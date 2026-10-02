@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.16 (published 2026-10-02 as artifact version 1790944423-5c22). It's one file with every clue built in.
+- `index.html`: the whole game, v4.17 (published 2026-10-02 as artifact version 1790944468-a2e1). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -70,6 +70,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.14 (2026-10-02): Guess the Year: Football (v4work/out/fyear.json, 80 clues of three same-calendar-year events, 74 from 2000 on, 2026 clue relies on the wc26 data). After Who Am I? in setup; in Football mode (now 11 categories). Boards with 8+ columns use a 92px minimum column so 11 fit from 1280px wide; narrower screens scroll the board sideways.
 - 4.15 (2026-10-02): Football mode uses a lighter pitch green (tile #2A9A4C, background #1C6E37) with a lighter red for minus scores, and shows a ⚽ after Jeopardy Night in the game's top bar.
 - 4.16 (2026-10-02): Board tile values are white in Football mode (gold elsewhere).
+- 4.17 (2026-10-02): Football mode picks a random 6 of its 11 categories (kept in pool order) each time it starts and on Play again; New board keeps the same 6.
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
