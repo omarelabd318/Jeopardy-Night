@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.12 (published 2026-10-02 as artifact version 1790943919-eeae). It's one file with every clue built in.
+- `index.html`: the whole game, v4.13 (published 2026-10-02 as artifact version 1790944082-ccdf). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -66,6 +66,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.10 (2026-10-02): Football mode button on setup (right of Back to title). Starts a game at once with a fixed board in a green pitch theme: Common Club, Career Path, Football Transfers, Guess the Footballer, Premier League (2000–Now), Champions League (2000–Now) and World Cup (mode-only category fwc built in src/extra.js from every World Cup clue plus the World Cup 2026 clues prefixed "2026: "). Going to setup or title restores blue and the previous picks. Colours now come from CSS variables (body.football overrides them). Also fixed the setup screen scrolling sideways on phones.
 - 4.11 (2026-10-02): Who Am I? category (v4work/out/whoami.json, 80 clues, 16 per value; three numbered facts about a footballer, about a fifth Egyptian; written from well-known facts, not source-checked one by one). Sits after Career Path in setup and in Football mode, which now has 8 categories. Boards with 8+ columns use smaller, tighter headers so long words fit.
 - 4.12 (2026-10-02): Football Stadiums category (v4work/out/stad.json, 80 text clues: stadium to club and club to stadium, 16 per value), after Football Transfers and in Football mode (now 9 categories). Text clues can now carry an optional third element, an image path shown full-size. Stadium photo clues come from v4work/stadium-photos.json (30 stadiums, key/value/name/wiki) and join the pool automatically at build time once photos/<key>.jpg exists; publish the new photos through files.
+- 4.13 (2026-10-02): Egyptian Football category (v4work/out/egfb.json, 80 clues; 52 copied from Football's Egypt clues, 28 new, e.g. Koller/Mosimane CAF titles, Afsha 2020 final, Zamalek Confederation Cups 2019/2024). After Football in setup; in Football mode (now 10 categories). Board headers scale with column count (--hvw = 12/cols vw).
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
