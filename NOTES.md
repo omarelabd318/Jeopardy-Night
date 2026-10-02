@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.25 (published 2026-10-02 as artifact version 1790946282-6f43). It's one file with every clue built in.
+- `index.html`: the whole game, v4.26 (published 2026-10-02 as artifact version 1790946504-aec9). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -79,6 +79,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.23 (2026-10-02): Football mode winner screen plays sounds/siuuu.mp3 (last 9 s of Omar's Ronaldo 'Inshallah Siuuu' clip, mono 96k, 0.15 s fade-in; copy in jeopardy/sounds/) instead of the fanfare; respects the sound toggle, stops on mute or leaving the winner screen, falls back to the fanfare if it can't play. Publish it via files: {"sounds/siuuu.mp3": ...}.
 - 4.24 (2026-10-02): First 18 of 30 stadium photos built into Football Stadiums as "Name this stadium." clues (photos/stadium-*.jpg, from v4work/stadium-photos/; signage blurred by the download thread). 12 still to come: campnou, santiagobernabeu, allianzarena, stamfordbridge, metropolitano, stadevelodrome, borgelarabstadium, estadioazteca, cravencottage, sanmames, stadelouisii, estadiododragao.
 - 4.25 (2026-10-02): Winner podium steps read 1st/2nd/3rd (ordinals, both modes). Experiment: Football mode category titles navy with a faint white shadow; undo by deleting the 'Football mode navy category titles' rule in src/head.html.
+- 4.26 (2026-10-02): All 30 stadium photos in (last 12 added); Football Stadiums now 110 clues, 22 per value with 6 photo clues each. Bernabéu and Camp Nou photos show the pre-renovation look; Stade Louis II and Borg El Arab are inside views.
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
