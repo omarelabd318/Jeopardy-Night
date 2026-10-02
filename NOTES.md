@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.30 (published 2026-10-02 as artifact version 1790947176-ebae). It's one file with every clue built in.
+- `index.html`: the whole game, v4.31 (published 2026-10-02 as artifact version 1790968226-2540). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -88,3 +88,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.28 (2026-10-02): Football mode green a step lighter (tile #33A957, background #238541, panel #228A44). The 4.27 values are in a comment above the body.football rule in src/head.html for a one-step revert. White tile values still read clearly (they keep their dark shadow).
 - 4.29 (2026-10-02): Football mode green shifted toward lime (tile #58B82C, background #3E9A1F, panel #449F22), as a try. The 4.28 values are in a comment above the body.football rule in src/head.html for a one-step revert. White values and navy titles checked readable in screenshots.
 - 4.30 (2026-10-02): Football mode uses Omar's neon swatch green #00FF14 (tiles and clue card; background #00E012). White would not read on it, so in Football mode the main text, tile values, and the winner headline are dark navy (#0B1530 / #0F2557) and the black text shadows are removed; plus/minus colours are dark green and dark red. To go back to the 4.29 lime, restore the values in the 4.30 comment in src/head.html and delete the "4.30 text rule" lines.
+- 4.31 (2026-10-02): Football mode text is black instead of navy (title, category titles, tile values, clue text and value, winner headline). Navy fills with white text (End game, the picking team, podium) are unchanged. To go back to navy text, delete the two "4.31 black text" lines in src/head.html and set the body.football .head colour back to var(--brass).

@@ -28,13 +28,16 @@ body.football .tile:not(.done){color:#fff}
 body.football{--cream:#0B1530}
 body.football .tile:not(.done){color:#0F2557;text-shadow:none}
 body.football #winTitle, body.football .tagline, body.football .bigtitle{text-shadow:none}
+/* 4.31 black text (Omar): delete these two lines to go back to navy text */
+body.football{--cream:#000}
+body.football h1, body.football .head, body.football .tile:not(.done), body.football .cluehead .val, body.football .confirmcard .val, body.football #winTitle, body.football .cgroup h4, body.football .prepcat .pcount, body.football .preplist b{color:#000}
 /* Football mode navy accents (Omar's 2026-10-02 experiment): delete this rule to go back to the gold (#FFCC33 / #C99A1E with dark text #1C1606) */
 body.football{--brass:#0F2557; --brass-dim:#0B1C45; --on-brass:#FFFFFF; --brass-rgb:15,37,87}
 body.football .award .grp .h, body.football .endbtn{background:var(--brass);border-color:var(--brass);color:#fff}
 body.football .pwb{background:rgba(var(--brass-rgb),.45);color:#fff}
 body.football .pod .who, body.football .win{color:#fff;background:var(--brass);border-radius:8px;padding:2px 10px}
 /* Football mode navy category titles (Omar's experiment, 4.25): delete this rule to go back to white */
-body.football .head{color:var(--brass);text-shadow:none}  /* 4.27: shadow removed; was text-shadow:2px 2px 0 rgba(255,255,255,.35) */
+body.football .head{color:#000;text-shadow:none}  /* 4.31: black; was color:var(--brass) (navy) */  /* 4.27: shadow removed; was text-shadow:2px 2px 0 rgba(255,255,255,.35) */
 body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05em}
 .btn.footbtn{border-color:#5DBE7A;background:#207D3F;color:#fff}
 html,body{height:100%}
@@ -268,7 +271,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.30</div>
+      <div class="eyebrow verlabel">v4.31</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -278,7 +281,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.30</div>
+      <div class="eyebrow verlabel">v4.31</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -478,7 +481,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.30`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.31`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
