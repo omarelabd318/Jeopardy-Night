@@ -26,6 +26,8 @@ body.football{--brass:#0F2557; --brass-dim:#0B1C45; --on-brass:#FFFFFF; --brass-
 body.football .award .grp .h, body.football .endbtn{background:var(--brass);border-color:var(--brass);color:#fff}
 body.football .pwb{background:rgba(var(--brass-rgb),.45);color:#fff}
 body.football .pod .who, body.football .win{color:#fff;background:var(--brass);border-radius:8px;padding:2px 10px}
+/* Football mode navy category titles (Omar's experiment, 4.25): delete this rule to go back to white */
+body.football .head{color:var(--brass);text-shadow:2px 2px 0 rgba(255,255,255,.35)}
 body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05em}
 .btn.footbtn{border-color:#5DBE7A;background:#207D3F;color:#fff}
 html,body{height:100%}
@@ -259,7 +261,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.24</div>
+      <div class="eyebrow verlabel">v4.25</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -269,7 +271,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.24</div>
+      <div class="eyebrow verlabel">v4.25</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -469,7 +471,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.24`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.25`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -723,7 +725,7 @@ function showWinner(){
   const rankOf = t => 1 + ranked.filter(x => x.score > t.score).length;
   const order = ranked.slice(0, 3);
   $("#podium").innerHTML = order.map(t => { const r = rankOf(t);
-    return `<div class="pod p${Math.min(r,3)}"><div class="who">${esc(t.name)}</div><div class="pts">${t.score}</div><div class="step">${r}</div></div>`; }).join("");
+    return `<div class="pod p${Math.min(r,3)}"><div class="who">${esc(t.name)}</div><div class="pts">${t.score}</div><div class="step">${r}${["th","st","nd","rd"][(r%100>10&&r%100<14)||r%10>3?0:r%10]}</div></div>`; }).join("");
   $("#podium").hidden = S.teams.length === 1;
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b class="${t.score<0?"neg":""}">${t.score}</b></li>`).join("") : "";
   $("#winBoard").hidden = S.cats.length*5 - Object.keys(S.done).length === 0;
