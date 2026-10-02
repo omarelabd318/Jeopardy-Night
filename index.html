@@ -10,7 +10,7 @@
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
 :root{
   --felt:#050A5E; --felt-2:#0A1486; --tile:#060CE9; --tile-hi:#2A33FF; --line:#2B36B8;
-  --brass:#FFCC33; --brass-dim:#C99A1E; --cream:#FFFFFF; --muted:#B9C0FF;
+  --brass:#FFCC33; --brass-dim:#C99A1E; --on-brass:#1C1606; --brass-rgb:255,204,51; --cream:#FFFFFF; --muted:#B9C0FF;
   --good:#7FD38F; --bad:#EE7A63;
   --panel:#070F6E; --deep:#03073F; --deeper:#02052E; --veil:2,4,40; --winhi:#1A2AB8;
   --display:"Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
@@ -21,6 +21,11 @@
 body.football{--felt:#1C6E37; --felt-2:#207D3F; --tile:#2A9A4C; --tile-hi:#36B35B; --line:#5DBE7A; --muted:#DDF6E5; --good:#C6FFD2; --bad:#FFC2B5;
   --panel:#1B743A; --deep:#13592A; --deeper:#0F4A22; --veil:12,64,30; --winhi:#3DBA63}
 body.football .tile:not(.done){color:#fff}
+/* Football mode navy accents (Omar's 2026-10-02 experiment): delete this rule to go back to the gold (#FFCC33 / #C99A1E with dark text #1C1606) */
+body.football{--brass:#0F2557; --brass-dim:#0B1C45; --on-brass:#FFFFFF; --brass-rgb:15,37,87}
+body.football .award .grp .h, body.football .endbtn{background:var(--brass);border-color:var(--brass);color:#fff}
+body.football .pwb{background:rgba(var(--brass-rgb),.45);color:#fff}
+body.football .pod .who, body.football .win{color:#fff;background:var(--brass);border-radius:8px;padding:2px 10px}
 body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05em}
 .btn.footbtn{border-color:#5DBE7A;background:#207D3F;color:#fff}
 html,body{height:100%}
@@ -44,11 +49,11 @@ h1 span{color:var(--cream)}
 .cgroup h4{margin:0 0 8px;font-family:var(--display);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:15px;color:var(--brass)}
 .cgroup h4 .gc{font-family:var(--body);font-weight:600;text-transform:none;letter-spacing:0;font-size:13px;opacity:.75;margin-left:6px;color:inherit}
 .chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px}
-.chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#1C1606}
+.chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:var(--on-brass)}
 .teams{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .teams input{background:var(--felt-2);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--cream);font:inherit;font-weight:600;width:170px;max-width:100%}
 .btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;background:var(--felt-2);border:1.5px solid var(--line)}
-.btn.primary{background:var(--brass);border-color:var(--brass);color:#1C1606;font-family:var(--display);font-size:22px;letter-spacing:.05em;text-transform:uppercase;padding:12px 28px}
+.btn.primary{background:var(--brass);border-color:var(--brass);color:var(--on-brass);font-family:var(--display);font-size:22px;letter-spacing:.05em;text-transform:uppercase;padding:12px 28px}
 .btn.small{padding:7px 12px;font-size:13px;border-radius:9px}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .note{color:var(--muted);font-size:13.5px;max-width:70ch}
@@ -83,7 +88,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 #board.many{--colmin:92px}
 #board.many .head{letter-spacing:0;padding-inline:4px;font-size:clamp(12.5px,var(--hvw,1.5vw),30px)}
 .head.has-tip{position:relative;cursor:help;flex-direction:column;gap:4px}
-.head .info{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--brass);color:#1C1606;font-family:var(--body);font-weight:800;font-size:12px;text-shadow:none;letter-spacing:0}
+.head .info{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--brass);color:var(--on-brass);font-family:var(--body);font-weight:800;font-size:12px;text-shadow:none;letter-spacing:0}
 .head .tip{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);width:240px;max-width:80vw;background:var(--cream);color:var(--felt-2);font-family:var(--body);font-weight:600;font-size:14px;line-height:1.4;text-transform:none;letter-spacing:0;text-shadow:none;text-align:left;padding:10px 12px;border-radius:8px;box-shadow:4px 4px 0 #000;z-index:4}
 .head.l .tip{left:0;transform:none}.head.r .tip{left:auto;right:0;transform:none}
 .head.has-tip:hover .tip,.head.has-tip:focus .tip,.head.show .tip{display:block}
@@ -102,11 +107,11 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .team .adj button{background:transparent;border:1px solid var(--line);border-radius:6px;font-size:12px;padding:1px 6px;color:var(--muted)}
 .team.lead{border-color:var(--brass)}
 .team{cursor:pointer}
-.team.turn{background:var(--brass);border-color:var(--brass);box-shadow:0 0 0 3px #000,0 0 18px rgba(255,204,51,.55)}
-.team.turn .nm,.team.turn .sc{color:#1C1606}
-.team.turn .adj button{color:#1C1606;border-color:rgba(0,0,0,.35)}
+.team.turn{background:var(--brass);border-color:var(--brass);box-shadow:0 0 0 3px #000,0 0 18px rgba(var(--brass-rgb),.55)}
+.team.turn .nm,.team.turn .sc{color:var(--on-brass)}
+.team.turn .adj button{color:var(--on-brass);border-color:rgba(0,0,0,.35)}
 .team .pick{display:block;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-#editScores[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#1C1606}
+#editScores[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:var(--on-brass)}
 
 /* clue card */
 #card{position:fixed;inset:0;background:rgba(var(--veil),.93);z-index:10;display:flex;align-items:center;justify-content:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
@@ -182,22 +187,22 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .opt .sw::after{content:"";position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s}
 .opt[aria-pressed="true"]{border-color:var(--brass-dim)}
 .opt[aria-pressed="true"] .sw{background:var(--brass);border-color:var(--brass)}
-.opt[aria-pressed="true"] .sw::after{transform:translateX(18px);background:#1C1606}
+.opt[aria-pressed="true"] .sw::after{transform:translateX(18px);background:var(--on-brass)}
 .sndbtn[aria-pressed="false"]{color:var(--muted);border-style:dashed}
 .endbtn{border-color:var(--brass-dim);color:var(--brass)}
 .team .pw{grid-column:1/-1;display:flex;gap:6px;margin-top:4px}
 .pwb{font-family:var(--display);font-weight:800;letter-spacing:.04em;font-size:14px;line-height:1;padding:5px 9px;border-radius:7px;border:1.5px solid var(--brass-dim);background:transparent;color:var(--brass)}
-.pwb.ready{background:var(--brass);color:#1C1606;border-color:var(--brass);box-shadow:0 0 12px rgba(255,204,51,.6)}
+.pwb.ready{background:var(--brass);color:var(--on-brass);border-color:var(--brass);box-shadow:0 0 12px rgba(var(--brass-rgb),.6)}
 .pwb:disabled,span.pwb{cursor:default}
 .pwb.used{opacity:.35;border-style:dashed;text-decoration:line-through;box-shadow:none}
-.team.turn .pwb{color:#1C1606;border-color:rgba(0,0,0,.45)}
-.team.turn .pwb.ready{background:#1C1606;color:var(--brass);border-color:#1C1606}
+.team.turn .pwb{color:var(--on-brass);border-color:rgba(0,0,0,.45)}
+.team.turn .pwb.ready{background:var(--on-brass);color:var(--brass);border-color:var(--on-brass)}
 .team.turn .pwb.used{opacity:.4}
 .pwb .sm{display:none}
 @media (max-width:640px){.pwb .sm{display:inline}}
 .pwrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .pwrow .lbl{font-size:13px;color:var(--muted);font-weight:600}
-.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:6px 12px;border-radius:999px;background:var(--brass);color:#1C1606}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-size:15px;padding:6px 12px;border-radius:999px;background:var(--brass);color:var(--on-brass)}
 .badges{display:flex;flex-wrap:wrap;gap:8px}
 .timer.out .t{color:var(--bad)}
 #winBox{position:fixed;inset:0;z-index:25;background:radial-gradient(ellipse at 50% 30%,var(--winhi) 0%,var(--felt) 55%,var(--deeper) 100%);display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
@@ -210,7 +215,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .pod .who{font-weight:700;font-size:clamp(16px,2vw,24px);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pod .pts{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,40px);color:var(--cream);font-variant-numeric:tabular-nums}
 .pod .step{width:100%;border-radius:10px 10px 0 0;background:var(--tile);border:2px solid #000;display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:clamp(34px,5vw,64px);color:var(--brass);text-shadow:3px 3px 0 #000}
-.pod.p1 .step{height:clamp(110px,18vh,170px);background:var(--brass);color:#1C1606;text-shadow:none}
+.pod.p1 .step{height:clamp(110px,18vh,170px);background:var(--brass);color:var(--on-brass);text-shadow:none}
 .pod.p2 .step{height:clamp(80px,13vh,120px)}
 .pod.p3 .step{height:clamp(64px,10vh,90px);font-size:clamp(28px,4vw,48px)}
 .pod.p1 .who{color:var(--brass)}
@@ -227,7 +232,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   @keyframes podIn{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
   .tile.done{transition:background .3s}
   .pwb.ready{animation:glow 1.2s ease-in-out infinite alternate}
-  @keyframes glow{from{box-shadow:0 0 4px rgba(255,204,51,.4)}to{box-shadow:0 0 16px rgba(255,204,51,.9)}}
+  @keyframes glow{from{box-shadow:0 0 4px rgba(var(--brass-rgb),.4)}to{box-shadow:0 0 16px rgba(var(--brass-rgb),.9)}}
 }
 @media (max-width:640px){
   .topbar .tools .btn.small{padding:6px 9px;font-size:12px}
@@ -254,7 +259,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.19</div>
+      <div class="eyebrow verlabel">v4.20</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -264,7 +269,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.19</div>
+      <div class="eyebrow verlabel">v4.20</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -464,7 +469,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.19`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.20`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -738,7 +743,7 @@ function confetti(){
   if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const cv = $("#confetti"), ctx = cv.getContext("2d"), dpr = Math.min(2, window.devicePixelRatio || 1);
   const W = cv.width = innerWidth*dpr, H = cv.height = innerHeight*dpr;
-  const cols = ["#FFCC33","#FFFFFF","#7FD38F","#EE7A63","#2A33FF","#B9C0FF"];
+  const cols = [S.football ? "#0F2557" : "#FFCC33","#FFFFFF","#7FD38F","#EE7A63","#2A33FF","#B9C0FF"];  // navy instead of gold in Football mode
   const ps = Array.from({length:180}, () => ({x:Math.random()*W, y:-Math.random()*H*0.8, vx:(Math.random()-.5)*2*dpr, vy:(2+Math.random()*3)*dpr, r:(4+Math.random()*5)*dpr, a:Math.random()*6.3, va:(Math.random()-.5)*.25, c:cols[Math.floor(Math.random()*cols.length)]}));
   const t0 = performance.now();
   const step = now => {
