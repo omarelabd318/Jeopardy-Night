@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.18 (published 2026-10-02 as artifact version 1790944519-95d2). It's one file with every clue built in.
+- `index.html`: the whole game, v4.19 (published 2026-10-02 as artifact version 1790944596-eff7). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -72,6 +72,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.16 (2026-10-02): Board tile values are white in Football mode (gold elsewhere).
 - 4.17 (2026-10-02): Football mode picks a random 6 of its 11 categories (kept in pool order) each time it starts and on Play again; New board keeps the same 6.
 - 4.18 (2026-10-02): Football mode button moved to sit right of Start game, in the lighter green.
+- 4.19 (2026-10-02): Renamed Guess the Year: Football to "Guess the Year: Football Edition" (id fyear unchanged).
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
