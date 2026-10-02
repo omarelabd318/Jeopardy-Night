@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.22 (published 2026-10-02 as artifact version 1790945353-12aa). It's one file with every clue built in.
+- `index.html`: the whole game, v4.23 (published 2026-10-02 as artifact version 1790945861-20b5). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -76,6 +76,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.20 (2026-10-02): Experiment, Omar may reverse it: in Football mode every gold accent is navy #0F2557 (title word, picking-team card, Start/Play again, timer bar, half-points and End game buttons, winner title and podium, confetti), with white text on navy. To undo: in src/head.html delete the 'Football mode navy accents' rule and the three body.football rules right after it, and in src/app.js drop the S.football check in confetti's cols. Gold now comes from variables --brass/--brass-dim/--on-brass/--brass-rgb.
 - 4.21 (2026-10-02): Football mode board values are navy (var(--brass)) with a faint white shadow, replacing the white from 4.16. Undo with the navy rule: values then fall back to gold; to restore white instead, set the body.football .tile:not(.done) rule back to color:#fff.
 - 4.22 (2026-10-02): Football mode board values back to white (Omar); the rest of the navy experiment stays.
+- 4.23 (2026-10-02): Football mode winner screen plays sounds/siuuu.mp3 (last 9 s of Omar's Ronaldo 'Inshallah Siuuu' clip, mono 96k, 0.15 s fade-in; copy in jeopardy/sounds/) instead of the fanfare; respects the sound toggle, stops on mute or leaving the winner screen, falls back to the fanfare if it can't play. Publish it via files: {"sounds/siuuu.mp3": ...}.
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
