@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.14 (published 2026-10-02 as artifact version 1790944318-d8df). It's one file with every clue built in.
+- `index.html`: the whole game, v4.15 (published 2026-10-02 as artifact version 1790944380-ea9e). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -68,6 +68,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.12 (2026-10-02): Football Stadiums category (v4work/out/stad.json, 80 text clues: stadium to club and club to stadium, 16 per value), after Football Transfers and in Football mode (now 9 categories). Text clues can now carry an optional third element, an image path shown full-size. Stadium photo clues come from v4work/stadium-photos.json (30 stadiums, key/value/name/wiki) and join the pool automatically at build time once photos/<key>.jpg exists; publish the new photos through files.
 - 4.13 (2026-10-02): Egyptian Football category (v4work/out/egfb.json, 80 clues; 52 copied from Football's Egypt clues, 28 new, e.g. Koller/Mosimane CAF titles, Afsha 2020 final, Zamalek Confederation Cups 2019/2024). After Football in setup; in Football mode (now 10 categories). Board headers scale with column count (--hvw = 12/cols vw).
 - 4.14 (2026-10-02): Guess the Year: Football (v4work/out/fyear.json, 80 clues of three same-calendar-year events, 74 from 2000 on, 2026 clue relies on the wc26 data). After Who Am I? in setup; in Football mode (now 11 categories). Boards with 8+ columns use a 92px minimum column so 11 fit from 1280px wide; narrower screens scroll the board sideways.
+- 4.15 (2026-10-02): Football mode uses a lighter pitch green (tile #2A9A4C, background #1C6E37) with a lighter red for minus scores, and shows a ⚽ after Jeopardy Night in the game's top bar.
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
