@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.07 (published 2026-10-02 as artifact version 1790936391-81f8). It's one file with every clue built in.
+- `index.html`: the whole game, v4.08 (published 2026-10-02 as artifact version 1790937887-3380). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -61,6 +61,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.05 (2026-10-02): 29 more new photos (AC Cobra, first-gen Dodge Viper, 6 actors/footballers, 21 Guess the Person). 99 of the 120 new photos are now in. Left out: ezzatabouaouf, ahmedshawqi, mohamedhassaneinheikal (too low-res for the zoom), bmw2002 (photo showed a 4-door), mahmoudmokhtareltetsh (too blurry), plus 16 still downloading (ramses, yasminabdulaziz, hassanhosny, salahabdallah, mahmoudkahraba, emadmoteab, ahmedbelal, taherabouzeid, ahmedelkass, rabahmadjer, mohamedhamaki, mohamedfouad, ahmedsaad, marwanpablo, hassanshakosh, abu).
 - 4.06 (2026-10-02): 7 more (2-door BMW 2002, Ramses, Kahraba, Emad Moteab, Rabah Madjer, Hamaki, Ahmed Saad). 106 of the 120 new photos are live. Not in the game: no free photo on Wikimedia for yasminabdulaziz, taherabouzeid, ahmedbelal, mohamedfouad, marwanpablo, hassanshakosh, abu; too low-res or not a photo for ahmedelkass, mahmoudmokhtareltetsh, hassanhosny, salahabdallah (painting), ezzatabouaouf, ahmedshawqi, mohamedhassaneinheikal. Omar can add any of these himself from the photo checklist in setup.
 - 4.07 (2026-10-02): The "2 answers" power-up button on an open clue now shows only for the team whose turn it is (Omar).
+- 4.08 (2026-10-02): Two new categories after Food & Drink: Fast Food (80 trivia clues, v4work/out/ffood.json; KFC-Egypt 1973 and hawawshi 1971 rest on single sources) and Most Calories (80 clues of 3 items, v4work/out/cal.json; McDonald's figures from US official pages, other chains from aggregator sites, Egyptian dishes estimated per stated portion; winner beats second by at least 8%). Clue text now keeps line breaks (.qtext white-space:pre-line).
 
 ## Guess the Person gaps (v4.00)
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
