@@ -18,9 +18,10 @@
   color-scheme:dark;
 }
 /* Football mode: pitch green in place of the blue */
+/* 4.29 lime; 4.28 was felt #238541 felt-2 #28934A tile #33A957 tile-hi #40BF66 line #6FCF8B panel #228A44 deep #197035 deeper #145E2C veil 16,82,40 winhi #4AC870 */
 /* 4.28 lighter; 4.27 was felt #1C6E37 felt-2 #207D3F tile #2A9A4C tile-hi #36B35B line #5DBE7A panel #1B743A deep #13592A deeper #0F4A22 veil 12,64,30 winhi #3DBA63 */
-body.football{--felt:#238541; --felt-2:#28934A; --tile:#33A957; --tile-hi:#40BF66; --line:#6FCF8B; --muted:#DDF6E5; --good:#C6FFD2; --bad:#FFC2B5;
-  --panel:#228A44; --deep:#197035; --deeper:#145E2C; --veil:16,82,40; --winhi:#4AC870}
+body.football{--felt:#3E9A1F; --felt-2:#46A624; --tile:#58B82C; --tile-hi:#6BCB38; --line:#9BE06A; --muted:#EEFAD9; --good:#E2FFC6; --bad:#FFC2B5;
+  --panel:#449F22; --deep:#347E19; --deeper:#2A6A14; --veil:42,102,20; --winhi:#7AD846}
 body.football .tile:not(.done){color:#fff}
 /* Football mode navy accents (Omar's 2026-10-02 experiment): delete this rule to go back to the gold (#FFCC33 / #C99A1E with dark text #1C1606) */
 body.football{--brass:#0F2557; --brass-dim:#0B1C45; --on-brass:#FFFFFF; --brass-rgb:15,37,87}
@@ -262,7 +263,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.28</div>
+      <div class="eyebrow verlabel">v4.29</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -272,7 +273,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.28</div>
+      <div class="eyebrow verlabel">v4.29</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -472,7 +473,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.28`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.29`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [

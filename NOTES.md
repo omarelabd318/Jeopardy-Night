@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.28 (published 2026-10-02 as artifact version 1790946702-7e80). It's one file with every clue built in.
+- `index.html`: the whole game, v4.29 (published 2026-10-02 as artifact version 1790946849-908d). It's one file with every clue built in.
 - `index-v3.59.html`: backup of the previous version.
 - `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -86,3 +86,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
 - No photo was found for: Mohamed Hamaki, Marwan Pablo, Mohamed Fouad, Dina El Sherbiny, Ahmed Amin, Hassan Shakosh, Asser Yassin, Abu, Hisham Abbas.
 - 4.28 (2026-10-02): Football mode green a step lighter (tile #33A957, background #238541, panel #228A44). The 4.27 values are in a comment above the body.football rule in src/head.html for a one-step revert. White tile values still read clearly (they keep their dark shadow).
+- 4.29 (2026-10-02): Football mode green shifted toward lime (tile #58B82C, background #3E9A1F, panel #449F22), as a try. The 4.28 values are in a comment above the body.football rule in src/head.html for a one-step revert. White values and navy titles checked readable in screenshots.
