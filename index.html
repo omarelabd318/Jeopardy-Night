@@ -22,7 +22,7 @@ body.football{--felt:#1C6E37; --felt-2:#207D3F; --tile:#2A9A4C; --tile-hi:#36B35
   --panel:#1B743A; --deep:#13592A; --deeper:#0F4A22; --veil:12,64,30; --winhi:#3DBA63}
 body.football .tile:not(.done){color:#fff}
 body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05em}
-.btn.footbtn{border-color:#2C8A4A;background:#0F4F26;color:#fff}
+.btn.footbtn{border-color:#5DBE7A;background:#207D3F;color:#fff}
 html,body{height:100%}
 body{background:var(--felt);color:var(--cream);font-family:var(--body);font-size:15px;line-height:1.45}
 *{box-sizing:border-box}
@@ -254,7 +254,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.17</div>
+      <div class="eyebrow verlabel">v4.18</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -264,7 +264,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.17</div>
+      <div class="eyebrow verlabel">v4.18</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -296,8 +296,8 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
     </details>
     <div class="row">
       <button class="btn primary" id="start">Start game</button>
-      <button class="btn small" id="setupHome">Back to title</button>
       <button class="btn small footbtn" id="football" title="A football-only board in green: 6 random picks from Common Club, Career Path, Who Am I?, Football Transfers, Football Stadiums, Guess the Footballer, Egyptian Football, Guess the Year: Football, Premier League, Champions League and World Cup">Football mode</button>
+      <button class="btn small" id="setupHome">Back to title</button>
       <button class="btn small" id="resetHist">Forget played clues</button>
       <span class="note" id="histNote"></span>
     </div>
@@ -464,7 +464,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.17`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.18`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
