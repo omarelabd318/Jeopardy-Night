@@ -20,7 +20,7 @@
 /* Football mode: pitch green in place of the blue */
 body.football{--felt:#1C6E37; --felt-2:#207D3F; --tile:#2A9A4C; --tile-hi:#36B35B; --line:#5DBE7A; --muted:#DDF6E5; --good:#C6FFD2; --bad:#FFC2B5;
   --panel:#1B743A; --deep:#13592A; --deeper:#0F4A22; --veil:12,64,30; --winhi:#3DBA63}
-body.football .tile:not(.done){color:var(--brass);text-shadow:2px 2px 0 rgba(255,255,255,.35)}
+body.football .tile:not(.done){color:#fff}
 /* Football mode navy accents (Omar's 2026-10-02 experiment): delete this rule to go back to the gold (#FFCC33 / #C99A1E with dark text #1C1606) */
 body.football{--brass:#0F2557; --brass-dim:#0B1C45; --on-brass:#FFFFFF; --brass-rgb:15,37,87}
 body.football .award .grp .h, body.football .endbtn{background:var(--brass);border-color:var(--brass);color:#fff}
@@ -259,7 +259,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.21</div>
+      <div class="eyebrow verlabel">v4.22</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -269,7 +269,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.21</div>
+      <div class="eyebrow verlabel">v4.22</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -469,7 +469,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.21`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.22`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
