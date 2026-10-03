@@ -207,6 +207,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .newscard ul{margin:0;padding-left:20px;line-height:1.5}
 .newscard li{margin:3px 0}
 .newshist{margin-top:14px}
+#newsLock{margin-top:14px} #newsLock label{display:block;font-weight:700;margin-bottom:8px} #newsLock input{flex:1;min-width:0;font:inherit;font-size:18px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--deeper);color:inherit} #newsErr{min-height:1.2em;margin-top:6px;color:var(--bad)}  /* 4.62: code lock */
 .newshist summary{cursor:pointer;font-weight:700}
 .newscard .era{margin:20px 0 2px;font-family:var(--display);font-size:18px;color:var(--brass);text-transform:uppercase;letter-spacing:.04em}
 .newscard ul.compact{list-style:none;padding-left:0}
@@ -331,7 +332,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.61</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.62</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -341,7 +342,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.61</div>
+      <div class="eyebrow verlabel">v4.62</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -397,7 +398,10 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 </div></div>
 <div id="newsBox" hidden><div class="clue newscard" role="dialog" aria-modal="true" aria-labelledby="newsTitle">
   <div class="val" id="newsTitle">Version history</div>
-  <details class="newshist"><summary>Version history</summary><div id="newsHist"></div></details>
+  <form id="newsLock" autocomplete="off"><label for="newsCode">Enter the code to see the version history</label>
+    <div class="row"><input id="newsCode" type="password" inputmode="text" autocapitalize="off" spellcheck="false" aria-describedby="newsErr"><button class="btn primary" type="submit">Open</button></div>
+    <div class="note" id="newsErr" role="alert"></div></form>
+  <details class="newshist" hidden><summary>Version history</summary><div id="newsHist"></div></details>
   <div class="row"><button class="btn primary" id="newsClose">Close</button></div>
 </div></div>
 <div id="confirmBox" hidden><div class="clue confirmcard" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText">

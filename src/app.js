@@ -133,14 +133,19 @@ function openNews(){
   $("#newsTitle").textContent = `Jeopardy Night v${vs[0].v}`;
   $("#newsHist").innerHTML = newsHTML(CHANGELOG);
   $(".newshist").open = false;
-  $("#newsBox").hidden = false; $("#newsClose").focus();
+  /* 4.62 (Omar): the history only opens with the code "joga" (any capitals); it locks again on every open */
+  $(".newshist").hidden = true; $("#newsLock").hidden = false; $("#newsCode").value = ""; $("#newsErr").textContent = "";
+  $("#newsBox").hidden = false; $("#newsCode").focus();
 }
+$("#newsLock").addEventListener("submit", e => { e.preventDefault();
+  if($("#newsCode").value.trim().toLowerCase() === "joga"){ $("#newsLock").hidden = true; $(".newshist").hidden = false; $(".newshist").open = true; $("#newsClose").focus(); }
+  else { $("#newsErr").textContent = "Wrong code."; $("#newsCode").select(); } });
 function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
 $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.61`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.62`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
