@@ -133,7 +133,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.42`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.43`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -347,7 +347,24 @@ $("#start").onclick = () => {
 /* Football mode: a fixed football board on a green pitch theme; setup and title go back to blue and the usual picks */
 const FOOTBALL = ["cclub","path","whoami","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"];
 function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S.football && S.prevCats){ S.cats = S.prevCats; S.prevCats = null; renderChips(); }
-  S.football = on; document.body.classList.toggle("football", on); }
+  S.football = on; document.body.classList.toggle("football", on); if(on) footballBg(); }
+/* 4.43: retro poster collage of football phrases behind the Football mode page (fixed layout, built once) */
+const FB_PHRASES = ["SIIIIIUUUUUU!","It's a f*cking disgrace","After review… #10 Paraguay","AGÜEROOOOO","Qué mirás, bobo?","Mo Salah, running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك"];
+const FB_FILL = ["GOAL!","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
+function footballBg(){
+  const el = $("#fbBg"); if(!el || el.childElementCount) return;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const out = [];
+  for(let i = 0; i < 170; i++){
+    const t = i % 3 === 2 ? FB_FILL[(i * 7) % FB_FILL.length] : FB_PHRASES[(i * 5) % FB_PHRASES.length];
+    const ar = /[\u0600-\u06FF]/.test(t), n = t.length, short = n <= 8;
+    const vert = !ar && short && n > 2 && rnd() < .35;
+    const cs = vert ? 1 : n > 8 ? Math.min(5, Math.ceil(n / (ar ? 5 : 5.5))) : n <= 3 ? 1 : (rnd() < .4 ? 2 : 1), rs = vert ? 2 : (n <= 8 && rnd() < .3) ? 2 : 1;
+    const f = 1 + Math.floor(rnd() * 6), c = 1 + Math.floor(rnd() * 5);
+    out.push(`<div class="b f${f} c${c}${vert ? " v" : ""}" style="grid-column:span ${cs};grid-row:span ${rs}"><span dir="auto" style="--n:${Math.max(3, n * (ar ? .75 : 1))}">${esc(t)}</span></div>`);
+  }
+  el.innerHTML = out.join("");
+}
 const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 13, in pool order
 $("#football").onclick = () => {
   setFootball(true); S.cats = footballPick(); newGame();
