@@ -43,8 +43,8 @@ body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05
 /* 4.43 try (Omar): retro poster collage of football phrases behind the Football mode page, at 20%, styled after v4work/football-theme-ref.avif.
    To undo: delete this block down to "end 4.43" and the fbBg div in the page; footballBg() in src/app.js then does nothing. */
 .fbbg{display:none}
-body.football .fbbg{display:grid;position:absolute;inset:0 0 6px;border-radius:6px;z-index:0;pointer-events:none;overflow:hidden;opacity:.32;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));grid-auto-rows:56px;grid-auto-flow:dense;gap:5px;padding:5px}
-body.football .boardwrap{position:relative} body.football .board{position:relative;z-index:1}  /* 4.45: collage sits inside the board frame only (4.43–4.44: position:fixed over the whole page, opacity .2, .wrap z-index:1) */
+body.football .fbbg{display:grid;position:absolute;inset:0 0 6px;border-radius:6px;z-index:0;pointer-events:none;overflow:hidden;opacity:.8;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));grid-auto-rows:56px;grid-auto-flow:dense;gap:5px;padding:5px}
+body.football .boardwrap{position:relative} body.football .board{position:relative;z-index:1}  /* 4.46: collage opacity .8 (4.45: .32). 4.45: collage sits inside the board frame only (4.43–4.44: position:fixed over the whole page, opacity .2, .wrap z-index:1) */
 .fbbg .b{container-type:size;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;line-height:.95;padding:0 4px}
 .fbbg .b span{white-space:nowrap;font-size:min(72cqh,calc(var(--k,150) * 1cqw / var(--n)))}
 .fbbg .b.v span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:min(72cqw,calc(var(--k,150) * 1cqh / var(--n)))}
@@ -62,7 +62,8 @@ body.football .boardwrap{position:relative} body.football .board{position:relati
 /* end 4.43 */
 /* 4.44 try (Omar): the collage shows through the board. Tiles and headers are 60% solid green, and the board's black grid is half see-through.
    To undo: delete these three lines (down to "end 4.44"). */
-body.football .head, body.football .tile, body.football .tile.done{background:rgba(0,215,0,.5)}  /* 4.44: .6 */
+body.football .tile, body.football .tile.done{background:rgba(0,215,0,.35)}  /* 4.45: .5; 4.44: .6 (headers and tiles together) */
+body.football .head{background:rgba(0,215,0,.72)}  /* 4.46: category names stay clean */
 body.football .tile:not(.done):hover{background:rgba(90,234,90,.75)}
 body.football .board{background:rgba(0,0,0,.5)}
 /* end 4.44 */
@@ -317,7 +318,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.45</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.46</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -327,7 +328,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.45</div>
+      <div class="eyebrow verlabel">v4.46</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
