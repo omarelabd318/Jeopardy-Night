@@ -133,7 +133,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.40`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.41`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -622,7 +622,7 @@ $("#clue").addEventListener("click", e => {
   }
   if(a==="reveal"){ c.revealed = true; c.fresh = true; stopTimer(); c.running = false; renderClue(); c.fresh = false; }
   if(a==="setspot"){ openFocus(norm(clueParts().a), "Host only: tap the face or the part to zoom in on"); return; }
-  if(a==="unblur"){ c.blur = c.blur < 0.006 ? 0 : c.blur * 0.55; renderClue(); }
+  if(a==="unblur"){ c.blur = c.blur < 0.005 ? 0 : c.blur * 0.72; renderClue(); }  // v4.40: c.blur < 0.006 ? 0 : c.blur * 0.55
   if(a==="zoomout"){ c.zoom = c.zoom < 1.4 ? 1 : 1 + (c.zoom-1)*0.55; renderClue(); }
   if(a==="qr"){ c.qr = true; renderClue(); }
   if(a==="nextturn"){ c.turn = ((c.turn||0)+1) % S.teams.length; c.clue = (c.clue||1)+1; renderClue(); }
