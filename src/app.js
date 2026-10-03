@@ -109,7 +109,7 @@ $("#optSound").onclick = () => setSound(!S.sound);
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
-/* v4.40: What's new + version history, from src/changelog.json (newest first) */
+/* v4.40: version history, from src/changelog.json (newest first) */
 /* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
 function newsHTML(list){
   let html = "", compact = [];
@@ -122,10 +122,11 @@ function newsHTML(list){
   flush(); return html;
 }
 function openNews(){
-  const vs = CHANGELOG.filter(e => e.v), now = vs.slice(0, 2);
-  $("#newsTitle").textContent = `What's new in v${vs[0].v}`;
-  $("#newsNow").innerHTML = newsHTML(now);
-  $("#newsHist").innerHTML = newsHTML(CHANGELOG.filter(e => !now.includes(e)));
+  /* 4.53 (Omar): no What's new section, just the full version history, collapsed (4.40–4.52 showed the latest two versions above it) */
+  const vs = CHANGELOG.filter(e => e.v);
+  $("#newsTitle").textContent = `Jeopardy Night v${vs[0].v}`;
+  $("#newsHist").innerHTML = newsHTML(CHANGELOG);
+  $(".newshist").open = false;
   $("#newsBox").hidden = false; $("#newsClose").focus();
 }
 function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
@@ -133,7 +134,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.52`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.53`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
