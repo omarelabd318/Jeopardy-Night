@@ -110,7 +110,7 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.37`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.38`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -194,9 +194,11 @@ function setPhoto(key, blob){
 }
 function removePhoto(key){ if(photos[key]){ if(photos[key].startsWith("blob:")) URL.revokeObjectURL(photos[key]); delete photos[key]; } DB.del(key); if(BUILTIN[key]) photos[key] = "photos/" + key + ".jpg"; }
 function packStatus(extra){
-  const n = Object.keys(photos).length;
-  const pc = $("#phCount"); if(pc) pc.textContent = n ? `· ${n} saved` : "";
-  $("#packStatus").innerHTML = (n ? `${n} photo${n>1?"s":""} ready` : "No photos loaded") + (extra||"");
+  const keys = new Set(); PHOTO_CATS.forEach(cat => LV.forEach(l => pool(cat,l).forEach(([ans]) => keys.add(norm(ans)))));
+  const ks = [...keys], built = ks.filter(k => photos[k] && !photos[k].startsWith("blob:")).length, own = ks.filter(k => photos[k] && photos[k].startsWith("blob:")).length;
+  const txt = [built ? `${built} built in` : "", own ? `${own} added on this device` : ""].filter(Boolean).join(" · ");
+  const pc = $("#phCount"); if(pc) pc.textContent = txt ? `· ${txt}` : "";
+  $("#packStatus").innerHTML = (txt || "No photos loaded") + (extra||"");
 }
 $("#pack").addEventListener("change", e => {
   const keys = photoKeys(); const miss = [];
@@ -205,7 +207,7 @@ $("#pack").addEventListener("change", e => {
     const k = keys.find(k => k === fn) || keys.find(k => fn.length >= 4 && (k.includes(fn) || fn.includes(k)));
     if(k) setPhoto(k, f); else miss.push(f.name);
   });
-  packStatus(miss.length ? ` · <strong>${miss.length} couldn't be matched by file name</strong> (${esc(miss.slice(0,3).join(", "))}${miss.length>3?"…":""}). Use the Add buttons in the checklist below to attach them.` : "");
+  packStatus(miss.length ? ` · <strong>${miss.length} couldn't be matched by file name</strong> (${esc(miss.slice(0,3).join(", "))}${miss.length>3?"…":""}). Use the Replace buttons in the checklist below to attach them.` : "");
   if(miss.length){ $("#photoPanel").open = true; $("#prepBox").open = true; }
   renderPrep(); e.target.value = "";
 });
@@ -226,7 +228,14 @@ $("#prep").addEventListener("click", e => {
   if(rm){ removePhoto(rm.dataset.rm); renderPrep(); packStatus(); }
 });
 const prepOpen = new Set();
+function otherPhotos(){
+  const el = $("#otherPhotos"); if(!el) return;
+  const n = id => catById(id) ? LV.reduce((t,l) => t + pool(id,l).filter(e => e[2]).length, 0) : 0;
+  const parts = [n("foodpic") ? `Guess the Food (${n("foodpic")} photos)` : "", n("stad") ? `the stadium photos in Football Stadiums (${n("stad")})` : ""].filter(Boolean);
+  el.textContent = parts.length ? ` ${parts.join(" and ")} ${parts.length>1?"are":"is"} built in too, but can't be changed here.` : ""; el.hidden = !parts.length;
+}
 function renderPrep(){
+  otherPhotos();
   $("#prep").innerHTML = PHOTO_CATS.map(cat => {
     let tot = 0, got = 0, spot = 0;
     const body = LV.map(l => `<b>${l}</b>` + pool(cat,l).map(([ans,wiki],i) => { const k = norm(ans), has = !!photos[k];

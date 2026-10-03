@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.37. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 77 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.38. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 77 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 530 jpgs loaded as `photos/<key>.jpg`: 420 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -51,7 +51,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 
 ## Missing photos (checked at v4.37)
 - Guess the Person launched in v4.00 with 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else. Photos were added later for Hamaki, Ahmed Amin, Asser Yassin, Dina El Sherbiny and Hisham Abbas.
-- 14 clues in `v4work/new-photos.json` still have no photo, so the build leaves them out. Omar can add any of them from the photo checklist in setup.
+- 14 clues in `v4work/new-photos.json` still have no photo, so the build leaves them out and they don't appear in the setup photo checklist either. To add one, put `photos/<key>.jpg` in the repo and rebuild.
   - No free photo found: Yasmin Abdulaziz, Ahmed Belal, Taher Abouzeid, Mohamed Fouad, Marwan Pablo, Hassan Shakosh, Abu.
   - Photo too low-res, too blurry, or a painting: Ezzat Abou Aouf, Hassan Hosny, Salah Abdallah, Ahmed El Kass, Mahmoud Mokhtar El Tetsh, Ahmed Shawqi, Mohamed Hassanein Heikal.
 
@@ -98,3 +98,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.35 (2026-10-03): Guess the Food is live with the first 47 of 80 photos (all the 100s and 200s and 15 of 16 300s; photos/food-*.jpg, unzoomed, "Name this food."). In the Knowledge group after Most Calories; not in Football mode. While any value has no photos, src/extra.js temporarily spreads the existing ones across the five values in difficulty order; once all 80 are in, each food goes back to its own value from v4work/food-photos.json. The other 33 (goulash and all 400s/500s) are still downloading in the photos thread.
 - 4.36 (2026-10-03): Guess the Food moved from Knowledge to the Photo Rounds group on the setup screen.
 - 4.37 (2026-10-03): All 80 Guess the Food photos in, each at its own value (16 per value). The artifact can hold at most 511 files, so the food photos are no longer separate jpgs: they are re-encoded (1280px, q78) and bundled into photos/food-100.js … food-500.js, one per value (~3–4 MB each), built by mkpacks.js in this folder from v4work/food-photos/ (see BUILD.md). Clue images use "pack:food-<value>:<key>"; app.js loads a pack when a board with that category is drawn and fills the image once it arrives. Use the same pack approach for any future photo category; the artifact has about 457 files now.
+- 4.38 (2026-10-03): Omar asked for the out-of-date photo section on the setup screen to be updated. Its heading is now just "Photo rounds". Its count reads "420 built in" (plus "N added on this device" when there are any), instead of "420 saved", which made the built-in photos look like they were saved on that device. The text explains that every car, actor, footballer and person already has a photo, and that the checklist is for previewing, setting zoom spots and replacing. It also says the Guess the Food (80) and stadium (30) photos are built in but can't be changed there. The checklist heading is now "Photo checklist: preview, zoom spot or replace", and the unmatched-file hint points to the Replace buttons.

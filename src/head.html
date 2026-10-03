@@ -273,7 +273,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.37</div>
+      <div class="eyebrow verlabel">v4.38</div>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -283,7 +283,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.37</div>
+      <div class="eyebrow verlabel">v4.38</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -305,12 +305,12 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
       </div>
     </div>
     <details class="panel photopanel" id="photoPanel">
-      <summary class="eyebrow">Photo rounds (Car, Actor, Footballer, Person) <span class="phcount" id="phCount"></span></summary>
+      <summary class="eyebrow">Photo rounds <span class="phcount" id="phCount"></span></summary>
       <div class="photobody">
-      <p class="note">Open the checklist below and tap <em>Add photo</em> next to any car or actor. Or, if your files are named after the answer (for example <em>Lancia Stratos.jpg</em>), load them all at once with the photo pack. Photos stay saved in this browser, so they're still there next time you open the game.</p>
+      <p class="note">Every car, actor, footballer and person already has a photo built in. Open the checklist below to preview one, change where it zooms in, or replace it with your own. To replace several at once, name your files after the answer (for example <em>Lancia Stratos.jpg</em>) and load them with the photo pack. Photos you add stay saved in this browser, so they're still there next time you open the game.<span id="otherPhotos"></span></p>
       <div class="row"><label class="btn small" for="pack">Load photo pack</label><input id="pack" type="file" accept="image/*" multiple hidden><span class="note" id="packStatus">No photos loaded</span></div>
       <div class="row"><button class="btn small" id="exportPhotos">Export photos</button><label class="btn small" for="importPhotos">Import photos</label><input id="importPhotos" type="file" accept=".zip,application/zip" hidden><span class="note" id="xferStatus">Export saves the photos you've added or replaced on this device (not the ones already built in), matched and with zoom spots, in one file. Import it on another device, or send it to Claude to build the photos into the game.</span></div>
-      <details id="prepBox"><summary>Photo checklist: add a photo</summary><div id="prep"></div></details><input id="assign" type="file" accept="image/*" hidden>
+      <details id="prepBox"><summary>Photo checklist: preview, zoom spot or replace</summary><div id="prep"></div></details><input id="assign" type="file" accept="image/*" hidden>
       </div>
     </details>
     <div class="row">
