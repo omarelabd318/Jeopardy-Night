@@ -110,16 +110,16 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.38`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.39`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
-  ["Egypt & Arab World", ["egy","egh","cairo","arab"]],
-  ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","fyear","form","stad","sport"]],
-  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","hp","marvel","toons","quote","quoteeg","qblank","mus","songt","song"]],
+  ["Egypt & Arab World", ["egy","egh","cairo","arab","prov"]],
+  ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","fyear","form","score","stad","sport"]],
+  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","himym","hp","marvel","toons","quote","quoteeg","qblank","mus","songt","song","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","lang","trans"]],
-  ["Knowledge", ["gk","his","ww2","year","myth","sci","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
-  ["Photo Rounds", ["car","actor","footy","person","foodpic"]],
+  ["Knowledge", ["gk","his","ww2","year","myth","sci","space","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
+  ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
   ["Party Games", ["act","acteg","emov","emeg","emsen","emseg","pw","rid","link","near"]]
 ];
 function renderChips(){
@@ -321,10 +321,10 @@ $("#start").onclick = () => {
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
 /* Football mode: a fixed football board on a green pitch theme; setup and title go back to blue and the usual picks */
-const FOOTBALL = ["cclub","path","whoami","xfer","stad","footy","egfb","fyear","form","pl","ucl","fwc"];
+const FOOTBALL = ["cclub","path","whoami","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"];
 function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S.football && S.prevCats){ S.cats = S.prevCats; S.prevCats = null; renderChips(); }
   S.football = on; document.body.classList.toggle("football", on); }
-const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 12, in pool order
+const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 13, in pool order
 $("#football").onclick = () => {
   setFootball(true); S.cats = footballPick(); newGame();
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
@@ -454,7 +454,7 @@ function openClue(cat,lvl,exclude,forceIdx){
 }
 function clueParts(){
   const {cat,lvl,idx,type} = S.cur;
-  if(type==="text"){ const [q,a,img] = pool(cat,lvl)[idx]; return {q, a, img}; }
+  if(type==="text"){ const [q,a,img,blur] = pool(cat,lvl)[idx]; return {q, a, img, blur}; }
   if(type==="flag"){ const id = pool(cat,lvl)[idx]; return {q:"Name the country this flag belongs to.", a:F[id][0], flag:id}; }
   if(type==="impostor"){ const [ic,w] = pool(cat,lvl)[idx]; return {q:"Who's the Impostor? Everyone plays. Each player scans their own code; one of you is secretly the impostor.", a:w, icat:ic}; }
   if(type==="password"){ const w = pool(cat,lvl)[idx]; return {q:"Each team picks one clue-giver. Both scan the same code. Take turns giving ONE-word clues; after each clue, that team gets one guess.", a:w}; }
@@ -485,7 +485,12 @@ function renderClue(){
   if(p.flag) media = `<div class="flagbox">${flagSVG(p.flag)}</div>`;
   if(p.pin){ let svg = ""; try{ svg = pinSVG(p.pin[0], p.pin[1]); }catch(e){ svg = ""; } media = svg ? `<div class="pinbox">${svg}</div>` : `<div class="note">The world map didn't load, so this map can't be drawn. Close the tile and pick another, or reload.</div>`; }
   if(p.shape){ let svg = ""; try{ svg = shapeSVG(p.shape); }catch(e){ svg = ""; } media = svg ? `<div class="shapebox">${svg}</div>` : `<div class="note">The world map didn't load, so this outline can't be drawn. Close the tile and pick another, or check your connection and reload.</div>`; }
-  if(p.img) media = `<div class="zoom"><img src="${esc(packSrc(p.img, c))}" alt="Photo clue" style="object-fit:contain"></div>`;
+  if(p.img){
+    /* Guess the Logo: the image starts blurred (p.blur = blur radius as a share of the image width) and the host can step it down */
+    if(p.blur && c.blurIdx !== c.idx){ c.blurIdx = c.idx; c.blur = p.blur; }
+    const b = p.blur && !c.revealed ? c.blur : 0;
+    media = `<div class="zoom${p.blur ? " logo" : ""}"><img src="${esc(packSrc(p.img, c))}" alt="${p.blur ? "Blurred logo" : "Photo clue"}" style="object-fit:contain"${b ? ` data-blur="${b}"` : ""}></div>${b ? `<div class="row"><button class="btn small" data-act="unblur">Less blur</button></div>` : ""}`;
+  }
   if(p.emoji) media = `<div class="emoji" role="img" aria-label="Emoji clue">${esc(p.emoji)}</div>`;
   if(c.type==="photo"){
     const url = photos[norm(p.a)];
@@ -551,6 +556,8 @@ function renderClue(){
       ${c.preview || c.revealed ? "" : `<button class="btn small" data-act="swap" title="Already played this one? Get a different clue from the same category and value">Swap clue</button>`}
       ${c.preview ? "" : `<button class="btn small" data-act="cancel">Back to board</button>`}
     </div>`;
+  const bimg = $("#clue .zoom img[data-blur]");
+  if(bimg) bimg.style.filter = `blur(${(+bimg.dataset.blur * bimg.parentElement.clientWidth).toFixed(1)}px)`;
   const zimg = $("#clue .zoom img");
   if(zimg && c.type==="photo" && !focus[norm(p.a)] && "FaceDetector" in window && (c.cat==="actor"||c.cat==="footy"||c.cat==="person")){
     const k = norm(p.a);
@@ -593,6 +600,7 @@ $("#clue").addEventListener("click", e => {
   }
   if(a==="reveal"){ c.revealed = true; c.fresh = true; stopTimer(); c.running = false; renderClue(); c.fresh = false; }
   if(a==="setspot"){ openFocus(norm(clueParts().a), "Host only: tap the face or the part to zoom in on"); return; }
+  if(a==="unblur"){ c.blur = c.blur < 0.006 ? 0 : c.blur * 0.55; renderClue(); }
   if(a==="zoomout"){ c.zoom = c.zoom < 1.4 ? 1 : 1 + (c.zoom-1)*0.55; renderClue(); }
   if(a==="qr"){ c.qr = true; renderClue(); }
   if(a==="nextturn"){ c.turn = ((c.turn||0)+1) % S.teams.length; c.clue = (c.clue||1)+1; renderClue(); }

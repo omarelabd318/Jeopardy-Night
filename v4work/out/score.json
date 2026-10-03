@@ -1,0 +1,338 @@
+{
+ "id": "score",
+ "name": "Guess the Score",
+ "type": "text",
+ "desc": "A famous match. Name the final score. For a shoot-out, the score before penalties and who won it.",
+ "data": {
+  "100": [
+   [
+    "What was the final score? Germany vs Brazil, 2014 World Cup semi-final",
+    "Germany 7–1 Brazil"
+   ],
+   [
+    "What was the final score? Barcelona vs PSG, 2017 Champions League last 16, second leg (the “Remontada”)",
+    "Barcelona 6–1 PSG"
+   ],
+   [
+    "What was the final score? AC Milan vs Liverpool, 2005 Champions League final in Istanbul",
+    "3–3 (Liverpool won 3–2 on penalties)"
+   ],
+   [
+    "What was the final score? Man United vs Arsenal, Premier League, August 2011",
+    "Man United 8–2 Arsenal"
+   ],
+   [
+    "What was the final score? Argentina vs France, 2022 World Cup final",
+    "3–3 (Argentina won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? Liverpool vs Barcelona, 2019 Champions League semi-final, second leg at Anfield",
+    "Liverpool 4–0 Barcelona"
+   ],
+   [
+    "What was the final score? Egypt vs Ghana, 2010 Africa Cup of Nations final",
+    "Egypt 1–0 Ghana (Gedo)"
+   ],
+   [
+    "What was the final score? Man City vs QPR, last day of the 2011–12 Premier League (Agüero's title winner)",
+    "Man City 3–2 QPR"
+   ],
+   [
+    "What was the final score? Spain vs Argentina, 2026 World Cup final",
+    "Spain 1–0 Argentina"
+   ],
+   [
+    "What was the final score? Barcelona vs Bayern, 2020 Champions League quarter-final in Lisbon",
+    "Bayern 8–2 Barcelona"
+   ],
+   [
+    "What was the final score? Liverpool vs Man United, Premier League, March 2023 at Anfield",
+    "Liverpool 7–0 Man United"
+   ],
+   [
+    "What was the final score? Argentina vs Saudi Arabia, 2022 World Cup group stage",
+    "Saudi Arabia 2–1 Argentina"
+   ],
+   [
+    "What was the final score? Morocco vs Portugal, 2022 World Cup quarter-final",
+    "Morocco 1–0 Portugal"
+   ],
+   [
+    "What was the final score? Real Madrid vs Liverpool, 2018 Champions League final in Kyiv",
+    "Real Madrid 3–1 Liverpool"
+   ],
+   [
+    "What was the final score? Egypt vs Algeria, 2009 World Cup play-off in Omdurman, Sudan",
+    "Algeria 1–0 Egypt"
+   ],
+   [
+    "What was the final score? Spain vs Netherlands, 2010 World Cup final",
+    "Spain 1–0 Netherlands (Iniesta, extra time)"
+   ]
+  ],
+  "200": [
+   [
+    "What was the final score? Man United vs Bayern, 1999 Champions League final",
+    "Man United 2–1 Bayern"
+   ],
+   [
+    "What was the final score? Brazil vs Germany, 2002 World Cup final",
+    "Brazil 2–0 Germany"
+   ],
+   [
+    "What was the final score? France vs Brazil, 1998 World Cup final",
+    "France 3–0 Brazil"
+   ],
+   [
+    "What was the final score? Italy vs France, 2006 World Cup final (Zidane's headbutt)",
+    "1–1 (Italy won 5–3 on penalties)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Atlético, 2014 Champions League final in Lisbon",
+    "Real Madrid 4–1 Atlético (after extra time)"
+   ],
+   [
+    "What was the final score? Man United vs Man City at Old Trafford, October 2011 (“Why always me?”)",
+    "Man City 6–1 Man United"
+   ],
+   [
+    "What was the final score? Ajax vs Tottenham, 2019 Champions League semi-final, second leg (Lucas Moura hat-trick)",
+    "Tottenham 3–2 Ajax"
+   ],
+   [
+    "What was the final score? Egypt vs Cameroon, 2008 Africa Cup of Nations final",
+    "Egypt 1–0 Cameroon (Aboutrika)"
+   ],
+   [
+    "What was the final score? Egypt vs Congo, 2017 World Cup qualifier (Salah's last-minute penalty)",
+    "Egypt 2–1 Congo"
+   ],
+   [
+    "What was the final score? Al Ahly vs Zamalek, 2020 CAF Champions League final (“the final of the century”)",
+    "Al Ahly 2–1 Zamalek"
+   ],
+   [
+    "What was the final score? Spain vs Italy, Euro 2012 final",
+    "Spain 4–0 Italy"
+   ],
+   [
+    "What was the final score? Spain vs England, Euro 2024 final",
+    "Spain 2–1 England"
+   ],
+   [
+    "What was the final score? Italy vs England, Euro 2020 final at Wembley",
+    "1–1 (Italy won 3–2 on penalties)"
+   ],
+   [
+    "What was the final score? Liverpool vs Tottenham, 2019 Champions League final in Madrid",
+    "Liverpool 2–0 Tottenham"
+   ],
+   [
+    "What was the final score? PSG vs Inter, 2025 Champions League final",
+    "PSG 5–0 Inter"
+   ],
+   [
+    "What was the final score? Chelsea vs Bayern, 2012 Champions League final in Munich",
+    "1–1 (Chelsea won 4–3 on penalties)"
+   ]
+  ],
+  "300": [
+   [
+    "What was the final score? Real Madrid vs Barcelona at the Bernabéu, May 2009 (Guardiola's first season)",
+    "Barcelona 6–2 Real Madrid"
+   ],
+   [
+    "What was the final score? Barcelona vs Real Madrid at Camp Nou, November 2010 (Mourinho's first Clásico)",
+    "Barcelona 5–0 Real Madrid"
+   ],
+   [
+    "What was the final score? Roma vs Barcelona, 2018 Champions League quarter-final, second leg",
+    "Roma 3–0 Barcelona"
+   ],
+   [
+    "What was the final score? Egypt vs Ivory Coast, 2006 Africa Cup of Nations final in Cairo",
+    "0–0 (Egypt won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? Egypt vs Cameroon, 2017 Africa Cup of Nations final",
+    "Cameroon 2–1 Egypt"
+   ],
+   [
+    "What was the final score? Egypt vs Senegal, 2021 Africa Cup of Nations final (played February 2022)",
+    "0–0 (Senegal won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? Egypt vs Uruguay, 2018 World Cup group stage",
+    "Uruguay 1–0 Egypt"
+   ],
+   [
+    "What was the final score? Egypt vs Algeria in Cairo, November 2009 World Cup qualifier",
+    "Egypt 2–0 Algeria"
+   ],
+   [
+    "What was the final score? Brazil vs Egypt, 2009 Confederations Cup",
+    "Brazil 4–3 Egypt"
+   ],
+   [
+    "What was the final score? Egypt vs Italy, 2009 Confederations Cup",
+    "Egypt 1–0 Italy (Mohamed Homos)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Man City, 2022 Champions League semi-final, second leg (Rodrygo's late double)",
+    "Real Madrid 3–1 Man City (after extra time)"
+   ],
+   [
+    "What was the final score? Man City vs Inter, 2023 Champions League final in Istanbul",
+    "Man City 1–0 Inter (Rodri)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Dortmund, 2024 Champions League final at Wembley",
+    "Real Madrid 2–0 Dortmund"
+   ],
+   [
+    "What was the final score? Portugal vs France, Euro 2016 final",
+    "Portugal 1–0 France (Éder, extra time)"
+   ],
+   [
+    "What was the final score? Spain vs Costa Rica, 2022 World Cup group stage",
+    "Spain 7–0 Costa Rica"
+   ],
+   [
+    "What was the final score? Spain vs Netherlands, 2014 World Cup group stage",
+    "Netherlands 5–1 Spain"
+   ]
+  ],
+  "400": [
+   [
+    "What was the final score? Germany vs England in Munich, 2001 World Cup qualifier",
+    "England 5–1 Germany"
+   ],
+   [
+    "What was the final score? Brazil vs Croatia, 2022 World Cup quarter-final",
+    "1–1 (Croatia won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? Argentina vs Netherlands, 2022 World Cup quarter-final",
+    "2–2 (Argentina won 4–3 on penalties)"
+   ],
+   [
+    "What was the final score? Brazil vs Belgium, 2018 World Cup quarter-final",
+    "Belgium 2–1 Brazil"
+   ],
+   [
+    "What was the final score? Germany vs South Korea, 2018 World Cup group stage",
+    "South Korea 2–0 Germany"
+   ],
+   [
+    "What was the final score? France vs Senegal, 2002 World Cup opening match",
+    "Senegal 1–0 France"
+   ],
+   [
+    "What was the final score? Uruguay vs Ghana, 2010 World Cup quarter-final (Suárez's handball)",
+    "1–1 (Uruguay won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? Egypt vs Russia, 2018 World Cup group stage",
+    "Russia 3–1 Egypt"
+   ],
+   [
+    "What was the final score? Egypt vs Saudi Arabia, 2018 World Cup group stage",
+    "Saudi Arabia 2–1 Egypt"
+   ],
+   [
+    "What was the final score? Real Madrid vs Barcelona at the Bernabéu, March 2022",
+    "Barcelona 4–0 Real Madrid"
+   ],
+   [
+    "What was the final score? Liverpool vs Arsenal at Anfield, February 2014",
+    "Liverpool 5–1 Arsenal"
+   ],
+   [
+    "What was the final score? Chelsea vs Arsenal, March 2014 (Wenger's 1,000th game)",
+    "Chelsea 6–0 Arsenal"
+   ],
+   [
+    "What was the final score? Man United vs Liverpool at Old Trafford, October 2021 (Salah hat-trick)",
+    "Liverpool 5–0 Man United"
+   ],
+   [
+    "What was the final score? Southampton vs Leicester, Premier League, October 2019",
+    "Leicester 9–0 Southampton (away)"
+   ],
+   [
+    "What was the final score? Juventus vs Real Madrid, 2017 Champions League final in Cardiff",
+    "Real Madrid 4–1 Juventus"
+   ],
+   [
+    "What was the final score? Liverpool vs Real Madrid, 2022 Champions League final in Paris",
+    "Real Madrid 1–0 Liverpool (Vinícius)"
+   ]
+  ],
+  "500": [
+   [
+    "What was the final score? Al Ahly vs Zamalek, Egyptian league, 2002 (Ahly's famous thrashing)",
+    "Al Ahly 6–1 Zamalek"
+   ],
+   [
+    "What was the final score? Al Ahly vs Kaizer Chiefs, 2021 CAF Champions League final in Casablanca",
+    "Al Ahly 3–0 Kaizer Chiefs"
+   ],
+   [
+    "What was the final score? Wydad vs Al Ahly, 2022 CAF Champions League final in Casablanca",
+    "Wydad 2–0 Al Ahly"
+   ],
+   [
+    "What was the final score? Al Ahly vs Wydad, 2023 CAF Champions League final, aggregate over two legs",
+    "Al Ahly 3–2 Wydad (2–1 in Cairo, 1–1 in Casablanca)"
+   ],
+   [
+    "What was the final score? Al Ahly vs Esperance, 2024 CAF Champions League final, aggregate over two legs",
+    "Al Ahly 1–0 Esperance (0–0, then 1–0 in Cairo)"
+   ],
+   [
+    "What was the final score? Al Ahly vs Bayern, 2020 Club World Cup semi-final (played February 2021)",
+    "Bayern 2–0 Al Ahly"
+   ],
+   [
+    "What was the final score? Chelsea vs PSG, 2025 Club World Cup final",
+    "Chelsea 3–0 PSG"
+   ],
+   [
+    "What was the final score? Bayern vs Barcelona, 2013 Champions League semi-final, aggregate over two legs",
+    "Bayern 7–0 Barcelona (4–0 and 3–0)"
+   ],
+   [
+    "What was the final score? Atlético vs Real Madrid, 2016 Champions League final in Milan",
+    "1–1 (Real Madrid won 5–3 on penalties)"
+   ],
+   [
+    "What was the final score? Barcelona vs Arsenal, 2006 Champions League final in Paris",
+    "Barcelona 2–1 Arsenal"
+   ],
+   [
+    "What was the final score? AC Milan vs Barcelona, 1994 Champions League final in Athens",
+    "AC Milan 4–0 Barcelona"
+   ],
+   [
+    "What was the final score? Cameroon vs Argentina, 1990 World Cup opening match",
+    "Cameroon 1–0 Argentina"
+   ],
+   [
+    "What was the final score? Man United vs Southampton, Premier League, February 2021",
+    "Man United 9–0 Southampton"
+   ],
+   [
+    "What was the final score? Aston Villa vs Liverpool, Premier League, October 2020",
+    "Aston Villa 7–2 Liverpool"
+   ],
+   [
+    "What was the final score? Brazil vs Netherlands, 2010 World Cup quarter-final",
+    "Netherlands 2–1 Brazil"
+   ],
+   [
+    "What was the final score? Greece vs Portugal, Euro 2004 final in Lisbon",
+    "Greece 1–0 Portugal (Charisteas)"
+   ]
+  ]
+ }
+}
