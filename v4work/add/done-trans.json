@@ -1,0 +1,135 @@
+{
+ "100": [
+  [
+   "Translate from Spanish: “caballo”",
+   "Horse"
+  ],
+  [
+   "Translate from Spanish: “mano”",
+   "Hand"
+  ],
+  [
+   "Translate from Spanish: “verde”",
+   "Green"
+  ],
+  [
+   "Translate from Spanish: “madre”",
+   "Mother"
+  ],
+  [
+   "Translate from French: “père”",
+   "Father"
+  ],
+  [
+   "Translate from Italian: “bambino”",
+   "Child / baby"
+  ]
+ ],
+ "200": [
+  [
+   "Translate from Spanish: “cerdo”",
+   "Pig"
+  ],
+  [
+   "Translate from Spanish: “vaca”",
+   "Cow"
+  ],
+  [
+   "Translate from Spanish: “sombrero”",
+   "Hat"
+  ],
+  [
+   "Translate from Spanish: “nube”",
+   "Cloud"
+  ],
+  [
+   "Translate from French: “pluie”",
+   "Rain"
+  ],
+  [
+   "Translate from Italian: “cuore”",
+   "Heart"
+  ]
+ ],
+ "300": [
+  [
+   "Translate from Spanish: “abeja”",
+   "Bee"
+  ],
+  [
+   "Translate from French: “araignée”",
+   "Spider"
+  ],
+  [
+   "Translate from Spanish: “ballena”",
+   "Whale"
+  ],
+  [
+   "Translate from French: “champignon”",
+   "Mushroom"
+  ],
+  [
+   "Translate from Spanish: “pulpo”",
+   "Octopus"
+  ],
+  [
+   "Translate from Italian: “ciliegia”",
+   "Cherry"
+  ]
+ ],
+ "400": [
+  [
+   "Translate from Spanish: “escalera”",
+   "Stairs (or ladder)"
+  ],
+  [
+   "Translate from Spanish: “hormiga”",
+   "Ant"
+  ],
+  [
+   "Translate from Italian: “cucchiaio”",
+   "Spoon"
+  ],
+  [
+   "Translate from Spanish: “sartén”",
+   "Frying pan"
+  ],
+  [
+   "Translate from French: “ciseaux”",
+   "Scissors"
+  ],
+  [
+   "Translate from Spanish: “almendra”",
+   "Almond"
+  ]
+ ],
+ "500": [
+  [
+   "Translate from Spanish: “actual”",
+   "Current (not actual)"
+  ],
+  [
+   "Translate from Spanish: “asistir”",
+   "To attend (not assist)"
+  ],
+  [
+   "Translate from Spanish: “recordar”",
+   "To remember (not record)"
+  ],
+  [
+   "Translate from Spanish: “bizarro”",
+   "Brave (not bizarre)"
+  ],
+  [
+   "Translate from French: “sympathique”",
+   "Nice / friendly (not sympathetic)"
+  ],
+  [
+   "Translate from Italian: “estate”",
+   "Summer (not estate)"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Summer (not estate)"
+ ]
+}

@@ -1,0 +1,145 @@
+{
+ "100": [
+  [
+   "What language is this? “Buenas noches” (it means 'good night')",
+   "Spanish"
+  ],
+  [
+   "What language is this? “Guten Morgen” (it means 'good morning')",
+   "German"
+  ],
+  [
+   "What language is this? “Hola, ¿qué tal?” (it means 'hi, how are you?')",
+   "Spanish"
+  ],
+  [
+   "What language is this? “Bonne nuit” (it means 'good night')",
+   "French"
+  ],
+  [
+   "The Egyptian word “بالطو” (coat) comes from which language?",
+   "French (paletot)"
+  ],
+  [
+   "The English word “hamburger” comes from which language?",
+   "German (from the city of Hamburg)"
+  ]
+ ],
+ "200": [
+  [
+   "What language is this? “Bom dia” (it means 'good morning')",
+   "Portuguese"
+  ],
+  [
+   "What language is this? “Olá, tudo bem?” (it means 'hi, how's it going?')",
+   "Portuguese"
+  ],
+  [
+   "The English word “tsunami” comes from which language?",
+   "Japanese ('harbour wave')"
+  ],
+  [
+   "The English word “ballet” comes from which language?",
+   "French"
+  ],
+  [
+   "The Egyptian word “دوش” (shower) comes from which language?",
+   "French (douche)"
+  ],
+  [
+   "The Egyptian word “شوفير” (driver) comes from which language?",
+   "French (chauffeur)"
+  ]
+ ],
+ "300": [
+  [
+   "The English word “yacht” comes from which language?",
+   "Dutch (jacht)"
+  ],
+  [
+   "The English word “mosquito” comes from which language?",
+   "Spanish ('little fly')"
+  ],
+  [
+   "The English word “lemon” comes from which language?",
+   "Arabic (laymūn, from Persian)"
+  ],
+  [
+   "The Egyptian word “كرافتة” (necktie) comes from which language?",
+   "French (cravate)"
+  ],
+  [
+   "The Egyptian word “بلوفر” (jumper) comes from which language?",
+   "English (pullover)"
+  ],
+  [
+   "The English word “karaoke” comes from which language?",
+   "Japanese ('empty orchestra')"
+  ]
+ ],
+ "400": [
+  [
+   "The English word “chocolate” comes from which language?",
+   "Nahuatl, the Aztec language (xocolatl)"
+  ],
+  [
+   "The English word “tariff” comes from which language?",
+   "Arabic (taʿrīf, 'notification')"
+  ],
+  [
+   "The English word “bungalow” comes from which language?",
+   "Hindi / Bengali ('in the Bengal style')"
+  ],
+  [
+   "The Egyptian word “روشتة” (prescription) comes from which language?",
+   "Italian (ricetta)"
+  ],
+  [
+   "The Egyptian word “جمبري” (shrimp) comes from which language?",
+   "Italian (gamberi)"
+  ],
+  [
+   "The Egyptian word “بانيو” (bathtub) comes from which language?",
+   "Italian (bagno)"
+  ]
+ ],
+ "500": [
+  [
+   "The English word “tattoo” comes from which language?",
+   "Tahitian / Polynesian (tatau)"
+  ],
+  [
+   "The English word “kayak” comes from which language?",
+   "Inuit (qajaq)"
+  ],
+  [
+   "The English word “boomerang” comes from which language?",
+   "Dharug, an Aboriginal Australian language"
+  ],
+  [
+   "The Egyptian word “تمساح” (crocodile) comes from which language?",
+   "Coptic (from Ancient Egyptian msḥ)"
+  ],
+  [
+   "The Egyptian word “سبرتو” (methylated spirit) comes from which language?",
+   "Italian (spirito)"
+  ],
+  [
+   "The English word “algorithm” comes from the name of which Persian mathematician?",
+   "Al-Khwarizmi"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Italian",
+  "German",
+  "Spanish",
+  "French",
+  "Portuguese",
+  "Japanese",
+  "Korean",
+  "Dutch",
+  "Arabic",
+  "English",
+  "Coptic"
+ ]
+}
