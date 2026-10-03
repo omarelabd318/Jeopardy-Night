@@ -1,0 +1,164 @@
+{
+ "100": [
+  [
+   "Which film or TV show is this line from? “Gotta catch 'em all!”",
+   "Pokémon"
+  ],
+  [
+   "Which film or TV show is this line from? “I solemnly swear that I am up to no good.”",
+   "Harry Potter (and the Prisoner of Azkaban)"
+  ],
+  [
+   "Which film or TV show is this line from? “I am speed.”",
+   "Cars"
+  ],
+  [
+   "Which film or TV show is this line from? “The first rule of Fight Club is: you do not talk about Fight Club.”",
+   "Fight Club"
+  ],
+  [
+   "Which film or TV show is this line from? “Who you gonna call?”",
+   "Ghostbusters"
+  ],
+  [
+   "Which film or TV show is this line from? “Supercalifragilisticexpialidocious!”",
+   "Mary Poppins"
+  ]
+ ],
+ "200": [
+  [
+   "Which film or TV show is this line from? “Bibbidi-bobbidi-boo!”",
+   "Cinderella"
+  ],
+  [
+   "Which film or TV show is this line from? “I'm Mr. Meeseeks! Look at me!”",
+   "Rick and Morty"
+  ],
+  [
+   "Which film or TV show is this line from? “It's over, Anakin! I have the high ground!”",
+   "Star Wars: Revenge of the Sith"
+  ],
+  [
+   "Which film or TV show is this line from? “Giggity giggity goo!”",
+   "Family Guy"
+  ],
+  [
+   "Which film or TV show is this line from? “Beam me up, Scotty.”",
+   "Star Trek"
+  ],
+  [
+   "Which film or TV show is this line from? “P. Sherman, 42 Wallaby Way, Sydney.”",
+   "Finding Nemo"
+  ]
+ ],
+ "300": [
+  [
+   "Which film or TV show is this line from? “Hello. My name is Inigo Montoya. You killed my father. Prepare to die.”",
+   "The Princess Bride"
+  ],
+  [
+   "Which film or TV show is this line from? “Pull the lever, Kronk!”",
+   "The Emperor's New Groove"
+  ],
+  [
+   "Which film or TV show is this line from? “Phenomenal cosmic powers… itty-bitty living space.”",
+   "Aladdin"
+  ],
+  [
+   "Which film or TV show is this line from? “Noice.”",
+   "Brooklyn Nine-Nine"
+  ],
+  [
+   "Which film or TV show is this line from? “Exterminate!”",
+   "Doctor Who"
+  ],
+  [
+   "Which film or TV show is this line from? “60% of the time, it works every time.”",
+   "Anchorman"
+  ]
+ ],
+ "400": [
+  [
+   "Which film or TV show is this line from? “Nobody expects the Spanish Inquisition!”",
+   "Monty Python's Flying Circus"
+  ],
+  [
+   "Which film or TV show is this line from? “You're killing me, Smalls!”",
+   "The Sandlot"
+  ],
+  [
+   "Which film or TV show is this line from? “You're tearing me apart, Lisa!”",
+   "The Room"
+  ],
+  [
+   "Which film or TV show is this line from? “Ugh, as if!”",
+   "Clueless"
+  ],
+  [
+   "Which film or TV show is this line from? “Resistance is futile.”",
+   "Star Trek: The Next Generation"
+  ],
+  [
+   "Which film or TV show is this line from? “Serenity now!”",
+   "Seinfeld"
+  ]
+ ],
+ "500": [
+  [
+   "Which film or TV show is this line from? “I'm not bad. I'm just drawn that way.”",
+   "Who Framed Roger Rabbit"
+  ],
+  [
+   "Which film or TV show is this line from? “I wish I knew how to quit you.”",
+   "Brokeback Mountain"
+  ],
+  [
+   "Which film or TV show is this line from? “Sweep the leg.”",
+   "The Karate Kid"
+  ],
+  [
+   "Which film or TV show is this line from? “Hello, Clarice.”",
+   "The Silence of the Lambs"
+  ],
+  [
+   "Which film or TV show is this line from? “That's how you get ants.”",
+   "Archer"
+  ],
+  [
+   "Which film or TV show is this line from? “It's alive! It's alive!”",
+   "Frankenstein (1931)"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Aladdin",
+  "Anchorman",
+  "Archer",
+  "Brokeback Mountain",
+  "Brooklyn Nine-Nine",
+  "Cars",
+  "Cinderella",
+  "Clueless",
+  "Doctor Who",
+  "Family Guy",
+  "Fight Club",
+  "Finding Nemo",
+  "Frankenstein (1931)",
+  "Ghostbusters",
+  "Harry Potter (and the Prisoner of Azkaban)",
+  "Mary Poppins",
+  "Monty Python's Flying Circus",
+  "Pokémon",
+  "Rick and Morty",
+  "Seinfeld",
+  "Star Trek",
+  "Star Trek: The Next Generation",
+  "Star Wars: Revenge of the Sith",
+  "The Emperor's New Groove",
+  "The Karate Kid",
+  "The Princess Bride",
+  "The Room",
+  "The Sandlot",
+  "The Silence of the Lambs",
+  "Who Framed Roger Rabbit"
+ ]
+}

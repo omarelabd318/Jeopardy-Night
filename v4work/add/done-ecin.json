@@ -1,0 +1,160 @@
+{
+ "100": [
+  [
+   "Who starred in 'El Limby' (2002)?",
+   "Mohamed Saad"
+  ],
+  [
+   "Who starred in 'Askar fi el Muaskar' (2003)?",
+   "Mohamed Henedy"
+  ],
+  [
+   "Which 1998 Mohamed Henedy film is set at the American University in Cairo?",
+   "Saidi fil Gamaa El Amrikia"
+  ],
+  [
+   "Who starred in 'X Large' (2011)?",
+   "Ahmed Helmy"
+  ],
+  [
+   "Who played the eldest brother, Rizk, in 'Welad Rizk' (2015)?",
+   "Ahmed Ezz"
+  ],
+  [
+   "Who starred in the action film 'Mafia' (2002)?",
+   "Ahmed El Sakka"
+  ]
+ ],
+ "200": [
+  [
+   "Which 2002 Mohamed Saad film made his drunk, mumbling character a household name?",
+   "El Limby"
+  ],
+  [
+   "Who starred in 'El Feel El Azraq' (2014)?",
+   "Karim Abdel Aziz"
+  ],
+  [
+   "Who starred in 'Bolbol Hayran' (2010)?",
+   "Ahmed Helmy"
+  ],
+  [
+   "Who starred in the Ramadan series 'Grand Hotel' (2016)?",
+   "Amr Youssef"
+  ],
+  [
+   "Who starred in the police series 'Kalabsh' (2017)?",
+   "Amir Karara"
+  ],
+  [
+   "Who starred in the Ramadan series 'Nesr El Saeed' (2018)?",
+   "Mohamed Ramadan"
+  ]
+ ],
+ "300": [
+  [
+   "Who played the spy Raafat El Haggan in the famous series?",
+   "Mahmoud Abdel Aziz"
+  ],
+  [
+   "Which 2001 biopic starred Ahmed Zaki as Anwar Sadat?",
+   "Ayam El Sadat (Days of Sadat)"
+  ],
+  [
+   "Who directed 'Hena Maysara' (2007)?",
+   "Khaled Youssef"
+  ],
+  [
+   "Who starred in the Ramadan series 'Saheb El Saada' (2014)?",
+   "Adel Emam"
+  ],
+  [
+   "Who played the blind Sheikh Hosny in 'El Kitkat' (1991)?",
+   "Mahmoud Abdel Aziz"
+  ],
+  [
+   "Who wrote the Adel Emam film 'El Erhabi' (1994)?",
+   "Lenin El Ramly"
+  ]
+ ],
+ "400": [
+  [
+   "Who directed 'El Ard' (The Land, 1969)?",
+   "Youssef Chahine"
+  ],
+  [
+   "Who starred in 'Doaa El Karawan' (1959)?",
+   "Faten Hamama"
+  ],
+  [
+   "Who directed 'Bab El Hadid' (Cairo Station, 1958)?",
+   "Youssef Chahine"
+  ],
+  [
+   "Who starred in 'Ghazal El Banat' (1949) with Laila Mourad?",
+   "Naguib El Rihani"
+  ],
+  [
+   "Who played the student in Salah Abu Seif's 'Shabab Emra'a' (1956)?",
+   "Shoukry Sarhan"
+  ],
+  [
+   "Who directed 'Al-Kitkat' (1991)?",
+   "Daoud Abdel Sayed"
+  ]
+ ],
+ "500": [
+  [
+   "Who directed 'Al-Mummia' (The Night of Counting the Years, 1969)?",
+   "Shadi Abdel Salam"
+  ],
+  [
+   "Who directed 'Sawaq El Otobis' (The Bus Driver, 1982)?",
+   "Atef El Tayeb"
+  ],
+  [
+   "Who starred in 'Sawaq El Otobis' (1982)?",
+   "Nour El Sherif"
+  ],
+  [
+   "Who directed 'Zawgaty wal Kalb' (My Wife and the Dog, 1971)?",
+   "Saeed Marzouk"
+  ],
+  [
+   "Who directed 'Yawmiyat Na'eb fil Aryaf' (1969)?",
+   "Tawfik Saleh"
+  ],
+  [
+   "Which 1972 Tawfik Saleh film, made in Syria, follows three Palestinians crossing the desert?",
+   "Al-Makhdu'un (The Dupes)"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Adel Emam",
+  "Ahmed El Sakka",
+  "Ahmed Ezz",
+  "Ahmed Helmy",
+  "Ahmed Mekky",
+  "Ahmed Zaki",
+  "Al-Makhdu'un (The Dupes)",
+  "Amir Karara",
+  "Amr Youssef",
+  "Atef El Tayeb",
+  "Daoud Abdel Sayed",
+  "Faten Hamama",
+  "Hany Khalifa",
+  "Karim Abdel Aziz",
+  "Khaled Youssef",
+  "Mahmoud Abdel Aziz",
+  "Mohamed Henedy",
+  "Mohamed Ramadan",
+  "Mohamed Saad",
+  "Naguib El Rihani",
+  "Nour El Sherif",
+  "Saeed Marzouk",
+  "Shadi Abdel Salam",
+  "Shoukry Sarhan",
+  "Tawfik Saleh",
+  "Youssef Chahine"
+ ]
+}

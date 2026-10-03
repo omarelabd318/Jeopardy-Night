@@ -124,6 +124,30 @@
    [
     "Fill in the missing word: “I'll never let ___, Jack.”",
     "go (Titanic)"
+   ],
+   [
+    "Fill in the missing word: “Do you want to build a ___?”",
+    "snowman (Frozen)"
+   ],
+   [
+    "Fill in the missing word: “Who lives in a pineapple under the ___?”",
+    "sea (SpongeBob SquarePants)"
+   ],
+   [
+    "Fill in the missing word: “Avada ___!”",
+    "Kedavra (Harry Potter)"
+   ],
+   [
+    "Fill in the missing word: “Just keep ___.”",
+    "swimming (Finding Nemo)"
+   ],
+   [
+    "Fill in the missing word: “To infinity and ___!”",
+    "beyond (Toy Story)"
+   ],
+   [
+    "Fill in the missing word: “Why so ___?”",
+    "serious (The Dark Knight)"
    ]
   ],
   "200": [
@@ -246,6 +270,30 @@
    [
     "Fill in the missing word: “That's my secret, Cap. I'm always ___.”",
     "angry (The Avengers)"
+   ],
+   [
+    "Fill in the missing word: “Houston, we have a ___.”",
+    "problem (Apollo 13)"
+   ],
+   [
+    "Fill in the missing word: “I see dead ___.”",
+    "people (The Sixth Sense)"
+   ],
+   [
+    "Fill in the missing word: “You can't handle the ___!”",
+    "truth (A Few Good Men)"
+   ],
+   [
+    "Fill in the missing word: “Show me the ___!”",
+    "money (Jerry Maguire)"
+   ],
+   [
+    "Fill in the missing word: “You're gonna need a bigger ___.”",
+    "boat (Jaws)"
+   ],
+   [
+    "Fill in the missing word: “Winter is ___.”",
+    "coming (Game of Thrones)"
    ]
   ],
   "300": [
@@ -368,6 +416,30 @@
    [
     "Fill in the missing word: “Perfectly balanced, as all things should ___.”",
     "be (Avengers: Infinity War)"
+   ],
+   [
+    "Fill in the missing word: “I'm gonna make him an offer he can't ___.”",
+    "refuse (The Godfather)"
+   ],
+   [
+    "Fill in the missing word: “Frankly, my dear, I don't give a ___.”",
+    "damn (Gone with the Wind)"
+   ],
+   [
+    "Fill in the missing word: “Say hello to my little ___!”",
+    "friend (Scarface)"
+   ],
+   [
+    "Fill in the missing word: “Nobody puts Baby in a ___.”",
+    "corner (Dirty Dancing)"
+   ],
+   [
+    "Fill in the missing word: “Have courage and be ___.”",
+    "kind (Cinderella, 2015)"
+   ],
+   [
+    "Fill in the missing word: “There is no ___.”",
+    "spoon (The Matrix)"
    ]
   ],
   "400": [
@@ -486,6 +558,30 @@
    [
     "Fill in the missing word: “It's called a ___, sweetheart.”",
     "hustle (Zootopia)"
+   ],
+   [
+    "Fill in the missing word: “I feel the need… the need for ___!”",
+    "speed (Top Gun)"
+   ],
+   [
+    "Fill in the missing word: “Keep your friends close, but your enemies ___.”",
+    "closer (The Godfather Part II)"
+   ],
+   [
+    "Fill in the missing word: “Get busy living, or get busy ___.”",
+    "dying (The Shawshank Redemption)"
+   ],
+   [
+    "Fill in the missing word: “They call it a Royale with ___.”",
+    "cheese (Pulp Fiction)"
+   ],
+   [
+    "Fill in the missing word: “Toto, I've a feeling we're not in ___ anymore.”",
+    "Kansas (The Wizard of Oz)"
+   ],
+   [
+    "Fill in the missing word: “My name is Maximus Decimus ___.”",
+    "Meridius (Gladiator)"
    ]
   ],
   "500": [
@@ -604,6 +700,30 @@
    [
     "Fill in the missing word: “There's always money in the banana ___.”",
     "stand (Arrested Development)"
+   ],
+   [
+    "Fill in the missing word: “I'm as mad as hell, and I'm not going to take this ___!”",
+    "anymore (Network)"
+   ],
+   [
+    "Fill in the missing word: “Forget it, Jake. It's ___.”",
+    "Chinatown (Chinatown)"
+   ],
+   [
+    "Fill in the missing word: “I coulda been a ___.”",
+    "contender (On the Waterfront)"
+   ],
+   [
+    "Fill in the missing word: “Of all the gin joints in all the towns in all the world, she walks into ___.”",
+    "mine (Casablanca)"
+   ],
+   [
+    "Fill in the missing word: “The greatest trick the devil ever pulled was convincing the world he didn't ___.”",
+    "exist (The Usual Suspects)"
+   ],
+   [
+    "Fill in the missing word: “I'm sorry, Dave. I'm afraid I can't do ___.”",
+    "that (2001: A Space Odyssey)"
    ]
   ]
  }
