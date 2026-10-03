@@ -20,7 +20,7 @@ for cid in [a for a in sys.argv[1:] if not a.startswith('--')]:
         for e in L:
             q,a=keys(e,typ); seenq[q]=v
             if a and typ not in ('closest',): seena[a]=v
-    allow={norm(x) for x in add.get('allow_dup_answers',[])}  # answers deliberately reused with a clearly different question
+    allow={norm(re.sub(r'\(.*?\)','',x)) for x in add.get('allow_dup_answers',[])}  # answers deliberately reused with a clearly different question
     probs=[]; n=0
     for v in ['100','200','300','400','500']:
         for e in add.get(v,[]):

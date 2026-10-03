@@ -1,0 +1,164 @@
+{
+ "100": [
+  [
+   "What year? Liverpool's 'Miracle of Istanbul' · Chelsea win their first league title in 50 years · Ronaldinho wins the Ballon d'Or",
+   "2005"
+  ],
+  [
+   "What year? Leicester City win the Premier League · Portugal win the Euros in France · Cristiano Ronaldo wins the Ballon d'Or",
+   "2016"
+  ],
+  [
+   "What year? France win the World Cup in Russia · Liverpool lose the Champions League final in Kyiv · Salah sets a 38-game Premier League scoring record",
+   "2018"
+  ],
+  [
+   "What year? Argentina win the World Cup in Qatar · Karim Benzema wins the Ballon d'Or · Real Madrid beat Liverpool in the Paris final",
+   "2022"
+  ],
+  [
+   "What year? Germany win the World Cup in Brazil · Real Madrid win 'La Décima' · Luis Suárez bites Giorgio Chiellini",
+   "2014"
+  ],
+  [
+   "What year? Manchester City win the treble · Messi joins Inter Miami · Cristiano Ronaldo joins Al Nassr",
+   "2023"
+  ]
+ ],
+ "200": [
+  [
+   "What year? Liverpool beat Tottenham in the Madrid final · Egypt host the Africa Cup of Nations · Algeria win the Africa Cup of Nations",
+   "2019"
+  ],
+  [
+   "What year? Spain win the Euros in Poland and Ukraine · Chelsea win the Champions League in Munich · Agüero's last-minute goal wins Man City the league",
+   "2012"
+  ],
+  [
+   "What year? Spain win the Euros in Austria and Switzerland · Man United beat Chelsea in the Moscow final · Egypt win the Africa Cup of Nations in Ghana",
+   "2008"
+  ],
+  [
+   "What year? Spain win their first World Cup · Inter win the treble under Mourinho · Egypt win a third Africa Cup of Nations in a row",
+   "2010"
+  ],
+  [
+   "What year? Italy win the delayed Euros at Wembley · Messi leaves Barcelona for PSG · Chelsea win the Champions League in Porto",
+   "2021"
+  ],
+  [
+   "What year? Neymar joins PSG for €222m · Real Madrid win back-to-back Champions Leagues · Salah's late penalty sends Egypt to the World Cup",
+   "2017"
+  ]
+ ],
+ "300": [
+  [
+   "What year? Barcelona win the treble in Guardiola's first season · Cristiano Ronaldo joins Real Madrid for £80m · Egypt beat world champions Italy at the Confederations Cup",
+   "2009"
+  ],
+  [
+   "What year? Bayern win the treble · Sir Alex Ferguson retires · Gareth Bale joins Real Madrid for a world record",
+   "2013"
+  ],
+  [
+   "What year? Barcelona win the Champions League with 'MSN' · Chelsea win the league under Mourinho · Jürgen Klopp takes over at Liverpool",
+   "2015"
+  ],
+  [
+   "What year? Liverpool win their first league title in 30 years · Bayern win the Champions League in Lisbon · Football stops for months because of Covid-19",
+   "2020"
+  ],
+  [
+   "What year? Greece win the Euros in Portugal · Arsenal finish the league unbeaten · Porto win the Champions League",
+   "2004"
+  ],
+  [
+   "What year? Barcelona beat Man United in the Wembley final · Man United win a record 19th league title · Man City beat Stoke in the FA Cup final",
+   "2011"
+  ]
+ ],
+ "400": [
+  [
+   "What year? AC Milan beat Juventus on penalties in the Old Trafford final · Real Madrid sign David Beckham · Roman Abramovich buys Chelsea",
+   "2003"
+  ],
+  [
+   "What year? AC Milan beat Liverpool in the Athens final · Kaká wins the Ballon d'Or · David Beckham joins LA Galaxy",
+   "2007"
+  ],
+  [
+   "What year? Liverpool win the FA Cup, League Cup and UEFA Cup · Bayern beat Valencia on penalties in the Champions League final · Zidane joins Real Madrid for a world record",
+   "2001"
+  ],
+  [
+   "What year? France win the Euros with a golden goal · Luís Figo moves from Barcelona to Real Madrid · Real Madrid beat Valencia in the Paris final",
+   "2000"
+  ],
+  [
+   "What year? Spain win the Euros in Germany · Real Madrid beat Dortmund at Wembley · Kylian Mbappé leaves PSG",
+   "2024"
+  ],
+  [
+   "What year? PSG win their first Champions League · Liverpool win the Premier League · Chelsea win the first 32-team Club World Cup",
+   "2025"
+  ]
+ ],
+ "500": [
+  [
+   "What year? France win the World Cup at home · Egypt win the Africa Cup of Nations in Burkina Faso · Real Madrid win their seventh European Cup",
+   "1998"
+  ],
+  [
+   "What year? Man United win the treble · Lazio win the last Cup Winners' Cup · Rivaldo wins the Ballon d'Or",
+   "1999"
+  ],
+  [
+   "What year? Zidane's volley wins the Glasgow final · Zamalek win the CAF Champions League · Ronaldinho's free kick beats England",
+   "2002"
+  ],
+  [
+   "What year? Saeed Al-Owairan's solo goal for Saudi Arabia · Brazil win the World Cup on penalties in the USA · Hristo Stoichkov wins the Ballon d'Or",
+   "1994"
+  ],
+  [
+   "What year? Cameroon beat holders Argentina in the opening game · Gazza cries in the semi-final · Egypt hold the Netherlands 1–1",
+   "1990"
+  ],
+  [
+   "What year? Maradona's 'Hand of God' · Argentina win the World Cup in Mexico · Egypt win the Africa Cup of Nations at home",
+   "1986"
+  ]
+ ],
+ "allow_dup_answers": [
+  "1986",
+  "1990",
+  "1994",
+  "1998",
+  "1999",
+  "2000",
+  "2001",
+  "2002",
+  "2003",
+  "2004",
+  "2005",
+  "2007",
+  "2008",
+  "2009",
+  "2010",
+  "2011",
+  "2012",
+  "2013",
+  "2014",
+  "2015",
+  "2016",
+  "2017",
+  "2018",
+  "2019",
+  "2020",
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025"
+ ]
+}

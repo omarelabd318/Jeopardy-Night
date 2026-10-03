@@ -1,0 +1,164 @@
+{
+ "100": [
+  [
+   "What was the final score? Argentina vs Croatia, 2022 World Cup semi-final",
+   "Argentina 3–0 Croatia"
+  ],
+  [
+   "What was the final score? France vs Croatia, 2018 World Cup final",
+   "France 4–2 Croatia"
+  ],
+  [
+   "What was the final score? Croatia vs England, 2018 World Cup semi-final",
+   "Croatia 2–1 England (after extra time)"
+  ],
+  [
+   "What was the final score? Man United vs Chelsea, 2008 Champions League final in Moscow",
+   "1–1 (Man United won 6–5 on penalties)"
+  ],
+  [
+   "What was the final score? Bayern vs PSG, 2020 Champions League final in Lisbon",
+   "Bayern 1–0 PSG (Coman)"
+  ],
+  [
+   "What was the final score? Barcelona vs Man United, 2009 Champions League final in Rome",
+   "Barcelona 2–0 Man United"
+  ]
+ ],
+ "200": [
+  [
+   "What was the final score? Barcelona vs Man United, 2011 Champions League final at Wembley",
+   "Barcelona 3–1 Man United"
+  ],
+  [
+   "What was the final score? Inter vs Bayern, 2010 Champions League final in Madrid",
+   "Inter 2–0 Bayern"
+  ],
+  [
+   "What was the final score? Chelsea vs Man City, 2021 Champions League final in Porto",
+   "Chelsea 1–0 Man City (Havertz)"
+  ],
+  [
+   "What was the final score? Egypt vs Cameroon, 2008 Africa Cup of Nations group stage",
+   "Egypt 4–2 Cameroon"
+  ],
+  [
+   "What was the final score? Italy vs Germany, 2006 World Cup semi-final in Dortmund",
+   "Italy 2–0 Germany (after extra time)"
+  ],
+  [
+   "What was the final score? Netherlands vs Argentina, 2014 World Cup semi-final",
+   "0–0 (Argentina won 4–2 on penalties)"
+  ]
+ ],
+ "300": [
+  [
+   "What was the final score? Brazil vs Netherlands, 2014 World Cup third-place match",
+   "Netherlands 3–0 Brazil"
+  ],
+  [
+   "What was the final score? Germany vs Argentina, 2010 World Cup quarter-final",
+   "Germany 4–0 Argentina"
+  ],
+  [
+   "What was the final score? Germany vs England, 2010 World Cup last 16",
+   "Germany 4–1 England"
+  ],
+  [
+   "What was the final score? Spain vs Germany, 2010 World Cup semi-final",
+   "Spain 1–0 Germany (Puyol)"
+  ],
+  [
+   "What was the final score? England vs Iceland, Euro 2016 last 16",
+   "Iceland 2–1 England"
+  ],
+  [
+   "What was the final score? France vs Argentina, 2018 World Cup last 16",
+   "France 4–3 Argentina"
+  ]
+ ],
+ "400": [
+  [
+   "What was the final score? Belgium vs Japan, 2018 World Cup last 16",
+   "Belgium 3–2 Japan"
+  ],
+  [
+   "What was the final score? Germany vs Japan, 2022 World Cup group stage",
+   "Japan 2–1 Germany"
+  ],
+  [
+   "What was the final score? Japan vs Spain, 2022 World Cup group stage",
+   "Japan 2–1 Spain"
+  ],
+  [
+   "What was the final score? Cameroon vs Brazil, 2022 World Cup group stage",
+   "Cameroon 1–0 Brazil"
+  ],
+  [
+   "What was the final score? Tunisia vs France, 2022 World Cup group stage",
+   "Tunisia 1–0 France"
+  ],
+  [
+   "What was the final score? Morocco vs Spain, 2022 World Cup last 16",
+   "0–0 (Morocco won 3–0 on penalties)"
+  ]
+ ],
+ "500": [
+  [
+   "What was the final score? Al Ahly vs Club América, 2006 Club World Cup third-place match",
+   "Al Ahly 2–1 Club América (Aboutrika 2)"
+  ],
+  [
+   "What was the final score? Egypt vs Algeria, 2010 Africa Cup of Nations semi-final",
+   "Egypt 4–0 Algeria"
+  ],
+  [
+   "What was the final score? Egypt vs Ivory Coast, 2008 Africa Cup of Nations semi-final",
+   "Egypt 4–1 Ivory Coast"
+  ],
+  [
+   "What was the final score? Egypt vs Morocco, 2017 Africa Cup of Nations quarter-final",
+   "Egypt 1–0 Morocco (Kahraba)"
+  ],
+  [
+   "What was the final score? Egypt vs Ivory Coast, 2021 Africa Cup of Nations last 16",
+   "0–0 (Egypt won 5–4 on penalties)"
+  ],
+  [
+   "What was the final score? Egypt vs Cameroon, 2021 Africa Cup of Nations semi-final",
+   "0–0 (Egypt won 3–1 on penalties)"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Argentina 3–0 Croatia",
+  "France 4–2 Croatia",
+  "Croatia 2–1 England (after extra time)",
+  "1–1 (Man United won 6–5 on penalties)",
+  "Bayern 1–0 PSG (Coman)",
+  "Barcelona 2–0 Man United",
+  "Barcelona 3–1 Man United",
+  "Inter 2–0 Bayern",
+  "Chelsea 1–0 Man City (Havertz)",
+  "Egypt 4–2 Cameroon",
+  "Italy 2–0 Germany (after extra time)",
+  "0–0 (Argentina won 4–2 on penalties)",
+  "Netherlands 3–0 Brazil",
+  "Germany 4–0 Argentina",
+  "Germany 4–1 England",
+  "Spain 1–0 Germany (Puyol)",
+  "Iceland 2–1 England",
+  "France 4–3 Argentina",
+  "Belgium 3–2 Japan",
+  "Japan 2–1 Germany",
+  "Japan 2–1 Spain",
+  "Cameroon 1–0 Brazil",
+  "Tunisia 1–0 France",
+  "0–0 (Morocco won 3–0 on penalties)",
+  "Al Ahly 2–1 Club América (Aboutrika 2)",
+  "Egypt 4–0 Algeria",
+  "Egypt 4–1 Ivory Coast",
+  "Egypt 1–0 Morocco (Kahraba)",
+  "0–0 (Egypt won 5–4 on penalties)",
+  "0–0 (Egypt won 3–1 on penalties)"
+ ]
+}

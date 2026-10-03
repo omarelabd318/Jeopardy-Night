@@ -1,338 +1,458 @@
 {
-"id": "stad",
-"name": "Football Stadiums",
-"type": "text",
-"desc": "Name the club from its stadium, the stadium from its club, or the stadium from a photo.",
-"data": {
-"100": [
-[
-"Which club plays at Old Trafford?",
-"Manchester United"
-],
-[
-"What is the name of Liverpool's stadium?",
-"Anfield"
-],
-[
-"Which club plays at the Camp Nou?",
-"Barcelona"
-],
-[
-"What is the name of Real Madrid's stadium?",
-"The Santiago Bernabéu"
-],
-[
-"Which club plays at the Emirates Stadium?",
-"Arsenal"
-],
-[
-"What is the name of Chelsea's stadium?",
-"Stamford Bridge"
-],
-[
-"Which club plays at the Allianz Arena?",
-"Bayern Munich"
-],
-[
-"Which two clubs share the San Siro?",
-"AC Milan and Inter"
-],
-[
-"What is the name of Egypt's national stadium, in Nasr City?",
-"Cairo International Stadium"
-],
-[
-"Which club plays at the Etihad Stadium?",
-"Manchester City"
-],
-[
-"Which club plays at the Parc des Princes?",
-"Paris Saint-Germain"
-],
-[
-"Which London stadium hosts the FA Cup final and England's home games?",
-"Wembley"
-],
-[
-"Which Rio de Janeiro stadium hosted the 2014 World Cup final?",
-"The Maracanã"
-],
-[
-"Which club played at White Hart Lane until 2017?",
-"Tottenham Hotspur"
-],
-[
-"Which club plays at the Allianz Stadium in Turin?",
-"Juventus"
-],
-[
-"What is the name of Borussia Dortmund's stadium?",
-"Signal Iduna Park (Westfalenstadion)"
-]
-],
-"200": [
-[
-"Which club plays at the Metropolitano in Madrid?",
-"Atlético Madrid"
-],
-[
-"Which club left Goodison Park for a new stadium in 2025?",
-"Everton"
-],
-[
-"Which club plays at St James' Park?",
-"Newcastle United"
-],
-[
-"What is the name of Aston Villa's stadium?",
-"Villa Park"
-],
-[
-"Which Glasgow club's stadium is nicknamed 'Paradise'?",
-"Celtic (Celtic Park)"
-],
-[
-"Which club plays at Ibrox?",
-"Rangers"
-],
-[
-"Which club plays at the Johan Cruyff Arena?",
-"Ajax"
-],
-[
-"Which two clubs share the Stadio Olimpico in Rome?",
-"Roma and Lazio"
-],
-[
-"Napoli's stadium was renamed in 2020 after which player?",
-"Diego Maradona"
-],
-[
-"Which club plays at La Bombonera?",
-"Boca Juniors"
-],
-[
-"Which club plays at the Estádio da Luz?",
-"Benfica"
-],
-[
-"What is the name of Marseille's stadium?",
-"The Stade Vélodrome"
-],
-[
-"Which club moved into the London Stadium, built for the 2012 Olympics?",
-"West Ham United"
-],
-[
-"Which club plays at the Mestalla?",
-"Valencia"
-],
-[
-"What is the name of Leeds United's stadium?",
-"Elland Road"
-],
-[
-"Which stadium in Qatar hosted the 2022 World Cup final?",
-"Lusail Stadium"
-]
-],
-"300": [
-[
-"Which club plays at the BayArena?",
-"Bayer Leverkusen"
-],
-[
-"Which club plays at the Veltins-Arena?",
-"Schalke 04"
-],
-[
-"Which club plays at the Ramón Sánchez-Pizjuán?",
-"Sevilla"
-],
-[
-"What is the name of Real Betis's stadium?",
-"The Benito Villamarín"
-],
-[
-"Which club plays at San Mamés?",
-"Athletic Club (Bilbao)"
-],
-[
-"What is the name of Porto's stadium?",
-"The Estádio do Dragão"
-],
-[
-"Which club plays at the Estádio José Alvalade?",
-"Sporting CP"
-],
-[
-"Which club plays at the Philips Stadion?",
-"PSV Eindhoven"
-],
-[
-"Which Rotterdam club plays at De Kuip?",
-"Feyenoord"
-],
-[
-"Which club plays at Selhurst Park?",
-"Crystal Palace"
-],
-[
-"What is the name of Fulham's stadium?",
-"Craven Cottage"
-],
-[
-"Which club plays at Molineux?",
-"Wolverhampton Wanderers"
-],
-[
-"Which club plays at Turf Moor?",
-"Burnley"
-],
-[
-"Which huge stadium near Alexandria is Egypt's biggest?",
-"Borg El Arab Stadium"
-],
-[
-"Which stadium near New York hosted the 2026 World Cup final?",
-"MetLife Stadium"
-],
-[
-"What is the name of Fiorentina's stadium?",
-"The Stadio Artemio Franchi"
-]
-],
-"400": [
-[
-"Which club plays at the Stade Louis II?",
-"Monaco"
-],
-[
-"Which club plays at the Red Bull Arena in Leipzig?",
-"RB Leipzig"
-],
-[
-"Which club plays at the Estadio de la Cerámica?",
-"Villarreal"
-],
-[
-"Which club plays at El Sadar?",
-"Osasuna"
-],
-[
-"Which club plays at the Reale Arena (Anoeta)?",
-"Real Sociedad"
-],
-[
-"Which club plays at the Gewiss Stadium in Bergamo?",
-"Atalanta"
-],
-[
-"Which club plays at the Stadio Renato Dall'Ara?",
-"Bologna"
-],
-[
-"Which club plays at the Estadio Monumental in Buenos Aires?",
-"River Plate"
-],
-[
-"Which Mexico City stadium hosted the 1970 and 1986 World Cup finals and the opening game of 2026?",
-"Estadio Azteca"
-],
-[
-"What is the name of Brighton's stadium?",
-"The Amex Stadium"
-],
-[
-"Which club plays at the City Ground?",
-"Nottingham Forest"
-],
-[
-"Which Saudi club, Cristiano Ronaldo's team, plays at Al-Awwal Park?",
-"Al Nassr"
-],
-[
-"Which Glasgow stadium is Scotland's national stadium?",
-"Hampden Park"
-],
-[
-"Which club plays at the Şükrü Saracoğlu Stadium?",
-"Fenerbahçe"
-],
-[
-"Which club plays at RAMS Park in Istanbul?",
-"Galatasaray"
-],
-[
-"Which club plays at Hillsborough?",
-"Sheffield Wednesday"
-]
-],
-"500": [
-[
-"What is the San Siro's official name?",
-"Stadio Giuseppe Meazza"
-],
-[
-"Where did Arsenal play before the Emirates?",
-"Highbury"
-],
-[
-"Which ground did Manchester City leave in 2003?",
-"Maine Road"
-],
-[
-"Where did Southampton play before St Mary's?",
-"The Dell"
-],
-[
-"Where did Bayern Munich play before the Allianz Arena?",
-"The Olympiastadion (Munich Olympic Stadium)"
-],
-[
-"Which Belgrade club plays at the stadium nicknamed 'the Marakana'?",
-"Red Star Belgrade"
-],
-[
-"Which Montevideo stadium hosted the first World Cup final in 1930?",
-"Estadio Centenario"
-],
-[
-"Which Egyptian club, nicknamed 'the Brazilians', plays at Ismailia Stadium?",
-"Ismaily"
-],
-[
-"Which Cairo club's ground is the Mokhtar El-Tetsh Stadium?",
-"Al Ahly"
-],
-[
-"Which Cairo club's ground is the Helmy Zamora Stadium?",
-"Zamalek"
-],
-[
-"Which club plays at the Stade Geoffroy-Guichard?",
-"Saint-Étienne"
-],
-[
-"Which club plays at the Abe Lenstra Stadion?",
-"Heerenveen"
-],
-[
-"What is the name of Brentford's stadium?",
-"The Gtech Community Stadium"
-],
-[
-"Which club plays at Deepdale?",
-"Preston North End"
-],
-[
-"Which Madrid club played at the Vicente Calderón until 2017?",
-"Atlético Madrid"
-],
-[
-"What was Juventus's stadium from 1990 to 2006, built for Italia 90?",
-"Stadio delle Alpi"
-]
-]
-}
+ "id": "stad",
+ "name": "Football Stadiums",
+ "type": "text",
+ "desc": "Name the club from its stadium, the stadium from its club, or the stadium from a photo.",
+ "data": {
+  "100": [
+   [
+    "Which club plays at Old Trafford?",
+    "Manchester United"
+   ],
+   [
+    "What is the name of Liverpool's stadium?",
+    "Anfield"
+   ],
+   [
+    "Which club plays at the Camp Nou?",
+    "Barcelona"
+   ],
+   [
+    "What is the name of Real Madrid's stadium?",
+    "The Santiago Bernabéu"
+   ],
+   [
+    "Which club plays at the Emirates Stadium?",
+    "Arsenal"
+   ],
+   [
+    "What is the name of Chelsea's stadium?",
+    "Stamford Bridge"
+   ],
+   [
+    "Which club plays at the Allianz Arena?",
+    "Bayern Munich"
+   ],
+   [
+    "Which two clubs share the San Siro?",
+    "AC Milan and Inter"
+   ],
+   [
+    "What is the name of Egypt's national stadium, in Nasr City?",
+    "Cairo International Stadium"
+   ],
+   [
+    "Which club plays at the Etihad Stadium?",
+    "Manchester City"
+   ],
+   [
+    "Which club plays at the Parc des Princes?",
+    "Paris Saint-Germain"
+   ],
+   [
+    "Which London stadium hosts the FA Cup final and England's home games?",
+    "Wembley"
+   ],
+   [
+    "Which Rio de Janeiro stadium hosted the 2014 World Cup final?",
+    "The Maracanã"
+   ],
+   [
+    "Which club played at White Hart Lane until 2017?",
+    "Tottenham Hotspur"
+   ],
+   [
+    "Which club plays at the Allianz Stadium in Turin?",
+    "Juventus"
+   ],
+   [
+    "What is the name of Borussia Dortmund's stadium?",
+    "Signal Iduna Park (Westfalenstadion)"
+   ],
+   [
+    "Which club plays at Stamford Bridge?",
+    "Chelsea"
+   ],
+   [
+    "Which club plays at Anfield?",
+    "Liverpool"
+   ],
+   [
+    "What is Manchester City's stadium called?",
+    "The Etihad Stadium"
+   ],
+   [
+    "What is Arsenal's stadium called?",
+    "The Emirates Stadium"
+   ],
+   [
+    "What is Bayern Munich's stadium called?",
+    "The Allianz Arena"
+   ],
+   [
+    "What is Barcelona's stadium called?",
+    "Camp Nou"
+   ]
+  ],
+  "200": [
+   [
+    "Which club plays at the Metropolitano in Madrid?",
+    "Atlético Madrid"
+   ],
+   [
+    "Which club left Goodison Park for a new stadium in 2025?",
+    "Everton"
+   ],
+   [
+    "Which club plays at St James' Park?",
+    "Newcastle United"
+   ],
+   [
+    "What is the name of Aston Villa's stadium?",
+    "Villa Park"
+   ],
+   [
+    "Which Glasgow club's stadium is nicknamed 'Paradise'?",
+    "Celtic (Celtic Park)"
+   ],
+   [
+    "Which club plays at Ibrox?",
+    "Rangers"
+   ],
+   [
+    "Which club plays at the Johan Cruyff Arena?",
+    "Ajax"
+   ],
+   [
+    "Which two clubs share the Stadio Olimpico in Rome?",
+    "Roma and Lazio"
+   ],
+   [
+    "Napoli's stadium was renamed in 2020 after which player?",
+    "Diego Maradona"
+   ],
+   [
+    "Which club plays at La Bombonera?",
+    "Boca Juniors"
+   ],
+   [
+    "Which club plays at the Estádio da Luz?",
+    "Benfica"
+   ],
+   [
+    "What is the name of Marseille's stadium?",
+    "The Stade Vélodrome"
+   ],
+   [
+    "Which club moved into the London Stadium, built for the 2012 Olympics?",
+    "West Ham United"
+   ],
+   [
+    "Which club plays at the Mestalla?",
+    "Valencia"
+   ],
+   [
+    "What is the name of Leeds United's stadium?",
+    "Elland Road"
+   ],
+   [
+    "Which stadium in Qatar hosted the 2022 World Cup final?",
+    "Lusail Stadium"
+   ],
+   [
+    "What is Juventus's stadium called?",
+    "The Allianz Stadium"
+   ],
+   [
+    "What is Paris Saint-Germain's stadium called?",
+    "The Parc des Princes"
+   ],
+   [
+    "What is Newcastle United's stadium called?",
+    "St James' Park"
+   ],
+   [
+    "What is West Ham's stadium called since 2016?",
+    "The London Stadium"
+   ],
+   [
+    "What is Atlético Madrid's stadium called?",
+    "The Metropolitano"
+   ],
+   [
+    "Which club plays at the Stadium of Light?",
+    "Sunderland"
+   ]
+  ],
+  "300": [
+   [
+    "Which club plays at the BayArena?",
+    "Bayer Leverkusen"
+   ],
+   [
+    "Which club plays at the Veltins-Arena?",
+    "Schalke 04"
+   ],
+   [
+    "Which club plays at the Ramón Sánchez-Pizjuán?",
+    "Sevilla"
+   ],
+   [
+    "What is the name of Real Betis's stadium?",
+    "The Benito Villamarín"
+   ],
+   [
+    "Which club plays at San Mamés?",
+    "Athletic Club (Bilbao)"
+   ],
+   [
+    "What is the name of Porto's stadium?",
+    "The Estádio do Dragão"
+   ],
+   [
+    "Which club plays at the Estádio José Alvalade?",
+    "Sporting CP"
+   ],
+   [
+    "Which club plays at the Philips Stadion?",
+    "PSV Eindhoven"
+   ],
+   [
+    "Which Rotterdam club plays at De Kuip?",
+    "Feyenoord"
+   ],
+   [
+    "Which club plays at Selhurst Park?",
+    "Crystal Palace"
+   ],
+   [
+    "What is the name of Fulham's stadium?",
+    "Craven Cottage"
+   ],
+   [
+    "Which club plays at Molineux?",
+    "Wolverhampton Wanderers"
+   ],
+   [
+    "Which club plays at Turf Moor?",
+    "Burnley"
+   ],
+   [
+    "Which huge stadium near Alexandria is Egypt's biggest?",
+    "Borg El Arab Stadium"
+   ],
+   [
+    "Which stadium near New York hosted the 2026 World Cup final?",
+    "MetLife Stadium"
+   ],
+   [
+    "What is the name of Fiorentina's stadium?",
+    "The Stadio Artemio Franchi"
+   ],
+   [
+    "Which club plays at the King Power Stadium?",
+    "Leicester City"
+   ],
+   [
+    "Which club plays at Elland Road?",
+    "Leeds United"
+   ],
+   [
+    "Which club plays at the Vitality Stadium?",
+    "Bournemouth"
+   ],
+   [
+    "Which club plays at St Mary's Stadium?",
+    "Southampton"
+   ],
+   [
+    "Which club plays at Bramall Lane?",
+    "Sheffield United"
+   ],
+   [
+    "Which club plays at the Deutsche Bank Park?",
+    "Eintracht Frankfurt"
+   ]
+  ],
+  "400": [
+   [
+    "Which club plays at the Stade Louis II?",
+    "Monaco"
+   ],
+   [
+    "Which club plays at the Red Bull Arena in Leipzig?",
+    "RB Leipzig"
+   ],
+   [
+    "Which club plays at the Estadio de la Cerámica?",
+    "Villarreal"
+   ],
+   [
+    "Which club plays at El Sadar?",
+    "Osasuna"
+   ],
+   [
+    "Which club plays at the Reale Arena (Anoeta)?",
+    "Real Sociedad"
+   ],
+   [
+    "Which club plays at the Gewiss Stadium in Bergamo?",
+    "Atalanta"
+   ],
+   [
+    "Which club plays at the Stadio Renato Dall'Ara?",
+    "Bologna"
+   ],
+   [
+    "Which club plays at the Estadio Monumental in Buenos Aires?",
+    "River Plate"
+   ],
+   [
+    "Which Mexico City stadium hosted the 1970 and 1986 World Cup finals and the opening game of 2026?",
+    "Estadio Azteca"
+   ],
+   [
+    "What is the name of Brighton's stadium?",
+    "The Amex Stadium"
+   ],
+   [
+    "Which club plays at the City Ground?",
+    "Nottingham Forest"
+   ],
+   [
+    "Which Saudi club, Cristiano Ronaldo's team, plays at Al-Awwal Park?",
+    "Al Nassr"
+   ],
+   [
+    "Which Glasgow stadium is Scotland's national stadium?",
+    "Hampden Park"
+   ],
+   [
+    "Which club plays at the Şükrü Saracoğlu Stadium?",
+    "Fenerbahçe"
+   ],
+   [
+    "Which club plays at RAMS Park in Istanbul?",
+    "Galatasaray"
+   ],
+   [
+    "Which club plays at Hillsborough?",
+    "Sheffield Wednesday"
+   ],
+   [
+    "Which club plays at the Weserstadion?",
+    "Werder Bremen"
+   ],
+   [
+    "Which club plays at the Stadio Diego Armando Maradona?",
+    "Napoli"
+   ],
+   [
+    "Which club plays at the Stadio Olimpico Grande Torino?",
+    "Torino"
+   ],
+   [
+    "Which club plays at the Stade de la Beaujoire?",
+    "Nantes"
+   ],
+   [
+    "Which club plays at the Groupama Stadium?",
+    "Lyon"
+   ],
+   [
+    "Which club plays at Vodafone Park (Tüpraş Stadium)?",
+    "Beşiktaş"
+   ]
+  ],
+  "500": [
+   [
+    "What is the San Siro's official name?",
+    "Stadio Giuseppe Meazza"
+   ],
+   [
+    "Where did Arsenal play before the Emirates?",
+    "Highbury"
+   ],
+   [
+    "Which ground did Manchester City leave in 2003?",
+    "Maine Road"
+   ],
+   [
+    "Where did Southampton play before St Mary's?",
+    "The Dell"
+   ],
+   [
+    "Where did Bayern Munich play before the Allianz Arena?",
+    "The Olympiastadion (Munich Olympic Stadium)"
+   ],
+   [
+    "Which Belgrade club plays at the stadium nicknamed 'the Marakana'?",
+    "Red Star Belgrade"
+   ],
+   [
+    "Which Montevideo stadium hosted the first World Cup final in 1930?",
+    "Estadio Centenario"
+   ],
+   [
+    "Which Egyptian club, nicknamed 'the Brazilians', plays at Ismailia Stadium?",
+    "Ismaily"
+   ],
+   [
+    "Which Cairo club's ground is the Mokhtar El-Tetsh Stadium?",
+    "Al Ahly"
+   ],
+   [
+    "Which Cairo club's ground is the Helmy Zamora Stadium?",
+    "Zamalek"
+   ],
+   [
+    "Which club plays at the Stade Geoffroy-Guichard?",
+    "Saint-Étienne"
+   ],
+   [
+    "Which club plays at the Abe Lenstra Stadion?",
+    "Heerenveen"
+   ],
+   [
+    "What is the name of Brentford's stadium?",
+    "The Gtech Community Stadium"
+   ],
+   [
+    "Which club plays at Deepdale?",
+    "Preston North End"
+   ],
+   [
+    "Which Madrid club played at the Vicente Calderón until 2017?",
+    "Atlético Madrid"
+   ],
+   [
+    "What was Juventus's stadium from 1990 to 2006, built for Italia 90?",
+    "Stadio delle Alpi"
+   ],
+   [
+    "Which club plays at the Volksparkstadion?",
+    "Hamburg (Hamburger SV)"
+   ],
+   [
+    "Which club plays at the Stade Pierre-Mauroy?",
+    "Lille"
+   ],
+   [
+    "Which two clubs share the Stadio Luigi Ferraris?",
+    "Genoa and Sampdoria"
+   ],
+   [
+    "Which club plays at the Kingdom Arena in Riyadh?",
+    "Al Hilal"
+   ],
+   [
+    "Which Egyptian club plays at the 30 June Stadium?",
+    "Pyramids FC"
+   ],
+   [
+    "Which stadium, opened in 1929, is Egypt's oldest?",
+    "Alexandria Stadium"
+   ]
+  ]
+ }
 }
