@@ -1,0 +1,338 @@
+{
+ "id": "hgames",
+ "name": "The Hunger Games",
+ "type": "text",
+ "desc": "Katniss, Panem, the Capitol and the arena, in the books and films.",
+ "data": {
+  "100": [
+   [
+    "Who is the heroine of The Hunger Games?",
+    "Katniss Everdeen"
+   ],
+   [
+    "Who plays Katniss?",
+    "Jennifer Lawrence"
+   ],
+   [
+    "Which district is Katniss from?",
+    "District 12"
+   ],
+   [
+    "Which sister does Katniss volunteer to replace?",
+    "Primrose (Prim) Everdeen"
+   ],
+   [
+    "What is Katniss's weapon?",
+    "A bow and arrows"
+   ],
+   [
+    "What is the country in The Hunger Games called?",
+    "Panem"
+   ],
+   [
+    "Who is the boy tribute from District 12?",
+    "Peeta Mellark"
+   ],
+   [
+    "Who plays Peeta?",
+    "Josh Hutcherson"
+   ],
+   [
+    "Who is Katniss's hunting partner and best friend?",
+    "Gale Hawthorne"
+   ],
+   [
+    "Who plays Gale?",
+    "Liam Hemsworth"
+   ],
+   [
+    "Who wrote The Hunger Games books?",
+    "Suzanne Collins"
+   ],
+   [
+    "What is the rich city that rules Panem called?",
+    "The Capitol"
+   ],
+   [
+    "Which bird is on Katniss's pin?",
+    "A mockingjay"
+   ],
+   [
+    "How many tributes fight in a normal Hunger Games?",
+    "24"
+   ],
+   [
+    "What does Peeta's family run?",
+    "A bakery"
+   ],
+   [
+    "Complete Katniss's nickname: 'The Girl on ___'",
+    "Fire"
+   ]
+  ],
+  "200": [
+   [
+    "Who is the President of Panem?",
+    "President Snow"
+   ],
+   [
+    "Who plays President Snow in the original films?",
+    "Donald Sutherland"
+   ],
+   [
+    "Who is Katniss and Peeta's drunk mentor?",
+    "Haymitch Abernathy"
+   ],
+   [
+    "Who plays Haymitch?",
+    "Woody Harrelson"
+   ],
+   [
+    "Who is Katniss's stylist, who designs her flaming dress?",
+    "Cinna"
+   ],
+   [
+    "Which musician plays Cinna?",
+    "Lenny Kravitz"
+   ],
+   [
+    "Who is District 12's escort, famous for her wigs?",
+    "Effie Trinket"
+   ],
+   [
+    "Who hosts the Hunger Games interviews on TV?",
+    "Caesar Flickerman"
+   ],
+   [
+    "Which young District 11 tribute becomes Katniss's ally?",
+    "Rue"
+   ],
+   [
+    "Which hand gesture becomes the rebels' symbol?",
+    "The three-finger salute"
+   ],
+   [
+    "What is the second book called?",
+    "Catching Fire"
+   ],
+   [
+    "What is the third book called?",
+    "Mockingjay"
+   ],
+   [
+    "What is the ceremony where tributes are picked called?",
+    "The reaping"
+   ],
+   [
+    "Which poisonous berries do Katniss and Peeta threaten to eat?",
+    "Nightlock"
+   ],
+   [
+    "Who plays Effie Trinket?",
+    "Elizabeth Banks"
+   ],
+   [
+    "Which districts do the 'Career' tributes come from?",
+    "Districts 1, 2 and 4"
+   ]
+  ],
+  "300": [
+   [
+    "What is the 2023 prequel film about young Coriolanus Snow called?",
+    "The Ballad of Songbirds & Snakes"
+   ],
+   [
+    "Who plays young Snow in the prequel?",
+    "Tom Blyth"
+   ],
+   [
+    "Who plays Lucy Gray Baird?",
+    "Rachel Zegler"
+   ],
+   [
+    "What is District 12's main industry?",
+    "Coal mining"
+   ],
+   [
+    "What are the special Games held every 25 years called?",
+    "The Quarter Quell"
+   ],
+   [
+    "Which District 4 victor fights with a trident?",
+    "Finnick Odair"
+   ],
+   [
+    "Who is the bearded Head Gamemaker in the first film?",
+    "Seneca Crane"
+   ],
+   [
+    "Who becomes Head Gamemaker after Seneca?",
+    "Plutarch Heavensbee"
+   ],
+   [
+    "Who plays Plutarch Heavensbee?",
+    "Philip Seymour Hoffman"
+   ],
+   [
+    "Which secret district leads the rebellion?",
+    "District 13"
+   ],
+   [
+    "Who leads District 13?",
+    "President Alma Coin"
+   ],
+   [
+    "Who plays President Coin?",
+    "Julianne Moore"
+   ],
+   [
+    "Which district is Johanna Mason from?",
+    "District 7"
+   ],
+   [
+    "Which flower is Snow's symbol?",
+    "A white rose"
+   ],
+   [
+    "What shape is the arena in the Quarter Quell?",
+    "A clock"
+   ],
+   [
+    "What are the Capitol's genetically engineered creatures called?",
+    "Mutts (muttations)"
+   ]
+  ],
+  "400": [
+   [
+    "What is Prim's cat called?",
+    "Buttercup"
+   ],
+   [
+    "Which District 2 Career is the last tribute Katniss and Peeta face?",
+    "Cato"
+   ],
+   [
+    "What does Katniss call the clever red-haired girl from District 5?",
+    "Foxface"
+   ],
+   [
+    "Which old District 4 victor volunteers in place of Annie?",
+    "Mags"
+   ],
+   [
+    "Which song does Katniss sing that becomes a rebel anthem?",
+    "The Hanging Tree"
+   ],
+   [
+    "Which District 3 victor is a technology genius?",
+    "Beetee"
+   ],
+   [
+    "Who plays Johanna Mason?",
+    "Jena Malone"
+   ],
+   [
+    "Who plays Finnick Odair?",
+    "Sam Claflin"
+   ],
+   [
+    "Who plays Caesar Flickerman?",
+    "Stanley Tucci"
+   ],
+   [
+    "Who directed Catching Fire and both Mockingjay films?",
+    "Francis Lawrence"
+   ],
+   [
+    "Who directed the first Hunger Games film?",
+    "Gary Ross"
+   ],
+   [
+    "Who plays Prim?",
+    "Willow Shields"
+   ],
+   [
+    "What are the Capitol's white-uniformed police called?",
+    "Peacekeepers"
+   ],
+   [
+    "Which district is Rue from?",
+    "District 11"
+   ],
+   [
+    "Which Hunger Games does Katniss first fight in?",
+    "The 74th"
+   ],
+   [
+    "What is District 12's illegal black market called?",
+    "The Hob"
+   ]
+  ],
+  "500": [
+   [
+    "What is President Snow's first name?",
+    "Coriolanus"
+   ],
+   [
+    "Which former stylist with a cat-like face hides the rebels in her shop?",
+    "Tigris"
+   ],
+   [
+    "What is the name of Lucy Gray Baird's band of travelling musicians?",
+    "The Covey"
+   ],
+   [
+    "Which Oscar winner plays Boggs in the Mockingjay films?",
+    "Mahershala Ali"
+   ],
+   [
+    "Who plays the head Gamemaker, Dr Volumnia Gaul, in the prequel?",
+    "Viola Davis"
+   ],
+   [
+    "What is the 2025 prequel novel about Haymitch's Games called?",
+    "Sunrise on the Reaping"
+   ],
+   [
+    "Which Hunger Games did Haymitch win?",
+    "The 50th (the second Quarter Quell)"
+   ],
+   [
+    "Katniss is named after an edible water plant. What is its other common name?",
+    "Arrowhead"
+   ],
+   [
+    "Who does Katniss shoot at what should be Snow's execution?",
+    "President Coin"
+   ],
+   [
+    "What is Katniss's mother's job?",
+    "A healer"
+   ],
+   [
+    "What is the golden horn full of supplies at the centre of the arena called?",
+    "The Cornucopia"
+   ],
+   [
+    "Who is Finnick's love, a victor from District 4?",
+    "Annie Cresta"
+   ],
+   [
+    "Who directs the rebels' propaganda films?",
+    "Cressida"
+   ],
+   [
+    "What kills Prim?",
+    "Parachute bombs dropped on the children at the Capitol"
+   ],
+   [
+    "Who is Snow's friend from District 2 in the prequel?",
+    "Sejanus Plinth"
+   ],
+   [
+    "Which Hunger Games are held in the prequel?",
+    "The 10th"
+   ]
+  ]
+ }
+}
