@@ -20,6 +20,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `v4work/form/`, `form-sources.txt`, `form-gen.js`: Formations sources and generators.
 - `photos/`: `<key>.jpg` photos for the photo rounds, plus `food-*.js` bundles. Each `photos/food-*.jpg` is kept because the build only adds a food clue when its jpg exists. The game itself loads the bundles.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
+- `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.
 - `NOTES.md`: project notes, the full version history and how to undo each experiment.
 - `BUILD.md`: a short build how-to.
 

@@ -24,6 +24,7 @@ const AR_EMOJI = new Set(${J([...AR])});
 const ACT_KIND = ${J(ACT)};
 const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
 const CHANGELOG = ${J(JSON.parse(fs.readFileSync('src/changelog.json','utf8')))};
+const BALLS = ${J(fs.existsSync(W+'/balls') ? fs.readdirSync(W+'/balls').filter(f=>f.endsWith('.webp')).sort().map(f=>'data:image/webp;base64,'+fs.readFileSync(W+'/balls/'+f).toString('base64')) : [])};
 // TV Show Mix: every clue from the 7 single-show categories, labelled by show
 (() => {
 const SHOWS = ["got","peaky","bb","pb","st","office","friends","himym"];

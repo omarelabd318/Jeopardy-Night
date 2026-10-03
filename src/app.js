@@ -133,7 +133,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.51`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.52`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -417,7 +417,10 @@ $("#football").onclick = () => {
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
-function newGame(){ S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
+/* 4.52: Football mode title shows one of the classic match balls in v4work/balls/ (Aerow, Jabulani, Ordem 3, Seitiro, Teamgeist), a different one each new board */
+let lastBall = -1;
+function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; let i; do { i = Math.floor(Math.random() * BALLS.length); } while(BALLS.length > 1 && i === lastBall); lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
+function newGame(){ pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
 const midgame = () => Object.keys(S.done).length > 0 || S.teams.some(t => t.score !== 0);
 let confirmYes = null;
 function askConfirm(title, text, yesLabel, onYes){
@@ -430,7 +433,7 @@ $("#confirmYes").onclick = () => { $("#confirmBox").hidden = true; const f = con
 $("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", goSetup);
 function goSetup(){ setFootball(false); $("#setup").hidden = false; $("#game").hidden = true; $("#scores").hidden = true; renderTeamInputs(); histNote(); }
 $("#editScores").onclick = e => { S.editing = !S.editing; e.currentTarget.setAttribute("aria-pressed", S.editing); e.currentTarget.textContent = S.editing ? "Done editing" : "Edit scores"; renderScores(); };
-$("#newBoard").onclick = () => askConfirm("Start a new board?", "Every tile comes back with new clues. Scores stay as they are.", "New board", () => { S.done = {}; S.ended = false; renderBoard(); });
+$("#newBoard").onclick = () => askConfirm("Start a new board?", "Every tile comes back with new clues. Scores stay as they are.", "New board", () => { pickBall(); S.done = {}; S.ended = false; renderBoard(); });
 
 /* ---------- board ---------- */
 function renderBoard(){
