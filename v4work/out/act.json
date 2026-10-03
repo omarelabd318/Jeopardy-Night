@@ -45,7 +45,13 @@
    "Godzilla",
    "Tom and Jerry",
    "Iron Man",
-   "Dumbo"
+   "Dumbo",
+   "Thor",
+   "Captain America",
+   "Deadpool",
+   "Transformers",
+   "Paddington",
+   "Alice in Wonderland"
   ],
   "200": [
    "Gladiator",
@@ -88,7 +94,13 @@
    "Grease",
    "Charlie and the Chocolate Factory",
    "Vikings",
-   "Wonder Woman"
+   "Wonder Woman",
+   "Bambi",
+   "Sleeping Beauty",
+   "Mary Poppins",
+   "Space Jam",
+   "Scooby-Doo",
+   "The Super Mario Bros. Movie"
   ],
   "300": [
    "Forrest Gump",
@@ -131,7 +143,13 @@
    "Saw",
    "Dirty Dancing",
    "Bridgerton",
-   "Lupin"
+   "Lupin",
+   "Venom",
+   "Aquaman",
+   "Encanto",
+   "Lilo & Stitch",
+   "The Flintstones",
+   "Planet of the Apes"
   ],
   "400": [
    "Whiplash",
@@ -174,7 +192,13 @@
    "Mad Max: Fury Road",
    "The Witcher",
    "Chernobyl",
-   "Ted Lasso"
+   "Ted Lasso",
+   "Free Willy",
+   "Stuart Little",
+   "Ted",
+   "Dracula",
+   "Zombieland",
+   "The Chronicles of Narnia"
   ],
   "500": [
    "Birdman",
@@ -217,7 +241,13 @@
    "The Big Lebowski",
    "Million Dollar Baby",
    "The Bear",
-   "Mindhunter"
+   "Mindhunter",
+   "127 Hours",
+   "Baby Driver",
+   "Jojo Rabbit",
+   "Minority Report",
+   "Blade Runner",
+   "The Departed"
   ]
  },
  "act_kind": {
@@ -425,6 +455,7 @@
   "The Big Lebowski": "film",
   "Million Dollar Baby": "film",
   "The Bear": "series",
-  "Mindhunter": "series"
+  "Mindhunter": "series",
+  "The Flintstones": "series"
  }
 }

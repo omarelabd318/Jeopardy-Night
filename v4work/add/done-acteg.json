@@ -1,0 +1,53 @@
+{
+ "100": [
+  "El Limby",
+  "Welad Rizk",
+  "El Feel El Azraq",
+  "Ibn El Qunsul",
+  "Harameya fi KG2",
+  "Alf Mabrouk"
+ ],
+ "200": [
+  "Asef Ala El Iz'ag",
+  "El Harb El Alameya El Talta",
+  "Ashghal Shaqa",
+  "Embraatoreyet Meen",
+  "Nadi El Regala El Serri",
+  "Le'bet Newton"
+ ],
+ "300": [
+  "Sabe' Gar",
+  "Ayza Atgawez",
+  "Omar Effendi",
+  "El Malek Farouk",
+  "Aboud Ala El Hedoud",
+  "El Keif"
+ ],
+ "400": [
+  "Om Kalthoum",
+  "Bahebb El Cima",
+  "El Arraf",
+  "Leilat Sokoot Baghdad",
+  "El Ostaz Ayoub",
+  "Om El Arousa"
+ ],
+ "500": [
+  "Rod Qalbi",
+  "El Bab El Maftouh",
+  "Hayat aw Mawt",
+  "El Fetewa",
+  "Ahlam Hind wa Kamilia",
+  "Ismail Yassine fil Ostool"
+ ],
+ "act_kind": {
+  "Ashghal Shaqa": "series",
+  "Embraatoreyet Meen": "series",
+  "Le'bet Newton": "series",
+  "Sabe' Gar": "series",
+  "Ayza Atgawez": "series",
+  "Omar Effendi": "series",
+  "El Malek Farouk": "series",
+  "Om Kalthoum": "series",
+  "El Arraf": "series"
+ }
+}

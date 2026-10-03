@@ -1,0 +1,42 @@
+{
+ "100": [
+  "Kite",
+  "Balloon",
+  "Pillow",
+  "Candle",
+  "Spoon",
+  "Butterfly"
+ ],
+ "200": [
+  "Ladder",
+  "Toothbrush",
+  "Helmet",
+  "Waiter",
+  "Scarecrow",
+  "Hammock"
+ ],
+ "300": [
+  "Parachute",
+  "Hourglass",
+  "Fingerprint",
+  "Avalanche",
+  "Mosquito",
+  "Satellite"
+ ],
+ "400": [
+  "Courage",
+  "Silence",
+  "Rumour",
+  "Deadline",
+  "Shadow",
+  "Habit"
+ ],
+ "500": [
+  "Envy",
+  "Humility",
+  "Legacy",
+  "Temptation",
+  "Solitude",
+  "Curiosity"
+ ]
+}

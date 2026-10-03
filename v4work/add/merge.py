@@ -9,7 +9,7 @@ def keys(e,typ):
     if typ=='act' or typ=='password': return norm(e), norm(e)
     if typ=='pin': return norm(e[0]+e[1]), norm(e[0])
     if typ=='closest': return norm(e[0]), None
-    if typ=='emoji': return norm(e[0]), norm(e[1])
+    if typ=='emoji': return e[0].strip(), norm(e[1])  # compare emoji strings raw: norm() strips emoji (and keeps only digits)
     q,a=e[0],e[1]; a=re.sub(r'\(.*?\)','',a)  # ignore bracketed extras when comparing answers
     return norm(q), norm(a)
 check='--check' in sys.argv

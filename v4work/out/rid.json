@@ -124,6 +124,30 @@
    [
     "What kind of cup can't hold water?",
     "A cupcake"
+   ],
+   [
+    "What has lots of eyes but can't see?",
+    "A potato"
+   ],
+   [
+    "What comes down but never goes up?",
+    "Rain"
+   ],
+   [
+    "What has a neck and two arms but no head or hands?",
+    "A shirt"
+   ],
+   [
+    "What flies without wings?",
+    "Time"
+   ],
+   [
+    "What do you call a bear with no ears?",
+    "B"
+   ],
+   [
+    "What do you call a fish with no eye?",
+    "A fsh"
    ]
   ],
   "200": [
@@ -250,6 +274,30 @@
    [
     "Which letter of the alphabet holds the most water?",
     "C (the sea)"
+   ],
+   [
+    "What has one horn and gives milk?",
+    "A milk truck"
+   ],
+   [
+    "What has no beginning, middle or end, and goes well with coffee?",
+    "A doughnut"
+   ],
+   [
+    "What has a thousand needles but can't sew?",
+    "A porcupine (or a hedgehog)"
+   ],
+   [
+    "An electric train heads north while the wind blows south. Which way does the smoke blow?",
+    "There's no smoke: it's electric"
+   ],
+   [
+    "What has a head but no brain, and grows in a garden?",
+    "A lettuce (a head of lettuce)"
+   ],
+   [
+    "What breaks on the water but never on land?",
+    "A wave"
    ]
   ],
   "300": [
@@ -376,6 +424,30 @@
    [
     "A girl was 10 on her last birthday and will be 12 on her next one. How?",
     "Today is her 11th birthday"
+   ],
+   [
+    "Which is faster, heat or cold?",
+    "Heat, because you can catch a cold"
+   ],
+   [
+    "I am my father's child and my mother's child, but I'm nobody's son. Who am I?",
+    "A daughter"
+   ],
+   [
+    "What can be measured but has no length, width or height?",
+    "Temperature (or time)"
+   ],
+   [
+    "How can a man go eight days without sleep?",
+    "He sleeps at night"
+   ],
+   [
+    "How far can a dog run into the woods?",
+    "Halfway: after that it's running out"
+   ],
+   [
+    "What can you hold without ever touching it?",
+    "A conversation"
    ]
   ],
   "400": [
@@ -494,6 +566,30 @@
    [
     "Which five-letter word reads the same upside down and backwards?",
     "SWIMS"
+   ],
+   [
+    "What can be stolen, mistaken or changed, yet never leaves you all your life?",
+    "Your identity"
+   ],
+   [
+    "What is the last letter of 'the alphabet'?",
+    "T"
+   ],
+   [
+    "A man was born in 1990 and turned 30 in 1960. How?",
+    "The years are BC"
+   ],
+   [
+    "What has a foot on each side and one in the middle?",
+    "A yardstick (three feet long)"
+   ],
+   [
+    "What word starts with IS, ends with AND, and has LA in the middle?",
+    "Island"
+   ],
+   [
+    "What comes next: J, F, M, A, M, J, J, …?",
+    "A (for August)"
    ]
   ],
   "500": [
@@ -612,6 +708,30 @@
    [
     "Which word is wrong if you pronounce it right, and right if you pronounce it wrong?",
     "'Wrong'"
+   ],
+   [
+    "Which word gets longer when you remove its third letter?",
+    "Lounger (longer)"
+   ],
+   [
+    "Give me one and you have either two or none. What am I?",
+    "A choice"
+   ],
+   [
+    "What is 3/7 chicken, 2/3 cat and 2/4 goat?",
+    "Chicago"
+   ],
+   [
+    "Which number has its letters in alphabetical order?",
+    "Forty"
+   ],
+   [
+    "Which word sounds exactly the same after you take away its first letter?",
+    "Scent (cent)"
+   ],
+   [
+    "I'm a six-letter word. Take one letter away and twelve remains. What am I?",
+    "Dozens"
    ]
   ]
  }
