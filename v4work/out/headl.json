@@ -1,0 +1,218 @@
+{
+ "id": "headl",
+ "name": "Real Headline",
+ "type": "text",
+ "desc": "Three headlines, only one is real. The others are made up. Pick the real one.",
+ "data": {
+  "100": [
+   [
+    "Only one of these headlines is real. Which one?\nA) Twitter renames itself 'X'\nB) Instagram renames itself 'Gram'\nC) WhatsApp renames itself 'W'",
+    "A) Twitter renames itself 'X' (2023)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Lionel Messi signs for Inter Miami\nB) Lionel Messi signs for Manchester City on a free\nC) Lionel Messi signs for Al Ahly",
+    "B) Lionel Messi signs for Manchester City on a free (2023)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Giant container ship gets stuck sideways in the Suez Canal for six days\nB) Egypt opens a glass bridge across the Red Sea to Saudi Arabia\nC) A whale swims up the Nile all the way to Cairo",
+    "A) Giant container ship gets stuck sideways in the Suez Canal for six days (the Ever Given, 2021)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Morocco become the first African team to reach a World Cup semi-final\nB) Egypt reach the World Cup quarter-finals\nC) Senegal win the World Cup",
+    "A) Morocco become the first African team to reach a World Cup semi-final (2022)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Kanye West punches Jimmy Kimmel at the Grammys\nB) Will Smith slaps Chris Rock on stage at the Oscars\nC) Drake throws a trophy at Kendrick Lamar at the BET Awards",
+    "B) Will Smith slaps Chris Rock on stage at the Oscars (2022)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Tutankhamun's mummy goes on a world tour, starting in Las Vegas\nB) The Sphinx gets its nose back thanks to 3D printing\nC) 22 royal mummies paraded through Cairo in golden carriages",
+    "C) 22 royal mummies paraded through Cairo in golden carriages (the Pharaohs' Golden Parade, 2021)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) King Charles abdicates and William becomes King\nB) Queen Elizabeth II dies aged 96\nC) Britain votes to abolish the monarchy",
+    "B) Queen Elizabeth II dies aged 96 (2022)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Brazil win their sixth World Cup\nB) England win the World Cup on penalties\nC) Spain beat Argentina 1–0 in the World Cup final",
+    "C) Spain beat Argentina 1–0 in the World Cup final (2026)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Luis Suárez bites Giorgio Chiellini at the World Cup\nB) Neymar sent off for dancing after a goal at the World Cup\nC) Goalkeeper scores a hat-trick of penalties at the World Cup",
+    "A) Luis Suárez bites Giorgio Chiellini at the World Cup (2014)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) The Pyramids of Giza close for a year of restoration\nB) The Grand Egyptian Museum officially opens\nC) Tutankhamun's tomb moved to the New Administrative Capital",
+    "B) The Grand Egyptian Museum officially opens (November 2025)\n(others: A and C are made up)"
+   ]
+  ],
+  "200": [
+   [
+    "Only one of these headlines is real. Which one?\nA) Wigan win the Champions League\nB) Leicester win the Premier League at 5000–1\nC) Ipswich win the Premier League a season after promotion",
+    "B) Leicester win the Premier League at 5000–1 (2016)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Man sues Coca-Cola for not giving him a free trip to space\nB) Man sues McDonald's because his Happy Meal didn't make him happy\nC) Man sues Pepsi for not giving him the fighter jet from its ad",
+    "C) Man sues Pepsi for not giving him the fighter jet from its ad (1996; he lost)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Essam El Hadary, 45, becomes the oldest player ever at a World Cup\nB) Hossam Hassan plays at the World Cup aged 43\nC) Aboutrika scores Egypt's first-ever World Cup goal",
+    "A) Essam El Hadary, 45, becomes the oldest player ever at a World Cup (2018)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Camel picks the winner of every Africa Cup of Nations match\nB) Octopus correctly predicts every Germany match at the World Cup\nC) Goldfish predicts every Premier League champion for ten years",
+    "B) Octopus correctly predicts every Germany match at the World Cup (Paul the Octopus, 2010)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Painted brick sells for $500,000 at Art Basel\nB) Chair glued to a ceiling sells for $1 million\nC) Banana duct-taped to a wall sells for $120,000",
+    "C) Banana duct-taped to a wall sells for $120,000 (Maurizio Cattelan's 'Comedian', 2019)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Lettuce outlasts the British Prime Minister in a live-streamed challenge\nB) Goldfish elected to a London borough council\nC) Cardboard cut-out of the Prime Minister wins a by-election",
+    "A) Lettuce outlasts the British Prime Minister in a live-streamed challenge (Liz Truss, 2022)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Thieves steal the Mona Lisa's frame but leave the painting\nB) Thieves steal Napoleon-era crown jewels from the Louvre in under eight minutes\nC) British Museum returns the Rosetta Stone to Egypt",
+    "B) Thieves steal Napoleon-era crown jewels from the Louvre in under eight minutes (October 2025)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Pluto stripped of its planet status\nB) Astronomers add a tenth planet, 'Nibiru'\nC) NASA renames Mars 'New Earth'",
+    "A) Pluto stripped of its planet status (2006)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Kim Kardashian names her daughter 'Wi-Fi'\nB) Drake names his son 'Certified Lover Boy'\nC) Elon Musk names his son 'X Æ A-12'",
+    "C) Elon Musk names his son 'X Æ A-12' (2020)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Google shuts down Search after 25 years\nB) ChatGPT reaches 100 million users in two months\nC) TikTok bans videos longer than 10 seconds",
+    "B) ChatGPT reaches 100 million users in two months (2023)\n(others: A and C are made up)"
+   ]
+  ],
+  "300": [
+   [
+    "Only one of these headlines is real. Which one?\nA) Red Bull pays $13 million to settle a lawsuit over 'Red Bull gives you wings'\nB) Nike pays out because its shoes didn't make a man 'Just Do It'\nC) Lay's sued by a man who could only eat one",
+    "A) Red Bull pays $13 million to settle a lawsuit over 'Red Bull gives you wings' (2014)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Scientists confirm camels store water in their humps\nB) Scientists explain why wombats poop cubes\nC) Scientists find cats can see in total darkness",
+    "B) Scientists explain why wombats poop cubes (2018)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Britain's navy surrenders to a pod of dolphins\nB) Egypt's army sent to fight a plague of camels in Sinai\nC) Australia's army loses a 'war' against emus",
+    "C) Australia's army loses a 'war' against emus (the Great Emu War, 1932)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Archaeologists find a 3,000-year-old 'lost golden city' near Luxor\nB) Cleopatra's tomb finally found in Alexandria\nC) A second Sphinx discovered buried beside the first",
+    "A) Archaeologists find a 3,000-year-old 'lost golden city' near Luxor (2021)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) 'Despacito' crashes Spotify for a whole day\nB) 'Gangnam Style' breaks YouTube's view counter\nC) 'Baby Shark' banned in South Korea for being too catchy",
+    "B) 'Gangnam Style' breaks YouTube's view counter (2014)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Pope Francis launches his own sneaker line with Nike\nB) Pope Francis appears as a guest judge on The Voice\nC) AI picture of Pope Francis in a white puffer jacket fools the internet",
+    "C) AI picture of Pope Francis in a white puffer jacket fools the internet (2023)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Saudi Arabia grants citizenship to a robot called Sophia\nB) Egypt gives a robot a driving licence\nC) Sweden lets a robot vote in its general election",
+    "A) Saudi Arabia grants citizenship to a robot called Sophia (2017)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Cairo traffic police start patrolling in Lamborghinis\nB) Dubai Police add a Bugatti Veyron to their fleet\nC) Riyadh police swap their cars for racing camels",
+    "B) Dubai Police add a Bugatti Veyron to their fleet (2013)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Museum accidentally hangs the Mona Lisa upside down for a week\nB) Restorer paints a smile on the Sphinx\nC) Amateur restoration turns a Spanish Jesus fresco into 'Monkey Christ'",
+    "C) Amateur restoration turns a Spanish Jesus fresco into 'Monkey Christ' (Ecce Homo, 2012)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Mo Salah statue unveiled in Sharm El Sheikh, and fans say it looks nothing like him\nB) Liverpool rename the Kop 'The Salah Stand'\nC) Egypt puts Salah's face on the new 200-pound note",
+    "A) Mo Salah statue unveiled in Sharm El Sheikh, and fans say it looks nothing like him (2018)\n(others: B and C are made up)"
+   ]
+  ],
+  "400": [
+   [
+    "Only one of these headlines is real. Which one?\nA) Norway's giant Christmas snowman is stolen again\nB) Sweden's giant straw Christmas goat in Gävle is burned down again\nC) Finland's Santa Claus Village runs out of reindeer",
+    "B) Sweden's giant straw Christmas goat in Gävle is burned down again (it has burned many times since 1966)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Goat elected mayor of a Swiss village\nB) Llama becomes mayor of a Peruvian town\nC) Dog elected mayor of Rabbit Hash, Kentucky",
+    "C) Dog elected mayor of Rabbit Hash, Kentucky (the town has had several dog mayors)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) The Mona Lisa is stolen from the Louvre, and Picasso is questioned\nB) The Statue of Liberty's torch is stolen\nC) Big Ben's clock hands are stolen during the Blitz",
+    "A) The Mona Lisa is stolen from the Louvre, and Picasso is questioned (1911)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Pelé's 1970 boots sell for £20 million\nB) Maradona's 'Hand of God' shirt sells for £7.1 million\nC) Zidane's 2006 World Cup headband sells for £5 million",
+    "B) Maradona's 'Hand of God' shirt sells for £7.1 million (2022)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Sweden gives a moose a seat in parliament\nB) Japan makes a robot dog an honorary citizen\nC) Norway's army knights a penguin, Sir Nils Olav",
+    "C) Norway's army knights a penguin, Sir Nils Olav (2008)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Tom Hanks becomes a Greek citizen\nB) Leonardo DiCaprio given Egyptian citizenship after filming in Siwa\nC) Keanu Reeves made an honorary citizen of Cairo",
+    "A) Tom Hanks becomes a Greek citizen (2020)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Japan's prime minister brings his cat to a cabinet meeting\nB) New Zealand's parliament speaker bottle-feeds an MP's baby during a debate\nC) Swiss MPs vote by yodelling",
+    "B) New Zealand's parliament speaker bottle-feeds an MP's baby during a debate (2019)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Germany sends a robot to Eurovision\nB) Sweden sends a choir of goats to Eurovision\nC) Ireland sends a turkey puppet, Dustin, to Eurovision",
+    "C) Ireland sends a turkey puppet, Dustin, to Eurovision (2008)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Japan keeps a train station open just for one high-school girl\nB) Tokyo opens a subway line for cats\nC) Swiss train waits two hours for a cow on the tracks to finish eating",
+    "A) Japan keeps a train station open just for one high-school girl (Kyu-Shirataki, until 2016)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) NASA loses a Mars rover after a typo in its password\nB) NASA loses a $125 million Mars orbiter over a mix-up between metric and imperial units\nC) European rocket explodes because someone forgot to charge its battery",
+    "B) NASA loses a $125 million Mars orbiter over a mix-up between metric and imperial units (Mars Climate Orbiter, 1999)\n(others: A and C are made up)"
+   ]
+  ],
+  "500": [
+   [
+    "Only one of these headlines is real. Which one?\nA) Burger King sells Whoppers for one cent, but only if you order near a McDonald's\nB) McDonald's gives free Big Macs to anyone wearing a Burger King crown\nC) KFC gives free chicken to anyone named 'Kentucky'",
+    "A) Burger King sells Whoppers for one cent, but only if you order near a McDonald's (the 'Whopper Detour', 2018)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Empty frame titled 'Air' sells for $1 million at Sotheby's\nB) Italian artist sells an 'invisible sculpture' for about $18,000\nC) Man sells a jar of his 'thoughts' for $50,000",
+    "B) Italian artist sells an 'invisible sculpture' for about $18,000 (Salvatore Garau, 2021)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) German firm pays staff extra for not using their phones at lunch\nB) Egyptian bank gives a day off to staff whose team wins the derby\nC) Japanese firm gives non-smokers six extra days off a year",
+    "C) Japanese firm gives non-smokers six extra days off a year (2017)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Cat serves as honorary mayor of Talkeetna, Alaska, for about 20 years\nB) Penguin made honorary mayor of a town in Patagonia\nC) Parrot made honorary mayor of a Caribbean island",
+    "A) Cat serves as honorary mayor of Talkeetna, Alaska, for about 20 years (Stubbs the cat)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Pepsi stops selling Pepsi in Egypt for a year after a recipe change\nB) Coca-Cola brings back its old recipe 79 days after launching 'New Coke'\nC) Coca-Cola launches a garlic-flavoured Coke in Japan",
+    "B) Coca-Cola brings back its old recipe 79 days after launching 'New Coke' (1985)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Denmark opens a hotline where a random Dane reads you a bedtime story\nB) Finland lets tourists phone a random reindeer herder\nC) Sweden launches a phone number that connects you to a random Swede",
+    "C) Sweden launches a phone number that connects you to a random Swede ('The Swedish Number', 2016)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Winner of the Wife Carrying World Championship gets his wife's weight in beer\nB) Ireland's sheep-shearing champion wins his weight in Guinness\nC) Germany's sausage-eating champion wins a lifetime supply of pretzels",
+    "A) Winner of the Wife Carrying World Championship gets his wife's weight in beer (Finland)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Wales confirms its national animal is the dragonfly\nB) Scotland's national animal is the unicorn\nC) Ireland's national animal is officially the leprechaun",
+    "B) Scotland's national animal is the unicorn (it has been for centuries)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Mexican man declared dead runs for president\nB) Brazilian man declared dead sues the priest who buried him\nC) Indian man officially 'dead' for 18 years founds an Association of Dead People",
+    "C) Indian man officially 'dead' for 18 years founds an Association of Dead People (Lal Bihari)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Japanese man earns a living by renting himself out to do nothing\nB) Dutch man rents himself out to finish other people's crosswords\nC) Canadian man rents himself out to laugh at your jokes, $5 a joke",
+    "A) Japanese man earns a living by renting himself out to do nothing (Shoji Morimoto)\n(others: B and C are made up)"
+   ]
+  ]
+ }
+}
