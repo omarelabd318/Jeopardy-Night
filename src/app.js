@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.73`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.75`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -365,8 +365,8 @@ function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S
   if(t1) t1.textContent = on ? "Joga" : "Jeopardy"; if(t2) t2.textContent = on ? "Bonito" : "Night"; }
 /* 4.43: retro poster collage of football phrases behind the Football mode board.
    4.48: packed into exactly the whole rows and columns that fit, and each phrase shrunk to fit its block, so nothing is cut off. */
-const FB_PHRASES = ["SIIIIIUUUUUU!","It's a f*cking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
-const FB_FILL = ["GOAL!","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
+const FB_PHRASES = ["SIIIIIUUUUUU!","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
+const FB_FILL = ["Calma","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
 const FB_CELL = {w:96, h:56, gap:5};
 const fbWant = t => { const ar = /[\u0600-\u06FF]/.test(t), n = t.length; return n > 8 ? Math.min(5, Math.ceil(n / (ar ? 5 : 5.5))) : ar ? 2 : 1; };
 /* 4.47: the collage starts just under the category row.
@@ -494,25 +494,31 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
    Football mode board (not on a clue, the winner screen or other screens) and only animates while it's showing. */
 (() => {
   const cv = document.getElementById("kick"); if(!cv) return; const g = cv.getContext("2d");
-  let ballImg = null, ballSrc = "", W = 0, H = 64, t0 = performance.now();
+  let ballImg = null, ballSrc = "", W = 0, H = 84, t0 = performance.now();
   const FLIGHT = 8, KICK = 0.32;  /* 4.71 (Omar): 8 s per crossing (was 2.2) */ // seconds the ball is in the air, and the kick swing
   const slow = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.5 : 1;
   const fit = () => { const dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
   const showing = () => S.football && !$("#game").hidden && !S.cur && $("#winBox").hidden && !$("#scores").hidden;
-  /* 4.72 (Omar): a little routine instead of plain kicks. The left player kills the ball on his knee, lets it pop up and
-     volleys it across; the right player cushions it on his foot, flicks it up and volleys it back. Each crossing still
-     takes FLIGHT seconds. (4.70-4.71 just kicked it back and forth along the ground: see NOTES 4.72 to undo.) */
-  const DWELL = 0.3, POP = 1.0, KNEE = 1.0, T1 = FLIGHT, T2 = T1 + DWELL, T3 = T2 + POP, T4 = T3 + FLIGHT, CYCLE = T4 + KNEE;
+  /* 4.75 (Omar): a six-touch rotation. Each player controls the ball, it pops up, and he volleys it across on the way down:
+     left knee, right foot, left head, right knee, left foot, right head, then again. Each crossing takes FLIGHT seconds.
+     The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
+  const ROT = [["L","knee"],["R","foot"],["L","head"],["R","knee"],["L","foot"],["R","head"]], POP = 1.1, SPIN = 0.35;
+  const UP = {knee: 18, foot: 16, head: 14};             // how far the ball pops up above the touch
+  const CYCLE = ROT.length * (FLIGHT + POP);
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
-  function man(x, dir, ang, knee){                         // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
-    const y = H - 1, hip = y - 16, sh = y - 29;
+  const kneeUp = dt => dt < -0.35 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.35) / 0.35) : 1 - sm(dt / 0.3);
+  const footUp = dt => dt < -0.3 || dt > 0.42 ? 0 : dt < 0 ? 0.25 * sm((dt + .3) / .3) : dt < .12 ? .25 + .3 * sm(dt / .12) : .55 * (1 - sm((dt - .12) / .3));
+  const hop = dt => Math.abs(dt) < 0.3 ? 4 * Math.cos(dt / 0.3 * Math.PI / 2) : 0;          // a little jump for the header
+  function man(x, dir, ang, knee, jump){                   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
+    const y = H - 1 - jump, hip = y - 16, sh = y - 29;
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
     g.beginPath(); g.arc(x, y - 35, 5, 0, Math.PI*2); g.fill();                  // head
     g.beginPath(); g.moveTo(x, sh + 1); g.lineTo(x, hip); g.stroke();            // body
-    g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11); g.stroke();  // arms
+    const arm = jump / 4 * 6;                                                     // arms come up a little on a header
+    g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13 - arm); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11 - arm); g.stroke();  // arms
     g.beginPath(); g.moveTo(x, hip); g.lineTo(x - 6*dir, y); g.stroke();         // back leg
     const th = ang + knee * (Math.PI/2 - ang), kx = x + Math.sin(th) * 8 * dir, ky = hip + Math.cos(th) * 8, sa = ang * (1 - knee);
     g.beginPath(); g.moveTo(x, hip); g.lineTo(kx, ky); g.lineTo(kx + Math.sin(sa) * 8 * dir, ky + Math.cos(sa) * 8); g.stroke();  // front leg
@@ -524,21 +530,25 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const src = (typeof BALLS !== "undefined" && BALLS.length && typeof lastBall === "number" && BALLS[lastBall]) || "";
     if(src !== ballSrc){ ballSrc = src; ballImg = null; if(src){ const im = new Image(); im.onload = () => { ballImg = im; }; im.src = src; } }
     g.clearRect(0, 0, W, H);
-    const L = 26, R = W - 26, r = 7, hip = H - 17;
-    const kneeL = [L + 9, hip - r - 1], volL = [L + 20, hip - 3], footR = [R - 14, H - 1 - r - 3], volR = [R - 20, hip - 3];
-    const t = (((now - t0) / 1000) * slow) % CYCLE;      // t = 0 is the left player's volley
+    const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
+    const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
+      return how === "knee" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+    const volley = side => [X[side] + 20 * D[side], hip - 3];
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
+    const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
+    const k = Math.min(ROT.length - 1, Math.floor(t / (FLIGHT + POP))), u = t - k * (FLIGHT + POP), [side, how] = ROT[k], from = side === "L" ? "R" : "L";
+    const C = touch(side, how), V = volley(side);
     let pos;
-    if(t < T1)      pos = seg(volL, footR, t / FLIGHT, 38);              // long volley across
-    else if(t < T2) pos = footR;                                          // cushioned on the right foot
-    else if(t < T3) pos = seg(footR, volR, (t - T2) / POP, 30);          // flicked up into the air
-    else if(t < T4) pos = seg(volR, kneeL, (t - T3) / FLIGHT, 32);       // volleyed back
-    else            pos = seg(kneeL, volL, (t - T4) / KNEE, 20);         // popped up off the knee
-    const angL = 0.35 + swing(t < KICK ? t : t - CYCLE);
-    const kneeLift = t < T4 ? sm((t - (T4 - 0.35)) / 0.35) : 1 - sm((t - T4) / 0.3);
-    const trap = t < T2 ? 0.25 * sm((t - (T1 - 0.3)) / 0.3) : t < T2 + 0.12 ? 0.25 + 0.55 * sm((t - T2) / 0.12) : 0.8 * (1 - sm((t - T2 - 0.12) / 0.3));
-    man(L, 1, angL, kneeLift); man(R, -1, 0.35 + trap + swing(t - T3), 0);
-    g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r);   // rolls with its sideways movement
+    if(u < FLIGHT){ const A = volley(from); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
+    else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
+    const pose = s => { let ang = 0.35, knee = 0, jump = 0;
+      ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
+        for(const sh of [-CYCLE, 0, CYCLE]){ const tc = i * (FLIGHT + POP) + FLIGHT + sh, dt = t - tc;
+          if(hw === "knee") knee += kneeUp(dt); else if(hw === "foot") ang += footUp(dt); else jump += hop(dt);
+          ang += swing(dt - POP); } });
+      return [ang, Math.min(1, knee), jump]; };
+    man(L, 1, ...pose("L")); man(R, -1, ...pose("R"));
+    g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
     g.restore();
