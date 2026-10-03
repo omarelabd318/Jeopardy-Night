@@ -145,13 +145,13 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.68`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.69`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
   ["Egypt & Arab World", ["egy","egh","cairo","arab","prov"]],
   ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","ecin","plot","romcom","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","himym","hp","hgames","marvel","toons","quote","quoteeg","qblank","mus","songt","song","lyric","spot","igf"]],
+  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","himym","hp","hgames","marvel","toons","romcom","quote","quoteeg","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
