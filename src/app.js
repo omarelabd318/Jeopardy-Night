@@ -110,11 +110,22 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 /* v4.40: What's new + version history, from src/changelog.json (newest first) */
-function newsHTML(list){ return list.map(e => `<h3>v${esc(e.v)}${e.date ? `<small>${esc(e.date)}</small>` : ""}</h3><ul>${e.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`).join(""); }
+/* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
+function newsHTML(list){
+  let html = "", compact = [];
+  const flush = () => { if(compact.length){ html += `<ul class="compact">${compact.join("")}</ul>`; compact = []; } };
+  list.forEach(e => {
+    if(e.era){ flush(); html += `<h4 class="era">${esc(e.era)}</h4>`; return; }
+    if(!e.date){ compact.push(`<li><b>${esc(e.v)}</b>${e.items.map(esc).join(" ")}</li>`); return; }
+    flush(); html += `<h3>v${esc(e.v)}<small>${esc(e.date)}</small></h3><ul>${e.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+  });
+  flush(); return html;
+}
 function openNews(){
-  $("#newsTitle").textContent = `What's new in v${CHANGELOG[0].v}`;
-  $("#newsNow").innerHTML = newsHTML(CHANGELOG.slice(0, 2));
-  $("#newsHist").innerHTML = newsHTML(CHANGELOG.slice(2));
+  const vs = CHANGELOG.filter(e => e.v), now = vs.slice(0, 2);
+  $("#newsTitle").textContent = `What's new in v${vs[0].v}`;
+  $("#newsNow").innerHTML = newsHTML(now);
+  $("#newsHist").innerHTML = newsHTML(CHANGELOG.filter(e => !now.includes(e)));
   $("#newsBox").hidden = false; $("#newsClose").focus();
 }
 function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }

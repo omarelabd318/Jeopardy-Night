@@ -56,10 +56,118 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Photo too low-res, too blurry, or a painting: Ezzat Abou Aouf, Hassan Hosny, Salah Abdallah, Ahmed El Kass, Mahmoud Mokhtar El Tetsh, Ahmed Shawqi, Mohamed Hassanein Heikal.
 
 ## Version history (from the original chat)
-- v1.x: Core game. 12 starting categories, a classic blue board, 45 s timer, photo rounds, Egypt and Arab World.
-- v2.x: Many new categories (emoji, riddles, Egypt editions, shows, football competitions, languages, and more). Act It Out QR code, half points, turn highlight, "Are you sure?" prompts, a score-edit toggle, title screen, full screen, zoom spots, photo export and import.
-- v3.0–3.27: Polish, a version label, the Guess the Footballer round, and a setup counter and Clear button.
-- 3.28 Photo checklist split per category · 3.29 Setup in 7 groups · 3.30 Badly Explained Plots, What's the Link? · 3.31 Literally Translated, Nicknames · 3.32 Nicknames moved · 3.33 Guess the Year, Mythology · 3.34 Breaking Bad, Prison Break, GTA V, Marvel/DC · 3.35 Actor questions removed from new shows · 3.36 Stranger Things, The Office (US) · 3.37 Renamed The Office · 3.38 Common Club · 3.39 Career Path · 3.40 Common Club and Career Path made harder, long clues shrink · 3.41 Badly Explained Plots: Egypt · 3.42 Swap clue button, Quotes: Egypt · 3.43 TV Show Mix · 3.44 Zoom-spot picker fix · 3.45 Export saves changed zoom spots · 3.46 84 footballer photos built in · 3.47 Footballer reshuffle · 3.48 Premier League 2000–Now (+40) · 3.49 Flags and outlines centred · 3.50 +240 clues · 3.51 80 actor zoom spots · 3.52 Cars · 3.53 Translate It · 3.54 Rename · 3.55 School Books · 3.56 School Books moved to Knowledge · 3.57 Description shortened · 3.58 Egyptian Cinema moved to Entertainment · 3.59 "Wrong spot? Fix zoom" removed from in-game cards
+- **1.x: Launch & The Egypt Update**
+  - 1.0 First Jeopardy Night: 12 categories, 659 clues, teams and scoring, drawn flags, zoomed photo rounds, Act It Out and a timer.
+  - 1.1 Classic Jeopardy look, with a blue board and gold numbers.
+  - 1.2 Removed the "Different clue" button.
+  - 1.3 5 more clues per value in every category (959 total) and 25 new flags.
+  - 1.4 All timers set to 45 seconds.
+  - 1.5 Photos save in the browser, and each car or actor gets its own Add photo button.
+  - 1.6 Photo tiles pick clues that have a photo.
+  - 1.7 Photos zoomed in further.
+  - 1.8 Added Egypt and Arab World, plus 450 new clues and 25 flags (1,409 total).
+  - 1.9 Scoring buttons appear only after the answer is revealed.
+  - 1.10 Added Emoji Movies, Emoji Sentences and Riddles.
+  - 1.11 Added Money & Business, Egyptian Cinema & Ramadan Series, and Tech & Gaming.
+  - 1.12 "Obscure Flags" renamed to Flags; Act It Out timer set to 60 seconds.
+  - 1.13 Score editing moved behind an "Edit scores" toggle.
+  - 1.14 Bigger category names on the board.
+- **2.x: Party, Smart Zoom, Fandoms & Photos Everywhere**
+  - 2.0 Act It Out QR codes, so only the actor sees the title.
+  - 2.1 Hold-to-peek removed; the QR shows only the title.
+  - 2.2 Act It Out timer starts manually.
+  - 2.3 Title screen with a Start button.
+  - 2.4 "Answer if you dare" removed from the tagline.
+  - 2.5 Title screen shows every time, with buttons back to it.
+  - 2.6 Added Act It Out: Egypt.
+  - 2.7 Renamed it "Act It Out: Egyptian Edition."
+  - 2.8 Added Who's the Impostor? (one QR code per player).
+  - 2.9 Added One Word Clues, with a turn tracker.
+  - 2.10 Half-points button on photo rounds.
+  - 2.11 Less zoom on hard photos, aimed nearer the centre.
+  - 2.12 Fixed actor photos not showing.
+  - 2.13 Tap-to-set zoom spot, full photo on the last zoom-out, and "Wrong spot? Fix zoom."
+  - 2.14 Added Famous Movie & TV Quotes.
+  - 2.15 Easier 400 and 500 quotes.
+  - 2.16 Egypt act-out moved next to Act It Out.
+  - 2.17 Start game moved before Back to title.
+  - 2.18 Photo rounds section hidden by default in setup.
+  - 2.19 "Are you sure?" prompt before leaving mid-game.
+  - 2.20 Category descriptions on hover or tap.
+  - 2.21 Impostor rules explain who wins.
+  - 2.22 Added Sports.
+  - 2.23 Added Closest Wins, with automatic winner detection.
+  - 2.24 Descriptions shown in setup only.
+  - 2.25 "Pick your poison" added to the tagline.
+  - 2.26 Tagline kept on one line.
+  - 2.27 Added Finish the Song Title and Fill in the Quote.
+  - 2.28 Added Game of Thrones, Peaky Blinders, Friends, Harry Potter, and Disney/CN/Nick.
+  - 2.29 Cartoons refocused on 2005–2015.
+  - 2.30 Renamed to "Disney/Cartoon Network/Nickelodeon."
+  - 2.31 Export and Import photos buttons.
+  - 2.32 160 photos built into the game for every device and player.
+  - 2.33 Exports include only new photos.
+  - 2.34 Arabic emoji clues tagged "(Arabic)."
+  - 2.35 Scoreboard highlights whose turn it is.
+  - 2.36 Full-screen button.
+  - 2.37 Added Brands & Famous Companies.
+  - 2.38 Added Country Outlines.
+  - 2.39 Outlines centred.
+  - 2.40 Added Marvel and Map Pin.
+  - 2.41 Map Pin crash fix; a clue that fails now shows an error message.
+  - 2.42 Added Cairo Streets & Places.
+- **3.x: The Big Refill, Football & History**
+  - 3.0 About 830 new clues across every non-photo category, plus 25 flags (4,039 total).
+  - 3.1 Added Emoji Movies & TV: Egypt Edition, World War II, Egypt History, Premier League, World Cup, and Champions League.
+  - 3.2 Added Football Transfers; half points on every round.
+  - 3.3 Added World Cup 2026, built from research.
+  - 3.4 Added Emoji Sentences: Egypt Edition.
+  - 3.5 Friends made harder; Peaky Blinders actor questions replaced.
+  - 3.6 Removed Who's the Impostor?
+  - 3.7 Game of Thrones cast questions replaced.
+  - 3.8 Cast questions restored alongside the new ones.
+  - 3.9 Added Languages.
+  - 3.10 Every "Egyptian Edition" renamed to "Egypt Edition."
+  - 3.11 Bigger team names.
+  - 3.12 Scoring-button names back to normal size; only the scoreboard stays bigger.
+  - 3.13 Fixed photo and map layouts covering the buttons.
+  - 3.14 "Categories chosen" counter in setup.
+  - 3.15 Clear button for category selection.
+  - 3.16 All button removed.
+  - 3.17 Act It Out gained TV shows, and titles are labelled film, series or play.
+  - 3.18 Emoji Movies became Emoji Movies & TV, with 25 shows added.
+  - 3.19 Version number shown on the title and setup screens.
+  - 3.20–3.27 Polish and the Guess the Footballer round.
+  - 3.30 Added Badly Explained Plots and What's the Link?
+  - 3.31 Added Literally Translated and Nicknames.
+  - 3.32 Nicknames moved.
+  - 3.33 Added Guess the Year and Mythology.
+  - 3.34 Added Breaking Bad, Prison Break, GTA V and Marvel/DC.
+  - 3.35 Actor questions removed from the new shows.
+  - 3.36 Added Stranger Things and The Office (US).
+  - 3.37 Renamed The Office.
+  - 3.38 Added Common Club.
+  - 3.39 Added Career Path.
+  - 3.40 Common Club and Career Path made harder; long clues shrink to fit.
+  - 3.41 Added Badly Explained Plots: Egypt.
+  - 3.42 Swap clue button; added Quotes: Egypt.
+  - 3.43 Added TV Show Mix.
+  - 3.44 Zoom-spot picker fix.
+  - 3.45 Export saves changed zoom spots.
+  - 3.46 84 footballer photos built in.
+  - 3.47 Footballer reshuffle.
+  - 3.48 40 more Premier League (2000–Now) clues.
+  - 3.49 Flags and outlines centred.
+  - 3.50 240 new clues.
+  - 3.51 80 actor zoom spots.
+  - 3.52 Added Cars.
+  - 3.53 Added Translate It.
+  - 3.54 Category renamed.
+  - 3.55 Added School Books.
+  - 3.56 School Books moved to Knowledge.
+  - 3.57 Description shortened.
+  - 3.58 Egyptian Cinema moved to Entertainment.
+  - 3.59 "Wrong spot? Fix zoom" removed from in-game cards.
 - 4.00 (2026-10-02): Every clue checked, rebalanced and expanded (68 categories, 9,246 clues; TV Show Mix not counted). ×2 and 2-answers power-ups (setup switch), a winner screen with podium and confetti, an End game button, the soft countdown ticks and chime with a mute switch in setup and the top bar, and Guess the Person (70 photos, about 30 Egyptian). Polish includes fixed China, Portugal, Norway and Ecuador outlines, phone and TV layouts, and a self-counting clue label.
 - 4.01 (2026-10-02): Correct photos for Bukayo Saka, Emam Ashour, Rivaldo, Zidane, Lancia Delta Integrale, Lotus Esprit S1, Subaru Impreza 22B and Mercedes 300 SL Gullwing (photo batch 4, which also resets old zoom spots for them). The old shared Ashour photo was Hossam (2018 Egypt friendly), so it stays as hossamashour. Winner podium now reads 1st, 2nd, 3rd from the left.
 - 4.02 (2026-10-02): Winner screen says "[team] win!" instead of "wins!" (Omar's wording).
@@ -100,4 +208,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.37 (2026-10-03): All 80 Guess the Food photos in, each at its own value (16 per value). The artifact can hold at most 511 files, so the food photos are no longer separate jpgs: they are re-encoded (1280px, q78) and bundled into photos/food-100.js … food-500.js, one per value (~3–4 MB each), built by mkpacks.js in this folder from v4work/food-photos/ (see BUILD.md). Clue images use "pack:food-<value>:<key>"; app.js loads a pack when a board with that category is drawn and fills the image once it arrives. Use the same pack approach for any future photo category; the artifact has about 457 files now.
 - 4.38 (2026-10-03): Omar asked for the out-of-date photo section on the setup screen to be updated. Its heading is now just "Photo rounds". Its count reads "530 built in" (every photo in the game, including Guess the Food and the stadiums, plus "N added on this device" when there are any), instead of "420 saved", which made the built-in photos look like they were saved on that device. Next to the photo pack button it says how many of them can be replaced there (420). The text explains that every car, actor, footballer and person already has a photo, and that the checklist is for previewing, setting zoom spots and replacing. It also says the Guess the Food (80) and stadium (30) photos are built in but can't be changed there. The checklist heading is now "Photo checklist: preview, zoom spot or replace", and the unmatched-file hint points to the Replace buttons.
 - 4.39 (2026-10-03): Six new categories Omar asked for, 80 clues each (16 per value): Egyptian Proverbs (Egypt & Arab World; finish the مثل, in Arabic), How I Met Your Mother (Entertainment, also in TV Show Mix), Guess the Score (Football & Sports and the Football mode pool, now 13; a normal clue, not Closest Wins, as Omar asked), Space & Planets (Knowledge, after Science), Most Spotify Listeners and Most Instagram Followers (Entertainment, after Guess the Song; three names, pick the biggest). The two ranking categories are generated by v4work/rank/gen.js from Wikipedia's lists (Instagram Sept 2026, Spotify 2 Oct 2026) plus web-search figures, with a safety margin so small changes don't flip an answer; re-run it to refresh the numbers. Each category has a log in v4work/out/<id>.log.md. Guess the Logo (Photo Rounds, blurred as Omar asked): 80 logos, 16 per value, about a sixth Egyptian or Arab (Al Ahly, Zamalek, Pyramids, Banque Misr, CIB, WE, EgyptAir, Talabat, Swvl, Careem, Emirates, Qatar Airways). The blur starts stronger at lower values (famous logos) and is sized to the picture, so it looks the same on a phone or a TV. The host can tap "Less blur", and the logo shows clearly on reveal. Logos come from each brand's Wikipedia infobox (v4work/logo-fetch.py, list in v4work/logo-photos.json) and ship as photos/logo-100.js … logo-500.js (node mkpacks.js logo), so the artifact gains 5 files, not 80. To change the blur, edit BLUR in src/extra.js.
-- 4.40 (2026-10-03): Omar asked for the version number on the title screen to be clickable. It looks the same as before apart from a dotted underline (gold on hover; Omar didn't want "What's new" written on the title page), and tapping it opens a panel: "What's new" shows the latest two versions, and "Version history" (tap to open) lists every version back to 1.x in short, player-friendly lines. The text lives in src/changelog.json (newest first), separate from these notes; add an entry there with each new version. Escape, Close or a tap outside closes it. Also, the setup screen's photo count now includes the 80 logos (610 built in). This reverses the v4.00 call to leave out a What's New page; that was Omar's call then and his call now.
+- 4.40 (2026-10-03): Omar found the full 1.0–3.19 update history and it's now in this list and in the game's version history (src/changelog.json, grouped by era, old versions as one line each). Omar asked for the version number on the title screen to be clickable. It looks the same as before apart from a dotted underline (gold on hover; Omar didn't want "What's new" written on the title page), and tapping it opens a panel: "What's new" shows the latest two versions, and "Version history" (tap to open) lists every version back to 1.x in short, player-friendly lines. The text lives in src/changelog.json (newest first), separate from these notes; add an entry there with each new version. Escape, Close or a tap outside closes it. Also, the setup screen's photo count now includes the 80 logos (610 built in). This reverses the v4.00 call to leave out a What's New page; that was Omar's call then and his call now.
