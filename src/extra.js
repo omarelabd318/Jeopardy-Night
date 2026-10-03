@@ -45,7 +45,7 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
     const o=JSON.parse(fs.readFileSync(f,'utf8')), at=CATS.findIndex(c=>c.id===after);
     CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:"text",desc:o.desc}); DATA[id]=o.data; });
   // v4.39: Guess the Logo, blurred logos bundled in photos/logo-<value>.js (built by mkpacks.js logo); 4th element = starting blur (share of image width)
-  { const lf=W+'/logo-photos.json'; if(fs.existsSync(lf)){ const d={100:[],200:[],300:[],400:[],500:[]}, BLUR={100:.05,200:.042,300:.035,400:.03,500:.025};
+  { const lf=W+'/logo-photos.json'; if(fs.existsSync(lf)){ const d={100:[],200:[],300:[],400:[],500:[]}, BLUR={100:.03,200:.027,300:.024,400:.021,500:.018};
     JSON.parse(fs.readFileSync(lf,'utf8')).forEach(e=>{ if(fs.existsSync(`${W}/logo-photos/${e.key}.png`)) d[e.value].push(["Name this brand.",e.name,`pack:logo-${e.value}:${e.key}`,BLUR[e.value]]); });
     if(Object.values(d).every(a=>a.length)){ CATS.splice(CATS.findIndex(c=>c.id==="foodpic")+1,0,{id:"logo",name:"Guess the Logo",type:"text",desc:"A blurred logo. Name the brand or club. The host can tap Less blur if nobody gets it."}); DATA.logo=d; } } }
   // v4.10: Football mode's World Cup, every World Cup clue plus the 2026 ones (labelled), not shown in setup

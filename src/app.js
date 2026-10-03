@@ -489,7 +489,7 @@ function renderClue(){
     /* Guess the Logo: the image starts blurred (p.blur = blur radius as a share of the image width) and the host can step it down */
     if(p.blur && c.blurIdx !== c.idx){ c.blurIdx = c.idx; c.blur = p.blur; }
     const b = p.blur && !c.revealed ? c.blur : 0;
-    media = `<div class="zoom${p.blur ? " logo" : ""}"><img src="${esc(packSrc(p.img, c))}" alt="${p.blur ? "Blurred logo" : "Photo clue"}" style="object-fit:contain"${b ? ` data-blur="${b}"` : ""}></div>${b ? `<div class="row"><button class="btn small" data-act="unblur">Less blur</button></div>` : ""}`;
+    media = `<div class="zoom${p.blur ? " logo" : ""}"><img src="${esc(packSrc(p.img, c))}" alt="${p.blur ? "Blurred logo" : "Photo clue"}" style="object-fit:contain${b ? `;filter:blur(${(b*100).toFixed(2)}cqw)` : ""}"></div>${b ? `<div class="row"><button class="btn small" data-act="unblur">Less blur</button></div>` : ""}`;
   }
   if(p.emoji) media = `<div class="emoji" role="img" aria-label="Emoji clue">${esc(p.emoji)}</div>`;
   if(c.type==="photo"){
@@ -556,8 +556,6 @@ function renderClue(){
       ${c.preview || c.revealed ? "" : `<button class="btn small" data-act="swap" title="Already played this one? Get a different clue from the same category and value">Swap clue</button>`}
       ${c.preview ? "" : `<button class="btn small" data-act="cancel">Back to board</button>`}
     </div>`;
-  const bimg = $("#clue .zoom img[data-blur]");
-  if(bimg) bimg.style.filter = `blur(${(+bimg.dataset.blur * bimg.parentElement.clientWidth).toFixed(1)}px)`;
   const zimg = $("#clue .zoom img");
   if(zimg && c.type==="photo" && !focus[norm(p.a)] && "FaceDetector" in window && (c.cat==="actor"||c.cat==="footy"||c.cat==="person")){
     const k = norm(p.a);

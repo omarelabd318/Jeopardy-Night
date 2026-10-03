@@ -27,13 +27,15 @@
   "key": "logo-whatsapp",
   "value": 100,
   "name": "WhatsApp",
-  "wiki": "WhatsApp"
+  "wiki": "WhatsApp",
+  "file": "WhatsApp.svg"
  },
  {
   "key": "logo-youtube",
   "value": 100,
   "name": "YouTube",
-  "wiki": "YouTube"
+  "wiki": "YouTube",
+  "file": "YouTube Logo 2017.svg"
  },
  {
   "key": "logo-adidas",
@@ -117,7 +119,8 @@
   "key": "logo-bmw",
   "value": 200,
   "name": "BMW",
-  "wiki": "BMW"
+  "wiki": "BMW",
+  "file": "BMW.svg"
  },
  {
   "key": "logo-audi",
@@ -189,7 +192,8 @@
   "key": "logo-tiktok",
   "value": 200,
   "name": "TikTok",
-  "wiki": "TikTok"
+  "wiki": "TikTok",
+  "file": "TikTok logo.svg"
  },
  {
   "key": "logo-lamborghini",
@@ -405,7 +409,8 @@
   "key": "logo-renault",
   "value": 500,
   "name": "Renault",
-  "wiki": "Renault"
+  "wiki": "Renault",
+  "file": "Renault 2021 Text.svg"
  },
  {
   "key": "logo-alfaromeo",
@@ -426,10 +431,10 @@
   "wiki": "Michelin"
  },
  {
-  "key": "logo-monster",
+  "key": "logo-nutella",
   "value": 500,
-  "name": "Monster Energy",
-  "wiki": "Monster Energy"
+  "name": "Nutella",
+  "wiki": "Nutella"
  },
  {
   "key": "logo-underarmour",
@@ -468,10 +473,10 @@
   "wiki": "Swvl"
  },
  {
-  "key": "logo-fawry",
+  "key": "logo-careem",
   "value": 500,
-  "name": "Fawry",
-  "wiki": "Fawry"
+  "name": "Careem",
+  "wiki": "Careem"
  },
  {
   "key": "logo-pringles",
