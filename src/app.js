@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.75`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.77`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -365,8 +365,11 @@ function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S
   if(t1) t1.textContent = on ? "Joga" : "Jeopardy"; if(t2) t2.textContent = on ? "Bonito" : "Night"; }
 /* 4.43: retro poster collage of football phrases behind the Football mode board.
    4.48: packed into exactly the whole rows and columns that fit, and each phrase shrunk to fit its block, so nothing is cut off. */
-const FB_PHRASES = ["SIIIIIUUUUUU!","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
+const FB_PHRASES = ["SIIIIIUUUUUU!","BAR-CO-LA","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
 const FB_FILL = ["Calma","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
+/* 4.76 (Omar): phrases drawn with a different font for each part between the dashes (Alfa Slab One, Lobster, Bebas Neue) */
+const FB_MIXED = {"BAR-CO-LA": [2, 3, 1]};
+const fbTxt = t => FB_MIXED[t] ? t.split("-").map((p, i) => `<i class="mx f${FB_MIXED[t][i % FB_MIXED[t].length]}">${esc(p)}</i>`).join("-") : esc(t);
 const FB_CELL = {w:96, h:56, gap:5};
 const fbWant = t => { const ar = /[\u0600-\u06FF]/.test(t), n = t.length; return n > 8 ? Math.min(5, Math.ceil(n / (ar ? 5 : 5.5))) : ar ? 2 : 1; };
 /* 4.47: the collage starts just under the category row.
@@ -410,7 +413,7 @@ function footballPoster(){
   const fits = (r, t) => { const n = Math.max(2, t.length * (/[\u0600-\u06FF]/.test(t) ? .8 : 1)) * .55, w = r.w - G - 8, h = r.h - G, o = [];
     o.push({m: "h", s: Math.min(h * .8, w / n)});
     const tw = two(t); if(tw) o.push({m: "2", s: Math.min(h * .8 / 2, w / (Math.max(tw[0].length, tw[1].length) * .55)), tw});
-    if(/^[A-Za-zÀ-ÿ!'-]{3,13}$/.test(t)) o.push({m: "v", s: Math.min(w * .8, h / n)});
+    if(!FB_MIXED[t] && /^[A-Za-zÀ-ÿ!'-]{3,13}$/.test(t)) o.push({m: "v", s: Math.min(w * .8, h / n)});
     return o.reduce((a, b) => b.s > a.s ? b : a); };
   const left = rects.slice(), blocks = [];
   const todo = items.slice(0, rects.length);
@@ -421,7 +424,7 @@ function footballPoster(){
     blocks.push({t: todo.splice(pick.ti, 1)[0], r: left.splice(pick.bi, 1)[0], f: pick.f});
   }
   el.innerHTML = blocks.map(({t, r, f}) => {
-    const txt = f.m === "2" ? esc(f.tw[0]) + "<br>" + esc(f.tw[1]) : esc(t);
+    const txt = f.m === "2" ? esc(f.tw[0]) + "<br>" + esc(f.tw[1]) : fbTxt(t);
     return `<div class="b f${1 + Math.floor(rnd() * 6)} c${1 + Math.floor(rnd() * 5)}${f.m === "v" ? " v" : ""}" style="left:${(r.x + G).toFixed(1)}px;top:${(r.y + G).toFixed(1)}px;width:${(r.w - G).toFixed(1)}px;height:${(r.h - G).toFixed(1)}px"><span dir="auto">${txt}</span></div>`;
   }).join("");
   fitPoster(); if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitPoster);
@@ -467,7 +470,7 @@ function footballBg(cols, rows){
     for(let y = r; y < r + rs; y++) for(let x = c; x < c + cs; x++) used[y][x] = blk;
     blocks.push(blk);
   }
-  el.innerHTML = blocks.map(b => `<div class="b f${b.f} c${b.k}${b.vert ? " v" : ""}" style="grid-area:${b.r + 1}/${b.c + 1}/span ${b.rs}/span ${b.cs}"><span dir="auto" style="--n:${Math.max(3, b.n * (b.ar ? .75 : 1))}">${esc(b.t)}</span></div>`).join("");
+  el.innerHTML = blocks.map(b => `<div class="b f${b.f} c${b.k}${b.vert ? " v" : ""}" style="grid-area:${b.r + 1}/${b.c + 1}/span ${b.rs}/span ${b.cs}"><span dir="auto" style="--n:${Math.max(3, b.n * (b.ar ? .75 : 1))}">${fbTxt(b.t)}</span></div>`).join("");
   fitFbBg(); if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitFbBg);
 }
 function fitFbBg(){  // shrink any phrase that is wider (or taller, if vertical) than its block
@@ -504,22 +507,28 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   /* 4.75 (Omar): a six-touch rotation. Each player controls the ball, it pops up, and he volleys it across on the way down:
      left knee, right foot, left head, right knee, left foot, right head, then again. Each crossing takes FLIGHT seconds.
      The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
-  const ROT = [["L","knee"],["R","foot"],["L","head"],["R","knee"],["L","foot"],["R","head"]], POP = 1.1, SPIN = 0.35;
-  const UP = {knee: 18, foot: 16, head: 14};             // how far the ball pops up above the touch
+  const ROT = [["L","knee"],["R","foot"],["L","head"],["R","heel"],["L","foot"],["R","knee"],["L","heel"],["R","head"]], POP = 1.1, SPIN = 0.35;
+  /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
+     The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20};             // how far the ball pops up above the touch
   const CYCLE = ROT.length * (FLIGHT + POP);
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
   const kneeUp = dt => dt < -0.35 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.35) / 0.35) : 1 - sm(dt / 0.3);
   const footUp = dt => dt < -0.3 || dt > 0.42 ? 0 : dt < 0 ? 0.25 * sm((dt + .3) / .3) : dt < .12 ? .25 + .3 * sm(dt / .12) : .55 * (1 - sm((dt - .12) / .3));
+  const heelUp = dt => dt < -0.3 || dt > 0.35 ? 0 : dt < 0 ? sm((dt + 0.3) / 0.3) : 1 - sm(dt / 0.35);
+  const turned = dt => dt > -0.5 && dt < 0.45;                                          // back to the ball for a heel flick
   const hop = dt => Math.abs(dt) < 0.3 ? 4 * Math.cos(dt / 0.3 * Math.PI / 2) : 0;          // a little jump for the header
-  function man(x, dir, ang, knee, jump){                   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
+  function man(x, dir, ang, knee, jump, heel, turn){                   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
+    if(turn){ dir = -dir; ang = 0.35; }                      // facing away for the heel flick
     const y = H - 1 - jump, hip = y - 16, sh = y - 29;
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
     g.beginPath(); g.arc(x, y - 35, 5, 0, Math.PI*2); g.fill();                  // head
     g.beginPath(); g.moveTo(x, sh + 1); g.lineTo(x, hip); g.stroke();            // body
     const arm = jump / 4 * 6;                                                     // arms come up a little on a header
     g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13 - arm); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11 - arm); g.stroke();  // arms
-    g.beginPath(); g.moveTo(x, hip); g.lineTo(x - 6*dir, y); g.stroke();         // back leg
+    const bk = x - Math.sin(0.35) * 8 * dir, bky = hip + Math.cos(0.35) * 8, bs = 0.35 + heel * 2.3;   // back leg, bending up behind for a heel flick
+    g.beginPath(); g.moveTo(x, hip); g.lineTo(bk, bky); g.lineTo(bk - Math.sin(bs) * 8 * dir, bky + Math.cos(bs) * 8); g.stroke();
     const th = ang + knee * (Math.PI/2 - ang), kx = x + Math.sin(th) * 8 * dir, ky = hip + Math.cos(th) * 8, sa = ang * (1 - knee);
     g.beginPath(); g.moveTo(x, hip); g.lineTo(kx, ky); g.lineTo(kx + Math.sin(sa) * 8 * dir, ky + Math.cos(sa) * 8); g.stroke();  // front leg
   }
@@ -532,7 +541,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     g.clearRect(0, 0, W, H);
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
-      return how === "knee" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+      return how === "knee" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
     const volley = side => [X[side] + 20 * D[side], hip - 3];
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
     const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
@@ -541,12 +550,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     let pos;
     if(u < FLIGHT){ const A = volley(from); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
-    const pose = s => { let ang = 0.35, knee = 0, jump = 0;
+    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = i * (FLIGHT + POP) + FLIGHT + sh, dt = t - tc;
-          if(hw === "knee") knee += kneeUp(dt); else if(hw === "foot") ang += footUp(dt); else jump += hop(dt);
+          if(hw === "knee") knee += kneeUp(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else jump += hop(dt);
           ang += swing(dt - POP); } });
-      return [ang, Math.min(1, knee), jump]; };
+      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn]; };
     man(L, 1, ...pose("L")); man(R, -1, ...pose("R"));
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
