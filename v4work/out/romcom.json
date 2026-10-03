@@ -1,0 +1,338 @@
+{
+ "id": "romcom",
+ "name": "Rom-Coms",
+ "type": "text",
+ "desc": "Romantic comedies, from Hollywood classics to Netflix and Egyptian favourites.",
+ "data": {
+  "100": [
+   [
+    "Which 1990 film stars Julia Roberts as Vivian and Richard Gere as Edward?",
+    "Pretty Woman"
+   ],
+   [
+    "Which 2004 rom-com follows a girl who wishes to be 'thirty, flirty and thriving'?",
+    "13 Going on 30"
+   ],
+   [
+    "In Notting Hill, Hugh Grant runs a bookshop. Which actress plays the film star he falls for?",
+    "Julia Roberts"
+   ],
+   [
+    "Which 1989 film asks whether men and women can ever just be friends, starring Billy Crystal and Meg Ryan?",
+    "When Harry Met Sally..."
+   ],
+   [
+    "Which Christmas rom-com follows a set of linked London love stories?",
+    "Love Actually"
+   ],
+   [
+    "Which 1999 film retells 'The Taming of the Shrew' in an American high school?",
+    "10 Things I Hate About You"
+   ],
+   [
+    "Which 2001 film stars Renée Zellweger as a single woman writing a diary?",
+    "Bridget Jones's Diary"
+   ],
+   [
+    "In which film does Sandra Bullock make her assistant (Ryan Reynolds) marry her so she isn't deported?",
+    "The Proposal"
+   ],
+   [
+    "Which Adam Sandler and Drew Barrymore film is about a woman who forgets everything each day?",
+    "50 First Dates"
+   ],
+   [
+    "Which 2003 film has Kate Hudson and Matthew McConaughey each playing a game with the other's heart?",
+    "How to Lose a Guy in 10 Days"
+   ],
+   [
+    "Which 1998 film has Tom Hanks and Meg Ryan as rival booksellers who fall for each other online?",
+    "You've Got Mail"
+   ],
+   [
+    "Which 2018 film follows Rachel Chu meeting her boyfriend's super-rich family in Singapore?",
+    "Crazy Rich Asians"
+   ],
+   [
+    "Which Tamer Hosny film series follows a playboy and the woman who changes him?",
+    "Omar & Salma"
+   ],
+   [
+    "In which 2005 film is Will Smith a professional 'date doctor'?",
+    "Hitch"
+   ],
+   [
+    "Which Netflix film starts when Lara Jean's secret love letters are posted to her crushes?",
+    "To All the Boys I've Loved Before"
+   ],
+   [
+    "Which 2011 film has Ryan Gosling teach Steve Carell how to talk to women?",
+    "Crazy, Stupid, Love"
+   ]
+  ],
+  "200": [
+   [
+    "Which actress stars in both Sleepless in Seattle and You've Got Mail?",
+    "Meg Ryan"
+   ],
+   [
+    "Which two actresses swap houses in The Holiday (2006)?",
+    "Cameron Diaz and Kate Winslet"
+   ],
+   [
+    "Who plays Mark Darcy in Bridget Jones's Diary?",
+    "Colin Firth"
+   ],
+   [
+    "Which film has the line 'I'm just a girl, standing in front of a boy, asking him to love her'?",
+    "Notting Hill"
+   ],
+   [
+    "Which 2009 film, starring Joseph Gordon-Levitt, warns that it is 'not a love story'?",
+    "(500) Days of Summer"
+   ],
+   [
+    "On which Beverly Hills street does Vivian go shopping in Pretty Woman?",
+    "Rodeo Drive"
+   ],
+   [
+    "Which 1987 film ends with 'Nobody puts Baby in a corner'?",
+    "Dirty Dancing"
+   ],
+   [
+    "Which 2002 film stars Jennifer Lopez as a hotel maid mistaken for a rich guest?",
+    "Maid in Manhattan"
+   ],
+   [
+    "Who stars with Kate Hudson as a rival bride in Bride Wars?",
+    "Anne Hathaway"
+   ],
+   [
+    "Which 2016 musical has Ryan Gosling and Emma Stone fall in love in Los Angeles?",
+    "La La Land"
+   ],
+   [
+    "Which 2011 film stars Justin Timberlake and Mila Kunis as friends who try to keep feelings out of it?",
+    "Friends with Benefits"
+   ],
+   [
+    "Which 2010 film stars Emma Stone as a student who pretends to have a bad reputation?",
+    "Easy A"
+   ],
+   [
+    "Who plays Lara Jean in To All the Boys I've Loved Before?",
+    "Lana Condor"
+   ],
+   [
+    "In which 1993 film does a boy call a radio show to find his widowed dad a new wife?",
+    "Sleepless in Seattle"
+   ],
+   [
+    "Which 2023 rom-com stars Sydney Sweeney and Glen Powell?",
+    "Anyone but You"
+   ],
+   [
+    "Who plays the singer in The Wedding Singer?",
+    "Adam Sandler"
+   ]
+  ],
+  "300": [
+   [
+    "Who directed When Harry Met Sally...?",
+    "Rob Reiner"
+   ],
+   [
+    "Who wrote Four Weddings and a Funeral, Notting Hill and Love Actually?",
+    "Richard Curtis"
+   ],
+   [
+    "Which 1994 film has Hugh Grant meet the same woman again and again at weddings?",
+    "Four Weddings and a Funeral"
+   ],
+   [
+    "What is Meg Ryan's online name in You've Got Mail?",
+    "Shopgirl"
+   ],
+   [
+    "Which game does Rachel play against Eleanor in Crazy Rich Asians?",
+    "Mahjong"
+   ],
+   [
+    "In which US state is The Proposal's family home?",
+    "Alaska"
+   ],
+   [
+    "What is Andie's job in How to Lose a Guy in 10 Days?",
+    "Magazine columnist"
+   ],
+   [
+    "Which 1961 film stars Audrey Hepburn as Holly Golightly?",
+    "Breakfast at Tiffany's"
+   ],
+   [
+    "Which 1934 Clark Gable film is often called the first screwball rom-com?",
+    "It Happened One Night"
+   ],
+   [
+    "Which actor sings 'Can't Take My Eyes Off You' on the bleachers in 10 Things I Hate About You?",
+    "Heath Ledger"
+   ],
+   [
+    "Who plays the Prime Minister in Love Actually?",
+    "Hugh Grant"
+   ],
+   [
+    "Which 2005 comedy stars Steve Carell as a shy man still waiting for love at 40?",
+    "The 40-Year-Old Virgin"
+   ],
+   [
+    "What colour is the front door of William's house in Notting Hill?",
+    "Blue"
+   ],
+   [
+    "Who stars with Ahmed El Sakka in Taymour w Shafika?",
+    "Mona Zaki"
+   ],
+   [
+    "In which 2013 film does Domhnall Gleeson use time travel to win Rachel McAdams?",
+    "About Time"
+   ],
+   [
+    "Which Jane Austen novel is Clueless based on?",
+    "Emma"
+   ]
+  ],
+  "400": [
+   [
+    "Who directed Sleepless in Seattle and You've Got Mail?",
+    "Nora Ephron"
+   ],
+   [
+    "Where do the lovers finally meet at the end of Sleepless in Seattle?",
+    "The top of the Empire State Building"
+   ],
+   [
+    "What is Edward's job in Pretty Woman?",
+    "Corporate raider (he buys and breaks up companies)"
+   ],
+   [
+    "Which Shakespeare play is She's the Man based on?",
+    "Twelfth Night"
+   ],
+   [
+    "What is the name of Hugh Grant's character in Bridget Jones's Diary?",
+    "Daniel Cleaver"
+   ],
+   [
+    "Which old hit does Billy Mack turn into a Christmas song in Love Actually?",
+    "Love Is All Around ('Christmas Is All Around')"
+   ],
+   [
+    "Which retired screenwriter does Iris befriend in The Holiday?",
+    "Arthur Abbott"
+   ],
+   [
+    "Which 1999 film has Julia Roberts leave several grooms at the altar?",
+    "Runaway Bride"
+   ],
+   [
+    "Who plays the groom Julia Roberts tries to steal in My Best Friend's Wedding?",
+    "Dermot Mulroney"
+   ],
+   [
+    "In which city is the big wedding in Crazy Rich Asians?",
+    "Singapore"
+   ],
+   [
+    "Which 2001 French film follows a shy Paris waitress who secretly helps others?",
+    "Amélie"
+   ],
+   [
+    "Who plays Spike, Hugh Grant's flatmate, in Notting Hill?",
+    "Rhys Ifans"
+   ],
+   [
+    "Which 1940 James Stewart film was remade as You've Got Mail?",
+    "The Shop Around the Corner"
+   ],
+   [
+    "In which New York deli is the 'I'll have what she's having' scene filmed?",
+    "Katz's Delicatessen"
+   ],
+   [
+    "Which 2019 Netflix rom-com stars Ali Wong and Randall Park?",
+    "Always Be My Maybe"
+   ],
+   [
+    "Which singer stars with Naguib El Rihani in the classic Ghazal El Banat?",
+    "Laila Mourad"
+   ]
+  ],
+  "500": [
+   [
+    "Which 1940 film stars Cary Grant, Katharine Hepburn and James Stewart?",
+    "The Philadelphia Story"
+   ],
+   [
+    "In Bringing Up Baby (1938), what kind of animal is Baby?",
+    "A leopard"
+   ],
+   [
+    "Who says 'I'll have what she's having' in When Harry Met Sally...?",
+    "Estelle Reiner, the director's mother"
+   ],
+   [
+    "Which 1953 film has Audrey Hepburn as a runaway princess in Rome?",
+    "Roman Holiday"
+   ],
+   [
+    "In which town is Groundhog Day set?",
+    "Punxsutawney"
+   ],
+   [
+    "Which actress won an Oscar for the rom-com Silver Linings Playbook?",
+    "Jennifer Lawrence"
+   ],
+   [
+    "Which language does Jamie learn to propose to Aurélia in Love Actually?",
+    "Portuguese"
+   ],
+   [
+    "What kind of books does William's shop sell in Notting Hill?",
+    "Travel books"
+   ],
+   [
+    "Which 1959 film has Jack Lemmon and Tony Curtis disguised as women in a band?",
+    "Some Like It Hot"
+   ],
+   [
+    "What is the name of Nick's mother, played by Michelle Yeoh, in Crazy Rich Asians?",
+    "Eleanor Young"
+   ],
+   [
+    "Which opera does Edward take Vivian to in Pretty Woman?",
+    "La traviata"
+   ],
+   [
+    "Where is 50 First Dates set?",
+    "Hawaii"
+   ],
+   [
+    "What nationality is Margaret in The Proposal?",
+    "Canadian"
+   ],
+   [
+    "Which 1967 film ends with Dustin Hoffman stopping a wedding?",
+    "The Graduate"
+   ],
+   [
+    "Who plays Clementine in Eternal Sunshine of the Spotless Mind?",
+    "Kate Winslet"
+   ],
+   [
+    "What is the name of the high school in 10 Things I Hate About You?",
+    "Padua High School"
+   ]
+  ]
+ }
+}
