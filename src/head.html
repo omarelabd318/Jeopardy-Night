@@ -151,6 +151,9 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .tile.done{background:var(--tile);color:transparent;text-shadow:none;transform:none;cursor:default}
 
 /* scoreboard */
+/* 4.70 (Omar): Football mode, two stick figures kick the ball back and forth on the line above the team names, while the board is showing. To remove: delete #kick here, the canvas, and kickLoop() in app.js */
+#kick{position:fixed;left:0;width:100vw;height:64px;pointer-events:none;z-index:6;display:none}
+body.football #kick.on{display:block}
 .scores{position:fixed;left:0;right:0;bottom:0;background:var(--deep);border-top:2px solid var(--brass-dim);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;overflow-x:auto;z-index:5}
 .team{flex:1 0 150px;display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;padding:6px 12px;border-radius:10px;background:var(--felt-2);border:1.5px solid var(--line)}
 .team .nm{font-weight:700;font-size:clamp(17px,1.6vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -333,7 +336,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.68</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.70</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -343,7 +346,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.68</div>
+      <div class="eyebrow verlabel">v4.70</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -392,6 +395,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 </div>
 
 <div class="scores" id="scores" hidden></div>
+<canvas id="kick" aria-hidden="true"></canvas>
 <div id="focusBox" hidden><div class="clue focuscard" role="dialog" aria-modal="true" aria-labelledby="focusTitle">
   <div class="eyebrow" id="focusTitle">Tap the spot to zoom in on</div>
   <div class="focuswrap"><img id="focusImg" alt="Photo to set the zoom spot on"><span id="focusMark" hidden></span></div>
