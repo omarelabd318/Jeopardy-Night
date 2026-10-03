@@ -1,6 +1,6 @@
 {
  "id": "quote",
- "name": "Famous Movie & TV Quotes",
+ "name": "Movie & TV Quotes",
  "type": "text",
  "desc": "Name the film or TV show the line comes from.",
  "data": {
