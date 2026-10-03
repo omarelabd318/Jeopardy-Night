@@ -43,8 +43,8 @@ body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05
 /* 4.43 try (Omar): retro poster collage of football phrases behind the Football mode page, at 20%, styled after v4work/football-theme-ref.avif.
    To undo: delete this block down to "end 4.43" and the fbBg div in the page; footballBg() in src/app.js then does nothing. */
 .fbbg{display:none}
-body.football .fbbg{display:grid;position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.2;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));grid-auto-rows:56px;grid-auto-flow:dense;gap:5px;padding:5px}
-body.football .wrap{position:relative;z-index:1}
+body.football .fbbg{display:grid;position:absolute;inset:0 0 6px;border-radius:6px;z-index:0;pointer-events:none;overflow:hidden;opacity:.32;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));grid-auto-rows:56px;grid-auto-flow:dense;gap:5px;padding:5px}
+body.football .boardwrap{position:relative} body.football .board{position:relative;z-index:1}  /* 4.45: collage sits inside the board frame only (4.43–4.44: position:fixed over the whole page, opacity .2, .wrap z-index:1) */
 .fbbg .b{container-type:size;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;line-height:.95;padding:0 4px}
 .fbbg .b span{white-space:nowrap;font-size:min(72cqh,calc(var(--k,150) * 1cqw / var(--n)))}
 .fbbg .b.v span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:min(72cqw,calc(var(--k,150) * 1cqh / var(--n)))}
@@ -62,7 +62,7 @@ body.football .wrap{position:relative;z-index:1}
 /* end 4.43 */
 /* 4.44 try (Omar): the collage shows through the board. Tiles and headers are 60% solid green, and the board's black grid is half see-through.
    To undo: delete these three lines (down to "end 4.44"). */
-body.football .head, body.football .tile, body.football .tile.done{background:rgba(0,215,0,.6)}
+body.football .head, body.football .tile, body.football .tile.done{background:rgba(0,215,0,.5)}  /* 4.44: .6 */
 body.football .tile:not(.done):hover{background:rgba(90,234,90,.75)}
 body.football .board{background:rgba(0,0,0,.5)}
 /* end 4.44 */
@@ -313,12 +313,11 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 
 </style>
 
-<div class="fbbg" id="fbBg" aria-hidden="true"></div>
 <div class="wrap">
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.44</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.45</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -328,7 +327,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.44</div>
+      <div class="eyebrow verlabel">v4.45</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -372,7 +371,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
       <h1>Jeopardy <span>Night</span></h1>
       <div class="row tools"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="editScores" aria-pressed="false">Edit scores</button><button class="btn small" id="newBoard">New board</button><button class="btn small" id="toSetup">Setup</button><button class="btn small" id="toHome">Title screen</button><button class="btn small endbtn" id="endGame">End game</button></div>
     </div>
-    <div class="boardwrap"><div class="board" id="board"></div></div>
+    <div class="boardwrap"><div class="fbbg" id="fbBg" aria-hidden="true"></div><div class="board" id="board"></div></div>
   </section>
 </div>
 
