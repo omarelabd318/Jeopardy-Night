@@ -1,6 +1,6 @@
 {
  "id": "xfer",
- "name": "Football Transfers",
+ "name": "Transfers",
  "type": "text",
  "desc": "Name the player from the clubs, year and fee. Fees are the widely reported figures, rounded.",
  "data": {
