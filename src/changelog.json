@@ -3,6 +3,13 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.53",
+  "date": "2026-10-03",
+  "items": [
+   "Tapping the version number now just shows the version history."
+  ]
+ },
+ {
   "v": "4.52",
   "date": "2026-10-03",
   "items": [

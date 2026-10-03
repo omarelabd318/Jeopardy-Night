@@ -8,7 +8,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 
 - `index.html`: the built game, about 1 MB, with every clue inlined. It loads `photos/` and `sounds/` by relative path.
 - `src/head.html`: the CSS and page shell. The Football mode colours are in the `body.football` rules near the top.
-- `src/changelog.json`: the player-facing What's new and version history, shown when you tap the version on the title screen.
+- `src/changelog.json`: the player-facing version history, shown when you tap the version on the title screen.
 - `src/app.js`: the game logic. `CAT_GROUPS` sets the setup-screen groups, and `FOOTBALL` sets the Football mode pool (a random 6 are picked per game).
 - `src/builtin.js` and `src/base.json`: the original categories and clues.
 - `src/extra.js`: adds the v4 categories (Who Am I?, Stadiums, Formations, Guess the Food and others), and adds photo clues only when their photo exists.
