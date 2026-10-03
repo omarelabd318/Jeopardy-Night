@@ -133,7 +133,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.46`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.47`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -351,6 +351,9 @@ function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S
 /* 4.43: retro poster collage of football phrases behind the Football mode page (fixed layout, built once) */
 const FB_PHRASES = ["SIIIIIUUUUUU!","It's a f*cking disgrace","After review… #10 Paraguay","AGÜEROOOOO","Qué mirás, bobo?","Mo Salah, running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك"];
 const FB_FILL = ["GOAL!","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
+/* 4.47: the collage starts just under the category row */
+function placeFbBg(){ const bg = $("#fbBg"), h = $("#board .head"), b = $("#board"); if(!bg || !h || !S.football) return; bg.style.top = (b.offsetTop + h.offsetTop + h.offsetHeight) + "px"; }
+window.addEventListener("resize", placeFbBg);
 function footballBg(){
   const el = $("#fbBg"); if(!el || el.childElementCount) return;
   let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
@@ -397,7 +400,7 @@ function renderBoard(){
     const d = S.done[`${id}-${l}`];
     html += `<button class="tile${d?" done":""}" data-cat="${id}" data-l="${l}" ${d?'disabled aria-label="Played"':`aria-label="${esc(catById(id).name)} for ${l}"`}>${l}</button>`;
   }));
-  b.innerHTML = html;
+  b.innerHTML = html; placeFbBg();
   const left = S.cats.length*5 - Object.keys(S.done).length;
   if(!left && !S.ended) setTimeout(showWinner, 350);
 }
