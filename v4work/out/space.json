@@ -1,0 +1,338 @@
+{
+ "id": "space",
+ "name": "Space & Planets",
+ "type": "text",
+ "desc": "Planets, moons, stars, missions and astronauts.",
+ "data": {
+  "100": [
+   [
+    "Which planet is known as the Red Planet?",
+    "Mars"
+   ],
+   [
+    "What is the largest planet in our solar system?",
+    "Jupiter"
+   ],
+   [
+    "Which planet is closest to the Sun?",
+    "Mercury"
+   ],
+   [
+    "Which planet is famous for its bright rings?",
+    "Saturn"
+   ],
+   [
+    "Who was the first person to walk on the Moon?",
+    "Neil Armstrong"
+   ],
+   [
+    "What is the name of our galaxy?",
+    "The Milky Way"
+   ],
+   [
+    "What is the star at the centre of our solar system?",
+    "The Sun"
+   ],
+   [
+    "How many planets are in our solar system?",
+    "8"
+   ],
+   [
+    "Which former planet was reclassified as a dwarf planet in 2006?",
+    "Pluto"
+   ],
+   [
+    "What is the US space agency called?",
+    "NASA"
+   ],
+   [
+    "Who was the first human in space?",
+    "Yuri Gagarin"
+   ],
+   [
+    "Which planet do we live on?",
+    "Earth"
+   ],
+   [
+    "What do you call a rock from space that reaches the ground?",
+    "A meteorite"
+   ],
+   [
+    "Which planet is the hottest in the solar system?",
+    "Venus"
+   ],
+   [
+    "What is the name of Elon Musk's rocket company?",
+    "SpaceX"
+   ],
+   [
+    "About how long does light from the Sun take to reach Earth: 8 seconds, 8 minutes or 8 hours?",
+    "8 minutes"
+   ]
+  ],
+  "200": [
+   [
+    "Which planet has the Great Red Spot, a giant storm?",
+    "Jupiter"
+   ],
+   [
+    "Which mission first landed people on the Moon?",
+    "Apollo 11"
+   ],
+   [
+    "What year did humans first land on the Moon?",
+    "1969"
+   ],
+   [
+    "Which planet spins on its side, almost tipped over?",
+    "Uranus"
+   ],
+   [
+    "What is the farthest planet from the Sun?",
+    "Neptune"
+   ],
+   [
+    "What is the name of the space telescope launched in 2021, Hubble's successor?",
+    "James Webb Space Telescope"
+   ],
+   [
+    "What was the first artificial satellite, launched in 1957?",
+    "Sputnik 1"
+   ],
+   [
+    "What is a group of stars forming a pattern in the sky called?",
+    "A constellation"
+   ],
+   [
+    "Which dwarf planet has a heart-shaped plain on it?",
+    "Pluto"
+   ],
+   [
+    "What force keeps the planets in orbit around the Sun?",
+    "Gravity"
+   ],
+   [
+    "What do you call a region where gravity is so strong not even light escapes?",
+    "A black hole"
+   ],
+   [
+    "Which planet has the most known moons (as of 2026)?",
+    "Saturn"
+   ],
+   [
+    "What is the name of NASA's rover that landed on Mars in 2021?",
+    "Perseverance"
+   ],
+   [
+    "Who was the first woman in space?",
+    "Valentina Tereshkova"
+   ],
+   [
+    "Between which two planets is the main asteroid belt?",
+    "Mars and Jupiter"
+   ],
+   [
+    "What is the name of the space station orbiting Earth since 1998?",
+    "The International Space Station (ISS)"
+   ]
+  ],
+  "300": [
+   [
+    "What is Jupiter's largest moon, also the largest moon in the solar system?",
+    "Ganymede"
+   ],
+   [
+    "What is the tallest volcano in the solar system, on Mars?",
+    "Olympus Mons"
+   ],
+   [
+    "What are the two moons of Mars called?",
+    "Phobos and Deimos"
+   ],
+   [
+    "Which planet has a day longer than its year?",
+    "Venus"
+   ],
+   [
+    "What is the nearest star to the Sun?",
+    "Proxima Centauri"
+   ],
+   [
+    "What is the name of Saturn's largest moon, which has a thick atmosphere?",
+    "Titan"
+   ],
+   [
+    "What unit is the distance light travels in a year?",
+    "A light-year"
+   ],
+   [
+    "Which two planets have no moons?",
+    "Mercury and Venus"
+   ],
+   [
+    "Who was the second person to walk on the Moon?",
+    "Buzz Aldrin"
+   ],
+   [
+    "Which ill-fated Apollo mission had the line “Houston, we've had a problem”?",
+    "Apollo 13"
+   ],
+   [
+    "What is the closest large galaxy to the Milky Way?",
+    "Andromeda"
+   ],
+   [
+    "What is the name of the boundary around a black hole beyond which nothing escapes?",
+    "The event horizon"
+   ],
+   [
+    "Which comet returns about every 76 years and was last seen in 1986?",
+    "Halley's Comet"
+   ],
+   [
+    "What is the name of NASA's programme to send people back to the Moon?",
+    "Artemis"
+   ],
+   [
+    "Which space telescope, launched in 1990, was famously fixed by astronauts in orbit?",
+    "Hubble"
+   ],
+   [
+    "Roughly how old is the universe: 4.5, 13.8 or 100 billion years?",
+    "13.8 billion years"
+   ]
+  ],
+  "400": [
+   [
+    "Which moon of Saturn shoots out geysers of water ice?",
+    "Enceladus"
+   ],
+   [
+    "What is the largest object in the asteroid belt, now a dwarf planet?",
+    "Ceres"
+   ],
+   [
+    "Which planet has the strongest winds in the solar system?",
+    "Neptune"
+   ],
+   [
+    "What is the name of the theory that the universe began from a hot, dense point?",
+    "The Big Bang"
+   ],
+   [
+    "Which moon of Jupiter is the most volcanically active body in the solar system?",
+    "Io"
+   ],
+   [
+    "Who was the first Arab in space, in 1985?",
+    "Prince Sultan bin Salman (Saudi Arabia)"
+   ],
+   [
+    "Which country's probe “Hope” reached Mars orbit in 2021?",
+    "The United Arab Emirates"
+   ],
+   [
+    "What is the name of the dwarf planet beyond Pluto that led to Pluto's demotion?",
+    "Eris"
+   ],
+   [
+    "What is the name for a star that explodes at the end of its life?",
+    "A supernova"
+   ],
+   [
+    "Which Russian space dog was the first animal to orbit Earth?",
+    "Laika"
+   ],
+   [
+    "Which Voyager probe is the most distant human-made object?",
+    "Voyager 1"
+   ],
+   [
+    "What is the name of the dark band of dust and gas where comets are thought to come from, far beyond Pluto?",
+    "The Oort Cloud"
+   ],
+   [
+    "Which planet's moon Triton orbits backwards?",
+    "Neptune"
+   ],
+   [
+    "What is the hottest colour of star: red, yellow or blue?",
+    "Blue"
+   ],
+   [
+    "What was the name of the Soviet space station that orbited from 1986 to 2001?",
+    "Mir"
+   ],
+   [
+    "What is the term for a planet that orbits a star other than the Sun?",
+    "An exoplanet"
+   ]
+  ],
+  "500": [
+   [
+    "Which NASA mission, named after an Egyptian god, brought back samples from asteroid Bennu in 2023?",
+    "OSIRIS-REx"
+   ],
+   [
+    "What is the name of the first black hole ever photographed, in galaxy M87?",
+    "M87* (Pōwehi)"
+   ],
+   [
+    "Which astronomer showed in the 1920s that the universe is expanding?",
+    "Edwin Hubble"
+   ],
+   [
+    "What is the name of the point in a planet's orbit closest to the Sun?",
+    "Perihelion"
+   ],
+   [
+    "Which British astronomer discovered Uranus in 1781?",
+    "William Herschel"
+   ],
+   [
+    "Which Egyptian-American NASA scientist led landing-site selection for the Apollo missions?",
+    "Farouk El-Baz"
+   ],
+   [
+    "What name is given to the region around the Sun dominated by the solar wind, which Voyager 1 left in 2012?",
+    "The heliosphere"
+   ],
+   [
+    "What is the name of Pluto's largest moon?",
+    "Charon"
+   ],
+   [
+    "What is the term for the point where a moon would be torn apart by a planet's gravity?",
+    "The Roche limit"
+   ],
+   [
+    "Which kind of star is left after a supernova if it is not a black hole: super-dense and spinning?",
+    "A neutron star (or pulsar)"
+   ],
+   [
+    "What spacecraft deliberately crashed into Saturn in 2017 to end its mission?",
+    "Cassini"
+   ],
+   [
+    "Which UAE astronaut did the first Arab spacewalk, in 2023?",
+    "Sultan Al Neyadi"
+   ],
+   [
+    "Who proposed that the Sun, not Earth, is at the centre of the solar system (1543)?",
+    "Nicolaus Copernicus"
+   ],
+   [
+    "Is Saturn denser or less dense than water?",
+    "Lower: Saturn would float"
+   ],
+   [
+    "What is the name of the Sun's outer atmosphere, seen during a total eclipse?",
+    "The corona"
+   ],
+   [
+    "Which Russian scientist is called the father of space travel and rocketry?",
+    "Konstantin Tsiolkovsky"
+   ]
+  ]
+ }
+}

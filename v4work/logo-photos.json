@@ -1,0 +1,487 @@
+[
+ {
+  "key": "logo-apple",
+  "value": 100,
+  "name": "Apple",
+  "wiki": "Apple Inc."
+ },
+ {
+  "key": "logo-nike",
+  "value": 100,
+  "name": "Nike",
+  "wiki": "Nike, Inc."
+ },
+ {
+  "key": "logo-mcdonalds",
+  "value": 100,
+  "name": "McDonald's",
+  "wiki": "McDonald's"
+ },
+ {
+  "key": "logo-instagram",
+  "value": 100,
+  "name": "Instagram",
+  "wiki": "Instagram"
+ },
+ {
+  "key": "logo-whatsapp",
+  "value": 100,
+  "name": "WhatsApp",
+  "wiki": "WhatsApp",
+  "file": "WhatsApp.svg"
+ },
+ {
+  "key": "logo-youtube",
+  "value": 100,
+  "name": "YouTube",
+  "wiki": "YouTube",
+  "file": "YouTube Logo 2017.svg"
+ },
+ {
+  "key": "logo-adidas",
+  "value": 100,
+  "name": "Adidas",
+  "wiki": "Adidas"
+ },
+ {
+  "key": "logo-spotify",
+  "value": 100,
+  "name": "Spotify",
+  "wiki": "Spotify"
+ },
+ {
+  "key": "logo-snapchat",
+  "value": 100,
+  "name": "Snapchat",
+  "wiki": "Snapchat"
+ },
+ {
+  "key": "logo-mercedes",
+  "value": 100,
+  "name": "Mercedes-Benz",
+  "wiki": "Mercedes-Benz"
+ },
+ {
+  "key": "logo-netflix",
+  "value": 100,
+  "name": "Netflix",
+  "wiki": "Netflix"
+ },
+ {
+  "key": "logo-alahly",
+  "value": 100,
+  "name": "Al Ahly",
+  "wiki": "Al Ahly SC"
+ },
+ {
+  "key": "logo-zamalek",
+  "value": 100,
+  "name": "Zamalek",
+  "wiki": "Zamalek SC"
+ },
+ {
+  "key": "logo-pepsi",
+  "value": 100,
+  "name": "Pepsi",
+  "wiki": "Pepsi"
+ },
+ {
+  "key": "logo-shell",
+  "value": 100,
+  "name": "Shell",
+  "wiki": "Shell plc"
+ },
+ {
+  "key": "logo-google",
+  "value": 100,
+  "name": "Google",
+  "wiki": "Google"
+ },
+ {
+  "key": "logo-cocacola",
+  "value": 200,
+  "name": "Coca-Cola",
+  "wiki": "Coca-Cola"
+ },
+ {
+  "key": "logo-puma",
+  "value": 200,
+  "name": "Puma",
+  "wiki": "Puma (brand)"
+ },
+ {
+  "key": "logo-ferrari",
+  "value": 200,
+  "name": "Ferrari",
+  "wiki": "Ferrari"
+ },
+ {
+  "key": "logo-bmw",
+  "value": 200,
+  "name": "BMW",
+  "wiki": "BMW",
+  "file": "BMW.svg"
+ },
+ {
+  "key": "logo-audi",
+  "value": 200,
+  "name": "Audi",
+  "wiki": "Audi"
+ },
+ {
+  "key": "logo-toyota",
+  "value": 200,
+  "name": "Toyota",
+  "wiki": "Toyota"
+ },
+ {
+  "key": "logo-vodafone",
+  "value": 200,
+  "name": "Vodafone",
+  "wiki": "Vodafone"
+ },
+ {
+  "key": "logo-orange",
+  "value": 200,
+  "name": "Orange",
+  "wiki": "Orange S.A."
+ },
+ {
+  "key": "logo-lacoste",
+  "value": 200,
+  "name": "Lacoste",
+  "wiki": "Lacoste"
+ },
+ {
+  "key": "logo-burgerking",
+  "value": 200,
+  "name": "Burger King",
+  "wiki": "Burger King"
+ },
+ {
+  "key": "logo-pizzahut",
+  "value": 200,
+  "name": "Pizza Hut",
+  "wiki": "Pizza Hut"
+ },
+ {
+  "key": "logo-redbull",
+  "value": 200,
+  "name": "Red Bull",
+  "wiki": "Red Bull"
+ },
+ {
+  "key": "logo-mastercard",
+  "value": 200,
+  "name": "Mastercard",
+  "wiki": "Mastercard"
+ },
+ {
+  "key": "logo-android",
+  "value": 200,
+  "name": "Android",
+  "wiki": "Android (operating system)"
+ },
+ {
+  "key": "logo-playstation",
+  "value": 200,
+  "name": "PlayStation",
+  "wiki": "PlayStation"
+ },
+ {
+  "key": "logo-tiktok",
+  "value": 200,
+  "name": "TikTok",
+  "wiki": "TikTok",
+  "file": "TikTok logo.svg"
+ },
+ {
+  "key": "logo-lamborghini",
+  "value": 300,
+  "name": "Lamborghini",
+  "wiki": "Lamborghini"
+ },
+ {
+  "key": "logo-porsche",
+  "value": 300,
+  "name": "Porsche",
+  "wiki": "Porsche"
+ },
+ {
+  "key": "logo-volkswagen",
+  "value": 300,
+  "name": "Volkswagen",
+  "wiki": "Volkswagen"
+ },
+ {
+  "key": "logo-chevrolet",
+  "value": 300,
+  "name": "Chevrolet",
+  "wiki": "Chevrolet"
+ },
+ {
+  "key": "logo-amazon",
+  "value": 300,
+  "name": "Amazon",
+  "wiki": "Amazon (company)"
+ },
+ {
+  "key": "logo-microsoft",
+  "value": 300,
+  "name": "Microsoft",
+  "wiki": "Microsoft"
+ },
+ {
+  "key": "logo-uber",
+  "value": 300,
+  "name": "Uber",
+  "wiki": "Uber"
+ },
+ {
+  "key": "logo-airbnb",
+  "value": 300,
+  "name": "Airbnb",
+  "wiki": "Airbnb"
+ },
+ {
+  "key": "logo-wikipedia",
+  "value": 300,
+  "name": "Wikipedia",
+  "wiki": "Wikipedia"
+ },
+ {
+  "key": "logo-firefox",
+  "value": 300,
+  "name": "Firefox",
+  "wiki": "Firefox"
+ },
+ {
+  "key": "logo-chrome",
+  "value": 300,
+  "name": "Google Chrome",
+  "wiki": "Google Chrome"
+ },
+ {
+  "key": "logo-discord",
+  "value": 300,
+  "name": "Discord",
+  "wiki": "Discord"
+ },
+ {
+  "key": "logo-telegram",
+  "value": 300,
+  "name": "Telegram",
+  "wiki": "Telegram (software)"
+ },
+ {
+  "key": "logo-dominos",
+  "value": 300,
+  "name": "Domino's",
+  "wiki": "Domino's"
+ },
+ {
+  "key": "logo-barcelona",
+  "value": 300,
+  "name": "FC Barcelona",
+  "wiki": "FC Barcelona"
+ },
+ {
+  "key": "logo-realmadrid",
+  "value": 300,
+  "name": "Real Madrid",
+  "wiki": "Real Madrid CF"
+ },
+ {
+  "key": "logo-egyptair",
+  "value": 400,
+  "name": "EgyptAir",
+  "wiki": "EgyptAir"
+ },
+ {
+  "key": "logo-telecomegypt",
+  "value": 400,
+  "name": "WE (Telecom Egypt)",
+  "wiki": "Telecom Egypt"
+ },
+ {
+  "key": "logo-talabat",
+  "value": 400,
+  "name": "Talabat",
+  "wiki": "Talabat"
+ },
+ {
+  "key": "logo-cib",
+  "value": 400,
+  "name": "CIB",
+  "wiki": "Commercial International Bank"
+ },
+ {
+  "key": "logo-banquemisr",
+  "value": 400,
+  "name": "Banque Misr",
+  "wiki": "Banque Misr"
+ },
+ {
+  "key": "logo-emirates",
+  "value": 400,
+  "name": "Emirates",
+  "wiki": "Emirates (airline)"
+ },
+ {
+  "key": "logo-qatarairways",
+  "value": 400,
+  "name": "Qatar Airways",
+  "wiki": "Qatar Airways"
+ },
+ {
+  "key": "logo-juventus",
+  "value": 400,
+  "name": "Juventus",
+  "wiki": "Juventus FC"
+ },
+ {
+  "key": "logo-manutd",
+  "value": 400,
+  "name": "Manchester United",
+  "wiki": "Manchester United F.C."
+ },
+ {
+  "key": "logo-liverpool",
+  "value": 400,
+  "name": "Liverpool",
+  "wiki": "Liverpool F.C."
+ },
+ {
+  "key": "logo-chelsea",
+  "value": 400,
+  "name": "Chelsea",
+  "wiki": "Chelsea F.C."
+ },
+ {
+  "key": "logo-pyramids",
+  "value": 400,
+  "name": "Pyramids FC",
+  "wiki": "Pyramids FC"
+ },
+ {
+  "key": "logo-twitch",
+  "value": 400,
+  "name": "Twitch",
+  "wiki": "Twitch (service)"
+ },
+ {
+  "key": "logo-lego",
+  "value": 400,
+  "name": "Lego",
+  "wiki": "The Lego Group"
+ },
+ {
+  "key": "logo-ikea",
+  "value": 400,
+  "name": "IKEA",
+  "wiki": "IKEA"
+ },
+ {
+  "key": "logo-visa",
+  "value": 400,
+  "name": "Visa",
+  "wiki": "Visa Inc."
+ },
+ {
+  "key": "logo-mitsubishi",
+  "value": 500,
+  "name": "Mitsubishi",
+  "wiki": "Mitsubishi Motors"
+ },
+ {
+  "key": "logo-subaru",
+  "value": 500,
+  "name": "Subaru",
+  "wiki": "Subaru"
+ },
+ {
+  "key": "logo-peugeot",
+  "value": 500,
+  "name": "Peugeot",
+  "wiki": "Peugeot"
+ },
+ {
+  "key": "logo-renault",
+  "value": 500,
+  "name": "Renault",
+  "wiki": "Renault",
+  "file": "Renault 2021 Text.svg"
+ },
+ {
+  "key": "logo-alfaromeo",
+  "value": 500,
+  "name": "Alfa Romeo",
+  "wiki": "Alfa Romeo"
+ },
+ {
+  "key": "logo-maserati",
+  "value": 500,
+  "name": "Maserati",
+  "wiki": "Maserati"
+ },
+ {
+  "key": "logo-michelin",
+  "value": 500,
+  "name": "Michelin",
+  "wiki": "Michelin"
+ },
+ {
+  "key": "logo-nutella",
+  "value": 500,
+  "name": "Nutella",
+  "wiki": "Nutella"
+ },
+ {
+  "key": "logo-underarmour",
+  "value": 500,
+  "name": "Under Armour",
+  "wiki": "Under Armour"
+ },
+ {
+  "key": "logo-reebok",
+  "value": 500,
+  "name": "Reebok",
+  "wiki": "Reebok"
+ },
+ {
+  "key": "logo-northface",
+  "value": 500,
+  "name": "The North Face",
+  "wiki": "The North Face"
+ },
+ {
+  "key": "logo-mazda",
+  "value": 500,
+  "name": "Mazda",
+  "wiki": "Mazda"
+ },
+ {
+  "key": "logo-citroen",
+  "value": 500,
+  "name": "Citroën",
+  "wiki": "Citroën"
+ },
+ {
+  "key": "logo-swvl",
+  "value": 500,
+  "name": "Swvl",
+  "wiki": "Swvl"
+ },
+ {
+  "key": "logo-careem",
+  "value": 500,
+  "name": "Careem",
+  "wiki": "Careem"
+ },
+ {
+  "key": "logo-pringles",
+  "value": 500,
+  "name": "Pringles",
+  "wiki": "Pringles"
+ }
+]

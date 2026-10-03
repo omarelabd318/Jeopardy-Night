@@ -4,6 +4,8 @@ Don't edit index.html by hand. It's generated. Edit the sources, then rebuild fr
 
     node build.js            # writes index.html
     node mkpacks.js          # only when Guess the Food photos change; writes photos/food-100.js … food-500.js (needs ImageMagick `convert`)
+    node mkpacks.js logo     # only when Guess the Logo images change; writes photos/logo-100.js … logo-500.js
+    python3 v4work/logo-fetch.py   # downloads missing logos from Wikipedia into v4work/logo-photos/ (list: v4work/logo-photos.json)
 
 - **src/head.html:** the CSS and page shell. Football mode colours are in the `body.football` rules near the top.
 - **src/app.js:** the game logic. It includes the setup groups (`CAT_GROUPS`) and the Football mode pool (`FOOTBALL`).

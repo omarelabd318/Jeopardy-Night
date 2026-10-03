@@ -109,17 +109,40 @@ $("#optSound").onclick = () => setSound(!S.sound);
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
+/* v4.40: What's new + version history, from src/changelog.json (newest first) */
+/* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
+function newsHTML(list){
+  let html = "", compact = [];
+  const flush = () => { if(compact.length){ html += `<ul class="compact">${compact.join("")}</ul>`; compact = []; } };
+  list.forEach(e => {
+    if(e.era){ flush(); html += `<h4 class="era">${esc(e.era)}</h4>`; return; }
+    if(!e.date){ compact.push(`<li><b>${esc(e.v)}</b>${e.items.map(esc).join(" ")}</li>`); return; }
+    flush(); html += `<h3>v${esc(e.v)}<small>${esc(e.date)}</small></h3><ul>${e.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+  });
+  flush(); return html;
+}
+function openNews(){
+  const vs = CHANGELOG.filter(e => e.v), now = vs.slice(0, 2);
+  $("#newsTitle").textContent = `What's new in v${vs[0].v}`;
+  $("#newsNow").innerHTML = newsHTML(now);
+  $("#newsHist").innerHTML = newsHTML(CHANGELOG.filter(e => !now.includes(e)));
+  $("#newsBox").hidden = false; $("#newsClose").focus();
+}
+function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
+$("#verBtn").onclick = openNews;
+$("#newsClose").onclick = closeNews;
+$("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.37`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.40`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
-  ["Egypt & Arab World", ["egy","egh","cairo","arab"]],
-  ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","fyear","form","stad","sport"]],
-  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","hp","marvel","toons","quote","quoteeg","qblank","mus","songt","song"]],
+  ["Egypt & Arab World", ["egy","egh","cairo","arab","prov"]],
+  ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","fyear","form","score","stad","sport"]],
+  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","himym","hp","marvel","toons","quote","quoteeg","qblank","mus","songt","song","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","lang","trans"]],
-  ["Knowledge", ["gk","his","ww2","year","myth","sci","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
-  ["Photo Rounds", ["car","actor","footy","person","foodpic"]],
+  ["Knowledge", ["gk","his","ww2","year","myth","sci","space","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
+  ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
   ["Party Games", ["act","acteg","emov","emeg","emsen","emseg","pw","rid","link","near"]]
 ];
 function renderChips(){
@@ -194,9 +217,12 @@ function setPhoto(key, blob){
 }
 function removePhoto(key){ if(photos[key]){ if(photos[key].startsWith("blob:")) URL.revokeObjectURL(photos[key]); delete photos[key]; } DB.del(key); if(BUILTIN[key]) photos[key] = "photos/" + key + ".jpg"; }
 function packStatus(extra){
-  const n = Object.keys(photos).length;
-  const pc = $("#phCount"); if(pc) pc.textContent = n ? `· ${n} saved` : "";
-  $("#packStatus").innerHTML = (n ? `${n} photo${n>1?"s":""} ready` : "No photos loaded") + (extra||"");
+  const keys = new Set(); PHOTO_CATS.forEach(cat => LV.forEach(l => pool(cat,l).forEach(([ans]) => keys.add(norm(ans)))));
+  const ks = [...keys], built = ks.filter(k => photos[k] && !photos[k].startsWith("blob:")).length, own = ks.filter(k => photos[k] && photos[k].startsWith("blob:")).length;
+  const other = ["foodpic","stad","logo"].reduce((t,id) => t + (catById(id) ? LV.reduce((u,l) => u + pool(id,l).filter(e => e[2]).length, 0) : 0), 0);
+  const ownTxt = own ? ` · ${own} added on this device` : "";
+  const pc = $("#phCount"); if(pc) pc.textContent = built + other ? `· ${built + other} built in${ownTxt}` : "";
+  $("#packStatus").innerHTML = (built ? `${built} you can replace here${ownTxt}` : own ? `${own} added on this device` : "No photos loaded") + (extra||"");
 }
 $("#pack").addEventListener("change", e => {
   const keys = photoKeys(); const miss = [];
@@ -205,7 +231,7 @@ $("#pack").addEventListener("change", e => {
     const k = keys.find(k => k === fn) || keys.find(k => fn.length >= 4 && (k.includes(fn) || fn.includes(k)));
     if(k) setPhoto(k, f); else miss.push(f.name);
   });
-  packStatus(miss.length ? ` · <strong>${miss.length} couldn't be matched by file name</strong> (${esc(miss.slice(0,3).join(", "))}${miss.length>3?"…":""}). Use the Add buttons in the checklist below to attach them.` : "");
+  packStatus(miss.length ? ` · <strong>${miss.length} couldn't be matched by file name</strong> (${esc(miss.slice(0,3).join(", "))}${miss.length>3?"…":""}). Use the Replace buttons in the checklist below to attach them.` : "");
   if(miss.length){ $("#photoPanel").open = true; $("#prepBox").open = true; }
   renderPrep(); e.target.value = "";
 });
@@ -226,7 +252,15 @@ $("#prep").addEventListener("click", e => {
   if(rm){ removePhoto(rm.dataset.rm); renderPrep(); packStatus(); }
 });
 const prepOpen = new Set();
+function otherPhotos(){
+  const el = $("#otherPhotos"); if(!el) return;
+  const n = id => catById(id) ? LV.reduce((t,l) => t + pool(id,l).filter(e => e[2]).length, 0) : 0;
+  const parts = [n("foodpic") ? `Guess the Food (${n("foodpic")} photos)` : "", n("logo") ? `Guess the Logo (${n("logo")} logos)` : "", n("stad") ? `the stadium photos in Football Stadiums (${n("stad")})` : ""].filter(Boolean);
+  const list = parts.length > 1 ? parts.slice(0,-1).join(", ") + " and " + parts[parts.length-1] : parts[0];
+  el.textContent = parts.length ? ` ${list} ${parts.length>1?"are":"is"} built in too, but can't be changed here.` : ""; el.hidden = !parts.length;
+}
 function renderPrep(){
+  otherPhotos();
   $("#prep").innerHTML = PHOTO_CATS.map(cat => {
     let tot = 0, got = 0, spot = 0;
     const body = LV.map(l => `<b>${l}</b>` + pool(cat,l).map(([ans,wiki],i) => { const k = norm(ans), has = !!photos[k];
@@ -311,10 +345,10 @@ $("#start").onclick = () => {
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
 /* Football mode: a fixed football board on a green pitch theme; setup and title go back to blue and the usual picks */
-const FOOTBALL = ["cclub","path","whoami","xfer","stad","footy","egfb","fyear","form","pl","ucl","fwc"];
+const FOOTBALL = ["cclub","path","whoami","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"];
 function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S.football && S.prevCats){ S.cats = S.prevCats; S.prevCats = null; renderChips(); }
   S.football = on; document.body.classList.toggle("football", on); }
-const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 12, in pool order
+const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 13, in pool order
 $("#football").onclick = () => {
   setFootball(true); S.cats = footballPick(); newGame();
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
@@ -444,7 +478,7 @@ function openClue(cat,lvl,exclude,forceIdx){
 }
 function clueParts(){
   const {cat,lvl,idx,type} = S.cur;
-  if(type==="text"){ const [q,a,img] = pool(cat,lvl)[idx]; return {q, a, img}; }
+  if(type==="text"){ const [q,a,img,blur] = pool(cat,lvl)[idx]; return {q, a, img, blur}; }
   if(type==="flag"){ const id = pool(cat,lvl)[idx]; return {q:"Name the country this flag belongs to.", a:F[id][0], flag:id}; }
   if(type==="impostor"){ const [ic,w] = pool(cat,lvl)[idx]; return {q:"Who's the Impostor? Everyone plays. Each player scans their own code; one of you is secretly the impostor.", a:w, icat:ic}; }
   if(type==="password"){ const w = pool(cat,lvl)[idx]; return {q:"Each team picks one clue-giver. Both scan the same code. Take turns giving ONE-word clues; after each clue, that team gets one guess.", a:w}; }
@@ -475,7 +509,12 @@ function renderClue(){
   if(p.flag) media = `<div class="flagbox">${flagSVG(p.flag)}</div>`;
   if(p.pin){ let svg = ""; try{ svg = pinSVG(p.pin[0], p.pin[1]); }catch(e){ svg = ""; } media = svg ? `<div class="pinbox">${svg}</div>` : `<div class="note">The world map didn't load, so this map can't be drawn. Close the tile and pick another, or reload.</div>`; }
   if(p.shape){ let svg = ""; try{ svg = shapeSVG(p.shape); }catch(e){ svg = ""; } media = svg ? `<div class="shapebox">${svg}</div>` : `<div class="note">The world map didn't load, so this outline can't be drawn. Close the tile and pick another, or check your connection and reload.</div>`; }
-  if(p.img) media = `<div class="zoom"><img src="${esc(packSrc(p.img, c))}" alt="Photo clue" style="object-fit:contain"></div>`;
+  if(p.img){
+    /* Guess the Logo: the image starts blurred (p.blur = blur radius as a share of the image width) and the host can step it down */
+    if(p.blur && c.blurIdx !== c.idx){ c.blurIdx = c.idx; c.blur = p.blur; }
+    const b = p.blur && !c.revealed ? c.blur : 0;
+    media = `<div class="zoom${p.blur ? " logo" : ""}"><img src="${esc(packSrc(p.img, c))}" alt="${p.blur ? "Blurred logo" : "Photo clue"}" style="object-fit:contain${b ? `;filter:blur(${(b*100).toFixed(2)}cqw)` : ""}"></div>${b ? `<div class="row"><button class="btn small" data-act="unblur">Less blur</button></div>` : ""}`;
+  }
   if(p.emoji) media = `<div class="emoji" role="img" aria-label="Emoji clue">${esc(p.emoji)}</div>`;
   if(c.type==="photo"){
     const url = photos[norm(p.a)];
@@ -583,6 +622,7 @@ $("#clue").addEventListener("click", e => {
   }
   if(a==="reveal"){ c.revealed = true; c.fresh = true; stopTimer(); c.running = false; renderClue(); c.fresh = false; }
   if(a==="setspot"){ openFocus(norm(clueParts().a), "Host only: tap the face or the part to zoom in on"); return; }
+  if(a==="unblur"){ c.blur = c.blur < 0.006 ? 0 : c.blur * 0.55; renderClue(); }
   if(a==="zoomout"){ c.zoom = c.zoom < 1.4 ? 1 : 1 + (c.zoom-1)*0.55; renderClue(); }
   if(a==="qr"){ c.qr = true; renderClue(); }
   if(a==="nextturn"){ c.turn = ((c.turn||0)+1) % S.teams.length; c.clue = (c.clue||1)+1; renderClue(); }
@@ -623,7 +663,7 @@ $("#clue").addEventListener("input", e => {
   const v = parseFloat(inp.value.replace(/[, ]/g, "")); S.cur.guesses = S.cur.guesses || {};
   if(isNaN(v)) delete S.cur.guesses[+inp.dataset.g]; else S.cur.guesses[+inp.dataset.g] = v;
 });
-document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
+document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(!$("#newsBox").hidden){ closeNews(); return; } if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
 
 try{ if(window.__WORLD_JSON){ WORLD.feats = decodeWorld(window.__WORLD_JSON);
   LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; }

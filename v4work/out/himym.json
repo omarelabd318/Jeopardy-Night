@@ -1,0 +1,338 @@
+{
+ "id": "himym",
+ "name": "How I Met Your Mother",
+ "type": "text",
+ "desc": "Ted, Marshall, Lily, Robin and Barney at MacLaren's.",
+ "data": {
+  "100": [
+   [
+    "What is the name of the bar where the gang hangs out?",
+    "MacLaren's Pub"
+   ],
+   [
+    "What is Barney's surname?",
+    "Stinson"
+   ],
+   [
+    "Finish Barney's catchphrase: “Legen… wait for it…”",
+    "…dary! (Legendary)"
+   ],
+   [
+    "What is Barney's two-word catchphrase about his clothes?",
+    "Suit up!"
+   ],
+   [
+    "What is Ted's job for most of the series?",
+    "Architect"
+   ],
+   [
+    "What does Ted steal for Robin on their first date?",
+    "A blue French horn"
+   ],
+   [
+    "What nationality is Robin?",
+    "Canadian"
+   ],
+   [
+    "What is Marshall's job?",
+    "Lawyer"
+   ],
+   [
+    "What does Lily do for a living?",
+    "Kindergarten teacher"
+   ],
+   [
+    "Which city does the show take place in?",
+    "New York"
+   ],
+   [
+    "Who plays Barney?",
+    "Neil Patrick Harris"
+   ],
+   [
+    "What is the name of Barney's book of pick-up schemes?",
+    "The Playbook"
+   ],
+   [
+    "What is Robin's teen pop-star alter ego called?",
+    "Robin Sparkles"
+   ],
+   [
+    "Which US state is Marshall from?",
+    "Minnesota"
+   ],
+   [
+    "How many seasons did the show run?",
+    "9"
+   ],
+   [
+    "Who does Barney marry in season 9?",
+    "Robin"
+   ]
+  ],
+  "200": [
+   [
+    "What colour is the Mother's umbrella?",
+    "Yellow"
+   ],
+   [
+    "What is the Mother's real name?",
+    "Tracy McConnell"
+   ],
+   [
+    "Which instrument does the Mother play?",
+    "Bass guitar"
+   ],
+   [
+    "Who leaves Ted at the altar?",
+    "Stella"
+   ],
+   [
+    "What is Robin Sparkles' big hit song?",
+    "Let's Go to the Mall"
+   ],
+   [
+    "Who is the Slap Bet Commissioner?",
+    "Lily"
+   ],
+   [
+    "How many slaps does Marshall win in the Slap Bet?",
+    "5"
+   ],
+   [
+    "Who plays Robin?",
+    "Cobie Smulders"
+   ],
+   [
+    "What does Barney write and live by: “The Bro ___”?",
+    "Code"
+   ],
+   [
+    "Which train station does Ted first meet the Mother at?",
+    "Farhampton"
+   ],
+   [
+    "What is Robin's job?",
+    "TV news reporter / anchor"
+   ],
+   [
+    "Who does Ted end up with in the final scene?",
+    "Robin"
+   ],
+   [
+    "What is Barney's one-line opener for introducing his friend?",
+    "“Have you met Ted?”"
+   ],
+   [
+    "What is the name of Marshall and Lily's first son?",
+    "Marvin"
+   ],
+   [
+    "Which city does Lily move to, leaving Marshall, to study art?",
+    "San Francisco"
+   ],
+   [
+    "What are Ted's kids called?",
+    "Penny and Luke"
+   ]
+  ],
+  "300": [
+   [
+    "Which bank does Barney (and later Marshall) work for?",
+    "Goliath National Bank (GNB)"
+   ],
+   [
+    "What is “the Naked Man”?",
+    "Waiting naked for your date to come back into the room"
+   ],
+   [
+    "What car does Marshall drive?",
+    "A Pontiac Fiero"
+   ],
+   [
+    "In Ted's Olive Theory, what makes a perfect couple?",
+    "One person likes olives, the other doesn't"
+   ],
+   [
+    "Which tie does Marshall make Barney wear after a bet?",
+    "The ducky tie"
+   ],
+   [
+    "What does Ted call women who scream “Woo!” at bars?",
+    "Woo Girls"
+   ],
+   [
+    "What costume is the girl Ted waits for every Halloween wearing?",
+    "The Slutty Pumpkin"
+   ],
+   [
+    "What nickname does Barney give Ted to make him cooler?",
+    "Teddy Westside"
+   ],
+   [
+    "Which university does Ted teach architecture at?",
+    "Columbia"
+   ],
+   [
+    "What two words does Barney say whenever someone dares him?",
+    "“Challenge accepted!”"
+   ],
+   [
+    "What name does a barista turn Barney's name into?",
+    "Swarley"
+   ],
+   [
+    "What is the name of Barney's daughter?",
+    "Ellie"
+   ],
+   [
+    "Over what weekend does most of season 9 take place?",
+    "Barney and Robin's wedding weekend"
+   ],
+   [
+    "What happens to the Mother in the finale?",
+    "She dies of an illness (in 2024)"
+   ],
+   [
+    "What is the only cassette stuck in Marshall's car stereo?",
+    "The Proclaimers (I'm Gonna Be (500 Miles))"
+   ],
+   [
+    "In “The Pineapple Incident”, who does Ted wake up next to (as well as the pineapple)?",
+    "Trudy"
+   ]
+  ],
+  "400": [
+   [
+    "What was Marshall's college basketball nickname?",
+    "Big Fudge"
+   ],
+   [
+    "What is Ted's middle name?",
+    "Evelyn"
+   ],
+   [
+    "What is the name of Marshall's dad?",
+    "Marvin Eriksen Sr."
+   ],
+   [
+    "What is Barney's mum called?",
+    "Loretta"
+   ],
+   [
+    "What is the name of Barney's half-brother?",
+    "James"
+   ],
+   [
+    "What is Ted's architecture firm called?",
+    "Mosbius Designs"
+   ],
+   [
+    "What is Barney's “Cheerleader Effect”?",
+    "Women look more attractive in a group than alone"
+   ],
+   [
+    "Which of the gang's doppelgängers is a stripper?",
+    "Lily's"
+   ],
+   [
+    "What is Robin's dad's name?",
+    "Robin Scherbatsky Sr."
+   ],
+   [
+    "What is Robin Sparkles' second hit, with Alan Thicke?",
+    "Sandcastles in the Sand"
+   ],
+   [
+    "Which co-worker does Robin love to be mean to?",
+    "Patrice"
+   ],
+   [
+    "Which underground event does Ted love: Robots vs. ___?",
+    "Wrestlers"
+   ],
+   [
+    "Who voices future Ted, the narrator?",
+    "Bob Saget"
+   ],
+   [
+    "What is the Murtaugh List named after?",
+    "Roger Murtaugh from Lethal Weapon (“I'm too old for this…”)"
+   ],
+   [
+    "What is the first article of the Bro Code?",
+    "Bros before hoes"
+   ],
+   [
+    "What does Marshall become at the end of the series?",
+    "A judge"
+   ]
+  ],
+  "500": [
+   [
+    "Who plays the Mother?",
+    "Cristin Milioti"
+   ],
+   [
+    "Who is Barney's real father?",
+    "Jerome Whittaker"
+   ],
+   [
+    "What is the name of Ted's arrogant boss who designed a building like a claw?",
+    "Hammond Druthers"
+   ],
+   [
+    "What does Ted's “Platinum Rule” say?",
+    "Never date someone you'll see regularly (a neighbour, co-worker, etc.)"
+   ],
+   [
+    "Barney's Hot/Crazy Scale: what line must a woman be above?",
+    "The Vicky Mendoza Diagonal"
+   ],
+   [
+    "What was the name of the Mother's boyfriend who died?",
+    "Max"
+   ],
+   [
+    "What is Lily's dad's name?",
+    "Mickey Aldrin"
+   ],
+   [
+    "What are Marshall's two brothers called?",
+    "Marcus and Marvin Jr."
+   ],
+   [
+    "What is Robin's middle name?",
+    "Charles"
+   ],
+   [
+    "What is Marshall's homemade board game called?",
+    "Marshgammon"
+   ],
+   [
+    "What name did Ted and Barney pick for the bar they planned to open?",
+    "Puzzles"
+   ],
+   [
+    "Which old hotel does Zoey fight to save from Ted's GNB building?",
+    "The Arcadian"
+   ],
+   [
+    "Which fake name does Barney back up with a trail of fake websites?",
+    "Lorenzo Von Matterhorn"
+   ],
+   [
+    "Which university did Ted, Marshall and Lily go to?",
+    "Wesleyan"
+   ],
+   [
+    "What do they call the Thanksgiving when Marshall delivers a slap?",
+    "Slapsgiving"
+   ],
+   [
+    "What does Barney's job title P.L.E.A.S.E. stand for?",
+    "Provide Legal Exculpation And Sign Everything"
+   ]
+  ]
+ }
+}
