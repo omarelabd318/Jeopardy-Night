@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.70`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.71`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -442,7 +442,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
 (() => {
   const cv = document.getElementById("kick"); if(!cv) return; const g = cv.getContext("2d");
   let ballImg = null, ballSrc = "", W = 0, H = 64, t0 = performance.now();
-  const FLIGHT = 2.2, KICK = 0.32;                       // seconds the ball is in the air, and the kick swing
+  const FLIGHT = 8, KICK = 0.32;  /* 4.71 (Omar): 8 s per crossing (was 2.2) */ // seconds the ball is in the air, and the kick swing
   const slow = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.5 : 1;
   const fit = () => { const dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
