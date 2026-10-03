@@ -65,10 +65,10 @@ body.football .boardwrap{position:relative} body.football .board{position:relati
 body.football #winBox{padding-bottom:76px}
 body.football #winBox .ledstrip{display:block;position:absolute;left:0;right:0;bottom:0;height:60px;background:#050505;border-top:3px solid #1a1a1a;overflow:hidden;z-index:2}
 body.football #winBox .ledstrip::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 1.1px,rgba(0,0,0,.55) 1.5px) 0 0/4px 4px}
-.ledtrack{display:flex;width:max-content;animation:ledscroll 18s linear infinite}
+.ledtrack{display:flex;width:max-content;animation:ledscroll 43s linear infinite}  /* 4.50: half the speed with the longer text (4.49: 18s) */
 .ledtrack span{font:400 44px/60px "Bebas Neue",var(--display),sans-serif;letter-spacing:.14em;color:#FFD21A;text-shadow:0 0 4px #FFB300,0 0 12px rgba(255,170,0,.7);padding-right:1.2em;white-space:nowrap}
 @keyframes ledscroll{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ledtrack{animation-duration:60s}}
+@media (prefers-reduced-motion:reduce){.ledtrack{animation-duration:120s}}
 /* end 4.49 */
 /* 4.44 try (Omar): the collage shows through the board. Tiles and headers are 60% solid green, and the board's black grid is half see-through.
    To undo: delete these three lines (down to "end 4.44"). */
@@ -328,7 +328,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.49</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.50</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -338,7 +338,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.49</div>
+      <div class="eyebrow verlabel">v4.50</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -410,5 +410,5 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <ol class="standings" id="standings"></ol>
   <div class="row" style="justify-content:center"><button class="btn primary" id="playAgain">Play again</button><button class="btn" id="winBoard">Back to board</button><button class="btn" id="winSetup">New setup</button></div>
   <p class="note" style="margin:0 auto;text-align:center">Play again keeps the same teams and categories, resets the scores and deals a fresh board.</p>
-</div><div class="ledstrip" aria-hidden="true"><div class="ledtrack"><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span></div></div></div>
+</div><div class="ledstrip" aria-hidden="true"><div class="ledtrack"><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span><span>SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU</span><span>⚽</span></div></div></div>
 <div id="card" hidden><div class="clue" id="clue" role="dialog" aria-modal="true"></div></div>

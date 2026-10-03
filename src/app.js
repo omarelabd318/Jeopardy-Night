@@ -133,7 +133,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.49`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.50`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -483,6 +483,7 @@ function stopConfetti(){ if(confRaf) cancelAnimationFrame(confRaf); confRaf = nu
 function confetti(){
   stopConfetti();
   if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if(S.football) return fireworks();  // 4.50 (Omar): Football mode gets fireworks instead of confetti. To undo, delete this line
   const cv = $("#confetti"), ctx = cv.getContext("2d"), dpr = Math.min(2, window.devicePixelRatio || 1);
   const W = cv.width = innerWidth*dpr, H = cv.height = innerHeight*dpr;
   const cols = [S.football ? "#0F2557" : "#FFCC33","#FFFFFF","#7FD38F","#EE7A63","#2A33FF","#B9C0FF"];  // navy instead of gold in Football mode
@@ -494,6 +495,38 @@ function confetti(){
       ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2); ctx.restore(); }
       else if(now - t0 < 3500){ p.y = -20; p.x = Math.random()*W; p.vy = (2+Math.random()*3)*dpr; alive++; } });
     confRaf = alive ? requestAnimationFrame(step) : null;
+  };
+  confRaf = requestAnimationFrame(step);
+}
+
+/* 4.50: fireworks for the Football mode winner screen. Rockets rise from the bottom and burst into sparks that fall and fade, for about six seconds */
+function fireworks(){
+  const cv = $("#confetti"), ctx = cv.getContext("2d"), dpr = Math.min(2, window.devicePixelRatio || 1);
+  const W = cv.width = innerWidth*dpr, H = cv.height = innerHeight*dpr, floor = H - 64*dpr;
+  const cols = ["#FFFFFF","#FFD21A","#E8202A","#0F2557","#7A2BD9","#FF7A00","#FF3FA4"];  // strong colours that read on the bright green
+  const rockets = [], sparks = [], t0 = performance.now(); let next = 0, fired = 0;
+  const launch = () => { const x = W*(.15 + Math.random()*.7);
+    rockets.push({x, y:floor, vx:(Math.random()-.5)*1.2*dpr, vy:-(9 + Math.random()*4)*dpr, top:H*(.12 + Math.random()*.3), c:cols[Math.floor(Math.random()*cols.length)]}); fired++; };
+  const burst = r => { const n = 60 + Math.floor(Math.random()*30), c2 = Math.random() < .4 ? cols[Math.floor(Math.random()*cols.length)] : r.c;
+    for(let i = 0; i < n; i++){ const a = Math.random()*6.283, v = (2 + Math.random()*5.5)*dpr;
+      sparks.push({x:r.x, y:r.y, px:r.x, py:r.y, vx:Math.cos(a)*v, vy:Math.sin(a)*v, life:1, fade:.008 + Math.random()*.012, c:i % 3 ? r.c : c2}); } };
+  const step = now => {
+    ctx.clearRect(0,0,W,H);
+    if(now - t0 < 6000 && now >= next){ launch(); if(fired < 3 || Math.random() < .35) launch(); next = now + 380 + Math.random()*420; }
+    ctx.lineCap = "round";
+    for(let i = rockets.length - 1; i >= 0; i--){ const r = rockets[i];
+      r.x += r.vx; r.y += r.vy; r.vy += .12*dpr;
+      ctx.strokeStyle = "#FFF6D0"; ctx.lineWidth = 4*dpr; ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 4*dpr; ctx.beginPath(); ctx.moveTo(r.x, r.y); ctx.lineTo(r.x - r.vx*3, r.y - r.vy*3); ctx.stroke();
+      if(r.y <= r.top || r.vy >= 0){ burst(r); rockets.splice(i, 1); } }
+    for(let i = sparks.length - 1; i >= 0; i--){ const p = sparks[i];
+      p.px = p.x; p.py = p.y; p.x += p.vx; p.y += p.vy; p.vx *= .985; p.vy = p.vy*.985 + .06*dpr; p.life -= p.fade;
+      if(p.life <= 0 || p.y > floor){ sparks.splice(i, 1); continue; }
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life*1.4)); ctx.strokeStyle = p.c; ctx.fillStyle = p.c; ctx.lineWidth = 4*dpr;
+      ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 4*dpr;
+      ctx.beginPath(); ctx.moveTo(p.px - p.vx*3, p.py - p.vy*3); ctx.lineTo(p.x, p.y); ctx.stroke();
+      ctx.beginPath(); ctx.arc(p.x, p.y, 3*dpr, 0, 6.283); ctx.fill(); }
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    confRaf = (now - t0 < 6000 || rockets.length || sparks.length) ? requestAnimationFrame(step) : null;
   };
   confRaf = requestAnimationFrame(step);
 }

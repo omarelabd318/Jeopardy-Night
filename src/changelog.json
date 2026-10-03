@@ -3,6 +3,14 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.50",
+  "date": "2026-10-03",
+  "items": [
+   "Football mode celebrates the winner with fireworks instead of confetti.",
+   "The winner screen's LED strip scrolls half as fast and now reads SSSSSSIIIIIIIIUUUUUUUUUUUUUUUUUUUUU."
+  ]
+ },
+ {
   "v": "4.49",
   "date": "2026-10-03",
   "items": [
