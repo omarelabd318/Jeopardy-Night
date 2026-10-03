@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.71`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.73`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -379,7 +379,60 @@ function placeFbBg(){
   const fit = (w, h) => [Math.max(2, Math.floor(W / (w + FB_CELL.gap))), Math.max(1, Math.round(H / (h + FB_CELL.gap)))];
   let [cols, rows] = fit(FB_CELL.w, FB_CELL.h);
   if(cols * rows > need){ const k = Math.sqrt(cols * rows / need); [cols, rows] = fit(FB_CELL.w * k, FB_CELL.h * k); }
+  if(FB_LAYOUT === "poster"){ const key = "p" + Math.round(W) + "x" + Math.round(H); if(bg.dataset.grid !== key){ bg.dataset.grid = key; footballPoster(); } return; }
+  bg.classList.remove("poster");
   if(bg.dataset.grid !== cols + "x" + rows) footballBg(cols, rows);
+}
+/* 4.73 try (Omar): blocks of uneven sizes, like the poster in v4work/football-theme-ref.avif, instead of the even grid of 4.43-4.72.
+   The space is cut into random rectangles (big, small, wide, tall) and each phrase goes where it can be drawn biggest:
+   one line, two lines or vertical. To go back to the even grid: set FB_LAYOUT to "grid" (footballBg() below is unchanged). */
+const FB_LAYOUT = "poster";
+function footballPoster(){
+  const el = $("#fbBg"); if(!el) return; el.classList.add("poster"); el.style.gridTemplateColumns = el.style.gridTemplateRows = "";
+  const G = FB_CELL.gap, W = el.clientWidth - G, H = el.clientHeight - G, MIN = Math.max(30, Math.min(W, H) / 9);
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const order = FB_PHRASES.map((_, j) => j).sort((a, b) => ((a * 7919) % 13) - ((b * 7919) % 13) || a - b).map(j => FB_PHRASES[j]);
+  const items = [...order, ...FB_FILL];
+  // cut the space: keep splitting a big rectangle (with some luck in which one) across its longer side, off-centre
+  const rects = [{x: 0, y: 0, w: W, h: H}];
+  while(rects.length < items.length){
+    let best = -1, bs = 0;
+    rects.forEach((r, i) => { const s = r.w * r.h * (0.45 + rnd()); if(Math.max(r.w, r.h) >= 2 * MIN && s > bs){ bs = s; best = i; } });
+    if(best < 0) break;
+    const r = rects[best], across = r.w / r.h > 1.15 ? true : r.h / r.w > 1.15 ? false : rnd() < .5, len = across ? r.w : r.h;
+    const cut = Math.max(MIN, Math.min(len - MIN, Math.round(len * (0.28 + 0.44 * rnd()))));
+    rects.splice(best, 1, across ? {x: r.x, y: r.y, w: cut, h: r.h} : {x: r.x, y: r.y, w: r.w, h: cut},
+                          across ? {x: r.x + cut, y: r.y, w: r.w - cut, h: r.h} : {x: r.x, y: r.y + cut, w: r.w, h: r.h - cut});
+  }
+  // how big a phrase could be drawn in a rectangle (rough: a letter is about half as wide as it is tall)
+  const two = t => { const sp = [...t.matchAll(/ /g)].map(m => m.index); if(!sp.length || t.length < 10) return null;
+    const i = sp.reduce((a, b) => Math.abs(b - t.length/2) < Math.abs(a - t.length/2) ? b : a); return [t.slice(0, i), t.slice(i + 1)]; };
+  const fits = (r, t) => { const n = Math.max(2, t.length * (/[\u0600-\u06FF]/.test(t) ? .8 : 1)) * .55, w = r.w - G - 8, h = r.h - G, o = [];
+    o.push({m: "h", s: Math.min(h * .8, w / n)});
+    const tw = two(t); if(tw) o.push({m: "2", s: Math.min(h * .8 / 2, w / (Math.max(tw[0].length, tw[1].length) * .55)), tw});
+    if(/^[A-Za-zÀ-ÿ!'-]{3,13}$/.test(t)) o.push({m: "v", s: Math.min(w * .8, h / n)});
+    return o.reduce((a, b) => b.s > a.s ? b : a); };
+  const left = rects.slice(), blocks = [];
+  const todo = items.slice(0, rects.length);
+  while(todo.length){  // place the phrase that would come out smallest first, in its best block, so none ends up tiny
+    let pick = null;
+    todo.forEach((t, ti) => { let bi = 0, bf = null; left.forEach((r, i) => { const f = fits(r, t); if(!bf || f.s > bf.s){ bf = f; bi = i; } });
+      if(!pick || bf.s < pick.f.s) pick = {ti, bi, f: bf}; });
+    blocks.push({t: todo.splice(pick.ti, 1)[0], r: left.splice(pick.bi, 1)[0], f: pick.f});
+  }
+  el.innerHTML = blocks.map(({t, r, f}) => {
+    const txt = f.m === "2" ? esc(f.tw[0]) + "<br>" + esc(f.tw[1]) : esc(t);
+    return `<div class="b f${1 + Math.floor(rnd() * 6)} c${1 + Math.floor(rnd() * 5)}${f.m === "v" ? " v" : ""}" style="left:${(r.x + G).toFixed(1)}px;top:${(r.y + G).toFixed(1)}px;width:${(r.w - G).toFixed(1)}px;height:${(r.h - G).toFixed(1)}px"><span dir="auto">${txt}</span></div>`;
+  }).join("");
+  fitPoster(); if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitPoster);
+}
+function fitPoster(){  // size each phrase to fill its block
+  document.querySelectorAll("#fbBg.poster .b span").forEach(sp => {
+    const b = sp.parentElement, v = b.classList.contains("v"); sp.style.fontSize = "100px";
+    const len = v ? sp.offsetHeight : sp.offsetWidth, thick = v ? sp.offsetWidth : sp.offsetHeight;
+    const k = Math.min(((v ? b.clientHeight : b.clientWidth) - 8) * .92 / Math.max(1, len), (v ? b.clientWidth : b.clientHeight) * .84 / Math.max(1, thick));
+    sp.style.fontSize = (100 * k).toFixed(1) + "px";
+  });
 }
 window.addEventListener("resize", placeFbBg);
 function footballBg(cols, rows){
@@ -448,15 +501,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
   const showing = () => S.football && !$("#game").hidden && !S.cur && $("#winBox").hidden && !$("#scores").hidden;
-  function man(x, dir, kick){                             // dir 1 faces right, -1 faces left; kick 0..1 swings the front leg
+  /* 4.72 (Omar): a little routine instead of plain kicks. The left player kills the ball on his knee, lets it pop up and
+     volleys it across; the right player cushions it on his foot, flicks it up and volleys it back. Each crossing still
+     takes FLIGHT seconds. (4.70-4.71 just kicked it back and forth along the ground: see NOTES 4.72 to undo.) */
+  const DWELL = 0.3, POP = 1.0, KNEE = 1.0, T1 = FLIGHT, T2 = T1 + DWELL, T3 = T2 + POP, T4 = T3 + FLIGHT, CYCLE = T4 + KNEE;
+  const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
+  const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
+  function man(x, dir, ang, knee){                         // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
     const y = H - 1, hip = y - 16, sh = y - 29;
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
     g.beginPath(); g.arc(x, y - 35, 5, 0, Math.PI*2); g.fill();                  // head
     g.beginPath(); g.moveTo(x, sh + 1); g.lineTo(x, hip); g.stroke();            // body
     g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11); g.stroke();  // arms
-    const a = Math.sin(Math.min(1, kick) * Math.PI) * 1.1;                      // front leg swing angle
     g.beginPath(); g.moveTo(x, hip); g.lineTo(x - 6*dir, y); g.stroke();         // back leg
-    g.beginPath(); g.moveTo(x, hip); g.lineTo(x + Math.sin(0.35 + a) * 16 * dir, hip + Math.cos(0.35 + a) * 16); g.stroke();  // front (kicking) leg
+    const th = ang + knee * (Math.PI/2 - ang), kx = x + Math.sin(th) * 8 * dir, ky = hip + Math.cos(th) * 8, sa = ang * (1 - knee);
+    g.beginPath(); g.moveTo(x, hip); g.lineTo(kx, ky); g.lineTo(kx + Math.sin(sa) * 8 * dir, ky + Math.cos(sa) * 8); g.stroke();  // front leg
   }
   function frame(now){
     requestAnimationFrame(frame);
@@ -465,15 +524,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const src = (typeof BALLS !== "undefined" && BALLS.length && typeof lastBall === "number" && BALLS[lastBall]) || "";
     if(src !== ballSrc){ ballSrc = src; ballImg = null; if(src){ const im = new Image(); im.onload = () => { ballImg = im; }; im.src = src; } }
     g.clearRect(0, 0, W, H);
-    const L = 26, R = W - 26, footL = L + 13, footR = R - 13;
-    const t = ((now - t0) / 1000) * slow, leg = t % (FLIGHT * 2), dirR = leg < FLIGHT;   // ball goes left→right, then right→left
-    const p = (leg % FLIGHT) / FLIGHT, e = p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2)/2; // ease in-out along the ground
-    const x = dirR ? footL + (footR - footL) * e : footR - (footR - footL) * e;
-    const r = 7, y = H - 1 - r - Math.sin(p * Math.PI) * 26;                          // a little lob between them
-    const kL = dirR ? (p * FLIGHT) / KICK : ((FLIGHT - p * FLIGHT) < KICK ? 1 - (FLIGHT - p * FLIGHT) / KICK : 0);
-    const kR = !dirR ? (p * FLIGHT) / KICK : ((FLIGHT - p * FLIGHT) < KICK ? 1 - (FLIGHT - p * FLIGHT) / KICK : 0);
-    man(L, 1, kL < 1 ? kL : 0); man(R, -1, kR < 1 ? kR : 0);
-    g.save(); g.translate(x, y); g.rotate((dirR ? 1 : -1) * p * Math.PI * 4);
+    const L = 26, R = W - 26, r = 7, hip = H - 17;
+    const kneeL = [L + 9, hip - r - 1], volL = [L + 20, hip - 3], footR = [R - 14, H - 1 - r - 3], volR = [R - 20, hip - 3];
+    const t = (((now - t0) / 1000) * slow) % CYCLE;      // t = 0 is the left player's volley
+    const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
+    let pos;
+    if(t < T1)      pos = seg(volL, footR, t / FLIGHT, 38);              // long volley across
+    else if(t < T2) pos = footR;                                          // cushioned on the right foot
+    else if(t < T3) pos = seg(footR, volR, (t - T2) / POP, 30);          // flicked up into the air
+    else if(t < T4) pos = seg(volR, kneeL, (t - T3) / FLIGHT, 32);       // volleyed back
+    else            pos = seg(kneeL, volL, (t - T4) / KNEE, 20);         // popped up off the knee
+    const angL = 0.35 + swing(t < KICK ? t : t - CYCLE);
+    const kneeLift = t < T4 ? sm((t - (T4 - 0.35)) / 0.35) : 1 - sm((t - T4) / 0.3);
+    const trap = t < T2 ? 0.25 * sm((t - (T1 - 0.3)) / 0.3) : t < T2 + 0.12 ? 0.25 + 0.55 * sm((t - T2) / 0.12) : 0.8 * (1 - sm((t - T2 - 0.12) / 0.3));
+    man(L, 1, angL, kneeLift); man(R, -1, 0.35 + trap + swing(t - T3), 0);
+    g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r);   // rolls with its sideways movement
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
     g.restore();

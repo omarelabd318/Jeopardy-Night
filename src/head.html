@@ -61,6 +61,10 @@ body.football .boardwrap{position:relative} body.football .board{position:relati
 .fbbg .c3{background:#9FE3A8;color:#0B3D1A;text-shadow:2px 2px 0 #F3EBD3}
 .fbbg .c4{color:#0B3D1A;text-shadow:3px 3px 0 #F3EBD3}
 .fbbg .c5{background:#0B3D1A;color:#9FE3A8;text-shadow:2px 2px 0 #0F2557}
+body.football .fbbg.poster{display:block}  /* 4.73 try (Omar): uneven poster blocks, placed by footballPoster() in src/app.js */
+.fbbg.poster .b{position:absolute;padding:0 4px}
+.fbbg.poster .b span{font-size:20px;line-height:.98}
+.fbbg.poster .b.v span{font-size:20px}
 /* end 4.43 */
 /* 4.49 try (Omar): scrolling stadium LED strip along the bottom of the Football mode winner screen. To undo: delete this block down to "end 4.49" and the ledstrip div in #winBox */
 .ledstrip{display:none}
@@ -336,7 +340,7 @@ body.football #kick.on{display:block}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.71</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.73</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -346,7 +350,7 @@ body.football #kick.on{display:block}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.71</div>
+      <div class="eyebrow verlabel">v4.73</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
