@@ -88,7 +88,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 a{color:var(--brass)}
 .wrap{padding-inline:16px;padding-block:18px 120px;max-width:1500px;margin:0 auto}
 h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,7vw,76px);letter-spacing:.01em;line-height:.9;margin:0;text-transform:uppercase;color:var(--brass);text-wrap:balance}
-h1 span{color:var(--cream)}
+h1 span{color:var(--cream)} h1 span.t1{color:inherit}  /* 4.64: .t1 is the first word (Jeopardy, or Joga in Football mode), coloured like the h1 */
 .sub{color:var(--muted);margin:.6em 0 0;max-width:60ch}
 .eyebrow{font-family:var(--display);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--muted)}
 
@@ -332,7 +332,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.63</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.64</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -342,7 +342,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.63</div>
+      <div class="eyebrow verlabel">v4.64</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -383,7 +383,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 
   <section id="game" hidden>
     <div class="topbar">
-      <h1>Jeopardy <span>Night</span></h1>
+      <h1><span class="t1">Jeopardy</span> <span>Night</span></h1>
       <div class="row tools"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="editScores" aria-pressed="false">Edit scores</button><button class="btn small" id="newBoard">New board</button><button class="btn small" id="toSetup">Setup</button><button class="btn small" id="toHome">Title screen</button><button class="btn small endbtn" id="endGame">End game</button></div>
     </div>
     <div class="boardwrap"><div class="fbbg" id="fbBg" aria-hidden="true"></div><div class="board" id="board"></div></div>
