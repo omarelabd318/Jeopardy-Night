@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.71`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.72`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -448,15 +448,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
   const showing = () => S.football && !$("#game").hidden && !S.cur && $("#winBox").hidden && !$("#scores").hidden;
-  function man(x, dir, kick){                             // dir 1 faces right, -1 faces left; kick 0..1 swings the front leg
+  /* 4.72 (Omar): a little routine instead of plain kicks. The left player kills the ball on his knee, lets it pop up and
+     volleys it across; the right player cushions it on his foot, flicks it up and volleys it back. Each crossing still
+     takes FLIGHT seconds. (4.70-4.71 just kicked it back and forth along the ground: see NOTES 4.72 to undo.) */
+  const DWELL = 0.3, POP = 1.0, KNEE = 1.0, T1 = FLIGHT, T2 = T1 + DWELL, T3 = T2 + POP, T4 = T3 + FLIGHT, CYCLE = T4 + KNEE;
+  const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
+  const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
+  function man(x, dir, ang, knee){                         // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
     const y = H - 1, hip = y - 16, sh = y - 29;
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
     g.beginPath(); g.arc(x, y - 35, 5, 0, Math.PI*2); g.fill();                  // head
     g.beginPath(); g.moveTo(x, sh + 1); g.lineTo(x, hip); g.stroke();            // body
     g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11); g.stroke();  // arms
-    const a = Math.sin(Math.min(1, kick) * Math.PI) * 1.1;                      // front leg swing angle
     g.beginPath(); g.moveTo(x, hip); g.lineTo(x - 6*dir, y); g.stroke();         // back leg
-    g.beginPath(); g.moveTo(x, hip); g.lineTo(x + Math.sin(0.35 + a) * 16 * dir, hip + Math.cos(0.35 + a) * 16); g.stroke();  // front (kicking) leg
+    const th = ang + knee * (Math.PI/2 - ang), kx = x + Math.sin(th) * 8 * dir, ky = hip + Math.cos(th) * 8, sa = ang * (1 - knee);
+    g.beginPath(); g.moveTo(x, hip); g.lineTo(kx, ky); g.lineTo(kx + Math.sin(sa) * 8 * dir, ky + Math.cos(sa) * 8); g.stroke();  // front leg
   }
   function frame(now){
     requestAnimationFrame(frame);
@@ -465,15 +471,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const src = (typeof BALLS !== "undefined" && BALLS.length && typeof lastBall === "number" && BALLS[lastBall]) || "";
     if(src !== ballSrc){ ballSrc = src; ballImg = null; if(src){ const im = new Image(); im.onload = () => { ballImg = im; }; im.src = src; } }
     g.clearRect(0, 0, W, H);
-    const L = 26, R = W - 26, footL = L + 13, footR = R - 13;
-    const t = ((now - t0) / 1000) * slow, leg = t % (FLIGHT * 2), dirR = leg < FLIGHT;   // ball goes left→right, then right→left
-    const p = (leg % FLIGHT) / FLIGHT, e = p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2)/2; // ease in-out along the ground
-    const x = dirR ? footL + (footR - footL) * e : footR - (footR - footL) * e;
-    const r = 7, y = H - 1 - r - Math.sin(p * Math.PI) * 26;                          // a little lob between them
-    const kL = dirR ? (p * FLIGHT) / KICK : ((FLIGHT - p * FLIGHT) < KICK ? 1 - (FLIGHT - p * FLIGHT) / KICK : 0);
-    const kR = !dirR ? (p * FLIGHT) / KICK : ((FLIGHT - p * FLIGHT) < KICK ? 1 - (FLIGHT - p * FLIGHT) / KICK : 0);
-    man(L, 1, kL < 1 ? kL : 0); man(R, -1, kR < 1 ? kR : 0);
-    g.save(); g.translate(x, y); g.rotate((dirR ? 1 : -1) * p * Math.PI * 4);
+    const L = 26, R = W - 26, r = 7, hip = H - 17;
+    const kneeL = [L + 9, hip - r - 1], volL = [L + 20, hip - 3], footR = [R - 14, H - 1 - r - 3], volR = [R - 20, hip - 3];
+    const t = (((now - t0) / 1000) * slow) % CYCLE;      // t = 0 is the left player's volley
+    const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
+    let pos;
+    if(t < T1)      pos = seg(volL, footR, t / FLIGHT, 38);              // long volley across
+    else if(t < T2) pos = footR;                                          // cushioned on the right foot
+    else if(t < T3) pos = seg(footR, volR, (t - T2) / POP, 30);          // flicked up into the air
+    else if(t < T4) pos = seg(volR, kneeL, (t - T3) / FLIGHT, 32);       // volleyed back
+    else            pos = seg(kneeL, volL, (t - T4) / KNEE, 20);         // popped up off the knee
+    const angL = 0.35 + swing(t < KICK ? t : t - CYCLE);
+    const kneeLift = t < T4 ? sm((t - (T4 - 0.35)) / 0.35) : 1 - sm((t - T4) / 0.3);
+    const trap = t < T2 ? 0.25 * sm((t - (T1 - 0.3)) / 0.3) : t < T2 + 0.12 ? 0.25 + 0.55 * sm((t - T2) / 0.12) : 0.8 * (1 - sm((t - T2 - 0.12) / 0.3));
+    man(L, 1, angL, kneeLift); man(R, -1, 0.35 + trap + swing(t - T3), 0);
+    g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r);   // rolls with its sideways movement
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
     g.restore();
