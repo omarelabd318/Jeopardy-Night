@@ -569,9 +569,10 @@ function removePhoto(key){ if(photos[key]){ if(photos[key].startsWith("blob:")) 
 function packStatus(extra){
   const keys = new Set(); PHOTO_CATS.forEach(cat => LV.forEach(l => pool(cat,l).forEach(([ans]) => keys.add(norm(ans)))));
   const ks = [...keys], built = ks.filter(k => photos[k] && !photos[k].startsWith("blob:")).length, own = ks.filter(k => photos[k] && photos[k].startsWith("blob:")).length;
-  const txt = [built ? `${built} built in` : "", own ? `${own} added on this device` : ""].filter(Boolean).join(" · ");
-  const pc = $("#phCount"); if(pc) pc.textContent = txt ? `· ${txt}` : "";
-  $("#packStatus").innerHTML = (txt || "No photos loaded") + (extra||"");
+  const other = ["foodpic","stad"].reduce((t,id) => t + (catById(id) ? LV.reduce((u,l) => u + pool(id,l).filter(e => e[2]).length, 0) : 0), 0);
+  const ownTxt = own ? ` · ${own} added on this device` : "";
+  const pc = $("#phCount"); if(pc) pc.textContent = built + other ? `· ${built + other} built in${ownTxt}` : "";
+  $("#packStatus").innerHTML = (built ? `${built} you can replace here${ownTxt}` : own ? `${own} added on this device` : "No photos loaded") + (extra||"");
 }
 $("#pack").addEventListener("change", e => {
   const keys = photoKeys(); const miss = [];
