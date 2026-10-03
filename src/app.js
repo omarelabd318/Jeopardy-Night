@@ -133,7 +133,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.50`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.51`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -466,13 +466,32 @@ function showWinner(){
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b class="${t.score<0?"neg":""}">${t.score}</b></li>`).join("") : "";
   $("#winBoard").hidden = S.cats.length*5 - Object.keys(S.done).length === 0;
   $("#winBox").hidden = false; $("#playAgain").focus();
-  confetti(); if(S.football && S.sound) playSiu(); else Snd.fanfare();
+  confetti(); ledStart(); if(S.football && S.sound) playSiu(); else Snd.fanfare();
 }
 /* Football mode winner sound: the last 9 seconds of Ronaldo's "Siuuu" clip, in place of the fanfare */
 let siuA = null;
 function playSiu(){ try{ if(!siuA) siuA = new Audio("sounds/siuuu.mp3"); siuA.currentTime = 0; const pr = siuA.play(); if(pr) pr.catch(() => Snd.fanfare()); }catch(e){ Snd.fanfare(); } }
 function stopSiu(){ if(siuA){ siuA.pause(); siuA.currentTime = 0; } }
-function hideWinner(){ $("#winBox").hidden = true; stopConfetti(); stopSiu(); }
+function hideWinner(){ $("#winBox").hidden = true; stopConfetti(); stopSiu(); ledStop(); }
+/* 4.51: the winner LED strip reads SSSIIIIIIII once, then U's that never end, at 65 px/s (32 with reduced motion; 4.50 was 130) */
+let ledRaf = null;
+function ledStop(){ if(ledRaf) cancelAnimationFrame(ledRaf); ledRaf = null; }
+function ledStart(){
+  ledStop(); const tr = $("#ledTrack"), strip = tr && tr.parentElement; if(!tr || !S.football) return;
+  tr.innerHTML = `<span id="ledHead">SSSIIIIIIII</span><span id="ledUs">${"U".repeat(20)}</span>`;
+  const us = $("#ledUs"), uW = us.getBoundingClientRect().width / 20;  // width of one U, letter spacing included
+  us.textContent = "U".repeat(Math.ceil(strip.clientWidth / uW) + 4);  // enough U's to fill the strip, plus a spare to wrap
+  const speed = (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ? 32 : 65;
+  let x = strip.clientWidth, head = $("#ledHead"), last = performance.now();
+  const step = now => {
+    x -= speed * Math.min(.1, (now - last) / 1000); last = now;
+    if(head && x + head.getBoundingClientRect().width < 0){ x += head.getBoundingClientRect().width; head.remove(); head = null; }  // the SSSIII has gone by
+    if(!head) while(x <= -uW) x += uW;  // after that, U's forever: shift back by one U, which looks identical
+    tr.style.transform = `translateX(${x.toFixed(1)}px)`;
+    ledRaf = requestAnimationFrame(step);
+  };
+  ledRaf = requestAnimationFrame(step);
+}
 $("#playAgain").onclick = () => { hideWinner(); if(S.football) S.cats = footballPick(); newGame(); renderBoard(); renderScores(); window.scrollTo(0,0); };
 $("#winBoard").onclick = () => { hideWinner(); };
 $("#winSetup").onclick = () => { hideWinner(); goSetup(); };
