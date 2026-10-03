@@ -154,6 +154,36 @@
     "How many stars are on the US flag?",
     50,
     "stars"
+   ],
+   [
+    "How many days are there in a leap year?",
+    366,
+    "days"
+   ],
+   [
+    "How many hours are there in a week?",
+    168,
+    "hours"
+   ],
+   [
+    "How many minutes does a football match last, without stoppage time?",
+    90,
+    "minutes"
+   ],
+   [
+    "How many states are there in the USA?",
+    50,
+    "states"
+   ],
+   [
+    "How many keys does a standard piano have?",
+    88,
+    "keys"
+   ],
+   [
+    "How many Oscars did Titanic win?",
+    11,
+    "Oscars"
    ]
   ],
   "200": [
@@ -305,6 +335,36 @@
    [
     "In which year did the October War (Yom Kippur War) take place?",
     1973,
+    ""
+   ],
+   [
+    "In which year did Egypt last win the Africa Cup of Nations?",
+    2010,
+    ""
+   ],
+   [
+    "How many Premier League goals did Salah score in 2017–18?",
+    32,
+    "goals"
+   ],
+   [
+    "How many minutes are there in a day?",
+    1440,
+    "minutes"
+   ],
+   [
+    "How many seconds are there in an hour?",
+    3600,
+    "seconds"
+   ],
+   [
+    "How many letters are there in the Arabic alphabet?",
+    28,
+    "letters"
+   ],
+   [
+    "In which year did the Grand Egyptian Museum fully open?",
+    2025,
     ""
    ]
   ],
@@ -458,6 +518,36 @@
     "For roughly how many years was Hosni Mubarak president of Egypt?",
     30,
     "years (1981–2011)"
+   ],
+   [
+    "In which year did Egypt first play at a World Cup?",
+    1934,
+    ""
+   ],
+   [
+    "How tall was the Great Pyramid when it was built, in metres?",
+    146.6,
+    "m"
+   ],
+   [
+    "How many World Cup goals did Miroslav Klose score, the record?",
+    16,
+    "goals"
+   ],
+   [
+    "In which year was Al Ahly founded?",
+    1907,
+    ""
+   ],
+   [
+    "In which year was Zamalek founded?",
+    1911,
+    ""
+   ],
+   [
+    "How many cards are in a standard deck, without jokers?",
+    52,
+    "cards"
    ]
   ],
   "400": [
@@ -610,6 +700,36 @@
     "How tall is Mount Kilimanjaro, in metres?",
     5895,
     "m"
+   ],
+   [
+    "How many paintings is Van Gogh said to have sold in his lifetime?",
+    1,
+    "painting"
+   ],
+   [
+    "How many keys are on a standard full-size computer keyboard?",
+    104,
+    "keys"
+   ],
+   [
+    "How many litres are in a US gallon?",
+    3.785,
+    "litres"
+   ],
+   [
+    "In which year did the Bibliotheca Alexandrina open?",
+    2002,
+    ""
+   ],
+   [
+    "In which year was the Cairo Tower completed?",
+    1961,
+    ""
+   ],
+   [
+    "Roughly how many bones does a newborn baby have?",
+    300,
+    "bones (roughly)"
    ]
   ],
   "500": [
@@ -762,6 +882,36 @@
     "In which year did Howard Carter find Tutankhamun's tomb?",
     1922,
     ""
+   ],
+   [
+    "How many islands make up Japan, by the 2023 official count?",
+    14125,
+    "islands"
+   ],
+   [
+    "Roughly how big is the Sinai Peninsula, in square kilometres?",
+    60000,
+    "km²"
+   ],
+   [
+    "What was the official attendance at the 1950 World Cup decider at the Maracanã?",
+    199854,
+    "people"
+   ],
+   [
+    "How many minutes did the longest tennis match, Isner v Mahut at Wimbledon 2010, last?",
+    665,
+    "minutes"
+   ],
+   [
+    "How many trillion kilometres are in one light-year?",
+    9.46,
+    "trillion km"
+   ],
+   [
+    "How many time zones does Russia span?",
+    11,
+    "time zones"
    ]
   ]
  }

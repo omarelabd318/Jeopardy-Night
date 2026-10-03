@@ -1,0 +1,45 @@
+{
+ "100": [
+  "Thor",
+  "Captain America",
+  "Deadpool",
+  "Transformers",
+  "Paddington",
+  "Alice in Wonderland"
+ ],
+ "200": [
+  "Bambi",
+  "Sleeping Beauty",
+  "Mary Poppins",
+  "Space Jam",
+  "Scooby-Doo",
+  "The Super Mario Bros. Movie"
+ ],
+ "300": [
+  "Venom",
+  "Aquaman",
+  "Encanto",
+  "Lilo & Stitch",
+  "The Flintstones",
+  "Planet of the Apes"
+ ],
+ "400": [
+  "Free Willy",
+  "Stuart Little",
+  "Ted",
+  "Dracula",
+  "Zombieland",
+  "The Chronicles of Narnia"
+ ],
+ "500": [
+  "127 Hours",
+  "Baby Driver",
+  "Jojo Rabbit",
+  "Minority Report",
+  "Blade Runner",
+  "The Departed"
+ ],
+ "act_kind": {
+  "The Flintstones": "series"
+ }
+}

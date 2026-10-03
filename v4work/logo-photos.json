@@ -670,5 +670,202 @@
   "name": "SEAT",
   "wiki": "SEAT",
   "file": "SEAT Logo from 2017.svg"
+ },
+ {
+  "key": "logo-starbucks",
+  "value": 100,
+  "name": "Starbucks",
+  "wiki": "Starbucks"
+ },
+ {
+  "key": "logo-kfc",
+  "value": 100,
+  "name": "KFC",
+  "wiki": "KFC",
+  "file": "KFC logo.svg"
+ },
+ {
+  "key": "logo-gmail",
+  "value": 100,
+  "name": "Gmail",
+  "wiki": "Gmail"
+ },
+ {
+  "key": "logo-tesla",
+  "value": 100,
+  "name": "Tesla",
+  "wiki": "Tesla, Inc."
+ },
+ {
+  "key": "logo-fanta",
+  "value": 100,
+  "name": "Fanta",
+  "wiki": "Fanta"
+ },
+ {
+  "key": "logo-zoom",
+  "value": 100,
+  "name": "Zoom",
+  "wiki": "Zoom Communications"
+ },
+ {
+  "key": "logo-rollsroyce",
+  "value": 200,
+  "name": "Rolls-Royce",
+  "wiki": "Rolls-Royce Motor Cars",
+  "file": "Rolls-Royce Motor Cars logo.svg"
+ },
+ {
+  "key": "logo-gucci",
+  "value": 200,
+  "name": "Gucci",
+  "wiki": "Gucci",
+  "file": "Gucci logo.svg"
+ },
+ {
+  "key": "logo-toblerone",
+  "value": 200,
+  "name": "Toblerone",
+  "wiki": "Toblerone"
+ },
+ {
+  "key": "logo-lexus",
+  "value": 200,
+  "name": "Lexus",
+  "wiki": "Lexus"
+ },
+ {
+  "key": "logo-shazam",
+  "value": 200,
+  "name": "Shazam",
+  "wiki": "Shazam (application)",
+  "file": "Shazam icon.svg"
+ },
+ {
+  "key": "logo-dropbox",
+  "value": 200,
+  "name": "Dropbox",
+  "wiki": "Dropbox"
+ },
+ {
+  "key": "logo-versace",
+  "value": 300,
+  "name": "Versace",
+  "wiki": "Versace"
+ },
+ {
+  "key": "logo-lufthansa",
+  "value": 300,
+  "name": "Lufthansa",
+  "wiki": "Lufthansa"
+ },
+ {
+  "key": "logo-atletico",
+  "value": 300,
+  "name": "Atlético Madrid",
+  "wiki": "Atlético Madrid",
+  "file": "Atletico Madrid Logo 2024.svg"
+ },
+ {
+  "key": "logo-psg",
+  "value": 300,
+  "name": "Paris Saint-Germain",
+  "wiki": "Paris Saint-Germain F.C.",
+  "file": "Paris Saint-Germain F.C..svg"
+ },
+ {
+  "key": "logo-mancity",
+  "value": 300,
+  "name": "Manchester City",
+  "wiki": "Manchester City F.C.",
+  "file": "Manchester City FC badge.svg"
+ },
+ {
+  "key": "logo-volvo",
+  "value": 300,
+  "name": "Volvo",
+  "wiki": "Volvo Cars"
+ },
+ {
+  "key": "logo-inter",
+  "value": 400,
+  "name": "Inter Milan",
+  "wiki": "Inter Milan",
+  "file": "FC Internazionale Milano 2021.svg"
+ },
+ {
+  "key": "logo-acmilan",
+  "value": 400,
+  "name": "AC Milan",
+  "wiki": "AC Milan",
+  "file": "Logo of AC Milan.svg"
+ },
+ {
+  "key": "logo-dortmund",
+  "value": 400,
+  "name": "Borussia Dortmund",
+  "wiki": "Borussia Dortmund",
+  "file": "Borussia Dortmund logo.svg"
+ },
+ {
+  "key": "logo-tottenham",
+  "value": 400,
+  "name": "Tottenham Hotspur",
+  "wiki": "Tottenham Hotspur F.C.",
+  "file": "Tottenham Hotspur.svg"
+ },
+ {
+  "key": "logo-galatasaray",
+  "value": 400,
+  "name": "Galatasaray",
+  "wiki": "Galatasaray S.K. (football)",
+  "file": "Galatasaray S.K. Logo 2026 5-stars.svg"
+ },
+ {
+  "key": "logo-alhilal",
+  "value": 400,
+  "name": "Al Hilal",
+  "wiki": "Al Hilal SFC",
+  "file": "Al Hilal SFC Logo.svg"
+ },
+ {
+  "key": "logo-juhayna",
+  "value": 500,
+  "name": "Juhayna",
+  "wiki": "Juhayna Food Industries"
+ },
+ {
+  "key": "logo-nestle",
+  "value": 500,
+  "name": "Nestlé",
+  "wiki": "Nestlé",
+  "file": "Nestle textlogo blue.svg"
+ },
+ {
+  "key": "logo-hermes",
+  "value": 500,
+  "name": "Hermès",
+  "wiki": "Hermès"
+ },
+ {
+  "key": "logo-ittihad",
+  "value": 500,
+  "name": "Al Ittihad Alexandria",
+  "wiki": "Al Ittihad Alexandria Club",
+  "file": "Al-Ittihad Alexandria Club logo.png"
+ },
+ {
+  "key": "logo-smouha",
+  "value": 500,
+  "name": "Smouha",
+  "wiki": "Smouha SC",
+  "file": "Smouha SC logo.png"
+ },
+ {
+  "key": "logo-heinz",
+  "value": 500,
+  "name": "Heinz",
+  "wiki": "Heinz",
+  "file": "Heinz logo.svg"
  }
 ]

@@ -156,6 +156,30 @@
    [
     "Which Cairo club was named Africa's 'Club of the Century' by CAF?",
     "Al Ahly"
+   ],
+   [
+    "What colour do you get by mixing red and white?",
+    "Pink"
+   ],
+   [
+    "How many hours are there in a day?",
+    "24"
+   ],
+   [
+    "At what temperature in Celsius does water freeze?",
+    "0 °C"
+   ],
+   [
+    "What is the tallest building in the world?",
+    "The Burj Khalifa"
+   ],
+   [
+    "What do bees make?",
+    "Honey"
+   ],
+   [
+    "What is the largest planet in the Solar System?",
+    "Jupiter"
    ]
   ],
   "200": [
@@ -306,6 +330,30 @@
    [
     "How many minutes does a football match last, not counting stoppage time?",
     "90"
+   ],
+   [
+    "What is the chemical symbol for gold?",
+    "Au"
+   ],
+   [
+    "Which social network had a blue bird logo before it became X?",
+    "Twitter"
+   ],
+   [
+    "What does 'CEO' stand for?",
+    "Chief Executive Officer"
+   ],
+   [
+    "What does 'FAQ' stand for?",
+    "Frequently Asked Questions"
+   ],
+   [
+    "What colour is a ruby?",
+    "Red"
+   ],
+   [
+    "How many sides does a decagon have?",
+    "10"
    ]
   ],
   "300": [
@@ -464,6 +512,30 @@
    [
     "What is the longest-running American animated TV series?",
     "The Simpsons"
+   ],
+   [
+    "What does 'VIP' stand for?",
+    "Very Important Person"
+   ],
+   [
+    "How many teeth does an adult usually have, wisdom teeth included?",
+    "32"
+   ],
+   [
+    "What is a baby owl called?",
+    "An owlet"
+   ],
+   [
+    "What is a group of fish called?",
+    "A school"
+   ],
+   [
+    "What is the fear of small, enclosed spaces called?",
+    "Claustrophobia"
+   ],
+   [
+    "What does 'ATM' stand for?",
+    "Automated Teller Machine"
    ]
   ],
   "400": [
@@ -622,6 +694,30 @@
    [
     "How many is a 'baker's dozen'?",
     "13"
+   ],
+   [
+    "What is a baby swan called?",
+    "A cygnet"
+   ],
+   [
+    "What is the fear of heights called?",
+    "Acrophobia"
+   ],
+   [
+    "Which blood type is the universal donor?",
+    "O negative"
+   ],
+   [
+    "Which gas makes up most of the air?",
+    "Nitrogen"
+   ],
+   [
+    "What is the longest bone in the human body?",
+    "The femur"
+   ],
+   [
+    "What is a female fox called?",
+    "A vixen"
    ]
   ],
   "500": [
@@ -776,6 +872,30 @@
    [
     "What is the groove between your nose and upper lip called?",
     "The philtrum"
+   ],
+   [
+    "What does 'SOS' stand for?",
+    "Nothing: it was picked because it's easy to send in Morse code"
+   ],
+   [
+    "What is the wavy '~' symbol called?",
+    "A tilde"
+   ],
+   [
+    "What is a group of giraffes called?",
+    "A tower"
+   ],
+   [
+    "What is a group of zebras called?",
+    "A dazzle"
+   ],
+   [
+    "What is a baby echidna called?",
+    "A puggle"
+   ],
+   [
+    "What is the fear of the number 666 called?",
+    "Hexakosioihexekontahexaphobia"
    ]
   ]
  }

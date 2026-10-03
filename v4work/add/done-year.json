@@ -1,0 +1,164 @@
+{
+ "100": [
+  [
+   "What year? Morocco reach the World Cup semi-finals · Wordle becomes a daily craze · Top Gun: Maverick is released",
+   "2022"
+  ],
+  [
+   "What year? Bayer Leverkusen win the Bundesliga unbeaten · Inside Out 2 is released · Taylor Swift's Eras Tour ends",
+   "2024"
+  ],
+  [
+   "What year? Benzema and Neymar move to Saudi clubs · The Titan submersible implodes · Spain win the Women's World Cup",
+   "2023"
+  ],
+  [
+   "What year? Facebook renames itself Meta · Chelsea win the Champions League in Porto · Messi wins the Copa América",
+   "2021"
+  ],
+  [
+   "What year? Liverpool win their first league title in 30 years · Among Us becomes a craze · Diego Maradona dies",
+   "2020"
+  ],
+  [
+   "What year? Disney+ launches · The first photo of a black hole · The USA win the Women's World Cup in France",
+   "2019"
+  ]
+ ],
+ "200": [
+  [
+   "What year? Fortnite Battle Royale launches · 'Shape of You' is everywhere · Fidget spinners take over",
+   "2017"
+  ],
+  [
+   "What year? Messi briefly quits Argentina after losing the Copa América final · Real Madrid beat Atlético in Milan · Prince dies",
+   "2016"
+  ],
+  [
+   "What year? 'The dress' (blue and black, or white and gold?) splits the internet · Jurassic World is released · Mourinho's Chelsea win the league",
+   "2015"
+  ],
+  [
+   "What year? Luis Suárez bites Chiellini · Flight MH17 is shot down · Flappy Bird is pulled from app stores",
+   "2014"
+  ],
+  [
+   "What year? The Harlem Shake craze · Bayern Munich win the treble · Breaking Bad ends",
+   "2013"
+  ],
+  [
+   "What year? Felix Baumgartner jumps from the edge of space · The first Avengers film is released · Spain win the Euros again",
+   "2012"
+  ]
+ ],
+ "300": [
+  [
+   "What year? Barcelona beat Man United at Wembley · The last Harry Potter film is released · South Sudan becomes independent",
+   "2011"
+  ],
+  [
+   "What year? The Haiti earthquake · The trapped Chilean miners are rescued · Toy Story 3 is released",
+   "2010"
+  ],
+  [
+   "What year? Egypt beat world champions Italy at the Confederations Cup · The Dubai Metro opens · Twilight: New Moon is released",
+   "2009"
+  ],
+  [
+   "What year? Man United beat Chelsea on penalties in Moscow · Iron Man launches the MCU · Spain win the Euros",
+   "2008"
+  ],
+  [
+   "What year? Benazir Bhutto is assassinated · Milan beat Liverpool in Athens · Transformers is released",
+   "2007"
+  ],
+  [
+   "What year? Mourinho's Porto win the Champions League · Yasser Arafat dies · Mean Girls is released",
+   "2004"
+  ]
+ ],
+ "400": [
+  [
+   "What year? The Bibliotheca Alexandrina opens · Zidane's volley wins the Champions League final · Eminem's 8 Mile is released",
+   "2002"
+  ],
+  [
+   "What year? Shrek is released · Bayern win the Champions League on penalties · Gladiator wins Best Picture",
+   "2001"
+  ],
+  [
+   "What year? Real Madrid win the first all-Spanish Champions League final · Harry Potter and the Goblet of Fire is published · France win the Euros",
+   "2000"
+  ],
+  [
+   "What year? The Sixth Sense is released · King Hassan II of Morocco dies · Ricky Martin's 'Livin' la Vida Loca'",
+   "1999"
+  ],
+  [
+   "What year? Yitzhak Rabin is assassinated · Amazon sells its first book · Eric Cantona's kung-fu kick",
+   "1995"
+  ],
+  [
+   "What year? Ayrton Senna dies · Pulp Fiction is released · Kurt Cobain dies",
+   "1994"
+  ]
+ ],
+ "500": [
+  [
+   "What year? The Heysel Stadium disaster · Coca-Cola launches 'New Coke' · The Mexico City earthquake",
+   "1985"
+  ],
+  [
+   "What year? Mao Zedong dies · Rocky is released · The Montreal Olympics",
+   "1976"
+  ],
+  [
+   "What year? Ali and Foreman's 'Rumble in the Jungle' · The Rubik's Cube is invented · Portugal's Carnation Revolution",
+   "1974"
+  ],
+  [
+   "What year? Algeria becomes independent · The Beatles release 'Love Me Do' · Lawrence of Arabia is released",
+   "1962"
+  ],
+  [
+   "What year? Nasser takes power in Egypt · Roger Bannister runs the first four-minute mile · West Germany's 'Miracle of Bern' World Cup win",
+   "1954"
+  ],
+  [
+   "What year? Egypt cancels its 1936 treaty with Britain · New Delhi hosts the first Asian Games · The Catcher in the Rye is published",
+   "1951"
+  ]
+ ],
+ "allow_dup_answers": [
+  "1951",
+  "1954",
+  "1962",
+  "1974",
+  "1976",
+  "1985",
+  "1994",
+  "1995",
+  "1999",
+  "2000",
+  "2001",
+  "2002",
+  "2004",
+  "2007",
+  "2008",
+  "2009",
+  "2010",
+  "2011",
+  "2012",
+  "2013",
+  "2014",
+  "2015",
+  "2016",
+  "2017",
+  "2019",
+  "2020",
+  "2021",
+  "2022",
+  "2023",
+  "2024"
+ ]
+}

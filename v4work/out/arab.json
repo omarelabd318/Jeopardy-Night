@@ -140,6 +140,30 @@
    [
     "Which sea separates the Arabian Peninsula from Africa?",
     "The Red Sea"
+   ],
+   [
+    "What is the capital of Saudi Arabia?",
+    "Riyadh"
+   ],
+   [
+    "What is the capital of Oman?",
+    "Muscat"
+   ],
+   [
+    "Which country hosted the 2022 World Cup?",
+    "Qatar"
+   ],
+   [
+    "Which Moroccan dish is slow-cooked in a cone-shaped clay pot?",
+    "Tagine"
+   ],
+   [
+    "What is the capital of Sudan?",
+    "Khartoum"
+   ],
+   [
+    "What drink, often served with dates, is a symbol of Gulf hospitality?",
+    "Arabic coffee (gahwa)"
    ]
   ],
   "200": [
@@ -282,6 +306,30 @@
    [
     "What is Jordan's only seaport, on the Red Sea?",
     "Aqaba"
+   ],
+   [
+    "Which yearly entertainment festival fills Saudi Arabia's capital each winter?",
+    "Riyadh Season"
+   ],
+   [
+    "Which Abu Dhabi island is home to Ferrari World and the F1 track?",
+    "Yas Island"
+   ],
+   [
+    "Which Moroccan goalkeeper starred in their 2022 World Cup semi-final run?",
+    "Yassine Bounou"
+   ],
+   [
+    "Which French-Algerian striker won the 2022 Ballon d'Or?",
+    "Karim Benzema"
+   ],
+   [
+    "Who scored Saudi Arabia's winner against Argentina at the 2022 World Cup?",
+    "Salem Al-Dawsari"
+   ],
+   [
+    "What is Abu Dhabi's national airline?",
+    "Etihad Airways"
    ]
   ],
   "300": [
@@ -424,6 +472,30 @@
    [
     "Which Algerian winger captained Algeria to the 2019 Africa Cup of Nations title?",
     "Riyad Mahrez"
+   ],
+   [
+    "Which river flows through Baghdad?",
+    "The Tigris"
+   ],
+   [
+    "Which ancient city near Tunis was Rome's great rival?",
+    "Carthage"
+   ],
+   [
+    "Which lone 400-year-old tree in Bahrain's desert is a famous sight?",
+    "The Tree of Life"
+   ],
+   [
+    "What is Kuwait City's most famous old market?",
+    "Souq Al-Mubarakiya"
+   ],
+   [
+    "Which southern Omani city is known for frankincense and monsoon rains?",
+    "Salalah"
+   ],
+   [
+    "Which Lebanese designer is famous for embroidered red-carpet gowns, alongside Elie Saab?",
+    "Zuhair Murad"
    ]
   ],
   "400": [
@@ -566,6 +638,30 @@
    [
     "Which Moroccan traveller wrote the 14th-century travel book known as the 'Rihla'?",
     "Ibn Battuta"
+   ],
+   [
+    "Which Lebanese valley lies between two mountain ranges and holds Baalbek?",
+    "The Bekaa Valley"
+   ],
+   [
+    "Which strait separates Yemen from Djibouti?",
+    "Bab el-Mandeb"
+   ],
+   [
+    "Which Tunisian village's underground homes were Luke Skywalker's home in Star Wars?",
+    "Matmata"
+   ],
+   [
+    "What is the capital of Saudi Arabia's mountainous Asir region?",
+    "Abha"
+   ],
+   [
+    "Which university in Fez is often called the oldest still running in the world?",
+    "Al-Qarawiyyin"
+   ],
+   [
+    "What is the river called where the Tigris and Euphrates meet?",
+    "The Shatt al-Arab"
    ]
   ],
   "500": [
@@ -708,6 +804,30 @@
    [
     "Which great Roman ruined city lies on the Libyan coast near Al-Khums?",
     "Leptis Magna"
+   ],
+   [
+    "Which ancient Greek city in eastern Libya is a UNESCO site?",
+    "Cyrene"
+   ],
+   [
+    "Which Abbasid caliph founded Baghdad in 762?",
+    "Al-Mansur"
+   ],
+   [
+    "Which Umayyad caliph built the Dome of the Rock?",
+    "Abd al-Malik"
+   ],
+   [
+    "Which Moorish palace towers over Granada?",
+    "The Alhambra"
+   ],
+   [
+    "Which Yemeni island is famous for its dragon's blood trees?",
+    "Socotra"
+   ],
+   [
+    "Which Jordanian desert castle is famous for its early Islamic frescoes?",
+    "Qusayr 'Amra"
    ]
   ]
  }

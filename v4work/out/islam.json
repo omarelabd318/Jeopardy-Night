@@ -1,0 +1,338 @@
+{
+ "id": "islam",
+ "name": "Islam",
+ "type": "text",
+ "desc": "The Quran, the pillars, Ramadan and Hajj, the Prophet's life and early Islamic history.",
+ "data": {
+  "100": [
+   [
+    "How many pillars of Islam are there?",
+    "Five"
+   ],
+   [
+    "What is the holy book of Islam?",
+    "The Quran"
+   ],
+   [
+    "In which month do Muslims fast from dawn to sunset?",
+    "Ramadan"
+   ],
+   [
+    "Which city is home to the Kaaba?",
+    "Mecca"
+   ],
+   [
+    "What is the pilgrimage to Mecca called?",
+    "Hajj"
+   ],
+   [
+    "How many obligatory prayers are there each day?",
+    "Five"
+   ],
+   [
+    "In which city is the Prophet's Mosque?",
+    "Medina"
+   ],
+   [
+    "What is the meal eaten before dawn in Ramadan called?",
+    "Suhoor"
+   ],
+   [
+    "What is the meal that breaks the fast at sunset called?",
+    "Iftar"
+   ],
+   [
+    "What is the call to prayer called?",
+    "The adhan"
+   ],
+   [
+    "What is the direction Muslims face to pray called?",
+    "The qibla (towards the Kaaba)"
+   ],
+   [
+    "Which Eid marks the end of Ramadan?",
+    "Eid al-Fitr"
+   ],
+   [
+    "Which Eid is the 'Feast of the Sacrifice'?",
+    "Eid al-Adha"
+   ],
+   [
+    "What is the charity paid before the Eid prayer at the end of Ramadan called?",
+    "Zakat al-Fitr"
+   ],
+   [
+    "What is the first surah of the Quran?",
+    "Al-Fatiha"
+   ],
+   [
+    "What is the person who calls the adhan called?",
+    "The muezzin"
+   ]
+  ],
+  "200": [
+   [
+    "How many surahs are in the Quran?",
+    "114"
+   ],
+   [
+    "What is a chapter of the Quran called?",
+    "A surah"
+   ],
+   [
+    "What is a verse of the Quran called?",
+    "An ayah"
+   ],
+   [
+    "What is the longest surah in the Quran?",
+    "Al-Baqarah"
+   ],
+   [
+    "What is the shortest surah in the Quran?",
+    "Al-Kawthar"
+   ],
+   [
+    "In which cave did the first revelation come to the Prophet?",
+    "The Cave of Hira"
+   ],
+   [
+    "Which angel brought the revelation?",
+    "Jibril (Gabriel)"
+   ],
+   [
+    "What was the first word of the Quran to be revealed?",
+    "Iqra' (Read)"
+   ],
+   [
+    "What is the Prophet's migration from Mecca to Medina called?",
+    "The Hijra"
+   ],
+   [
+    "In which year CE did the Hijra take place?",
+    "622"
+   ],
+   [
+    "What is the washing before prayer called?",
+    "Wudu"
+   ],
+   [
+    "What is the congregational prayer held every Friday called?",
+    "Jumu'ah (the Friday prayer)"
+   ],
+   [
+    "What is the night in the last ten days of Ramadan, 'better than a thousand months', called?",
+    "Laylat al-Qadr (the Night of Decree)"
+   ],
+   [
+    "What is the tall tower of a mosque called?",
+    "A minaret"
+   ],
+   [
+    "What is the niche in a mosque wall that shows the direction of prayer called?",
+    "The mihrab"
+   ],
+   [
+    "Who was the first caliph after the Prophet?",
+    "Abu Bakr al-Siddiq"
+   ]
+  ],
+  "300": [
+   [
+    "Who was the second caliph?",
+    "Umar ibn al-Khattab"
+   ],
+   [
+    "Under which caliph was the Quran gathered into one standard copy sent to the provinces?",
+    "Uthman ibn Affan"
+   ],
+   [
+    "Who was the fourth caliph?",
+    "Ali ibn Abi Talib"
+   ],
+   [
+    "What was the name of the Prophet's first wife?",
+    "Khadijah"
+   ],
+   [
+    "Which wife of the Prophet was the daughter of Abu Bakr?",
+    "Aisha"
+   ],
+   [
+    "Which battle in 624 was the Muslims' first major victory?",
+    "The Battle of Badr"
+   ],
+   [
+    "Which battle in 625 was fought beside a mountain just north of Medina?",
+    "The Battle of Uhud"
+   ],
+   [
+    "In which battle did the Muslims dig a trench around Medina?",
+    "The Battle of the Trench (al-Khandaq)"
+   ],
+   [
+    "Which 628 treaty did the Prophet sign with Quraysh?",
+    "The Treaty of Hudaybiyyah"
+   ],
+   [
+    "What is the Prophet's night journey to Jerusalem and ascent to heaven called?",
+    "Al-Isra' wal-Mi'raj"
+   ],
+   [
+    "Which mosque in Jerusalem is Islam's third holiest?",
+    "Al-Aqsa Mosque"
+   ],
+   [
+    "Which well in Mecca do pilgrims drink from?",
+    "Zamzam"
+   ],
+   [
+    "Between which two hills do pilgrims walk seven times?",
+    "Safa and Marwa"
+   ],
+   [
+    "Where do pilgrims stand on the 9th of Dhul Hijjah, the high point of Hajj?",
+    "Mount Arafat"
+   ],
+   [
+    "What is the sacred state, and simple white clothing, of a pilgrim called?",
+    "Ihram"
+   ],
+   [
+    "Which Cairo mosque and university was founded by the Fatimids in 970?",
+    "Al-Azhar"
+   ]
+  ],
+  "400": [
+   [
+    "Which is the oldest mosque in Egypt and in Africa?",
+    "The Mosque of Amr ibn al-As"
+   ],
+   [
+    "Which surah is often called 'the heart of the Quran'?",
+    "Ya-Sin"
+   ],
+   [
+    "Which surah is the only one that doesn't begin with Bismillah?",
+    "At-Tawbah"
+   ],
+   [
+    "Which is the only surah named after a woman?",
+    "Maryam"
+   ],
+   [
+    "In which surah is Ayat al-Kursi (the Throne Verse)?",
+    "Al-Baqarah"
+   ],
+   [
+    "Which prophet is mentioned most often in the Quran?",
+    "Musa (Moses)"
+   ],
+   [
+    "How many prophets are named in the Quran?",
+    "25"
+   ],
+   [
+    "Which prophet was swallowed by a whale?",
+    "Yunus (Jonah)"
+   ],
+   [
+    "Which prophet built the ark?",
+    "Nuh (Noah)"
+   ],
+   [
+    "Which prophet's story is told in full in one surah, called 'the best of stories'?",
+    "Yusuf (Joseph)"
+   ],
+   [
+    "What are the first four caliphs called in Arabic?",
+    "Al-Khulafa' al-Rashidun (the rightly guided caliphs)"
+   ],
+   [
+    "What is walking around the Kaaba seven times called?",
+    "Tawaf"
+   ],
+   [
+    "What is the 'lesser pilgrimage' that can be made at any time of year called?",
+    "Umrah"
+   ],
+   [
+    "In which Islamic month is Hajj?",
+    "Dhul Hijjah"
+   ],
+   [
+    "What is the first month of the Islamic calendar?",
+    "Muharram"
+   ],
+   [
+    "Which caliph started the Hijri calendar?",
+    "Umar ibn al-Khattab"
+   ]
+  ],
+  "500": [
+   [
+    "Which companion, the Prophet's scribe, led the gathering of the Quran into one book?",
+    "Zayd ibn Thabit"
+   ],
+   [
+    "Which hadith collection is considered the most authentic?",
+    "Sahih al-Bukhari"
+   ],
+   [
+    "How many main Sunni schools of law (madhhabs) are there?",
+    "Four (Hanafi, Maliki, Shafi'i and Hanbali)"
+   ],
+   [
+    "Which founder of a school of law is buried in Cairo?",
+    "Imam al-Shafi'i"
+   ],
+   [
+    "Into how many parts (juz') is the Quran divided?",
+    "30"
+   ],
+   [
+    "What are the rules for reciting the Quran correctly called?",
+    "Tajweed"
+   ],
+   [
+    "Which Egyptian reciter is known as 'the golden voice'?",
+    "Sheikh Abdul Basit Abdul Samad"
+   ],
+   [
+    "Which Egyptian reciter was the first to record the whole Quran, in 1961?",
+    "Sheikh Mahmoud Khalil Al-Hussary"
+   ],
+   [
+    "To which tribe did the Prophet belong?",
+    "Quraysh"
+   ],
+   [
+    "Which uncle raised and protected the Prophet?",
+    "Abu Talib"
+   ],
+   [
+    "Who was the first muezzin in Islam?",
+    "Bilal ibn Rabah"
+   ],
+   [
+    "In which year of the Hijra did the Muslims take Mecca?",
+    "8 AH (630 CE)"
+   ],
+   [
+    "What was the first mosque built in Islam?",
+    "Quba Mosque"
+   ],
+   [
+    "Which Cairo mosque by Khan El Khalili is named after the Prophet's grandson?",
+    "Al-Hussein Mosque"
+   ],
+   [
+    "What is the series of pillars pilgrims throw pebbles at in Mina called?",
+    "The Jamarat"
+   ],
+   [
+    "What is the Prophet's farewell speech, given during his only Hajj, called?",
+    "The Farewell Sermon (Khutbat al-Wada')"
+   ]
+  ]
+ }
+}

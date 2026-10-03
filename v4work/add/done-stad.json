@@ -1,0 +1,132 @@
+{
+ "100": [
+  [
+   "Which club plays at Stamford Bridge?",
+   "Chelsea"
+  ],
+  [
+   "Which club plays at Anfield?",
+   "Liverpool"
+  ],
+  [
+   "What is Manchester City's stadium called?",
+   "The Etihad Stadium"
+  ],
+  [
+   "What is Arsenal's stadium called?",
+   "The Emirates Stadium"
+  ],
+  [
+   "What is Bayern Munich's stadium called?",
+   "The Allianz Arena"
+  ],
+  [
+   "What is Barcelona's stadium called?",
+   "Camp Nou"
+  ]
+ ],
+ "200": [
+  [
+   "What is Juventus's stadium called?",
+   "The Allianz Stadium"
+  ],
+  [
+   "What is Paris Saint-Germain's stadium called?",
+   "The Parc des Princes"
+  ],
+  [
+   "What is Newcastle United's stadium called?",
+   "St James' Park"
+  ],
+  [
+   "What is West Ham's stadium called since 2016?",
+   "The London Stadium"
+  ],
+  [
+   "What is Atlético Madrid's stadium called?",
+   "The Metropolitano"
+  ],
+  [
+   "Which club plays at the Stadium of Light?",
+   "Sunderland"
+  ]
+ ],
+ "300": [
+  [
+   "Which club plays at the King Power Stadium?",
+   "Leicester City"
+  ],
+  [
+   "Which club plays at Elland Road?",
+   "Leeds United"
+  ],
+  [
+   "Which club plays at the Vitality Stadium?",
+   "Bournemouth"
+  ],
+  [
+   "Which club plays at St Mary's Stadium?",
+   "Southampton"
+  ],
+  [
+   "Which club plays at Bramall Lane?",
+   "Sheffield United"
+  ],
+  [
+   "Which club plays at the Deutsche Bank Park?",
+   "Eintracht Frankfurt"
+  ]
+ ],
+ "400": [
+  [
+   "Which club plays at the Weserstadion?",
+   "Werder Bremen"
+  ],
+  [
+   "Which club plays at the Stadio Diego Armando Maradona?",
+   "Napoli"
+  ],
+  [
+   "Which club plays at the Stadio Olimpico Grande Torino?",
+   "Torino"
+  ],
+  [
+   "Which club plays at the Stade de la Beaujoire?",
+   "Nantes"
+  ],
+  [
+   "Which club plays at the Groupama Stadium?",
+   "Lyon"
+  ],
+  [
+   "Which club plays at Vodafone Park (Tüpraş Stadium)?",
+   "Beşiktaş"
+  ]
+ ],
+ "500": [
+  [
+   "Which club plays at the Volksparkstadion?",
+   "Hamburg (Hamburger SV)"
+  ],
+  [
+   "Which club plays at the Stade Pierre-Mauroy?",
+   "Lille"
+  ],
+  [
+   "Which two clubs share the Stadio Luigi Ferraris?",
+   "Genoa and Sampdoria"
+  ],
+  [
+   "Which club plays at the Kingdom Arena in Riyadh?",
+   "Al Hilal"
+  ],
+  [
+   "Which Egyptian club plays at the 30 June Stadium?",
+   "Pyramids FC"
+  ],
+  [
+   "Which stadium, opened in 1929, is Egypt's oldest?",
+   "Alexandria Stadium"
+  ]
+ ]
+}

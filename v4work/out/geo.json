@@ -148,6 +148,30 @@
    [
     "What is the capital of Russia?",
     "Moscow"
+   ],
+   [
+    "What is the capital of Italy?",
+    "Rome"
+   ],
+   [
+    "What is the capital of Qatar?",
+    "Doha"
+   ],
+   [
+    "On which continent is Kenya?",
+    "Africa"
+   ],
+   [
+    "What is the capital of the United States?",
+    "Washington, D.C."
+   ],
+   [
+    "What is the capital of China?",
+    "Beijing"
+   ],
+   [
+    "What is the capital of Kuwait?",
+    "Kuwait City"
    ]
   ],
   "200": [
@@ -294,6 +318,30 @@
    [
     "What is the capital of India?",
     "New Delhi"
+   ],
+   [
+    "Which river flows through Rome?",
+    "The Tiber"
+   ],
+   [
+    "What is the capital of Syria?",
+    "Damascus"
+   ],
+   [
+    "What is the capital of Iraq?",
+    "Baghdad"
+   ],
+   [
+    "What is the capital of Mexico?",
+    "Mexico City"
+   ],
+   [
+    "Which strait splits Istanbul between Europe and Asia?",
+    "The Bosphorus"
+   ],
+   [
+    "Which mountain range separates France and Spain?",
+    "The Pyrenees"
    ]
   ],
   "300": [
@@ -440,6 +488,30 @@
    [
     "What is the capital of Poland?",
     "Warsaw"
+   ],
+   [
+    "What is the official capital of the Netherlands?",
+    "Amsterdam"
+   ],
+   [
+    "Which desert covers most of Botswana?",
+    "The Kalahari"
+   ],
+   [
+    "What is the capital of Bahrain?",
+    "Manama"
+   ],
+   [
+    "What is the capital of Ghana?",
+    "Accra"
+   ],
+   [
+    "What is the longest mountain range on land?",
+    "The Andes"
+   ],
+   [
+    "What is the world's highest waterfall?",
+    "Angel Falls"
    ]
   ],
   "400": [
@@ -586,6 +658,30 @@
    [
     "Lake Titicaca lies on the border of Peru and which country?",
     "Bolivia"
+   ],
+   [
+    "What is the capital of Venezuela?",
+    "Caracas"
+   ],
+   [
+    "What is the capital of Serbia?",
+    "Belgrade"
+   ],
+   [
+    "What is the capital of Bulgaria?",
+    "Sofia"
+   ],
+   [
+    "What is the capital of Rwanda?",
+    "Kigali"
+   ],
+   [
+    "What is the capital of Uganda?",
+    "Kampala"
+   ],
+   [
+    "What is the capital of Cyprus?",
+    "Nicosia"
    ]
   ],
   "500": [
@@ -732,6 +828,30 @@
    [
     "Which African country has three capital cities (Pretoria, Cape Town and Bloemfontein)?",
     "South Africa"
+   ],
+   [
+    "What is the official capital of Sri Lanka?",
+    "Sri Jayawardenepura Kotte"
+   ],
+   [
+    "What is the capital of Belize?",
+    "Belmopan"
+   ],
+   [
+    "What is the capital of Mauritius?",
+    "Port Louis"
+   ],
+   [
+    "What is the capital of Gabon?",
+    "Libreville"
+   ],
+   [
+    "What is the capital of Cameroon?",
+    "Yaoundé"
+   ],
+   [
+    "What is the official capital of Côte d'Ivoire?",
+    "Yamoussoukro"
    ]
   ]
  }

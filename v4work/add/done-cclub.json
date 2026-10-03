@@ -1,0 +1,162 @@
+{
+ "100": [
+  [
+   "Which club did all three play for? Cristiano Ronaldo · Karim Benzema · Luka Modrić",
+   "Real Madrid"
+  ],
+  [
+   "Which club did all three play for? Lionel Messi · Neymar · Kylian Mbappé",
+   "PSG"
+  ],
+  [
+   "Which club did all three play for? Dele Alli · Christian Eriksen · Jan Vertonghen",
+   "Tottenham Hotspur"
+  ],
+  [
+   "Which club did all three play for? Mohamed Salah · Steven Gerrard · Virgil van Dijk",
+   "Liverpool"
+  ],
+  [
+   "Which club did all three play for? Erling Haaland · Kevin De Bruyne · Sergio Agüero",
+   "Manchester City"
+  ],
+  [
+   "Which club did all three play for? Robert Lewandowski · Thomas Müller · Arjen Robben",
+   "Bayern Munich"
+  ]
+ ],
+ "200": [
+  [
+   "Which club did all three play for? Zlatan Ibrahimović · Kaká · Andrea Pirlo",
+   "AC Milan"
+  ],
+  [
+   "Which club did all three play for? Didier Drogba · Frank Lampard · John Terry",
+   "Chelsea"
+  ],
+  [
+   "Which club did all three play for? Robert Lewandowski · Marco Reus · Jude Bellingham",
+   "Borussia Dortmund"
+  ],
+  [
+   "Which club did all three play for? Paul Pogba · Andrea Pirlo · Alessandro Del Piero",
+   "Juventus"
+  ],
+  [
+   "Which club did all three play for? Thierry Henry · Dennis Bergkamp · Patrick Vieira",
+   "Arsenal"
+  ],
+  [
+   "Which club did all three play for? Antoine Griezmann · Fernando Torres · Sergio Agüero",
+   "Atlético Madrid"
+  ]
+ ],
+ "300": [
+  [
+   "Which club did all three play for? Riyad Mahrez · Jamie Vardy · N'Golo Kanté",
+   "Leicester City"
+  ],
+  [
+   "Which club did all three play for? Thierry Henry · David Trezeguet · Lilian Thuram",
+   "Monaco"
+  ],
+  [
+   "Which club did all three play for? Mohamed Salah · Kevin De Bruyne · Romelu Lukaku",
+   "Chelsea"
+  ],
+  [
+   "Which club did all three play for? Edinson Cavani · Ezequiel Lavezzi · Marek Hamšík",
+   "Napoli"
+  ],
+  [
+   "Which club did all three play for? Theo Walcott · Adam Lallana · Gareth Bale",
+   "Southampton"
+  ],
+  [
+   "Which club did all three play for? Mido · Hossam Ghaly · Gareth Bale",
+   "Tottenham Hotspur"
+  ]
+ ],
+ "400": [
+  [
+   "Which club did all three play for? Ahmed Hegazi · Romelu Lukaku · Peter Odemwingie",
+   "West Bromwich Albion"
+  ],
+  [
+   "Which club did all three play for? Ramadan Sobhi · Aaron Mooy · Philip Billing",
+   "Huddersfield Town"
+  ],
+  [
+   "Which club did all three play for? Trezeguet (Mahmoud Hassan) · Jack Grealish · John McGinn",
+   "Aston Villa"
+  ],
+  [
+   "Which club did all three play for? Ahmed Elmohamady · Jake Livermore · Robert Snodgrass",
+   "Hull City"
+  ],
+  [
+   "Which club did all three play for? Omar Marmoush · Randal Kolo Muani · Filip Kostić",
+   "Eintracht Frankfurt"
+  ],
+  [
+   "Which club did all three play for? Mostafa Mohamed · Randal Kolo Muani · Ludovic Blas",
+   "Nantes"
+  ]
+ ],
+ "500": [
+  [
+   "Which club did all three play for? Amr Zaki · Antonio Valencia · Emmerson Boyce",
+   "Wigan Athletic"
+  ],
+  [
+   "Which club did all three play for? Mido · Zlatan Ibrahimović · Rafael van der Vaart",
+   "Ajax"
+  ],
+  [
+   "Which club did all three play for? Hossam Hassan · Dimitar Berbatov · Zisis Vryzas",
+   "PAOK"
+  ],
+  [
+   "Which club did all three play for? Mohamed Zidan · Shinji Okazaki · André Schürrle",
+   "Mainz 05"
+  ],
+  [
+   "Which club did all three play for? Ahmed Hassan · Vincent Kompany · Romelu Lukaku",
+   "Anderlecht"
+  ],
+  [
+   "Which club did all three play for? Mohamed Elneny · Xherdan Shaqiri · Mohamed Salah",
+   "Basel"
+  ]
+ ],
+ "allow_dup_answers": [
+  "AC Milan",
+  "Ajax",
+  "Anderlecht",
+  "Arsenal",
+  "Aston Villa",
+  "Atlético Madrid",
+  "Basel",
+  "Bayern Munich",
+  "Borussia Dortmund",
+  "Chelsea",
+  "Eintracht Frankfurt",
+  "Huddersfield Town",
+  "Hull City",
+  "Juventus",
+  "Leicester City",
+  "Liverpool",
+  "Mainz 05",
+  "Manchester City",
+  "Monaco",
+  "Nantes",
+  "Napoli",
+  "PAOK",
+  "PSG",
+  "Real Madrid",
+  "Southampton",
+  "Tottenham Hotspur",
+  "West Bromwich Albion",
+  "Wigan Athletic"
+ ]
+}

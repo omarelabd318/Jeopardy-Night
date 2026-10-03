@@ -1,0 +1,164 @@
+{
+ "100": [
+  [
+   "Which has the most calories?\nA) 100 g of watermelon\nB) a cup of blueberries\nC) a whole pomegranate",
+   "C) a whole pomegranate: 234 kcal\n(others: A) 30, B) 84 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a McDonald's Big Mac\nB) a Subway 6-inch Veggie Delite\nC) a cup of blueberries",
+   "A) a McDonald's Big Mac: 580 kcal\n(others: B) 230, C) 84 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a bag of M&M's (48 g)\nB) a whole Domino's medium hand-tossed pepperoni pizza (8 slices)\nC) a medium apple",
+   "B) a whole Domino's medium hand-tossed pepperoni pizza (8 slices): 1600 kcal\n(others: A) 240, C) 95 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a can of Diet Coke (330 ml)\nB) McDonald's Hotcakes (with syrup and butter)\nC) 100 g of watermelon",
+   "B) McDonald's Hotcakes (with syrup and butter): 580 kcal\n(others: A) 1, C) 30 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a medium carrot\nB) a KFC Chicken Pot Pie\nC) a slice of cheddar (28 g)",
+   "B) a KFC Chicken Pot Pie: 720 kcal\n(others: A) 25, C) 115 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) one Oreo cookie\nB) one ta'meya patty (~17 g)\nC) 100 g of dark chocolate (70–85%)",
+   "C) 100 g of dark chocolate (70–85%): 598 kcal\n(others: A) 53, B) 57 kcal)"
+  ]
+ ],
+ "200": [
+  [
+   "Which has the most calories?\nA) a cup of strawberries\nB) a McDonald's Chocolate Chip Cookie\nC) a McDonald's OREO McFlurry (regular)",
+   "C) a McDonald's OREO McFlurry (regular): 410 kcal\n(others: A) 49, B) 170 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) 2 ta'meya patties\nB) a Hardee's Monster Thickburger\nC) 100 g of dark chocolate (70–85%)",
+   "B) a Hardee's Monster Thickburger: 1400 kcal\n(others: A) 114, C) 598 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a Starbucks grande Caffè Mocha\nB) 3 ta'meya patties\nC) a handful of walnuts (28 g, ~14 halves)",
+   "A) a Starbucks grande Caffè Mocha: 370 kcal\n(others: B) 171, C) 185 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a McDonald's McCrispy\nB) 2 ta'meya patties\nC) a Subway footlong Italian B.M.T.",
+   "C) a Subway footlong Italian B.M.T.: 820 kcal\n(others: A) 470, B) 114 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a Krispy Kreme Original Glazed doughnut\nB) a McDonald's Double Cheeseburger\nC) a cup of grapes",
+   "B) a McDonald's Double Cheeseburger: 450 kcal\n(others: A) 190, C) 104 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a medium pear\nB) a McDonald's Big Mac\nC) a Snickers bar (52.7 g)",
+   "B) a McDonald's Big Mac: 580 kcal\n(others: A) 101, C) 250 kcal)"
+  ]
+ ],
+ "300": [
+  [
+   "Which has the most calories?\nA) a cup of cooked brown rice\nB) a McDonald's Cheeseburger\nC) a Starbucks grande Java Chip Frappuccino",
+   "C) a Starbucks grande Java Chip Frappuccino: 440 kcal\n(others: A) 218, B) 300 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a Cinnabon MiniBon\nB) a cup of cooked spaghetti\nC) a handful of pistachios (28 g, ~49 nuts)",
+   "A) a Cinnabon MiniBon: 350 kcal\n(others: B) 221, C) 159 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) McDonald's medium fries\nB) a whole avocado (Hass, ~136 g flesh)\nC) 100 g of grilled chicken breast",
+   "A) McDonald's medium fries: 320 kcal\n(others: B) 227, C) 165 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a KFC Original Recipe drumstick\nB) a Starbucks grande Caffè Mocha\nC) a cup of cooked quinoa",
+   "B) a Starbucks grande Caffè Mocha: 370 kcal\n(others: A) 130, C) 222 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a cup of cooked brown rice\nB) a cup of tea with 1 tsp sugar\nC) a can of Coca-Cola (330 ml)",
+   "A) a cup of cooked brown rice: 218 kcal\n(others: B) 18, C) 139 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a guava\nB) a medium baked potato with skin (~170 g)\nC) McDonald's small fries",
+   "C) McDonald's small fries: 230 kcal\n(others: A) 37, B) 161 kcal)"
+  ]
+ ],
+ "400": [
+  [
+   "Which has the most calories?\nA) 3 ta'meya patties\nB) a medium pear\nC) a KFC Original Recipe whole wing",
+   "A) 3 ta'meya patties: 171 kcal\n(others: B) 101, C) 130 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a slice of cheddar (28 g)\nB) a large baked sweet potato (~300 g)\nC) a piece of basbousa (~8 x 6 cm)",
+   "B) a large baked sweet potato (~300 g): 270 kcal\n(others: A) 115, C) 220 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a medium apple\nB) McDonald's small fries\nC) a McDonald's Egg McMuffin",
+   "C) a McDonald's Egg McMuffin: 310 kcal\n(others: A) 95, B) 230 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) 100 g of almonds\nB) a 2-finger Kit Kat\nC) a McDonald's Sausage McMuffin with Egg",
+   "A) 100 g of almonds: 579 kcal\n(others: B) 105, C) 480 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a Krispy Kreme Original Glazed doughnut\nB) a bag of M&M's (48 g)\nC) a whole cucumber (~300 g)",
+   "B) a bag of M&M's (48 g): 240 kcal\n(others: A) 190, C) 45 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) 2 tablespoons of honey\nB) McDonald's Hash Browns\nC) a bowl of oatmeal made with water (1 cup)",
+   "C) a bowl of oatmeal made with water (1 cup): 166 kcal\n(others: A) 128, B) 140 kcal)"
+  ]
+ ],
+ "500": [
+  [
+   "Which has the most calories?\nA) a whole avocado (Hass, ~136 g flesh)\nB) a whole mango\nC) a Twix (2 bars, 50 g)",
+   "C) a Twix (2 bars, 50 g): 250 kcal\n(others: A) 227, B) 202 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a Hardee's Famous Star with Cheese\nB) a Twix (2 bars, 50 g)\nC) McDonald's Hotcakes (with syrup and butter)",
+   "A) a Hardee's Famous Star with Cheese: 660 kcal\n(others: B) 250, C) 580 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a tablespoon of mayonnaise\nB) a cup of watermelon cubes\nC) a tablespoon of butter",
+   "C) a tablespoon of butter: 102 kcal\n(others: A) 94, B) 46 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a Krispy Kreme Glazed Kreme Filled doughnut\nB) a medium tomato\nC) a Starbucks grande Caramel Frappuccino",
+   "C) a Starbucks grande Caramel Frappuccino: 380 kcal\n(others: A) 340, B) 22 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a tablespoon of butter\nB) a piece of basbousa (~8 x 6 cm)\nC) a Snickers bar (52.7 g)",
+   "C) a Snickers bar (52.7 g): 250 kcal\n(others: A) 102, B) 220 kcal)"
+  ],
+  [
+   "Which has the most calories?\nA) a medium orange\nB) McDonald's large fries\nC) a Starbucks grande White Chocolate Mocha",
+   "B) McDonald's large fries: 480 kcal\n(others: A) 62, C) 430 kcal)"
+  ]
+ ],
+ "allow_dup_answers": [
+  "A) 100 g of almonds: 579 kcal\n(others: B) 105, C) 480 kcal)",
+  "A) 3 ta'meya patties: 171 kcal\n(others: B) 101, C) 130 kcal)",
+  "A) McDonald's medium fries: 320 kcal\n(others: B) 227, C) 165 kcal)",
+  "A) a Cinnabon MiniBon: 350 kcal\n(others: B) 221, C) 159 kcal)",
+  "A) a Hardee's Famous Star with Cheese: 660 kcal\n(others: B) 250, C) 580 kcal)",
+  "A) a McDonald's Big Mac: 580 kcal\n(others: B) 230, C) 84 kcal)",
+  "A) a Starbucks grande Caffè Mocha: 370 kcal\n(others: B) 171, C) 185 kcal)",
+  "A) a cup of cooked brown rice: 218 kcal\n(others: B) 18, C) 139 kcal)",
+  "B) McDonald's Hotcakes (with syrup and butter): 580 kcal\n(others: A) 1, C) 30 kcal)",
+  "B) McDonald's large fries: 480 kcal\n(others: A) 62, C) 430 kcal)",
+  "B) a Hardee's Monster Thickburger: 1400 kcal\n(others: A) 114, C) 598 kcal)",
+  "B) a KFC Chicken Pot Pie: 720 kcal\n(others: A) 25, C) 115 kcal)",
+  "B) a McDonald's Big Mac: 580 kcal\n(others: A) 101, C) 250 kcal)",
+  "B) a McDonald's Double Cheeseburger: 450 kcal\n(others: A) 190, C) 104 kcal)",
+  "B) a Starbucks grande Caffè Mocha: 370 kcal\n(others: A) 130, C) 222 kcal)",
+  "B) a bag of M&M's (48 g): 240 kcal\n(others: A) 190, C) 45 kcal)",
+  "B) a large baked sweet potato (~300 g): 270 kcal\n(others: A) 115, C) 220 kcal)",
+  "B) a whole Domino's medium hand-tossed pepperoni pizza (8 slices): 1600 kcal\n(others: A) 240, C) 95 kcal)",
+  "C) 100 g of dark chocolate (70–85%): 598 kcal\n(others: A) 53, B) 57 kcal)",
+  "C) McDonald's small fries: 230 kcal\n(others: A) 37, B) 161 kcal)",
+  "C) a McDonald's Egg McMuffin: 310 kcal\n(others: A) 95, B) 230 kcal)",
+  "C) a McDonald's OREO McFlurry (regular): 410 kcal\n(others: A) 49, B) 170 kcal)",
+  "C) a Snickers bar (52.7 g): 250 kcal\n(others: A) 102, B) 220 kcal)",
+  "C) a Starbucks grande Caramel Frappuccino: 380 kcal\n(others: A) 340, B) 22 kcal)",
+  "C) a Starbucks grande Java Chip Frappuccino: 440 kcal\n(others: A) 218, B) 300 kcal)",
+  "C) a Subway footlong Italian B.M.T.: 820 kcal\n(others: A) 470, B) 114 kcal)",
+  "C) a Twix (2 bars, 50 g): 250 kcal\n(others: A) 227, B) 202 kcal)",
+  "C) a bowl of oatmeal made with water (1 cup): 166 kcal\n(others: A) 128, B) 140 kcal)",
+  "C) a tablespoon of butter: 102 kcal\n(others: A) 94, B) 46 kcal)",
+  "C) a whole pomegranate: 234 kcal\n(others: A) 30, B) 84 kcal)"
+ ]
+}
