@@ -38,7 +38,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - **Reversible experiments:** when Omar wants to try a look (for example the navy accents or the green shades), keep the previous values in a comment next to the new rule. Put the undo steps in that version's NOTES entry, so "go back" is a one-step change.
 - **Clue quality:** follow `v4work/BRIEF.md`. Check facts that may have changed recently. Keep the counts per value within 2 of each other. Don't repeat an answer within a category unless the question is clearly different.
 - **Photo clues:** a photo clue is included only when its `photos/<key>.jpg` exists. Blur visible signage or brand badges that would give the answer away.
-- **File limit:** the live artifact holds at most 511 files, and it has about 457 now. A new photo category with many images should ship as `.js` bundles, as Guess the Food does (see `mkpacks.js`).
+- **File limit:** the live artifact holds at most 511 files. Since 4.56 the photo rounds use about 580, so the artifact can only be republished after bundling them as `.js` packs, the way Guess the Food does (see `mkpacks.js`). GitHub Pages, which Omar uses, has no limit.
 - **Ask Omar first** before removing categories or clues, or changing how scoring works.
 
 ## Playing and publishing
