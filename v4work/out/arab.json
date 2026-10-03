@@ -1,0 +1,714 @@
+{
+ "id": "arab",
+ "name": "Arab World",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What is the capital of Lebanon?",
+    "Beirut"
+   ],
+   [
+    "What is the tallest building in the world?",
+    "The Burj Khalifa (Dubai)"
+   ],
+   [
+    "Which Jordanian city is carved into rose-red rock?",
+    "Petra"
+   ],
+   [
+    "What is the capital of the UAE?",
+    "Abu Dhabi"
+   ],
+   [
+    "What is the capital of Iraq?",
+    "Baghdad"
+   ],
+   [
+    "Which Arab country has the largest population?",
+    "Egypt"
+   ],
+   [
+    "What is Saudi Arabia's currency?",
+    "The riyal"
+   ],
+   [
+    "Which Moroccan town is famous for its blue-painted streets?",
+    "Chefchaouen"
+   ],
+   [
+    "In which city is the Kaaba?",
+    "Mecca"
+   ],
+   [
+    "What is the capital of Tunisia?",
+    "Tunis"
+   ],
+   [
+    "What is the capital of Jordan?",
+    "Amman"
+   ],
+   [
+    "What is the capital of Syria?",
+    "Damascus"
+   ],
+   [
+    "Which Levantine dish is a fried shell of bulgur stuffed with minced meat?",
+    "Kibbeh"
+   ],
+   [
+    "What is the capital of Qatar?",
+    "Doha"
+   ],
+   [
+    "Casablanca is in which country?",
+    "Morocco"
+   ],
+   [
+    "What is the capital of Algeria?",
+    "Algiers"
+   ],
+   [
+    "Al-Aqsa Mosque is in which city?",
+    "Jerusalem"
+   ],
+   [
+    "What is the capital of Kuwait?",
+    "Kuwait City"
+   ],
+   [
+    "Riyadh is the capital of which country?",
+    "Saudi Arabia"
+   ],
+   [
+    "What is the UAE's currency?",
+    "The dirham"
+   ],
+   [
+    "Which three-towered landmark stands on the Kuwait City coast?",
+    "The Kuwait Towers"
+   ],
+   [
+    "Which Arab country has the largest proven oil reserves?",
+    "Saudi Arabia"
+   ],
+   [
+    "Manama is the capital of which country?",
+    "Bahrain"
+   ],
+   [
+    "How many emirates make up the UAE?",
+    "Seven"
+   ],
+   [
+    "What is the capital of Morocco?",
+    "Rabat"
+   ],
+   [
+    "What is the capital of Libya?",
+    "Tripoli"
+   ],
+   [
+    "What is the chickpea and tahini dip loved across the Levant?",
+    "Hummus"
+   ],
+   [
+    "Which Lebanese singer is famous for the morning songs played on Arab radio?",
+    "Fairuz"
+   ],
+   [
+    "What is the meat cooked on a turning spit and sliced into sandwiches across the Arab world?",
+    "Shawarma"
+   ],
+   [
+    "Which Lebanese salad is made mostly of parsley and bulgur?",
+    "Tabbouleh"
+   ],
+   [
+    "Which huge mall sits at the foot of the Burj Khalifa?",
+    "The Dubai Mall"
+   ],
+   [
+    "Which Lebanese singer sang 'Ah W Noss'?",
+    "Nancy Ajram"
+   ],
+   [
+    "What is Qatar's national airline?",
+    "Qatar Airways"
+   ],
+   [
+    "Which sea separates the Arabian Peninsula from Africa?",
+    "The Red Sea"
+   ]
+  ],
+  "200": [
+   [
+    "How many members does the Arab League have?",
+    "22"
+   ],
+   [
+    "Which country is famous for the frankincense of Dhofar?",
+    "Oman"
+   ],
+   [
+    "Which Arab country reached the World Cup semi-finals in 2022?",
+    "Morocco"
+   ],
+   [
+    "Which island country is linked to Saudi Arabia by the King Fahd Causeway?",
+    "Bahrain"
+   ],
+   [
+    "What is Dubai's palm-shaped artificial island called?",
+    "Palm Jumeirah"
+   ],
+   [
+    "Which city was called 'the Paris of the Middle East' in the 1960s?",
+    "Beirut"
+   ],
+   [
+    "Which ancient Syrian desert city was ruled by Queen Zenobia?",
+    "Palmyra"
+   ],
+   [
+    "Khartoum is the capital of which country?",
+    "Sudan"
+   ],
+   [
+    "Which city is Saudi Arabia's main Red Sea port?",
+    "Jeddah"
+   ],
+   [
+    "Which Lebanese-American writer wrote 'The Prophet'?",
+    "Khalil Gibran"
+   ],
+   [
+    "Which French football legend has Algerian parents?",
+    "Zinedine Zidane"
+   ],
+   [
+    "The ruins of ancient Carthage are in which country?",
+    "Tunisia"
+   ],
+   [
+    "Which airline is based in Dubai?",
+    "Emirates"
+   ],
+   [
+    "Which currency is the highest-valued currency unit in the world?",
+    "The Kuwaiti dinar"
+   ],
+   [
+    "Which Arab country has a cedar tree on its flag?",
+    "Lebanon"
+   ],
+   [
+    "Which city hosted Expo 2020 (held 2021–22)?",
+    "Dubai"
+   ],
+   [
+    "Which country is called 'the Land of a Million Martyrs'?",
+    "Algeria"
+   ],
+   [
+    "Who founded the UAE in 1971?",
+    "Sheikh Zayed bin Sultan Al Nahyan"
+   ],
+   [
+    "Which lamb and fermented-yoghurt dish is Jordan's national dish?",
+    "Mansaf"
+   ],
+   [
+    "Which Arab country's capital is Muscat?",
+    "Oman"
+   ],
+   [
+    "What is Jordan's currency?",
+    "The Jordanian dinar"
+   ],
+   [
+    "What is the long white robe worn by Gulf men called?",
+    "A thobe (kandura in the UAE)"
+   ],
+   [
+    "In which Saudi city is the Prophet's Mosque?",
+    "Medina"
+   ],
+   [
+    "Gnawa music comes from which country?",
+    "Morocco"
+   ],
+   [
+    "What is Morocco called in Arabic?",
+    "Al-Maghrib"
+   ],
+   [
+    "Which country won the 2025 FIFA Arab Cup, beating Jordan in the final?",
+    "Morocco"
+   ],
+   [
+    "Which Arab country played at its first ever World Cup in 2026?",
+    "Jordan"
+   ],
+   [
+    "Which Algerian singer is known as 'the King of Raï'?",
+    "Khaled (Cheb Khaled)"
+   ],
+   [
+    "Which Saudi club did Cristiano Ronaldo join in 2023?",
+    "Al Nassr"
+   ],
+   [
+    "Which sail-shaped Dubai hotel stands on its own island?",
+    "Burj Al Arab"
+   ],
+   [
+    "Which strait separates Morocco from Spain?",
+    "The Strait of Gibraltar"
+   ],
+   [
+    "Which very salty lake between Jordan and the West Bank is the lowest point on land?",
+    "The Dead Sea"
+   ],
+   [
+    "What is the hot chilli paste of Tunisia called?",
+    "Harissa"
+   ],
+   [
+    "What is the checked cotton headscarf worn across the Levant and the Gulf called?",
+    "Keffiyeh (shemagh / ghutra)"
+   ],
+   [
+    "What is Jordan's only seaport, on the Red Sea?",
+    "Aqaba"
+   ]
+  ],
+  "300": [
+   [
+    "What is Yemen's constitutional capital?",
+    "Sanaa"
+   ],
+   [
+    "What is the capital of Somalia?",
+    "Mogadishu"
+   ],
+   [
+    "Which Saudi mega-project includes a linear city called 'The Line'?",
+    "NEOM"
+   ],
+   [
+    "Jemaa el-Fnaa square is in which Moroccan city?",
+    "Marrakesh"
+   ],
+   [
+    "Zanzibar was once ruled by sultans from which Arab country?",
+    "Oman"
+   ],
+   [
+    "Which Iraqi-British architect was the first woman to win the Pritzker Prize?",
+    "Zaha Hadid"
+   ],
+   [
+    "The Ishtar Gate, now in Berlin, came from which ancient city?",
+    "Babylon"
+   ],
+   [
+    "Which Syrian singer is nicknamed 'Sultan El Tarab'?",
+    "George Wassouf"
+   ],
+   [
+    "In which country did the Arab Spring begin in December 2010?",
+    "Tunisia"
+   ],
+   [
+    "Which steamed semolina dish is the signature of Morocco and Algeria?",
+    "Couscous"
+   ],
+   [
+    "Which Jordanian desert valley stood in for Mars in 'The Martian'?",
+    "Wadi Rum"
+   ],
+   [
+    "Which news network was launched in Qatar in 1996?",
+    "Al Jazeera"
+   ],
+   [
+    "Which Saudi club did Karim Benzema join in 2023?",
+    "Al Ittihad"
+   ],
+   [
+    "Which Tunisian tennis player reached three Grand Slam finals?",
+    "Ons Jabeur"
+   ],
+   [
+    "Which Moroccan full-back was named African Footballer of the Year for 2025?",
+    "Achraf Hakimi"
+   ],
+   [
+    "Halawet el Jibn, a sweet cheese roll, is a speciality of which Syrian city?",
+    "Hama (also Homs)"
+   ],
+   [
+    "Which Moroccan city's name means 'the White House'?",
+    "Casablanca (Dar al-Bayda)"
+   ],
+   [
+    "The ancient port city of Byblos is in which country?",
+    "Lebanon"
+   ],
+   [
+    "The Yas Marina Formula 1 circuit is in which country?",
+    "The UAE (Abu Dhabi)"
+   ],
+   [
+    "Which river joins the Tigris to form the Shatt al-Arab?",
+    "The Euphrates"
+   ],
+   [
+    "Which Syrian city is famous for its huge citadel and ancient covered souq?",
+    "Aleppo"
+   ],
+   [
+    "What is Libya's second-largest city?",
+    "Benghazi"
+   ],
+   [
+    "Which Arab country won independence from France in 1962?",
+    "Algeria"
+   ],
+   [
+    "Which Moroccan city is called 'the Red City'?",
+    "Marrakesh"
+   ],
+   [
+    "What was the Nabataeans' capital?",
+    "Petra"
+   ],
+   [
+    "Which Saudi singer is nicknamed 'Fannan El Arab' (the Artist of the Arabs)?",
+    "Mohammed Abdu"
+   ],
+   [
+    "Which two European countries will co-host the 2030 World Cup with Morocco?",
+    "Spain and Portugal"
+   ],
+   [
+    "Which famous Paris museum opened a branch in Abu Dhabi in 2017?",
+    "The Louvre"
+   ],
+   [
+    "Which queen of Jordan was born in Kuwait to Palestinian parents?",
+    "Queen Rania"
+   ],
+   [
+    "What is the capital of Mauritania?",
+    "Nouakchott"
+   ],
+   [
+    "Which Sudanese city faces Khartoum across the Nile?",
+    "Omdurman"
+   ],
+   [
+    "Which Tunisian clifftop village is famous for its blue-and-white houses?",
+    "Sidi Bou Said"
+   ],
+   [
+    "In which Palestinian city is the Church of the Nativity?",
+    "Bethlehem"
+   ],
+   [
+    "Which Lebanese director's 'Capernaum' was nominated for an Oscar?",
+    "Nadine Labaki"
+   ],
+   [
+    "Which Algerian winger captained Algeria to the 2019 Africa Cup of Nations title?",
+    "Riyad Mahrez"
+   ]
+  ],
+  "400": [
+   [
+    "Which singer was called 'the Voice of Lebanon'?",
+    "Wadih El Safi"
+   ],
+   [
+    "Which island nation off East Africa is an Arab League member?",
+    "Comoros"
+   ],
+   [
+    "Which Palestinian poet wrote 'Identity Card' ('Record! I am an Arab')?",
+    "Mahmoud Darwish"
+   ],
+   [
+    "Which is the northernmost emirate of the UAE?",
+    "Ras Al Khaimah"
+   ],
+   [
+    "Which Arab country is often called the only one with no desert?",
+    "Lebanon"
+   ],
+   [
+    "Who was the first Arab in space, in 1985?",
+    "Prince Sultan bin Salman Al Saud"
+   ],
+   [
+    "Which Emirati became the first Arab to do a spacewalk, in 2023?",
+    "Sultan Al Neyadi"
+   ],
+   [
+    "Which Sudanese novelist wrote 'Season of Migration to the North'?",
+    "Tayeb Salih"
+   ],
+   [
+    "Al-Qarawiyyin, the oldest existing university, is in which city?",
+    "Fez"
+   ],
+   [
+    "What is the curved dagger on Oman's flag called?",
+    "A khanjar"
+   ],
+   [
+    "Which Lebanese site has the Roman temples of Bacchus and Jupiter?",
+    "Baalbek"
+   ],
+   [
+    "What is the highest mountain in the Arab world?",
+    "Jebel Toubkal (Morocco)"
+   ],
+   [
+    "Which king ruled Jordan from 1952 to 1999?",
+    "King Hussein"
+   ],
+   [
+    "Which Iraqi city, briefly the Abbasid capital, has a famous spiral minaret?",
+    "Samarra"
+   ],
+   [
+    "Which Tunisian island is home to the El Ghriba synagogue?",
+    "Djerba"
+   ],
+   [
+    "What is the Nabataean site in Saudi Arabia known as 'the sister of Petra'?",
+    "Hegra (Mada'in Salih)"
+   ],
+   [
+    "Which Palestinian-American scholar wrote 'Orientalism'?",
+    "Edward Said"
+   ],
+   [
+    "Which Hollywood actress has a Lebanese father?",
+    "Salma Hayek"
+   ],
+   [
+    "Who took power in Algeria in a 1965 coup?",
+    "Houari Boumediene"
+   ],
+   [
+    "Which Iraqi city holds the shrine of Imam Ali?",
+    "Najaf"
+   ],
+   [
+    "Which stadium hosted the 2022 World Cup final?",
+    "Lusail Stadium"
+   ],
+   [
+    "Which Beirut-born British singer released 'Grace Kelly'?",
+    "Mika"
+   ],
+   [
+    "Which Lebanese designer is famous for red-carpet gowns?",
+    "Elie Saab"
+   ],
+   [
+    "Which Jordanian Roman city is called 'the Pompeii of the East'?",
+    "Jerash"
+   ],
+   [
+    "Which Saudi city is nicknamed 'the Bride of the Red Sea'?",
+    "Jeddah"
+   ],
+   [
+    "In which Algerian city is Albert Camus's novel 'The Plague' set?",
+    "Oran"
+   ],
+   [
+    "Which town on Riyadh's edge was the first capital of the Saudi state?",
+    "Diriyah"
+   ],
+   [
+    "Which Lebanese singer and actress was nicknamed 'Al Shahroura'?",
+    "Sabah"
+   ],
+   [
+    "What are the wetlands of southern Iraq, home of the Marsh Arabs, called?",
+    "The Mesopotamian Marshes (Ahwar)"
+   ],
+   [
+    "Which Saudi desert region is home to Hegra and the mirrored Maraya concert hall?",
+    "AlUla"
+   ],
+   [
+    "Which emirate is known as the cultural capital of the UAE?",
+    "Sharjah"
+   ],
+   [
+    "Who became the first Saudi woman in space, in 2023?",
+    "Rayyanah Barnawi"
+   ],
+   [
+    "Who scored Morocco's winner against Portugal in the 2022 World Cup quarter-final?",
+    "Youssef En-Nesyri"
+   ],
+   [
+    "Which Tunisian president fled the country in January 2011?",
+    "Zine El Abidine Ben Ali"
+   ],
+   [
+    "Which Moroccan traveller wrote the 14th-century travel book known as the 'Rihla'?",
+    "Ibn Battuta"
+   ]
+  ],
+  "500": [
+   [
+    "Which ancient Yemeni dam was a wonder of Arabian engineering?",
+    "The Marib Dam"
+   ],
+   [
+    "Which Algerian city is called 'the City of Bridges'?",
+    "Constantine"
+   ],
+   [
+    "What is the capital of Comoros?",
+    "Moroni"
+   ],
+   [
+    "Which ancient Nubian kingdom had its capital at Meroë?",
+    "The Kingdom of Kush"
+   ],
+   [
+    "What is the real name of the Syrian poet known as Adonis?",
+    "Ali Ahmad Said Esber"
+   ],
+   [
+    "Which Yemeni town of mud-brick towers is called 'the Manhattan of the Desert'?",
+    "Shibam"
+   ],
+   [
+    "What was the 1916 uprising led by Sharif Hussein of Mecca?",
+    "The Great Arab Revolt"
+   ],
+   [
+    "Which Mauritanian desert town is famous for its ancient manuscript libraries?",
+    "Chinguetti"
+   ],
+   [
+    "The dragon's blood trees of Socotra belong to which country?",
+    "Yemen"
+   ],
+   [
+    "Which Lebanese-French author won the 1993 Prix Goncourt for 'The Rock of Tanios'?",
+    "Amin Maalouf"
+   ],
+   [
+    "What was the capital of the Umayyad state in Al-Andalus?",
+    "Córdoba"
+   ],
+   [
+    "The Great Ziggurat of Ur is near which modern Iraqi city?",
+    "Nasiriyah"
+   ],
+   [
+    "Which inland Omani city, famous for its fort, was an old capital?",
+    "Nizwa"
+   ],
+   [
+    "Which brothers composed most of Fairuz's songs?",
+    "The Rahbani Brothers (Assi and Mansour)"
+   ],
+   [
+    "Which ancient Phoenician city in Lebanon was famous for purple dye?",
+    "Tyre"
+   ],
+   [
+    "Which Iraqi singer is called 'the Caesar of Arabic Song'?",
+    "Kadim Al Sahir"
+   ],
+   [
+    "What is the capital of Djibouti?",
+    "Djibouti City"
+   ],
+   [
+    "Which sultan ruled Oman from 1970 to 2020?",
+    "Qaboos bin Said"
+   ],
+   [
+    "The Queen of Sheba is linked to which ancient kingdom in Yemen?",
+    "Saba (Sheba)"
+   ],
+   [
+    "Which dynasty built Marrakesh's Koutoubia Mosque?",
+    "The Almohads"
+   ],
+   [
+    "Which Palestinian city is often called the oldest continuously inhabited city?",
+    "Jericho"
+   ],
+   [
+    "Which Yemeni port was a British colony until 1967?",
+    "Aden"
+   ],
+   [
+    "Which dynasty rules Morocco today?",
+    "The Alaouite dynasty"
+   ],
+   [
+    "Who founded modern Saudi Arabia in 1932?",
+    "King Abdulaziz Ibn Saud"
+   ],
+   [
+    "Who became the first Emirati in space, on the ISS in 2019?",
+    "Hazza Al Mansouri"
+   ],
+   [
+    "What is Libya's traditional dish of a barley-dough dome served in a tomato stew?",
+    "Bazeen"
+   ],
+   [
+    "Which mountain range runs across northern Oman and the eastern UAE?",
+    "The Hajar Mountains"
+   ],
+   [
+    "What was Amman called in Greek and Roman times?",
+    "Philadelphia"
+   ],
+   [
+    "Which lost Omani desert city is linked to the legendary 'Iram of the Pillars'?",
+    "Ubar"
+   ],
+   [
+    "Which northern Lebanese valley is famous for its cliffside monasteries and is a UNESCO site?",
+    "The Qadisha Valley"
+   ],
+   [
+    "Who was independent Algeria's first president?",
+    "Ahmed Ben Bella"
+   ],
+   [
+    "Which Syrian poet wrote the lyrics of Abdel Halim's 'Qariat El Fengan'?",
+    "Nizar Qabbani"
+   ],
+   [
+    "Which Tunis-born scholar wrote the 'Muqaddimah'?",
+    "Ibn Khaldun"
+   ],
+   [
+    "Which Iraqi city stands across the Tigris from the ruins of Nineveh?",
+    "Mosul"
+   ],
+   [
+    "Which great Roman ruined city lies on the Libyan coast near Al-Khums?",
+    "Leptis Magna"
+   ]
+  ]
+ }
+}

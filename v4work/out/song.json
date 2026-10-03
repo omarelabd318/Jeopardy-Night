@@ -1,0 +1,502 @@
+{
+ "id": "song",
+ "name": "Guess the Song",
+ "type": "text",
+ "desc": "The host reads a line from a song. Name the song and the singer. About half are Arabic, mostly Egyptian. Half points for only the song or only the singer.",
+ "data": {
+  "100": [
+   [
+    "Name the song and the singer: “Is this the real life? Is this just fantasy?”",
+    "Bohemian Rhapsody (Queen)"
+   ],
+   [
+    "Name the song and the singer: “I must've called a thousand times”",
+    "Hello (Adele)"
+   ],
+   [
+    "Name the song and the singer: “The club isn't the best place to find a lover”",
+    "Shape of You (Ed Sheeran)"
+   ],
+   [
+    "Name the song and the singer: “I've been tryna call, I've been on my own for long enough”",
+    "Blinding Lights (The Weeknd)"
+   ],
+   [
+    "Name the song and the singer: “Just a small town girl, livin' in a lonely world”",
+    "Don't Stop Believin' (Journey)"
+   ],
+   [
+    "Name the song and the singer: “Clap along if you feel like a room without a roof”",
+    "Happy (Pharrell Williams)"
+   ],
+   [
+    "Name the song and the singer: “Annie, are you OK?”",
+    "Smooth Criminal (Michael Jackson)"
+   ],
+   [
+    "Name the song and the singer: “Buddy, you're a boy, make a big noise”",
+    "We Will Rock You (Queen)"
+   ],
+   [
+    "Name the song and the singer: “Is it too late now to say sorry?”",
+    "Sorry (Justin Bieber)"
+   ],
+   [
+    "Name the song and the singer: “Hey, I just met you, and this is crazy”",
+    "Call Me Maybe (Carly Rae Jepsen)"
+   ],
+   [
+    "Name the song and the singer: “Don't worry about a thing, 'cause every little thing gonna be all right”",
+    "Three Little Birds (Bob Marley)"
+   ],
+   [
+    "Name the song and the singer: “She was more like a beauty queen from a movie scene”",
+    "Billie Jean (Michael Jackson)"
+   ],
+   [
+    "Name the song and the singer: “تملي معاك ولو حتى بعيد عني”",
+    "Tamally Maak (تملي معاك), Amr Diab"
+   ],
+   [
+    "Name the song and the singer: “حبيبي يا نور العين يا ساكن خيالي”",
+    "Habibi Ya Nour El Ein (نور العين), Amr Diab"
+   ],
+   [
+    "Name the song and the singer: “ليلي نهاري تعالى حبيبي لا ملامة”",
+    "Leily Nahary (ليلي نهاري), Amr Diab"
+   ],
+   [
+    "Name the song and the singer: “أهواك وأتمنى لو أنساك”",
+    "Ahwak (أهواك), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “جانا الهوى جانا ورمانا الهوى رمانا”",
+    "Gana El Hawa (جانا الهوى), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “لاحسن هبعد، أبعد آه ونص”",
+    "Ah W Noss (آه ونص), Nancy Ajram"
+   ],
+   [
+    "Name the song and the singer: “يا اطبطب وادلع”",
+    "Ya Tabtab (يا طبطب), Nancy Ajram"
+   ],
+   [
+    "Name the song and the singer: “رجب حوش صاحبك عني”",
+    "Ragab (رجب), Haifa Wehbe"
+   ],
+   [
+    "Name the song and the singer: “بهوايا انتي قاعدة معايا”",
+    "Bent El Geran (بنت الجيران), Hassan Shakosh & Omar Kamal"
+   ],
+   [
+    "Name the song and the singer: “علّي صوتك بالغنا لسه الأغاني ممكنة”",
+    "Ally Sotak (علّي صوتك), Mohamed Mounir"
+   ],
+   [
+    "Name the song and the singer: “انت معلم واحنا منك نتعلم”",
+    "LM3ALLEM (لمعلم), Saad Lamjarred"
+   ],
+   [
+    "Name the song and the singer: “مشاعر تشاور تودع مسافر”",
+    "Mashaer (مشاعر), Sherine"
+   ]
+  ],
+  "200": [
+   [
+    "Name the song and the singer: “Load up on guns, bring your friends”",
+    "Smells Like Teen Spirit (Nirvana)"
+   ],
+   [
+    "Name the song and the singer: “Hello, is it me you're looking for?”",
+    "Hello (Lionel Richie)"
+   ],
+   [
+    "Name the song and the singer: “Today is gonna be the day that they're gonna throw it back to you”",
+    "Wonderwall (Oasis)"
+   ],
+   [
+    "Name the song and the singer: “I got my driver's license last week”",
+    "drivers license (Olivia Rodrigo)"
+   ],
+   [
+    "Name the song and the singer: “We're no strangers to love”",
+    "Never Gonna Give You Up (Rick Astley)"
+   ],
+   [
+    "Name the song and the singer: “This ain't a song for the broken-hearted”",
+    "It's My Life (Bon Jovi)"
+   ],
+   [
+    "Name the song and the singer: “Look at the stars, look how they shine for you”",
+    "Yellow (Coldplay)"
+   ],
+   [
+    "Name the song and the singer: “His palms are sweaty, knees weak, arms are heavy”",
+    "Lose Yourself (Eminem)"
+   ],
+   [
+    "Name the song and the singer: “White shirt now red, my bloody nose”",
+    "bad guy (Billie Eilish)"
+   ],
+   [
+    "Name the song and the singer: “'Cause the players gonna play, play, play”",
+    "Shake It Off (Taylor Swift)"
+   ],
+   [
+    "Name the song and the singer: “Rah rah ah-ah-ah, Roma Roma-ma”",
+    "Bad Romance (Lady Gaga)"
+   ],
+   [
+    "Name the song and the singer: “Sí, sabes que ya llevo un rato mirándote”",
+    "Despacito (Luis Fonsi ft. Daddy Yankee)"
+   ],
+   [
+    "Name the song and the singer: “رجعوني عينيك لأيامي اللي راحوا”",
+    "Enta Omri (انت عمري), Umm Kulthum"
+   ],
+   [
+    "Name the song and the singer: “ولا عادش رحمة، مولد وصاحبه غايب”",
+    "Zahma Ya Donya Zahma (زحمة يا دنيا زحمة), Ahmed Adaweya"
+   ],
+   [
+    "Name the song and the singer: “وانتي عمّالة تزيدي في حيرتي”",
+    "Ezzay (إزاي), Mohamed Mounir"
+   ],
+   [
+    "Name the song and the singer: “قوم نادي ع الصعيدي وابن اخوك البورسعيدي”",
+    "Boshret Kheir (بشرة خير), Hussain Al Jassmi"
+   ],
+   [
+    "Name the song and the singer: “والخطوة بيني وبين حبيبي براح”",
+    "Sawah (سواح), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “الواد عطشان اسقوه”",
+    "El Sah El Dah Embo (السح الدح امبو), Ahmed Adaweya"
+   ],
+   [
+    "Name the song and the singer: “يا حبيبي الليل وسماه ونجومه وقمره وسهره”",
+    "Alf Leila W Leila (ألف ليلة وليلة), Umm Kulthum"
+   ],
+   [
+    "Name the song and the singer: “جلست والخوف بعينيها تتأمل فنجاني المقلوب”",
+    "Qariat El Fengan (قارئة الفنجان), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “وركبت أول موجة في سكة الأموال”",
+    "Ah Law Le'bt Ya Zahr (آه لو لعبت يا زهر), Ahmed Sheba"
+   ],
+   [
+    "Name the song and the singer: “الفرح فيه سطرين والباقي كله عذاب”",
+    "Ketab Hayati (كتاب حياتي), Hassan El Asmar"
+   ],
+   [
+    "Name the song and the singer: “لا دي ملامحي ولا شكلي ولا ده أنا”",
+    "Ana Mesh Arfany (أنا مش عارفني), Abdel Basset Hamouda"
+   ],
+   [
+    "Name the song and the singer: “وبسأل وقلبي بيحلم يوم يرتاح من جراحه”",
+    "Ana Ayesh (أنا عايش), Amr Diab"
+   ]
+  ],
+  "300": [
+   [
+    "Name the song and the singer: “Some of them want to use you”",
+    "Sweet Dreams (Are Made of This) (Eurythmics)"
+   ],
+   [
+    "Name the song and the singer: “Take a sad song and make it better”",
+    "Hey Jude (The Beatles)"
+   ],
+   [
+    "Name the song and the singer: “Living easy, living free, season ticket on a one-way ride”",
+    "Highway to Hell (AC/DC)"
+   ],
+   [
+    "Name the song and the singer: “We don't need no education”",
+    "Another Brick in the Wall (Pink Floyd)"
+   ],
+   [
+    "Name the song and the singer: “There's a lady who's sure all that glitters is gold”",
+    "Stairway to Heaven (Led Zeppelin)"
+   ],
+   [
+    "Name the song and the singer: “In the town where I was born lived a man who sailed to sea”",
+    "Yellow Submarine (The Beatles)"
+   ],
+   [
+    "Name the song and the singer: “Yeah, I'm gonna ride 'til I can't no more”",
+    "Old Town Road (Lil Nas X)"
+   ],
+   [
+    "Name the song and the singer: “Ground Control to Major Tom”",
+    "Space Oddity (David Bowie)"
+   ],
+   [
+    "Name the song and the singer: “I'm gonna pop some tags, only got twenty dollars in my pocket”",
+    "Thrift Shop (Macklemore & Ryan Lewis)"
+   ],
+   [
+    "Name the song and the singer: “We were both young when I first saw you”",
+    "Love Story (Taylor Swift)"
+   ],
+   [
+    "Name the song and the singer: “You used to call me on my cell phone”",
+    "Hotline Bling (Drake)"
+   ],
+   [
+    "Name the song and the singer: “I'm off the deep end, watch as I dive in”",
+    "Shallow (Lady Gaga & Bradley Cooper)"
+   ],
+   [
+    "Name the song and the singer: “يا أحلى نوبات جنوني”",
+    "Zidini Ishqan (زيديني عشقاً), Kadim Al Sahir"
+   ],
+   [
+    "Name the song and the singer: “أنا والله كنت مفكرتك برات البلاد”",
+    "Kifak Inta (كيفك إنت), Fairuz"
+   ],
+   [
+    "Name the song and the singer: “يأخدني من تحت ذراعي يزرعني في إحدى الغيمات”",
+    "Kalimat (كلمات), Majida El Roumi"
+   ],
+   [
+    "Name the song and the singer: “ماتت بمحراب عينيك ابتهالاتي”",
+    "Ana Wa Laila (أنا وليلى), Kadim Al Sahir"
+   ],
+   [
+    "Name the song and the singer: “وأنا محتاج منذ عصور لامرأة تجعلني أحزن”",
+    "Madrasat El Hob (مدرسة الحب), Kadim Al Sahir"
+   ],
+   [
+    "Name the song and the singer: “نزلت وقلت أنا مش راجع وكتبت بدمي في كل شارع”",
+    "Sout El Horeya (صوت الحرية), Cairokee ft. Hany Adel"
+   ],
+   [
+    "Name the song and the singer: “من نظرة خدني في لحظة”",
+    "Habibi Dah (Nari Narein) (حبيبي ده (ناري نارين)), Hisham Abbas"
+   ],
+   [
+    "Name the song and the singer: “قلبي بيسألني عليك أتاريني بفكر فيك”",
+    "Amarain (قمرين), Amr Diab"
+   ],
+   [
+    "Name the song and the singer: “ولو غلبتنا دموع عنينا نندهله بيجيلنا أوام”",
+    "El Hob El Haqiqi (الحب الحقيقي), Mohamed Fouad"
+   ],
+   [
+    "Name the song and the singer: “الرمش سلم سلام جرحني”",
+    "Sahrany (سحراني), Ehab Tawfik"
+   ],
+   [
+    "Name the song and the singer: “سيبيني براحتي أوصفها، مكسوفة ليه”",
+    "Wahashtini (وحشتيني), Amr Diab"
+   ],
+   [
+    "Name the song and the singer: “بتعلم الحبايب ينسوا كلمة فراق”",
+    "Allem Albi (علم قلبي), Amr Diab"
+   ]
+  ],
+  "400": [
+   [
+    "Name the song and the singer: “Her name was Lola, she was a showgirl”",
+    "Copacabana (Barry Manilow)"
+   ],
+   [
+    "Name the song and the singer: “Feeling my way through the darkness”",
+    "Wake Me Up (Avicii)"
+   ],
+   [
+    "Name the song and the singer: “Somebody once told me the world is gonna roll me”",
+    "All Star (Smash Mouth)"
+   ],
+   [
+    "Name the song and the singer: “There lived a certain man in Russia long ago”",
+    "Rasputin (Boney M.)"
+   ],
+   [
+    "Name the song and the singer: “Sometimes I feel I've got to run away”",
+    "Tainted Love (Soft Cell)"
+   ],
+   [
+    "Name the song and the singer: “Travelling in a fried-out Kombi”",
+    "Down Under (Men at Work)"
+   ],
+   [
+    "Name the song and the singer: “This hit, that ice cold, Michelle Pfeiffer, that white gold”",
+    "Uptown Funk (Mark Ronson ft. Bruno Mars)"
+   ],
+   [
+    "Name the song and the singer: “You're just too good to be true”",
+    "Can't Take My Eyes Off You (Frankie Valli)"
+   ],
+   [
+    "Name the song and the singer: “Wise men say only fools rush in”",
+    "Can't Help Falling in Love (Elvis Presley)"
+   ],
+   [
+    "Name the song and the singer: “Do you remember the 21st night of September?”",
+    "September (Earth, Wind & Fire)"
+   ],
+   [
+    "Name the song and the singer: “In West Philadelphia born and raised”",
+    "The Fresh Prince of Bel-Air theme (Will Smith (DJ Jazzy Jeff & the Fresh Prince))"
+   ],
+   [
+    "Name the song and the singer: “When the night has come and the land is dark”",
+    "Stand by Me (Ben E. King)"
+   ],
+   [
+    "Name the song and the singer: “ما شافش الأمل في عيون الولاد وصبايا البلد”",
+    "Ya Habibti Ya Masr (يا حبيبتي يا مصر), Shadia"
+   ],
+   [
+    "Name the song and the singer: “فزعانة يا قلبي أكبر بهالغربة وما تعرفني بلادي”",
+    "Nassam Alayna El Hawa (نسم علينا الهوا), Fairuz"
+   ],
+   [
+    "Name the song and the singer: “يا أم طرحة وجلابية، الزمن شاب وانتي شابة”",
+    "Masr Yamma Ya Bahiya (مصر يامّا يا بهية), Sheikh Imam"
+   ],
+   [
+    "Name the song and the singer: “ضحكت لنا أنا وهو”",
+    "Fatet Ganbena (فاتت جنبنا), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “منين بيجي الشجن من اختلاف الزمن”",
+    "Layali El Helmeya (ليالي الحلمية), Mohamed El Helw (theme of Layali El Helmeya)"
+   ],
+   [
+    "Name the song and the singer: “لفيت بلاد ومشيت بلاد”",
+    "Mayyal (ميال), Amr Diab"
+   ],
+   [
+    "Name the song and the singer: “وخيالك بيكون ويايا”",
+    "Batwanes Beek (بتونس بيك), Warda"
+   ],
+   [
+    "Name the song and the singer: “لا الشمس تطلع، لا القلب يعشق”",
+    "Lolaki (لولاكي), Ali Hemeida"
+   ],
+   [
+    "Name the song and the singer: “يا حنينة وكلك طيبة يا رب يخليكي يا أمي”",
+    "Set El Habayeb (ست الحبايب), Fayza Ahmed"
+   ],
+   [
+    "Name the song and the singer: “رميت الورد طفيت الشمع”",
+    "Zay El Hawa (زي الهوا), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “تحت الرمش عذاب وحنين وعذاب وعيون ما تنام”",
+    "Ah Ya Asmarani El Loon (آه يا أسمراني اللون), Shadia"
+   ],
+   [
+    "Name the song and the singer: “اليوم عاد كأن شيئا لم يكن”",
+    "Ayazon (أيظن), Najat"
+   ],
+   [
+    "Name the song and the singer: “وعلشان أنول كل الرضا يوماتي أروحلو مرتين”",
+    "Saken Fi Hay El Sayeda (ساكن في حي السيدة), Mohamed Abdel Mottaleb"
+   ]
+  ],
+  "500": [
+   [
+    "Name the song and the singer: “I'm a cowboy, on a steel horse I ride”",
+    "Wanted Dead or Alive (Bon Jovi)"
+   ],
+   [
+    "Name the song and the singer: “Vrei să pleci dar nu mă, nu mă iei”",
+    "Dragostea Din Tei (O-Zone)"
+   ],
+   [
+    "Name the song and the singer: “Nossa, nossa, assim você me mata”",
+    "Ai Se Eu Te Pego (Michel Teló)"
+   ],
+   [
+    "Name the song and the singer: “Ma-ma-se, ma-ma-sa, ma-ma-ko-ssa”",
+    "Wanna Be Startin' Somethin' (Michael Jackson)"
+   ],
+   [
+    "Name the song and the singer: “Sunday morning, rain is falling”",
+    "Sunday Morning (Maroon 5)"
+   ],
+   [
+    "Name the song and the singer: “She's up all night 'til the sun”",
+    "Get Lucky (Daft Punk ft. Pharrell Williams)"
+   ],
+   [
+    "Name the song and the singer: “Jessie is a friend, yeah, I know he's been a good friend of mine”",
+    "Jessie's Girl (Rick Springfield)"
+   ],
+   [
+    "Name the song and the singer: “Sha la la la la la, my oh my, looks like the boy's too shy”",
+    "Kiss the Girl (The Little Mermaid (Samuel E. Wright))"
+   ],
+   [
+    "Name the song and the singer: “And I think it's gonna be a long, long time”",
+    "Rocket Man (Elton John)"
+   ],
+   [
+    "Name the song and the singer: “I get knocked down, but I get up again”",
+    "Tubthumping (Chumbawamba)"
+   ],
+   [
+    "Name the song and the singer: “Yo listen up, here's a story about a little guy that lives in a blue world”",
+    "Blue (Da Ba Dee) (Eiffel 65)"
+   ],
+   [
+    "Name the song and the singer: “Dale a tu cuerpo alegría”",
+    "Macarena (Los del Río)"
+   ],
+   [
+    "Name the song and the singer: “كان صرحا من خيال فهوى”",
+    "Al Atlal (الأطلال), Umm Kulthum"
+   ],
+   [
+    "Name the song and the singer: “أنا عملت إيه فيكم تشاكوني وأشاكيكم”",
+    "Zuruni Kul Sana Marra (زوروني كل سنة مرة), Sayed Darwish (also accept Fairuz)"
+   ],
+   [
+    "Name the song and the singer: “مالكش حق تلوم عليا”",
+    "Ahu Da Elli Sar (أهو ده اللي صار), Sayed Darwish (also accept Fairuz)"
+   ],
+   [
+    "Name the song and the singer: “صفر يا وابور واربط عندك نزلني في البلد دي”",
+    "Salma Ya Salama (سالمة يا سلامة), Sayed Darwish"
+   ],
+   [
+    "Name the song and the singer: “والديك بيدن كوكو كوكو في الفجرية”",
+    "El Helwa Di (الحلوة دي), Sayed Darwish (also accept Fairuz)"
+   ],
+   [
+    "Name the song and the singer: “ودعني من غير ما تسلم”",
+    "Ya Msafer Wahdak (يا مسافر وحدك), Mohamed Abdel Wahab"
+   ],
+   [
+    "Name the song and the singer: “ولا رايحين فين ولا عايزين ايه”",
+    "Min Gher Leih (من غير ليه), Mohamed Abdel Wahab"
+   ],
+   [
+    "Name the song and the singer: “قال لي حتحبي، دايما يحكيلي وبصدق”",
+    "Ana Albi Dalili (أنا قلبي دليلي), Laila Murad"
+   ],
+   [
+    "Name the song and the singer: “وصفولي الصبر لقيته خيال”",
+    "Daret El Ayam (دارت الأيام), Umm Kulthum"
+   ],
+   [
+    "Name the song and the singer: “وفين حبيبي اللي رماني من جنة الحب لناره”",
+    "El Rabie (الربيع), Farid al-Atrash"
+   ],
+   [
+    "Name the song and the singer: “ضيعت عليه العمر يا بوي”",
+    "Ala Hesb Wedad (على حسب وداد قلبي), Abdel Halim Hafez"
+   ],
+   [
+    "Name the song and the singer: “تفيد بإيه يا ندم وتعمل إيه يا عتاب”",
+    "Fat El Mead (فات الميعاد), Umm Kulthum"
+   ]
+  ]
+ }
+}

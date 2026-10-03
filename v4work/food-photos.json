@@ -1,0 +1,482 @@
+[
+ {
+  "key": "food-bigmac",
+  "value": 100,
+  "name": "Big Mac",
+  "wiki": "Big Mac"
+ },
+ {
+  "key": "food-koshari",
+  "value": 100,
+  "name": "Koshari",
+  "wiki": "Koshary"
+ },
+ {
+  "key": "food-sushi",
+  "value": 100,
+  "name": "Sushi",
+  "wiki": "Sushi"
+ },
+ {
+  "key": "food-croissant",
+  "value": 100,
+  "name": "Croissant",
+  "wiki": "Croissant"
+ },
+ {
+  "key": "food-shawarma",
+  "value": 100,
+  "name": "Shawarma",
+  "wiki": "Shawarma"
+ },
+ {
+  "key": "food-falafel",
+  "value": 100,
+  "name": "Falafel (ta’meya)",
+  "wiki": "Falafel"
+ },
+ {
+  "key": "food-pineapple",
+  "value": 100,
+  "name": "Pineapple",
+  "wiki": "Pineapple"
+ },
+ {
+  "key": "food-avocado",
+  "value": 100,
+  "name": "Avocado",
+  "wiki": "Avocado"
+ },
+ {
+  "key": "food-broccoli",
+  "value": 100,
+  "name": "Broccoli",
+  "wiki": "Broccoli"
+ },
+ {
+  "key": "food-watermelon",
+  "value": 100,
+  "name": "Watermelon",
+  "wiki": "Watermelon"
+ },
+ {
+  "key": "food-doughnut",
+  "value": 100,
+  "name": "Doughnut",
+  "wiki": "Doughnut"
+ },
+ {
+  "key": "food-pancake",
+  "value": 100,
+  "name": "Pancakes",
+  "wiki": "Pancake"
+ },
+ {
+  "key": "food-hotdog",
+  "value": 100,
+  "name": "Hot dog",
+  "wiki": "Hot dog"
+ },
+ {
+  "key": "food-taco",
+  "value": 100,
+  "name": "Taco",
+  "wiki": "Taco"
+ },
+ {
+  "key": "food-lasagne",
+  "value": 100,
+  "name": "Lasagne",
+  "wiki": "Lasagne"
+ },
+ {
+  "key": "food-popcorn",
+  "value": 100,
+  "name": "Popcorn",
+  "wiki": "Popcorn"
+ },
+ {
+  "key": "food-ful",
+  "value": 200,
+  "name": "Ful medames",
+  "wiki": "Ful medames"
+ },
+ {
+  "key": "food-molokhia",
+  "value": 200,
+  "name": "Molokhia",
+  "wiki": "Mulukhiyah"
+ },
+ {
+  "key": "food-kunafa",
+  "value": 200,
+  "name": "Kunafa",
+  "wiki": "Knafeh"
+ },
+ {
+  "key": "food-baklava",
+  "value": 200,
+  "name": "Baklava",
+  "wiki": "Baklava"
+ },
+ {
+  "key": "food-fatta",
+  "value": 200,
+  "name": "Fatta",
+  "wiki": "Fatteh"
+ },
+ {
+  "key": "food-mahshi",
+  "value": 200,
+  "name": "Mahshi (stuffed vegetables)",
+  "wiki": "Mahshi"
+ },
+ {
+  "key": "food-paella",
+  "value": 200,
+  "name": "Paella",
+  "wiki": "Paella"
+ },
+ {
+  "key": "food-ramen",
+  "value": 200,
+  "name": "Ramen",
+  "wiki": "Ramen"
+ },
+ {
+  "key": "food-hummus",
+  "value": 200,
+  "name": "Hummus",
+  "wiki": "Hummus"
+ },
+ {
+  "key": "food-cauliflower",
+  "value": 200,
+  "name": "Cauliflower",
+  "wiki": "Cauliflower"
+ },
+ {
+  "key": "food-eggplant",
+  "value": 200,
+  "name": "Aubergine (eggplant)",
+  "wiki": "Eggplant"
+ },
+ {
+  "key": "food-kiwi",
+  "value": 200,
+  "name": "Kiwi",
+  "wiki": "Kiwifruit"
+ },
+ {
+  "key": "food-pomegranate",
+  "value": 200,
+  "name": "Pomegranate",
+  "wiki": "Pomegranate"
+ },
+ {
+  "key": "food-asparagus",
+  "value": 200,
+  "name": "Asparagus",
+  "wiki": "Asparagus"
+ },
+ {
+  "key": "food-tiramisu",
+  "value": 200,
+  "name": "Tiramisu",
+  "wiki": "Tiramisu"
+ },
+ {
+  "key": "food-churros",
+  "value": 200,
+  "name": "Churros",
+  "wiki": "Churro"
+ },
+ {
+  "key": "food-basbousa",
+  "value": 300,
+  "name": "Basbousa",
+  "wiki": "Basbousa"
+ },
+ {
+  "key": "food-omali",
+  "value": 300,
+  "name": "Om Ali",
+  "wiki": "Umm Ali"
+ },
+ {
+  "key": "food-feteer",
+  "value": 300,
+  "name": "Feteer meshaltet",
+  "wiki": "Feteer meshaltet"
+ },
+ {
+  "key": "food-hawawshi",
+  "value": 300,
+  "name": "Hawawshi",
+  "wiki": "Hawawshi"
+ },
+ {
+  "key": "food-pho",
+  "value": 300,
+  "name": "Pho",
+  "wiki": "Pho"
+ },
+ {
+  "key": "food-bibimbap",
+  "value": 300,
+  "name": "Bibimbap",
+  "wiki": "Bibimbap"
+ },
+ {
+  "key": "food-padthai",
+  "value": 300,
+  "name": "Pad thai",
+  "wiki": "Pad thai"
+ },
+ {
+  "key": "food-okra",
+  "value": 300,
+  "name": "Okra (bamya)",
+  "wiki": "Okra"
+ },
+ {
+  "key": "food-artichoke",
+  "value": 300,
+  "name": "Artichoke",
+  "wiki": "Artichoke"
+ },
+ {
+  "key": "food-dragonfruit",
+  "value": 300,
+  "name": "Dragon fruit",
+  "wiki": "Pitaya"
+ },
+ {
+  "key": "food-leek",
+  "value": 300,
+  "name": "Leek",
+  "wiki": "Leek"
+ },
+ {
+  "key": "food-macaron",
+  "value": 300,
+  "name": "Macarons",
+  "wiki": "Macaron"
+ },
+ {
+  "key": "food-cremebrulee",
+  "value": 300,
+  "name": "Crème brûlée",
+  "wiki": "Crème brûlée"
+ },
+ {
+  "key": "food-eggsbenedict",
+  "value": 300,
+  "name": "Eggs Benedict",
+  "wiki": "Eggs Benedict"
+ },
+ {
+  "key": "food-pricklypear",
+  "value": 300,
+  "name": "Prickly pear (teen shoky)",
+  "wiki": "Opuntia ficus-indica"
+ },
+ {
+  "key": "food-goulash",
+  "value": 300,
+  "name": "Goulash",
+  "wiki": "Goulash"
+ },
+ {
+  "key": "food-kohlrabi",
+  "value": 400,
+  "name": "Kohlrabi",
+  "wiki": "Kohlrabi"
+ },
+ {
+  "key": "food-fennel",
+  "value": 400,
+  "name": "Fennel",
+  "wiki": "Fennel"
+ },
+ {
+  "key": "food-lychee",
+  "value": 400,
+  "name": "Lychee",
+  "wiki": "Lychee"
+ },
+ {
+  "key": "food-durian",
+  "value": 400,
+  "name": "Durian",
+  "wiki": "Durian"
+ },
+ {
+  "key": "food-jackfruit",
+  "value": 400,
+  "name": "Jackfruit",
+  "wiki": "Jackfruit"
+ },
+ {
+  "key": "food-starfruit",
+  "value": 400,
+  "name": "Star fruit (carambola)",
+  "wiki": "Carambola"
+ },
+ {
+  "key": "food-bokchoy",
+  "value": 400,
+  "name": "Bok choy",
+  "wiki": "Bok choy"
+ },
+ {
+  "key": "food-rambutan",
+  "value": 400,
+  "name": "Rambutan",
+  "wiki": "Rambutan"
+ },
+ {
+  "key": "food-shakshuka",
+  "value": 400,
+  "name": "Shakshuka",
+  "wiki": "Shakshouka"
+ },
+ {
+  "key": "food-poutine",
+  "value": 400,
+  "name": "Poutine",
+  "wiki": "Poutine"
+ },
+ {
+  "key": "food-fesikh",
+  "value": 400,
+  "name": "Fesikh",
+  "wiki": "Fesikh"
+ },
+ {
+  "key": "food-ceviche",
+  "value": 400,
+  "name": "Ceviche",
+  "wiki": "Ceviche"
+ },
+ {
+  "key": "food-mesaqaa",
+  "value": 400,
+  "name": "Mesaqa’a (Egyptian moussaka)",
+  "wiki": "Moussaka"
+ },
+ {
+  "key": "food-pasteldenata",
+  "value": 400,
+  "name": "Pastel de nata",
+  "wiki": "Pastel de nata"
+ },
+ {
+  "key": "food-gnocchi",
+  "value": 400,
+  "name": "Gnocchi",
+  "wiki": "Gnocchi"
+ },
+ {
+  "key": "food-okonomiyaki",
+  "value": 400,
+  "name": "Okonomiyaki",
+  "wiki": "Okonomiyaki"
+ },
+ {
+  "key": "food-romanesco",
+  "value": 500,
+  "name": "Romanesco broccoli",
+  "wiki": "Romanesco broccoli"
+ },
+ {
+  "key": "food-celeriac",
+  "value": 500,
+  "name": "Celeriac",
+  "wiki": "Celeriac"
+ },
+ {
+  "key": "food-kumquat",
+  "value": 500,
+  "name": "Kumquat",
+  "wiki": "Kumquat"
+ },
+ {
+  "key": "food-mangosteen",
+  "value": 500,
+  "name": "Mangosteen",
+  "wiki": "Purple mangosteen"
+ },
+ {
+  "key": "food-cherimoya",
+  "value": 500,
+  "name": "Cherimoya (custard apple)",
+  "wiki": "Cherimoya"
+ },
+ {
+  "key": "food-physalis",
+  "value": 500,
+  "name": "Physalis (Cape gooseberry)",
+  "wiki": "Physalis peruviana"
+ },
+ {
+  "key": "food-persimmon",
+  "value": 500,
+  "name": "Persimmon (kaka)",
+  "wiki": "Persimmon"
+ },
+ {
+  "key": "food-jerusalemartichoke",
+  "value": 500,
+  "name": "Jerusalem artichoke",
+  "wiki": "Jerusalem artichoke"
+ },
+ {
+  "key": "food-taro",
+  "value": 500,
+  "name": "Taro (qolqas)",
+  "wiki": "Taro"
+ },
+ {
+  "key": "food-tamarillo",
+  "value": 500,
+  "name": "Tamarillo",
+  "wiki": "Tamarillo"
+ },
+ {
+  "key": "food-feijoa",
+  "value": 500,
+  "name": "Feijoa",
+  "wiki": "Feijoa"
+ },
+ {
+  "key": "food-kiwano",
+  "value": 500,
+  "name": "Kiwano (horned melon)",
+  "wiki": "Cucumis metuliferus"
+ },
+ {
+  "key": "food-bittermelon",
+  "value": 500,
+  "name": "Bitter melon",
+  "wiki": "Momordica charantia"
+ },
+ {
+  "key": "food-chayote",
+  "value": 500,
+  "name": "Chayote",
+  "wiki": "Chayote"
+ },
+ {
+  "key": "food-salsify",
+  "value": 500,
+  "name": "Salsify",
+  "wiki": "Salsify"
+ },
+ {
+  "key": "food-galangal",
+  "value": 500,
+  "name": "Galangal",
+  "wiki": "Galangal"
+ }
+]

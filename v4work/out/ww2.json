@@ -1,0 +1,518 @@
+{
+ "id": "ww2",
+ "name": "World War II",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "In which year did World War II begin?",
+    "1939"
+   ],
+   [
+    "Which country did Germany invade to start the war?",
+    "Poland"
+   ],
+   [
+    "Which US naval base did Japan attack in December 1941?",
+    "Pearl Harbor"
+   ],
+   [
+    "Who led the Soviet Union during the war?",
+    "Joseph Stalin"
+   ],
+   [
+    "Which two Japanese cities were hit by atomic bombs?",
+    "Hiroshima and Nagasaki"
+   ],
+   [
+    "Which US president led the country for most of the war?",
+    "Franklin D. Roosevelt"
+   ],
+   [
+    "What were the two sides called?",
+    "The Allies and the Axis"
+   ],
+   [
+    "Which country did Mussolini lead?",
+    "Italy"
+   ],
+   [
+    "What was the Nazi secret police called?",
+    "The Gestapo"
+   ],
+   [
+    "Which young girl's diary, written in hiding in Amsterdam, became famous?",
+    "Anne Frank's"
+   ],
+   [
+    "On D-Day the Allies landed in which region of France?",
+    "Normandy"
+   ],
+   [
+    "Which British leader said 'We shall fight on the beaches'?",
+    "Winston Churchill"
+   ],
+   [
+    "What was the German air force called?",
+    "The Luftwaffe"
+   ],
+   [
+    "What was the secret US project to build the atomic bomb called?",
+    "The Manhattan Project"
+   ],
+   [
+    "Which emperor ruled Japan during the war?",
+    "Hirohito"
+   ],
+   [
+    "In which year did World War II end?",
+    "1945"
+   ],
+   [
+    "What was the hooked-cross symbol of the Nazi party called?",
+    "The swastika"
+   ],
+   [
+    "What is the Nazi genocide of about six million Jews called?",
+    "The Holocaust"
+   ],
+   [
+    "Which capital city did the Soviets capture in 1945, where Hitler died?",
+    "Berlin"
+   ],
+   [
+    "What title did Hitler use, meaning 'leader'?",
+    "Führer"
+   ],
+   [
+    "Which French capital was occupied by Germany from 1940 to 1944?",
+    "Paris"
+   ],
+   [
+    "Which country was split into East and West after the war?",
+    "Germany"
+   ],
+   [
+    "Which 2023 Christopher Nolan film is about the 'father of the atomic bomb'?",
+    "Oppenheimer"
+   ],
+   [
+    "Which Steven Spielberg film follows soldiers searching for one paratrooper after D-Day?",
+    "Saving Private Ryan"
+   ],
+   [
+    "What symbol were Jews in Nazi-ruled Europe forced to wear on their clothes?",
+    "A yellow Star of David"
+   ]
+  ],
+  "200": [
+   [
+    "Which 1942 battle in Egypt turned the war in North Africa?",
+    "El Alamein"
+   ],
+   [
+    "Which German general was nicknamed 'the Desert Fox'?",
+    "Erwin Rommel"
+   ],
+   [
+    "Which British general took command of the Eighth Army in August 1942 and went on to beat Rommel?",
+    "Bernard Montgomery"
+   ],
+   [
+    "What was the 1940 evacuation of Allied troops from France called?",
+    "Dunkirk (Operation Dynamo)"
+   ],
+   [
+    "What was the 1940 air battle over England called?",
+    "The Battle of Britain"
+   ],
+   [
+    "Which Soviet city was besieged for about 872 days?",
+    "Leningrad"
+   ],
+   [
+    "Which battle on the Volga (1942–43) turned the Eastern Front?",
+    "Stalingrad"
+   ],
+   [
+    "Who was Supreme Allied Commander for D-Day?",
+    "Dwight D. Eisenhower"
+   ],
+   [
+    "What were Japan's suicide pilots called?",
+    "Kamikaze"
+   ],
+   [
+    "What was Germany's fast 'lightning war' tactic called?",
+    "Blitzkrieg"
+   ],
+   [
+    "What does V-E Day stand for?",
+    "Victory in Europe Day"
+   ],
+   [
+    "Which 1939 pact did Germany and the USSR sign?",
+    "The Molotov–Ribbentrop Pact"
+   ],
+   [
+    "On which island was the famous US flag-raising photo taken?",
+    "Iwo Jima"
+   ],
+   [
+    "Which country declared war on Germany on the same day as France, 3 September 1939?",
+    "The United Kingdom"
+   ],
+   [
+    "What famous British fighter plane is linked with the Battle of Britain?",
+    "The Spitfire"
+   ],
+   [
+    "On what date was D-Day?",
+    "6 June 1944"
+   ],
+   [
+    "Which US general promised the Philippines 'I shall return'?",
+    "Douglas MacArthur"
+   ],
+   [
+    "Who was Hitler's long-time partner, whom he married the day before they both died?",
+    "Eva Braun"
+   ],
+   [
+    "Complete the British wartime poster: 'Keep Calm and …'",
+    "Carry On"
+   ],
+   [
+    "Which Quentin Tarantino film imagines a plot to kill Hitler in a Paris cinema?",
+    "Inglourious Basterds"
+   ],
+   [
+    "Which organisation was founded in 1945 to keep world peace after the war?",
+    "The United Nations"
+   ],
+   [
+    "What was the policy of giving in to Hitler's demands, linked to Neville Chamberlain, called?",
+    "Appeasement"
+   ],
+   [
+    "In which German city were top Nazis put on trial after the war?",
+    "Nuremberg"
+   ],
+   [
+    "Which country suffered the most deaths in the war?",
+    "The Soviet Union"
+   ],
+   [
+    "Which country did Japan invade in full in 1937?",
+    "China"
+   ]
+  ],
+  "300": [
+   [
+    "What was the B-29 that dropped the Hiroshima bomb called?",
+    "Enola Gay"
+   ],
+   [
+    "What was the code name for Germany's 1941 invasion of the USSR?",
+    "Operation Barbarossa"
+   ],
+   [
+    "What machine did Germany use to encrypt messages?",
+    "Enigma"
+   ],
+   [
+    "Which British mathematician, played by Benedict Cumberbatch in The Imitation Game, helped break German codes?",
+    "Alan Turing"
+   ],
+   [
+    "Which 1942 naval battle turned the Pacific war?",
+    "Midway"
+   ],
+   [
+    "Which French marshal led the Vichy government?",
+    "Philippe Pétain"
+   ],
+   [
+    "Who led the Free French?",
+    "Charles de Gaulle"
+   ],
+   [
+    "Name one of the two D-Day beaches assigned to US troops.",
+    "Utah or Omaha"
+   ],
+   [
+    "Where did Churchill, Roosevelt and Stalin meet in February 1945?",
+    "Yalta"
+   ],
+   [
+    "Who was Hitler's propaganda minister?",
+    "Joseph Goebbels"
+   ],
+   [
+    "Which German battleship was sunk in May 1941?",
+    "The Bismarck"
+   ],
+   [
+    "What was the Soviets' famous main tank?",
+    "The T-34"
+   ],
+   [
+    "What was the long fight against German U-boats called?",
+    "The Battle of the Atlantic"
+   ],
+   [
+    "Which German field marshal surrendered at Stalingrad?",
+    "Friedrich Paulus"
+   ],
+   [
+    "Which British colony fell to Japan in February 1942 in Britain's largest surrender?",
+    "Singapore"
+   ],
+   [
+    "Where was the codebreaking centre in England?",
+    "Bletchley Park"
+   ],
+   [
+    "What did the Soviets call their war against Germany?",
+    "The Great Patriotic War"
+   ],
+   [
+    "Which July 1945 conference near Berlin was held after Germany's surrender?",
+    "The Potsdam Conference"
+   ],
+   [
+    "What was the 1943 revolt of Jews in Poland's capital called?",
+    "The Warsaw Ghetto Uprising"
+   ],
+   [
+    "What was the US plan to rebuild Western Europe after the war called?",
+    "The Marshall Plan"
+   ],
+   [
+    "Which 1945 battle for a Japanese island cost over 100,000 lives?",
+    "Okinawa"
+   ],
+   [
+    "Which German businessman saved over 1,000 Jews, as shown in a Spielberg film?",
+    "Oskar Schindler"
+   ],
+   [
+    "What were the German flying bombs launched at London in 1944 called?",
+    "V-1s (doodlebugs)"
+   ],
+   [
+    "Which Native American language did US Marine code talkers use?",
+    "Navajo"
+   ],
+   [
+    "Who was the head of the SS?",
+    "Heinrich Himmler"
+   ],
+   [
+    "What was France's line of forts along the German border called?",
+    "The Maginot Line"
+   ]
+  ],
+  "400": [
+   [
+    "Which Egyptian port was the main base of Britain's Mediterranean Fleet?",
+    "Alexandria"
+   ],
+   [
+    "Which US general was nicknamed 'Old Blood and Guts'?",
+    "George S. Patton"
+   ],
+   [
+    "What was the code name for the 1942 Allied landings in North Africa?",
+    "Operation Torch"
+   ],
+   [
+    "Where did Roosevelt, Churchill and Chiang Kai-shek meet in November 1943?",
+    "Cairo (the Cairo Conference)"
+   ],
+   [
+    "Which Japanese admiral planned the Pearl Harbor attack?",
+    "Isoroku Yamamoto"
+   ],
+   [
+    "What was the largest Nazi death camp?",
+    "Auschwitz-Birkenau"
+   ],
+   [
+    "What was the 1944 plot to kill Hitler called?",
+    "The July Plot (Operation Valkyrie)"
+   ],
+   [
+    "What was Germany's last big offensive in the West, in the Ardennes, called?",
+    "The Battle of the Bulge"
+   ],
+   [
+    "Which German city was devastated by Allied firebombing in February 1945?",
+    "Dresden"
+   ],
+   [
+    "Which Libyan port was famously besieged in 1941?",
+    "Tobruk"
+   ],
+   [
+    "Which top Nazi flew alone to Scotland in 1941?",
+    "Rudolf Hess"
+   ],
+   [
+    "Which British commander was replaced in North Africa in August 1942, with Montgomery taking over the Eighth Army?",
+    "Claude Auchinleck"
+   ],
+   [
+    "What were the 'Desert Rats'?",
+    "The British 7th Armoured Division"
+   ],
+   [
+    "What was the Nagasaki bomb nicknamed?",
+    "Fat Man"
+   ],
+   [
+    "What was the Hiroshima bomb nicknamed?",
+    "Little Boy"
+   ],
+   [
+    "Which 1942–43 Solomon Islands campaign was the first big Allied attack on Japan?",
+    "Guadalcanal"
+   ],
+   [
+    "What was the 1944 Allied airborne operation to seize bridges in the Netherlands, including Arnhem?",
+    "Operation Market Garden"
+   ],
+   [
+    "Which 1943 Soviet battle is often called the biggest tank battle in history?",
+    "The Battle of Kursk"
+   ],
+   [
+    "Which Holocaust organiser was captured by Israeli agents in Argentina in 1960?",
+    "Adolf Eichmann"
+   ],
+   [
+    "At which January 1942 meeting did Nazi officials plan the 'Final Solution'?",
+    "The Wannsee Conference"
+   ],
+   [
+    "In which New Mexico town was the Manhattan Project's main lab?",
+    "Los Alamos"
+   ],
+   [
+    "Which Japanese battleship, the largest ever built, was sunk in April 1945?",
+    "The Yamato"
+   ],
+   [
+    "Where did Churchill, Roosevelt and Stalin first meet together, in November 1943?",
+    "Tehran (the Tehran Conference)"
+   ],
+   [
+    "What was the 1942 forced march of US and Filipino prisoners in the Philippines called?",
+    "The Bataan Death March"
+   ],
+   [
+    "Who was Japan's prime minister at the time of Pearl Harbor, later hanged as a war criminal?",
+    "Hideki Tojo"
+   ]
+  ],
+  "500": [
+   [
+    "Which 1951 treaty formally ended the war with Japan?",
+    "The Treaty of San Francisco"
+   ],
+   [
+    "What was the code name for the plan to fool Germany about where D-Day would land?",
+    "Operation Fortitude (part of Operation Bodyguard)"
+   ],
+   [
+    "On which battleship did Japan sign its surrender?",
+    "USS Missouri"
+   ],
+   [
+    "Which German battleship was sunk in Norway in 1944 by RAF Lancasters?",
+    "The Tirpitz"
+   ],
+   [
+    "Which country's troops finally captured Monte Cassino in 1944?",
+    "Poland"
+   ],
+   [
+    "In which year did Italy surrender and switch to the Allied side?",
+    "1943"
+   ],
+   [
+    "What was the code name for the Allied invasion of Sicily?",
+    "Operation Husky"
+   ],
+   [
+    "What was Germany's planned invasion of Britain called?",
+    "Operation Sea Lion"
+   ],
+   [
+    "Which Soviet marshal captured Berlin?",
+    "Georgy Zhukov"
+   ],
+   [
+    "Who was King of Egypt during the war?",
+    "Farouk"
+   ],
+   [
+    "What is the 1942 event called when British tanks surrounded Abdeen Palace?",
+    "The 4 February Incident"
+   ],
+   [
+    "Which Japanese general, 'the Tiger of Malaya', took Singapore?",
+    "Tomoyuki Yamashita"
+   ],
+   [
+    "What was the Kindertransport?",
+    "The rescue of Jewish children to Britain"
+   ],
+   [
+    "In which French city did Germany first sign its unconditional surrender, on 7 May 1945?",
+    "Reims"
+   ],
+   [
+    "Which Wafd leader did Britain force King Farouk to appoint as prime minister in February 1942?",
+    "Mustafa el-Nahhas"
+   ],
+   [
+    "What was the British 1940–41 offensive that routed the Italian army in Egypt and Libya?",
+    "Operation Compass"
+   ],
+   [
+    "Which 1944 naval battle was nicknamed 'the Great Marianas Turkey Shoot'?",
+    "The Battle of the Philippine Sea"
+   ],
+   [
+    "What was the code name for the Allied landings in southern France in August 1944?",
+    "Operation Dragoon"
+   ],
+   [
+    "Which future Egyptian president was arrested in 1942 for his contacts with German spies?",
+    "Anwar Sadat"
+   ],
+   [
+    "What was the code name for Germany's 1941 airborne invasion of Crete?",
+    "Operation Mercury"
+   ],
+   [
+    "Who was Supreme Allied Commander in South East Asia from 1943?",
+    "Lord Louis Mountbatten"
+   ],
+   [
+    "What was the Soviet Union's 1939–40 war against Finland called?",
+    "The Winter War"
+   ],
+   [
+    "Which Norwegian collaborator's name became a word for 'traitor'?",
+    "Vidkun Quisling"
+   ],
+   [
+    "At which Egyptian coastal town did Italy's 1940 invasion of Egypt stop?",
+    "Sidi Barrani"
+   ]
+  ]
+ }
+}

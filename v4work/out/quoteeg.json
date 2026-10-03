@@ -1,0 +1,486 @@
+{
+ "id": "quoteeg",
+ "name": "Famous Movie & TV Quotes: Egypt Edition",
+ "type": "text",
+ "desc": "A famous line from an Egyptian film, series or play. Name where it's from.",
+ "data": {
+  "100": [
+   [
+    "Where is this line from? “إيه اللي جاب القلعة جنب البحر؟”",
+    "Awkal (عوكل)"
+   ],
+   [
+    "Where is this line from? “أنا بابا يالا”",
+    "Tito (تيتو)"
+   ],
+   [
+    "Where is this line from? “جزرة وقطمها جحش”",
+    "El Kabeer Awy (الكبير أوي) (TV)"
+   ],
+   [
+    "Where is this line from? “مرسي ابن المعلم الزناتي اتهزم يا رجالة”",
+    "Madraset El Moshaghebeen (مدرسة المشاغبين) (play)"
+   ],
+   [
+    "Where is this line from? “ده أنا غلبان”",
+    "Shahed Mashafsh Haga (شاهد ماشافش حاجة) (play)"
+   ],
+   [
+    "Where is this line from? “شغلتك على المدفع بروروم؟”",
+    "Ismail Yassin fil Ostool (إسماعيل يس في الأسطول)"
+   ],
+   [
+    "Where is this line from? “أراك توزع من مال أمك”",
+    "Ya Ana Ya Khalty (يا أنا يا خالتي)"
+   ],
+   [
+    "Where is this line from? “الحب ولع في الدرة”",
+    "Askar fil Moaskar (عسكر في المعسكر)"
+   ],
+   [
+    "Where is this line from? “خلاص هتنزل المرة دي”",
+    "Ibn Hamido (ابن حميدو)"
+   ],
+   [
+    "Where is this line from? “الحلزونة يا مه الحلزونة”",
+    "Morgan Ahmed Morgan (مرجان أحمد مرجان)"
+   ],
+   [
+    "Where is this line from? “من النهارده مفيش حكومة.. أنا الحكومة”",
+    "El Gezira (الجزيرة)"
+   ],
+   [
+    "Where is this line from? “أنا جوايا ست مؤدبة”",
+    "Nelly w Sherihan (نيللي وشريهان) (TV)"
+   ],
+   [
+    "Where is this line from? “هو كله ضرب ضرب؟ مفيش شتيمة؟”",
+    "El Nazer (الناظر)"
+   ],
+   [
+    "Where is this line from? “مش أنا عيد ميلادي النهارده؟”",
+    "El Safara fel Emara (السفارة في العمارة)"
+   ],
+   [
+    "Where is this line from? “متعودة.. دايمًا”",
+    "Shahed Mashafsh Haga (شاهد ماشافش حاجة) (play)"
+   ],
+   [
+    "Where is this line from? “أمك حلوة أوي يا لمبي”",
+    "El Lemby (اللمبي)"
+   ],
+   [
+    "Where is this line from? “صيعني يا عاطف”",
+    "El Nazer (الناظر)"
+   ],
+   [
+    "Where is this line from? “هاي يا كوكو”",
+    "El Kabeer Awy (الكبير أوي) (TV)"
+   ],
+   [
+    "Where is this line from? “أنا عايز جملة مفيدة”",
+    "Madraset El Moshaghebeen (مدرسة المشاغبين) (play)"
+   ],
+   [
+    "Where is this line from? “يا فاشل يا فاشل”",
+    "El Basha Telmeez (الباشا تلميذ)"
+   ],
+   [
+    "Where is this line from? “إيه ياد الحلاوة دي”",
+    "Elly Bally Balak (اللي بالي بالك)"
+   ],
+   [
+    "Where is this line from? “دا أنا من عابدين يا مجانين”",
+    "La Tarago3 wala Esteslam (لا تراجع ولا استسلام)"
+   ],
+   [
+    "Where is this line from? “أنا مبقتش بخاف زي الأول.. أنا بقيت بخاف أكتر”",
+    "Fool El Seen El Azeem (فول الصين العظيم)"
+   ],
+   [
+    "Where is this line from? “اوعى تاخدني غياب يا مستر”",
+    "El Kabeer Awy (الكبير أوي) (TV)"
+   ]
+  ],
+  "200": [
+   [
+    "Where is this line from? “تصدق سلخت قبل ما أدبح”",
+    "Bouha (بوحة)"
+   ],
+   [
+    "Where is this line from? “البوس البوس.. الحضن الحضن”",
+    "El Lemby (اللمبي)"
+   ],
+   [
+    "Where is this line from? “العلبة دي فيها إيه؟”",
+    "Ser Ta2eyet El Ekhfa (سر طاقية الإخفاء)"
+   ],
+   [
+    "Where is this line from? “بلد شهادات صحيح”",
+    "Ana w Howa w Heya (أنا وهو وهي)"
+   ],
+   [
+    "Where is this line from? “ارحم أمي العيانة”",
+    "Asal Eswed (عسل إسود)"
+   ],
+   [
+    "Where is this line from? “أنا بحملك المسؤولية كاملة”",
+    "El Kabeer Awy (الكبير أوي) (TV)"
+   ],
+   [
+    "Where is this line from? “اعمل نفسك ميت”",
+    "El Nazer (الناظر)"
+   ],
+   [
+    "Where is this line from? “مش هو ده المنطق ولا مش هو يا متعلمين يا بتوع المدارس؟”",
+    "Madraset El Moshaghebeen (مدرسة المشاغبين) (play)"
+   ],
+   [
+    "Where is this line from? “وهدي نيتك يا وحش الكون”",
+    "Elly Malosh Kebeer (اللي مالوش كبير) (TV)"
+   ],
+   [
+    "Where is this line from? “خليكي فريش إحنا في رحلة”",
+    "Saeedi fel Gam3a El Amrikeya (صعيدي في الجامعة الأمريكية)"
+   ],
+   [
+    "Where is this line from? “هاي شوجر”",
+    "Be 100 Wesh (بـ100 وش) (TV)"
+   ],
+   [
+    "Where is this line from? “يا جوافة المستكاوي”",
+    "El Kabeer Awy (الكبير أوي) (TV)"
+   ],
+   [
+    "Where is this line from? “يا أم نيازي صحي نيازي”",
+    "Ghabi Menno Fih (غبي منه فيه)"
+   ],
+   [
+    "Where is this line from? “حسبي الله ونعم الوكيل فيك يا فخري”",
+    "Gana El Bayan El Tali (جاءنا البيان التالي)"
+   ],
+   [
+    "Where is this line from? “العيب مش فيكم.. العيب في النظام”",
+    "Film Thaqafy (فيلم ثقافي)"
+   ],
+   [
+    "Where is this line from? “لقد وقعنا في الفخ”",
+    "Morgan Ahmed Morgan (مرجان أحمد مرجان)"
+   ],
+   [
+    "Where is this line from? “طب يا سيدي شكرًا”",
+    "Katkout (كتكوت)"
+   ],
+   [
+    "Where is this line from? “أذاكر وأنجح.. الاتنين”",
+    "El Eyal Kebret (العيال كبرت) (play)"
+   ],
+   [
+    "Where is this line from? “بابا شفشق”",
+    "El Saffara (الصفارة) (TV)"
+   ],
+   [
+    "Where is this line from? “يا ناس يا لوكال يا شعبيين”",
+    "H Dabbour (إتش دبور)"
+   ],
+   [
+    "Where is this line from? “جايب لي ورد وأنا مفطرتش من الصبح”",
+    "El Nazer (الناظر)"
+   ],
+   [
+    "Where is this line from? “محدش ياخد ميدو ابني ويديني بداله مروحة”",
+    "Mido Mashakel (ميدو مشاكل)"
+   ],
+   [
+    "Where is this line from? “دي شقة المعلم فوزي وأنا مراته الجديدة”",
+    "Saeedi fel Gam3a El Amrikeya (صعيدي في الجامعة الأمريكية)"
+   ]
+  ],
+  "300": [
+   [
+    "Where is this line from? “الساعة بخمسة جنيه والحسابة بتحسب”",
+    "Antar Shayel Seifo (عنتر شايل سيفه)"
+   ],
+   [
+    "Where is this line from? “فتشني فتش”",
+    "Ibn Hamido (ابن حميدو)"
+   ],
+   [
+    "Where is this line from? “أحلى من الشرف مفيش”",
+    "Ahebbak ya Hassan (أحبك يا حسن)"
+   ],
+   [
+    "Where is this line from? “هقتله وأديك رنة”",
+    "Askar fil Moaskar (عسكر في المعسكر)"
+   ],
+   [
+    "Where is this line from? “الجوازة باظت”",
+    "Aris men Gehat Amneya (عريس من جهة أمنية)"
+   ],
+   [
+    "Where is this line from? “ناس طيبين أوي يا خال”",
+    "El Wad Sayed El Shaghal (الواد سيد الشغال) (play)"
+   ],
+   [
+    "Where is this line from? “كلنا فاسدون.. لا أستثني أحدًا”",
+    "Ded El Hokouma (ضد الحكومة)"
+   ],
+   [
+    "Where is this line from? “عايز تحتفل بالالتصاق يا صايع يا ملتصق”",
+    "Abboud ala El Hodoud (عبود على الحدود)"
+   ],
+   [
+    "Where is this line from? “ساعات المحشي بيبقى أحن علينا من الناس”",
+    "El Saffara (الصفارة) (TV)"
+   ],
+   [
+    "Where is this line from? “جواز عتريس من فؤادة باطل”",
+    "Shey2 Men El Khof (شيء من الخوف)"
+   ],
+   [
+    "Where is this line from? “أصل أنا عندي شعرة.. ساعة تروح وساعة تيجي”",
+    "Ismail Yassin fi Mostashfa El Maganeen (إسماعيل يس في مستشفى المجانين)"
+   ],
+   [
+    "Where is this line from? “ابنك مجنون يا حاج”",
+    "Karkar (كركر)"
+   ],
+   [
+    "Where is this line from? “دي آراء.. آراء!”",
+    "Ramadan Mabrouk Abul Alamein Hamouda (رمضان مبروك أبو العلمين حمودة)"
+   ],
+   [
+    "Where is this line from? “القرش ماله عامل كده ليه يا عربي؟”",
+    "Ashghal Sha2a Geddan (أشغال شقة جدًا) (TV)"
+   ],
+   [
+    "Where is this line from? “هو الدين بيقول إيه؟”",
+    "Hassan w Morqos (حسن ومرقص)"
+   ],
+   [
+    "Where is this line from? “خاف يا عيد”",
+    "Eyal Habiba (عيال حبيبة)"
+   ],
+   [
+    "Where is this line from? “سي عبعال”",
+    "Raya w Sakina (ريا وسكينة) (play)"
+   ],
+   [
+    "Where is this line from? “شيلوا الميتين اللي تحت”",
+    "Raya w Sakina (ريا وسكينة) (play)"
+   ],
+   [
+    "Where is this line from? “يا 300 ألف أهلًا وسهلًا”",
+    "Ya Ana Ya Khalty (يا أنا يا خالتي)"
+   ],
+   [
+    "Where is this line from? “اللوحة دي بتمثل الإنسان المعاصر.. بعد ما خد على قفاه”",
+    "Aris men Gehat Amneya (عريس من جهة أمنية)"
+   ],
+   [
+    "Where is this line from? “إنت أهه اللي بتسقط أشيائك”",
+    "La Tarago3 wala Esteslam (لا تراجع ولا استسلام)"
+   ],
+   [
+    "Where is this line from? “وربنا لأنيمك من المغرب يا صين”",
+    "Fool El Seen El Azeem (فول الصين العظيم)"
+   ],
+   [
+    "Where is this line from? “أنا شربت حشيش يا سعاد”",
+    "Karakon fel Share3 (كراكون في الشارع)"
+   ]
+  ],
+  "400": [
+   [
+    "Where is this line from? “هي دي مصر يا عبلة”",
+    "El So3oud ela El Hawya (الصعود إلى الهاوية)"
+   ],
+   [
+    "Where is this line from? “الشغلانة دي مش محتاجة شهادات.. دي محتاجة ليونة”",
+    "El Eyal Kebret (العيال كبرت) (play)"
+   ],
+   [
+    "Where is this line from? “بعد 14 سنة خدمة في ثانوي بتقولي أقف؟”",
+    "Madraset El Moshaghebeen (مدرسة المشاغبين) (play)"
+   ],
+   [
+    "Where is this line from? “آني نعنوشة”",
+    "Raya w Sakina (ريا وسكينة) (play)"
+   ],
+   [
+    "Where is this line from? “إحنا في زمن المسخ”",
+    "Omaret Yacoubian (عمارة يعقوبيان)"
+   ],
+   [
+    "Where is this line from? “الحب هو الغاز الذي نشعل به البوتاجاز”",
+    "Teer Enta (طير إنت)"
+   ],
+   [
+    "Where is this line from? “أحارب الغلاء بالاستغناء”",
+    "El Beida wel Hagar (البيضة والحجر)"
+   ],
+   [
+    "Where is this line from? “على الله حكايتك يا ست”",
+    "Elly Malosh Kebeer (اللي مالوش كبير) (TV)"
+   ],
+   [
+    "Where is this line from? “أيها الناس.. المكنة طلعت قماش”",
+    "Aelet Zizi (عائلة زيزي)"
+   ],
+   [
+    "Where is this line from? “الكورة فين؟”",
+    "El Zawag ala El Tari2a El Haditha (الزواج على الطريقة الحديثة)"
+   ],
+   [
+    "Where is this line from? “حد ليه شوق في حاجة؟”",
+    "El Kitkat (الكيت كات)"
+   ],
+   [
+    "Where is this line from? “كنا جايبين سيرة أمك”",
+    "El Ab El Rouhi (الأب الروحي) (TV)"
+   ],
+   [
+    "Where is this line from? “أنا عملت كل حاجة غلط ممكن تتخيلها”",
+    "Tito (تيتو)"
+   ],
+   [
+    "Where is this line from? “ولادنا هما أصدقاء السوء اللي أهلنا كانوا بيحذرونا منهم”",
+    "El Saffara (الصفارة) (TV)"
+   ],
+   [
+    "Where is this line from? “مسيرها تروق وتحلى”",
+    "El Eyal Kebret (العيال كبرت) (play)"
+   ],
+   [
+    "Where is this line from? “يا صفايح الزبدة السايحة”",
+    "Law Kont Ghani (لو كنت غني)"
+   ],
+   [
+    "Where is this line from? “كلمتي لا يمكن تنزل الأرض أبدًا”",
+    "Ibn Hamido (ابن حميدو)"
+   ],
+   [
+    "Where is this line from? “هو بعينه بغباوته وشكله العكر”",
+    "Ismail Yassin fil Ostool (إسماعيل يس في الأسطول)"
+   ],
+   [
+    "Where is this line from? “إنتي جاية اشتغلي إيه؟”",
+    "Ella Khamsa (إلا خمسة)"
+   ],
+   [
+    "Where is this line from? “الكنز في الرحلة.. في الناس اللي بتقابلهم”",
+    "Tito (تيتو)"
+   ],
+   [
+    "Where is this line from? “اللهم ارزقها بسيارة مفخخة”",
+    "Haha w Toffaha (حاحا وتفاحة)"
+   ],
+   [
+    "Where is this line from? “الحمد لله على الحمد لله”",
+    "Gezeeret Ghamam (جزيرة غمام) (TV)"
+   ],
+   [
+    "Where is this line from? “تعيش انت يا حج.. والله ما عندي أهل”",
+    "Ya Rab Walad (يا رب ولد)"
+   ]
+  ],
+  "500": [
+   [
+    "Where is this line from? “الحكومة مالهاش دراع عشان تتلوي منه”",
+    "El Erhab wel Kabab (الإرهاب والكباب)"
+   ],
+   [
+    "Where is this line from? “ويل للعالم إذا انحرف المتعلمون”",
+    "El Beida wel Hagar (البيضة والحجر)"
+   ],
+   [
+    "Where is this line from? “كلهم كدابين.. وكلهم عارفين إنهم كدابين”",
+    "El Hob Fo2 Hadabet El Haram (الحب فوق هضبة الهرم)"
+   ],
+   [
+    "Where is this line from? “لكن كنا رجالة.. ووقفنا وقفة رجالة”",
+    "El Ard (الأرض)"
+   ],
+   [
+    "Where is this line from? “ثاء.. عين.. باء.. ألف.. نون.. تبقى حنش”",
+    "El Ostaza Fatma (الأستاذة فاطمة)"
+   ],
+   [
+    "Where is this line from? “صلاة النبي أحسن”",
+    "Ibn Hamido (ابن حميدو)"
+   ],
+   [
+    "Where is this line from? “مشكلة أبويا إنه مش قادر يصدق إنه أعمى”",
+    "El Kitkat (الكيت كات)"
+   ],
+   [
+    "Where is this line from? “دلوقتي عرفت القرد بيتنطط ليه”",
+    "Gary El Wohoush (جري الوحوش)"
+   ],
+   [
+    "Where is this line from? “الجواز مش للغلابة اللي زينا”",
+    "El Hob Fo2 Hadabet El Haram (الحب فوق هضبة الهرم)"
+   ],
+   [
+    "Where is this line from? “الليلة يا عمدة”",
+    "El Zawga El Tanya (الزوجة الثانية)"
+   ],
+   [
+    "Where is this line from? “الحاجات بتيجي لما نبطل ندور عليها”",
+    "El Nemr El Aswad (النمر الأسود)"
+   ],
+   [
+    "Where is this line from? “إن مقدرتش تضحك متدمعش”",
+    "Hysteria (هيستيريا)"
+   ],
+   [
+    "Where is this line from? “دول لازم يتحاكموا بتهمة الغباء السياسي”",
+    "Ayam El Sadat (أيام السادات)"
+   ],
+   [
+    "Where is this line from? “عاش خاين ومات كافر”",
+    "Bir El Khiana (بئر الخيانة)"
+   ],
+   [
+    "Where is this line from? “الكهرباء عملت كونتاكت”",
+    "Ismail Yassin fi Mostashfa El Maganeen (إسماعيل يس في مستشفى المجانين)"
+   ],
+   [
+    "Where is this line from? “أنا مش شايف أيتها ست”",
+    "Sukkar Hanem (سكر هانم)"
+   ],
+   [
+    "Where is this line from? “دي حاجة لو عرفتوها تبقوا عُمد”",
+    "Mohami Khol3 (محامي خلع)"
+   ],
+   [
+    "Where is this line from? “داخلي بالخيل وعاملي فيها كبير الدهاشنة”",
+    "Fi Mahattet Masr (في محطة مصر)"
+   ],
+   [
+    "Where is this line from? “طظ”",
+    "El Qahira 30 (القاهرة 30)"
+   ],
+   [
+    "Where is this line from? “الناس كلها بقت فتوات، أمال مين اللي هينضرب؟”",
+    "El Sheitan Ye3ez (الشيطان يعظ)"
+   ],
+   [
+    "Where is this line from? “مدوباهم اتنين”",
+    "Hamati Malak (حماتي ملاك)"
+   ],
+   [
+    "Where is this line from? “كتع كسح كسل”",
+    "Nasl El Aghrab (نسل الأغراب) (TV)"
+   ],
+   [
+    "Where is this line from? “امشي ولو قابلت مرات عمك قولها إنتي طالق”",
+    "Asad w Arba3 Otat (أسد وأربع قطط)"
+   ],
+   [
+    "Where is this line from? “إنت جمعيات حقوق الإنسان في العالم عندها علم بصوتك؟”",
+    "Andaleeb El Do2y (عندليب الدقي)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,434 @@
+{
+ "id": "books",
+ "name": "School Books",
+ "type": "text",
+ "desc": "Pride and Prejudice, The Giver, Persepolis, To Kill a Mockingbird, Chinese Cinderella, Fahrenheit 451.",
+ "data": {
+  "100": [
+   [
+    "Pride and Prejudice: Fill in the blank: \"It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a ___.\"",
+    "Wife"
+   ],
+   [
+    "Pride and Prejudice: Which Bennet sister ends up marrying Mr. Darcy?",
+    "Elizabeth"
+   ],
+   [
+    "Which school book follows the five Bennet sisters and their mother's hunt for husbands?",
+    "Pride and Prejudice"
+   ],
+   [
+    "The Giver: What is the name of the boy chosen as the new Receiver of Memory?",
+    "Jonas"
+   ],
+   [
+    "The Giver: What is the name of the baby Jonas escapes with at the end?",
+    "Gabriel (Gabe)"
+   ],
+   [
+    "Persepolis: In which country does Marji grow up?",
+    "Iran"
+   ],
+   [
+    "Persepolis: What head covering are Marji and the girls at her school forced to wear?",
+    "The veil (headscarf)"
+   ],
+   [
+    "To Kill a Mockingbird: What is Atticus Finch's job?",
+    "Lawyer"
+   ],
+   [
+    "To Kill a Mockingbird: What is the nickname of the reclusive Radley neighbour the children are obsessed with?",
+    "Boo"
+   ],
+   [
+    "To Kill a Mockingbird: Which Finch child narrates the story?",
+    "Scout"
+   ],
+   [
+    "Chinese Cinderella: What does Adeline call her cruel stepmother?",
+    "Niang"
+   ],
+   [
+    "Chinese Cinderella: Adeline's family treats her as bad luck because of whose death?",
+    "Her mother's (died after giving birth to her)"
+   ],
+   [
+    "Fahrenheit 451: What is Guy Montag's job?",
+    "Fireman (he burns books)"
+   ],
+   [
+    "Fahrenheit 451: What does the number in the title refer to?",
+    "The temperature (in °F) at which book paper burns"
+   ],
+   [
+    "In which school book do firemen start fires instead of putting them out?",
+    "Fahrenheit 451"
+   ],
+   [
+    "Who wrote Pride and Prejudice?",
+    "Jane Austen"
+   ],
+   [
+    "Who wrote The Giver?",
+    "Lois Lowry"
+   ],
+   [
+    "Who wrote and drew Persepolis?",
+    "Marjane Satrapi"
+   ],
+   [
+    "Who wrote To Kill a Mockingbird?",
+    "Harper Lee"
+   ],
+   [
+    "Who wrote Fahrenheit 451?",
+    "Ray Bradbury"
+   ],
+   [
+    "Chinese Cinderella: Is the book an invented story or a true memoir?",
+    "A true memoir (the author's own childhood)"
+   ]
+  ],
+  "200": [
+   [
+    "Pride and Prejudice: Which charming militia officer does Lydia Bennet run off with?",
+    "(George) Wickham"
+   ],
+   [
+    "The Giver: At what age does Jonas receive his life Assignment?",
+    "Twelve"
+   ],
+   [
+    "The Giver: What polite word does the community use for killing someone?",
+    "Release"
+   ],
+   [
+    "The Giver: What is the name of Jonas's little sister?",
+    "Lily"
+   ],
+   [
+    "Persepolis: To which European city do Marji's parents send her to study?",
+    "Vienna"
+   ],
+   [
+    "Persepolis: In what language was Persepolis originally published?",
+    "French"
+   ],
+   [
+    "Which school book is a black-and-white graphic memoir about a girl growing up during the Iranian Revolution?",
+    "Persepolis"
+   ],
+   [
+    "To Kill a Mockingbird: In what fictional Alabama town is the novel set?",
+    "Maycomb"
+   ],
+   [
+    "To Kill a Mockingbird: What is the name of Scout's older brother?",
+    "Jem"
+   ],
+   [
+    "Chinese Cinderella: What is the name of Adeline's kind, unmarried aunt who supports her?",
+    "Aunt Baba"
+   ],
+   [
+    "Chinese Cinderella: In which northern Chinese city is Adeline born?",
+    "Tianjin"
+   ],
+   [
+    "Fahrenheit 451: What is the name of Montag's wife?",
+    "Mildred"
+   ],
+   [
+    "Fahrenheit 451: What is the name of the curious teenage neighbour who makes Montag question his life?",
+    "Clarisse (McClellan)"
+   ],
+   [
+    "In which school book does a community live by 'Sameness', with no colour, music or weather?",
+    "The Giver"
+   ],
+   [
+    "Pride and Prejudice: Which Bennet sister marries Mr. Bingley?",
+    "Jane"
+   ],
+   [
+    "The Giver: What must community members take every day once the 'Stirrings' begin?",
+    "A pill"
+   ],
+   [
+    "Persepolis: Which wise relative tells Marji to always keep her dignity and stay true to herself?",
+    "Her grandmother"
+   ],
+   [
+    "To Kill a Mockingbird: Which Black man does Atticus defend in court?",
+    "Tom Robinson"
+   ],
+   [
+    "Chinese Cinderella: What does Adeline call her kind grandfather?",
+    "Ye Ye"
+   ],
+   [
+    "Fahrenheit 451: What does Montag secretly hide behind the air-conditioning grille at home?",
+    "Books"
+   ]
+  ],
+  "300": [
+   [
+    "Pride and Prejudice: What is the name of the Bennet family's home?",
+    "Longbourn"
+   ],
+   [
+    "Pride and Prejudice: What is the name of Mr. Darcy's grand estate?",
+    "Pemberley"
+   ],
+   [
+    "Pride and Prejudice: Whom does Elizabeth's friend Charlotte Lucas marry?",
+    "Mr. Collins"
+   ],
+   [
+    "Pride and Prejudice: What is the name of Mr. Darcy's snobbish aunt?",
+    "Lady Catherine de Bourgh"
+   ],
+   [
+    "The Giver: What is the first memory the Giver transmits to Jonas?",
+    "Sledding down a snowy hill"
+   ],
+   [
+    "Persepolis: What is the name of Marji's communist uncle, executed by the new regime?",
+    "Anoosh"
+   ],
+   [
+    "Persepolis: Which war breaks out soon after the revolution and brings missile attacks on Tehran?",
+    "The Iran-Iraq War"
+   ],
+   [
+    "To Kill a Mockingbird: What is Scout's real first name?",
+    "Jean Louise"
+   ],
+   [
+    "To Kill a Mockingbird: What is the name of the Finches' housekeeper?",
+    "Calpurnia"
+   ],
+   [
+    "To Kill a Mockingbird: What costume is Scout wearing when Bob Ewell attacks the children?",
+    "A ham"
+   ],
+   [
+    "Chinese Cinderella: To which big city does the family move after Tianjin?",
+    "Shanghai"
+   ],
+   [
+    "Chinese Cinderella: What kind of contest does Adeline win, persuading her father to send her to England?",
+    "An (international) playwriting competition"
+   ],
+   [
+    "Fahrenheit 451: What is the eight-legged robotic creature that hunts down book owners?",
+    "The Mechanical Hound"
+   ],
+   [
+    "In which school book do people wear tiny 'Seashell' radios in their ears and watch wall-sized TVs?",
+    "Fahrenheit 451"
+   ],
+   [
+    "Fahrenheit 451: What is the name of the retired English professor who helps Montag?",
+    "Faber"
+   ],
+   [
+    "Pride and Prejudice: What is the name of the estate Mr. Bingley rents near the Bennets?",
+    "Netherfield (Park)"
+   ],
+   [
+    "The Giver: At which yearly ceremony do the Twelves receive their Assignments?",
+    "The Ceremony of Twelve"
+   ],
+   [
+    "Persepolis: Which ruler is overthrown in the revolution at the start of the book?",
+    "The Shah"
+   ],
+   [
+    "To Kill a Mockingbird: Whom does Bob Ewell accuse Tom Robinson of attacking?",
+    "His daughter, Mayella Ewell"
+   ],
+   [
+    "Chinese Cinderella: What is the name of the spoiled youngest daughter of Father and Niang?",
+    "Little Sister (Susan)"
+   ],
+   [
+    "Fahrenheit 451: What is the name of Montag's fire chief?",
+    "Captain Beatty"
+   ]
+  ],
+  "400": [
+   [
+    "Pride and Prejudice: What is Mr. Darcy's first name?",
+    "Fitzwilliam"
+   ],
+   [
+    "Which school book was originally titled 'First Impressions'?",
+    "Pride and Prejudice"
+   ],
+   [
+    "The Giver: What Assignment is Jonas's best friend Asher given?",
+    "Assistant Director of Recreation"
+   ],
+   [
+    "The Giver: What is the name of the previous Receiver-in-Training, who failed ten years earlier?",
+    "Rosemary"
+   ],
+   [
+    "The Giver: What is the first colour Jonas begins to see?",
+    "Red"
+   ],
+   [
+    "Persepolis: How old is Marji when her parents send her to Austria?",
+    "14"
+   ],
+   [
+    "Persepolis: What is the name of the family's maid, who falls for the neighbour's son?",
+    "Mehri"
+   ],
+   [
+    "Persepolis: Whom does Marji marry after returning to Tehran?",
+    "Reza"
+   ],
+   [
+    "To Kill a Mockingbird: Which of Tom Robinson's arms is crippled?",
+    "His left"
+   ],
+   [
+    "In which school book does a lawyer once nicknamed 'One-Shot' gun down a mad dog in the street?",
+    "To Kill a Mockingbird"
+   ],
+   [
+    "Chinese Cinderella: What were the initials of Adeline's pet duckling, killed by her father's dog?",
+    "PLT (Precious Little Treasure — or Thing)"
+   ],
+   [
+    "Chinese Cinderella: Which brother is the only sibling who is kind to Adeline?",
+    "Third Brother (James)"
+   ],
+   [
+    "Chinese Cinderella: Niang is half Chinese and half what?",
+    "French"
+   ],
+   [
+    "Fahrenheit 451: Which book of the Bible does Montag try to memorise?",
+    "Ecclesiastes (Revelation also counts)"
+   ],
+   [
+    "Fahrenheit 451: What is the name of the leader of the exiles who memorise books?",
+    "Granger"
+   ],
+   [
+    "Pride and Prejudice: In which English county is the Bennets' home?",
+    "Hertfordshire"
+   ],
+   [
+    "The Giver: What is Jonas's father's job?",
+    "Nurturer (caring for newchildren)"
+   ],
+   [
+    "Persepolis: What does young Marji want to be when she grows up?",
+    "A prophet"
+   ],
+   [
+    "To Kill a Mockingbird: Who kills Bob Ewell to save the children?",
+    "Boo Radley"
+   ],
+   [
+    "Chinese Cinderella: Which member of the family has bound feet?",
+    "Grandmother (Nai Nai)"
+   ],
+   [
+    "Fahrenheit 451: What does Mildred overdose on early in the book?",
+    "Sleeping pills"
+   ]
+  ],
+  "500": [
+   [
+    "Pride and Prejudice: What is Mr. Darcy said to be worth per year?",
+    "£10,000 a year"
+   ],
+   [
+    "In which school book does a housekeeper named Mrs. Reynolds give a tour of her master's estate?",
+    "Pride and Prejudice"
+   ],
+   [
+    "Pride and Prejudice: What is the name of Lady Catherine de Bourgh's estate in Kent?",
+    "Rosings (Park)"
+   ],
+   [
+    "The Giver: What is Jonas's number?",
+    "Nineteen"
+   ],
+   [
+    "In which school book does an old woman named Larissa describe a man named Roberto's celebration?",
+    "The Giver"
+   ],
+   [
+    "Persepolis: What does Marji's grandmother keep in her bra so she always smells nice?",
+    "Jasmine flowers"
+   ],
+   [
+    "Persepolis: Which pop singer's poster do Marji's parents smuggle back from Turkey, along with an Iron Maiden one?",
+    "Kim Wilde"
+   ],
+   [
+    "Persepolis: What is the surname of the Jewish neighbours killed when a missile hits Marji's street?",
+    "Baba-Levy"
+   ],
+   [
+    "To Kill a Mockingbird: What is Dill's hometown?",
+    "Meridian, Mississippi"
+   ],
+   [
+    "To Kill a Mockingbird: Which flowers does Jem destroy in Mrs. Dubose's garden?",
+    "Camellias"
+   ],
+   [
+    "Chinese Cinderella: What is the title of Adeline's prize-winning play?",
+    "Gone with the Locusts"
+   ],
+   [
+    "Chinese Cinderella: What is the name of Father's dog, which kills Adeline's duckling?",
+    "Jackie"
+   ],
+   [
+    "Fahrenheit 451: What are the surnames of Montag's two fellow firemen?",
+    "Stoneman and Black"
+   ],
+   [
+    "Fahrenheit 451: To which city does Faber flee before the bombing?",
+    "St. Louis"
+   ],
+   [
+    "Fahrenheit 451: What was the title of the 1951 novella Bradbury expanded into the book?",
+    "The Fireman"
+   ],
+   [
+    "Pride and Prejudice: To which seaside town does Lydia go with the militia as Mrs. Forster's guest?",
+    "Brighton"
+   ],
+   [
+    "The Giver: Where does Jonas's mother work?",
+    "The Department of Justice"
+   ],
+   [
+    "Persepolis: What does Uncle Anoosh make for Marji out of bread while in prison?",
+    "A swan"
+   ],
+   [
+    "To Kill a Mockingbird: What is the name of Calpurnia's church, which she takes the children to?",
+    "First Purchase (African M.E. Church)"
+   ],
+   [
+    "Chinese Cinderella: What is Adeline's Chinese name?",
+    "Jun-ling"
+   ],
+   [
+    "Fahrenheit 451: Which poem by Matthew Arnold does Montag read aloud to Mildred's friends?",
+    "Dover Beach"
+   ]
+  ]
+ }
+}

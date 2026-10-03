@@ -1,0 +1,338 @@
+{
+ "id": "ffood",
+ "name": "Fast Food",
+ "type": "text",
+ "desc": "Trivia about fast food chains, famous menu items and Egyptian street food.",
+ "data": {
+  "100": [
+   [
+    "What does “KFC” stand for?",
+    "Kentucky Fried Chicken"
+   ],
+   [
+    "Which chain's mascot is a clown named Ronald?",
+    "McDonald's"
+   ],
+   [
+    "What is Burger King's signature burger called?",
+    "The Whopper"
+   ],
+   [
+    "Which pizza chain introduced Stuffed Crust pizza?",
+    "Pizza Hut"
+   ],
+   [
+    "Which pizza chain's logo looks like a domino tile?",
+    "Domino's"
+   ],
+   [
+    "Which colonel founded KFC?",
+    "Colonel Harland Sanders"
+   ],
+   [
+    "Which chain's logo is a pair of golden arches?",
+    "McDonald's"
+   ],
+   [
+    "Gad and Zooba are famous in Egypt for which fried bean patty?",
+    "Ta'meya (Egyptian falafel, made with fava beans)"
+   ],
+   [
+    "Which chain's slogan is “I'm lovin' it”?",
+    "McDonald's"
+   ],
+   [
+    "Which chain's slogan is “Finger lickin' good”?",
+    "KFC"
+   ],
+   [
+    "Which Egyptian street dish mixes rice, lentils, pasta and chickpeas, topped with spicy tomato sauce and crispy fried onions?",
+    "Koshary"
+   ],
+   [
+    "What is Egypt's classic breakfast dish of slow-cooked fava beans called?",
+    "Foul (ful medames)"
+   ],
+   [
+    "What is the Egyptian baladi bread stuffed with spiced minced meat and baked called?",
+    "Hawawshi"
+   ],
+   [
+    "What is KFC's big shareable tub of fried chicken called?",
+    "A bucket"
+   ],
+   [
+    "What does “BK” stand for?",
+    "Burger King"
+   ],
+   [
+    "Which chain sells the Frosty dessert?",
+    "Wendy's"
+   ]
+  ],
+  "200": [
+   [
+    "Which chain sells the Zinger burger?",
+    "KFC"
+   ],
+   [
+    "Which pizza chain is known for its red roof logo?",
+    "Pizza Hut"
+   ],
+   [
+    "Which chain sells the Baconator?",
+    "Wendy's"
+   ],
+   [
+    "Which sandwich chain's slogan was “Eat Fresh”?",
+    "Subway"
+   ],
+   [
+    "Which Mexican-style chain sells the Crunchwrap Supreme?",
+    "Taco Bell"
+   ],
+   [
+    "Which Egyptian burger chain, founded in 2008, is named after a large horned animal?",
+    "Buffalo Burger"
+   ],
+   [
+    "What is the name of Burger King's crown-wearing mascot?",
+    "The King"
+   ],
+   [
+    "What does a McDonald's Happy Meal come with besides the food?",
+    "A toy"
+   ],
+   [
+    "Which chain is famous for its Thickburger?",
+    "Hardee's"
+   ],
+   [
+    "Which famous koshary shop sits on Champollion Street in downtown Cairo?",
+    "Abou Tarek"
+   ],
+   [
+    "What spicy fried-liver sandwich is named after an Egyptian coastal city?",
+    "Kebda Eskandarani (Alexandrian liver)"
+   ],
+   [
+    "Which pizza chain sells “Hot-N-Ready” pizzas and has the catchphrase “Pizza! Pizza!”?",
+    "Little Caesars"
+   ],
+   [
+    "Which pizza chain's slogan is “Better Ingredients. Better Pizza.”?",
+    "Papa John's"
+   ],
+   [
+    "Which chain's famous 1990s mascot was a talking chihuahua?",
+    "Taco Bell"
+   ],
+   [
+    "Which chain advertises that its burgers are “flame-grilled”?",
+    "Burger King"
+   ],
+   [
+    "What is McDonald's breakfast sandwich of egg, Canadian bacon and cheese on an English muffin called?",
+    "Egg McMuffin"
+   ]
+  ],
+  "300": [
+   [
+    "In which US state did the McDonald brothers open their first restaurant?",
+    "California (San Bernardino, 1940)"
+   ],
+   [
+    "What was Burger King's original name?",
+    "Insta-Burger King"
+   ],
+   [
+    "Which chain did Dave Thomas found and name after his daughter?",
+    "Wendy's"
+   ],
+   [
+    "How many herbs and spices are in KFC's secret Original Recipe?",
+    "11"
+   ],
+   [
+    "Which US chicken chain is famous for being closed on Sundays?",
+    "Chick-fil-A"
+   ],
+   [
+    "Which chain's old slogan was “Have it your way”?",
+    "Burger King"
+   ],
+   [
+    "In what year did the first McDonald's open in Egypt?",
+    "1994"
+   ],
+   [
+    "Which chain sells the Twister wrap?",
+    "KFC"
+   ],
+   [
+    "Finish the Big Mac jingle: “Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a…”",
+    "Sesame seed bun"
+   ],
+   [
+    "Which pizza chain once promised delivery in 30 minutes or the pizza was free?",
+    "Domino's"
+   ],
+   [
+    "Which Egyptian street-food chain opened its first New York branch, in Nolita, in 2019?",
+    "Zooba"
+   ],
+   [
+    "Popeyes' full name says its chicken is in the style of which US state?",
+    "Louisiana (Popeyes Louisiana Kitchen)"
+   ],
+   [
+    "Which coffee-and-doughnut chain dropped “Donuts” from its name in 2019?",
+    "Dunkin'"
+   ],
+   [
+    "What does Subway call its 12-inch sandwich?",
+    "The Footlong"
+   ],
+   [
+    "Which doughnut chain lights up a “Hot Now” sign when fresh glazed doughnuts are coming off the line?",
+    "Krispy Kreme"
+   ],
+   [
+    "Which sandwich chain did 17-year-old Fred DeLuca co-found in 1965 with a $1,000 loan?",
+    "Subway"
+   ]
+  ],
+  "400": [
+   [
+    "Name the four official shapes of Chicken McNuggets.",
+    "Ball, bell, boot and bone (bow-tie)"
+   ],
+   [
+    "What is the name of McDonald's big purple character?",
+    "Grimace"
+   ],
+   [
+    "What does “IHOP” stand for?",
+    "International House of Pancakes"
+   ],
+   [
+    "Which chain was founded by Glen Bell?",
+    "Taco Bell"
+   ],
+   [
+    "In what year did the Big Mac go on sale across the US?",
+    "1968"
+   ],
+   [
+    "Which Swedish furniture store is famous for its cheap hot dogs?",
+    "IKEA"
+   ],
+   [
+    "Which chain's mascot is a red-haired girl with pigtails?",
+    "Wendy's"
+   ],
+   [
+    "Which company owns KFC, Pizza Hut and Taco Bell?",
+    "Yum! Brands"
+   ],
+   [
+    "In which US city was Pizza Hut founded in 1958?",
+    "Wichita, Kansas"
+   ],
+   [
+    "What is McDonald's fish sandwich called?",
+    "Filet-O-Fish"
+   ],
+   [
+    "Which Egyptian sandwich chain did three brothers open in Heliopolis in 1988?",
+    "Mo'men"
+   ],
+   [
+    "Which global chain is run in Egypt by Manfoods, part of the Mansour Group?",
+    "McDonald's"
+   ],
+   [
+    "At In-N-Out, what is the secret-menu name for a burger with mustard-grilled patty, extra spread and grilled onions?",
+    "Animal Style"
+   ],
+   [
+    "Wendy's founder said its burgers are square for what reason?",
+    "“We don't cut corners” (and the meat pokes out so you can see it)"
+   ],
+   [
+    "Which South African chain, founded in 1987, is famous for its peri-peri chicken?",
+    "Nando's"
+   ],
+   [
+    "Which Filipino fast-food chain has a smiling red-and-yellow bee as its mascot?",
+    "Jollibee"
+   ]
+  ],
+  "500": [
+   [
+    "In which city did McDonald's open a famous branch in Pushkin Square in 1990?",
+    "Moscow"
+   ],
+   [
+    "Which chain was originally called “Pete's Super Submarines”?",
+    "Subway"
+   ],
+   [
+    "Colonel Sanders first sold his fried chicken at what kind of business in Corbin, Kentucky?",
+    "A roadside service (gas) station"
+   ],
+   [
+    "Who turned McDonald's into a global franchise after buying out the McDonald brothers?",
+    "Ray Kroc"
+   ],
+   [
+    "In what year did KFC open its first branch in Egypt?",
+    "1973"
+   ],
+   [
+    "Which diner chain started out as “Danny's Donuts”?",
+    "Denny's"
+   ],
+   [
+    "Which company runs KFC, Pizza Hut and Hardee's in Egypt?",
+    "Americana"
+   ],
+   [
+    "Which chain's 1984 ad asked “Where's the beef?”",
+    "Wendy's"
+   ],
+   [
+    "Which chain sold the Double Down, using two fried chicken fillets instead of a bun?",
+    "KFC"
+   ],
+   [
+    "What were the first names of the two McDonald brothers?",
+    "Richard and Maurice (Dick and Mac)"
+   ],
+   [
+    "Arby's name comes from the initials of its founders — what are they?",
+    "R.B. — the Raffel Brothers"
+   ],
+   [
+    "Popeyes was named after Popeye Doyle, a detective in which 1971 film?",
+    "The French Connection"
+   ],
+   [
+    "Which magazine publishes the “Big Mac Index” to compare currencies?",
+    "The Economist"
+   ],
+   [
+    "Hawawshi was invented in 1971 by a Cairo butcher with what surname?",
+    "Al-Hawawshi (Ahmed al-Hawawsh)"
+   ],
+   [
+    "Baskin-Robbins' famous “31 flavors” were meant to give one flavor for what?",
+    "Every day of the month"
+   ],
+   [
+    "Truett Cathy founded which chicken chain?",
+    "Chick-fil-A"
+   ]
+  ]
+ }
+}

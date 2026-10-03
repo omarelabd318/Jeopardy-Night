@@ -1,0 +1,518 @@
+{
+ "id": "xfer",
+ "name": "Football Transfers",
+ "type": "text",
+ "desc": "Name the player from the clubs, year and fee. Fees are the widely reported figures, rounded.",
+ "data": {
+  "100": [
+   [
+    "Which player moved from Manchester United to Real Madrid in 2009 for about £80m?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which player moved from Barcelona to PSG in 2017 for a world-record €222m?",
+    "Neymar"
+   ],
+   [
+    "Which player moved from Barcelona to PSG in 2021 for free?",
+    "Lionel Messi"
+   ],
+   [
+    "Which player moved from Tottenham to Real Madrid in 2013 for about £85m?",
+    "Gareth Bale"
+   ],
+   [
+    "Which player moved from Borussia Dortmund to Manchester City in 2022 for about £51m?",
+    "Erling Haaland"
+   ],
+   [
+    "Which player moved from Tottenham to Bayern Munich in 2023 for about £86m?",
+    "Harry Kane"
+   ],
+   [
+    "Which player moved from PSG to Real Madrid in 2024 for free?",
+    "Kylian Mbappé"
+   ],
+   [
+    "Which player moved from Roma to Liverpool in 2017 for about £37m?",
+    "Mohamed Salah"
+   ],
+   [
+    "Which player moved from Real Madrid to Al Ittihad in 2023 for free?",
+    "Karim Benzema"
+   ],
+   [
+    "Which player moved from Manchester United to Al Nassr in 2023 for free?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which player moved from Juventus to Manchester United in 2016 for a then-world-record £89m?",
+    "Paul Pogba"
+   ],
+   [
+    "Which player moved from Southampton to Liverpool in 2018 for about £75m?",
+    "Virgil van Dijk"
+   ],
+   [
+    "Which player moved from Borussia Dortmund to Real Madrid in 2023 for about €103m?",
+    "Jude Bellingham"
+   ],
+   [
+    "Which player moved from Aston Villa to Manchester City in 2021 for £100m?",
+    "Jack Grealish"
+   ],
+   [
+    "Which player moved from PSG to Inter Miami in 2023 for free?",
+    "Lionel Messi"
+   ],
+   [
+    "Which player moved from West Ham to Arsenal in 2023 for a club-record £105m?",
+    "Declan Rice"
+   ],
+   [
+    "Which player moved from Liverpool to Trabzonspor in 2026 for free?",
+    "Mohamed Salah"
+   ],
+   [
+    "Which player moved from Manchester United to Real Madrid in 2003 for about £25m?",
+    "David Beckham"
+   ],
+   [
+    "Which player moved from Liverpool to Barcelona in 2018 for about £142m?",
+    "Philippe Coutinho"
+   ],
+   [
+    "Which player moved from Juventus to Real Madrid in 2001 for a then-world-record £46m (about €77m)?",
+    "Zinedine Zidane"
+   ],
+   [
+    "Which player moved from Santos to Barcelona in 2013 for an officially reported €57m?",
+    "Neymar"
+   ],
+   [
+    "Which player moved from Real Madrid to PSG in 2021 for free?",
+    "Sergio Ramos"
+   ],
+   [
+    "Which player moved from Manchester United to Juventus in 2022 for free?",
+    "Paul Pogba"
+   ],
+   [
+    "Which player moved from Manchester City to Tottenham in 2026 on a season-long loan with a £60m obligation to buy?",
+    "Omar Marmoush"
+   ],
+   [
+    "Which player moved from Everton to Manchester United in 2004 for a fee rising to about £27m?",
+    "Wayne Rooney"
+   ]
+  ],
+  "200": [
+   [
+    "Which player moved from Real Madrid to Juventus in 2018 for about €100m?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which player moved from Monaco to PSG in 2017 for about €180m (loan, then permanent)?",
+    "Kylian Mbappé"
+   ],
+   [
+    "Which player moved from Inter to Chelsea in 2021 for about £97.5m?",
+    "Romelu Lukaku"
+   ],
+   [
+    "Which player moved from Benfica to Chelsea in 2023 for about £107m?",
+    "Enzo Fernández"
+   ],
+   [
+    "Which player moved from Atlético Madrid to Barcelona in 2019 for €120m?",
+    "Antoine Griezmann"
+   ],
+   [
+    "Which player moved from Liverpool to Barcelona in 2014 for about £75m?",
+    "Luis Suárez"
+   ],
+   [
+    "Which player moved from Chelsea to Real Madrid in 2019 for about £89m?",
+    "Eden Hazard"
+   ],
+   [
+    "Which player moved from Liverpool to Chelsea in 2011 for £50m?",
+    "Fernando Torres"
+   ],
+   [
+    "Which player moved from Wolfsburg to Manchester City in 2015 for about £55m?",
+    "Kevin De Bruyne"
+   ],
+   [
+    "Which player moved from Newcastle to Liverpool in 2025 for a then-British-record £125m?",
+    "Alexander Isak"
+   ],
+   [
+    "Which player moved from Bayer Leverkusen to Liverpool in 2025 for about £100m (up to £116m)?",
+    "Florian Wirtz"
+   ],
+   [
+    "Which player moved from PSG to Al Hilal in 2023 for about €90m?",
+    "Neymar"
+   ],
+   [
+    "Which player moved from Eintracht Frankfurt to Manchester City in 2025 for about £59m?",
+    "Omar Marmoush"
+   ],
+   [
+    "Which player moved from Real Madrid to Arsenal in 2013 for £42.5m?",
+    "Mesut Özil"
+   ],
+   [
+    "Which player moved from Bayern Munich to Barcelona in 2022 for about €45m?",
+    "Robert Lewandowski"
+   ],
+   [
+    "Which player moved from Barcelona to Real Madrid in 2000 for a then-world-record £37m?",
+    "Luís Figo"
+   ],
+   [
+    "Which player moved from Chelsea to Manchester City in 2026 for about £125m?",
+    "Enzo Fernández"
+   ],
+   [
+    "Which player moved from Sporting CP to Manchester United in 2003 for about £12m?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which player moved from Sporting CP to Arsenal in 2025 for about £55m (up to £64m)?",
+    "Viktor Gyökeres"
+   ],
+   [
+    "Which player moved from Atlético Madrid to Manchester City in 2011 for about £38m?",
+    "Sergio Agüero"
+   ],
+   [
+    "Which player moved from Sporting CP to Manchester United in 2020 for about £47m (up to £68m)?",
+    "Bruno Fernandes"
+   ],
+   [
+    "Which player moved from Marseille to Chelsea in 2004 for about £24m?",
+    "Didier Drogba"
+   ],
+   [
+    "Which player moved from Southampton to Liverpool in 2016 for about £34m?",
+    "Sadio Mané"
+   ],
+   [
+    "Which player moved from PSG to Liverpool in 2026 for a reported fee of over £100m?",
+    "Bradley Barcola"
+   ],
+   [
+    "Which player moved from Tottenham to Real Madrid in 2012 for about £30m?",
+    "Luka Modrić"
+   ]
+  ],
+  "300": [
+   [
+    "Which player moved from AC Milan to Real Madrid in 2009 for about £56m?",
+    "Kaká"
+   ],
+   [
+    "Which player moved from Inter to Barcelona in 2009 for about €69m plus Samuel Eto'o?",
+    "Zlatan Ibrahimović"
+   ],
+   [
+    "Which player moved from Real Madrid to Manchester United in 2014 for a then-British-record £59.7m?",
+    "Ángel Di María"
+   ],
+   [
+    "Which player moved from Newcastle to Liverpool in 2011 for £35m?",
+    "Andy Carroll"
+   ],
+   [
+    "Which player moved from Liverpool to Manchester City in 2015 for about £49m?",
+    "Raheem Sterling"
+   ],
+   [
+    "Which player moved from Borussia Dortmund to Barcelona in 2017 for about €105m?",
+    "Ousmane Dembélé"
+   ],
+   [
+    "Which player moved from Benfica to Atlético Madrid in 2019 for €126m?",
+    "João Félix"
+   ],
+   [
+    "Which player moved from Leicester to Manchester United in 2019 for a defender-record £80m?",
+    "Harry Maguire"
+   ],
+   [
+    "Which player moved from Ajax to Manchester United in 2022 for about £85m?",
+    "Antony"
+   ],
+   [
+    "Which player moved from Borussia Dortmund to Manchester United in 2021 for £73m?",
+    "Jadon Sancho"
+   ],
+   [
+    "Which player moved from Barcelona to Arsenal in 2014 for about £35m?",
+    "Alexis Sánchez"
+   ],
+   [
+    "Which player moved from Basel to Chelsea in 2014 for about £11m?",
+    "Mohamed Salah"
+   ],
+   [
+    "Which player moved from Arsenal to Barcelona in 2007 for about £16m?",
+    "Thierry Henry"
+   ],
+   [
+    "Which player moved from Leicester to Manchester City in 2018 for £60m?",
+    "Riyad Mahrez"
+   ],
+   [
+    "Which player moved from Brighton to Chelsea in 2023 for about £115m?",
+    "Moisés Caicedo"
+   ],
+   [
+    "Which player moved from Aston Villa to Chelsea in 2026 for about £117m?",
+    "Morgan Rogers"
+   ],
+   [
+    "Which player moved from Newcastle to Arsenal in 2026 for about £75m?",
+    "Bruno Guimarães"
+   ],
+   [
+    "Which player moved from Newcastle to Barcelona in 2026 for about £69m?",
+    "Anthony Gordon"
+   ],
+   [
+    "Which player moved from Newcastle to Tottenham in 2026 for about £92.5m (up to £100m)?",
+    "Sandro Tonali"
+   ],
+   [
+    "Which player moved from Eintracht Frankfurt to Liverpool in 2025 for about £69m (up to £79m)?",
+    "Hugo Ekitiké"
+   ],
+   [
+    "Which player moved from Brentford to Manchester United in 2025 for about £65m (up to £71m)?",
+    "Bryan Mbeumo"
+   ],
+   [
+    "Which player moved from RB Leipzig to Manchester United in 2025 for about £66m (up to £74m)?",
+    "Benjamin Šeško"
+   ],
+   [
+    "Which player moved from RB Leipzig to Liverpool in 2023 for his £60m release clause?",
+    "Dominik Szoboszlai"
+   ],
+   [
+    "Which player moved from Ajax to Barcelona in 2019 for about €75m (up to €86m)?",
+    "Frenkie de Jong"
+   ],
+   [
+    "Which player moved from Napoli to Galatasaray in 2025 for a Turkish-record €75m (after a loan)?",
+    "Victor Osimhen"
+   ]
+  ],
+  "400": [
+   [
+    "Which player moved from Monaco to Real Madrid in 2014 for about €80m?",
+    "James Rodríguez"
+   ],
+   [
+    "Which player moved from Everton to Manchester United in 2017 for about £75m?",
+    "Romelu Lukaku"
+   ],
+   [
+    "Which player moved from Real Madrid to Chelsea in 2017 for about £58m?",
+    "Álvaro Morata"
+   ],
+   [
+    "Which player moved from Leicester to Chelsea in 2016 for about £32m?",
+    "N'Golo Kanté"
+   ],
+   [
+    "Which player moved from RB Leipzig to Manchester City in 2023 for about £77m?",
+    "Joško Gvardiol"
+   ],
+   [
+    "Which player moved from Benfica to Liverpool in 2022 for about £64m (up to £85m)?",
+    "Darwin Núñez"
+   ],
+   [
+    "Which player moved from Real Madrid to Manchester United in 2022 for about £60m (up to £70m)?",
+    "Casemiro"
+   ],
+   [
+    "Which player moved from Shakhtar Donetsk to Chelsea in 2023 for about £62m (up to £89m)?",
+    "Mykhailo Mudryk"
+   ],
+   [
+    "Which player moved from Chelsea to Arsenal in 2023 for about £65m?",
+    "Kai Havertz"
+   ],
+   [
+    "Which player moved from Chelsea to Manchester United in 2023 for about £55m (up to £60m)?",
+    "Mason Mount"
+   ],
+   [
+    "Which player moved from Manchester City to Bayern Munich in 2020 for about £45m?",
+    "Leroy Sané"
+   ],
+   [
+    "Which player moved from Liverpool to Bayern Munich in 2025 for about €70m?",
+    "Luis Díaz"
+   ],
+   [
+    "Which player moved from Benfica to Manchester City in 2020 for about £62m?",
+    "Rúben Dias"
+   ],
+   [
+    "Which player moved from Athletic Bilbao to Chelsea in 2018 for a goalkeeper-record £71.6m?",
+    "Kepa Arrizabalaga"
+   ],
+   [
+    "Which player moved from Napoli to Juventus in 2016 for €90m?",
+    "Gonzalo Higuaín"
+   ],
+   [
+    "Which player moved from Nottingham Forest to Manchester City in 2026 for about £116m?",
+    "Elliot Anderson"
+   ],
+   [
+    "Which player moved from Bournemouth to Manchester City in 2026 for about £64m (in January)?",
+    "Antoine Semenyo"
+   ],
+   [
+    "Which player moved from AC Milan to Chelsea in 2006 for a then-British-record £30.8m?",
+    "Andriy Shevchenko"
+   ],
+   [
+    "Which player moved from Leeds to Manchester United in 2002 for a then-British-record of about £30m?",
+    "Rio Ferdinand"
+   ],
+   [
+    "Which player moved from Inter to PSG in 2021 for about €60m?",
+    "Achraf Hakimi"
+   ],
+   [
+    "Which player moved from Lille to Arsenal in 2019 for a club-record £72m?",
+    "Nicolas Pépé"
+   ],
+   [
+    "Which player moved from Atlético Madrid to Manchester City in 2019 for his £62.8m release clause?",
+    "Rodri"
+   ],
+   [
+    "Which player moved from Brighton to Liverpool in 2023 for about £35m?",
+    "Alexis Mac Allister"
+   ],
+   [
+    "Which player moved from Barcelona to Napoli in 1984 for a then-world-record of about £6.9m?",
+    "Diego Maradona"
+   ],
+   [
+    "Which player moved from Liverpool to Bayern Munich in 2022 for about £35m?",
+    "Sadio Mané"
+   ]
+  ],
+  "500": [
+   [
+    "Which player moved from Kasımpaşa to Aston Villa in 2019 for about £8.75m?",
+    "Trezeguet (Mahmoud Hassan)"
+   ],
+   [
+    "Which player moved from Real Madrid to Arsenal in 2021 for about £30m (after a loan)?",
+    "Martin Ødegaard"
+   ],
+   [
+    "Which player moved from PSV to Liverpool in 2023 for about £37m?",
+    "Cody Gakpo"
+   ],
+   [
+    "Which player moved from Borussia Dortmund to Chelsea in 2019 for about £58m?",
+    "Christian Pulisic"
+   ],
+   [
+    "Which player moved from Chelsea to Arsenal in 2015 for about £10m?",
+    "Petr Čech"
+   ],
+   [
+    "Which player moved from Porto to Liverpool in 2022 for about £37.5m (up to £49m)?",
+    "Luis Díaz"
+   ],
+   [
+    "Which player moved from Schalke to Manchester City in 2016 for about £37m?",
+    "Leroy Sané"
+   ],
+   [
+    "Which player moved from Liverpool to Real Madrid in 2025 for about €10m, to leave a month before his contract ended?",
+    "Trent Alexander-Arnold"
+   ],
+   [
+    "Which player moved from Crystal Palace to Manchester United in 2013 for about £15m?",
+    "Wilfried Zaha"
+   ],
+   [
+    "Which player moved from Lille to Chelsea in 2012 for about £32m?",
+    "Eden Hazard"
+   ],
+   [
+    "Which player moved from Arsenal to Manchester United in 2012 for about £24m?",
+    "Robin van Persie"
+   ],
+   [
+    "Which player moved from Chelsea to Manchester United in 2014 for a club-record £37.1m?",
+    "Juan Mata"
+   ],
+   [
+    "Which player moved from Chelsea to Real Madrid in 2018 for about £35m?",
+    "Thibaut Courtois"
+   ],
+   [
+    "Which player moved from Tottenham to Manchester United in 2008 for about £30.75m?",
+    "Dimitar Berbatov"
+   ],
+   [
+    "Which player moved from Real Madrid to Manchester City in 2008 for a then-British-record £32.5m?",
+    "Robinho"
+   ],
+   [
+    "Which player moved from Le Havre to Leicester in 2014 for about £450,000?",
+    "Riyad Mahrez"
+   ],
+   [
+    "Which player moved from Caen to Leicester in 2015 for about £5.6m?",
+    "N'Golo Kanté"
+   ],
+   [
+    "Which player moved from Celtic to Southampton in 2015 for about £13m?",
+    "Virgil van Dijk"
+   ],
+   [
+    "Which player moved from Red Bull Salzburg to Borussia Dortmund in 2020 for about €20m (in January)?",
+    "Erling Haaland"
+   ],
+   [
+    "Which player moved from Barcelona to Inter in 1997 for a then-world-record of about £19.5m?",
+    "Ronaldo Nazário"
+   ],
+   [
+    "Which player moved from Parma to Juventus in 2001 for a then-goalkeeper-record of about €52m?",
+    "Gianluigi Buffon"
+   ],
+   [
+    "Which player moved from Blackburn to Newcastle in 1996 for a then-world-record £15m?",
+    "Alan Shearer"
+   ],
+   [
+    "Which player moved from Juventus to Arsenal in 1999 for about £11m?",
+    "Thierry Henry"
+   ],
+   [
+    "Which player moved from Juventus to Inter in 2006 for about €25m?",
+    "Zlatan Ibrahimović"
+   ],
+   [
+    "Which player moved from Chelsea to Napoli in 2024 for about €30m?",
+    "Romelu Lukaku"
+   ]
+  ]
+ }
+}

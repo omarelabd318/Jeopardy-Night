@@ -1,0 +1,738 @@
+{
+ "id": "geo",
+ "name": "Geography",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "The Strait of Gibraltar separates Spain from which African country?",
+    "Morocco"
+   ],
+   [
+    "What is the capital of Australia?",
+    "Canberra"
+   ],
+   [
+    "Mount Kilimanjaro is in which country?",
+    "Tanzania"
+   ],
+   [
+    "What is the largest country in South America by area?",
+    "Brazil"
+   ],
+   [
+    "The Dead Sea lies between the West Bank, Israel and which country?",
+    "Jordan"
+   ],
+   [
+    "What is the capital of Canada?",
+    "Ottawa"
+   ],
+   [
+    "What is the largest ocean on Earth?",
+    "The Pacific"
+   ],
+   [
+    "Istanbul sits on two continents: Europe and which other?",
+    "Asia"
+   ],
+   [
+    "What is the smallest country in the world by area?",
+    "Vatican City"
+   ],
+   [
+    "Which desert covers most of North Africa?",
+    "The Sahara"
+   ],
+   [
+    "The Suez Canal links the Mediterranean with which sea?",
+    "The Red Sea"
+   ],
+   [
+    "Which European country is shaped like a boot?",
+    "Italy"
+   ],
+   [
+    "What is the capital of Saudi Arabia?",
+    "Riyadh"
+   ],
+   [
+    "What is the highest mountain in the world?",
+    "Mount Everest"
+   ],
+   [
+    "Which African country has the largest population?",
+    "Nigeria"
+   ],
+   [
+    "Which river flows through London?",
+    "The Thames"
+   ],
+   [
+    "What is the capital of Greece?",
+    "Athens"
+   ],
+   [
+    "What is the longest river in South America?",
+    "The Amazon"
+   ],
+   [
+    "Which country has had the world's largest population since 2023?",
+    "India"
+   ],
+   [
+    "Machu Picchu is in which country?",
+    "Peru"
+   ],
+   [
+    "What is the largest country in the world by area?",
+    "Russia"
+   ],
+   [
+    "What is the capital of Germany?",
+    "Berlin"
+   ],
+   [
+    "Which ocean lies between Africa and Australia?",
+    "The Indian Ocean"
+   ],
+   [
+    "In which country is the Taj Mahal?",
+    "India"
+   ],
+   [
+    "Not counting Australia, what is the largest island in the world?",
+    "Greenland"
+   ],
+   [
+    "Which river flows through Paris?",
+    "The Seine"
+   ],
+   [
+    "What is the capital of Japan?",
+    "Tokyo"
+   ],
+   [
+    "What is the longest river in Africa?",
+    "The Nile"
+   ],
+   [
+    "In which country is the Eiffel Tower?",
+    "France"
+   ],
+   [
+    "What is the capital of Spain?",
+    "Madrid"
+   ],
+   [
+    "The Sinai Peninsula links Africa to which continent?",
+    "Asia"
+   ],
+   [
+    "What is the coldest continent?",
+    "Antarctica"
+   ],
+   [
+    "In which country is the city of Dubai?",
+    "The United Arab Emirates"
+   ],
+   [
+    "What is the capital of Lebanon?",
+    "Beirut"
+   ],
+   [
+    "Which ocean lies between Europe and North America?",
+    "The Atlantic"
+   ],
+   [
+    "What is the capital of Russia?",
+    "Moscow"
+   ]
+  ],
+  "200": [
+   [
+    "What is the capital of Turkey?",
+    "Ankara"
+   ],
+   [
+    "Counting its overseas territories, which country has the most time zones?",
+    "France (12)"
+   ],
+   [
+    "What is the capital of New Zealand?",
+    "Wellington"
+   ],
+   [
+    "Lake Victoria is shared by Uganda, Kenya and which third country?",
+    "Tanzania"
+   ],
+   [
+    "Which is the only country with coastline on both the Atlantic and the Indian Ocean?",
+    "South Africa"
+   ],
+   [
+    "Which country has more natural lakes than the rest of the world combined?",
+    "Canada"
+   ],
+   [
+    "What is the capital of Morocco?",
+    "Rabat"
+   ],
+   [
+    "Which river flows through Baghdad?",
+    "The Tigris"
+   ],
+   [
+    "Which sea lies between Italy and the Balkans?",
+    "The Adriatic Sea"
+   ],
+   [
+    "What is the capital of Nigeria?",
+    "Abuja"
+   ],
+   [
+    "What is the capital of Switzerland?",
+    "Bern"
+   ],
+   [
+    "What is the largest country in Africa by area?",
+    "Algeria"
+   ],
+   [
+    "The Andes run along the western side of which continent?",
+    "South America"
+   ],
+   [
+    "What is the capital of Vietnam?",
+    "Hanoi"
+   ],
+   [
+    "Which river flows through Vienna, Budapest and Belgrade?",
+    "The Danube"
+   ],
+   [
+    "What is the capital of Portugal?",
+    "Lisbon"
+   ],
+   [
+    "Which mountain range is the traditional border between Europe and Asia?",
+    "The Ural Mountains"
+   ],
+   [
+    "What is the capital of Kenya?",
+    "Nairobi"
+   ],
+   [
+    "What is the capital of Argentina?",
+    "Buenos Aires"
+   ],
+   [
+    "What is the largest US state by area?",
+    "Alaska"
+   ],
+   [
+    "What is the capital of South Korea?",
+    "Seoul"
+   ],
+   [
+    "Which mountain range contains Mount Everest?",
+    "The Himalayas"
+   ],
+   [
+    "What is the capital of Iran?",
+    "Tehran"
+   ],
+   [
+    "Which Red Sea resort at the tip of Sinai hosted the COP27 climate summit in 2022?",
+    "Sharm El Sheikh"
+   ],
+   [
+    "Which country is made up of over 7,000 islands, including Luzon and Mindanao?",
+    "The Philippines"
+   ],
+   [
+    "What is the capital of Hungary?",
+    "Budapest"
+   ],
+   [
+    "What is the capital of the United Arab Emirates?",
+    "Abu Dhabi"
+   ],
+   [
+    "What is the capital of Brazil?",
+    "Brasília"
+   ],
+   [
+    "What is the capital of Jordan?",
+    "Amman"
+   ],
+   [
+    "What is the capital of Sudan?",
+    "Khartoum"
+   ],
+   [
+    "Which country has the largest population in the Arab world?",
+    "Egypt"
+   ],
+   [
+    "Mount Fuji is the highest mountain in which country?",
+    "Japan"
+   ],
+   [
+    "Which Scandinavian country is famous for its fjords and its long Atlantic coast?",
+    "Norway"
+   ],
+   [
+    "What is the capital of Tunisia?",
+    "Tunis"
+   ],
+   [
+    "Which is the largest of North America's Great Lakes?",
+    "Lake Superior"
+   ],
+   [
+    "What is the capital of India?",
+    "New Delhi"
+   ]
+  ],
+  "300": [
+   [
+    "The Atacama, one of the driest deserts on Earth, is mostly in which country?",
+    "Chile"
+   ],
+   [
+    "What is the capital of Kazakhstan?",
+    "Astana"
+   ],
+   [
+    "What is the largest island in the Mediterranean?",
+    "Sicily"
+   ],
+   [
+    "The Gobi Desert spans China and which other country?",
+    "Mongolia"
+   ],
+   [
+    "Which African country was known as Upper Volta until 1984?",
+    "Burkina Faso"
+   ],
+   [
+    "What is the deepest lake in the world?",
+    "Lake Baikal (Russia)"
+   ],
+   [
+    "Name BOTH landlocked countries of South America.",
+    "Bolivia and Paraguay"
+   ],
+   [
+    "The Danube ends in which sea?",
+    "The Black Sea"
+   ],
+   [
+    "The historic city of Timbuktu is in which country?",
+    "Mali"
+   ],
+   [
+    "What is the northernmost capital city of a sovereign state?",
+    "Reykjavík"
+   ],
+   [
+    "Tbilisi is the capital of which country?",
+    "Georgia"
+   ],
+   [
+    "What is the capital of Libya?",
+    "Tripoli"
+   ],
+   [
+    "The Galápagos Islands belong to which country?",
+    "Ecuador"
+   ],
+   [
+    "What is the most populous country in the Horn of Africa?",
+    "Ethiopia"
+   ],
+   [
+    "After the Sahara, what is the world's largest hot desert?",
+    "The Arabian Desert"
+   ],
+   [
+    "Montevideo is the capital of which country?",
+    "Uruguay"
+   ],
+   [
+    "What is the capital of Pakistan?",
+    "Islamabad"
+   ],
+   [
+    "What is the smallest country in Africa by area?",
+    "Seychelles"
+   ],
+   [
+    "What is the capital of Croatia?",
+    "Zagreb"
+   ],
+   [
+    "The Great Barrier Reef lies off which Australian state?",
+    "Queensland"
+   ],
+   [
+    "What is the capital of Ethiopia?",
+    "Addis Ababa"
+   ],
+   [
+    "What is the capital of Cambodia?",
+    "Phnom Penh"
+   ],
+   [
+    "Which river forms much of the border between the USA and Mexico?",
+    "The Rio Grande"
+   ],
+   [
+    "Accra is the capital of which country?",
+    "Ghana"
+   ],
+   [
+    "Which strait between Oman and Iran carries much of the world's oil?",
+    "The Strait of Hormuz"
+   ],
+   [
+    "Which strait separates Asia from North America?",
+    "The Bering Strait"
+   ],
+   [
+    "Which Egyptian oasis near the Libyan border was home to the Oracle of Amun?",
+    "Siwa"
+   ],
+   [
+    "Which gulf separates Sinai from Saudi Arabia, with Aqaba and Eilat at its tip?",
+    "The Gulf of Aqaba"
+   ],
+   [
+    "What is the capital of Nepal?",
+    "Kathmandu"
+   ],
+   [
+    "Which country of over 17,000 islands has the world's largest Muslim population?",
+    "Indonesia"
+   ],
+   [
+    "Which river flows through Cologne and forms part of the German–Swiss border?",
+    "The Rhine"
+   ],
+   [
+    "What is the capital of Peru?",
+    "Lima"
+   ],
+   [
+    "Which sea lies between Greece and Turkey?",
+    "The Aegean Sea"
+   ],
+   [
+    "What is the capital of Algeria?",
+    "Algiers"
+   ],
+   [
+    "What is the capital of Afghanistan?",
+    "Kabul"
+   ],
+   [
+    "What is the capital of Poland?",
+    "Warsaw"
+   ]
+  ],
+  "400": [
+   [
+    "Which city became the capital of Myanmar in 2006?",
+    "Naypyidaw"
+   ],
+   [
+    "Which is the only doubly landlocked country in Europe?",
+    "Liechtenstein"
+   ],
+   [
+    "Which country has the most islands in the world (about 267,000)?",
+    "Sweden"
+   ],
+   [
+    "What is the highest seat of government of any country, at about 3,600 m?",
+    "La Paz, Bolivia"
+   ],
+   [
+    "What is the longest river flowing entirely within Europe?",
+    "The Volga"
+   ],
+   [
+    "The roadless Darién Gap separates Panama from which country?",
+    "Colombia"
+   ],
+   [
+    "What is the capital of Bhutan?",
+    "Thimphu"
+   ],
+   [
+    "Lilongwe is the capital of which African country?",
+    "Malawi"
+   ],
+   [
+    "What is the least populated capital city in the EU?",
+    "Valletta, Malta"
+   ],
+   [
+    "Which country is completely surrounded by South Africa?",
+    "Lesotho"
+   ],
+   [
+    "Angel Falls, the world's tallest uninterrupted waterfall, is in which country?",
+    "Venezuela"
+   ],
+   [
+    "What is the capital of Oman?",
+    "Muscat"
+   ],
+   [
+    "Nouakchott is the capital of which country?",
+    "Mauritania"
+   ],
+   [
+    "Which strait links the Red Sea to the Gulf of Aden?",
+    "Bab-el-Mandeb"
+   ],
+   [
+    "What is the highest mountain in South America?",
+    "Aconcagua"
+   ],
+   [
+    "Which island is shared by Haiti and the Dominican Republic?",
+    "Hispaniola"
+   ],
+   [
+    "What is the capital of Laos?",
+    "Vientiane"
+   ],
+   [
+    "What is the capital of Kyrgyzstan?",
+    "Bishkek"
+   ],
+   [
+    "The Faroe Islands belong to which country?",
+    "Denmark"
+   ],
+   [
+    "What is Africa's second-longest river?",
+    "The Congo"
+   ],
+   [
+    "What is the capital of Bangladesh?",
+    "Dhaka"
+   ],
+   [
+    "Ljubljana is the capital of which country?",
+    "Slovenia"
+   ],
+   [
+    "What is the longest river in Asia?",
+    "The Yangtze"
+   ],
+   [
+    "Lusaka is the capital of which country?",
+    "Zambia"
+   ],
+   [
+    "Which tiny country sits in the Pyrenees between France and Spain?",
+    "Andorra"
+   ],
+   [
+    "What was Zimbabwe called before 1980?",
+    "Rhodesia"
+   ],
+   [
+    "Which Egyptian city sits at the southern end of the Suez Canal?",
+    "Suez"
+   ],
+   [
+    "What is the capital of Yemen?",
+    "Sana'a"
+   ],
+   [
+    "What is Egypt's highest mountain?",
+    "Mount Catherine (Gabal Katrina)"
+   ],
+   [
+    "Which strait separates Sicily from mainland Italy?",
+    "The Strait of Messina"
+   ],
+   [
+    "What is the capital of Mongolia?",
+    "Ulaanbaatar"
+   ],
+   [
+    "What is the river called where the Tigris and Euphrates join before reaching the Gulf?",
+    "The Shatt al-Arab"
+   ],
+   [
+    "Which African capital lies on the Congo River, right across from Brazzaville?",
+    "Kinshasa"
+   ],
+   [
+    "The Atlas Mountains run through Morocco, Algeria and which third country?",
+    "Tunisia"
+   ],
+   [
+    "What is the capital of Uzbekistan?",
+    "Tashkent"
+   ],
+   [
+    "Lake Titicaca lies on the border of Peru and which country?",
+    "Bolivia"
+   ]
+  ],
+  "500": [
+   [
+    "What is the capital of Madagascar?",
+    "Antananarivo"
+   ],
+   [
+    "What is the capital of Palau?",
+    "Ngerulmud"
+   ],
+   [
+    "Which is the only country with territory in all four hemispheres?",
+    "Kiribati"
+   ],
+   [
+    "The Caspian Sea borders Russia, Kazakhstan, Turkmenistan, Iran and which fifth country?",
+    "Azerbaijan"
+   ],
+   [
+    "Which country has more pyramids than any other?",
+    "Sudan"
+   ],
+   [
+    "The Qattara Depression, one of Africa's lowest points, is in which country?",
+    "Egypt"
+   ],
+   [
+    "What is the capital of Eritrea?",
+    "Asmara"
+   ],
+   [
+    "Podgorica is the capital of which European country?",
+    "Montenegro"
+   ],
+   [
+    "Point Nemo, the spot farthest from any land, is in which ocean?",
+    "The South Pacific"
+   ],
+   [
+    "What is the largest landlocked country in the world?",
+    "Kazakhstan"
+   ],
+   [
+    "Which West African country was called Dahomey until 1975?",
+    "Benin"
+   ],
+   [
+    "Tristan da Cunha, the most remote inhabited archipelago, belongs to which country?",
+    "The United Kingdom"
+   ],
+   [
+    "What is the capital of Tuvalu?",
+    "Funafuti"
+   ],
+   [
+    "Which Ethiopian lake is the source of the Blue Nile?",
+    "Lake Tana"
+   ],
+   [
+    "What is the deepest known point in the ocean called?",
+    "The Challenger Deep"
+   ],
+   [
+    "Which two countries share the island of Timor?",
+    "Indonesia and Timor-Leste (East Timor)"
+   ],
+   [
+    "The narrow Wakhan Corridor connects Afghanistan to which country?",
+    "China"
+   ],
+   [
+    "What is the capital of the Federated States of Micronesia?",
+    "Palikir"
+   ],
+   [
+    "Which city became Burundi's political capital in 2019?",
+    "Gitega"
+   ],
+   [
+    "The Svalbard archipelago belongs to which country?",
+    "Norway"
+   ],
+   [
+    "The Caprivi Strip is part of which country?",
+    "Namibia"
+   ],
+   [
+    "Which is the only sea with no land coastline?",
+    "The Sargasso Sea"
+   ],
+   [
+    "Victoria Falls lies on the border of which two countries?",
+    "Zambia and Zimbabwe"
+   ],
+   [
+    "Which is Africa's largest landlocked country by area?",
+    "Chad"
+   ],
+   [
+    "Port of Spain is the capital of which country?",
+    "Trinidad and Tobago"
+   ],
+   [
+    "Which European capital is built on 14 islands?",
+    "Stockholm"
+   ],
+   [
+    "Which Egyptian depression, west of the Nile, is home to Lake Qarun?",
+    "The Faiyum (Fayoum)"
+   ],
+   [
+    "What is the capital of Burkina Faso?",
+    "Ouagadougou"
+   ],
+   [
+    "What is the capital of Brunei?",
+    "Bandar Seri Begawan"
+   ],
+   [
+    "The Great Sand Sea stretches across Egypt and which other country?",
+    "Libya"
+   ],
+   [
+    "Paramaribo is the capital of which country?",
+    "Suriname"
+   ],
+   [
+    "The Bosphorus links the Black Sea to which smaller sea?",
+    "The Sea of Marmara"
+   ],
+   [
+    "Which is the only Central American country with no Caribbean coastline?",
+    "El Salvador"
+   ],
+   [
+    "Which area on the Red Sea coast is claimed by both Egypt and Sudan?",
+    "The Halaib Triangle"
+   ],
+   [
+    "Which strait separates Australia from New Guinea?",
+    "The Torres Strait"
+   ],
+   [
+    "Which African country has three capital cities (Pretoria, Cape Town and Bloemfontein)?",
+    "South Africa"
+   ]
+  ]
+ }
+}

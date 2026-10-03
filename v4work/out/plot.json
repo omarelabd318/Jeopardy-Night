@@ -1,0 +1,458 @@
+{
+ "id": "plot",
+ "name": "Badly Explained Plots",
+ "type": "text",
+ "desc": "A famous film or TV show, explained badly. Name it.",
+ "data": {
+  "100": [
+   [
+    "A man won't share a floating door, and his girlfriend lets go of him anyway.",
+    "Titanic"
+   ],
+   [
+    "A lion cub's uncle throws his dad off a cliff, so the cub runs away and sings about having no worries.",
+    "The Lion King"
+   ],
+   [
+    "A chemistry teacher gets cancer and starts a very successful side business.",
+    "Breaking Bad (TV)"
+   ],
+   [
+    "Six friends spend ten years sitting on the same sofa in the same coffee shop.",
+    "Friends (TV)"
+   ],
+   [
+    "Toys panic and freeze every time a child walks into the room.",
+    "Toy Story"
+   ],
+   [
+    "A boy finds out he's famous in a world he's never heard of, then goes to boarding school.",
+    "Harry Potter (and the Philosopher's Stone)"
+   ],
+   [
+    "A fish dad crosses the whole ocean looking for his son, who has one small fin.",
+    "Finding Nemo"
+   ],
+   [
+    "A rich orphan dresses up as a bat to punch a man dressed as a clown.",
+    "The Dark Knight (any Batman film with the Joker accepted)"
+   ],
+   [
+    "Broke adults in Korea play children's playground games for money. Losing is bad.",
+    "Squid Game (TV)"
+   ],
+   [
+    "A princess with ice powers locks herself away; her sister just wants to build a snowman.",
+    "Frozen"
+   ],
+   [
+    "A purple man collects six shiny rocks so he can snap away half the universe.",
+    "Avengers: Infinity War"
+   ],
+   [
+    "Fairy-tale characters invade an ogre's swamp, so he goes on a road trip with a talking donkey.",
+    "Shrek"
+   ],
+   [
+    "A family forgets their kid at Christmas, and he booby-traps the house against two burglars.",
+    "Home Alone"
+   ],
+   [
+    "A teenager gets bitten by a spider and now has to pay his aunt's rent and save New York.",
+    "Spider-Man"
+   ],
+   [
+    "A family of superheroes pretends to be normal, and the baby keeps setting things on fire.",
+    "The Incredibles"
+   ],
+   [
+    "A Marine in a wheelchair gets a tall blue alien body and switches sides.",
+    "Avatar"
+   ],
+   [
+    "A girl moves into a castle with a hairy, cursed prince, and the furniture won't stop singing.",
+    "Beauty and the Beast"
+   ],
+   [
+    "A rich man brings dinosaurs back to life for a theme park, and then the power goes out.",
+    "Jurassic Park"
+   ],
+   [
+    "A street thief gets three wishes from a big blue man who lives in a lamp.",
+    "Aladdin"
+   ],
+   [
+    "A teenage girl moves to a rainy town and falls for a century-old vampire who sparkles.",
+    "Twilight"
+   ],
+   [
+    "Five feelings live inside a girl's head and fight over the controls.",
+    "Inside Out"
+   ],
+   [
+    "A lazy safety inspector at a nuclear plant somehow keeps his job for over 35 years.",
+    "The Simpsons (TV)"
+   ],
+   [
+    "A mermaid gives up her voice for a pair of legs and a man she's met once.",
+    "The Little Mermaid"
+   ]
+  ],
+  "200": [
+   [
+    "Thieves in red jumpsuits and Dalí masks break into a mint and print their own money.",
+    "Money Heist (TV)"
+   ],
+   [
+    "An old man ties thousands of balloons to his house rather than move.",
+    "Up"
+   ],
+   [
+    "A man with a box of chocolates keeps turning up at every big moment in American history.",
+    "Forrest Gump"
+   ],
+   [
+    "A rat controls a terrible cook by pulling his hair.",
+    "Ratatouille"
+   ],
+   [
+    "A billionaire builds a metal suit in a cave with a box of scraps.",
+    "Iron Man"
+   ],
+   [
+    "Brothers in flat caps run Birmingham with razor blades sewn into their hats.",
+    "Peaky Blinders (TV)"
+   ],
+   [
+    "A man gets himself into prison to break his brother out; the escape map is tattooed on his body.",
+    "Prison Break (TV)"
+   ],
+   [
+    "Kids on bikes look for their friend, who is stuck in a dark, upside-down copy of their town.",
+    "Stranger Things (TV)"
+   ],
+   [
+    "Employees of a paper company are filmed for nine years; the boss is the main problem.",
+    "The Office (TV)"
+   ],
+   [
+    "Families fight over a chair made of swords, and winter takes forever to arrive.",
+    "Game of Thrones (TV)"
+   ],
+   [
+    "A lonely robot left to clean up Earth falls in love and follows his crush into space.",
+    "WALL-E"
+   ],
+   [
+    "A man with insomnia starts a club that nobody is allowed to talk about.",
+    "Fight Club"
+   ],
+   [
+    "A man stuck on an island for four years becomes best friends with a volleyball.",
+    "Cast Away"
+   ],
+   [
+    "A teenager drives a time-travelling car into 1955 and his mum develops a crush on him.",
+    "Back to the Future"
+   ],
+   [
+    "A thief, a talking raccoon, a tree that says one sentence and two others save the galaxy to a mixtape.",
+    "Guardians of the Galaxy"
+   ],
+   [
+    "A man who barely speaks causes a disaster everywhere he goes, and his best friend is a teddy bear.",
+    "Mr. Bean (TV)"
+   ],
+   [
+    "A girl follows a rabbit in a waistcoat down a hole and has tea with some very strange people.",
+    "Alice in Wonderland"
+   ],
+   [
+    "Friends wake up in Las Vegas with a tiger, a baby and no groom.",
+    "The Hangover"
+   ],
+   [
+    "A blonde sorority girl follows her ex to Harvard Law and beats everyone with a pink bag and a chihuahua.",
+    "Legally Blonde"
+   ],
+   [
+    "A magical family in Colombia has a house that talks, and nobody talks about Bruno.",
+    "Encanto"
+   ],
+   [
+    "A girl with black braids and no emotions solves murders at a boarding school for outcasts.",
+    "Wednesday (TV)"
+   ],
+   [
+    "A reporter in glasses is also the strongest man on Earth, and nobody notices it's the same face.",
+    "Superman"
+   ],
+   [
+    "Two men in black suits clean up after aliens and wipe everyone's memory with a flash.",
+    "Men in Black"
+   ]
+  ],
+  "300": [
+   [
+    "A man spends 19 years digging through a wall with a tiny hammer hidden behind a poster.",
+    "The Shawshank Redemption"
+   ],
+   [
+    "A man who can't make new memories tattoos notes on himself to find his wife's killer.",
+    "Memento"
+   ],
+   [
+    "Thieves break into a man's dreams to plant an idea; nobody is sure if the spinning top ever stops.",
+    "Inception"
+   ],
+   [
+    "A man finds out his whole life is a TV show and tries to sail off the edge of the set.",
+    "The Truman Show"
+   ],
+   [
+    "A dad leaves his kids to go planet shopping; one hour for him is seven years for them.",
+    "Interstellar"
+   ],
+   [
+    "A poor family gets jobs with a rich family one by one, all pretending not to know each other.",
+    "Parasite"
+   ],
+   [
+    "A man wakes up in a pod, takes a red pill and learns kung fu in seconds.",
+    "The Matrix"
+   ],
+   [
+    "Two hitmen chat about burgers, a boxer refuses to throw a fight, and the story is told in the wrong order.",
+    "Pulp Fiction"
+   ],
+   [
+    "A man stranded on Mars grows potatoes using his own poop.",
+    "The Martian"
+   ],
+   [
+    "A little boy sees dead people, and the man trying to help him is about to get some news.",
+    "The Sixth Sense"
+   ],
+   [
+    "An old crime boss gets shot while buying oranges, and his youngest son takes over the business.",
+    "The Godfather"
+   ],
+   [
+    "A failed stand-up comedian in clown make-up dances down a long flight of stairs.",
+    "Joker"
+   ],
+   [
+    "A bride in a yellow tracksuit wakes from a coma and works through a list of people to kill.",
+    "Kill Bill"
+   ],
+   [
+    "A teacher gets his students to stand on their desks and rip pages out of their poetry book.",
+    "Dead Poets Society"
+   ],
+   [
+    "A scientist's machine shrinks his kids, and the back garden becomes a jungle.",
+    "Honey, I Shrunk the Kids"
+   ],
+   [
+    "A drunk scientist drags his grandson across the universe and once turns himself into a pickle.",
+    "Rick and Morty (TV)"
+   ],
+   [
+    "A male nurse meets his girlfriend's father, a former CIA man with a lie detector.",
+    "Meet the Parents"
+   ],
+   [
+    "A space crew answers a distress call, and one of them has something burst out of his chest at dinner.",
+    "Alien"
+   ],
+   [
+    "A bus can't go under 50 miles per hour or it blows up.",
+    "Speed"
+   ],
+   [
+    "A crew of 11 thieves robs three Las Vegas casinos in one night.",
+    "Ocean's Eleven"
+   ],
+   [
+    "A farm girl's house lands on a witch, and she takes the dead witch's shoes.",
+    "The Wizard of Oz"
+   ],
+   [
+    "A new assistant at a fashion magazine works for a terrifying editor who wants her coffee hot.",
+    "The Devil Wears Prada"
+   ]
+  ],
+  "400": [
+   [
+    "A rude doctor with a cane insists, every single week, that it's never lupus.",
+    "House (TV)"
+   ],
+   [
+    "A mob boss starts seeing a therapist because some ducks left his swimming pool.",
+    "The Sopranos (TV)"
+   ],
+   [
+    "A grumpy weatherman relives the same February day until he learns to be nice.",
+    "Groundhog Day"
+   ],
+   [
+    "A man is born old and gets younger every year, ending up as a baby in his girlfriend's arms.",
+    "The Curious Case of Benjamin Button"
+   ],
+   [
+    "A writer, his wife and their son look after an empty hotel all winter. It does not go well.",
+    "The Shining"
+   ],
+   [
+    "A young FBI trainee asks an imprisoned cannibal for help catching another killer.",
+    "The Silence of the Lambs"
+   ],
+   [
+    "A stockbroker throws dwarves at a target, takes a lot of pills and goes to prison for fraud.",
+    "The Wolf of Wall Street"
+   ],
+   [
+    "A financial adviser moves his family to a lake in Missouri to launder money for a cartel.",
+    "Ozark (TV)"
+   ],
+   [
+    "A lonely man falls in love with his phone's operating system.",
+    "Her"
+   ],
+   [
+    "A woman fakes her own disappearance to frame her husband.",
+    "Gone Girl"
+   ],
+   [
+    "Two detectives hunt a killer who murders seven people, one for each deadly sin. Don't open the box.",
+    "Se7en"
+   ],
+   [
+    "A teenager fakes being sick and has the best day off ever in Chicago.",
+    "Ferris Bueller's Day Off"
+   ],
+   [
+    "A rookie cop spends one very long day with a crooked detective in Los Angeles.",
+    "Training Day"
+   ],
+   [
+    "Five very different teenagers spend a Saturday in detention and become friends.",
+    "The Breakfast Club"
+   ],
+   [
+    "A future king with a stammer takes lessons from an Australian with unusual methods.",
+    "The King's Speech"
+   ],
+   [
+    "A rich man who can't move his body hires a carer from the suburbs, and they become best friends.",
+    "The Intouchables"
+   ],
+   [
+    "A bored suburban dad quits his job, buys a sports car and gets obsessed with his daughter's friend.",
+    "American Beauty"
+   ],
+   [
+    "A Jewish pianist hides in the ruins of Warsaw during the Second World War.",
+    "The Pianist"
+   ],
+   [
+    "A family drives a broken yellow van across the country to get their daughter to a beauty pageant.",
+    "Little Miss Sunshine"
+   ],
+   [
+    "A janitor at MIT secretly solves maths problems that the professors can't.",
+    "Good Will Hunting"
+   ],
+   [
+    "A couple pays a company to erase each other from their memories.",
+    "Eternal Sunshine of the Spotless Mind"
+   ]
+  ],
+  "500": [
+   [
+    "Two magicians ruin each other's lives over a trick; one of them has a twin nobody knows about.",
+    "The Prestige"
+   ],
+   [
+    "A cop goes undercover in the mob while a mobster goes undercover in the police.",
+    "The Departed"
+   ],
+   [
+    "A student builds a website, gets sued by twins who row, and loses his best friend.",
+    "The Social Network"
+   ],
+   [
+    "A hotel concierge is framed for an old lady's murder and escapes prison with his lobby boy.",
+    "The Grand Budapest Hotel"
+   ],
+   [
+    "A jazz drummer gets screamed at until he plays at exactly the right tempo.",
+    "Whiplash"
+   ],
+   [
+    "A programmer is hired to test whether a robot girl seems human; she has her own plans.",
+    "Ex Machina"
+   ],
+   [
+    "A mother is sure her house is haunted, but she and her children may be the ones doing the haunting.",
+    "The Others"
+   ],
+   [
+    "A small-time lawyer in Albuquerque makes one bad decision after another, years before he meets a meth cook.",
+    "Better Call Saul (TV)"
+   ],
+   [
+    "Two detectives in Louisiana chase a killer while one of them explains that time is a flat circle.",
+    "True Detective (TV)"
+   ],
+   [
+    "A media billionaire's children fight over who will run Dad's company, and none of them are nice.",
+    "Succession (TV)"
+   ],
+   [
+    "A mute cleaner at a secret government lab falls in love with a fish-man.",
+    "The Shape of Water"
+   ],
+   [
+    "A father and son walk south across a burned-out America, pushing a shopping trolley.",
+    "The Road"
+   ],
+   [
+    "A young American and a French woman get off a train in Vienna and walk around talking all night.",
+    "Before Sunrise"
+   ],
+   [
+    "A poor father in Rome searches the whole city with his son for his stolen bicycle.",
+    "Bicycle Thieves"
+   ],
+   [
+    "Twelve men in a hot room argue about whether a boy killed his father.",
+    "12 Angry Men"
+   ],
+   [
+    "A newspaper tycoon dies saying one word, and a reporter spends the film working out what it means.",
+    "Citizen Kane"
+   ],
+   [
+    "Four Danish teachers test a theory that they'd be better at life if they were always a little drunk.",
+    "Another Round"
+   ],
+   [
+    "A man answers a ringing phone box in New York and a sniper won't let him hang up.",
+    "Phone Booth"
+   ],
+   [
+    "A pregnant police chief in Minnesota investigates a kidnapping gone wrong; a woodchipper is involved.",
+    "Fargo"
+   ],
+   [
+    "Two hitmen hide in a Belgian tourist town, and one of them hates every minute of it.",
+    "In Bruges"
+   ],
+   [
+    "Two brothers drive a 1967 Impala across America hunting ghosts and demons.",
+    "Supernatural (TV)"
+   ]
+  ]
+ }
+}

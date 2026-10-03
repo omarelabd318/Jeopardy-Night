@@ -1,0 +1,297 @@
+{
+ "id": "person",
+ "name": "Guess the Person",
+ "type": "photo",
+ "data": {
+  "100": [
+   [
+    "Barack Obama",
+    "Barack_Obama"
+   ],
+   [
+    "Elon Musk",
+    "Elon_Musk"
+   ],
+   [
+    "Taylor Swift",
+    "Taylor_Swift"
+   ],
+   [
+    "Beyoncé",
+    "Beyoncé"
+   ],
+   [
+    "Donald Trump",
+    "Donald_Trump"
+   ],
+   [
+    "Mark Zuckerberg",
+    "Mark_Zuckerberg"
+   ],
+   [
+    "Rihanna",
+    "Rihanna"
+   ],
+   [
+    "Michael Jackson",
+    "Michael_Jackson"
+   ],
+   [
+    "Amr Diab",
+    "Amr_Diab"
+   ],
+   [
+    "Tamer Hosny",
+    "Tamer_Hosny"
+   ],
+   [
+    "Abdel Halim Hafez",
+    "Abdel_Halim_Hafez"
+   ],
+   [
+    "Gamal Abdel Nasser",
+    "Gamal_Abdel_Nasser"
+   ],
+   [
+    "Anwar Sadat",
+    "Anwar_Sadat"
+   ],
+   [
+    "Abdel Fattah el-Sisi",
+    "Abdel_Fattah_el-Sisi"
+   ],
+   [
+    "Mohamed Mounir",
+    "Mohamed_Mounir"
+   ]
+  ],
+  "200": [
+   [
+    "Kim Kardashian",
+    "Kim_Kardashian"
+   ],
+   [
+    "Bill Gates",
+    "Bill_Gates"
+   ],
+   [
+    "Drake",
+    "Drake_(musician)"
+   ],
+   [
+    "Shakira",
+    "Shakira"
+   ],
+   [
+    "Usain Bolt",
+    "Usain_Bolt"
+   ],
+   [
+    "LeBron James",
+    "LeBron_James"
+   ],
+   [
+    "Eminem",
+    "Eminem"
+   ],
+   [
+    "Vladimir Putin",
+    "Vladimir_Putin"
+   ],
+   [
+    "Hosni Mubarak",
+    "Hosni_Mubarak"
+   ],
+   [
+    "Sherine Abdel Wahab",
+    "Sherine"
+   ],
+   [
+    "Bassem Youssef",
+    "Bassem_Youssef"
+   ],
+   [
+    "Wegz",
+    "Wegz"
+   ],
+   [
+    "Ahmed El Sakka",
+    "Ahmed_el-Sakka"
+   ],
+   [
+    "Faten Hamama",
+    "Faten_Hamama"
+   ],
+   [
+    "Soad Hosny",
+    "Soad_Hosny"
+   ]
+  ],
+  "300": [
+   [
+    "Serena Williams",
+    "Serena_Williams"
+   ],
+   [
+    "Roger Federer",
+    "Roger_Federer"
+   ],
+   [
+    "Kanye West",
+    "Kanye_West"
+   ],
+   [
+    "Jeff Bezos",
+    "Jeff_Bezos"
+   ],
+   [
+    "Bad Bunny",
+    "Bad_Bunny"
+   ],
+   [
+    "Ed Sheeran",
+    "Ed_Sheeran"
+   ],
+   [
+    "Billie Eilish",
+    "Billie_Eilish"
+   ],
+   [
+    "Steve Jobs",
+    "Steve_Jobs"
+   ],
+   [
+    "Naguib Mahfouz",
+    "Naguib_Mahfouz"
+   ],
+   [
+    "Magdi Yacoub",
+    "Magdi_Yacoub"
+   ],
+   [
+    "Angham",
+    "Angham"
+   ],
+   [
+    "Ahmed Mekky",
+    "Ahmed_Mekky"
+   ],
+   [
+    "Yasmine Sabri",
+    "Yasmine_Sabri"
+   ]
+  ],
+  "400": [
+   [
+    "Lewis Hamilton",
+    "Lewis_Hamilton"
+   ],
+   [
+    "Sam Altman",
+    "Sam_Altman"
+   ],
+   [
+    "MrBeast",
+    "MrBeast"
+   ],
+   [
+    "Malala Yousafzai",
+    "Malala_Yousafzai"
+   ],
+   [
+    "Rafael Nadal",
+    "Rafael_Nadal"
+   ],
+   [
+    "Novak Djokovic",
+    "Novak_Djokovic"
+   ],
+   [
+    "Greta Thunberg",
+    "Greta_Thunberg"
+   ],
+   [
+    "The Weeknd",
+    "The_Weeknd"
+   ],
+   [
+    "Mohamed ElBaradei",
+    "Mohamed_ElBaradei"
+   ],
+   [
+    "Ruby",
+    "Ruby_(Egyptian_singer)"
+   ],
+   [
+    "Amr Adib",
+    "Amr_Adib"
+   ],
+   [
+    "Mohamed Abdel Wahab",
+    "Mohamed_Abdel_Wahab"
+   ],
+   [
+    "Tim Cook",
+    "Tim_Cook"
+   ]
+  ],
+  "500": [
+   [
+    "Jensen Huang",
+    "Jensen_Huang"
+   ],
+   [
+    "Satya Nadella",
+    "Satya_Nadella"
+   ],
+   [
+    "Christopher Nolan",
+    "Christopher_Nolan"
+   ],
+   [
+    "Quentin Tarantino",
+    "Quentin_Tarantino"
+   ],
+   [
+    "Hayao Miyazaki",
+    "Hayao_Miyazaki"
+   ],
+   [
+    "Kendrick Lamar",
+    "Kendrick_Lamar"
+   ],
+   [
+    "Zaha Hadid",
+    "Zaha_Hadid"
+   ],
+   [
+    "Boutros Boutros-Ghali",
+    "Boutros_Boutros-Ghali"
+   ],
+   [
+    "Taha Hussein",
+    "Taha_Hussein"
+   ],
+   [
+    "Farouk El-Baz",
+    "Farouk_El-Baz"
+   ],
+   [
+    "Huda Shaarawi",
+    "Huda_Sha'arawi"
+   ],
+   [
+    "King Farouk",
+    "Farouk_of_Egypt"
+   ],
+   [
+    "Naguib Sawiris",
+    "Naguib_Sawiris"
+   ],
+   [
+    "Ahmed Zewail",
+    "Ahmed_Zewail"
+   ]
+  ]
+ }
+}

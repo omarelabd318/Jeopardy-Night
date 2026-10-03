@@ -1,0 +1,582 @@
+{
+ "id": "year",
+ "name": "Guess the Year",
+ "type": "text",
+ "desc": "Three things that happened in the same year. Name the year.",
+ "data": {
+  "100": [
+   [
+    "What year? COVID-19 lockdowns begin · Kobe Bryant dies · The Tokyo Olympics are postponed",
+    "2020"
+   ],
+   [
+    "What year? Argentina win the World Cup in Qatar · Queen Elizabeth II dies · ChatGPT launches",
+    "2022"
+   ],
+   [
+    "What year? Egypt's January 25 revolution · Osama bin Laden is killed · Steve Jobs dies",
+    "2011"
+   ],
+   [
+    "What year? Michael Jackson dies · Barcelona win the treble under Guardiola · Avatar is released",
+    "2009"
+   ],
+   [
+    "What year? Leicester City win the Premier League · The UK votes for Brexit · Pokémon Go comes out",
+    "2016"
+   ],
+   [
+    "What year? Liverpool win the Champions League in Madrid · Notre-Dame cathedral catches fire · Avengers: Endgame is released",
+    "2019"
+   ],
+   [
+    "What year? The 9/11 attacks · The first Harry Potter film · Wikipedia launches",
+    "2001"
+   ],
+   [
+    "What year? Egypt play at the World Cup in Russia · France win the World Cup · Prince Harry marries Meghan Markle",
+    "2018"
+   ],
+   [
+    "What year? Squid Game is released · Messi joins PSG · The delayed Tokyo Olympics are held",
+    "2021"
+   ],
+   [
+    "What year? Germany beat Brazil 7–1 at a World Cup in Brazil · The Ice Bucket Challenge goes viral · Robin Williams dies",
+    "2014"
+   ],
+   [
+    "What year? Usain Bolt wins three golds in Beijing · Barack Obama is first elected · The 2008 financial crash",
+    "2008"
+   ],
+   [
+    "What year? Princess Diana dies · Titanic is released · The first Harry Potter book is published",
+    "1997"
+   ],
+   [
+    "What year? PSG win their first Champions League · Pope Leo XIV is elected · The Grand Egyptian Museum officially opens",
+    "2025"
+   ],
+   [
+    "What year? Russia invades Ukraine · Elon Musk buys Twitter · Will Smith slaps Chris Rock at the Oscars",
+    "2022"
+   ],
+   [
+    "What year? Donald Trump is elected president for the first time · Ronaldo's Portugal win the Euros · David Bowie dies",
+    "2016"
+   ],
+   [
+    "What year? An Icelandic volcano grounds flights across Europe · The first iPad goes on sale · Inception is released",
+    "2010"
+   ],
+   [
+    "What year? Donald Trump wins a second election · Spain win the Euros in Germany · The WHO declares Egypt malaria-free",
+    "2024"
+   ],
+   [
+    "What year? Flight MH370 disappears · Real Madrid win La Décima · Sisi is elected president of Egypt",
+    "2014"
+   ],
+   [
+    "What year? Spain win the World Cup in North America · The Winter Olympics are held in Milan and Cortina · The USA marks 250 years of independence",
+    "2026"
+   ],
+   [
+    "What year? The Turkey–Syria earthquake · King Charles III is crowned · Messi wins his eighth Ballon d'Or",
+    "2023"
+   ],
+   [
+    "What year? George Floyd protests · The UK formally leaves the EU · Bayern Munich win the Champions League in Lisbon",
+    "2020"
+   ],
+   [
+    "What year? Egypt hosts the Africa Cup of Nations · Game of Thrones ends · Joker is released",
+    "2019"
+   ],
+   [
+    "What year? The Ever Given blocks the Suez Canal · The Pharaohs' Golden Parade in Cairo · Italy win the delayed Euro 2020",
+    "2021"
+   ],
+   [
+    "What year? Prince William marries Kate Middleton · The Fukushima nuclear disaster · Adele releases 21",
+    "2011"
+   ],
+   [
+    "What year? Pope Francis dies · Liverpool win their 20th league title · Diogo Jota dies in a car crash",
+    "2025"
+   ],
+   [
+    "What year? Cristiano Ronaldo joins Real Madrid for a world-record fee · Usain Bolt runs 9.58 in Berlin · The swine flu pandemic",
+    "2009"
+   ],
+   [
+    "What year? Mohamed Salah sets a Premier League record with 32 goals · Black Panther is released · Cristiano Ronaldo joins Juventus",
+    "2018"
+   ],
+   [
+    "What year? The Bataclan attacks in Paris · Adele releases Hello · Sepp Blatter is banned by FIFA",
+    "2015"
+   ]
+  ],
+  "200": [
+   [
+    "What year? Facebook is founded · The Athens Olympics · The Indian Ocean tsunami",
+    "2004"
+   ],
+   [
+    "What year? YouTube is founded · Liverpool's Istanbul comeback · Hurricane Katrina",
+    "2005"
+   ],
+   [
+    "What year? Zidane's World Cup final headbutt · Pluto is demoted · Twitter launches",
+    "2006"
+   ],
+   [
+    "What year? The first iPhone is released · Kaká wins the Ballon d'Or · The last Harry Potter book comes out",
+    "2007"
+   ],
+   [
+    "What year? Spain win the World Cup in South Africa · Instagram launches · Egypt win a third straight Africa Cup of Nations",
+    "2010"
+   ],
+   [
+    "What year? The London Olympics · Chelsea win the Champions League · Gangnam Style goes viral",
+    "2012"
+   ],
+   [
+    "What year? Sir Alex Ferguson retires · Pope Francis is elected · Frozen is released",
+    "2013"
+   ],
+   [
+    "What year? The New Suez Canal opens · Barcelona win their second treble · Star Wars: The Force Awakens is released",
+    "2015"
+   ],
+   [
+    "What year? Mohamed Salah joins Liverpool · Despacito tops the charts · Egypt qualify for their first World Cup in 28 years",
+    "2017"
+   ],
+   [
+    "What year? Man City win the treble · Messi joins Inter Miami · Barbie and Oppenheimer are released",
+    "2023"
+   ],
+   [
+    "What year? Real Madrid win their 15th Champions League · The Paris Olympics · Mbappé joins Real Madrid",
+    "2024"
+   ],
+   [
+    "What year? Brazil win the World Cup in Japan and South Korea · Euro coins and notes enter circulation · Spider-Man with Tobey Maguire is released",
+    "2002"
+   ],
+   [
+    "What year? The Port Said Stadium disaster · Mohamed Morsi is elected president · NASA's Curiosity rover lands on Mars",
+    "2012"
+   ],
+   [
+    "What year? Edward Snowden leaks NSA secrets · Gareth Bale joins Real Madrid for a world-record fee · Nelson Mandela dies",
+    "2013"
+   ],
+   [
+    "What year? Egypt win the Africa Cup of Nations in Ghana · The Dark Knight is released · The Large Hadron Collider is switched on",
+    "2008"
+   ],
+   [
+    "What year? Egypt win the Africa Cup of Nations at home · Saddam Hussein is executed · The Nintendo Wii is released",
+    "2006"
+   ],
+   [
+    "What year? Egypt holds its first multi-candidate presidential election · Pope John Paul II dies · The 7/7 London bombings",
+    "2005"
+   ],
+   [
+    "What year? The Thai cave rescue · Real Madrid win a third straight Champions League, in Kyiv · Avengers: Infinity War is released",
+    "2018"
+   ],
+   [
+    "What year? Neymar joins PSG for a world-record fee · Real Madrid win back-to-back Champions Leagues · Egypt reach the Africa Cup of Nations final in Gabon",
+    "2017"
+   ],
+   [
+    "What year? Greece win Euro 2004 · Gmail launches · Shrek 2 is released",
+    "2004"
+   ],
+   [
+    "What year? The Human Genome Project is completed · Finding Nemo is released · The Space Shuttle Columbia disaster",
+    "2003"
+   ],
+   [
+    "What year? Luís Figo moves from Barcelona to Real Madrid · The PlayStation 2 is released · Vladimir Putin is first elected Russia's president",
+    "2000"
+   ],
+   [
+    "What year? The 'New Seven Wonders' are announced · Rihanna's Umbrella tops the charts · Ratatouille is released",
+    "2007"
+   ],
+   [
+    "What year? The first iPod · The first Xbox · Liverpool win the FA Cup, League Cup and UEFA Cup",
+    "2001"
+   ],
+   [
+    "What year? Egypt win the Africa Cup of Nations in Burkina Faso · Windows 98 launches · The Clinton–Lewinsky scandal",
+    "1998"
+   ],
+   [
+    "What year? The Atlanta Olympics · Germany win Euro 96 in England · Independence Day is released",
+    "1996"
+   ],
+   [
+    "What year? Napster launches · Star Wars: The Phantom Menace is released · The Columbine school shooting",
+    "1999"
+   ],
+   [
+    "What year? Senegal beat France at the World Cup · The Bali bombings · American Idol premieres",
+    "2002"
+   ]
+  ],
+  "300": [
+   [
+    "What year? France win their home World Cup · Google is founded · Titanic wins 11 Oscars",
+    "1998"
+   ],
+   [
+    "What year? Man United win the treble · The Matrix is released · The euro is introduced for banks",
+    "1999"
+   ],
+   [
+    "What year? The Sydney Olympics · Gladiator is released · The Y2K bug panic",
+    "2000"
+   ],
+   [
+    "What year? The World Cup is held in the USA · Nelson Mandela becomes president · Friends premieres",
+    "1994"
+   ],
+   [
+    "What year? Nelson Mandela is released from prison · Egypt play at the World Cup in Italy · Germany reunifies",
+    "1990"
+   ],
+   [
+    "What year? The Soviet Union collapses · Freddie Mercury dies · The Gulf War",
+    "1991"
+   ],
+   [
+    "What year? The Berlin Wall falls · Tim Berners-Lee proposes the World Wide Web · Tiananmen Square protests",
+    "1989"
+   ],
+   [
+    "What year? The invasion of Iraq · Concorde's final flight · Real Madrid sign David Beckham",
+    "2003"
+   ],
+   [
+    "What year? Dolly the sheep is cloned · Tupac dies · The Spice Girls release Wannabe",
+    "1996"
+   ],
+   [
+    "What year? Toy Story is released · Windows 95 launches · George Weah wins the Ballon d'Or",
+    "1995"
+   ],
+   [
+    "What year? The Barcelona Olympics · The Premier League is founded · Denmark win the Euros",
+    "1992"
+   ],
+   [
+    "What year? Maradona's Hand of God · The Chernobyl disaster · Egypt win the Africa Cup of Nations at home",
+    "1986"
+   ],
+   [
+    "What year? The Black Monday stock market crash · Porto win the European Cup · The Simpsons first appear on TV",
+    "1987"
+   ],
+   [
+    "What year? Israel hands the last of Sinai back to Egypt · Italy win the World Cup in Spain · Michael Jackson releases Thriller",
+    "1982"
+   ],
+   [
+    "What year? Jurassic Park is released · Marseille win the first Champions League final · The European Union is formally created",
+    "1993"
+   ],
+   [
+    "What year? Naguib Mahfouz wins the Nobel Prize · The Netherlands win the Euros · The Lockerbie bombing",
+    "1988"
+   ],
+   [
+    "What year? John Lennon is shot dead · The Moscow Olympics are boycotted · Pac-Man is released",
+    "1980"
+   ],
+   [
+    "What year? World War II ends · The Arab League is founded · The United Nations is founded",
+    "1945"
+   ],
+   [
+    "What year? The Channel Tunnel opens · The Rwandan genocide · The Lion King is released",
+    "1994"
+   ],
+   [
+    "What year? Iraq invades Kuwait · Windows 3.0 launches · Home Alone is released",
+    "1990"
+   ],
+   [
+    "What year? The Space Shuttle Challenger explodes · Top Gun is released · Halley's Comet returns",
+    "1986"
+   ],
+   [
+    "What year? The Oslo Accords are signed · Pablo Escobar is killed · Schindler's List is released",
+    "1993"
+   ],
+   [
+    "What year? Hong Kong returns to China · The Luxor massacre · Mike Tyson bites Evander Holyfield's ear",
+    "1997"
+   ],
+   [
+    "What year? The Cairo earthquake · Bill Clinton is elected · Disney's Aladdin is released",
+    "1992"
+   ],
+   [
+    "What year? The Oklahoma City bombing · Ajax win the Champions League · Braveheart is released",
+    "1995"
+   ],
+   [
+    "What year? The Seoul Olympics · Die Hard is released · Soviet troops begin leaving Afghanistan",
+    "1988"
+   ],
+   [
+    "What year? Nirvana release Smells Like Teen Spirit · Red Star Belgrade win the European Cup · Disney's Beauty and the Beast is released",
+    "1991"
+   ],
+   [
+    "What year? The Game Boy is released · The Exxon Valdez oil spill · Disney's The Little Mermaid is released",
+    "1989"
+   ]
+  ],
+  "400": [
+   [
+    "What year? The internet switches to TCP/IP · Michael Jackson first does the moonwalk on TV · Return of the Jedi is released",
+    "1983"
+   ],
+   [
+    "What year? The Moon landing · Woodstock · Concorde's first flight",
+    "1969"
+   ],
+   [
+    "What year? The October War · The Sydney Opera House opens · Pink Floyd release The Dark Side of the Moon",
+    "1973"
+   ],
+   [
+    "What year? Anwar Sadat is assassinated · MTV launches · Prince Charles marries Diana",
+    "1981"
+   ],
+   [
+    "What year? The Iranian Revolution · Egypt and Israel sign a peace treaty · Sony launches the Walkman",
+    "1979"
+   ],
+   [
+    "What year? Umm Kulthum dies · Microsoft is founded · Jaws is released",
+    "1975"
+   ],
+   [
+    "What year? Abdel Halim Hafez dies · Star Wars is released · Elvis Presley dies",
+    "1977"
+   ],
+   [
+    "What year? Gamal Abdel Nasser dies · The Aswan High Dam is completed · Brazil win their third World Cup",
+    "1970"
+   ],
+   [
+    "What year? JFK is assassinated · Martin Luther King's 'I Have a Dream' speech · The Beatles release their first album",
+    "1963"
+   ],
+   [
+    "What year? Live Aid · Back to the Future is released · The first version of Windows",
+    "1985"
+   ],
+   [
+    "What year? The first Apple Macintosh · The Los Angeles Olympics · Band Aid's 'Do They Know It's Christmas?'",
+    "1984"
+   ],
+   [
+    "What year? England win the World Cup · Star Trek premieres · China's Cultural Revolution begins",
+    "1966"
+   ],
+   [
+    "What year? Egypt nationalises the Suez Canal · The first Eurovision Song Contest · Elvis releases Heartbreak Hotel",
+    "1956"
+   ],
+   [
+    "What year? The Six-Day War (the Naksa) · Celtic win the European Cup · The first human heart transplant",
+    "1967"
+   ],
+   [
+    "What year? Martin Luther King is assassinated · The Mexico City Olympics · Man United win the European Cup",
+    "1968"
+   ],
+   [
+    "What year? The Munich Olympics massacre · Sadat expels Soviet advisers from Egypt · The Watergate break-in",
+    "1972"
+   ],
+   [
+    "What year? ABBA win Eurovision with Waterloo · Richard Nixon resigns · West Germany win their home World Cup",
+    "1974"
+   ],
+   [
+    "What year? The Camp David Accords are signed · Argentina win their home World Cup · The first test-tube baby is born",
+    "1978"
+   ],
+   [
+    "What year? Concorde starts passenger flights · Apple is founded · Nadia Comăneci scores the first perfect 10",
+    "1976"
+   ],
+   [
+    "What year? Winston Churchill dies · Malcolm X is assassinated · The Sound of Music is released",
+    "1965"
+   ],
+   [
+    "What year? The Beatles appear on The Ed Sullivan Show · The Tokyo Olympics · Cassius Clay beats Sonny Liston",
+    "1964"
+   ],
+   [
+    "What year? The Cuban Missile Crisis · Marilyn Monroe dies · The first James Bond film, Dr. No",
+    "1962"
+   ],
+   [
+    "What year? The Iran–Iraq War begins · CNN launches · The Empire Strikes Back is released",
+    "1980"
+   ],
+   [
+    "What year? The Beatles break up · Apollo 13 · The first Earth Day",
+    "1970"
+   ],
+   [
+    "What year? Sadat visits Jerusalem · The Apple II goes on sale · Steve Biko dies",
+    "1977"
+   ],
+   [
+    "What year? Indira Gandhi is assassinated · Ghostbusters is released · The Bhopal gas disaster",
+    "1984"
+   ],
+   [
+    "What year? Construction of the Aswan High Dam begins · The Rome Olympics · John F. Kennedy is elected",
+    "1960"
+   ],
+   [
+    "What year? Apollo 8 orbits the Moon · 2001: A Space Odyssey is released · The Prague Spring",
+    "1968"
+   ]
+  ],
+  "500": [
+   [
+    "What year? The UAE is founded · Walt Disney World opens · Egypt becomes the 'Arab Republic of Egypt'",
+    "1971"
+   ],
+   [
+    "What year? The July 23 Revolution in Egypt · Elizabeth II becomes queen · The Great Smog of London",
+    "1952"
+   ],
+   [
+    "What year? Tutankhamun's tomb is discovered · Britain declares Egypt independent · The BBC is founded",
+    "1922"
+   ],
+   [
+    "What year? The Titanic sinks · The Stockholm Olympics · The first Oreo cookie",
+    "1912"
+   ],
+   [
+    "What year? Penicillin is discovered · Mickey Mouse debuts in Steamboat Willie · The Amsterdam Olympics",
+    "1928"
+   ],
+   [
+    "What year? The first World Cup, in Uruguay · Pluto is discovered · Construction of the Empire State Building begins",
+    "1930"
+   ],
+   [
+    "What year? Egypt become the first African team at a World Cup · Bonnie and Clyde are killed · Hitler becomes Führer of Germany",
+    "1934"
+   ],
+   [
+    "What year? Gandhi is assassinated · The NHS is founded · London hosts the Olympics",
+    "1948"
+   ],
+   [
+    "What year? Yuri Gagarin becomes the first person in space · The Berlin Wall is built · The Bay of Pigs invasion",
+    "1961"
+   ],
+   [
+    "What year? World War I begins · The Panama Canal opens · Egypt becomes a British protectorate",
+    "1914"
+   ],
+   [
+    "What year? The Wright brothers' first flight · The first Tour de France · Harley-Davidson is founded",
+    "1903"
+   ],
+   [
+    "What year? Zamalek is founded · Amundsen reaches the South Pole · The Mona Lisa is stolen from the Louvre",
+    "1911"
+   ],
+   [
+    "What year? Al Ahly is founded · Picasso paints Les Demoiselles d'Avignon · Baden-Powell holds the first Scout camp",
+    "1907"
+   ],
+   [
+    "What year? Egypt is declared a republic · Hillary and Tenzing climb Everest · Elizabeth II is crowned",
+    "1953"
+   ],
+   [
+    "What year? Farouk becomes King of Egypt · Jesse Owens stars at the Berlin Olympics · The Spanish Civil War begins",
+    "1936"
+   ],
+   [
+    "What year? The Wall Street Crash · The first Academy Awards · Tintin first appears",
+    "1929"
+   ],
+   [
+    "What year? The 1919 Revolution in Egypt · The Treaty of Versailles is signed · Alcock and Brown fly non-stop across the Atlantic",
+    "1919"
+   ],
+   [
+    "What year? Egypt and Syria form the United Arab Republic · Pelé and Brazil win the World Cup in Sweden · The Munich air disaster",
+    "1958"
+   ],
+   [
+    "What year? Saad Zaghloul dies · Lindbergh flies solo across the Atlantic · The Jazz Singer, the first talkie, is released",
+    "1927"
+   ],
+   [
+    "What year? Sputnik 1 is launched · Ghana becomes independent · The Treaty of Rome is signed",
+    "1957"
+   ],
+   [
+    "What year? Disneyland opens · Albert Einstein dies · James Dean dies",
+    "1955"
+   ],
+   [
+    "What year? Fidel Castro takes power in Cuba · The Barbie doll launches · Ben-Hur is released",
+    "1959"
+   ],
+   [
+    "What year? The first Winter Olympics · Lenin dies · Egypt's first elected parliament opens",
+    "1924"
+   ],
+   [
+    "What year? The Hindenburg disaster · The Golden Gate Bridge opens · Snow White and the Seven Dwarfs premieres",
+    "1937"
+   ],
+   [
+    "What year? Orson Welles' War of the Worlds broadcast · Italy win a second straight World Cup · Superman first appears",
+    "1938"
+   ],
+   [
+    "What year? India and Pakistan become independent · The Dead Sea Scrolls are found · Chuck Yeager breaks the sound barrier",
+    "1947"
+   ],
+   [
+    "What year? NATO is founded · Mao proclaims the People's Republic of China · Orwell publishes Nineteen Eighty-Four",
+    "1949"
+   ],
+   [
+    "What year? The Korean War begins · Uruguay win the World Cup in Brazil · The first Formula One world championship",
+    "1950"
+   ],
+   [
+    "What year? The Kingdom of Saudi Arabia is proclaimed · Iraq becomes independent · The Los Angeles Olympics",
+    "1932"
+   ]
+  ]
+ }
+}

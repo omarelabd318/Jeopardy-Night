@@ -1,0 +1,738 @@
+{
+ "id": "his",
+ "name": "History",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "In which year did World War II end?",
+    "1945"
+   ],
+   [
+    "Which Ancient Wonder of the World stood in Alexandria?",
+    "The Lighthouse (Pharos) of Alexandria"
+   ],
+   [
+    "Who was the first person to walk on the Moon?",
+    "Neil Armstrong"
+   ],
+   [
+    "In which year did the Berlin Wall fall?",
+    "1989"
+   ],
+   [
+    "Which civilisation built Machu Picchu?",
+    "The Inca"
+   ],
+   [
+    "Which Egyptian president nationalised the Suez Canal in 1956?",
+    "Gamal Abdel Nasser"
+   ],
+   [
+    "In which year did the Titanic sink?",
+    "1912"
+   ],
+   [
+    "Which Roman city was buried by Mount Vesuvius in 79 AD?",
+    "Pompeii"
+   ],
+   [
+    "Which Egyptian queen had relationships with Julius Caesar and Mark Antony?",
+    "Cleopatra (VII)"
+   ],
+   [
+    "Which country gave the Statue of Liberty to the United States?",
+    "France"
+   ],
+   [
+    "Which river was the lifeline of ancient Egypt?",
+    "The Nile"
+   ],
+   [
+    "Who was US president during the American Civil War?",
+    "Abraham Lincoln"
+   ],
+   [
+    "What was built across northern China to keep out invaders?",
+    "The Great Wall"
+   ],
+   [
+    "The Colosseum is in which ancient city?",
+    "Rome"
+   ],
+   [
+    "In which year did Christopher Columbus reach the Americas?",
+    "1492"
+   ],
+   [
+    "Who led Nazi Germany during World War II?",
+    "Adolf Hitler"
+   ],
+   [
+    "Who was the first President of the United States?",
+    "George Washington"
+   ],
+   [
+    "In which year did humans first land on the Moon?",
+    "1969"
+   ],
+   [
+    "Which war was fought from 1914 to 1918?",
+    "World War I"
+   ],
+   [
+    "Who led India's non-violent independence movement?",
+    "Mahatma Gandhi"
+   ],
+   [
+    "Who was Britain's first female prime minister?",
+    "Margaret Thatcher"
+   ],
+   [
+    "Which ancient Greek city is seen as the birthplace of democracy?",
+    "Athens"
+   ],
+   [
+    "Who painted the ceiling of the Sistine Chapel?",
+    "Michelangelo"
+   ],
+   [
+    "Which ancient people built the Parthenon?",
+    "The ancient Greeks"
+   ],
+   [
+    "Which country did Napoleon rule as emperor?",
+    "France"
+   ],
+   [
+    "Which Ancient Wonder of the World is the only one still standing?",
+    "The Great Pyramid of Giza"
+   ],
+   [
+    "Which Roman leader was stabbed to death on the Ides of March, 44 BC?",
+    "Julius Caesar"
+   ],
+   [
+    "Which war ended with the fall of Saigon in 1975?",
+    "The Vietnam War"
+   ],
+   [
+    "Whose ships on his first voyage were the Niña, the Pinta and the Santa María?",
+    "Christopher Columbus"
+   ],
+   [
+    "In which country did the Renaissance begin?",
+    "Italy"
+   ],
+   [
+    "Which civil rights leader gave the 'I Have a Dream' speech?",
+    "Martin Luther King Jr."
+   ],
+   [
+    "What is the giant statue with a lion's body and a human head at Giza called?",
+    "The Great Sphinx"
+   ],
+   [
+    "Who was the first person in space?",
+    "Yuri Gagarin"
+   ],
+   [
+    "Which Egyptian president ruled for about 30 years until 2011?",
+    "Hosni Mubarak"
+   ],
+   [
+    "What was the picture-based writing system of ancient Egypt called?",
+    "Hieroglyphs"
+   ]
+  ],
+  "200": [
+   [
+    "Who was known as the Maid of Orléans?",
+    "Joan of Arc"
+   ],
+   [
+    "Who was the first President of Egypt after the 1952 revolution?",
+    "Mohamed Naguib"
+   ],
+   [
+    "Howard Carter found which pharaoh's nearly intact tomb in 1922?",
+    "Tutankhamun"
+   ],
+   [
+    "In which year did the October War (Yom Kippur War) begin?",
+    "1973"
+   ],
+   [
+    "Who crowned himself Emperor of the French in 1804?",
+    "Napoleon Bonaparte"
+   ],
+   [
+    "The Ottomans captured which city in 1453?",
+    "Constantinople"
+   ],
+   [
+    "Who was Britain's prime minister for most of World War II?",
+    "Winston Churchill"
+   ],
+   [
+    "In which year did the Soviet Union dissolve?",
+    "1991"
+   ],
+   [
+    "Which Muslim leader recaptured Jerusalem from the Crusaders in 1187?",
+    "Saladin (Salah ad-Din)"
+   ],
+   [
+    "Which ship carried the Pilgrims to America in 1620?",
+    "The Mayflower"
+   ],
+   [
+    "Which empire did Genghis Khan found?",
+    "The Mongol Empire"
+   ],
+   [
+    "Which 1789 event began with the storming of the Bastille?",
+    "The French Revolution"
+   ],
+   [
+    "Which pharaoh built the Great Pyramid of Giza?",
+    "Khufu (Cheops)"
+   ],
+   [
+    "Which city was the capital of the Umayyad Caliphate?",
+    "Damascus"
+   ],
+   [
+    "Who was the first woman to win a Nobel Prize?",
+    "Marie Curie"
+   ],
+   [
+    "Which Egyptian president signed the Camp David Accords?",
+    "Anwar Sadat"
+   ],
+   [
+    "In which year did Egypt's 25 January revolution take place?",
+    "2011"
+   ],
+   [
+    "Who was South Africa's first Black president?",
+    "Nelson Mandela"
+   ],
+   [
+    "Suleiman the Magnificent ruled which empire?",
+    "The Ottoman Empire"
+   ],
+   [
+    "Which queen was the wife of Akhenaten?",
+    "Nefertiti"
+   ],
+   [
+    "Which European country colonised Algeria?",
+    "France"
+   ],
+   [
+    "Who invented the movable-type printing press around 1440?",
+    "Johannes Gutenberg"
+   ],
+   [
+    "Which US president was assassinated in Dallas in 1963?",
+    "John F. Kennedy"
+   ],
+   [
+    "Which 1967 war is known in Egypt as the Naksa?",
+    "The Six-Day War"
+   ],
+   [
+    "Whose expedition was the first to sail around the world?",
+    "Ferdinand Magellan's"
+   ],
+   [
+    "Which war began in 1950 when the North invaded the South?",
+    "The Korean War"
+   ],
+   [
+    "Which Greek city-state sent 300 soldiers to Thermopylae?",
+    "Sparta"
+   ],
+   [
+    "Which Macedonian king conquered the Persian Empire and was crowned pharaoh in Egypt?",
+    "Alexander the Great"
+   ],
+   [
+    "What was the long stand-off between the USA and the USSR from 1947 to 1991 called?",
+    "The Cold War"
+   ],
+   [
+    "In which year did the Free Officers' revolution take place in Egypt?",
+    "1952"
+   ],
+   [
+    "Which country did Iraq invade in 1990, leading to the Gulf War?",
+    "Kuwait"
+   ],
+   [
+    "Which Venetian traveller's stories of Kublai Khan's China became a famous book?",
+    "Marco Polo"
+   ],
+   [
+    "Which Roman emperor was said to have 'fiddled while Rome burned' in 64 AD?",
+    "Nero"
+   ],
+   [
+    "Which ancient city in Jordan did the Nabataeans carve into rose-red rock?",
+    "Petra"
+   ],
+   [
+    "What was the ancient trade route linking China to the Mediterranean called?",
+    "The Silk Road"
+   ],
+   [
+    "Whose expedition was the first to reach the South Pole, in 1911?",
+    "Roald Amundsen's"
+   ],
+   [
+    "Which country joined Egypt in 1958 to form the United Arab Republic?",
+    "Syria"
+   ]
+  ],
+  "300": [
+   [
+    "Which Persian king led the invasion of Greece that included Thermopylae?",
+    "Xerxes I"
+   ],
+   [
+    "Which 1919 treaty formally ended World War I with Germany?",
+    "The Treaty of Versailles"
+   ],
+   [
+    "Which female pharaoh ruled for about 20 years and built the temple at Deir el-Bahari?",
+    "Hatshepsut"
+   ],
+   [
+    "The Rosetta Stone was found in 1799 during whose military campaign?",
+    "Napoleon's (French campaign in Egypt)"
+   ],
+   [
+    "Which dynasty founded the city of Cairo in 969 AD?",
+    "The Fatimids"
+   ],
+   [
+    "Who was the last Tsar of Russia?",
+    "Nicholas II"
+   ],
+   [
+    "In which year was the Battle of Hastings?",
+    "1066"
+   ],
+   [
+    "Which ruler, who took power in 1805, is called the founder of modern Egypt?",
+    "Muhammad Ali Pasha"
+   ],
+   [
+    "What was the code name for the Allied invasion of Normandy?",
+    "Operation Overlord"
+   ],
+   [
+    "Who co-wrote The Communist Manifesto with Karl Marx?",
+    "Friedrich Engels"
+   ],
+   [
+    "Which Carthaginian general crossed the Alps with elephants?",
+    "Hannibal"
+   ],
+   [
+    "In which year did Britain declare Egypt nominally independent?",
+    "1922"
+   ],
+   [
+    "Which Abbasid capital was sacked by the Mongols in 1258?",
+    "Baghdad"
+   ],
+   [
+    "Who was the first emperor of a unified China?",
+    "Qin Shi Huang"
+   ],
+   [
+    "Which British queen reigned for 63 years in the 19th century?",
+    "Queen Victoria"
+   ],
+   [
+    "Who founded the People's Republic of China in 1949?",
+    "Mao Zedong"
+   ],
+   [
+    "Which Soviet leader launched perestroika?",
+    "Mikhail Gorbachev"
+   ],
+   [
+    "Tenochtitlan was the capital of which empire?",
+    "The Aztec Empire"
+   ],
+   [
+    "Who was the first caliph after the Prophet Muhammad?",
+    "Abu Bakr"
+   ],
+   [
+    "Which 1962 standoff nearly started a nuclear war?",
+    "The Cuban Missile Crisis"
+   ],
+   [
+    "Which country was ruled by the Shah until 1979?",
+    "Iran"
+   ],
+   [
+    "Which Mongol leader founded China's Yuan dynasty?",
+    "Kublai Khan"
+   ],
+   [
+    "Who founded the modern Republic of Turkey in 1923?",
+    "Mustafa Kemal Atatürk"
+   ],
+   [
+    "In which country did the Bolsheviks seize power in 1917?",
+    "Russia"
+   ],
+   [
+    "Which Roman emperor legalised Christianity in 313?",
+    "Constantine the Great"
+   ],
+   [
+    "Who was the first Roman emperor?",
+    "Augustus (Octavian)"
+   ],
+   [
+    "Who wrote 'The Prince' in 1513?",
+    "Niccolò Machiavelli"
+   ],
+   [
+    "What was the code name of Egypt's 1973 crossing of the Suez Canal?",
+    "Operation Badr"
+   ],
+   [
+    "Which South American liberator gave his name to Bolivia?",
+    "Simón Bolívar"
+   ],
+   [
+    "What was the plague that killed about a third of Europe in the 14th century called?",
+    "The Black Death"
+   ],
+   [
+    "Which Italian city did the Medici family rule during the Renaissance?",
+    "Florence"
+   ],
+   [
+    "Which 1215 English charter limited the king's power?",
+    "The Magna Carta"
+   ],
+   [
+    "Which vast temple complex in Luxor was dedicated mainly to Amun?",
+    "Karnak"
+   ],
+   [
+    "Which British territory was handed back to China in 1997?",
+    "Hong Kong"
+   ],
+   [
+    "Which Mesopotamian people invented cuneiform, one of the first writing systems?",
+    "The Sumerians"
+   ],
+   [
+    "Which French diplomat led the building of the Suez Canal?",
+    "Ferdinand de Lesseps"
+   ],
+   [
+    "Which Roman wall was built across northern Britain in the 120s AD?",
+    "Hadrian's Wall"
+   ]
+  ],
+  "400": [
+   [
+    "Which 1992 treaty created the European Union?",
+    "The Maastricht Treaty"
+   ],
+   [
+    "Which Mamluk sultan defeated the Mongols at Ain Jalut in 1260?",
+    "Qutuz"
+   ],
+   [
+    "The 1956 invasion of Egypt by Britain, France and Israel is known in English as what?",
+    "The Suez Crisis (Tripartite Aggression)"
+   ],
+   [
+    "Which Persian empire, ruling from Ctesiphon (224–651 AD), fought Rome and Byzantium for centuries?",
+    "The Sasanian Empire"
+   ],
+   [
+    "The 1648 Peace of Westphalia ended which war?",
+    "The Thirty Years' War"
+   ],
+   [
+    "Which pharaoh moved the capital to Amarna and promoted worship of the Aten?",
+    "Akhenaten"
+   ],
+   [
+    "In which year did Ottoman Sultan Selim I conquer Egypt?",
+    "1517"
+   ],
+   [
+    "What was Britain's 1917 statement supporting a 'national home for the Jewish people' in Palestine?",
+    "The Balfour Declaration"
+   ],
+   [
+    "Which 1805 naval battle ended Napoleon's hopes of invading Britain?",
+    "The Battle of Trafalgar"
+   ],
+   [
+    "Who was the last king of Egypt, an infant when he took the throne in 1952?",
+    "Fuad II"
+   ],
+   [
+    "Which Chinese dynasty built most of the Great Wall that stands today?",
+    "The Ming dynasty"
+   ],
+   [
+    "Which king is shown uniting Upper and Lower Egypt on a famous palette?",
+    "Narmer"
+   ],
+   [
+    "Who founded the Ottoman Empire?",
+    "Osman I"
+   ],
+   [
+    "Which secret 1916 deal split the Middle East between Britain and France?",
+    "The Sykes–Picot Agreement"
+   ],
+   [
+    "Which Egyptian army officer led the 1881–82 revolt against Khedive Tewfik?",
+    "Ahmed Urabi"
+   ],
+   [
+    "In which year did the Suez Canal open?",
+    "1869"
+   ],
+   [
+    "Which Turkic conqueror sacked Delhi in 1398 and Damascus in 1401?",
+    "Timur (Tamerlane)"
+   ],
+   [
+    "Which city was the last Muslim kingdom in Spain, falling in 1492?",
+    "Granada"
+   ],
+   [
+    "What was the name of Darwin's ship?",
+    "HMS Beagle"
+   ],
+   [
+    "Mansa Musa, often called the richest man in history, ruled which empire?",
+    "The Mali Empire"
+   ],
+   [
+    "In which year was the Ottoman sultanate formally abolished?",
+    "1922"
+   ],
+   [
+    "What is Napoleon's 1798 victory over the Mamluks near Cairo called?",
+    "The Battle of the Pyramids"
+   ],
+   [
+    "Which Mughal emperor built the Taj Mahal?",
+    "Shah Jahan"
+   ],
+   [
+    "Cuzco was the capital of which empire?",
+    "The Inca Empire"
+   ],
+   [
+    "Which Ancient Wonder was said to be in Babylon?",
+    "The Hanging Gardens"
+   ],
+   [
+    "In which year did the Berlin Wall go up?",
+    "1961"
+   ],
+   [
+    "Which Israeli defensive line along the Suez Canal did Egypt break through in 1973?",
+    "The Bar Lev Line"
+   ],
+   [
+    "Which Persian king founded the Achaemenid Empire?",
+    "Cyrus the Great"
+   ],
+   [
+    "Who was the last emperor of China?",
+    "Puyi"
+   ],
+   [
+    "Which 1683 siege marked the high point of Ottoman expansion into Europe?",
+    "The Siege of Vienna"
+   ],
+   [
+    "Which khedive, grandson of Muhammad Ali, opened the Suez Canal and built downtown Cairo?",
+    "Khedive Ismail"
+   ],
+   [
+    "In which year was the Battle of Waterloo?",
+    "1815"
+   ],
+   [
+    "Which Greek writer is called the 'Father of History'?",
+    "Herodotus"
+   ],
+   [
+    "Which Greek dynasty, founded by one of Alexander's generals, was the last to rule Egypt as pharaohs?",
+    "The Ptolemaic dynasty (Ptolemies)"
+   ],
+   [
+    "Which 1916 uprising against Ottoman rule was led by Sharif Hussein of Mecca and helped by 'Lawrence of Arabia'?",
+    "The Arab Revolt"
+   ],
+   [
+    "Which African country defeated Italy at the Battle of Adwa in 1896?",
+    "Ethiopia (Abyssinia)"
+   ]
+  ],
+  "500": [
+   [
+    "Which pharaoh signed the earliest known peace treaty, with the Hittites, after the Battle of Kadesh?",
+    "Ramesses II"
+   ],
+   [
+    "Which Mamluk sultan's huge mosque-madrasa (1356–63) sits below the Cairo Citadel?",
+    "Sultan Hassan"
+   ],
+   [
+    "In which year was the naval Battle of Navarino?",
+    "1827"
+   ],
+   [
+    "Which Byzantine emperor built the Hagia Sophia that stands today?",
+    "Justinian I"
+   ],
+   [
+    "Which leader of Egypt's 1919 revolution was exiled to Malta?",
+    "Saad Zaghloul"
+   ],
+   [
+    "What was the first capital of unified Egypt, traditionally founded by Menes?",
+    "Memphis"
+   ],
+   [
+    "Which Austrian statesman presided over the Congress of Vienna (1814–15)?",
+    "Klemens von Metternich"
+   ],
+   [
+    "Which son of Muhammad Ali defeated the Ottoman army at Konya in 1832?",
+    "Ibrahim Pasha"
+   ],
+   [
+    "The Library of Ashurbanipal was in which Assyrian city?",
+    "Nineveh"
+   ],
+   [
+    "Which 1840 agreement between the European powers forced Muhammad Ali out of Syria?",
+    "The Convention of London (1840)"
+   ],
+   [
+    "Which Roman emperor split power into the Tetrarchy (rule of four)?",
+    "Diocletian"
+   ],
+   [
+    "Which pharaoh expelled the Hyksos and founded the 18th Dynasty?",
+    "Ahmose I"
+   ],
+   [
+    "Under which Fatimid caliph was Al-Azhar founded in 970?",
+    "Al-Mu'izz li-Din Allah"
+   ],
+   [
+    "What was the 1906 incident where British officers clashed with Egyptian villagers, followed by public hangings?",
+    "The Dinshaway incident"
+   ],
+   [
+    "Which Mamluk sultan's mosque appeared on the old Egyptian one-pound note?",
+    "Qaitbay"
+   ],
+   [
+    "Which admiral destroyed Napoleon's fleet at Abu Qir Bay in 1798?",
+    "Horatio Nelson"
+   ],
+   [
+    "Which pharaoh's mummy was issued a passport to fly to Paris in 1976?",
+    "Ramesses II"
+   ],
+   [
+    "In which year was the Battle of Manzikert?",
+    "1071"
+   ],
+   [
+    "Which Abbasid caliph features in many tales of 'One Thousand and One Nights'?",
+    "Harun al-Rashid"
+   ],
+   [
+    "Besides hieroglyphs and Greek, which script is on the Rosetta Stone?",
+    "Demotic"
+   ],
+   [
+    "Which Mamluk sultan took Acre in 1291, ending the Crusader states?",
+    "Al-Ashraf Khalil"
+   ],
+   [
+    "Who defeated Antony and Cleopatra at the Battle of Actium in 31 BC?",
+    "Octavian (later Augustus)"
+   ],
+   [
+    "Which Spanish conquistador brought down the Aztec Empire?",
+    "Hernán Cortés"
+   ],
+   [
+    "Which ruler of Egypt began building the Delta Barrage at El Qanater?",
+    "Muhammad Ali Pasha"
+   ],
+   [
+    "Which 1979 agreement made Egypt the first Arab country to make peace with Israel?",
+    "The Egypt–Israel Peace Treaty"
+   ],
+   [
+    "Which woman ruled Egypt as sultana in 1250, between the Ayyubids and the Mamluks?",
+    "Shajar al-Durr"
+   ],
+   [
+    "What was Muhammad Ali's 1811 killing of the Mamluk leaders in Cairo called?",
+    "The Citadel Massacre (Massacre of the Mamluks)"
+   ],
+   [
+    "At which 1882 battle did Britain defeat Ahmed Urabi's army?",
+    "Tel el-Kebir"
+   ],
+   [
+    "Who became the world's first female prime minister, in Ceylon (Sri Lanka) in 1960?",
+    "Sirimavo Bandaranaike"
+   ],
+   [
+    "Which Fatimid caliph mysteriously disappeared in 1021 and is revered by the Druze?",
+    "Al-Hakim bi-Amr Allah"
+   ],
+   [
+    "Which Spanish city was the capital of the Umayyad Caliphate of al-Andalus?",
+    "Córdoba"
+   ],
+   [
+    "Which Babylonian king issued one of the earliest written law codes?",
+    "Hammurabi"
+   ],
+   [
+    "Which 1904 Anglo-French agreement gave Britain a free hand in Egypt and France one in Morocco?",
+    "The Entente Cordiale"
+   ],
+   [
+    "Which Nubian kingdom's kings ruled Egypt as the 25th Dynasty?",
+    "Kush"
+   ],
+   [
+    "Which Egyptian feminist publicly removed her face veil at a Cairo train station in 1923?",
+    "Huda Shaarawi"
+   ]
+  ]
+ }
+}

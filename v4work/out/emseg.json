@@ -1,0 +1,339 @@
+{
+ "id": "emseg",
+ "name": "Emoji Sentences: Egypt Edition",
+ "type": "emoji",
+ "desc": "Everyday Egyptian phrases at the low values, Egyptian proverbs higher up. Answer in Egyptian Arabic.",
+ "arabic_answers": [],
+ "data": {
+  "100": [
+   [
+    "🤷‍♂️😌",
+    "Ma'lesh: never mind"
+   ],
+   [
+    "✋🛑",
+    "Khalas: that's it, enough"
+   ],
+   [
+    "🏃‍♂️💨",
+    "Yalla: come on, let's go"
+   ],
+   [
+    "🙏🤞📅",
+    "Inshallah: God willing"
+   ],
+   [
+    "👍👌",
+    "Tamam: OK, fine"
+   ],
+   [
+    "🚫❓😌",
+    "Mafeesh moshkela: no problem"
+   ],
+   [
+    "👋❓",
+    "Ezzayak? How are you?"
+   ],
+   [
+    "👤👆❤️",
+    "'Ala rasi: on my head (with pleasure)"
+   ],
+   [
+    "🚪🤗",
+    "Ahlan wa sahlan: welcome"
+   ],
+   [
+    "💪🔥",
+    "Gamed: awesome, solid"
+   ],
+   [
+    "🌙🏮",
+    "Ramadan Kareem"
+   ],
+   [
+    "🙏😊",
+    "Shokran: thank you"
+   ],
+   [
+    "👋🕊️",
+    "Ma'a salama: goodbye"
+   ],
+   [
+    "🎂📅😊",
+    "Kol sana w enta tayeb: many happy returns"
+   ],
+   [
+    "🌙🐑🎉",
+    "Eid sa'eed: happy Eid"
+   ],
+   [
+    "👀⚠️",
+    "Khod balak: watch out"
+   ]
+  ],
+  "200": [
+   [
+    "💇‍♂️✨",
+    "Na'eeman: said after a haircut or a shower"
+   ],
+   [
+    "🍽️❤️",
+    "Bel hana wel shefa: enjoy your meal"
+   ],
+   [
+    "1️⃣0️⃣0️⃣0️⃣🎉",
+    "Alf mabrouk: a thousand congratulations"
+   ],
+   [
+    "🤒🙏",
+    "Salamtak: get well soon"
+   ],
+   [
+    "✋5️⃣",
+    "Khamsa w khmeesa: against the evil eye"
+   ],
+   [
+    "⏳🔜",
+    "Ba'd shwaya: in a little while"
+   ],
+   [
+    "🤧🙏",
+    "Yarhamkom Allah: said after a sneeze"
+   ],
+   [
+    "🧿👁️",
+    "'Ein el hasood: the envious eye"
+   ],
+   [
+    "🎩👨",
+    "Ya basha: hey boss"
+   ],
+   [
+    "🏃‍♂️💨😈",
+    "El 'agala men el shaytan: haste is from the devil"
+   ],
+   [
+    "☀️🌼",
+    "Sabah el fol: good morning (lit. morning of jasmine)"
+   ],
+   [
+    "🫡",
+    "Hader: right away, at your service"
+   ],
+   [
+    "😱⚫☀️",
+    "Ya nhar eswed: oh no! (lit. what a black day)"
+   ],
+   [
+    "🙋‍♂️🛣️🔜",
+    "Ana fel sekka: I'm on my way"
+   ],
+   [
+    "🧞✨",
+    "Shobbeik lobbeik: your wish is my command"
+   ],
+   [
+    "🤞💭",
+    "Ya reit: I wish"
+   ]
+  ],
+  "300": [
+   [
+    "🐦✋🆚🔟🌳",
+    "'Asfour fel eid wala 'ashara 'al shagara: a bird in the hand beats ten in the tree"
+   ],
+   [
+    "🍯🐝",
+    "Elli 'ayez el 'asal yesbor 'ala 'arsat el nahl: if you want honey, put up with the stings"
+   ],
+   [
+    "🦆👤🤚",
+    "Elli 'ala rasso batha byhassis 'aleiha: the guilty one feels for the duck on his head"
+   ],
+   [
+    "🐱🚪🐭🎉",
+    "Ghab el 'ott, el'ab ya far: the cat's away, play, mouse"
+   ],
+   [
+    "🍞👨‍🍳",
+    "Edi el 'eish le khabbazo walaw kal nosso: give the bread to its baker even if he eats half"
+   ],
+   [
+    "😇🎁➡️🌊",
+    "E'mel el kheir w armeeh fel bahr: do good and throw it in the sea"
+   ],
+   [
+    "🗣️🥈🤐🥇",
+    "El kalam men fadda wel sokout men dahab: speech is silver, silence is gold"
+   ],
+   [
+    "🪢✂️",
+    "Kol 'o'da w laha hallal: every knot has someone to untie it"
+   ],
+   [
+    "💃🚫🌍↗️",
+    "Elli ma ye'rafsh yor'os y'ool el ard 'awga: can't dance, so he blames the crooked floor"
+   ],
+   [
+    "📅🍑",
+    "Bokra fel meshmesh: tomorrow, in apricot season (never)"
+   ],
+   [
+    "🍞🧂",
+    "'Eish w malh: bread and salt (the bond of people who've shared food)"
+   ],
+   [
+    "🩸🪶😂",
+    "Dammak khafeef: you're funny (lit. your blood is light)"
+   ],
+   [
+    "🩸🏋️😒",
+    "Dammak te'eel: you're annoying (lit. your blood is heavy)"
+   ],
+   [
+    "🔛💡",
+    "'Ala fekra: by the way (lit. on an idea)"
+   ],
+   [
+    "😊👤🍀",
+    "Wesh el kheir: a bringer of good luck"
+   ],
+   [
+    "🫂💪",
+    "Shedd helak: hang in there, stay strong"
+   ]
+  ],
+  "400": [
+   [
+    "☁️⬇️🌍🤲",
+    "Elli tegeeh men el sama testa'belha el ard: what comes from the sky, the earth accepts"
+   ],
+   [
+    "⏳🔑😌",
+    "El sabr moftah el farag: patience is the key to relief"
+   ],
+   [
+    "🎪🚶‍♂️🚫🫘",
+    "Tele' men el moled bela hommos: left the moulid without chickpeas (came away with nothing)"
+   ],
+   [
+    "😢🎉🚫🪑",
+    "Gat el hazina tefrah malaatlahash matrah: the sad woman came to celebrate and found no seat"
+   ],
+   [
+    "💧🤿",
+    "El maya tekdab el ghattas: the water gives the lie to the diver"
+   ],
+   [
+    "🏝️💥⏰",
+    "Ba'd ma kharbet Malta: after Malta was ruined (too late)"
+   ],
+   [
+    "🫘⚖️",
+    "Kol fula w laha kayyal: every bean has someone to measure it"
+   ],
+   [
+    "🚶‍♂️❓📄",
+    "El ghayeb hogeto ma'ah: the absent one has his excuse"
+   ],
+   [
+    "👀🥅🙈",
+    "Elli ma yeshoofsh men el gharbal yeb'a a'ma: if you can't see through a sieve, you're blind"
+   ],
+   [
+    "7️⃣🛠️🍀❌",
+    "Sab' sanaye' wel bakht dayee': seven trades and no luck"
+   ],
+   [
+    "👅🐎",
+    "Lesanak hosanak: your tongue is your horse (guard it and it guards you)"
+   ],
+   [
+    "✋💧🆚✋🔥",
+    "Elli eido fel maya mesh zay elli eido fel nar: a hand in water isn't like a hand in fire"
+   ],
+   [
+    "🚪🪚💔",
+    "Bab el naggar mekhalla': the carpenter's door is broken"
+   ],
+   [
+    "👵🦂",
+    "El hama 'a'raba: the mother-in-law is a scorpion"
+   ],
+   [
+    "1️⃣✋🚫👏",
+    "El eid el wahda ma tesa'afsh: one hand can't clap"
+   ],
+   [
+    "🕋👥🗺️",
+    "Ahl Makka adra be she'abha: Mecca's people know its paths best"
+   ]
+  ],
+  "500": [
+   [
+    "☀️🥅🚫",
+    "El shams ma tetghattash bel gharbal: you can't cover the sun with a sieve"
+   ],
+   [
+    "🍲🥄",
+    "Elli fel 'edra yetall'oh el ma'la'a: what's in the pot, the ladle brings out"
+   ],
+   [
+    "🧠💍",
+    "El 'a'l zeina: good sense is an ornament"
+   ],
+   [
+    "🐦⚫🎁👩",
+    "Ya ma gab el ghorab le ommo: look how much the crow brought its mother (nothing at all)"
+   ],
+   [
+    "🏗️🇪🇬🍬",
+    "Elli banu Masr kanu fel asl halawany: the people who built Egypt were originally confectioners"
+   ],
+   [
+    "👴💰",
+    "Elli malosh kbeer yeshteriloh kbeer: if you have no elder, buy one"
+   ],
+   [
+    "👥📶",
+    "El nas ma'amat: people have their ranks"
+   ],
+   [
+    "☀️👋🏠🏠",
+    "Sabah el kheir ya gari, enta f halak w ana f hali: good morning, neighbour, you mind yours and I'll mind mine"
+   ],
+   [
+    "🐴🪢👉",
+    "Orbot el homar matrah ma ye'oolak sahbo: tie the donkey where its owner tells you"
+   ],
+   [
+    "🐪👀🚫↪️",
+    "El gamal ma yeshoofsh 'ewegt ra'abto: the camel can't see its own crooked neck"
+   ],
+   [
+    "🌙🗣️🧈☀️🫠",
+    "Kalam el leil madhoon bel zebda, yetla' 'aleih el nahar yesih: night talk is buttered, daylight melts it"
+   ],
+   [
+    "🧴🚫⏳",
+    "Ma yesla'h el 'attar ma afsado el dahr: the perfumer can't fix what time has ruined"
+   ],
+   [
+    "💧⬆️🚫",
+    "El mayya ma tetla'sh fel 'aali: water doesn't flow uphill"
+   ],
+   [
+    "😴😇✅😴😈❌",
+    "Ya bakht men bat mazloum wala bat zalem: lucky is he who sleeps wronged, not as the wrongdoer"
+   ],
+   [
+    "😨👹➡️👹",
+    "Elli yekhaf men el 'afreet yetla'lo: whoever fears the demon, it appears to him"
+   ],
+   [
+    "🎺🧔🚫🙈",
+    "Elli yzammar ma yghattish da'no: whoever plays the pipe can't hide his chin"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,646 @@
+{
+ "id": "emsen",
+ "name": "Emoji Sentences",
+ "type": "emoji",
+ "desc": "Decode the saying from the emojis. Higher values include Egyptian proverbs.",
+ "arabic_answers": [
+  "El erd fi 'ein ommo ghazal: the monkey is a gazelle in its mother's eyes",
+  "El 'ersh el abyad yenfa' fel yom el eswed: the white piastre helps on the black day",
+  "Ekfi el 'edra 'ala bo'aha, tetla' el bent le ommaha: flip the pot on its mouth, the daughter turns out like her mother",
+  "Elli ekhtasho mato: the shy ones have died",
+  "Elli ma ye'rafsh ye'ool 'ads: he who doesn't know says it's lentils",
+  "Ya wakhed el 'erd 'ala malo, yerooh el mal wel 'erd yefdal 'ala halo: marry the monkey for its money, the money goes and the monkey stays",
+  "El 'ein ma tetla'sh 'an el hageb: the eye doesn't rise above the eyebrow",
+  "Ba'd ma shab waddoh el kottab: after he grew old they sent him to school",
+  "Zay el atrash fel zaffa: like the deaf man at the wedding",
+  "El bab elli yegilak meno el reeh, seddo w estereeh: the door that brings in wind, shut it and rest",
+  "Ibn el wezz 'awwam: the duckling is a swimmer",
+  "Elli fat mat: what's past is dead",
+  "'Ala 'ad lehafak med reglak: stretch your legs only as far as your blanket",
+  "Kol ta'khira fiha khira: every delay hides something good",
+  "El ba'ara lamma te'a' tekter sakakinha: when the cow falls, the knives multiply",
+  "Elli yetlese' men el shorba yenfokh fel zabadi: burned by soup, he blows on yoghurt",
+  "El 'ein basira wel eid 'asira: the eye sees but the hand is short",
+  "Ye'mel men el habba 'obba: he makes a dome out of a seed (a mountain out of a molehill)",
+  "Elli 'al bar 'awwam: the one on the shore is a great swimmer",
+  "El shoghl mesh 'eib: work is no shame",
+  "Mesh kol marra teslam el garra: the jar doesn't come out safe every time",
+  "El kelab tenbah wel 'afla tesir: the dogs bark and the caravan moves on",
+  "Gih yekahhalha 'amaha: he came to line her eyes with kohl and blinded her",
+  "El gar 'abl el dar: (choose) the neighbour before the house",
+  "Ya ma fel habs mazaleem: so many innocent people are in prison",
+  "Elli yeshoof balwet gheiro tehoon 'aleih balweto: see others' troubles and yours feel lighter"
+ ],
+ "data": {
+  "100": [
+   [
+    "⏰💰",
+    "Time is money"
+   ],
+   [
+    "🍎📅👨‍⚕️🚫",
+    "An apple a day keeps the doctor away"
+   ],
+   [
+    "🌧️🐱🐶",
+    "It's raining cats and dogs"
+   ],
+   [
+    "🔨🧊",
+    "Break the ice"
+   ],
+   [
+    "🐘🚪🏠",
+    "The elephant in the room"
+   ],
+   [
+    "🧩🍰",
+    "A piece of cake"
+   ],
+   [
+    "💤👶",
+    "Sleep like a baby"
+   ],
+   [
+    "🐔🥚❓",
+    "Which came first, the chicken or the egg?"
+   ],
+   [
+    "🍞🧈",
+    "Bread and butter"
+   ],
+   [
+    "❤️1️⃣👀",
+    "Love at first sight"
+   ],
+   [
+    "🏠🍬🏠",
+    "Home sweet home"
+   ],
+   [
+    "🌈🏺🪙",
+    "A pot of gold at the end of the rainbow"
+   ],
+   [
+    "👊🔥🔥",
+    "Fight fire with fire"
+   ],
+   [
+    "🙈🙉🙊",
+    "See no evil, hear no evil, speak no evil"
+   ],
+   [
+    "👊🛣️",
+    "Hit the road"
+   ],
+   [
+    "📚🐛",
+    "Bookworm"
+   ],
+   [
+    "🛋️🥔",
+    "Couch potato"
+   ],
+   [
+    "🍽️🐴",
+    "I could eat a horse"
+   ],
+   [
+    "🍏👁️",
+    "The apple of my eye"
+   ],
+   [
+    "🐢🏆",
+    "Slow and steady wins the race"
+   ],
+   [
+    "⏰✈️",
+    "Time flies"
+   ],
+   [
+    "🔢🐑😴",
+    "Counting sheep"
+   ],
+   [
+    "🍰🍒🔝",
+    "The cherry on top"
+   ],
+   [
+    "🤞🤞",
+    "Fingers crossed"
+   ],
+   [
+    "👄🔒",
+    "My lips are sealed"
+   ],
+   [
+    "🙋‍♂️🔝🌍",
+    "On top of the world"
+   ],
+   [
+    "🤏🌍",
+    "It's a small world"
+   ],
+   [
+    "🐐👑",
+    "The GOAT (Greatest Of All Time)"
+   ],
+   [
+    "🧠🧊",
+    "Brain freeze"
+   ],
+   [
+    "🐝⏰💼",
+    "Busy as a bee"
+   ]
+  ],
+  "200": [
+   [
+    "🪨🐦🐦",
+    "Kill two birds with one stone"
+   ],
+   [
+    "1️⃣🔵🌙",
+    "Once in a blue moon"
+   ],
+   [
+    "🐦✋2️⃣🌳",
+    "A bird in the hand is worth two in the bush"
+   ],
+   [
+    "👴🐶🚫🆕🎪",
+    "You can't teach an old dog new tricks"
+   ],
+   [
+    "🐱⬅️👜",
+    "Let the cat out of the bag"
+   ],
+   [
+    "🚫🥚🥚🥚1️⃣🧺",
+    "Don't put all your eggs in one basket"
+   ],
+   [
+    "🦶👄",
+    "Put your foot in your mouth"
+   ],
+   [
+    "🫘🫗",
+    "Spill the beans"
+   ],
+   [
+    "💸🌳🚫",
+    "Money doesn't grow on trees"
+   ],
+   [
+    "🥶🦶",
+    "Cold feet"
+   ],
+   [
+    "🍋➡️🍹",
+    "When life gives you lemons, make lemonade"
+   ],
+   [
+    "⛈️🧠",
+    "Brainstorm"
+   ],
+   [
+    "🎂✋🍴",
+    "Have your cake and eat it too"
+   ],
+   [
+    "🧊🏔️🔝",
+    "The tip of the iceberg"
+   ],
+   [
+    "🐶🗣️❌🌳",
+    "Barking up the wrong tree"
+   ],
+   [
+    "🐱👅❓",
+    "Cat got your tongue?"
+   ],
+   [
+    "💰🌧️📅",
+    "Save it for a rainy day"
+   ],
+   [
+    "🐦🗣️",
+    "A little bird told me"
+   ],
+   [
+    "🍬👶",
+    "Like taking candy from a baby"
+   ],
+   [
+    "🔔🧠",
+    "That rings a bell"
+   ],
+   [
+    "🐘🧠",
+    "An elephant never forgets"
+   ],
+   [
+    "💥🦵",
+    "Break a leg"
+   ],
+   [
+    "🐊😢",
+    "Crocodile tears"
+   ],
+   [
+    "🐮😇",
+    "Holy cow"
+   ],
+   [
+    "🧈👐",
+    "Butterfingers"
+   ],
+   [
+    "✋🐴🐴",
+    "Hold your horses"
+   ],
+   [
+    "➕➖🧲",
+    "Opposites attract"
+   ],
+   [
+    "🏠🟰❤️",
+    "Home is where the heart is"
+   ],
+   [
+    "🔁🏋️💯",
+    "Practice makes perfect"
+   ],
+   [
+    "🚫☕🙋‍♂️",
+    "Not my cup of tea"
+   ]
+  ],
+  "300": [
+   [
+    "➕🐟🌊",
+    "There are plenty more fish in the sea"
+   ],
+   [
+    "🎁🐴👄🚫👀",
+    "Don't look a gift horse in the mouth"
+   ],
+   [
+    "🐺👕🐑",
+    "A wolf in sheep's clothing"
+   ],
+   [
+    "🔨💅👤",
+    "Hit the nail on the head"
+   ],
+   [
+    "🌹🌵",
+    "Every rose has its thorn"
+   ],
+   [
+    "⏳❤️‍🩹",
+    "Time heals all wounds"
+   ],
+   [
+    "🪶🐦🐦🐦",
+    "Birds of a feather flock together"
+   ],
+   [
+    "🚫⚖️📖🖼️",
+    "Don't judge a book by its cover"
+   ],
+   [
+    "🌅🐦🪱",
+    "The early bird catches the worm"
+   ],
+   [
+    "🙈🧠❌",
+    "Out of sight, out of mind"
+   ],
+   [
+    "🏃‍♂️🔊💬🔈",
+    "Actions speak louder than words"
+   ],
+   [
+    "🌾💥🐫",
+    "The straw that broke the camel's back"
+   ],
+   [
+    "🥛😭🚫",
+    "Don't cry over spilt milk"
+   ],
+   [
+    "🍳➡️🔥",
+    "Out of the frying pan, into the fire"
+   ],
+   [
+    "🐴👄",
+    "Straight from the horse's mouth"
+   ],
+   [
+    "🍯🪰",
+    "You catch more flies with honey than with vinegar"
+   ],
+   [
+    "🆕🧹✨",
+    "A new broom sweeps clean"
+   ],
+   [
+    "🦁🍰",
+    "The lion's share"
+   ],
+   [
+    "⚫🐑",
+    "The black sheep of the family"
+   ],
+   [
+    "🍎🍊⚖️",
+    "Comparing apples and oranges"
+   ],
+   [
+    "🐟🏜️",
+    "A fish out of water"
+   ],
+   [
+    "🦈💵",
+    "Loan shark"
+   ],
+   [
+    "🐇🎩",
+    "Pull a rabbit out of a hat"
+   ],
+   [
+    "😭🐺",
+    "Cry wolf"
+   ],
+   [
+    "🔥🥔",
+    "Hot potato"
+   ],
+   [
+    "⛽➡️🔥",
+    "Add fuel to the fire"
+   ],
+   [
+    "🧱👂",
+    "The walls have ears"
+   ],
+   [
+    "🐢⏰👍",
+    "Better late than never"
+   ],
+   [
+    "🖼️🟰1️⃣0️⃣0️⃣0️⃣💬",
+    "A picture is worth a thousand words"
+   ],
+   [
+    "💀🗄️",
+    "Skeletons in the closet"
+   ]
+  ],
+  "400": [
+   [
+    "🐒👁️👩➡️🦌",
+    "El erd fi 'ein ommo ghazal: the monkey is a gazelle in its mother's eyes"
+   ],
+   [
+    "⚪🪙⬛📅",
+    "El 'ersh el abyad yenfa' fel yom el eswed: the white piastre helps on the black day"
+   ],
+   [
+    "🐱✈️🐭🎉",
+    "When the cat's away, the mice will play"
+   ],
+   [
+    "💰🚫🛒😊",
+    "Money can't buy happiness"
+   ],
+   [
+    "🏛️🚫1️⃣📅",
+    "Rome wasn't built in a day"
+   ],
+   [
+    "🤔💀🐱",
+    "Curiosity killed the cat"
+   ],
+   [
+    "🍎⬇️🌳📏",
+    "The apple doesn't fall far from the tree"
+   ],
+   [
+    "🧵⏱️9️⃣",
+    "A stitch in time saves nine"
+   ],
+   [
+    "🐴➡️💧🚫🥤",
+    "You can lead a horse to water but you can't make it drink"
+   ],
+   [
+    "😳➡️⚰️",
+    "Elli ekhtasho mato: the shy ones have died"
+   ],
+   [
+    "👨‍🍳👨‍🍳👨‍🍳🍲🤢",
+    "Too many cooks spoil the broth"
+   ],
+   [
+    "😍👁️🧑",
+    "Beauty is in the eye of the beholder"
+   ],
+   [
+    "🖊️💪⚔️",
+    "The pen is mightier than the sword"
+   ],
+   [
+    "🔨⛓️🔥",
+    "Strike while the iron is hot"
+   ],
+   [
+    "⏪⚰️",
+    "Elli fat mat: what's past is dead"
+   ],
+   [
+    "🛏️🦵📏",
+    "'Ala 'ad lehafak med reglak: stretch your legs only as far as your blanket"
+   ],
+   [
+    "⏳👍",
+    "Kol ta'khira fiha khira: every delay hides something good"
+   ],
+   [
+    "💨🚫🔥",
+    "There's no smoke without fire"
+   ],
+   [
+    "🦢🎶",
+    "Swan song"
+   ],
+   [
+    "😴🐶🤫",
+    "Let sleeping dogs lie"
+   ],
+   [
+    "🚫🔢🐣🥚",
+    "Don't count your chickens before they hatch"
+   ],
+   [
+    "🐂🇨🇳🏪",
+    "A bull in a china shop"
+   ],
+   [
+    "🛒➡️🐴",
+    "Put the cart before the horse"
+   ],
+   [
+    "🐶📅",
+    "Every dog has its day"
+   ],
+   [
+    "🍳🟰🥚💥",
+    "You can't make an omelette without breaking eggs"
+   ],
+   [
+    "🐘⚪",
+    "A white elephant"
+   ],
+   [
+    "🥶🦃",
+    "Cold turkey"
+   ],
+   [
+    "🌱➡️🕌",
+    "Ye'mel men el habba 'obba: he makes a dome out of a seed (a mountain out of a molehill)"
+   ],
+   [
+    "🏖️🧍🏊💪",
+    "Elli 'al bar 'awwam: the one on the shore is a great swimmer"
+   ],
+   [
+    "🛠️🚫😳",
+    "El shoghl mesh 'eib: work is no shame"
+   ]
+  ],
+  "500": [
+   [
+    "🤷🗣️🫘",
+    "Elli ma ye'rafsh ye'ool 'ads: he who doesn't know says it's lentils"
+   ],
+   [
+    "💍🐒💰➡️💸🐒",
+    "Ya wakhed el 'erd 'ala malo, yerooh el mal wel 'erd yefdal 'ala halo: marry the monkey for its money, the money goes and the monkey stays"
+   ],
+   [
+    "👁️⬆️🚫🤨",
+    "El 'ein ma tetla'sh 'an el hageb: the eye doesn't rise above the eyebrow"
+   ],
+   [
+    "👴➡️🏫",
+    "Ba'd ma shab waddoh el kottab: after he grew old they sent him to school"
+   ],
+   [
+    "🧏‍♂️💒🎶",
+    "Zay el atrash fel zaffa: like the deaf man at the wedding"
+   ],
+   [
+    "🚶‍♂️💨❤️📈",
+    "Absence makes the heart grow fonder"
+   ],
+   [
+    "🏠🪟🚫🪨",
+    "People in glass houses shouldn't throw stones"
+   ],
+   [
+    "🌱🟢➡️🚧",
+    "The grass is always greener on the other side"
+   ],
+   [
+    "☁️🥈🧵",
+    "Every cloud has a silver lining"
+   ],
+   [
+    "🌊🤫🌀",
+    "Still waters run deep (Ya ma taht el sawahi dawahi)"
+   ],
+   [
+    "🚪💨🔒😌",
+    "El bab elli yegilak meno el reeh, seddo w estereeh: the door that brings in wind, shut it and rest"
+   ],
+   [
+    "🦆👶🏊",
+    "Ibn el wezz 'awwam: the duckling is a swimmer"
+   ],
+   [
+    "🚫🦷✋🍽️",
+    "Don't bite the hand that feeds you"
+   ],
+   [
+    "🐄⬇️🔪🔪",
+    "El ba'ara lamma te'a' tekter sakakinha: when the cow falls, the knives multiply"
+   ],
+   [
+    "🍲🔥🥛💨",
+    "Elli yetlese' men el shorba yenfokh fel zabadi: burned by soup, he blows on yoghurt"
+   ],
+   [
+    "👁️✋📏",
+    "El 'ein basira wel eid 'asira: the eye sees but the hand is short"
+   ],
+   [
+    "⚱️🙃👧🟰👩",
+    "Ekfi el 'edra 'ala bo'aha, tetla' el bent le ommaha: flip the pot on its mouth, the daughter turns out like her mother"
+   ],
+   [
+    "🏺✅🔁🚫",
+    "Mesh kol marra teslam el garra: the jar doesn't come out safe every time"
+   ],
+   [
+    "🐕🗣️🐪➡️",
+    "El kelab tenbah wel 'afla tesir: the dogs bark and the caravan moves on"
+   ],
+   [
+    "🖌️👁️➡️🦯",
+    "Gih yekahhalha 'amaha: he came to line her eyes with kohl and blinded her"
+   ],
+   [
+    "🧑‍🤝‍🧑1️⃣🏠2️⃣",
+    "El gar 'abl el dar: (choose) the neighbour before the house"
+   ],
+   [
+    "⛓️😇😇😇",
+    "Ya ma fel habs mazaleem: so many innocent people are in prison"
+   ],
+   [
+    "👀😫👤➡️😌",
+    "Elli yeshoof balwet gheiro tehoon 'aleih balweto: see others' troubles and yours feel lighter"
+   ],
+   [
+    "🎻🏛️🔥",
+    "Fiddling while Rome burns"
+   ],
+   [
+    "✂️👃😠",
+    "Cut off your nose to spite your face"
+   ],
+   [
+    "😂🔚🥇",
+    "He who laughs last laughs best"
+   ],
+   [
+    "🐀🐀🏃🚢",
+    "Like rats leaving a sinking ship"
+   ],
+   [
+    "⬆️🐟🍳",
+    "Bigger fish to fry"
+   ],
+   [
+    "🍞🔪🔝",
+    "The best thing since sliced bread"
+   ],
+   [
+    "2️⃣🎻",
+    "Play second fiddle"
+   ]
+  ]
+ }
+}

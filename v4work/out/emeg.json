@@ -1,0 +1,519 @@
+{
+ "id": "emeg",
+ "name": "Emoji Movies & TV: Egypt Edition",
+ "type": "emoji",
+ "desc": "Name the Egyptian film, series or play from the emojis.",
+ "arabic_answers": [],
+ "data": {
+  "100": [
+   [
+    "🍯⚫",
+    "Assal Eswed"
+   ],
+   [
+    "👳‍♂️💍💍💍💍",
+    "Gaafar El Omda"
+   ],
+   [
+    "🐦😕",
+    "Bolbol Hayran"
+   ],
+   [
+    "💣🍢",
+    "El Irhab wel Kabab"
+   ],
+   [
+    "🌾🎓🇺🇸",
+    "Saidi fil Gamaa el Amrekeya"
+   ],
+   [
+    "🍔👕🔝",
+    "X-Large"
+   ],
+   [
+    "👨👨👨",
+    "Keda Reda"
+   ],
+   [
+    "🗡️🌿",
+    "El Hashasheen"
+   ],
+   [
+    "🏝️🔫",
+    "El Gezira"
+   ],
+   [
+    "👨‍🏫🏫",
+    "El Nazer"
+   ],
+   [
+    "🇳🇱🧳",
+    "Hammam fi Amsterdam"
+   ],
+   [
+    "👻📚",
+    "Paranormal"
+   ],
+   [
+    "💎🗺️",
+    "El Kenz"
+   ],
+   [
+    "👨👩👩👩👩👩👩",
+    "Ragel W Set Settat"
+   ],
+   [
+    "👨‍🌾🔝🔝",
+    "El Kebeer Awi"
+   ],
+   [
+    "🐍🪜",
+    "El Selm wel Te'ban"
+   ],
+   [
+    "👦🐐🌴",
+    "Bakkar"
+   ],
+   [
+    "🫘🇨🇳",
+    "Fool El Seen El Azeem"
+   ],
+   [
+    "🍎🎮",
+    "Lo'bet Newton"
+   ],
+   [
+    "🪖✅",
+    "El Ekhtiyar"
+   ],
+   [
+    "🤴🔪",
+    "El Prince"
+   ],
+   [
+    "❤️🫵",
+    "Bahebak"
+   ],
+   [
+    "👩👩👩➡️👨👨👨",
+    "Banat El Amm"
+   ],
+   [
+    "🧠❓👴",
+    "Zaheimar"
+   ],
+   [
+    "🌍⚔️3️⃣",
+    "El Harb El Alameya El Talta"
+   ]
+  ],
+  "200": [
+   [
+    "🐯⚫",
+    "El Nemr El Aswad"
+   ],
+   [
+    "🌍😱",
+    "Ard El Khof"
+   ],
+   [
+    "⬇️🎮",
+    "Taht El Saytara"
+   ],
+   [
+    "7️⃣❤️",
+    "Hepta"
+   ],
+   [
+    "🥤🌰",
+    "Sharbat Loz"
+   ],
+   [
+    "☀️🤠",
+    "Shams El Zanati"
+   ],
+   [
+    "👑🔫",
+    "El Embrator"
+   ],
+   [
+    "🛤️🪖",
+    "El Mamar"
+   ],
+   [
+    "🕵️‍♂️🇪🇬",
+    "Raafat El Haggan"
+   ],
+   [
+    "🐦🫵",
+    "Teer Enta"
+   ],
+   [
+    "👔👔",
+    "El Badla"
+   ],
+   [
+    "🤍👨",
+    "Ibrahim El Abyad"
+   ],
+   [
+    "👨👨🕵️",
+    "Welad El Amm"
+   ],
+   [
+    "👨‍👦‍👦💰",
+    "Welad Rizk"
+   ],
+   [
+    "🧞👨",
+    "Kira & El Gin"
+   ],
+   [
+    "🐕🇪🇬",
+    "Kalb Baladi"
+   ],
+   [
+    "🚫🙋‍♂️",
+    "Mesh Ana"
+   ],
+   [
+    "🌙👋",
+    "Tesbah 'ala Kheir"
+   ],
+   [
+    "🦅🌾",
+    "Nesr El Se'eed"
+   ],
+   [
+    "🇩🇰🧪",
+    "El Tagroba El Danemarkeya"
+   ],
+   [
+    "☪️✝️👬",
+    "Hassan w Morcos"
+   ],
+   [
+    "🕷️🕸️",
+    "El Ankabout"
+   ],
+   [
+    "1️⃣0️⃣0️⃣0️⃣🎉🔁",
+    "Alf Mabrook"
+   ],
+   [
+    "👬🎮🏆",
+    "El Lo'ba"
+   ],
+   [
+    "💎💨",
+    "Torab El Mas"
+   ]
+  ],
+  "300": [
+   [
+    "🌙🌙🏘️",
+    "Leyali El Helmeya"
+   ],
+   [
+    "🐱🐱",
+    "El Kitkat"
+   ],
+   [
+    "☁️🛗🌍",
+    "Bein El Samaa wel Ard"
+   ],
+   [
+    "🪣⚰️",
+    "El Sakka Mat"
+   ],
+   [
+    "👰🌊",
+    "Arous El Nil"
+   ],
+   [
+    "🌍🎭",
+    "Ard El Nefaq"
+   ],
+   [
+    "👄👄🐇",
+    "Afwah wa Araneb"
+   ],
+   [
+    "🛏️⬜",
+    "El Wessada El Khalia"
+   ],
+   [
+    "🐦🙏",
+    "Doaa El Karawan"
+   ],
+   [
+    "⚔️🏞️",
+    "Seraa fil Wadi"
+   ],
+   [
+    "🚪⚙️🚂",
+    "Bab El Hadid"
+   ],
+   [
+    "👰👨‍💼⭐",
+    "Zawgat Ragol Mohem"
+   ],
+   [
+    "❓🌀",
+    "Heya Fawda?"
+   ],
+   [
+    "🌙🎪🎎",
+    "El Leila El Kebira"
+   ],
+   [
+    "💭👦✈️",
+    "Ahlam El Fata El Tayer"
+   ],
+   [
+    "🏫😈",
+    "Madrasat El Moshaghebeen"
+   ],
+   [
+    "👁️🚫⚖️",
+    "Shahed Ma Shafsh Haga"
+   ],
+   [
+    "👩👩🔪",
+    "Raya w Sekina"
+   ],
+   [
+    "🥋👨",
+    "Mr. Karate"
+   ],
+   [
+    "🔗👮",
+    "Kalabsh"
+   ],
+   [
+    "👨‍👩‍👧‍👦👨‍👩‍👧‍👦💯",
+    "Kamel El Adad"
+   ],
+   [
+    "😴🍯",
+    "El Nom fel Asal"
+   ],
+   [
+    "🤴🌑",
+    "Amir El Zalam"
+   ],
+   [
+    "👳‍♂️🕺🧤",
+    "Sheikh Jackson"
+   ],
+   [
+    "🐦🐦🌑",
+    "Toyour El Zalam"
+   ]
+  ],
+  "400": [
+   [
+    "🏛️☕",
+    "El Karnak"
+   ],
+   [
+    "🌍🌾",
+    "El Ard"
+   ],
+   [
+    "🚌↔️",
+    "Ismailia Rayeh Gai"
+   ],
+   [
+    "🗣️💕👧",
+    "Ghazal El Banat"
+   ],
+   [
+    "📮👨",
+    "El Bostagi"
+   ],
+   [
+    "🚌🧑🛞",
+    "Sawak El Otobees"
+   ],
+   [
+    "🚪🎩",
+    "El Beh Bawab"
+   ],
+   [
+    "😇🪖",
+    "El Bari'a"
+   ],
+   [
+    "⚠️👀💃",
+    "Khali Balak Men Zouzou"
+   ],
+   [
+    "🇪🇬🚢5️⃣6️⃣",
+    "Nasser 56"
+   ],
+   [
+    "⚽🧑",
+    "El Harrif"
+   ],
+   [
+    "⚓❓",
+    "Iskandariya… Leh?"
+   ],
+   [
+    "👰2️⃣",
+    "El Zoga El Tanya"
+   ],
+   [
+    "👶➡️🧑",
+    "El Eyal Kebret"
+   ],
+   [
+    "🤏😱",
+    "Shey' Men El Khof"
+   ],
+   [
+    "👰1️⃣3️⃣",
+    "El Zoga Talattashar (El Zoga 13)"
+   ],
+   [
+    "🚪🔓",
+    "El Bab El Maftouh"
+   ],
+   [
+    "🍀👨⚖️👩",
+    "Bekhit w Adila"
+   ],
+   [
+    "👋👬",
+    "Salam Ya Sahby"
+   ],
+   [
+    "❄️0️⃣👨",
+    "Shaaban Taht El Sefr"
+   ],
+   [
+    "💍👫🎭",
+    "El Motazawgoon"
+   ],
+   [
+    "🛥️👩‍👦⚖️",
+    "Taht El Wesaya"
+   ],
+   [
+    "🌙🎉👨‍🏫",
+    "Ramadan Mabrouk Abul Alamein Hamouda"
+   ],
+   [
+    "👨🔝🌳",
+    "Abi Fawq El Shagara"
+   ],
+   [
+    "1️⃣👥",
+    "Wahed Men El Nas"
+   ]
+  ],
+  "500": [
+   [
+    "👨🤵",
+    "Baba Arees"
+   ],
+   [
+    "🧹👦",
+    "El Wad Sayed El Shaghal"
+   ],
+   [
+    "🍬🏘️",
+    "El Sukkariya"
+   ],
+   [
+    "📖🔥",
+    "El Maseer"
+   ],
+   [
+    "🏰🏰",
+    "Bein El Qasrein"
+   ],
+   [
+    "🏙️3️⃣0️⃣",
+    "El Qahira 30"
+   ],
+   [
+    "🌍💭",
+    "Ard El Ahlam"
+   ],
+   [
+    "👦🚫🧥👴",
+    "Lan A'eesh fi Gelbab Abi"
+   ],
+   [
+    "💪🏘️",
+    "El Azima"
+   ],
+   [
+    "📅🕊️👨",
+    "Ayam El Sadat"
+   ],
+   [
+    "👄❤️🔺",
+    "El Hob Fawq Hadabet El Haram"
+   ],
+   [
+    "🧟📜",
+    "El Mummia"
+   ],
+   [
+    "👩✨",
+    "Shabab Imra'a"
+   ],
+   [
+    "🦅⚔️🏰",
+    "El Naser Salah El Din"
+   ],
+   [
+    "👄🪖",
+    "Ismail Yassin fil Geish"
+   ],
+   [
+    "🧺🌀⏳",
+    "El Ghassala"
+   ],
+   [
+    "▶️🔚",
+    "Bedaya w Nehaya"
+   ],
+   [
+    "🦹🐕🐕",
+    "El Less wel Kelab"
+   ],
+   [
+    "🏰😍",
+    "Qasr El Shoq"
+   ],
+   [
+    "🏠👨🤫",
+    "Fi Beitna Ragol"
+   ],
+   [
+    "🙋‍♀️🕊️",
+    "Ana Horra"
+   ],
+   [
+    "⚔️⚓🚢",
+    "Seraa fil Mina"
+   ],
+   [
+    "🕴️🛡️",
+    "El Bodyguard"
+   ],
+   [
+    "💃🥁",
+    "El Ra'sa wel Tabbal"
+   ],
+   [
+    "🚫🤥💄",
+    "Ana La Akdhib Walakinni Atagammal"
+   ]
+  ]
+ }
+}

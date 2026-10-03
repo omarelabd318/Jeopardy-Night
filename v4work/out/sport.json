@@ -1,0 +1,618 @@
+{
+ "id": "sport",
+ "name": "Sports",
+ "type": "text",
+ "desc": "Every sport except football, which has its own category.",
+ "data": {
+  "100": [
+   [
+    "Which sport uses a shuttlecock?",
+    "Badminton"
+   ],
+   [
+    "How many rings are on the Olympic flag?",
+    "5"
+   ],
+   [
+    "Which city hosted the 2024 Summer Olympics?",
+    "Paris"
+   ],
+   [
+    "In tennis, what is a score of zero called?",
+    "Love"
+   ],
+   [
+    "Which boxer called himself 'The Greatest'?",
+    "Muhammad Ali"
+   ],
+   [
+    "How many holes are in a standard round of golf?",
+    "18"
+   ],
+   [
+    "Who holds the men's 100 m world record?",
+    "Usain Bolt"
+   ],
+   [
+    "In which sport do you do a slam dunk?",
+    "Basketball"
+   ],
+   [
+    "What colour jersey does the Tour de France leader wear?",
+    "Yellow"
+   ],
+   [
+    "Which sport is played at Wimbledon?",
+    "Tennis"
+   ],
+   [
+    "How many minutes long is an NBA quarter?",
+    "12"
+   ],
+   [
+    "Which swimmer won 23 Olympic gold medals?",
+    "Michael Phelps"
+   ],
+   [
+    "In which sport do you score a 'try'?",
+    "Rugby"
+   ],
+   [
+    "What does F1 stand for?",
+    "Formula One"
+   ],
+   [
+    "In which sport do you use a cue?",
+    "Snooker (or pool)"
+   ],
+   [
+    "Which sport is the Super Bowl for?",
+    "American football"
+   ],
+   [
+    "Lewis Hamilton is a star of which sport?",
+    "Formula 1"
+   ],
+   [
+    "What shape is a rugby ball?",
+    "Oval"
+   ],
+   [
+    "Which Korean martial art is known for its high kicks?",
+    "Taekwondo"
+   ],
+   [
+    "In which country is the Tour de France held?",
+    "France"
+   ],
+   [
+    "Which city will host the 2028 Summer Olympics?",
+    "Los Angeles"
+   ],
+   [
+    "How many players does each basketball team have on the court?",
+    "5"
+   ],
+   [
+    "In which sport do you hit a home run?",
+    "Baseball"
+   ],
+   [
+    "How many players does each volleyball team have on the court?",
+    "6"
+   ],
+   [
+    "Which Spanish tennis legend is nicknamed 'Rafa'?",
+    "Rafael Nadal"
+   ],
+   [
+    "What colour belt is the best-known top rank in karate?",
+    "Black"
+   ],
+   [
+    "In which sport can you score a 'hole in one'?",
+    "Golf"
+   ],
+   [
+    "Which country hosts a Formula 1 Grand Prix through the streets of Monte Carlo?",
+    "Monaco"
+   ],
+   [
+    "In boxing, what does KO stand for?",
+    "Knockout"
+   ],
+   [
+    "In which sport do you use a 'foil', an 'épée' or a 'sabre'?",
+    "Fencing"
+   ]
+  ],
+  "200": [
+   [
+    "Who holds the men's record for Grand Slam singles titles, with 24?",
+    "Novak Djokovic"
+   ],
+   [
+    "Which F1 driver shares the record of seven world titles with Michael Schumacher?",
+    "Lewis Hamilton"
+   ],
+   [
+    "Which country has won the most Cricket World Cups?",
+    "Australia"
+   ],
+   [
+    "Which city hosted the 2020 Olympics, held in 2021?",
+    "Tokyo"
+   ],
+   [
+    "The Stanley Cup is awarded in which sport?",
+    "Ice hockey"
+   ],
+   [
+    "Which basketball player is nicknamed 'King James'?",
+    "LeBron James"
+   ],
+   [
+    "How long is a marathon, in kilometres?",
+    "42.195 km"
+   ],
+   [
+    "Which Grand Slam tournament is played on clay?",
+    "The French Open (Roland Garros)"
+   ],
+   [
+    "The Ryder Cup is contested in which sport?",
+    "Golf"
+   ],
+   [
+    "Which boxer was nicknamed 'Iron Mike'?",
+    "Mike Tyson"
+   ],
+   [
+    "How many players does each ice hockey team have on the ice?",
+    "6"
+   ],
+   [
+    "With which team did Michael Jordan win six NBA titles?",
+    "Chicago Bulls"
+   ],
+   [
+    "What is the highest possible break in snooker?",
+    "147"
+   ],
+   [
+    "In which country was table tennis invented?",
+    "England"
+   ],
+   [
+    "Which woman won 23 Grand Slam singles titles in the Open Era?",
+    "Serena Williams"
+   ],
+   [
+    "Which sport uses the terms 'ace' and 'deuce'?",
+    "Tennis"
+   ],
+   [
+    "Which basketball legend wore number 23 for the Chicago Bulls?",
+    "Michael Jordan"
+   ],
+   [
+    "What colour is the centre of an archery target?",
+    "Gold (yellow)"
+   ],
+   [
+    "How many players are in a cricket team?",
+    "11"
+   ],
+   [
+    "In cricket, what is scoring 100 runs called?",
+    "A century"
+   ],
+   [
+    "How long is an Olympic swimming pool?",
+    "50 metres"
+   ],
+   [
+    "Which country hosted the 2026 Winter Olympics?",
+    "Italy (Milan–Cortina)"
+   ],
+   [
+    "Who won the 2025 Formula 1 world title?",
+    "Lando Norris"
+   ],
+   [
+    "Which Tunisian tennis player reached three Grand Slam finals in 2022 and 2023?",
+    "Ons Jabeur"
+   ],
+   [
+    "How many points is a touchdown worth in American football?",
+    "6"
+   ],
+   [
+    "Which golf tournament gives its winner a green jacket?",
+    "The Masters"
+   ],
+   [
+    "Which Italian won the men's singles at Wimbledon in 2025 and 2026?",
+    "Jannik Sinner"
+   ],
+   [
+    "What is the national sport of Japan?",
+    "Sumo wrestling"
+   ],
+   [
+    "Which country has dominated men's and women's squash rankings since the 2010s?",
+    "Egypt"
+   ],
+   [
+    "Which city hosted the 2016 Summer Olympics?",
+    "Rio de Janeiro"
+   ]
+  ],
+  "300": [
+   [
+    "Which Egyptian won modern pentathlon gold at Paris 2024?",
+    "Ahmed Elgendy"
+   ],
+   [
+    "Which F1 team is based in Maranello?",
+    "Ferrari"
+   ],
+   [
+    "In golf, what is one under par on a hole called?",
+    "A birdie"
+   ],
+   [
+    "Which country won the 2023 Rugby World Cup?",
+    "South Africa"
+   ],
+   [
+    "Which NBA player scored 100 points in a single game?",
+    "Wilt Chamberlain"
+   ],
+   [
+    "Which Grand Slam is played at Flushing Meadows?",
+    "The US Open"
+   ],
+   [
+    "How many events are in a heptathlon?",
+    "7"
+   ],
+   [
+    "Which cyclist was stripped of seven Tour de France titles?",
+    "Lance Armstrong"
+   ],
+   [
+    "What is a perfect score in ten-pin bowling?",
+    "300"
+   ],
+   [
+    "Muay Thai comes from which country?",
+    "Thailand"
+   ],
+   [
+    "What is the highest score possible with three darts?",
+    "180"
+   ],
+   [
+    "Which Moroccan has held the 1500 m world record since 1998?",
+    "Hicham El Guerrouj"
+   ],
+   [
+    "Which horse race is called 'the Run for the Roses'?",
+    "The Kentucky Derby"
+   ],
+   [
+    "Which Egyptian became squash world No. 1 in 2014?",
+    "Mohamed El Shorbagy"
+   ],
+   [
+    "Which city hosted the first modern Olympics in 1896?",
+    "Athens"
+   ],
+   [
+    "Which country won the most medals at the Paris 2024 Olympics?",
+    "The United States"
+   ],
+   [
+    "How many French Open titles did Rafael Nadal win?",
+    "14"
+   ],
+   [
+    "Who won the men's 100 m gold at the Paris 2024 Olympics?",
+    "Noah Lyles"
+   ],
+   [
+    "What is Canada's official national winter sport?",
+    "Ice hockey"
+   ],
+   [
+    "Which Japanese martial art's name means 'the gentle way'?",
+    "Judo"
+   ],
+   [
+    "What is the highest score from a single dart?",
+    "60 (treble 20)"
+   ],
+   [
+    "The FIVB governs which sport?",
+    "Volleyball"
+   ],
+   [
+    "Which team won Super Bowl LX in February 2026?",
+    "The Seattle Seahawks"
+   ],
+   [
+    "Which team won the 2026 NBA title, its first since 1973?",
+    "The New York Knicks"
+   ],
+   [
+    "Which Swede keeps breaking his own pole vault world record?",
+    "Armand 'Mondo' Duplantis"
+   ],
+   [
+    "How many players does each rugby union team have on the field?",
+    "15"
+   ],
+   [
+    "Which Egyptian karateka won Olympic gold at Tokyo 2020?",
+    "Feryal Abdelaziz"
+   ],
+   [
+    "Which tennis player has won a record 10 Australian Open men's titles?",
+    "Novak Djokovic"
+   ],
+   [
+    "Which NFL quarterback won a record seven Super Bowls?",
+    "Tom Brady"
+   ],
+   [
+    "Which country hosted the 2021 World Men's Handball Championship?",
+    "Egypt"
+   ]
+  ],
+  "400": [
+   [
+    "Which F1 driver won four straight world titles from 2021 to 2024?",
+    "Max Verstappen"
+   ],
+   [
+    "Who was the first gymnast to score a perfect 10 at the Olympics?",
+    "Nadia Comăneci"
+   ],
+   [
+    "Who did Muhammad Ali fight in the 'Rumble in the Jungle'?",
+    "George Foreman"
+   ],
+   [
+    "What is the diameter of a basketball hoop?",
+    "18 inches (about 46 cm)"
+   ],
+   [
+    "In which sport is a period of play called a 'chukka'?",
+    "Polo"
+   ],
+   [
+    "Which city hosted the 2022 Winter Olympics?",
+    "Beijing"
+   ],
+   [
+    "What are three strikes in a row called in bowling?",
+    "A turkey"
+   ],
+   [
+    "What is the Super Bowl trophy called?",
+    "The Vince Lombardi Trophy"
+   ],
+   [
+    "Which country has won the most Davis Cups?",
+    "The United States"
+   ],
+   [
+    "Which athlete won four golds at the 1936 Berlin Olympics?",
+    "Jesse Owens"
+   ],
+   [
+    "Which country won the first Rugby World Cup in 1987?",
+    "New Zealand"
+   ],
+   [
+    "In which team sport did Egypt reach the Olympic semi-finals at Tokyo 2020?",
+    "Handball"
+   ],
+   [
+    "How many points is the black ball worth in snooker?",
+    "7"
+   ],
+   [
+    "Who won the 2023 Cricket World Cup?",
+    "Australia"
+   ],
+   [
+    "Who won the men's singles at Wimbledon in 2024?",
+    "Carlos Alcaraz"
+   ],
+   [
+    "Which NBA team has won the most championships?",
+    "The Boston Celtics (18)"
+   ],
+   [
+    "How many red balls are on a snooker table at the start of a frame?",
+    "15"
+   ],
+   [
+    "What was Muhammad Ali's birth name?",
+    "Cassius Clay"
+   ],
+   [
+    "Which is the only sport ever played on the Moon?",
+    "Golf"
+   ],
+   [
+    "Which Egyptian wrestler won Greco-Roman gold at the 2004 Athens Olympics?",
+    "Karam Gaber"
+   ],
+   [
+    "Which Egyptian taekwondo star won Olympic bronze at both Rio 2016 and Tokyo 2020?",
+    "Hedaya Malak (Hedaya Wahba)"
+   ],
+   [
+    "Which Egyptian fencer won men's sabre bronze at Paris 2024?",
+    "Mohamed El-Sayed"
+   ],
+   [
+    "The Thomas Cup is the men's world team championship of which sport?",
+    "Badminton"
+   ],
+   [
+    "Which Tunisian swimmer won 400 m freestyle gold at Tokyo 2020?",
+    "Ahmed Hafnaoui"
+   ],
+   [
+    "How many players does each baseball team have on the field while defending?",
+    "9"
+   ],
+   [
+    "Which Egyptian weightlifter won silver in the women's 81 kg at Paris 2024?",
+    "Sara Samir"
+   ],
+   [
+    "The Iditarod is a famous race in which sport?",
+    "Sled dog racing"
+   ],
+   [
+    "Which ice hockey legend was nicknamed 'The Great One'?",
+    "Wayne Gretzky"
+   ],
+   [
+    "How long is a cricket pitch, in yards?",
+    "22 yards"
+   ],
+   [
+    "Which driver has won the most Formula 1 races?",
+    "Lewis Hamilton"
+   ]
+  ],
+  "500": [
+   [
+    "Who won the first F1 World Championship in 1950?",
+    "Giuseppe Farina"
+   ],
+   [
+    "Which golfer has won the most men's majors?",
+    "Jack Nicklaus (18)"
+   ],
+   [
+    "Which tennis player won the calendar Grand Slam twice, in 1962 and 1969?",
+    "Rod Laver"
+   ],
+   [
+    "Badminton is named after a stately home in which English county?",
+    "Gloucestershire"
+   ],
+   [
+    "Who broke baseball's colour line in 1947?",
+    "Jackie Robinson"
+   ],
+   [
+    "Who ran the first sub-two-hour marathon, in 2019?",
+    "Eliud Kipchoge"
+   ],
+   [
+    "The America's Cup is contested in which sport?",
+    "Sailing"
+   ],
+   [
+    "Which NBA player won a record 11 championships?",
+    "Bill Russell"
+   ],
+   [
+    "Which boxer retired with a perfect 50–0 professional record?",
+    "Floyd Mayweather Jr."
+   ],
+   [
+    "In fencing, which weapon lets you score on the whole body?",
+    "Épée"
+   ],
+   [
+    "In which year did Egypt first compete at the Olympics?",
+    "1912"
+   ],
+   [
+    "Which city hosted the 1980 Olympics that the USA boycotted?",
+    "Moscow"
+   ],
+   [
+    "Basketball's inventor, James Naismith, came from which country?",
+    "Canada"
+   ],
+   [
+    "What is the most clubs a golfer may carry in a bag?",
+    "14"
+   ],
+   [
+    "How many players does each water polo team have in the water?",
+    "7"
+   ],
+   [
+    "In which country were the first Winter Olympics held, in 1924?",
+    "France (Chamonix)"
+   ],
+   [
+    "Who won the tennis 'Golden Slam' in 1988?",
+    "Steffi Graf"
+   ],
+   [
+    "Which weightlifter won Egypt's first Olympic gold, in 1928?",
+    "El Sayed Nosseir"
+   ],
+   [
+    "What is the highest rank in sumo wrestling?",
+    "Yokozuna"
+   ],
+   [
+    "In golf, what is three under par on a single hole called?",
+    "An albatross (double eagle)"
+   ],
+   [
+    "Which sprinter won Saint Lucia's first Olympic gold, in the women's 100 m at Paris 2024?",
+    "Julien Alfred"
+   ],
+   [
+    "Which Egyptian swimmer won bronze in the women's 50 m butterfly at the 2017 World Championships?",
+    "Farida Osman"
+   ],
+   [
+    "Which team won the first Cricket World Cup, in 1975?",
+    "West Indies"
+   ],
+   [
+    "What is women's tennis's world team competition, formerly the Fed Cup, called now?",
+    "The Billie Jean King Cup"
+   ],
+   [
+    "Who handed Muhammad Ali his first professional defeat, in 1971?",
+    "Joe Frazier"
+   ],
+   [
+    "Which Kenyan won the Olympic men's marathon at both Rio 2016 and Tokyo 2020?",
+    "Eliud Kipchoge"
+   ],
+   [
+    "In which athletics event is the 'Fosbury Flop' used?",
+    "High jump"
+   ],
+   [
+    "Which NBA star was nicknamed 'The Mailman'?",
+    "Karl Malone"
+   ],
+   [
+    "The Webb Ellis Cup is the trophy for which sport's World Cup?",
+    "Rugby union"
+   ],
+   [
+    "Which Moroccan hurdler became the first Arab and African woman to win Olympic gold, in 1984?",
+    "Nawal El Moutawakel"
+   ]
+  ]
+ }
+}

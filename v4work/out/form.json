@@ -1,0 +1,390 @@
+{
+ "id": "form",
+ "name": "Formations",
+ "type": "text",
+ "desc": "A full starting lineup, strikers at the top and the keeper at the bottom. Name the team and the year.",
+ "data": {
+  "100": [
+   [
+    "4-3-3\nPedro · Messi · Villa\nXavi · Busquets · Iniesta\nAlves · Piqué · Mascherano · Abidal\nValdés",
+    "Barcelona, 2011 (Champions League final v Man United)"
+   ],
+   [
+    "4-2-3-1\nVilla\nPedro · Xavi · Iniesta\nBusquets · Xabi Alonso\nRamos · Piqué · Puyol · Capdevila\nCasillas",
+    "Spain, 2010 (World Cup final v Netherlands)"
+   ],
+   [
+    "4-4-2\nRooney · Tevez\nHargreaves · Carrick · Scholes · Ronaldo\nBrown · Ferdinand · Vidić · Evra\nVan der Sar",
+    "Manchester United, 2008 (Champions League final v Chelsea)"
+   ],
+   [
+    "4-3-3\nSalah · Firmino · Mané\nHenderson · Fabinho · Wijnaldum\nAlexander-Arnold · Matip · Van Dijk · Robertson\nAlisson",
+    "Liverpool, 2019 (Champions League final v Tottenham)"
+   ],
+   [
+    "4-3-3\nMessi · Álvarez · Di María\nDe Paul · Enzo Fernández · Mac Allister\nMolina · Romero · Otamendi · Tagliafico\nE. Martínez",
+    "Argentina, 2022 (World Cup final v France)"
+   ],
+   [
+    "4-2-3-1\nGiroud\nMbappé · Griezmann · Matuidi\nKanté · Pogba\nPavard · Varane · Umtiti · Hernández\nLloris",
+    "France, 2018 (World Cup final v Croatia)"
+   ],
+   [
+    "4-4-2\nBergkamp · Henry\nLjungberg · Vieira · Gilberto Silva · Pires\nLauren · Touré · Campbell · Cole\nLehmann",
+    "Arsenal, 2003–04 (the Invincibles)"
+   ],
+   [
+    "4-2-3-1\nKlose\nMüller · Kroos · Özil\nSchweinsteiger · Kramer\nLahm · Boateng · Hummels · Höwedes\nNeuer",
+    "Germany, 2014 (World Cup final v Argentina)"
+   ],
+   [
+    "4-3-1-2\nBenzema · Ronaldo\nIsco\nModrić · Casemiro · Kroos\nCarvajal · Varane · Ramos · Marcelo\nNavas",
+    "Real Madrid, 2017 (Champions League final v Juventus)"
+   ],
+   [
+    "4-3-3\nMessi · Suárez · Neymar\nRakitić · Busquets · Iniesta\nAlves · Piqué · Mascherano · Alba\nter Stegen",
+    "Barcelona, 2015 (Champions League final v Juventus)"
+   ],
+   [
+    "4-4-1-1\nBaroš\nKewell\nLuis García · Gerrard · Xabi Alonso · Riise\nFinnan · Carragher · Hyypiä · Traoré\nDudek",
+    "Liverpool, 2005 (Champions League final v AC Milan, Istanbul)"
+   ],
+   [
+    "4-4-2\nOkazaki · Vardy\nMahrez · Kanté · Drinkwater · Albrighton\nSimpson · Morgan · Huth · Fuchs\nSchmeichel",
+    "Leicester City, 2015–16 (the title season)"
+   ],
+   [
+    "4-2-3-1\nDrogba\nKalou · Mata · Bertrand\nMikel · Lampard\nBosingwa · David Luiz · Cahill · Cole\nČech",
+    "Chelsea, 2012 (Champions League final v Bayern)"
+   ],
+   [
+    "4-3-3\nEto'o · Messi · Henry\nXavi · Busquets · Iniesta\nPuyol · Touré · Piqué · Sylvinho\nValdés",
+    "Barcelona, 2009 (Champions League final v Man United)"
+   ],
+   [
+    "4-3-3\nBale · Benzema · Ronaldo\nModrić · Khedira · Di María\nCarvajal · Varane · Ramos · Coentrão\nCasillas",
+    "Real Madrid, 2014 (Champions League final v Atlético, La Décima)"
+   ],
+   [
+    "4-2-3-1\nMorata\nYamal · Olmo · Nico Williams\nRodri · Fabián Ruiz\nCarvajal · Le Normand · Laporte · Cucurella\nUnai Simón",
+    "Spain, 2024 (Euro final v England)"
+   ],
+   [
+    "4-2-3-1\nToni\nCamoranesi · Totti · Perrotta\nGattuso · Pirlo\nZambrotta · Cannavaro · Materazzi · Grosso\nBuffon",
+    "Italy, 2006 (World Cup final v France)"
+   ],
+   [
+    "3-2-4-1\nHaaland\nBernardo Silva · De Bruyne · Gündoğan · Grealish\nStones · Rodri\nAkanji · Dias · Aké\nEderson",
+    "Manchester City, 2023 (Champions League final v Inter)"
+   ]
+  ],
+  "200": [
+   [
+    "4-3-3\nDoué · Dembélé · Kvaratskhelia\nNeves · Vitinha · Fabián Ruiz\nHakimi · Marquinhos · Pacho · Nuno Mendes\nDonnarumma",
+    "Paris Saint-Germain, 2025 (Champions League final v Inter)"
+   ],
+   [
+    "3-4-2-1\nRonaldo\nRonaldinho · Rivaldo\nCafu · Gilberto Silva · Kléberson · Roberto Carlos\nLúcio · Edmílson · Roque Júnior\nMarcos",
+    "Brazil, 2002 (World Cup final v Germany)"
+   ],
+   [
+    "4-2-3-1\nMilito\nEto'o · Sneijder · Pandev\nZanetti · Cambiasso\nMaicon · Lúcio · Samuel · Chivu\nJúlio César",
+    "Inter, 2010 (Champions League final v Bayern)"
+   ],
+   [
+    "4-2-3-1\nMandžukić\nRobben · Müller · Ribéry\nJavi Martínez · Schweinsteiger\nLahm · Boateng · Dante · Alaba\nNeuer",
+    "Bayern Munich, 2013 (Champions League final v Dortmund)"
+   ],
+   [
+    "4-3-3\nValverde · Benzema · Vinícius\nModrić · Casemiro · Kroos\nCarvajal · Militão · Alaba · Mendy\nCourtois",
+    "Real Madrid, 2022 (Champions League final v Liverpool)"
+   ],
+   [
+    "3-4-2-1\nWerner\nHavertz · Mount\nJames · Kanté · Jorginho · Chilwell\nAzpilicueta · Thiago Silva · Rüdiger\nMendy",
+    "Chelsea, 2021 (Champions League final v Man City)"
+   ],
+   [
+    "4-4-2\nCole · Yorke\nGiggs · Beckham · Butt · Blomqvist\nG. Neville · Johnsen · Stam · Irwin\nSchmeichel",
+    "Manchester United, 1999 (Champions League final v Bayern)"
+   ],
+   [
+    "4-3-2-1\nInzaghi\nKaká · Seedorf\nGattuso · Pirlo · Ambrosini\nOddo · Nesta · Maldini · Jankulovski\nDida",
+    "AC Milan, 2007 (Champions League final v Liverpool)"
+   ],
+   [
+    "4-2-3-1\nKane\nEriksen · Alli · Son\nSissoko · Winks\nTrippier · Alderweireld · Vertonghen · Rose\nLloris",
+    "Tottenham, 2019 (Champions League final v Liverpool)"
+   ],
+   [
+    "4-1-3-2\nNani · Ronaldo\nRenato Sanches · Adrien Silva · João Mário\nWilliam Carvalho\nCédric · Pepe · Fonte · Guerreiro\nRui Patrício",
+    "Portugal, 2016 (Euro final v France)"
+   ],
+   [
+    "4-3-3\nSalah · Firmino · Mané\nHenderson · Milner · Wijnaldum\nAlexander-Arnold · Lovren · Van Dijk · Robertson\nKarius",
+    "Liverpool, 2018 (Champions League final v Real Madrid)"
+   ],
+   [
+    "4-4-2\nTevez · Agüero\nSilva · Barry · Yaya Touré · Nasri\nZabaleta · Kompany · Lescott · Clichy\nHart",
+    "Manchester City, 2012 (title decider v QPR, the 93:20 game)"
+   ],
+   [
+    "4-3-3\nSilva · Fàbregas · Iniesta\nXavi · Busquets · Xabi Alonso\nArbeloa · Piqué · Ramos · Alba\nCasillas",
+    "Spain, 2012 (Euro final v Italy)"
+   ],
+   [
+    "4-2-3-1\nLewandowski\nGnabry · Müller · Coman\nThiago · Goretzka\nKimmich · Boateng · Alaba · Davies\nNeuer",
+    "Bayern Munich, 2020 (Champions League final v PSG)"
+   ],
+   [
+    "4-3-3\nGiannakopoulos · Charisteas · Vryzas\nZagorakis · Katsouranis · Basinas\nSeitaridis · Dellas · Kapsis · Fyssas\nNikopolidis",
+    "Greece, 2004 (Euro final v Portugal)"
+   ],
+   [
+    "4-2-3-1\nMandžukić\nRebić · Modrić · Perišić\nBrozović · Rakitić\nVrsaljko · Lovren · Vida · Strinić\nSubašić",
+    "Croatia, 2018 (World Cup final v France)"
+   ],
+   [
+    "4-2-3-1\nVan Persie\nRobben · Sneijder · Kuyt\nVan Bommel · De Jong\nVan der Wiel · Heitinga · Mathijsen · Van Bronckhorst\nStekelenburg",
+    "Netherlands, 2010 (World Cup final v Spain)"
+   ],
+   [
+    "4-3-3\nPolitano · Osimhen · Kvaratskhelia\nAnguissa · Lobotka · Zieliński\nDi Lorenzo · Rrahmani · Kim Min-jae · Mário Rui\nMeret",
+    "Napoli, 2022–23 (the Scudetto season)"
+   ]
+  ],
+  "300": [
+   [
+    "4-3-3\nJ. Cole · Drogba · Malouda\nBallack · Makélélé · Lampard\nEssien · Carvalho · Terry · A. Cole\nČech",
+    "Chelsea, 2008 (Champions League final v Man United)"
+   ],
+   [
+    "4-4-2\nVilla · Diego Costa\nRaúl García · Gabi · Tiago · Koke\nJuanfran · Miranda · Godín · Filipe Luís\nCourtois",
+    "Atlético Madrid, 2014 (Champions League final v Real Madrid)"
+   ],
+   [
+    "4-4-2\nVinícius · Rodrygo\nValverde · Camavinga · Kroos · Bellingham\nCarvajal · Rüdiger · Nacho · Mendy\nCourtois",
+    "Real Madrid, 2024 (Champions League final v Dortmund)"
+   ],
+   [
+    "4-3-1-2\nDerlei · Carlos Alberto\nDeco\nPedro Mendes · Costinha · Maniche\nPaulo Ferreira · Jorge Costa · Ricardo Carvalho · Nuno Valente\nVítor Baía",
+    "Porto, 2004 (Champions League final v Monaco)"
+   ],
+   [
+    "4-4-1-1\nHenry\nLjungberg\nPires · Gilberto Silva · Fàbregas · Hleb\nEboué · Touré · Campbell · Cole\nLehmann",
+    "Arsenal, 2006 (Champions League final v Barcelona)"
+   ],
+   [
+    "4-2-3-1\nLewandowski\nBłaszczykowski · Reus · Großkreutz\nBender · Gündoğan\nPiszczek · Subotić · Hummels · Schmelzer\nWeidenfeller",
+    "Borussia Dortmund, 2013 (Champions League final v Bayern)"
+   ],
+   [
+    "4-4-2\nRaúl · Morientes\nFigo · Makélélé · Zidane · Solari\nMíchel Salgado · Hierro · Helguera · Roberto Carlos\nCésar",
+    "Real Madrid, 2002 (Champions League final v Leverkusen, Zidane's volley)"
+   ],
+   [
+    "3-5-2\nKlose · Neuville\nFrings · Schneider · Hamann · Jeremies · Bode\nLinke · Ramelow · Metzelder\nKahn",
+    "Germany, 2002 (World Cup final v Brazil)"
+   ],
+   [
+    "3-5-2\nDžeko · Lautaro\nDumfries · Barella · Brozović · Çalhanoğlu · Dimarco\nDarmian · Acerbi · Bastoni\nOnana",
+    "Inter, 2023 (Champions League final v Man City)"
+   ],
+   [
+    "4-3-3\nDi María · Lautaro · Messi\nDe Paul · Paredes · Lo Celso\nMontiel · Romero · Otamendi · Acuña\nE. Martínez",
+    "Argentina, 2021 (Copa América final v Brazil)"
+   ],
+   [
+    "4-3-3\nPark · Ronaldo · Rooney\nAnderson · Carrick · Giggs\nO'Shea · Ferdinand · Vidić · Evra\nVan der Sar",
+    "Manchester United, 2009 (Champions League final v Barcelona)"
+   ],
+   [
+    "3-4-2-1\nBoniface\nHofmann · Wirtz\nFrimpong · Palacios · Xhaka · Grimaldo\nKossounou · Tah · Tapsoba\nHrádecký",
+    "Bayer Leverkusen, 2023–24 (the unbeaten Bundesliga season)"
+   ],
+   [
+    "4-3-3\nZiyech · En-Nesyri · Boufal\nOunahi · Amrabat · Amallah\nHakimi · El Yamiq · Saïss · Attiyat Allah\nBounou",
+    "Morocco, 2022 (World Cup quarter-final v Portugal)"
+   ],
+   [
+    "4-4-2\nSigþórsson · Böðvarsson\nGuðmundsson · Gunnarsson · G. Sigurðsson · B. Bjarnason\nSævarsson · R. Sigurðsson · Árnason · Skúlason\nHalldórsson",
+    "Iceland, 2016 (beat England at the Euros)"
+   ],
+   [
+    "4-3-3\nSalah · Trezeguet · Warda\nElneny · Tarek Hamed · Abdallah El-Said\nEl-Mohamady · Gabr · Hegazi · Ahmed Fathy\nEl-Hadary",
+    "Egypt, 2017 (Africa Cup of Nations final v Cameroon)"
+   ],
+   [
+    "4-3-1-2\nTevez · Morata\nVidal\nMarchisio · Pirlo · Pogba\nLichtsteiner · Barzagli · Bonucci · Evra\nBuffon",
+    "Juventus, 2015 (Champions League final v Barcelona)"
+   ],
+   [
+    "4-4-1-1\nKuyt\nGerrard\nPennant · Mascherano · Xabi Alonso · Zenden\nFinnan · Carragher · Agger · Riise\nReina",
+    "Liverpool, 2007 (Champions League final v AC Milan)"
+   ],
+   [
+    "4-4-2\nGriezmann · Torres\nSaúl · Gabi · Augusto Fernández · Koke\nJuanfran · Savić · Godín · Filipe Luís\nOblak",
+    "Atlético Madrid, 2016 (Champions League final v Real Madrid)"
+   ],
+   [
+    "4-3-3\nMahrez · Gabriel Jesus · Foden\nDe Bruyne · Rodri · Bernardo Silva\nStones · Fernandinho · Laporte · Cancelo\nEderson",
+    "Manchester City, 2022 (final-day title decider v Aston Villa)"
+   ]
+  ],
+  "400": [
+   [
+    "4-3-3\nPedro · Giroud · Hazard\nKanté · Jorginho · Kovačić\nAzpilicueta · Christensen · David Luiz · Emerson\nKepa",
+    "Chelsea, 2019 (Europa League final v Arsenal)"
+   ],
+   [
+    "4-3-3\nMata · Rashford · Mkhitaryan\nHerrera · Pogba · Fellaini\nValencia · Smalling · Blind · Darmian\nRomero",
+    "Manchester United, 2017 (Europa League final v Ajax)"
+   ],
+   [
+    "4-3-3\nMahrez · De Bruyne · Sterling\nBernardo Silva · Gündoğan · Foden\nWalker · Stones · Dias · Zinchenko\nEderson",
+    "Manchester City, 2021 (Champions League final v Chelsea, no striker)"
+   ],
+   [
+    "4-2-3-1\nTadić\nZiyech · Van de Beek · Neres\nSchöne · De Jong\nMazraoui · De Ligt · Blind · Tagliafico\nOnana",
+    "Ajax, 2019 (Champions League semi-final v Tottenham)"
+   ],
+   [
+    "4-2-3-1\nFüllkrug\nSancho · Brandt · Adeyemi\nCan · Sabitzer\nRyerson · Hummels · Schlotterbeck · Maatsen\nKobel",
+    "Borussia Dortmund, 2024 (Champions League final v Real Madrid)"
+   ],
+   [
+    "4-3-3\nGiuly · Eto'o · Ronaldinho\nVan Bommel · Edmílson · Deco\nOleguer · Puyol · Márquez · Van Bronckhorst\nValdés",
+    "Barcelona, 2006 (Champions League final v Arsenal)"
+   ],
+   [
+    "4-2-3-1\nHiguaín\nDani Alves · Dybala · Mandžukić\nKhedira · Pjanić\nBarzagli · Bonucci · Chiellini · Alex Sandro\nBuffon",
+    "Juventus, 2017 (Champions League final v Real Madrid)"
+   ],
+   [
+    "4-3-3\nAl-Buraikan · Al-Shehri · Al-Dawsari\nKanno · Al-Malki · Al-Faraj\nAbdulhamid · Al-Tambakti · Al-Bulayhi · Al-Shahrani\nAl-Owais",
+    "Saudi Arabia, 2022 (beat Argentina at the World Cup)"
+   ],
+   [
+    "4-2-3-1\nMarwan Mohsen\nWarda · Abdallah Said · Trezeguet\nTarek Hamed · Elneny\nAhmed Fathy · Gabr · Hegazi · Abdel-Shafy\nEl-Shenawy",
+    "Egypt, 2018 (World Cup v Uruguay, Salah on the bench)"
+   ],
+   [
+    "3-4-2-1\nScamacca\nDe Ketelaere · Lookman\nZappacosta · Éderson · Koopmeiners · Ruggeri\nDjimsiti · Hien · Kolašinac\nMusso",
+    "Atalanta, 2024 (Europa League final v Leverkusen)"
+   ],
+   [
+    "3-4-2-1\nBorré\nLindstrøm · Kamada\nKnauff · Sow · Rode · Kostić\nTouré · Tuta · N'Dicka\nTrapp",
+    "Eintracht Frankfurt, 2022 (Europa League final v Rangers)"
+   ],
+   [
+    "3-4-1-2\nSchick · Dzeko\nNainggolan\nFlorenzi · De Rossi · Strootman · Kolarov\nManolas · Fazio · Juan Jesus\nAlisson",
+    "Roma, 2018 (Champions League quarter-final 2nd leg v Barcelona, won 3-0)"
+   ],
+   [
+    "5-4-1\nEn-Nesyri\nZiyech · Ounahi · Amrabat · Boufal\nHakimi · El Yamiq · Saïss · Dari · Mazraoui\nBounou",
+    "Morocco, 2022 (World Cup semi-final v France)"
+   ],
+   [
+    "3-5-2\nRobson-Kanu · Bale\nGunter · Allen · Ledley · King · Taylor\nChester · Ashley Williams · Collins\nHennessey",
+    "Wales, 2016 (Euro semi-final v Portugal)"
+   ],
+   [
+    "4-2-3-1\nTorres\nRamires · Mata · Oscar\nLampard · David Luiz\nAzpilicueta · Ivanović · Cahill · Cole\nČech",
+    "Chelsea, 2013 (Europa League final v Benfica)"
+   ],
+   [
+    "4-4-2\nHeskey · Owen\nGerrard · Hamann · McAllister · Murphy\nBabbel · Henchoz · Hyypiä · Carragher\nWesterveld",
+    "Liverpool, 2001 (UEFA Cup final v Alavés)"
+   ],
+   [
+    "4-4-2\nCavani · Forlán\nDiego Pérez · Gargano · Arévalo Ríos · Álvaro Pereira\nMaxi Pereira · Godín · Victorino · Cáceres\nMuslera",
+    "Uruguay, 2010 (World Cup semi-final v Netherlands)"
+   ],
+   [
+    "4-3-3\nSuso · De Jong · Ocampos\nJordán · Fernando · Banega\nJesús Navas · Koundé · Diego Carlos · Reguilón\nBono",
+    "Sevilla, 2020 (Europa League final v Inter)"
+   ],
+   [
+    "4-1-2-1-2\nZidan · Moteab\nAhmed Hassan\nHossam Ghaly · Abd Rabo\nEl-Mohamady\nAhmed Fathy · Wael Gomaa · Hany Said · Moawad\nEl-Hadary",
+    "Egypt, 2010 (Africa Cup of Nations final v Ghana)"
+   ]
+  ],
+  "500": [
+   [
+    "4-3-3\nGiuly · Morientes · Rothen\nBernardi · Cissé · Zikos\nIbarra · Rodriguez · Givet · Evra\nRoma",
+    "Monaco, 2004 (Champions League final v Porto)"
+   ],
+   [
+    "4-1-4-1\nNeuville\nSchneider · Ballack · Baştürk · Brdarić\nRamelow\nSebescen · Živković · Lúcio · Placente\nButt",
+    "Bayer Leverkusen, 2002 (Champions League final v Real Madrid)"
+   ],
+   [
+    "4-4-2\nSánchez · Carew\nMendieta · Baraja · Aimar · Kily González\nAngloma · Ayala · Pellegrino · Carboni\nCañizares",
+    "Valencia, 2001 (Champions League final v Bayern)"
+   ],
+   [
+    "3-5-2\nSutton · Larsson\nAgathe · Lennon · Lambert · Petrov · Thompson\nMjällby · Baldé · Valgaeren\nDouglas",
+    "Celtic, 2003 (UEFA Cup final v Porto)"
+   ],
+   [
+    "4-4-2\nHasselbaink · Viduka\nMorrison · Boateng · Rochemback · Downing\nParnaby · Southgate · Riggott · Queudrue\nSchwarzer",
+    "Middlesbrough, 2006 (UEFA Cup final v Sevilla)"
+   ],
+   [
+    "4-4-1-1\nZamora\nGera\nDuff · Etuhu · Murphy · Davies\nBaird · Hughes · Hangeland · Konchesky\nSchwarzer",
+    "Fulham, 2010 (Europa League final v Atlético Madrid)"
+   ],
+   [
+    "3-5-2\nJordi Cruyff · Javi Moreno\nContra · Tomić · Desio · Astudillo · Geli\nEggen · Karmona · Téllez\nHerrera",
+    "Alavés, 2001 (UEFA Cup final v Liverpool)"
+   ],
+   [
+    "4-3-3\nFayzulin · Arshavin · Tekke\nDenisov · Tymoshchuk · Zyryanov\nAnyukov · Shirokov · Križanac · Širl\nMalafeev",
+    "Zenit Saint Petersburg, 2008 (UEFA Cup final v Rangers)"
+   ],
+   [
+    "4-2-3-1\nLuiz Adriano\nIlsinho · Jádson · Willian\nLewandowski · Fernandinho\nSrna · Kucher · Chygrynskiy · Raț\nPyatov",
+    "Shakhtar Donetsk, 2009 (UEFA Cup final v Werder Bremen)"
+   ],
+   [
+    "4-3-3\nMcManaman · Koné · Maloney\nMcCarthy · McArthur · Gómez\nBoyce · Alcaraz · Scharner · Espinoza\nRobles",
+    "Wigan Athletic, 2013 (FA Cup final v Man City)"
+   ],
+   [
+    "4-5-1\nKanu\nUtaka · Diarra · Mendes · Muntari · Kranjčar\nJohnson · Campbell · Distin · Hreiðarsson\nJames",
+    "Portsmouth, 2008 (FA Cup final v Cardiff)"
+   ],
+   [
+    "3-4-3\nCha Du-ri · Hwang Sun-hong · Lee Chun-soo\nSong Chong-gug · Yoo Sang-chul · Park Ji-sung · Lee Young-pyo\nChoi Jin-cheul · Hong Myung-bo · Kim Tae-young\nLee Woon-jae",
+    "South Korea, 2002 (World Cup semi-final v Germany)"
+   ],
+   [
+    "4-1-4-1\nDiouf\nN'Diaye · Bouba Diop · Diao · Fadiga\nCissé\nColy · Diatta · Malick Diop · Daf\nSylva",
+    "Senegal, 2002 (World Cup opener v France)"
+   ],
+   [
+    "3-4-2-1\nZidan\nAboutrika · Abd Rabo\nAhmed Fathy · Shawky · Homos · Moawad\nAhmed Said · Hany Said · Wael Gomaa\nEl-Hadary",
+    "Egypt, 2009 (Confederations Cup v Italy, won 1-0)"
+   ],
+   [
+    "4-4-1-1\nChristopher Katongo\nChisamba Lungu\nMayuka · Chansa · Sinkala · Kalaba\nNkausu · Sunzu · Himoonde · Musonda\nMweene",
+    "Zambia, 2012 (Africa Cup of Nations final v Ivory Coast)"
+   ],
+   [
+    "5-4-1\nCampbell\nRuiz · Borges · Tejeda · Bolaños\nGamboa · Acosta · González · Umaña · Díaz\nNavas",
+    "Costa Rica, 2014 (World Cup quarter-final v Netherlands)"
+   ],
+   [
+    "4-4-2\nSmith · Viduka\nBakke · Batty · Dacourt · Kewell\nMills · Ferdinand · Matteo · Harte\nMartyn",
+    "Leeds United, 2001 (Champions League semi-final 2nd leg v Valencia)"
+   ],
+   [
+    "4-2-3-1\nPandiani\nVíctor · Valerón · Luque\nSergio · Mauro Silva\nManuel Pablo · Andrade · Naybet · Romero\nMolina",
+    "Deportivo La Coruña, 2004 (Champions League quarter-final 2nd leg v AC Milan, won 4-0)"
+   ],
+   [
+    "4-3-3\nEl Shahat · Marwan Mohsen · Ajayi\nEl Solia · Hamdi Fathi · Afsha\nMohamed Hany · Yasser Ibrahim · Ayman Ashraf · Maaloul\nEl Shenawy",
+    "Al Ahly, 2020 (CAF Champions League final v Zamalek)"
+   ]
+  ]
+ }
+}

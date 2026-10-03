@@ -1,0 +1,378 @@
+{
+ "id": "gta",
+ "name": "GTA V",
+ "type": "text",
+ "desc": "Grand Theft Auto V: story mode, Los Santos and GTA Online.",
+ "data": {
+  "100": [
+   [
+    "Name the three playable characters.",
+    "Michael, Franklin and Trevor"
+   ],
+   [
+    "The fictional city where GTA V is set.",
+    "Los Santos"
+   ],
+   [
+    "Which real city is Los Santos based on?",
+    "Los Angeles"
+   ],
+   [
+    "Which company makes GTA?",
+    "Rockstar Games"
+   ],
+   [
+    "In what year was GTA V first released?",
+    "2013"
+   ],
+   [
+    "Franklin's dog.",
+    "Chop"
+   ],
+   [
+    "Which protagonist is a retired bank robber in witness protection?",
+    "Michael"
+   ],
+   [
+    "Which protagonist is a violent, unhinged meth dealer living in the desert?",
+    "Trevor"
+   ],
+   [
+    "The fictional state the game is set in.",
+    "San Andreas"
+   ],
+   [
+    "The \"Vinewood\" sign is a parody of what?",
+    "The Hollywood sign"
+   ],
+   [
+    "The tallest mountain on the map.",
+    "Mount Chiliad"
+   ],
+   [
+    "The online multiplayer mode.",
+    "GTA Online"
+   ],
+   [
+    "What breed of dog is Chop?",
+    "A Rottweiler"
+   ],
+   [
+    "What do the stars at the top of the screen show?",
+    "Your wanted level"
+   ],
+   [
+    "Which protagonist is a young repo man from South Los Santos?",
+    "Franklin"
+   ],
+   [
+    "Which next Grand Theft Auto game returns to Vice City?",
+    "GTA VI"
+   ],
+   [
+    "Which real US state is San Andreas based on?",
+    "California"
+   ],
+   [
+    "Which numbered Grand Theft Auto game came right before GTA V?",
+    "GTA IV"
+   ]
+  ],
+  "200": [
+   [
+    "What is Michael's real surname?",
+    "Townley"
+   ],
+   [
+    "Franklin's best friend.",
+    "Lamar Davis"
+   ],
+   [
+    "Michael's two children.",
+    "Jimmy and Tracey"
+   ],
+   [
+    "Michael's wife.",
+    "Amanda"
+   ],
+   [
+    "Trevor's business.",
+    "Trevor Philips Industries"
+   ],
+   [
+    "The desert town where Trevor lives.",
+    "Sandy Shores"
+   ],
+   [
+    "The FIB is a parody of what?",
+    "The FBI"
+   ],
+   [
+    "The target of the final big heist.",
+    "The Union Depository"
+   ],
+   [
+    "How many endings does the story have?",
+    "Three"
+   ],
+   [
+    "Where does the prologue robbery take place?",
+    "Ludendorff, North Yankton"
+   ],
+   [
+    "The heist planner with a disability who works from his house.",
+    "Lester Crest"
+   ],
+   [
+    "The game's parody of Facebook.",
+    "Lifeinvader"
+   ],
+   [
+    "The purple-wearing gang that are Franklin's enemies.",
+    "The Ballas"
+   ],
+   [
+    "Franklin and Lamar's green-wearing gang.",
+    "The Families"
+   ],
+   [
+    "What are the in-game money packs sold for real cash in GTA Online called?",
+    "Shark Cards"
+   ],
+   [
+    "Which sport can you play on the court at Michael's house?",
+    "Tennis"
+   ],
+   [
+    "The strip club Trevor takes over.",
+    "Vanilla Unicorn"
+   ],
+   [
+    "The game's burger chain.",
+    "Burger Shot"
+   ]
+  ],
+  "300": [
+   [
+    "In ending A, who does Franklin kill?",
+    "Trevor"
+   ],
+   [
+    "What nationality is Trevor?",
+    "Canadian"
+   ],
+   [
+    "The private military company that parodies Blackwater.",
+    "Merryweather"
+   ],
+   [
+    "The first heist in the game: which store?",
+    "Vangelico (a jewellery store)"
+   ],
+   [
+    "The Armenian car dealer Franklin works for at the start.",
+    "Simeon Yetarian"
+   ],
+   [
+    "Franklin's aunt, who he lives with at first.",
+    "Aunt Denise"
+   ],
+   [
+    "Which rich neighbourhood is Michael's house in?",
+    "Rockford Hills"
+   ],
+   [
+    "The island heist added to GTA Online in 2020.",
+    "Cayo Perico"
+   ],
+   [
+    "On which consoles did GTA V first come out?",
+    "PS3 and Xbox 360"
+   ],
+   [
+    "The corrupt FIB agent who blackmails the crew alongside Dave Norton.",
+    "Steve Haines"
+   ],
+   [
+    "In ending B, who kills Michael?",
+    "Franklin"
+   ],
+   [
+    "Michael's old partner whose grave is in North Yankton.",
+    "Brad Snider"
+   ],
+   [
+    "How quickly did GTA V make $1 billion?",
+    "In three days"
+   ],
+   [
+    "The game's parody of Apple and the iPhone.",
+    "iFruit"
+   ],
+   [
+    "The game's version of Venice Beach.",
+    "Vespucci Beach"
+   ],
+   [
+    "What is Franklin's special ability?",
+    "Slowing down time while driving"
+   ],
+   [
+    "The flying rocket bike that GTA Online players love to hate.",
+    "The Oppressor Mk II"
+   ],
+   [
+    "The game's fried chicken chain.",
+    "Cluckin' Bell"
+   ]
+  ],
+  "400": [
+   [
+    "The ending where all three survive.",
+    "The Third Way (Deathwish)"
+   ],
+   [
+    "The Lifeinvader CEO Franklin kills with a phone bomb.",
+    "Jay Norris"
+   ],
+   [
+    "Michael's therapist.",
+    "Dr Isiah Friedlander"
+   ],
+   [
+    "The game's two stock markets.",
+    "BAWSAQ and LCN"
+   ],
+   [
+    "The billionaire who refuses to pay the crew for stolen cars.",
+    "Devin Weston"
+   ],
+   [
+    "Trevor's paranoid, conspiracy-obsessed business partner.",
+    "Ron Jakowski"
+   ],
+   [
+    "Which neighbourhood does Franklin move to from Strawberry?",
+    "Vinewood Hills"
+   ],
+   [
+    "The final heist mission.",
+    "The Big Score"
+   ],
+   [
+    "The Mexican cartel boss who makes Michael pay for the hillside house he pulls down.",
+    "Martin Madrazo"
+   ],
+   [
+    "Trevor's slow-witted friend from Sandy Shores.",
+    "Wade Hebert"
+   ],
+   [
+    "The cult parody whose followers say \"Kifflom!\"",
+    "The Epsilon Program"
+   ],
+   [
+    "The game's parody of Twitter.",
+    "Bleeter"
+   ],
+   [
+    "What is Trevor's special ability called?",
+    "Red Mist"
+   ],
+   [
+    "Which TV talent show does Tracey try to get on?",
+    "Fame or Shame"
+   ],
+   [
+    "Michael's yoga instructor.",
+    "Fabien LaRouche"
+   ],
+   [
+    "What are the 50 collectibles you gather for the alien Omega?",
+    "Spaceship parts"
+   ],
+   [
+    "The submarine you buy to plan the Cayo Perico Heist.",
+    "The Kosatka"
+   ],
+   [
+    "The casino that opened in GTA Online in 2019.",
+    "The Diamond Casino & Resort"
+   ]
+  ],
+  "500": [
+   [
+    "The rock station hosted by Kenny Loggins.",
+    "Los Santos Rock Radio"
+   ],
+   [
+    "How many years before the main story does the prologue happen?",
+    "Nine"
+   ],
+   [
+    "Trevor kills Johnny Klebitz, the star of which GTA IV expansion?",
+    "The Lost and Damned"
+   ],
+   [
+    "GTA V has sold more than how many copies: 100, 150 or 200 million?",
+    "200 million"
+   ],
+   [
+    "Which actress sued Rockstar, saying a character was based on her?",
+    "Lindsay Lohan"
+   ],
+   [
+    "The car brand parody of Lamborghini.",
+    "Pegassi"
+   ],
+   [
+    "The car brand parody of Ferrari.",
+    "Grotti"
+   ],
+   [
+    "The Chinese gangster Trevor goes to for a drug deal, father of Tao.",
+    "Wei Cheng"
+   ],
+   [
+    "Michael's son is obsessed with which in-game shooter?",
+    "Righteous Slaughter"
+   ],
+   [
+    "Trevor was thrown out of training for which career?",
+    "Air Force pilot"
+   ],
+   [
+    "What do the hidden peyote plants let you do?",
+    "Turn into animals"
+   ],
+   [
+    "The bank parody robbed in GTA Online's first heist.",
+    "Fleeca"
+   ],
+   [
+    "Madrazo's wife, whom Trevor kidnaps.",
+    "Patricia Madrazo"
+   ],
+   [
+    "The leader of the Epsilon Program.",
+    "Cris Formage"
+   ],
+   [
+    "Franklin's ex-girlfriend, a nurse.",
+    "Tanisha"
+   ],
+   [
+    "The paparazzo whose photo missions Franklin takes on.",
+    "Beverly Felton"
+   ],
+   [
+    "The bank robbed in Paleto Bay in story mode.",
+    "Blaine County Savings Bank"
+   ],
+   [
+    "Amanda's tennis coach, whom Michael catches in bed with her.",
+    "Kyle Chavis"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,834 @@
+{
+ "id": "egy",
+ "name": "Egypt",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What is Egypt's second-largest city?",
+    "Alexandria"
+   ],
+   [
+    "Which Cairo square was the centre of the 2011 protests?",
+    "Tahrir Square"
+   ],
+   [
+    "Which spring festival falls on the Monday after Coptic Easter?",
+    "Sham El Nessim"
+   ],
+   [
+    "Which huge dam on the Nile was completed in 1970?",
+    "The Aswan High Dam"
+   ],
+   [
+    "Which resort city sits at the southern tip of Sinai?",
+    "Sharm El Sheikh"
+   ],
+   [
+    "What is the lion-bodied statue at Giza called?",
+    "The Great Sphinx"
+   ],
+   [
+    "What colour is the eagle on Egypt's flag?",
+    "Gold"
+   ],
+   [
+    "What is Egypt's international dialling code?",
+    "+20"
+   ],
+   [
+    "Which old Cairo bazaar dates back to the 14th century?",
+    "Khan El Khalili"
+   ],
+   [
+    "What is the name of the new capital east of Cairo where the government has moved its ministries?",
+    "The New Administrative Capital"
+   ],
+   [
+    "Which sea borders Egypt to the north?",
+    "The Mediterranean"
+   ],
+   [
+    "Which city is often called the world's greatest open-air museum?",
+    "Luxor"
+   ],
+   [
+    "What is Egyptian rice pudding called?",
+    "Roz bel laban"
+   ],
+   [
+    "What is the loose traditional robe worn by Egyptian men called?",
+    "Galabeya"
+   ],
+   [
+    "What is Egypt's national airline?",
+    "EgyptAir"
+   ],
+   [
+    "Which city is at the southern end of the Suez Canal?",
+    "Suez"
+   ],
+   [
+    "What is a traditional Egyptian coffeehouse called?",
+    "Ahwa"
+   ],
+   [
+    "In which month do Egyptians hang up fanous lanterns?",
+    "Ramadan"
+   ],
+   [
+    "Which Egyptian actor is nicknamed 'El Zaeem' (the Leader)?",
+    "Adel Emam"
+   ],
+   [
+    "What is the smaller unit of the Egyptian pound called?",
+    "The piastre (qersh)"
+   ],
+   [
+    "Which Egyptian city is nicknamed 'the Bride of the Mediterranean'?",
+    "Alexandria"
+   ],
+   [
+    "Which festival marks the end of Ramadan?",
+    "Eid al-Fitr"
+   ],
+   [
+    "Whose golden death mask is Egypt's most famous treasure?",
+    "Tutankhamun's"
+   ],
+   [
+    "What is Egypt's national dish of rice, lentils, pasta and spicy tomato sauce topped with fried onions?",
+    "Koshari (كشري)"
+   ],
+   [
+    "What is the slow-cooked fava bean dish Egyptians eat for breakfast?",
+    "Ful medames (فول مدمس)"
+   ],
+   [
+    "Which singer is known as 'Kawkab El Sharq' (Star of the East)?",
+    "Umm Kulthum"
+   ],
+   [
+    "Which Egyptian footballer won the Premier League Golden Boot several times with Liverpool?",
+    "Mohamed Salah"
+   ],
+   [
+    "Which two clubs play the Cairo derby, Egypt's biggest football match?",
+    "Al Ahly and Zamalek"
+   ],
+   [
+    "Who was the ancient Egyptian sun god?",
+    "Ra"
+   ],
+   [
+    "Which museum near the Giza pyramids fully opened in 2025?",
+    "The Grand Egyptian Museum"
+   ],
+   [
+    "Who wrote the Cairo Trilogy?",
+    "Naguib Mahfouz"
+   ],
+   [
+    "What is Egypt's everyday round flatbread, whose name comes from the word for 'life'?",
+    "Aish baladi"
+   ],
+   [
+    "What do Egyptians call their fava-bean version of falafel?",
+    "Ta'meya"
+   ],
+   [
+    "What is the green soup made from jute leaves, often served with rice and chicken?",
+    "Molokhia"
+   ],
+   [
+    "Who walks the streets with a drum during Ramadan to wake people for suhoor?",
+    "El Mesaharati"
+   ],
+   [
+    "Which baked dessert of pastry, milk and nuts is named after a woman?",
+    "Om Ali"
+   ],
+   [
+    "Which canal links the Mediterranean to the Red Sea?",
+    "The Suez Canal"
+   ],
+   [
+    "What is the ancient Egyptian picture-writing system called?",
+    "Hieroglyphs"
+   ],
+   [
+    "What is the nickname of Egypt's national football team?",
+    "The Pharaohs"
+   ],
+   [
+    "What is the sugarcane juice sold at Egyptian juice shops called?",
+    "Asab"
+   ],
+   [
+    "What do Egyptians call the summer beach coast west of Alexandria?",
+    "El Sahel (the North Coast)"
+   ]
+  ],
+  "200": [
+   [
+    "What is Egypt's main national stadium in Nasr City called?",
+    "Cairo International Stadium"
+   ],
+   [
+    "How many governorates does Egypt have?",
+    "27"
+   ],
+   [
+    "Which oasis near Libya has the Oracle of Amun that Alexander the Great visited?",
+    "Siwa"
+   ],
+   [
+    "Which lake formed behind the Aswan High Dam?",
+    "Lake Nasser"
+   ],
+   [
+    "Which mosque in the Citadel is also called the Alabaster Mosque?",
+    "The Mosque of Muhammad Ali"
+   ],
+   [
+    "Which temple of Ramesses II was moved in the 1960s to save it from Lake Nasser?",
+    "Abu Simbel"
+   ],
+   [
+    "Which Egyptian newspaper was founded in 1875?",
+    "Al-Ahram"
+   ],
+   [
+    "The Hanging Church is in which part of Cairo?",
+    "Coptic Cairo (Old Cairo)"
+   ],
+   [
+    "The Cairo Tower stands on which Nile island?",
+    "Gezira (Zamalek)"
+   ],
+   [
+    "Who wrote the novel 'The Yacoubian Building'?",
+    "Alaa Al Aswany"
+   ],
+   [
+    "Ali Farag and Nour El Sherbini are world champions in which sport?",
+    "Squash"
+   ],
+   [
+    "Which canal city is named after Khedive Said?",
+    "Port Said"
+   ],
+   [
+    "Which Egyptian city hosted the COP27 climate summit in 2022?",
+    "Sharm El Sheikh"
+   ],
+   [
+    "What is Alexandria's long seafront road called?",
+    "The Corniche"
+   ],
+   [
+    "Which city is home to the Citadel of Qaitbay?",
+    "Alexandria"
+   ],
+   [
+    "In which year did the Cairo Metro open?",
+    "1987"
+   ],
+   [
+    "What does Egypt's nickname 'Umm El Donya' mean?",
+    "Mother of the World"
+   ],
+   [
+    "Which Red Sea town hosts the El Gouna Film Festival?",
+    "El Gouna"
+   ],
+   [
+    "On which mountain is Moses believed to have received the Ten Commandments?",
+    "Mount Sinai (Gabal Musa)"
+   ],
+   [
+    "What are the three colours of Egypt's flag?",
+    "Red, white and black"
+   ],
+   [
+    "Which governorate, built around a big oasis, lies just southwest of Cairo?",
+    "Fayoum"
+   ],
+   [
+    "Who led the 1922 excavation that found Tutankhamun's tomb?",
+    "Howard Carter"
+   ],
+   [
+    "Which singer was nicknamed 'El Andaleeb El Asmar' (the Brown Nightingale)?",
+    "Abdel Halim Hafez"
+   ],
+   [
+    "Which Wonder of the Ancient World stood on Pharos island in Alexandria?",
+    "The Lighthouse of Alexandria"
+   ],
+   [
+    "Which Egyptian actor got an Oscar nomination for 'Lawrence of Arabia' (1962)?",
+    "Omar Sharif"
+   ],
+   [
+    "Which jackal-headed god was the guardian of mummification and tombs?",
+    "Anubis"
+   ],
+   [
+    "For which pharaoh was the Great Pyramid of Giza built?",
+    "Khufu (Cheops)"
+   ],
+   [
+    "Which Egyptian shared the 1978 Nobel Peace Prize?",
+    "Anwar Sadat"
+   ],
+   [
+    "What is the largest ancient temple complex in Luxor?",
+    "Karnak"
+   ],
+   [
+    "Which actress is called 'Sayedet El Shasha El Arabeya' (Lady of the Arab Screen)?",
+    "Faten Hamama"
+   ],
+   [
+    "Which ancient Egyptian god has a falcon's head?",
+    "Horus"
+   ],
+   [
+    "In which year was the Suez Canal nationalised?",
+    "1956"
+   ],
+   [
+    "Which stone, carved with the same decree in three scripts, unlocked hieroglyphs?",
+    "The Rosetta Stone"
+   ],
+   [
+    "Who was the last active ruler of Ptolemaic Egypt, famous for her romance with Mark Antony?",
+    "Cleopatra (VII)"
+   ],
+   [
+    "Which actor played the mumbling character 'El Lemby'?",
+    "Mohamed Saad"
+   ],
+   [
+    "What is the traditional wooden sailboat on the Nile called?",
+    "A felucca"
+   ],
+   [
+    "Which Upper Egyptian city on the Nile is the heart of Egypt's Nubian culture?",
+    "Aswan"
+   ],
+   [
+    "Which Egyptian goalkeeper became the oldest player ever at a World Cup, in 2018?",
+    "Essam El Hadary"
+   ],
+   [
+    "What salted, fermented fish is eaten on Sham El Nessim?",
+    "Fesikh"
+   ],
+   [
+    "Which Egyptian-American actor won the Best Actor Oscar for 'Bohemian Rhapsody'?",
+    "Rami Malek"
+   ],
+   [
+    "Which coach led Egypt to three Africa Cup of Nations titles in a row (2006, 2008, 2010)?",
+    "Hassan Shehata"
+   ],
+   [
+    "Which valley on Luxor's west bank holds the tombs of New Kingdom pharaohs?",
+    "The Valley of the Kings"
+   ]
+  ],
+  "300": [
+   [
+    "What is the highest mountain in Egypt?",
+    "Mount Catherine"
+   ],
+   [
+    "In which year did Egypt and Syria form the United Arab Republic?",
+    "1958"
+   ],
+   [
+    "Which Egyptian poet is known as 'Amir El Shoara' (Prince of Poets)?",
+    "Ahmed Shawqi"
+   ],
+   [
+    "Ismailia sits on the shore of which lake?",
+    "Lake Timsah"
+   ],
+   [
+    "Ras El Bar beach is in which governorate?",
+    "Damietta"
+   ],
+   [
+    "What is the big saltwater lake in Fayoum called?",
+    "Lake Qarun"
+   ],
+   [
+    "What is the capital of the Red Sea governorate?",
+    "Hurghada"
+   ],
+   [
+    "Which ancient monastery stands at the foot of Mount Sinai?",
+    "Saint Catherine's Monastery"
+   ],
+   [
+    "What does 'El Qahira' (Cairo) mean?",
+    "The Victorious (The Conqueror)"
+   ],
+   [
+    "Who won Egypt's first Olympic gold in 56 years, in wrestling at Athens 2004?",
+    "Karam Gaber"
+   ],
+   [
+    "What is the traditional Egyptian hand puppet with a squeaky voice called?",
+    "Aragoz"
+   ],
+   [
+    "Which elevated bridge is the main road artery across central Cairo?",
+    "The 6th of October Bridge"
+   ],
+   [
+    "What is the sugar doll sold during the Mawlid season called?",
+    "Arouset El Mawlid"
+   ],
+   [
+    "Which khedive built Downtown Cairo in a Parisian style?",
+    "Khedive Ismail"
+   ],
+   [
+    "Which Egyptian university, founded in 970, is one of the oldest in the world?",
+    "Al-Azhar"
+   ],
+   [
+    "Who starred in 'El Nemr El Aswad' (The Black Tiger, 1984)?",
+    "Ahmed Zaki"
+   ],
+   [
+    "What did the festival 'Wafaa El Nil' celebrate?",
+    "The Nile's annual flood"
+   ],
+   [
+    "Which Sinai town sits on the Gulf of Aqaba at the border crossing?",
+    "Taba"
+   ],
+   [
+    "What is the town across the canal from Port Said called?",
+    "Port Fouad"
+   ],
+   [
+    "Which Delta city holds the huge Moulid of El Sayed El Badawi?",
+    "Tanta"
+   ],
+   [
+    "Which Egyptian writer wrote the memoir 'The Days' (Al-Ayyam)?",
+    "Taha Hussein"
+   ],
+   [
+    "Which city is the headquarters of the Suez Canal Authority?",
+    "Ismailia"
+   ],
+   [
+    "Which governorate is Saint Catherine in?",
+    "South Sinai"
+   ],
+   [
+    "Which Egyptian won the 1999 Nobel Prize in Chemistry for femtochemistry?",
+    "Ahmed Zewail"
+   ],
+   [
+    "Whose terraced mortuary temple stands at Deir El Bahari in Luxor?",
+    "Queen Hatshepsut's"
+   ],
+   [
+    "Which pharaoh built a new capital at Amarna dedicated to the Aten?",
+    "Akhenaten"
+   ],
+   [
+    "Which 1942 WWII battle saw Montgomery defeat Rommel on Egypt's north coast?",
+    "El Alamein"
+   ],
+   [
+    "What is the hot, dusty spring wind named after the Arabic word for 'fifty'?",
+    "El Khamaseen (الخماسين)"
+   ],
+   [
+    "Which university was founded in 1908 as the Egyptian University?",
+    "Cairo University"
+   ],
+   [
+    "What is the lower house of Egypt's parliament called?",
+    "The House of Representatives"
+   ],
+   [
+    "The famous bust of Queen Nefertiti is in a museum in which city?",
+    "Berlin"
+   ],
+   [
+    "Which pharaoh built the middle of the three Giza pyramids?",
+    "Khafre (Chephren)"
+   ],
+   [
+    "Which oasis is the capital of the New Valley governorate?",
+    "Kharga"
+   ],
+   [
+    "Which ancient city near Saqqara was the capital of Old Kingdom Egypt?",
+    "Memphis"
+   ],
+   [
+    "Which Egyptian author wrote the 'Ma Wara'a El Tabi'a' novels that became Netflix's 'Paranormal'?",
+    "Ahmed Khaled Tawfik"
+   ],
+   [
+    "Which North Coast area did Egypt sign over to a $35 billion UAE-backed development deal in 2024?",
+    "Ras El Hekma"
+   ],
+   [
+    "Mansoura is the capital of which governorate?",
+    "Dakahlia"
+   ],
+   [
+    "Sara Samir won Olympic silver for Egypt at Paris 2024 in which sport?",
+    "Weightlifting"
+   ],
+   [
+    "Which god of the afterlife was killed by his brother Set and brought back by Isis?",
+    "Osiris"
+   ],
+   [
+    "Which actor played twin brothers in the comedy series 'El Kebeer Awi'?",
+    "Ahmed Mekky"
+   ],
+   [
+    "Which Upper Egyptian city is nearest to the Temple of Hathor at Dendera?",
+    "Qena"
+   ]
+  ],
+  "400": [
+   [
+    "What is the Fayoum valley famous for its whale fossils called?",
+    "Wadi El Hitan (Valley of the Whales)"
+   ],
+   [
+    "In which Egyptian desert do chalk rock formations look like giant mushrooms?",
+    "The White Desert (Farafra)"
+   ],
+   [
+    "What dam was built at Aswan in 1902, before the High Dam?",
+    "The Aswan Low Dam"
+   ],
+   [
+    "Which Egyptian architect built the mud-brick village of New Gourna?",
+    "Hassan Fathy"
+   ],
+   [
+    "Which Belgian baron founded the Cairo suburb of Heliopolis?",
+    "Baron Édouard Empain"
+   ],
+   [
+    "The Temple of Isis was moved to Agilkia Island. What is the temple complex called?",
+    "Philae"
+   ],
+   [
+    "Which feminist leader publicly removed her face veil at Cairo station in 1923?",
+    "Huda Shaarawi"
+   ],
+   [
+    "Which Egyptian-British novelist wrote 'The Map of Love'?",
+    "Ahdaf Soueif"
+   ],
+   [
+    "Which actor founded 'Tiyatro Masr', launching a generation of young comedians?",
+    "Ashraf Abdel Baky"
+   ],
+   [
+    "What is the giant gas field Eni discovered off Egypt in 2015?",
+    "Zohr"
+   ],
+   [
+    "Which Fatimid gate is where the last Mamluk sultan, Tumanbay, was hanged?",
+    "Bab Zuweila"
+   ],
+   [
+    "Who composed the music of Egypt's national anthem 'Bilady, Bilady, Bilady'?",
+    "Sayed Darwish"
+   ],
+   [
+    "What is the capital of Matrouh governorate?",
+    "Marsa Matrouh"
+   ],
+   [
+    "In which year did Egypt adopt its current flag with the Eagle of Saladin?",
+    "1984"
+   ],
+   [
+    "Who was the architect of Djoser's Step Pyramid?",
+    "Imhotep"
+   ],
+   [
+    "Which ancient Egyptian goddess of the sky arches over the earth?",
+    "Nut"
+   ],
+   [
+    "What did ancient Egyptians call their land, meaning 'black land'?",
+    "Kemet"
+   ],
+   [
+    "What are the Nile's two Delta branches called?",
+    "Rosetta and Damietta"
+   ],
+   [
+    "Who was the first Egyptian to climb Mount Everest?",
+    "Omar Samra"
+   ],
+   [
+    "Who became the first Egyptian woman to win Olympic gold, at Tokyo 2020?",
+    "Feryal Abdelaziz (karate)"
+   ],
+   [
+    "Which Sinai town is famous for the Blue Hole dive site?",
+    "Dahab"
+   ],
+   [
+    "Which governorate is the Bahariya Oasis in?",
+    "Giza"
+   ],
+   [
+    "Which Western Desert depression holds the second-lowest point in Africa?",
+    "The Qattara Depression (منخفض القطارة)"
+   ],
+   [
+    "Which Upper Egyptian city has the well-preserved Temple of Horus?",
+    "Edfu"
+   ],
+   [
+    "Tomb QV66, often called Egypt's most beautiful, belongs to which wife of Ramesses II?",
+    "Nefertari"
+   ],
+   [
+    "Which Egyptian director won a lifetime achievement prize at Cannes in 1997?",
+    "Youssef Chahine"
+   ],
+   [
+    "Who composed Umm Kulthum's 'Enta Omri'?",
+    "Mohamed Abdel Wahab"
+   ],
+   [
+    "Which world-famous Egyptian heart surgeon is behind the Aswan Heart Centre?",
+    "Sir Magdi Yacoub"
+   ],
+   [
+    "Against the feather of which goddess was a dead person's heart weighed?",
+    "Ma'at"
+   ],
+   [
+    "Which ancient Egyptian god of wisdom had the head of an ibis?",
+    "Thoth"
+   ],
+   [
+    "Which Egyptian director made the 2016 film 'Eshtebak' (Clash), set inside a police van?",
+    "Mohamed Diab"
+   ],
+   [
+    "Egypt played at its fourth World Cup in 2026. In which year did it play its first?",
+    "1934"
+   ],
+   [
+    "Which Delta village's 1906 hanging of farmers after a pigeon-shooting clash enraged Egyptians against Britain?",
+    "Denshawai"
+   ],
+   [
+    "Which Egyptian won Olympic gold in modern pentathlon at Paris 2024?",
+    "Ahmed Elgendy"
+   ],
+   [
+    "What is the giant cracked obelisk left lying in an ancient Aswan quarry called?",
+    "The Unfinished Obelisk"
+   ],
+   [
+    "Which Egyptian novelist won the 2009 Arabic Booker Prize for 'Azazeel'?",
+    "Youssef Ziedan"
+   ],
+   [
+    "Which singer-actress starred opposite Naguib El Rihani in 'Ghazal El Banat' (1949)?",
+    "Leila Mourad"
+   ],
+   [
+    "Which composer, married to the singer Warda, wrote many of her and Abdel Halim's hits?",
+    "Baligh Hamdi"
+   ],
+   [
+    "Which early king is shown uniting Upper and Lower Egypt on a famous stone palette?",
+    "Narmer"
+   ],
+   [
+    "Which Cairo-born singer had a hit with 'Paroles, paroles'?",
+    "Dalida"
+   ]
+  ],
+  "500": [
+   [
+    "Which Norwegian firm designed the Bibliotheca Alexandrina?",
+    "Snøhetta"
+   ],
+   [
+    "What destroyed Cairo's original Khedivial Opera House in 1971?",
+    "A fire"
+   ],
+   [
+    "Who became Egypt's first female minister, in 1962?",
+    "Hikmat Abu Zayd"
+   ],
+   [
+    "Who designed the Cairo Tower?",
+    "Naoum Shebib"
+   ],
+   [
+    "What was Egypt's first major film studio, founded in 1935?",
+    "Studio Misr"
+   ],
+   [
+    "Who founded Banque Misr in 1920?",
+    "Talaat Harb"
+   ],
+   [
+    "What did the ancient Egyptians call Luxor (Thebes)?",
+    "Waset"
+   ],
+   [
+    "The Dendera zodiac came from a temple dedicated to which goddess?",
+    "Hathor"
+   ],
+   [
+    "What is Egypt's largest governorate by area?",
+    "New Valley"
+   ],
+   [
+    "What was Hosni Mubarak's career before he became vice president?",
+    "An Air Force officer (Air Force commander)"
+   ],
+   [
+    "What was the name of Empress Eugénie's yacht that led the Suez Canal opening in 1869?",
+    "L'Aigle"
+   ],
+   [
+    "In roughly which year was the Nilometer on Roda Island built?",
+    "861 AD (9th century)"
+   ],
+   [
+    "Which Egyptian physicist was nicknamed 'the Einstein of the Arabs'?",
+    "Ali Moustafa Mosharafa"
+   ],
+   [
+    "Baron Empain's palace in Heliopolis was inspired by which temple?",
+    "Angkor Wat (Cambodia)"
+   ],
+   [
+    "What was the ancient canal linking the Nile to the Red Sea called?",
+    "The Canal of the Pharaohs (Necho's Canal)"
+   ],
+   [
+    "Which remote plateau in the Western Desert has the 'Cave of Swimmers' rock art?",
+    "Gilf Kebir"
+   ],
+   [
+    "Which Fayoum site is famous for lifelike painted mummy portraits?",
+    "Hawara (the Fayum mummy portraits)"
+   ],
+   [
+    "Which Egyptian singer and film star was nicknamed 'the Cinderella of the Screen'?",
+    "Soad Hosny"
+   ],
+   [
+    "What is the name of the cemetery-city in Cairo where people live among the tombs?",
+    "The City of the Dead (El Arafa / Qarafa)"
+   ],
+   [
+    "Which 1927 film produced by Aziza Amir is considered Egypt's first feature film?",
+    "Layla"
+   ],
+   [
+    "Which pharaoh built the Bent Pyramid at Dahshur?",
+    "Sneferu"
+   ],
+   [
+    "Roughly how tall was the Great Pyramid when it was built?",
+    "About 146 metres"
+   ],
+   [
+    "Which sultan built the hospital complex on Al-Muizz Street in 1284?",
+    "Qalawun"
+   ],
+   [
+    "What is the main Coptic Orthodox cathedral in Abbassia called?",
+    "St. Mark's Coptic Orthodox Cathedral"
+   ],
+   [
+    "On which two dates does the sun light up the inner sanctuary of Abu Simbel?",
+    "22 February and 22 October"
+   ],
+   [
+    "Which Upper Egypt double temple is dedicated to Sobek and Haroeris?",
+    "Kom Ombo"
+   ],
+   [
+    "Which Azhari scholar went to Paris with Muhammad Ali's 1826 student mission and wrote a book about it?",
+    "Rifa'a El Tahtawi (رفاعة الطهطاوي)"
+   ],
+   [
+    "Who became the first Egyptian and Arab woman to earn a pilot's licence, in 1933?",
+    "Lotfia El Nadi"
+   ],
+   [
+    "Who scored Egypt's penalty against the Netherlands at the 1990 World Cup?",
+    "Magdi Abdelghani"
+   ],
+   [
+    "Which Alexandrian painter worked as a judge in the Mixed Courts before devoting himself to art?",
+    "Mahmoud Saïd"
+   ],
+   [
+    "Which Egyptian nuclear physicist died in a mysterious 1952 car crash in California?",
+    "Sameera Moussa"
+   ],
+   [
+    "Which country funded and designed the Cairo Opera House, opened in 1988?",
+    "Japan"
+   ],
+   [
+    "Which pharaoh's mummy was famously issued an Egyptian passport for a 1976 trip to Paris?",
+    "Ramesses II"
+   ],
+   [
+    "Which Egyptian novelist won the first Arabic Booker Prize, in 2008, for 'Sunset Oasis'?",
+    "Bahaa Taher"
+   ],
+   [
+    "Which ancient Delta city near Zagazig was the cult centre of the cat goddess Bastet?",
+    "Bubastis (Tell Basta)"
+   ],
+   [
+    "Which queen, wife of Amenhotep III and grandmother of Tutankhamun, has a famous wooden portrait head?",
+    "Tiye"
+   ],
+   [
+    "Which Greek poet who lived in Alexandria wrote 'Ithaka'?",
+    "Constantine Cavafy"
+   ],
+   [
+    "Which Fatimid general founded the city of Cairo in 969?",
+    "Jawhar al-Siqilli"
+   ],
+   [
+    "Which 1798 battle near Giza saw Napoleon defeat the Mamluks?",
+    "The Battle of the Pyramids (Embabeh)"
+   ],
+   [
+    "The world's oldest known peace treaty followed which battle between Ramesses II and the Hittites?",
+    "The Battle of Kadesh"
+   ]
+  ]
+ }
+}

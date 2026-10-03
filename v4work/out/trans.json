@@ -1,0 +1,518 @@
+{
+ "id": "trans",
+ "name": "Translate It",
+ "type": "text",
+ "desc": "A Spanish, French or Italian word. Translate it into English (or Arabic).",
+ "data": {
+  "100": [
+   [
+    "Translate from Spanish: “gato”",
+    "Cat"
+   ],
+   [
+    "Translate from Spanish: “perro”",
+    "Dog"
+   ],
+   [
+    "Translate from Spanish: “casa”",
+    "House / home"
+   ],
+   [
+    "Translate from Spanish: “agua”",
+    "Water"
+   ],
+   [
+    "Translate from Spanish: “libro”",
+    "Book"
+   ],
+   [
+    "Translate from French: “pomme”",
+    "Apple"
+   ],
+   [
+    "Translate from French: “fromage”",
+    "Cheese"
+   ],
+   [
+    "Translate from French: “voiture”",
+    "Car"
+   ],
+   [
+    "Translate from French: “soleil”",
+    "Sun"
+   ],
+   [
+    "Translate from Italian: “amore”",
+    "Love"
+   ],
+   [
+    "Translate from Italian: “bello”",
+    "Beautiful / handsome"
+   ],
+   [
+    "Translate from Italian: “gelato”",
+    "Ice cream"
+   ],
+   [
+    "Translate from Italian: “notte”",
+    "Night"
+   ],
+   [
+    "Translate from Spanish: “playa”",
+    "Beach"
+   ],
+   [
+    "Translate from Italian: “cucina”",
+    "Kitchen (or cooking)"
+   ],
+   [
+    "Translate from Spanish: “leche”",
+    "Milk"
+   ],
+   [
+    "Translate from Spanish: “hermano”",
+    "Brother"
+   ],
+   [
+    "Translate from Spanish: “rojo”",
+    "Red"
+   ],
+   [
+    "Translate from Spanish: “mesa”",
+    "Table"
+   ],
+   [
+    "Translate from French: “fleur”",
+    "Flower"
+   ],
+   [
+    "Translate from French: “école”",
+    "School"
+   ],
+   [
+    "Translate from French: “bleu”",
+    "Blue"
+   ],
+   [
+    "Translate from French: “ami”",
+    "Friend"
+   ],
+   [
+    "Translate from Italian: “mare”",
+    "Sea"
+   ],
+   [
+    "Translate from Italian: “famiglia”",
+    "Family"
+   ]
+  ],
+  "200": [
+   [
+    "Translate from French: “lune”",
+    "Moon"
+   ],
+   [
+    "Translate from Italian: “mangiare”",
+    "To eat"
+   ],
+   [
+    "Translate from Spanish: “mariposa”",
+    "Butterfly"
+   ],
+   [
+    "Translate from Spanish: “cerveza”",
+    "Beer"
+   ],
+   [
+    "Translate from Spanish: “cuchillo”",
+    "Knife"
+   ],
+   [
+    "Translate from Spanish: “manzana”",
+    "Apple"
+   ],
+   [
+    "Translate from French: “fenêtre”",
+    "Window"
+   ],
+   [
+    "Translate from French: “citron”",
+    "Lemon"
+   ],
+   [
+    "Translate from French: “oiseau”",
+    "Bird"
+   ],
+   [
+    "Translate from French: “chaussure”",
+    "Shoe"
+   ],
+   [
+    "Translate from French: “bibliothèque”",
+    "Library"
+   ],
+   [
+    "Translate from Italian: “strada”",
+    "Street / road"
+   ],
+   [
+    "Translate from Italian: “chiave”",
+    "Key"
+   ],
+   [
+    "Translate from Italian: “albero”",
+    "Tree"
+   ],
+   [
+    "Translate from Italian: “ponte”",
+    "Bridge"
+   ],
+   [
+    "Translate from Spanish: “abuela”",
+    "Grandmother"
+   ],
+   [
+    "Translate from Spanish: “cielo”",
+    "Sky"
+   ],
+   [
+    "Translate from Spanish: “verano”",
+    "Summer"
+   ],
+   [
+    "Translate from Spanish: “huevo”",
+    "Egg"
+   ],
+   [
+    "Translate from French: “pomme de terre”",
+    "Potato"
+   ],
+   [
+    "Translate from French: “boulangerie”",
+    "Bakery"
+   ],
+   [
+    "Translate from French: “neige”",
+    "Snow"
+   ],
+   [
+    "Translate from Italian: “orologio”",
+    "Clock / watch"
+   ],
+   [
+    "Translate from Italian: “specchio”",
+    "Mirror"
+   ],
+   [
+    "Translate from Italian: “pesce”",
+    "Fish"
+   ]
+  ],
+  "300": [
+   [
+    "Translate from Spanish: “almohada”",
+    "Pillow"
+   ],
+   [
+    "Translate from Spanish: “zanahoria”",
+    "Carrot"
+   ],
+   [
+    "Translate from Spanish: “tiburón”",
+    "Shark"
+   ],
+   [
+    "Translate from Spanish: “murciélago”",
+    "Bat (the animal)"
+   ],
+   [
+    "Translate from French: “pamplemousse”",
+    "Grapefruit"
+   ],
+   [
+    "Translate from French: “citrouille”",
+    "Pumpkin"
+   ],
+   [
+    "Translate from French: “parapluie”",
+    "Umbrella"
+   ],
+   [
+    "Translate from French: “grenouille”",
+    "Frog"
+   ],
+   [
+    "Translate from French: “éventail”",
+    "Fan (a hand fan)"
+   ],
+   [
+    "Translate from Italian: “lumaca”",
+    "Snail"
+   ],
+   [
+    "Translate from Italian: “cavolo”",
+    "Cabbage"
+   ],
+   [
+    "Translate from Italian: “ghiaccio”",
+    "Ice"
+   ],
+   [
+    "Translate from Italian: “coniglio”",
+    "Rabbit"
+   ],
+   [
+    "Translate from Italian: “fragola”",
+    "Strawberry"
+   ],
+   [
+    "Translate from Spanish: “aguacate”",
+    "Avocado"
+   ],
+   [
+    "Translate from Spanish: “ardilla”",
+    "Squirrel"
+   ],
+   [
+    "Translate from Spanish: “calcetín”",
+    "Sock"
+   ],
+   [
+    "Translate from Spanish: “cumpleaños”",
+    "Birthday"
+   ],
+   [
+    "Translate from Spanish: “mochila”",
+    "Backpack"
+   ],
+   [
+    "Translate from French: “hibou”",
+    "Owl"
+   ],
+   [
+    "Translate from French: “tortue”",
+    "Turtle / tortoise"
+   ],
+   [
+    "Translate from French: “poubelle”",
+    "Rubbish bin"
+   ],
+   [
+    "Translate from Italian: “pomodoro”",
+    "Tomato"
+   ],
+   [
+    "Translate from Italian: “cipolla”",
+    "Onion"
+   ],
+   [
+    "Translate from Italian: “forchetta”",
+    "Fork"
+   ]
+  ],
+  "400": [
+   [
+    "Translate from Spanish: “sacapuntas”",
+    "Pencil sharpener"
+   ],
+   [
+    "Translate from Spanish: “embarazada”",
+    "Pregnant (not embarrassed!)"
+   ],
+   [
+    "Translate from Spanish: “carpeta”",
+    "Folder (not carpet)"
+   ],
+   [
+    "Translate from Spanish: “éxito”",
+    "Success (not exit)"
+   ],
+   [
+    "Translate from Spanish: “constipado”",
+    "Having a cold (not constipated)"
+   ],
+   [
+    "Translate from Spanish: “librería”",
+    "Bookshop (not library)"
+   ],
+   [
+    "Translate from French: “coin”",
+    "Corner (not coin)"
+   ],
+   [
+    "Translate from French: “sensible”",
+    "Sensitive (not sensible)"
+   ],
+   [
+    "Translate from French: “pain”",
+    "Bread (not pain)"
+   ],
+   [
+    "Translate from Italian: “camera”",
+    "Room (not camera)"
+   ],
+   [
+    "Translate from Italian: “burro”",
+    "Butter (not donkey)"
+   ],
+   [
+    "Translate from Italian: “parenti”",
+    "Relatives (not parents)"
+   ],
+   [
+    "Translate from Italian: “fattoria”",
+    "Farm (not factory)"
+   ],
+   [
+    "Translate from French: “arc-en-ciel”",
+    "Rainbow"
+   ],
+   [
+    "Translate from Italian: “cocomero”",
+    "Watermelon"
+   ],
+   [
+    "Translate from Spanish: “ropa”",
+    "Clothes (not rope)"
+   ],
+   [
+    "Translate from Spanish: “largo”",
+    "Long (not large)"
+   ],
+   [
+    "Translate from Spanish: “molestar”",
+    "To bother / annoy (not molest)"
+   ],
+   [
+    "Translate from French: “raisin”",
+    "Grape (not raisin)"
+   ],
+   [
+    "Translate from French: “blesser”",
+    "To injure (not bless)"
+   ],
+   [
+    "Translate from French: “déception”",
+    "Disappointment (not deception)"
+   ],
+   [
+    "Translate from French: “chair”",
+    "Flesh (not chair)"
+   ],
+   [
+    "Translate from Italian: “caldo”",
+    "Hot (not cold)"
+   ],
+   [
+    "Translate from Italian: “annoiato”",
+    "Bored (not annoyed)"
+   ],
+   [
+    "Translate from Italian: “confetti”",
+    "Sugared almonds (not paper confetti)"
+   ]
+  ],
+  "500": [
+   [
+    "Translate from French: “location”",
+    "Rental (not location)"
+   ],
+   [
+    "Translate from French: “monnaie”",
+    "Change (coins), not money"
+   ],
+   [
+    "Translate from Italian: “morbido”",
+    "Soft (not morbid)"
+   ],
+   [
+    "Translate from Spanish: “sobremesa”",
+    "Time spent chatting at the table after a meal"
+   ],
+   [
+    "Translate from Spanish: “madrugada”",
+    "The early hours of the morning (after midnight)"
+   ],
+   [
+    "Translate from Spanish: “estrenar”",
+    "To use or wear something for the first time"
+   ],
+   [
+    "Translate from Spanish: “ojalá”",
+    "Hopefully / I wish (from Arabic 'in shā' Allāh')"
+   ],
+   [
+    "Translate from French: “flâner”",
+    "To stroll aimlessly"
+   ],
+   [
+    "Translate from French: “chantier”",
+    "Construction site"
+   ],
+   [
+    "Translate from French: “ornithorynque”",
+    "Platypus"
+   ],
+   [
+    "Translate from French: “dépaysement”",
+    "The feeling of being out of your element in a foreign place"
+   ],
+   [
+    "Translate from Italian: “abbiocco”",
+    "Sleepiness after a big meal"
+   ],
+   [
+    "Translate from Italian: “magari”",
+    "If only / I wish (or maybe)"
+   ],
+   [
+    "Translate from Italian: “pantofole”",
+    "Slippers"
+   ],
+   [
+    "Translate from Italian: “struzzo”",
+    "Ostrich"
+   ],
+   [
+    "Translate from Spanish: “tocayo”",
+    "Someone who has the same first name as you"
+   ],
+   [
+    "Translate from Spanish: “friolero”",
+    "Someone who always feels the cold"
+   ],
+   [
+    "Translate from Spanish: “empalagar”",
+    "To be sickly sweet (too much)"
+   ],
+   [
+    "Translate from Spanish: “desvelado”",
+    "Unable to sleep / kept awake"
+   ],
+   [
+    "Translate from French: “retrouvailles”",
+    "The joy of meeting someone again after a long time"
+   ],
+   [
+    "Translate from French: “chuchoter”",
+    "To whisper"
+   ],
+   [
+    "Translate from French: “grasse matinée”",
+    "A lie-in (sleeping in late)"
+   ],
+   [
+    "Translate from Italian: “culaccino”",
+    "The ring a wet glass leaves on a table"
+   ],
+   [
+    "Translate from Italian: “gattara”",
+    "A woman who feeds stray cats (a 'cat lady')"
+   ],
+   [
+    "Translate from Italian: “meriggiare”",
+    "To rest in the shade at midday"
+   ]
+  ]
+ }
+}

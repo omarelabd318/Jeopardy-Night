@@ -1,0 +1,182 @@
+[
+ {
+  "key": "stadium-oldtrafford",
+  "value": 100,
+  "name": "Old Trafford",
+  "wiki": "Old Trafford"
+ },
+ {
+  "key": "stadium-anfield",
+  "value": 100,
+  "name": "Anfield",
+  "wiki": "Anfield"
+ },
+ {
+  "key": "stadium-campnou",
+  "value": 100,
+  "name": "Camp Nou",
+  "wiki": "Camp Nou"
+ },
+ {
+  "key": "stadium-santiagobernabeu",
+  "value": 100,
+  "name": "Santiago Bernabéu",
+  "wiki": "Santiago Bernabéu Stadium"
+ },
+ {
+  "key": "stadium-wembleystadium",
+  "value": 100,
+  "name": "Wembley Stadium",
+  "wiki": "Wembley Stadium"
+ },
+ {
+  "key": "stadium-allianzarena",
+  "value": 100,
+  "name": "Allianz Arena",
+  "wiki": "Allianz Arena"
+ },
+ {
+  "key": "stadium-sansiro",
+  "value": 200,
+  "name": "San Siro",
+  "wiki": "San Siro"
+ },
+ {
+  "key": "stadium-maracana",
+  "value": 200,
+  "name": "Maracanã",
+  "wiki": "Maracanã Stadium"
+ },
+ {
+  "key": "stadium-emiratesstadium",
+  "value": 200,
+  "name": "Emirates Stadium",
+  "wiki": "Emirates Stadium"
+ },
+ {
+  "key": "stadium-stamfordbridge",
+  "value": 200,
+  "name": "Stamford Bridge",
+  "wiki": "Stamford Bridge (stadium)"
+ },
+ {
+  "key": "stadium-signalidunapark",
+  "value": 200,
+  "name": "Signal Iduna Park",
+  "wiki": "Westfalenstadion"
+ },
+ {
+  "key": "stadium-cairointernationalstadium",
+  "value": 200,
+  "name": "Cairo International Stadium",
+  "wiki": "Cairo International Stadium"
+ },
+ {
+  "key": "stadium-etihadstadium",
+  "value": 300,
+  "name": "Etihad Stadium",
+  "wiki": "City of Manchester Stadium"
+ },
+ {
+  "key": "stadium-parcdesprinces",
+  "value": 300,
+  "name": "Parc des Princes",
+  "wiki": "Parc des Princes"
+ },
+ {
+  "key": "stadium-tottenhamhotspurstadium",
+  "value": 300,
+  "name": "Tottenham Hotspur Stadium",
+  "wiki": "Tottenham Hotspur Stadium"
+ },
+ {
+  "key": "stadium-labombonera",
+  "value": 300,
+  "name": "La Bombonera",
+  "wiki": "La Bombonera"
+ },
+ {
+  "key": "stadium-lusailstadium",
+  "value": 300,
+  "name": "Lusail Stadium",
+  "wiki": "Lusail Stadium"
+ },
+ {
+  "key": "stadium-celticpark",
+  "value": 300,
+  "name": "Celtic Park",
+  "wiki": "Celtic Park"
+ },
+ {
+  "key": "stadium-metropolitano",
+  "value": 400,
+  "name": "Metropolitano",
+  "wiki": "Metropolitano Stadium"
+ },
+ {
+  "key": "stadium-johancruyffarena",
+  "value": 400,
+  "name": "Johan Cruyff Arena",
+  "wiki": "Johan Cruyff Arena"
+ },
+ {
+  "key": "stadium-estadiodaluz",
+  "value": 400,
+  "name": "Estádio da Luz",
+  "wiki": "Estádio da Luz"
+ },
+ {
+  "key": "stadium-stadevelodrome",
+  "value": 400,
+  "name": "Stade Vélodrome",
+  "wiki": "Stade Vélodrome"
+ },
+ {
+  "key": "stadium-stjamespark",
+  "value": 400,
+  "name": "St James' Park",
+  "wiki": "St James' Park"
+ },
+ {
+  "key": "stadium-borgelarabstadium",
+  "value": 400,
+  "name": "Borg El Arab Stadium",
+  "wiki": "Borg El Arab Stadium"
+ },
+ {
+  "key": "stadium-estadioazteca",
+  "value": 500,
+  "name": "Estadio Azteca",
+  "wiki": "Estadio Azteca"
+ },
+ {
+  "key": "stadium-cravencottage",
+  "value": 500,
+  "name": "Craven Cottage",
+  "wiki": "Craven Cottage"
+ },
+ {
+  "key": "stadium-sanmames",
+  "value": 500,
+  "name": "San Mamés",
+  "wiki": "San Mamés Stadium"
+ },
+ {
+  "key": "stadium-stadelouisii",
+  "value": 500,
+  "name": "Stade Louis II",
+  "wiki": "Stade Louis II"
+ },
+ {
+  "key": "stadium-estadiododragao",
+  "value": 500,
+  "name": "Estádio do Dragão",
+  "wiki": "Estádio do Dragão"
+ },
+ {
+  "key": "stadium-stadiodiegoarmandomaradona",
+  "value": 500,
+  "name": "Stadio Diego Armando Maradona",
+  "wiki": "Stadio Diego Armando Maradona"
+ }
+]

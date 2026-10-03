@@ -1,0 +1,842 @@
+[
+{
+"round": "car",
+"value": 100,
+"name": "Toyota Corolla",
+"wiki": "Toyota_Corolla",
+"key": "toyotacorolla"
+},
+{
+"round": "car",
+"value": 100,
+"name": "Kia Sportage",
+"wiki": "Kia_Sportage",
+"key": "kiasportage"
+},
+{
+"round": "car",
+"value": 100,
+"name": "Nissan Sunny",
+"wiki": "Nissan_Sunny",
+"key": "nissansunny"
+},
+{
+"round": "car",
+"value": 100,
+"name": "Chevrolet Camaro",
+"wiki": "Chevrolet_Camaro",
+"key": "chevroletcamaro"
+},
+{
+"round": "car",
+"value": 100,
+"name": "Tesla Model S",
+"wiki": "Tesla_Model_S",
+"key": "teslamodels"
+},
+{
+"round": "car",
+"value": 100,
+"name": "Smart Fortwo",
+"wiki": "Smart_Fortwo",
+"key": "smartfortwo"
+},
+{
+"round": "car",
+"value": 200,
+"name": "Lamborghini Aventador",
+"wiki": "Lamborghini_Aventador",
+"key": "lamborghiniaventador"
+},
+{
+"round": "car",
+"value": 200,
+"name": "McLaren P1",
+"wiki": "McLaren_P1",
+"key": "mclarenp1"
+},
+{
+"round": "car",
+"value": 200,
+"name": "Ferrari 458 Italia",
+"wiki": "Ferrari_458",
+"key": "ferrari458italia"
+},
+{
+"round": "car",
+"value": 200,
+"name": "Nissan 350Z",
+"wiki": "Nissan_350Z",
+"key": "nissan350z"
+},
+{
+"round": "car",
+"value": 200,
+"name": "Mercedes-Benz SLS AMG",
+"wiki": "Mercedes-Benz_SLS_AMG",
+"key": "mercedesbenzslsamg"
+},
+{
+"round": "car",
+"value": 200,
+"name": "Land Rover Defender (classic)",
+"wiki": "Land_Rover_Defender",
+"key": "landroverdefender"
+},
+{
+"round": "car",
+"value": 300,
+"name": "Lada 2107 (Lada Riva)",
+"wiki": "Lada_Riva",
+"key": "lada2107"
+},
+{
+"round": "car",
+"value": 300,
+"name": "Mercedes-Benz W124 (E-Class)",
+"wiki": "Mercedes-Benz_W124",
+"key": "mercedesbenzw124"
+},
+{
+"round": "car",
+"value": 300,
+"name": "BMW 2002",
+"wiki": "BMW_02_Series",
+"key": "bmw2002"
+},
+{
+"round": "car",
+"value": 300,
+"name": "Volkswagen Type 2 (Microbus)",
+"wiki": "Volkswagen_Type_2",
+"key": "volkswagentype2"
+},
+{
+"round": "car",
+"value": 300,
+"name": "Citroën 2CV",
+"wiki": "Citroën_2CV",
+"key": "citroen2cv"
+},
+{
+"round": "car",
+"value": 300,
+"name": "Ford Model T",
+"wiki": "Ford_Model_T",
+"key": "fordmodelt"
+},
+{
+"round": "car",
+"value": 400,
+"name": "AC Cobra",
+"wiki": "AC_Cobra",
+"key": "accobra"
+},
+{
+"round": "car",
+"value": 400,
+"name": "Ferrari Enzo",
+"wiki": "Ferrari_Enzo",
+"key": "ferrarienzo"
+},
+{
+"round": "car",
+"value": 400,
+"name": "Toyota 2000GT",
+"wiki": "Toyota_2000GT",
+"key": "toyota2000gt"
+},
+{
+"round": "car",
+"value": 400,
+"name": "Datsun 240Z",
+"wiki": "Nissan_S30",
+"key": "datsun240z"
+},
+{
+"round": "car",
+"value": 400,
+"name": "Dodge Viper (first generation)",
+"wiki": "Dodge_Viper",
+"key": "dodgeviper"
+},
+{
+"round": "car",
+"value": 400,
+"name": "Dino 246 GT",
+"wiki": "Dino_206_GT_and_246_GT",
+"key": "dino246gt"
+},
+{
+"round": "car",
+"value": 500,
+"name": "Ramses (Egyptian car)",
+"wiki": "Ramses_(car)",
+"key": "ramses"
+},
+{
+"round": "car",
+"value": 500,
+"name": "Messerschmitt KR200",
+"wiki": "Messerschmitt_KR200",
+"key": "messerschmittkr200"
+},
+{
+"round": "car",
+"value": 500,
+"name": "Peel P50",
+"wiki": "Peel_P50",
+"key": "peelp50"
+},
+{
+"round": "car",
+"value": 500,
+"name": "Nissan S-Cargo",
+"wiki": "Nissan_S-Cargo",
+"key": "nissanscargo"
+},
+{
+"round": "car",
+"value": 500,
+"name": "Lamborghini Espada",
+"wiki": "Lamborghini_Espada",
+"key": "lamborghiniespada"
+},
+{
+"round": "car",
+"value": 500,
+"name": "Amphicar 770",
+"wiki": "Amphicar",
+"key": "amphicar770"
+},
+{
+"round": "actor",
+"value": 100,
+"name": "Al Pacino",
+"wiki": "Al_Pacino",
+"key": "alpacino"
+},
+{
+"round": "actor",
+"value": 100,
+"name": "Robert De Niro",
+"wiki": "Robert_De_Niro",
+"key": "robertdeniro"
+},
+{
+"round": "actor",
+"value": 100,
+"name": "Samuel L. Jackson",
+"wiki": "Samuel_L._Jackson",
+"key": "samuelljackson"
+},
+{
+"round": "actor",
+"value": 100,
+"name": "Jennifer Aniston",
+"wiki": "Jennifer_Aniston",
+"key": "jenniferaniston"
+},
+{
+"round": "actor",
+"value": 100,
+"name": "Amir Karara",
+"wiki": "Amir_Karara",
+"key": "amirkarara"
+},
+{
+"round": "actor",
+"value": 100,
+"name": "Yasmin Abdulaziz",
+"wiki": "Yasmin_Abdulaziz",
+"key": "yasminabdulaziz"
+},
+{
+"round": "actor",
+"value": 200,
+"name": "Christian Bale",
+"wiki": "Christian_Bale",
+"key": "christianbale"
+},
+{
+"round": "actor",
+"value": 200,
+"name": "Matt Damon",
+"wiki": "Matt_Damon",
+"key": "mattdamon"
+},
+{
+"round": "actor",
+"value": 200,
+"name": "Natalie Portman",
+"wiki": "Natalie_Portman",
+"key": "natalieportman"
+},
+{
+"round": "actor",
+"value": 200,
+"name": "Hugh Jackman",
+"wiki": "Hugh_Jackman",
+"key": "hughjackman"
+},
+{
+"round": "actor",
+"value": 200,
+"name": "Donia Samir Ghanem",
+"wiki": "Donia_Samir_Ghanem",
+"key": "doniasamirghanem"
+},
+{
+"round": "actor",
+"value": 200,
+"name": "Ahmed Fahmy",
+"wiki": "Ahmed_Fahmy",
+"key": "ahmedfahmy"
+},
+{
+"round": "actor",
+"value": 300,
+"name": "Benedict Cumberbatch",
+"wiki": "Benedict_Cumberbatch",
+"key": "benedictcumberbatch"
+},
+{
+"round": "actor",
+"value": 300,
+"name": "Viola Davis",
+"wiki": "Viola_Davis",
+"key": "violadavis"
+},
+{
+"round": "actor",
+"value": 300,
+"name": "Henry Cavill",
+"wiki": "Henry_Cavill",
+"key": "henrycavill"
+},
+{
+"round": "actor",
+"value": 300,
+"name": "Saoirse Ronan",
+"wiki": "Saoirse_Ronan",
+"key": "saoirseronan"
+},
+{
+"round": "actor",
+"value": 300,
+"name": "Menna Shalaby",
+"wiki": "Menna_Shalabi",
+"key": "mennashalaby"
+},
+{
+"round": "actor",
+"value": 300,
+"name": "Nelly Karim",
+"wiki": "Nelly_Karim",
+"key": "nellykarim"
+},
+{
+"round": "actor",
+"value": 400,
+"name": "Willem Dafoe",
+"wiki": "Willem_Dafoe",
+"key": "willemdafoe"
+},
+{
+"round": "actor",
+"value": 400,
+"name": "Frances McDormand",
+"wiki": "Frances_McDormand",
+"key": "francesmcdormand"
+},
+{
+"round": "actor",
+"value": 400,
+"name": "Bryan Cranston",
+"wiki": "Bryan_Cranston",
+"key": "bryancranston"
+},
+{
+"round": "actor",
+"value": 400,
+"name": "Christoph Waltz",
+"wiki": "Christoph_Waltz",
+"key": "christophwaltz"
+},
+{
+"round": "actor",
+"value": 400,
+"name": "Mahmoud Yassin",
+"wiki": "Mahmoud_Yassin",
+"key": "mahmoudyassin"
+},
+{
+"round": "actor",
+"value": 400,
+"name": "Ezzat Abou Aouf",
+"wiki": "Ezzat_Abou_Aouf",
+"key": "ezzatabouaouf"
+},
+{
+"round": "actor",
+"value": 500,
+"name": "Paul Dano",
+"wiki": "Paul_Dano",
+"key": "pauldano"
+},
+{
+"round": "actor",
+"value": 500,
+"name": "Domhnall Gleeson",
+"wiki": "Domhnall_Gleeson",
+"key": "domhnallgleeson"
+},
+{
+"round": "actor",
+"value": 500,
+"name": "Brian Cox",
+"wiki": "Brian_Cox_(actor)",
+"key": "briancox"
+},
+{
+"round": "actor",
+"value": 500,
+"name": "Hassan Hosny",
+"wiki": "Hassan_Hosny",
+"key": "hassanhosny"
+},
+{
+"round": "actor",
+"value": 500,
+"name": "Salah Abdallah",
+"wiki": "Salah_Abdallah",
+"key": "salahabdallah"
+},
+{
+"round": "actor",
+"value": 500,
+"name": "Lotfy Labib",
+"wiki": "Lotfy_Labib",
+"key": "lotfylabib"
+},
+{
+"round": "footy",
+"value": 100,
+"name": "Pelé",
+"wiki": "Pelé",
+"key": "pele"
+},
+{
+"round": "footy",
+"value": 100,
+"name": "Diego Maradona",
+"wiki": "Diego_Maradona",
+"key": "diegomaradona"
+},
+{
+"round": "footy",
+"value": 100,
+"name": "Ronaldo Nazário",
+"wiki": "Ronaldo_(Brazilian_footballer)",
+"key": "ronaldonazario"
+},
+{
+"round": "footy",
+"value": 100,
+"name": "David Beckham",
+"wiki": "David_Beckham",
+"key": "davidbeckham"
+},
+{
+"round": "footy",
+"value": 100,
+"name": "Gianluigi Buffon",
+"wiki": "Gianluigi_Buffon",
+"key": "gianluigibuffon"
+},
+{
+"round": "footy",
+"value": 100,
+"name": "Manuel Neuer",
+"wiki": "Manuel_Neuer",
+"key": "manuelneuer"
+},
+{
+"round": "footy",
+"value": 200,
+"name": "Zizo",
+"wiki": "Ahmed_Sayed_(footballer,_born_1995)",
+"key": "zizo"
+},
+{
+"round": "footy",
+"value": 200,
+"name": "Mohamed El Shenawy",
+"wiki": "Mohamed_El_Shenawy",
+"key": "mohamedelshenawy"
+},
+{
+"round": "footy",
+"value": 200,
+"name": "Luis Suárez",
+"wiki": "Luis_Suárez",
+"key": "luissuarez"
+},
+{
+"round": "footy",
+"value": 200,
+"name": "Thibaut Courtois",
+"wiki": "Thibaut_Courtois",
+"key": "thibautcourtois"
+},
+{
+"round": "footy",
+"value": 200,
+"name": "Federico Valverde",
+"wiki": "Federico_Valverde",
+"key": "federicovalverde"
+},
+{
+"round": "footy",
+"value": 200,
+"name": "Declan Rice",
+"wiki": "Declan_Rice",
+"key": "declanrice"
+},
+{
+"round": "footy",
+"value": 300,
+"name": "Mahmoud Kahraba",
+"wiki": "Mahmoud_Kahraba",
+"key": "mahmoudkahraba"
+},
+{
+"round": "footy",
+"value": 300,
+"name": "Hamdi Fathi",
+"wiki": "Hamdi_Fathi",
+"key": "hamdifathi"
+},
+{
+"round": "footy",
+"value": 300,
+"name": "Arjen Robben",
+"wiki": "Arjen_Robben",
+"key": "arjenrobben"
+},
+{
+"round": "footy",
+"value": 300,
+"name": "Franck Ribéry",
+"wiki": "Franck_Ribéry",
+"key": "franckribery"
+},
+{
+"round": "footy",
+"value": 300,
+"name": "Wesley Sneijder",
+"wiki": "Wesley_Sneijder",
+"key": "wesleysneijder"
+},
+{
+"round": "footy",
+"value": 300,
+"name": "Fernando Torres",
+"wiki": "Fernando_Torres",
+"key": "fernandotorres"
+},
+{
+"round": "footy",
+"value": 400,
+"name": "Hany Ramzy",
+"wiki": "Hany_Ramzy",
+"key": "hanyramzy"
+},
+{
+"round": "footy",
+"value": 400,
+"name": "Emad Moteab",
+"wiki": "Emad_Moteab",
+"key": "emadmoteab"
+},
+{
+"round": "footy",
+"value": 400,
+"name": "Cafu",
+"wiki": "Cafu",
+"key": "cafu"
+},
+{
+"round": "footy",
+"value": 400,
+"name": "Roberto Carlos",
+"wiki": "Roberto_Carlos",
+"key": "robertocarlos"
+},
+{
+"round": "footy",
+"value": 400,
+"name": "Pavel Nedvěd",
+"wiki": "Pavel_Nedvěd",
+"key": "pavelnedved"
+},
+{
+"round": "footy",
+"value": 400,
+"name": "Ahmed Belal",
+"wiki": "Ahmed_Belal",
+"key": "ahmedbelal"
+},
+{
+"round": "footy",
+"value": 500,
+"name": "Taher Abouzeid",
+"wiki": "Taher_Abouzeid",
+"key": "taherabouzeid"
+},
+{
+"round": "footy",
+"value": 500,
+"name": "Gamal Abdelhamid",
+"wiki": "Gamal_Abdelhamid",
+"key": "gamalabdelhamid"
+},
+{
+"round": "footy",
+"value": 500,
+"name": "Ahmed El Kass",
+"wiki": "Ahmed_El-Kass",
+"key": "ahmedelkass"
+},
+{
+"round": "footy",
+"value": 500,
+"name": "Mahmoud Mokhtar El Tetsh",
+"wiki": "Mokhtar_El-Tetsh",
+"key": "mahmoudmokhtareltetsh"
+},
+{
+"round": "footy",
+"value": 500,
+"name": "Rabah Madjer",
+"wiki": "Rabah_Madjer",
+"key": "rabahmadjer"
+},
+{
+"round": "footy",
+"value": 500,
+"name": "Roger Milla",
+"wiki": "Roger_Milla",
+"key": "rogermilla"
+},
+{
+"round": "person",
+"value": 100,
+"name": "Albert Einstein",
+"wiki": "Albert_Einstein",
+"key": "alberteinstein"
+},
+{
+"round": "person",
+"value": 100,
+"name": "Queen Elizabeth II",
+"wiki": "Elizabeth_II",
+"key": "queenelizabethii"
+},
+{
+"round": "person",
+"value": 100,
+"name": "Kim Jong Un",
+"wiki": "Kim_Jong_Un",
+"key": "kimjongun"
+},
+{
+"round": "person",
+"value": 100,
+"name": "Justin Bieber",
+"wiki": "Justin_Bieber",
+"key": "justinbieber"
+},
+{
+"round": "person",
+"value": 100,
+"name": "Nancy Ajram",
+"wiki": "Nancy_Ajram",
+"key": "nancyajram"
+},
+{
+"round": "person",
+"value": 100,
+"name": "Haifa Wehbe",
+"wiki": "Haifa_Wehbe",
+"key": "haifawehbe"
+},
+{
+"round": "person",
+"value": 200,
+"name": "Mohamed Hamaki",
+"wiki": "Mohamed_Hamaki",
+"key": "mohamedhamaki"
+},
+{
+"round": "person",
+"value": 200,
+"name": "Mohamed Fouad",
+"wiki": "Mohamed_Fouad",
+"key": "mohamedfouad"
+},
+{
+"round": "person",
+"value": 200,
+"name": "Ahmed Saad",
+"wiki": "Ahmed_Saad_(singer)",
+"key": "ahmedsaad"
+},
+{
+"round": "person",
+"value": 200,
+"name": "Ariana Grande",
+"wiki": "Ariana_Grande",
+"key": "arianagrande"
+},
+{
+"round": "person",
+"value": 200,
+"name": "Muhammad Ali",
+"wiki": "Muhammad_Ali",
+"key": "muhammadali"
+},
+{
+"round": "person",
+"value": 200,
+"name": "Nelson Mandela",
+"wiki": "Nelson_Mandela",
+"key": "nelsonmandela"
+},
+{
+"round": "person",
+"value": 300,
+"name": "Marwan Pablo",
+"wiki": "Marwan_Pablo",
+"key": "marwanpablo"
+},
+{
+"round": "person",
+"value": 300,
+"name": "Hassan Shakosh",
+"wiki": "Hassan_Shakosh",
+"key": "hassanshakosh"
+},
+{
+"round": "person",
+"value": 300,
+"name": "Hisham Abbas",
+"wiki": "Hisham_Abbas",
+"key": "hishamabbas"
+},
+{
+"round": "person",
+"value": 300,
+"name": "Ahmed Amin",
+"wiki": "Ahmed_Amin_(comedian)",
+"key": "ahmedamin"
+},
+{
+"round": "person",
+"value": 300,
+"name": "Dua Lipa",
+"wiki": "Dua_Lipa",
+"key": "dualipa"
+},
+{
+"round": "person",
+"value": 300,
+"name": "Lady Gaga",
+"wiki": "Lady_Gaga",
+"key": "ladygaga"
+},
+{
+"round": "person",
+"value": 400,
+"name": "Dina El Sherbiny",
+"wiki": "Dina_El_Sherbiny",
+"key": "dinaelsherbiny"
+},
+{
+"round": "person",
+"value": 400,
+"name": "Asser Yassin",
+"wiki": "Asser_Yassin",
+"key": "asseryassin"
+},
+{
+"round": "person",
+"value": 400,
+"name": "Abu",
+"wiki": "Abu_(singer)",
+"key": "abu"
+},
+{
+"round": "person",
+"value": 400,
+"name": "Hamza Namira",
+"wiki": "Hamza_Namira",
+"key": "hamzanamira"
+},
+{
+"round": "person",
+"value": 400,
+"name": "Simone Biles",
+"wiki": "Simone_Biles",
+"key": "simonebiles"
+},
+{
+"round": "person",
+"value": 400,
+"name": "Gordon Ramsay",
+"wiki": "Gordon_Ramsay",
+"key": "gordonramsay"
+},
+{
+"round": "person",
+"value": 500,
+"name": "Sayed Darwish",
+"wiki": "Sayed_Darwish",
+"key": "sayeddarwish"
+},
+{
+"round": "person",
+"value": 500,
+"name": "Saad Zaghloul",
+"wiki": "Saad_Zaghloul",
+"key": "saadzaghloul"
+},
+{
+"round": "person",
+"value": 500,
+"name": "Nawal El Saadawi",
+"wiki": "Nawal_El_Saadawi",
+"key": "nawalelsaadawi"
+},
+{
+"round": "person",
+"value": 500,
+"name": "Ahmed Shawqi",
+"wiki": "Ahmed_Shawqi",
+"key": "ahmedshawqi"
+},
+{
+"round": "person",
+"value": 500,
+"name": "Tim Berners-Lee",
+"wiki": "Tim_Berners-Lee",
+"key": "timbernerslee"
+},
+{
+"round": "person",
+"value": 500,
+"name": "Mohamed Hassanein Heikal",
+"wiki": "Mohamed_Hassanein_Heikal",
+"key": "mohamedhassaneinheikal"
+}
+]

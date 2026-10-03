@@ -1,0 +1,518 @@
+{
+ "id": "cars",
+ "name": "Cars",
+ "type": "text",
+ "desc": "Car brands, badges, owners, famous models, motorsport and Egypt's car scene.",
+ "data": {
+  "100": [
+   [
+    "Toyota, Honda and Nissan all come from which country?",
+    "Japan"
+   ],
+   [
+    "What animal is on Lamborghini's badge?",
+    "A bull"
+   ],
+   [
+    "What animal is on Ferrari's badge?",
+    "A (prancing) horse"
+   ],
+   [
+    "What animal is on Peugeot's badge?",
+    "A lion"
+   ],
+   [
+    "Which German brand's logo is four interlocking rings?",
+    "Audi"
+   ],
+   [
+    "Translated into English, what does 'Volkswagen' mean?",
+    "People's car"
+   ],
+   [
+    "Which car brand's logo is a three-pointed star?",
+    "Mercedes-Benz"
+   ],
+   [
+    "Which Ford, built from 1908 to 1927, sold over 15 million cars?",
+    "Model T"
+   ],
+   [
+    "Lexus is the luxury brand of which Japanese carmaker?",
+    "Toyota"
+   ],
+   [
+    "Which car company is named after the inventor Nikola Tesla?",
+    "Tesla"
+   ],
+   [
+    "In 'Goldfinger' (1964), James Bond drove a DB5 made by which British brand?",
+    "Aston Martin"
+   ],
+   [
+    "Lewis Hamilton has driven for which Formula 1 team since 2025?",
+    "Ferrari"
+   ],
+   [
+    "In 'El Nasr Automotive', what does the Arabic word 'Nasr' mean?",
+    "Victory"
+   ],
+   [
+    "Egypt's Nasr 128 was a licensed version of which Italian car?",
+    "Fiat 128"
+   ],
+   [
+    "What make of car does Mr. Bean drive?",
+    "A Mini"
+   ],
+   [
+    "Which country does Ferrari come from?",
+    "Italy"
+   ],
+   [
+    "Which car brand's logo is a blue oval?",
+    "Ford"
+   ],
+   [
+    "What is the name of the red race-car hero of Pixar's 'Cars'?",
+    "Lightning McQueen"
+   ],
+   [
+    "Which flag is waved to end a Formula 1 race?",
+    "The chequered flag"
+   ],
+   [
+    "Which British driver shares the record of seven F1 world titles with Michael Schumacher?",
+    "Lewis Hamilton"
+   ],
+   [
+    "Which Japanese brand, also famous for motorbikes, has a big 'H' badge?",
+    "Honda"
+   ],
+   [
+    "What does SUV stand for?",
+    "Sport utility vehicle"
+   ],
+   [
+    "Which Korean brand makes the Sportage and the Picanto?",
+    "Kia"
+   ],
+   [
+    "Which film series stars Vin Diesel as street racer Dom Toretto?",
+    "Fast & Furious"
+   ],
+   [
+    "Which part of a car has a 'tread'?",
+    "The tyres"
+   ]
+  ],
+  "200": [
+   [
+    "In which German city is BMW headquartered?",
+    "Munich"
+   ],
+   [
+    "What does ABS stand for?",
+    "Anti-lock Braking System"
+   ],
+   [
+    "BMW stands for 'Bayerische Motoren Werke' - what is that in English?",
+    "Bavarian Motor Works"
+   ],
+   [
+    "Rolls-Royce cars are made by a subsidiary of which German carmaker?",
+    "BMW"
+   ],
+   [
+    "Which German car group owns Lamborghini, Bentley and Škoda?",
+    "Volkswagen Group"
+   ],
+   [
+    "Škoda comes from which country?",
+    "Czech Republic"
+   ],
+   [
+    "Which car is the best-selling nameplate of all time, with over 50 million sold?",
+    "Toyota Corolla"
+   ],
+   [
+    "What production innovation did Ford introduce for the Model T in 1913?",
+    "The moving assembly line"
+   ],
+   [
+    "What speed must the DeLorean reach to time-travel in 'Back to the Future'?",
+    "88 mph"
+   ],
+   [
+    "Which German brand made its F1 debut as a works team in 2026 after taking over Sauber?",
+    "Audi"
+   ],
+   [
+    "The 24 Hours of Le Mans is held in which country?",
+    "France"
+   ],
+   [
+    "Which Nissan was Egypt's best-selling car in both 2023 and 2024?",
+    "Nissan Sunny"
+   ],
+   [
+    "Most tuk-tuks in Egypt are made by which Indian company?",
+    "Bajaj"
+   ],
+   [
+    "Before making supercars, Ferruccio Lamborghini made what kind of vehicles?",
+    "Tractors"
+   ],
+   [
+    "What is the name of the Rolls-Royce bonnet mascot?",
+    "Spirit of Ecstasy"
+   ],
+   [
+    "Which Japanese brand makes the Lancer and the Pajero?",
+    "Mitsubishi"
+   ],
+   [
+    "Who won the 2025 Formula 1 world championship?",
+    "Lando Norris"
+   ],
+   [
+    "With which team did Max Verstappen win his four F1 titles (2021–24)?",
+    "Red Bull Racing"
+   ],
+   [
+    "What colour are Cairo's newer taxis?",
+    "White"
+   ],
+   [
+    "Which French brand makes the Clio and the Mégane?",
+    "Renault"
+   ],
+   [
+    "Which country does Volvo come from?",
+    "Sweden"
+   ],
+   [
+    "Which Chinese electric-car maker overtook Tesla as the world's biggest EV seller?",
+    "BYD"
+   ],
+   [
+    "Which German driver won seven F1 titles, five of them in a row with Ferrari?",
+    "Michael Schumacher"
+   ],
+   [
+    "What does 'GT' stand for in car names?",
+    "Gran Turismo (Grand Tourer)"
+   ],
+   [
+    "Which Italian brand makes the Panda and the 500?",
+    "Fiat"
+   ]
+  ],
+  "300": [
+   [
+    "Peugeot, Citroën, Fiat, Jeep and Opel all belong to which car group?",
+    "Stellantis"
+   ],
+   [
+    "Jaguar Land Rover has been owned since 2008 by which Indian group?",
+    "Tata (Tata Motors)"
+   ],
+   [
+    "Volvo Cars is majority-owned by which Chinese company?",
+    "Geely"
+   ],
+   [
+    "MG has been owned since 2007 by which Chinese state-owned carmaker?",
+    "SAIC Motor"
+   ],
+   [
+    "Which Romanian car brand has been owned by Renault since 1999?",
+    "Dacia"
+   ],
+   [
+    "Which company is Kia's largest shareholder, owning about a third of it?",
+    "Hyundai (Hyundai Motor Company)"
+   ],
+   [
+    "Lamborghini model names like Miura, Diablo and Murciélago come from what?",
+    "Famous fighting bulls"
+   ],
+   [
+    "Which team has won the most F1 Constructors' Championships?",
+    "Ferrari"
+   ],
+   [
+    "Which manufacturer has the most overall wins at the 24 Hours of Le Mans?",
+    "Porsche"
+   ],
+   [
+    "A turbocharger's turbine is spun by what?",
+    "Exhaust gases"
+   ],
+   [
+    "Legend says which Egyptian king banned anyone else from painting their car red?",
+    "King Farouk"
+   ],
+   [
+    "Since 1985, GM has made Chevrolets in Egypt in a joint venture with which Egyptian group?",
+    "Mansour (Mansour Automotive)"
+   ],
+   [
+    "Egypt's GB Corp, founded by the Ghabbour brothers, is best known as the local distributor and assembler of which Korean brand?",
+    "Hyundai"
+   ],
+   [
+    "The brand name 'Volvo' is Latin for what?",
+    "I roll"
+   ],
+   [
+    "BMW's blue-and-white roundel is not a propeller. Its colours come from the flag of which German state?",
+    "Bavaria"
+   ],
+   [
+    "The 'T' in FIAT stands for which Italian city?",
+    "Turin (Torino)"
+   ],
+   [
+    "Which Italian circuit is known as the 'Temple of Speed'?",
+    "Monza"
+   ],
+   [
+    "Who became F1's youngest ever race winner, aged 18, in 2016?",
+    "Max Verstappen"
+   ],
+   [
+    "Which British luxury brand's badge is a 'B' with wings?",
+    "Bentley"
+   ],
+   [
+    "What kind of car is Herbie, the Love Bug?",
+    "A Volkswagen Beetle"
+   ],
+   [
+    "Infiniti is the luxury brand of which Japanese carmaker?",
+    "Nissan"
+   ],
+   [
+    "Which Ford race car beat Ferrari to win Le Mans in 1966?",
+    "Ford GT40"
+   ],
+   [
+    "Which team won the F1 Constructors' Championship in both 2024 and 2025?",
+    "McLaren"
+   ],
+   [
+    "Which Japanese brand made the rotary-engined RX-7?",
+    "Mazda"
+   ],
+   [
+    "What does VIN stand for on a car?",
+    "Vehicle Identification Number"
+   ],
+   [
+    "Which Brazilian F1 legend was killed at Imola in 1994?",
+    "Ayrton Senna"
+   ]
+  ],
+  "400": [
+   [
+    "Jackie Stewart nicknamed which German race track 'The Green Hell'?",
+    "Nürburgring (Nordschleife)"
+   ],
+   [
+    "In 1989, Australia's Wheels magazine nicknamed which Nissan 'Godzilla'?",
+    "The Skyline GT-R (R32)"
+   ],
+   [
+    "Subaru is the Japanese name for which star cluster, shown on its badge?",
+    "The Pleiades"
+   ],
+   [
+    "'Audi' is the Latin translation of which founder's surname?",
+    "Horch (August Horch)"
+   ],
+   [
+    "Audi's four rings stand for the four companies that merged in 1932 to form what?",
+    "Auto Union"
+   ],
+   [
+    "In Korean, what does 'Hyundai' mean?",
+    "Modernity"
+   ],
+   [
+    "What does DSG stand for in Volkswagen gearboxes?",
+    "Direct-Shift Gearbox (Direktschaltgetriebe)"
+   ],
+   [
+    "What does ESP stand for in the stability system Bosch and Mercedes launched in 1995?",
+    "Electronic Stability Program"
+   ],
+   [
+    "Which Scottish engineer coined the term 'horsepower' to market his steam engines?",
+    "James Watt"
+   ],
+   [
+    "The Monaco GP, the Indy 500 and Le Mans together make up what?",
+    "The Triple Crown of Motorsport"
+   ],
+   [
+    "Egypt's 1960s 'Ramses' car was based on the Prinz, a car from which German maker?",
+    "NSU"
+   ],
+   [
+    "Which Chinese brand was Egypt's second-biggest car brand in 2024, behind Nissan?",
+    "Chery"
+   ],
+   [
+    "In 2000, the Dakar Rally started in Dakar and finished in which city?",
+    "Cairo"
+   ],
+   [
+    "In which country was the last original VW Beetle built, in 2003?",
+    "Mexico (Puebla)"
+   ],
+   [
+    "Toyota's name was changed from which spelling of the founding family's name?",
+    "Toyoda"
+   ],
+   [
+    "Which company assembles BMWs in Egypt's 6th of October City?",
+    "Bavarian Auto Group"
+   ],
+   [
+    "Which F1 overtaking aid, a rear-wing flap, was scrapped for the 2026 rules?",
+    "DRS (Drag Reduction System)"
+   ],
+   [
+    "Which Swedish car brand's badge was a red griffin with a crown?",
+    "Saab"
+   ],
+   [
+    "What does the 'R' mean in a tyre size like 205/55 R16?",
+    "Radial"
+   ],
+   [
+    "Since 2020, the Dakar Rally has been held in which country?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Fiat performance brand has a scorpion badge?",
+    "Abarth"
+   ],
+   [
+    "In car specs, what is torque?",
+    "Twisting (turning) force from the engine"
+   ],
+   [
+    "In which country is the Spa-Francorchamps circuit?",
+    "Belgium"
+   ],
+   [
+    "What does 'Formula' refer to in Formula 1?",
+    "The set of rules every car must follow"
+   ],
+   [
+    "Which French driver, nicknamed 'The Professor', won four F1 titles?",
+    "Alain Prost"
+   ]
+  ],
+  "500": [
+   [
+    "Citroën's double chevron badge depicts what kind of gears?",
+    "Helical (chevron/herringbone) gears"
+   ],
+   [
+    "Mazda is named after the god Ahura Mazda and after which founder?",
+    "Jujiro Matsuda"
+   ],
+   [
+    "Which Mazda won Le Mans in 1991, the only winner without a piston engine?",
+    "Mazda 787B"
+   ],
+   [
+    "Before founding his own company, Enzo Ferrari ran the racing team of which brand?",
+    "Alfa Romeo"
+   ],
+   [
+    "Ferrari's prancing horse came from the plane of which Italian World War I flying ace?",
+    "Francesco Baracca"
+   ],
+   [
+    "Alfa Romeo's badge has a serpent (the biscione) that was the emblem of which Milanese noble house?",
+    "The Visconti"
+   ],
+   [
+    "Chevrolet co-founder Louis Chevrolet was born in which country?",
+    "Switzerland"
+   ],
+   [
+    "In 1888, who drove the Benz Patent-Motorwagen from Mannheim to Pforzheim on a famous road trip?",
+    "Bertha Benz"
+   ],
+   [
+    "In 2019, a prototype of which car hit 304.77 mph (490 km/h) at Ehra-Lessien?",
+    "Bugatti Chiron (Super Sport 300+)"
+   ],
+   [
+    "Mercedes developed the G-Class after a suggestion from which ruler?",
+    "The Shah of Iran (Mohammad Reza Pahlavi)"
+   ],
+   [
+    "Peugeot's lion logo first stood for the strength of which Peugeot product?",
+    "Saw blades"
+   ],
+   [
+    "Egypt's Nasr Şahin was a licensed copy of a car from which Turkish maker?",
+    "Tofaş"
+   ],
+   [
+    "Starting in 1978, Arab American Vehicles built which American brand's vehicles in Egypt?",
+    "Jeep"
+   ],
+   [
+    "Which desert rally began in 1982, started and finished at the Giza pyramids, and last ran in 2015?",
+    "Rallye des Pharaons (Pharaohs Rally)"
+   ],
+   [
+    "Who is the only driver to win the F1 title after his death (1970)?",
+    "Jochen Rindt"
+   ],
+   [
+    "Which Italian design house styled the Lamborghini Countach?",
+    "Bertone"
+   ],
+   [
+    "What does DOHC stand for?",
+    "Double overhead camshaft"
+   ],
+   [
+    "What was the first car to carry the Ferrari name, in 1947?",
+    "Ferrari 125 S"
+   ],
+   [
+    "Who designed the original 1959 Mini?",
+    "Alec Issigonis"
+   ],
+   [
+    "Oldsmobile is named after which founder?",
+    "Ransom E. Olds"
+   ],
+   [
+    "Which race saw motorsport's deadliest crash in 1955, killing over 80 spectators?",
+    "Le Mans (24 Hours of Le Mans)"
+   ],
+   [
+    "At which circuit was the first F1 World Championship race held, in 1950?",
+    "Silverstone"
+   ],
+   [
+    "Before cars, Suzuki started out making what?",
+    "Weaving looms"
+   ],
+   [
+    "What is the name of Ferrari's private test track next to Maranello?",
+    "Fiorano"
+   ]
+  ]
+ }
+}

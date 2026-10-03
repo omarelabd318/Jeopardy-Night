@@ -1,0 +1,518 @@
+{
+ "id": "path",
+ "name": "Career Path",
+ "type": "text",
+ "desc": "A footballer's clubs in order. Name the player.",
+ "data": {
+  "100": [
+   [
+    "Whose career? Atlético Madrid → Liverpool → Chelsea → AC Milan → Atlético Madrid → Sagan Tosu",
+    "Fernando Torres"
+   ],
+   [
+    "Whose career? Feyenoord → Arsenal → Man United → Fenerbahçe → Feyenoord",
+    "Robin van Persie"
+   ],
+   [
+    "Whose career? Groningen → PSV → Chelsea → Real Madrid → Bayern Munich → Groningen",
+    "Arjen Robben"
+   ],
+   [
+    "Whose career? Real Madrid → Leganés → Espanyol → Mallorca → Barcelona → Inter → Anzhi Makhachkala → Chelsea → Everton → Sampdoria → Antalyaspor → Konyaspor → Qatar SC",
+    "Samuel Eto'o"
+   ],
+   [
+    "Whose career? Arsenal → Barcelona → Chelsea → Monaco → Como",
+    "Cesc Fàbregas"
+   ],
+   [
+    "Whose career? Rosario Central → Benfica → Real Madrid → Man United → PSG → Juventus → Benfica → Rosario Central",
+    "Ángel Di María"
+   ],
+   [
+    "Whose career? Malmö → Ajax → Juventus → Inter → Barcelona → AC Milan → PSG → Man United → LA Galaxy → AC Milan",
+    "Zlatan Ibrahimović"
+   ],
+   [
+    "Whose career? Nacional → Groningen → Ajax → Liverpool → Barcelona → Atlético Madrid → Nacional → Grêmio → Inter Miami",
+    "Luis Suárez"
+   ],
+   [
+    "Whose career? Le Mans → Guingamp → Marseille → Chelsea → Shanghai Shenhua → Galatasaray → Chelsea → Montreal Impact → Phoenix Rising",
+    "Didier Drogba"
+   ],
+   [
+    "Whose career? Dinamo Zagreb → Zrinjski Mostar → Inter Zaprešić → Dinamo Zagreb → Tottenham → Real Madrid → AC Milan",
+    "Luka Modrić"
+   ],
+   [
+    "Whose career? Grêmio → PSG → Barcelona → AC Milan → Flamengo → Atlético Mineiro → Querétaro → Fluminense → Ravenna",
+    "Ronaldinho"
+   ],
+   [
+    "Whose career? São Paulo → AC Milan → Real Madrid → AC Milan → São Paulo → Orlando City",
+    "Kaká"
+   ],
+   [
+    "Whose career? Wadi Degla → Wolfsburg → St. Pauli → Stuttgart → Wolfsburg → Eintracht Frankfurt → Man City → Tottenham",
+    "Omar Marmoush"
+   ],
+   [
+    "Whose career? Al Mokawloon → Basel → Chelsea → Fiorentina → Roma → Liverpool → Trabzonspor",
+    "Mohamed Salah"
+   ],
+   [
+    "Whose career? Man United → Preston → Real Madrid → LA Galaxy → AC Milan → LA Galaxy → AC Milan → LA Galaxy → PSG",
+    "David Beckham"
+   ],
+   [
+    "Whose career? Santos → Barcelona → PSG → Al Hilal → Santos",
+    "Neymar"
+   ],
+   [
+    "Whose career? Sporting CP → Man United → Real Madrid → Juventus → Man United → Al Nassr",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Whose career? Barcelona → PSG → Inter Miami",
+    "Lionel Messi"
+   ],
+   [
+    "Whose career? Everton → Man United → Everton → DC United → Derby County",
+    "Wayne Rooney"
+   ],
+   [
+    "Whose career? Monaco → PSG → Real Madrid",
+    "Kylian Mbappé"
+   ],
+   [
+    "Whose career? Bryne → Molde → Red Bull Salzburg → Borussia Dortmund → Man City",
+    "Erling Haaland"
+   ],
+   [
+    "Whose career? Birmingham City → Borussia Dortmund → Real Madrid",
+    "Jude Bellingham"
+   ],
+   [
+    "Whose career? Lille → Chelsea → Real Madrid",
+    "Eden Hazard"
+   ],
+   [
+    "Whose career? Barcelona → Vissel Kobe → Emirates Club",
+    "Andrés Iniesta"
+   ],
+   [
+    "Whose career? Cannes → Bordeaux → Juventus → Real Madrid",
+    "Zinedine Zidane"
+   ]
+  ],
+  "200": [
+   [
+    "Whose career? PSG → Arsenal → Real Madrid → PSG → Liverpool → Man City → Fenerbahçe → Bolton → Chelsea → Shanghai Shenhua → Juventus → West Brom → Mumbai City",
+    "Nicolas Anelka"
+   ],
+   [
+    "Whose career? River Plate → Parma → Lazio → Inter → Chelsea → AC Milan → Chelsea → Inter → Genoa → Parma",
+    "Hernán Crespo"
+   ],
+   [
+    "Whose career? Colo-Colo → Bayer Leverkusen → Juventus → Bayern Munich → Barcelona → Inter → Flamengo → Athletico Paranaense → Colo-Colo",
+    "Arturo Vidal"
+   ],
+   [
+    "Whose career? Željezničar → Teplice → Wolfsburg → Man City → Roma → Inter → Fenerbahçe → Fiorentina → Schalke",
+    "Edin Džeko"
+   ],
+   [
+    "Whose career? Sporting CP → Man United → Sporting CP → Fenerbahçe → Valencia → Lazio → Sporting CP → Orlando City → Venezia → Melbourne Victory → Adana Demirspor → Estrela da Amadora → Aktobe",
+    "Nani"
+   ],
+   [
+    "Whose career? River Plate → Corinthians → West Ham → Liverpool → Barcelona → Hebei China Fortune → Estudiantes",
+    "Javier Mascherano"
+   ],
+   [
+    "Whose career? Independiente → Man United → Villarreal → Atlético Madrid → Inter → Internacional → Cerezo Osaka → Peñarol → Mumbai City → Kitchee",
+    "Diego Forlán"
+   ],
+   [
+    "Whose career? Boca Juniors → Corinthians → West Ham → Man United → Man City → Juventus → Boca Juniors → Shanghai Shenhua → Boca Juniors",
+    "Carlos Tevez"
+   ],
+   [
+    "Whose career? Anderlecht → Chelsea → West Brom → Everton → Man United → Inter → Chelsea → Inter → Roma → Napoli",
+    "Romelu Lukaku"
+   ],
+   [
+    "Whose career? Real Madrid → Juventus → Real Madrid → Chelsea → Atlético Madrid → Juventus → Atlético Madrid → AC Milan → Galatasaray → Como → Leganés",
+    "Álvaro Morata"
+   ],
+   [
+    "Whose career? Zamalek → Gent → Ajax → Celta Vigo → Marseille → Roma → Tottenham → Middlesbrough → Wigan → Zamalek → West Ham → Ajax → Zamalek → Barnsley",
+    "Mido"
+   ],
+   [
+    "Whose career? Al Ahly → Anderlecht → Mouscron → Kasımpaşa → Aston Villa → İstanbul Başakşehir → Trabzonspor → Al-Rayyan → Al Ahly → Al-Riyadh",
+    "Trezeguet (Mahmoud Hassan)"
+   ],
+   [
+    "Whose career? Zamalek → Tala'ea El Gaish → Zamalek → Galatasaray → Nantes → Konyaspor",
+    "Mostafa Mohamed"
+   ],
+   [
+    "Whose career? Ghazl El Mahalla → ENPPI → Sunderland → Hull City → Aston Villa",
+    "Ahmed Elmohamady"
+   ],
+   [
+    "Whose career? Al Mokawloon → Basel → Arsenal → Beşiktaş → Arsenal → Al Jazira → Levadiakos",
+    "Mohamed Elneny"
+   ],
+   [
+    "Whose career? Monaco → Juventus → Arsenal → Barcelona → New York Red Bulls → Arsenal → New York Red Bulls",
+    "Thierry Henry"
+   ],
+   [
+    "Whose career? Southampton → Tottenham → Real Madrid → Tottenham → Real Madrid → LAFC",
+    "Gareth Bale"
+   ],
+   [
+    "Whose career? Genk → Chelsea → Werder Bremen → Chelsea → Wolfsburg → Man City → Napoli",
+    "Kevin De Bruyne"
+   ],
+   [
+    "Whose career? Metz → Red Bull Salzburg → Southampton → Liverpool → Bayern Munich → Al Nassr",
+    "Sadio Mané"
+   ],
+   [
+    "Whose career? Groningen → Celtic → Southampton → Liverpool",
+    "Virgil van Dijk"
+   ],
+   [
+    "Whose career? Schalke → Werder Bremen → Real Madrid → Arsenal → Fenerbahçe → İstanbul Başakşehir",
+    "Mesut Özil"
+   ],
+   [
+    "Whose career? Cruzeiro → PSV → Barcelona → Inter → Real Madrid → AC Milan → Corinthians",
+    "Ronaldo Nazário"
+   ],
+   [
+    "Whose career? Sporting CP → Barcelona → Real Madrid → Inter",
+    "Luís Figo"
+   ],
+   [
+    "Whose career? Parma → Juventus → PSG → Juventus → Parma",
+    "Gianluigi Buffon"
+   ]
+  ],
+  "300": [
+   [
+    "Whose career? Vitória → Kawasaki Frontale → Consadole Sapporo → Tokyo Verdy → Porto → Zenit → Shanghai SIPG → Atlético Mineiro → Fluminense",
+    "Hulk"
+   ],
+   [
+    "Whose career? Ajax → Real Madrid → Inter → Galatasaray → Nice → Al-Gharafa",
+    "Wesley Sneijder"
+   ],
+   [
+    "Whose career? Sporting CP → Barcelona → Porto → Inter → Chelsea → Beşiktaş → Al Ahli → Porto → Beşiktaş → Kasımpaşa → Vitória Guimarães",
+    "Ricardo Quaresma"
+   ],
+   [
+    "Whose career? River Plate → Porto → Atlético Madrid → Monaco → Man United → Chelsea → Monaco → Galatasaray → Rayo Vallecano → Millonarios",
+    "Radamel Falcao"
+   ],
+   [
+    "Whose career? Albacete → Zaragoza → Real Madrid → Monaco → Real Madrid → Liverpool → Valencia → Marseille",
+    "Fernando Morientes"
+   ],
+   [
+    "Whose career? West Ham → Bournemouth → Tottenham → Portsmouth → Tottenham → Toronto FC → Sunderland → Bournemouth → Rangers → Sunderland",
+    "Jermain Defoe"
+   ],
+   [
+    "Whose career? Norwich → Coventry → Newcastle → Celtic → Blackburn → Liverpool → West Ham → Man City → Cardiff → Liverpool → Cardiff",
+    "Craig Bellamy"
+   ],
+   [
+    "Whose career? Tottenham → QPR → Portsmouth → Aston Villa → Norwich → Southampton → Liverpool → Portsmouth → Tottenham → Stoke → Burnley",
+    "Peter Crouch"
+   ],
+   [
+    "Whose career? Talleres → Huracán → Palermo → PSG → Roma → Elche → Qatar SC",
+    "Javier Pastore"
+   ],
+   [
+    "Whose career? Danubio → Palermo → Napoli → PSG → Man United → Valencia → Boca Juniors",
+    "Edinson Cavani"
+   ],
+   [
+    "Whose career? PSV → De Graafschap → AGOVV → Heerenveen → Ajax → Real Madrid → AC Milan → Schalke → Ajax → Schalke",
+    "Klaas-Jan Huntelaar"
+   ],
+   [
+    "Whose career? El Mansoura → ENPPI → Lokomotiv Moscow → Zamalek → Wigan → Zamalek → Hull City → Elazığspor → Al-Salmiya → Raja Casablanca",
+    "Amr Zaki"
+   ],
+   [
+    "Whose career? Aswan → Ismaily → Kocaelispor → Denizlispor → Gençlerbirliği → Beşiktaş → Anderlecht → Al Ahly → Zamalek",
+    "Ahmed Hassan"
+   ],
+   [
+    "Whose career? Ismaily → Fiorentina → Perugia → Al Ahly → West Brom → Al-Ittihad → NEOM",
+    "Ahmed Hegazi"
+   ],
+   [
+    "Whose career? Braga → Penafiel → Celta Vigo → Albacete → Real Valladolid → Atlético Madrid → Rayo Vallecano → Chelsea → Atlético Madrid → Atlético Mineiro → Wolves → Botafogo → Grêmio",
+    "Diego Costa"
+   ],
+   [
+    "Whose career? Tottenham → Leyton Orient → Millwall → Norwich → Leicester → Tottenham → Bayern Munich",
+    "Harry Kane"
+   ],
+   [
+    "Whose career? Tersana → Al Ahly → Baniyas → Al Ahly",
+    "Mohamed Aboutrika"
+   ],
+   [
+    "Whose career? Future FC → Al Ahly → Nice",
+    "Mohamed Abdelmonem"
+   ],
+   [
+    "Whose career? Brescia → Inter → Reggina → Brescia → AC Milan → Juventus → New York City FC",
+    "Andrea Pirlo"
+   ],
+   [
+    "Whose career? Newell's Old Boys → River Plate → Boca Juniors → Fiorentina → Roma → Inter → Al-Arabi",
+    "Gabriel Batistuta"
+   ],
+   [
+    "Whose career? Real Sociedad → Eibar → Real Sociedad → Liverpool → Real Madrid → Bayern Munich",
+    "Xabi Alonso"
+   ],
+   [
+    "Whose career? West Ham → Swansea → Chelsea → Man City → New York City FC",
+    "Frank Lampard"
+   ],
+   [
+    "Whose career? Cannes → AC Milan → Arsenal → Juventus → Inter → Man City",
+    "Patrick Vieira"
+   ],
+   [
+    "Whose career? Den Bosch → Heerenveen → PSV → Man United → Real Madrid → Hamburg → Málaga",
+    "Ruud van Nistelrooy"
+   ],
+   [
+    "Whose career? Bahia → Sevilla → Barcelona → Juventus → PSG → São Paulo → Barcelona → Pumas UNAM",
+    "Dani Alves"
+   ]
+  ],
+  "400": [
+   [
+    "Whose career? Vasco da Gama → Grêmio → Porto → Galatasaray → Sporting CP → Bolton → Ancona → Newell's Old Boys → Goiás → Beira-Mar → Anorthosis → Newcastle Jets",
+    "Mário Jardel"
+   ],
+   [
+    "Whose career? Ponte Preta → Rennes → São Paulo → Porto → Sevilla → São Paulo → Tianjin Quanjian → Vasco da Gama",
+    "Luís Fabiano"
+   ],
+   [
+    "Whose career? Sakaryaspor → Bursaspor → Galatasaray → Torino → Galatasaray → Inter → Parma → Blackburn → Galatasaray",
+    "Hakan Şükür"
+   ],
+   [
+    "Whose career? Athletic Bilbao → Juventus → Sevilla → Swansea → Tottenham → Napoli → Udinese → Eibar",
+    "Fernando Llorente"
+   ],
+   [
+    "Whose career? Lyon → Lens → Nice → Marseille → QPR → Newcastle → Chelsea → Crystal Palace → Las Palmas → Getafe → Lille → Rizespor → Adana Demirspor → Brest",
+    "Loïc Rémy"
+   ],
+   [
+    "Whose career? Rouen → Mouscron → Hoffenheim → West Ham → Newcastle → Chelsea → Beşiktaş → Shanghai Shenhua → Beşiktaş → Göztepe → Shanghai Shenhua → İstanbul Başakşehir → Lugano",
+    "Demba Ba"
+   ],
+   [
+    "Whose career? Olimpia → Bayern Munich → Blackburn → Man City → Blackburn → Real Betis → Málaga → Cruz Azul → Málaga → Olimpia → Libertad → Nacional (PAR)",
+    "Roque Santa Cruz"
+   ],
+   [
+    "Whose career? River Plate → Barcelona → Monaco → Sevilla → Real Madrid → Benfica → Málaga → Olympiacos → Verona → River Plate",
+    "Javier Saviola"
+   ],
+   [
+    "Whose career? Corinthians → CSKA Moscow → Man City → Everton → Galatasaray → Internacional → Atlético Mineiro → Al Shabab → Jiangsu Suning → Corinthians → Nagoya Grampus → Corinthians",
+    "Jô"
+   ],
+   [
+    "Whose career? Zamalek → PAOK → Zamalek → Al Wasl → Sporting CP → Ismaily → Zamalek → Al-Raed → Apollon Smyrnis → Zamalek",
+    "Shikabala"
+   ],
+   [
+    "Whose career? ENPPI → Luzern → Grasshopper → ENPPI → Zamalek → Al-Ittihad → Aves → Al Ahly → Hatayspor → Al Ahly → Al Ittihad (Libya) → Qadsia → ENPPI",
+    "Mahmoud Kahraba"
+   ],
+   [
+    "Whose career? Al Ahly → Stoke → Huddersfield → Al Ahly → Pyramids",
+    "Ramadan Sobhi"
+   ],
+   [
+    "Whose career? Zamalek → Basel → LAFC → Pyramids → Tala'ea El Gaish → Pyramids → Zamalek",
+    "Omar Gaber"
+   ],
+   [
+    "Whose career? AB (Akademisk Boldklub) → Midtjylland → Werder Bremen → Mainz → Hamburg → Borussia Dortmund → Mainz → Baniyas → El Entag El Harby",
+    "Mohamed Zidan"
+   ],
+   [
+    "Whose career? Al Ahly → Feyenoord → Tottenham → Derby County → Al Nassr → Al Ahly → Lierse → Al Ahly → Al Nassr → Al Ahly",
+    "Hossam Ghaly"
+   ],
+   [
+    "Whose career? CSKA Sofia → Bayer Leverkusen → Tottenham → Man United → Fulham → Monaco → PAOK → Kerala Blasters",
+    "Dimitar Berbatov"
+   ],
+   [
+    "Whose career? Marseille → Arsenal → Man City → Sevilla → Antalyaspor → West Ham → Anderlecht",
+    "Samir Nasri"
+   ],
+   [
+    "Whose career? Wydad Casablanca → Atlético Madrid → Real Zaragoza → Girona → Sevilla → Al Hilal",
+    "Yassine Bounou"
+   ],
+   [
+    "Whose career? Beveren → Metalurh Donetsk → Olympiacos → Monaco → Barcelona → Man City → Olympiacos → Qingdao Huanghai",
+    "Yaya Touré"
+   ],
+   [
+    "Whose career? Santos → Real Madrid → Man City → Santos → AC Milan → Santos → Guangzhou Evergrande → Atlético Mineiro → Sivasspor → İstanbul Başakşehir",
+    "Robinho"
+   ],
+   [
+    "Whose career? Galatasaray → Atlético Madrid → Barcelona → İstanbul Başakşehir → Galatasaray",
+    "Arda Turan"
+   ],
+   [
+    "Whose career? Sheffield United → Hull City → Wigan → Hull City → Leicester → Man United",
+    "Harry Maguire"
+   ],
+   [
+    "Whose career? Basel → Schalke → Sevilla → Barcelona → Sevilla → Al-Shabab → Hajduk Split",
+    "Ivan Rakitić"
+   ],
+   [
+    "Whose career? Chemnitzer FC → Kaiserslautern → Bayer Leverkusen → Bayern Munich → Chelsea → Bayer Leverkusen",
+    "Michael Ballack"
+   ],
+   [
+    "Whose career? Tonnerre Yaoundé → Monaco → PSG → AC Milan → Chelsea → Man City → Marseille → Al Jazira",
+    "George Weah"
+   ]
+  ],
+  "500": [
+   [
+    "Whose career? Hertha Berlin → Tottenham → Borussia Dortmund → Portsmouth → Genoa → AC Milan → Schalke → AC Milan → Las Palmas → Eintracht Frankfurt → Sassuolo → Barcelona → Fiorentina → Beşiktaş → Monza → Hertha Berlin",
+    "Kevin-Prince Boateng"
+   ],
+   [
+    "Whose career? Lumezzane → Inter → Man City → AC Milan → Liverpool → AC Milan → Nice → Marseille → Brescia → Monza → Adana Demirspor → Sion → Adana Demirspor → Genoa",
+    "Mario Balotelli"
+   ],
+   [
+    "Whose career? Vaal Professionals → FC Zürich → Rennes → Monaco → Roma → Blackburn → Galatasaray",
+    "Shabani Nonda"
+   ],
+   [
+    "Whose career? Torino → Pisa → Ravenna → Venezia → Atalanta → Juventus → Atlético Madrid → Lazio → Inter → AC Milan → Monaco → Sampdoria → Atalanta → Fiorentina → Atalanta",
+    "Christian Vieri"
+   ],
+   [
+    "Whose career? Metz → Monaco → Arsenal → Man City → Real Madrid → Tottenham → Crystal Palace → İstanbul Başakşehir → Kayserispor → Olimpia → Semassi",
+    "Emmanuel Adebayor"
+   ],
+   [
+    "Whose career? Feyenoord → Real Madrid → Hércules → Everton → Alania Vladikavkaz → Reading → Sheffield Wednesday → Kayseri Erciyesspor → Baniyas → Sparta Rotterdam",
+    "Royston Drenthe"
+   ],
+   [
+    "Whose career? Barcelona → Roma → AC Milan → Ajax → Stoke → Mainz → Alavés → Montreal Impact → Vissel Kobe",
+    "Bojan Krkić"
+   ],
+   [
+    "Whose career? Beveren → Le Mans → Lille → Arsenal → Roma → Hebei China Fortune → Parma → Trabzonspor → Aris",
+    "Gervinho"
+   ],
+   [
+    "Whose career? Twente → Inter → Werder Bremen → Stoke → West Ham → Shanghai SIPG → Bologna → Inter → Red Star Belgrade",
+    "Marko Arnautović"
+   ],
+   [
+    "Whose career? Liberty Professionals → Udinese → Modena → Rennes → Sunderland → Al Ain → Shanghai SIPG → Shabab Al Ahli → Kayserispor → NorthEast United → Legon Cities",
+    "Asamoah Gyan"
+   ],
+   [
+    "Whose career? Lyon → Marseille → Newcastle → Hull City → Nice → PSG → Rennes → Real Valladolid → Bordeaux → Lille",
+    "Hatem Ben Arfa"
+   ],
+   [
+    "Whose career? Reggiana → Inter → Newcastle → Wolfsburg → Rubin Kazan → Birmingham → Levante → Seattle Sounders → Shanghai Shenhua → Wuhan",
+    "Obafemi Martins"
+   ],
+   [
+    "Whose career? Al Ahly → PAOK → Neuchâtel Xamax → Al Ahly → Al Ain → Zamalek → Al Masry → Tersana → Al Ittihad Alexandria",
+    "Hossam Hassan"
+   ],
+   [
+    "Whose career? Port Vale → Chesterfield → Wigan → Barnsley → Wigan → Middlesbrough → Ipswich → Kuwait SC → Bristol City",
+    "Sam Morsy"
+   ],
+   [
+    "Whose career? Partizan → Fiorentina → Man City → Inter → Sevilla → Monaco → Hertha Berlin → Olympiacos → Omonia → AEL Limassol",
+    "Stevan Jovetić"
+   ],
+   [
+    "Whose career? Partizan → PSV → Chelsea → Atlético Madrid → Fenerbahçe → PSG → Zenit → South China → BATE Borisov",
+    "Mateja Kežman"
+   ],
+   [
+    "Whose career? Bastia → Lyon → Chelsea → Real Madrid → Chelsea → AC Milan → Panathinaikos → Persib Bandung → Sabail",
+    "Michael Essien"
+   ],
+   [
+    "Whose career? Borussia Neunkirchen → Eintracht Frankfurt → Fenerbahçe → PSG → Bolton → Qatar SC → Hull City",
+    "Jay-Jay Okocha"
+   ],
+   [
+    "Whose career? Seven Stars → Cape Town Spurs → Ajax → Celta Vigo → Porto → Blackburn → West Ham → Orlando Pirates",
+    "Benni McCarthy"
+   ],
+   [
+    "Whose career? Lens → Tottenham → QPR → Fulham → AC Milan → Benfica → Genoa → Benfica → Al Nasr",
+    "Adel Taarabt"
+   ],
+   [
+    "Whose career? Bordeaux → Arsenal → West Ham → Crystal Palace → Cardiff",
+    "Marouane Chamakh"
+   ],
+   [
+    "Whose career? Iwuanyanwu Nationale → Ajax → Inter → Arsenal → West Brom → Portsmouth",
+    "Nwankwo Kanu"
+   ],
+   [
+    "Whose career? ASEC Mimosas → Beveren → Arsenal → Galatasaray → Sunderland",
+    "Emmanuel Eboué"
+   ],
+   [
+    "Whose career? Millwall → Everton → New York Red Bulls → Shanghai Shenhua → Hangzhou Greentown → Melbourne City → Millwall → Jamshedpur",
+    "Tim Cahill"
+   ],
+   [
+    "Whose career? Cerezo Osaka → Borussia Dortmund → Man United → Borussia Dortmund → Beşiktaş → Real Zaragoza → PAOK → Sint-Truiden → Cerezo Osaka",
+    "Shinji Kagawa"
+   ],
+   [
+    "Whose career? Chivas → Man United → Real Madrid → Man United → Bayer Leverkusen → West Ham → Sevilla → LA Galaxy → Chivas",
+    "Javier Hernández (Chicharito)"
+   ]
+  ]
+ }
+}

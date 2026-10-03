@@ -1,0 +1,678 @@
+{
+ "id": "pl",
+ "name": "Premier League (2000–Now)",
+ "type": "text",
+ "desc": "The Premier League from the 2000–01 season to today.",
+ "data": {
+  "100": [
+   [
+    "Who won the Premier League in 2024–25?",
+    "Liverpool"
+   ],
+   [
+    "Which club won four titles in a row from 2020–21 to 2023–24?",
+    "Manchester City"
+   ],
+   [
+    "Which Egyptian has won the Premier League Golden Boot four times?",
+    "Mohamed Salah"
+   ],
+   [
+    "Who managed Manchester United until 2013?",
+    "Sir Alex Ferguson"
+   ],
+   [
+    "Who managed Arsenal to the 2025–26 Premier League title?",
+    "Mikel Arteta"
+   ],
+   [
+    "Which club does Erling Haaland play for?",
+    "Manchester City"
+   ],
+   [
+    "Which club is nicknamed 'the Toffees'?",
+    "Everton"
+   ],
+   [
+    "Which club plays at the Etihad Stadium?",
+    "Manchester City"
+   ],
+   [
+    "Which club plays at the Emirates Stadium?",
+    "Arsenal"
+   ],
+   [
+    "Whose fans sing 'You'll Never Walk Alone'?",
+    "Liverpool's"
+   ],
+   [
+    "Which Spurs striker moved to Bayern Munich in 2023?",
+    "Harry Kane"
+   ],
+   [
+    "Which London club is nicknamed 'the Hammers'?",
+    "West Ham United"
+   ],
+   [
+    "Which club plays at St James' Park?",
+    "Newcastle United"
+   ],
+   [
+    "Which South Korean captained Tottenham?",
+    "Son Heung-min"
+   ],
+   [
+    "Which 5000-to-1 outsiders won the 2015–16 title?",
+    "Leicester City"
+   ],
+   [
+    "Which club went the entire 2003–04 Premier League season unbeaten?",
+    "Arsenal"
+   ],
+   [
+    "Which Russian billionaire bought Chelsea in 2003?",
+    "Roman Abramovich"
+   ],
+   [
+    "Who won the title in his first season as Chelsea manager, 2004–05?",
+    "José Mourinho"
+   ],
+   [
+    "Which Arsenal striker won four Golden Boots between 2002 and 2006?",
+    "Thierry Henry"
+   ],
+   [
+    "Which Portuguese winger joined Manchester United from Sporting Lisbon in 2003?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which 16-year-old Everton striker's late winner ended Arsenal's 30-game unbeaten run in October 2002?",
+    "Wayne Rooney"
+   ],
+   [
+    "Who replaced Jürgen Klopp as Liverpool manager in 2024?",
+    "Arne Slot"
+   ],
+   [
+    "Which club won the 2025–26 Premier League, its first title in 22 years?",
+    "Arsenal"
+   ],
+   [
+    "Which club plays at Villa Park?",
+    "Aston Villa"
+   ],
+   [
+    "Which club won the 2019–20 title, its first league title in 30 years?",
+    "Liverpool"
+   ],
+   [
+    "Which Egyptian striker joined Manchester City in January 2025?",
+    "Omar Marmoush"
+   ],
+   [
+    "Who managed Manchester City to the treble in 2022–23?",
+    "Pep Guardiola"
+   ],
+   [
+    "Which England winger came through Arsenal's academy and wears the number 7?",
+    "Bukayo Saka"
+   ],
+   [
+    "Which club did Wayne Rooney join from Everton in 2004?",
+    "Manchester United"
+   ],
+   [
+    "Which Liverpool right-back left for Real Madrid in 2025?",
+    "Trent Alexander-Arnold"
+   ],
+   [
+    "Who won the 2025–26 Golden Boot with 27 goals?",
+    "Erling Haaland"
+   ],
+   [
+    "Who managed Liverpool from 2015 to 2024?",
+    "Jürgen Klopp"
+   ],
+   [
+    "Which club plays at Selhurst Park?",
+    "Crystal Palace"
+   ]
+  ],
+  "200": [
+   [
+    "Which Ivorian striker joined Chelsea from Marseille in 2004?",
+    "Didier Drogba"
+   ],
+   [
+    "Which midfielder joined Chelsea from West Ham in 2001?",
+    "Frank Lampard"
+   ],
+   [
+    "Who won the 2013–14 Golden Boot with 31 goals for Liverpool?",
+    "Luis Suárez"
+   ],
+   [
+    "Which Dutchman won the Golden Boot in 2011–12 and 2012–13?",
+    "Robin van Persie"
+   ],
+   [
+    "Who managed Chelsea to the title in his first season, 2016–17?",
+    "Antonio Conte"
+   ],
+   [
+    "Which club finished 2018–19 with 97 points and still came second?",
+    "Liverpool"
+   ],
+   [
+    "Which Leicester striker scored in 11 Premier League games in a row in 2015?",
+    "Jamie Vardy"
+   ],
+   [
+    "Who managed Chelsea to the 2014–15 title?",
+    "José Mourinho"
+   ],
+   [
+    "Which Brazilian goalkeeper won title after title with Pep's Man City?",
+    "Ederson"
+   ],
+   [
+    "Which Belgian playmaker starred for Man City from 2015 to 2025?",
+    "Kevin De Bruyne"
+   ],
+   [
+    "Which club went down in 2022–23 along with Leicester and Leeds?",
+    "Southampton"
+   ],
+   [
+    "Which manager left Arsenal in 2018 after 22 years?",
+    "Arsène Wenger"
+   ],
+   [
+    "Which Spanish goalkeeper played for Manchester United from 2011 to 2023?",
+    "David de Gea"
+   ],
+   [
+    "Name Liverpool's famous front three under Klopp.",
+    "Salah, Mané and Firmino"
+   ],
+   [
+    "From which club did Arsenal sign Declan Rice in 2023?",
+    "West Ham"
+   ],
+   [
+    "Which Manchester United captain set a Premier League record with 21 assists in 2025–26?",
+    "Bruno Fernandes"
+   ],
+   [
+    "Who won the 2007–08 Golden Boot with 31 goals?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which club won the league and FA Cup Double in 2001–02?",
+    "Arsenal"
+   ],
+   [
+    "Which manager, known as 'Big Sam', led Bolton from 1999 to 2007?",
+    "Sam Allardyce"
+   ],
+   [
+    "Which Dutchman won the 2002–03 Golden Boot for Manchester United?",
+    "Ruud van Nistelrooy"
+   ],
+   [
+    "Which Egyptian striker joined Tottenham on loan from Roma in January 2005?",
+    "Mido"
+   ],
+   [
+    "Which Spaniard left Valencia to become Liverpool manager in 2004?",
+    "Rafael Benítez"
+   ],
+   [
+    "Which Newcastle striker retired in 2006 as the Premier League's all-time top scorer?",
+    "Alan Shearer"
+   ],
+   [
+    "Which Italian 'Tinkerman' managed Chelsea from 2000 to 2004?",
+    "Claudio Ranieri"
+   ],
+   [
+    "Which German playmaker joined Liverpool from Bayer Leverkusen in 2025?",
+    "Florian Wirtz"
+   ],
+   [
+    "Which Norwegian playmaker joined Arsenal from Real Madrid in 2021?",
+    "Martin Ødegaard"
+   ],
+   [
+    "Which club is nicknamed 'the Seagulls'?",
+    "Brighton & Hove Albion"
+   ],
+   [
+    "Which Liverpool captain lifted the 2019–20 Premier League trophy?",
+    "Jordan Henderson"
+   ],
+   [
+    "Which club won the 2025 League Cup, its first major domestic trophy in 70 years?",
+    "Newcastle United"
+   ],
+   [
+    "Which Dutch defender captained Liverpool to the 2024–25 title?",
+    "Virgil van Dijk"
+   ],
+   [
+    "Which London club plays at Craven Cottage?",
+    "Fulham"
+   ],
+   [
+    "Which Belgian striker had two spells at Chelsea, the second after joining from Inter in 2021?",
+    "Romelu Lukaku"
+   ],
+   [
+    "Which Swedish striker joined Liverpool from Newcastle for a British record fee in 2025?",
+    "Alexander Isak"
+   ]
+  ],
+  "300": [
+   [
+    "Who won the 2009–10 Golden Boot with 29 goals for Chelsea?",
+    "Didier Drogba"
+   ],
+   [
+    "Which two players shared the 2010–11 Golden Boot?",
+    "Dimitar Berbatov and Carlos Tevez"
+   ],
+   [
+    "Who won the Golden Boot in 2019–20 at the age of 33?",
+    "Jamie Vardy"
+   ],
+   [
+    "Who shared the 2021–22 Golden Boot with Mohamed Salah?",
+    "Son Heung-min"
+   ],
+   [
+    "Which three players shared the 2018–19 Golden Boot?",
+    "Salah, Mané and Aubameyang"
+   ],
+   [
+    "Who managed Man City to their first Premier League title in 2011–12?",
+    "Roberto Mancini"
+   ],
+   [
+    "Which club won the title in Ferguson's final season, 2012–13?",
+    "Manchester United"
+   ],
+   [
+    "Who won the 2008–09 Golden Boot for Chelsea?",
+    "Nicolas Anelka"
+   ],
+   [
+    "How many league goals did Haaland score in his first Premier League season?",
+    "36"
+   ],
+   [
+    "Which Liverpool defender won PFA Player of the Year in 2019?",
+    "Virgil van Dijk"
+   ],
+   [
+    "Who managed Tottenham to second place in 2016–17?",
+    "Mauricio Pochettino"
+   ],
+   [
+    "Who was Manchester United's first manager after Ferguson?",
+    "David Moyes"
+   ],
+   [
+    "Which club bought Philippe Coutinho from Liverpool in 2018?",
+    "Barcelona"
+   ],
+   [
+    "Which Argentine coach led Leeds back to the Premier League in 2020?",
+    "Marcelo Bielsa"
+   ],
+   [
+    "Who scored the fastest Premier League goal, after 7.69 seconds in 2019?",
+    "Shane Long"
+   ],
+   [
+    "Who won the 2000–01 Golden Boot with 23 goals for Chelsea?",
+    "Jimmy Floyd Hasselbaink"
+   ],
+   [
+    "Who won the 2006–07 Golden Boot with 20 goals for Chelsea?",
+    "Didier Drogba"
+   ],
+   [
+    "Which club finished 8th in its first-ever top-flight season, 2006–07?",
+    "Reading"
+   ],
+   [
+    "Who replaced José Mourinho as Chelsea manager in September 2007?",
+    "Avram Grant"
+   ],
+   [
+    "Which club ended Arsenal's 49-match unbeaten run in October 2004?",
+    "Manchester United"
+   ],
+   [
+    "Which Liverpool striker scored 24 league goals in his debut season, 2007–08?",
+    "Fernando Torres"
+   ],
+   [
+    "Which defender joined Manchester United from Leeds for a British record fee in 2002?",
+    "Rio Ferdinand"
+   ],
+   [
+    "Which Liverpool captain won PFA Player of the Year in 2006?",
+    "Steven Gerrard"
+   ],
+   [
+    "From which club did Man City sign Haaland?",
+    "Borussia Dortmund"
+   ],
+   [
+    "Which club left Goodison Park for a new stadium at Bramley-Moore Dock in 2025?",
+    "Everton"
+   ],
+   [
+    "Which London club was relegated in 2025–26 with 39 points?",
+    "West Ham United"
+   ],
+   [
+    "Which Arsenal goalkeeper won the 2025–26 Golden Glove with 19 clean sheets?",
+    "David Raya"
+   ],
+   [
+    "Which Portuguese manager did Manchester United sack in January 2026?",
+    "Rúben Amorim"
+   ],
+   [
+    "Which Italian manager left Chelsea on New Year's Day 2026?",
+    "Enzo Maresca"
+   ],
+   [
+    "Which Ivorian midfielder, brother of Kolo, won three titles with Manchester City?",
+    "Yaya Touré"
+   ],
+   [
+    "Which Liverpool striker bit Chelsea's Branislav Ivanović in 2013?",
+    "Luis Suárez"
+   ],
+   [
+    "Which Spanish playmaker, 'El Mago', won four titles with Manchester City from 2010 to 2020?",
+    "David Silva"
+   ],
+   [
+    "Which French midfielder won back-to-back titles with Leicester and Chelsea in 2016 and 2017?",
+    "N'Golo Kanté"
+   ]
+  ],
+  "400": [
+   [
+    "Whose record of 32 goals in a 38-game season did Haaland break?",
+    "Mohamed Salah's"
+   ],
+   [
+    "Which club won the 2016–17 title with a then-record 30 wins?",
+    "Chelsea"
+   ],
+   [
+    "Which club holds the record of 32 wins in a single season?",
+    "Manchester City"
+   ],
+   [
+    "Who won PFA Player of the Year in 2017–18?",
+    "Mohamed Salah"
+   ],
+   [
+    "For which club was Rodri playing when he won the 2024 Ballon d'Or?",
+    "Manchester City"
+   ],
+   [
+    "Which club went down with just 16 points in 2023–24?",
+    "Sheffield United"
+   ],
+   [
+    "Who managed Man City to the 2013–14 title?",
+    "Manuel Pellegrini"
+   ],
+   [
+    "Which club nearly won the 2013–14 title under Brendan Rodgers?",
+    "Liverpool"
+   ],
+   [
+    "Whose slip against Chelsea in April 2014 cost Liverpool dearly?",
+    "Steven Gerrard's"
+   ],
+   [
+    "How many points did Leicester win the 2015–16 title with?",
+    "81"
+   ],
+   [
+    "Which Algerian winger won PFA Player of the Year in 2016?",
+    "Riyad Mahrez"
+   ],
+   [
+    "To which club did Cesc Fàbregas leave Arsenal in 2011?",
+    "Barcelona"
+   ],
+   [
+    "How many Premier League titles did Sir Alex Ferguson win?",
+    "13"
+   ],
+   [
+    "Which Liverpool goalkeeper scored a header against West Brom in 2021?",
+    "Alisson Becker"
+   ],
+   [
+    "Which club went down in 2007–08 with a record-low 11 points?",
+    "Derby County"
+   ],
+   [
+    "How many league goals did Chelsea concede in their 2004–05 title season?",
+    "15"
+   ],
+   [
+    "Which Chelsea captain won PFA Player of the Year in 2005?",
+    "John Terry"
+   ],
+   [
+    "Whose final-day winner at Old Trafford kept West Ham up in 2007?",
+    "Carlos Tevez"
+   ],
+   [
+    "At which rival's ground did Arsenal clinch the 2003–04 title?",
+    "Tottenham's (White Hart Lane)"
+   ],
+   [
+    "Which Arsenal captain was sent off in the 2003 'Battle of Old Trafford'?",
+    "Patrick Vieira"
+   ],
+   [
+    "Which club, Champions League semi-finalists in 2001, were relegated in 2004?",
+    "Leeds United"
+   ],
+   [
+    "Which Egyptian midfielder threw his Tottenham shirt to the ground after being substituted in 2007?",
+    "Hossam Ghaly"
+   ],
+   [
+    "Which club did Liverpool beat 7–0 in March 2023?",
+    "Manchester United"
+   ],
+   [
+    "Which club finished bottom in 2025–26 with just 20 points?",
+    "Wolverhampton Wanderers"
+   ],
+   [
+    "Which south-coast club qualified for Europe for the first time by finishing 6th in 2025–26?",
+    "Bournemouth"
+   ],
+   [
+    "How many points did Arsenal win the 2025–26 title with?",
+    "85"
+   ],
+   [
+    "In 2024–25 all three promoted clubs went straight back down. Name them.",
+    "Leicester City, Ipswich Town and Southampton"
+   ],
+   [
+    "Which club became the first Welsh side to play in the Premier League, in 2011?",
+    "Swansea City"
+   ],
+   [
+    "Who is Manchester City's all-time top Premier League scorer?",
+    "Sergio Agüero"
+   ],
+   [
+    "Which Togolese striker played for Arsenal, Man City, Tottenham and Crystal Palace?",
+    "Emmanuel Adebayor"
+   ],
+   [
+    "Which club finished second behind Arsenal in 2025–26?",
+    "Manchester City"
+   ],
+   [
+    "Which promoted club finished 7th in 2025–26 to reach the Europa League?",
+    "Sunderland"
+   ],
+   [
+    "Which Spanish striker joined Chelsea from Liverpool for £50m in January 2011?",
+    "Fernando Torres"
+   ]
+  ],
+  "500": [
+   [
+    "How many points did Liverpool win the 2019–20 title with?",
+    "99"
+   ],
+   [
+    "In 2025–26 Bruno Fernandes broke the record of 20 assists in a season, held by Kevin De Bruyne and which Arsenal legend?",
+    "Thierry Henry"
+   ],
+   [
+    "Who won the 2014–15 Golden Boot?",
+    "Sergio Agüero"
+   ],
+   [
+    "In which season did Harry Kane win his first Golden Boot?",
+    "2015–16"
+   ],
+   [
+    "Who scored five goals in about 20 minutes against Newcastle in 2015?",
+    "Sergio Agüero"
+   ],
+   [
+    "Leicester keeper Kasper Schmeichel's father won the league with which club?",
+    "Manchester United"
+   ],
+   [
+    "Who assisted Agüero's title-winning goal in 2012?",
+    "Mario Balotelli"
+   ],
+   [
+    "Who managed Chelsea to the 2009–10 title with a record 103 goals?",
+    "Carlo Ancelotti"
+   ],
+   [
+    "Which Tottenham player won PFA Player of the Year in 2011 and 2013?",
+    "Gareth Bale"
+   ],
+   [
+    "Which club lost 9–0 to Liverpool in August 2022?",
+    "Bournemouth"
+   ],
+   [
+    "Which club did Man City beat 6–1 away in October 2011?",
+    "Manchester United"
+   ],
+   [
+    "Which Leicester owner died in a helicopter crash outside the stadium in 2018?",
+    "Vichai Srivaddhanaprabha"
+   ],
+   [
+    "Whose record of 653 Premier League appearances did James Milner break in February 2026?",
+    "Gareth Barry"
+   ],
+   [
+    "Which goalkeeper holds the record for most Premier League clean sheets?",
+    "Petr Čech (202)"
+   ],
+   [
+    "Which club beat Reading 7–4 in 2007, the highest-scoring Premier League game ever?",
+    "Portsmouth"
+   ],
+   [
+    "Spurs led Man United 3–0 at half-time in September 2001. What was the final score?",
+    "3–5 to Manchester United"
+   ],
+   [
+    "Which club beat Manchester City 8–1 on the final day of 2007–08?",
+    "Middlesbrough"
+   ],
+   [
+    "Who set a record of 164 consecutive Premier League appearances, ending in 2005?",
+    "Frank Lampard"
+   ],
+   [
+    "Which Manchester United striker won PFA Player of the Year in 2001?",
+    "Teddy Sheringham"
+   ],
+   [
+    "Which newly promoted club finished 5th in 2000–01?",
+    "Ipswich Town"
+   ],
+   [
+    "Man United clinched the 2007–08 title with a final-day win away at which club?",
+    "Wigan Athletic"
+   ],
+   [
+    "Who broke Wayne Rooney's record as the youngest Premier League scorer in December 2002?",
+    "James Milner"
+   ],
+   [
+    "Which Man City defender won the 2025–26 Young Player of the Season award?",
+    "Nico O'Reilly"
+   ],
+   [
+    "Which club went straight back down in 2025–26, along with Wolves and West Ham?",
+    "Burnley"
+   ],
+   [
+    "Which Nigerian showman starred for Bolton from 2002 to 2006?",
+    "Jay-Jay Okocha"
+   ],
+   [
+    "Whose 10-second goal for Spurs in 2000 was the Premier League's fastest until 2019?",
+    "Ledley King"
+   ],
+   [
+    "Which Tottenham goalkeeper scored a long free kick against Watford in 2007?",
+    "Paul Robinson"
+   ],
+   [
+    "Which Stoke goalkeeper scored after 13 seconds against Southampton in 2013?",
+    "Asmir Begović"
+   ],
+   [
+    "Who was Arsenal's goalkeeper in the 2003–04 'Invincibles' season?",
+    "Jens Lehmann"
+   ],
+   [
+    "Which Saudi fund led the takeover of Newcastle in 2021?",
+    "The Public Investment Fund (PIF)"
+   ],
+   [
+    "Which Chilean moved from Arsenal to Manchester United in a 2018 swap for Henrikh Mkhitaryan?",
+    "Alexis Sánchez"
+   ],
+   [
+    "How many Golden Boots had Erling Haaland won by the end of 2025–26?",
+    "3"
+   ],
+   [
+    "Whose long-range winner against Leicester in May 2019 kept Man City's title bid on track?",
+    "Vincent Kompany"
+   ]
+  ]
+ }
+}

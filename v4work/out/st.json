@@ -1,0 +1,382 @@
+{
+ "id": "st",
+ "name": "Stranger Things",
+ "type": "text",
+ "desc": "Hawkins, the Upside Down and the gang.",
+ "data": {
+  "100": [
+   [
+    "The town where Stranger Things is set.",
+    "Hawkins, Indiana"
+   ],
+   [
+    "The girl with powers, named after the number tattooed on her arm.",
+    "Eleven"
+   ],
+   [
+    "The boy who goes missing in season 1.",
+    "Will Byers"
+   ],
+   [
+    "The dark parallel dimension.",
+    "The Upside Down"
+   ],
+   [
+    "Eleven's favourite food.",
+    "Eggo waffles"
+   ],
+   [
+    "Will's mum.",
+    "Joyce Byers"
+   ],
+   [
+    "Hawkins' chief of police.",
+    "Jim Hopper"
+   ],
+   [
+    "The fantasy board game the boys play.",
+    "Dungeons & Dragons"
+   ],
+   [
+    "The season 1 monster, named after a D&D creature.",
+    "The Demogorgon"
+   ],
+   [
+    "In which decade is the show set?",
+    "The 1980s"
+   ],
+   [
+    "What does Joyce use to talk to Will through the wall?",
+    "Christmas lights"
+   ],
+   [
+    "Which streaming service makes Stranger Things?",
+    "Netflix"
+   ],
+   [
+    "The curly-haired kid with missing teeth who adopts a creature.",
+    "Dustin"
+   ],
+   [
+    "Mike's little sister, taken by Vecna in the final season.",
+    "Holly Wheeler"
+   ],
+   [
+    "Eleven's boyfriend.",
+    "Mike Wheeler"
+   ],
+   [
+    "The metal-loving leader of the Hellfire Club in season 4.",
+    "Eddie Munson"
+   ],
+   [
+    "What do the kids ride everywhere around Hawkins?",
+    "Bikes"
+   ],
+   [
+    "How many seasons does Stranger Things have?",
+    "Five"
+   ],
+   [
+    "What does Eleven call Hopper after he adopts her?",
+    "Dad"
+   ]
+  ],
+  "200": [
+   [
+    "What happens to Eleven's nose when she uses her powers?",
+    "It bleeds"
+   ],
+   [
+    "Lucas's sassy younger sister.",
+    "Erica"
+   ],
+   [
+    "The new mall in season 3.",
+    "Starcourt Mall"
+   ],
+   [
+    "The ice cream shop where Steve works.",
+    "Scoops Ahoy"
+   ],
+   [
+    "The giant shadow monster of season 2.",
+    "The Mind Flayer"
+   ],
+   [
+    "The villain of season 4.",
+    "Vecna"
+   ],
+   [
+    "Which song saves Max from Vecna?",
+    "Running Up That Hill (Kate Bush)"
+   ],
+   [
+    "Mike's older sister.",
+    "Nancy Wheeler"
+   ],
+   [
+    "The government lab where Eleven grew up.",
+    "Hawkins National Laboratory"
+   ],
+   [
+    "Steve's weapon of choice.",
+    "A baseball bat with nails"
+   ],
+   [
+    "What does Dustin name the creature he adopts?",
+    "Dart"
+   ],
+   [
+    "Who created the show?",
+    "The Duffer Brothers"
+   ],
+   [
+    "Who finally kills Vecna in the series finale?",
+    "Joyce Byers"
+   ],
+   [
+    "Which character comes out as gay to his friends in the final season?",
+    "Will Byers"
+   ],
+   [
+    "Who proposes to Joyce in the series finale?",
+    "Hopper"
+   ],
+   [
+    "Which character spends most of the final season in a coma?",
+    "Max"
+   ],
+   [
+    "Who becomes Max's boyfriend?",
+    "Lucas Sinclair"
+   ],
+   [
+    "What does Eleven wear over her eyes to focus her powers?",
+    "A blindfold"
+   ]
+  ],
+  "300": [
+   [
+    "What is Eleven's real first name?",
+    "Jane"
+   ],
+   [
+    "The scientist Eleven calls \"Papa\".",
+    "Dr Martin Brenner"
+   ],
+   [
+    "Eddie Munson's D&D club.",
+    "The Hellfire Club"
+   ],
+   [
+    "Which song does Eddie play on guitar in the Upside Down?",
+    "Master of Puppets (Metallica)"
+   ],
+   [
+    "In which country is Hopper imprisoned in season 4?",
+    "Russia (the Soviet Union)"
+   ],
+   [
+    "Will's older brother.",
+    "Jonathan Byers"
+   ],
+   [
+    "What is Max's surname?",
+    "Mayfield"
+   ],
+   [
+    "Dustin's girlfriend from summer camp in Utah.",
+    "Suzie"
+   ],
+   [
+    "Which song do Dustin and Suzie sing over the radio?",
+    "The NeverEnding Story theme"
+   ],
+   [
+    "Who helps Steve crack the Russian code in season 3?",
+    "Robin"
+   ],
+   [
+    "Eleven's 'sister' with illusion powers, number Eight.",
+    "Kali"
+   ],
+   [
+    "Max's violent older stepbrother.",
+    "Billy Hargrove"
+   ],
+   [
+    "The dog-like creatures of season 2.",
+    "Demodogs"
+   ],
+   [
+    "Into how many volumes was the final season released?",
+    "Three"
+   ],
+   [
+    "In which year is the final season set?",
+    "1987"
+   ],
+   [
+    "The video rental store where Steve and Robin work in season 4.",
+    "Family Video"
+   ],
+   [
+    "The arcade game where Max holds the high score as MADMAX.",
+    "Dig Dug"
+   ],
+   [
+    "Who becomes valedictorian and gives the graduation speech in the finale?",
+    "Dustin"
+   ]
+  ],
+  "400": [
+   [
+    "What is Vecna's real name?",
+    "Henry Creel"
+   ],
+   [
+    "Before he became Vecna, what number was he at the lab?",
+    "One (001)"
+   ],
+   [
+    "The conspiracy-theorist journalist who helps Nancy and Jonathan.",
+    "Murray Bauman"
+   ],
+   [
+    "Joyce's kind boyfriend in season 2, killed in the lab.",
+    "Bob Newby"
+   ],
+   [
+    "The fort Will built in the woods.",
+    "Castle Byers"
+   ],
+   [
+    "The name of Hopper's late daughter.",
+    "Sara"
+   ],
+   [
+    "The school dance at the end of season 2.",
+    "The Snow Ball"
+   ],
+   [
+    "The project that restores Eleven's powers in season 4.",
+    "NINA"
+   ],
+   [
+    "In which year is season 1 set?",
+    "1983"
+   ],
+   [
+    "At whose pool party does Barb disappear?",
+    "Steve's"
+   ],
+   [
+    "Which Clash song is a big part of season 1?",
+    "Should I Stay or Should I Go"
+   ],
+   [
+    "Into how many volumes was season 4 split?",
+    "Two"
+   ],
+   [
+    "The basketball star who leads the hunt for Eddie in season 4.",
+    "Jason Carver"
+   ],
+   [
+    "Which of Eleven's 'sisters' is killed in the final season?",
+    "Kali (Eight)"
+   ],
+   [
+    "The military scientist hunting Eleven in season 5.",
+    "Dr. Kay"
+   ],
+   [
+    "What is the dimension beyond the Upside Down called in season 5?",
+    "The Abyss"
+   ],
+   [
+    "Who does Mike hand his D&D game over to at the very end?",
+    "Holly (and her friends)"
+   ],
+   [
+    "Hawkins' local newspaper.",
+    "The Hawkins Post"
+   ]
+  ],
+  "500": [
+   [
+    "The cat that Dart eats.",
+    "Mews"
+   ],
+   [
+    "Lucas's weapon of choice.",
+    "A slingshot (Wrist Rocket)"
+   ],
+   [
+    "The restaurant where Hopper and Joyce plan their date.",
+    "Enzo's"
+   ],
+   [
+    "Finish Hopper's rule: \"Mornings are for coffee and ___\".",
+    "Contemplation"
+   ],
+   [
+    "What is Eleven's mother's name?",
+    "Terry Ives"
+   ],
+   [
+    "Which number does Suzie give Dustin to open the safe?",
+    "Planck's constant"
+   ],
+   [
+    "Vecna's first victim in season 4.",
+    "Chrissy Cunningham"
+   ],
+   [
+    "The Russian guard Hopper befriends and calls \"Enzo\".",
+    "Dmitri"
+   ],
+   [
+    "What is Barb's surname?",
+    "Holland"
+   ],
+   [
+    "Which hairspray does Steve swear by?",
+    "Fabergé Farrah Fawcett"
+   ],
+   [
+    "The Terminator-like Russian assassin of season 3.",
+    "Grigori"
+   ],
+   [
+    "In the epilogue, which town is Hopper offered a police chief job in?",
+    "Montauk"
+   ],
+   [
+    "What does Vecna call himself when he befriends Holly?",
+    "Mr. Whatsit"
+   ],
+   [
+    "The summer camp Dustin goes to before season 3.",
+    "Camp Know Where"
+   ],
+   [
+    "What is Will's D&D character called?",
+    "Will the Wise"
+   ],
+   [
+    "The general store where Joyce works.",
+    "Melvald's"
+   ],
+   [
+    "In which part of Russia is Hopper's prison in season 4?",
+    "Kamchatka"
+   ],
+   [
+    "The title of the series finale.",
+    "The Rightside Up"
+   ]
+  ]
+ }
+}

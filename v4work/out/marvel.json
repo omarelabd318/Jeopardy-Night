@@ -1,0 +1,778 @@
+{
+ "id": "marvel",
+ "name": "Marvel/DC",
+ "type": "text",
+ "desc": "Marvel and DC: films, shows and comics.",
+ "data": {
+  "100": [
+   [
+    "What is Iron Man's real name?",
+    "Tony Stark"
+   ],
+   [
+    "What is Thor's hammer called?",
+    "Mjolnir"
+   ],
+   [
+    "What is Captain America's real name?",
+    "Steve Rogers"
+   ],
+   [
+    "Who is Thor's adopted brother?",
+    "Loki"
+   ],
+   [
+    "Which green hero is Bruce Banner's alter ego?",
+    "The Hulk"
+   ],
+   [
+    "What is Spider-Man's real name?",
+    "Peter Parker"
+   ],
+   [
+    "Who snaps his fingers to wipe out half of all life?",
+    "Thanos"
+   ],
+   [
+    "How many Infinity Stones are there?",
+    "6"
+   ],
+   [
+    "Who plays Iron Man?",
+    "Robert Downey Jr."
+   ],
+   [
+    "Which Avenger fights with a bow and arrow?",
+    "Hawkeye"
+   ],
+   [
+    "What is Black Widow's first name?",
+    "Natasha"
+   ],
+   [
+    "Which hero can shrink to the size of an insect?",
+    "Ant-Man"
+   ],
+   [
+    "Which organisation does Nick Fury lead?",
+    "S.H.I.E.L.D."
+   ],
+   [
+    "What is the only thing Groot can say?",
+    "'I am Groot'"
+   ],
+   [
+    "Which superhero team does Iron Man help found?",
+    "The Avengers"
+   ],
+   [
+    "Which hero fights with a round vibranium shield?",
+    "Captain America"
+   ],
+   [
+    "Who is the God of Thunder?",
+    "Thor"
+   ],
+   [
+    "What colour is the Hulk?",
+    "Green"
+   ],
+   [
+    "Superman's home planet.",
+    "Krypton"
+   ],
+   [
+    "Batman's real name.",
+    "Bruce Wayne"
+   ],
+   [
+    "The city Batman protects.",
+    "Gotham City"
+   ],
+   [
+    "Superman's only real weakness.",
+    "Kryptonite"
+   ],
+   [
+    "Wonder Woman's home island.",
+    "Themyscira"
+   ],
+   [
+    "Batman's loyal butler.",
+    "Alfred (Pennyworth)"
+   ],
+   [
+    "Batman's clown-faced arch-enemy.",
+    "The Joker"
+   ],
+   [
+    "The DC hero known as the fastest man alive.",
+    "The Flash"
+   ],
+   [
+    "Which underwater kingdom does Aquaman rule?",
+    "Atlantis"
+   ],
+   [
+    "Superman works as a reporter at which newspaper?",
+    "The Daily Planet"
+   ],
+   [
+    "Which Marvel hero's salute comes with the cry 'Wakanda Forever'?",
+    "Black Panther"
+   ],
+   [
+    "Batman's car.",
+    "The Batmobile"
+   ],
+   [
+    "The DC hero with a red cape and an 'S' on his chest.",
+    "Superman"
+   ],
+   [
+    "Which X-Man has metal claws and heals almost instantly?",
+    "Wolverine"
+   ],
+   [
+    "Which red-suited Marvel antihero never stops talking to the audience?",
+    "Deadpool"
+   ],
+   [
+    "The Amazon princess played by Gal Gadot.",
+    "Wonder Woman"
+   ],
+   [
+    "Batman's secret base under Wayne Manor.",
+    "The Batcave"
+   ],
+   [
+    "What does the Hulk love to shout before fighting?",
+    "'Hulk smash!'"
+   ],
+   [
+    "Who plays Spider-Man in the MCU?",
+    "Tom Holland"
+   ],
+   [
+    "Which Marvel team includes Star-Lord, Gamora and Drax?",
+    "The Guardians of the Galaxy"
+   ]
+  ],
+  "200": [
+   [
+    "What was the first MCU film, released in 2008?",
+    "Iron Man"
+   ],
+   [
+    "What is Doctor Strange's first name?",
+    "Stephen"
+   ],
+   [
+    "What is Thor's home realm called?",
+    "Asgard"
+   ],
+   [
+    "What is Star-Lord's real name?",
+    "Peter Quill"
+   ],
+   [
+    "What is Captain Marvel's real name?",
+    "Carol Danvers"
+   ],
+   [
+    "What metal is Captain America's shield made of?",
+    "Vibranium"
+   ],
+   [
+    "Who plays Thor?",
+    "Chris Hemsworth"
+   ],
+   [
+    "What is Tony Stark's AI assistant called in the early films?",
+    "J.A.R.V.I.S."
+   ],
+   [
+    "What is Black Panther's real name?",
+    "T'Challa"
+   ],
+   [
+    "What is Scarlet Witch's real name?",
+    "Wanda Maximoff"
+   ],
+   [
+    "What is Hawkeye's real name?",
+    "Clint Barton"
+   ],
+   [
+    "In which country is the big battle at the end of Infinity War?",
+    "Wakanda"
+   ],
+   [
+    "What is the Winter Soldier's real name?",
+    "Bucky Barnes (James Buchanan Barnes)"
+   ],
+   [
+    "What is Spider-Man's aunt called?",
+    "May"
+   ],
+   [
+    "What is Black Panther's genius younger sister called?",
+    "Shuri"
+   ],
+   [
+    "Who plays Captain America?",
+    "Chris Evans"
+   ],
+   [
+    "Who plays Black Widow?",
+    "Scarlett Johansson"
+   ],
+   [
+    "Who becomes the new Captain America after Endgame?",
+    "Sam Wilson (Falcon)"
+   ],
+   [
+    "Superman's Kryptonian name.",
+    "Kal-El"
+   ],
+   [
+    "Batman's young sidekick.",
+    "Robin"
+   ],
+   [
+    "What gives Green Lantern his powers?",
+    "His power ring"
+   ],
+   [
+    "Wonder Woman's magic lasso.",
+    "The Lasso of Truth"
+   ],
+   [
+    "The reporter Superman loves.",
+    "Lois Lane"
+   ],
+   [
+    "The Flash's real name (the best-known one).",
+    "Barry Allen"
+   ],
+   [
+    "What does Gotham shine into the sky to call Batman?",
+    "The Bat-Signal"
+   ],
+   [
+    "The city Superman protects.",
+    "Metropolis"
+   ],
+   [
+    "DC's main superhero team.",
+    "The Justice League"
+   ],
+   [
+    "What is Tony Stark's company called?",
+    "Stark Industries"
+   ],
+   [
+    "What metal coats Wolverine's skeleton and claws?",
+    "Adamantium"
+   ],
+   [
+    "What do the initials of Spider-Man's love interest MJ stand for?",
+    "Mary Jane"
+   ],
+   [
+    "Who plays Superman in James Gunn's Superman (2025)?",
+    "David Corenswet"
+   ],
+   [
+    "Superman's super-powered dog.",
+    "Krypto"
+   ],
+   [
+    "What is Deadpool's real name?",
+    "Wade Wilson"
+   ],
+   [
+    "What is the stretchy leader of the Fantastic Four called?",
+    "Mr. Fantastic (Reed Richards)"
+   ],
+   [
+    "Which Fantastic Four member shouts 'Flame on!'?",
+    "The Human Torch (Johnny Storm)"
+   ],
+   [
+    "The Joker's girlfriend, a former psychiatrist.",
+    "Harley Quinn"
+   ],
+   [
+    "Who plays Batman in The Batman (2022)?",
+    "Robert Pattinson"
+   ],
+   [
+    "Who leads the X-Men and runs a school for mutants?",
+    "Professor X (Charles Xavier)"
+   ]
+  ],
+  "300": [
+   [
+    "Who directed The Dark Knight trilogy?",
+    "Christopher Nolan"
+   ],
+   [
+    "Which Infinity Stone is in Vision's forehead?",
+    "The Mind Stone"
+   ],
+   [
+    "On which planet is the Soul Stone hidden?",
+    "Vormir"
+   ],
+   [
+    "What is Thanos's home planet?",
+    "Titan"
+   ],
+   [
+    "How is Hela related to Thor?",
+    "She is his older sister"
+   ],
+   [
+    "Who plays Thanos?",
+    "Josh Brolin"
+   ],
+   [
+    "What is Ant-Man's real name?",
+    "Scott Lang"
+   ],
+   [
+    "What is Killmonger's first name?",
+    "Erik"
+   ],
+   [
+    "What does TVA stand for in Loki?",
+    "Time Variance Authority"
+   ],
+   [
+    "Who is the villain in Spider-Man: Homecoming?",
+    "The Vulture (Adrian Toomes)"
+   ],
+   [
+    "Which Nazi science organisation does Captain America fight in World War II?",
+    "Hydra"
+   ],
+   [
+    "Which two Avengers create Ultron?",
+    "Tony Stark and Bruce Banner"
+   ],
+   [
+    "What animal is Rocket?",
+    "A raccoon (genetically modified)"
+   ],
+   [
+    "What are Iron Man's last words?",
+    "'I am Iron Man'"
+   ],
+   [
+    "Which of Thanos's daughters is sacrificed for the Soul Stone?",
+    "Gamora"
+   ],
+   [
+    "What was Doctor Strange's job before he became a sorcerer?",
+    "Neurosurgeon"
+   ],
+   [
+    "Who plays Doctor Strange?",
+    "Benedict Cumberbatch"
+   ],
+   [
+    "What is Peter Parker's best friend called in the MCU Spider-Man films?",
+    "Ned"
+   ],
+   [
+    "Superman's bald billionaire nemesis.",
+    "Lex Luthor"
+   ],
+   [
+    "The asylum where Batman's villains are locked up.",
+    "Arkham Asylum"
+   ],
+   [
+    "What is the Penguin's real name?",
+    "Oswald Cobblepot"
+   ],
+   [
+    "Superman's adoptive parents.",
+    "Jonathan and Martha Kent"
+   ],
+   [
+    "The town where Superman grew up.",
+    "Smallville"
+   ],
+   [
+    "Wonder Woman's everyday name.",
+    "Diana Prince"
+   ],
+   [
+    "In the classic origin, what does the Joker fall into?",
+    "A vat of chemicals"
+   ],
+   [
+    "Which Batman villain uses fear toxin?",
+    "Scarecrow"
+   ],
+   [
+    "What does Bane break when he slams Batman over his knee?",
+    "His back (spine)"
+   ],
+   [
+    "Which Infinity Stone does Doctor Strange hand Thanos to save Tony?",
+    "The Time Stone"
+   ],
+   [
+    "Which villain is Robert Downey Jr. returning to play in Avengers: Doomsday?",
+    "Doctor Doom"
+   ],
+   [
+    "Which planet-eating giant threatens Earth in The Fantastic Four: First Steps (2025)?",
+    "Galactus"
+   ],
+   [
+    "Who plays Reed Richards in The Fantastic Four: First Steps?",
+    "Pedro Pascal"
+   ],
+   [
+    "What is Magneto's power?",
+    "Controlling metal (magnetism)"
+   ],
+   [
+    "Which Marvel hero is blind lawyer Matt Murdock?",
+    "Daredevil"
+   ],
+   [
+    "Which gun-toting antihero, Frank Castle, appears in Spider-Man: Brand New Day (2026)?",
+    "The Punisher"
+   ],
+   [
+    "Which Batman villain needs a freezing-cold suit to survive?",
+    "Mr. Freeze"
+   ],
+   [
+    "Which plant-controlling villain is Pamela Isley?",
+    "Poison Ivy"
+   ],
+   [
+    "What is Ms. Marvel's real name?",
+    "Kamala Khan"
+   ],
+   [
+    "Who is Natasha Romanoff's 'little sister', played by Florence Pugh?",
+    "Yelena Belova"
+   ]
+  ],
+  "400": [
+   [
+    "What is Thor's mother's name?",
+    "Frigga"
+   ],
+   [
+    "What is the Riddler's real name?",
+    "Edward Nygma"
+   ],
+   [
+    "Which Infinity Stone is inside the Tesseract?",
+    "The Space Stone"
+   ],
+   [
+    "Which Infinity Stone is the Aether?",
+    "The Reality Stone"
+   ],
+   [
+    "Which Infinity Stone is inside the Orb in Guardians of the Galaxy?",
+    "The Power Stone"
+   ],
+   [
+    "Which Infinity Stone is inside the Eye of Agamotto?",
+    "The Time Stone"
+   ],
+   [
+    "Which brothers directed Avengers: Endgame?",
+    "The Russo brothers (Anthony and Joe)"
+   ],
+   [
+    "Who plays Loki?",
+    "Tom Hiddleston"
+   ],
+   [
+    "Who is Star-Lord's father?",
+    "Ego"
+   ],
+   [
+    "What is the axe Thor gets in Infinity War called?",
+    "Stormbreaker"
+   ],
+   [
+    "What is Tony Stark's daughter called?",
+    "Morgan"
+   ],
+   [
+    "Who does Nick Fury page at the end of Infinity War?",
+    "Captain Marvel"
+   ],
+   [
+    "In which decade is Captain Marvel (2019) mainly set?",
+    "The 1990s (1995)"
+   ],
+   [
+    "Who is the Sorcerer Supreme at the start of Doctor Strange?",
+    "The Ancient One"
+   ],
+   [
+    "Who has been president of Marvel Studios since 2007?",
+    "Kevin Feige"
+   ],
+   [
+    "What does Tony Stark build in the cave in Iron Man?",
+    "The Mark I armour suit"
+   ],
+   [
+    "Who is Wanda's husband in WandaVision?",
+    "Vision"
+   ],
+   [
+    "What is the sorcerers' training place in Nepal called?",
+    "Kamar-Taj"
+   ],
+   [
+    "What is Two-Face's real name?",
+    "Harvey Dent"
+   ],
+   [
+    "What is Catwoman's real name?",
+    "Selina Kyle"
+   ],
+   [
+    "What is Green Arrow's real name?",
+    "Oliver Queen"
+   ],
+   [
+    "What does DC stand for?",
+    "Detective Comics"
+   ],
+   [
+    "Superman's Kryptonian father.",
+    "Jor-El"
+   ],
+   [
+    "The Flash's arch-enemy in a yellow suit.",
+    "Reverse-Flash (Eobard Thawne)"
+   ],
+   [
+    "Who was the first Robin?",
+    "Dick Grayson"
+   ],
+   [
+    "What is Harley Quinn's real name?",
+    "Harleen Quinzel"
+   ],
+   [
+    "Who guards the library at Kamar-Taj in Doctor Strange?",
+    "Wong"
+   ],
+   [
+    "Who directed Thor: Ragnarok?",
+    "Taika Waititi"
+   ],
+   [
+    "By the end of Thunderbolts* (2025), what is the team publicly called?",
+    "The New Avengers"
+   ],
+   [
+    "Who plays Lex Luthor in Superman (2025)?",
+    "Nicholas Hoult"
+   ],
+   [
+    "Wolverine goes by Logan, but what is his birth name?",
+    "James Howlett"
+   ],
+   [
+    "Who plays Kara Zor-El in Supergirl (2026)?",
+    "Milly Alcock"
+   ],
+   [
+    "Which Aquaman star plays the bounty hunter Lobo in Supergirl (2026)?",
+    "Jason Momoa"
+   ],
+   [
+    "What is Doctor Strange's red cape called?",
+    "The Cloak of Levitation"
+   ],
+   [
+    "Norman Osborn's villain identity.",
+    "The Green Goblin"
+   ],
+   [
+    "Which criminal organisation does Shang-Chi's father lead?",
+    "The Ten Rings"
+   ],
+   [
+    "What are Star-Lord's mixtapes called?",
+    "Awesome Mix (Vol. 1 and 2)"
+   ],
+   [
+    "Which young archer does Clint Barton train in Hawkeye (2021)?",
+    "Kate Bishop"
+   ]
+  ],
+  "500": [
+   [
+    "Which dwarf forges Stormbreaker?",
+    "Eitri"
+   ],
+   [
+    "What is the name of Captain America's World War II squad?",
+    "The Howling Commandos"
+   ],
+   [
+    "Superman first appeared in which comic in 1938?",
+    "Action Comics #1"
+   ],
+   [
+    "Darkseid rules which planet?",
+    "Apokolips"
+   ],
+   [
+    "Who guards the Bifrost as Asgard's gatekeeper?",
+    "Heimdall"
+   ],
+   [
+    "Who plays 'the Mandarin' (Trevor Slattery) in Iron Man 3?",
+    "Ben Kingsley"
+   ],
+   [
+    "What does S.H.I.E.L.D. stand for in the MCU?",
+    "Strategic Homeland Intervention, Enforcement and Logistics Division"
+   ],
+   [
+    "What is the Collector's real name?",
+    "Taneleer Tivan"
+   ],
+   [
+    "What is Star-Lord's ship called?",
+    "The Milano"
+   ],
+   [
+    "In which US city does Black Panther (2018) open?",
+    "Oakland"
+   ],
+   [
+    "What is the space prison in Guardians of the Galaxy called?",
+    "The Kyln"
+   ],
+   [
+    "Who voices Rocket?",
+    "Bradley Cooper"
+   ],
+   [
+    "Who plays Ego?",
+    "Kurt Russell"
+   ],
+   [
+    "In which year was young Peter Quill taken from Earth?",
+    "1988"
+   ],
+   [
+    "In which country is New Asgard built?",
+    "Norway (Tønsberg)"
+   ],
+   [
+    "What are Hydra's giant weapon ships called in The Winter Soldier?",
+    "Project Insight helicarriers"
+   ],
+   [
+    "In which film is Stan Lee's final MCU cameo, as a driver in 1970?",
+    "Avengers: Endgame"
+   ],
+   [
+    "What is the name of Thanos's army's alien henchmen group?",
+    "The Black Order (Children of Thanos)"
+   ],
+   [
+    "Batman first appeared in which comic?",
+    "Detective Comics #27"
+   ],
+   [
+    "Which film had young Bruce Wayne just watched when his parents were killed (in the classic comics)?",
+    "The Mark of Zorro"
+   ],
+   [
+    "Martian Manhunter's real name.",
+    "J'onn J'onzz"
+   ],
+   [
+    "What do the letters of SHAZAM stand for?",
+    "Solomon, Hercules, Atlas, Zeus, Achilles, Mercury"
+   ],
+   [
+    "The planet that is the base of the Green Lantern Corps.",
+    "Oa"
+   ],
+   [
+    "Which Robin was killed by the Joker in A Death in the Family?",
+    "Jason Todd"
+   ],
+   [
+    "Who created Superman?",
+    "Jerry Siegel and Joe Shuster"
+   ],
+   [
+    "What was Hal Jordan's job before becoming Green Lantern?",
+    "Test pilot"
+   ],
+   [
+    "What is Cyborg's real name?",
+    "Victor Stone"
+   ],
+   [
+    "Who created Batman with Bob Kane?",
+    "Bill Finger"
+   ],
+   [
+    "Who directed Spider-Man: Brand New Day (2026)?",
+    "Destin Daniel Cretton"
+   ],
+   [
+    "Who runs DC Studios alongside Peter Safran?",
+    "James Gunn"
+   ],
+   [
+    "Who co-created Spider-Man with Steve Ditko?",
+    "Stan Lee"
+   ],
+   [
+    "In which year did Spider-Man first appear, in Amazing Fantasy #15?",
+    "1962"
+   ],
+   [
+    "Galactus's silver herald who rides a board through space.",
+    "The Silver Surfer"
+   ],
+   [
+    "On which garbage planet does Thor fight the Hulk in Thor: Ragnarok?",
+    "Sakaar"
+   ],
+   [
+    "What is the first of the Winter Soldier's Russian trigger words?",
+    "'Longing'"
+   ],
+   [
+    "Which plant gives the Black Panther his powers?",
+    "The heart-shaped herb"
+   ],
+   [
+    "Who is the main villain of Supergirl (2026)?",
+    "Krem of the Yellow Hills"
+   ],
+   [
+    "Ra's al Ghul's secret order in Batman Begins.",
+    "The League of Shadows"
+   ]
+  ]
+ }
+}

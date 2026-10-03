@@ -1,0 +1,730 @@
+{
+ "id": "mus",
+ "name": "Music",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Which singer is known as 'Kawkab El Sharq' (Star of the East)?",
+    "Umm Kulthum"
+   ],
+   [
+    "Who released the 1982 album 'Thriller'?",
+    "Michael Jackson"
+   ],
+   [
+    "Which band had Freddie Mercury as lead singer?",
+    "Queen"
+   ],
+   [
+    "Which rapper's real name is Marshall Mathers?",
+    "Eminem"
+   ],
+   [
+    "Who sang 'Shape of You'?",
+    "Ed Sheeran"
+   ],
+   [
+    "Which Beatle released 'Imagine' as a solo artist?",
+    "John Lennon"
+   ],
+   [
+    "Which Lebanese singer is often called 'the Neighbour of the Moon'?",
+    "Fairuz"
+   ],
+   [
+    "How many keys does a standard piano have?",
+    "88"
+   ],
+   [
+    "Which artist released 'Blinding Lights'?",
+    "The Weeknd"
+   ],
+   [
+    "Which K-pop group released 'Dynamite' in 2020?",
+    "BTS"
+   ],
+   [
+    "Which Egyptian singer released 'Tamally Maak'?",
+    "Amr Diab"
+   ],
+   [
+    "Who is known as the 'Queen of Pop'?",
+    "Madonna"
+   ],
+   [
+    "Who sang 'Bad Guy' in 2019?",
+    "Billie Eilish"
+   ],
+   [
+    "Which instrument was Jimi Hendrix famous for?",
+    "Electric guitar"
+   ],
+   [
+    "Which Egyptian singer is nicknamed 'El Hadaba'?",
+    "Amr Diab"
+   ],
+   [
+    "What was Taylor Swift's record-breaking 2023–24 tour called?",
+    "The Eras Tour"
+   ],
+   [
+    "Who released the 2015 single 'Hello'?",
+    "Adele"
+   ],
+   [
+    "Which girl group was Beyoncé part of?",
+    "Destiny's Child"
+   ],
+   [
+    "Who released 'Baby' as a teenager in 2010?",
+    "Justin Bieber"
+   ],
+   [
+    "Which large, triangle-shaped orchestral string instrument is always played by plucking?",
+    "The harp"
+   ],
+   [
+    "Which Egyptian actor-singer released 'Number One'?",
+    "Mohamed Ramadan"
+   ],
+   [
+    "Which rapper's real name is Shawn Carter?",
+    "Jay-Z"
+   ],
+   [
+    "Which band had John, Paul, George and Ringo?",
+    "The Beatles"
+   ],
+   [
+    "Who is known as 'the King of Rock and Roll'?",
+    "Elvis Presley"
+   ],
+   [
+    "Which pop star's fans call themselves 'Swifties'?",
+    "Taylor Swift"
+   ],
+   [
+    "Which Lebanese singer had a big hit with 'Ya Tabtab'?",
+    "Nancy Ajram"
+   ],
+   [
+    "Which Barbadian singer released 'Umbrella'?",
+    "Rihanna"
+   ],
+   [
+    "Which singer released '24K Magic' and 'Just the Way You Are'?",
+    "Bruno Mars"
+   ],
+   [
+    "Which Egyptian singer released 'Ah Ya Leil' and 'Sabri Aleel'?",
+    "Sherine (Sherine Abdel Wahab)"
+   ],
+   [
+    "Which boy band featured Harry Styles, Niall Horan, Liam Payne, Louis Tomlinson and Zayn Malik?",
+    "One Direction"
+   ],
+   [
+    "Which pop star released 'Oops!... I Did It Again'?",
+    "Britney Spears"
+   ],
+   [
+    "How many strings does a standard guitar have?",
+    "Six"
+   ],
+   [
+    "Which Egyptian singer is nicknamed 'Nigm El Geel' (Star of the Generation)?",
+    "Tamer Hosny"
+   ],
+   [
+    "Which American singer released 'Firework' and 'Roar'?",
+    "Katy Perry"
+   ],
+   [
+    "Which British-Albanian singer released 'Levitating' and 'New Rules'?",
+    "Dua Lipa"
+   ],
+   [
+    "Which Canadian singer sang 'My Heart Will Go On' for Titanic?",
+    "Celine Dion"
+   ]
+  ],
+  "200": [
+   [
+    "Which Egyptian singer is nicknamed 'El Andaleeb El Asmar' (the Dark Nightingale)?",
+    "Abdel Halim Hafez"
+   ],
+   [
+    "Which singer named his albums with maths symbols: +, x, ÷, =, −?",
+    "Ed Sheeran"
+   ],
+   [
+    "What nationality were Daft Punk?",
+    "French"
+   ],
+   [
+    "Which band released 'Wonderwall'?",
+    "Oasis"
+   ],
+   [
+    "Who composed 'Für Elise'?",
+    "Ludwig van Beethoven"
+   ],
+   [
+    "Which rapper released 'To Pimp a Butterfly'?",
+    "Kendrick Lamar"
+   ],
+   [
+    "Which Egyptian rapper had a huge hit with 'El Bakht'?",
+    "Wegz"
+   ],
+   [
+    "Which Nirvana album has a baby swimming after a dollar on its cover?",
+    "Nevermind"
+   ],
+   [
+    "Chris Martin is the frontman of which band?",
+    "Coldplay"
+   ],
+   [
+    "Which Colombian singer released 'Hips Don't Lie'?",
+    "Shakira"
+   ],
+   [
+    "Which artist released the 2016 visual album 'Lemonade'?",
+    "Beyoncé"
+   ],
+   [
+    "Which Lebanese singer released 'Ah W Noss'?",
+    "Nancy Ajram"
+   ],
+   [
+    "Which rapper released the albums 'Views' and 'Scorpion'?",
+    "Drake"
+   ],
+   [
+    "Which band released 'Hotel California'?",
+    "Eagles"
+   ],
+   [
+    "Which K-pop girl group released 'How You Like That'?",
+    "Blackpink"
+   ],
+   [
+    "Which Algerian-born singer, a star in Egypt, was known as 'Warda El Gazaereya'?",
+    "Warda"
+   ],
+   [
+    "Which Puerto Rican artist released 'Un Verano Sin Ti'?",
+    "Bad Bunny"
+   ],
+   [
+    "Which band released 'Smells Like Teen Spirit'?",
+    "Nirvana"
+   ],
+   [
+    "What does 'a cappella' mean?",
+    "Singing without instruments"
+   ],
+   [
+    "Which Swedish group sang 'Dancing Queen'?",
+    "ABBA"
+   ],
+   [
+    "Which 2017 Spanish-language song became the most-viewed YouTube video for years?",
+    "Despacito"
+   ],
+   [
+    "Who was called 'the Queen of Soul'?",
+    "Aretha Franklin"
+   ],
+   [
+    "Bob Marley came from which country?",
+    "Jamaica"
+   ],
+   [
+    "Which British singer named her albums after her age, like 21 and 25?",
+    "Adele"
+   ],
+   [
+    "Which rapper released 'The Marshall Mathers LP'?",
+    "Eminem"
+   ],
+   [
+    "Which mahraganat singer had the hit 'Bent El Geran'?",
+    "Hassan Shakosh"
+   ],
+   [
+    "Which Lebanese singer had a huge hit with 'Ragab'?",
+    "Haifa Wehbe"
+   ],
+   [
+    "Who sang 'Despacito' with Daddy Yankee?",
+    "Luis Fonsi"
+   ],
+   [
+    "Which sha'bi legend sang 'Zahma Ya Donia Zahma'?",
+    "Ahmed Adaweya"
+   ],
+   [
+    "Which Lebanese singer is nicknamed 'the Queen of Feelings'?",
+    "Elissa"
+   ],
+   [
+    "Which Iraqi singer is nicknamed 'the Caesar of Arabic Song'?",
+    "Kadim Al Sahir"
+   ],
+   [
+    "Which Irish band, fronted by Bono, released 'With or Without You'?",
+    "U2"
+   ],
+   [
+    "Which British singer released the album 'Back to Black'?",
+    "Amy Winehouse"
+   ],
+   [
+    "Which French DJ released 'Titanium' with Sia?",
+    "David Guetta"
+   ],
+   [
+    "Which British girl group sang 'Wannabe' in 1996?",
+    "Spice Girls"
+   ],
+   [
+    "What is the highest female singing voice called?",
+    "Soprano"
+   ]
+  ],
+  "300": [
+   [
+    "Which composer wrote Umm Kulthum's 'Enta Omri'?",
+    "Mohamed Abdel Wahab"
+   ],
+   [
+    "Which Pink Floyd album has a prism on its cover?",
+    "The Dark Side of the Moon"
+   ],
+   [
+    "Which East Coast rapper, Tupac's rival, was killed in 1997?",
+    "The Notorious B.I.G. (Biggie)"
+   ],
+   [
+    "What was Kanye West's debut album?",
+    "The College Dropout"
+   ],
+   [
+    "Which Algerian singer is called the 'King of Raï'?",
+    "Khaled (Cheb Khaled)"
+   ],
+   [
+    "Which Egyptian singer is nicknamed 'El King'?",
+    "Mohamed Mounir"
+   ],
+   [
+    "Which English city are the Arctic Monkeys from?",
+    "Sheffield"
+   ],
+   [
+    "Who was known as 'the Godfather of Soul'?",
+    "James Brown"
+   ],
+   [
+    "Which Radiohead album was released in 1997?",
+    "OK Computer"
+   ],
+   [
+    "Ozzy Osbourne was the singer of which band?",
+    "Black Sabbath"
+   ],
+   [
+    "Who composed 'The Nutcracker'?",
+    "Pyotr Ilyich Tchaikovsky"
+   ],
+   [
+    "What is Lady Gaga's real first name?",
+    "Stefani"
+   ],
+   [
+    "Singer Sabah Fakhri is linked to the tarab tradition of which Syrian city?",
+    "Aleppo"
+   ],
+   [
+    "Which Michael Jackson album came out in 1987?",
+    "Bad"
+   ],
+   [
+    "Which singer is nicknamed 'The Boss'?",
+    "Bruce Springsteen"
+   ],
+   [
+    "Which N.W.A member released 'The Chronic'?",
+    "Dr. Dre"
+   ],
+   [
+    "Who is the lead singer of Cairokee?",
+    "Amir Eid"
+   ],
+   [
+    "What is the goblet-shaped Arabic hand drum called?",
+    "Darbuka (tabla)"
+   ],
+   [
+    "Which band released 'Stairway to Heaven'?",
+    "Led Zeppelin"
+   ],
+   [
+    "Who was Nirvana's lead singer?",
+    "Kurt Cobain"
+   ],
+   [
+    "Which composer was almost completely deaf when he wrote his Ninth Symphony?",
+    "Ludwig van Beethoven"
+   ],
+   [
+    "Who wrote and starred in the musical 'Hamilton'?",
+    "Lin-Manuel Miranda"
+   ],
+   [
+    "Which Egyptian composer was nicknamed 'Mosiqar El Agyal' (Musician of the Generations)?",
+    "Mohamed Abdel Wahab"
+   ],
+   [
+    "Which jazz trumpeter sang 'What a Wonderful World'?",
+    "Louis Armstrong"
+   ],
+   [
+    "Which Lebanese singer is nicknamed 'the Superstar'?",
+    "Ragheb Alama"
+   ],
+   [
+    "Who composed the opera 'The Magic Flute'?",
+    "Wolfgang Amadeus Mozart"
+   ],
+   [
+    "Which Saudi singer is called 'Fannan El Arab' (the Artist of the Arabs)?",
+    "Mohamed Abdu"
+   ],
+   [
+    "Which Syrian-born singer, oud player and film star was Asmahan's brother?",
+    "Farid al-Atrash"
+   ],
+   [
+    "Which Las Vegas band released 'Mr. Brightside'?",
+    "The Killers"
+   ],
+   [
+    "What was the name of Beyoncé's alter ego on her 2008 album?",
+    "Sasha Fierce"
+   ],
+   [
+    "Which instrument does Yo-Yo Ma play?",
+    "Cello"
+   ],
+   [
+    "Which Nigerian singer released 'Calm Down'?",
+    "Rema"
+   ],
+   [
+    "How many lines does a musical staff have?",
+    "Five"
+   ],
+   [
+    "Which Moroccan singer released the 2015 hit 'Lm3allem'?",
+    "Saad Lamjarred"
+   ],
+   [
+    "Which Australian rock band released 'Back in Black'?",
+    "AC/DC"
+   ],
+   [
+    "Which Egyptian singer and actress sang the patriotic classic 'Ya Habibti Ya Masr'?",
+    "Shadia"
+   ]
+  ],
+  "400": [
+   [
+    "Which Alexandrian composer (1892–1923) is called 'the Artist of the People'?",
+    "Sayed Darwish"
+   ],
+   [
+    "What is the name of the Arabic system of melodic modes, like Rast and Bayati?",
+    "Maqam (plural: maqamat)"
+   ],
+   [
+    "Who was Led Zeppelin's drummer?",
+    "John Bonham"
+   ],
+   [
+    "What was Frank Ocean's album after 'Channel Orange'?",
+    "Blonde (2016)"
+   ],
+   [
+    "Whose ballet 'The Rite of Spring' caused a riot at its 1913 Paris premiere?",
+    "Igor Stravinsky"
+   ],
+   [
+    "Which city is Travis Scott from?",
+    "Houston"
+   ],
+   [
+    "Which French duo released the album 'Moon Safari' in 1998?",
+    "Air"
+   ],
+   [
+    "What was the last album The Beatles recorded together?",
+    "Abbey Road"
+   ],
+   [
+    "Which band released 'In Rainbows' online as pay-what-you-want?",
+    "Radiohead"
+   ],
+   [
+    "Which Algerian singer's 1990s cover of 'Ya Rayah' became a global hit?",
+    "Rachid Taha"
+   ],
+   [
+    "Who composed 'Clair de Lune'?",
+    "Claude Debussy"
+   ],
+   [
+    "What was the title of Prince's 1984 album and film?",
+    "Purple Rain"
+   ],
+   [
+    "Which singer is known as 'the Piano Man'?",
+    "Billy Joel"
+   ],
+   [
+    "Who composed 'Boléro'?",
+    "Maurice Ravel"
+   ],
+   [
+    "Who composed the score for Lawrence of Arabia?",
+    "Maurice Jarre"
+   ],
+   [
+    "Which Swedish DJ released 'Levels'?",
+    "Avicii"
+   ],
+   [
+    "What is the Egyptian end-blown reed flute called?",
+    "The ney (nay)"
+   ],
+   [
+    "Which Italian composer wrote 'The Four Seasons'?",
+    "Antonio Vivaldi"
+   ],
+   [
+    "Which rapper's debut album was 'Illmatic'?",
+    "Nas"
+   ],
+   [
+    "In which Algerian city did Raï music develop?",
+    "Oran"
+   ],
+   [
+    "What kind of instrument is the qanun?",
+    "A plucked zither (flat, played on the lap)"
+   ],
+   [
+    "Which singer performed as 'Ziggy Stardust'?",
+    "David Bowie"
+   ],
+   [
+    "Which composer wrote 'Aida', premiered in Cairo in 1871?",
+    "Giuseppe Verdi"
+   ],
+   [
+    "What does 'fortissimo' mean in music?",
+    "Very loud"
+   ],
+   [
+    "Who was the lead singer of The Doors?",
+    "Jim Morrison"
+   ],
+   [
+    "Which Tunisian singer is famous for his version of 'Sidi Mansour'?",
+    "Saber Rebai"
+   ],
+   [
+    "Which Daft Punk album includes 'Get Lucky'?",
+    "Random Access Memories"
+   ],
+   [
+    "What is Drake's real first name?",
+    "Aubrey"
+   ],
+   [
+    "Which Lebanese brothers wrote and composed most of Fairuz's songs?",
+    "The Rahbani brothers (Assi and Mansour)"
+   ],
+   [
+    "Which Nigerian star calls himself 'the African Giant'?",
+    "Burna Boy"
+   ],
+   [
+    "Which Spanish singer released the 2022 album 'Motomami'?",
+    "Rosalía"
+   ],
+   [
+    "Who composed 'The Blue Danube' waltz?",
+    "Johann Strauss II"
+   ],
+   [
+    "Which singer was known as 'the Voice of Lebanon'?",
+    "Wadih El Safi"
+   ],
+   [
+    "Which Lebanese singer and actress was nicknamed 'El Shahroura' (the Songbird)?",
+    "Sabah"
+   ],
+   [
+    "Which Seattle band released 'Black Hole Sun'?",
+    "Soundgarden"
+   ]
+  ],
+  "500": [
+   [
+    "In which year did Umm Kulthum die?",
+    "1975"
+   ],
+   [
+    "Wagner's 'Ring of the Nibelung' cycle has how many operas?",
+    "Four"
+   ],
+   [
+    "Which sha'bi singer became famous in 2000 with 'Ana Bakrah Israel'?",
+    "Shaaban Abdel Rahim"
+   ],
+   [
+    "What Arabic word describes the ecstatic emotional state music can induce?",
+    "Tarab"
+   ],
+   [
+    "Which rapper made the album 'Madvillainy' with Madlib?",
+    "MF DOOM"
+   ],
+   [
+    "Who produced Michael Jackson's 'Thriller'?",
+    "Quincy Jones"
+   ],
+   [
+    "Which 1977 Fleetwood Mac album was recorded while band members were breaking up?",
+    "Rumours"
+   ],
+   [
+    "What is the largest and lowest-pitched instrument of the orchestral violin family?",
+    "Double bass"
+   ],
+   [
+    "Which record label did Berry Gordy found in Detroit?",
+    "Motown"
+   ],
+   [
+    "Who composed the music for Umm Kulthum's 'Al Atlal'?",
+    "Riad Al Sunbati"
+   ],
+   [
+    "Which 1959 Miles Davis album is the best-selling jazz record ever?",
+    "Kind of Blue"
+   ],
+   [
+    "How many symphonies did Gustav Mahler complete?",
+    "Nine"
+   ],
+   [
+    "Which Arab singer gave two historic concerts at the Paris Olympia in 1967?",
+    "Umm Kulthum"
+   ],
+   [
+    "What time signature is a waltz in?",
+    "3/4"
+   ],
+   [
+    "What is the plectrum used to play the oud called?",
+    "Risha"
+   ],
+   [
+    "Who composed the opera 'Carmen'?",
+    "Georges Bizet"
+   ],
+   [
+    "Who sang the Egyptian classic 'Adaweya'?",
+    "Mohamed Rushdi"
+   ],
+   [
+    "Which saxophonist recorded 'A Love Supreme'?",
+    "John Coltrane"
+   ],
+   [
+    "Which band's debut album cover is a banana by Andy Warhol?",
+    "The Velvet Underground"
+   ],
+   [
+    "Which Spanish composer wrote the guitar piece 'Concierto de Aranjuez'?",
+    "Joaquín Rodrigo"
+   ],
+   [
+    "Which instrument was Egyptian musician Omar Khorshid famous for?",
+    "The electric guitar"
+   ],
+   [
+    "Which band's debut album was 'Unknown Pleasures'?",
+    "Joy Division"
+   ],
+   [
+    "Who composed Abdel Halim Hafez's 'Qariat al-Fingan'?",
+    "Mohamed El Mougy"
+   ],
+   [
+    "Which early 20th-century Egyptian singer was called 'Sultanat El Tarab'?",
+    "Mounira El Mahdeya"
+   ],
+   [
+    "Who was the lead singer of Lebanese band Mashrou' Leila?",
+    "Hamed Sinno"
+   ],
+   [
+    "Which heavy metal band's mascot is a zombie called Eddie?",
+    "Iron Maiden"
+   ],
+   [
+    "Who composed Umm Kulthum's 'Alf Leila w Leila'?",
+    "Baligh Hamdi"
+   ],
+   [
+    "What is the improvised sung poem, often starting 'Ya Leil, ya ein', called in Arabic music?",
+    "Mawwal"
+   ],
+   [
+    "Which Egyptian poet wrote the words of Umm Kulthum's 'Al Atlal'?",
+    "Ibrahim Nagi"
+   ],
+   [
+    "Which jazz pianist composed ''Round Midnight'?",
+    "Thelonious Monk"
+   ],
+   [
+    "Which composer wrote 4′33″, a piece where the musicians play nothing?",
+    "John Cage"
+   ],
+   [
+    "Which Iraqi oud virtuoso founded Cairo's Bayt al-Oud school?",
+    "Naseer Shamma"
+   ],
+   [
+    "What was Elvis Presley's Memphis mansion called?",
+    "Graceland"
+   ],
+   [
+    "Which rapper was born Calvin Broadus Jr.?",
+    "Snoop Dogg"
+   ],
+   [
+    "What is the Andalusian strophic song form, like 'Lamma Bada Yatathanna', called?",
+    "Muwashshah"
+   ]
+  ]
+ }
+}

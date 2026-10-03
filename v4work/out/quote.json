@@ -1,0 +1,618 @@
+{
+ "id": "quote",
+ "name": "Famous Movie & TV Quotes",
+ "type": "text",
+ "desc": "Name the film or TV show the line comes from.",
+ "data": {
+  "100": [
+   [
+    "Which film or TV show is this line from? “May the Force be with you.”",
+    "Star Wars"
+   ],
+   [
+    "Which film or TV show is this line from? “Houston, we have a problem.”",
+    "Apollo 13"
+   ],
+   [
+    "Which film or TV show is this line from? “Why so serious?”",
+    "The Dark Knight"
+   ],
+   [
+    "Which film or TV show is this line from? “To infinity and beyond!”",
+    "Toy Story"
+   ],
+   [
+    "Which film or TV show is this line from? “Hakuna matata.”",
+    "The Lion King"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm the king of the world!”",
+    "Titanic"
+   ],
+   [
+    "Which film or TV show is this line from? “Just keep swimming.”",
+    "Finding Nemo"
+   ],
+   [
+    "Which film or TV show is this line from? “Say my name.”",
+    "Breaking Bad"
+   ],
+   [
+    "Which film or TV show is this line from? “Winter is coming.”",
+    "Game of Thrones"
+   ],
+   [
+    "Which film or TV show is this line from? “How you doin'?”",
+    "Friends"
+   ],
+   [
+    "Which film or TV show is this line from? “Bazinga!”",
+    "The Big Bang Theory"
+   ],
+   [
+    "Which film or TV show is this line from? “Life is like a box of chocolates.”",
+    "Forrest Gump"
+   ],
+   [
+    "Which film or TV show is this line from? “I am Iron Man.”",
+    "Iron Man"
+   ],
+   [
+    "Which film or TV show is this line from? “Wakanda forever!”",
+    "Black Panther"
+   ],
+   [
+    "Which film or TV show is this line from? “Legen… wait for it… dary!”",
+    "How I Met Your Mother"
+   ],
+   [
+    "Which film or TV show is this line from? “Run, Forrest, run!”",
+    "Forrest Gump"
+   ],
+   [
+    "Which film or TV show is this line from? “Help me, Obi-Wan Kenobi. You're my only hope.”",
+    "Star Wars (A New Hope)"
+   ],
+   [
+    "Which film or TV show is this line from? “Fish are friends, not food.”",
+    "Finding Nemo"
+   ],
+   [
+    "Which film or TV show is this line from? “Expecto Patronum!”",
+    "Harry Potter"
+   ],
+   [
+    "Which film or TV show is this line from? “Ogres are like onions.”",
+    "Shrek"
+   ],
+   [
+    "Which film or TV show is this line from? “Cowabunga!”",
+    "Teenage Mutant Ninja Turtles"
+   ],
+   [
+    "Which film or TV show is this line from? “Hulk smash!”",
+    "The Avengers / Hulk"
+   ],
+   [
+    "Which film or TV show is this line from? “We are Venom.”",
+    "Venom"
+   ],
+   [
+    "Which film or TV show is this line from? “Is this the Krusty Krab? No, this is Patrick!”",
+    "SpongeBob SquarePants"
+   ],
+   [
+    "Which film or TV show is this line from? “D'oh!”",
+    "The Simpsons"
+   ],
+   [
+    "Which film or TV show is this line from? “What's up, Doc?”",
+    "Looney Tunes (Bugs Bunny)"
+   ],
+   [
+    "Which film or TV show is this line from? “Dracarys!”",
+    "Game of Thrones"
+   ],
+   [
+    "Which film or TV show is this line from? “Hi Barbie!”",
+    "Barbie"
+   ],
+   [
+    "Which film or TV show is this line from? “¡Ay, caramba!”",
+    "The Simpsons"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm ready! I'm ready!”",
+    "SpongeBob SquarePants"
+   ]
+  ],
+  "200": [
+   [
+    "Which film or TV show is this line from? “You shall not pass!”",
+    "The Lord of the Rings: The Fellowship of the Ring"
+   ],
+   [
+    "Which film or TV show is this line from? “Here's Johnny!”",
+    "The Shining"
+   ],
+   [
+    "Which film or TV show is this line from? “I see dead people.”",
+    "The Sixth Sense"
+   ],
+   [
+    "Which film or TV show is this line from? “You can't handle the truth!”",
+    "A Few Good Men"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm gonna make him an offer he can't refuse.”",
+    "The Godfather"
+   ],
+   [
+    "Which film or TV show is this line from? “Bond. James Bond.”",
+    "James Bond films (first said in Dr. No)"
+   ],
+   [
+    "Which film or TV show is this line from? “I am the one who knocks.”",
+    "Breaking Bad"
+   ],
+   [
+    "Which film or TV show is this line from? “Are you not entertained?”",
+    "Gladiator"
+   ],
+   [
+    "Which film or TV show is this line from? “Show me the money!”",
+    "Jerry Maguire"
+   ],
+   [
+    "Which film or TV show is this line from? “There is no spoon.”",
+    "The Matrix"
+   ],
+   [
+    "Which film or TV show is this line from? “That's what she said.”",
+    "The Office"
+   ],
+   [
+    "Which film or TV show is this line from? “Hasta la vista, baby.”",
+    "Terminator 2: Judgment Day"
+   ],
+   [
+    "Which film or TV show is this line from? “We were on a break!”",
+    "Friends"
+   ],
+   [
+    "Which film or TV show is this line from? “E.T. phone home.”",
+    "E.T. the Extra-Terrestrial"
+   ],
+   [
+    "Which film or TV show is this line from? “You're gonna need a bigger boat.”",
+    "Jaws"
+   ],
+   [
+    "Which film or TV show is this line from? “Yeah, science!”",
+    "Breaking Bad"
+   ],
+   [
+    "Which film or TV show is this line from? “Pivot! Pivot!”",
+    "Friends"
+   ],
+   [
+    "Which film or TV show is this line from? “Roads? Where we're going, we don't need roads.”",
+    "Back to the Future"
+   ],
+   [
+    "Which film or TV show is this line from? “Hello there!”",
+    "Star Wars: Revenge of the Sith"
+   ],
+   [
+    "Which film or TV show is this line from? “I am inevitable.”",
+    "Avengers: Endgame"
+   ],
+   [
+    "Which film or TV show is this line from? “I volunteer as tribute!”",
+    "The Hunger Games"
+   ],
+   [
+    "Which film or TV show is this line from? “This is Sparta!”",
+    "300"
+   ],
+   [
+    "Which film or TV show is this line from? “Oh my God, they killed Kenny!”",
+    "South Park"
+   ],
+   [
+    "Which film or TV show is this line from? “Mufasa! Mufasa! Mufasa!”",
+    "The Lion King"
+   ],
+   [
+    "Which film or TV show is this line from? “Shut up and take my money!”",
+    "Futurama"
+   ],
+   [
+    "Which film or TV show is this line from? “I love you 3000.”",
+    "Avengers: Endgame"
+   ],
+   [
+    "Which film or TV show is this line from? “Challenge accepted!”",
+    "How I Met Your Mother"
+   ],
+   [
+    "Which film or TV show is this line from? “I will find you, and I will kill you.”",
+    "Taken"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm Pickle Rick!”",
+    "Rick and Morty"
+   ],
+   [
+    "Which film or TV show is this line from? “This is the way.”",
+    "The Mandalorian"
+   ]
+  ],
+  "300": [
+   [
+    "Which film or TV show is this line from? “Here's looking at you, kid.”",
+    "Casablanca"
+   ],
+   [
+    "Which film or TV show is this line from? “Frankly, my dear, I don't give a damn.”",
+    "Gone with the Wind"
+   ],
+   [
+    "Which film or TV show is this line from? “Say hello to my little friend!”",
+    "Scarface"
+   ],
+   [
+    "Which film or TV show is this line from? “You talkin' to me?”",
+    "Taxi Driver"
+   ],
+   [
+    "Which film or TV show is this line from? “I drink your milkshake!”",
+    "There Will Be Blood"
+   ],
+   [
+    "Which film or TV show is this line from? “Chaos is a ladder.”",
+    "Game of Thrones"
+   ],
+   [
+    "Which film or TV show is this line from? “They may take our lives, but they'll never take our freedom!”",
+    "Braveheart"
+   ],
+   [
+    "Which film or TV show is this line from? “Great Scott!”",
+    "Back to the Future"
+   ],
+   [
+    "Which film or TV show is this line from? “Nobody puts Baby in a corner.”",
+    "Dirty Dancing"
+   ],
+   [
+    "Which film or TV show is this line from? “I feel the need… the need for speed!”",
+    "Top Gun"
+   ],
+   [
+    "Which film or TV show is this line from? “No soup for you!”",
+    "Seinfeld"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm not a psychopath, I'm a high-functioning sociopath.”",
+    "Sherlock"
+   ],
+   [
+    "Which film or TV show is this line from? “Wax on, wax off.”",
+    "The Karate Kid"
+   ],
+   [
+    "Which film or TV show is this line from? “I am vengeance.”",
+    "The Batman"
+   ],
+   [
+    "Which film or TV show is this line from? “You complete me.”",
+    "Jerry Maguire"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm flying, Jack!”",
+    "Titanic"
+   ],
+   [
+    "Which film or TV show is this line from? “Yo, Adrian!”",
+    "Rocky"
+   ],
+   [
+    "Which film or TV show is this line from? “Look at me. I'm the captain now.”",
+    "Captain Phillips"
+   ],
+   [
+    "Which film or TV show is this line from? “Do or do not. There is no try.”",
+    "Star Wars: The Empire Strikes Back"
+   ],
+   [
+    "Which film or TV show is this line from? “Toto, I've a feeling we're not in Kansas anymore.”",
+    "The Wizard of Oz"
+   ],
+   [
+    "Which film or TV show is this line from? “Sell me this pen.”",
+    "The Wolf of Wall Street"
+   ],
+   [
+    "Which film or TV show is this line from? “I see you.”",
+    "Avatar"
+   ],
+   [
+    "Which film or TV show is this line from? “Are we there yet?”",
+    "Shrek 2"
+   ],
+   [
+    "Which film or TV show is this line from? “You go, Glen Coco!”",
+    "Mean Girls"
+   ],
+   [
+    "Which film or TV show is this line from? “Why is the rum gone?”",
+    "Pirates of the Caribbean: The Curse of the Black Pearl"
+   ],
+   [
+    "Which film or TV show is this line from? “Skadoosh!”",
+    "Kung Fu Panda"
+   ],
+   [
+    "Which film or TV show is this line from? “Friends don't lie.”",
+    "Stranger Things"
+   ],
+   [
+    "Which film or TV show is this line from? “Some people are worth melting for.”",
+    "Frozen"
+   ],
+   [
+    "Which film or TV show is this line from? “Clever girl.”",
+    "Jurassic Park"
+   ],
+   [
+    "Which film or TV show is this line from? “I declare bankruptcy!”",
+    "The Office"
+   ]
+  ],
+  "400": [
+   [
+    "Which film or TV show is this line from? “The Dude abides.”",
+    "The Big Lebowski"
+   ],
+   [
+    "Which film or TV show is this line from? “Keep your friends close, but your enemies closer.”",
+    "The Godfather Part II"
+   ],
+   [
+    "Which film or TV show is this line from? “Get busy living, or get busy dying.”",
+    "The Shawshank Redemption"
+   ],
+   [
+    "Which film or TV show is this line from? “They call it a Royale with cheese.”",
+    "Pulp Fiction"
+   ],
+   [
+    "Which film or TV show is this line from? “I ate his liver with some fava beans and a nice chianti.”",
+    "The Silence of the Lambs"
+   ],
+   [
+    "Which film or TV show is this line from? “Why do we fall, Bruce?”",
+    "Batman Begins"
+   ],
+   [
+    "Which film or TV show is this line from? “…standing in front of a boy, asking him to love her.”",
+    "Notting Hill"
+   ],
+   [
+    "Which film or TV show is this line from? “You is kind. You is smart. You is important.”",
+    "The Help"
+   ],
+   [
+    "Which film or TV show is this line from? “Carpe diem. Seize the day, boys.”",
+    "Dead Poets Society"
+   ],
+   [
+    "Which film or TV show is this line from? “After all this time? Always.”",
+    "Harry Potter (and the Deathly Hallows – Part 2)"
+   ],
+   [
+    "Which film or TV show is this line from? “It's a trap!”",
+    "Star Wars: Return of the Jedi"
+   ],
+   [
+    "Which film or TV show is this line from? “I love the smell of napalm in the morning.”",
+    "Apocalypse Now"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm Spartacus!”",
+    "Spartacus"
+   ],
+   [
+    "Which film or TV show is this line from? “Hope is a good thing, maybe the best of things.”",
+    "The Shawshank Redemption"
+   ],
+   [
+    "Which film or TV show is this line from? “Inconceivable!”",
+    "The Princess Bride"
+   ],
+   [
+    "Which film or TV show is this line from? “What's in the box?!”",
+    "Se7en"
+   ],
+   [
+    "Which film or TV show is this line from? “Wilson!”",
+    "Cast Away"
+   ],
+   [
+    "Which film or TV show is this line from? “I don't have friends. I got family.”",
+    "The Fast & Furious films"
+   ],
+   [
+    "Which film or TV show is this line from? “Squirrel!”",
+    "Up"
+   ],
+   [
+    "Which film or TV show is this line from? “Puny god.”",
+    "The Avengers"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm kind of a big deal.”",
+    "Anchorman"
+   ],
+   [
+    "Which film or TV show is this line from? “Smile and wave, boys. Smile and wave.”",
+    "Madagascar"
+   ],
+   [
+    "Which film or TV show is this line from? “The truth is out there.”",
+    "The X-Files"
+   ],
+   [
+    "Which film or TV show is this line from? “Have you tried turning it off and on again?”",
+    "The IT Crowd"
+   ],
+   [
+    "Which film or TV show is this line from? “It's not the plane, it's the pilot.”",
+    "Top Gun: Maverick"
+   ],
+   [
+    "Which film or TV show is this line from? “I know kung fu.”",
+    "The Matrix"
+   ],
+   [
+    "Which film or TV show is this line from? “Cool cool cool cool cool. No doubt, no doubt.”",
+    "Brooklyn Nine-Nine"
+   ],
+   [
+    "Which film or TV show is this line from? “Treat yo' self!”",
+    "Parks and Recreation"
+   ],
+   [
+    "Which film or TV show is this line from? “Dormammu, I've come to bargain.”",
+    "Doctor Strange"
+   ],
+   [
+    "Which film or TV show is this line from? “Allons-y!”",
+    "Doctor Who"
+   ]
+  ],
+  "500": [
+   [
+    "Which film or TV show is this line from? “I'm the guy who does his job.”",
+    "The Departed"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm your huckleberry.”",
+    "Tombstone"
+   ],
+   [
+    "Which film or TV show is this line from? “Well, nobody's perfect.”",
+    "Some Like It Hot"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm as mad as hell…”",
+    "Network"
+   ],
+   [
+    "Which film or TV show is this line from? “Open the pod bay doors, HAL.”",
+    "2001: A Space Odyssey"
+   ],
+   [
+    "Which film or TV show is this line from? “Bueller? Bueller?”",
+    "Ferris Bueller's Day Off"
+   ],
+   [
+    "Which film or TV show is this line from? “I'll have what she's having.”",
+    "When Harry Met Sally"
+   ],
+   [
+    "Which film or TV show is this line from? “They're here.”",
+    "Poltergeist"
+   ],
+   [
+    "Which film or TV show is this line from? “Gentlemen, you can't fight in here! This is the War Room!”",
+    "Dr. Strangelove"
+   ],
+   [
+    "Which film or TV show is this line from? “Leave the gun. Take the cannoli.”",
+    "The Godfather"
+   ],
+   [
+    "Which film or TV show is this line from? “I coulda been a contender.”",
+    "On the Waterfront"
+   ],
+   [
+    "Which film or TV show is this line from? “Forget it, Jake. It's Chinatown.”",
+    "Chinatown"
+   ],
+   [
+    "Which film or TV show is this line from? “Soylent Green is people!”",
+    "Soylent Green"
+   ],
+   [
+    "Which film or TV show is this line from? “Mrs. Robinson, you're trying to seduce me.”",
+    "The Graduate"
+   ],
+   [
+    "Which film or TV show is this line from? “Of all the gin joints…”",
+    "Casablanca"
+   ],
+   [
+    "Which film or TV show is this line from? “I have always depended on the kindness of strangers.”",
+    "A Streetcar Named Desire"
+   ],
+   [
+    "Which film or TV show is this line from? “The greatest trick the devil ever pulled…”",
+    "The Usual Suspects"
+   ],
+   [
+    "Which film or TV show is this line from? “You've got to ask yourself one question: 'Do I feel lucky?'”",
+    "Dirty Harry"
+   ],
+   [
+    "Which film or TV show is this line from? “His name was Robert Paulson.”",
+    "Fight Club"
+   ],
+   [
+    "Which film or TV show is this line from? “I'm walking here!”",
+    "Midnight Cowboy"
+   ],
+   [
+    "Which film or TV show is this line from? “There can be only one.”",
+    "Highlander"
+   ],
+   [
+    "Which film or TV show is this line from? “Snakes. Why'd it have to be snakes?”",
+    "Raiders of the Lost Ark"
+   ],
+   [
+    "Which film or TV show is this line from? “What is this, a center for ants?”",
+    "Zoolander"
+   ],
+   [
+    "Which film or TV show is this line from? “Son of a nutcracker!”",
+    "Elf"
+   ],
+   [
+    "Which film or TV show is this line from? “So you're telling me there's a chance!”",
+    "Dumb and Dumber"
+   ],
+   [
+    "Which film or TV show is this line from? “'Tis but a scratch.”",
+    "Monty Python and the Holy Grail"
+   ],
+   [
+    "Which film or TV show is this line from? “Rosebud.”",
+    "Citizen Kane"
+   ],
+   [
+    "Which film or TV show is this line from? “Hoo-ah!”",
+    "Scent of a Woman"
+   ],
+   [
+    "Which film or TV show is this line from? “Did I do that?”",
+    "Family Matters"
+   ],
+   [
+    "Which film or TV show is this line from? “On your left.”",
+    "Captain America: The Winter Soldier"
+   ]
+  ]
+ }
+}

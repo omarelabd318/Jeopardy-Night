@@ -1,0 +1,466 @@
+{
+ "id": "nick",
+ "name": "Nicknames",
+ "type": "text",
+ "desc": "Who or what goes by this nickname? Footballers, clubs, cities, stars and more.",
+ "data": {
+  "100": [
+   [
+    "Who or what is nicknamed “The Big Apple”?",
+    "New York"
+   ],
+   [
+    "Who or what is nicknamed “The Egyptian King”?",
+    "Mohamed Salah"
+   ],
+   [
+    "Who or what is nicknamed “The King of Pop”?",
+    "Michael Jackson"
+   ],
+   [
+    "Who or what is nicknamed “Om El Donya (Mother of the World)”?",
+    "Egypt"
+   ],
+   [
+    "Who or what is nicknamed “The Land of the Rising Sun”?",
+    "Japan"
+   ],
+   [
+    "Who or what is nicknamed “The Red Planet”?",
+    "Mars"
+   ],
+   [
+    "Who or what is nicknamed “The Pharaohs”?",
+    "Egypt's national football team"
+   ],
+   [
+    "Who or what is nicknamed “La Pulga (The Flea)”?",
+    "Lionel Messi"
+   ],
+   [
+    "Who or what is nicknamed “The Gunners”?",
+    "Arsenal"
+   ],
+   [
+    "Who or what is nicknamed “The Rock”?",
+    "Dwayne Johnson"
+   ],
+   [
+    "Who or what is nicknamed “CR7”?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Who or what is nicknamed “City of a Thousand Minarets”?",
+    "Cairo"
+   ],
+   [
+    "Who or what is nicknamed “El Hadaba (The Plateau)”?",
+    "Amr Diab"
+   ],
+   [
+    "Who or what is nicknamed “The Queen of Pop”?",
+    "Madonna"
+   ],
+   [
+    "Who or what is nicknamed “The Blue Planet”?",
+    "Earth"
+   ],
+   [
+    "Who or what is nicknamed “The Man of Steel”?",
+    "Superman"
+   ],
+   [
+    "Who or what is nicknamed “The Dark Knight”?",
+    "Batman"
+   ],
+   [
+    "Who or what is nicknamed “Nambar Wahed (Number One)”?",
+    "Mohamed Ramadan"
+   ],
+   [
+    "Who or what is nicknamed “Lightning Bolt”?",
+    "Usain Bolt"
+   ],
+   [
+    "Who or what is nicknamed “The Fab Four”?",
+    "The Beatles"
+   ],
+   [
+    "Who or what is nicknamed “Slim Shady”?",
+    "Eminem"
+   ],
+   [
+    "Who or what is nicknamed “The Three Lions”?",
+    "England's national football team"
+   ],
+   [
+    "Who or what is nicknamed “The King of Clay”?",
+    "Rafael Nadal"
+   ]
+  ],
+  "200": [
+   [
+    "Who or what is nicknamed “The Red Devils”?",
+    "Manchester United (also Al Ahly or Belgium)"
+   ],
+   [
+    "Who or what is nicknamed “The Special One”?",
+    "José Mourinho"
+   ],
+   [
+    "Who or what is nicknamed “The White Knights”?",
+    "Zamalek"
+   ],
+   [
+    "Who or what is nicknamed “Nady El Qarn (Club of the Century)”?",
+    "Al Ahly"
+   ],
+   [
+    "Who or what is nicknamed “The City of Light”?",
+    "Paris"
+   ],
+   [
+    "Who or what is nicknamed “Sin City”?",
+    "Las Vegas"
+   ],
+   [
+    "Who or what is nicknamed “El Zaeem (The Leader)”?",
+    "Adel Imam"
+   ],
+   [
+    "Who or what is nicknamed “Los Blancos”?",
+    "Real Madrid"
+   ],
+   [
+    "Who or what is nicknamed “Queen B”?",
+    "Beyoncé"
+   ],
+   [
+    "Who or what is nicknamed “The Fresh Prince”?",
+    "Will Smith"
+   ],
+   [
+    "Who or what is nicknamed “Kawkab El Sharq (Star of the East)”?",
+    "Umm Kulthum"
+   ],
+   [
+    "Who or what is nicknamed “Bride of the Mediterranean”?",
+    "Alexandria"
+   ],
+   [
+    "Who or what is nicknamed “El Andaleeb El Asmar (The Dark Nightingale)”?",
+    "Abdel Halim Hafez"
+   ],
+   [
+    "Who or what is nicknamed “The Lone Star State”?",
+    "Texas"
+   ],
+   [
+    "Who or what is nicknamed “King Khan”?",
+    "Shah Rukh Khan"
+   ],
+   [
+    "Who or what is nicknamed “El King”?",
+    "Mohamed Mounir"
+   ],
+   [
+    "Who or what is nicknamed “Bibo”?",
+    "Mahmoud El Khatib"
+   ],
+   [
+    "Who or what is nicknamed “The Atlas Lions”?",
+    "Morocco's national football team"
+   ],
+   [
+    "Who or what is nicknamed “King James”?",
+    "LeBron James"
+   ],
+   [
+    "Who or what is nicknamed “The Bard of Avon”?",
+    "William Shakespeare"
+   ],
+   [
+    "Who or what is nicknamed “His Airness”?",
+    "Michael Jordan"
+   ],
+   [
+    "Who or what is nicknamed “Iron Mike”?",
+    "Mike Tyson"
+   ],
+   [
+    "Who or what is nicknamed “Les Bleus”?",
+    "France's national football team"
+   ]
+  ],
+  "300": [
+   [
+    "Who or what is nicknamed “The Iron Lady”?",
+    "Margaret Thatcher"
+   ],
+   [
+    "Who or what is nicknamed “The Citizens”?",
+    "Manchester City"
+   ],
+   [
+    "Who or what is nicknamed “The Emerald Isle”?",
+    "Ireland"
+   ],
+   [
+    "Who or what is nicknamed “The Old Lady”?",
+    "Juventus"
+   ],
+   [
+    "Who or what is nicknamed “The Eternal City”?",
+    "Rome"
+   ],
+   [
+    "Who or what is nicknamed “The Windy City”?",
+    "Chicago"
+   ],
+   [
+    "Who or what is nicknamed “Il Fenomeno”?",
+    "Ronaldo Nazário"
+   ],
+   [
+    "Who or what is nicknamed “El Niño”?",
+    "Fernando Torres"
+   ],
+   [
+    "Who or what is nicknamed “El Pibe de Oro (The Golden Boy)”?",
+    "Diego Maradona"
+   ],
+   [
+    "Who or what is nicknamed “The Land of a Thousand Lakes”?",
+    "Finland"
+   ],
+   [
+    "Who or what is nicknamed “Sayedat El Shasha El Arabeya (Lady of the Arab Screen)”?",
+    "Faten Hamama"
+   ],
+   [
+    "Who or what is nicknamed “Amir El Shoaraa (Prince of Poets)”?",
+    "Ahmed Shawqi"
+   ],
+   [
+    "Who or what is nicknamed “The Golden State”?",
+    "California"
+   ],
+   [
+    "Who or what is nicknamed “Umm Al-Qura (Mother of Villages)”?",
+    "Mecca"
+   ],
+   [
+    "Who or what is nicknamed “The Green Falcons”?",
+    "Saudi Arabia's national football team"
+   ],
+   [
+    "Who or what is nicknamed “Sultan El Tarab”?",
+    "George Wassouf"
+   ],
+   [
+    "Who or what is nicknamed “Amir El Qoloub (Prince of Hearts)”?",
+    "Mohamed Aboutrika"
+   ],
+   [
+    "Who or what is nicknamed “The Lion City”?",
+    "Singapore"
+   ],
+   [
+    "Who or what is nicknamed “The Rainbow Nation”?",
+    "South Africa"
+   ],
+   [
+    "Who or what is nicknamed “The Queen of Soul”?",
+    "Aretha Franklin"
+   ],
+   [
+    "Who or what is nicknamed “La Albiceleste”?",
+    "Argentina's national football team"
+   ],
+   [
+    "Who or what is nicknamed “The Hammers”?",
+    "West Ham United"
+   ]
+  ],
+  "400": [
+   [
+    "Who or what is nicknamed “The Toffees”?",
+    "Everton"
+   ],
+   [
+    "Who or what is nicknamed “The Desert Fox”?",
+    "Erwin Rommel"
+   ],
+   [
+    "Who or what is nicknamed “The Maid of Orléans”?",
+    "Joan of Arc"
+   ],
+   [
+    "Who or what is nicknamed “Der Kaiser”?",
+    "Franz Beckenbauer"
+   ],
+   [
+    "Who or what is nicknamed “The Big Easy”?",
+    "New Orleans"
+   ],
+   [
+    "Who or what is nicknamed “The Black Pearl”?",
+    "Pelé"
+   ],
+   [
+    "Who or what is nicknamed “The Rose-Red City”?",
+    "Petra"
+   ],
+   [
+    "Who or what is nicknamed “The Magpies”?",
+    "Newcastle United"
+   ],
+   [
+    "Who or what is nicknamed “The Sun King”?",
+    "Louis XIV of France"
+   ],
+   [
+    "Who or what is nicknamed “El Pistolero”?",
+    "Luis Suárez"
+   ],
+   [
+    "Who or what is nicknamed “Wahsh El Shasha (Beast of the Screen)”?",
+    "Farid Shawqi"
+   ],
+   [
+    "Who or what is nicknamed “Ameed El Adab El Arabi (Dean of Arabic Literature)”?",
+    "Taha Hussein"
+   ],
+   [
+    "Who or what is nicknamed “The Eagles of Carthage”?",
+    "Tunisia's national football team"
+   ],
+   [
+    "Who or what is nicknamed “Les Fennecs (The Desert Foxes)”?",
+    "Algeria's national football team"
+   ],
+   [
+    "Who or what is nicknamed “Jarat El Qamar (Neighbour of the Moon)”?",
+    "Fairuz"
+   ],
+   [
+    "Who or what is nicknamed “Mousiqar El Agyal (Musician of the Generations)”?",
+    "Mohamed Abdel Wahab"
+   ],
+   [
+    "Who or what is nicknamed “The Little Corporal”?",
+    "Napoleon Bonaparte"
+   ],
+   [
+    "Who or what is nicknamed “The Hermit Kingdom”?",
+    "North Korea"
+   ],
+   [
+    "Who or what is nicknamed “The Prince of Darkness”?",
+    "Ozzy Osbourne"
+   ],
+   [
+    "Who or what is nicknamed “The Big Smoke”?",
+    "London"
+   ],
+   [
+    "Who or what is nicknamed “The Socceroos”?",
+    "Australia's national football team"
+   ],
+   [
+    "Who or what is nicknamed “The Lady with the Lamp”?",
+    "Florence Nightingale"
+   ]
+  ],
+  "500": [
+   [
+    "Who or what is nicknamed “The Iron Chancellor”?",
+    "Otto von Bismarck"
+   ],
+   [
+    "Who or what is nicknamed “The Lionheart”?",
+    "Richard I of England"
+   ],
+   [
+    "Who or what is nicknamed “The Granite City”?",
+    "Aberdeen"
+   ],
+   [
+    "Who or what is nicknamed “The Divine Ponytail”?",
+    "Roberto Baggio"
+   ],
+   [
+    "Who or what is nicknamed “The Pink City”?",
+    "Jaipur"
+   ],
+   [
+    "Who or what is nicknamed “The Galloping Major”?",
+    "Ferenc Puskás"
+   ],
+   [
+    "Who or what is nicknamed “Der Bomber”?",
+    "Gerd Müller"
+   ],
+   [
+    "Who or what is nicknamed “The Baby-Faced Assassin”?",
+    "Ole Gunnar Solskjær"
+   ],
+   [
+    "Who or what is nicknamed “La Saeta Rubia (The Blond Arrow)”?",
+    "Alfredo Di Stéfano"
+   ],
+   [
+    "Who or what is nicknamed “The Iron Duke”?",
+    "The Duke of Wellington"
+   ],
+   [
+    "Who or what is nicknamed “The Little Sparrow”?",
+    "Édith Piaf"
+   ],
+   [
+    "Who or what is nicknamed “The Venice of the East”?",
+    "Bangkok (also said of Suzhou or Udaipur)"
+   ],
+   [
+    "Who or what is nicknamed “Auld Reekie”?",
+    "Edinburgh"
+   ],
+   [
+    "Who or what is nicknamed “The City of a Hundred Gates”?",
+    "Thebes (Luxor)"
+   ],
+   [
+    "Who or what is nicknamed “The Land of the Thunder Dragon”?",
+    "Bhutan"
+   ],
+   [
+    "Who or what is nicknamed “The Pearl of Africa”?",
+    "Uganda"
+   ],
+   [
+    "Who or what is nicknamed “Slowhand”?",
+    "Eric Clapton"
+   ],
+   [
+    "Who or what is nicknamed “The Man in Black”?",
+    "Johnny Cash"
+   ],
+   [
+    "Who or what is nicknamed “The Napoleon of Crime”?",
+    "Professor Moriarty"
+   ],
+   [
+    "Who or what is nicknamed “The Golden Bear”?",
+    "Jack Nicklaus"
+   ],
+   [
+    "Who or what is nicknamed “The Red Baron”?",
+    "Manfred von Richthofen"
+   ],
+   [
+    "Who or what is nicknamed “The Black Spider”?",
+    "Lev Yashin"
+   ]
+  ]
+ }
+}
