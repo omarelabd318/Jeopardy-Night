@@ -8,6 +8,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 
 - `index.html`: the built game, about 1 MB, with every clue inlined. It loads `photos/` and `sounds/` by relative path.
 - `src/head.html`: the CSS and page shell. The Football mode colours are in the `body.football` rules near the top.
+- `src/changelog.json`: the player-facing What's new and version history, shown when you tap the version on the title screen.
 - `src/app.js`: the game logic. `CAT_GROUPS` sets the setup-screen groups, and `FOOTBALL` sets the Football mode pool (a random 6 are picked per game).
 - `src/builtin.js` and `src/base.json`: the original categories and clues.
 - `src/extra.js`: adds the v4 categories (Who Am I?, Stadiums, Formations, Guess the Food and others), and adds photo clues only when their photo exists.
@@ -27,7 +28,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 1. Edit `src/` or `v4work/`.
 2. Bump the version. The label is the `v4.NN` string in `src/head.html` and `src/app.js`. Run `sed -i 's/v4\.37/v4.38/g' src/head.html src/app.js` with the current and next numbers.
 3. Run `node build.js`.
-4. Update `NOTES.md`. Change the version line under "What's here", then add a `- 4.NN (YYYY-MM-DD): …` entry at the end of the version history. Write it in plain language, and say what Omar asked for when it was his call.
+4. Add the new version at the top of `src/changelog.json` (one or two short lines a player would care about; it shows in the game when you tap the version number). Then update `NOTES.md`. Change the version line under "What's here", then add a `- 4.NN (YYYY-MM-DD): …` entry at the end of the version history. Write it in plain language, and say what Omar asked for when it was his call.
 5. Open `index.html` in a browser and check the change, on the board and in Football mode if it's affected.
 6. Commit `src/`, `v4work/`, `index.html` and `NOTES.md` together.
 

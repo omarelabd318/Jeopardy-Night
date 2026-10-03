@@ -23,6 +23,7 @@ const flagSVG = id => \`<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000
 const AR_EMOJI = new Set(${J([...AR])});
 const ACT_KIND = ${J(ACT)};
 const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
+const CHANGELOG = ${J(JSON.parse(fs.readFileSync('src/changelog.json','utf8')))};
 // TV Show Mix: every clue from the 7 single-show categories, labelled by show
 (() => {
 const SHOWS = ["got","peaky","bb","pb","st","office","friends","himym"];

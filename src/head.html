@@ -155,6 +155,19 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .qr img,.qr canvas{display:block;width:220px;height:220px}
 #confirmBox{position:fixed;inset:0;background:rgba(var(--veil),.9);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}
 .confirmcard{width:min(460px,100%)}
+/* v4.40: version label opens What's new + version history */
+.verbtn{background:none;border:0;padding:4px 8px;cursor:pointer;font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;text-decoration:underline dotted;text-underline-offset:4px}
+.verbtn:hover,.verbtn:focus-visible{color:var(--brass)}
+.verbtn::after{content:" · What's new";color:var(--brass)}
+#newsBox{position:fixed;inset:0;background:rgba(var(--veil),.9);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}
+.newscard{width:min(620px,100%);max-height:86vh;overflow:auto;text-align:left}
+.newscard .val{font-family:var(--display);font-weight:900;font-size:30px;color:var(--brass);text-transform:uppercase}
+.newscard h3{margin:14px 0 4px;font-size:16px;letter-spacing:.04em}
+.newscard h3 small{font-weight:400;color:var(--muted);margin-left:8px}
+.newscard ul{margin:0;padding-left:20px;line-height:1.5}
+.newscard li{margin:3px 0}
+.newshist{margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}
+.newshist summary{cursor:pointer;font-weight:700}
 .confirmcard .val{font-family:var(--display);font-weight:900;font-size:32px;color:var(--brass);text-transform:uppercase}
 .confirmcard .note{font-size:15px;margin:0}
 #focusBox{position:fixed;inset:0;background:rgba(var(--veil),.95);z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -274,7 +287,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <div class="eyebrow verlabel">v4.39</div>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.40</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -284,7 +297,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.39</div>
+      <div class="eyebrow verlabel">v4.40</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -337,6 +350,12 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <div class="eyebrow" id="focusTitle">Tap the spot to zoom in on</div>
   <div class="focuswrap"><img id="focusImg" alt="Photo to set the zoom spot on"><span id="focusMark" hidden></span></div>
   <div class="row"><button class="btn primary" id="focusDone">Done</button><span class="note">The game zooms in on this spot. Tap again to move it.</span></div>
+</div></div>
+<div id="newsBox" hidden><div class="clue newscard" role="dialog" aria-modal="true" aria-labelledby="newsTitle">
+  <div class="val" id="newsTitle">What's new</div>
+  <div id="newsNow"></div>
+  <details class="newshist"><summary>Version history</summary><div id="newsHist"></div></details>
+  <div class="row"><button class="btn primary" id="newsClose">Close</button></div>
 </div></div>
 <div id="confirmBox" hidden><div class="clue confirmcard" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText">
   <div class="val" id="confirmTitle">Leave this game?</div>

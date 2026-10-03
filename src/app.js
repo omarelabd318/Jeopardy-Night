@@ -109,8 +109,20 @@ $("#optSound").onclick = () => setSound(!S.sound);
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
+/* v4.40: What's new + version history, from src/changelog.json (newest first) */
+function newsHTML(list){ return list.map(e => `<h3>v${esc(e.v)}${e.date ? `<small>${esc(e.date)}</small>` : ""}</h3><ul>${e.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`).join(""); }
+function openNews(){
+  $("#newsTitle").textContent = `What's new in v${CHANGELOG[0].v}`;
+  $("#newsNow").innerHTML = newsHTML(CHANGELOG.slice(0, 2));
+  $("#newsHist").innerHTML = newsHTML(CHANGELOG.slice(2));
+  $("#newsBox").hidden = false; $("#newsClose").focus();
+}
+function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
+$("#verBtn").onclick = openNews;
+$("#newsClose").onclick = closeNews;
+$("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.39`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} categories · ${n.toLocaleString("en-US")} clues · v4.40`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -196,7 +208,7 @@ function removePhoto(key){ if(photos[key]){ if(photos[key].startsWith("blob:")) 
 function packStatus(extra){
   const keys = new Set(); PHOTO_CATS.forEach(cat => LV.forEach(l => pool(cat,l).forEach(([ans]) => keys.add(norm(ans)))));
   const ks = [...keys], built = ks.filter(k => photos[k] && !photos[k].startsWith("blob:")).length, own = ks.filter(k => photos[k] && photos[k].startsWith("blob:")).length;
-  const other = ["foodpic","stad"].reduce((t,id) => t + (catById(id) ? LV.reduce((u,l) => u + pool(id,l).filter(e => e[2]).length, 0) : 0), 0);
+  const other = ["foodpic","stad","logo"].reduce((t,id) => t + (catById(id) ? LV.reduce((u,l) => u + pool(id,l).filter(e => e[2]).length, 0) : 0), 0);
   const ownTxt = own ? ` · ${own} added on this device` : "";
   const pc = $("#phCount"); if(pc) pc.textContent = built + other ? `· ${built + other} built in${ownTxt}` : "";
   $("#packStatus").innerHTML = (built ? `${built} you can replace here${ownTxt}` : own ? `${own} added on this device` : "No photos loaded") + (extra||"");
@@ -232,8 +244,9 @@ const prepOpen = new Set();
 function otherPhotos(){
   const el = $("#otherPhotos"); if(!el) return;
   const n = id => catById(id) ? LV.reduce((t,l) => t + pool(id,l).filter(e => e[2]).length, 0) : 0;
-  const parts = [n("foodpic") ? `Guess the Food (${n("foodpic")} photos)` : "", n("stad") ? `the stadium photos in Football Stadiums (${n("stad")})` : ""].filter(Boolean);
-  el.textContent = parts.length ? ` ${parts.join(" and ")} ${parts.length>1?"are":"is"} built in too, but can't be changed here.` : ""; el.hidden = !parts.length;
+  const parts = [n("foodpic") ? `Guess the Food (${n("foodpic")} photos)` : "", n("logo") ? `Guess the Logo (${n("logo")} logos)` : "", n("stad") ? `the stadium photos in Football Stadiums (${n("stad")})` : ""].filter(Boolean);
+  const list = parts.length > 1 ? parts.slice(0,-1).join(", ") + " and " + parts[parts.length-1] : parts[0];
+  el.textContent = parts.length ? ` ${list} ${parts.length>1?"are":"is"} built in too, but can't be changed here.` : ""; el.hidden = !parts.length;
 }
 function renderPrep(){
   otherPhotos();
@@ -639,7 +652,7 @@ $("#clue").addEventListener("input", e => {
   const v = parseFloat(inp.value.replace(/[, ]/g, "")); S.cur.guesses = S.cur.guesses || {};
   if(isNaN(v)) delete S.cur.guesses[+inp.dataset.g]; else S.cur.guesses[+inp.dataset.g] = v;
 });
-document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
+document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(!$("#newsBox").hidden){ closeNews(); return; } if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
 
 try{ if(window.__WORLD_JSON){ WORLD.feats = decodeWorld(window.__WORLD_JSON);
   LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; }
