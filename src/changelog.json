@@ -3,6 +3,21 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.42",
+  "date": "2026-10-03",
+  "items": [
+   "Football mode board values are white."
+  ]
+ },
+ {
+  "v": "4.41",
+  "date": "2026-10-03",
+  "items": [
+   "Guess the Logo starts a little less blurred, and Less blur clears it in smaller steps.",
+   "30 more logos in Guess the Logo (110 in all), including Ismaily, e&, Al Jazeera, MBC, Arsenal and Bayern."
+  ]
+ },
+ {
   "v": "4.40",
   "date": "2026-10-03",
   "items": [
