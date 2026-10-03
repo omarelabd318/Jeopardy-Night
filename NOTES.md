@@ -3,11 +3,12 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.37 (published 2026-10-02 as artifact version 1790991192-c0af). It's one file with every clue built in.
-- `index-v3.59.html`: backup of the previous version.
-- `photos/`: 420 built-in photos (cars, actors, footballers, and 70 for Guess the Person), loaded as `photos/<key>.jpg`.
+- `index.html`: the whole game, v4.37. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 77 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `photos/`: 530 jpgs loaded as `photos/<key>.jpg`: 420 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
+- `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
 - The page needs internet for its CDN scripts (QR code, JSZip, world map) and Google Fonts.
+- The v3.59 backup (`index-v3.59.html`) is not in this repo or its history.
 
 ## State at v3.59
 - 67 categories, 6,832 clues (the title screen says "6,300+").
@@ -48,6 +49,12 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - General polish: fix bugs found while testing, smooth out the animations and transitions, make buttons and spacing consistent, check the layout on a TV, laptop and phone, and tidy setup.
 - Rebalance values: inside each category, move clues that are too easy or too hard to a lower or higher value. Keep the counts per value roughly even.
 
+## Missing photos (checked at v4.37)
+- Guess the Person launched in v4.00 with 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else. Photos were added later for Hamaki, Ahmed Amin, Asser Yassin, Dina El Sherbiny and Hisham Abbas.
+- 14 clues in `v4work/new-photos.json` still have no photo, so the build leaves them out. Omar can add any of them from the photo checklist in setup.
+  - No free photo found: Yasmin Abdulaziz, Ahmed Belal, Taher Abouzeid, Mohamed Fouad, Marwan Pablo, Hassan Shakosh, Abu.
+  - Photo too low-res, too blurry, or a painting: Ezzat Abou Aouf, Hassan Hosny, Salah Abdallah, Ahmed El Kass, Mahmoud Mokhtar El Tetsh, Ahmed Shawqi, Mohamed Hassanein Heikal.
+
 ## Version history (from the original chat)
 - v1.x: Core game. 12 starting categories, a classic blue board, 45 s timer, photo rounds, Egypt and Arab World.
 - v2.x: Many new categories (emoji, riddles, Egypt editions, shows, football competitions, languages, and more). Act It Out QR code, half points, turn highlight, "Are you sure?" prompts, a score-edit toggle, title screen, full screen, zoom spots, photo export and import.
@@ -81,10 +88,6 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 4.25 (2026-10-02): Winner podium steps read 1st/2nd/3rd (ordinals, both modes). Experiment: Football mode category titles navy with a faint white shadow; undo by deleting the 'Football mode navy category titles' rule in src/head.html.
 - 4.26 (2026-10-02): All 30 stadium photos in (last 12 added); Football Stadiums now 110 clues, 22 per value with 6 photo clues each. Bernabéu and Camp Nou photos show the pre-renovation look; Stade Louis II and Borg El Arab are inside views.
 - 4.27 (2026-10-02): Football mode navy category titles have no shadow now. To put it back, set text-shadow:2px 2px 0 rgba(255,255,255,.35) in the body.football .head rule (the old value is in a comment next to it).
-
-## Guess the Person gaps (v4.00)
-- 70 of the planned 80 people. Umm Kulthum was dropped because her photo looked like someone else.
-- No photo was found for: Mohamed Hamaki, Marwan Pablo, Mohamed Fouad, Dina El Sherbiny, Ahmed Amin, Hassan Shakosh, Asser Yassin, Abu, Hisham Abbas.
 - 4.28 (2026-10-02): Football mode green a step lighter (tile #33A957, background #238541, panel #228A44). The 4.27 values are in a comment above the body.football rule in src/head.html for a one-step revert. White tile values still read clearly (they keep their dark shadow).
 - 4.29 (2026-10-02): Football mode green shifted toward lime (tile #58B82C, background #3E9A1F, panel #449F22), as a try. The 4.28 values are in a comment above the body.football rule in src/head.html for a one-step revert. White values and navy titles checked readable in screenshots.
 - 4.30 (2026-10-02): Football mode uses Omar's neon swatch green #00FF14 (tiles and clue card; background #00E012). White would not read on it, so in Football mode the main text, tile values, and the winner headline are dark navy (#0B1530 / #0F2557) and the black text shadows are removed; plus/minus colours are dark green and dark red. To go back to the 4.29 lime, restore the values in the 4.30 comment in src/head.html and delete the "4.30 text rule" lines.
