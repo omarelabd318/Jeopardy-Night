@@ -3,6 +3,14 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.59",
+  "date": "2026-10-03",
+  "items": [
+   "The countdown ticks, the time's-up chime and the winner sounds are about 4 times louder, so you can hear them over the room.",
+   "Football mode's Siuuu clip is louder too, and the game unlocks sound on your first tap so browsers can't silently block it."
+  ]
+ },
+ {
   "v": "4.58",
   "date": "2026-10-03",
   "items": [

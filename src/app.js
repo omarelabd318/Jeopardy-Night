@@ -85,12 +85,18 @@ const pool = (cat,lvl) => DATA[cat][lvl];
 
 /* ---------- sound: soft countdown ticks and a fading bell-like chime (C_soft_end) ---------- */
 const Snd = (() => {
-  let ac = null;
-  const ctx = () => { if(!ac){ try{ ac = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ ac = null; } } if(ac && ac.state === "suspended") ac.resume(); return ac; };
+  let ac = null, out = null;
+  /* 4.59: every sound goes through one master volume, then a limiter so loud moments don't distort.
+     VOL 4 makes the ticks, chime and fanfare about 4x louder (12 dB) so they carry over a room; set VOL = 1 to go back to the 4.58 levels. */
+  const VOL = 4;
+  const ctx = () => { if(!ac){ try{ ac = new (window.AudioContext || window.webkitAudioContext)();
+      const lim = ac.createDynamicsCompressor(); lim.threshold.value = -6; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.1;
+      out = ac.createGain(); out.gain.value = VOL; out.connect(lim).connect(ac.destination);
+    }catch(e){ ac = null; } } if(ac && ac.state === "suspended") ac.resume(); return ac; };
   const tone = (freq, start, dur, vol, type="sine", attack=0.005) => { const a = ctx(); if(!a) return;
     const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + start;
     o.type = type; o.frequency.value = freq; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + attack); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-    o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + 0.05); };
+    o.connect(g).connect(out || a.destination); o.start(t); o.stop(t + dur + 0.05); };
   return {
     unlock(){ if(S.sound) ctx(); },
     tick(){ if(!S.sound) return; tone(1320, 0, 0.09, 0.05, "triangle"); tone(660, 0, 0.07, 0.03, "sine"); },
@@ -134,7 +140,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.58`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.59`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -474,7 +480,14 @@ function showWinner(){
 }
 /* Football mode winner sound: the last 9 seconds of Ronaldo's "Siuuu" clip, in place of the fanfare */
 let siuA = null;
-function playSiu(){ try{ if(!siuA) siuA = new Audio("sounds/siuuu.mp3"); siuA.currentTime = 0; const pr = siuA.play(); if(pr) pr.catch(() => Snd.fanfare()); }catch(e){ Snd.fanfare(); } }
+function playSiu(){ try{ if(!siuA) siuA = new Audio("sounds/siuuu.mp3"); siuA.muted = false; siuA.volume = 1; siuA.currentTime = 0; const pr = siuA.play(); if(pr) pr.catch(() => Snd.fanfare()); }catch(e){ Snd.fanfare(); } }
+/* 4.59: browsers (Safari, iPhone) block audio that starts without a tap (the timer sounds' AudioContext too), and the winner screen can open on a timer after the last tile.
+   So on the first tap, load the clip and play it muted for an instant; after that it's allowed to play at any time. */
+function primeSiu(){ Snd.unlock(); try{ if(siuA) return; siuA = new Audio("sounds/siuuu.mp3"); siuA.preload = "auto"; siuA.muted = true;
+  const pr = siuA.play(); const done = () => { if(siuA.muted){ siuA.pause(); siuA.currentTime = 0; } };
+  if(pr) pr.then(done).catch(() => {}); else done(); }catch(e){} }
+document.addEventListener("pointerdown", primeSiu, {once:true, capture:true});
+document.addEventListener("keydown", primeSiu, {once:true, capture:true});
 function stopSiu(){ if(siuA){ siuA.pause(); siuA.currentTime = 0; } }
 function hideWinner(){ $("#winBox").hidden = true; stopConfetti(); stopSiu(); ledStop(); }
 /* 4.51: the winner LED strip reads SSSIIIIIIII once, then U's that never end, at 65 px/s (32 with reduced motion; 4.50 was 130) */
