@@ -40,6 +40,7 @@ body.football .pod .who, body.football .win{color:#fff;background:var(--brass);b
 /* Football mode navy category titles (Omar's experiment, 4.25): delete this rule to go back to white */
 body.football .head{color:#000;text-shadow:none}  /* 4.31: black; was color:var(--brass) (navy) */  /* 4.27: shadow removed; was text-shadow:2px 2px 0 rgba(255,255,255,.35) */
 body.football .topbar h1::after{content:" ⚽";font-size:.8em;vertical-align:.05em}
+body.football .tile:not(.done){color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.35)}  /* 4.42 try (Omar): white board values. To undo, delete this line; values go back to black from the 4.31 rule above */
 .btn.footbtn{border-color:#5DBE7A;background:#207D3F;color:#fff}
 html,body{height:100%}
 body{background:var(--felt);color:var(--cream);font-family:var(--body);font-size:15px;line-height:1.45}
@@ -290,7 +291,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.41</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="What's new and version history">v4.42</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -300,7 +301,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.41</div>
+      <div class="eyebrow verlabel">v4.42</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
