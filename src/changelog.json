@@ -3,6 +3,13 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.61",
+  "date": "2026-10-03",
+  "items": [
+   "Football mode: the half-points button is plain yellow text instead of a navy box."
+  ]
+ },
+ {
   "v": "4.60",
   "date": "2026-10-03",
   "items": [
