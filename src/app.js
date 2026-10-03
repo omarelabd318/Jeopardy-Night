@@ -350,15 +350,20 @@ function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S
   S.football = on; document.body.classList.toggle("football", on); }
 /* 4.43: retro poster collage of football phrases behind the Football mode board.
    4.48: packed into exactly the whole rows and columns that fit, and each phrase shrunk to fit its block, so nothing is cut off. */
-const FB_PHRASES = ["SIIIIIUUUUUU!","It's a f*cking disgrace","After review… #10 Paraguay","AGÜEROOOOO","Qué mirás, bobo?","Mo Salah, running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة"];
+const FB_PHRASES = ["SIIIIIUUUUUU!","It's a f*cking disgrace","After review… #10 Paraguay","AGÜEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
 const FB_FILL = ["GOAL!","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
 const FB_CELL = {w:96, h:56, gap:5};
-/* 4.47: the collage starts just under the category row */
+const fbWant = t => { const ar = /[\u0600-\u06FF]/.test(t), n = t.length; return n > 8 ? Math.min(5, Math.ceil(n / (ar ? 5 : 5.5))) : ar ? 2 : 1; };
+/* 4.47: the collage starts just under the category row.
+   4.48: no repeats. Cells grow when there's more room than phrases, so each phrase and filler appears at most once. */
 function placeFbBg(){
   const bg = $("#fbBg"), h = $("#board .head"), b = $("#board"); if(!bg || !h || !S.football) return;
   bg.style.top = (b.offsetTop + h.offsetTop + h.offsetHeight) + "px";
-  const cols = Math.max(2, Math.floor((bg.clientWidth - FB_CELL.gap) / (FB_CELL.w + FB_CELL.gap))),
-        rows = Math.max(1, Math.round((bg.clientHeight - FB_CELL.gap) / (FB_CELL.h + FB_CELL.gap)));
+  const W = bg.clientWidth - FB_CELL.gap, H = bg.clientHeight - FB_CELL.gap;
+  const need = [...FB_PHRASES, ...FB_FILL].reduce((a, t) => a + fbWant(t), 0) * 1.1;  // cells all the phrases would take
+  const fit = (w, h) => [Math.max(2, Math.floor(W / (w + FB_CELL.gap))), Math.max(1, Math.round(H / (h + FB_CELL.gap)))];
+  let [cols, rows] = fit(FB_CELL.w, FB_CELL.h);
+  if(cols * rows > need){ const k = Math.sqrt(cols * rows / need); [cols, rows] = fit(FB_CELL.w * k, FB_CELL.h * k); }
   if(bg.dataset.grid !== cols + "x" + rows) footballBg(cols, rows);
 }
 window.addEventListener("resize", placeFbBg);
@@ -367,27 +372,34 @@ function footballBg(cols, rows){
   el.dataset.grid = cols + "x" + rows;
   el.style.gridTemplateColumns = `repeat(${cols},1fr)`; el.style.gridTemplateRows = `repeat(${rows},1fr)`;
   let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const used = Array.from({length: rows}, () => Array(cols).fill(false)), out = [];
-  let i = 0, pi = 0, fi = 0;
-  const ORDER = FB_PHRASES.map((_, j) => j).sort((a, b) => ((a * 7919) % 13) - ((b * 7919) % 13) || a - b);  // fixed shuffle, mixes English and Arabic
+  const used = Array.from({length: rows}, () => Array(cols).fill(null)), blocks = [];
+  // one queue, each phrase and filler once: two phrases (fixed shuffle, mixes English and Arabic), then a filler
+  const order = FB_PHRASES.map((_, j) => j).sort((a, b) => ((a * 7919) % 13) - ((b * 7919) % 13) || a - b).map(j => FB_PHRASES[j]);
+  const queue = []; let fi = 0;
+  const roomy = cols * rows >= [...FB_PHRASES, ...FB_FILL].reduce((a, t) => a + fbWant(t), 0);  // tight on space: phrases first, fillers only plug gaps
+  order.forEach((t, j) => { queue.push(t); if(roomy && j % 2 === 1 && fi < FB_FILL.length) queue.push(FB_FILL[fi++]); });
+  while(fi < FB_FILL.length) queue.push(FB_FILL[fi++]);
   for(let r = 0; r < rows; r++) for(let c = 0; c < cols; c++){
     if(used[r][c]) continue;
     let free = 0; while(c + free < cols && !used[r][c + free]) free++;
-    const want = t => { const ar = /[\u0600-\u06FF]/.test(t), n = t.length; return n > 8 ? Math.min(5, Math.ceil(n / (ar ? 5 : 5.5))) : ar ? 2 : 1; };
-    const fill = i % 3 === 2; let t = fill ? FB_FILL[fi % FB_FILL.length] : FB_PHRASES[ORDER[pi % ORDER.length]]; i++;
-    if(want(t) > free){ const fits = FB_FILL.filter(x => want(x) <= free && x.length <= free * 5); t = fits[fi % Math.max(1, fits.length)] || "!"; fi++; }  // a leftover gap gets a short filler; the phrase waits for the next block
-    else if(fill) fi++; else pi++;  // every phrase once before any repeats
-    const ar = /[\u0600-\u06FF]/.test(t), n = t.length, short = n <= 8;
+    const qi = queue.findIndex(t => fbWant(t) <= free);
+    if(qi < 0){  // nothing left that fits: widen the block to the left instead of repeating a phrase
+      const left = c > 0 && used[r][c - 1];
+      if(left && left.rs === 1){ left.cs++; used[r][c] = left; }
+      continue;
+    }
+    const t = queue.splice(qi, 1)[0], ar = /[\u0600-\u06FF]/.test(t), n = t.length;
     const vert = /^[A-Za-zÀ-ÿ!]{3,8}$/.test(t) && r + 1 < rows && !used[r + 1][c] && rnd() < .35;
-    let cs = vert ? 1 : Math.max(want(t), n > 3 && !ar && n <= 8 && rnd() < .4 ? 2 : 1);
+    const spare = cols * rows - blocks.reduce((a, x) => a + x.cs * x.rs, 0) > queue.reduce((a, x) => a + fbWant(x), 0) + fbWant(t) + 2;
+    let cs = vert ? 1 : Math.max(fbWant(t), spare && n > 3 && !ar && n <= 8 && rnd() < .5 ? 2 : 1);
     cs = Math.max(1, Math.min(cs, free));
-    let rs = vert ? 2 : (n <= 8 && rnd() < .3) ? 2 : 1;
+    let rs = vert ? 2 : (spare && n <= 12 && rnd() < .35) ? 2 : 1;
     if(rs === 2 && (r + 1 >= rows || used[r + 1].slice(c, c + cs).some(Boolean))) rs = 1;
-    for(let y = r; y < r + rs; y++) for(let x = c; x < c + cs; x++) used[y][x] = true;
-    const f = 1 + Math.floor(rnd() * 6), k = 1 + Math.floor(rnd() * 5);
-    out.push(`<div class="b f${f} c${k}${vert && rs === 2 ? " v" : ""}" style="grid-area:${r + 1}/${c + 1}/span ${rs}/span ${cs}"><span dir="auto" style="--n:${Math.max(3, n * (ar ? .75 : 1))}">${esc(t)}</span></div>`);
+    const blk = {t, r, c, rs, cs, vert: vert && rs === 2, ar, n, f: 1 + Math.floor(rnd() * 6), k: 1 + Math.floor(rnd() * 5)};
+    for(let y = r; y < r + rs; y++) for(let x = c; x < c + cs; x++) used[y][x] = blk;
+    blocks.push(blk);
   }
-  el.innerHTML = out.join("");
+  el.innerHTML = blocks.map(b => `<div class="b f${b.f} c${b.k}${b.vert ? " v" : ""}" style="grid-area:${b.r + 1}/${b.c + 1}/span ${b.rs}/span ${b.cs}"><span dir="auto" style="--n:${Math.max(3, b.n * (b.ar ? .75 : 1))}">${esc(b.t)}</span></div>`).join("");
   fitFbBg(); if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitFbBg);
 }
 function fitFbBg(){  // shrink any phrase that is wider (or taller, if vertical) than its block
