@@ -1,0 +1,338 @@
+{
+ "id": "cal",
+ "name": "Most Calories",
+ "type": "text",
+ "desc": "Three foods or drinks. Pick the one with the most calories. Figures are published nutrition values for the stated portion.",
+ "data": {
+  "100": [
+   [
+    "Which has the most calories?\nA) a whole cucumber (~300 g)\nB) a McDonald's Big Mac\nC) a medium apple",
+    "B) a McDonald's Big Mac: 580 kcal\n(others: A) 45, C) 95 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a hard-boiled egg\nB) a Cinnabon Classic Roll\nC) a medium banana",
+    "B) a Cinnabon Classic Roll: 880 kcal\n(others: A) 78, C) 105 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium tomato\nB) a cup of tea with 1 tsp sugar\nC) a medium plate of koshary (~400 g)",
+    "C) a medium plate of koshary (~400 g): 900 kcal\n(others: A) 22, B) 18 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium carrot\nB) a KFC Chicken Pot Pie\nC) a cup of strawberries",
+    "B) a KFC Chicken Pot Pie: 720 kcal\n(others: A) 25, C) 49 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium orange\nB) McDonald's large fries\nC) a can of Diet Coke (330 ml)",
+    "B) McDonald's large fries: 480 kcal\n(others: A) 62, C) 1 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Krispy Kreme Original Glazed doughnut\nB) one Medjool date\nC) a Hardee's Monster Thickburger",
+    "C) a Hardee's Monster Thickburger: 1400 kcal\n(others: A) 190, B) 66 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a slice of plain feteer meshaltet (~150 g)\nB) a guava\nC) a cup of watermelon cubes",
+    "A) a slice of plain feteer meshaltet (~150 g): 510 kcal\n(others: B) 37, C) 46 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) 3 cups of plain air-popped popcorn\nB) a glass of skimmed milk (240 ml)\nC) a Cinnabon Caramel Pecanbon",
+    "C) a Cinnabon Caramel Pecanbon: 1080 kcal\n(others: A) 93, B) 83 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium orange\nB) a Subway 6-inch Veggie Delite\nC) a Subway footlong Italian B.M.T.",
+    "C) a Subway footlong Italian B.M.T.: 820 kcal\n(others: A) 62, B) 230 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) one ta'meya patty (~17 g)\nB) a cup of tea, no sugar\nC) one hawawshi loaf (~250 g)",
+    "C) one hawawshi loaf (~250 g): 580 kcal\n(others: A) 57, B) 2 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium apple\nB) a cup of black coffee, no sugar\nC) a bowl of Om Ali (~200 g)",
+    "C) a bowl of Om Ali (~200 g): 420 kcal\n(others: A) 95, B) 2 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Extra Crispy chicken breast\nB) a KFC Original Recipe drumstick\nC) a hard-boiled egg",
+    "A) a KFC Extra Crispy chicken breast: 530 kcal\n(others: B) 130, C) 78 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) 100 g of watermelon\nB) 100 g of cucumber\nC) 100 g of almonds",
+    "C) 100 g of almonds: 579 kcal\n(others: A) 30, B) 15 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a whole Domino's medium hand-tossed pepperoni pizza (8 slices)\nB) a medium banana\nC) a McDonald's Big Mac",
+    "A) a whole Domino's medium hand-tossed pepperoni pizza (8 slices): 1600 kcal\n(others: B) 105, C) 580 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a can of Coca-Cola (330 ml)\nB) a medium carrot\nC) a Burger King Whopper",
+    "C) a Burger King Whopper: 660 kcal\n(others: A) 139, B) 25 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium carrot\nB) a Cinnabon Classic Roll\nC) a cup of tea, no sugar",
+    "B) a Cinnabon Classic Roll: 880 kcal\n(others: A) 25, C) 2 kcal)"
+   ]
+  ],
+  "200": [
+   [
+    "Which has the most calories?\nA) a McDonald's Quarter Pounder with Cheese\nB) a McDonald's Egg McMuffin\nC) a McDonald's Cheeseburger",
+    "A) a McDonald's Quarter Pounder with Cheese: 520 kcal\n(others: B) 310, C) 300 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a can of Coca-Cola (330 ml)\nB) a large glass of sugarcane juice (330 ml)\nC) a glass of orange juice (240 ml)",
+    "B) a large glass of sugarcane juice (330 ml): 257 kcal\n(others: A) 139, C) 112 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Krispy Kreme Original Glazed doughnut\nB) McDonald's Hash Browns\nC) a Krispy Kreme Glazed Kreme Filled doughnut",
+    "C) a Krispy Kreme Glazed Kreme Filled doughnut: 340 kcal\n(others: A) 190, B) 140 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium apple\nB) a whole avocado (Hass, ~136 g flesh)\nC) a medium banana",
+    "B) a whole avocado (Hass, ~136 g flesh): 227 kcal\n(others: A) 95, C) 105 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC biscuit\nB) a KFC Original Recipe chicken breast\nC) a KFC Original Recipe drumstick",
+    "B) a KFC Original Recipe chicken breast: 390 kcal\n(others: A) 180, C) 130 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a piece of basbousa (~8 x 6 cm)\nB) a portion of konafa (~150 g)\nC) 2 Medjool dates",
+    "B) a portion of konafa (~150 g): 400 kcal\n(others: A) 220, C) 133 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) McDonald's medium fries\nB) McDonald's Hash Browns\nC) a medium baked potato with skin (~170 g)",
+    "A) McDonald's medium fries: 320 kcal\n(others: B) 140, C) 161 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Cinnabon Classic Roll\nB) a KFC Original Recipe chicken breast\nC) a McDonald's Big Mac",
+    "A) a Cinnabon Classic Roll: 880 kcal\n(others: B) 390, C) 580 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a bowl of foul medames (~200 g)\nB) 2 ta'meya patties\nC) a hard-boiled egg",
+    "A) a bowl of foul medames (~200 g): 300 kcal\n(others: B) 114, C) 78 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) 10-piece McDonald's Chicken McNuggets\nB) McDonald's Hash Browns\nC) a McDonald's Hamburger",
+    "A) 10-piece McDonald's Chicken McNuggets: 410 kcal\n(others: B) 140, C) 250 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a 2-finger Kit Kat\nB) one Oreo cookie\nC) a Snickers bar (52.7 g)",
+    "C) a Snickers bar (52.7 g): 250 kcal\n(others: A) 105, B) 53 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Cheeseburger\nB) a McDonald's Filet-O-Fish\nC) a Burger King Whopper",
+    "C) a Burger King Whopper: 660 kcal\n(others: A) 300, B) 380 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Cadbury Dairy Milk bar (45 g)\nB) a can of Red Bull (250 ml)\nC) a medium banana",
+    "A) a Cadbury Dairy Milk bar (45 g): 240 kcal\n(others: B) 110, C) 105 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Domino's Chocolate Lava Crunch Cake\nB) a Krispy Kreme Original Glazed doughnut\nC) a McDonald's Vanilla Cone",
+    "A) a Domino's Chocolate Lava Crunch Cake: 350 kcal\n(others: B) 190, C) 200 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium banana\nB) a hard-boiled egg\nC) a Krispy Kreme Chocolate Iced Glazed doughnut",
+    "C) a Krispy Kreme Chocolate Iced Glazed doughnut: 240 kcal\n(others: A) 105, B) 78 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Vanilla Cone\nB) a McDonald's OREO McFlurry (regular)\nC) a glass of orange juice (240 ml)",
+    "B) a McDonald's OREO McFlurry (regular): 410 kcal\n(others: A) 200, C) 112 kcal)"
+   ]
+  ],
+  "300": [
+   [
+    "Which has the most calories?\nA) a medium ear of corn\nB) a large baked sweet potato (~300 g)\nC) a cup of cooked white rice",
+    "B) a large baked sweet potato (~300 g): 270 kcal\n(others: A) 100, C) 205 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a hard-boiled egg\nB) a medium banana\nC) 2 tablespoons of peanut butter",
+    "C) 2 tablespoons of peanut butter: 190 kcal\n(others: A) 78, B) 105 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Egg McMuffin\nB) McDonald's medium fries\nC) a McDonald's McChicken",
+    "C) a McDonald's McChicken: 390 kcal\n(others: A) 310, B) 320 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium banana\nB) a bottle of Coca-Cola (500 ml)\nC) a handful of pistachios (28 g, ~49 nuts)",
+    "B) a bottle of Coca-Cola (500 ml): 210 kcal\n(others: A) 105, C) 159 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Original Recipe chicken breast\nB) a KFC Original Recipe thigh\nC) a KFC Original Recipe drumstick",
+    "A) a KFC Original Recipe chicken breast: 390 kcal\n(others: B) 280, C) 130 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Double Quarter Pounder with Cheese\nB) a McDonald's Quarter Pounder with Cheese\nC) a McDonald's Big Mac",
+    "A) a McDonald's Double Quarter Pounder with Cheese: 740 kcal\n(others: B) 520, C) 580 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a bowl of Om Ali (~200 g)\nB) a Krispy Kreme Glazed Kreme Filled doughnut\nC) a piece of basbousa (~8 x 6 cm)",
+    "A) a bowl of Om Ali (~200 g): 420 kcal\n(others: B) 340, C) 220 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a handful of almonds (28 g, ~23 nuts)\nB) a cup of grapes\nC) a medium apple",
+    "A) a handful of almonds (28 g, ~23 nuts): 164 kcal\n(others: B) 104, C) 95 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium banana\nB) a medium apple\nC) 3 Medjool dates",
+    "C) 3 Medjool dates: 199 kcal\n(others: A) 105, B) 95 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Original Recipe chicken breast\nB) a KFC Extra Crispy chicken breast\nC) a McDonald's Filet-O-Fish",
+    "B) a KFC Extra Crispy chicken breast: 530 kcal\n(others: A) 390, C) 380 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) 3 ta'meya patties\nB) a cup of cooked white rice\nC) a bowl of foul medames (~200 g)",
+    "C) a bowl of foul medames (~200 g): 300 kcal\n(others: A) 171, B) 205 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's OREO McFlurry (regular)\nB) a Burger King Hershey's Sundae Pie\nC) a Krispy Kreme Original Glazed doughnut",
+    "A) a McDonald's OREO McFlurry (regular): 410 kcal\n(others: B) 310, C) 190 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) 2 tablespoons of Nutella\nB) a medium banana\nC) 2 tablespoons of honey",
+    "A) 2 tablespoons of Nutella: 200 kcal\n(others: B) 105, C) 128 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Original Recipe chicken breast\nB) a KFC Original Recipe thigh\nC) a KFC Extra Crispy chicken breast",
+    "C) a KFC Extra Crispy chicken breast: 530 kcal\n(others: A) 390, B) 280 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC biscuit\nB) a Cinnabon MiniBon\nC) a Krispy Kreme Original Glazed doughnut",
+    "B) a Cinnabon MiniBon: 350 kcal\n(others: A) 180, C) 190 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Snickers bar (52.7 g)\nB) a Cadbury Dairy Milk bar (45 g)\nC) McDonald's medium fries",
+    "C) McDonald's medium fries: 320 kcal\n(others: A) 250, B) 240 kcal)"
+   ]
+  ],
+  "400": [
+   [
+    "Which has the most calories?\nA) a KFC Famous Bowl\nB) a Burger King Whopper\nC) a McDonald's Big Mac",
+    "A) a KFC Famous Bowl: 740 kcal\n(others: B) 660, C) 580 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a large banana\nB) a whole mango\nC) a whole pomegranate",
+    "C) a whole pomegranate: 234 kcal\n(others: A) 121, B) 202 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) McDonald's Hash Browns\nB) a piece of basbousa (~8 x 6 cm)\nC) a Krispy Kreme Original Glazed doughnut",
+    "B) a piece of basbousa (~8 x 6 cm): 220 kcal\n(others: A) 140, C) 190 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Cinnabon MiniBon\nB) a portion of konafa (~150 g)\nC) a Domino's Chocolate Lava Crunch Cake",
+    "B) a portion of konafa (~150 g): 400 kcal\n(others: A) 350, C) 350 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Quarter Pounder with Cheese\nB) a Hardee's Famous Star with Cheese\nC) a McDonald's Big Mac",
+    "B) a Hardee's Famous Star with Cheese: 660 kcal\n(others: A) 520, C) 580 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a tablespoon of honey\nB) a teaspoon of sugar\nC) a tablespoon of tahini",
+    "C) a tablespoon of tahini: 89 kcal\n(others: A) 64, B) 16 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a cup of cooked lentils\nB) a medium baked potato with skin (~170 g)\nC) a cup of cooked white rice",
+    "A) a cup of cooked lentils: 230 kcal\n(others: B) 161, C) 205 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a handful of walnuts (28 g, ~14 halves)\nB) a handful of cashews (28 g, ~18 nuts)\nC) a handful of almonds (28 g, ~23 nuts)",
+    "A) a handful of walnuts (28 g, ~14 halves): 185 kcal\n(others: B) 157, C) 164 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Krispy Kreme Original Glazed doughnut\nB) a McDonald's Vanilla Cone\nC) a Krispy Kreme Chocolate Iced Glazed doughnut",
+    "C) a Krispy Kreme Chocolate Iced Glazed doughnut: 240 kcal\n(others: A) 190, B) 200 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Snickers bar (52.7 g)\nB) a 4-finger Kit Kat\nC) 3 Medjool dates",
+    "A) a Snickers bar (52.7 g): 250 kcal\n(others: B) 210, C) 199 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Egg McMuffin\nB) a McDonald's Hamburger\nC) a Subway 6-inch Veggie Delite",
+    "A) a McDonald's Egg McMuffin: 310 kcal\n(others: B) 250, C) 230 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Extra Crispy chicken breast\nB) a McDonald's Quarter Pounder with Cheese\nC) a Burger King Whopper",
+    "C) a Burger King Whopper: 660 kcal\n(others: A) 530, B) 520 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Cheeseburger\nB) a Domino's Chocolate Lava Crunch Cake\nC) a Snickers bar (52.7 g)",
+    "B) a Domino's Chocolate Lava Crunch Cake: 350 kcal\n(others: A) 300, C) 250 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Big Mac\nB) a McDonald's Quarter Pounder with Cheese\nC) a Hardee's Famous Star with Cheese",
+    "C) a Hardee's Famous Star with Cheese: 660 kcal\n(others: A) 580, B) 520 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Hamburger\nB) a Krispy Kreme Chocolate Iced Glazed doughnut\nC) a bowl of foul medames (~200 g)",
+    "C) a bowl of foul medames (~200 g): 300 kcal\n(others: A) 250, B) 240 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Chicken Pot Pie\nB) a McDonald's Big Mac\nC) a McDonald's Quarter Pounder with Cheese",
+    "A) a KFC Chicken Pot Pie: 720 kcal\n(others: B) 580, C) 520 kcal)"
+   ]
+  ],
+  "500": [
+   [
+    "Which has the most calories?\nA) 10-piece McDonald's Chicken McNuggets\nB) a McDonald's McChicken\nC) McDonald's large fries",
+    "C) McDonald's large fries: 480 kcal\n(others: A) 410, B) 390 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a Krispy Kreme Original Glazed doughnut\nB) a can of Coca-Cola (330 ml)\nC) a whole avocado (Hass, ~136 g flesh)",
+    "C) a whole avocado (Hass, ~136 g flesh): 227 kcal\n(others: A) 190, B) 139 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Vanilla Cone\nB) a cup of cooked lentils\nC) a Krispy Kreme Original Glazed doughnut",
+    "B) a cup of cooked lentils: 230 kcal\n(others: A) 200, C) 190 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC biscuit\nB) a KFC Original Recipe whole wing\nC) a KFC Original Recipe drumstick",
+    "A) a KFC biscuit: 180 kcal\n(others: B) 130, C) 130 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a KFC Famous Bowl\nB) a Hardee's Famous Star with Cheese\nC) a Cinnabon Classic Roll",
+    "C) a Cinnabon Classic Roll: 880 kcal\n(others: A) 740, B) 660 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) 5 ta'meya patties\nB) a McDonald's Hamburger\nC) a Krispy Kreme Original Glazed doughnut",
+    "A) 5 ta'meya patties: 285 kcal\n(others: B) 250, C) 190 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a medium banana\nB) a glass of skimmed milk (240 ml)\nC) a tablespoon of olive oil",
+    "C) a tablespoon of olive oil: 119 kcal\n(others: A) 105, B) 83 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a handful of almonds (28 g, ~23 nuts)\nB) a can of Coca-Cola (330 ml)\nC) McDonald's Hash Browns",
+    "A) a handful of almonds (28 g, ~23 nuts): 164 kcal\n(others: B) 139, C) 140 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Baked Apple Pie\nB) McDonald's Hash Browns\nC) a McDonald's Vanilla Cone",
+    "A) a McDonald's Baked Apple Pie: 230 kcal\n(others: B) 140, C) 200 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a large glass of sugarcane juice (330 ml)\nB) a can of Coca-Cola (330 ml)\nC) a Krispy Kreme Original Glazed doughnut",
+    "A) a large glass of sugarcane juice (330 ml): 257 kcal\n(others: B) 139, C) 190 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a McDonald's Double Quarter Pounder with Cheese\nB) a Burger King Whopper\nC) a Subway footlong Italian B.M.T.",
+    "C) a Subway footlong Italian B.M.T.: 820 kcal\n(others: A) 740, B) 660 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a glass of orange juice (240 ml)\nB) a can of Red Bull (250 ml)\nC) a glass of whole milk (240 ml)",
+    "C) a glass of whole milk (240 ml): 149 kcal\n(others: A) 112, B) 110 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a bottle of Coca-Cola (500 ml)\nB) a can of Red Bull (250 ml)\nC) a large glass of sugarcane juice (330 ml)",
+    "C) a large glass of sugarcane juice (330 ml): 257 kcal\n(others: A) 210, B) 110 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a handful of almonds (28 g, ~23 nuts)\nB) 2 tablespoons of Nutella\nC) a medium banana",
+    "B) 2 tablespoons of Nutella: 200 kcal\n(others: A) 164, C) 105 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) McDonald's Hash Browns\nB) a whole avocado (Hass, ~136 g flesh)\nC) a handful of walnuts (28 g, ~14 halves)",
+    "B) a whole avocado (Hass, ~136 g flesh): 227 kcal\n(others: A) 140, C) 185 kcal)"
+   ],
+   [
+    "Which has the most calories?\nA) a glass of whole milk (240 ml)\nB) a handful of walnuts (28 g, ~14 halves)\nC) a Subway 6-inch Veggie Delite",
+    "C) a Subway 6-inch Veggie Delite: 230 kcal\n(others: A) 149, B) 185 kcal)"
+   ]
+  ]
+ }
+}

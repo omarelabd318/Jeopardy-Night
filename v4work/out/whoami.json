@@ -1,0 +1,338 @@
+{
+"id": "whoami",
+"name": "Who Am I?",
+"type": "text",
+"desc": "Three clues about a footballer, from easiest to most telling. Name him.",
+"data": {
+"100": [
+[
+"1. I captained my country to the 2022 World Cup.\n2. I have a record eight Ballon d'Ors.\n3. I joined Barcelona's academy at 13 and left the club in 2021.",
+"Lionel Messi"
+],
+[
+"1. I'm the top scorer in men's international football.\n2. I won the Champions League with Manchester United and Real Madrid.\n3. I moved to Al Nassr in 2023.",
+"Cristiano Ronaldo"
+],
+[
+"1. I was born in the village of Nagrig and started at Al Mokawloon.\n2. I played for Basel, Chelsea, Fiorentina and Roma.\n3. I won the Premier League with Liverpool in 2020.",
+"Mohamed Salah"
+],
+[
+"1. I started at Santos.\n2. PSG paid a world-record €222m to take me from Barcelona in 2017.\n3. In 2023 I passed Pelé's Brazil scoring record.",
+"Neymar"
+],
+[
+"1. I won the World Cup at 19 in 2018.\n2. I scored a hat-trick in the 2022 World Cup final.\n3. I joined Real Madrid on a free transfer from PSG in 2024.",
+"Kylian Mbappé"
+],
+[
+"1. My father played for Leeds and Manchester City.\n2. I played for Salzburg and Borussia Dortmund.\n3. I scored a record 36 goals in my first Premier League season.",
+"Erling Haaland"
+],
+[
+"1. I scored twice in the 1998 World Cup final.\n2. I was sent off for a headbutt in the 2006 final.\n3. I coached Real Madrid to three Champions Leagues in a row.",
+"Zinedine Zidane"
+],
+[
+"1. I scored from my own half against Wimbledon in 1996.\n2. I'm married to a Spice Girl.\n3. I co-own Inter Miami.",
+"David Beckham"
+],
+[
+"1. I won the 2002 World Cup.\n2. I won the 2005 Ballon d'Or.\n3. Real Madrid fans gave me a standing ovation at the Bernabéu in 2005.",
+"Ronaldinho"
+],
+[
+"1. I wore the number 22 for Al Ahly.\n2. I scored the winner in the 2008 Africa Cup of Nations final against Cameroon.\n3. I showed a 'Sympathize with Gaza' shirt after scoring in 2008.",
+"Mohamed Aboutrika"
+],
+[
+"1. I'm Arsenal's all-time top scorer.\n2. I was one of the 2003–04 Invincibles.\n3. My handball set up France's goal against Ireland in a 2009 World Cup play-off.",
+"Thierry Henry"
+],
+[
+"1. I scored the 'Hand of God' goal.\n2. I captained Argentina to the 1986 World Cup.\n3. I won two Serie A titles with Napoli.",
+"Diego Maradona"
+],
+[
+"1. I won three World Cups.\n2. I spent most of my career at Santos.\n3. I finished my career at the New York Cosmos.",
+"Pelé"
+],
+[
+"1. I came through Barcelona's La Masia academy.\n2. I won Euro 2024 with Spain.\n3. At 16, I became the youngest scorer in Euros history.",
+"Lamine Yamal"
+],
+[
+"1. I started at Everton.\n2. I'm Manchester United's all-time top scorer.\n3. I scored a famous overhead kick against Manchester City in 2011.",
+"Wayne Rooney"
+],
+[
+"1. I scored five goals in nine minutes against Wolfsburg in 2015.\n2. I broke Gerd Müller's record with 41 Bundesliga goals in a season.\n3. I moved from Bayern Munich to Barcelona in 2022.",
+"Robert Lewandowski"
+]
+],
+"200": [
+[
+"1. I played for Marseille before joining Chelsea.\n2. I'm Ivory Coast's all-time top scorer.\n3. I scored the equaliser and the winning penalty in the 2012 Champions League final.",
+"Didier Drogba"
+],
+[
+"1. I captained Liverpool to the 2005 Champions League in Istanbul.\n2. I slipped against Chelsea in 2014.\n3. As a manager, I won the Scottish title with Rangers.",
+"Steven Gerrard"
+],
+[
+"1. Real Madrid signed me from Tottenham in 2012.\n2. I captained Croatia to the 2018 World Cup final.\n3. I won the 2018 Ballon d'Or.",
+"Luka Modrić"
+],
+[
+"1. Chelsea let me go before I starred at Wolfsburg.\n2. I won six Premier League titles with Manchester City.\n3. I joined Napoli in 2025.",
+"Kevin De Bruyne"
+],
+[
+"1. My twin brother played alongside me.\n2. I'm Egypt's all-time top scorer.\n3. I became Egypt's head coach in 2024.",
+"Hossam Hassan"
+],
+[
+"1. I'm Spain's most-capped player.\n2. I scored a 93rd-minute equaliser in the 2014 Champions League final.\n3. I went back to Sevilla in 2023.",
+"Sergio Ramos"
+],
+[
+"1. I scored a stoppage-time goal at Stamford Bridge in the 2009 semi-final.\n2. I scored the winner in the 2010 World Cup final.\n3. After Barcelona, I played in Japan for Vissel Kobe.",
+"Andrés Iniesta"
+],
+[
+"1. I won the 2020 Puskás Award for a solo goal against Burnley.\n2. I shared the 2021–22 Premier League Golden Boot.\n3. I joined LAFC in 2025.",
+"Son Heung-min"
+],
+[
+"1. I scored a 30-yard bicycle kick against England in 2012.\n2. I played for Ajax, Juventus, Inter, Barcelona and Milan.\n3. I'm Sweden's all-time top scorer.",
+"Zlatan Ibrahimović"
+],
+[
+"1. I played for Barcelona, Real Madrid, Inter and Milan.\n2. I had a half-moon haircut at the 2002 World Cup.\n3. I scored twice in the 2002 World Cup final.",
+"Ronaldo Nazário"
+],
+[
+"1. I'm Tottenham's all-time top scorer.\n2. I'm England's all-time top scorer.\n3. I won my first major trophy with Bayern Munich in 2025.",
+"Harry Kane"
+],
+[
+"1. I started at West Ham, where my dad played.\n2. My 'ghost goal' against Germany in 2010 wasn't given.\n3. I'm Chelsea's all-time top scorer.",
+"Frank Lampard"
+],
+[
+"1. I won the Champions League with Milan in 2007.\n2. I won the 2007 Ballon d'Or.\n3. Real Madrid signed me in 2009.",
+"Kaká"
+],
+[
+"1. I celebrated my goals with a front flip.\n2. I won the 2014 World Cup.\n3. I'm the World Cup's all-time top scorer, with 16 goals.",
+"Miroslav Klose"
+],
+[
+"1. I won the 2000 Ballon d'Or.\n2. My move from Barcelona to Real Madrid in 2000 broke the world record.\n3. Barcelona fans threw a pig's head at me.",
+"Luís Figo"
+],
+[
+"1. My goals helped West Ham stay up in 2007.\n2. I played for both Manchester clubs.\n3. City put up a 'Welcome to Manchester' billboard for me.",
+"Carlos Tevez"
+]
+],
+"300": [
+[
+"1. I played in Turkey for Beşiktaş, then for Anderlecht.\n2. I won the Africa Cup of Nations four times.\n3. I'm Egypt's most-capped player.",
+"Ahmed Hassan"
+],
+[
+"1. I was a goalkeeper for Al Ahly and briefly for Sion in Switzerland.\n2. I won four Africa Cup of Nations titles.\n3. At 45, I became the oldest player ever at a World Cup.",
+"Essam El-Hadary"
+],
+[
+"1. I left Real Madrid for Inter in 2009.\n2. I won the treble with Inter in 2010.\n3. I lost the 2010 World Cup final with the Netherlands.",
+"Wesley Sneijder"
+],
+[
+"1. I came through Atlético Madrid, where they called me 'El Niño'.\n2. I scored the winner in the Euro 2008 final.\n3. Chelsea paid £50m for me in 2011.",
+"Fernando Torres"
+],
+[
+"1. I came through Real Madrid's academy.\n2. I won the treble with Barcelona and again with Inter.\n3. I'm Cameroon's all-time top scorer.",
+"Samuel Eto'o"
+],
+[
+"1. I won the 2006 World Cup.\n2. I joined Juventus on a free from Milan in 2011.\n3. I chipped a Panenka penalty against England at Euro 2012.",
+"Andrea Pirlo"
+],
+[
+"1. I played for PSV, Chelsea, Real Madrid and Bayern.\n2. I always cut inside onto my left foot.\n3. I scored the winner in the 2013 Champions League final.",
+"Arjen Robben"
+],
+[
+"1. I scored the winner in the 2023 Champions League final.\n2. I was named player of the tournament at Euro 2024.\n3. I won the 2024 Ballon d'Or.",
+"Rodri"
+],
+[
+"1. Manchester United signed me for a British record fee in 2014.\n2. I scored the winner in the 2021 Copa América final at the Maracanã.\n3. I scored in the 2022 World Cup final.",
+"Ángel Di María"
+],
+[
+"1. I scored the fastest Premier League hat-trick, in under three minutes, for Southampton.\n2. I scored the winning penalty in the AFCON 2021 final.\n3. I moved to Bayern Munich in 2022.",
+"Sadio Mané"
+],
+[
+"1. I started at Southampton as a left-back.\n2. I became the world's most expensive player in 2013.\n3. I scored an overhead kick in the 2018 Champions League final.",
+"Gareth Bale"
+],
+[
+"1. My father Cesare also captained Milan.\n2. I spent my whole 25-year career at AC Milan.\n3. I scored after 51 seconds in the 2005 Champions League final.",
+"Paolo Maldini"
+],
+[
+"1. Birmingham retired my number 22 when I left at 17.\n2. I played for Borussia Dortmund.\n3. I scored an overhead kick against Slovakia at Euro 2024.",
+"Jude Bellingham"
+],
+[
+"1. They called me 'the Divine Ponytail'.\n2. I won the 1993 Ballon d'Or.\n3. I missed the deciding penalty in the 1994 World Cup final.",
+"Roberto Baggio"
+],
+[
+"1. I played non-league football for Stocksbridge Park Steels and Fleetwood.\n2. I scored in a record 11 Premier League games in a row.\n3. I won the 2016 title with Leicester.",
+"Jamie Vardy"
+],
+[
+"1. I won the league with Leeds before joining Manchester United.\n2. I was banned for eight months for a kung-fu kick on a fan in 1995.\n3. I said, 'When the seagulls follow the trawler...'",
+"Eric Cantona"
+]
+],
+"400": [
+[
+"1. I came from Zamalek and had a spell at Lokomotiv Moscow.\n2. They called me 'the Bulldozer'.\n3. I was Wigan's goal machine on loan in 2008.",
+"Amr Zaki"
+],
+[
+"1. My father Hamada Emam also starred for Zamalek.\n2. I played in Italy for Udinese and in the Netherlands for De Graafschap.\n3. Zamalek fans call me 'the Little Genius'.",
+"Hazem Emam"
+],
+[
+"1. I led Villarreal to the 2006 Champions League semi-final but missed a late penalty against Arsenal.\n2. I'm a Boca Juniors legend.\n3. I later became Boca's president.",
+"Juan Román Riquelme"
+],
+[
+"1. I won the 1999 Ballon d'Or.\n2. My bicycle-kick hat-trick against Valencia in 2001 sent Barcelona into the Champions League.\n3. I faked a face injury against Turkey at the 2002 World Cup.",
+"Rivaldo"
+],
+[
+"1. I starred in Johan Cruyff's Barcelona 'Dream Team'.\n2. I shared the Golden Boot at the 1994 World Cup.\n3. I won the 1994 Ballon d'Or.",
+"Hristo Stoichkov"
+],
+[
+"1. I'm Czech and played for Lazio and Juventus.\n2. I won the 2003 Ballon d'Or.\n3. Suspension kept me out of the 2003 Champions League final.",
+"Pavel Nedvěd"
+],
+[
+"1. I dribbled past Oliver Kahn for a famous goal for Eintracht Frankfurt in 1993.\n2. I played for PSG and Bolton.\n3. They said I was so good they named me twice.",
+"Jay-Jay Okocha"
+],
+[
+"1. I scored the winning penalty in the 2003 Champions League final.\n2. I won the 2004 Ballon d'Or.\n3. I later managed Ukraine.",
+"Andriy Shevchenko"
+],
+[
+"1. I struggled at Manchester United but scored twice at Anfield.\n2. I won the European Golden Shoe with Villarreal and with Atlético Madrid.\n3. I won the Golden Ball at the 2010 World Cup.",
+"Diego Forlán"
+],
+[
+"1. I won the Golden Boot at the 2010 World Cup.\n2. I call myself a 'Raumdeuter', an interpreter of space.\n3. I left Bayern Munich for Vancouver Whitecaps in 2025.",
+"Thomas Müller"
+],
+[
+"1. I played for Feyenoord and Tottenham.\n2. I threw my Spurs shirt on the ground after being subbed in 2007.\n3. I captained Al Ahly.",
+"Hossam Ghaly"
+],
+[
+"1. I played in Portugal for Beira-Mar.\n2. I scored Egypt's penalty against the Netherlands at the 1990 World Cup.\n3. Egypt didn't score another World Cup goal until Salah in 2018.",
+"Magdi Abdelghani"
+],
+[
+"1. I won the Premier League in back-to-back seasons with two different clubs.\n2. I won the 2018 World Cup.\n3. I moved to Al-Ittihad in 2023.",
+"N'Golo Kanté"
+],
+[
+"1. Juventus paid a world-record fee for a goalkeeper to sign me in 2001.\n2. I won the 2006 World Cup.\n3. I stayed with Juventus after they were relegated in 2006.",
+"Gianluigi Buffon"
+],
+[
+"1. I was born in Suriname.\n2. I'm the only player to win the Champions League with three clubs.\n3. Those clubs were Ajax, Real Madrid and Milan.",
+"Clarence Seedorf"
+],
+[
+"1. I was one of Arsenal's Invincibles.\n2. I moved to Chelsea in 2006.\n3. I won a record seven FA Cups.",
+"Ashley Cole"
+]
+],
+"500": [
+[
+"1. I played at the 1990 World Cup.\n2. I spent years in Germany with Werder Bremen and Kaiserslautern.\n3. I coached Egypt at the 2012 Olympics.",
+"Hany Ramzy"
+],
+[
+"1. I joined Perugia in 1998.\n2. I won Serie A with Roma in 2001.\n3. I retired at 29, right after the 2006 World Cup.",
+"Hidetoshi Nakata"
+],
+[
+"1. They called me 'the Maradona of the Carpathians'.\n2. I played for both Real Madrid and Barcelona.\n3. I won the 2000 UEFA Cup with Galatasaray.",
+"Gheorghe Hagi"
+],
+[
+"1. I'm famous for my big blonde hair.\n2. I played at three World Cups for Colombia.\n3. I played in MLS for the Tampa Bay Mutiny.",
+"Carlos Valderrama"
+],
+[
+"1. I'm famous for knuckleball free kicks.\n2. I'm Brazilian, from Recife.\n3. I won seven Ligue 1 titles in a row with Lyon.",
+"Juninho Pernambucano"
+],
+[
+"1. I played for Bayer Leverkusen and Tottenham.\n2. I scored five goals in one game against Blackburn in 2010.\n3. I shared the 2010–11 Premier League Golden Boot.",
+"Dimitar Berbatov"
+],
+[
+"1. In 2002 my club finished runner-up in the league, the German Cup and the Champions League.\n2. Suspension kept me out of the 2002 World Cup final.\n3. I joined Chelsea from Bayern Munich in 2006.",
+"Michael Ballack"
+],
+[
+"1. I joined Inter from Banfield in 1995.\n2. I'm Inter's record appearance maker.\n3. I captained Inter to the 2010 treble.",
+"Javier Zanetti"
+],
+[
+"1. I came through Ismaily.\n2. I played for Fiorentina and West Brom.\n3. I moved to Al-Ittihad in 2020.",
+"Ahmed Hegazi"
+],
+[
+"1. I'm nicknamed after a French striker.\n2. I played for Anderlecht, Kasımpaşa and Aston Villa.\n3. I returned to Al Ahly in 2024.",
+"Trezeguet (Mahmoud Hassan)"
+],
+[
+"1. I celebrated my goals with a somersault.\n2. I'm Mexican and starred for Real Madrid.\n3. I scored 38 La Liga goals in one season, every one with a single touch.",
+"Hugo Sánchez"
+],
+[
+"1. I played in Germany for Bayern Munich and Hertha Berlin.\n2. I'm from Iran.\n3. I held the men's international scoring record until Cristiano Ronaldo passed me.",
+"Ali Daei"
+],
+[
+"1. I'm Algerian.\n2. I scored a backheel for Porto in the 1987 European Cup final.\n3. I later coached Algeria.",
+"Rabah Madjer"
+],
+[
+"1. I won African Footballer of the Year three times.\n2. I won the 1993 Champions League with Marseille.\n3. My sons André and Jordan also play for Ghana.",
+"Abedi Pelé"
+],
+[
+"1. I won three Africa Cup of Nations titles.\n2. I had spells in England at Sheffield United and Hull City.\n3. I joined Pyramids from Al Ahly in 2019.",
+"Ahmed Fathy"
+],
+[
+"1. I'm Turkey's all-time top scorer.\n2. I played for Galatasaray, Inter and Blackburn.\n3. I scored the fastest goal in World Cup history, after 11 seconds in 2002.",
+"Hakan Şükür"
+]
+]
+}
+}

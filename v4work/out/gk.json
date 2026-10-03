@@ -1,0 +1,782 @@
+{
+ "id": "gk",
+ "name": "General Knowledge",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "How many players does each volleyball team have on court?",
+    "6"
+   ],
+   [
+    "Which planet is called the Red Planet?",
+    "Mars"
+   ],
+   [
+    "What is Japan's currency?",
+    "The yen"
+   ],
+   [
+    "How many bones are in the adult human body?",
+    "206"
+   ],
+   [
+    "What is the hardest natural substance?",
+    "Diamond"
+   ],
+   [
+    "Which company makes the PlayStation?",
+    "Sony"
+   ],
+   [
+    "What does 'www' stand for?",
+    "World Wide Web"
+   ],
+   [
+    "Which language has the most native speakers?",
+    "Mandarin Chinese"
+   ],
+   [
+    "Which app's logo is a white ghost on yellow?",
+    "Snapchat"
+   ],
+   [
+    "How many continents are there?",
+    "7"
+   ],
+   [
+    "How many days are in a leap year?",
+    "366"
+   ],
+   [
+    "Which company makes the iPhone?",
+    "Apple"
+   ],
+   [
+    "How many strings does a standard guitar have?",
+    "6"
+   ],
+   [
+    "What is the largest mammal on Earth?",
+    "The blue whale"
+   ],
+   [
+    "Which fast-food chain's mascot is Ronald?",
+    "McDonald's"
+   ],
+   [
+    "What is the currency of the United Kingdom?",
+    "Pound sterling"
+   ],
+   [
+    "Which animal is called 'the ship of the desert'?",
+    "The camel"
+   ],
+   [
+    "How many sides does a hexagon have?",
+    "6"
+   ],
+   [
+    "How many colours are in a rainbow?",
+    "7"
+   ],
+   [
+    "What colour do you get by mixing blue and yellow?",
+    "Green"
+   ],
+   [
+    "How many legs does an insect have?",
+    "6"
+   ],
+   [
+    "How many players does a football team have on the pitch?",
+    "11"
+   ],
+   [
+    "Which month is the shortest of the year?",
+    "February"
+   ],
+   [
+    "Which animal is called 'the king of the jungle'?",
+    "The lion"
+   ],
+   [
+    "Which dam created Lake Nasser?",
+    "The Aswan High Dam"
+   ],
+   [
+    "How many zeros are in one million?",
+    "6"
+   ],
+   [
+    "How many years are in a millennium?",
+    "1,000"
+   ],
+   [
+    "How many sides does an octagon have?",
+    "8"
+   ],
+   [
+    "What is Egypt's currency?",
+    "The Egyptian pound"
+   ],
+   [
+    "Which app is known for short videos and a musical-note logo?",
+    "TikTok"
+   ],
+   [
+    "How many stars are on the US flag?",
+    "50"
+   ],
+   [
+    "Which fruit is dried to make raisins?",
+    "Grapes"
+   ],
+   [
+    "What is the main ingredient of guacamole?",
+    "Avocado"
+   ],
+   [
+    "Which sport is played at Wimbledon?",
+    "Tennis"
+   ],
+   [
+    "How many seconds are in an hour?",
+    "3,600"
+   ],
+   [
+    "Which Egyptian street food mixes rice, lentils, pasta and spicy tomato sauce?",
+    "Koshari"
+   ],
+   [
+    "What is the largest continent?",
+    "Asia"
+   ],
+   [
+    "Which Cairo club was named Africa's 'Club of the Century' by CAF?",
+    "Al Ahly"
+   ]
+  ],
+  "200": [
+   [
+    "How many minutes are in a day?",
+    "1,440"
+   ],
+   [
+    "How many hours are in a week?",
+    "168"
+   ],
+   [
+    "Who is the most-followed person on Instagram?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "What does NASA stand for?",
+    "National Aeronautics and Space Administration"
+   ],
+   [
+    "Which chess piece can only move diagonally?",
+    "The bishop"
+   ],
+   [
+    "What is the currency of Switzerland?",
+    "The Swiss franc"
+   ],
+   [
+    "How many squares are on a chessboard?",
+    "64"
+   ],
+   [
+    "In which year was the first iPhone released?",
+    "2007"
+   ],
+   [
+    "What does the 'S' in HTTPS stand for?",
+    "Secure"
+   ],
+   [
+    "Who painted the Mona Lisa?",
+    "Leonardo da Vinci"
+   ],
+   [
+    "In which city is the Arab League headquartered?",
+    "Cairo"
+   ],
+   [
+    "How many hearts does an octopus have?",
+    "3"
+   ],
+   [
+    "Which country has won the most Olympic gold medals overall?",
+    "The United States"
+   ],
+   [
+    "What is 50 in Roman numerals?",
+    "L"
+   ],
+   [
+    "Which country does LEGO come from?",
+    "Denmark"
+   ],
+   [
+    "How many players does each basketball team have on court?",
+    "5"
+   ],
+   [
+    "What does PDF stand for?",
+    "Portable Document Format"
+   ],
+   [
+    "What is the largest desert in the world?",
+    "Antarctica"
+   ],
+   [
+    "Who co-founded Microsoft with Paul Allen?",
+    "Bill Gates"
+   ],
+   [
+    "What does 'a.m.' stand for?",
+    "Ante meridiem"
+   ],
+   [
+    "Which language is spoken in Brazil?",
+    "Portuguese"
+   ],
+   [
+    "What is the tallest animal in the world?",
+    "The giraffe"
+   ],
+   [
+    "Which Hindu festival is known as the festival of lights?",
+    "Diwali"
+   ],
+   [
+    "What is a baby kangaroo called?",
+    "A joey"
+   ],
+   [
+    "What does 'CV' stand for?",
+    "Curriculum vitae"
+   ],
+   [
+    "What do you call a word formed from initials and pronounced as a word, like NASA?",
+    "An acronym"
+   ],
+   [
+    "What is the fear of spiders called?",
+    "Arachnophobia"
+   ],
+   [
+    "How many months of the year have 31 days?",
+    "7"
+   ],
+   [
+    "In which country were the ancient Olympic Games held?",
+    "Greece"
+   ],
+   [
+    "What is one hundredth of an Egyptian pound called?",
+    "A piastre (qirsh)"
+   ],
+   [
+    "Which superhero is known as the 'Man of Steel'?",
+    "Superman"
+   ],
+   [
+    "Which country produces the most coffee?",
+    "Brazil"
+   ],
+   [
+    "Which chess piece moves in an L-shape?",
+    "The knight"
+   ],
+   [
+    "How many cards are in a standard deck, without jokers?",
+    "52"
+   ],
+   [
+    "What does 'DIY' stand for?",
+    "Do it yourself"
+   ],
+   [
+    "Which dessert is made of shredded pastry, syrup and often cream or nuts?",
+    "Konafa (kunafa)"
+   ],
+   [
+    "How many minutes does a football match last, not counting stoppage time?",
+    "90"
+   ]
+  ],
+  "300": [
+   [
+    "How many keys does a standard piano have?",
+    "88"
+   ],
+   [
+    "What is Scotland's national animal?",
+    "The unicorn"
+   ],
+   [
+    "What does GIF stand for?",
+    "Graphics Interchange Format"
+   ],
+   [
+    "Which country first used paper money?",
+    "China"
+   ],
+   [
+    "What is a group of crows called?",
+    "A murder"
+   ],
+   [
+    "How many official time zones does China use?",
+    "One"
+   ],
+   [
+    "Which company was originally called 'BackRub'?",
+    "Google"
+   ],
+   [
+    "Which continent has no native snakes?",
+    "Antarctica"
+   ],
+   [
+    "What is the total of all the dots on a standard six-sided die?",
+    "21"
+   ],
+   [
+    "Which country drinks the most coffee per person?",
+    "Finland"
+   ],
+   [
+    "In which year did Egypt most recently host the Africa Cup of Nations?",
+    "2019"
+   ],
+   [
+    "What is Japan's national sport?",
+    "Sumo wrestling"
+   ],
+   [
+    "Which is the most visited art museum in the world?",
+    "The Louvre"
+   ],
+   [
+    "What is Morocco's currency?",
+    "The dirham"
+   ],
+   [
+    "What is the best-selling video game of all time?",
+    "Minecraft"
+   ],
+   [
+    "What does RSVP stand for?",
+    "Répondez s'il vous plaît"
+   ],
+   [
+    "Which company owns Instagram and WhatsApp?",
+    "Meta"
+   ],
+   [
+    "What is the fastest bird in a dive?",
+    "The peregrine falcon"
+   ],
+   [
+    "How many strings does a violin have?",
+    "4"
+   ],
+   [
+    "What is the world's largest coral reef system?",
+    "The Great Barrier Reef"
+   ],
+   [
+    "What does NATO stand for?",
+    "North Atlantic Treaty Organization"
+   ],
+   [
+    "What does UNESCO stand for?",
+    "United Nations Educational, Scientific and Cultural Organization"
+   ],
+   [
+    "What is the main language of Iran?",
+    "Persian (Farsi)"
+   ],
+   [
+    "What is the national bird of the USA?",
+    "The bald eagle"
+   ],
+   [
+    "Counting second-language speakers, which is the most spoken language in the world?",
+    "English"
+   ],
+   [
+    "Who wrote the novel '1984'?",
+    "George Orwell"
+   ],
+   [
+    "Who composed 'The Four Seasons'?",
+    "Antonio Vivaldi"
+   ],
+   [
+    "What do you call a word or phrase that reads the same backwards?",
+    "A palindrome"
+   ],
+   [
+    "What is the only mammal capable of true flight?",
+    "The bat"
+   ],
+   [
+    "What does 'USB' stand for?",
+    "Universal Serial Bus"
+   ],
+   [
+    "What is a group of lions called?",
+    "A pride"
+   ],
+   [
+    "What is a baby goat called?",
+    "A kid"
+   ],
+   [
+    "In which country did judo begin?",
+    "Japan"
+   ],
+   [
+    "What does 'AD' stand for in dates?",
+    "Anno Domini"
+   ],
+   [
+    "What is Saudi Arabia's currency?",
+    "The riyal"
+   ],
+   [
+    "Which Egyptian actor is known as 'El Zaeem' (the Leader)?",
+    "Adel Emam"
+   ],
+   [
+    "Which Egyptian singer was called 'Kawkab El Sharq' (Star of the East)?",
+    "Umm Kulthum"
+   ],
+   [
+    "What is the Japanese art of paper folding called?",
+    "Origami"
+   ],
+   [
+    "What is the longest-running American animated TV series?",
+    "The Simpsons"
+   ]
+  ],
+  "400": [
+   [
+    "Which is the only letter that doesn't appear in any US state name?",
+    "Q"
+   ],
+   [
+    "What does the 'T' in CAPTCHA stand for?",
+    "Turing"
+   ],
+   [
+    "What is the Greek-correct plural of 'octopus'?",
+    "Octopodes"
+   ],
+   [
+    "What is the dot over a lowercase 'i' called?",
+    "A tittle"
+   ],
+   [
+    "Which African country recognises 16 official languages?",
+    "Zimbabwe"
+   ],
+   [
+    "How many coloured stickers are on a standard 3×3 Rubik's Cube?",
+    "54"
+   ],
+   [
+    "What is Vietnam's currency?",
+    "The đồng (dong)"
+   ],
+   [
+    "What does the 'e' in 'e.g.' stand for?",
+    "Exempli (exempli gratia)"
+   ],
+   [
+    "Which architecture firm designed the Burj Khalifa?",
+    "Skidmore, Owings & Merrill (SOM)"
+   ],
+   [
+    "What is the imaginary line at roughly 180° longitude called?",
+    "The International Date Line"
+   ],
+   [
+    "On a UK Monopoly board, which is the most expensive property?",
+    "Mayfair"
+   ],
+   [
+    "Which number, spelled in English, has its letters in alphabetical order?",
+    "Forty"
+   ],
+   [
+    "In Morse code, which letter is a single dot?",
+    "E"
+   ],
+   [
+    "In which year was Google founded?",
+    "1998"
+   ],
+   [
+    "Who is the only Egyptian to win the Nobel Prize in Literature?",
+    "Naguib Mahfouz"
+   ],
+   [
+    "What is the most common surname in the world?",
+    "Wang (Li is close behind)"
+   ],
+   [
+    "What is South Africa's currency?",
+    "The rand"
+   ],
+   [
+    "What does 'ibid.' mean in a citation?",
+    "In the same place"
+   ],
+   [
+    "What does 'QR' stand for in QR code?",
+    "Quick Response"
+   ],
+   [
+    "Which planet has a day longer than its year?",
+    "Venus"
+   ],
+   [
+    "Which was the first country to give women the vote, in 1893?",
+    "New Zealand"
+   ],
+   [
+    "What is a group of flamingos called?",
+    "A flamboyance"
+   ],
+   [
+    "What is a baby hedgehog called?",
+    "A hoglet"
+   ],
+   [
+    "What do you call words that sound the same but are spelled differently, like 'pair' and 'pear'?",
+    "Homophones"
+   ],
+   [
+    "What is the national language of Pakistan?",
+    "Urdu"
+   ],
+   [
+    "How many small squares are on a standard Sudoku grid?",
+    "81"
+   ],
+   [
+    "Which is the only continent crossed by both the Equator and the Prime Meridian?",
+    "Africa"
+   ],
+   [
+    "Who wrote 'One Hundred Years of Solitude'?",
+    "Gabriel García Márquez"
+   ],
+   [
+    "What is a 'googol'?",
+    "1 followed by 100 zeros"
+   ],
+   [
+    "What does 'SIM' stand for in SIM card?",
+    "Subscriber Identity Module"
+   ],
+   [
+    "Which chess move lets the king and a rook move at the same time?",
+    "Castling"
+   ],
+   [
+    "FIFA's name is French. What does it stand for?",
+    "Fédération Internationale de Football Association"
+   ],
+   [
+    "What is the '&' symbol called?",
+    "An ampersand"
+   ],
+   [
+    "How many players does each water polo team have in the pool?",
+    "7"
+   ],
+   [
+    "Which currency is the highest-valued in the world per unit?",
+    "The Kuwaiti dinar"
+   ],
+   [
+    "Which is the only US state whose name has one syllable?",
+    "Maine"
+   ],
+   [
+    "Who wrote 'Les Misérables'?",
+    "Victor Hugo"
+   ],
+   [
+    "Which Egyptian novelist wrote 'The Yacoubian Building'?",
+    "Alaa Al Aswany"
+   ],
+   [
+    "How many is a 'baker's dozen'?",
+    "13"
+   ]
+  ],
+  "500": [
+   [
+    "What is the official name of the # symbol?",
+    "Octothorpe"
+   ],
+   [
+    "What is the fear of the number 13 called?",
+    "Triskaidekaphobia"
+   ],
+   [
+    "What was Istanbul called before it was Constantinople?",
+    "Byzantium"
+   ],
+   [
+    "How many of the six UN official languages are written right to left?",
+    "One (Arabic)"
+   ],
+   [
+    "What is a group of owls called?",
+    "A parliament"
+   ],
+   [
+    "What is the ISO currency code for the Egyptian pound?",
+    "EGP"
+   ],
+   [
+    "What is the word for the smell of rain on dry earth?",
+    "Petrichor"
+   ],
+   [
+    "Which is the only country whose English name ends in 'h'?",
+    "Bangladesh"
+   ],
+   [
+    "What was the first .com domain ever registered (1985)?",
+    "symbolics.com"
+   ],
+   [
+    "What is the plural of 'mongoose'?",
+    "Mongooses"
+   ],
+   [
+    "What is the sum of the interior angles of a pentagon?",
+    "540°"
+   ],
+   [
+    "Name a common English word with 15 letters and no repeated letter.",
+    "Uncopyrightable (also dermatoglyphics)"
+   ],
+   [
+    "What is a barrel maker called?",
+    "A cooper"
+   ],
+   [
+    "What is the smooth area between your eyebrows called?",
+    "The glabella"
+   ],
+   [
+    "Which country has the most Nobel laureates?",
+    "The United States"
+   ],
+   [
+    "What is the plastic tip on a shoelace called?",
+    "An aglet"
+   ],
+   [
+    "Which Egyptian won the Nobel Peace Prize in 2005?",
+    "Mohamed ElBaradei"
+   ],
+   [
+    "What is the study of flags called?",
+    "Vexillology"
+   ],
+   [
+    "Which common long word can be typed using only the left hand on a QWERTY keyboard?",
+    "Stewardesses"
+   ],
+   [
+    "How many time zones does Russia span?",
+    "11"
+   ],
+   [
+    "In which year was the first email sent?",
+    "1971"
+   ],
+   [
+    "What is Egypt's national flower?",
+    "The lotus"
+   ],
+   [
+    "What is a group of jellyfish called?",
+    "A smack (or bloom)"
+   ],
+   [
+    "Which country sends London a Christmas tree for Trafalgar Square every year?",
+    "Norway"
+   ],
+   [
+    "What is the little hook under the 'ç' called?",
+    "A cedilla"
+   ],
+   [
+    "Who first deciphered hieroglyphs using the Rosetta Stone?",
+    "Jean-François Champollion"
+   ],
+   [
+    "Which is the only planet whose English name comes from a Greek god?",
+    "Uranus"
+   ],
+   [
+    "Which Norwegian firm designed the Bibliotheca Alexandrina?",
+    "Snøhetta"
+   ],
+   [
+    "What is a group of ravens called?",
+    "An unkindness"
+   ],
+   [
+    "What is the line between day and night on a planet or moon called?",
+    "The terminator"
+   ],
+   [
+    "What is the paragraph mark '¶' called?",
+    "A pilcrow"
+   ],
+   [
+    "Which country has the longest coastline in the world?",
+    "Canada"
+   ],
+   [
+    "What is the (ironically long) name for the fear of long words?",
+    "Hippopotomonstrosesquippedaliophobia"
+   ],
+   [
+    "Which is the only country whose national flag is not a rectangle?",
+    "Nepal"
+   ],
+   [
+    "What is the medical name for 'brain freeze'?",
+    "Sphenopalatine ganglioneuralgia"
+   ],
+   [
+    "How many raised dots make up one Braille cell?",
+    "6"
+   ],
+   [
+    "Which university in Fez, Morocco, is the oldest still running, according to Guinness?",
+    "Al-Qarawiyyin"
+   ],
+   [
+    "What is the groove between your nose and upper lip called?",
+    "The philtrum"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,498 @@
+{
+ "id": "lit",
+ "name": "Literally Translated",
+ "type": "text",
+ "desc": "Film and series titles translated word for word, into Arabic or out of it. Name the original.",
+ "data": {
+  "100": [
+   [
+    "Name the film or series: “لوحدي في البيت”",
+    "Home Alone"
+   ],
+   [
+    "Name the film or series: “الملك الأسد”",
+    "The Lion King"
+   ],
+   [
+    "Name the film or series: “لعبة الحبّار”",
+    "Squid Game (TV)"
+   ],
+   [
+    "Name the film or series: “حاجات غريبة”",
+    "Stranger Things (TV)"
+   ],
+   [
+    "Name the film or series: “قصة لعبة”",
+    "Toy Story"
+   ],
+   [
+    "Name the film or series: “البحث عن نيمو”",
+    "Finding Nemo"
+   ],
+   [
+    "Name the film or series: “صحاب”",
+    "Friends (TV)"
+   ],
+   [
+    "Name the film or series: “حروب النجوم”",
+    "Star Wars"
+   ],
+   [
+    "Name the film or series: “الراجل العنكبوت”",
+    "Spider-Man"
+   ],
+   [
+    "Name the Egyptian film or series: “An Upper Egyptian at the American University”",
+    "Saeedi fel Gamaa el Amrikeya"
+   ],
+   [
+    "Name the Egyptian film or series: “The Blue Elephant”",
+    "El Fil El Azraq"
+   ],
+   [
+    "Name the Egyptian film or series: “The Very Big One”",
+    "El Kebeer Awi (TV)"
+   ],
+   [
+    "Name the film or series: “الجنينة الجوراسية”",
+    "Jurassic Park"
+   ],
+   [
+    "Name the film or series: “رجّالة في الإسود”",
+    "Men in Black"
+   ],
+   [
+    "Name the film or series: “متجمّدة”",
+    "Frozen"
+   ],
+   [
+    "Name the film or series: “الراجل الحديد”",
+    "Iron Man"
+   ],
+   [
+    "Name the film or series: “الحلوة والوحش”",
+    "Beauty and the Beast"
+   ],
+   [
+    "Name the film or series: “جوّه بره”",
+    "Inside Out"
+   ],
+   [
+    "Name the film or series: “الخارقين”",
+    "The Incredibles"
+   ],
+   [
+    "Name the film or series: “سيد الخواتم”",
+    "The Lord of the Rings"
+   ],
+   [
+    "Name the film or series: “مستر فاصوليا”",
+    "Mr. Bean (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Suit”",
+    "El Badla"
+   ],
+   [
+    "Name the Egyptian film or series: “Gaafar the Mayor”",
+    "Gaafar El Omda (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Legend”",
+    "El Ostoura (TV)"
+   ]
+  ],
+  "200": [
+   [
+    "Name the film or series: “لعبة الكراسي”",
+    "Game of Thrones (TV)"
+   ],
+   [
+    "Name the film or series: “السريع والغضبان”",
+    "The Fast and the Furious"
+   ],
+   [
+    "Name the film or series: “غبي وأغبى”",
+    "Dumb and Dumber"
+   ],
+   [
+    "Name the film or series: “المكتب”",
+    "The Office (TV)"
+   ],
+   [
+    "Name the film or series: “امسكني لو تقدر”",
+    "Catch Me If You Can"
+   ],
+   [
+    "Name the film or series: “الست العجيبة”",
+    "Wonder Woman"
+   ],
+   [
+    "Name the Egyptian film or series: “Black Honey”",
+    "Assal Eswed"
+   ],
+   [
+    "Name the Egyptian film or series: “The Island”",
+    "El Gezira"
+   ],
+   [
+    "Name the Egyptian film or series: “The Headmaster”",
+    "El Nazer"
+   ],
+   [
+    "Name the Egyptian film or series: “The Consul's Son”",
+    "Ibn El Qunsul"
+   ],
+   [
+    "Name the Egyptian film or series: “Rizk's Boys”",
+    "Welad Rizk"
+   ],
+   [
+    "Name the Egyptian film or series: “The Choice”",
+    "El Ikhtiyar (TV)"
+   ],
+   [
+    "Name the film or series: “نادي الخناق”",
+    "Fight Club"
+   ],
+   [
+    "Name the Egyptian film or series: “Terrorism and Kebab”",
+    "El Irhab wal Kabab"
+   ],
+   [
+    "Name the film or series: “بنات شريرة”",
+    "Mean Girls"
+   ],
+   [
+    "Name the film or series: “صيادين العفاريت”",
+    "Ghostbusters"
+   ],
+   [
+    "Name the film or series: “رجّالة إكس”",
+    "X-Men"
+   ],
+   [
+    "Name the film or series: “عيلة حديثة”",
+    "Modern Family (TV)"
+   ],
+   [
+    "Name the film or series: “دكتور غريب”",
+    "Doctor Strange"
+   ],
+   [
+    "Name the film or series: “الأرملة السودة”",
+    "Black Widow"
+   ],
+   [
+    "Name the Egyptian film or series: “The Black Tiger”",
+    "El Nemr El Eswed"
+   ],
+   [
+    "Name the Egyptian film or series: “Under Control”",
+    "Taht El Saytara (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Assassins”",
+    "El Hashasheen (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Kids Grew Up”",
+    "El Eyal Kebret (play)"
+   ]
+  ],
+  "300": [
+   [
+    "Name the film or series: “استراحة السجن”",
+    "Prison Break (TV)"
+   ],
+   [
+    "Name the film or series: “بداية”",
+    "Inception"
+   ],
+   [
+    "Name the film or series: “الطفيلي”",
+    "Parasite"
+   ],
+   [
+    "Name the film or series: “بين النجوم”",
+    "Interstellar"
+   ],
+   [
+    "Name the film or series: “الموتى اللي ماشيين”",
+    "The Walking Dead (TV)"
+   ],
+   [
+    "Name the film or series: “إزاي قابلت أمكم”",
+    "How I Met Your Mother (TV)"
+   ],
+   [
+    "Name the film or series: “المراية السودة”",
+    "Black Mirror (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Embassy in the Building”",
+    "El Sefara fi El Omara"
+   ],
+   [
+    "Name the Egyptian film or series: “Thieves in KG2”",
+    "Harameya fi KG2"
+   ],
+   [
+    "Name the Egyptian film or series: “The Pasha Is a Student”",
+    "El Basha Telmiz"
+   ],
+   [
+    "Name the Egyptian film or series: “A Soldier in the Camp”",
+    "Askar fel Moaskar"
+   ],
+   [
+    "Name the Egyptian film or series: “The Danish Experiment”",
+    "El Tagroba El Denmarkeya"
+   ],
+   [
+    "Name the Egyptian film or series: “Sons of the Uncle”",
+    "Welad El Am"
+   ],
+   [
+    "Name the film or series: “كُل، صلّي، حب”",
+    "Eat Pray Love"
+   ],
+   [
+    "Name the film or series: “القلب الشجاع”",
+    "Braveheart"
+   ],
+   [
+    "Name the film or series: “مناورة الملكة”",
+    "The Queen's Gambit (TV)"
+   ],
+   [
+    "Name the film or series: “التاج”",
+    "The Crown (TV)"
+   ],
+   [
+    "Name the film or series: “الدبّ”",
+    "The Bear (TV)"
+   ],
+   [
+    "Name the film or series: “وراثة”",
+    "Succession (TV)"
+   ],
+   [
+    "Name the film or series: “اطلع بره”",
+    "Get Out"
+   ],
+   [
+    "Name the Egyptian film or series: “A Thousand Congratulations”",
+    "1000 Mabrouk"
+   ],
+   [
+    "Name the Egyptian film or series: “The Third World War”",
+    "El Harb El Alameya El Talta"
+   ],
+   [
+    "Name the Egyptian film or series: “A Witness Who Saw Nothing”",
+    "Shahed Ma Shafsh Haga (play)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Prince”",
+    "El Prince (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “The School of Troublemakers”",
+    "Madraset El Moshaghebeen (play)"
+   ]
+  ],
+  "400": [
+   [
+    "Name the film or series: “سكوت الخرفان”",
+    "The Silence of the Lambs"
+   ],
+   [
+    "Name the film or series: “راح مع الهوا”",
+    "Gone with the Wind"
+   ],
+   [
+    "Name the film or series: “بيكسر وحش”",
+    "Breaking Bad (TV)"
+   ],
+   [
+    "Name the film or series: “رجّالة مجانين”",
+    "Mad Men (TV)"
+   ],
+   [
+    "Name the film or series: “ستات بيوت يائسات”",
+    "Desperate Housewives (TV)"
+   ],
+   [
+    "Name the film or series: “خلاص شوشانك”",
+    "The Shawshank Redemption"
+   ],
+   [
+    "Name the film or series: “خيال لُب”",
+    "Pulp Fiction"
+   ],
+   [
+    "Name the film or series: “أحسن تكلّم سول”",
+    "Better Call Saul (TV)"
+   ],
+   [
+    "Name the film or series: “بيت الكوتشينة”",
+    "House of Cards (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “I Won't Live in My Father's Robe”",
+    "Lan Aeesh fi Gelbab Abi (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “Whose Empire?”",
+    "Embraatoreyet Meen (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “Wife Number 13”",
+    "El Zawga Talattashar"
+   ],
+   [
+    "Name the Egyptian film or series: “Land of Fear”",
+    "Ard El Khof"
+   ],
+   [
+    "Name the Egyptian film or series: “Ismailia Back and Forth”",
+    "Ismailia Rayeh Gai"
+   ],
+   [
+    "Name the film or series: “هي”",
+    "Her"
+   ],
+   [
+    "Name the film or series: “الأيرلندي”",
+    "The Irishman"
+   ],
+   [
+    "Name the film or series: “جزيرة الشيش”",
+    "Shutter Island"
+   ],
+   [
+    "Name the film or series: “جمال أمريكاني”",
+    "American Beauty"
+   ],
+   [
+    "Name the film or series: “مدرسة الروك”",
+    "School of Rock"
+   ],
+   [
+    "Name the film or series: “فوق”",
+    "Up"
+   ],
+   [
+    "Name the Egyptian film or series: “The Land”",
+    "El Ard"
+   ],
+   [
+    "Name the Egyptian film or series: “The Second Wife”",
+    "El Zoga El Tanya"
+   ],
+   [
+    "Name the Egyptian film or series: “The Bus Driver”",
+    "Sawak El Otobees"
+   ],
+   [
+    "Name the Egyptian film or series: “Mouths and Rabbits”",
+    "Afwah wa Araneb"
+   ]
+  ],
+  "500": [
+   [
+    "Name the film or series: “الراحلين”",
+    "The Departed"
+   ],
+   [
+    "Name the film or series: “البرتقانة اللي بزمبلك”",
+    "A Clockwork Orange"
+   ],
+   [
+    "Name the film or series: “مفيش بلد للعواجيز”",
+    "No Country for Old Men"
+   ],
+   [
+    "Name the film or series: “شمس أبدية لعقل مافيهوش ولا بقعة”",
+    "Eternal Sunshine of the Spotless Mind"
+   ],
+   [
+    "Name the film or series: “العيّان الإنجليزي”",
+    "The English Patient"
+   ],
+   [
+    "Name the film or series: “صيد الإرادة الطيبة”",
+    "Good Will Hunting"
+   ],
+   [
+    "Name the Egyptian film or series: “The Iron Gate”",
+    "Bab El Hadid (Cairo Station)"
+   ],
+   [
+    "Name the Egyptian film or series: “The Curlew's Prayer”",
+    "Doaa El Karawan"
+   ],
+   [
+    "Name the Egyptian film or series: “Love on the Pyramids Plateau”",
+    "El Hob Fawq Hadabet El Haram"
+   ],
+   [
+    "Name the Egyptian film or series: “Money and Sons”",
+    "El Mal wel Banoon (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “Nights of Helmeya”",
+    "Layali El Helmeya (TV)"
+   ],
+   [
+    "Name the Egyptian film or series: “Halawany's Gate”",
+    "Bawabet El Halawany (TV)"
+   ],
+   [
+    "Name the film or series: “يوم المرموط”",
+    "Groundhog Day"
+   ],
+   [
+    "Name the film or series: “إدوارد إيدين مقص”",
+    "Edward Scissorhands"
+   ],
+   [
+    "Name the film or series: “واحد طار فوق عش الوقواق”",
+    "One Flew Over the Cuckoo's Nest"
+   ],
+   [
+    "Name the film or series: “تلات لوحات إعلانات بره إبينج، ميزوري”",
+    "Three Billboards Outside Ebbing, Missouri"
+   ],
+   [
+    "Name the film or series: “جحيم أو مية عالية”",
+    "Hell or High Water"
+   ],
+   [
+    "Name the film or series: “الميل الأخضر”",
+    "The Green Mile"
+   ],
+   [
+    "Name the Egyptian film or series: “Something of Fear”",
+    "Shei' Men El Khouf"
+   ],
+   [
+    "Name the Egyptian film or series: “The Sin”",
+    "El Haram"
+   ],
+   [
+    "Name the Egyptian film or series: “The Postman”",
+    "El Bostagi"
+   ],
+   [
+    "Name the Egyptian film or series: “The Water-Carrier Is Dead”",
+    "El Sakka Mat"
+   ],
+   [
+    "Name the Egyptian film or series: “The Mummy”",
+    "El Momya"
+   ]
+  ]
+ }
+}

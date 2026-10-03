@@ -1,0 +1,650 @@
+{
+ "id": "lang",
+ "name": "Languages",
+ "type": "text",
+ "desc": "Name the language, translate the word, or say where an English or Egyptian word came from.",
+ "data": {
+  "100": [
+   [
+    "What language is this? “Gracias” (it means 'thank you')",
+    "Spanish"
+   ],
+   [
+    "What language is this? “Merci” (it means 'thank you')",
+    "French"
+   ],
+   [
+    "What language is this? “Danke” (it means 'thank you')",
+    "German"
+   ],
+   [
+    "What language is this? “Grazie” (it means 'thank you')",
+    "Italian"
+   ],
+   [
+    "What language is this? “Obrigado” (it means 'thank you')",
+    "Portuguese"
+   ],
+   [
+    "What language is this? “Namaste” (it means 'hello')",
+    "Hindi"
+   ],
+   [
+    "What language is this? “Shalom” (it means 'peace / hello')",
+    "Hebrew"
+   ],
+   [
+    "What is the official language of Brazil?",
+    "Portuguese"
+   ],
+   [
+    "What is the main language of Mexico?",
+    "Spanish"
+   ],
+   [
+    "What is the main language of Austria?",
+    "German"
+   ],
+   [
+    "How many letters are in the Arabic alphabet?",
+    "28"
+   ],
+   [
+    "What does “amigo” mean?",
+    "Friend (Spanish)"
+   ],
+   [
+    "What does “bonjour” mean?",
+    "Hello / good day (French)"
+   ],
+   [
+    "The English word “coffee” comes from which language?",
+    "Arabic (qahwa), via Turkish"
+   ],
+   [
+    "What language is this? “Buongiorno” (it means 'good morning')",
+    "Italian"
+   ],
+   [
+    "What does “oui” mean?",
+    "Yes (French)"
+   ],
+   [
+    "In Egyptian football talk, “فاول” and “جون” come from which language?",
+    "English (foul, goal)"
+   ],
+   [
+    "The Egyptian word “كوافير” (hairdresser) comes from which language?",
+    "French (coiffeur)"
+   ],
+   [
+    "The Egyptian word “جاتوه” (cake / pastry) comes from which language?",
+    "French (gâteau)"
+   ],
+   [
+    "Which language has the most native speakers in the world?",
+    "Mandarin Chinese"
+   ],
+   [
+    "What does “kawaii” mean?",
+    "Cute (Japanese)"
+   ],
+   [
+    "What does “hakuna matata” mean?",
+    "No worries (Swahili)"
+   ],
+   [
+    "What language is this? “Konnichiwa” (it means 'hello')",
+    "Japanese"
+   ],
+   [
+    "What language is this? “Annyeonghaseyo” (it means 'hello')",
+    "Korean"
+   ],
+   [
+    "What does “au revoir” mean?",
+    "Goodbye (French)"
+   ],
+   [
+    "What does “adiós” mean?",
+    "Goodbye (Spanish)"
+   ],
+   [
+    "What does “bon appétit” mean?",
+    "Enjoy your meal (French)"
+   ],
+   [
+    "What does “bravo” mean?",
+    "Well done (Italian)"
+   ],
+   [
+    "What does “sí” mean?",
+    "Yes (Spanish)"
+   ],
+   [
+    "The Egyptian word “أوتوبيس” (bus) comes from which language?",
+    "French (autobus)"
+   ],
+   [
+    "The Egyptian word “كمبيوتر” (computer) comes from which language?",
+    "English"
+   ],
+   [
+    "What is the official language of the Netherlands?",
+    "Dutch"
+   ]
+  ],
+  "200": [
+   [
+    "What language is this? “Спасибо” (it means 'thank you')",
+    "Russian"
+   ],
+   [
+    "What language is this? “ありがとう” (it means 'thank you')",
+    "Japanese"
+   ],
+   [
+    "What language is this? “Ευχαριστώ” (it means 'thank you')",
+    "Greek"
+   ],
+   [
+    "What language is this? “Teşekkürler” (it means 'thank you')",
+    "Turkish"
+   ],
+   [
+    "What language is this? “감사합니다” (it means 'thank you')",
+    "Korean"
+   ],
+   [
+    "What language is this? “谢谢” (it means 'thank you')",
+    "Chinese (Mandarin)"
+   ],
+   [
+    "The English word “sugar” comes from which language?",
+    "Arabic (sukkar)"
+   ],
+   [
+    "The English word “algebra” comes from which language?",
+    "Arabic (al-jabr)"
+   ],
+   [
+    "The English word “tycoon” comes from which language?",
+    "Japanese (taikun)"
+   ],
+   [
+    "What does “por favor” mean?",
+    "Please (Spanish)"
+   ],
+   [
+    "What does “hasta la vista” mean?",
+    "See you later (Spanish)"
+   ],
+   [
+    "What is the main language of Quebec?",
+    "French"
+   ],
+   [
+    "How many official languages does the United Nations have?",
+    "6"
+   ],
+   [
+    "Alpha, beta, gamma and delta are letters of which alphabet?",
+    "Greek"
+   ],
+   [
+    "The Egyptian word “شنطة” (bag) comes from which language?",
+    "Turkish (çanta)"
+   ],
+   [
+    "The Egyptian word “أسانسير” (elevator) comes from which language?",
+    "French (ascenseur)"
+   ],
+   [
+    "The Egyptian word “ريجيم” (diet) comes from which language?",
+    "French (régime)"
+   ],
+   [
+    "The Egyptian word “فاتورة” (bill / invoice) comes from which language?",
+    "Italian (fattura)"
+   ],
+   [
+    "Russian is written in which alphabet?",
+    "Cyrillic"
+   ],
+   [
+    "What is the main language of Iran?",
+    "Persian (Farsi)"
+   ],
+   [
+    "What does “déjà vu” mean?",
+    "'Already seen' (French)"
+   ],
+   [
+    "The Egyptian word “bantalon (trousers)” comes from which language?",
+    "French (pantalon)"
+   ],
+   [
+    "What language is this? “Merhaba” (it means 'hello')",
+    "Turkish"
+   ],
+   [
+    "What language is this? “Sawasdee” (it means 'hello')",
+    "Thai"
+   ],
+   [
+    "The English word “emoji” comes from which language?",
+    "Japanese"
+   ],
+   [
+    "The English word “yoga” comes from which language?",
+    "Sanskrit"
+   ],
+   [
+    "The Egyptian word “بلكونة” (balcony) comes from which language?",
+    "Italian (balcone)"
+   ],
+   [
+    "The Egyptian word “جورنال” (newspaper) comes from which language?",
+    "French (journal)"
+   ],
+   [
+    "What is the national language of Pakistan?",
+    "Urdu"
+   ],
+   [
+    "What does “carpe diem” mean?",
+    "Seize the day (Latin)"
+   ],
+   [
+    "What does “arrivederci” mean?",
+    "Goodbye (Italian)"
+   ],
+   [
+    "What does “mamma mia” mean?",
+    "'My mother!' (Italian)"
+   ]
+  ],
+  "300": [
+   [
+    "The English word “safari” comes from which language?",
+    "Swahili (from Arabic safar)"
+   ],
+   [
+    "The English word “magazine” comes from which language?",
+    "Arabic (makhazin, storehouses)"
+   ],
+   [
+    "The English word “shampoo” comes from which language?",
+    "Hindi (champo, to massage)"
+   ],
+   [
+    "The English word “robot” comes from which language?",
+    "Czech"
+   ],
+   [
+    "The English word “kindergarten” comes from which language?",
+    "German"
+   ],
+   [
+    "The English word “avatar” comes from which language?",
+    "Sanskrit"
+   ],
+   [
+    "The English word “zero” comes from which language?",
+    "Arabic (sifr)"
+   ],
+   [
+    "The Egyptian word “kobri (bridge)” comes from which language?",
+    "Turkish (köprü)"
+   ],
+   [
+    "The Egyptian word “gazma (shoe)” comes from which language?",
+    "Turkish (çizme, boot)"
+   ],
+   [
+    "What does “schadenfreude” mean?",
+    "Pleasure at someone else's misfortune (German)"
+   ],
+   [
+    "The Egyptian word “بلطجي” (thug) comes from which language?",
+    "Turkish (baltacı, 'axeman', from balta 'axe')"
+   ],
+   [
+    "The Egyptian word “روبابيكيا” (old junk) comes from which language?",
+    "Italian (roba vecchia, 'old stuff')"
+   ],
+   [
+    "The Egyptian word “أبلة” (older sister / Miss) comes from which language?",
+    "Turkish (abla, 'older sister')"
+   ],
+   [
+    "The Egyptian word “بلياتشو” (clown) comes from which language?",
+    "Italian (pagliaccio)"
+   ],
+   [
+    "The Egyptian word “بوية” (paint) comes from which language?",
+    "Turkish (boya)"
+   ],
+   [
+    "Egyptian farmers still go by months like “طوبة” and “أمشير”. Which calendar are they from?",
+    "The Coptic calendar"
+   ],
+   [
+    "Switzerland has four national languages: German, French, Italian and which one?",
+    "Romansh"
+   ],
+   [
+    "The English word “cotton” comes from which language?",
+    "Arabic (qutn)"
+   ],
+   [
+    "The Egyptian word “kanaba (sofa)” comes from which language?",
+    "French (canapé)"
+   ],
+   [
+    "Japanese is written with kanji, katakana and which third script?",
+    "Hiragana"
+   ],
+   [
+    "What are the three scripts on the Rosetta Stone?",
+    "Hieroglyphic, Demotic and Ancient Greek"
+   ],
+   [
+    "The Egyptian word “oda (room)” comes from which language?",
+    "Turkish (oda)"
+   ],
+   [
+    "The English word “sofa” comes from which language?",
+    "Arabic (suffa)"
+   ],
+   [
+    "The English word “tea” comes from which language?",
+    "Chinese (Hokkien 'te')"
+   ],
+   [
+    "The English word “cookie” comes from which language?",
+    "Dutch (koekje)"
+   ],
+   [
+    "The Egyptian word “ترابيزة” (table) comes from which language?",
+    "Greek (trapeza)"
+   ],
+   [
+    "What language is this? “Xin chào” (it means 'hello')",
+    "Vietnamese"
+   ],
+   [
+    "What is the main language of Ethiopia?",
+    "Amharic"
+   ],
+   [
+    "Hindi is written in which script?",
+    "Devanagari"
+   ],
+   [
+    "What does “carte blanche” mean?",
+    "Full freedom to act (French, 'blank card')"
+   ],
+   [
+    "What does “wanderlust” mean?",
+    "A strong desire to travel (German)"
+   ],
+   [
+    "What are Canada's two official languages?",
+    "English and French"
+   ]
+  ],
+  "400": [
+   [
+    "The English word “ketchup” comes from which language?",
+    "Hokkien Chinese"
+   ],
+   [
+    "The English word “kiosk” comes from which language?",
+    "Turkish (köşk, from Persian)"
+   ],
+   [
+    "The English word “pyjamas” comes from which language?",
+    "Persian (via Hindi/Urdu)"
+   ],
+   [
+    "The English word “admiral” comes from which language?",
+    "Arabic (amir, commander)"
+   ],
+   [
+    "What language is this? “Kiitos” (it means 'thank you')",
+    "Finnish"
+   ],
+   [
+    "What language is this? “Dziękuję” (it means 'thank you')",
+    "Polish"
+   ],
+   [
+    "What language is this? “Takk” (it means 'thank you')",
+    "Norwegian (Icelandic also uses 'takk')"
+   ],
+   [
+    "What language is this? “Asante” (it means 'thank you')",
+    "Swahili"
+   ],
+   [
+    "The English word “jungle” comes from which language?",
+    "Hindi (jangal)"
+   ],
+   [
+    "The English word “boss” comes from which language?",
+    "Dutch (baas)"
+   ],
+   [
+    "How many official languages does South Africa have?",
+    "12 (including sign language)"
+   ],
+   [
+    "What is the official language of Andorra?",
+    "Catalan"
+   ],
+   [
+    "The Egyptian word “خواجة” (foreigner) comes from which language?",
+    "Persian (khwāja, 'master / lord')"
+   ],
+   [
+    "The Egyptian word “بدروم” (basement) comes from which language?",
+    "Turkish (bodrum)"
+   ],
+   [
+    "The Egyptian word “لوكاندة” (small hotel) comes from which language?",
+    "Italian (locanda, 'inn')"
+   ],
+   [
+    "The Egyptian word “بصارة” (bissara, the fava-bean dish) comes from which language?",
+    "Coptic ('cooked beans')"
+   ],
+   [
+    "The English word “assassin” comes from which language?",
+    "Arabic (hashishin)"
+   ],
+   [
+    "The Egyptian word “abajora (lampshade)” comes from which language?",
+    "French (abat-jour)"
+   ],
+   [
+    "Which European language comes from Arabic and is written in Latin letters?",
+    "Maltese"
+   ],
+   [
+    "'Alcohol' comes from the Arabic 'al-kuhl'. What was al-kuhl?",
+    "Kohl, the dark eye powder"
+   ],
+   [
+    "Which king created the Korean alphabet, Hangul, in the 1440s?",
+    "King Sejong the Great"
+   ],
+   [
+    "The English word “alcove” comes from which language?",
+    "Arabic (al-qubba, 'the vault')"
+   ],
+   [
+    "The English word “alligator” comes from which language?",
+    "Spanish (el lagarto, 'the lizard')"
+   ],
+   [
+    "The English word “mattress” comes from which language?",
+    "Arabic (matrah)"
+   ],
+   [
+    "The Egyptian word “شاكوش” (hammer) comes from which language?",
+    "Turkish (çekiç)"
+   ],
+   [
+    "The Egyptian word “برنيطة” (hat) comes from which language?",
+    "Italian (berretta)"
+   ],
+   [
+    "What language is this? “Mahalo” (it means 'thank you')",
+    "Hawaiian"
+   ],
+   [
+    "What language is this? “Salamat” (it means 'thank you')",
+    "Filipino (Tagalog)"
+   ],
+   [
+    "What language is this? “Tack” (it means 'thank you')",
+    "Swedish"
+   ],
+   [
+    "What does “zeitgeist” mean?",
+    "'Spirit of the time' (German)"
+   ],
+   [
+    "Which language is official in both Angola and Mozambique?",
+    "Portuguese"
+   ]
+  ],
+  "500": [
+   [
+    "What language is this? “Terima kasih” (it means 'thank you')",
+    "Malay / Indonesian"
+   ],
+   [
+    "What language is this? “Cảm ơn” (it means 'thank you')",
+    "Vietnamese"
+   ],
+   [
+    "What language is this? “Hvala” (it means 'thank you')",
+    "Croatian / Serbian / Bosnian"
+   ],
+   [
+    "What language is this? “Köszönöm” (it means 'thank you')",
+    "Hungarian"
+   ],
+   [
+    "The Egyptian word “بقشيش” (tip) comes from which language?",
+    "Persian (bakhshish, 'gift')"
+   ],
+   [
+    "What language is this? “Grazas” (it means 'thank you')",
+    "Galician"
+   ],
+   [
+    "What language is this? “Dankie” (it means 'thank you')",
+    "Afrikaans"
+   ],
+   [
+    "What language is this? “Rahmat” (it means 'thank you')",
+    "Uzbek (or Tajik)"
+   ],
+   [
+    "What language is this? “Diolch” (it means 'thank you')",
+    "Welsh"
+   ],
+   [
+    "What language is this? “Eskerrik asko” (it means 'thank you')",
+    "Basque"
+   ],
+   [
+    "What language is this? “Paldies” (it means 'thank you')",
+    "Latvian"
+   ],
+   [
+    "What language is this? “Aitäh” (it means 'thank you')",
+    "Estonian"
+   ],
+   [
+    "What did 'ciao' originally mean?",
+    "'(I am) your servant'"
+   ],
+   [
+    "'Checkmate' comes from the Persian 'shah mat'. What does it mean?",
+    "'The king is helpless (defeated)'"
+   ],
+   [
+    "Which language has the longest alphabet, with 74 letters?",
+    "Khmer"
+   ],
+   [
+    "The Egyptian word “طوبة” (brick) comes from which language?",
+    "Coptic (ⲧⲱⲱⲃⲉ, from Ancient Egyptian)"
+   ],
+   [
+    "The Egyptian word “ترزي” (tailor) comes from which language?",
+    "Persian (darzī), via Turkish terzi"
+   ],
+   [
+    "The “ـجي” ending in “مكوجي”, “قهوجي” and “بلطجي” comes from which language?",
+    "Turkish (the suffix -cı / -ci, 'person who does')"
+   ],
+   [
+    "“أجزخانة” (pharmacy) came from Turkish “eczahane”. What does the “خانة” part mean?",
+    "'House' (from Persian khāne): a 'house of drugs'"
+   ],
+   [
+    "The Egyptian word “أسطى” (master craftsman / driver) comes from which language?",
+    "Persian (ūstā), via Turkish usta"
+   ],
+   [
+    "Which country has the most living languages in the world, about 840?",
+    "Papua New Guinea"
+   ],
+   [
+    "The English word “candy” comes from which language?",
+    "Arabic (qandi), from Persian"
+   ],
+   [
+    "The English word “sherbet” comes from which language?",
+    "Arabic (sharba, 'a drink'), via Turkish"
+   ],
+   [
+    "The English word “giraffe” comes from which language?",
+    "Arabic (zarāfa)"
+   ],
+   [
+    "The Egyptian word “تختة” (board / school desk) comes from which language?",
+    "Persian (takhta)"
+   ],
+   [
+    "What language is this? “Nandri” (it means 'thank you')",
+    "Tamil"
+   ],
+   [
+    "What language is this? “Go raibh maith agat” (it means 'thank you')",
+    "Irish"
+   ],
+   [
+    "What language is this? “Faleminderit” (it means 'thank you')",
+    "Albanian"
+   ],
+   [
+    "What language is this? “Tanemmirt” (it means 'thank you')",
+    "Berber (Tamazight / Kabyle)"
+   ],
+   [
+    "Who created the invented language Esperanto in 1887?",
+    "L. L. Zamenhof"
+   ],
+   [
+    "What does “saudade” mean?",
+    "A deep, nostalgic longing (Portuguese)"
+   ]
+  ]
+ }
+}

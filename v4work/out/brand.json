@@ -1,0 +1,606 @@
+{
+ "id": "brand",
+ "name": "Brands & Famous Companies",
+ "type": "text",
+ "desc": "Brand origins, logos, slogans and original names, including Egyptian brands.",
+ "data": {
+  "100": [
+   [
+    "Which brand's slogan is 'Just Do It'?",
+    "Nike"
+   ],
+   [
+    "Which company's logo is an apple with a bite taken out?",
+    "Apple"
+   ],
+   [
+    "Which country does IKEA come from?",
+    "Sweden"
+   ],
+   [
+    "Which fast-food chain's logo is the 'Golden Arches'?",
+    "McDonald's"
+   ],
+   [
+    "Which messaging app, owned by Meta, has a green phone logo?",
+    "WhatsApp"
+   ],
+   [
+    "Which coffee chain's logo is a green mermaid (siren)?",
+    "Starbucks"
+   ],
+   [
+    "Which country does LEGO come from?",
+    "Denmark"
+   ],
+   [
+    "Which car brand's logo is a prancing horse?",
+    "Ferrari"
+   ],
+   [
+    "Which car brand's logo is a three-pointed star?",
+    "Mercedes-Benz"
+   ],
+   [
+    "Which chocolate spread is made by Ferrero?",
+    "Nutella"
+   ],
+   [
+    "Which social media app's logo is a ghost?",
+    "Snapchat"
+   ],
+   [
+    "Which country is Toyota from?",
+    "Japan"
+   ],
+   [
+    "Which drink's slogan was 'Red Bull gives you…'?",
+    "Wings"
+   ],
+   [
+    "Which brand makes the Galaxy phones?",
+    "Samsung"
+   ],
+   [
+    "Which fast-food chain sells the Whopper?",
+    "Burger King"
+   ],
+   [
+    "Which car brand's blue-and-white roundel logo is said to look like a propeller?",
+    "BMW"
+   ],
+   [
+    "Which app's logo is a camera on a colourful gradient square?",
+    "Instagram"
+   ],
+   [
+    "What colour is the Coca-Cola logo?",
+    "Red (with white writing)"
+   ],
+   [
+    "Which company makes Windows?",
+    "Microsoft"
+   ],
+   [
+    "Which company's logo is a yellow scallop shell?",
+    "Shell"
+   ],
+   [
+    "Which streaming service's logo is a red 'N'?",
+    "Netflix"
+   ],
+   [
+    "Which company makes the PlayStation?",
+    "Sony"
+   ],
+   [
+    "What is Egypt's best-known crisps brand, owned by PepsiCo?",
+    "Chipsy"
+   ],
+   [
+    "Which app's logo is a white musical note on black?",
+    "TikTok"
+   ],
+   [
+    "Which video site's logo is a red play button?",
+    "YouTube"
+   ],
+   [
+    "Which music app's logo is a green circle with three curved lines?",
+    "Spotify"
+   ],
+   [
+    "Which pizza chain's logo is a red roof?",
+    "Pizza Hut"
+   ],
+   [
+    "Which pizza chain's logo is a domino tile?",
+    "Domino's"
+   ],
+   [
+    "Which social network's logo is a white 'f' on blue?",
+    "Facebook"
+   ],
+   [
+    "What two colours is the IKEA logo?",
+    "Blue and yellow"
+   ]
+  ],
+  "200": [
+   [
+    "Which fast-food chain's logo is a red-haired girl with pigtails?",
+    "Wendy's"
+   ],
+   [
+    "Which car brand's logo is four interlocking rings?",
+    "Audi"
+   ],
+   [
+    "Which fast-food chain's mascot is a colonel?",
+    "KFC (Colonel Sanders)"
+   ],
+   [
+    "Which country does Zara come from?",
+    "Spain"
+   ],
+   [
+    "Which car brand's logo is a raging bull?",
+    "Lamborghini"
+   ],
+   [
+    "Which sportswear brand's logo is a leaping cat?",
+    "Puma"
+   ],
+   [
+    "Which country is Nestlé from?",
+    "Switzerland"
+   ],
+   [
+    "Which chocolate bar's slogan is 'Have a break, have a…'?",
+    "KitKat"
+   ],
+   [
+    "Which brand's logo has three stripes?",
+    "Adidas"
+   ],
+   [
+    "Which luxury brand's logo is two interlocking Cs?",
+    "Chanel"
+   ],
+   [
+    "Which car brand's name means 'people's car' in German?",
+    "Volkswagen"
+   ],
+   [
+    "Which app's logo was a blue bird before it rebranded as X?",
+    "Twitter"
+   ],
+   [
+    "Which fashion brand's logo is a polo player on horseback?",
+    "Ralph Lauren (Polo)"
+   ],
+   [
+    "Which toy brand makes Barbie?",
+    "Mattel"
+   ],
+   [
+    "Which brand's logo is a silhouette of Michael Jordan dunking?",
+    "Jordan (Jumpman)"
+   ],
+   [
+    "Which country is Samsung from?",
+    "South Korea"
+   ],
+   [
+    "Which energy drink's logo shows two charging bulls?",
+    "Red Bull"
+   ],
+   [
+    "Which fast-food chain's slogan is 'I'm lovin' it'?",
+    "McDonald's"
+   ],
+   [
+    "Which airline's logo features the falcon god Horus?",
+    "EgyptAir"
+   ],
+   [
+    "Nike is named after the Greek goddess of what?",
+    "Victory"
+   ],
+   [
+    "Which Egyptian mobile network was called Mobinil until 2016?",
+    "Orange"
+   ],
+   [
+    "Which chocolate brand is known for its purple wrappers and Dairy Milk?",
+    "Cadbury"
+   ],
+   [
+    "Which ride-hailing app's name comes from the German word for 'above'?",
+    "Uber"
+   ],
+   [
+    "Which famous koshari restaurant on Champollion Street in Downtown Cairo is named after its owner's nickname?",
+    "Abou Tarek"
+   ],
+   [
+    "Which Japanese company makes the Switch console?",
+    "Nintendo"
+   ],
+   [
+    "Which jeans brand puts a small red tab on its back pocket?",
+    "Levi's"
+   ],
+   [
+    "Which luxury brand's monogram is 'LV'?",
+    "Louis Vuitton"
+   ],
+   [
+    "Which country does Lacoste come from?",
+    "France"
+   ],
+   [
+    "Which food-delivery app with an orange logo was founded in Kuwait?",
+    "Talabat"
+   ],
+   [
+    "Which triangular chocolate bar's shape is linked to the Matterhorn?",
+    "Toblerone"
+   ]
+  ],
+  "300": [
+   [
+    "Which Egyptian mobile network uses the colour red and was formerly called Click?",
+    "Vodafone Egypt"
+   ],
+   [
+    "Which country does Heineken come from?",
+    "The Netherlands"
+   ],
+   [
+    "Which Chinese phone brand was founded by Lei Jun in 2010?",
+    "Xiaomi"
+   ],
+   [
+    "Which company was originally called 'Brad's Drink'?",
+    "Pepsi"
+   ],
+   [
+    "Which fashion brand's logo is a crocodile?",
+    "Lacoste"
+   ],
+   [
+    "What does the name of the fashion brand H&M stand for?",
+    "Hennes & Mauritz"
+   ],
+   [
+    "Which company was originally called 'BackRub'?",
+    "Google"
+   ],
+   [
+    "What does the 'BMW' name stand for?",
+    "Bayerische Motoren Werke (Bavarian Motor Works)"
+   ],
+   [
+    "Which luxury brand's logo is a Medusa head?",
+    "Versace"
+   ],
+   [
+    "Which car brand's logo is a lion?",
+    "Peugeot"
+   ],
+   [
+    "Which country is Rolex from?",
+    "Switzerland"
+   ],
+   [
+    "IKEA is Ingvar Kamprad's initials plus E and A. What do the E and A stand for?",
+    "Elmtaryd and Agunnaryd (his family farm and home village)"
+   ],
+   [
+    "Which fashion house's logo is two interlocking Gs?",
+    "Gucci"
+   ],
+   [
+    "Which luxury car brand's bonnet ornament is the 'Spirit of Ecstasy'?",
+    "Rolls-Royce"
+   ],
+   [
+    "Which car brand's logo is a slanted 'H'?",
+    "Hyundai"
+   ],
+   [
+    "Which French car brand's logo is a double chevron?",
+    "Citroën"
+   ],
+   [
+    "Which country is Lenovo from?",
+    "China"
+   ],
+   [
+    "Which Egyptian payments company's name means 'instant' in Arabic?",
+    "Fawry"
+   ],
+   [
+    "Which Milan fashion house, founded in 1913, uses an upside-down triangle logo?",
+    "Prada"
+   ],
+   [
+    "Amazon was named after what?",
+    "The Amazon River (the biggest river, for the biggest store)"
+   ],
+   [
+    "Which Egyptian chocolate brand with a crown logo was founded in Alexandria in 1919?",
+    "Corona"
+   ],
+   [
+    "Which car brand's logo is called the 'bowtie'?",
+    "Chevrolet"
+   ],
+   [
+    "Which US retailer's logo is a red bullseye?",
+    "Target"
+   ],
+   [
+    "Which Egyptian electronics group, founded by the El Araby family, partners with Sharp and Toshiba?",
+    "El Araby Group"
+   ],
+   [
+    "Which car brand's logo is a lightning bolt in a circle?",
+    "Opel"
+   ],
+   [
+    "Which web browser's logo is a fox wrapped around a globe?",
+    "Firefox"
+   ],
+   [
+    "Which Egyptian café chain is named after a herb?",
+    "Cilantro"
+   ],
+   [
+    "Which Dubai ride-hailing app did Uber buy in 2019 for $3.1 billion?",
+    "Careem"
+   ],
+   [
+    "Which French supermarket chain's logo hides a 'C' between red and blue arrows?",
+    "Carrefour"
+   ],
+   [
+    "Which sweets brand's slogan is 'Taste the rainbow'?",
+    "Skittles"
+   ]
+  ],
+  "400": [
+   [
+    "Which Italian car brand's logo is a trident?",
+    "Maserati"
+   ],
+   [
+    "Which Egyptian dairy and juice brand was founded by Safwan Thabet in 1983?",
+    "Juhayna"
+   ],
+   [
+    "Which Swiss company makes the original red Swiss Army knife?",
+    "Victorinox"
+   ],
+   [
+    "Which airline's logo is an oryx?",
+    "Qatar Airways"
+   ],
+   [
+    "Adidas is named after its founder. What was his name?",
+    "Adolf 'Adi' Dassler"
+   ],
+   [
+    "Which company's logo hides an arrow between two of its letters?",
+    "FedEx"
+   ],
+   [
+    "Which Egyptian cigarette company, founded in 1920, is one of the oldest in the Arab world?",
+    "Eastern Company"
+   ],
+   [
+    "Which brand's founder was Adi Dassler's brother, Rudolf?",
+    "Puma"
+   ],
+   [
+    "Which luxury brand began in 1837 as a harness workshop in Paris?",
+    "Hermès"
+   ],
+   [
+    "Which brand's name comes from the Latin for 'I roll'?",
+    "Volvo"
+   ],
+   [
+    "What was Amazon's original name?",
+    "Cadabra"
+   ],
+   [
+    "What is the Michelin Man's official name?",
+    "Bibendum"
+   ],
+   [
+    "Which company began as 'Jerry and David's Guide to the World Wide Web'?",
+    "Yahoo!"
+   ],
+   [
+    "Which Japanese company made the Tamagotchi?",
+    "Bandai"
+   ],
+   [
+    "Which company's name is a misspelling of a huge number?",
+    "Google (from 'googol')"
+   ],
+   [
+    "Starbucks is named after a character in which novel?",
+    "Moby-Dick"
+   ],
+   [
+    "What does 'Lego' come from in Danish?",
+    "'Leg godt' (play well)"
+   ],
+   [
+    "Coca-Cola is named after which two original ingredients?",
+    "Coca leaves and kola nuts"
+   ],
+   [
+    "What do the three points of the Mercedes-Benz star stand for?",
+    "Land, sea and air"
+   ],
+   [
+    "Which British fashion house's logo is the 'Equestrian Knight'?",
+    "Burberry"
+   ],
+   [
+    "Which sunglasses brand's name means 'block the sun's rays'?",
+    "Ray-Ban"
+   ],
+   [
+    "Which Egyptian fridge and appliance brand is named after the Greek-Egyptian family who founded it?",
+    "Kiriazi"
+   ],
+   [
+    "Which Egyptian snack company makes Molto croissants?",
+    "Edita"
+   ],
+   [
+    "Which ice-cream chain's logo hides the number 31?",
+    "Baskin-Robbins"
+   ],
+   [
+    "What was Instagram's original name?",
+    "Burbn"
+   ],
+   [
+    "What does HSBC stand for?",
+    "Hongkong and Shanghai Banking Corporation"
+   ],
+   [
+    "Which Japanese carmaker used to sell its cars under the name Datsun?",
+    "Nissan"
+   ],
+   [
+    "Which state-owned company built Egypt's 'Nasr' cars from the 1960s?",
+    "El Nasr Automotive (Nasr)"
+   ],
+   [
+    "Which inventor is Tesla named after?",
+    "Nikola Tesla"
+   ]
+  ],
+  "500": [
+   [
+    "What does the name 'Häagen-Dazs' mean in Danish?",
+    "Nothing: it's made up to sound Scandinavian"
+   ],
+   [
+    "Subaru is the Japanese name for which star cluster, shown on its logo?",
+    "The Pleiades"
+   ],
+   [
+    "Which company made the first commercial mobile phone, the DynaTAC?",
+    "Motorola"
+   ],
+   [
+    "What did LG originally stand for?",
+    "Lucky-Goldstar"
+   ],
+   [
+    "The name ASUS comes from which mythical creature?",
+    "Pegasus"
+   ],
+   [
+    "What does the Samsung name mean in Korean?",
+    "Three stars"
+   ],
+   [
+    "Which Italian car brand's logo features the serpent from Milan's coat of arms?",
+    "Alfa Romeo"
+   ],
+   [
+    "Which company's name comes from the Japanese for 'three diamonds'?",
+    "Mitsubishi"
+   ],
+   [
+    "What was Pepsi named after?",
+    "Dyspepsia (indigestion), the drink was sold as a digestive aid"
+   ],
+   [
+    "Which car brand's name is Latin for 'listen', a translation of its founder's surname Horch?",
+    "Audi"
+   ],
+   [
+    "Which huge textile company in El Mahalla El Kubra was founded by Talaat Harb's Banque Misr in 1927?",
+    "Misr Spinning and Weaving (Ghazl El Mahalla)"
+   ],
+   [
+    "What was Nike's original name?",
+    "Blue Ribbon Sports"
+   ],
+   [
+    "Which phone company began in 1865 as a paper mill in Finland?",
+    "Nokia"
+   ],
+   [
+    "Which fashion house is named after Elsa, Coco Chanel's great rival?",
+    "Schiaparelli"
+   ],
+   [
+    "Mazda is named after its founder Matsuda and which ancient god?",
+    "Ahura Mazda (the Zoroastrian god of wisdom)"
+   ],
+   [
+    "Which car brand takes its name from a Spanish nickname for a founder's daughter?",
+    "Mercedes (Mercedes Jellinek)"
+   ],
+   [
+    "Porsche's crest includes the coat of arms of which German city?",
+    "Stuttgart"
+   ],
+   [
+    "Which historic Egyptian soft-drink brand was founded by a Greek family in the early 1900s?",
+    "Spiro Spathis"
+   ],
+   [
+    "What was Burger King's original name in 1953?",
+    "Insta-Burger King"
+   ],
+   [
+    "DHL is named after its three founders. Name one of them.",
+    "Dalsey, Hillblom or Lynn"
+   ],
+   [
+    "Which camera brand was originally called Nippon Kogaku?",
+    "Nikon"
+   ],
+   [
+    "What does the Kia name roughly mean?",
+    "'Rising out of Asia'"
+   ],
+   [
+    "The name Haribo comes from its founder and his city. Who and where?",
+    "Hans Riegel, Bonn"
+   ],
+   [
+    "What does 'TAG' stand for in TAG Heuer?",
+    "Techniques d'Avant-Garde"
+   ],
+   [
+    "What was Sony's original company name?",
+    "Tokyo Tsushin Kogyo (Totsuko)"
+   ],
+   [
+    "Fanta's name comes from which German word?",
+    "Fantasie (imagination)"
+   ],
+   [
+    "Which Egyptian department-store chain was originally called Orosdi-Back?",
+    "Omar Effendi"
+   ],
+   [
+    "Reebok is named after what?",
+    "An African antelope (the rhebok)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,518 @@
+{
+ "id": "wc",
+ "name": "World Cup",
+ "type": "text",
+ "desc": "Mostly 1998 onwards, plus a few classics.",
+ "data": {
+  "100": [
+   [
+    "Who scored the winning goal in the 2010 World Cup final?",
+    "Andrés Iniesta"
+   ],
+   [
+    "Which country hosted the 2014 World Cup?",
+    "Brazil"
+   ],
+   [
+    "Which country hosted the 2006 World Cup?",
+    "Germany"
+   ],
+   [
+    "Who did Argentina beat in the 2022 final?",
+    "France"
+   ],
+   [
+    "Who captained Argentina to the 2022 title?",
+    "Lionel Messi"
+   ],
+   [
+    "How many teams played at the 2026 World Cup?",
+    "48"
+   ],
+   [
+    "What was the noisy plastic horn heard all through the 2010 World Cup?",
+    "The vuvuzela"
+   ],
+   [
+    "Which country will host the 2034 World Cup?",
+    "Saudi Arabia"
+   ],
+   [
+    "Who did France beat in the 2018 final?",
+    "Croatia"
+   ],
+   [
+    "Which two countries co-hosted the 2002 World Cup?",
+    "South Korea and Japan"
+   ],
+   [
+    "What was the octopus that 'predicted' 2010 results called?",
+    "Paul"
+   ],
+   [
+    "Which country hosted the very first World Cup, in 1930?",
+    "Uruguay"
+   ],
+   [
+    "How often is the World Cup held?",
+    "Every four years"
+   ],
+   [
+    "Which country won its fourth title in 2014?",
+    "Germany"
+   ],
+   [
+    "Which country won the 2002 World Cup?",
+    "Brazil"
+   ],
+   [
+    "Which African country reached the semi-finals in 2022?",
+    "Morocco"
+   ],
+   [
+    "Which country won the 1998 World Cup on home soil?",
+    "France"
+   ],
+   [
+    "Which country won the 2026 World Cup?",
+    "Spain"
+   ],
+   [
+    "What is the award for the tournament's top scorer called?",
+    "The Golden Boot"
+   ],
+   [
+    "In which month was the 2022 World Cup final played?",
+    "December"
+   ],
+   [
+    "Which Shakira song was the official song of the 2010 World Cup?",
+    "Waka Waka (This Time for Africa)"
+   ],
+   [
+    "Which Argentine legend captained his country to the 1986 title?",
+    "Diego Maradona"
+   ],
+   [
+    "Which country does Luka Modrić play for?",
+    "Croatia"
+   ],
+   [
+    "Which national team is nicknamed 'the Three Lions'?",
+    "England"
+   ],
+   [
+    "What colour shirts does Brazil traditionally wear?",
+    "Yellow"
+   ]
+  ],
+  "200": [
+   [
+    "Who scored the winner in the 2014 final?",
+    "Mario Götze"
+   ],
+   [
+    "Who won the Golden Ball in 2018?",
+    "Luka Modrić"
+   ],
+   [
+    "Who won the Golden Boot in 2018?",
+    "Harry Kane"
+   ],
+   [
+    "Who won the Golden Boot in 2014?",
+    "James Rodríguez"
+   ],
+   [
+    "How many goals did Mbappé score at the 2022 World Cup?",
+    "8"
+   ],
+   [
+    "What was the official ball of the 2010 World Cup called?",
+    "Jabulani"
+   ],
+   [
+    "Who did Luis Suárez bite at the 2014 World Cup?",
+    "Giorgio Chiellini"
+   ],
+   [
+    "Which team did Saudi Arabia shock 2–1 in 2022?",
+    "Argentina"
+   ],
+   [
+    "Who won the Golden Ball in 2006?",
+    "Zinedine Zidane"
+   ],
+   [
+    "Who did Spain beat in the 2010 final?",
+    "The Netherlands"
+   ],
+   [
+    "Who did Brazil beat in the 2002 final?",
+    "Germany"
+   ],
+   [
+    "At which World Cup was VAR first used?",
+    "2018 (Russia)"
+   ],
+   [
+    "Against which team did Suárez handle on the line in the 2010 quarter-final?",
+    "Ghana"
+   ],
+   [
+    "Who won the Golden Ball in 2014?",
+    "Lionel Messi"
+   ],
+   [
+    "Which country won the 1966 World Cup at home?",
+    "England"
+   ],
+   [
+    "Who won the Golden Ball in 2022?",
+    "Lionel Messi"
+   ],
+   [
+    "Who sang 'La Copa de la Vida' at the 1998 World Cup?",
+    "Ricky Martin"
+   ],
+   [
+    "Who scored a hat-trick in the 3–3 draw between Portugal and Spain in 2018?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which is the only country to have played at every World Cup?",
+    "Brazil"
+   ],
+   [
+    "Which country's fans made the 'Viking clap' famous at its World Cup debut in 2018?",
+    "Iceland"
+   ],
+   [
+    "Which national team is nicknamed 'La Albiceleste'?",
+    "Argentina"
+   ],
+   [
+    "Which Brazilian passed Pelé as his country's all-time top scorer in 2023?",
+    "Neymar"
+   ],
+   [
+    "Which Dutchman scored a famous flying header against Spain in 2014?",
+    "Robin van Persie"
+   ],
+   [
+    "Which Asian team beat both Germany and Spain in the 2022 group stage?",
+    "Japan"
+   ],
+   [
+    "Which country hosted the 1994 World Cup?",
+    "The USA"
+   ]
+  ],
+  "300": [
+   [
+    "Which three teams were in Egypt's group at the 2018 World Cup?",
+    "Uruguay, Russia and Saudi Arabia"
+   ],
+   [
+    "Who won the Golden Ball in 2010?",
+    "Diego Forlán"
+   ],
+   [
+    "Who won the Golden Boot in 2010?",
+    "Thomas Müller"
+   ],
+   [
+    "Who won the Golden Boot in 2006?",
+    "Miroslav Klose"
+   ],
+   [
+    "Who won Best Young Player in 2018?",
+    "Kylian Mbappé"
+   ],
+   [
+    "Who won the Golden Glove in 2014?",
+    "Manuel Neuer"
+   ],
+   [
+    "Who won the Golden Glove in 2018?",
+    "Thibaut Courtois"
+   ],
+   [
+    "Which goalkeeper won the Golden Ball in 2002?",
+    "Oliver Kahn"
+   ],
+   [
+    "Who scored the fastest World Cup goal, after 11 seconds in 2002?",
+    "Hakan Şükür"
+   ],
+   [
+    "Which team finished third at the 2002 World Cup?",
+    "Turkey"
+   ],
+   [
+    "Who coached South Korea to the 2002 semi-finals?",
+    "Guus Hiddink"
+   ],
+   [
+    "Whose 'ghost goal' against Germany in 2010 wasn't given?",
+    "Frank Lampard's"
+   ],
+   [
+    "Who scored both goals in the 2002 final?",
+    "Ronaldo"
+   ],
+   [
+    "What was the 2022 mascot called?",
+    "La'eeb"
+   ],
+   [
+    "What was the 2014 official ball called?",
+    "Brazuca"
+   ],
+   [
+    "Who coached France to the 2018 title, after winning it as a player in 1998?",
+    "Didier Deschamps"
+   ],
+   [
+    "Who coached Argentina to the 2022 title?",
+    "Lionel Scaloni"
+   ],
+   [
+    "Who is the only player to win three World Cups?",
+    "Pelé"
+   ],
+   [
+    "The 2030 World Cup will be played on which three continents?",
+    "Africa, Europe and South America"
+   ],
+   [
+    "How many players could each team name in its squad at the 2022 World Cup?",
+    "26"
+   ],
+   [
+    "Who scored Saudi Arabia's winner against Argentina in 2022?",
+    "Salem Al-Dawsari"
+   ],
+   [
+    "Which stadium hosted the 2022 final?",
+    "Lusail Stadium"
+   ],
+   [
+    "Which team beat holders Germany 1–0 in their 2018 opener?",
+    "Mexico"
+   ],
+   [
+    "Which team beat Egypt 3–1 in St Petersburg in 2018?",
+    "Russia"
+   ],
+   [
+    "Who scored the opening goal of the 2022 final, from the penalty spot?",
+    "Lionel Messi"
+   ]
+  ],
+  "400": [
+   [
+    "Who won Best Young Player in 2022?",
+    "Enzo Fernández"
+   ],
+   [
+    "Who won Best Young Player in 2014?",
+    "Paul Pogba"
+   ],
+   [
+    "Who won the Golden Glove in 2010?",
+    "Iker Casillas"
+   ],
+   [
+    "What was the 2022 official ball called?",
+    "Al Rihla"
+   ],
+   [
+    "What was the 2010 mascot, a leopard, called?",
+    "Zakumi"
+   ],
+   [
+    "Who scored Senegal's winner against France in the 2002 opener?",
+    "Papa Bouba Diop"
+   ],
+   [
+    "Who holds the record for most World Cup appearances?",
+    "Lionel Messi"
+   ],
+   [
+    "Which team did Croatia knock out on penalties in the 2022 quarter-finals?",
+    "Brazil"
+   ],
+   [
+    "Who scored Morocco's quarter-final winner against Portugal in 2022?",
+    "Youssef En-Nesyri"
+   ],
+   [
+    "Who coached Germany to the 2014 title?",
+    "Joachim Löw"
+   ],
+   [
+    "Which Croatian goalkeeper saved three penalties against Japan in 2022?",
+    "Dominik Livaković"
+   ],
+   [
+    "Which team knocked Brazil out in the 2018 quarter-finals?",
+    "Belgium"
+   ],
+   [
+    "Which team did Spain beat 1–0 in the 2010 semi-final?",
+    "Germany"
+   ],
+   [
+    "Which team beat Spain 1–0 in their opening game of 2010?",
+    "Switzerland"
+   ],
+   [
+    "Which Dutch goalkeeper came on just for the shootout against Costa Rica in 2014?",
+    "Tim Krul"
+   ],
+   [
+    "Which team knocked Spain out on penalties in the 2022 round of 16?",
+    "Morocco"
+   ],
+   [
+    "Which Arab team beat France 1–0 in the 2022 group stage?",
+    "Tunisia"
+   ],
+   [
+    "Who became the oldest World Cup scorer, aged 42, in 1994?",
+    "Roger Milla"
+   ],
+   [
+    "Which Dutch striker scored twice off the bench against Argentina in the 2022 quarter-final?",
+    "Wout Weghorst"
+   ],
+   [
+    "Which Dutch midfielder scored five goals at the 2010 World Cup, including two against Brazil?",
+    "Wesley Sneijder"
+   ],
+   [
+    "Which team did Iran beat 2–1 in a politically charged 1998 match?",
+    "The USA"
+   ],
+   [
+    "Which team beat Saudi Arabia 8–0 in 2002?",
+    "Germany"
+   ],
+   [
+    "Which Mexico goalkeeper became a cult hero for his saves against Brazil in 2014?",
+    "Guillermo 'Memo' Ochoa"
+   ],
+   [
+    "Which team beat Germany 2–0 to knock the holders out in the 2018 group stage?",
+    "South Korea"
+   ],
+   [
+    "Which French defender scored a stunning volley against Argentina in 2018?",
+    "Benjamin Pavard"
+   ]
+  ],
+  "500": [
+   [
+    "Which country kept the original Jules Rimet trophy after its third win in 1970?",
+    "Brazil"
+   ],
+   [
+    "Who scored a record 13 goals at a single World Cup, in 1958?",
+    "Just Fontaine"
+   ],
+   [
+    "What is Uruguay's shock 1950 win over Brazil in Rio called?",
+    "The Maracanazo"
+   ],
+   [
+    "Who scored Argentina's second goal in the 2022 final?",
+    "Ángel Di María"
+   ],
+   [
+    "Who scored the winning penalty in the 2006 final?",
+    "Fabio Grosso"
+   ],
+   [
+    "Which French player hit the bar in the 2006 final shootout?",
+    "David Trezeguet"
+   ],
+   [
+    "Which Ghanaian missed a last-minute penalty against Uruguay in 2010?",
+    "Asamoah Gyan"
+   ],
+   [
+    "Which Croatian scored at both ends in the 2018 final?",
+    "Mario Mandžukić"
+   ],
+   [
+    "Whose long free kick looped over David Seaman in 2002?",
+    "Ronaldinho's"
+   ],
+   [
+    "Which African team reached the quarter-finals on its debut in 2002?",
+    "Senegal"
+   ],
+   [
+    "Who is the only coach to win two World Cups?",
+    "Vittorio Pozzo (Italy, 1934 and 1938)"
+   ],
+   [
+    "Which stadium hosted the 2014 final?",
+    "The Maracanã"
+   ],
+   [
+    "Which Algerian goalkeeper starred against Germany in the 2014 round of 16?",
+    "Raïs M'Bolhi"
+   ],
+   [
+    "Which team did Algeria beat 4–2 in the 2014 group stage?",
+    "South Korea"
+   ],
+   [
+    "Who scored a penalty in the 2nd minute of the 1974 final?",
+    "Johan Neeskens"
+   ],
+   [
+    "Which Saudi player scored a famous solo goal against Belgium in 1994?",
+    "Saeed Al-Owairan"
+   ],
+   [
+    "Which team did Brazil beat in the 2002 semi-final?",
+    "Turkey"
+   ],
+   [
+    "Who scored both of Egypt's goals against Hungary in 1934?",
+    "Abdulrahman Fawzi"
+   ],
+   [
+    "Which team did Egypt hold to a 0–0 draw at Italia 90?",
+    "The Republic of Ireland"
+   ],
+   [
+    "In 1986, which became the first Arab and African team to reach the World Cup knockout stage?",
+    "Morocco"
+   ],
+   [
+    "Which team did Algeria shock 2–1 at the 1982 World Cup?",
+    "West Germany"
+   ],
+   [
+    "Who scored Spain's winner in the 2010 semi-final against Germany?",
+    "Carles Puyol"
+   ],
+   [
+    "Who scored the only hat-trick in a men's World Cup final before Mbappé?",
+    "Geoff Hurst"
+   ],
+   [
+    "Who scored the first golden goal in World Cup history, against Paraguay in 1998?",
+    "Laurent Blanc"
+   ],
+   [
+    "Which Saudi striker played at four World Cups, from 1994 to 2006?",
+    "Sami Al-Jaber"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,578 @@
+{
+ "id": "toons",
+ "name": "Disney/Cartoon Network/Nickelodeon",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Who is SpongeBob's best friend?",
+    "Patrick Star"
+   ],
+   [
+    "Which Cartoon Network hero turns into aliens with a watch on his wrist?",
+    "Ben 10 (Ben Tennyson)"
+   ],
+   [
+    "Which Disney Channel show follows a teen who secretly lives a double life as a pop star?",
+    "Hannah Montana"
+   ],
+   [
+    "What is the snowman in Frozen called?",
+    "Olaf"
+   ],
+   [
+    "Which Nickelodeon show stars Aang?",
+    "Avatar: The Last Airbender"
+   ],
+   [
+    "What is Phineas and Ferb's pet platypus called?",
+    "Perry"
+   ],
+   [
+    "Who lives in a pineapple under the sea?",
+    "SpongeBob SquarePants"
+   ],
+   [
+    "Which Disney film stars a toy cowboy and a space ranger?",
+    "Toy Story"
+   ],
+   [
+    "Which Nickelodeon show follows Carly Shay and her web show?",
+    "iCarly"
+   ],
+   [
+    "Which Disney Channel movie is set at East High?",
+    "High School Musical"
+   ],
+   [
+    "Which Cartoon Network show follows Finn and Jake?",
+    "Adventure Time"
+   ],
+   [
+    "Which Disney film follows a clownfish searching for his son?",
+    "Finding Nemo"
+   ],
+   [
+    "What is Simba's father called?",
+    "Mufasa"
+   ],
+   [
+    "Which Nickelodeon sitcom stars two very different stepbrothers?",
+    "Drake & Josh"
+   ],
+   [
+    "Which Disney Channel show follows the Russo family of wizards?",
+    "Wizards of Waverly Place"
+   ],
+   [
+    "What is SpongeBob's pet snail called?",
+    "Gary"
+   ],
+   [
+    "Who is SpongeBob's grumpy neighbour?",
+    "Squidward"
+   ],
+   [
+    "What kind of animal is Patrick?",
+    "A starfish"
+   ],
+   [
+    "What is Mickey Mouse's girlfriend called?",
+    "Minnie Mouse"
+   ],
+   [
+    "Which Cartoon Network show stars three super-powered little girls?",
+    "The Powerpuff Girls"
+   ],
+   [
+    "Which Cartoon Network show follows a boy genius with a secret lab?",
+    "Dexter's Laboratory"
+   ],
+   [
+    "Which Disney princess is a mermaid?",
+    "Ariel"
+   ],
+   [
+    "Which Nickelodeon cartoon follows babies Tommy, Chuckie and Angelica?",
+    "Rugrats"
+   ],
+   [
+    "Which pink Cartoon Network dog is scared of everything?",
+    "Courage the Cowardly Dog"
+   ],
+   [
+    "Which Disney film features a street rat, a genie and a magic lamp?",
+    "Aladdin"
+   ],
+   [
+    "Which Disney-Pixar film takes place inside a girl's head, among her emotions?",
+    "Inside Out"
+   ],
+   [
+    "Which Nickelodeon heroes are four pizza-loving ninja turtles?",
+    "Teenage Mutant Ninja Turtles"
+   ],
+   [
+    "What is Mickey Mouse's dog called?",
+    "Pluto"
+   ]
+  ],
+  "200": [
+   [
+    "What is SpongeBob's job?",
+    "Fry cook at the Krusty Krab"
+   ],
+   [
+    "What is Ben Tennyson's alien watch called?",
+    "The Omnitrix"
+   ],
+   [
+    "What is Hannah Montana's real name?",
+    "Miley Stewart"
+   ],
+   [
+    "Which Cartoon Network show stars a blue cat called Gumball?",
+    "The Amazing World of Gumball"
+   ],
+   [
+    "What is Gumball's goldfish brother called?",
+    "Darwin"
+   ],
+   [
+    "Which Cartoon Network show stars Mordecai and Rigby?",
+    "Regular Show"
+   ],
+   [
+    "What animals are Mordecai and Rigby?",
+    "A blue jay and a raccoon"
+   ],
+   [
+    "What are Timmy Turner's fairy godparents called?",
+    "Cosmo and Wanda"
+   ],
+   [
+    "Which Disney Channel show follows twins living in a hotel?",
+    "The Suite Life of Zack & Cody"
+   ],
+   [
+    "What is Zack and Cody's hotel called?",
+    "The Tipton"
+   ],
+   [
+    "Which Disney-Pixar film stars a rat who dreams of being a chef?",
+    "Ratatouille"
+   ],
+   [
+    "Which Disney Channel movie puts the Jonas Brothers at a summer music camp?",
+    "Camp Rock"
+   ],
+   [
+    "Which Nickelodeon show is set at Hollywood Arts High School?",
+    "Victorious"
+   ],
+   [
+    "Who is Phineas and Ferb's sister, always trying to bust them?",
+    "Candace"
+   ],
+   [
+    "Which Disney film stars a princess with 70 feet of magic hair?",
+    "Tangled"
+   ],
+   [
+    "Who owns the Krusty Krab?",
+    "Mr. Krabs"
+   ],
+   [
+    "Which Disney Channel show stars Raven Baxter, who sees the future?",
+    "That's So Raven"
+   ],
+   [
+    "What is the squirrel in SpongeBob called?",
+    "Sandy Cheeks"
+   ],
+   [
+    "Which Disney film teams a fox with a rabbit police officer?",
+    "Zootopia"
+   ],
+   [
+    "Which Nickelodeon show follows a boy with a football-shaped head?",
+    "Hey Arnold!"
+   ],
+   [
+    "Name the three Powerpuff Girls.",
+    "Blossom, Bubbles and Buttercup"
+   ],
+   [
+    "What is Dexter's annoying big sister called?",
+    "Dee Dee"
+   ],
+   [
+    "What is the shape-shifting demigod in Moana called?",
+    "Maui"
+   ],
+   [
+    "Which Disney-Pixar film follows the superhero Parr family?",
+    "The Incredibles"
+   ],
+   [
+    "What is Elsa's younger sister called?",
+    "Anna"
+   ],
+   [
+    "Which Disney Channel show had a cartoon version of its star sharing her thoughts?",
+    "Lizzie McGuire"
+   ],
+   [
+    "Which Disney-Pixar film stars race car Lightning McQueen?",
+    "Cars"
+   ],
+   [
+    "Complete the Cartoon Network title: Ed, Edd n ___.",
+    "Eddy"
+   ],
+   [
+    "What is SpongeBob's underwater town called?",
+    "Bikini Bottom"
+   ]
+  ],
+  "300": [
+   [
+    "In which town do Phineas and Ferb live?",
+    "Danville"
+   ],
+   [
+    "Who is Perry the Platypus's evil nemesis?",
+    "Dr. Doofenshmirtz"
+   ],
+   [
+    "What is Carly's older brother called in iCarly?",
+    "Spencer"
+   ],
+   [
+    "Who is iCarly's tech producer?",
+    "Freddie"
+   ],
+   [
+    "Which element does Toph bend in Avatar?",
+    "Earth"
+   ],
+   [
+    "What is Zuko's uncle called?",
+    "Iroh"
+   ],
+   [
+    "What is Ben 10's cousin called?",
+    "Gwen"
+   ],
+   [
+    "Which Nickelodeon hero is half-human, half-ghost?",
+    "Danny Phantom"
+   ],
+   [
+    "Who plays Alex Russo in Wizards of Waverly Place?",
+    "Selena Gomez"
+   ],
+   [
+    "Which Cartoon Network show is set in a home for imaginary friends?",
+    "Foster's Home for Imaginary Friends"
+   ],
+   [
+    "What is Mac's blue imaginary friend called in Foster's?",
+    "Bloo"
+   ],
+   [
+    "What are the twins called in Gravity Falls?",
+    "Dipper and Mabel"
+   ],
+   [
+    "Who plays Hannah Montana?",
+    "Miley Cyrus"
+   ],
+   [
+    "Which Disney-Pixar film stars a lonely trash-compacting robot?",
+    "WALL-E"
+   ],
+   [
+    "What is Zuko's sister called?",
+    "Azula"
+   ],
+   [
+    "Which Ben 10 alien is made of fire?",
+    "Heatblast"
+   ],
+   [
+    "Who voices Olaf in Frozen?",
+    "Josh Gad"
+   ],
+   [
+    "What is the kingdom in Frozen called?",
+    "Arendelle"
+   ],
+   [
+    "Who created the Powerpuff Girls in his lab?",
+    "Professor Utonium"
+   ],
+   [
+    "What kind of animal is Mojo Jojo?",
+    "A chimpanzee (monkey)"
+   ],
+   [
+    "What is Plankton's failing restaurant called?",
+    "The Chum Bucket"
+   ],
+   [
+    "What does Plankton keep trying to steal?",
+    "The Krabby Patty secret formula"
+   ],
+   [
+    "Who voices the Genie in Aladdin (1992)?",
+    "Robin Williams"
+   ],
+   [
+    "What is the rabbit police officer in Zootopia called?",
+    "Judy Hopps"
+   ],
+   [
+    "Which Disney-Pixar film sends a young musician to the Land of the Dead?",
+    "Coco"
+   ],
+   [
+    "Which new emotion takes over Riley's mind in Inside Out 2?",
+    "Anxiety"
+   ],
+   [
+    "Which Cartoon Network samurai is flung into the future by Aku?",
+    "Samurai Jack"
+   ],
+   [
+    "What is Moana's dim-witted pet rooster called?",
+    "Heihei"
+   ]
+  ],
+  "400": [
+   [
+    "What is Dr. Doofenshmirtz's company called?",
+    "Doofenshmirtz Evil Incorporated"
+   ],
+   [
+    "What do all of Doofenshmirtz's inventions end with?",
+    "'-inator'"
+   ],
+   [
+    "What is Gumball's surname?",
+    "Watterson"
+   ],
+   [
+    "In Chowder, which chef does Chowder work for as an apprentice?",
+    "Mung Daal"
+   ],
+   [
+    "What is the Avatar sequel set 70 years later called?",
+    "The Legend of Korra"
+   ],
+   [
+    "Who leads the Teen Titans?",
+    "Robin"
+   ],
+   [
+    "What is the Tipton's hotel manager called?",
+    "Mr. Moseby"
+   ],
+   [
+    "Which Nickelodeon show was a 'school survival guide'?",
+    "Ned's Declassified School Survival Guide"
+   ],
+   [
+    "Which Nickelodeon show is set at Pacific Coast Academy?",
+    "Zoey 101"
+   ],
+   [
+    "What is Kim Possible's sidekick's naked mole-rat called?",
+    "Rufus"
+   ],
+   [
+    "Which Disney Channel show made video diaries for baby Charlie?",
+    "Good Luck Charlie"
+   ],
+   [
+    "Which Nickelodeon show turned four hockey players into a boy band?",
+    "Big Time Rush"
+   ],
+   [
+    "What kind of object is Benson in Regular Show?",
+    "A gumball machine"
+   ],
+   [
+    "Which princess is made of candy in Adventure Time?",
+    "Princess Bubblegum"
+   ],
+   [
+    "Which Teen Titan is half-robot?",
+    "Cyborg"
+   ],
+   [
+    "Who is Dr. Drakken's sidekick in Kim Possible?",
+    "Shego"
+   ],
+   [
+    "What is Aang's flying bison called?",
+    "Appa"
+   ],
+   [
+    "Which green Teen Titan can change into animals?",
+    "Beast Boy"
+   ],
+   [
+    "What is Dexter's rival genius called?",
+    "Mandark"
+   ],
+   [
+    "What is Kim Possible's catchphrase?",
+    "'So what's the sitch?'"
+   ],
+   [
+    "What are Courage the Cowardly Dog's owners called?",
+    "Muriel and Eustace Bagge"
+   ],
+   [
+    "Which Nickelodeon girl can talk to animals in The Wild Thornberrys?",
+    "Eliza Thornberry"
+   ],
+   [
+    "In Hey Arnold!, which bully secretly loves Arnold?",
+    "Helga Pataki"
+   ],
+   [
+    "Which Cartoon Network show follows Steven and the Crystal Gems?",
+    "Steven Universe"
+   ],
+   [
+    "What is Tommy Pickles's dog called in Rugrats?",
+    "Spike"
+   ],
+   [
+    "What is the cooking rat in Ratatouille called?",
+    "Remy"
+   ],
+   [
+    "What is Carl's late wife called in Up?",
+    "Ellie"
+   ],
+   [
+    "What is Dr. Doofenshmirtz's teenage daughter called?",
+    "Vanessa"
+   ]
+  ],
+  "500": [
+   [
+    "What is Gumball's mum called?",
+    "Nicole"
+   ],
+   [
+    "What is Grunkle Stan's tourist trap in Gravity Falls called?",
+    "The Mystery Shack"
+   ],
+   [
+    "What is Grunkle Stan's twin brother called?",
+    "Stanford (Ford) Pines"
+   ],
+   [
+    "What is the Ice King's real name in Adventure Time?",
+    "Simon Petrikov"
+   ],
+   [
+    "What is Aang's lemur called?",
+    "Momo"
+   ],
+   [
+    "In which town is The Amazing World of Gumball set?",
+    "Elmore"
+   ],
+   [
+    "Who is Candace's boyfriend in Phineas and Ferb?",
+    "Jeremy"
+   ],
+   [
+    "What is Sam's surname in iCarly?",
+    "Puckett"
+   ],
+   [
+    "What is the Russo family's sandwich shop called?",
+    "Waverly Sub Station"
+   ],
+   [
+    "What is Ben 10's grandfather called?",
+    "Max Tennyson (Grandpa Max)"
+   ],
+   [
+    "Who wrote the songs for Moana?",
+    "Lin-Manuel Miranda (with Opetaia Foa'i and Mark Mancina)"
+   ],
+   [
+    "What is Danny Phantom's family surname?",
+    "Fenton"
+   ],
+   [
+    "What is the talking dog in Up called?",
+    "Dug"
+   ],
+   [
+    "Which film won Pixar its first Best Animated Feature Oscar?",
+    "Finding Nemo"
+   ],
+   [
+    "What is Ben 10's alien archenemy called?",
+    "Vilgax"
+   ],
+   [
+    "What is Mabel's pet pig called in Gravity Falls?",
+    "Waddles"
+   ],
+   [
+    "What is Phineas and Ferb's dad called?",
+    "Lawrence Fletcher"
+   ],
+   [
+    "In which town do Courage and his owners live?",
+    "Nowhere (Kansas)"
+   ],
+   [
+    "Which city do the Powerpuff Girls protect?",
+    "Townsville"
+   ],
+   [
+    "Which sweets do the Eds keep scamming kids to buy?",
+    "Jawbreakers"
+   ],
+   [
+    "What is Samurai Jack's shape-shifting demon enemy called?",
+    "Aku"
+   ],
+   [
+    "What is Arnold's grandparents' boarding house called?",
+    "The Sunset Arms"
+   ],
+   [
+    "What is the surname of the Rugrats twins Phil and Lil?",
+    "DeVille"
+   ],
+   [
+    "What is Timmy Turner's evil babysitter called?",
+    "Vicky"
+   ],
+   [
+    "Who is Perry the Platypus's boss at O.W.C.A.?",
+    "Major Monogram"
+   ],
+   [
+    "Which triangle-shaped demon is the big villain of Gravity Falls?",
+    "Bill Cipher"
+   ],
+   [
+    "Which instrument does Squidward play?",
+    "The clarinet"
+   ]
+  ]
+ }
+}

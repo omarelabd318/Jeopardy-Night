@@ -1,0 +1,614 @@
+{
+ "id": "tg",
+ "name": "Tech & Gaming",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Which company makes the Xbox?",
+    "Microsoft"
+   ],
+   [
+    "Who is Nintendo's plumber mascot?",
+    "Mario"
+   ],
+   [
+    "What does CPU stand for?",
+    "Central Processing Unit"
+   ],
+   [
+    "In which game do Creepers explode?",
+    "Minecraft"
+   ],
+   [
+    "Which company makes Galaxy phones?",
+    "Samsung"
+   ],
+   [
+    "What does USB stand for?",
+    "Universal Serial Bus"
+   ],
+   [
+    "Which battle royale drops players from a Battle Bus?",
+    "Fortnite"
+   ],
+   [
+    "What is the card-collecting mode in FIFA / EA FC called?",
+    "Ultimate Team"
+   ],
+   [
+    "Which game series stars Master Chief?",
+    "Halo"
+   ],
+   [
+    "Which company made ChatGPT?",
+    "OpenAI"
+   ],
+   [
+    "Who is Sega's blue hedgehog mascot?",
+    "Sonic"
+   ],
+   [
+    "What does AI stand for?",
+    "Artificial intelligence"
+   ],
+   [
+    "Which game series is set in the city of Los Santos?",
+    "Grand Theft Auto"
+   ],
+   [
+    "What is Apple's voice assistant called?",
+    "Siri"
+   ],
+   [
+    "Which company makes Android?",
+    "Google"
+   ],
+   [
+    "Which keys copy text on Windows?",
+    "Ctrl + C"
+   ],
+   [
+    "Which app is famous for short videos and a 'For You' page?",
+    "TikTok"
+   ],
+   [
+    "Which game series stars Kratos?",
+    "God of War"
+   ],
+   [
+    "Which console did Sony release in 2020?",
+    "PlayStation 5"
+   ],
+   [
+    "What does 'GG' mean at the end of an online match?",
+    "Good game"
+   ],
+   [
+    "Which Nintendo character is a round pink puffball?",
+    "Kirby"
+   ],
+   [
+    "Which company makes the iPhone?",
+    "Apple"
+   ],
+   [
+    "Which shooter series includes 'Modern Warfare' and 'Warzone'?",
+    "Call of Duty"
+   ],
+   [
+    "What is the name of Mario's taller brother in green?",
+    "Luigi"
+   ],
+   [
+    "Which yellow electric Pokémon is Ash's partner?",
+    "Pikachu"
+   ],
+   [
+    "What is Amazon's voice assistant called?",
+    "Alexa"
+   ],
+   [
+    "Which company owns Instagram and WhatsApp?",
+    "Meta"
+   ],
+   [
+    "In which game do rocket-powered cars play football?",
+    "Rocket League"
+   ],
+   [
+    "What does PC stand for?",
+    "Personal computer"
+   ],
+   [
+    "What do gamers call the delay between pressing a button and the game reacting?",
+    "Lag"
+   ]
+  ],
+  "200": [
+   [
+    "Which Sony console sold about 160 million units, the all-time record the Switch is still chasing?",
+    "PlayStation 2"
+   ],
+   [
+    "Who co-founded Apple with Steve Jobs?",
+    "Steve Wozniak"
+   ],
+   [
+    "What does RAM stand for?",
+    "Random Access Memory"
+   ],
+   [
+    "Which studio makes Grand Theft Auto?",
+    "Rockstar Games"
+   ],
+   [
+    "What did EA rename FIFA to in 2023?",
+    "EA Sports FC"
+   ],
+   [
+    "What was Konami's football rival to FIFA called?",
+    "Pro Evolution Soccer (PES)"
+   ],
+   [
+    "What does HTML stand for?",
+    "HyperText Markup Language"
+   ],
+   [
+    "Which 2017 Nintendo console is both handheld and home console?",
+    "Nintendo Switch"
+   ],
+   [
+    "In which game series does Link save Hyrule?",
+    "The Legend of Zelda"
+   ],
+   [
+    "What does GPU stand for?",
+    "Graphics Processing Unit"
+   ],
+   [
+    "What is Valve's PC game store called?",
+    "Steam"
+   ],
+   [
+    "In Among Us, what are the saboteurs called?",
+    "Impostors"
+   ],
+   [
+    "What does URL stand for?",
+    "Uniform Resource Locator"
+   ],
+   [
+    "Which game series stars Lara Croft?",
+    "Tomb Raider"
+   ],
+   [
+    "Which game platform's currency is called Robux?",
+    "Roblox"
+   ],
+   [
+    "Which messaging app has a paper-plane logo?",
+    "Telegram"
+   ],
+   [
+    "What is the smallest unit of digital data?",
+    "A bit"
+   ],
+   [
+    "Who are the two main characters of 'The Last of Us'?",
+    "Joel and Ellie"
+   ],
+   [
+    "What does the error 'HTTP 404' mean?",
+    "Page not found"
+   ],
+   [
+    "Which company made the Walkman?",
+    "Sony"
+   ],
+   [
+    "Which Elon Musk company runs the Starlink satellite internet service?",
+    "SpaceX"
+   ],
+   [
+    "In which year did the Nintendo Switch 2 launch?",
+    "2025"
+   ],
+   [
+    "Which battle royale sends players to the island of Erangel?",
+    "PUBG (PUBG: Battlegrounds)"
+   ],
+   [
+    "What does NPC stand for in games?",
+    "Non-player character"
+   ],
+   [
+    "What is Google's AI chatbot, formerly called Bard, now called?",
+    "Gemini"
+   ],
+   [
+    "What did Konami rename Pro Evolution Soccer to in 2021?",
+    "eFootball"
+   ],
+   [
+    "Which Riot Games tactical shooter has characters called 'agents'?",
+    "Valorant"
+   ],
+   [
+    "What does FPS stand for as a game genre?",
+    "First-person shooter"
+   ],
+   [
+    "Which horror game series features the animatronic bear Freddy Fazbear?",
+    "Five Nights at Freddy's"
+   ],
+   [
+    "What is Microsoft's game subscription service called?",
+    "Xbox Game Pass"
+   ]
+  ],
+  "300": [
+   [
+    "Which studio develops the main Pokémon games?",
+    "Game Freak"
+   ],
+   [
+    "In League of Legends, what structure must you destroy to win?",
+    "The Nexus"
+   ],
+   [
+    "In which year did Google Chrome launch?",
+    "2008"
+   ],
+   [
+    "Which programming language is named after a British comedy group?",
+    "Python"
+   ],
+   [
+    "Who is called the father of the computer?",
+    "Charles Babbage"
+   ],
+   [
+    "Which company makes the Unreal Engine?",
+    "Epic Games"
+   ],
+   [
+    "Who created the Linux kernel?",
+    "Linus Torvalds"
+   ],
+   [
+    "Which studio made The Witcher 3?",
+    "CD Projekt Red"
+   ],
+   [
+    "In which year was YouTube founded?",
+    "2005"
+   ],
+   [
+    "What does HTTP stand for?",
+    "HyperText Transfer Protocol"
+   ],
+   [
+    "Who created Tetris?",
+    "Alexey Pajitnov"
+   ],
+   [
+    "In which year was the first iPod released?",
+    "2001"
+   ],
+   [
+    "Who is the main villain of The Legend of Zelda?",
+    "Ganon (Ganondorf)"
+   ],
+   [
+    "Which game's world championship is called The International?",
+    "Dota 2"
+   ],
+   [
+    "Bluetooth is named after whom?",
+    "Harald Bluetooth, a Viking king of Denmark"
+   ],
+   [
+    "Who co-founded Google with Larry Page?",
+    "Sergey Brin"
+   ],
+   [
+    "What does VPN stand for?",
+    "Virtual Private Network"
+   ],
+   [
+    "Which game follows outlaw Arthur Morgan?",
+    "Red Dead Redemption 2"
+   ],
+   [
+    "Who co-founded Nvidia and is its CEO?",
+    "Jensen Huang"
+   ],
+   [
+    "What was Twitter's original character limit?",
+    "140"
+   ],
+   [
+    "Who created Minecraft?",
+    "Markus 'Notch' Persson"
+   ],
+   [
+    "Which free anime-style open-world game is set in the land of Teyvat?",
+    "Genshin Impact"
+   ],
+   [
+    "Which company makes Ryzen processors and Radeon graphics cards?",
+    "AMD"
+   ],
+   [
+    "What was Facebook's original name when it launched in 2004?",
+    "TheFacebook"
+   ],
+   [
+    "What does LAN stand for?",
+    "Local area network"
+   ],
+   [
+    "In which year was the long-awaited 'Hollow Knight: Silksong' finally released?",
+    "2025"
+   ],
+   [
+    "What is a CAPTCHA designed to check?",
+    "That you're a human, not a bot"
+   ],
+   [
+    "What does MMORPG stand for?",
+    "Massively multiplayer online role-playing game"
+   ],
+   [
+    "Which Japanese company makes Street Fighter and Resident Evil?",
+    "Capcom"
+   ],
+   [
+    "Which game series has the mascot Vault Boy?",
+    "Fallout"
+   ],
+   [
+    "Which Valve puzzle series features GLaDOS and a gun that makes holes in walls?",
+    "Portal"
+   ]
+  ],
+  "400": [
+   [
+    "Which 1972 arcade game was the first big commercial video game hit?",
+    "Pong"
+   ],
+   [
+    "What was the NES called in Japan?",
+    "Famicom"
+   ],
+   [
+    "Skyrim is set on which continent?",
+    "Tamriel"
+   ],
+   [
+    "Which studio made the original Call of Duty?",
+    "Infinity Ward"
+   ],
+   [
+    "What does SSD stand for?",
+    "Solid State Drive"
+   ],
+   [
+    "Who invented the World Wide Web?",
+    "Tim Berners-Lee"
+   ],
+   [
+    "What is the highest-grossing media franchise of all time?",
+    "Pokémon"
+   ],
+   [
+    "In which year did the first PlayStation launch in Japan?",
+    "1994"
+   ],
+   [
+    "Which studio developed Elden Ring?",
+    "FromSoftware"
+   ],
+   [
+    "What does SQL stand for?",
+    "Structured Query Language"
+   ],
+   [
+    "Which IBM computer beat Garry Kasparov in 1997?",
+    "Deep Blue"
+   ],
+   [
+    "Which language did Brendan Eich create in about 10 days?",
+    "JavaScript"
+   ],
+   [
+    "Which British company designs the chip architecture in most smartphones?",
+    "Arm"
+   ],
+   [
+    "Which company made the Dreamcast?",
+    "Sega"
+   ],
+   [
+    "What does Moore's law predict?",
+    "Transistor counts on chips double about every two years"
+   ],
+   [
+    "Which language does Google recommend for new Android apps?",
+    "Kotlin"
+   ],
+   [
+    "Who is credited as the first computer programmer?",
+    "Ada Lovelace"
+   ],
+   [
+    "Which gaming company did Microsoft buy in 2023 for about $69 billion?",
+    "Activision Blizzard"
+   ],
+   [
+    "What does SIM stand for in 'SIM card'?",
+    "Subscriber Identity Module"
+   ],
+   [
+    "Which 2023 Zelda game gave Link the 'Ultrahand' power?",
+    "The Legend of Zelda: Tears of the Kingdom"
+   ],
+   [
+    "Which game engine, used for Pokémon Go and Hollow Knight, is named after togetherness?",
+    "Unity"
+   ],
+   [
+    "What is the name of the silent scientist hero of Half-Life?",
+    "Gordon Freeman"
+   ],
+   [
+    "The word 'emoji' comes from Japanese for which two words?",
+    "Picture + character"
+   ],
+   [
+    "Which game series is set in Rapture, a city under the sea?",
+    "BioShock"
+   ],
+   [
+    "Which company made the first commercial microprocessor, the 4004, in 1971?",
+    "Intel"
+   ],
+   [
+    "What does the 'K' in 4K roughly refer to?",
+    "About 4,000 pixels across the screen"
+   ],
+   [
+    "Which game won Game of the Year at The Game Awards 2025?",
+    "Clair Obscur: Expedition 33"
+   ],
+   [
+    "Which country's sovereign wealth fund led the $55 billion takeover of EA, completed in 2026?",
+    "Saudi Arabia (PIF)"
+   ],
+   [
+    "What does GIF stand for?",
+    "Graphics Interchange Format"
+   ]
+  ],
+  "500": [
+   [
+    "What did Nintendo originally make when founded in 1889?",
+    "Playing cards (hanafuda)"
+   ],
+   [
+    "What was Mario called in the original Donkey Kong?",
+    "Jumpman"
+   ],
+   [
+    "Which 1985 game first used the Konami Code?",
+    "Gradius"
+   ],
+   [
+    "What was the first console to use interchangeable ROM cartridges (1976)?",
+    "Fairchild Channel F"
+   ],
+   [
+    "What was the first IBM PC virus (1986) called?",
+    "Brain"
+   ],
+   [
+    "At which organisation was the first website hosted?",
+    "CERN"
+   ],
+   [
+    "Which game was the first played in space, on a Game Boy in 1993?",
+    "Tetris"
+   ],
+   [
+    "What does the P in PNG stand for?",
+    "Portable"
+   ],
+   [
+    "Which company started life as Tokyo Tsushin Kogyo?",
+    "Sony"
+   ],
+   [
+    "What was the first general-purpose electronic digital computer (1945)?",
+    "ENIAC"
+   ],
+   [
+    "Which Atari game was famously buried in a New Mexico landfill?",
+    "E.T. the Extra-Terrestrial"
+   ],
+   [
+    "Which AI beat Go champion Lee Sedol in 2016?",
+    "AlphaGo"
+   ],
+   [
+    "Which 1980 Atari game contains the first famous video game Easter egg?",
+    "Adventure"
+   ],
+   [
+    "What does the recursive acronym GNU stand for?",
+    "GNU's Not Unix"
+   ],
+   [
+    "What did the first ever SMS text, sent in 1992, say?",
+    "Merry Christmas"
+   ],
+   [
+    "Why, according to legend, was Final Fantasy given its name?",
+    "Its creator thought it might be his last game"
+   ],
+   [
+    "What does JPEG stand for?",
+    "Joint Photographic Experts Group"
+   ],
+   [
+    "What was the first home video game console, released in 1972?",
+    "The Magnavox Odyssey"
+   ],
+   [
+    "What was Apple's first computer called?",
+    "The Apple I"
+   ],
+   [
+    "What was found in a Harvard computer in 1947 and logged as the first actual 'bug'?",
+    "A moth"
+   ],
+   [
+    "Which scientist coined the term 'artificial intelligence' in 1955?",
+    "John McCarthy"
+   ],
+   [
+    "Which Nintendo engineer designed the Game Boy?",
+    "Gunpei Yokoi"
+   ],
+   [
+    "Which 1995 Nintendo console showed everything in red and flopped?",
+    "Virtual Boy"
+   ],
+   [
+    "Which 1962 MIT game is one of the first ever digital video games?",
+    "Spacewar!"
+   ],
+   [
+    "What was the first web browser, made by Tim Berners-Lee, called?",
+    "WorldWideWeb (later Nexus)"
+   ],
+   [
+    "Which two scientists won the 2024 Nobel Prize in Physics for work on neural networks?",
+    "John Hopfield and Geoffrey Hinton"
+   ],
+   [
+    "Which company made the Neo Geo console?",
+    "SNK"
+   ],
+   [
+    "Pac-Man's name comes from which Japanese sound?",
+    "'Paku-paku' (the sound of munching)"
+   ],
+   [
+    "What was the Xbox 360's famous hardware failure nicknamed?",
+    "The Red Ring of Death"
+   ]
+  ]
+ }
+}

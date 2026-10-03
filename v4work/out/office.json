@@ -1,0 +1,374 @@
+{
+ "id": "office",
+ "name": "The Office",
+ "type": "text",
+ "desc": "Dunder Mifflin Scranton, from Michael to Dwight.",
+ "data": {
+  "100": [
+   [
+    "The paper company the show follows.",
+    "Dunder Mifflin"
+   ],
+   [
+    "In which city is the show's Dunder Mifflin branch?",
+    "Scranton, Pennsylvania"
+   ],
+   [
+    "The regional manager.",
+    "Michael Scott"
+   ],
+   [
+    "The \"Assistant (to the) Regional Manager\".",
+    "Dwight Schrute"
+   ],
+   [
+    "The receptionist who marries Jim.",
+    "Pam Beesly"
+   ],
+   [
+    "Jim's favourite prank target.",
+    "Dwight"
+   ],
+   [
+    "What crop grows on Dwight's farm?",
+    "Beets"
+   ],
+   [
+    "Michael's most famous catchphrase.",
+    "That's what she said"
+   ],
+   [
+    "What does Michael's mug say?",
+    "World's Best Boss"
+   ],
+   [
+    "Jim puts Dwight's stapler in what?",
+    "Jell-O"
+   ],
+   [
+    "The show is a remake of a series from which country?",
+    "The UK"
+   ],
+   [
+    "What is Oscar's job?",
+    "Accountant"
+   ],
+   [
+    "The salesman famous for looking straight at the camera after something awkward.",
+    "Jim Halpert"
+   ],
+   [
+    "The grumpy salesman who just wants to do his crossword puzzle.",
+    "Stanley Hudson"
+   ],
+   [
+    "The strict, cat-loving accountant who secretly dates Dwight.",
+    "Angela Martin"
+   ],
+   [
+    "The chatty customer service rep obsessed with celebrity gossip.",
+    "Kelly Kapoor"
+   ],
+   [
+    "Michael shouts \"I DECLARE ___!\" to fix his money problems.",
+    "Bankruptcy"
+   ],
+   [
+    "Michael spends $400 on a video iPod for the office's Secret Santa at which holiday party?",
+    "Christmas"
+   ]
+  ],
+  "200": [
+   [
+    "The name of Dwight's family farm.",
+    "Schrute Farms"
+   ],
+   [
+    "What animal does Angela love?",
+    "Cats"
+   ],
+   [
+    "What does Kevin famously spill all over the office floor?",
+    "His chili"
+   ],
+   [
+    "Michael's homemade action film.",
+    "Threat Level Midnight"
+   ],
+   [
+    "Which university did Andy go to?",
+    "Cornell"
+   ],
+   [
+    "Michael's annual office awards.",
+    "The Dundies"
+   ],
+   [
+    "Michael's \"prison\" character.",
+    "Prison Mike"
+   ],
+   [
+    "The HR rep Michael hates.",
+    "Toby Flenderson"
+   ],
+   [
+    "The company Michael starts after quitting.",
+    "The Michael Scott Paper Company"
+   ],
+   [
+    "The temp who later becomes a corporate VP.",
+    "Ryan Howard"
+   ],
+   [
+    "Dwight's silent cousin on the farm.",
+    "Mose"
+   ],
+   [
+    "How many seasons does the show have?",
+    "Nine"
+   ],
+   [
+    "What kitchen gadget does Michael burn his foot on?",
+    "A George Foreman Grill"
+   ],
+   [
+    "\"I'm not superstitious, but I am a little ___.\"",
+    "Stitious"
+   ],
+   [
+    "Who replaces Pam as the receptionist?",
+    "Erin Hannon"
+   ],
+   [
+    "Which martial art does Dwight proudly hold a belt in?",
+    "Karate"
+   ],
+   [
+    "Pam gets banned from which restaurant after the Dundies?",
+    "Chili's"
+   ],
+   [
+    "What does Andy punch a hole in after Jim hides his phone in the ceiling?",
+    "The wall"
+   ]
+  ],
+  "300": [
+   [
+    "Stanley's favourite day of the year.",
+    "Pretzel Day"
+   ],
+   [
+    "Michael's boss and on-off girlfriend.",
+    "Jan Levinson"
+   ],
+   [
+    "The HR rep who becomes Michael's true love.",
+    "Holly Flax"
+   ],
+   [
+    "Which branch merges with Scranton in season 3?",
+    "Stamford"
+   ],
+   [
+    "Who does Michael hit with his car?",
+    "Meredith"
+   ],
+   [
+    "\"Bears. Beets. ___.\"",
+    "Battlestar Galactica"
+   ],
+   [
+    "Andy's nickname for himself.",
+    "Nard Dog"
+   ],
+   [
+    "The printer company that buys Dunder Mifflin.",
+    "Sabre"
+   ],
+   [
+    "What does Dwight start in the office to test everyone's fire safety?",
+    "A real fire"
+   ],
+   [
+    "Where do Jim and Pam get married?",
+    "Niagara Falls"
+   ],
+   [
+    "Phyllis's husband, of Vance Refrigeration.",
+    "Bob Vance"
+   ],
+   [
+    "Who is the regional manager in the final episodes?",
+    "Dwight"
+   ],
+   [
+    "Michael's secret agent hero in Threat Level Midnight.",
+    "Agent Michael Scarn"
+   ],
+   [
+    "Which instrument does Andy love to play?",
+    "The banjo"
+   ],
+   [
+    "The Dunder Mifflin CFO who later buys the company back.",
+    "David Wallace"
+   ],
+   [
+    "Jim and Pam's first child.",
+    "Cecelia (Cece)"
+   ],
+   [
+    "According to Prison Mike, what is the worst thing about prison?",
+    "The Dementors"
+   ],
+   [
+    "Michael's flirty alter ego with a backwards cap.",
+    "Date Mike"
+   ]
+  ],
+  "400": [
+   [
+    "What is Creed's job title?",
+    "Quality assurance"
+   ],
+   [
+    "Jan's candle company.",
+    "Serenity by Jan"
+   ],
+   [
+    "The tall Sabre liaison who dates Erin.",
+    "Gabe Lewis"
+   ],
+   [
+    "What is Erin's real first name?",
+    "Kelly"
+   ],
+   [
+    "Jim's sports marketing company in Philadelphia.",
+    "Athlead (later Athleap)"
+   ],
+   [
+    "The two founders of Dunder Mifflin.",
+    "Robert Dunder and Robert Mifflin"
+   ],
+   [
+    "David Wallace makes millions from which invention?",
+    "Suck It (a toy vacuum)"
+   ],
+   [
+    "Where does Michael move when he leaves?",
+    "Colorado (Boulder), with Holly"
+   ],
+   [
+    "Andy's college a cappella group.",
+    "Here Comes Treble"
+   ],
+   [
+    "Which Christmas figure does Dwight dress up as?",
+    "Belsnickel"
+   ],
+   [
+    "Michael's sales idea that hides tickets in paper boxes.",
+    "The Golden Ticket"
+   ],
+   [
+    "Pam goes to art school in which city?",
+    "New York"
+   ],
+   [
+    "The book club for 'refined' culture that Pam, Oscar and Toby belong to.",
+    "The Finer Things Club"
+   ],
+   [
+    "What does Jim give Pam in the Christmas gift swap, with a love note inside?",
+    "A teapot"
+   ],
+   [
+    "Ryan's failed social networking start-up that Michael invests in.",
+    "WUPHF.com"
+   ],
+   [
+    "The Office Olympics event where you shuffle across the office with paper boxes on your feet.",
+    "Flonkerton"
+   ],
+   [
+    "Andy's nickname for Jim.",
+    "Big Tuna"
+   ],
+   [
+    "The warehouse foreman who later joins Jim at Athlead.",
+    "Darryl Philbin"
+   ]
+  ],
+  "500": [
+   [
+    "Kevin's band.",
+    "Scrantonicity"
+   ],
+   [
+    "The serial killer case Toby sits on the jury for.",
+    "The Scranton Strangler"
+   ],
+   [
+    "Which of Pam's relatives does Michael date?",
+    "Her mother, Helene"
+   ],
+   [
+    "Angela's cat, which Dwight kills by putting it in the freezer.",
+    "Sprinkles"
+   ],
+   [
+    "What is Michael's middle name?",
+    "Gary"
+   ],
+   [
+    "Michael's fun run raises awareness of which disease?",
+    "Rabies"
+   ],
+   [
+    "What is Dwight's middle name?",
+    "Kurt"
+   ],
+   [
+    "Holly's boyfriend before she gets back with Michael.",
+    "AJ"
+   ],
+   [
+    "Angela and Dwight's son.",
+    "Phillip"
+   ],
+   [
+    "Which branch does Karen go on to manage?",
+    "Utica"
+   ],
+   [
+    "The trainer who runs Diversity Day.",
+    "Mr. Brown"
+   ],
+   [
+    "The 2025 spin-off The Paper follows the documentary crew to a struggling newspaper in which Ohio city?",
+    "Toledo"
+   ],
+   [
+    "Dwight's recycling superhero alter ego.",
+    "Recyclops"
+   ],
+   [
+    "Ryan's website relaunch project for Dunder Mifflin.",
+    "Dunder Mifflin Infinity"
+   ],
+   [
+    "The boss in the original UK version of the show.",
+    "David Brent"
+   ],
+   [
+    "The title of Michael's management book in the finale.",
+    "Somehow I Manage"
+   ],
+   [
+    "Where does Toby move to when he leaves Scranton in season 4?",
+    "Costa Rica"
+   ]
+  ]
+ }
+}

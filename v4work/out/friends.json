@@ -1,0 +1,498 @@
+{
+ "id": "friends",
+ "name": "Friends",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What is Joey's surname?",
+    "Tribbiani"
+   ],
+   [
+    "How many times does Ross get divorced?",
+    "3"
+   ],
+   [
+    "What is Phoebe's twin sister called?",
+    "Ursula"
+   ],
+   [
+    "What pets do Joey and Chandler keep in their flat?",
+    "A chick and a duck"
+   ],
+   [
+    "Who plays Ross?",
+    "David Schwimmer"
+   ],
+   [
+    "Which soap opera does Joey star in?",
+    "Days of Our Lives"
+   ],
+   [
+    "What is Joey's soap character called?",
+    "Dr. Drake Ramoray"
+   ],
+   [
+    "What does Ross keep shouting while moving the couch?",
+    "'Pivot!'"
+   ],
+   [
+    "Who is Ross's first wife?",
+    "Carol"
+   ],
+   [
+    "Who does Phoebe marry?",
+    "Mike Hannigan"
+   ],
+   [
+    "Who plays Mike?",
+    "Paul Rudd"
+   ],
+   [
+    "What colour are Monica's apartment walls?",
+    "Purple"
+   ],
+   [
+    "What is Monica's surname after she marries Chandler?",
+    "Bing"
+   ],
+   [
+    "What does Joey famously refuse to share?",
+    "Food"
+   ],
+   [
+    "Who plays Phoebe?",
+    "Lisa Kudrow"
+   ],
+   [
+    "What is Janice's catchphrase?",
+    "'Oh. My. God.'"
+   ],
+   [
+    "What is Phoebe's job?",
+    "Masseuse"
+   ],
+   [
+    "What is Rachel's surname?",
+    "Green"
+   ],
+   [
+    "What is Joey's famous pick-up line?",
+    "'How you doin'?'"
+   ],
+   [
+    "Complete Ross's excuse: 'We were on a ___!'",
+    "Break"
+   ],
+   [
+    "What is Phoebe's most famous song?",
+    "'Smelly Cat'"
+   ],
+   [
+    "What is Ross's job?",
+    "Paleontologist"
+   ],
+   [
+    "In which city is the show set?",
+    "New York City"
+   ],
+   [
+    "What is the coffee shop where the friends hang out?",
+    "Central Perk"
+   ]
+  ],
+  "200": [
+   [
+    "What is Joey's stuffed penguin called?",
+    "Hugsy"
+   ],
+   [
+    "Which fashion company does Rachel work for in the later seasons?",
+    "Ralph Lauren"
+   ],
+   [
+    "What number is Monica's apartment for most of the show?",
+    "20"
+   ],
+   [
+    "In which city do Ross and Rachel get drunkenly married?",
+    "Las Vegas"
+   ],
+   [
+    "What is Chandler's job, which nobody can remember?",
+    "Statistical analysis and data reconfiguration"
+   ],
+   [
+    "What is Joey's favourite kind of food, which he eats all the time?",
+    "Sandwiches"
+   ],
+   [
+    "Who did Rachel leave at the altar?",
+    "Barry"
+   ],
+   [
+    "Which film star plays Will, who hated Rachel in high school?",
+    "Brad Pitt"
+   ],
+   [
+    "Which friend has a third nipple?",
+    "Chandler"
+   ],
+   [
+    "What game show does Joey audition to host?",
+    "Bamboozled"
+   ],
+   [
+    "What is Ross's second wife called?",
+    "Emily"
+   ],
+   [
+    "Whose name does Ross say at the altar?",
+    "Rachel's"
+   ],
+   [
+    "What is the Central Perk barista called?",
+    "Gunther"
+   ],
+   [
+    "What does Monica put on her head at Thanksgiving?",
+    "A turkey"
+   ],
+   [
+    "Who plays Monica?",
+    "Courteney Cox"
+   ],
+   [
+    "At which department store does Rachel work?",
+    "Bloomingdale's"
+   ],
+   [
+    "What is Ross's son called?",
+    "Ben"
+   ],
+   [
+    "Which city does Rachel almost move to in the finale?",
+    "Paris"
+   ],
+   [
+    "Which friend is a chef?",
+    "Monica"
+   ],
+   [
+    "What is Ross and Rachel's daughter called?",
+    "Emma"
+   ],
+   [
+    "Monica's much older boyfriend, the eye doctor, is called what?",
+    "Richard"
+   ],
+   [
+    "Which friend does Rachel date in the later seasons, to Ross's horror?",
+    "Joey"
+   ],
+   [
+    "What is Rachel's famous 1990s haircut called?",
+    "'The Rachel'"
+   ],
+   [
+    "What is Ross's pet monkey called?",
+    "Marcel"
+   ]
+  ],
+  "300": [
+   [
+    "What is Chandler's middle name?",
+    "Muriel"
+   ],
+   [
+    "What is Chandler's creepy roommate called?",
+    "Eddie"
+   ],
+   [
+    "What are Monica and Ross's parents called?",
+    "Jack and Judy Geller"
+   ],
+   [
+    "What goes wrong with Rachel's Thanksgiving trifle?",
+    "She adds a layer of beef"
+   ],
+   [
+    "What does Chandler's father do?",
+    "Headlines a drag show in Las Vegas"
+   ],
+   [
+    "What is Joey's agent called?",
+    "Estelle"
+   ],
+   [
+    "Who is Ben's other mother?",
+    "Susan"
+   ],
+   [
+    "What is Phoebe's alter ego called?",
+    "Regina Phalange"
+   ],
+   [
+    "For which brother does Phoebe carry triplets?",
+    "Frank Jr."
+   ],
+   [
+    "In which year did Friends first air?",
+    "1994"
+   ],
+   [
+    "What are Monica and Chandler's adopted twins called?",
+    "Jack and Erica"
+   ],
+   [
+    "What do Monica and Rachel lose in the trivia bet?",
+    "Their apartment"
+   ],
+   [
+    "What is Chandler's final career?",
+    "Advertising (junior copywriter)"
+   ],
+   [
+    "What do the friends call the neighbour across the street who never wears clothes?",
+    "Ugly Naked Guy"
+   ],
+   [
+    "How many sisters does Joey have?",
+    "Seven"
+   ],
+   [
+    "What is Phoebe's surname?",
+    "Buffay"
+   ],
+   [
+    "Which friend lived on the street as a teenager?",
+    "Phoebe"
+   ],
+   [
+    "What job does Joey take at Central Perk?",
+    "Waiter"
+   ],
+   [
+    "Whose clothes does Joey put on all at once as revenge?",
+    "Chandler's"
+   ],
+   [
+    "What does Joey wear to eat a whole Thanksgiving turkey?",
+    "Phoebe's maternity pants"
+   ],
+   [
+    "Which friend gets a disastrously dark spray tan?",
+    "Ross"
+   ],
+   [
+    "Which of the six friends never gets married during the show?",
+    "Joey"
+   ],
+   [
+    "In which city do Monica and Chandler first sleep together?",
+    "London"
+   ],
+   [
+    "Whose baby does Rachel have?",
+    "Ross's"
+   ]
+  ],
+  "400": [
+   [
+    "What number is Joey and Chandler's apartment?",
+    "19"
+   ],
+   [
+    "What is Joey's alter ego called?",
+    "Ken Adams"
+   ],
+   [
+    "What is Rachel's sister, played by Christina Applegate, called?",
+    "Amy"
+   ],
+   [
+    "What costume does Ross wear to teach Ben about Hanukkah?",
+    "The Holiday Armadillo"
+   ],
+   [
+    "What job does Rachel guess Chandler has in the trivia game?",
+    "'Transponster'"
+   ],
+   [
+    "Which millionaire does Monica date?",
+    "Pete Becker"
+   ],
+   [
+    "Who plays Richard Burke?",
+    "Tom Selleck"
+   ],
+   [
+    "What is Rachel's hairless cat called?",
+    "Mrs. Whiskerson"
+   ],
+   [
+    "Who is Gunther's boss and the owner of Central Perk?",
+    "Terry"
+   ],
+   [
+    "What is Joey's childhood imaginary friend called?",
+    "Maurice"
+   ],
+   [
+    "What name does Phoebe change hers to after marrying?",
+    "Princess Consuela Bananahammock"
+   ],
+   [
+    "What name does Mike change his to in revenge?",
+    "Crap Bag"
+   ],
+   [
+    "At which university does Ross lecture?",
+    "NYU (New York University)"
+   ],
+   [
+    "What was the Geller family dog called?",
+    "Chi-Chi"
+   ],
+   [
+    "What does Chandler's mother do?",
+    "Writes erotic novels"
+   ],
+   [
+    "Who plays Chandler's mother?",
+    "Morgan Fairchild"
+   ],
+   [
+    "Who plays Gunther?",
+    "James Michael Tyler"
+   ],
+   [
+    "Which holiday does Chandler refuse to celebrate?",
+    "Thanksgiving"
+   ],
+   [
+    "Phoebe's grandmother's 'secret' cookie recipe turns out to come from which brand?",
+    "Nestlé Toll House"
+   ],
+   [
+    "What is a 'Joey Special'?",
+    "Two pizzas"
+   ],
+   [
+    "What club did Ross and Will start in high school?",
+    "The 'I Hate Rachel Green' Club"
+   ],
+   [
+    "Who does Joey make spend Thanksgiving inside a box?",
+    "Chandler"
+   ],
+   [
+    "What is Rachel's handsome assistant called?",
+    "Tag"
+   ],
+   [
+    "Which beach TV show do Joey and Chandler love watching together?",
+    "Baywatch"
+   ]
+  ],
+  "500": [
+   [
+    "Who plays Janice?",
+    "Maggie Wheeler"
+   ],
+   [
+    "What is the building superintendent called?",
+    "Mr. Treeger"
+   ],
+   [
+    "What is Rachel's father's name?",
+    "Dr. Leonard Green"
+   ],
+   [
+    "What is the extra gravy-soaked slice of bread in Ross's Thanksgiving sandwich called?",
+    "The Moist Maker"
+   ],
+   [
+    "What does Ross claim 'unagi' is?",
+    "A state of total awareness"
+   ],
+   [
+    "Which fruit is Ross allergic to?",
+    "Kiwi (also lobster and peanuts)"
+   ],
+   [
+    "Whose apartment was Monica's originally?",
+    "Her grandmother's"
+   ],
+   [
+    "What is Joey and Chandler's ceramic dog statue called?",
+    "Pat the Dog"
+   ],
+   [
+    "Which book does Joey keep in the freezer because it scares him?",
+    "The Shining"
+   ],
+   [
+    "Which book does Rachel keep in the freezer?",
+    "Little Women"
+   ],
+   [
+    "What is the Geller family's football trophy called?",
+    "The Geller Cup"
+   ],
+   [
+    "What does Barry, the man Rachel left at the altar, do for a living?",
+    "Orthodontist"
+   ],
+   [
+    "Which instrument does Ross play to the friends' horror?",
+    "The keyboard (synthesizer)"
+   ],
+   [
+    "Where do Ross and Rachel share their first kiss?",
+    "Central Perk (after closing)"
+   ],
+   [
+    "What is Phoebe's birth mother called?",
+    "Phoebe Abbott"
+   ],
+   [
+    "In which city is the spin-off 'Joey' set?",
+    "Los Angeles"
+   ],
+   [
+    "What does Ross dress as for Halloween, calling himself 'Spudnik'?",
+    "A potato crossed with the Sputnik satellite"
+   ],
+   [
+    "What is the cat Phoebe thinks is her reincarnated mother actually called?",
+    "Julio"
+   ],
+   [
+    "Which fake chocolate does Monica have to cook with for a client?",
+    "Mockolate"
+   ],
+   [
+    "What is Joey's acting technique for looking thoughtful called?",
+    "'Smell-the-fart' acting"
+   ],
+   [
+    "What is the name of Phoebe's brother's wife, his former home ec teacher?",
+    "Alice"
+   ],
+   [
+    "What is the restaurant where Monica becomes head chef?",
+    "Javu"
+   ],
+   [
+    "Where does Chandler tell Janice he is moving, to get rid of her?",
+    "Yemen"
+   ],
+   [
+    "What is Ross's middle name?",
+    "Eustace"
+   ]
+  ]
+ }
+}

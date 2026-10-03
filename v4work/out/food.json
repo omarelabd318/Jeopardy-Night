@@ -1,0 +1,854 @@
+{
+ "id": "food",
+ "name": "Food & Drink",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What is the main ingredient of guacamole?",
+    "Avocado"
+   ],
+   [
+    "What is the crispy topping on koshari?",
+    "Fried onions"
+   ],
+   [
+    "Which country does sushi come from?",
+    "Japan"
+   ],
+   [
+    "What is the main ingredient of hummus?",
+    "Chickpeas"
+   ],
+   [
+    "Which cheese goes on a classic Margherita pizza?",
+    "Mozzarella"
+   ],
+   [
+    "Egyptian ta'ameya is made from what?",
+    "Fava beans"
+   ],
+   [
+    "Which country is famous for the croissant?",
+    "France"
+   ],
+   [
+    "Tahini is made from which seeds?",
+    "Sesame seeds"
+   ],
+   [
+    "What is espresso topped with steamed milk and thick foam called?",
+    "A cappuccino"
+   ],
+   [
+    "What is the Egyptian dish of stuffed vegetables called?",
+    "Mahshi"
+   ],
+   [
+    "Which nut is used in Nutella?",
+    "Hazelnut"
+   ],
+   [
+    "Which spice is 'kammoun' in Egyptian Arabic?",
+    "Cumin"
+   ],
+   [
+    "What is popcorn made from?",
+    "Corn (maize)"
+   ],
+   [
+    "Which country do tacos come from?",
+    "Mexico"
+   ],
+   [
+    "What is Egyptian flatbread called?",
+    "Aish baladi"
+   ],
+   [
+    "Which fruit is Ismailia famous for?",
+    "Mango"
+   ],
+   [
+    "What is the shredded-pastry dessert filled with cream or nuts?",
+    "Kunafa"
+   ],
+   [
+    "Fries are made from which vegetable?",
+    "Potatoes"
+   ],
+   [
+    "What is sushi traditionally wrapped in?",
+    "Seaweed (nori)"
+   ],
+   [
+    "What is the Egyptian fava bean breakfast dish called?",
+    "Ful medames"
+   ],
+   [
+    "Which green nut is common on Middle Eastern desserts?",
+    "Pistachio"
+   ],
+   [
+    "What is Egyptian 'asab' juice made from?",
+    "Sugarcane"
+   ],
+   [
+    "Raisins are dried versions of which fruit?",
+    "Grapes"
+   ],
+   [
+    "Egyptian 'roz bel laban' is rice cooked in what?",
+    "Milk"
+   ],
+   [
+    "Which Egyptian dish mixes rice, lentils and macaroni under tomato sauce?",
+    "Koshari"
+   ],
+   [
+    "Which country does Parmesan cheese come from?",
+    "Italy"
+   ],
+   [
+    "What stimulant is found in coffee, tea and cola?",
+    "Caffeine"
+   ],
+   [
+    "Which country does kimchi come from?",
+    "Korea"
+   ],
+   [
+    "Outside Egypt, falafel is usually made from what?",
+    "Chickpeas"
+   ],
+   [
+    "Prunes are dried versions of which fruit?",
+    "Plums"
+   ],
+   [
+    "What is the dried apricot paste drunk in Ramadan called?",
+    "Qamar El Din"
+   ],
+   [
+    "On which Egyptian spring holiday is feseekh traditionally eaten?",
+    "Sham El-Nessim"
+   ],
+   [
+    "Which Egyptian street food is chopped liver fried with peppers and spices, often in a sandwich?",
+    "Kebda (Alexandrian liver)"
+   ],
+   [
+    "Which country does the döner kebab come from?",
+    "Turkey"
+   ],
+   [
+    "Which Ramadan dessert is a small folded pancake stuffed with nuts or cream?",
+    "Qatayef"
+   ],
+   [
+    "Which fruit do Egyptians call 'farawla'?",
+    "Strawberry"
+   ],
+   [
+    "Egyptian 'roz bel shaariya' is rice cooked with what?",
+    "Vermicelli (shaariya)"
+   ],
+   [
+    "Pad thai is the famous noodle dish of which country?",
+    "Thailand"
+   ],
+   [
+    "What is added to tea to make Egyptian 'shai bel na'na''?",
+    "Mint"
+   ],
+   [
+    "What do Italians call ice cream?",
+    "Gelato"
+   ],
+   [
+    "What is the meal eaten just before dawn in Ramadan called?",
+    "Suhoor"
+   ],
+   [
+    "What is the main ingredient of an omelette?",
+    "Eggs"
+   ]
+  ],
+  "200": [
+   [
+    "Which Southeast Asian fruit is banned in some hotels for its smell?",
+    "Durian"
+   ],
+   [
+    "Which fizzy drink is made from fermented sweet tea?",
+    "Kombucha"
+   ],
+   [
+    "Pizza Margherita is said to have been created in which Italian city?",
+    "Naples"
+   ],
+   [
+    "What is sushi rice seasoned with?",
+    "Rice vinegar"
+   ],
+   [
+    "Which rice dish comes from Valencia?",
+    "Paella"
+   ],
+   [
+    "What is the world's most expensive spice by weight?",
+    "Saffron"
+   ],
+   [
+    "Which thin pastry is used for baklava?",
+    "Filo (phyllo)"
+   ],
+   [
+    "Which country produces the most coffee?",
+    "Brazil"
+   ],
+   [
+    "Marzipan is made from which nut?",
+    "Almonds"
+   ],
+   [
+    "What is the main ingredient of tabbouleh?",
+    "Parsley"
+   ],
+   [
+    "Baba ghanoush is made from which vegetable?",
+    "Aubergine (eggplant)"
+   ],
+   [
+    "Which Italian dessert's name means 'pick me up'?",
+    "Tiramisu"
+   ],
+   [
+    "Which country does feta cheese come from?",
+    "Greece"
+   ],
+   [
+    "Which Egyptian dessert is made from semolina soaked in syrup?",
+    "Basbousa"
+   ],
+   [
+    "What is the Japanese dish of lightly battered, deep-fried seafood and vegetables?",
+    "Tempura"
+   ],
+   [
+    "What is shakshuka?",
+    "Eggs poached in spiced tomato sauce"
+   ],
+   [
+    "Which spice comes from tree bark?",
+    "Cinnamon"
+   ],
+   [
+    "What is the Japanese noodle soup with a rich broth called?",
+    "Ramen"
+   ],
+   [
+    "What two things go into the 'taqleya' poured over molokhia?",
+    "Garlic and coriander"
+   ],
+   [
+    "Which yellow spice colours most curries?",
+    "Turmeric"
+   ],
+   [
+    "What is the baked Italian dish of layered pasta sheets called?",
+    "Lasagne"
+   ],
+   [
+    "Haggis is the national dish of which country?",
+    "Scotland"
+   ],
+   [
+    "Which Greek dish layers aubergine and minced meat under béchamel?",
+    "Moussaka"
+   ],
+   [
+    "Cheese fondue is a national dish of which country?",
+    "Switzerland"
+   ],
+   [
+    "Egyptian karkadeh is made from which flower?",
+    "Hibiscus"
+   ],
+   [
+    "Which Eid is fattah traditionally cooked for?",
+    "Eid al-Adha"
+   ],
+   [
+    "Which grain is belila made from?",
+    "Wheat"
+   ],
+   [
+    "What is Egyptian fiteer?",
+    "A flaky layered pastry (Egyptian pie)"
+   ],
+   [
+    "What is Egyptian hawawshi?",
+    "Bread stuffed with spiced minced meat, then baked"
+   ],
+   [
+    "Egyptian besara is a dip made mainly from which bean?",
+    "Fava beans (split)"
+   ],
+   [
+    "Which country does pho come from?",
+    "Vietnam"
+   ],
+   [
+    "Egyptian 'kahk' biscuits are baked for which holiday?",
+    "Eid al-Fitr"
+   ],
+   [
+    "Which Greek dip is made from yoghurt, cucumber and garlic?",
+    "Tzatziki"
+   ],
+   [
+    "Which dessert is made of layered filo pastry, chopped nuts and syrup?",
+    "Baklava"
+   ],
+   [
+    "What is the Egyptian sweet made from sesame paste and sold in blocks?",
+    "Halawa (halva)"
+   ],
+   [
+    "What is Egyptian sambousek?",
+    "Small fried pastries filled with cheese or meat"
+   ],
+   [
+    "Which country do churros come from?",
+    "Spain"
+   ],
+   [
+    "What is kofta mainly made from?",
+    "Minced meat"
+   ],
+   [
+    "Which fried croquette of bulgur and minced meat is shaped like a rugby ball?",
+    "Kibbeh (kobeba)"
+   ],
+   [
+    "Which Italian rice dish is stirred slowly with stock until creamy?",
+    "Risotto"
+   ],
+   [
+    "Egyptian 'kharroub' juice is made from which pod?",
+    "Carob"
+   ],
+   [
+    "Which bird is stuffed with rice or freekeh in Egypt's 'hamam mahshi'?",
+    "Pigeon"
+   ]
+  ],
+  "300": [
+   [
+    "Egyptian molokhia is made from which plant's leaves?",
+    "Jute (jute mallow)"
+   ],
+   [
+    "What is the Japanese word for the savoury 'fifth taste'?",
+    "Umami"
+   ],
+   [
+    "What is raw sliced fish served without rice called?",
+    "Sashimi"
+   ],
+   [
+    "Which fruit used to be called the 'Chinese gooseberry'?",
+    "Kiwi"
+   ],
+   [
+    "Which vegetable gives borscht its colour?",
+    "Beetroot"
+   ],
+   [
+    "Pierogi are dumplings from which country?",
+    "Poland"
+   ],
+   [
+    "Which nut goes into classic pesto Genovese?",
+    "Pine nuts"
+   ],
+   [
+    "Bubble tea was invented in which country?",
+    "Taiwan"
+   ],
+   [
+    "Paprika is the spice most associated with which country?",
+    "Hungary"
+   ],
+   [
+    "Which fish is traditionally used for feseekh?",
+    "Grey mullet (bouri)"
+   ],
+   [
+    "Which country does Gouda cheese come from?",
+    "The Netherlands"
+   ],
+   [
+    "Which herb is the base of classic pesto?",
+    "Basil"
+   ],
+   [
+    "What is the name of Morocco's conical clay cooking pot?",
+    "Tagine"
+   ],
+   [
+    "Ceviche is the national dish of which country?",
+    "Peru"
+   ],
+   [
+    "What is the main ingredient of gazpacho?",
+    "Tomatoes"
+   ],
+   [
+    "Which cheese is used in tiramisu?",
+    "Mascarpone"
+   ],
+   [
+    "Halloumi comes from which island country?",
+    "Cyprus"
+   ],
+   [
+    "Which leavened flatbread is baked on the wall of a tandoor?",
+    "Naan"
+   ],
+   [
+    "Which fruit is in a tarte Tatin?",
+    "Apples"
+   ],
+   [
+    "Couscous is made from which ingredient?",
+    "Semolina (durum wheat)"
+   ],
+   [
+    "The hamburger is named after a city in which country?",
+    "Germany (Hamburg)"
+   ],
+   [
+    "What is 'unagi' in sushi?",
+    "Eel"
+   ],
+   [
+    "Traditional mozzarella di bufala uses milk from which animal?",
+    "Water buffalo"
+   ],
+   [
+    "Which Levantine salad contains toasted or fried pieces of pita?",
+    "Fattoush"
+   ],
+   [
+    "Tequila is made from which plant?",
+    "Blue agave"
+   ],
+   [
+    "Harissa chilli paste comes from which country?",
+    "Tunisia"
+   ],
+   [
+    "Mexican mole poblano famously contains which surprising ingredient?",
+    "Chocolate"
+   ],
+   [
+    "What is the Japanese fermented soybean paste?",
+    "Miso"
+   ],
+   [
+    "What is Egyptian 'mish' made from?",
+    "Aged, fermented cheese"
+   ],
+   [
+    "What is the small long-handled Turkish-coffee pot called in Egypt?",
+    "Kanaka"
+   ],
+   [
+    "What does 'al dente' mean?",
+    "'To the tooth' (pasta with a slight bite)"
+   ],
+   [
+    "Which country is poutine from?",
+    "Canada"
+   ],
+   [
+    "Sauerkraut is fermented what?",
+    "Cabbage"
+   ],
+   [
+    "Which Provençal vegetable stew shares its name with a Pixar film?",
+    "Ratatouille"
+   ],
+   [
+    "Which Indian yoghurt drink can be served sweet or salty?",
+    "Lassi"
+   ],
+   [
+    "What is the Japanese rice wine called?",
+    "Sake"
+   ],
+   [
+    "Apart from parsley, which grain is the base of tabbouleh?",
+    "Bulgur"
+   ],
+   [
+    "What is Egyptian mesa'a'a?",
+    "Fried aubergine baked in tomato sauce"
+   ],
+   [
+    "Which Spanish tapas classic is a thick omelette of potatoes and eggs?",
+    "Tortilla española"
+   ],
+   [
+    "Mansaf, lamb cooked in fermented dried yoghurt, is the national dish of which country?",
+    "Jordan"
+   ],
+   [
+    "What is the white Lebanese garlic sauce served with shawarma called?",
+    "Toum"
+   ],
+   [
+    "What is termes, a classic Egyptian street snack?",
+    "Lupin beans"
+   ]
+  ],
+  "400": [
+   [
+    "In which country was the Caesar salad invented?",
+    "Mexico (Tijuana)"
+   ],
+   [
+    "Traditional soba noodles are made from which flour?",
+    "Buckwheat"
+   ],
+   [
+    "Hollandaise is an emulsion of butter, lemon and what?",
+    "Egg yolks"
+   ],
+   [
+    "What gives Earl Grey tea its flavour?",
+    "Bergamot"
+   ],
+   [
+    "Knafeh Nabulsiyeh is named after which city?",
+    "Nablus"
+   ],
+   [
+    "Which pastry is used to make profiteroles and éclairs?",
+    "Choux pastry"
+   ],
+   [
+    "Legend says Om Ali is named after Sultan Aybak's first wife, who served it to celebrate the killing of which rival queen?",
+    "Shajar al-Durr"
+   ],
+   [
+    "Which French mother sauce is made from milk thickened with roux?",
+    "Béchamel"
+   ],
+   [
+    "Which country is the world's largest producer of dates?",
+    "Egypt"
+   ],
+   [
+    "Which cheese does a traditional Roman carbonara use?",
+    "Pecorino Romano"
+   ],
+   [
+    "Japanese sweet anko paste is made from which bean?",
+    "Adzuki (red bean)"
+   ],
+   [
+    "What does the Indian spice blend name 'garam masala' mean?",
+    "Hot (warming) spice mix"
+   ],
+   [
+    "What does 'sous vide' mean in French?",
+    "Under vacuum"
+   ],
+   [
+    "Which Japanese fish can be lethally poisonous if prepared wrong?",
+    "Fugu (pufferfish)"
+   ],
+   [
+    "What is the pear-shaped pot used to slow-cook ful called?",
+    "Idra"
+   ],
+   [
+    "The croissant descends from the kipferl of which country?",
+    "Austria"
+   ],
+   [
+    "Khachapuri, a cheese-filled bread, comes from which country?",
+    "Georgia"
+   ],
+   [
+    "What is foie gras made from?",
+    "Fattened duck or goose liver"
+   ],
+   [
+    "What is Egyptian dukkah?",
+    "A nut, seed and spice blend"
+   ],
+   [
+    "Which country produces the most olive oil?",
+    "Spain"
+   ],
+   [
+    "Traditional sahlab is thickened with flour from which plant?",
+    "Orchid tubers"
+   ],
+   [
+    "What are Japanese gyoza?",
+    "Dumplings (usually pan-fried)"
+   ],
+   [
+    "What is the Indian clarified butter called?",
+    "Ghee"
+   ],
+   [
+    "What is the main herb in za'atar?",
+    "Wild thyme (za'atar)"
+   ],
+   [
+    "What is freekeh?",
+    "Young green wheat, roasted"
+   ],
+   [
+    "Which three vegetables make a classic French mirepoix?",
+    "Onion, carrot and celery"
+   ],
+   [
+    "Manchego cheese comes from which country?",
+    "Spain (La Mancha)"
+   ],
+   [
+    "Which small fish is a key ingredient in Worcestershire sauce?",
+    "Anchovies"
+   ],
+   [
+    "Which compound makes chilli peppers hot?",
+    "Capsaicin"
+   ],
+   [
+    "What is the French term for preparing all ingredients before cooking?",
+    "Mise en place"
+   ],
+   [
+    "What is the Indonesian fried-rice dish called?",
+    "Nasi goreng"
+   ],
+   [
+    "Which Korean dish of rice, vegetables and egg is often served in a hot stone bowl?",
+    "Bibimbap"
+   ],
+   [
+    "What is a Japanese rice ball, often wrapped in nori, called?",
+    "Onigiri"
+   ],
+   [
+    "What is the Italian starter carpaccio?",
+    "Thin slices of raw beef"
+   ],
+   [
+    "Egyptian basterma's spicy coating is made mainly from which seed?",
+    "Fenugreek"
+   ],
+   [
+    "Which Brazilian national dish is a black-bean stew?",
+    "Feijoada"
+   ],
+   [
+    "Egyptian 'sogo' sandwiches are named after which spicy Turkish sausage?",
+    "Sujuk"
+   ],
+   [
+    "Which Upper Egyptian bread is left to rise in the sun before baking?",
+    "Aish shamsi"
+   ],
+   [
+    "Which deep-red, lemony spice is sprinkled on fattoush?",
+    "Sumac"
+   ],
+   [
+    "Which Moroccan spice blend's name means 'head of the shop'?",
+    "Ras el hanout"
+   ],
+   [
+    "What is Japanese matcha?",
+    "Powdered green tea"
+   ]
+  ],
+  "500": [
+   [
+    "Real wasabi comes from which part of the plant?",
+    "The rhizome (root stem)"
+   ],
+   [
+    "What is the top grade given to Japanese wagyu beef?",
+    "A5"
+   ],
+   [
+    "What is the most consumed spirit in the world by volume?",
+    "Baijiu"
+   ],
+   [
+    "Ethiopian injera is made from which grain?",
+    "Teff"
+   ],
+   [
+    "Which chilli held the world's-hottest record before Pepper X (2023)?",
+    "Carolina Reaper"
+   ],
+   [
+    "Which country produces the most saffron?",
+    "Iran"
+   ],
+   [
+    "Sobia, the Ramadan drink, is traditionally made mainly from what?",
+    "Rice (or coconut), milk and sugar"
+   ],
+   [
+    "Which Italian city produces the protected 'Aceto Balsamico Tradizionale'?",
+    "Modena (and Reggio Emilia)"
+   ],
+   [
+    "Which two countries both claim pisco as their national spirit?",
+    "Peru and Chile"
+   ],
+   [
+    "Which mould gives Roquefort its blue veins?",
+    "Penicillium roqueforti"
+   ],
+   [
+    "Tahdig, the crispy rice from the bottom of the pot, comes from which cuisine?",
+    "Persian (Iranian)"
+   ],
+   [
+    "What casing is Egyptian mombar stuffed into?",
+    "Intestines (sheep or cow)"
+   ],
+   [
+    "What is coffee made from beans eaten and excreted by civets called?",
+    "Kopi luwak"
+   ],
+   [
+    "The Ramadan drink 'erk sous' is made from which root?",
+    "Liquorice"
+   ],
+   [
+    "Which country drinks the most tea per person?",
+    "Turkey"
+   ],
+   [
+    "Legend says hawawshi is named after whom?",
+    "Ahmed El-Hawawshi, a Cairo butcher"
+   ],
+   [
+    "Which country produces the most vanilla?",
+    "Madagascar"
+   ],
+   [
+    "What is Japanese umeboshi?",
+    "Pickled (salted) ume plum"
+   ],
+   [
+    "Which country produces the most cocoa?",
+    "Ivory Coast"
+   ],
+   [
+    "Domiati cheese is named after which Egyptian city?",
+    "Damietta"
+   ],
+   [
+    "What is 'pule', one of the world's most expensive cheeses, made from?",
+    "Donkey milk"
+   ],
+   [
+    "Which Japanese stock is made from kombu and bonito flakes?",
+    "Dashi"
+   ],
+   [
+    "What is bottarga?",
+    "Salted, cured fish roe"
+   ],
+   [
+    "Which nut must be steamed or roasted from its shell because the raw shell is toxic?",
+    "Cashew"
+   ],
+   [
+    "Which country is bobotie, a baked spiced-mince dish, from?",
+    "South Africa"
+   ],
+   [
+    "Name the three main ingredients of Om Ali.",
+    "Pastry or bread, milk and nuts"
+   ],
+   [
+    "Which Italian cheese's name means 'recooked'?",
+    "Ricotta"
+   ],
+   [
+    "Capers are which part of the caper plant?",
+    "Unopened flower buds"
+   ],
+   [
+    "The spice mahlab is made from the kernels of which fruit's stones?",
+    "Cherry (St Lucie / mahaleb cherry)"
+   ],
+   [
+    "Which tree resin from the Greek island of Chios flavours Arabic booza ice cream?",
+    "Mastic"
+   ],
+   [
+    "What is the clay pot Egyptian roz me'ammar is baked in called?",
+    "Beram (bram)"
+   ],
+   [
+    "Which single spice was named because it tastes like cinnamon, nutmeg and clove combined?",
+    "Allspice"
+   ],
+   [
+    "Which vegetable, with potato, is the base of the cold soup vichyssoise?",
+    "Leeks"
+   ],
+   [
+    "What is the fiery Ethiopian spice blend used in stews like doro wat?",
+    "Berbere"
+   ],
+   [
+    "Which town in Piedmont, Italy, is famous for its white truffles?",
+    "Alba"
+   ],
+   [
+    "What is the sticky, stringy Japanese dish of fermented soybeans?",
+    "Natto"
+   ],
+   [
+    "Egyptian koshari is said to descend from which Indian rice-and-lentil dish?",
+    "Khichdi"
+   ],
+   [
+    "Musakhan, roast chicken with sumac and onions on taboon bread, is the national dish of where?",
+    "Palestine"
+   ],
+   [
+    "What was the fermented fish sauce of ancient Rome called?",
+    "Garum"
+   ],
+   [
+    "What Japanese term means letting the chef choose your meal?",
+    "Omakase"
+   ],
+   [
+    "Which gas is infused into 'nitro' cold brew coffee?",
+    "Nitrogen"
+   ],
+   [
+    "What is the hot-and-sour Thai soup, often made with shrimp?",
+    "Tom yum"
+   ]
+  ]
+ }
+}

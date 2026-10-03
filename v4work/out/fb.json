@@ -1,0 +1,738 @@
+{
+ "id": "fb",
+ "name": "Football",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Which country won the 2022 World Cup?",
+    "Argentina"
+   ],
+   [
+    "Which Egyptian club was named CAF's African Club of the Century?",
+    "Al Ahly"
+   ],
+   [
+    "Which country hosted the 2022 World Cup?",
+    "Qatar"
+   ],
+   [
+    "Who has won the most Ballon d'Or awards?",
+    "Lionel Messi (8)"
+   ],
+   [
+    "Which club plays at the Santiago Bernabéu?",
+    "Real Madrid"
+   ],
+   [
+    "What is the Egyptian national team's nickname?",
+    "The Pharaohs"
+   ],
+   [
+    "Which country won Euro 2024?",
+    "Spain"
+   ],
+   [
+    "Which English club is nicknamed the Red Devils?",
+    "Manchester United"
+   ],
+   [
+    "What are Zamalek's traditional home colours?",
+    "White with red stripes"
+   ],
+   [
+    "How long is a regular football match, excluding stoppage time?",
+    "90 minutes"
+   ],
+   [
+    "Which country hosted the 2018 World Cup?",
+    "Russia"
+   ],
+   [
+    "At which club did Lionel Messi start his professional career?",
+    "Barcelona"
+   ],
+   [
+    "Which country has won the most World Cups?",
+    "Brazil (5)"
+   ],
+   [
+    "What colour card means a player is sent off?",
+    "Red"
+   ],
+   [
+    "Which Egyptian is called 'the Egyptian King' by Liverpool fans?",
+    "Mohamed Salah"
+   ],
+   [
+    "Which club plays at Anfield?",
+    "Liverpool"
+   ],
+   [
+    "How many points does a team get for a league win?",
+    "3"
+   ],
+   [
+    "Which country is Neymar from?",
+    "Brazil"
+   ],
+   [
+    "What is Barcelona's stadium called?",
+    "Camp Nou (Spotify Camp Nou)"
+   ],
+   [
+    "What is Europe's top club competition?",
+    "The UEFA Champions League"
+   ],
+   [
+    "What is it called when a player scores three goals in a match?",
+    "A hat-trick"
+   ],
+   [
+    "Which MLS club did Lionel Messi join in 2023?",
+    "Inter Miami"
+   ],
+   [
+    "What colour does Al Ahly play in?",
+    "Red"
+   ],
+   [
+    "Who won the 2014 World Cup?",
+    "Germany"
+   ],
+   [
+    "Which country is Kylian Mbappé from?",
+    "France"
+   ],
+   [
+    "Which English club plays at Old Trafford?",
+    "Manchester United"
+   ],
+   [
+    "How many minutes long is each half of extra time?",
+    "15 minutes"
+   ],
+   [
+    "What is the match between Al Ahly and Zamalek called?",
+    "The Cairo Derby"
+   ],
+   [
+    "Which country won the 2026 World Cup?",
+    "Spain"
+   ],
+   [
+    "What is the marked box in front of each goal called, where a foul gives away a penalty?",
+    "The penalty area (the box)"
+   ],
+   [
+    "How many players does each team have on the pitch at kick-off?",
+    "11"
+   ],
+   [
+    "Which national team is nicknamed 'the Atlas Lions'?",
+    "Morocco"
+   ],
+   [
+    "Which Barcelona winger won Euro 2024 with Spain at just 16?",
+    "Lamine Yamal"
+   ],
+   [
+    "Which Real Madrid and Brazil winger is known as 'Vini Jr'?",
+    "Vinícius Júnior"
+   ],
+   [
+    "Which national team is nicknamed 'Les Bleus'?",
+    "France"
+   ],
+   [
+    "What is it called when a player puts the ball into their own net?",
+    "An own goal"
+   ]
+  ],
+  "200": [
+   [
+    "Mohamed Salah joined Liverpool in 2017 from which club?",
+    "Roma"
+   ],
+   [
+    "Who won the 2018 World Cup?",
+    "France"
+   ],
+   [
+    "Who is the all-time top scorer in men's international football?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which club won the treble in 2022–23?",
+    "Manchester City"
+   ],
+   [
+    "How many Africa Cup of Nations titles has Egypt won?",
+    "7"
+   ],
+   [
+    "Which African country co-hosts the 2030 World Cup with Spain and Portugal?",
+    "Morocco"
+   ],
+   [
+    "Which club plays at the Allianz Arena?",
+    "Bayern Munich"
+   ],
+   [
+    "Which English club is nicknamed the Gunners?",
+    "Arsenal"
+   ],
+   [
+    "Who scored the 'Hand of God' goal?",
+    "Diego Maradona"
+   ],
+   [
+    "Which three countries hosted the 2026 World Cup?",
+    "USA, Canada and Mexico"
+   ],
+   [
+    "Which club won the 2024–25 Champions League?",
+    "Paris Saint-Germain"
+   ],
+   [
+    "Which Saudi club did Cristiano Ronaldo join in 2023?",
+    "Al Nassr"
+   ],
+   [
+    "Which Egyptian club is nicknamed 'the White Knights'?",
+    "Zamalek"
+   ],
+   [
+    "Who scored a hat-trick in the 2022 World Cup final?",
+    "Kylian Mbappé"
+   ],
+   [
+    "At which club did Cristiano Ronaldo start his career?",
+    "Sporting CP (Lisbon)"
+   ],
+   [
+    "Which American club did David Beckham join in 2007?",
+    "LA Galaxy"
+   ],
+   [
+    "Who won the 2018 Ballon d'Or, ending the Messi–Ronaldo run?",
+    "Luka Modrić"
+   ],
+   [
+    "Which country won the 2010 World Cup?",
+    "Spain"
+   ],
+   [
+    "What is Italy's top league called?",
+    "Serie A"
+   ],
+   [
+    "Which country hosted the 2010 World Cup?",
+    "South Africa"
+   ],
+   [
+    "Who is Barcelona's opponent in El Clásico?",
+    "Real Madrid"
+   ],
+   [
+    "Which Norwegian striker set the Premier League record for goals in a season in 2022–23?",
+    "Erling Haaland"
+   ],
+   [
+    "Which London club plays at Stamford Bridge?",
+    "Chelsea"
+   ],
+   [
+    "What does VAR stand for?",
+    "Video Assistant Referee"
+   ],
+   [
+    "Which club has won the most European Cups / Champions Leagues?",
+    "Real Madrid"
+   ],
+   [
+    "Which Egyptian playmaker is nicknamed 'the Magician'?",
+    "Mohamed Aboutrika"
+   ],
+   [
+    "Who scored both of Egypt's goals at the 2018 World Cup?",
+    "Mohamed Salah"
+   ],
+   [
+    "Who won the 2006 World Cup?",
+    "Italy"
+   ],
+   [
+    "Who won the 2025 Ballon d'Or?",
+    "Ousmane Dembélé"
+   ],
+   [
+    "Which country beat hosts Morocco in the 2025 AFCON final, only for CAF to award the title to Morocco months later?",
+    "Senegal"
+   ],
+   [
+    "Which Italian club is nicknamed 'the Rossoneri'?",
+    "AC Milan"
+   ],
+   [
+    "Which Saudi club did Neymar join from PSG in 2023?",
+    "Al Hilal"
+   ],
+   [
+    "Which Brazilian legend is known as 'O Rei' (the King)?",
+    "Pelé"
+   ],
+   [
+    "Which Portuguese coach called himself 'the Special One'?",
+    "José Mourinho"
+   ],
+   [
+    "Which Egyptian club won the CAF Champions League in both 2023 and 2024?",
+    "Al Ahly"
+   ],
+   [
+    "Which English club won the first 32-team Club World Cup, in 2025?",
+    "Chelsea"
+   ]
+  ],
+  "300": [
+   [
+    "Who coached Egypt at the 2018 World Cup?",
+    "Héctor Cúper"
+   ],
+   [
+    "Which coach has won the most Champions League titles?",
+    "Carlo Ancelotti"
+   ],
+   [
+    "Before 2018, in which year had Egypt last played at a World Cup?",
+    "1990"
+   ],
+   [
+    "Who did Zidane headbutt in the 2006 World Cup final?",
+    "Marco Materazzi"
+   ],
+   [
+    "Who is the Premier League's all-time top scorer?",
+    "Alan Shearer"
+   ],
+   [
+    "Who managed Leicester City to the 2015–16 Premier League title?",
+    "Claudio Ranieri"
+   ],
+   [
+    "Which country won the first World Cup in 1930?",
+    "Uruguay"
+   ],
+   [
+    "Which Egyptian goalkeeper was named best keeper at three straight AFCONs (2006–2010)?",
+    "Essam El Hadary"
+   ],
+   [
+    "Who is the only goalkeeper to win the Ballon d'Or?",
+    "Lev Yashin"
+   ],
+   [
+    "Which Swiss club did Mohamed Salah play for?",
+    "FC Basel"
+   ],
+   [
+    "What name is given to the fluid Dutch system of Rinus Michels and Johan Cruyff?",
+    "Total Football"
+   ],
+   [
+    "Who became the all-time top scorer in World Cup history at the 2026 tournament?",
+    "Kylian Mbappé (22)"
+   ],
+   [
+    "Which English club did Mohamed Elneny play for?",
+    "Arsenal"
+   ],
+   [
+    "Who won the 2023 AFCON, played in early 2024?",
+    "Ivory Coast"
+   ],
+   [
+    "Who won the 2021 AFCON, played in early 2022?",
+    "Senegal"
+   ],
+   [
+    "Which English club signed Mohamed Salah in 2014?",
+    "Chelsea"
+   ],
+   [
+    "Who did Egypt face in their first match of the 2018 World Cup?",
+    "Uruguay"
+   ],
+   [
+    "Which club's fans form 'the Yellow Wall'?",
+    "Borussia Dortmund"
+   ],
+   [
+    "Who won Euro 2016?",
+    "Portugal"
+   ],
+   [
+    "Who managed Liverpool to the 2019–20 Premier League title?",
+    "Jürgen Klopp"
+   ],
+   [
+    "Who won Euro 2020 (played in 2021)?",
+    "Italy"
+   ],
+   [
+    "Which Egyptian club is based in Ismailia?",
+    "Ismaily"
+   ],
+   [
+    "Which club has won the most Bundesliga titles?",
+    "Bayern Munich"
+   ],
+   [
+    "Who won the 2022 Ballon d'Or?",
+    "Karim Benzema"
+   ],
+   [
+    "Which club has won the most Serie A titles?",
+    "Juventus"
+   ],
+   [
+    "Who coached Barcelona to six trophies in 2009?",
+    "Pep Guardiola"
+   ],
+   [
+    "Who did France beat in the 1998 World Cup final?",
+    "Brazil"
+   ],
+   [
+    "How many Ballon d'Or awards has Cristiano Ronaldo won?",
+    "5"
+   ],
+   [
+    "Which Egyptian club won its first CAF Champions League in 2025?",
+    "Pyramids FC"
+   ],
+   [
+    "Which German club went the whole 2023–24 Bundesliga season unbeaten?",
+    "Bayer Leverkusen"
+   ],
+   [
+    "Which Spanish club is nicknamed 'Los Colchoneros'?",
+    "Atlético Madrid"
+   ],
+   [
+    "Which Egyptian winger, who played for Aston Villa, took his nickname from a French World Cup winner?",
+    "Trezeguet (Mahmoud Hassan)"
+   ],
+   [
+    "Which Moroccan right-back was named CAF African Player of the Year for 2025?",
+    "Achraf Hakimi"
+   ],
+   [
+    "Which Dutch great gave his name to a famous 'turn' first seen at the 1974 World Cup?",
+    "Johan Cruyff"
+   ],
+   [
+    "Who won the 2024 Ballon d'Or?",
+    "Rodri"
+   ],
+   [
+    "What is the nickname of Algeria's national team?",
+    "The Desert Foxes (Les Fennecs)"
+   ]
+  ],
+  "400": [
+   [
+    "In which year did Al Ahly win their first African Champions Cup?",
+    "1982"
+   ],
+   [
+    "Who scored the fastest hat-trick in Premier League history, in 2015?",
+    "Sadio Mané"
+   ],
+   [
+    "In which season were Arsenal's 'Invincibles' unbeaten?",
+    "2003–04"
+   ],
+   [
+    "What was the score of Brazil vs Germany in the 2014 World Cup semi-final?",
+    "1–7 (Germany won 7–1)"
+   ],
+   [
+    "Who scored the winner for Egypt against Cameroon in the 2008 AFCON final?",
+    "Mohamed Aboutrika"
+   ],
+   [
+    "Which Dutch club did Mido play for?",
+    "Ajax"
+   ],
+   [
+    "Who was the top scorer at the 2002 World Cup?",
+    "Ronaldo (Nazário)"
+   ],
+   [
+    "Which Premier League club is nicknamed the Cottagers?",
+    "Fulham"
+   ],
+   [
+    "Who coached Egypt to three straight AFCON titles (2006, 2008, 2010)?",
+    "Hassan Shehata"
+   ],
+   [
+    "Which stadium hosted the 1986 World Cup final?",
+    "Estadio Azteca"
+   ],
+   [
+    "What is the Premier League record for points in a season?",
+    "100 (Manchester City, 2017–18)"
+   ],
+   [
+    "Who scored the stoppage-time winner that won Man City the 2012 title?",
+    "Sergio Agüero"
+   ],
+   [
+    "Who scored Egypt's stoppage-time goal vs Algeria in Cairo in November 2009?",
+    "Emad Moteab"
+   ],
+   [
+    "Which club won the 2024–25 Europa League?",
+    "Tottenham Hotspur"
+   ],
+   [
+    "Who won the Golden Glove at the 2022 World Cup?",
+    "Emiliano Martínez"
+   ],
+   [
+    "Who did Egypt beat in the 2006 AFCON final in Cairo?",
+    "Ivory Coast"
+   ],
+   [
+    "Which Brazilian won the 2007 Ballon d'Or?",
+    "Kaká"
+   ],
+   [
+    "Which club are Hazem Emam and Shikabala linked with?",
+    "Zamalek"
+   ],
+   [
+    "Which country was the first African side to reach a World Cup quarter-final, in 1990?",
+    "Cameroon"
+   ],
+   [
+    "Which Italian club did Mohamed Salah play for before Roma?",
+    "Fiorentina"
+   ],
+   [
+    "Who is the all-time top scorer in Champions League history?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Which Moroccan goalkeeper starred at the 2022 World Cup?",
+    "Yassine Bounou (Bono)"
+   ],
+   [
+    "Who coached Egypt to the 2017 AFCON final?",
+    "Héctor Cúper"
+   ],
+   [
+    "Which Brazilian club is Pelé most associated with?",
+    "Santos"
+   ],
+   [
+    "Which team won the first Premier League season in 1992–93?",
+    "Manchester United"
+   ],
+   [
+    "Which club won the first European Cup in 1956?",
+    "Real Madrid"
+   ],
+   [
+    "Which Senegal goalkeeper saved Brahim Díaz's stoppage-time penalty in the 2025 AFCON final?",
+    "Édouard Mendy"
+   ],
+   [
+    "Who beat Egypt on penalties in the 2025 AFCON third-place match?",
+    "Nigeria"
+   ],
+   [
+    "Which Egyptian became the oldest player in World Cup history when he played in 2018, aged 45?",
+    "Essam El Hadary"
+   ],
+   [
+    "What is the nickname of Tunisia's national team?",
+    "The Eagles of Carthage"
+   ],
+   [
+    "Which club won Serie A in 2024–25 under Antonio Conte?",
+    "Napoli"
+   ],
+   [
+    "Which Belgian was appointed Bayern Munich head coach in 2024?",
+    "Vincent Kompany"
+   ],
+   [
+    "Who coached Barcelona to the 2024–25 La Liga title?",
+    "Hansi Flick"
+   ],
+   [
+    "Whose stoppage-time free kick against Nigeria sent Algeria into the 2019 AFCON final?",
+    "Riyad Mahrez"
+   ],
+   [
+    "Who coached Morocco to the 2022 World Cup semi-finals?",
+    "Walid Regragui"
+   ],
+   [
+    "Which English club won the 2025–26 Europa League, its first trophy in 30 years?",
+    "Aston Villa"
+   ]
+  ],
+  "500": [
+   [
+    "Who scored Egypt's only goal at the 1990 World Cup?",
+    "Magdi Abdelghani (penalty vs Netherlands)"
+   ],
+   [
+    "Who scored the winner in the 2010 AFCON final against Ghana?",
+    "Mohamed Nagy 'Gedo'"
+   ],
+   [
+    "In which year did Egypt first play at a World Cup?",
+    "1934"
+   ],
+   [
+    "Who managed Egypt at the 1990 World Cup?",
+    "Mahmoud El-Gohary"
+   ],
+   [
+    "Which club did Zamalek beat in the 2002 CAF Champions League final?",
+    "Raja Casablanca"
+   ],
+   [
+    "Who has the most assists in Premier League history?",
+    "Ryan Giggs"
+   ],
+   [
+    "Who scored Liverpool's first goal in the 2005 'Miracle of Istanbul' final?",
+    "Steven Gerrard"
+   ],
+   [
+    "Who holds the record for most caps for Egypt?",
+    "Ahmed Hassan"
+   ],
+   [
+    "Who was the first African player to win the Ballon d'Or?",
+    "George Weah"
+   ],
+   [
+    "Which country knocked Egypt out of the 1934 World Cup in their only match?",
+    "Hungary"
+   ],
+   [
+    "Which club won the first Egyptian league title, in 1948–49?",
+    "Al Ahly"
+   ],
+   [
+    "At which Egyptian club did Mohamed Salah start his career?",
+    "El Mokawloon (Arab Contractors)"
+   ],
+   [
+    "Who scored in every match of the 1970 World Cup?",
+    "Jairzinho"
+   ],
+   [
+    "Which Egypt striker scored 69 international goals and later coached the Pharaohs at the 2026 World Cup?",
+    "Hossam Hassan"
+   ],
+   [
+    "In which year did Egypt win its first AFCON?",
+    "1957"
+   ],
+   [
+    "Who is the all-time top scorer in AFCON history?",
+    "Samuel Eto'o (18)"
+   ],
+   [
+    "Which club won the first FIFA Club World Championship in 2000?",
+    "Corinthians"
+   ],
+   [
+    "Who is the only player to win the Champions League with three clubs?",
+    "Clarence Seedorf"
+   ],
+   [
+    "In which year did Zamalek win their first African Champions Cup?",
+    "1984"
+   ],
+   [
+    "Who won the Golden Boot at the 1998 World Cup?",
+    "Davor Šuker"
+   ],
+   [
+    "Who did Egypt beat in the 1998 AFCON final?",
+    "South Africa"
+   ],
+   [
+    "Who coached Egypt to the 1998 AFCON title?",
+    "Mahmoud El-Gohary"
+   ],
+   [
+    "Which club did Zamalek beat on penalties to win the 2024 CAF Super Cup in Riyadh?",
+    "Al Ahly"
+   ],
+   [
+    "Which country did Egypt beat on penalties in the 2017 AFCON semi-final?",
+    "Burkina Faso"
+   ],
+   [
+    "Which South African club did Pyramids beat in the 2025 CAF Champions League final?",
+    "Mamelodi Sundowns"
+   ],
+   [
+    "Which Egyptian striker was a goal-scoring hit on loan at Wigan in 2008–09?",
+    "Amr Zaki"
+   ],
+   [
+    "In which year did Egypt host the first 24-team AFCON?",
+    "2019"
+   ],
+   [
+    "In which year did Mohamed Salah first win CAF African Player of the Year?",
+    "2017"
+   ],
+   [
+    "Which Tunisian club did Al Ahly beat in the 2024 CAF Champions League final?",
+    "Espérance de Tunis"
+   ],
+   [
+    "Which Moroccan club did Al Ahly beat in the 2023 CAF Champions League final?",
+    "Wydad Casablanca"
+   ],
+   [
+    "Which Senegal midfielder scored the extra-time winner in the 2025 AFCON final?",
+    "Pape Gueye"
+   ],
+   [
+    "Who scored Argentina's winner in the 1986 World Cup final?",
+    "Jorge Burruchaga"
+   ],
+   [
+    "Which Czech player gave his name to the chipped penalty he scored in the 1976 Euro final?",
+    "Antonín Panenka"
+   ],
+   [
+    "Which English club won the 2025–26 Conference League, its first European trophy?",
+    "Crystal Palace"
+   ],
+   [
+    "Which country won the 2019 AFCON in Egypt?",
+    "Algeria"
+   ],
+   [
+    "Who was Senegal's coach in the 2025 AFCON final?",
+    "Pape Thiaw"
+   ]
+  ]
+ }
+}

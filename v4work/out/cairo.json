@@ -1,0 +1,686 @@
+{
+ "id": "cairo",
+ "name": "Cairo Streets & Places",
+ "type": "text",
+ "desc": "Neighbourhoods, bridges, squares, metro stations and the history behind Cairo's streets.",
+ "data": {
+  "100": [
+   [
+    "Cairo Tower stands in which neighbourhood?",
+    "Zamalek (Gezira island)"
+   ],
+   [
+    "Which square is home to the old Egyptian Museum?",
+    "Tahrir Square"
+   ],
+   [
+    "What is the famous old bazaar in Islamic Cairo called?",
+    "Khan El Khalili"
+   ],
+   [
+    "What do Cairenes call the Ring Road?",
+    "El Dayery"
+   ],
+   [
+    "The Great Pyramids are in which governorate?",
+    "Giza"
+   ],
+   [
+    "Which hilltop fortress, begun by Saladin, overlooks Cairo?",
+    "The Citadel (Salah El Din Citadel)"
+   ],
+   [
+    "What is Cairo's main railway station called?",
+    "Ramses Station"
+   ],
+   [
+    "What do Cairenes call Downtown?",
+    "Wust El Balad"
+   ],
+   [
+    "Which ancient mosque-university gives its name to a district of Islamic Cairo?",
+    "Al-Azhar"
+   ],
+   [
+    "Which new city west of Cairo is home to Mall of Arabia?",
+    "6th of October City"
+   ],
+   [
+    "Which Heliopolis landmark was built as a Belgian baron's palace?",
+    "Baron Empain Palace"
+   ],
+   [
+    "Which Cairo district's name means 'New Egypt'?",
+    "Heliopolis (Masr El Gedida)"
+   ],
+   [
+    "Which Nile island is home to the Cairo Opera House?",
+    "Gezira (Zamalek)"
+   ],
+   [
+    "Which metro line opened first, in 1987?",
+    "Line 1"
+   ],
+   [
+    "In which city east of Cairo did AUC open its new campus in 2008?",
+    "New Cairo"
+   ],
+   [
+    "Which Cairo square is home to the Arab League headquarters?",
+    "Tahrir Square"
+   ],
+   [
+    "What is the road running along the Nile in Cairo called?",
+    "The Corniche (Corniche El Nil)"
+   ],
+   [
+    "Which mosque beside Khan El Khalili is named after the Prophet's grandson?",
+    "Al-Hussein Mosque"
+   ],
+   [
+    "Which Cairo district is named after the Prophet's granddaughter whose mosque stands at its heart?",
+    "Sayeda Zeinab (السيدة زينب)"
+   ],
+   [
+    "Which long Giza street leads straight to the Pyramids?",
+    "Pyramids Road (Shar'a El Haram)"
+   ],
+   [
+    "What is Downtown Cairo's most famous koshari restaurant?",
+    "Abou Tarek (أبو طارق)"
+   ],
+   [
+    "What is the huge 14-storey government building on Tahrir Square called?",
+    "El Mogamma (مجمع التحرير)"
+   ],
+   [
+    "Which New Cairo mall is home to Egypt's first IKEA?",
+    "Cairo Festival City"
+   ],
+   [
+    "Which lotus-shaped tower is Cairo's best-known lookout point?",
+    "The Cairo Tower"
+   ],
+   [
+    "Ramses Station stands on which square?",
+    "Ramses Square"
+   ],
+   [
+    "What is the big zoo next to Cairo University called?",
+    "Giza Zoo"
+   ],
+   [
+    "Which stadium usually hosts the Al Ahly vs Zamalek derby?",
+    "Cairo International Stadium"
+   ],
+   [
+    "What is the domed Ottoman-style mosque on top of the Citadel called?",
+    "The Mosque of Muhammad Ali"
+   ],
+   [
+    "Which mall in 6th of October City has an indoor ski slope?",
+    "Mall of Egypt"
+   ],
+   [
+    "What colour are Cairo's modern metered taxis?",
+    "White"
+   ],
+   [
+    "Which airport, on the edge of Heliopolis, is Egypt's busiest?",
+    "Cairo International Airport"
+   ],
+   [
+    "What is the horse-drawn carriage you can ride on the Corniche called?",
+    "A hantour"
+   ],
+   [
+    "Which desert highway takes Cairenes to Alex and the North Coast?",
+    "The Cairo–Alexandria Desert Road"
+   ]
+  ],
+  "200": [
+   [
+    "Which historic street runs through Fatimid Cairo from Bab El Futuh to Bab Zuweila?",
+    "Al-Muizz Street"
+   ],
+   [
+    "Which elevated road links Downtown to Mohandessin and on to Sheikh Zayed?",
+    "The 26th of July Corridor (Mehwar)"
+   ],
+   [
+    "Which metro line runs to Helwan?",
+    "Line 1"
+   ],
+   [
+    "Gameat El Dewal El Arabeya Street is in which neighbourhood?",
+    "Mohandessin"
+   ],
+   [
+    "Road 9 is the main street of which neighbourhood?",
+    "Maadi"
+   ],
+   [
+    "Which bridge with lion statues links Tahrir to the Opera House?",
+    "Qasr El Nil Bridge"
+   ],
+   [
+    "Which metro station sits under Tahrir Square?",
+    "Sadat"
+   ],
+   [
+    "Which metro line serves Cairo University?",
+    "Line 2"
+   ],
+   [
+    "On which Nile island is Manial Palace?",
+    "Roda Island"
+   ],
+   [
+    "The Hanging Church is in which part of Cairo?",
+    "Coptic Cairo (Old Cairo)"
+   ],
+   [
+    "Which main road runs through New Cairo, lined with malls and banks?",
+    "90th Street (El Tes'een)"
+   ],
+   [
+    "Cairo International Stadium is in which district?",
+    "Nasr City"
+   ],
+   [
+    "Which bridge crosses Zamalek, linking Bulaq to Agouza?",
+    "15th of May Bridge"
+   ],
+   [
+    "Which Heliopolis palace is Egypt's presidential palace?",
+    "Ittihadiya Palace"
+   ],
+   [
+    "Which park was built on centuries of rubble next to Islamic Cairo, opening in 2005?",
+    "Al-Azhar Park"
+   ],
+   [
+    "City Stars mall is in which district?",
+    "Nasr City"
+   ],
+   [
+    "Which new city along the Cairo–Alex desert road is known for Arkan Plaza and compounds?",
+    "Sheikh Zayed"
+   ],
+   [
+    "Which metro station serves the Cairo Opera House?",
+    "Opera (Line 2)"
+   ],
+   [
+    "Al Ahly's main club headquarters is on which Nile island?",
+    "Gezira (Zamalek)"
+   ],
+   [
+    "Which mosque on Tahrir Square is famous for funerals and condolences of public figures?",
+    "Omar Makram Mosque"
+   ],
+   [
+    "Which huge Talaat Moustafa Group city sits on the Cairo–Suez road?",
+    "Madinaty (مدينتي)"
+   ],
+   [
+    "Cairo University's main campus is actually in which governorate?",
+    "Giza"
+   ],
+   [
+    "Which busy Nasr City street is named after a famous writer and poet from Aswan?",
+    "Abbas El Akkad Street"
+   ],
+   [
+    "Which famous café in Khan El Khalili has been open since 1797?",
+    "El Fishawy"
+   ],
+   [
+    "Which huge Mamluk mosque-madrasa stands at the foot of the Citadel?",
+    "The Sultan Hassan Mosque"
+   ],
+   [
+    "Which big public university is based in Abbassia?",
+    "Ain Shams University"
+   ],
+   [
+    "Which cultural centre sits under the 15th of May Bridge in Zamalek?",
+    "El Sawy Culturewheel (ساقية الصاوي)"
+   ],
+   [
+    "Which gated city in New Cairo was one of Talaat Moustafa's first big projects?",
+    "El Rehab"
+   ],
+   [
+    "Which amusement park is on the Wahat Road in 6th of October City?",
+    "Dream Park"
+   ],
+   [
+    "Which Giza district between Mohandessin and the Nile is home to the Ministry of Agriculture?",
+    "Dokki"
+   ],
+   [
+    "What does the name 'Nasr City' mean?",
+    "Victory City"
+   ],
+   [
+    "Which crowded northern district is known for its long main street and mixed Muslim–Christian community?",
+    "Shubra"
+   ],
+   [
+    "What is the round state TV and radio building on the Corniche called?",
+    "Maspero"
+   ],
+   [
+    "Which new city on the Cairo–Ismailia road has a name meaning 'sunrise'?",
+    "El Shorouk"
+   ]
+  ],
+  "300": [
+   [
+    "Which mosque in Fustat was the first ever built in Egypt, around 642?",
+    "The Mosque of Amr ibn al-As"
+   ],
+   [
+    "What was Tahrir Square called before 1952?",
+    "Ismailia Square (Midan El Ismailiyya)"
+   ],
+   [
+    "Where was the giant Ramses II statue in Ramses Square moved to?",
+    "The Grand Egyptian Museum (Giza)"
+   ],
+   [
+    "Which historic Downtown café was a meeting place for writers like Naguib Mahfouz?",
+    "Café Riche"
+   ],
+   [
+    "Which long elevated highway runs from the west bank across the Nile and Downtown toward Nasr City?",
+    "The 6th of October Bridge"
+   ],
+   [
+    "Which metro line serves Attaba and Heliopolis?",
+    "Line 3"
+   ],
+   [
+    "Which Downtown square has a statue of the founder of Banque Misr?",
+    "Talaat Harb Square"
+   ],
+   [
+    "Which embassy-filled neighbourhood beside Tahrir is known for its curving streets?",
+    "Garden City"
+   ],
+   [
+    "Which is the oldest mosque in Cairo surviving in its original form, finished in 879?",
+    "Mosque of Ibn Tulun"
+   ],
+   [
+    "Which Mohandessin square is named after a doctor and TV presenter, with a mosque of the same name?",
+    "Mustafa Mahmoud Square"
+   ],
+   [
+    "Which main street runs across Zamalek?",
+    "26th of July Street"
+   ],
+   [
+    "Which metro station under Ramses Square links Lines 1 and 2?",
+    "Al Shohadaa"
+   ],
+   [
+    "Which Nile island is home to the medieval Nilometer?",
+    "Roda Island"
+   ],
+   [
+    "Which hill on Cairo's eastern edge is home to the Cave Church?",
+    "Mokattam"
+   ],
+   [
+    "Which Cairo landmark next to the Pyramids is a hotel where Churchill and Roosevelt met in 1943?",
+    "Mena House"
+   ],
+   [
+    "What is the huge mosque in the New Administrative Capital called?",
+    "Al-Fattah Al-Aleem Mosque"
+   ],
+   [
+    "Which island neighbourhood is home to the Gezira Sporting Club?",
+    "Zamalek"
+   ],
+   [
+    "Which Downtown palace became the main royal residence in 1874?",
+    "Abdeen Palace"
+   ],
+   [
+    "Since 2021, the royal mummies have been displayed in which museum in Fustat?",
+    "The National Museum of Egyptian Civilization (NMEC)"
+   ],
+   [
+    "Which botanical garden founded under Khedive Ismail sits next to Cairo University?",
+    "El Orman Garden (حديقة الأورمان)"
+   ],
+   [
+    "Which Nasr City monument to the 1973 war dead is also President Sadat's tomb?",
+    "The Unknown Soldier Memorial (El Nasb El Tazkary)"
+   ],
+   [
+    "Which Metro Line 3 terminus is the hub where the LRT to the New Capital starts?",
+    "Adly Mansour"
+   ],
+   [
+    "What is the name of Cairo University's famous teaching hospital, founded in 1827?",
+    "Qasr El Eyni (Kasr El Aini)"
+   ],
+   [
+    "How many lion statues guard Qasr El Nil Bridge?",
+    "Four"
+   ],
+   [
+    "Zamalek SC's clubhouse is in which Giza district?",
+    "Mit Okba"
+   ],
+   [
+    "Which crowded market street runs from Ataba into Islamic Cairo?",
+    "El Mosky"
+   ],
+   [
+    "Which Corniche hotel beside Tahrir was the famous Nile Hilton?",
+    "The Nile Ritz-Carlton"
+   ],
+   [
+    "Which southern Cairo district has the Japanese Garden?",
+    "Helwan"
+   ],
+   [
+    "What is the arcaded old commercial heart of Heliopolis called?",
+    "El Korba"
+   ],
+   [
+    "Which airport west of Cairo opened to passenger flights around 2019 near the Pyramids?",
+    "Sphinx International Airport"
+   ],
+   [
+    "Which Heliopolis square is named after an old cinema?",
+    "Roxy Square"
+   ],
+   [
+    "Which old Heliopolis amusement park shares its name with a fairytale land?",
+    "Merryland"
+   ],
+   [
+    "Which small Zamalek park is known for its rocky grottoes?",
+    "The Fish Garden (Hadiqat El Asmak)"
+   ],
+   [
+    "Which riverside district holds the Nile City Towers and the old port of Cairo?",
+    "Bulaq (Boulaq)"
+   ]
+  ],
+  "400": [
+   [
+    "Which Downtown street, home to Abou Tarek, is named after the Frenchman who deciphered hieroglyphs?",
+    "Champollion Street"
+   ],
+   [
+    "Which Downtown street was Cairo's old theatre and cabaret district?",
+    "Emad El Din Street"
+   ],
+   [
+    "What was Al Shohadaa metro station called before 2011?",
+    "Mubarak"
+   ],
+   [
+    "What record does the Tahya Misr (Rod El Farag) Bridge hold?",
+    "World's widest cable-stayed bridge"
+   ],
+   [
+    "26th of July Street is named after the date of which event in 1952?",
+    "King Farouk's abdication"
+   ],
+   [
+    "Which Downtown square is named after the opera house that burned in 1971?",
+    "Opera Square (Midan El Opera)"
+   ],
+   [
+    "Which gate in the northern wall of Fatimid Cairo stands beside Bab El Nasr?",
+    "Bab El Futuh"
+   ],
+   [
+    "Which Mokattam neighbourhood of Coptic rubbish collectors is home to the Cave Church?",
+    "Manshiyat Naser ('Garbage City')"
+   ],
+   [
+    "Which mosque beside Sultan Hassan holds the tombs of King Farouk and the last Shah of Iran?",
+    "Al-Rifa'i Mosque"
+   ],
+   [
+    "Which metro line runs from Shubra El Kheima to El Monib?",
+    "Line 2"
+   ],
+   [
+    "What is Cairo's famous second-hand book market near Ataba called?",
+    "Sour El Azbakeya"
+   ],
+   [
+    "Which Zamalek hotel was built as a palace for Empress Eugénie's 1869 visit?",
+    "The Cairo Marriott (Gezira Palace)"
+   ],
+   [
+    "Which Islamic Cairo street is famous for its tentmakers' covered market?",
+    "El Khayamiya (Street of the Tentmakers)"
+   ],
+   [
+    "Which neighbourhood of Islamic Cairo is the setting of Naguib Mahfouz's Cairo Trilogy?",
+    "Gamaleya"
+   ],
+   [
+    "Which cemetery east of Islamic Cairo holds Sultan Qaitbay's mausoleum?",
+    "The Northern Cemetery (City of the Dead)"
+   ],
+   [
+    "What is the giant cathedral in the New Administrative Capital called?",
+    "The Cathedral of the Nativity of Christ"
+   ],
+   [
+    "What was the first bridge across the Nile in Cairo, opened in 1871?",
+    "Qasr El Nil Bridge"
+   ],
+   [
+    "Which museum beside Ibn Tulun Mosque is named after the British officer who lived there?",
+    "The Gayer-Anderson Museum (Beit El Kritliya)"
+   ],
+   [
+    "Manial Palace was built by which prince, the brother of Khedive Abbas II?",
+    "Prince Mohamed Ali Tewfik"
+   ],
+   [
+    "Which metro station links Line 1 and Line 3?",
+    "Gamal Abdel Nasser (Nasser)"
+   ],
+   [
+    "To the nearest 10 metres, how tall is the Cairo Tower?",
+    "About 190 m (187 m)"
+   ],
+   [
+    "Which district is named after Abbas Helmy I, ruler of Egypt in the 1850s?",
+    "Abbassia (العباسية)"
+   ],
+   [
+    "Which Imbaba square is named after a famous nightclub that stood there?",
+    "Kit Kat Square (ميدان الكيت كات)"
+   ],
+   [
+    "Which Mohandessin street is famous for its clothes shops and traffic?",
+    "Shehab Street"
+   ],
+   [
+    "Which Coptic Cairo church is said to stand over a cave where the Holy Family sheltered?",
+    "Abu Serga (Saints Sergius and Bacchus)"
+   ],
+   [
+    "Which square beside the Egyptian Museum has a statue of the chief of staff killed in 1969?",
+    "Abdel Moneim Riad Square"
+   ],
+   [
+    "Which small Fatimid mosque on Al-Muizz Street has Cairo's oldest carved stone facade?",
+    "Al-Aqmar Mosque"
+   ],
+   [
+    "Which Ottoman-era merchant's house on Darb El Asfar is now a museum?",
+    "Beit El Suhaymi"
+   ],
+   [
+    "Which Mamluk sultan's complex near Al-Azhar hosts the Tanoura dance shows?",
+    "Al-Ghuri (Wekalet El Ghuri)"
+   ],
+   [
+    "Which Downtown square has a statue of the nationalist leader who died in 1908?",
+    "Mustafa Kamil Square"
+   ],
+   [
+    "What is the Downtown pedestrian lane of cafés named after the old stock exchange?",
+    "El Borsa"
+   ],
+   [
+    "Which Nile island in Giza has been fought over by residents and developers since 2017?",
+    "Al-Warraq Island"
+   ],
+   [
+    "Which Fatimid gate's name means 'Gate of Victory'?",
+    "Bab El Nasr"
+   ]
+  ],
+  "500": [
+   [
+    "The twin minarets on top of Bab Zuweila belong to which mosque?",
+    "The Mosque of Sultan al-Mu'ayyad"
+   ],
+   [
+    "In which year was the Ramses statue moved out of Ramses Square?",
+    "2006"
+   ],
+   [
+    "What was Ramses Square called before the statue arrived in 1955?",
+    "Bab El Hadid Square"
+   ],
+   [
+    "What was Talaat Harb Street called before it was renamed?",
+    "Soliman Pasha Street"
+   ],
+   [
+    "What is the medieval aqueduct that carried Nile water to the Citadel called?",
+    "Magra El Oyoun"
+   ],
+   [
+    "Which old canal through Cairo was filled in to make Port Said Street?",
+    "El Khalig El Masri (the Egyptian Canal)"
+   ],
+   [
+    "What is Ataba's full name?",
+    "El Ataba El Khadra (the Green Threshold)"
+   ],
+   [
+    "Which part of Al-Muizz Street is named for standing 'between the two palaces'?",
+    "Bein El Qasrein"
+   ],
+   [
+    "Who designed the Egyptian Museum building in Tahrir (1902)?",
+    "Marcel Dourgnon"
+   ],
+   [
+    "Metro Line 1 was built largely on which older railway line?",
+    "The Helwan railway (joined to the El Marg line)"
+   ],
+   [
+    "What does 'Mohandessin' mean?",
+    "The Engineers (it was built for the engineers' syndicate)"
+   ],
+   [
+    "What does the name 'Maadi' come from?",
+    "A ferry crossing (the place of crossing the Nile)"
+   ],
+   [
+    "Which French-born officer, later Soliman Pasha, gave his name to the street now called Talaat Harb?",
+    "Joseph Sève (Soliman Pasha El Faransawi)"
+   ],
+   [
+    "What is the name of Cairo's huge Friday flea market, where almost anything second-hand is sold?",
+    "Souq El Gomaa (the Friday Market)"
+   ],
+   [
+    "What is the name of the square in front of Cairo University's dome?",
+    "Nahdet Masr Square"
+   ],
+   [
+    "Which sculptor made the granite 'Nahdet Masr' statue outside Cairo University?",
+    "Mahmoud Mokhtar"
+   ],
+   [
+    "Which medieval gate is also called 'Bawabat El Metwalli'?",
+    "Bab Zuweila"
+   ],
+   [
+    "Which district is home to the Citadel and the Sultan Hassan Mosque?",
+    "El Khalifa"
+   ],
+   [
+    "In which Heliopolis church is Baron Empain buried?",
+    "The Basilica of Our Lady of Heliopolis (El Basilique)"
+   ],
+   [
+    "Which 1913 department store on Khazindar Square in Ataba was modelled on Galeries Lafayette?",
+    "Sednaoui (صيدناوي)"
+   ],
+   [
+    "Which iron bridge linking Bulaq to Zamalek was dismantled in 1998?",
+    "Abu El Ela Bridge"
+   ],
+   [
+    "Which square lies at the foot of the Citadel, beside Sultan Hassan Mosque?",
+    "Salah El Din Square (Midan El Qalaa / El Rumeila)"
+   ],
+   [
+    "Opened in 2001, which road tunnels run beneath Islamic Cairo between Salah Salem and Ataba?",
+    "The Al-Azhar Tunnels (نفق الأزهر)"
+   ],
+   [
+    "What is the name of the historic synagogue on Downtown's Adly Street?",
+    "Sha'ar Hashamayim"
+   ],
+   [
+    "In which Cairo district is the 'Virgin's Tree', where the Holy Family is said to have rested?",
+    "Matariya"
+   ],
+   [
+    "Which 1940 Downtown block was Cairo's tallest building when it opened?",
+    "The Immobilia Building"
+   ],
+   [
+    "What was the first Arab capital in Egypt, founded by Amr ibn al-As in 641?",
+    "Fustat"
+   ],
+   [
+    "What was the Abbasid capital founded north of Fustat in 750?",
+    "Al-Askar"
+   ],
+   [
+    "What was the city built by Ahmad ibn Tulun around his great mosque?",
+    "Al-Qata'i"
+   ],
+   [
+    "Which Zamalek palace on the Nile is now the art centre 'Mogamaa El Fonoun'?",
+    "Aisha Fahmy Palace"
+   ],
+   [
+    "In which year did Cairo's first electric tram line open?",
+    "1896"
+   ],
+   [
+    "Which 1571 Ottoman mosque is one of Bulaq's oldest landmarks?",
+    "The Sinan Pasha Mosque"
+   ],
+   [
+    "Which palace on the Nile in Shubra El Kheima did Muhammad Ali build as his retreat?",
+    "Muhammad Ali's Shubra Palace"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,378 @@
+{
+ "id": "pb",
+ "name": "Prison Break",
+ "type": "text",
+ "desc": "Michael Scofield, Lincoln Burrows, Fox River and beyond.",
+ "data": {
+  "100": [
+   [
+    "The engineer who gets himself sent to prison to break his brother out.",
+    "Michael Scofield"
+   ],
+   [
+    "Michael's brother, on death row.",
+    "Lincoln Burrows"
+   ],
+   [
+    "The name of the prison in season 1.",
+    "Fox River State Penitentiary"
+   ],
+   [
+    "Where does Michael hide the escape plan?",
+    "In tattoos on his body"
+   ],
+   [
+    "The prison doctor who falls for Michael.",
+    "Sara Tancredi"
+   ],
+   [
+    "Mob boss inmate who runs the prison work crew.",
+    "John Abruzzi"
+   ],
+   [
+    "Michael's cellmate in season 1.",
+    "Fernando Sucre"
+   ],
+   [
+    "In which US state is Fox River?",
+    "Illinois"
+   ],
+   [
+    "What is Michael's job before prison?",
+    "Structural engineer"
+   ],
+   [
+    "Lincoln is framed for killing the brother of whom?",
+    "The Vice President"
+   ],
+   [
+    "The secret organisation behind the conspiracy.",
+    "The Company"
+   ],
+   [
+    "Lincoln's son.",
+    "LJ (Lincoln Jr.)"
+   ],
+   [
+    "Which of the two brothers is the older one?",
+    "Lincoln Burrows"
+   ],
+   [
+    "What sentence is Lincoln facing at the start of the show?",
+    "The death penalty (electric chair)"
+   ],
+   [
+    "What crime does Michael commit to get sent to Fox River?",
+    "Armed bank robbery"
+   ],
+   [
+    "Where does Michael start digging out of his cell?",
+    "Behind the toilet"
+   ],
+   [
+    "Which TV network originally aired Prison Break?",
+    "Fox"
+   ],
+   [
+    "The 2017 revival reveals which supposedly dead character is still alive?",
+    "Michael Scofield"
+   ]
+  ],
+  "200": [
+   [
+    "What is T-Bag's real name?",
+    "Theodore Bagwell"
+   ],
+   [
+    "The brutal prison in Panama in season 3.",
+    "Sona"
+   ],
+   [
+    "The FBI agent who hunts the escapees in season 2.",
+    "Alexander Mahone"
+   ],
+   [
+    "Old inmate with a cat, rumoured to be a famous hijacker.",
+    "Charles Westmoreland"
+   ],
+   [
+    "The corrupt prison guard captain.",
+    "Brad Bellick"
+   ],
+   [
+    "Sara's father holds which job?",
+    "Governor of Illinois"
+   ],
+   [
+    "Which illness does Michael pretend to have to get into the infirmary?",
+    "Diabetes"
+   ],
+   [
+    "The warden of Fox River.",
+    "Henry Pope"
+   ],
+   [
+    "In which state is Westmoreland's $5 million hidden?",
+    "Utah"
+   ],
+   [
+    "Fox River is in which Illinois city?",
+    "Joliet"
+   ],
+   [
+    "The condition that lets Michael notice details others miss.",
+    "Low latent inhibition"
+   ],
+   [
+    "Which body part do Abruzzi's men cut off Michael?",
+    "His toes"
+   ],
+   [
+    "Lincoln's ex-girlfriend and lawyer who fights his case.",
+    "Veronica Donovan"
+   ],
+   [
+    "What drug is Sara Tancredi a recovering addict of?",
+    "Morphine"
+   ],
+   [
+    "C-Note's real name, Benjamin Franklin, matches the face on which US banknote?",
+    "The $100 bill"
+   ],
+   [
+    "Which season is set mostly inside Sona?",
+    "Season 3"
+   ],
+   [
+    "What kind of animal does Westmoreland keep in his cell?",
+    "A cat"
+   ],
+   [
+    "Who does Sara Tancredi marry?",
+    "Michael Scofield"
+   ]
+  ],
+  "300": [
+   [
+    "The data the brothers have to steal in season 4.",
+    "Scylla"
+   ],
+   [
+    "Secret Service agent who switches sides in season 2.",
+    "Paul Kellerman"
+   ],
+   [
+    "The Vice President who becomes President.",
+    "Caroline Reynolds"
+   ],
+   [
+    "Sucre's girlfriend.",
+    "Maricruz"
+   ],
+   [
+    "What is C-Note's real name?",
+    "Benjamin Franklin"
+   ],
+   [
+    "The inmate who memorises the map of Michael's tattoo.",
+    "Haywire"
+   ],
+   [
+    "How many inmates escape from Fox River?",
+    "Eight"
+   ],
+   [
+    "What is Michael and Lincoln's father called?",
+    "Aldo Burrows"
+   ],
+   [
+    "What does PI stand for at Fox River?",
+    "Prison Industries"
+   ],
+   [
+    "Which country are the escapees heading for at the end of season 2?",
+    "Panama"
+   ],
+   [
+    "Which US state is T-Bag from?",
+    "Alabama"
+   ],
+   [
+    "What colour are the Fox River inmates' uniforms?",
+    "Blue"
+   ],
+   [
+    "How many seasons did Prison Break run before its 2017 revival?",
+    "Four"
+   ],
+   [
+    "Which escapee dies of a stab wound on the night of the breakout?",
+    "Charles Westmoreland"
+   ],
+   [
+    "What paper figure does Michael leave for Sara?",
+    "An origami crane"
+   ],
+   [
+    "What medical problem threatens Michael's life in season 4?",
+    "A brain tumour"
+   ],
+   [
+    "Whose 'head' is delivered in a box in season 3?",
+    "Sara's (it turns out to be fake)"
+   ],
+   [
+    "Which escapee is a former soldier who served in the Gulf War?",
+    "C-Note"
+   ]
+  ],
+  "400": [
+   [
+    "What model is the warden building that Michael helps with?",
+    "The Taj Mahal"
+   ],
+   [
+    "The inmate who runs Sona from the inside.",
+    "Lechero"
+   ],
+   [
+    "The man Michael has to break out of Sona.",
+    "James Whistler"
+   ],
+   [
+    "The Company agent who goes by Susan B. Anthony.",
+    "Gretchen Morgan"
+   ],
+   [
+    "Michael and Lincoln's mother.",
+    "Christina Scofield"
+   ],
+   [
+    "How does T-Bag lose his hand?",
+    "Abruzzi cuts it off with an axe"
+   ],
+   [
+    "Whistler carries a book that hides coordinates. What kind of book?",
+    "A bird guide"
+   ],
+   [
+    "In the revival, what is Michael's alias?",
+    "Kaniel Outis"
+   ],
+   [
+    "What do the press call the escapees?",
+    "The Fox River Eight"
+   ],
+   [
+    "Which famous hijacker is Westmoreland said to be?",
+    "D.B. Cooper"
+   ],
+   [
+    "What is Sara's father's first name?",
+    "Frank"
+   ],
+   [
+    "In which year did Prison Break first air?",
+    "2005"
+   ],
+   [
+    "Whose body does Mahone have buried in his backyard?",
+    "Oscar Shales"
+   ],
+   [
+    "Which young inmate is nicknamed 'Tweener'?",
+    "David Apolskis"
+   ],
+   [
+    "In the revival, who is Sara's new husband?",
+    "Jacob Ness"
+   ],
+   [
+    "What is the name of Whistler's girlfriend in Panama?",
+    "Sofia Lugo"
+   ],
+   [
+    "Which character sacrifices himself in a flooded tunnel in season 4?",
+    "Brad Bellick"
+   ],
+   [
+    "In which city is Scylla kept in season 4?",
+    "Los Angeles"
+   ],
+   [
+    "What do Michael and his team receive at the end of season 4?",
+    "Full exonerations (pardons)"
+   ]
+  ],
+  "500": [
+   [
+    "The prison in Yemen in the revival season.",
+    "Ogygia"
+   ],
+   [
+    "Season 4's Company general.",
+    "General Jonathan Krantz"
+   ],
+   [
+    "What is Mahone addicted to?",
+    "Midazolam"
+   ],
+   [
+    "What is Westmoreland's cat called?",
+    "Marilyn"
+   ],
+   [
+    "How does Michael seemingly die in The Final Break?",
+    "Electrocuted while opening a door so Sara can escape"
+   ],
+   [
+    "Who was Lincoln framed for killing?",
+    "Terrence Steadman"
+   ],
+   [
+    "Michael's alias Kaniel Outis hides a word meaning 'nobody' in Greek. Which hero used that name?",
+    "Odysseus"
+   ],
+   [
+    "Who kills Abruzzi?",
+    "The FBI, in a shootout"
+   ],
+   [
+    "What is Michael and Sara's son called?",
+    "Mike (Michael Jr.)"
+   ],
+   [
+    "What is the name of Mahone's son?",
+    "Cameron"
+   ],
+   [
+    "What is Haywire's real name?",
+    "Charles Patoshik"
+   ],
+   [
+    "What false name does T-Bag use at Gate in season 4?",
+    "Cole Pfeiffer"
+   ],
+   [
+    "What codename does the villain of the revival season go by?",
+    "Poseidon"
+   ],
+   [
+    "What is the name of the witness Abruzzi wants Michael to find?",
+    "Otto Fibonacci"
+   ],
+   [
+    "In which prison is Sara held in The Final Break?",
+    "Miami-Dade State Penitentiary"
+   ],
+   [
+    "Through which room of Fox River do the escapees break out?",
+    "The infirmary"
+   ],
+   [
+    "What is the nickname of T-Bag's son in the revival?",
+    "Whip"
+   ]
+  ]
+ }
+}

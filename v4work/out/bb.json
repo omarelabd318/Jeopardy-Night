@@ -1,0 +1,382 @@
+{
+ "id": "bb",
+ "name": "Breaking Bad",
+ "type": "text",
+ "desc": "Walter White, Jesse Pinkman and the whole Albuquerque crew.",
+ "data": {
+  "100": [
+   [
+    "What subject does Walter White teach?",
+    "Chemistry"
+   ],
+   [
+    "What alias does Walt use in the drug world?",
+    "Heisenberg"
+   ],
+   [
+    "Walt's former student who becomes his partner.",
+    "Jesse Pinkman"
+   ],
+   [
+    "In which city is Breaking Bad set?",
+    "Albuquerque, New Mexico"
+   ],
+   [
+    "Walt's brother-in-law, who works for the DEA.",
+    "Hank Schrader"
+   ],
+   [
+    "Walt's wife.",
+    "Skyler White"
+   ],
+   [
+    "What colour is Walt's famous meth?",
+    "Blue"
+   ],
+   [
+    "Gus Fring's fast-food chicken chain.",
+    "Los Pollos Hermanos"
+   ],
+   [
+    "The lawyer who later gets his own spin-off.",
+    "Saul Goodman"
+   ],
+   [
+    "What vehicle do Walt and Jesse first use as a mobile lab?",
+    "An RV"
+   ],
+   [
+    "What illness is Walt diagnosed with at the start?",
+    "Lung cancer"
+   ],
+   [
+    "What is the nickname of Walt's son, Walter Jr.?",
+    "Flynn"
+   ],
+   [
+    "What does Walt angrily throw onto the roof of his house?",
+    "A pizza"
+   ],
+   [
+    "What does Walt do to his hair, giving Heisenberg his look?",
+    "Shaves his head"
+   ],
+   [
+    "What does Jesse always call Walt?",
+    "Mr. White"
+   ],
+   [
+    "What drug does Walt cook?",
+    "Crystal meth"
+   ],
+   [
+    "Jesse's favourite word to end a sentence with.",
+    "\"Bitch\""
+   ],
+   [
+    "The owner of Los Pollos Hermanos.",
+    "Gus Fring"
+   ],
+   [
+    "Who does Walt keep saying he's doing it all for, until he admits \"I did it for me\"?",
+    "His family"
+   ]
+  ],
+  "200": [
+   [
+    "Finish Walt's line: \"I am the one who ___.\"",
+    "Knocks"
+   ],
+   [
+    "Gus's older, bald fixer and hitman.",
+    "Mike Ehrmantraut"
+   ],
+   [
+    "What colour does Marie wear almost all the time?",
+    "Purple"
+   ],
+   [
+    "\"They're not rocks, Marie!\" What does Hank collect?",
+    "Minerals"
+   ],
+   [
+    "Finish Jesse's cheer: \"Yeah, ___!\"",
+    "Science"
+   ],
+   [
+    "What does Jesse use to dissolve a body in a bathtub, with messy results?",
+    "Hydrofluoric acid"
+   ],
+   [
+    "The car wash Walt and Skyler buy.",
+    "A1A Car Wash"
+   ],
+   [
+    "The company Walt co-founded and walked away from before it made billions.",
+    "Gray Matter Technologies"
+   ],
+   [
+    "What kind of hat does Walt wear as Heisenberg?",
+    "A black pork-pie hat"
+   ],
+   [
+    "What is the name of Hank's wife, Skyler's sister?",
+    "Marie"
+   ],
+   [
+    "How many seasons does Breaking Bad have?",
+    "Five"
+   ],
+   [
+    "Which birthday is Walt celebrating in the first episode?",
+    "His 50th"
+   ],
+   [
+    "What condition does Walter Jr. have?",
+    "Cerebral palsy"
+   ],
+   [
+    "What is Walt wearing (not much) when he drives the RV in the pilot?",
+    "His underwear (tighty-whities)"
+   ],
+   [
+    "Gus's superlab is hidden under what kind of business?",
+    "An industrial laundry"
+   ],
+   [
+    "Walt and Skyler's baby daughter.",
+    "Holly"
+   ],
+   [
+    "The 2019 follow-up film about Jesse's escape.",
+    "El Camino"
+   ],
+   [
+    "The street name for Walt's blue meth.",
+    "Blue Sky"
+   ]
+  ],
+  "300": [
+   [
+    "Gus Fring is originally from which country?",
+    "Chile"
+   ],
+   [
+    "The silent twin assassins from the cartel.",
+    "The Cousins (Leonel and Marco Salamanca)"
+   ],
+   [
+    "Old man in a wheelchair who communicates by ringing a bell.",
+    "Hector \"Tio\" Salamanca"
+   ],
+   [
+    "Jesse's girlfriend in season 2, whom Walt lets die.",
+    "Jane Margolis"
+   ],
+   [
+    "What lands in Walt's pool after the plane crash?",
+    "A burnt pink teddy bear"
+   ],
+   [
+    "The chemist Gus hires as Walt's lab assistant, whom Jesse shoots.",
+    "Gale Boetticher"
+   ],
+   [
+    "The violent dealer who beats one of his own men to death at the junkyard.",
+    "Tuco Salamanca"
+   ],
+   [
+    "What book in Walt's bathroom gives him away to Hank?",
+    "Leaves of Grass (Walt Whitman)"
+   ],
+   [
+    "Jesse's friends: Badger and ___.",
+    "Skinny Pete"
+   ],
+   [
+    "What is Saul Goodman's real name?",
+    "Jimmy McGill"
+   ],
+   [
+    "Who kills Mike?",
+    "Walter White"
+   ],
+   [
+    "Who is Walt's alias \"Heisenberg\" named after?",
+    "Werner Heisenberg, the physicist"
+   ],
+   [
+    "Who poisoned Brock?",
+    "Walter White"
+   ],
+   [
+    "Hank's DEA partner.",
+    "Steven Gomez"
+   ],
+   [
+    "What model of car does Walt drive?",
+    "A Pontiac Aztek"
+   ],
+   [
+    "What crime does Marie keep committing?",
+    "Shoplifting"
+   ],
+   [
+    "Who created Breaking Bad?",
+    "Vince Gilligan"
+   ],
+   [
+    "What does Gus use to kill Victor in front of Walt and Jesse?",
+    "A box cutter"
+   ]
+  ],
+  "400": [
+   [
+    "The German company whose subsidiary secretly funds Gus.",
+    "Madrigal Electromotive"
+   ],
+   [
+    "Who is Walt speaking to when he says \"Say my name\"?",
+    "Declan"
+   ],
+   [
+    "The episode in which Hank is killed.",
+    "Ozymandias"
+   ],
+   [
+    "Where does Walt bury his money barrels?",
+    "To'hajiilee (in the desert)"
+   ],
+   [
+    "What did Jesse call himself when cooking in season 1?",
+    "Cap'n Cook"
+   ],
+   [
+    "The leader of the white supremacist gang, Todd's uncle.",
+    "Uncle Jack"
+   ],
+   [
+    "What do they steal in the train heist?",
+    "Methylamine"
+   ],
+   [
+    "How does Gus kill the cartel bosses at Don Eladio's?",
+    "Poisoned tequila"
+   ],
+   [
+    "The \"vacuum repair\" man who gives people new identities.",
+    "Ed (the disappearer)"
+   ],
+   [
+    "The dealer Walt keeps chained by a bike lock in Jesse's basement, then strangles.",
+    "Krazy-8"
+   ],
+   [
+    "How does Gus die?",
+    "A bomb on Hector's wheelchair"
+   ],
+   [
+    "Who shoots the boy on the dirt bike after the train heist?",
+    "Todd Alquist"
+   ],
+   [
+    "Walt's ex-girlfriend, who co-owns Gray Matter.",
+    "Gretchen Schwartz"
+   ],
+   [
+    "What is Mike's granddaughter called?",
+    "Kaylee"
+   ],
+   [
+    "The informant whose severed head rides on a tortoise.",
+    "Tortuga"
+   ],
+   [
+    "The episode in which Walt spends the whole time chasing a fly in the lab.",
+    "Fly"
+   ],
+   [
+    "What do Walt, Jesse and Mike use to wipe the laptop in police evidence?",
+    "A giant magnet"
+   ],
+   [
+    "Jesse's girlfriend in seasons 3 and 4, mother of Brock.",
+    "Andrea Cantillo"
+   ]
+  ],
+  "500": [
+   [
+    "How does Lydia get poisoned?",
+    "Ricin in her Stevia"
+   ],
+   [
+    "Gus's partner from Chile who was shot by Hector years ago.",
+    "Max Arciniega"
+   ],
+   [
+    "In group therapy, what does Jesse describe making in a woodworking class?",
+    "A wooden box"
+   ],
+   [
+    "What fake name does Walt use while hiding in New Hampshire?",
+    "Mr. Lambert"
+   ],
+   [
+    "The cartel boss who owns the pool where Max was killed.",
+    "Don Eladio"
+   ],
+   [
+    "What is the title of the final episode?",
+    "Felina"
+   ],
+   [
+    "Which song plays at the very end of the finale?",
+    "Baby Blue (Badfinger)"
+   ],
+   [
+    "How much money did Walt originally calculate he needed to leave his family?",
+    "$737,000"
+   ],
+   [
+    "What poison does Walt make to kill Gus, later found in a cigarette?",
+    "Ricin"
+   ],
+   [
+    "What plant does Walt use to poison Brock?",
+    "Lily of the valley"
+   ],
+   [
+    "Gale was recorded singing karaoke. Which song?",
+    "Major Tom (Peter Schilling)"
+   ],
+   [
+    "Walt works at a car wash in season 1. What is his boss's first name?",
+    "Bogdan"
+   ],
+   [
+    "What is Walt's middle name?",
+    "Hartwell"
+   ],
+   [
+    "The White family's home address.",
+    "308 Negra Arroyo Lane"
+   ],
+   [
+    "What does Hank call his home-brewed beer?",
+    "Schraderbräu"
+   ],
+   [
+    "Jesse's friend shot dead while dealing on a street corner in season 2.",
+    "Combo"
+   ],
+   [
+    "What explosive does Walt pass off as meth in Tuco's office?",
+    "Mercury fulminate"
+   ],
+   [
+    "The name of the laundry that hides Gus's superlab.",
+    "Lavandería Brillante"
+   ]
+  ]
+ }
+}

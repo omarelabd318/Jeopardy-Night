@@ -1,0 +1,494 @@
+{
+ "id": "peaky",
+ "name": "Peaky Blinders",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "In which city is Peaky Blinders set?",
+    "Birmingham"
+   ],
+   [
+    "What is Tommy Shelby's full first name?",
+    "Thomas"
+   ],
+   [
+    "What do the Peaky Blinders hide in their caps?",
+    "Razor blades"
+   ],
+   [
+    "What do the family call Polly Gray?",
+    "Aunt Polly"
+   ],
+   [
+    "Who is Tommy's hot-tempered older brother?",
+    "Arthur Shelby"
+   ],
+   [
+    "Which war did Tommy fight in before the show begins?",
+    "World War I"
+   ],
+   [
+    "Which area of Birmingham are the Shelbys from?",
+    "Small Heath"
+   ],
+   [
+    "Which Tom Hardy character leads a Jewish gang in Camden?",
+    "Alfie Solomons"
+   ],
+   [
+    "What is the Shelbys' main business at the start?",
+    "Illegal betting (bookmaking)"
+   ],
+   [
+    "What is the youngest Shelby brother called?",
+    "Finn"
+   ],
+   [
+    "In which decade is most of the show set?",
+    "The 1920s"
+   ],
+   [
+    "What is the family firm called?",
+    "Shelby Company Limited"
+   ],
+   [
+    "What is the pub the Shelbys drink in called?",
+    "The Garrison"
+   ],
+   [
+    "What is Tommy's sister called?",
+    "Ada"
+   ],
+   [
+    "Which British broadcaster originally aired the show?",
+    "The BBC"
+   ],
+   [
+    "What kind of hats do the Peaky Blinders wear?",
+    "Flat caps"
+   ],
+   [
+    "How many seasons of Peaky Blinders are there?",
+    "6"
+   ],
+   [
+    "What does John Shelby always have in his mouth?",
+    "A toothpick"
+   ],
+   [
+    "What is the surname of the family at the centre of the show?",
+    "Shelby"
+   ],
+   [
+    "Which spirit does Tommy pour himself in almost every scene?",
+    "Whiskey"
+   ],
+   [
+    "Who is the head of the Shelby family?",
+    "Tommy Shelby"
+   ],
+   [
+    "Which animals does Tommy love, breed and race?",
+    "Horses"
+   ],
+   [
+    "Which world war is raging in the 2026 film?",
+    "World War II"
+   ],
+   [
+    "Which streaming service released the 2026 Peaky Blinders film?",
+    "Netflix"
+   ]
+  ],
+  "200": [
+   [
+    "Who is the Belfast police inspector hunting the Shelbys in Season 1?",
+    "Chester Campbell"
+   ],
+   [
+    "Which undercover agent does Tommy fall for in Season 1?",
+    "Grace Burgess"
+   ],
+   [
+    "What is Arthur's wife called?",
+    "Linda"
+   ],
+   [
+    "What is Polly's son called?",
+    "Michael Gray"
+   ],
+   [
+    "Which real British fascist is a villain in Seasons 5 and 6?",
+    "Oswald Mosley"
+   ],
+   [
+    "Who leads the Italian gang in Season 2?",
+    "Darby Sabini"
+   ],
+   [
+    "What is the Shelby family's heritage?",
+    "Romani (travellers)"
+   ],
+   [
+    "How do the gang announce themselves before a hit?",
+    "'By order of the Peaky Blinders'"
+   ],
+   [
+    "Who becomes Tommy's second wife?",
+    "Lizzie Stark"
+   ],
+   [
+    "Which Russian aristocrat does Tommy deal with in Season 3?",
+    "Grand Duchess Tatiana Petrovna"
+   ],
+   [
+    "Which racecourse gangster is Tommy's big rival in Season 1?",
+    "Billy Kimber"
+   ],
+   [
+    "What political job does Tommy hold in Seasons 5 and 6?",
+    "Member of Parliament"
+   ],
+   [
+    "Which American gangster is a rival in Season 6?",
+    "Jack Nelson"
+   ],
+   [
+    "At which racecourse do the Shelbys strike in Season 2?",
+    "Epsom"
+   ],
+   [
+    "What is Tommy and Grace's son called?",
+    "Charlie"
+   ],
+   [
+    "Which Shelby ran the family business while the brothers were away at war?",
+    "Aunt Polly"
+   ],
+   [
+    "Into which city do the Shelbys expand in Season 2?",
+    "London"
+   ],
+   [
+    "What is the 2026 Peaky Blinders film that continues the story called?",
+    "The Immortal Man"
+   ],
+   [
+    "What is the name of Tommy's grown-up son in the 2026 film?",
+    "Duke Shelby"
+   ],
+   [
+    "Which Shelby sibling is a Member of Parliament in the 2026 film?",
+    "Ada"
+   ],
+   [
+    "Who is shot dead at a charity dinner in Season 3 by a bullet meant for Tommy?",
+    "Grace"
+   ],
+   [
+    "The end of which American ban drives Tommy's smuggling plans in Season 6?",
+    "Prohibition"
+   ],
+   [
+    "What job does Grace take at the Garrison while spying on Tommy?",
+    "Barmaid"
+   ],
+   [
+    "Which 1929 financial disaster opens Season 5?",
+    "The Wall Street Crash"
+   ]
+  ],
+  "300": [
+   [
+    "What is Ada's son called?",
+    "Karl"
+   ],
+   [
+    "Which exiled Russian aristocrats hire Tommy in Season 3?",
+    "The White Russians"
+   ],
+   [
+    "Where does Michael meet and marry Gina?",
+    "America"
+   ],
+   [
+    "Who created Peaky Blinders?",
+    "Steven Knight"
+   ],
+   [
+    "Which Italian-American family comes for revenge in Season 4?",
+    "The Changrettas"
+   ],
+   [
+    "What colour is the horse Tommy rides away on in the series finale?",
+    "White"
+   ],
+   [
+    "What is Tommy's daughter called?",
+    "Ruby"
+   ],
+   [
+    "What illness kills Ruby in Season 6?",
+    "Tuberculosis"
+   ],
+   [
+    "What is Tommy wrongly told he has in Season 6?",
+    "A tuberculoma (brain tumour)"
+   ],
+   [
+    "Which Shelby brother is killed in Season 4?",
+    "John Shelby"
+   ],
+   [
+    "What does Tommy name his racehorse in Season 2?",
+    "Grace's Secret"
+   ],
+   [
+    "Which communist organiser is Ada's husband?",
+    "Freddie Thorne"
+   ],
+   [
+    "In which part of London is Alfie's bakery?",
+    "Camden Town"
+   ],
+   [
+    "Which character is killed off at the start of Season 6?",
+    "Aunt Polly"
+   ],
+   [
+    "What job does Lizzie do for Tommy before they marry?",
+    "His secretary"
+   ],
+   [
+    "What does Tommy smuggle through Miquelon in Season 6?",
+    "Rum"
+   ],
+   [
+    "What faith is Arthur's wife Linda?",
+    "Quaker"
+   ],
+   [
+    "Which real-life British politician does Tommy deal with across the series?",
+    "Winston Churchill"
+   ],
+   [
+    "Who is Gina Gray married to?",
+    "Michael Gray"
+   ],
+   [
+    "Which Shelby is killed in the 2026 film?",
+    "Ada"
+   ],
+   [
+    "What do the Nazis plan to flood Britain with in the 2026 film?",
+    "Counterfeit banknotes"
+   ],
+   [
+    "At the start of Season 4, what is Tommy's family about to suffer when he saves them at the last minute?",
+    "Hanging"
+   ],
+   [
+    "Which dead character does Tommy keep seeing in visions in the later seasons?",
+    "Grace"
+   ],
+   [
+    "In which year is the 2026 film set?",
+    "1940"
+   ]
+  ],
+  "400": [
+   [
+    "Who is Ada's son Karl named after?",
+    "Karl Marx"
+   ],
+   [
+    "What is Tommy's country estate called?",
+    "Arrow House"
+   ],
+   [
+    "Which party does Tommy represent as an MP?",
+    "Labour"
+   ],
+   [
+    "Which aristocrat, Mosley's lover, appears in Season 6?",
+    "Diana Mitford"
+   ],
+   [
+    "Which group is behind Polly's death in Season 6?",
+    "The IRA"
+   ],
+   [
+    "Which French island off Canada does Tommy use for smuggling in Season 6?",
+    "Miquelon"
+   ],
+   [
+    "What is the loyal traveller ally 'Johnny ___' called?",
+    "Johnny Dogs"
+   ],
+   [
+    "Which Nick Cave & the Bad Seeds song is the theme?",
+    "Red Right Hand"
+   ],
+   [
+    "Who kills Chester Campbell?",
+    "Aunt Polly"
+   ],
+   [
+    "What does Tommy do to his family at the end of Season 3?",
+    "Has them arrested"
+   ],
+   [
+    "Which drug is Arthur addicted to in the later seasons?",
+    "Opium"
+   ],
+   [
+    "What is John Shelby's wife called?",
+    "Esme"
+   ],
+   [
+    "Whose assassination at a rally fails at the end of Season 5?",
+    "Oswald Mosley's"
+   ],
+   [
+    "Which boxer does Tommy back in Season 4?",
+    "Bonnie Gold"
+   ],
+   [
+    "Which American city is Jack Nelson from?",
+    "Boston"
+   ],
+   [
+    "Which painter does Polly sit for in Season 3?",
+    "Ruben Oliver"
+   ],
+   [
+    "Which Birmingham factory are the stolen guns from in Season 1?",
+    "BSA (Birmingham Small Arms)"
+   ],
+   [
+    "What does Tommy set on fire in the final episode?",
+    "His caravan (vardo)"
+   ],
+   [
+    "Who does Tommy shoot dead in the final episode of the series?",
+    "Michael Gray"
+   ],
+   [
+    "Whose death does Tommy fake to trap Luca Changretta in Season 4?",
+    "Arthur's"
+   ],
+   [
+    "Which Nazi agent does Tommy kill in the 2026 film?",
+    "John Beckett"
+   ],
+   [
+    "In which city's docks does the 2026 film reach its climax?",
+    "Liverpool"
+   ],
+   [
+    "What is the Glasgow gang in Season 5 called?",
+    "The Billy Boys"
+   ],
+   [
+    "Which street preacher fought in the war alongside Tommy?",
+    "Jeremiah Jesus"
+   ]
+  ],
+  "500": [
+   [
+    "In which year does Season 1 begin?",
+    "1919"
+   ],
+   [
+    "What was Tommy's job in the army, digging under enemy lines?",
+    "Tunneller"
+   ],
+   [
+    "What is Tommy's shell-shocked sniper friend in Season 2 called?",
+    "Barney"
+   ],
+   [
+    "Which Shelby uncle runs the canal yard?",
+    "Charlie Strong"
+   ],
+   [
+    "Which Glasgow gang leader appears in Season 5?",
+    "Jimmy McCavern"
+   ],
+   [
+    "In which year does Season 6 begin, as Prohibition ends?",
+    "1933"
+   ],
+   [
+    "On which street is the Shelby betting shop?",
+    "Watery Lane"
+   ],
+   [
+    "What is the name of Tommy's estranged father, who turns up in Season 1?",
+    "Arthur Shelby Sr."
+   ],
+   [
+    "When was the real Peaky Blinders gang active?",
+    "The 1890s (late 19th century)"
+   ],
+   [
+    "Which secret group does Father John Hughes run?",
+    "Section D"
+   ],
+   [
+    "Which traveller family feuds with the Shelbys in Season 1?",
+    "The Lees"
+   ],
+   [
+    "What is Alfie Solomons's dog called?",
+    "Cyril"
+   ],
+   [
+    "Which aristocratic horse trainer does Tommy have an affair with in Season 2?",
+    "May Carleton"
+   ],
+   [
+    "Which communist union organiser does Tommy get involved with in Season 4?",
+    "Jessie Eden"
+   ],
+   [
+    "What is the name of the Romani assassin who allies with Tommy in Season 4?",
+    "Aberama Gold"
+   ],
+   [
+    "What is the racehorse Tommy buys in Season 1?",
+    "Monaghan Boy"
+   ],
+   [
+    "Which poem does Tommy recite as he dies in the 2026 film?",
+    "In the Bleak Midwinter"
+   ],
+   [
+    "What is the name of the palm reader who draws Tommy back to Birmingham in the 2026 film?",
+    "Kaulo Chiriklo"
+   ],
+   [
+    "What is Duke Shelby's real first name?",
+    "Erasmus"
+   ],
+   [
+    "What is Aunt Polly's real first name?",
+    "Elizabeth"
+   ],
+   [
+    "Who is Grace married to when she returns in Season 2?",
+    "Clive MacKinnon"
+   ],
+   [
+    "What is the name of the children's charity Tommy launches in Season 3?",
+    "The Grace Shelby Institute"
+   ],
+   [
+    "In the 2026 film, what is written on the bullet that kills Tommy?",
+    "His own name"
+   ]
+  ]
+ }
+}

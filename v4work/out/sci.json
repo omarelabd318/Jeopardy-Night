@@ -1,0 +1,746 @@
+{
+ "id": "sci",
+ "name": "Science",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Which gas do plants absorb from the air?",
+    "Carbon dioxide"
+   ],
+   [
+    "What is the chemical symbol for sodium?",
+    "Na"
+   ],
+   [
+    "Which planet is closest to the Sun?",
+    "Mercury"
+   ],
+   [
+    "Which part of the cell is called its powerhouse?",
+    "The mitochondria"
+   ],
+   [
+    "What is the boiling point of water in Fahrenheit?",
+    "212 °F"
+   ],
+   [
+    "What is the largest organ of the human body?",
+    "The skin"
+   ],
+   [
+    "Roughly how fast does light travel, in km per second?",
+    "About 300,000 km/s"
+   ],
+   [
+    "What is the largest planet in the Solar System?",
+    "Jupiter"
+   ],
+   [
+    "Who developed the theory of relativity?",
+    "Albert Einstein"
+   ],
+   [
+    "What is the freezing point of water in Celsius?",
+    "0 °C"
+   ],
+   [
+    "Which organ pumps blood around the body?",
+    "The heart"
+   ],
+   [
+    "What is the nearest star to Earth?",
+    "The Sun"
+   ],
+   [
+    "How many planets are in the Solar System?",
+    "8"
+   ],
+   [
+    "What is the fastest land animal?",
+    "The cheetah"
+   ],
+   [
+    "What is the chemical formula of water?",
+    "H₂O"
+   ],
+   [
+    "What do we call animals that eat only plants?",
+    "Herbivores"
+   ],
+   [
+    "Which organs do we breathe with?",
+    "The lungs"
+   ],
+   [
+    "How many legs does a spider have?",
+    "8"
+   ],
+   [
+    "What are the light-sensing organs of the body?",
+    "The eyes"
+   ],
+   [
+    "What do bees make?",
+    "Honey"
+   ],
+   [
+    "What force keeps us on the ground?",
+    "Gravity"
+   ],
+   [
+    "How many teeth does an adult usually have, including wisdom teeth?",
+    "32"
+   ],
+   [
+    "Which organ do we think with?",
+    "The brain"
+   ],
+   [
+    "What is at the centre of our Solar System?",
+    "The Sun"
+   ],
+   [
+    "Who formulated the three laws of motion?",
+    "Isaac Newton"
+   ],
+   [
+    "Whales are fish: true or false?",
+    "False: they are mammals"
+   ],
+   [
+    "What do caterpillars turn into?",
+    "Butterflies (or moths)"
+   ],
+   [
+    "What is Earth's natural satellite called?",
+    "The Moon"
+   ],
+   [
+    "What is the boiling point of water in Celsius?",
+    "100 °C"
+   ],
+   [
+    "Is a frog a mammal, a reptile or an amphibian?",
+    "An amphibian"
+   ],
+   [
+    "What do we call animals that eat both plants and meat?",
+    "Omnivores"
+   ],
+   [
+    "What colour is chlorophyll?",
+    "Green"
+   ],
+   [
+    "Which part of a plant takes in water from the soil?",
+    "The roots"
+   ],
+   [
+    "What is the name of our galaxy?",
+    "The Milky Way"
+   ],
+   [
+    "What are the three common states of matter?",
+    "Solid, liquid and gas"
+   ],
+   [
+    "What is it called when a liquid slowly turns into a gas?",
+    "Evaporation"
+   ]
+  ],
+  "200": [
+   [
+    "How many chromosomes do most humans have?",
+    "46 (23 pairs)"
+   ],
+   [
+    "Which blood type is the universal donor?",
+    "O negative"
+   ],
+   [
+    "What is the most abundant gas in Earth's atmosphere?",
+    "Nitrogen"
+   ],
+   [
+    "What is the chemical symbol for gold?",
+    "Au"
+   ],
+   [
+    "What is the pH of pure water?",
+    "7"
+   ],
+   [
+    "Which planet has the most known moons?",
+    "Saturn"
+   ],
+   [
+    "What kind of animal is a Komodo dragon?",
+    "A lizard"
+   ],
+   [
+    "What is the SI unit of force?",
+    "The newton"
+   ],
+   [
+    "Which vitamin does your skin make in sunlight?",
+    "Vitamin D"
+   ],
+   [
+    "What does DNA stand for?",
+    "Deoxyribonucleic acid"
+   ],
+   [
+    "Which subatomic particle has a negative charge?",
+    "The electron"
+   ],
+   [
+    "What is the most abundant element in the universe?",
+    "Hydrogen"
+   ],
+   [
+    "What is the chemical symbol for iron?",
+    "Fe"
+   ],
+   [
+    "What is the centre of an atom called?",
+    "The nucleus"
+   ],
+   [
+    "What does a seismograph measure?",
+    "Earthquakes (ground motion)"
+   ],
+   [
+    "Which organs filter blood to make urine?",
+    "The kidneys"
+   ],
+   [
+    "What is the unit of electrical resistance?",
+    "The ohm"
+   ],
+   [
+    "What is the chemical symbol for silver?",
+    "Ag"
+   ],
+   [
+    "What is the force that resists motion between two surfaces?",
+    "Friction"
+   ],
+   [
+    "Which organ does hepatitis affect?",
+    "The liver"
+   ],
+   [
+    "Which planet is called the Morning Star?",
+    "Venus"
+   ],
+   [
+    "Which instrument measures air pressure?",
+    "A barometer"
+   ],
+   [
+    "What is the hardest substance in the human body?",
+    "Tooth enamel"
+   ],
+   [
+    "What is the chemical symbol for oxygen?",
+    "O"
+   ],
+   [
+    "Which blood vessels carry blood away from the heart?",
+    "Arteries"
+   ],
+   [
+    "What is the process by which plants make food from sunlight?",
+    "Photosynthesis"
+   ],
+   [
+    "What do we call a group of stars that forms a recognisable pattern?",
+    "A constellation"
+   ],
+   [
+    "What is the hottest planet in the Solar System?",
+    "Venus"
+   ],
+   [
+    "What is the SI unit of electric current?",
+    "The ampere (amp)"
+   ],
+   [
+    "What kind of energy does a stretched spring or a raised object store?",
+    "Potential energy"
+   ],
+   [
+    "What is a baby frog called?",
+    "A tadpole"
+   ],
+   [
+    "What do we call an animal with no backbone?",
+    "An invertebrate"
+   ],
+   [
+    "What is the curved path of a planet around the Sun called?",
+    "An orbit"
+   ],
+   [
+    "Which blood cells carry oxygen around the body?",
+    "Red blood cells"
+   ],
+   [
+    "What is Earth's outermost layer called?",
+    "The crust"
+   ],
+   [
+    "What is molten rock called once it comes out of a volcano?",
+    "Lava"
+   ],
+   [
+    "What does a light-year measure?",
+    "Distance"
+   ]
+  ],
+  "300": [
+   [
+    "Which is the only metal that is liquid at room temperature?",
+    "Mercury"
+   ],
+   [
+    "Which organ produces insulin?",
+    "The pancreas"
+   ],
+   [
+    "What is the process of a cell dividing into two identical cells?",
+    "Mitosis"
+   ],
+   [
+    "What is absolute zero in degrees Celsius?",
+    "−273.15 °C"
+   ],
+   [
+    "Who discovered penicillin?",
+    "Alexander Fleming"
+   ],
+   [
+    "What is the chemical formula of table salt?",
+    "NaCl"
+   ],
+   [
+    "Which star is closest to Earth after the Sun?",
+    "Proxima Centauri"
+   ],
+   [
+    "Which blood cells fight infection?",
+    "White blood cells (leukocytes)"
+   ],
+   [
+    "Which layer of the atmosphere holds the ozone layer?",
+    "The stratosphere"
+   ],
+   [
+    "What is the study of fungi called?",
+    "Mycology"
+   ],
+   [
+    "What is the heaviest element found naturally in significant amounts?",
+    "Uranium"
+   ],
+   [
+    "Which element has atomic number 6?",
+    "Carbon"
+   ],
+   [
+    "Which part of the brain controls balance and coordination?",
+    "The cerebellum"
+   ],
+   [
+    "What type of rock forms from cooled magma?",
+    "Igneous rock"
+   ],
+   [
+    "Roughly how fast does sound travel in air, in metres per second?",
+    "About 343 m/s"
+   ],
+   [
+    "What is the SI unit of energy?",
+    "The joule"
+   ],
+   [
+    "What is the chemical symbol for lead?",
+    "Pb"
+   ],
+   [
+    "Which gas gives classic signs their red-orange glow?",
+    "Neon"
+   ],
+   [
+    "Who proposed in 1543 that Earth orbits the Sun?",
+    "Nicolaus Copernicus"
+   ],
+   [
+    "What is the main component of natural gas?",
+    "Methane"
+   ],
+   [
+    "What is the longest bone in the human body?",
+    "The femur"
+   ],
+   [
+    "What is the chemical symbol for helium?",
+    "He"
+   ],
+   [
+    "Which planet has the shortest day?",
+    "Jupiter"
+   ],
+   [
+    "Which coloured part of the eye controls how much light gets in?",
+    "The iris"
+   ],
+   [
+    "What is the most common blood type?",
+    "O positive"
+   ],
+   [
+    "What was the title of Darwin's 1859 book?",
+    "On the Origin of Species"
+   ],
+   [
+    "What was the first artificial satellite?",
+    "Sputnik 1"
+   ],
+   [
+    "Which colour of visible light has the longest wavelength?",
+    "Red"
+   ],
+   [
+    "Which pigment gives human skin its colour?",
+    "Melanin"
+   ],
+   [
+    "What is the clear front layer of the eye called?",
+    "The cornea"
+   ],
+   [
+    "Which tube carries food from the mouth to the stomach?",
+    "The oesophagus (esophagus)"
+   ],
+   [
+    "What is the scientific name for the voice box?",
+    "The larynx"
+   ],
+   [
+    "What is the chemical symbol for copper?",
+    "Cu"
+   ],
+   [
+    "Which physicist wrote 'A Brief History of Time'?",
+    "Stephen Hawking"
+   ],
+   [
+    "Spiders and scorpions belong to which class of animals?",
+    "Arachnids"
+   ],
+   [
+    "Which monk worked out the laws of inheritance using pea plants?",
+    "Gregor Mendel"
+   ],
+   [
+    "What is the scientific study of weather called?",
+    "Meteorology"
+   ]
+  ],
+  "400": [
+   [
+    "What is Avogadro's number, approximately?",
+    "6.022 × 10²³"
+   ],
+   [
+    "Which metal has the highest melting point?",
+    "Tungsten"
+   ],
+   [
+    "What is the smallest bone in the human body?",
+    "The stapes (in the ear)"
+   ],
+   [
+    "Which planet rotates on its side?",
+    "Uranus"
+   ],
+   [
+    "What does LASER stand for?",
+    "Light Amplification by Stimulated Emission of Radiation"
+   ],
+   [
+    "Which particle did James Chadwick discover in 1932?",
+    "The neutron"
+   ],
+   [
+    "Which is the only planet less dense than water?",
+    "Saturn"
+   ],
+   [
+    "Which enzyme unwinds DNA during replication?",
+    "Helicase"
+   ],
+   [
+    "What is the chemical symbol for potassium?",
+    "K"
+   ],
+   [
+    "Who discovered radioactivity in 1896?",
+    "Henri Becquerel"
+   ],
+   [
+    "What word describes animals most active at dawn and dusk?",
+    "Crepuscular"
+   ],
+   [
+    "What is the most abundant element in Earth's crust?",
+    "Oxygen"
+   ],
+   [
+    "Which organelle carries out photosynthesis?",
+    "The chloroplast"
+   ],
+   [
+    "Which gas makes up almost 1% of Earth's atmosphere?",
+    "Argon"
+   ],
+   [
+    "What is the SI unit of electric charge?",
+    "The coulomb"
+   ],
+   [
+    "What was the supercontinent of about 250 million years ago called?",
+    "Pangaea"
+   ],
+   [
+    "Which hormone regulates the sleep cycle?",
+    "Melatonin"
+   ],
+   [
+    "What is the bacteria-derived gene-editing tool called?",
+    "CRISPR (CRISPR–Cas9)"
+   ],
+   [
+    "Which element has the symbol Sn?",
+    "Tin"
+   ],
+   [
+    "What does an ammeter measure?",
+    "Electric current"
+   ],
+   [
+    "What is the chemical symbol for mercury?",
+    "Hg"
+   ],
+   [
+    "What is the nearest large galaxy to the Milky Way?",
+    "Andromeda"
+   ],
+   [
+    "Which astronomer worked out the three laws of planetary motion?",
+    "Johannes Kepler"
+   ],
+   [
+    "What is the SI unit of power?",
+    "The watt"
+   ],
+   [
+    "Roughly what pH is stomach acid: 2, 7 or 11?",
+    "About 2 (very acidic)"
+   ],
+   [
+    "How many compartments does a cow's stomach have?",
+    "Four"
+   ],
+   [
+    "Which two scientists published the double-helix structure of DNA in 1953?",
+    "James Watson and Francis Crick"
+   ],
+   [
+    "What are the tiny air sacs in the lungs called?",
+    "Alveoli"
+   ],
+   [
+    "Who developed the first widely used polio vaccine in 1955?",
+    "Jonas Salk"
+   ],
+   [
+    "What kind of chemical bond forms when atoms share pairs of electrons?",
+    "A covalent bond"
+   ],
+   [
+    "What is the outermost layer of the Sun's atmosphere called?",
+    "The corona"
+   ],
+   [
+    "Which tiny part of the cell builds proteins?",
+    "The ribosome"
+   ],
+   [
+    "Which scale ranks minerals by hardness from 1 to 10?",
+    "The Mohs scale"
+   ],
+   [
+    "What is a particle of light called?",
+    "A photon"
+   ],
+   [
+    "Olympus Mons, the largest volcano in the Solar System, is on which planet?",
+    "Mars"
+   ],
+   [
+    "Lack of which vitamin causes scurvy?",
+    "Vitamin C"
+   ],
+   [
+    "What are atoms of the same element with different numbers of neutrons called?",
+    "Isotopes"
+   ]
+  ],
+  "500": [
+   [
+    "What is the Chandrasekhar limit, in solar masses (approx.)?",
+    "About 1.4"
+   ],
+   [
+    "Apart from Q, which letter appears in no element symbol?",
+    "J"
+   ],
+   [
+    "Which noble gas is named from the Greek word for 'stranger'?",
+    "Xenon"
+   ],
+   [
+    "Who measured the electron's charge with the oil-drop experiment?",
+    "Robert Millikan"
+   ],
+   [
+    "Which protein stores oxygen in muscle tissue?",
+    "Myoglobin"
+   ],
+   [
+    "What is the half-life of carbon-14, approximately?",
+    "About 5,730 years"
+   ],
+   [
+    "What is the boundary between Earth's crust and mantle called?",
+    "The Mohorovičić discontinuity (Moho)"
+   ],
+   [
+    "What is the point of a planet's orbit closest to the Sun called?",
+    "Perihelion"
+   ],
+   [
+    "How many bones does a shark have?",
+    "Zero (its skeleton is cartilage)"
+   ],
+   [
+    "What is the radius of a black hole's event horizon called?",
+    "The Schwarzschild radius"
+   ],
+   [
+    "What is the most electronegative element?",
+    "Fluorine"
+   ],
+   [
+    "Which Egyptian-born scientist won the 1999 Nobel Prize in Chemistry for femtochemistry?",
+    "Ahmed Zewail"
+   ],
+   [
+    "What is the densest naturally occurring element?",
+    "Osmium"
+   ],
+   [
+    "Which is the only rock that can float on water?",
+    "Pumice"
+   ],
+   [
+    "Who formulated the uncertainty principle?",
+    "Werner Heisenberg"
+   ],
+   [
+    "What is the rarest naturally occurring element in Earth's crust?",
+    "Astatine"
+   ],
+   [
+    "What is the distant shell of icy bodies at the edge of the Solar System called?",
+    "The Oort Cloud"
+   ],
+   [
+    "What is Planck's constant, approximately?",
+    "6.626 × 10⁻³⁴ J·s"
+   ],
+   [
+    "Which enzyme joins DNA fragments together?",
+    "DNA ligase"
+   ],
+   [
+    "Which vessel carries blood from the heart to the lungs?",
+    "The pulmonary artery"
+   ],
+   [
+    "What is the bending of light around a massive object called?",
+    "Gravitational lensing"
+   ],
+   [
+    "What is the study of insects called?",
+    "Entomology"
+   ],
+   [
+    "Titan, the moon with a thick atmosphere, orbits which planet?",
+    "Saturn"
+   ],
+   [
+    "What is the most abundant protein in the human body?",
+    "Collagen"
+   ],
+   [
+    "What is the scientific word for 'cold-blooded' animals?",
+    "Ectotherms"
+   ],
+   [
+    "Which Egyptian-American geologist helped NASA choose the Apollo Moon landing sites?",
+    "Farouk El-Baz"
+   ],
+   [
+    "On average over time, which planet is closest to Earth?",
+    "Mercury"
+   ],
+   [
+    "Which Egyptian physicist, dean of science at Cairo University from 1936, was nicknamed 'Egypt's Einstein'?",
+    "Ali Moustafa Mosharafa"
+   ],
+   [
+    "What is the SI unit of magnetic flux density?",
+    "The tesla"
+   ],
+   [
+    "Which element is named after the Greek word for the Sun?",
+    "Helium"
+   ],
+   [
+    "Which particle, confirmed at CERN in 2012, explains how other particles get mass?",
+    "The Higgs boson"
+   ],
+   [
+    "Which part of the brain controls hunger, thirst and body temperature?",
+    "The hypothalamus"
+   ],
+   [
+    "What is the word for an organism that thrives in extreme heat, cold or acidity?",
+    "An extremophile"
+   ],
+   [
+    "Which Danish physicist proposed the atom model with electrons in fixed orbits?",
+    "Niels Bohr"
+   ],
+   [
+    "In which layer of the atmosphere does the International Space Station orbit?",
+    "The thermosphere"
+   ]
+  ]
+ }
+}

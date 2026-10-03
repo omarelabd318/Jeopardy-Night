@@ -1,0 +1,514 @@
+{
+ "id": "ucl",
+ "name": "Champions League (2000–Now)",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Which club won three Champions Leagues in a row from 2016 to 2018?",
+    "Real Madrid"
+   ],
+   [
+    "Who won the 2019 Champions League?",
+    "Liverpool"
+   ],
+   [
+    "Which club came from 3–0 down at half-time to win the 2005 final?",
+    "Liverpool"
+   ],
+   [
+    "Which English club won the 2012 final on penalties in Munich?",
+    "Chelsea"
+   ],
+   [
+    "With which club did Messi win four Champions Leagues?",
+    "Barcelona"
+   ],
+   [
+    "Who won the 2024 Champions League?",
+    "Real Madrid"
+   ],
+   [
+    "Who won the 2021 final in Porto?",
+    "Chelsea"
+   ],
+   [
+    "Who did Real Madrid beat in the 2022 final?",
+    "Liverpool"
+   ],
+   [
+    "Which Portuguese star won the Champions League with Man Utd and Real Madrid?",
+    "Cristiano Ronaldo"
+   ],
+   [
+    "Why is the trophy nicknamed 'Big Ears'?",
+    "Because of its huge handles"
+   ],
+   [
+    "Which Egyptian scored a penalty in the 2019 final?",
+    "Mohamed Salah"
+   ],
+   [
+    "Which country is 2004 winner Porto from?",
+    "Portugal"
+   ],
+   [
+    "Who managed Porto to the 2004 title?",
+    "José Mourinho"
+   ],
+   [
+    "Who won the 2020 final in Lisbon?",
+    "Bayern Munich"
+   ],
+   [
+    "Which club lost the 2025 final 5–0?",
+    "Inter Milan"
+   ],
+   [
+    "Which club won the Champions League in both 2025 and 2026?",
+    "Paris Saint-Germain"
+   ],
+   [
+    "Which English club lost the 2026 final on penalties?",
+    "Arsenal"
+   ],
+   [
+    "Which English club completed the treble in 2023 by winning its first Champions League?",
+    "Manchester City"
+   ],
+   [
+    "Which Italian club did Liverpool beat in the 2005 final?",
+    "AC Milan"
+   ],
+   [
+    "Which club is nicknamed 'Los Blancos'?",
+    "Real Madrid"
+   ],
+   [
+    "Which Real Madrid defender's challenge forced Mohamed Salah off injured in the 2018 final?",
+    "Sergio Ramos"
+   ],
+   [
+    "Which French superstar joined Real Madrid from PSG in 2024?",
+    "Kylian Mbappé"
+   ],
+   [
+    "Which Croatian midfielder won six Champions Leagues with Real Madrid?",
+    "Luka Modrić"
+   ],
+   [
+    "What is the famous piece of music played before every Champions League match called?",
+    "The Champions League anthem"
+   ],
+   [
+    "Who managed Liverpool to the 2019 title?",
+    "Jürgen Klopp"
+   ]
+  ],
+  "200": [
+   [
+    "Who scored the winning penalty for Chelsea in 2012?",
+    "Didier Drogba"
+   ],
+   [
+    "Who scored a bicycle kick in the 2018 final?",
+    "Gareth Bale"
+   ],
+   [
+    "Which Liverpool goalkeeper made two costly errors in the 2018 final?",
+    "Loris Karius"
+   ],
+   [
+    "Who scored the famous volley in the 2002 final?",
+    "Zinedine Zidane"
+   ],
+   [
+    "Who scored Real's 93rd-minute equaliser in the 2014 final?",
+    "Sergio Ramos"
+   ],
+   [
+    "Who scored Chelsea's winner in the 2021 final?",
+    "Kai Havertz"
+   ],
+   [
+    "Who scored Real's winner in the 2022 final?",
+    "Vinícius Júnior"
+   ],
+   [
+    "Who scored Man City's winner in the 2023 final?",
+    "Rodri"
+   ],
+   [
+    "Which Chelsea captain slipped taking a penalty in the 2008 final?",
+    "John Terry"
+   ],
+   [
+    "Who won the 2008 all-English final in Moscow?",
+    "Manchester United"
+   ],
+   [
+    "Which two Madrid clubs met in the 2014 and 2016 finals?",
+    "Real Madrid and Atlético Madrid"
+   ],
+   [
+    "Who did Barcelona beat in the 2015 final?",
+    "Juventus"
+   ],
+   [
+    "In which city was the 2005 final?",
+    "Istanbul"
+   ],
+   [
+    "Which 19-year-old scored twice for PSG in the 2025 final?",
+    "Désiré Doué"
+   ],
+   [
+    "Which English club lost the 2019 final?",
+    "Tottenham Hotspur"
+   ],
+   [
+    "Which Spanish coach led PSG to the 2025 and 2026 titles?",
+    "Luis Enrique"
+   ],
+   [
+    "Which Arsenal forward scored in the 6th minute of the 2026 final?",
+    "Kai Havertz"
+   ],
+   [
+    "How many European Cups / Champions Leagues have Real Madrid won?",
+    "15"
+   ],
+   [
+    "Which Italian club won the treble under José Mourinho in 2010?",
+    "Inter Milan"
+   ],
+   [
+    "Which Brazilian playmaker won the 2007 title with AC Milan?",
+    "Kaká"
+   ],
+   [
+    "Which German club did Real Madrid beat in the 2024 final?",
+    "Borussia Dortmund"
+   ],
+   [
+    "In which London stadium was the 2024 final played?",
+    "Wembley"
+   ],
+   [
+    "What is the 36-team first stage that replaced the group stage in 2024–25 called?",
+    "The league phase"
+   ],
+   [
+    "How many teams play in the league phase?",
+    "36"
+   ],
+   [
+    "Which Georgian winger joined PSG in January 2025 and won the title that May?",
+    "Khvicha Kvaratskhelia"
+   ]
+  ],
+  "300": [
+   [
+    "Who did Barcelona beat in the 2006 final?",
+    "Arsenal"
+   ],
+   [
+    "Who scored both of Milan's goals in the 2007 final?",
+    "Filippo Inzaghi"
+   ],
+   [
+    "Who did Barcelona beat in the 2009 final in Rome?",
+    "Manchester United"
+   ],
+   [
+    "Who did Barcelona beat 3–1 in the 2011 final at Wembley?",
+    "Manchester United"
+   ],
+   [
+    "Which two German clubs met in the 2013 final?",
+    "Bayern Munich and Borussia Dortmund"
+   ],
+   [
+    "Who scored Bayern's winner in 2020 against his former club PSG?",
+    "Kingsley Coman"
+   ],
+   [
+    "Who scored both goals for Inter in the 2010 final?",
+    "Diego Milito"
+   ],
+   [
+    "Which two Italian clubs met in the 2003 final?",
+    "AC Milan and Juventus"
+   ],
+   [
+    "Which club won the 2001 final on penalties against Valencia?",
+    "Bayern Munich"
+   ],
+   [
+    "Who did Real Madrid beat in the all-Spanish 2000 final?",
+    "Valencia"
+   ],
+   [
+    "Who managed Barcelona to the 2009 and 2011 titles?",
+    "Pep Guardiola"
+   ],
+   [
+    "Who managed Real Madrid to three titles in a row?",
+    "Zinedine Zidane"
+   ],
+   [
+    "Who managed Liverpool to the 2005 title?",
+    "Rafael Benítez"
+   ],
+   [
+    "Who was Chelsea's interim manager when they won in 2012?",
+    "Roberto Di Matteo"
+   ],
+   [
+    "Who coached Bayern to the 2020 treble?",
+    "Hansi Flick"
+   ],
+   [
+    "Which club did Liverpool beat 4–0 in the 2019 'Anfield comeback'?",
+    "Barcelona"
+   ],
+   [
+    "Which Norwegian scored five goals in one Champions League game against RB Leipzig in 2023?",
+    "Erling Haaland"
+   ],
+   [
+    "Who scored PSG's penalty equaliser in the 2026 final?",
+    "Ousmane Dembélé"
+   ],
+   [
+    "In which city was the 2017 final?",
+    "Cardiff"
+   ],
+   [
+    "Who coached Inter Milan in the 2023 and 2025 finals?",
+    "Simone Inzaghi"
+   ],
+   [
+    "In which city was the 2026 final?",
+    "Budapest"
+   ],
+   [
+    "Who was Liverpool's goalkeeper in the 2019 final?",
+    "Alisson Becker"
+   ],
+   [
+    "Whose stoppage-time strike at Stamford Bridge sent Barcelona to the 2009 final?",
+    "Andrés Iniesta"
+   ],
+   [
+    "Which Moroccan right-back scored PSG's first goal in the 2025 final?",
+    "Achraf Hakimi"
+   ],
+   [
+    "Which club did Chelsea beat in the 2021 final?",
+    "Manchester City"
+   ]
+  ],
+  "400": [
+   [
+    "Who did Porto beat in the 2004 final?",
+    "Monaco"
+   ],
+   [
+    "Who did Real Madrid beat in the 2002 final?",
+    "Bayer Leverkusen"
+   ],
+   [
+    "Which Liverpool goalkeeper did the 'spaghetti legs' in the 2005 shootout?",
+    "Jerzy Dudek"
+   ],
+   [
+    "Who scored Liverpool's second goal in the 2019 final?",
+    "Divock Origi"
+   ],
+   [
+    "Who scored Real's opener in the 2024 final?",
+    "Dani Carvajal"
+   ],
+   [
+    "Whose penalty did Van der Sar save to win the 2008 final?",
+    "Nicolas Anelka's"
+   ],
+   [
+    "Who scored Barcelona's goals in the 2009 final?",
+    "Samuel Eto'o and Lionel Messi"
+   ],
+   [
+    "Who scored Milan's winning penalty in the 2003 final?",
+    "Andriy Shevchenko"
+   ],
+   [
+    "Which stadium hosted the 2003 final?",
+    "Old Trafford"
+   ],
+   [
+    "Who scored Bayern's late winner in the 2013 final?",
+    "Arjen Robben"
+   ],
+   [
+    "In which city was the 2018 final?",
+    "Kyiv"
+   ],
+   [
+    "Who scored Barcelona's winner in the 2006 final?",
+    "Juliano Belletti"
+   ],
+   [
+    "Which Arsenal goalkeeper was sent off in the 2006 final?",
+    "Jens Lehmann"
+   ],
+   [
+    "Who coached Real Madrid to 'La Décima' in 2014?",
+    "Carlo Ancelotti"
+   ],
+   [
+    "Which Arsenal goalkeeper saved Nuno Mendes's penalty in the 2026 final shootout?",
+    "David Raya"
+   ],
+   [
+    "Who came off the bench to score twice in Liverpool's 4–0 win over Barcelona in 2019?",
+    "Georginio Wijnaldum"
+   ],
+   [
+    "Whose extra-time header put Real Madrid ahead in the 2014 final?",
+    "Gareth Bale's"
+   ],
+   [
+    "Which English champions reached the 2017 quarter-finals on their debut?",
+    "Leicester City"
+   ],
+   [
+    "Who managed Tottenham in the 2019 final?",
+    "Mauricio Pochettino"
+   ],
+   [
+    "Whose stoppage-time goal for Man City against Spurs was ruled out by VAR in the 2019 quarter-final?",
+    "Raheem Sterling's"
+   ],
+   [
+    "Which Real Madrid goalkeeper made nine saves in the 2022 final?",
+    "Thibaut Courtois"
+   ],
+   [
+    "Who coached Chelsea to the 2021 title?",
+    "Thomas Tuchel"
+   ],
+   [
+    "Who was Real Madrid's goalkeeper in the 2016, 2017 and 2018 finals?",
+    "Keylor Navas"
+   ],
+   [
+    "Who scored Juventus's overhead-kick goal in the 2017 final?",
+    "Mario Mandžukić"
+   ],
+   [
+    "Who scored a second-half hat-trick for Tottenham at Ajax in the 2019 semi-final?",
+    "Lucas Moura"
+   ]
+  ],
+  "500": [
+   [
+    "What does 'La Décima' refer to?",
+    "Real Madrid's 10th European Cup, won in 2014"
+   ],
+   [
+    "Which club beat Barcelona 8–2 in 2020?",
+    "Bayern Munich"
+   ],
+   [
+    "Which club did Barcelona beat 6–1 in the 2017 'Remontada'?",
+    "Paris Saint-Germain"
+   ],
+   [
+    "Who scored Barcelona's sixth goal in that 6–1?",
+    "Sergi Roberto"
+   ],
+   [
+    "Who coached Monaco in the 2004 final?",
+    "Didier Deschamps"
+   ],
+   [
+    "Which Cypriot club reached the 2012 quarter-finals?",
+    "APOEL"
+   ],
+   [
+    "Which Dutch club knocked out Real Madrid and Juventus in 2019?",
+    "Ajax"
+   ],
+   [
+    "In which city was the 2023 final?",
+    "Istanbul"
+   ],
+   [
+    "Who scored two of Milan's three goals in the 2005 final?",
+    "Hernán Crespo"
+   ],
+   [
+    "Who scored Liverpool's third goal in 2005 from the rebound of his saved penalty?",
+    "Xabi Alonso"
+   ],
+   [
+    "Which goalkeeper saved three penalties for Bayern in the 2001 final?",
+    "Oliver Kahn"
+   ],
+   [
+    "Which players share the record of six European Cup/Champions League titles?",
+    "Paco Gento, plus Carvajal, Modrić, Kroos and Nacho"
+   ],
+   [
+    "In which city was the 2025 final?",
+    "Munich"
+   ],
+   [
+    "Who did Milan beat in the 2007 final in Athens?",
+    "Liverpool"
+   ],
+   [
+    "Which Arsenal defender blazed the deciding penalty over the bar in the 2026 final?",
+    "Gabriel (Magalhães)"
+   ],
+   [
+    "Who was named Player of the Match in the 2026 final?",
+    "Vitinha"
+   ],
+   [
+    "Who scored Atlético Madrid's equaliser in the 2016 final?",
+    "Yannick Carrasco"
+   ],
+   [
+    "Which Brazilian goalkeeper saved three penalties for Milan in the 2003 final?",
+    "Dida"
+   ],
+   [
+    "Who scored Dortmund's penalty in the 2013 final?",
+    "İlkay Gündoğan"
+   ],
+   [
+    "Who scored Arsenal's goal in the 2006 final?",
+    "Sol Campbell"
+   ],
+   [
+    "Which Brazilian scored Porto's opener in the 2004 final?",
+    "Carlos Alberto"
+   ],
+   [
+    "Who scored Juventus's goal in the 2015 final?",
+    "Álvaro Morata"
+   ],
+   [
+    "Who scored Bayer Leverkusen's goal in the 2002 final?",
+    "Lúcio"
+   ],
+   [
+    "Who scored Valencia's penalty in normal time of the 2001 final?",
+    "Gaizka Mendieta"
+   ]
+  ]
+ }
+}

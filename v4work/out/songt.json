@@ -1,0 +1,598 @@
+{
+ "id": "songt",
+ "name": "Finish the Song Title",
+ "type": "text",
+ "desc": "A famous song title with a word missing. Name the missing word.",
+ "data": {
+  "100": [
+   [
+    "Finish the song title: “Shape of ___”",
+    "Shape of You (Ed Sheeran)"
+   ],
+   [
+    "Finish the song title: “Blinding ___”",
+    "Blinding Lights (The Weeknd)"
+   ],
+   [
+    "Finish the song title: “Bohemian ___”",
+    "Bohemian Rhapsody (Queen)"
+   ],
+   [
+    "Finish the song title: “Hotel ___”",
+    "Hotel California (Eagles)"
+   ],
+   [
+    "Finish the song title: “Billie ___”",
+    "Billie Jean (Michael Jackson)"
+   ],
+   [
+    "Finish the song title: “Smells Like Teen ___”",
+    "Smells Like Teen Spirit (Nirvana)"
+   ],
+   [
+    "Finish the song title: “Tamally ___”",
+    "Tamally Maak (Amr Diab)"
+   ],
+   [
+    "Finish the song title: “Enta ___”",
+    "Enta Omri (Umm Kulthum); also accept Enta El Hob (Umm Kulthum)"
+   ],
+   [
+    "Finish the song title: “Rolling in the ___”",
+    "Rolling in the Deep (Adele)"
+   ],
+   [
+    "Finish the song title: “Hips Don't ___”",
+    "Hips Don't Lie (Shakira)"
+   ],
+   [
+    "Finish the song title: “Uptown ___”",
+    "Uptown Funk (Mark Ronson ft. Bruno Mars); also accept Uptown Girl (Billy Joel)"
+   ],
+   [
+    "Finish the song title: “Stairway to ___”",
+    "Stairway to Heaven (Led Zeppelin)"
+   ],
+   [
+    "Finish the song title: “Habibi Ya Nour El ___”",
+    "Habibi Ya Nour El Ain (Amr Diab)"
+   ],
+   [
+    "Finish the song title: “Thinking Out ___”",
+    "Thinking Out Loud (Ed Sheeran)"
+   ],
+   [
+    "Finish the song title: “Old Town ___”",
+    "Old Town Road (Lil Nas X)"
+   ],
+   [
+    "Finish the song title: “Wrecking ___”",
+    "Wrecking Ball (Miley Cyrus)"
+   ],
+   [
+    "Finish the song title: “Poker ___”",
+    "Poker Face (Lady Gaga)"
+   ],
+   [
+    "Finish the song title: “Ice Ice ___”",
+    "Ice Ice Baby (Vanilla Ice)"
+   ],
+   [
+    "Finish the song title: “Single ___ (Put a Ring on It)”",
+    "Single Ladies (Put a Ring on It) (Beyoncé)"
+   ],
+   [
+    "Finish the song title: “We Will Rock ___”",
+    "We Will Rock You (Queen)"
+   ],
+   [
+    "Finish the song title: “We Are the ___”",
+    "We Are the Champions (Queen)"
+   ],
+   [
+    "Finish the song title: “Another One Bites the ___”",
+    "Another One Bites the Dust (Queen)"
+   ],
+   [
+    "Finish the song title: “Beat ___”",
+    "Beat It (Michael Jackson)"
+   ],
+   [
+    "Finish the song title: “Shake It ___”",
+    "Shake It Off (Taylor Swift)"
+   ],
+   [
+    "Finish the song title: “Call Me ___”",
+    "Call Me Maybe (Carly Rae Jepsen)"
+   ],
+   [
+    "Finish the song title: “My Heart Will Go ___”",
+    "My Heart Will Go On (Celine Dion)"
+   ],
+   [
+    "Finish the song title: “Number ___”",
+    "Number One (Mohamed Ramadan)"
+   ],
+   [
+    "Finish the song title: “Waka ___”",
+    "Waka Waka (Shakira)"
+   ],
+   [
+    "Finish the song title: “Dancing ___”",
+    "Dancing Queen (ABBA)"
+   ]
+  ],
+  "200": [
+   [
+    "Finish the song title: “Sweet Child o' ___”",
+    "Sweet Child o' Mine (Guns N' Roses)"
+   ],
+   [
+    "Finish the song title: “Livin' on a ___”",
+    "Livin' on a Prayer (Bon Jovi)"
+   ],
+   [
+    "Finish the song title: “Lose ___”",
+    "Lose Yourself (Eminem); also accept Lose Control"
+   ],
+   [
+    "Finish the song title: “Crazy in ___”",
+    "Crazy in Love (Beyoncé)"
+   ],
+   [
+    "Finish the song title: “Someone Like ___”",
+    "Someone Like You (Adele)"
+   ],
+   [
+    "Finish the song title: “Take On ___”",
+    "Take On Me (a-ha)"
+   ],
+   [
+    "Finish the song title: “Every Breath You ___”",
+    "Every Breath You Take (The Police)"
+   ],
+   [
+    "Finish the song title: “Don't Stop Me ___”",
+    "Don't Stop Me Now (Queen)"
+   ],
+   [
+    "Finish the song title: “Viva la ___”",
+    "Viva la Vida (Coldplay)"
+   ],
+   [
+    "Finish the song title: “Seven Nation ___”",
+    "Seven Nation Army (The White Stripes)"
+   ],
+   [
+    "Finish the song title: “Zay El ___”",
+    "Zay El Hawa (Abdel Halim Hafez)"
+   ],
+   [
+    "Finish the song title: “Wala Ala ___”",
+    "Wala Ala Balo (Amr Diab)"
+   ],
+   [
+    "Finish the song title: “Boos El ___”",
+    "Boos El Wawa (Haifa Wehbe)"
+   ],
+   [
+    "Finish the song title: “Gangnam ___”",
+    "Gangnam Style (PSY)"
+   ],
+   [
+    "Finish the song title: “Hotline ___”",
+    "Hotline Bling (Drake)"
+   ],
+   [
+    "Finish the song title: “Watermelon ___”",
+    "Watermelon Sugar (Harry Styles)"
+   ],
+   [
+    "Finish the song title: “Moves Like ___”",
+    "Moves Like Jagger (Maroon 5)"
+   ],
+   [
+    "Finish the song title: “Can't Stop the ___!”",
+    "Can't Stop the Feeling! (Justin Timberlake)"
+   ],
+   [
+    "Finish the song title: “Bent El ___”",
+    "Bent El Geran (Hassan Shakosh)"
+   ],
+   [
+    "Finish the song title: “Ana Lak Ala ___”",
+    "Ana Lak Ala Tool (Abdel Halim Hafez)"
+   ],
+   [
+    "Finish the song title: “Ah Ya ___”",
+    "Ah Ya Leil (Sherine)"
+   ],
+   [
+    "Finish the song title: “Allem ___”",
+    "Allem Albi (Amr Diab)"
+   ],
+   [
+    "Finish the song title: “Man in the ___”",
+    "Man in the Mirror (Michael Jackson)"
+   ],
+   [
+    "Finish the song title: “Livin' la Vida ___”",
+    "Livin' la Vida Loca (Ricky Martin)"
+   ],
+   [
+    "Finish the song title: “Black or ___”",
+    "Black or White (Michael Jackson)"
+   ],
+   [
+    "Finish the song title: “Girls Just Want to Have ___”",
+    "Girls Just Want to Have Fun (Cyndi Lauper)"
+   ],
+   [
+    "Finish the song title: “Born This ___”",
+    "Born This Way (Lady Gaga)"
+   ],
+   [
+    "Finish the song title: “Can't Help Falling in ___”",
+    "Can't Help Falling in Love (Elvis Presley)"
+   ],
+   [
+    "Finish the song title: “drivers ___”",
+    "drivers license (Olivia Rodrigo)"
+   ]
+  ],
+  "300": [
+   [
+    "Finish the song title: “Sultans of ___”",
+    "Sultans of Swing (Dire Straits)"
+   ],
+   [
+    "Finish the song title: “Purple ___”",
+    "Purple Rain (Prince); also accept Purple Haze (Jimi Hendrix)"
+   ],
+   [
+    "Finish the song title: “Comfortably ___”",
+    "Comfortably Numb (Pink Floyd)"
+   ],
+   [
+    "Finish the song title: “Like a Rolling ___”",
+    "Like a Rolling Stone (Bob Dylan)"
+   ],
+   [
+    "Finish the song title: “Nothing Else ___”",
+    "Nothing Else Matters (Metallica)"
+   ],
+   [
+    "Finish the song title: “Gangsta's ___”",
+    "Gangsta's Paradise (Coolio)"
+   ],
+   [
+    "Finish the song title: “Wake Me Up When September ___”",
+    "Wake Me Up When September Ends (Green Day)"
+   ],
+   [
+    "Finish the song title: “Alf Leila w ___”",
+    "Alf Leila w Leila (Umm Kulthum)"
+   ],
+   [
+    "Finish the song title: “Nassam Alayna El ___”",
+    "Nassam Alayna El Hawa (Fairuz)"
+   ],
+   [
+    "Finish the song title: “Leily ___”",
+    "Leily Nahary (Amr Diab)"
+   ],
+   [
+    "Finish the song title: “Ajmal ___”",
+    "Ajmal Ihsas (Elissa)"
+   ],
+   [
+    "Finish the song title: “Boulevard of Broken ___”",
+    "Boulevard of Broken Dreams (Green Day)"
+   ],
+   [
+    "Finish the song title: “Eye of the ___”",
+    "Eye of the Tiger (Survivor)"
+   ],
+   [
+    "Finish the song title: “Sweet Home ___”",
+    "Sweet Home Alabama (Lynyrd Skynyrd); also accept Sweet Home Chicago"
+   ],
+   [
+    "Finish the song title: “Smooth ___”",
+    "Smooth Criminal (Michael Jackson); also accept Smooth Operator (Sade)"
+   ],
+   [
+    "Finish the song title: “Should I Stay or Should I ___”",
+    "Should I Stay or Should I Go (The Clash)"
+   ],
+   [
+    "Finish the song title: “Highway to ___”",
+    "Highway to Hell (AC/DC)"
+   ],
+   [
+    "Finish the song title: “…Baby One More ___”",
+    "…Baby One More Time (Britney Spears)"
+   ],
+   [
+    "Finish the song title: “No Woman, No ___”",
+    "No Woman, No Cry (Bob Marley & the Wailers)"
+   ],
+   [
+    "Finish the song title: “Kammel ___”",
+    "Kammel Kalamak (Amr Diab)"
+   ],
+   [
+    "Finish the song title: “Dorak ___”",
+    "Dorak Gai (Wegz)"
+   ],
+   [
+    "Finish the song title: “Sidi ___”",
+    "Sidi Mansour (Saber Rebai)"
+   ],
+   [
+    "Finish the song title: “Ya Habibti Ya ___”",
+    "Ya Habibti Ya Masr (Shadia)"
+   ],
+   [
+    "Finish the song title: “Sweet Dreams (Are Made of ___)”",
+    "Sweet Dreams (Are Made of This) (Eurythmics)"
+   ],
+   [
+    "Finish the song title: “Total Eclipse of the ___”",
+    "Total Eclipse of the Heart (Bonnie Tyler)"
+   ],
+   [
+    "Finish the song title: “Ain't No Mountain High ___”",
+    "Ain't No Mountain High Enough (Marvin Gaye & Tammi Terrell)"
+   ],
+   [
+    "Finish the song title: “Stand by ___”",
+    "Stand by Me (Ben E. King)"
+   ],
+   [
+    "Finish the song title: “The Final ___”",
+    "The Final Countdown (Europe)"
+   ],
+   [
+    "Finish the song title: “Bring Me to ___”",
+    "Bring Me to Life (Evanescence)"
+   ]
+  ],
+  "400": [
+   [
+    "Finish the song title: “Qariat al-___”",
+    "Qariat al-Fingan (Abdel Halim Hafez)"
+   ],
+   [
+    "Finish the song title: “Zidini ___”",
+    "Zidini Ishqan (Kadim Al Sahir)"
+   ],
+   [
+    "Finish the song title: “Kifak ___”",
+    "Kifak Inta (Fairuz)"
+   ],
+   [
+    "Finish the song title: “Salma Ya ___”",
+    "Salma Ya Salama (Sayed Darwish)"
+   ],
+   [
+    "Finish the song title: “Akhasmak ___”",
+    "Akhasmak Ah (Nancy Ajram)"
+   ],
+   [
+    "Finish the song title: “Gana El ___”",
+    "Gana El Hawa (Abdel Halim Hafez)"
+   ],
+   [
+    "Finish the song title: “Life on ___?”",
+    "Life on Mars? (David Bowie)"
+   ],
+   [
+    "Finish the song title: “Heart of ___”",
+    "Heart of Glass (Blondie); also accept Heart of Gold (Neil Young)"
+   ],
+   [
+    "Finish the song title: “Paint It ___”",
+    "Paint It Black (The Rolling Stones)"
+   ],
+   [
+    "Finish the song title: “Under ___”",
+    "Under Pressure (Queen & David Bowie)"
+   ],
+   [
+    "Finish the song title: “Karma ___”",
+    "Karma Police (Radiohead); also accept Karma Chameleon (Culture Club)"
+   ],
+   [
+    "Finish the song title: “Born to ___”",
+    "Born to Run (Bruce Springsteen); also accept Born to Die (Lana Del Rey)"
+   ],
+   [
+    "Finish the song title: “Don't Stop ___”",
+    "Don't Stop Believin' (Journey)"
+   ],
+   [
+    "Finish the song title: “Somebody That I Used to ___”",
+    "Somebody That I Used to Know (Gotye)"
+   ],
+   [
+    "Finish the song title: “Here Comes the ___”",
+    "Here Comes the Sun (The Beatles)"
+   ],
+   [
+    "Finish the song title: “Mr. Blue ___”",
+    "Mr. Blue Sky (Electric Light Orchestra)"
+   ],
+   [
+    "Finish the song title: “Ya Msafer ___”",
+    "Ya Msafer Wahdak (Mohamed Abdel Wahab)"
+   ],
+   [
+    "Finish the song title: “Smoke on the ___”",
+    "Smoke on the Water (Deep Purple)"
+   ],
+   [
+    "Finish the song title: “Running Up That ___”",
+    "Running Up That Hill (Kate Bush)"
+   ],
+   [
+    "Finish the song title: “Fatet ___”",
+    "Fatet Ganbena (Abdel Halim Hafez)"
+   ],
+   [
+    "Finish the song title: “Amal ___”",
+    "Amal Hayati (Umm Kulthum)"
+   ],
+   [
+    "Finish the song title: “Habaytak Bel ___”",
+    "Habaytak Bel Sayf (Fairuz)"
+   ],
+   [
+    "Finish the song title: “Batwanes ___”",
+    "Batwanes Beek (Warda)"
+   ],
+   [
+    "Finish the song title: “Ya Wad Ya ___”",
+    "Ya Wad Ya Te'eel (Soad Hosny)"
+   ],
+   [
+    "Finish the song title: “Wish You Were ___”",
+    "Wish You Were Here (Pink Floyd)"
+   ],
+   [
+    "Finish the song title: “Message in a ___”",
+    "Message in a Bottle (The Police)"
+   ],
+   [
+    "Finish the song title: “Enter ___”",
+    "Enter Sandman (Metallica)"
+   ],
+   [
+    "Finish the song title: “Hit the Road ___”",
+    "Hit the Road Jack (Ray Charles)"
+   ],
+   [
+    "Finish the song title: “Light My ___”",
+    "Light My Fire (The Doors)"
+   ]
+  ],
+  "500": [
+   [
+    "Finish the song title: “Ana Bakrah ___”",
+    "Ana Bakrah Israel (Shaaban Abdel Rahim)"
+   ],
+   [
+    "Finish the song title: “Losing My ___”",
+    "Losing My Religion (R.E.M.)"
+   ],
+   [
+    "Finish the song title: “Tainted ___”",
+    "Tainted Love (Soft Cell)"
+   ],
+   [
+    "Finish the song title: “Once in a ___”",
+    "Once in a Lifetime (Talking Heads)"
+   ],
+   [
+    "Finish the song title: “Where Is My ___?”",
+    "Where Is My Mind? (Pixies)"
+   ],
+   [
+    "Finish the song title: “Common ___”",
+    "Common People (Pulp)"
+   ],
+   [
+    "Finish the song title: “Bitter Sweet ___”",
+    "Bitter Sweet Symphony (The Verve)"
+   ],
+   [
+    "Finish the song title: “Don't Look Back in ___”",
+    "Don't Look Back in Anger (Oasis)"
+   ],
+   [
+    "Finish the song title: “Ace of ___”",
+    "Ace of Spades (Motörhead)"
+   ],
+   [
+    "Finish the song title: “Personal ___”",
+    "Personal Jesus (Depeche Mode)"
+   ],
+   [
+    "Finish the song title: “Fake Plastic ___”",
+    "Fake Plastic Trees (Radiohead)"
+   ],
+   [
+    "Finish the song title: “Enjoy the ___”",
+    "Enjoy the Silence (Depeche Mode)"
+   ],
+   [
+    "Finish the song title: “A Day in the ___”",
+    "A Day in the Life (The Beatles)"
+   ],
+   [
+    "Finish the song title: “Sympathy for the ___”",
+    "Sympathy for the Devil (The Rolling Stones)"
+   ],
+   [
+    "Finish the song title: “Space ___”",
+    "Space Oddity (David Bowie)"
+   ],
+   [
+    "Finish the song title: “Lessa ___”",
+    "Lessa Faker (Umm Kulthum)"
+   ],
+   [
+    "Finish the song title: “Seret El ___”",
+    "Seret El Hob (Umm Kulthum)"
+   ],
+   [
+    "Finish the song title: “Aatini El ___”",
+    "Aatini El Nay (Fairuz)"
+   ],
+   [
+    "Finish the song title: “Blue ___”",
+    "Blue Monday (New Order); also accept Blue Velvet"
+   ],
+   [
+    "Finish the song title: “Baeed ___”",
+    "Baeed Anak (Umm Kulthum)"
+   ],
+   [
+    "Finish the song title: “Zahrat al-___”",
+    "Zahrat al-Mada'en (Fairuz)"
+   ],
+   [
+    "Finish the song title: “Aho Da Elli ___”",
+    "Aho Da Elli Sar (Sayed Darwish)"
+   ],
+   [
+    "Finish the song title: “Lamma Bada ___”",
+    "Lamma Bada Yatathanna (classic muwashshah, sung by Fairuz and others)"
+   ],
+   [
+    "Finish the song title: “Killing in the ___”",
+    "Killing in the Name (Rage Against the Machine)"
+   ],
+   [
+    "Finish the song title: “Paranoid ___”",
+    "Paranoid Android (Radiohead)"
+   ],
+   [
+    "Finish the song title: “Song ___”",
+    "Song 2 (Blur)"
+   ],
+   [
+    "Finish the song title: “Tiny ___”",
+    "Tiny Dancer (Elton John)"
+   ],
+   [
+    "Finish the song title: “Johnny B. ___”",
+    "Johnny B. Goode (Chuck Berry)"
+   ],
+   [
+    "Finish the song title: “Helwa Ya ___”",
+    "Helwa Ya Baladi (Dalida)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,570 @@
+{
+ "id": "hp",
+ "name": "Harry Potter",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What is Harry's owl called?",
+    "Hedwig"
+   ],
+   [
+    "Which house is Harry in?",
+    "Gryffindor"
+   ],
+   [
+    "Which Quidditch position does Harry play?",
+    "Seeker"
+   ],
+   [
+    "Who is headmaster of Hogwarts for most of the series?",
+    "Albus Dumbledore"
+   ],
+   [
+    "Which platform does the Hogwarts Express leave from?",
+    "Platform 9¾"
+   ],
+   [
+    "What is the Weasleys' home called?",
+    "The Burrow"
+   ],
+   [
+    "Who is Harry's red-haired best friend?",
+    "Ron Weasley"
+   ],
+   [
+    "What is the wizarding bank called?",
+    "Gringotts"
+   ],
+   [
+    "Who is Hogwarts' half-giant gamekeeper?",
+    "Hagrid"
+   ],
+   [
+    "Which sport do wizards play on broomsticks?",
+    "Quidditch"
+   ],
+   [
+    "Which spell disarms an opponent?",
+    "Expelliarmus"
+   ],
+   [
+    "Who wrote the Harry Potter books?",
+    "J.K. Rowling"
+   ],
+   [
+    "What shape is Harry's scar?",
+    "A lightning bolt"
+   ],
+   [
+    "Which house is Draco Malfoy in?",
+    "Slytherin"
+   ],
+   [
+    "What is the name of Harry's brainy best friend?",
+    "Hermione Granger"
+   ],
+   [
+    "Which dark wizard killed Harry's parents?",
+    "Lord Voldemort"
+   ],
+   [
+    "Who plays Hermione in the films?",
+    "Emma Watson"
+   ],
+   [
+    "What is the name of the wizarding school Harry attends?",
+    "Hogwarts"
+   ],
+   [
+    "Who plays Harry in the films?",
+    "Daniel Radcliffe"
+   ],
+   [
+    "What do wizards call non-magic people?",
+    "Muggles"
+   ],
+   [
+    "What decides which house each new student joins?",
+    "The Sorting Hat"
+   ],
+   [
+    "What does Harry wear to become invisible?",
+    "An Invisibility Cloak"
+   ],
+   [
+    "What are Harry's mean aunt and uncle called?",
+    "Petunia and Vernon Dursley"
+   ],
+   [
+    "What is the Dursleys' spoiled son called?",
+    "Dudley"
+   ],
+   [
+    "How many main Harry Potter books are there?",
+    "7"
+   ],
+   [
+    "Which house has a badger as its symbol?",
+    "Hufflepuff"
+   ],
+   [
+    "What is Ron's little sister called?",
+    "Ginny"
+   ]
+  ],
+  "200": [
+   [
+    "What is Voldemort's real name?",
+    "Tom Riddle"
+   ],
+   [
+    "What is the Killing Curse?",
+    "Avada Kedavra"
+   ],
+   [
+    "What is Harry's Patronus?",
+    "A stag"
+   ],
+   [
+    "What is the Weasleys' pet rat called?",
+    "Scabbers"
+   ],
+   [
+    "Which creatures guard Azkaban?",
+    "Dementors"
+   ],
+   [
+    "What is Dumbledore's phoenix called?",
+    "Fawkes"
+   ],
+   [
+    "Which house is Luna Lovegood in?",
+    "Ravenclaw"
+   ],
+   [
+    "What comes with every Chocolate Frog?",
+    "A collectible wizard card"
+   ],
+   [
+    "Who is Harry's godfather?",
+    "Sirius Black"
+   ],
+   [
+    "Which Quidditch position does Ron play?",
+    "Keeper"
+   ],
+   [
+    "What is Hagrid's three-headed dog called?",
+    "Fluffy"
+   ],
+   [
+    "What does 'Lumos' do?",
+    "Lights the tip of the wand"
+   ],
+   [
+    "What is the all-wizard village near Hogwarts called?",
+    "Hogsmeade"
+   ],
+   [
+    "Who teaches Potions in Harry's first five years?",
+    "Severus Snape"
+   ],
+   [
+    "What is Hagrid's giant spider called?",
+    "Aragog"
+   ],
+   [
+    "Which ball must the Seeker catch?",
+    "The Golden Snitch"
+   ],
+   [
+    "What are the Weasley twins called?",
+    "Fred and George"
+   ],
+   [
+    "What is the wizard prison called?",
+    "Azkaban"
+   ],
+   [
+    "Who plays Ron in the films?",
+    "Rupert Grint"
+   ],
+   [
+    "What does 'Expecto Patronum' conjure?",
+    "A Patronus"
+   ],
+   [
+    "Who is the grumpy Hogwarts caretaker?",
+    "Argus Filch"
+   ],
+   [
+    "Which sweets come in every flavour, even earwax?",
+    "Bertie Bott's Every Flavour Beans"
+   ],
+   [
+    "Which magical map shows everyone's location in Hogwarts?",
+    "The Marauder's Map"
+   ],
+   [
+    "Who is Draco's father?",
+    "Lucius Malfoy"
+   ],
+   [
+    "What is the wizarding world's daily newspaper?",
+    "The Daily Prophet"
+   ],
+   [
+    "Which potion lets you take on someone else's appearance?",
+    "Polyjuice Potion"
+   ],
+   [
+    "What kind of creature is Dobby?",
+    "A house-elf"
+   ],
+   [
+    "Which house does the Sorting Hat almost put Harry in?",
+    "Slytherin"
+   ]
+  ],
+  "300": [
+   [
+    "What does the Mirror of Erised show?",
+    "Your deepest desire"
+   ],
+   [
+    "Who is the Half-Blood Prince?",
+    "Severus Snape"
+   ],
+   [
+    "Counting Harry, how many Horcruxes did Voldemort make?",
+    "7"
+   ],
+   [
+    "What does Hermione use to attend extra classes?",
+    "A Time-Turner"
+   ],
+   [
+    "Who kills Dumbledore?",
+    "Severus Snape"
+   ],
+   [
+    "What is the three-school competition in Book 4?",
+    "The Triwizard Tournament"
+   ],
+   [
+    "Which two schools compete with Hogwarts in the Triwizard Tournament?",
+    "Beauxbatons and Durmstrang"
+   ],
+   [
+    "What is Voldemort's snake called?",
+    "Nagini"
+   ],
+   [
+    "What does 'Wingardium Leviosa' do?",
+    "Makes objects float"
+   ],
+   [
+    "What frees Dobby?",
+    "A sock"
+   ],
+   [
+    "What is Professor Lupin's secret?",
+    "He's a werewolf"
+   ],
+   [
+    "What is Sirius Black's Animagus form?",
+    "A large black dog"
+   ],
+   [
+    "Which ghost haunts a girls' bathroom?",
+    "Moaning Myrtle"
+   ],
+   [
+    "Which family owned Dobby?",
+    "The Malfoys"
+   ],
+   [
+    "What does 'Accio' do?",
+    "Summons an object"
+   ],
+   [
+    "Who is the Hufflepuff champion in the Triwizard Tournament?",
+    "Cedric Diggory"
+   ],
+   [
+    "What is the Dursleys' address?",
+    "4 Privet Drive"
+   ],
+   [
+    "What is Filch's cat called?",
+    "Mrs Norris"
+   ],
+   [
+    "What is the famous sweet shop in Hogsmeade?",
+    "Honeydukes"
+   ],
+   [
+    "Hermione's S.P.E.W. campaigns for whose rights?",
+    "House-elves"
+   ],
+   [
+    "Who is Minister for Magic for most of the first five books?",
+    "Cornelius Fudge"
+   ],
+   [
+    "Who plays Snape in the films?",
+    "Alan Rickman"
+   ],
+   [
+    "What model is the Weasleys' flying car?",
+    "A Ford Anglia"
+   ],
+   [
+    "Which violent tree does the Weasleys' flying car crash into?",
+    "The Whomping Willow"
+   ],
+   [
+    "What does Harry eat to breathe underwater in the second task?",
+    "Gillyweed"
+   ],
+   [
+    "What are Voldemort's followers called?",
+    "Death Eaters"
+   ],
+   [
+    "Who is Harry's first kiss?",
+    "Cho Chang"
+   ],
+   [
+    "Which room appears only when someone truly needs it?",
+    "The Room of Requirement"
+   ]
+  ],
+  "400": [
+   [
+    "What is Hermione's cat called?",
+    "Crookshanks"
+   ],
+   [
+    "Which Diagon Alley shop sells wands?",
+    "Ollivanders"
+   ],
+   [
+    "Which subject is Neville best at?",
+    "Herbology"
+   ],
+   [
+    "Who teaches Transfiguration and heads Gryffindor?",
+    "Professor McGonagall"
+   ],
+   [
+    "What is the core of Harry's wand?",
+    "A phoenix feather"
+   ],
+   [
+    "What is Snape's Patronus?",
+    "A doe"
+   ],
+   [
+    "What is Tonks's first name?",
+    "Nymphadora"
+   ],
+   [
+    "Name the three Deathly Hallows.",
+    "The Elder Wand, the Resurrection Stone and the Cloak of Invisibility"
+   ],
+   [
+    "What is Dumbledore's first middle name?",
+    "Percival (Albus Percival Wulfric Brian)"
+   ],
+   [
+    "What is the Weasley twins' joke shop called?",
+    "Weasleys' Wizard Wheezes"
+   ],
+   [
+    "Whose sword does Harry pull from the Sorting Hat?",
+    "Godric Gryffindor's"
+   ],
+   [
+    "What is Harry's younger son called?",
+    "Albus Severus Potter"
+   ],
+   [
+    "Name all four Marauders' nicknames.",
+    "Moony, Wormtail, Padfoot and Prongs"
+   ],
+   [
+    "What is the luck potion called?",
+    "Felix Felicis"
+   ],
+   [
+    "What does Umbridge make Harry write lines with?",
+    "A blood quill"
+   ],
+   [
+    "What is Neville's toad called?",
+    "Trevor"
+   ],
+   [
+    "What kind of creature is Buckbeak?",
+    "A hippogriff"
+   ],
+   [
+    "How many points is catching the Golden Snitch worth?",
+    "150"
+   ],
+   [
+    "Who plays Dumbledore in HBO's Harry Potter series, due on 25 December 2026?",
+    "John Lithgow"
+   ],
+   [
+    "What shape does Ron's boggart take?",
+    "A giant spider"
+   ],
+   [
+    "Which winged horses, visible only to people who have seen death, pull the Hogwarts carriages?",
+    "Thestrals"
+   ],
+   [
+    "Which object of Helga Hufflepuff's becomes a Horcrux?",
+    "Her cup"
+   ],
+   [
+    "Which slashing curse did Snape invent?",
+    "Sectumsempra"
+   ],
+   [
+    "What is Bellatrix's married surname?",
+    "Lestrange"
+   ],
+   [
+    "What is Hagrid's giant half-brother called?",
+    "Grawp"
+   ],
+   [
+    "What is the odd magazine run by Luna's father?",
+    "The Quibbler"
+   ],
+   [
+    "Which Weasley brother works with dragons in Romania?",
+    "Charlie"
+   ],
+   [
+    "Which giant snake lives in the Chamber of Secrets?",
+    "The Basilisk"
+   ]
+  ],
+  "500": [
+   [
+    "What is Hagrid's baby dragon called?",
+    "Norbert"
+   ],
+   [
+    "Who is the Knight Bus conductor?",
+    "Stan Shunpike"
+   ],
+   [
+    "In which village is the Riddle House?",
+    "Little Hangleton"
+   ],
+   [
+    "What is Hermione's middle name?",
+    "Jean"
+   ],
+   [
+    "What is Ron's tiny owl called?",
+    "Pigwidgeon"
+   ],
+   [
+    "Who is the Hufflepuff house ghost?",
+    "The Fat Friar"
+   ],
+   [
+    "Who is the Slytherin house ghost?",
+    "The Bloody Baron"
+   ],
+   [
+    "Which spell conjures the Dark Mark?",
+    "Morsmordre"
+   ],
+   [
+    "Which goblin helps break into Gringotts?",
+    "Griphook"
+   ],
+   [
+    "What was Lily Potter's maiden name?",
+    "Evans"
+   ],
+   [
+    "What was Voldemort's mother called?",
+    "Merope Gaunt"
+   ],
+   [
+    "What wood is Harry's wand made of?",
+    "Holly"
+   ],
+   [
+    "Which spell repairs broken objects?",
+    "Reparo"
+   ],
+   [
+    "Which Hogsmeade pub does Aberforth run?",
+    "The Hog's Head"
+   ],
+   [
+    "What is the Gryffindor ghost known as?",
+    "Nearly Headless Nick"
+   ],
+   [
+    "What is the Black family's house-elf called?",
+    "Kreacher"
+   ],
+   [
+    "Name the three Unforgivable Curses.",
+    "Avada Kedavra, Crucio (Cruciatus) and Imperio"
+   ],
+   [
+    "Who is the Ravenclaw house ghost?",
+    "The Grey Lady"
+   ],
+   [
+    "What is Harry's eldest son called?",
+    "James Sirius Potter"
+   ],
+   [
+    "What is Luna's father's first name?",
+    "Xenophilius"
+   ],
+   [
+    "Who plays Snape in HBO's Harry Potter series?",
+    "Paapa Essiedu"
+   ],
+   [
+    "Which dark-arts shop is in Knockturn Alley?",
+    "Borgin and Burkes"
+   ],
+   [
+    "What wood is Voldemort's wand made of?",
+    "Yew"
+   ],
+   [
+    "What is the wizarding hospital called?",
+    "St Mungo's"
+   ],
+   [
+    "What is it called when Harry's and Voldemort's wands connect in a golden beam?",
+    "Priori Incantatem"
+   ],
+   [
+    "Who is the strict Hogwarts librarian?",
+    "Madam Pince"
+   ],
+   [
+    "What is Harry's middle name?",
+    "James"
+   ]
+  ]
+ }
+}

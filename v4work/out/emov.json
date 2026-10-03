@@ -1,0 +1,717 @@
+{
+ "id": "emov",
+ "name": "Emoji Movies & TV",
+ "type": "emoji",
+ "desc": "Name the film or TV show from the emojis.",
+ "arabic_answers": [
+  "El Feel El Azraq"
+ ],
+ "data": {
+  "100": [
+   [
+    "🦁👑",
+    "The Lion King"
+   ],
+   [
+    "🚢🧊💔",
+    "Titanic"
+   ],
+   [
+    "🕷️🧑",
+    "Spider-Man"
+   ],
+   [
+    "🦈🏖️",
+    "Jaws"
+   ],
+   [
+    "🏠😱🎄",
+    "Home Alone"
+   ],
+   [
+    "❄️👸⛄",
+    "Frozen"
+   ],
+   [
+    "🦖🏝️",
+    "Jurassic Park"
+   ],
+   [
+    "🐼🥋",
+    "Kung Fu Panda"
+   ],
+   [
+    "🧙‍♂️⚡👓",
+    "Harry Potter"
+   ],
+   [
+    "🐠🔍",
+    "Finding Nemo"
+   ],
+   [
+    "🧸🚀🤠",
+    "Toy Story"
+   ],
+   [
+    "🦇🦸‍♂️",
+    "Batman"
+   ],
+   [
+    "🟢👹🏰",
+    "Shrek"
+   ],
+   [
+    "🐭👨‍🍳",
+    "Ratatouille"
+   ],
+   [
+    "🎈🏠👴",
+    "Up"
+   ],
+   [
+    "⚡🔨",
+    "Thor"
+   ],
+   [
+    "🧸🍯🎈",
+    "Winnie the Pooh"
+   ],
+   [
+    "🧽🍍🌊",
+    "SpongeBob SquarePants (TV)"
+   ],
+   [
+    "🦑🎮",
+    "Squid Game (TV)"
+   ],
+   [
+    "👫👫👫☕",
+    "Friends (TV)"
+   ],
+   [
+    "🔦🧇👧",
+    "Stranger Things (TV)"
+   ],
+   [
+    "🟡👨‍👩‍👧‍👦🍩",
+    "The Simpsons (TV)"
+   ],
+   [
+    "🍕🐢🥷",
+    "Teenage Mutant Ninja Turtles"
+   ],
+   [
+    "🚗⚡🏁",
+    "Cars"
+   ],
+   [
+    "💛👓🍌",
+    "Minions (or Despicable Me)"
+   ],
+   [
+    "🌹👸👹",
+    "Beauty and the Beast"
+   ],
+   [
+    "👠🎃🕛",
+    "Cinderella"
+   ],
+   [
+    "🍎👸🪞",
+    "Snow White"
+   ],
+   [
+    "🤥👃🪵",
+    "Pinocchio"
+   ],
+   [
+    "🦁🦓🦒🦛🗽",
+    "Madagascar"
+   ],
+   [
+    "🧊🐘🐿️🌰",
+    "Ice Age"
+   ],
+   [
+    "🐱🐭💥",
+    "Tom and Jerry (TV)"
+   ],
+   [
+    "🏎️💨👨‍👩‍👦",
+    "Fast & Furious"
+   ],
+   [
+    "👱‍♀️💖👠",
+    "Barbie"
+   ],
+   [
+    "👹🚪😱👧",
+    "Monsters, Inc."
+   ]
+  ],
+  "200": [
+   [
+    "👽📞🏠",
+    "E.T."
+   ],
+   [
+    "💊🕶️🥋",
+    "The Matrix"
+   ],
+   [
+    "🏴‍☠️🦜⚓",
+    "Pirates of the Caribbean"
+   ],
+   [
+    "⏰🔙🚗",
+    "Back to the Future"
+   ],
+   [
+    "🦍🏙️",
+    "King Kong"
+   ],
+   [
+    "🧞‍♂️🪔🐒",
+    "Aladdin"
+   ],
+   [
+    "🍫🏭🎫",
+    "Charlie and the Chocolate Factory (or Willy Wonka & the Chocolate Factory)"
+   ],
+   [
+    "👻🚫",
+    "Ghostbusters"
+   ],
+   [
+    "💍🌋🧝",
+    "The Lord of the Rings"
+   ],
+   [
+    "🥊🐯🏃",
+    "Rocky"
+   ],
+   [
+    "🏃‍♂️🍫🪶",
+    "Forrest Gump"
+   ],
+   [
+    "🤖🌱",
+    "WALL-E"
+   ],
+   [
+    "🧜‍♀️🐚",
+    "The Little Mermaid"
+   ],
+   [
+    "🌪️🏠👠",
+    "The Wizard of Oz"
+   ],
+   [
+    "🦸‍♂️🛡️🇺🇸",
+    "Captain America"
+   ],
+   [
+    "❓🚂🐉",
+    "How to Train Your Dragon"
+   ],
+   [
+    "👨‍🚀🥔🔴",
+    "The Martian"
+   ],
+   [
+    "🧟🧟🌍",
+    "World War Z"
+   ],
+   [
+    "🐵🌍",
+    "Planet of the Apes"
+   ],
+   [
+    "🧪👨‍🏫💰",
+    "Breaking Bad (TV)"
+   ],
+   [
+    "🐉👑❄️",
+    "Game of Thrones (TV)"
+   ],
+   [
+    "🎭🔴💶",
+    "Money Heist (TV)"
+   ],
+   [
+    "🔒🏃‍♂️🗺️",
+    "Prison Break (TV)"
+   ],
+   [
+    "🧢🪒🥃",
+    "Peaky Blinders (TV)"
+   ],
+   [
+    "🎈🤡",
+    "It"
+   ],
+   [
+    "🖤👧✋",
+    "Wednesday (TV)"
+   ],
+   [
+    "🧸🚗👨",
+    "Mr. Bean (TV)"
+   ],
+   [
+    "🐧💃🎶",
+    "Happy Feet"
+   ],
+   [
+    "👸🐸💋",
+    "The Princess and the Frog"
+   ],
+   [
+    "🦍🆚🦖",
+    "Godzilla vs. Kong"
+   ],
+   [
+    "🐰👮‍♀️🦊",
+    "Zootopia"
+   ],
+   [
+    "🌊🛶🐓",
+    "Moana"
+   ],
+   [
+    "💀🎸🇲🇽",
+    "Coco"
+   ],
+   [
+    "🔵👽🌳",
+    "Avatar"
+   ],
+   [
+    "🏹🔥👧🍞",
+    "The Hunger Games"
+   ]
+  ],
+  "300": [
+   [
+    "💭🌀🔝",
+    "Inception"
+   ],
+   [
+    "🃏😂🪜",
+    "Joker"
+   ],
+   [
+    "🌌🚀⏳",
+    "Interstellar"
+   ],
+   [
+    "👊🧼",
+    "Fight Club"
+   ],
+   [
+    "🚕🔫🗽",
+    "Taxi Driver"
+   ],
+   [
+    "🐺🧱💰",
+    "The Wolf of Wall Street"
+   ],
+   [
+    "🧠😄😢😡",
+    "Inside Out"
+   ],
+   [
+    "🏝️🏐",
+    "Cast Away"
+   ],
+   [
+    "🦢⚫🩰",
+    "Black Swan"
+   ],
+   [
+    "🥁😤",
+    "Whiplash"
+   ],
+   [
+    "⏪🧠📝",
+    "Memento"
+   ],
+   [
+    "🎹🌃⭐",
+    "La La Land"
+   ],
+   [
+    "🐅🚣‍♂️🌊",
+    "Life of Pi"
+   ],
+   [
+    "🔪🐑🔇",
+    "The Silence of the Lambs"
+   ],
+   [
+    "✂️✋👦",
+    "Edward Scissorhands"
+   ],
+   [
+    "👰🏃‍♀️",
+    "Runaway Bride"
+   ],
+   [
+    "🦁🧙‍♀️🚪",
+    "The Lion, the Witch and the Wardrobe (Narnia)"
+   ],
+   [
+    "🎩🍫✨",
+    "Wonka (accept any Willy Wonka film)"
+   ],
+   [
+    "🕵️‍♂️🔍🎻",
+    "Sherlock Holmes (or Sherlock)"
+   ],
+   [
+    "📄🏢🖨️",
+    "The Office (TV)"
+   ],
+   [
+    "🇨🇴💊👮",
+    "Narcos (TV)"
+   ],
+   [
+    "🧟🧟🔫",
+    "The Walking Dead (TV)"
+   ],
+   [
+    "🩸🔪🧑‍🔬",
+    "Dexter (TV)"
+   ],
+   [
+    "👑🇬🇧📺",
+    "The Crown (TV)"
+   ],
+   [
+    "🧪🦠🍄🧟",
+    "The Last of Us (TV)"
+   ],
+   [
+    "🐴🛏️🍝🔫",
+    "The Godfather"
+   ],
+   [
+    "🏜️🪱🌶️",
+    "Dune"
+   ],
+   [
+    "🔨🧱🌧️🏃",
+    "The Shawshank Redemption"
+   ],
+   [
+    "🐶✏️🔫",
+    "John Wick"
+   ],
+   [
+    "😈👠👜",
+    "The Devil Wears Prada"
+   ],
+   [
+    "🌊1️⃣1️⃣🎰",
+    "Ocean's Eleven"
+   ],
+   [
+    "☢️🏭🇺🇦",
+    "Chernobyl (TV)"
+   ],
+   [
+    "🎩🇫🇷💎",
+    "Lupin (TV)"
+   ],
+   [
+    "⚔️🏟️👑🐯",
+    "Gladiator"
+   ],
+   [
+    "🏠🩺💊🦯",
+    "House (TV)"
+   ]
+  ],
+  "400": [
+   [
+    "📺🏝️👀",
+    "The Truman Show"
+   ],
+   [
+    "💣🧑‍🔬☢️",
+    "Oppenheimer"
+   ],
+   [
+    "🏨💐🎂",
+    "The Grand Budapest Hotel"
+   ],
+   [
+    "🪨🏠🍑",
+    "Parasite"
+   ],
+   [
+    "🐟💚👩",
+    "The Shape of Water"
+   ],
+   [
+    "⏰🦫🔁",
+    "Groundhog Day"
+   ],
+   [
+    "🧑‍✈️🆔🏃",
+    "Catch Me If You Can"
+   ],
+   [
+    "🧠🧽💔",
+    "Eternal Sunshine of the Spotless Mind"
+   ],
+   [
+    "🐦🎭🎬",
+    "Birdman"
+   ],
+   [
+    "🌽👽⭕",
+    "Signs"
+   ],
+   [
+    "🔢🧠🎓",
+    "A Beautiful Mind"
+   ],
+   [
+    "🌙👦🌊",
+    "Moonlight"
+   ],
+   [
+    "🏞️🐻💀",
+    "The Revenant"
+   ],
+   [
+    "🚗🏁🇺🇸🇮🇹",
+    "Ford v Ferrari"
+   ],
+   [
+    "8️⃣😠🤠",
+    "The Hateful Eight"
+   ],
+   [
+    "🎩🃏💰",
+    "Now You See Me"
+   ],
+   [
+    "🌊🧊🗽",
+    "The Day After Tomorrow"
+   ],
+   [
+    "👴➡️👶",
+    "The Curious Case of Benjamin Button"
+   ],
+   [
+    "💊🧠🚀",
+    "Limitless"
+   ],
+   [
+    "🔁🪖👽",
+    "Edge of Tomorrow"
+   ],
+   [
+    "📺⬛🪞",
+    "Black Mirror (TV)"
+   ],
+   [
+    "✈️🏝️🔢",
+    "Lost (TV)"
+   ],
+   [
+    "1️⃣2️⃣😠👨‍⚖️",
+    "12 Angry Men"
+   ],
+   [
+    "🏝️🔒🧠",
+    "Shutter Island"
+   ],
+   [
+    "☂️💃🌧️",
+    "Singin' in the Rain"
+   ],
+   [
+    "🐘🔵",
+    "El Feel El Azraq"
+   ],
+   [
+    "6️⃣👀👻",
+    "The Sixth Sense"
+   ],
+   [
+    "🫖🥄😱",
+    "Get Out"
+   ],
+   [
+    "🐪🏜️🇬🇧",
+    "Lawrence of Arabia"
+   ],
+   [
+    "🚫🌍👴",
+    "No Country for Old Men"
+   ],
+   [
+    "🤖👩🧪🔒",
+    "Ex Machina"
+   ],
+   [
+    "👽🦑✍️",
+    "Arrival"
+   ],
+   [
+    "🪖🚤🇬🇧🏖️",
+    "Dunkirk"
+   ],
+   [
+    "💰🧼🏞️",
+    "Ozark (TV)"
+   ],
+   [
+    "🐻🍳🔪",
+    "The Bear (TV)"
+   ]
+  ],
+  "500": [
+   [
+    "🏃‍♀️🔴💰",
+    "Run Lola Run"
+   ],
+   [
+    "🪓🚪❄️",
+    "The Shining"
+   ],
+   [
+    "🍊⚙️",
+    "A Clockwork Orange"
+   ],
+   [
+    "🐦🐦🐦😱",
+    "The Birds"
+   ],
+   [
+    "👁️🪟📸",
+    "Rear Window"
+   ],
+   [
+    "🥊🐂",
+    "Raging Bull"
+   ],
+   [
+    "🛷🌹📰",
+    "Citizen Kane"
+   ],
+   [
+    "🐦🥚🏥",
+    "One Flew Over the Cuckoo's Nest"
+   ],
+   [
+    "⛵🐟👴",
+    "The Old Man and the Sea"
+   ],
+   [
+    "🎥🍿🇮🇹",
+    "Cinema Paradiso"
+   ],
+   [
+    "🎩🐦🪄",
+    "The Prestige"
+   ],
+   [
+    "🧚‍♀️🌿👧🗝️",
+    "Pan's Labyrinth"
+   ],
+   [
+    "🐘👨",
+    "The Elephant Man"
+   ],
+   [
+    "🎂🔁🔪",
+    "Happy Death Day"
+   ],
+   [
+    "👫🪞✂️",
+    "Us"
+   ],
+   [
+    "🏢💰👨‍👧‍👦👑",
+    "Succession (TV)"
+   ],
+   [
+    "🧠✂️🏢",
+    "Severance (TV)"
+   ],
+   [
+    "🦉🌲☕🍒",
+    "Twin Peaks (TV)"
+   ],
+   [
+    "🎤🗽🥣🚫",
+    "Seinfeld (TV)"
+   ],
+   [
+    "📞🎧🚔",
+    "The Wire (TV)"
+   ],
+   [
+    "📋🏭👧🔴",
+    "Schindler's List"
+   ],
+   [
+    "⏪⏩🕵️‍♂️",
+    "Tenet"
+   ],
+   [
+    "🥯👀🌀🌌",
+    "Everything Everywhere All at Once"
+   ],
+   [
+    "👩🇫🇷🥄🍮",
+    "Amélie"
+   ],
+   [
+    "😵‍💫🌀🗼",
+    "Vertigo"
+   ],
+   [
+    "✈️🎹🇲🇦",
+    "Casablanca"
+   ],
+   [
+    "🚿🔪🏨",
+    "Psycho"
+   ],
+   [
+    "🚁🔥🌴🎶",
+    "Apocalypse Now"
+   ],
+   [
+    "👧🛁🐉👻",
+    "Spirited Away"
+   ],
+   [
+    "❄️🤰👮‍♀️",
+    "Fargo"
+   ],
+   [
+    "🛢️🥤🩸",
+    "There Will Be Blood"
+   ],
+   [
+    "🍝🔫🛋️🦆",
+    "The Sopranos (TV)"
+   ],
+   [
+    "🚬🥃👔📢",
+    "Mad Men (TV)"
+   ],
+   [
+    "🍌🏠💰",
+    "Arrested Development (TV)"
+   ]
+  ]
+ }
+}

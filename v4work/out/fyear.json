@@ -1,0 +1,338 @@
+{
+"id": "fyear",
+"name": "Guess the Year: Football Edition",
+"type": "text",
+"desc": "Three football events from the same year. Name the year. Mostly 2000 onwards.",
+"data": {
+"100": [
+[
+"What year? Brazil win the World Cup in Japan and South Korea · Ronaldo plays with a half-moon haircut · Senegal beat holders France in the opening game",
+"2002"
+],
+[
+"What year? Italy win the World Cup in Germany · Zidane is sent off for a headbutt in the final · Egypt win the Africa Cup of Nations at home",
+"2006"
+],
+[
+"What year? Spain win the World Cup in South Africa · Paul the Octopus predicts the results · Inter win the treble under Mourinho",
+"2010"
+],
+[
+"What year? Germany win the World Cup in Brazil · Brazil lose 7–1 to Germany · Luis Suárez bites Giorgio Chiellini",
+"2014"
+],
+[
+"What year? France win the World Cup in Russia · Egypt play at their first World Cup in 28 years · Cristiano Ronaldo joins Juventus",
+"2018"
+],
+[
+"What year? Argentina win the World Cup in Qatar · Mbappé scores a hat-trick in the final · Cristiano Ronaldo leaves Manchester United",
+"2022"
+],
+[
+"What year? Leicester win the Premier League · Portugal win the Euros · Iceland knock England out of the Euros",
+"2016"
+],
+[
+"What year? Italy win the delayed Euro 2020 · Messi leaves Barcelona for PSG · Cristiano Ronaldo returns to Manchester United",
+"2021"
+],
+[
+"What year? Manchester City win the treble · Messi joins Inter Miami · Cristiano Ronaldo makes his Al Nassr debut",
+"2023"
+],
+[
+"What year? Spain win the Euros in Germany · Mbappé joins Real Madrid · Leverkusen win the Bundesliga unbeaten",
+"2024"
+],
+[
+"What year? Neymar joins PSG for a world-record €222m · Mohamed Salah joins Liverpool · Egypt qualify for their first World Cup in 28 years",
+"2017"
+],
+[
+"What year? Liverpool win the Champions League in Madrid · Egypt host the Africa Cup of Nations · Liverpool beat Barcelona 4–0 at Anfield",
+"2019"
+],
+[
+"What year? Liverpool win their first league title in 30 years · Diego Maradona dies · Football stops for months because of COVID",
+"2020"
+],
+[
+"What year? The first 48-team World Cup is played in Canada, Mexico and the USA · Spain win the World Cup · Egypt win a World Cup knockout match for the first time",
+"2026"
+],
+[
+"What year? Agüero scores in the 93rd minute to win City the title · Chelsea win the Champions League in Munich · Spain beat Italy 4–0 in the Euro final",
+"2012"
+],
+[
+"What year? Spain win the Euros · Manchester United beat Chelsea on penalties in Moscow · Egypt win the Africa Cup of Nations in Ghana",
+"2008"
+]
+],
+"200": [
+[
+"What year? Greece win the Euros · Mourinho's Porto win the Champions League · Arsenal finish the league season unbeaten",
+"2004"
+],
+[
+"What year? Liverpool come back from 3–0 down in Istanbul · Chelsea win their first league title in 50 years · Messi scores his first goal for Barcelona",
+"2005"
+],
+[
+"What year? Cristiano Ronaldo joins Real Madrid for £80m · Barcelona win six trophies in one year · Thierry Henry's handball knocks Ireland out of World Cup qualifying",
+"2009"
+],
+[
+"What year? Sir Alex Ferguson retires · Gareth Bale joins Real Madrid · Bayern beat Dortmund in the Champions League final at Wembley",
+"2013"
+],
+[
+"What year? Barcelona win the treble with Messi, Suárez and Neymar · FIFA officials are arrested in Zurich · Chelsea win the league under Mourinho",
+"2015"
+],
+[
+"What year? Barcelona beat Manchester United in the Champions League final at Wembley · Manchester City win 6–1 at Old Trafford · Fernando Torres joins Chelsea for £50m",
+"2011"
+],
+[
+"What year? David Beckham joins LA Galaxy · Milan beat Liverpool in the Champions League final in Athens · Kaká wins the Ballon d'Or",
+"2007"
+],
+[
+"What year? Roman Abramovich buys Chelsea · David Beckham joins Real Madrid · Cristiano Ronaldo joins Manchester United",
+"2003"
+],
+[
+"What year? Liverpool win the FA Cup, League Cup and UEFA Cup · Zidane joins Real Madrid for a world-record fee · England beat Germany 5–1 in Munich",
+"2001"
+],
+[
+"What year? France win the Euros with a golden goal · Luís Figo moves from Barcelona to Real Madrid · Real Madrid beat Valencia in the Champions League final",
+"2000"
+],
+[
+"What year? PSG win their first Champions League · Liverpool win a record-equalling 20th English title · Omar Marmoush joins Manchester City",
+"2025"
+],
+[
+"What year? Senegal beat Egypt on penalties in the Africa Cup of Nations final · Erling Haaland joins Manchester City · Real Madrid beat Liverpool in the Champions League final in Paris",
+"2022"
+],
+[
+"What year? Bale scores an overhead kick as Real Madrid win a third straight Champions League · Mohamed Salah scores a record 32 Premier League goals · Manchester City finish the league with 100 points",
+"2018"
+],
+[
+"What year? Real Madrid win 'La Décima', their 10th European Cup · Mohamed Salah joins Chelsea · Luis Suárez joins Barcelona",
+"2014"
+],
+[
+"What year? France win the World Cup at home · Egypt win the Africa Cup of Nations in Burkina Faso · Michael Owen scores a solo wonder goal against Argentina",
+"1998"
+],
+[
+"What year? Manchester United win the treble · United score twice in stoppage time to win the Champions League final at the Camp Nou · Rivaldo wins the Ballon d'Or",
+"1999"
+]
+],
+"300": [
+[
+"What year? Barcelona beat Arsenal in the Champions League final in Paris · Juventus are relegated over a match-fixing scandal · Fabio Cannavaro wins the Ballon d'Or",
+"2006"
+],
+[
+"What year? Frank Lampard's 'ghost goal' against Germany isn't given · Luis Suárez handles on the line against Ghana · Qatar are awarded the 2022 World Cup",
+"2010"
+],
+[
+"What year? Zambia win the Africa Cup of Nations · Robin van Persie joins Manchester United · Messi scores 91 goals in a calendar year",
+"2012"
+],
+[
+"What year? Paul Pogba rejoins Manchester United for a world-record fee · Real Madrid beat Atlético on penalties in the Champions League final in Milan · Cristiano Ronaldo wins his fourth Ballon d'Or",
+"2016"
+],
+[
+"What year? Barcelona come back from 4–0 down to beat PSG 6–1 · Cameroon beat Egypt in the Africa Cup of Nations final · Real Madrid beat Juventus in the Champions League final in Cardiff",
+"2017"
+],
+[
+"What year? Algeria win the Africa Cup of Nations in Egypt · The USA win the Women's World Cup in France · Manchester City win a domestic treble",
+"2019"
+],
+[
+"What year? Bayern beat Barcelona 8–2 · Al Ahly beat Zamalek in the 'Final of the Century' · Messi sends a burofax asking to leave Barcelona",
+"2020"
+],
+[
+"What year? The European Super League collapses within 48 hours · Chelsea win the Champions League in Porto · Argentina win the Copa América at the Maracanã",
+"2021"
+],
+[
+"What year? Jude Bellingham joins Real Madrid · Harry Kane joins Bayern Munich · Spain win the Women's World Cup",
+"2023"
+],
+[
+"What year? Ivory Coast win the Africa Cup of Nations as hosts · Jürgen Klopp leaves Liverpool · Real Madrid win their 15th European Cup at Wembley",
+"2024"
+],
+[
+"What year? Abu Dhabi owners buy Manchester City · Pep Guardiola becomes Barcelona coach · Cristiano Ronaldo wins his first Ballon d'Or",
+"2008"
+],
+[
+"What year? Egypt beat world champions Italy at the Confederations Cup · Egypt lose a World Cup play-off to Algeria in Omdurman · Messi wins his first Ballon d'Or",
+"2009"
+],
+[
+"What year? Wigan win the FA Cup and are relegated in the same season · Neymar joins Barcelona · Nigeria win the Africa Cup of Nations",
+"2013"
+],
+[
+"What year? Zidane's volley wins the Champions League final in Glasgow · Zamalek win the CAF Champions League · Rio Ferdinand joins Manchester United",
+"2002"
+],
+[
+"What year? Mourinho joins Chelsea and calls himself 'a special one' · Wayne Rooney joins Manchester United · Tunisia win the Africa Cup of Nations at home",
+"2004"
+],
+[
+"What year? Kevin De Bruyne joins Manchester City · Ivory Coast win the Africa Cup of Nations on penalties · Chile win the Copa América at home",
+"2015"
+]
+],
+"400": [
+[
+"What year? Bayern beat Valencia on penalties in the Champions League final · Juventus sign Buffon for a world-record goalkeeper fee · Rivaldo's bicycle-kick hat-trick against Valencia",
+"2001"
+],
+[
+"What year? Milan beat Juventus on penalties at Old Trafford · Ronaldinho joins Barcelona · Pavel Nedvěd wins the Ballon d'Or",
+"2003"
+],
+[
+"What year? Real Madrid fans applaud Ronaldinho at the Bernabéu · The Glazer family buys Manchester United · Brazil win the Confederations Cup in Germany",
+"2005"
+],
+[
+"What year? Thierry Henry joins Barcelona · Sevilla win a second straight UEFA Cup · Iraq win the Asian Cup",
+"2007"
+],
+[
+"What year? Manchester United win a record 19th English title · Japan win the Women's World Cup · Uruguay win the Copa América",
+"2011"
+],
+[
+"What year? Cameroon win the Africa Cup of Nations and Olympic gold · Galatasaray win the UEFA Cup · Chelsea win the last FA Cup final at the old Wembley",
+"2000"
+],
+[
+"What year? West Germany win the World Cup in Italy · Egypt play at their second World Cup · Roger Milla dances at the corner flag",
+"1990"
+],
+[
+"What year? Roberto Baggio misses the decisive penalty in the World Cup final · The USA host the World Cup · Maradona is sent home from the World Cup after a failed drug test",
+"1994"
+],
+[
+"What year? Maradona scores the 'Hand of God' goal · Egypt win the Africa Cup of Nations at home · Mexico host the World Cup",
+"1986"
+],
+[
+"What year? Pyramids win the CAF Champions League · Chelsea win the expanded Club World Cup in the USA · Kevin De Bruyne joins Napoli",
+"2025"
+],
+[
+"What year? Arsène Wenger leaves Arsenal after 22 years · Luka Modrić wins the Ballon d'Or · VAR is used at a World Cup for the first time",
+"2018"
+],
+[
+"What year? Karim Benzema wins the Ballon d'Or · Pelé dies · Todd Boehly's group buys Chelsea",
+"2022"
+],
+[
+"What year? Christian Eriksen collapses on the pitch at the Euros · Saudi Arabia's PIF buys Newcastle · Lewandowski breaks Gerd Müller's 41-goal Bundesliga record",
+"2021"
+],
+[
+"What year? Messi wins his sixth Ballon d'Or · João Félix joins Atlético Madrid for €126m · Ajax knock out Real Madrid and Juventus to reach the Champions League semi-finals",
+"2019"
+],
+[
+"What year? Neymar joins Al Hilal · Al Ahly beat Wydad in the CAF Champions League final · Karim Benzema joins Al-Ittihad",
+"2023"
+],
+[
+"What year? Argentina win the Copa América in the USA · Rodri wins the Ballon d'Or · Al Ahly beat Espérance in the CAF Champions League final",
+"2024"
+]
+],
+"500": [
+[
+"What year? Ronaldo joins Real Madrid · Cameroon win the Africa Cup of Nations in Mali · Arsenal win the league and FA Cup double",
+"2002"
+],
+[
+"What year? Andriy Shevchenko wins the Ballon d'Or · Valencia win La Liga and the UEFA Cup · Werder Bremen win the German double",
+"2004"
+],
+[
+"What year? Ballack and Shevchenko join Chelsea · Ghana play at their first World Cup · Sevilla win their first UEFA Cup",
+"2006"
+],
+[
+"What year? Russia reach the Euro semi-finals under Guus Hiddink · Zenit Saint Petersburg win the UEFA Cup · Portsmouth win the FA Cup",
+"2008"
+],
+[
+"What year? Kaká joins Real Madrid · Brazil win the Confederations Cup in South Africa · Wolfsburg win the Bundesliga",
+"2009"
+],
+[
+"What year? Mourinho becomes Real Madrid coach · Atlético Madrid win the first Europa League final · Egypt win the Africa Cup of Nations in Angola",
+"2010"
+],
+[
+"What year? Rooney scores an overhead kick against Manchester City · Al Sadd win the AFC Champions League · Villas-Boas's Porto win the Europa League",
+"2011"
+],
+[
+"What year? Montpellier win Ligue 1 · Dortmund win the German double · Didier Drogba joins Shanghai Shenhua",
+"2012"
+],
+[
+"What year? Brazil beat Spain 3–0 in the Confederations Cup final · David Moyes replaces Ferguson at Manchester United · Bayern win the treble under Jupp Heynckes",
+"2013"
+],
+[
+"What year? Gerrard slips and Manchester City win the title · James Rodríguez wins the World Cup Golden Boot · Louis van Gaal becomes Manchester United manager",
+"2014"
+],
+[
+"What year? Sepp Blatter announces he will step down as FIFA president · Sevilla win the Europa League in Warsaw · Messi leaves Jérôme Boateng on the floor in a Champions League semi-final",
+"2015"
+],
+[
+"What year? Wales reach the Euro semi-finals · Zidane takes over as Real Madrid coach · Pep Guardiola joins Manchester City",
+"2016"
+],
+[
+"What year? Chelsea win the league under Antonio Conte · Arsenal beat Chelsea in the FA Cup final · Cristiano Ronaldo wins his fifth Ballon d'Or",
+"2017"
+],
+[
+"What year? Euro 2020 is postponed by a year · Bayern beat PSG in the Champions League final in Lisbon · Lewandowski is named FIFA's best men's player",
+"2020"
+],
+[
+"What year? Luís Figo wins the Ballon d'Or · Zidane is named FIFA World Player of the Year · Galatasaray beat Real Madrid in the UEFA Super Cup",
+"2000"
+],
+[
+"What year? Ronaldo falls ill hours before the World Cup final · Croatia finish third at their first World Cup · Davor Šuker wins the World Cup Golden Boot",
+"1998"
+]
+]
+}
+}

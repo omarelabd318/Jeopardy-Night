@@ -1,0 +1,470 @@
+{
+ "id": "myth",
+ "name": "Mythology",
+ "type": "text",
+ "desc": "Greek, Egyptian, Norse and other myths: gods, heroes and monsters.",
+ "data": {
+  "100": [
+   [
+    "King of the Greek gods, who threw lightning bolts.",
+    "Zeus"
+   ],
+   [
+    "Norse god of thunder who carries the hammer Mjölnir.",
+    "Thor"
+   ],
+   [
+    "The Egyptian sun god.",
+    "Ra"
+   ],
+   [
+    "Greek hero whose only weak spot was his heel.",
+    "Achilles"
+   ],
+   [
+    "Half man, half bull, it lived in a labyrinth on Crete.",
+    "The Minotaur"
+   ],
+   [
+    "She had snakes for hair and turned people to stone.",
+    "Medusa"
+   ],
+   [
+    "Greek god of the sea, who carries a trident.",
+    "Poseidon"
+   ],
+   [
+    "The famous winged horse of Greek myth.",
+    "Pegasus"
+   ],
+   [
+    "Greek hero who completed 12 labours.",
+    "Heracles (Hercules)"
+   ],
+   [
+    "The Greeks hid inside a wooden horse to get into which city?",
+    "Troy"
+   ],
+   [
+    "Jackal-headed Egyptian god of mummification.",
+    "Anubis"
+   ],
+   [
+    "Home of the Norse gods.",
+    "Asgard"
+   ],
+   [
+    "Mythical bird that is reborn from its own ashes.",
+    "The phoenix"
+   ],
+   [
+    "Roman god of love who shoots arrows.",
+    "Cupid"
+   ],
+   [
+    "Giant with a single eye in the middle of his forehead.",
+    "A Cyclops"
+   ],
+   [
+    "Sea creature that is half woman, half fish.",
+    "A mermaid"
+   ],
+   [
+    "Creature with a lion's body and a human head, famously at Giza.",
+    "The Sphinx"
+   ],
+   [
+    "Mountain home of the Greek gods.",
+    "Mount Olympus"
+   ],
+   [
+    "Creature that is half man, half horse.",
+    "A centaur"
+   ],
+   [
+    "Homer's poem about Odysseus's long journey home.",
+    "The Odyssey"
+   ],
+   [
+    "Wizard who advised King Arthur.",
+    "Merlin"
+   ],
+   [
+    "King Arthur's magic sword.",
+    "Excalibur"
+   ],
+   [
+    "Spirits made of smokeless fire in Arabian folklore.",
+    "Jinn (genies)"
+   ]
+  ],
+  "200": [
+   [
+    "Greek god of the underworld.",
+    "Hades"
+   ],
+   [
+    "Greek goddess of love and beauty.",
+    "Aphrodite"
+   ],
+   [
+    "She opened a jar and released all the evils into the world.",
+    "Pandora"
+   ],
+   [
+    "He flew too close to the sun on wings made of wax.",
+    "Icarus"
+   ],
+   [
+    "Egyptian god of the afterlife, killed by his own brother.",
+    "Osiris"
+   ],
+   [
+    "Egyptian god of chaos, storms and the desert.",
+    "Set (Seth)"
+   ],
+   [
+    "Falcon-headed Egyptian sky god whose eye is a symbol of protection.",
+    "Horus"
+   ],
+   [
+    "The Norse trickster god.",
+    "Loki"
+   ],
+   [
+    "Greek messenger god with winged sandals.",
+    "Hermes"
+   ],
+   [
+    "Goddess of wisdom who sprang fully grown from Zeus's head.",
+    "Athena"
+   ],
+   [
+    "He fell in love with his own reflection.",
+    "Narcissus"
+   ],
+   [
+    "What did the Romans call Zeus?",
+    "Jupiter"
+   ],
+   [
+    "Greek goddess of victory, now a sports brand.",
+    "Nike"
+   ],
+   [
+    "Greek god of wine and celebration.",
+    "Dionysus"
+   ],
+   [
+    "Greek goddess of the hunt and the moon, usually shown with a bow.",
+    "Artemis"
+   ],
+   [
+    "Greek god of war.",
+    "Ares"
+   ],
+   [
+    "Egyptian symbol called the 'key of life'.",
+    "The ankh"
+   ],
+   [
+    "Roman god of war, who gave his name to a planet.",
+    "Mars"
+   ],
+   [
+    "Queen of the Greek gods and wife of Zeus.",
+    "Hera"
+   ],
+   [
+    "Sailor from the Arabian Nights who makes seven voyages.",
+    "Sinbad"
+   ],
+   [
+    "Her face 'launched a thousand ships'.",
+    "Helen of Troy"
+   ],
+   [
+    "Sea creatures whose singing lured sailors to their deaths.",
+    "The Sirens"
+   ],
+   [
+    "Greek god of the sun, music and prophecy.",
+    "Apollo"
+   ]
+  ],
+  "300": [
+   [
+    "Hero who cut off Medusa's head.",
+    "Perseus"
+   ],
+   [
+    "He led the Argonauts in search of the Golden Fleece.",
+    "Jason"
+   ],
+   [
+    "Odysseus spent ten years trying to get home to which island?",
+    "Ithaca"
+   ],
+   [
+    "Norse father of the gods, who gave up an eye for wisdom.",
+    "Odin"
+   ],
+   [
+    "Egyptian goddess of magic who gathered up her murdered husband's body.",
+    "Isis"
+   ],
+   [
+    "Cat-headed Egyptian goddess.",
+    "Bastet"
+   ],
+   [
+    "Ibis-headed Egyptian god of writing and wisdom.",
+    "Thoth"
+   ],
+   [
+    "Three-headed dog that guards the Greek underworld.",
+    "Cerberus"
+   ],
+   [
+    "Titan who stole fire from the gods and gave it to humans.",
+    "Prometheus"
+   ],
+   [
+    "Great hall where Norse warriors go after dying in battle.",
+    "Valhalla"
+   ],
+   [
+    "King whose touch turned everything, even his food, to gold.",
+    "Midas"
+   ],
+   [
+    "Many-headed monster: cut off one head and two grow back.",
+    "The Hydra"
+   ],
+   [
+    "Titan condemned to hold up the sky.",
+    "Atlas"
+   ],
+   [
+    "Greek blacksmith god of fire and the forge.",
+    "Hephaestus"
+   ],
+   [
+    "Egyptian cow goddess of love, music and joy.",
+    "Hathor"
+   ],
+   [
+    "Norse goddess of love whose chariot is pulled by cats.",
+    "Freya (Freyja)"
+   ],
+   [
+    "Creature with a lion's body and an eagle's head and wings.",
+    "A griffin"
+   ],
+   [
+    "Two-faced Roman god who gave his name to January.",
+    "Janus"
+   ],
+   [
+    "Greek goddess of the harvest and mother of Persephone.",
+    "Demeter"
+   ],
+   [
+    "Rainbow bridge between Midgard and Asgard.",
+    "Bifröst"
+   ],
+   [
+    "He solved the Sphinx's riddle at Thebes.",
+    "Oedipus"
+   ],
+   [
+    "Greek god of dreams, who shares his name with a Matrix character.",
+    "Morpheus"
+   ],
+   [
+    "Odysseus's wife, who waited 20 years for him.",
+    "Penelope"
+   ]
+  ],
+  "400": [
+   [
+    "Elephant-headed Hindu god of new beginnings.",
+    "Ganesha"
+   ],
+   [
+    "Ferryman who carries the dead across the river Styx.",
+    "Charon"
+   ],
+   [
+    "He was punished by pushing a boulder uphill forever.",
+    "Sisyphus"
+   ],
+   [
+    "In the Egyptian afterlife, your heart was weighed against the feather of which goddess?",
+    "Ma'at"
+   ],
+   [
+    "Giant serpent that attacks Ra's boat every night.",
+    "Apep (Apophis)"
+   ],
+   [
+    "Norse name for the end of the world.",
+    "Ragnarök"
+   ],
+   [
+    "Giant tree that connects the nine Norse worlds.",
+    "Yggdrasil"
+   ],
+   [
+    "Odin's eight-legged horse.",
+    "Sleipnir"
+   ],
+   [
+    "Musician who went into the underworld to bring back Eurydice.",
+    "Orpheus"
+   ],
+   [
+    "Who gave Theseus the thread to find his way out of the labyrinth?",
+    "Ariadne"
+   ],
+   [
+    "Twins raised by a she-wolf who founded Rome.",
+    "Romulus and Remus"
+   ],
+   [
+    "Female warriors who choose who dies in battle and take them to Valhalla.",
+    "The Valkyries"
+   ],
+   [
+    "Cyclops blinded by Odysseus.",
+    "Polyphemus"
+   ],
+   [
+    "Monkey god who helps Rama in the Ramayana.",
+    "Hanuman"
+   ],
+   [
+    "Fire-breathing monster with a lion's head, a goat's body and a snake's tail.",
+    "The Chimera"
+   ],
+   [
+    "Norse god of light, killed by a dart of mistletoe.",
+    "Baldur (Balder)"
+   ],
+   [
+    "How many Muses were there in Greek myth?",
+    "Nine"
+   ],
+   [
+    "Pot-bellied Egyptian god of the Nile flood.",
+    "Hapi"
+   ],
+   [
+    "River of forgetfulness in the Greek underworld.",
+    "Lethe"
+   ],
+   [
+    "Giant Greek hunter placed among the stars as a constellation.",
+    "Orion"
+   ],
+   [
+    "Crocodile-headed Egyptian god worshipped at Kom Ombo and in the Faiyum.",
+    "Sobek"
+   ],
+   [
+    "Babylonian goddess of love and war, with a famous gate in Babylon.",
+    "Ishtar"
+   ]
+  ],
+  "500": [
+   [
+    "Hippo-headed Egyptian goddess who protected childbirth.",
+    "Taweret"
+   ],
+   [
+    "Egyptian creator god of Memphis, patron of craftsmen.",
+    "Ptah"
+   ],
+   [
+    "Ram-headed Egyptian god who shaped humans on a potter's wheel.",
+    "Khnum"
+   ],
+   [
+    "Giant Norse wolf who swallows Odin at Ragnarök.",
+    "Fenrir"
+   ],
+   [
+    "Names of Odin's two ravens.",
+    "Huginn and Muninn"
+   ],
+   [
+    "Zeus punished the Titan who stole fire by sending an eagle to eat which of his organs every day?",
+    "His liver"
+   ],
+   [
+    "Ancient Mesopotamian king who went searching for immortality.",
+    "Gilgamesh"
+   ],
+   [
+    "Feathered-serpent god of the Aztecs.",
+    "Quetzalcoatl"
+   ],
+   [
+    "Persephone had to stay in the underworld part of each year because she ate what?",
+    "Pomegranate seeds"
+   ],
+   [
+    "Lion-headed Egyptian goddess of war who almost wiped out humanity.",
+    "Sekhmet"
+   ],
+   [
+    "Egyptian sky goddess whose body arches over the earth.",
+    "Nut"
+   ],
+   [
+    "Japanese sun goddess.",
+    "Amaterasu"
+   ],
+   [
+    "Dwarf Egyptian god who protected homes, mothers and children.",
+    "Bes"
+   ],
+   [
+    "Name of Odin's spear.",
+    "Gungnir"
+   ],
+   [
+    "Giant, wise bird of Persian myth.",
+    "The Simurgh"
+   ],
+   [
+    "Scarab-headed Egyptian god of the rising sun.",
+    "Khepri"
+   ],
+   [
+    "Trojan princess cursed to make true prophecies that no one believed.",
+    "Cassandra"
+   ],
+   [
+    "Norse world serpent that circles the earth.",
+    "Jörmungandr"
+   ],
+   [
+    "Chief Babylonian god who defeated the sea monster Tiamat.",
+    "Marduk"
+   ],
+   [
+    "Egyptian goddess shown with a scorpion on her head.",
+    "Serqet (Selket)"
+   ],
+   [
+    "King of Crete who had the labyrinth built.",
+    "Minos"
+   ],
+   [
+    "Craftsman who built the labyrinth and made wings for himself and his son.",
+    "Daedalus"
+   ]
+  ]
+ }
+}

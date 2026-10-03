@@ -1,0 +1,614 @@
+{
+ "id": "mb",
+ "name": "Money & Business",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What does IPO stand for?",
+    "Initial Public Offering"
+   ],
+   [
+    "Who founded Amazon?",
+    "Jeff Bezos"
+   ],
+   [
+    "What does CEO stand for?",
+    "Chief Executive Officer"
+   ],
+   [
+    "Who has been Tesla's CEO since 2008?",
+    "Elon Musk"
+   ],
+   [
+    "What does ATM stand for?",
+    "Automated Teller Machine"
+   ],
+   [
+    "Which company owns YouTube?",
+    "Google (Alphabet)"
+   ],
+   [
+    "What do you call a market where prices keep rising?",
+    "A bull market"
+   ],
+   [
+    "Who founded Facebook?",
+    "Mark Zuckerberg"
+   ],
+   [
+    "What does ROI stand for?",
+    "Return on Investment"
+   ],
+   [
+    "Which Egyptian company is famous for its bill-payment kiosks?",
+    "Fawry"
+   ],
+   [
+    "What does VAT stand for?",
+    "Value Added Tax"
+   ],
+   [
+    "Which card brand's logo is two overlapping red and yellow circles?",
+    "Mastercard"
+   ],
+   [
+    "What is regular pay for a job, usually monthly, called?",
+    "A salary"
+   ],
+   [
+    "What does HR stand for?",
+    "Human resources"
+   ],
+   [
+    "Who succeeded Steve Jobs as Apple's CEO in 2011?",
+    "Tim Cook"
+   ],
+   [
+    "What do you call someone who starts their own business?",
+    "An entrepreneur"
+   ],
+   [
+    "Which company did Elon Musk buy in 2022 for $44 billion?",
+    "Twitter (now X)"
+   ],
+   [
+    "What is the symbol of the euro?",
+    "€"
+   ],
+   [
+    "What are goods sold to other countries called?",
+    "Exports"
+   ],
+   [
+    "What did Facebook's parent company rename itself in 2021?",
+    "Meta"
+   ],
+   [
+    "Which instant money-transfer app did Egypt's central bank launch in 2022?",
+    "InstaPay"
+   ],
+   [
+    "What is Saudi Arabia's currency called?",
+    "The riyal"
+   ],
+   [
+    "Who co-founded Microsoft with Paul Allen?",
+    "Bill Gates"
+   ],
+   [
+    "What does CV stand for?",
+    "Curriculum vitae"
+   ],
+   [
+    "What is the extra money you pay a bank for borrowing called?",
+    "Interest"
+   ],
+   [
+    "Which was the first cryptocurrency, launched in 2009?",
+    "Bitcoin"
+   ],
+   [
+    "What is the UAE's currency called?",
+    "The dirham"
+   ],
+   [
+    "What is the money a business keeps after paying all its costs called?",
+    "Profit"
+   ],
+   [
+    "What is the document a business sends asking to be paid called?",
+    "An invoice"
+   ],
+   [
+    "What is one hundredth of an Egyptian pound called?",
+    "A piastre (irsh)"
+   ]
+  ],
+  "200": [
+   [
+    "What is the pseudonym of Bitcoin's creator?",
+    "Satoshi Nakamoto"
+   ],
+   [
+    "What is the short name of Egypt's stock exchange?",
+    "EGX"
+   ],
+   [
+    "What is a private startup valued at over $1 billion called?",
+    "A unicorn"
+   ],
+   [
+    "What does GDP stand for?",
+    "Gross Domestic Product"
+   ],
+   [
+    "What is a market that falls 20% or more from its peak called?",
+    "A bear market"
+   ],
+   [
+    "What is Egypt's largest bank by assets?",
+    "National Bank of Egypt"
+   ],
+   [
+    "What is the EGX's main index of 30 companies called?",
+    "EGX30"
+   ],
+   [
+    "Who founded Alibaba?",
+    "Jack Ma"
+   ],
+   [
+    "What does B2B stand for?",
+    "Business to business"
+   ],
+   [
+    "Which fashion brand is the flagship of Spain's Inditex?",
+    "Zara"
+   ],
+   [
+    "What is a dividend?",
+    "A share of profits paid to shareholders"
+   ],
+   [
+    "Which furniture company did Ingvar Kamprad found?",
+    "IKEA"
+   ],
+   [
+    "What is inflation?",
+    "A general rise in prices (fall in money's buying power)"
+   ],
+   [
+    "What is China's currency called?",
+    "The renminbi (yuan)"
+   ],
+   [
+    "What is a unit of ownership in a company called?",
+    "A share (stock)"
+   ],
+   [
+    "What is buying and selling within the same trading day called?",
+    "Day trading"
+   ],
+   [
+    "What is the UK's central bank?",
+    "The Bank of England"
+   ],
+   [
+    "What is the USA's central bank usually called?",
+    "The Fed (Federal Reserve)"
+   ],
+   [
+    "What does IMF stand for?",
+    "International Monetary Fund"
+   ],
+   [
+    "What does P&L stand for?",
+    "Profit and loss"
+   ],
+   [
+    "Which Egyptian bank did Talaat Harb found in 1920?",
+    "Banque Misr"
+   ],
+   [
+    "Who co-founded Google with Sergey Brin?",
+    "Larry Page"
+   ],
+   [
+    "What does LLC stand for?",
+    "Limited liability company"
+   ],
+   [
+    "What does KPI stand for?",
+    "Key performance indicator"
+   ],
+   [
+    "What is the US dollar's nickname, from the colour of its notes?",
+    "The greenback"
+   ],
+   [
+    "Which mobile operator is Egypt's largest by subscribers?",
+    "Vodafone Egypt"
+   ],
+   [
+    "What does MBA stand for?",
+    "Master of Business Administration"
+   ],
+   [
+    "What is a long-term loan used to buy a home called?",
+    "A mortgage"
+   ],
+   [
+    "Which US stock exchange is home to most big tech shares such as Apple, Microsoft and Nvidia?",
+    "Nasdaq"
+   ],
+   [
+    "What is 'forex' short for?",
+    "Foreign exchange (the currency market)"
+   ]
+  ],
+  "300": [
+   [
+    "Which investor is called 'the Oracle of Omaha'?",
+    "Warren Buffett"
+   ],
+   [
+    "Which company overtook Walmart in 2026 to top the Fortune Global 500 as the world's biggest company by revenue?",
+    "Amazon"
+   ],
+   [
+    "What does 'net worth' measure?",
+    "Assets minus liabilities"
+   ],
+   [
+    "What does APR stand for?",
+    "Annual percentage rate"
+   ],
+   [
+    "Which Egyptian bus-booking startup listed on Nasdaq in 2022?",
+    "Swvl"
+   ],
+   [
+    "Which Sawiris brother founded Orascom Telecom?",
+    "Naguib Sawiris"
+   ],
+   [
+    "In which year did Egypt float the pound, halving its value in November?",
+    "2016"
+   ],
+   [
+    "What does the P/E ratio compare?",
+    "Share price to earnings per share"
+   ],
+   [
+    "Which US bank's collapse in 2008 triggered the financial crisis?",
+    "Lehman Brothers"
+   ],
+   [
+    "Which country has the world's largest sovereign wealth fund?",
+    "Norway"
+   ],
+   [
+    "What does ETF stand for?",
+    "Exchange-Traded Fund"
+   ],
+   [
+    "What is short selling?",
+    "Selling borrowed shares, hoping to buy them back cheaper"
+   ],
+   [
+    "Which crypto exchange run by Sam Bankman-Fried collapsed in 2022?",
+    "FTX"
+   ],
+   [
+    "What is Egypt's largest private-sector bank?",
+    "CIB (Commercial International Bank)"
+   ],
+   [
+    "Which Egyptian fintech became Egypt's first unicorn in 2020?",
+    "Fawry"
+   ],
+   [
+    "Which state-owned Egyptian telecom company runs the 'WE' brand?",
+    "Telecom Egypt"
+   ],
+   [
+    "How is a recession commonly defined?",
+    "Two quarters in a row of shrinking GDP"
+   ],
+   [
+    "What is Japan's main stock index?",
+    "The Nikkei 225"
+   ],
+   [
+    "What is it called when a company buys its own shares on the market?",
+    "A share buyback"
+   ],
+   [
+    "Which company owns Dove, Lipton and Knorr?",
+    "Unilever"
+   ],
+   [
+    "Which index tracks 30 big US 'blue-chip' companies?",
+    "The Dow Jones Industrial Average"
+   ],
+   [
+    "Which country's currency is the world's most valuable unit, at over $3?",
+    "Kuwait (the Kuwaiti dinar)"
+   ],
+   [
+    "What does SME stand for?",
+    "Small and medium-sized enterprise"
+   ],
+   [
+    "In which city is the European Central Bank based?",
+    "Frankfurt"
+   ],
+   [
+    "Who became Apple's CEO on 1 September 2026, taking over from Tim Cook?",
+    "John Ternus"
+   ],
+   [
+    "In 2024 Egypt signed a $35 billion deal with the UAE to develop which North Coast headland?",
+    "Ras El Hekma"
+   ],
+   [
+    "What is a 'blue-chip' stock?",
+    "A share in a large, stable, well-established company"
+   ],
+   [
+    "Which Swiss ski resort hosts the World Economic Forum every January?",
+    "Davos"
+   ],
+   [
+    "What does FDI stand for?",
+    "Foreign direct investment"
+   ],
+   [
+    "Which Chinese company owns TikTok's technology and created the app?",
+    "ByteDance"
+   ],
+   [
+    "What is a company's share price multiplied by its number of shares called?",
+    "Market capitalisation (market cap)"
+   ]
+  ],
+  "400": [
+   [
+    "Which company was the first to reach a $1 trillion market value, in 2018?",
+    "Apple"
+   ],
+   [
+    "Which US agency regulates the stock markets?",
+    "The SEC (Securities and Exchange Commission)"
+   ],
+   [
+    "What does EBITDA stand for?",
+    "Earnings Before Interest, Taxes, Depreciation and Amortisation"
+   ],
+   [
+    "What is the Rule of 72 used for?",
+    "Estimating how many years it takes money to double"
+   ],
+   [
+    "Which company trades under the ticker BRK?",
+    "Berkshire Hathaway"
+   ],
+   [
+    "Who wrote 'The Wealth of Nations'?",
+    "Adam Smith"
+   ],
+   [
+    "Which company became the first to reach a $4 trillion market value, in 2025?",
+    "Nvidia"
+   ],
+   [
+    "What does CAGR stand for?",
+    "Compound Annual Growth Rate"
+   ],
+   [
+    "Which US energy company collapsed in a 2001 accounting scandal?",
+    "Enron"
+   ],
+   [
+    "The Egyptian word 'geneih' comes from which old British coin?",
+    "The guinea"
+   ],
+   [
+    "Which mathematician, subject of 'A Beautiful Mind', won the 1994 economics Nobel?",
+    "John Nash"
+   ],
+   [
+    "What is the key rate-setting committee of the Central Bank of Egypt called?",
+    "The Monetary Policy Committee (MPC)"
+   ],
+   [
+    "What does ESG stand for?",
+    "Environmental, Social and Governance"
+   ],
+   [
+    "Which economist wrote 'The General Theory of Employment, Interest and Money'?",
+    "John Maynard Keynes"
+   ],
+   [
+    "What is a stock-market fall of 10% from a recent high called?",
+    "A correction"
+   ],
+   [
+    "Which magazine's Big Mac Index compares currency values?",
+    "The Economist"
+   ],
+   [
+    "Which Egyptian construction giant was founded by Onsi Sawiris?",
+    "Orascom"
+   ],
+   [
+    "What is it called when a central bank creates money to buy bonds?",
+    "Quantitative easing"
+   ],
+   [
+    "Name two of the 'Big Four' accounting firms.",
+    "Any two of Deloitte, PwC, EY and KPMG"
+   ],
+   [
+    "Which Egyptian fintech became a unicorn in 2023, valued at $1 billion?",
+    "MNT-Halan"
+   ],
+   [
+    "What does 'S&P' stand for in the S&P 500?",
+    "Standard & Poor's"
+   ],
+   [
+    "What is high inflation combined with stagnant growth and high unemployment called?",
+    "Stagflation"
+   ],
+   [
+    "Which Egyptian family conglomerate distributes Caterpillar machines and runs McDonald's in Egypt?",
+    "Mansour Group"
+   ],
+   [
+    "In March 2024 Egypt let the pound fall from about 31 per dollar to roughly what?",
+    "About 50 per dollar"
+   ],
+   [
+    "Who wrote the 2013 bestseller 'Capital in the Twenty-First Century'?",
+    "Thomas Piketty"
+   ],
+   [
+    "Swvl went public through a SPAC. What does SPAC stand for?",
+    "Special purpose acquisition company"
+   ],
+   [
+    "What is a 'dead cat bounce' in the markets?",
+    "A brief recovery in a falling price"
+   ],
+   [
+    "Which California tech lender collapsed after a bank run in March 2023?",
+    "Silicon Valley Bank (SVB)"
+   ],
+   [
+    "Which Saudi oil company's 2019 listing was the biggest IPO in history?",
+    "Saudi Aramco"
+   ]
+  ],
+  "500": [
+   [
+    "Who wrote 'The Intelligent Investor'?",
+    "Benjamin Graham"
+   ],
+   [
+    "In which year did the Alexandria Stock Exchange, EGX's predecessor, open?",
+    "1883"
+   ],
+   [
+    "What is 29 October 1929, the worst day of the Wall Street Crash, called?",
+    "Black Tuesday"
+   ],
+   [
+    "What is a 'haircut' in finance?",
+    "A cut applied to an asset's value (e.g. collateral or debt)"
+   ],
+   [
+    "What does WACC stand for?",
+    "Weighted Average Cost of Capital"
+   ],
+   [
+    "What was the 1630s Dutch speculative bubble called?",
+    "Tulip mania"
+   ],
+   [
+    "Which curve shows the link between tax rates and tax revenue?",
+    "The Laffer curve"
+   ],
+   [
+    "What is the US market's 'fear index' called?",
+    "The VIX"
+   ],
+   [
+    "Which Nobel-backed hedge fund collapsed in 1998?",
+    "Long-Term Capital Management (LTCM)"
+   ],
+   [
+    "What does Gresham's law say?",
+    "Bad money drives out good"
+   ],
+   [
+    "What does IFRS stand for?",
+    "International Financial Reporting Standards"
+   ],
+   [
+    "What does an inverted yield curve often signal?",
+    "A coming recession"
+   ],
+   [
+    "In which year did the Central Bank of Egypt begin operating?",
+    "1961"
+   ],
+   [
+    "What is borrowing in a low-interest currency to invest in a high-interest one called?",
+    "A carry trade"
+   ],
+   [
+    "Which 1720 British bubble involved a company trading with South America?",
+    "The South Sea Bubble"
+   ],
+   [
+    "Which psychologist won the economics Nobel and wrote 'Thinking, Fast and Slow'?",
+    "Daniel Kahneman"
+   ],
+   [
+    "What does LBO stand for?",
+    "Leveraged Buyout"
+   ],
+   [
+    "Which option 'Greek' measures sensitivity to the underlying asset's price?",
+    "Delta"
+   ],
+   [
+    "Which Italian friar is credited with first publishing double-entry bookkeeping (1494)?",
+    "Luca Pacioli"
+   ],
+   [
+    "Which economist coined the phrase 'conspicuous consumption'?",
+    "Thorstein Veblen"
+   ],
+   [
+    "Which Italian economist gave his name to the 80/20 rule?",
+    "Vilfredo Pareto"
+   ],
+   [
+    "At which 1944 conference in New Hampshire were the IMF and World Bank set up?",
+    "Bretton Woods"
+   ],
+   [
+    "What does the Gini coefficient measure?",
+    "Inequality (of income or wealth)"
+   ],
+   [
+    "What is a 'golden parachute'?",
+    "A large payout to an executive who loses their job"
+   ],
+   [
+    "Which Egyptian ruler sold Egypt's Suez Canal shares to Britain in 1875?",
+    "Khedive Ismail"
+   ],
+   [
+    "What is 'Dutch disease'?",
+    "A natural-resource boom that hurts a country's other industries"
+   ],
+   [
+    "Which law says 'supply creates its own demand'?",
+    "Say's law"
+   ],
+   [
+    "What is a 'black swan' event, a term made famous by Nassim Taleb?",
+    "A rare, unpredictable event with huge impact"
+   ],
+   [
+    "Which king of Lydia, famous for his wealth, is credited with the first gold coins?",
+    "Croesus"
+   ]
+  ]
+ }
+}

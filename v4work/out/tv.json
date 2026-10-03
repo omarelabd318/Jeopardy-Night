@@ -1,0 +1,734 @@
+{
+ "id": "tv",
+ "name": "Movies & TV",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Which TV show features the Starks and the Lannisters?",
+    "Game of Thrones"
+   ],
+   [
+    "Who directed both Titanic and Avatar?",
+    "James Cameron"
+   ],
+   [
+    "In Breaking Bad, what alias does Walter White use?",
+    "Heisenberg"
+   ],
+   [
+    "Which film has the line 'I'll be back'?",
+    "The Terminator"
+   ],
+   [
+    "In Friends, what is the coffee shop called?",
+    "Central Perk"
+   ],
+   [
+    "Which Egyptian actor starred in 'El Irhab wel Kabab'?",
+    "Adel Emam"
+   ],
+   [
+    "What is the lion cub's name in The Lion King?",
+    "Simba"
+   ],
+   [
+    "Which superhero is Tony Stark?",
+    "Iron Man"
+   ],
+   [
+    "In Money Heist, what does the mastermind call himself?",
+    "The Professor"
+   ],
+   [
+    "Which Netflix show is set in Hawkins, Indiana?",
+    "Stranger Things"
+   ],
+   [
+    "What is Black Panther's home country?",
+    "Wakanda"
+   ],
+   [
+    "Which school does Harry Potter attend?",
+    "Hogwarts"
+   ],
+   [
+    "In Squid Game, what colour are the guards' jumpsuits?",
+    "Pink"
+   ],
+   [
+    "Which cartoon family lives in Springfield?",
+    "The Simpsons"
+   ],
+   [
+    "Who plays Captain Jack Sparrow?",
+    "Johnny Depp"
+   ],
+   [
+    "Which Egyptian comedian plays the title role in 'El Lemby'?",
+    "Mohamed Saad"
+   ],
+   [
+    "Which film stars the toys Woody and Buzz?",
+    "Toy Story"
+   ],
+   [
+    "Who played Wolverine in the X-Men films?",
+    "Hugh Jackman"
+   ],
+   [
+    "Which sitcom features Dwight Schrute?",
+    "The Office (US)"
+   ],
+   [
+    "What is Batman's real name?",
+    "Bruce Wayne"
+   ],
+   [
+    "Which superhero's secret identity is Clark Kent?",
+    "Superman"
+   ],
+   [
+    "Which country is Squid Game from?",
+    "South Korea"
+   ],
+   [
+    "Which show is about a chemistry teacher who starts making drugs?",
+    "Breaking Bad"
+   ],
+   [
+    "Which film saga features Jedi and lightsabers?",
+    "Star Wars"
+   ],
+   [
+    "In which film series does the wizard Gandalf appear?",
+    "The Lord of the Rings (and The Hobbit)"
+   ],
+   [
+    "What is the race car hero of Pixar's 'Cars' called?",
+    "Lightning McQueen"
+   ],
+   [
+    "Which film features a theme park of cloned dinosaurs?",
+    "Jurassic Park"
+   ],
+   [
+    "Which Pixar film follows a clownfish searching for his lost son?",
+    "Finding Nemo"
+   ],
+   [
+    "What is the name of the talking snowman in Frozen?",
+    "Olaf"
+   ],
+   [
+    "Who plays Jack Dawson in Titanic?",
+    "Leonardo DiCaprio"
+   ],
+   [
+    "Which Netflix animated film follows the K-pop girl group HUNTR/X?",
+    "KPop Demon Hunters"
+   ],
+   [
+    "Who is the headmaster of Hogwarts for most of the Harry Potter series?",
+    "Albus Dumbledore"
+   ],
+   [
+    "Which Egyptian comedian starred in 'Assal Eswed' (2010)?",
+    "Ahmed Helmy"
+   ],
+   [
+    "Which Marvel villain wipes out half of all life with a snap of his fingers?",
+    "Thanos"
+   ],
+   [
+    "What are the little yellow helpers in Despicable Me called?",
+    "Minions"
+   ],
+   [
+    "Which British spy has the code number 007?",
+    "James Bond"
+   ],
+   [
+    "Which film series follows street racer Dominic Toretto and his 'family'?",
+    "Fast & Furious"
+   ]
+  ],
+  "200": [
+   [
+    "What is Black Panther's real name?",
+    "T'Challa"
+   ],
+   [
+    "Who directed Pulp Fiction?",
+    "Quentin Tarantino"
+   ],
+   [
+    "What paper company is The Office (US) set in?",
+    "Dunder Mifflin"
+   ],
+   [
+    "Who starred in 'Saidi fil Gamaa el Amrekeya' (1998)?",
+    "Mohamed Henedy"
+   ],
+   [
+    "Which film was the first non-English-language Best Picture winner?",
+    "Parasite"
+   ],
+   [
+    "Who plays Tommy Shelby in Peaky Blinders?",
+    "Cillian Murphy"
+   ],
+   [
+    "Who played the Joker in The Dark Knight?",
+    "Heath Ledger"
+   ],
+   [
+    "In Succession, what is the Roy family's company called?",
+    "Waystar Royco"
+   ],
+   [
+    "Which Christopher Nolan film is about stealing ideas through shared dreams?",
+    "Inception"
+   ],
+   [
+    "What is Saul Goodman's real name?",
+    "Jimmy McGill"
+   ],
+   [
+    "In which 2016 Ramadan series did Mohamed Ramadan play Rifaai?",
+    "El Ostoura"
+   ],
+   [
+    "Which Netflix series follows chess prodigy Beth Harmon?",
+    "The Queen's Gambit"
+   ],
+   [
+    "What is Sheldon's roommate called in The Big Bang Theory?",
+    "Leonard Hofstadter"
+   ],
+   [
+    "Who directed Jaws and E.T.?",
+    "Steven Spielberg"
+   ],
+   [
+    "Which Hogwarts house is Draco Malfoy in?",
+    "Slytherin"
+   ],
+   [
+    "Which veteran actor starred in 'Abbas El Abyad fel Yom El Eswed'?",
+    "Yehia El Fakharany"
+   ],
+   [
+    "Who directed The Dark Knight trilogy?",
+    "Christopher Nolan"
+   ],
+   [
+    "What is Jon Snow's direwolf called?",
+    "Ghost"
+   ],
+   [
+    "Which film won Best Picture at the 2024 Oscars?",
+    "Oppenheimer"
+   ],
+   [
+    "Who plays Eleven in Stranger Things?",
+    "Millie Bobby Brown"
+   ],
+   [
+    "Which Pixar film is set in the Land of the Dead?",
+    "Coco"
+   ],
+   [
+    "Who plays Wednesday Addams in Netflix's 'Wednesday'?",
+    "Jenna Ortega"
+   ],
+   [
+    "Which film swept the 2023 Oscars, including Best Picture?",
+    "Everything Everywhere All at Once"
+   ],
+   [
+    "Which royal family is The Crown about?",
+    "The British royal family"
+   ],
+   [
+    "What is Chandler's surname in Friends?",
+    "Bing"
+   ],
+   [
+    "Which 1994 film follows Andy Dufresne in prison?",
+    "The Shawshank Redemption"
+   ],
+   [
+    "Which actor played Walter White?",
+    "Bryan Cranston"
+   ],
+   [
+    "Which film won Best Picture at the 2026 Oscars?",
+    "One Battle After Another"
+   ],
+   [
+    "In Friends, what is Ross Geller's profession?",
+    "Paleontologist"
+   ],
+   [
+    "Which series follows the Dutton family and their Montana ranch?",
+    "Yellowstone"
+   ],
+   [
+    "Who plays the title role in 'Barbie' (2023)?",
+    "Margot Robbie"
+   ],
+   [
+    "Which Egyptian comedian plays both the mayor and his twin in 'El Kebeer Awi'?",
+    "Ahmed Mekky"
+   ],
+   [
+    "Which Disney film features the song 'How Far I'll Go'?",
+    "Moana"
+   ],
+   [
+    "Which HBO prequel to Game of Thrones follows House Targaryen?",
+    "House of the Dragon"
+   ],
+   [
+    "In The Matrix, which colour pill does Neo take?",
+    "Red"
+   ],
+   [
+    "Who plays Paul Atreides in Denis Villeneuve's 'Dune'?",
+    "Timothée Chalamet"
+   ],
+   [
+    "What is the name of Walter White's partner in Breaking Bad?",
+    "Jesse Pinkman"
+   ]
+  ],
+  "300": [
+   [
+    "What is the hotel called in The Shining?",
+    "The Overlook Hotel"
+   ],
+   [
+    "In The Sopranos, what is Tony's strip club called?",
+    "Bada Bing!"
+   ],
+   [
+    "Who composed the score for Interstellar?",
+    "Hans Zimmer"
+   ],
+   [
+    "Which director made 'Bab El Hadid' (Cairo Station, 1958)?",
+    "Youssef Chahine"
+   ],
+   [
+    "In which city is The Wire set?",
+    "Baltimore"
+   ],
+   [
+    "Which actor has won three Best Actor Oscars?",
+    "Daniel Day-Lewis"
+   ],
+   [
+    "What is the name of the computer in 2001: A Space Odyssey?",
+    "HAL 9000"
+   ],
+   [
+    "Who directed Get Out?",
+    "Jordan Peele"
+   ],
+   [
+    "Who played the title role in 'Ibrahim El Abyad' (2009)?",
+    "Ahmed El Sakka"
+   ],
+   [
+    "Which film won Best Picture at the 2025 Oscars?",
+    "Anora"
+   ],
+   [
+    "Who directed Dune: Part Two?",
+    "Denis Villeneuve"
+   ],
+   [
+    "In The Godfather, whose severed head ends up in a producer's bed?",
+    "A horse's"
+   ],
+   [
+    "Who directed Parasite?",
+    "Bong Joon-ho"
+   ],
+   [
+    "What is the precious substance in Dune called?",
+    "Spice (melange)"
+   ],
+   [
+    "Which singer starred in 'Ismailia Rayeh Gai' (1997)?",
+    "Mohamed Fouad"
+   ],
+   [
+    "Which series follows chefs Carmy and Sydney?",
+    "The Bear"
+   ],
+   [
+    "Who plays Saul Goodman?",
+    "Bob Odenkirk"
+   ],
+   [
+    "What is Dexter Morgan's day job?",
+    "Blood-spatter analyst (for Miami police)"
+   ],
+   [
+    "What does Michael Scofield have tattooed on his body in Prison Break?",
+    "The prison's blueprints (an escape plan)"
+   ],
+   [
+    "Who directed 'Pan's Labyrinth'?",
+    "Guillermo del Toro"
+   ],
+   [
+    "Which was the first Studio Ghibli film to win the Oscar for Best Animated Feature?",
+    "Spirited Away"
+   ],
+   [
+    "Which fast-food chain fronts Gus Fring's drug business in Breaking Bad?",
+    "Los Pollos Hermanos"
+   ],
+   [
+    "Which film features Tyler Durden?",
+    "Fight Club"
+   ],
+   [
+    "Who directed 'Taxi Driver' and 'Goodfellas'?",
+    "Martin Scorsese"
+   ],
+   [
+    "Who plays Arthur Fleck in 'Joker' (2019)?",
+    "Joaquin Phoenix"
+   ],
+   [
+    "Who won Best Actor at the 2026 Oscars for 'Sinners'?",
+    "Michael B. Jordan"
+   ],
+   [
+    "Who directed 'Barbie' (2023)?",
+    "Greta Gerwig"
+   ],
+   [
+    "What is the bar called in How I Met Your Mother?",
+    "MacLaren's (Pub)"
+   ],
+   [
+    "Which Egyptian actor stars in 'El Feel El Azraq' (The Blue Elephant, 2014)?",
+    "Karim Abdel Aziz"
+   ],
+   [
+    "Which actress starred opposite Adel Emam in 'El Irhab wel Kabab'?",
+    "Yousra"
+   ],
+   [
+    "Who plays Michael Corleone in The Godfather?",
+    "Al Pacino"
+   ],
+   [
+    "Which HBO series stars Pedro Pascal and Bella Ramsey in a fungus apocalypse?",
+    "The Last of Us"
+   ],
+   [
+    "In Peaky Blinders, which English city is the Shelby family from?",
+    "Birmingham"
+   ],
+   [
+    "What is the monster in season 1 of Stranger Things nicknamed?",
+    "The Demogorgon"
+   ],
+   [
+    "Who plays the astronaut Cooper in Interstellar?",
+    "Matthew McConaughey"
+   ]
+  ],
+  "400": [
+   [
+    "Who directed the 2003 Korean film Oldboy?",
+    "Park Chan-wook"
+   ],
+   [
+    "What won Best Picture at the very first Academy Awards?",
+    "Wings"
+   ],
+   [
+    "In the German series Dark, what is the town called?",
+    "Winden"
+   ],
+   [
+    "Who played Skyler White in Breaking Bad?",
+    "Anna Gunn"
+   ],
+   [
+    "In Lost, which flight crashes on the island?",
+    "Oceanic Flight 815"
+   ],
+   [
+    "Three films share the record of 11 Oscars. Name all three.",
+    "Ben-Hur, Titanic, The Return of the King"
+   ],
+   [
+    "Which Egyptian actor was Oscar-nominated for Lawrence of Arabia?",
+    "Omar Sharif"
+   ],
+   [
+    "What is the name of the spaceship in Alien (1979)?",
+    "The Nostromo"
+   ],
+   [
+    "In Twin Peaks, who killed Laura Palmer?",
+    "Her father, Leland Palmer (possessed by BOB)"
+   ],
+   [
+    "Which 2006 Marwan Hamed film is based on Alaa Al Aswany's novel?",
+    "The Yacoubian Building (Omaret Yacoubian)"
+   ],
+   [
+    "Which agency does Don Draper work at when Mad Men begins?",
+    "Sterling Cooper"
+   ],
+   [
+    "Who directed Amélie?",
+    "Jean-Pierre Jeunet"
+   ],
+   [
+    "What is the tiger's name in Life of Pi?",
+    "Richard Parker"
+   ],
+   [
+    "Who starred in the 2000 Egyptian film 'Ard El Khof'?",
+    "Ahmed Zaki"
+   ],
+   [
+    "Who played Rick Deckard in the original Blade Runner?",
+    "Harrison Ford"
+   ],
+   [
+    "Who directed the Egyptian film 'Clash' (Eshtebak, 2016)?",
+    "Mohamed Diab"
+   ],
+   [
+    "What is the company called in 'Severance'?",
+    "Lumon Industries"
+   ],
+   [
+    "Who played Norman Bates in Psycho?",
+    "Anthony Perkins"
+   ],
+   [
+    "What is the Dude's real name in The Big Lebowski?",
+    "Jeffrey Lebowski"
+   ],
+   [
+    "What is Kim's surname in Better Call Saul?",
+    "Wexler"
+   ],
+   [
+    "Which film won the first-ever Oscar for Best Animated Feature?",
+    "Shrek"
+   ],
+   [
+    "What is Tony Soprano's psychiatrist called?",
+    "Dr. Jennifer Melfi"
+   ],
+   [
+    "In which film is 'Rosebud' the final word of the main character?",
+    "Citizen Kane"
+   ],
+   [
+    "Who directed 'Psycho' and 'Vertigo'?",
+    "Alfred Hitchcock"
+   ],
+   [
+    "Who composed the scores for Star Wars, Jaws and Indiana Jones?",
+    "John Williams"
+   ],
+   [
+    "Who directed 'One Battle After Another'?",
+    "Paul Thomas Anderson"
+   ],
+   [
+    "Who won Best Actress at the 2026 Oscars for 'Hamnet'?",
+    "Jessie Buckley"
+   ],
+   [
+    "What is Truman's surname in The Truman Show?",
+    "Burbank"
+   ],
+   [
+    "Who directed the 2017 Egyptian film 'El Kenz' (The Treasure)?",
+    "Sherif Arafa"
+   ],
+   [
+    "What is the concierge called in The Grand Budapest Hotel?",
+    "Monsieur Gustave H."
+   ],
+   [
+    "In Severance, which department do Mark, Helly, Dylan and Irving work in?",
+    "Macrodata Refinement (MDR)"
+   ],
+   [
+    "Who plays Logan Roy in Succession?",
+    "Brian Cox"
+   ],
+   [
+    "Who directed the Best Picture winner 'Moonlight'?",
+    "Barry Jenkins"
+   ],
+   [
+    "Which real fungus causes the outbreak in The Last of Us?",
+    "Cordyceps"
+   ],
+   [
+    "Who played Hannibal Lecter in The Silence of the Lambs?",
+    "Anthony Hopkins"
+   ]
+  ],
+  "500": [
+   [
+    "Who directed Stalker and Solaris (1972)?",
+    "Andrei Tarkovsky"
+   ],
+   [
+    "What is the official name of the Oscar statuette award?",
+    "The Academy Award of Merit"
+   ],
+   [
+    "Which HBO series was based on Tom Perrotta's novel about 2% of people vanishing?",
+    "The Leftovers"
+   ],
+   [
+    "Who directed 'Yomeddine', which competed for the Palme d'Or in 2018?",
+    "A.B. Shawky"
+   ],
+   [
+    "Which cinematographer shot Blade Runner 2049 and 1917?",
+    "Roger Deakins"
+   ],
+   [
+    "What is Kramer's first name in Seinfeld?",
+    "Cosmo"
+   ],
+   [
+    "What was the first feature film with synchronised spoken dialogue?",
+    "The Jazz Singer (1927)"
+   ],
+   [
+    "In Kubrick's The Shining, which room number is the haunted room?",
+    "237"
+   ],
+   [
+    "Who starred in 'Doaa El Karawan' (The Nightingale's Prayer, 1959)?",
+    "Faten Hamama"
+   ],
+   [
+    "Which Italian director made 8½?",
+    "Federico Fellini"
+   ],
+   [
+    "Which Journey song plays in the final scene of The Sopranos?",
+    "Don't Stop Believin'"
+   ],
+   [
+    "Which 1927 German film features the robot Maria?",
+    "Metropolis"
+   ],
+   [
+    "Who directed Chungking Express and In the Mood for Love?",
+    "Wong Kar-wai"
+   ],
+   [
+    "Which 1969 Shadi Abdel Salam film is often ranked the greatest Egyptian film?",
+    "The Night of Counting the Years (El Momya)"
+   ],
+   [
+    "Who played blind Sheikh Hosny in 'El Kitkat' (1991)?",
+    "Mahmoud Abdel Aziz"
+   ],
+   [
+    "Who directed Seven Samurai (1954)?",
+    "Akira Kurosawa"
+   ],
+   [
+    "Which actor has won the most acting Oscars?",
+    "Katharine Hepburn (4)"
+   ],
+   [
+    "Which typeface is Wes Anderson famous for using in his films?",
+    "Futura"
+   ],
+   [
+    "In Arrested Development, what is the family business called?",
+    "The Bluth Company"
+   ],
+   [
+    "Who directed 'The 400 Blows'?",
+    "François Truffaut"
+   ],
+   [
+    "What was Stanley Kubrick's final film?",
+    "Eyes Wide Shut"
+   ],
+   [
+    "What is Don Draper's real name in Mad Men?",
+    "Dick Whitman"
+   ],
+   [
+    "Which Iranian director made 'A Separation'?",
+    "Asghar Farhadi"
+   ],
+   [
+    "What is Omar Little's weapon of choice in The Wire?",
+    "A shotgun"
+   ],
+   [
+    "What is Tony Soprano's nephew and protégé called?",
+    "Christopher Moltisanti"
+   ],
+   [
+    "Which Norwegian film won Best International Feature at the 2026 Oscars?",
+    "Sentimental Value"
+   ],
+   [
+    "Who won Best Supporting Actor at the 2026 Oscars for 'One Battle After Another'?",
+    "Sean Penn"
+   ],
+   [
+    "Who directed the 1991 Egyptian film 'El Kitkat'?",
+    "Daoud Abdel Sayed"
+   ],
+   [
+    "Which Egyptian director made 'Zawgat Ragol Mohem' (Wife of an Important Man, 1987)?",
+    "Mohamed Khan"
+   ],
+   [
+    "In Casablanca, what is Rick's nightclub called?",
+    "Rick's Café Américain"
+   ],
+   [
+    "Who was the first woman to win the Best Director Oscar?",
+    "Kathryn Bigelow"
+   ],
+   [
+    "Which actor played three roles, including the title character, in Dr. Strangelove?",
+    "Peter Sellers"
+   ],
+   [
+    "What is the main spaceship called in Interstellar?",
+    "The Endurance"
+   ],
+   [
+    "In Breaking Bad, what is the name of the White family's car wash?",
+    "A1A Car Wash"
+   ],
+   [
+    "Which Egyptian actress starred in 'El Zoga El Tanya' (The Second Wife, 1967)?",
+    "Soad Hosny"
+   ]
+  ]
+ }
+}

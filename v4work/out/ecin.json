@@ -1,0 +1,610 @@
+{
+ "id": "ecin",
+ "name": "Egyptian Cinema & Ramadan Series",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "Who starred in 'El Nazer' (2000)?",
+    "Alaa Waley El Din"
+   ],
+   [
+    "Who starred in 'Hammam fi Amsterdam' (1999)?",
+    "Mohamed Henedy"
+   ],
+   [
+    "Which star is most famous for the Ramadan Fawazeer of the 1980s?",
+    "Sherihan (Nelly also accepted)"
+   ],
+   [
+    "Which actress is called 'the Lady of the Arab Screen'?",
+    "Faten Hamama"
+   ],
+   [
+    "In which Ahmed Helmy film does he play identical triplets?",
+    "Keda Reda"
+   ],
+   [
+    "Which Ramadan comedy stars Ahmed Mekky as twin brothers, one raised in America?",
+    "El Kabeer Awi"
+   ],
+   [
+    "Which singer-actor stars in the 'Omar & Salma' films?",
+    "Tamer Hosny"
+   ],
+   [
+    "Which Nubian boy is the hero of a classic Ramadan cartoon?",
+    "Bakkar"
+   ],
+   [
+    "Which 2023 Ramadan series stars Mohamed Ramadan as a man with four wives?",
+    "Gaafar El Omda"
+   ],
+   [
+    "Who played martyr Ahmed El Mansi in 'El Ekhtiyar'?",
+    "Amir Karara"
+   ],
+   [
+    "In 'El Irhab wel Kabab', which government building is taken over?",
+    "The Mogamma in Tahrir"
+   ],
+   [
+    "Which Netflix series stars Ahmed Amin as Dr. Refaat Ismail?",
+    "Paranormal"
+   ],
+   [
+    "In which Ahmed Helmy film does an Egyptian-American come home to a chaotic Cairo?",
+    "Assal Eswed"
+   ],
+   [
+    "Who starred in 'El Gezira' (2007)?",
+    "Ahmed El Sakka"
+   ],
+   [
+    "Who starred in 'El Embrator' (1990)?",
+    "Ahmed Zaki"
+   ],
+   [
+    "Who stars in 'El Badla' (2018) with Akram Hosny?",
+    "Tamer Hosny"
+   ],
+   [
+    "Who stars in 'El Limby 8 Giga'?",
+    "Mohamed Saad"
+   ],
+   [
+    "Who plays the overweight lead in 'X-Large' (2011)?",
+    "Ahmed Helmy"
+   ],
+   [
+    "Who stars in the series 'Ibn Halal' (2014)?",
+    "Mohamed Ramadan"
+   ],
+   [
+    "Who starred in the police series 'Kalbash'?",
+    "Amir Karara"
+   ],
+   [
+    "Who starred in 'Ramadan Mabrouk Abul-Alamein Hamouda' (2008)?",
+    "Mohamed Henedy"
+   ],
+   [
+    "Who starred in 'Morgan Ahmed Morgan' (2007)?",
+    "Adel Emam"
+   ],
+   [
+    "Who starred in 'Elly Baly Balak' (2003)?",
+    "Mohamed Saad"
+   ],
+   [
+    "Which actress plays Shafika in 'Taymour w Shafika' (2007)?",
+    "Mona Zaki"
+   ],
+   [
+    "Which Ramadan series stars Hamada Helal as Saber, a man who battles jinn?",
+    "El Maddah"
+   ],
+   [
+    "Which 2020 Ramadan series tells the story of martyr Ahmed El Mansi?",
+    "El Ekhtiyar"
+   ],
+   [
+    "Who starred in 'Ghabi Menno Fih' (2004)?",
+    "Hany Ramzy"
+   ],
+   [
+    "Who stars in 'El Feel El Azraq' (2014)?",
+    "Karim Abdel Aziz"
+   ],
+   [
+    "Which 2024 Ramadan epic follows Hassan al-Sabbah and his assassins?",
+    "El Hashasheen"
+   ],
+   [
+    "Which star hosts a new Ramadan prank show almost every year?",
+    "Ramez Galal"
+   ]
+  ],
+  "200": [
+   [
+    "Who played Hassan al-Sabbah in 'El Hashasheen' (2024)?",
+    "Karim Abdel Aziz"
+   ],
+   [
+    "Who played Abdel Ghafour El Borai in 'Lan A'eesh fi Gelbab Abi'?",
+    "Nour El Sherif"
+   ],
+   [
+    "Which actress starred in the addiction drama 'Taht El Saytara' (2015)?",
+    "Nelly Karim"
+   ],
+   [
+    "Who starred in 'Teer Enta' (2009)?",
+    "Ahmed Mekky"
+   ],
+   [
+    "Who played Saladin in 'El Nasser Salah El Din' (1963)?",
+    "Ahmed Mazhar"
+   ],
+   [
+    "Who led the 2016 Ramadan series 'Grand Hotel'?",
+    "Amr Youssef"
+   ],
+   [
+    "Which trio starred in 'Samir w Shahir w Baheer'?",
+    "Ahmed Fahmy, Hisham Maged and Shiko"
+   ],
+   [
+    "Who starred in 'Zaki Chan' (2005)?",
+    "Ahmed Helmy"
+   ],
+   [
+    "Who starred in 'Tito' (2004)?",
+    "Ahmed El Sakka"
+   ],
+   [
+    "Who plays the Egyptian intelligence officer in 'Welad El Amm' (2009)?",
+    "Karim Abdel Aziz"
+   ],
+   [
+    "Which two stars lead 'Kira & El Gin' (2022)?",
+    "Karim Abdel Aziz and Ahmed Ezz"
+   ],
+   [
+    "Which Ahmed Ezz war film is set during the War of Attrition?",
+    "El Mamar (2019)"
+   ],
+   [
+    "Who starred in the Netflix series 'Finding Ola'?",
+    "Hend Sabry"
+   ],
+   [
+    "Who played the spy Raafat El Haggan?",
+    "Mahmoud Abdel Aziz"
+   ],
+   [
+    "Who stars in 'Shams El Zanati' (1991)?",
+    "Adel Emam"
+   ],
+   [
+    "Who stars in 'Mr. Karate' (1993)?",
+    "Ahmed Zaki"
+   ],
+   [
+    "Who stars in the sitcom 'Ragel W Set Settat'?",
+    "Ashraf Abdel Baky"
+   ],
+   [
+    "Which comedian, best known for 'El Limby', takes a dramatic role in 'El Kenz' (2017)?",
+    "Mohamed Saad"
+   ],
+   [
+    "Who stars in the series 'Sharbat Loz' (2012)?",
+    "Yousra"
+   ],
+   [
+    "Who played 'Fatouta' in the Ramadan fawazeer?",
+    "Samir Ghanem"
+   ],
+   [
+    "Who leads the 2025 Ramadan series 'Lam Shamseya'?",
+    "Amina Khalil"
+   ],
+   [
+    "Who plays the pickpocket turned resistance leader in 'El Nos' (2025)?",
+    "Ahmed Amin"
+   ],
+   [
+    "Which singer plays Saber in 'El Maddah'?",
+    "Hamada Helal"
+   ],
+   [
+    "Who leads the gangster brothers in 'Welad Rizk' (2015)?",
+    "Ahmed Ezz"
+   ],
+   [
+    "Which Lebanese singer stars in 'Halawet Rooh' (2014)?",
+    "Haifa Wehbe"
+   ],
+   [
+    "Who stars in 'Abdo Mota' (2012)?",
+    "Mohamed Ramadan"
+   ],
+   [
+    "Who stars in the sitcom 'Ashghal Shaqa' with Asmaa Galal?",
+    "Hisham Maged"
+   ],
+   [
+    "Which sisters star in 'Nelly & Sherihan' (2016)?",
+    "Donia and Amy Samir Ghanem"
+   ],
+   [
+    "Who starred in 'Mafia' (2002)?",
+    "Ahmed El Sakka"
+   ],
+   [
+    "Who stars in the 2026 Ramadan series 'Ala Add El Hob'?",
+    "Nelly Karim"
+   ]
+  ],
+  "300": [
+   [
+    "Who wrote the novel 'El Feel El Azraq'?",
+    "Ahmed Mourad"
+   ],
+   [
+    "Who directed 'Welad Rizk'?",
+    "Tarek El Eryan"
+   ],
+   [
+    "In Chahine's 'Heya Fawda?', who played the corrupt officer Hatem?",
+    "Khaled Saleh"
+   ],
+   [
+    "'Ghazal El Banat' (1949) was the last film of which comedy legend?",
+    "Naguib El Rihani"
+   ],
+   [
+    "Who starred in 'Afwah wa Araneb' (1977)?",
+    "Faten Hamama"
+   ],
+   [
+    "Who wrote the novel 'Hadith El Sabah wel Masa', adapted into a 2001 Ramadan series?",
+    "Naguib Mahfouz"
+   ],
+   [
+    "Who led the Alexandria-set series 'Zizinia'?",
+    "Yehia El Fakharany"
+   ],
+   [
+    "Who wrote the novel 'Hepta'?",
+    "Mohamed Sadek"
+   ],
+   [
+    "Who played Nasser in 'Nasser 56' (1996)?",
+    "Ahmed Zaki"
+   ],
+   [
+    "Who directed 'Sawak El Otobees' (The Bus Driver, 1982)?",
+    "Atef El Tayeb"
+   ],
+   [
+    "Who starred in the classic Ramadan series 'Ahlam El Fata El Tayer'?",
+    "Adel Emam"
+   ],
+   [
+    "Who starred in 'Khali Balak Men Zouzou' (1972)?",
+    "Soad Hosny"
+   ],
+   [
+    "Who directed 'Shabab Imra'a' (1956)?",
+    "Salah Abu Seif"
+   ],
+   [
+    "Which sha'bi singer acted in 'Mowaten w Mokhber w Harami' (2001)?",
+    "Shaaban Abdel Rahim"
+   ],
+   [
+    "Who directed 'El Mohager' (The Emigrant, 1994)?",
+    "Youssef Chahine"
+   ],
+   [
+    "Who stars in 'Ard El Nefaq' (1968)?",
+    "Fouad El Mohandes"
+   ],
+   [
+    "Who stars in 'Asmaa' (2011)?",
+    "Hend Sabry"
+   ],
+   [
+    "Who stars in 'Bobbos' (2009) with Yousra?",
+    "Adel Emam"
+   ],
+   [
+    "What is Ahmed Zaki's job in 'El Beh Bawab' (1977)?",
+    "Doorman (bawab)"
+   ],
+   [
+    "Which singer starred in 'El Wessada El Khalia' (1957)?",
+    "Abdel Halim Hafez"
+   ],
+   [
+    "In which 2025 series does Mohamed Henedy play a lawyer who wakes from a 20-year coma?",
+    "Shahadet Moamlet Atfal"
+   ],
+   [
+    "Who plays the pilot haunted by his passengers' ghosts in 'El Captain' (2025)?",
+    "Akram Hosny"
+   ],
+   [
+    "Who plays Garhy in the 2025 Ramadan series 'Seed El Nas'?",
+    "Amr Saad"
+   ],
+   [
+    "Who co-leads the 2026 series 'Sawa Sawa' with Hoda El Mufti?",
+    "Ahmed Malek"
+   ],
+   [
+    "Who played Om Kalthoum in the 1999 series 'Om Kalthoum'?",
+    "Sabreen"
+   ],
+   [
+    "Who leads the 2026 national-security series 'Regal El Dhel'?",
+    "Amir Karara"
+   ],
+   [
+    "Who co-starred with Mohamed Henedy in 'Ga'ana El Bayan El Tali' (2001)?",
+    "Hanan Turk"
+   ],
+   [
+    "Who plays the belly dancer in the 2025 series 'Ish Ish'?",
+    "Mai Omar"
+   ],
+   [
+    "Who played Hassan opposite Adel Emam's Morcos in 'Hassan w Morcos' (2008)?",
+    "Omar Sharif"
+   ],
+   [
+    "Who wrote the novel 'Omaret Yacoubian'?",
+    "Alaa Al Aswany"
+   ]
+  ],
+  "400": [
+   [
+    "Who wrote the series 'Leyali El Helmeya'?",
+    "Osama Anwar Okasha"
+   ],
+   [
+    "Who wrote the words of the puppet operetta 'El Leila El Kebira'?",
+    "Salah Jahin"
+   ],
+   [
+    "Which 1975 film about political prisoners stars Soad Hosny and Nour El Sherif?",
+    "Al-Karnak"
+   ],
+   [
+    "In which Atef El Tayeb film does Ahmed Zaki play a naive conscript guarding prisoners?",
+    "Al-Bari'a (The Innocent, 1986)"
+   ],
+   [
+    "Who starred in 'El Bostagi' (The Postman, 1968)?",
+    "Shoukry Sarhan"
+   ],
+   [
+    "Who directed the 1964 film 'Bein El Kasrein'?",
+    "Hassan El Imam"
+   ],
+   [
+    "Which comedian starred with Hind Rostom in 'Ibn Hamido' (1957)?",
+    "Ismail Yassine"
+   ],
+   [
+    "Which dancer-actress starred in 'Shabab Imra'a'?",
+    "Tahia Carioca"
+   ],
+   [
+    "Who wrote the books behind Netflix's 'Paranormal'?",
+    "Ahmed Khaled Tawfik"
+   ],
+   [
+    "Who directed 'El Irhab wel Kabab' and 'El Mamar'?",
+    "Sherif Arafa"
+   ],
+   [
+    "Who wrote the screenplay of 'El Irhab wel Kabab'?",
+    "Wahid Hamed"
+   ],
+   [
+    "Who played the title role in 'Abou El Ela El Beshry' (1986)?",
+    "Mahmoud Morsi"
+   ],
+   [
+    "Chahine's 'Al-Ard' (1970) is based on a novel by whom?",
+    "Abdel Rahman El Sharqawi"
+   ],
+   [
+    "Who composed the famous theme of 'Raafat El Haggan'?",
+    "Ammar El Sherei"
+   ],
+   [
+    "Who directed 'El Feel El Azraq'?",
+    "Marwan Hamed"
+   ],
+   [
+    "Who directed 'Wahed Sefr' (One-Zero, 2009)?",
+    "Kamla Abu Zekry"
+   ],
+   [
+    "Whose novel was adapted into 'El Qahira 30'?",
+    "Naguib Mahfouz"
+   ],
+   [
+    "Who directed 'Bein El Samaa wel Ard' (1959)?",
+    "Salah Abu Seif"
+   ],
+   [
+    "Who stars in 'El Sakka Mat' (1977)?",
+    "Ezzat El Alaili and Farid Shawqi"
+   ],
+   [
+    "Who directed 'Ehky Ya Shahrazad' (2009)?",
+    "Yousry Nasrallah"
+   ],
+   [
+    "In which 1959 film did Soad Hosny make her debut?",
+    "Hassan w Na'ima"
+   ],
+   [
+    "Who wrote the novel behind 'Mawlana' (2016)?",
+    "Ibrahim Eissa"
+   ],
+   [
+    "Which Syrian actor played the king in the 2007 series 'El Malek Farouk'?",
+    "Taym Hassan"
+   ],
+   [
+    "Who directed 'Sheikh Jackson' (2017)?",
+    "Amr Salama"
+   ],
+   [
+    "Who sang the theme song of 'Leyali El Helmeya'?",
+    "Mohamed El Helw"
+   ],
+   [
+    "Who played Sheikh El Shaarawy in 'Imam El Doaa' (2003)?",
+    "Hassan Youssef"
+   ],
+   [
+    "Which 2016 film takes place entirely inside a police truck?",
+    "Eshtebak (Clash)"
+   ],
+   [
+    "Who directed 'Al-Karnak' (1975)?",
+    "Ali Badrakhan"
+   ],
+   [
+    "Who played Abdel Halim Hafez in the 2006 series 'El Andaleeb'?",
+    "Shady Shamel"
+   ]
+  ],
+  "500": [
+   [
+    "Who directed the realist landmark 'Al-Azima' (1939)?",
+    "Kamal Selim"
+   ],
+   [
+    "Which 1997 Chahine film about Averroes competed at Cannes?",
+    "Al-Maseer (Destiny)"
+   ],
+   [
+    "Which 1954 film paired Faten Hamama with Omar Sharif in his debut?",
+    "Seraa fil Wadi (Struggle in the Valley)"
+   ],
+   [
+    "What is the first film of Chahine's Alexandria trilogy (1979)?",
+    "Iskandariya… Leh? (Alexandria… Why?)"
+   ],
+   [
+    "Who starred in Mohamed Khan's 'Zawgat Ragol Mohem' (1987)?",
+    "Ahmed Zaki (with Mervat Amin)"
+   ],
+   [
+    "Who directed 'El Kitkat' (1991)?",
+    "Daoud Abdel Sayed"
+   ],
+   [
+    "What was Egypt's first talking feature film (1932)?",
+    "Awlad El Zawat"
+   ],
+   [
+    "Who played Nazek El Selahdar in 'Leyali El Helmeya'?",
+    "Safia El Emary"
+   ],
+   [
+    "Who played Soliman Ghanem in 'Leyali El Helmeya'?",
+    "Salah El Saadany"
+   ],
+   [
+    "Who played Richard the Lionheart in 'El Nasser Salah El Din'?",
+    "Hamdy Gheith"
+   ],
+   [
+    "Which Mohamed Khan film stars Adel Emam as a street footballer?",
+    "El Harrif (1983)"
+   ],
+   [
+    "Whose novel was adapted into 'Ana Horra' (1959)?",
+    "Ihsan Abdel Quddous"
+   ],
+   [
+    "Which 1950 film is often called Egypt's first colour feature?",
+    "Baba Arees"
+   ],
+   [
+    "Ismail Yassine made a famous comedy series of films joining which institutions?",
+    "The army, navy, air force and police (Ismail Yassine fil…)"
+   ],
+   [
+    "Who directed 'El Qahira 30' (1966)?",
+    "Salah Abu Seif"
+   ],
+   [
+    "Who stars in 'Ard El Ahlam' (1993), her final film?",
+    "Faten Hamama"
+   ],
+   [
+    "Who stars in 'Arous El Nil' (1963)?",
+    "Lobna Abdel Aziz (with Rushdy Abaza)"
+   ],
+   [
+    "Who composed the music for 'Leyali El Helmeya'?",
+    "Michel El Masry"
+   ],
+   [
+    "Who directed 'Sahar El Layali' (2003)?",
+    "Hani Khalifa"
+   ],
+   [
+    "Who directed 'Ghazal El Banat' (1949)?",
+    "Anwar Wagdi"
+   ],
+   [
+    "Whose novel was adapted into 'Doaa El Karawan' (1959)?",
+    "Taha Hussein"
+   ],
+   [
+    "Who directed 'El Haram' (The Sin, 1965)?",
+    "Henry Barakat"
+   ],
+   [
+    "Who wrote the novel 'El Haram' (The Sin)?",
+    "Youssef Idris"
+   ],
+   [
+    "Who played Raya in 'Raya w Sekina' (1953)?",
+    "Negma Ibrahim"
+   ],
+   [
+    "Which actress-producer made 'Laila' (1927), one of Egypt's first feature films?",
+    "Aziza Amir"
+   ],
+   [
+    "Whose novel 'Malek El Hazin' became the film 'El Kitkat'?",
+    "Ibrahim Aslan"
+   ],
+   [
+    "Who directed the series 'Leyali El Helmeya'?",
+    "Ismail Abdel Hafez"
+   ],
+   [
+    "Who played Hamida in 'Zuqaq El Midaq' (1963)?",
+    "Shadia"
+   ],
+   [
+    "Who played Si El Sayed in the films of Mahfouz's Cairo Trilogy?",
+    "Yehia Chahine"
+   ]
+  ]
+ }
+}

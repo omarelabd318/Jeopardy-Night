@@ -1,0 +1,510 @@
+{
+ "id": "got",
+ "name": "Game of Thrones",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What is the Stark family's ancestral castle?",
+    "Winterfell"
+   ],
+   [
+    "What is Daenerys's largest dragon called?",
+    "Drogon"
+   ],
+   [
+    "What is the capital of the Seven Kingdoms?",
+    "King's Landing"
+   ],
+   [
+    "Which character is nicknamed 'the Imp'?",
+    "Tyrion Lannister"
+   ],
+   [
+    "What is the giant ice barrier in the north called?",
+    "The Wall"
+   ],
+   [
+    "Which house has a lion as its sigil?",
+    "House Lannister"
+   ],
+   [
+    "Which house's words are 'Winter is Coming'?",
+    "House Stark"
+   ],
+   [
+    "What is Arya's sword called?",
+    "Needle"
+   ],
+   [
+    "Which house has a stag as its sigil?",
+    "House Baratheon"
+   ],
+   [
+    "Who sits on the Iron Throne when the series begins?",
+    "Robert Baratheon"
+   ],
+   [
+    "Which gentle giant can only say one word?",
+    "Hodor"
+   ],
+   [
+    "Who leads the undead army from beyond the Wall?",
+    "The Night King"
+   ],
+   [
+    "Who is Daenerys's husband in Season 1?",
+    "Khal Drogo"
+   ],
+   [
+    "How many seasons does Game of Thrones have?",
+    "8"
+   ],
+   [
+    "What is Jon Snow's direwolf called?",
+    "Ghost"
+   ],
+   [
+    "What list does Arya recite every night before she sleeps?",
+    "Her kill list"
+   ],
+   [
+    "What is the Night's Watch's main castle at the Wall?",
+    "Castle Black"
+   ],
+   [
+    "Who plays Daenerys Targaryen?",
+    "Emilia Clarke"
+   ],
+   [
+    "Who plays Jon Snow?",
+    "Kit Harington"
+   ],
+   [
+    "What colour are the White Walkers' eyes?",
+    "Blue"
+   ],
+   [
+    "What is the name of Ned Stark's elder daughter?",
+    "Sansa"
+   ],
+   [
+    "What hatches from Daenerys's eggs at the end of Season 1?",
+    "Dragons"
+   ],
+   [
+    "Which Lannister twins are secretly lovers?",
+    "Jaime and Cersei"
+   ],
+   [
+    "Who is raised as Ned Stark's bastard son?",
+    "Jon Snow"
+   ],
+   [
+    "Who pushes Bran out of a tower window in the first episode?",
+    "Jaime Lannister"
+   ]
+  ],
+  "200": [
+   [
+    "What does 'Valar morghulis' mean?",
+    "All men must die"
+   ],
+   [
+    "Which king is poisoned at his own wedding?",
+    "Joffrey Baratheon"
+   ],
+   [
+    "Which Stark is killed with his mother at the Red Wedding?",
+    "Robb Stark"
+   ],
+   [
+    "Which house has a kraken as its sigil?",
+    "House Greyjoy"
+   ],
+   [
+    "Which house's words are 'Fire and Blood'?",
+    "House Targaryen"
+   ],
+   [
+    "Which character is called 'the Kingslayer'?",
+    "Jaime Lannister"
+   ],
+   [
+    "What is the Hound's real name?",
+    "Sandor Clegane"
+   ],
+   [
+    "Who is 'the Mountain'?",
+    "Gregor Clegane"
+   ],
+   [
+    "What is Jon Snow's sword called?",
+    "Longclaw"
+   ],
+   [
+    "Who is Samwell Tarly's partner from beyond the Wall?",
+    "Gilly"
+   ],
+   [
+    "Who kills the Night King?",
+    "Arya Stark"
+   ],
+   [
+    "Which city does Daenerys burn in Season 8?",
+    "King's Landing"
+   ],
+   [
+    "Who is named king at the end of the series?",
+    "Bran Stark"
+   ],
+   [
+    "What does 'Khaleesi' mean?",
+    "Queen (wife of a khal)"
+   ],
+   [
+    "Which book series is the show based on?",
+    "A Song of Ice and Fire"
+   ],
+   [
+    "What mystical role does Bran take on beyond the Wall?",
+    "The Three-Eyed Raven"
+   ],
+   [
+    "What is the name of Daenerys's brother who wants the throne in Season 1?",
+    "Viserys"
+   ],
+   [
+    "Who is the father of Jaime, Cersei and Tyrion?",
+    "Tywin Lannister"
+   ],
+   [
+    "Who plays Tyrion Lannister?",
+    "Peter Dinklage"
+   ],
+   [
+    "What is the prequel series about House Targaryen called?",
+    "House of the Dragon"
+   ],
+   [
+    "Who is Tyrion's lover who later betrays him on the witness stand?",
+    "Shae"
+   ],
+   [
+    "What word does the septa keep chanting during Cersei's walk of atonement?",
+    "Shame!"
+   ],
+   [
+    "What is Daenerys's army of eunuch soldiers called?",
+    "The Unsullied"
+   ],
+   [
+    "Which wildling woman does Jon Snow fall in love with?",
+    "Ygritte"
+   ],
+   [
+    "Which of Daenerys's dragons does Jon Snow ride?",
+    "Rhaegal"
+   ]
+  ],
+  "300": [
+   [
+    "Who does Arya train with in Braavos?",
+    "The Faceless Men"
+   ],
+   [
+    "Who wrote 'A Song of Ice and Fire'?",
+    "George R. R. Martin"
+   ],
+   [
+    "What is Littlefinger's real name?",
+    "Petyr Baelish"
+   ],
+   [
+    "What is the name of Tyrion's sellsword friend?",
+    "Bronn"
+   ],
+   [
+    "Whose death as Hand of the King kicks off the story?",
+    "Jon Arryn"
+   ],
+   [
+    "What phrase did 'Hodor' come from?",
+    "'Hold the door'"
+   ],
+   [
+    "What is Brienne of Tarth's sword called?",
+    "Oathkeeper"
+   ],
+   [
+    "Who kills Tywin Lannister?",
+    "Tyrion Lannister"
+   ],
+   [
+    "In which city is the Iron Bank?",
+    "Braavos"
+   ],
+   [
+    "What is Varys's nickname?",
+    "The Spider"
+   ],
+   [
+    "Who is Jon Snow's real mother?",
+    "Lyanna Stark"
+   ],
+   [
+    "What is Jon Snow's real name?",
+    "Aegon Targaryen"
+   ],
+   [
+    "Who confesses to poisoning Joffrey?",
+    "Olenna Tyrell"
+   ],
+   [
+    "Where do the Greyjoys come from?",
+    "The Iron Islands"
+   ],
+   [
+    "What kind of tree has a carved face in the godswood?",
+    "A weirwood"
+   ],
+   [
+    "Who is Grey Worm's love?",
+    "Missandei"
+   ],
+   [
+    "Which house takes over the North after the Red Wedding?",
+    "House Bolton"
+   ],
+   [
+    "What does the command 'Dracarys' tell a dragon to do?",
+    "Breathe fire"
+   ],
+   [
+    "What is Arya's direwolf called?",
+    "Nymeria"
+   ],
+   [
+    "What are the Night King's undead soldiers called?",
+    "Wights"
+   ],
+   [
+    "What did Davos Seaworth do for a living before he was knighted?",
+    "He was a smuggler"
+   ],
+   [
+    "What is the traditional reply to 'Valar morghulis'?",
+    "Valar dohaeris"
+   ],
+   [
+    "Followers of which god say 'The night is dark and full of terrors'?",
+    "The Lord of Light (R'hllor)"
+   ],
+   [
+    "Who is executed in the great hall of Winterfell after Sansa and Arya turn the tables in Season 7?",
+    "Littlefinger (Petyr Baelish)"
+   ],
+   [
+    "Who is stabbed by his own Night's Watch brothers with the words 'For the Watch'?",
+    "Jon Snow"
+   ]
+  ],
+  "400": [
+   [
+    "What is the poison that kills Joffrey called?",
+    "The Strangler"
+   ],
+   [
+    "What is Ned Stark's sword called?",
+    "Ice"
+   ],
+   [
+    "Who kills Oberyn Martell in trial by combat?",
+    "The Mountain (Gregor Clegane)"
+   ],
+   [
+    "What is the seat of House Lannister?",
+    "Casterly Rock"
+   ],
+   [
+    "Which of Daenerys's dragons is killed and raised by the Night King?",
+    "Viserion"
+   ],
+   [
+    "What name is Theon given while held captive by Ramsay?",
+    "Reek"
+   ],
+   [
+    "Who is the red priestess of the Lord of Light?",
+    "Melisandre"
+   ],
+   [
+    "What is the name of Stannis's daughter?",
+    "Shireen"
+   ],
+   [
+    "Who becomes Master of Coin in the finale?",
+    "Bronn"
+   ],
+   [
+    "What is the seat of House Tyrell?",
+    "Highgarden"
+   ],
+   [
+    "Which house rules Dorne?",
+    "House Martell"
+   ],
+   [
+    "Who feeds Ramsay Bolton to his own hounds?",
+    "Sansa Stark"
+   ],
+   [
+    "In which city does Daenerys first buy and free the Unsullied?",
+    "Astapor"
+   ],
+   [
+    "Finish the line Arya learns from her sword teacher: 'What do we say to the God of Death?'",
+    "Not today"
+   ],
+   [
+    "Who is the 'King-Beyond-the-Wall'?",
+    "Mance Rayder"
+   ],
+   [
+    "Which city, home of the fighting pits, does Daenerys rule?",
+    "Meereen"
+   ],
+   [
+    "What is Sansa's direwolf called?",
+    "Lady"
+   ],
+   [
+    "Who kills the Mountain in the long-awaited 'Cleganebowl'?",
+    "The Hound (Sandor Clegane)"
+   ],
+   [
+    "Which lord does Daenerys burn alive with his son after they refuse to bend the knee?",
+    "Randyll Tarly"
+   ],
+   [
+    "Which lord of the Twins hosts the Red Wedding?",
+    "Walder Frey"
+   ],
+   [
+    "Which Dornish woman, Oberyn's lover, poisons Myrcella?",
+    "Ellaria Sand"
+   ],
+   [
+    "Which sellsword becomes Daenerys's lover in Meereen?",
+    "Daario Naharis"
+   ],
+   [
+    "What are the open-walled prison cells of the Eyrie, where Tyrion is held, called?",
+    "The sky cells"
+   ],
+   [
+    "Which religious leader forces Cersei to do her walk of atonement?",
+    "The High Sparrow"
+   ]
+  ],
+  "500": [
+   [
+    "What is the giant who fights for Jon at the Battle of the Bastards called?",
+    "Wun Wun"
+   ],
+   [
+    "What name does Arya use while disguised as a boy in Season 2?",
+    "Arry"
+   ],
+   [
+    "What is Robb Stark's direwolf called?",
+    "Grey Wind"
+   ],
+   [
+    "What is Rickon's direwolf called?",
+    "Shaggydog"
+   ],
+   [
+    "Ice was reforged into Oathkeeper and which other sword?",
+    "Widow's Wail"
+   ],
+   [
+    "What was the Mad King's name?",
+    "Aerys II Targaryen"
+   ],
+   [
+    "Which legendary knight was called the Sword of the Morning?",
+    "Arthur Dayne"
+   ],
+   [
+    "Which house's words are 'Unbowed, Unbent, Unbroken'?",
+    "House Martell"
+   ],
+   [
+    "Which house's words are 'We Do Not Sow'?",
+    "House Greyjoy"
+   ],
+   [
+    "Which house's words are 'Growing Strong'?",
+    "House Tyrell"
+   ],
+   [
+    "Why is Daenerys called 'Stormborn'?",
+    "She was born on Dragonstone during a great storm"
+   ],
+   [
+    "Who is 'the Onion Knight'?",
+    "Davos Seaworth"
+   ],
+   [
+    "Who kills Viserys with a 'crown' of molten gold?",
+    "Khal Drogo"
+   ],
+   [
+    "What is Samwell Tarly's family seat?",
+    "Horn Hill"
+   ],
+   [
+    "Who composed the Game of Thrones theme?",
+    "Ramin Djawadi"
+   ],
+   [
+    "What surname do bastards born in Dorne get?",
+    "Sand"
+   ],
+   [
+    "What is House Tarly's Valyrian steel sword called?",
+    "Heartsbane"
+   ],
+   [
+    "What is the Valyrian steel dagger Arya uses to kill the Night King called?",
+    "The catspaw dagger"
+   ],
+   [
+    "Which island castle is Stannis Baratheon's seat?",
+    "Dragonstone"
+   ],
+   [
+    "Which 2026 prequel follows the hedge knight Ser Duncan the Tall and his squire Egg?",
+    "A Knight of the Seven Kingdoms"
+   ],
+   [
+    "Which Lord Commander of the Night's Watch is killed in the mutiny at Craster's Keep?",
+    "Jeor Mormont"
+   ],
+   [
+    "What is the name of the Braavosi 'water dancer' who teaches Arya to fight in Season 1?",
+    "Syrio Forel"
+   ],
+   [
+    "At which tower does Bran see the young Ned Stark fight Arthur Dayne?",
+    "The Tower of Joy"
+   ],
+   [
+    "What is the name of Ned Stark's younger brother who joined the Night's Watch?",
+    "Benjen Stark"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,610 @@
+{
+ "id": "qblank",
+ "name": "Fill in the Quote",
+ "type": "text",
+ "desc": "A famous movie or TV line with one word missing. Say the missing word.",
+ "data": {
+  "100": [
+   [
+    "Fill in the missing word: “I'll be ___.”",
+    "back (The Terminator)"
+   ],
+   [
+    "Fill in the missing word: “You're a wizard, ___.”",
+    "Harry (Harry Potter and the Philosopher's Stone)"
+   ],
+   [
+    "Fill in the missing word: “I am ___.”",
+    "Groot (Guardians of the Galaxy)"
+   ],
+   [
+    "Fill in the missing word: “Avengers… ___.”",
+    "assemble (Avengers: Endgame)"
+   ],
+   [
+    "Fill in the missing word: “With great power comes great ___.”",
+    "responsibility (Spider-Man)"
+   ],
+   [
+    "Fill in the missing word: “Ohana means ___.”",
+    "family (Lilo & Stitch)"
+   ],
+   [
+    "Fill in the missing word: “Life finds a ___.”",
+    "way (Jurassic Park)"
+   ],
+   [
+    "Fill in the missing word: “There's no place like ___.”",
+    "home (The Wizard of Oz)"
+   ],
+   [
+    "Fill in the missing word: “I'm ___.”",
+    "Batman (Batman films)"
+   ],
+   [
+    "Fill in the missing word: “Elementary, my dear ___.”",
+    "Watson (Sherlock Holmes films)"
+   ],
+   [
+    "Fill in the missing word: “Yabba dabba ___!”",
+    "doo (The Flintstones)"
+   ],
+   [
+    "Fill in the missing word: “Eat my ___!”",
+    "shorts (The Simpsons)"
+   ],
+   [
+    "Fill in the missing word: “Shaken, not ___.”",
+    "stirred (James Bond)"
+   ],
+   [
+    "Fill in the missing word: “Wingardium ___!”",
+    "Leviosa (Harry Potter and the Philosopher's Stone)"
+   ],
+   [
+    "Fill in the missing word: “Anyone can ___.”",
+    "cook (Ratatouille)"
+   ],
+   [
+    "Fill in the missing word: “No, I am your ___.”",
+    "father (The Empire Strikes Back)"
+   ],
+   [
+    "Fill in the missing word: “You know nothing, Jon ___.”",
+    "Snow (Game of Thrones)"
+   ],
+   [
+    "Fill in the missing word: “Live long and ___.”",
+    "prosper (Star Trek)"
+   ],
+   [
+    "Fill in the missing word: “Magic Mirror on the ___”",
+    "wall (Snow White and the Seven Dwarfs)"
+   ],
+   [
+    "Fill in the missing word: “Oh. My. ___!”",
+    "God (Friends)"
+   ],
+   [
+    "Fill in the missing word: “Hi, I'm Olaf and I like warm ___!”",
+    "hugs (Frozen)"
+   ],
+   [
+    "Fill in the missing word: “Dobby is a free ___!”",
+    "elf (Harry Potter and the Chamber of Secrets)"
+   ],
+   [
+    "Fill in the missing word: “Ka-___!”",
+    "chow (Cars)"
+   ],
+   [
+    "Fill in the missing word: “May the odds be ever in your ___.”",
+    "favor (The Hunger Games)"
+   ],
+   [
+    "Fill in the missing word: “Joey doesn't share ___!”",
+    "food (Friends)"
+   ],
+   [
+    "Fill in the missing word: “What are you doing in my ___?!”",
+    "swamp (Shrek)"
+   ],
+   [
+    "Fill in the missing word: “Reach for the ___!”",
+    "sky (Toy Story)"
+   ],
+   [
+    "Fill in the missing word: “It's so ___!”",
+    "fluffy (Despicable Me)"
+   ],
+   [
+    "Fill in the missing word: “Better call ___!”",
+    "Saul (Breaking Bad)"
+   ],
+   [
+    "Fill in the missing word: “I'll never let ___, Jack.”",
+    "go (Titanic)"
+   ]
+  ],
+  "200": [
+   [
+    "Fill in the missing word: “On Wednesdays we wear ___.”",
+    "pink (Mean Girls)"
+   ],
+   [
+    "Fill in the missing word: “Go ahead, make my ___.”",
+    "day (Sudden Impact)"
+   ],
+   [
+    "Fill in the missing word: “…live long enough to see yourself become the ___.”",
+    "villain (The Dark Knight)"
+   ],
+   [
+    "Fill in the missing word: “Just when I thought I was out, they pull me back ___.”",
+    "in (The Godfather Part III)"
+   ],
+   [
+    "Fill in the missing word: “A Lannister always pays his ___.”",
+    "debts (Game of Thrones)"
+   ],
+   [
+    "Fill in the missing word: “Bears. Beets. Battlestar ___.”",
+    "Galactica (The Office)"
+   ],
+   [
+    "Fill in the missing word: “I drink and I know ___.”",
+    "things (Game of Thrones)"
+   ],
+   [
+    "Fill in the missing word: “You had me at ___.”",
+    "hello (Jerry Maguire)"
+   ],
+   [
+    "Fill in the missing word: “We'll always have ___.”",
+    "Paris (Casablanca)"
+   ],
+   [
+    "Fill in the missing word: “There's no crying in ___!”",
+    "baseball (A League of Their Own)"
+   ],
+   [
+    "Fill in the missing word: “Fear is the path to the ___ side.”",
+    "dark (Star Wars: The Phantom Menace)"
+   ],
+   [
+    "Fill in the missing word: “I want to play a ___.”",
+    "game (Saw)"
+   ],
+   [
+    "Fill in the missing word: “There's a snake in my ___!”",
+    "boot (Toy Story)"
+   ],
+   [
+    "Fill in the missing word: “I have a very ___ set of skills.”",
+    "particular (Taken)"
+   ],
+   [
+    "Fill in the missing word: “I can do this all ___.”",
+    "day (Captain America: The First Avenger)"
+   ],
+   [
+    "Fill in the missing word: “You can't sit with ___!”",
+    "us (Mean Girls)"
+   ],
+   [
+    "Fill in the missing word: “It's ___ time!”",
+    "morphin' (Power Rangers)"
+   ],
+   [
+    "Fill in the missing word: “One does not simply walk into ___.”",
+    "Mordor (The Lord of the Rings)"
+   ],
+   [
+    "Fill in the missing word: “My ___.”",
+    "precious (The Lord of the Rings)"
+   ],
+   [
+    "Fill in the missing word: “Mr. Stark, I don't feel so ___.”",
+    "good (Avengers: Infinity War)"
+   ],
+   [
+    "Fill in the missing word: “I'm Mary ___, y'all!”",
+    "Poppins (Guardians of the Galaxy Vol. 2)"
+   ],
+   [
+    "Fill in the missing word: “There is no secret ___.”",
+    "ingredient (Kung Fu Panda)"
+   ],
+   [
+    "Fill in the missing word: “Adventure is out ___!”",
+    "there (Up)"
+   ],
+   [
+    "Fill in the missing word: “Hold the ___!”",
+    "door (Game of Thrones)"
+   ],
+   [
+    "Fill in the missing word: “Suit ___!”",
+    "up (How I Met Your Mother)"
+   ],
+   [
+    "Fill in the missing word: “Knock knock knock, ___.”",
+    "Penny (The Big Bang Theory)"
+   ],
+   [
+    "Fill in the missing word: “Some men just want to watch the world ___.”",
+    "burn (The Dark Knight)"
+   ],
+   [
+    "Fill in the missing word: “Do you know the ___ Man?”",
+    "Muffin (Shrek)"
+   ],
+   [
+    "Fill in the missing word: “No ___!”",
+    "capes (The Incredibles)"
+   ],
+   [
+    "Fill in the missing word: “That's my secret, Cap. I'm always ___.”",
+    "angry (The Avengers)"
+   ]
+  ],
+  "300": [
+   [
+    "Fill in the missing word: “I'm not superstitious, but I am a little ___.”",
+    "stitious (The Office)"
+   ],
+   [
+    "Fill in the missing word: “Get in, ___, we're going shopping.”",
+    "loser (Mean Girls)"
+   ],
+   [
+    "Fill in the missing word: “Welcome to the real ___.”",
+    "world (The Matrix)"
+   ],
+   [
+    "Fill in the missing word: “Keep the change, ya ___ animal.”",
+    "filthy (Home Alone)"
+   ],
+   [
+    "Fill in the missing word: “I'm in a glass ___ of emotion!”",
+    "case (Anchorman)"
+   ],
+   [
+    "Fill in the missing word: “Wubba lubba dub ___!”",
+    "dub (Rick and Morty)"
+   ],
+   [
+    "Fill in the missing word: “You mess with the bull, you get the ___.”",
+    "horns (The Breakfast Club)"
+   ],
+   [
+    "Fill in the missing word: “Mischief ___.”",
+    "managed (Harry Potter and the Prisoner of Azkaban)"
+   ],
+   [
+    "Fill in the missing word: “As you ___.”",
+    "wish (The Princess Bride)"
+   ],
+   [
+    "Fill in the missing word: “Chewie, we're ___.”",
+    "home (Star Wars: The Force Awakens)"
+   ],
+   [
+    "Fill in the missing word: “Remember who you ___.”",
+    "are (The Lion King)"
+   ],
+   [
+    "Fill in the missing word: “Yippee-ki-___”",
+    "yay (Die Hard)"
+   ],
+   [
+    "Fill in the missing word: “Hello, ___.”",
+    "Newman (Seinfeld)"
+   ],
+   [
+    "Fill in the missing word: “Why don't you make like a ___ and get out of here?”",
+    "tree (Back to the Future)"
+   ],
+   [
+    "Fill in the missing word: “When someone asks you if you're a ___, you say yes!”",
+    "god (Ghostbusters)"
+   ],
+   [
+    "Fill in the missing word: “Sometimes you gotta run before you can ___.”",
+    "walk (Iron Man)"
+   ],
+   [
+    "Fill in the missing word: “…but what I ___ that defines me.”",
+    "do (Batman Begins)"
+   ],
+   [
+    "Fill in the missing word: “Jesse, we need to ___.”",
+    "cook (Breaking Bad)"
+   ],
+   [
+    "Fill in the missing word: “She doesn't even go ___!”",
+    "here (Mean Girls)"
+   ],
+   [
+    "Fill in the missing word: “Could I BE wearing any more ___?”",
+    "clothes (Friends)"
+   ],
+   [
+    "Fill in the missing word: “Tread ___.”",
+    "lightly (Breaking Bad)"
+   ],
+   [
+    "Fill in the missing word: “Stupid is as stupid ___.”",
+    "does (Forrest Gump)"
+   ],
+   [
+    "Fill in the missing word: “Identity theft is not a ___, Jim!”",
+    "joke (The Office)"
+   ],
+   [
+    "Fill in the missing word: “What we do in life echoes in ___.”",
+    "eternity (Gladiator)"
+   ],
+   [
+    "Fill in the missing word: “Tonight we dine in ___!”",
+    "hell (300)"
+   ],
+   [
+    "Fill in the missing word: “Come with me if you want to ___.”",
+    "live (The Terminator films)"
+   ],
+   [
+    "Fill in the missing word: “Failure is not an ___.”",
+    "option (Apollo 13)"
+   ],
+   [
+    "Fill in the missing word: “If you build it, he will ___.”",
+    "come (Field of Dreams)"
+   ],
+   [
+    "Fill in the missing word: “All work and no play makes Jack a dull ___.”",
+    "boy (The Shining)"
+   ],
+   [
+    "Fill in the missing word: “Perfectly balanced, as all things should ___.”",
+    "be (Avengers: Infinity War)"
+   ]
+  ],
+  "400": [
+   [
+    "Fill in the missing word: “Valar ___.”",
+    "morghulis (Game of Thrones)"
+   ],
+   [
+    "Fill in the missing word: “I am serious. And don't call me ___.”",
+    "Shirley (Airplane!)"
+   ],
+   [
+    "Fill in the missing word: “Say goodnight to the bad ___!”",
+    "guy (Scarface)"
+   ],
+   [
+    "Fill in the missing word: “They call me Mister ___!”",
+    "Tibbs (In the Heat of the Night)"
+   ],
+   [
+    "Fill in the missing word: “It belongs in a ___!”",
+    "museum (Indiana Jones and the Last Crusade)"
+   ],
+   [
+    "Fill in the missing word: “I'll get you, my pretty, and your little ___ too!”",
+    "dog (The Wizard of Oz)"
+   ],
+   [
+    "Fill in the missing word: “Get to the ___!”",
+    "choppa / chopper (Predator)"
+   ],
+   [
+    "Fill in the missing word: “I'm having an old friend for ___.”",
+    "dinner (The Silence of the Lambs)"
+   ],
+   [
+    "Fill in the missing word: “Fredo, you broke my ___.”",
+    "heart (The Godfather Part II)"
+   ],
+   [
+    "Fill in the missing word: “La-dee-___.”",
+    "da (Annie Hall)"
+   ],
+   [
+    "Fill in the missing word: “Life moves pretty ___.”",
+    "fast (Ferris Bueller's Day Off)"
+   ],
+   [
+    "Fill in the missing word: “I am big! It's the ___ that got small.”",
+    "pictures (Sunset Boulevard)"
+   ],
+   [
+    "Fill in the missing word: “Round up the usual ___.”",
+    "suspects (Casablanca)"
+   ],
+   [
+    "Fill in the missing word: “Hey, ___!”",
+    "Stella (A Streetcar Named Desire)"
+   ],
+   [
+    "Fill in the missing word: “No, Mr. Bond, I expect you to ___!”",
+    "die (Goldfinger)"
+   ],
+   [
+    "Fill in the missing word: “A boy's best friend is his ___.”",
+    "mother (Psycho)"
+   ],
+   [
+    "Fill in the missing word: “Hey, you ___!”",
+    "guys (The Goonies)"
+   ],
+   [
+    "Fill in the missing word: “Take your stinking paws off me, you damned dirty ___!”",
+    "ape (Planet of the Apes)"
+   ],
+   [
+    "Fill in the missing word: “Pay no attention to that man behind the ___!”",
+    "curtain (The Wizard of Oz)"
+   ],
+   [
+    "Fill in the missing word: “I am Jack's complete lack of ___.”",
+    "surprise (Fight Club)"
+   ],
+   [
+    "Fill in the missing word: “After all, tomorrow is another ___.”",
+    "day (Gone with the Wind)"
+   ],
+   [
+    "Fill in the missing word: “Luca Brasi sleeps with the ___.”",
+    "fishes (The Godfather)"
+   ],
+   [
+    "Fill in the missing word: “Talk to me, ___.”",
+    "Goose (Top Gun)"
+   ],
+   [
+    "Fill in the missing word: “Fear is the mind-___.”",
+    "killer (Dune)"
+   ],
+   [
+    "Fill in the missing word: “I am burdened with glorious ___.”",
+    "purpose (The Avengers)"
+   ],
+   [
+    "Fill in the missing word: “I do not think it means what you ___ it means.”",
+    "think (The Princess Bride)"
+   ],
+   [
+    "Fill in the missing word: “You'll shoot your ___ out!”",
+    "eye (A Christmas Story)"
+   ],
+   [
+    "Fill in the missing word: “1.21 ___!”",
+    "gigawatts (Back to the Future)"
+   ],
+   [
+    "Fill in the missing word: “It's called a ___, sweetheart.”",
+    "hustle (Zootopia)"
+   ]
+  ],
+  "500": [
+   [
+    "Fill in the missing word: “Mein ___, I can walk!”",
+    "Führer (Dr. Strangelove)"
+   ],
+   [
+    "Fill in the missing word: “Louis, I think this is the beginning of a beautiful ___.”",
+    "friendship (Casablanca)"
+   ],
+   [
+    "Fill in the missing word: “Well, here's another nice ___ you've gotten me into!”",
+    "mess (Laurel and Hardy)"
+   ],
+   [
+    "Fill in the missing word: “Is it ___?”",
+    "safe (Marathon Man)"
+   ],
+   [
+    "Fill in the missing word: “The horror… the ___.”",
+    "horror (Apocalypse Now)"
+   ],
+   [
+    "Fill in the missing word: “I'm just one stomach flu away from my goal ___.”",
+    "weight (The Devil Wears Prada)"
+   ],
+   [
+    "Fill in the missing word: “Wait a minute, wait a minute. You ain't heard ___ yet!”",
+    "nothin' (The Jazz Singer)"
+   ],
+   [
+    "Fill in the missing word: “Don't let's ask for the moon. We have the ___.”",
+    "stars (Now, Voyager)"
+   ],
+   [
+    "Fill in the missing word: “We rob ___.”",
+    "banks (Bonnie and Clyde)"
+   ],
+   [
+    "Fill in the missing word: “Love means never having to say you're ___.”",
+    "sorry (Love Story)"
+   ],
+   [
+    "Fill in the missing word: “My mother thanks you. My father thanks you. And I thank ___.”",
+    "you (Yankee Doodle Dandy)"
+   ],
+   [
+    "Fill in the missing word: “I'm not even supposed to be here ___!”",
+    "today (Clerks)"
+   ],
+   [
+    "Fill in the missing word: “All right, Mr. ___, I'm ready for my close-up.”",
+    "DeMille (Sunset Boulevard)"
+   ],
+   [
+    "Fill in the missing word: “Stay ___, Ponyboy.”",
+    "gold (The Outsiders)"
+   ],
+   [
+    "Fill in the missing word: “Greed, for lack of a better word, is ___.”",
+    "good (Wall Street)"
+   ],
+   [
+    "Fill in the missing word: “…what we are put in this world to rise ___.”",
+    "above (The African Queen)"
+   ],
+   [
+    "Fill in the missing word: “Win just one for the ___.”",
+    "Gipper (Knute Rockne, All American)"
+   ],
+   [
+    "Fill in the missing word: “Funny how? Like I'm a ___?”",
+    "clown (Goodfellas)"
+   ],
+   [
+    "Fill in the missing word: “What we've got here is failure to ___.”",
+    "communicate (Cool Hand Luke)"
+   ],
+   [
+    "Fill in the missing word: “Just one word… ___.”",
+    "plastics (The Graduate)"
+   ],
+   [
+    "Fill in the missing word: “Made it, Ma! Top of the ___!”",
+    "world (White Heat)"
+   ],
+   [
+    "Fill in the missing word: “Fasten your seatbelts. It's going to be a bumpy ___.”",
+    "night (All About Eve)"
+   ],
+   [
+    "Fill in the missing word: “The stuff that ___ are made of.”",
+    "dreams (The Maltese Falcon)"
+   ],
+   [
+    "Fill in the missing word: “Party on, ___!”",
+    "Wayne or Garth (Wayne's World)"
+   ],
+   [
+    "Fill in the missing word: “Snap out of ___!”",
+    "it (Moonstruck)"
+   ],
+   [
+    "Fill in the missing word: “These go to ___.”",
+    "eleven (This Is Spinal Tap)"
+   ],
+   [
+    "Fill in the missing word: “Be excellent to each ___.”",
+    "other (Bill & Ted's Excellent Adventure)"
+   ],
+   [
+    "Fill in the missing word: “Not that there's anything ___ with that!”",
+    "wrong (Seinfeld)"
+   ],
+   [
+    "Fill in the missing word: “There's always money in the banana ___.”",
+    "stand (Arrested Development)"
+   ]
+  ]
+ }
+}

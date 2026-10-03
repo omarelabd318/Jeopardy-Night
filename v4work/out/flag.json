@@ -1,0 +1,638 @@
+{
+ "id": "flag",
+ "name": "Flags",
+ "type": "flag",
+ "desc": "Name the country from its flag.",
+ "flags": {
+  "nigeria": "Nigeria",
+  "colombia": "Colombia",
+  "ghana": "Ghana",
+  "greece": "Greece",
+  "jamaica": "Jamaica",
+  "bangladesh": "Bangladesh",
+  "vietnam": "Vietnam",
+  "chile": "Chile",
+  "czechia": "Czech Republic",
+  "norway": "Norway",
+  "iceland": "Iceland",
+  "estonia": "Estonia",
+  "lithuania": "Lithuania",
+  "latvia": "Latvia",
+  "senegal": "Senegal",
+  "cameroon": "Cameroon",
+  "panama": "Panama",
+  "cuba": "Cuba",
+  "somalia": "Somalia",
+  "burkina": "Burkina Faso",
+  "botswana": "Botswana",
+  "tanzania": "Tanzania",
+  "laos": "Laos",
+  "myanmar": "Myanmar",
+  "armenia": "Armenia",
+  "azerbaijan": "Azerbaijan",
+  "gabon": "Gabon",
+  "sierraleone": "Sierra Leone",
+  "bahamas": "The Bahamas",
+  "trinidad": "Trinidad and Tobago",
+  "guyana": "Guyana",
+  "suriname": "Suriname",
+  "seychelles": "Seychelles",
+  "mauritius": "Mauritius",
+  "benin": "Benin",
+  "djibouti": "Djibouti",
+  "guineabissau": "Guinea-Bissau",
+  "saotome": "São Tomé and Príncipe",
+  "comoros": "Comoros",
+  "faroe": "Faroe Islands",
+  "nauru": "Nauru",
+  "palau": "Palau",
+  "marshall": "Marshall Islands",
+  "micronesia": "Micronesia",
+  "tonga": "Tonga",
+  "aland": "Åland Islands",
+  "greenland": "Greenland",
+  "maldives": "Maldives",
+  "timorleste": "Timor-Leste",
+  "stlucia": "Saint Lucia",
+  "ireland": "Ireland",
+  "belgium": "Belgium",
+  "sweden": "Sweden",
+  "switzerland": "Switzerland",
+  "finland": "Finland",
+  "mali": "Mali",
+  "guinea": "Guinea",
+  "ivorycoast": "Ivory Coast",
+  "hungary": "Hungary",
+  "bulgaria": "Bulgaria",
+  "niger": "Niger",
+  "bolivia": "Bolivia",
+  "kuwait": "Kuwait",
+  "sudan": "Sudan",
+  "libya": "Libya",
+  "qatar": "Qatar",
+  "bahrain": "Bahrain",
+  "madagascar": "Madagascar",
+  "congo": "Republic of the Congo",
+  "gambia": "The Gambia",
+  "solomon": "Solomon Islands",
+  "antigua": "Antigua and Barbuda",
+  "namibia": "Namibia",
+  "nepal": "Nepal",
+  "stvincent": "Saint Vincent and the Grenadines",
+  "austria": "Austria",
+  "denmark": "Denmark",
+  "netherlands": "Netherlands",
+  "peru": "Peru",
+  "thailand": "Thailand",
+  "romania": "Romania (or Chad, near-identical)",
+  "luxembourg": "Luxembourg",
+  "honduras": "Honduras",
+  "syria": "Syria",
+  "venezuela": "Venezuela",
+  "jordan": "Jordan",
+  "mauritania": "Mauritania",
+  "togo": "Togo",
+  "rwanda": "Rwanda",
+  "ethiopia": "Ethiopia",
+  "car": "Central African Republic",
+  "liberia": "Liberia",
+  "capeverde": "Cape Verde",
+  "burundi": "Burundi",
+  "malawi": "Malawi",
+  "stkitts": "Saint Kitts and Nevis",
+  "grenada": "Grenada",
+  "vanuatu": "Vanuatu",
+  "barbados": "Barbados",
+  "samoa": "Samoa",
+  "japan": "Japan",
+  "italy": "Italy",
+  "france": "France",
+  "germany": "Germany",
+  "turkey": "Turkey",
+  "brazil": "Brazil",
+  "china": "China",
+  "poland": "Poland",
+  "ukraine": "Ukraine",
+  "russia": "Russia",
+  "palestine": "Palestine",
+  "uae": "United Arab Emirates",
+  "tunisia": "Tunisia",
+  "algeria": "Algeria",
+  "indonesia": "Indonesia (or Monaco, same flag)",
+  "pakistan": "Pakistan",
+  "morocco": "Morocco",
+  "yemen": "Yemen",
+  "chad": "Chad",
+  "argentina": "Argentina",
+  "uruguay": "Uruguay",
+  "malaysia": "Malaysia",
+  "philippines": "Philippines",
+  "northmacedonia": "North Macedonia",
+  "bosnia": "Bosnia and Herzegovina",
+  "uk": "United Kingdom",
+  "usa": "United States",
+  "india": "India",
+  "england": "England",
+  "lebanon": "Lebanon",
+  "southafrica": "South Africa",
+  "australia": "Australia",
+  "newzealand": "New Zealand",
+  "scotland": "Scotland",
+  "spain": "Spain",
+  "georgia": "Georgia",
+  "monaco": "Monaco",
+  "singapore": "Singapore",
+  "kenya": "Kenya",
+  "northkorea": "North Korea",
+  "uzbekistan": "Uzbekistan",
+  "drcongo": "DR Congo",
+  "southsudan": "South Sudan",
+  "serbia": "Serbia",
+  "puertorico": "Puerto Rico",
+  "guatemala": "Guatemala",
+  "haiti": "Haiti",
+  "sanmarino": "San Marino",
+  "dominicanrep": "Dominican Republic",
+  "costarica": "Costa Rica",
+  "canada": "Canada",
+  "egypt": "Egypt",
+  "saudi": "Saudi Arabia",
+  "mexico": "Mexico",
+  "portugal": "Portugal",
+  "southkorea": "South Korea",
+  "iran": "Iran",
+  "iraq": "Iraq",
+  "oman": "Oman",
+  "croatia": "Croatia",
+  "slovenia": "Slovenia",
+  "slovakia": "Slovakia",
+  "albania": "Albania",
+  "montenegro": "Montenegro",
+  "moldova": "Moldova",
+  "belarus": "Belarus",
+  "kazakhstan": "Kazakhstan",
+  "kyrgyzstan": "Kyrgyzstan",
+  "tajikistan": "Tajikistan",
+  "turkmenistan": "Turkmenistan",
+  "mongolia": "Mongolia",
+  "srilanka": "Sri Lanka",
+  "bhutan": "Bhutan",
+  "cambodia": "Cambodia",
+  "brunei": "Brunei",
+  "ecuador": "Ecuador",
+  "paraguay": "Paraguay",
+  "nicaragua": "Nicaragua",
+  "elsalvador": "El Salvador",
+  "belize": "Belize",
+  "dominica": "Dominica",
+  "fiji": "Fiji",
+  "png": "Papua New Guinea",
+  "kiribati": "Kiribati",
+  "tuvalu": "Tuvalu",
+  "angola": "Angola",
+  "mozambique": "Mozambique",
+  "zambia": "Zambia",
+  "zimbabwe": "Zimbabwe",
+  "uganda": "Uganda",
+  "eritrea": "Eritrea",
+  "lesotho": "Lesotho",
+  "eswatini": "Eswatini",
+  "eqguinea": "Equatorial Guinea",
+  "cyprus": "Cyprus",
+  "malta": "Malta",
+  "andorra": "Andorra",
+  "liechtenstein": "Liechtenstein",
+  "vatican": "Vatican City"
+ },
+ "data": {
+  "100": [
+   "nigeria",
+   "colombia",
+   "ghana",
+   "greece",
+   "jamaica",
+   "vietnam",
+   "ireland",
+   "belgium",
+   "sweden",
+   "switzerland",
+   "finland",
+   "denmark",
+   "netherlands",
+   "peru",
+   "japan",
+   "italy",
+   "france",
+   "germany",
+   "turkey",
+   "uk",
+   "usa",
+   "india",
+   "england",
+   "lebanon",
+   "palestine",
+   "tunisia",
+   "algeria",
+   "morocco",
+   "argentina",
+   "uae",
+   "brazil",
+   "spain",
+   "china",
+   "egypt",
+   "saudi",
+   "canada",
+   "mexico",
+   "portugal",
+   "southkorea",
+   "croatia"
+  ],
+  "200": [
+   "iceland",
+   "senegal",
+   "cameroon",
+   "panama",
+   "cuba",
+   "somalia",
+   "ivorycoast",
+   "hungary",
+   "bulgaria",
+   "romania",
+   "syria",
+   "venezuela",
+   "poland",
+   "ukraine",
+   "russia",
+   "southafrica",
+   "australia",
+   "newzealand",
+   "scotland",
+   "bangladesh",
+   "czechia",
+   "thailand",
+   "chile",
+   "norway",
+   "austria",
+   "jordan",
+   "kuwait",
+   "libya",
+   "sudan",
+   "indonesia",
+   "kenya",
+   "qatar",
+   "pakistan",
+   "yemen",
+   "uruguay",
+   "iran",
+   "iraq",
+   "albania",
+   "oman",
+   "northkorea"
+  ],
+  "300": [
+   "botswana",
+   "tanzania",
+   "laos",
+   "myanmar",
+   "armenia",
+   "azerbaijan",
+   "gabon",
+   "sierraleone",
+   "bahamas",
+   "trinidad",
+   "niger",
+   "bolivia",
+   "mauritania",
+   "togo",
+   "rwanda",
+   "ethiopia",
+   "georgia",
+   "singapore",
+   "estonia",
+   "lithuania",
+   "latvia",
+   "burkina",
+   "mali",
+   "guinea",
+   "luxembourg",
+   "honduras",
+   "bahrain",
+   "serbia",
+   "malaysia",
+   "philippines",
+   "bosnia",
+   "nepal",
+   "costarica",
+   "cyprus",
+   "kazakhstan",
+   "cambodia",
+   "ecuador",
+   "paraguay",
+   "uganda"
+  ],
+  "400": [
+   "guyana",
+   "suriname",
+   "seychelles",
+   "mauritius",
+   "benin",
+   "djibouti",
+   "guineabissau",
+   "saotome",
+   "comoros",
+   "faroe",
+   "madagascar",
+   "congo",
+   "gambia",
+   "car",
+   "liberia",
+   "capeverde",
+   "burundi",
+   "malawi",
+   "uzbekistan",
+   "drcongo",
+   "southsudan",
+   "puertorico",
+   "dominicanrep",
+   "haiti",
+   "guatemala",
+   "namibia",
+   "maldives",
+   "slovenia",
+   "slovakia",
+   "moldova",
+   "belarus",
+   "srilanka",
+   "mongolia",
+   "malta",
+   "angola",
+   "zimbabwe",
+   "montenegro",
+   "kyrgyzstan",
+   "liechtenstein"
+  ],
+  "500": [
+   "nauru",
+   "palau",
+   "marshall",
+   "micronesia",
+   "tonga",
+   "aland",
+   "greenland",
+   "timorleste",
+   "stlucia",
+   "solomon",
+   "antigua",
+   "stvincent",
+   "stkitts",
+   "grenada",
+   "vanuatu",
+   "barbados",
+   "samoa",
+   "northmacedonia",
+   "sanmarino",
+   "tajikistan",
+   "turkmenistan",
+   "bhutan",
+   "brunei",
+   "nicaragua",
+   "elsalvador",
+   "belize",
+   "dominica",
+   "fiji",
+   "png",
+   "kiribati",
+   "tuvalu",
+   "mozambique",
+   "zambia",
+   "eritrea",
+   "lesotho",
+   "eswatini",
+   "eqguinea",
+   "andorra",
+   "vatican"
+  ]
+ },
+ "new_flags": {
+  "canada": [
+   "Canada",
+   "<rect x=\"0\" y=\"0\" width=\"75.5\" height=\"200\" fill=\"#D80621\"/><rect x=\"75\" y=\"0\" width=\"150.5\" height=\"200\" fill=\"#fff\"/><rect x=\"225\" y=\"0\" width=\"75.5\" height=\"200\" fill=\"#D80621\"/><polygon points=\"150.0,33.5 161.3,56.0 173.8,51.0 168.8,83.5 187.5,66.0 192.5,76.0 210.0,71.0 205.0,91.0 212.5,96.0 182.5,118.5 186.3,128.5 156.3,123.5 155.0,156.0 145.0,156.0 143.8,123.5 113.8,128.5 117.5,118.5 87.5,96.0 95.0,91.0 90.0,71.0 107.5,76.0 112.5,66.0 131.3,83.5 126.3,51.0 138.8,56.0 150.0,33.5\" fill=\"#D80621\"/>"
+  ],
+  "egypt": [
+   "Egypt",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#CE1126\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#000\"/><g transform=\"translate(115,64) scale(0.7)\"><ellipse cx=\"50\" cy=\"55\" rx=\"11\" ry=\"18\" fill=\"#C09300\"/><polygon points=\"45,44 45,28 54,26 55,44\" fill=\"#C09300\"/><circle cx=\"49\" cy=\"22\" r=\"7\" fill=\"#C09300\"/><polygon points=\"44,19 35,24 44,26\" fill=\"#C09300\"/><polygon points=\"44,42 10,14 13,26 5,30 13,36 5,42 14,47 8,54 20,57 14,64 28,62 24,70 42,62\" fill=\"#C09300\"/><polygon points=\"56,42 90,14 87,26 95,30 87,36 95,42 86,47 92,54 80,57 86,64 72,62 76,70 58,62\" fill=\"#C09300\"/><polygon points=\"42,68 58,68 64,90 56,85 50,94 44,85 36,90\" fill=\"#C09300\"/></g><path d=\"M143,98 h14 v10 a7,7 0 0,1 -14,0 z\" fill=\"#fff\" stroke=\"#C09300\" stroke-width=\"2\"/><rect x=\"146\" y=\"98\" width=\"8\" height=\"8\" fill=\"#CE1126\"/>"
+  ],
+  "saudi": [
+   "Saudi Arabia",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#006C35\"/><path d=\"M72,78 q8,-18 16,0 q8,18 16,0 l0,-20 M112,80 l0,-24 q6,24 18,22 q10,-2 10,-14 M150,80 q14,6 26,-6 l0,-18 M186,80 q8,-14 18,-4 q8,10 18,-4 l0,-14 M214,62 q6,12 14,16\" fill=\"none\" stroke=\"#fff\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><rect x=\"92\" y=\"112\" width=\"130\" height=\"6\" fill=\"#fff\"/><polygon points=\"92,110 74,115 92,120\" fill=\"#fff\"/><rect x=\"222\" y=\"106\" width=\"8\" height=\"18\" fill=\"#fff\"/><rect x=\"228\" y=\"112\" width=\"12\" height=\"6\" fill=\"#fff\"/>"
+  ],
+  "mexico": [
+   "Mexico",
+   "<rect x=\"0\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#006847\"/><rect x=\"100\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#fff\"/><rect x=\"200\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#CE1126\"/><path d=\"M124,108 a28,28 0 0,0 52,0\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><polygon points=\"143,118 157,118 162,124 138,124\" fill=\"#2E7D32\"/><rect x=\"147\" y=\"104\" width=\"6\" height=\"16\" fill=\"#2E7D32\"/><rect x=\"138\" y=\"98\" width=\"6\" height=\"10\" fill=\"#2E7D32\"/><rect x=\"156\" y=\"96\" width=\"6\" height=\"12\" fill=\"#2E7D32\"/><ellipse cx=\"150\" cy=\"86\" rx=\"10\" ry=\"15\" fill=\"#8B5A2B\"/><polygon points=\"142,78 126,62 132,86\" fill=\"#8B5A2B\"/><polygon points=\"158,78 170,62 168,88\" fill=\"#8B5A2B\"/><circle cx=\"146\" cy=\"70\" r=\"6\" fill=\"#8B5A2B\"/><path d=\"M156,98 q10,-6 16,-2\" fill=\"none\" stroke=\"#3E7D3A\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "portugal": [
+   "Portugal",
+   "<rect x=\"0\" y=\"0\" width=\"120.5\" height=\"200\" fill=\"#006600\"/><rect x=\"120\" y=\"0\" width=\"180.5\" height=\"200\" fill=\"#FF0000\"/><circle cx=\"120\" cy=\"100\" r=\"30\" fill=\"none\" stroke=\"#FFE000\" stroke-width=\"6\"/><path d=\"M92,92 L148,108 M92,108 L148,92\" fill=\"none\" stroke=\"#FFE000\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M104,80 h32 v26 a16,16 0 0,1 -32,0 z\" fill=\"#fff\" stroke=\"#FF0000\" stroke-width=\"0\"/><path d=\"M108,84 h24 v21 a12,12 0 0,1 -24,0 z\" fill=\"#fff\" stroke=\"#FF0000\" stroke-width=\"4\"/><rect x=\"117.5\" y=\"87\" width=\"5\" height=\"6\" fill=\"#003399\"/><rect x=\"109.5\" y=\"95\" width=\"5\" height=\"6\" fill=\"#003399\"/><rect x=\"125.5\" y=\"95\" width=\"5\" height=\"6\" fill=\"#003399\"/><rect x=\"117.5\" y=\"95\" width=\"5\" height=\"6\" fill=\"#003399\"/><rect x=\"117.5\" y=\"103\" width=\"5\" height=\"6\" fill=\"#003399\"/>"
+  ],
+  "southkorea": [
+   "South Korea",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#fff\"/><path d=\"M118.80,79.20 A37.5,37.5 0 0,0 181.20,120.80 A18.75,18.75 0 0,0 150.00,100.00 A18.75,18.75 0 0,1 118.80,79.20 Z\" fill=\"#0047A0\" /><path d=\"M118.80,79.20 A37.5,37.5 0 0,1 181.20,120.80 A18.75,18.75 0 0,0 150.00,100.00 A18.75,18.75 0 0,1 118.80,79.20 Z\" fill=\"#CD2E3A\" /><g transform=\"translate(95.08,63.39) rotate(303.69)\"><rect x=\"-12.5\" y=\"-8.4\" width=\"25\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"-2.1\" width=\"25\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"4.2\" width=\"25\" height=\"4.2\" fill=\"#000\"/></g><g transform=\"translate(204.92,136.61) rotate(123.69)\"><rect x=\"-12.5\" y=\"-8.4\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"1.05\" y=\"-8.4\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"-2.1\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"1.05\" y=\"-2.1\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"4.2\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"1.05\" y=\"4.2\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/></g><g transform=\"translate(204.92,63.39) rotate(56.31)\"><rect x=\"-12.5\" y=\"-8.4\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"1.05\" y=\"-8.4\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"-2.1\" width=\"25\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"4.2\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"1.05\" y=\"4.2\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/></g><g transform=\"translate(95.08,136.61) rotate(236.31)\"><rect x=\"-12.5\" y=\"-8.4\" width=\"25\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"-2.1\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"1.05\" y=\"-2.1\" width=\"11.45\" height=\"4.2\" fill=\"#000\"/><rect x=\"-12.5\" y=\"4.2\" width=\"25\" height=\"4.2\" fill=\"#000\"/></g>"
+  ],
+  "iran": [
+   "Iran",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#239F40\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#DA0000\"/><rect x=\"8\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"8\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"21.1\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"21.1\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"34.2\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"34.2\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"47.3\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"47.3\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"60.4\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"60.4\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"73.5\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"73.5\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"86.6\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"86.6\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"99.7\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"99.7\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"112.8\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"112.8\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"125.89999999999999\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"125.89999999999999\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"139\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"139\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"152.1\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"152.1\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"165.2\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"165.2\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"178.29999999999998\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"178.29999999999998\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"191.4\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"191.4\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"204.5\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"204.5\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"217.6\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"217.6\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"230.7\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"230.7\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"243.79999999999998\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"243.79999999999998\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"256.9\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"256.9\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"270\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"270\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"283.09999999999997\" y=\"62\" width=\"8\" height=\"3\" fill=\"#fff\"/><rect x=\"283.09999999999997\" y=\"135\" width=\"8\" height=\"3\" fill=\"#fff\"/><path d=\"M150,78 c-3,8 -3,26 0,40 c3,-14 3,-32 0,-40 z\" fill=\"#DA0000\" /><path d=\"M140,82 c-12,8 -12,26 4,36 M160,82 c12,8 12,26 -4,36\" fill=\"none\" stroke=\"#DA0000\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M134,86 c-14,10 -12,30 8,36 M166,86 c14,10 12,30 -8,36\" fill=\"none\" stroke=\"#DA0000\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><rect x=\"147\" y=\"74\" width=\"6\" height=\"6\" fill=\"#DA0000\"/>"
+  ],
+  "iraq": [
+   "Iraq",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#CE1126\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#000\"/><path d=\"M98,92 l0,18 h18 M124,110 l0,-20 M134,110 q4,-14 12,0 q4,10 12,0 l0,-20 M168,110 h20 l0,-16 q-8,-4 -10,6 M198,110 l0,-20\" fill=\"none\" stroke=\"#007A3D\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"120\" cy=\"86\" r=\"3\" fill=\"#007A3D\"/>"
+  ],
+  "oman": [
+   "Oman",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#DB161B\"/><rect x=\"100\" y=\"0\" width=\"200\" height=\"67\" fill=\"#fff\"/><rect x=\"100\" y=\"133\" width=\"200\" height=\"67\" fill=\"#008000\"/><g transform=\"translate(50,36)\"><path d=\"M-16,-16 L16,16 M16,-16 L-16,16\" fill=\"none\" stroke=\"#fff\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M-4,-14 h8 v8 q8,10 0,24 q-4,4 -4,-2 q4,-12 -4,-22 z\" fill=\"#fff\" /><rect x=\"-10\" y=\"-8\" width=\"20\" height=\"4\" fill=\"#fff\"/></g>"
+  ],
+  "croatia": [
+   "Croatia",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#FF0000\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#171796\"/><path d=\"M122,74 h56 v38 a28,28 0 0,1 -56,0 z\" fill=\"#fff\" /><clipPath id=\"hrc\"><path d=\"M122,74 h56 v38 a28,28 0 0,1 -56,0 z\"/></clipPath><g clip-path=\"url(#hrc)\"><rect x=\"122\" y=\"74\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"122\" y=\"96.4\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"122\" y=\"118.8\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"133.2\" y=\"85.2\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"133.2\" y=\"107.6\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"133.2\" y=\"130\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"144.4\" y=\"74\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"144.4\" y=\"96.4\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"144.4\" y=\"118.8\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"155.6\" y=\"85.2\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"155.6\" y=\"107.6\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"155.6\" y=\"130\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"166.8\" y=\"74\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"166.8\" y=\"96.4\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/><rect x=\"166.8\" y=\"118.8\" width=\"11.2\" height=\"11.2\" fill=\"#FF0000\"/></g><path d=\"M122,74 h56 v38 a28,28 0 0,1 -56,0 z\" fill=\"none\" stroke=\"#FF0000\" stroke-width=\"1.5\"/><polygon points=\"122,72 122,64 133.2,64 133.2,72\" fill=\"#0093DD\"/><polygon points=\"133.2,72 133.2,60 144.39999999999998,60 144.39999999999998,72\" fill=\"#171796\"/><polygon points=\"144.4,72 144.4,56 155.6,56 155.6,72\" fill=\"#0093DD\"/><polygon points=\"155.6,72 155.6,60 166.79999999999998,60 166.79999999999998,72\" fill=\"#171796\"/><polygon points=\"166.8,72 166.8,64 178,64 178,72\" fill=\"#0093DD\"/>"
+  ],
+  "slovenia": [
+   "Slovenia",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#005DA4\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#ED1C24\"/><path d=\"M60,40 h40 v34 q0,22 -20,30 q-20,-8 -20,-30 z\" fill=\"#005DA4\" stroke=\"#ED1C24\" stroke-width=\"3\"/><polygon points=\"64,82 72,72 80,62 88,72 96,82 96,88 64,88\" fill=\"#fff\"/><path d=\"M66,92 q7,-4 14,0 q7,4 14,0\" fill=\"none\" stroke=\"#005DA4\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><polygon points=\"72.0,46.0 73.0,48.3 75.5,48.0 74.0,50.0 75.5,52.0 73.0,51.7 72.0,54.0 71.0,51.7 68.5,52.0 70.0,50.0 68.5,48.0 71.0,48.3\" fill=\"#FFDD00\"/><polygon points=\"88.0,46.0 89.0,48.3 91.5,48.0 90.0,50.0 91.5,52.0 89.0,51.7 88.0,54.0 87.0,51.7 84.5,52.0 86.0,50.0 84.5,48.0 87.0,48.3\" fill=\"#FFDD00\"/><polygon points=\"80.0,54.0 81.0,56.3 83.5,56.0 82.0,58.0 83.5,60.0 81.0,59.7 80.0,62.0 79.0,59.7 76.5,60.0 78.0,58.0 76.5,56.0 79.0,56.3\" fill=\"#FFDD00\"/>"
+  ],
+  "slovakia": [
+   "Slovakia",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#0B4EA2\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#EE1C25\"/><path d=\"M62,40 h64 v52 q0,36 -32,48 q-32,-12 -32,-48 z\" fill=\"#EE1C25\" stroke=\"#fff\" stroke-width=\"4\"/><rect x=\"90\" y=\"52\" width=\"8\" height=\"68\" fill=\"#fff\"/><rect x=\"74\" y=\"66\" width=\"40\" height=\"7\" fill=\"#fff\"/><rect x=\"78\" y=\"82\" width=\"32\" height=\"7\" fill=\"#fff\"/><path d=\"M66,118 q10,-14 20,-2 q8,-12 16,0 q10,-12 20,2 q-8,16 -28,22 q-20,-6 -28,-22 z\" fill=\"#0B4EA2\" />"
+  ],
+  "albania": [
+   "Albania",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#E41E20\"/><g transform=\"translate(100,30) scale(1.4)\"><ellipse cx=\"50\" cy=\"54\" rx=\"10\" ry=\"17\" fill=\"#000\"/><polygon points=\"45,42 38,22 43,20 50,38\" fill=\"#000\"/><polygon points=\"55,42 62,22 57,20 50,38\" fill=\"#000\"/><circle cx=\"39\" cy=\"18\" r=\"5\" fill=\"#000\"/><circle cx=\"61\" cy=\"18\" r=\"5\" fill=\"#000\"/><polygon points=\"35,15 27,20 35,21\" fill=\"#000\"/><polygon points=\"65,15 73,20 65,21\" fill=\"#000\"/><polygon points=\"44,38 8,16 12,26 3,30 12,36 3,42 13,47 6,54 18,57 12,64 26,62 22,70 42,60\" fill=\"#000\"/><polygon points=\"56,38 92,16 88,26 97,30 88,36 97,42 87,47 94,54 82,57 88,64 74,62 78,70 58,60\" fill=\"#000\"/><polygon points=\"43,66 57,66 64,88 57,83 50,92 43,83 36,88\" fill=\"#000\"/><polygon points=\"44,66 33,76 37,79 47,70\" fill=\"#000\"/><polygon points=\"56,66 67,76 63,79 53,70\" fill=\"#000\"/></g>"
+  ],
+  "montenegro": [
+   "Montenegro",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#C40308\"/><path d=\"M0,0 h300 v200 h-300 z M10,10 v180 h280 v-180 z\" fill=\"#D3AE3B\" fill-rule=\"evenodd\"/><g transform=\"translate(110,48) scale(0.8)\"><ellipse cx=\"50\" cy=\"54\" rx=\"10\" ry=\"17\" fill=\"#D3AE3B\"/><polygon points=\"45,42 38,22 43,20 50,38\" fill=\"#D3AE3B\"/><polygon points=\"55,42 62,22 57,20 50,38\" fill=\"#D3AE3B\"/><circle cx=\"39\" cy=\"18\" r=\"5\" fill=\"#D3AE3B\"/><circle cx=\"61\" cy=\"18\" r=\"5\" fill=\"#D3AE3B\"/><polygon points=\"35,15 27,20 35,21\" fill=\"#D3AE3B\"/><polygon points=\"65,15 73,20 65,21\" fill=\"#D3AE3B\"/><polygon points=\"44,38 8,16 12,26 3,30 12,36 3,42 13,47 6,54 18,57 12,64 26,62 22,70 42,60\" fill=\"#D3AE3B\"/><polygon points=\"56,38 92,16 88,26 97,30 88,36 97,42 87,47 94,54 82,57 88,64 74,62 78,70 58,60\" fill=\"#D3AE3B\"/><polygon points=\"43,66 57,66 64,88 57,83 50,92 43,83 36,88\" fill=\"#D3AE3B\"/><polygon points=\"44,66 33,76 37,79 47,70\" fill=\"#D3AE3B\"/><polygon points=\"56,66 67,76 63,79 53,70\" fill=\"#D3AE3B\"/></g><polygon points=\"140,46 146,36 150,44 154,36 160,46\" fill=\"#D3AE3B\"/><path d=\"M140,92 h20 v12 a10,10 0 0,1 -20,0 z\" fill=\"#1D5E91\" />"
+  ],
+  "moldova": [
+   "Moldova",
+   "<rect x=\"0\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#0046AE\"/><rect x=\"100\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#FFD200\"/><rect x=\"200\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#CC092F\"/><g transform=\"translate(124,62) scale(0.52)\"><ellipse cx=\"50\" cy=\"55\" rx=\"11\" ry=\"18\" fill=\"#B07E3B\"/><polygon points=\"45,44 45,28 54,26 55,44\" fill=\"#B07E3B\"/><circle cx=\"49\" cy=\"22\" r=\"7\" fill=\"#B07E3B\"/><polygon points=\"44,19 35,24 44,26\" fill=\"#B07E3B\"/><polygon points=\"44,42 10,14 13,26 5,30 13,36 5,42 14,47 8,54 20,57 14,64 28,62 24,70 42,62\" fill=\"#B07E3B\"/><polygon points=\"56,42 90,14 87,26 95,30 87,36 95,42 86,47 92,54 80,57 86,64 72,62 76,70 58,62\" fill=\"#B07E3B\"/><polygon points=\"42,68 58,68 64,90 56,85 50,94 44,85 36,90\" fill=\"#B07E3B\"/></g><path d=\"M139,92 h22 v12 a11,11 0 0,1 -22,0 z\" fill=\"#CC092F\" /><path d=\"M139,100 h22 v4 a11,11 0 0,1 -22,0 z\" fill=\"#0046AE\" /><circle cx=\"150\" cy=\"97\" r=\"3\" fill=\"#B07E3B\"/>"
+  ],
+  "belarus": [
+   "Belarus",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"133.83\" fill=\"#C8313E\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#4AA657\"/><rect x=\"0\" y=\"0\" width=\"34\" height=\"200\" fill=\"#fff\"/><polygon points=\"17,2 29,14 17,26 5,14\" fill=\"#C8313E\"/><polygon points=\"17,9 22,14 17,19 12,14\" fill=\"#fff\"/><polygon points=\"17,30.5 29,42.5 17,54.5 5,42.5\" fill=\"#C8313E\"/><polygon points=\"17,37.5 22,42.5 17,47.5 12,42.5\" fill=\"#fff\"/><polygon points=\"17,59 29,71 17,83 5,71\" fill=\"#C8313E\"/><polygon points=\"17,66 22,71 17,76 12,71\" fill=\"#fff\"/><polygon points=\"17,87.5 29,99.5 17,111.5 5,99.5\" fill=\"#C8313E\"/><polygon points=\"17,94.5 22,99.5 17,104.5 12,99.5\" fill=\"#fff\"/><polygon points=\"17,116 29,128 17,140 5,128\" fill=\"#C8313E\"/><polygon points=\"17,123 22,128 17,133 12,128\" fill=\"#fff\"/><polygon points=\"17,144.5 29,156.5 17,168.5 5,156.5\" fill=\"#C8313E\"/><polygon points=\"17,151.5 22,156.5 17,161.5 12,156.5\" fill=\"#fff\"/><polygon points=\"17,173 29,185 17,197 5,185\" fill=\"#C8313E\"/><polygon points=\"17,180 22,185 17,190 12,185\" fill=\"#fff\"/>"
+  ],
+  "kazakhstan": [
+   "Kazakhstan",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#00AFCA\"/><polygon points=\"160.0,46.0 162.9,56.1 167.8,46.8 168.7,57.3 175.3,49.0 174.1,59.5 182.2,52.7 179.0,62.8 188.3,57.7 183.2,67.0 193.3,63.8 186.5,71.9 197.0,70.7 188.7,77.3 199.2,78.2 189.9,83.1 200.0,86.0 189.9,88.9 199.2,93.8 188.7,94.7 197.0,101.3 186.5,100.1 193.3,108.2 183.2,105.0 188.3,114.3 179.0,109.2 182.2,119.3 174.1,112.5 175.3,123.0 168.7,114.7 167.8,125.2 162.9,115.9 160.0,126.0 157.1,115.9 152.2,125.2 151.3,114.7 144.7,123.0 145.9,112.5 137.8,119.3 141.0,109.2 131.7,114.3 136.8,105.0 126.7,108.2 133.5,100.1 123.0,101.3 131.3,94.7 120.8,93.8 130.1,88.9 120.0,86.0 130.1,83.1 120.8,78.2 131.3,77.3 123.0,70.7 133.5,71.9 126.7,63.8 136.8,67.0 131.7,57.7 141.0,62.8 137.8,52.7 145.9,59.5 144.7,49.0 151.3,57.3 152.2,46.8 157.1,56.1\" fill=\"#FEC50C\"/><circle cx=\"160\" cy=\"86\" r=\"24\" fill=\"#FEC50C\"/><path d=\"M120,128 q20,-16 40,-6 q20,-10 40,6 q-20,-4 -40,8 q-20,-12 -40,-8 z\" fill=\"#FEC50C\" /><rect x=\"14\" y=\"0\" width=\"6\" height=\"200\" fill=\"#00AFCA\"/><path d=\"M26,12 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,12 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,22 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,37 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,37 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,47 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,62 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,62 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,72 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,87 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,87 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,97 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,112 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,112 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,122 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,137 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,137 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,147 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,162 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,162 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,172 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M26,187 q-14,0 -14,8 q0,8 8,6 q6,-2 2,-6 M26,187 q14,0 14,8 q0,8 -8,6 q-6,-2 -2,-6 M26,197 l0,8\" fill=\"none\" stroke=\"#FEC50C\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "kyrgyzstan": [
+   "Kyrgyzstan",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#E8112D\"/><polygon points=\"150.0,46.0 152.8,64.1 158.4,46.7 158.4,65.0 166.7,48.6 163.8,66.7 174.5,51.9 168.8,69.3 181.7,56.3 173.4,72.6 188.2,61.8 177.4,76.6 193.7,68.3 180.7,81.2 198.1,75.5 183.3,86.2 201.4,83.3 185.0,91.6 203.3,91.6 185.9,97.2 204.0,100.0 185.9,102.8 203.3,108.4 185.0,108.4 201.4,116.7 183.3,113.8 198.1,124.5 180.7,118.8 193.7,131.7 177.4,123.4 188.2,138.2 173.4,127.4 181.7,143.7 168.8,130.7 174.5,148.1 163.8,133.3 166.7,151.4 158.4,135.0 158.4,153.3 152.8,135.9 150.0,154.0 147.2,135.9 141.6,153.3 141.6,135.0 133.3,151.4 136.2,133.3 125.5,148.1 131.2,130.7 118.3,143.7 126.6,127.4 111.8,138.2 122.6,123.4 106.3,131.7 119.3,118.8 101.9,124.5 116.7,113.8 98.6,116.7 115.0,108.4 96.7,108.4 114.1,102.8 96.0,100.0 114.1,97.2 96.7,91.6 115.0,91.6 98.6,83.3 116.7,86.2 101.9,75.5 119.3,81.2 106.3,68.3 122.6,76.6 111.8,61.8 126.6,72.6 118.3,56.3 131.2,69.3 125.5,51.9 136.2,66.7 133.3,48.6 141.6,65.0 141.6,46.7 147.2,64.1\" fill=\"#FFEF00\"/><circle cx=\"150\" cy=\"100\" r=\"36\" fill=\"#FFEF00\"/><circle cx=\"150\" cy=\"100\" r=\"22\" fill=\"#E8112D\"/><circle cx=\"150\" cy=\"100\" r=\"20\" fill=\"#FFEF00\"/><path d=\"M131,92 q19,-12 38,0 M131,108 q19,12 38,0 M140,82 q-4,18 0,36 M160,82 q4,18 0,36\" fill=\"none\" stroke=\"#E8112D\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "tajikistan": [
+   "Tajikistan",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"57.64\" fill=\"#CC0000\"/><rect x=\"0\" y=\"57.14\" width=\"300\" height=\"86.21\" fill=\"#fff\"/><rect x=\"0\" y=\"142.86\" width=\"300\" height=\"57.64\" fill=\"#006600\"/><path d=\"M132,112 h36 l-4,-18 l-7,8 l-7,-16 l-7,16 l-7,-8 z\" fill=\"#F8C300\" /><rect x=\"132\" y=\"112\" width=\"36\" height=\"6\" fill=\"#F8C300\"/><polygon points=\"110.0,104.0 111.3,108.1 115.7,108.1 112.2,110.7 113.5,114.9 110.0,112.3 106.5,114.9 107.8,110.7 104.3,108.1 108.7,108.1\" fill=\"#F8C300\"/><polygon points=\"115.4,88.0 116.7,92.1 121.1,92.1 117.5,94.7 118.9,98.9 115.4,96.3 111.8,98.9 113.2,94.7 109.7,92.1 114.0,92.1\" fill=\"#F8C300\"/><polygon points=\"130.0,76.3 131.3,80.4 135.7,80.4 132.2,83.0 133.5,87.1 130.0,84.6 126.5,87.1 127.8,83.0 124.3,80.4 128.7,80.4\" fill=\"#F8C300\"/><polygon points=\"150.0,72.0 151.3,76.1 155.7,76.1 152.2,78.7 153.5,82.9 150.0,80.3 146.5,82.9 147.8,78.7 144.3,76.1 148.7,76.1\" fill=\"#F8C300\"/><polygon points=\"170.0,76.3 171.3,80.4 175.7,80.4 172.2,83.0 173.5,87.1 170.0,84.6 166.5,87.1 167.8,83.0 164.3,80.4 168.7,80.4\" fill=\"#F8C300\"/><polygon points=\"184.6,88.0 186.0,92.1 190.3,92.1 186.8,94.7 188.2,98.9 184.6,96.3 181.1,98.9 182.5,94.7 178.9,92.1 183.3,92.1\" fill=\"#F8C300\"/><polygon points=\"190.0,104.0 191.3,108.1 195.7,108.1 192.2,110.7 193.5,114.9 190.0,112.3 186.5,114.9 187.8,110.7 184.3,108.1 188.7,108.1\" fill=\"#F8C300\"/>"
+  ],
+  "turkmenistan": [
+   "Turkmenistan",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#00843D\"/><rect x=\"36\" y=\"0\" width=\"48\" height=\"200\" fill=\"#D22630\"/><ellipse cx=\"60\" cy=\"22\" rx=\"18\" ry=\"14\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"22\" rx=\"12\" ry=\"9\" fill=\"#D22630\"/><polygon points=\"60,15 68,22 60,29 52,22\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"22\" rx=\"3\" ry=\"3\" fill=\"#00843D\"/><ellipse cx=\"60\" cy=\"61\" rx=\"18\" ry=\"14\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"61\" rx=\"12\" ry=\"9\" fill=\"#D22630\"/><polygon points=\"60,54 68,61 60,68 52,61\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"61\" rx=\"3\" ry=\"3\" fill=\"#00843D\"/><ellipse cx=\"60\" cy=\"100\" rx=\"18\" ry=\"14\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"100\" rx=\"12\" ry=\"9\" fill=\"#D22630\"/><polygon points=\"60,93 68,100 60,107 52,100\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"100\" rx=\"3\" ry=\"3\" fill=\"#00843D\"/><ellipse cx=\"60\" cy=\"139\" rx=\"18\" ry=\"14\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"139\" rx=\"12\" ry=\"9\" fill=\"#D22630\"/><polygon points=\"60,132 68,139 60,146 52,139\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"139\" rx=\"3\" ry=\"3\" fill=\"#00843D\"/><ellipse cx=\"60\" cy=\"178\" rx=\"18\" ry=\"14\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"178\" rx=\"12\" ry=\"9\" fill=\"#D22630\"/><polygon points=\"60,171 68,178 60,185 52,178\" fill=\"#F5F5DC\"/><ellipse cx=\"60\" cy=\"178\" rx=\"3\" ry=\"3\" fill=\"#00843D\"/><circle cx=\"122\" cy=\"40\" r=\"18\" fill=\"#fff\"/><circle cx=\"128\" cy=\"36\" r=\"16\" fill=\"#00843D\"/><polygon points=\"146.0,25.5 147.0,28.6 150.3,28.6 147.6,30.5 148.6,33.6 146.0,31.7 143.4,33.6 144.4,30.5 141.7,28.6 145.0,28.6\" fill=\"#fff\"/><polygon points=\"152.0,37.5 153.0,40.6 156.3,40.6 153.6,42.5 154.6,45.6 152.0,43.7 149.4,45.6 150.4,42.5 147.7,40.6 151.0,40.6\" fill=\"#fff\"/><polygon points=\"138.0,17.5 139.0,20.6 142.3,20.6 139.6,22.5 140.6,25.6 138.0,23.7 135.4,25.6 136.4,22.5 133.7,20.6 137.0,20.6\" fill=\"#fff\"/><polygon points=\"150.0,49.5 151.0,52.6 154.3,52.6 151.6,54.5 152.6,57.6 150.0,55.7 147.4,57.6 148.4,54.5 145.7,52.6 149.0,52.6\" fill=\"#fff\"/><polygon points=\"158.0,19.5 159.0,22.6 162.3,22.6 159.6,24.5 160.6,27.6 158.0,25.7 155.4,27.6 156.4,24.5 153.7,22.6 157.0,22.6\" fill=\"#fff\"/>"
+  ],
+  "mongolia": [
+   "Mongolia",
+   "<rect x=\"0\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#DA2032\"/><rect x=\"100\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#0066B3\"/><rect x=\"200\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#DA2032\"/><circle cx=\"50\" cy=\"68\" r=\"7\" fill=\"#FFD900\"/><polygon points=\"50,42 54,52 50,50 46,52\" fill=\"#FFD900\"/><rect x=\"36\" y=\"78\" width=\"28\" height=\"4\" fill=\"#FFD900\"/><path d=\"M36,62 a14,9 0 0,0 28,0 a14,12 0 0,1 -28,0 z\" fill=\"#FFD900\" /><polygon points=\"36,86 64,86 50,92\" fill=\"#FFD900\"/><rect x=\"34\" y=\"96\" width=\"32\" height=\"6\" fill=\"#FFD900\"/><rect x=\"34\" y=\"150\" width=\"32\" height=\"6\" fill=\"#FFD900\"/><circle cx=\"50\" cy=\"126\" r=\"14\" fill=\"#FFD900\"/><path d=\"M50,112 a7,7 0 0,1 0,14 a7,7 0 0,0 0,14 a14,14 0 0,1 0,-28 z\" fill=\"#DA2032\" /><rect x=\"22\" y=\"96\" width=\"6\" height=\"60\" fill=\"#FFD900\"/><rect x=\"72\" y=\"96\" width=\"6\" height=\"60\" fill=\"#FFD900\"/><polygon points=\"36,160 64,160 50,166\" fill=\"#FFD900\"/>"
+  ],
+  "srilanka": [
+   "Sri Lanka",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#FFBE29\"/><rect x=\"8\" y=\"8\" width=\"40\" height=\"184\" fill=\"#00534E\"/><rect x=\"48\" y=\"8\" width=\"40\" height=\"184\" fill=\"#EB7400\"/><rect x=\"96\" y=\"8\" width=\"196\" height=\"184\" fill=\"#8D153A\"/><path d=\"M228,150 l-4,-26 q8,-26 -14,-34 q-24,-6 -40,6 l-14,-6 q-14,2 -12,16 l8,10 l-6,18 l6,16 h12 l0,-14 l10,-6 l20,4 l2,16 h12 l-2,-18 q8,4 10,18 z\" fill=\"#FFBE29\" /><rect x=\"150\" y=\"62\" width=\"5\" height=\"40\" fill=\"#FFBE29\"/><rect x=\"142\" y=\"98\" width=\"20\" height=\"5\" fill=\"#FFBE29\"/><path d=\"M226,100 q14,-12 10,-30\" fill=\"none\" stroke=\"#FFBE29\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><ellipse cx=\"110\" cy=\"22\" rx=\"6\" ry=\"9\" fill=\"#FFBE29\"/><ellipse cx=\"278\" cy=\"22\" rx=\"6\" ry=\"9\" fill=\"#FFBE29\"/><ellipse cx=\"110\" cy=\"178\" rx=\"6\" ry=\"9\" fill=\"#FFBE29\"/><ellipse cx=\"278\" cy=\"178\" rx=\"6\" ry=\"9\" fill=\"#FFBE29\"/>"
+  ],
+  "bhutan": [
+   "Bhutan",
+   "<polygon points=\"0,0 300,0 0,200\" fill=\"#FFD520\"/><polygon points=\"300,0 300,200 0,200\" fill=\"#FF4E12\"/><path d=\"M86,150 q20,-6 26,-20 M112,94 l-6,-10 l12,4 l0,-12 l10,8 l4,-12 l8,10 l6,-12 l6,12 l8,-10 l4,12 l10,-8 l2,12 l10,-6 l-2,12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M70,152 q-6,-26 18,-40 q26,-16 50,-4 q24,12 44,-2 q20,-14 34,-34 q8,-12 22,-16\" fill=\"none\" stroke=\"#fff\" stroke-width=\"16\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M234,46 q16,-10 30,0 l12,-2 l-6,8 l8,6 l-14,2 q-6,10 -20,8 q-12,-2 -14,-12 z\" fill=\"#fff\" /><circle cx=\"246\" cy=\"48\" r=\"2.5\" fill=\"#FF4E12\"/><path d=\"M246,40 l-6,-12 M252,40 l2,-12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M104,124 L96,146\" fill=\"none\" stroke=\"#fff\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"96\" cy=\"151\" r=\"6\" fill=\"#fff\"/><path d=\"M138,112 L132,140\" fill=\"none\" stroke=\"#fff\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"132\" cy=\"145\" r=\"6\" fill=\"#fff\"/><path d=\"M186,96 L196,122\" fill=\"none\" stroke=\"#fff\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"196\" cy=\"127\" r=\"6\" fill=\"#fff\"/><path d=\"M214,74 L232,92\" fill=\"none\" stroke=\"#fff\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"232\" cy=\"97\" r=\"6\" fill=\"#fff\"/>"
+  ],
+  "cambodia": [
+   "Cambodia",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"50.5\" fill=\"#032EA1\"/><rect x=\"0\" y=\"50\" width=\"300\" height=\"100.5\" fill=\"#E00025\"/><rect x=\"0\" y=\"150\" width=\"300\" height=\"50.5\" fill=\"#032EA1\"/><path d=\"M98,128 h104 v-6 h-8 v-10 h-10 l-2,-14 l-3,6 l-1,-10 l-3,-14 l-3,14 l-1,10 l-3,-6 l-2,14 h-12 l-2,-16 l-2,4 l-2,-14 l-4,-18 l-4,18 l-2,14 l-2,-4 l-2,16 h-12 l-2,-14 l-3,6 l-1,-10 l-3,-14 l-3,14 l-1,10 l-3,-6 l-2,14 h-10 v10 h-8 z\" fill=\"#fff\" /><rect x=\"94\" y=\"128\" width=\"112\" height=\"5\" fill=\"#fff\"/>"
+  ],
+  "brunei": [
+   "Brunei",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#F7E017\"/><polygon points=\"0,40 300,140 300,180 0,80\" fill=\"#fff\"/><polygon points=\"0,80 300,180 300,200 0,100\" fill=\"#000\"/><polygon points=\"0,64 300,164\" fill=\"#000\"/><g transform=\"translate(150,100)\"><path d=\"M-26,-10 a26,26 0 0,0 52,0 a30,24 0 0,1 -52,0 z\" fill=\"#CF1126\" /><rect x=\"-3\" y=\"-42\" width=\"6\" height=\"48\" fill=\"#CF1126\"/><path d=\"M-30,-32 q12,10 26,0 v12 q-14,6 -26,-6 z M30,-32 q-12,10 -26,0 v12 q14,6 26,-6 z\" fill=\"#CF1126\" /><polygon points=\"-6,-50 6,-50 0,-58\" fill=\"#CF1126\"/><path d=\"M-24,16 q-10,8 -4,24 M24,16 q10,8 4,24\" fill=\"none\" stroke=\"#CF1126\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><rect x=\"-24\" y=\"34\" width=\"48\" height=\"8\" fill=\"#CF1126\"/></g>"
+  ],
+  "ecuador": [
+   "Ecuador",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100.5\" fill=\"#FFDD00\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"50.5\" fill=\"#034EA2\"/><rect x=\"0\" y=\"150\" width=\"300\" height=\"50.5\" fill=\"#ED1C24\"/><ellipse cx=\"150\" cy=\"104\" rx=\"20\" ry=\"26\" fill=\"#5BA4D9\"/><ellipse cx=\"150\" cy=\"112\" rx=\"14\" ry=\"12\" fill=\"#2E8B57\"/><path d=\"M136,118 h28 v8 h-28 z\" fill=\"#3A6EA5\" /><g transform=\"translate(110,48) scale(0.8)\"><path d=\"M50,30 l-46,-6 l30,18 z M50,30 l46,-6 l-30,18 z\" fill=\"#333\"/></g><circle cx=\"150\" cy=\"76\" r=\"6\" fill=\"#333\"/><path d=\"M128,100 q-6,20 6,32 M172,100 q6,20 -6,32\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "paraguay": [
+   "Paraguay",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#D52B1E\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#0038A8\"/><circle cx=\"150\" cy=\"100\" r=\"22\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"3\"/><circle cx=\"150\" cy=\"100\" r=\"26\" fill=\"none\" stroke=\"#D52B1E\" stroke-width=\"2\"/><polygon points=\"150.0,92.0 151.8,97.5 157.6,97.5 152.9,100.9 154.7,106.5 150.0,103.1 145.3,106.5 147.1,100.9 142.4,97.5 148.2,97.5\" fill=\"#FCD116\"/>"
+  ],
+  "nicaragua": [
+   "Nicaragua",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#0067C6\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#0067C6\"/><circle cx=\"150\" cy=\"100\" r=\"24\" fill=\"none\" stroke=\"#C9A100\" stroke-width=\"4\"/><polygon points=\"150,82 170,114 130,114\" fill=\"#2E9AD0\"/><path d=\"M136,108 a14,14 0 0,1 28,0 z\" fill=\"#E04040\" /><path d=\"M140,108 a10,10 0 0,1 20,0 z\" fill=\"#F2C200\" /><polygon points=\"132,114 140,104 146,110 152,102 160,110 168,114\" fill=\"#2E8B57\"/>"
+  ],
+  "elsalvador": [
+   "El Salvador",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#0F47AF\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#0F47AF\"/><path d=\"M124,96 a26,26 0 0,0 52,0\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M126,90 q-4,-14 6,-24 M174,90 q4,-14 -6,-24\" fill=\"none\" stroke=\"#2E7D32\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><polygon points=\"150,74 168,104 132,104\" fill=\"#C9A100\"/><polygon points=\"150,78 164,102 136,102\" fill=\"#7FB7E6\"/><polygon points=\"138,102 144,94 150,98 156,92 162,102\" fill=\"#2E8B57\"/><path d=\"M132,108 l-10,-14 M168,108 l10,-14\" fill=\"none\" stroke=\"#0F47AF\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "belize": [
+   "Belize",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#171696\"/><rect x=\"0\" y=\"0\" width=\"300\" height=\"20\" fill=\"#D90F19\"/><rect x=\"0\" y=\"180\" width=\"300\" height=\"20\" fill=\"#D90F19\"/><circle cx=\"150\" cy=\"100\" r=\"60\" fill=\"#fff\"/><ellipse cx=\"202\" cy=\"100\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"201.58996446835283\" cy=\"106.51732814534382\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"200.36632437868883\" cy=\"112.93187413257245\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"198.34837726618906\" cy=\"119.14247673960325\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"195.5679473622809\" cy=\"125.0511910532892\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"192.06888370749726\" cy=\"130.5648331192086\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"187.9063686259134\" cy=\"135.5964495082918\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"183.14604746693186\" cy=\"140.06668862434105\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"177.8629933389078\" cy=\"143.90505212610478\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"172.14052316138378\" cy=\"147.051006728233\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"166.06888370749726\" cy=\"149.454938847348\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"159.74382835845768\" cy=\"151.07893703789182\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"153.2651070155243\" cy=\"151.89738987827013\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"146.7348929844757\" cy=\"151.89738987827013\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"140.25617164154232\" cy=\"151.07893703789182\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"133.93111629250274\" cy=\"149.454938847348\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"127.85947683861622\" cy=\"147.051006728233\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"122.13700666109216\" cy=\"143.90505212610478\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"116.85395253306814\" cy=\"140.06668862434105\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"112.09363137408661\" cy=\"135.5964495082918\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"107.93111629250274\" cy=\"130.5648331192086\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"104.4320526377191\" cy=\"125.05119105328922\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"101.65162273381094\" cy=\"119.14247673960327\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"99.63367562131118\" cy=\"112.93187413257245\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"98.41003553164715\" cy=\"106.51732814534384\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"98\" cy=\"100\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"98.41003553164715\" cy=\"93.48267185465618\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"99.63367562131118\" cy=\"87.06812586742754\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"101.65162273381094\" cy=\"80.85752326039673\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"104.4320526377191\" cy=\"74.94880894671081\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"107.93111629250274\" cy=\"69.4351668807914\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"112.0936313740866\" cy=\"64.40355049170819\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"116.85395253306814\" cy=\"59.93331137565895\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"122.13700666109219\" cy=\"56.09494787389521\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"127.85947683861625\" cy=\"52.94899327176697\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"133.93111629250274\" cy=\"50.54506115265202\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"140.25617164154232\" cy=\"48.92106296210819\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"146.73489298447572\" cy=\"48.10261012172988\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"153.26510701552428\" cy=\"48.10261012172988\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"159.74382835845768\" cy=\"48.92106296210819\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"166.06888370749726\" cy=\"50.54506115265201\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"172.14052316138373\" cy=\"52.948993271766966\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"177.86299333890778\" cy=\"56.094947873895194\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"183.14604746693186\" cy=\"59.93331137565894\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"187.9063686259134\" cy=\"64.40355049170817\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"192.06888370749726\" cy=\"69.43516688079139\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"195.5679473622809\" cy=\"74.9488089467108\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"198.34837726618906\" cy=\"80.8575232603967\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"200.3663243786888\" cy=\"87.06812586742753\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><ellipse cx=\"201.58996446835283\" cy=\"93.48267185465616\" rx=\"5\" ry=\"3\" fill=\"#2E7D32\"/><path d=\"M136,82 h28 v20 a14,14 0 0,1 -28,0 z\" fill=\"#fff\" stroke=\"#7a4a1a\" stroke-width=\"2\"/><path d=\"M150,82 V116 M136,92 h28\" fill=\"none\" stroke=\"#7a4a1a\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"124\" cy=\"100\" r=\"9\" fill=\"#7a4a1a\"/><circle cx=\"176\" cy=\"100\" r=\"9\" fill=\"#3a2a1a\"/><rect x=\"146\" y=\"66\" width=\"8\" height=\"16\" fill=\"#2E7D32\"/><ellipse cx=\"150\" cy=\"64\" rx=\"16\" ry=\"8\" fill=\"#2E7D32\"/><path d=\"M126,124 q24,10 48,0\" fill=\"none\" stroke=\"#7a4a1a\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "dominica": [
+   "Dominica",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#006B3F\"/><rect x=\"120\" y=\"0\" width=\"20\" height=\"200\" fill=\"#FCD116\"/><rect x=\"140\" y=\"0\" width=\"20\" height=\"200\" fill=\"#000\"/><rect x=\"160\" y=\"0\" width=\"20\" height=\"200\" fill=\"#fff\"/><rect x=\"0\" y=\"70\" width=\"300\" height=\"20\" fill=\"#FCD116\"/><rect x=\"0\" y=\"90\" width=\"300\" height=\"20\" fill=\"#000\"/><rect x=\"0\" y=\"110\" width=\"300\" height=\"20\" fill=\"#fff\"/><circle cx=\"150\" cy=\"100\" r=\"42\" fill=\"#D41C30\"/><polygon points=\"150.0,61.0 151.3,65.1 155.7,65.1 152.2,67.7 153.5,71.9 150.0,69.3 146.5,71.9 147.8,67.7 144.3,65.1 148.7,65.1\" fill=\"#006B3F\"/><polygon points=\"150.0,63.5 150.8,65.9 153.3,65.9 151.3,67.4 152.1,69.8 150.0,68.3 147.9,69.8 148.7,67.4 146.7,65.9 149.2,65.9\" fill=\"#FCD116\"/><polygon points=\"169.4,67.3 170.7,71.4 175.1,71.4 171.6,74.0 172.9,78.2 169.4,75.6 165.9,78.2 167.2,74.0 163.7,71.4 168.0,71.4\" fill=\"#006B3F\"/><polygon points=\"169.4,69.8 170.2,72.2 172.7,72.2 170.7,73.7 171.5,76.1 169.4,74.6 167.3,76.1 168.1,73.7 166.1,72.2 168.6,72.2\" fill=\"#FCD116\"/><polygon points=\"181.4,83.8 182.7,87.9 187.1,87.9 183.6,90.5 184.9,94.7 181.4,92.1 177.9,94.7 179.2,90.5 175.7,87.9 180.0,87.9\" fill=\"#006B3F\"/><polygon points=\"181.4,86.3 182.2,88.7 184.7,88.7 182.7,90.2 183.4,92.6 181.4,91.1 179.3,92.6 180.1,90.2 178.1,88.7 180.6,88.7\" fill=\"#FCD116\"/><polygon points=\"181.4,104.2 182.7,108.3 187.1,108.3 183.6,110.9 184.9,115.1 181.4,112.5 177.9,115.1 179.2,110.9 175.7,108.3 180.0,108.3\" fill=\"#006B3F\"/><polygon points=\"181.4,106.7 182.2,109.1 184.7,109.1 182.7,110.6 183.4,113.0 181.4,111.5 179.3,113.0 180.1,110.6 178.1,109.1 180.6,109.1\" fill=\"#FCD116\"/><polygon points=\"169.4,120.7 170.7,124.8 175.1,124.8 171.6,127.4 172.9,131.6 169.4,129.0 165.9,131.6 167.2,127.4 163.7,124.8 168.0,124.8\" fill=\"#006B3F\"/><polygon points=\"169.4,123.2 170.2,125.6 172.7,125.6 170.7,127.1 171.5,129.5 169.4,128.0 167.3,129.5 168.1,127.1 166.1,125.6 168.6,125.6\" fill=\"#FCD116\"/><polygon points=\"150.0,127.0 151.3,131.1 155.7,131.1 152.2,133.7 153.5,137.9 150.0,135.3 146.5,137.9 147.8,133.7 144.3,131.1 148.7,131.1\" fill=\"#006B3F\"/><polygon points=\"150.0,129.5 150.8,131.9 153.3,131.9 151.3,133.4 152.1,135.8 150.0,134.3 147.9,135.8 148.7,133.4 146.7,131.9 149.2,131.9\" fill=\"#FCD116\"/><polygon points=\"130.6,120.7 132.0,124.8 136.3,124.8 132.8,127.4 134.1,131.6 130.6,129.0 127.1,131.6 128.4,127.4 124.9,124.8 129.3,124.8\" fill=\"#006B3F\"/><polygon points=\"130.6,123.2 131.4,125.6 133.9,125.6 131.9,127.1 132.7,129.5 130.6,128.0 128.5,129.5 129.3,127.1 127.3,125.6 129.8,125.6\" fill=\"#FCD116\"/><polygon points=\"118.6,104.2 120.0,108.3 124.3,108.3 120.8,110.9 122.1,115.1 118.6,112.5 115.1,115.1 116.4,110.9 112.9,108.3 117.3,108.3\" fill=\"#006B3F\"/><polygon points=\"118.6,106.7 119.4,109.1 121.9,109.1 119.9,110.6 120.7,113.0 118.6,111.5 116.6,113.0 117.3,110.6 115.3,109.1 117.8,109.1\" fill=\"#FCD116\"/><polygon points=\"118.6,83.8 120.0,87.9 124.3,87.9 120.8,90.5 122.1,94.7 118.6,92.1 115.1,94.7 116.4,90.5 112.9,87.9 117.3,87.9\" fill=\"#006B3F\"/><polygon points=\"118.6,86.3 119.4,88.7 121.9,88.7 119.9,90.2 120.7,92.6 118.6,91.1 116.6,92.6 117.3,90.2 115.3,88.7 117.8,88.7\" fill=\"#FCD116\"/><polygon points=\"130.6,67.3 132.0,71.4 136.3,71.4 132.8,74.0 134.1,78.2 130.6,75.6 127.1,78.2 128.4,74.0 124.9,71.4 129.3,71.4\" fill=\"#006B3F\"/><polygon points=\"130.6,69.8 131.4,72.2 133.9,72.2 131.9,73.7 132.7,76.1 130.6,74.6 128.5,76.1 129.3,73.7 127.3,72.2 129.8,72.2\" fill=\"#FCD116\"/><ellipse cx=\"150\" cy=\"102\" rx=\"8\" ry=\"14\" fill=\"#6E3B8C\"/><circle cx=\"150\" cy=\"86\" r=\"6\" fill=\"#2E7D32\"/><polygon points=\"146,84 140,90 146,90\" fill=\"#FCD116\"/><polygon points=\"146,114 154,114 152,126 148,126\" fill=\"#2E7D32\"/>"
+  ],
+  "fiji": [
+   "Fiji",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#68BFE5\"/><clipPath id=\"ujfj\"><rect x=\"0\" y=\"0\" width=\"60\" height=\"40\"/></clipPath><g transform=\"translate(0,0) scale(2.5,2.5)\"><g clip-path=\"url(#ujfj)\"><rect x=\"0\" y=\"0\" width=\"60\" height=\"40\" fill=\"#012169\"/><path d=\"M0,0 L60,40 M60,0 L0,40\" stroke=\"#fff\" stroke-width=\"8\"/><path d=\"M0,0 L60,40 M60,0 L0,40\" stroke=\"#C8102E\" stroke-width=\"2.6\"/><rect x=\"24\" y=\"0\" width=\"12\" height=\"40\" fill=\"#fff\"/><rect x=\"0\" y=\"14\" width=\"60\" height=\"12\" fill=\"#fff\"/><rect x=\"26.5\" y=\"0\" width=\"7\" height=\"40\" fill=\"#C8102E\"/><rect x=\"0\" y=\"16.5\" width=\"60\" height=\"7\" fill=\"#C8102E\"/></g></g><path d=\"M196,62 h64 v52 q0,32 -32,44 q-32,-12 -32,-44 z\" fill=\"#fff\" stroke=\"#68BFE5\" stroke-width=\"0\"/><rect x=\"196\" y=\"62\" width=\"64\" height=\"18\" fill=\"#CE1126\"/><circle cx=\"228\" cy=\"71\" r=\"5\" fill=\"#FCD116\"/><polygon points=\"212,74 220,66 228,71 220,76\" fill=\"#FCD116\"/><rect x=\"225\" y=\"80\" width=\"6\" height=\"76\" fill=\"#CE1126\"/><rect x=\"196\" y=\"103\" width=\"64\" height=\"6\" fill=\"#CE1126\"/><rect x=\"204\" y=\"86\" width=\"14\" height=\"12\" fill=\"#FCD116\"/><rect x=\"238\" y=\"86\" width=\"14\" height=\"12\" fill=\"#2E7D32\"/><rect x=\"204\" y=\"114\" width=\"14\" height=\"14\" fill=\"#2E7D32\"/><rect x=\"238\" y=\"114\" width=\"12\" height=\"14\" fill=\"#4A7FB5\"/>"
+  ],
+  "png": [
+   "Papua New Guinea",
+   "<polygon points=\"0,0 300,0 300,200\" fill=\"#CE1126\"/><polygon points=\"0,0 300,200 0,200\" fill=\"#000\"/><polygon points=\"60.0,97.0 62.0,103.2 68.6,103.2 63.3,107.1 65.3,113.3 60.0,109.4 54.7,113.3 56.7,107.1 51.4,103.2 58.0,103.2\" fill=\"#fff\"/><polygon points=\"38.0,128.0 39.8,133.5 45.6,133.5 40.9,136.9 42.7,142.5 38.0,139.1 33.3,142.5 35.1,136.9 30.4,133.5 36.2,133.5\" fill=\"#fff\"/><polygon points=\"82.0,125.0 83.6,129.8 88.7,129.8 84.5,132.8 86.1,137.7 82.0,134.7 77.9,137.7 79.5,132.8 75.3,129.8 80.4,129.8\" fill=\"#fff\"/><polygon points=\"60.0,167.0 62.0,173.2 68.6,173.2 63.3,177.1 65.3,183.3 60.0,179.4 54.7,183.3 56.7,177.1 51.4,173.2 58.0,173.2\" fill=\"#fff\"/><polygon points=\"66.0,147.5 67.0,150.6 70.3,150.6 67.6,152.5 68.6,155.6 66.0,153.7 63.4,155.6 64.4,152.5 61.7,150.6 65.0,150.6\" fill=\"#fff\"/><path d=\"M198,70 q20,-20 46,-14 l10,-10 l2,8 q-8,8 -16,10 q20,6 24,24 q-20,-14 -40,-6 q-10,6 -14,22 q-6,-12 -12,-34 z\" fill=\"#FCD116\" /><path d=\"M210,64 q-30,-6 -50,10 M212,70 q-26,10 -40,34\" fill=\"none\" stroke=\"#FCD116\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "kiribati": [
+   "Kiribati",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100\" fill=\"#CE1126\"/><polygon points=\"150.0,52.0 155.9,68.5 167.3,55.2 166.8,72.8 182.3,64.5 175.5,80.7 193.0,78.6 180.8,91.2 197.8,95.6 181.9,103.0 196.2,113.1 178.6,114.3 188.3,128.9 171.6,123.6 175.3,140.8 161.6,129.8 158.8,147.2 150.0,132.0 141.2,147.2 138.4,129.8 124.7,140.8 128.4,123.6 111.7,128.9 121.4,114.3 103.8,113.1 118.1,103.0 102.2,95.6 119.2,91.2 107.0,78.6 124.5,80.7 117.7,64.5 133.2,72.8 132.7,55.2 144.1,68.5\" fill=\"#FCD116\"/><circle cx=\"150\" cy=\"100\" r=\"32\" fill=\"#FCD116\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"100\" fill=\"#003F87\"/><path d=\"M0,110 q37.5,-12 75,0 t75,0 t75,0 t75,0 v14 q-37.5,-12 -75,0 t-75,0 t-75,0 t-75,0 z\" fill=\"#fff\" /><path d=\"M0,140 q37.5,-12 75,0 t75,0 t75,0 t75,0 v14 q-37.5,-12 -75,0 t-75,0 t-75,0 t-75,0 z\" fill=\"#fff\" /><path d=\"M0,170 q37.5,-12 75,0 t75,0 t75,0 t75,0 v14 q-37.5,-12 -75,0 t-75,0 t-75,0 t-75,0 z\" fill=\"#fff\" /><path d=\"M104,40 q22,-14 46,4 q22,-20 50,-12 q-20,6 -30,20 q-6,8 -20,6 l-12,10 l4,-14 q-14,-8 -38,-14 z\" fill=\"#FCD116\" />"
+  ],
+  "tuvalu": [
+   "Tuvalu",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#5B97B1\"/><clipPath id=\"ujtv\"><rect x=\"0\" y=\"0\" width=\"60\" height=\"40\"/></clipPath><g transform=\"translate(0,0) scale(2.5,2.5)\"><g clip-path=\"url(#ujtv)\"><rect x=\"0\" y=\"0\" width=\"60\" height=\"40\" fill=\"#012169\"/><path d=\"M0,0 L60,40 M60,0 L0,40\" stroke=\"#fff\" stroke-width=\"8\"/><path d=\"M0,0 L60,40 M60,0 L0,40\" stroke=\"#C8102E\" stroke-width=\"2.6\"/><rect x=\"24\" y=\"0\" width=\"12\" height=\"40\" fill=\"#fff\"/><rect x=\"0\" y=\"14\" width=\"60\" height=\"12\" fill=\"#fff\"/><rect x=\"26.5\" y=\"0\" width=\"7\" height=\"40\" fill=\"#C8102E\"/><rect x=\"0\" y=\"16.5\" width=\"60\" height=\"7\" fill=\"#C8102E\"/></g></g><polygon points=\"185.0,156.0 187.0,162.2 193.6,162.2 188.3,166.1 190.3,172.3 185.0,168.4 179.7,172.3 181.7,166.1 176.4,162.2 183.0,162.2\" fill=\"#FFCE00\"/><polygon points=\"210.0,131.0 212.0,137.2 218.6,137.2 213.3,141.1 215.3,147.3 210.0,143.4 204.7,147.3 206.7,141.1 201.4,137.2 208.0,137.2\" fill=\"#FFCE00\"/><polygon points=\"235.0,166.0 237.0,172.2 243.6,172.2 238.3,176.1 240.3,182.3 235.0,178.4 229.7,182.3 231.7,176.1 226.4,172.2 233.0,172.2\" fill=\"#FFCE00\"/><polygon points=\"200.0,101.0 202.0,107.2 208.6,107.2 203.3,111.1 205.3,117.3 200.0,113.4 194.7,117.3 196.7,111.1 191.4,107.2 198.0,107.2\" fill=\"#FFCE00\"/><polygon points=\"250.0,111.0 252.0,117.2 258.6,117.2 253.3,121.1 255.3,127.3 250.0,123.4 244.7,127.3 246.7,121.1 241.4,117.2 248.0,117.2\" fill=\"#FFCE00\"/><polygon points=\"230.0,76.0 232.0,82.2 238.6,82.2 233.3,86.1 235.3,92.3 230.0,88.4 224.7,92.3 226.7,86.1 221.4,82.2 228.0,82.2\" fill=\"#FFCE00\"/><polygon points=\"270.0,61.0 272.0,67.2 278.6,67.2 273.3,71.1 275.3,77.3 270.0,73.4 264.7,77.3 266.7,71.1 261.4,67.2 268.0,67.2\" fill=\"#FFCE00\"/><polygon points=\"255.0,31.0 257.0,37.2 263.6,37.2 258.3,41.1 260.3,47.3 255.0,43.4 249.7,47.3 251.7,41.1 246.4,37.2 253.0,37.2\" fill=\"#FFCE00\"/><polygon points=\"280.0,131.0 282.0,137.2 288.6,137.2 283.3,141.1 285.3,147.3 280.0,143.4 274.7,147.3 276.7,141.1 271.4,137.2 278.0,137.2\" fill=\"#FFCE00\"/>"
+  ],
+  "angola": [
+   "Angola",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100.5\" fill=\"#CC092F\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"100.5\" fill=\"#000\"/><path d=\"M168,72 a40,40 0 1,1 -50,58 l10,-6 a28,28 0 1,0 34,-42 z\" fill=\"#FFCB00\" /><polygon points=\"118,132 178,88 186,92 126,138\" fill=\"#FFCB00\"/><path d=\"M178,88 q16,-8 18,6\" fill=\"none\" stroke=\"#FFCB00\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><polygon points=\"146.0,82.0 148.7,90.3 157.4,90.3 150.4,95.4 153.1,103.7 146.0,98.6 138.9,103.7 141.6,95.4 134.6,90.3 143.3,90.3\" fill=\"#FFCB00\"/>"
+  ],
+  "mozambique": [
+   "Mozambique",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#009A44\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#000\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#FCE100\"/><rect x=\"0\" y=\"63\" width=\"300\" height=\"8\" fill=\"#fff\"/><rect x=\"0\" y=\"129\" width=\"300\" height=\"8\" fill=\"#fff\"/><polygon points=\"0,0 130,100 0,200\" fill=\"#D21034\"/><polygon points=\"48.0,60.0 57.0,87.6 86.0,87.6 62.5,104.7 71.5,132.4 48.0,115.3 24.5,132.4 33.5,104.7 10.0,87.6 39.0,87.6\" fill=\"#FCE100\"/><path d=\"M36,100 h24 v14 h-24 z\" fill=\"#fff\" /><path d=\"M28,122 L68,84 M68,122 L28,84\" fill=\"none\" stroke=\"#000\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "zambia": [
+   "Zambia",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#198A00\"/><rect x=\"200\" y=\"90\" width=\"33\" height=\"110\" fill=\"#DE2010\"/><rect x=\"233\" y=\"90\" width=\"34\" height=\"110\" fill=\"#000\"/><rect x=\"267\" y=\"90\" width=\"33\" height=\"110\" fill=\"#EF7D00\"/><path d=\"M212,46 q20,-26 38,-4 q18,-22 38,4 q-14,-6 -26,4 l-8,16 q-4,4 -8,0 l-8,-16 q-12,-10 -26,-4 z\" fill=\"#EF7D00\" /><circle cx=\"250\" cy=\"40\" r=\"5\" fill=\"#EF7D00\"/>"
+  ],
+  "zimbabwe": [
+   "Zimbabwe",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"29.07\" fill=\"#319208\"/><rect x=\"0\" y=\"28.57\" width=\"300\" height=\"29.07\" fill=\"#FFD200\"/><rect x=\"0\" y=\"57.14\" width=\"300\" height=\"29.07\" fill=\"#DE2010\"/><rect x=\"0\" y=\"85.71\" width=\"300\" height=\"29.07\" fill=\"#000\"/><rect x=\"0\" y=\"114.29\" width=\"300\" height=\"29.07\" fill=\"#DE2010\"/><rect x=\"0\" y=\"142.86\" width=\"300\" height=\"29.07\" fill=\"#FFD200\"/><rect x=\"0\" y=\"171.43\" width=\"300\" height=\"29.07\" fill=\"#319208\"/><polygon points=\"0,0 120,100 0,200\" fill=\"#000\"/><polygon points=\"0,8 110,100 0,192\" fill=\"#fff\"/><polygon points=\"40.0,76.0 45.4,92.6 62.8,92.6 48.7,102.8 54.1,119.4 40.0,109.2 25.9,119.4 31.3,102.8 17.2,92.6 34.6,92.6\" fill=\"#DE2010\"/><path d=\"M32,86 h12 v-10 l8,-4 l-2,8 v8 q6,10 -2,26 h-14 z\" fill=\"#FFD200\" />"
+  ],
+  "uganda": [
+   "Uganda",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"33.83\" fill=\"#000\"/><rect x=\"0\" y=\"33.33\" width=\"300\" height=\"33.83\" fill=\"#FCDC04\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"33.83\" fill=\"#D90000\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"33.83\" fill=\"#000\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"33.83\" fill=\"#FCDC04\"/><rect x=\"0\" y=\"166.67\" width=\"300\" height=\"33.83\" fill=\"#D90000\"/><circle cx=\"150\" cy=\"100\" r=\"38\" fill=\"#fff\"/><ellipse cx=\"148\" cy=\"108\" rx=\"10\" ry=\"16\" fill=\"#9CA69C\"/><rect x=\"144\" y=\"120\" width=\"3\" height=\"16\" fill=\"#000\"/><rect x=\"152\" y=\"120\" width=\"3\" height=\"16\" fill=\"#000\"/><path d=\"M150,96 q6,-18 -2,-26\" fill=\"none\" stroke=\"#000\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"146\" cy=\"70\" r=\"6\" fill=\"#000\"/><polygon points=\"140,70 132,74 140,74\" fill=\"#D90000\"/><polygon points=\"150.0,56.0 150.6,62.1 154.7,57.5 151.6,62.8 157.6,61.5 152.0,64.0 157.6,66.5 151.6,65.2 154.7,70.5 150.6,65.9 150.0,72.0 149.4,65.9 145.3,70.5 148.4,65.2 142.4,66.5 148.0,64.0 142.4,61.5 148.4,62.8 145.3,57.5 149.4,62.1\" fill=\"#FCDC04\"/><ellipse cx=\"140\" cy=\"106\" rx=\"6\" ry=\"10\" fill=\"#D90000\"/>"
+  ],
+  "eritrea": [
+   "Eritrea",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100\" fill=\"#12AD2B\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"100\" fill=\"#4189DD\"/><polygon points=\"0,0 300,100 0,200\" fill=\"#EA0437\"/><circle cx=\"66\" cy=\"100\" r=\"30\" fill=\"none\" stroke=\"#FFC726\" stroke-width=\"4\"/><rect x=\"64\" y=\"78\" width=\"4\" height=\"48\" fill=\"#FFC726\"/><ellipse cx=\"58\" cy=\"84\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"74\" cy=\"84\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"58\" cy=\"91\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"74\" cy=\"91\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"58\" cy=\"98\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"74\" cy=\"98\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"58\" cy=\"105\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"74\" cy=\"105\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"58\" cy=\"112\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"74\" cy=\"112\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"58\" cy=\"119\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/><ellipse cx=\"74\" cy=\"119\" rx=\"6\" ry=\"2.5\" fill=\"#FFC726\"/>"
+  ],
+  "lesotho": [
+   "Lesotho",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"60.5\" fill=\"#00209F\"/><rect x=\"0\" y=\"60\" width=\"300\" height=\"80.5\" fill=\"#fff\"/><rect x=\"0\" y=\"140\" width=\"300\" height=\"60.5\" fill=\"#009543\"/><path d=\"M150,64 l-9,14 h18 z\" fill=\"#000\" /><rect x=\"147\" y=\"74\" width=\"6\" height=\"8\" fill=\"#000\"/><path d=\"M142,82 h16 q6,14 24,28 q-16,10 -32,6 q-16,4 -32,-6 q18,-14 24,-28 z\" fill=\"#000\" />"
+  ],
+  "eswatini": [
+   "Eswatini",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"30.5\" fill=\"#3E5EB9\"/><rect x=\"0\" y=\"30\" width=\"300\" height=\"10.5\" fill=\"#FFD900\"/><rect x=\"0\" y=\"40\" width=\"300\" height=\"120.5\" fill=\"#B10C0C\"/><rect x=\"0\" y=\"160\" width=\"300\" height=\"10.5\" fill=\"#FFD900\"/><rect x=\"0\" y=\"170\" width=\"300\" height=\"30.5\" fill=\"#3E5EB9\"/><rect x=\"40\" y=\"98\" width=\"220\" height=\"4\" fill=\"#FFD900\"/><rect x=\"50\" y=\"110\" width=\"200\" height=\"4\" fill=\"#FFD900\"/><path d=\"M90,100 q60,-46 120,0 q-60,46 -120,0 z\" fill=\"#fff\" /><path d=\"M150,54 q30,20 60,46 q-30,26 -60,46 z\" fill=\"#000\" /><ellipse cx=\"118\" cy=\"100\" rx=\"3\" ry=\"9\" fill=\"#000\"/><ellipse cx=\"130\" cy=\"100\" rx=\"3\" ry=\"9\" fill=\"#000\"/><ellipse cx=\"172\" cy=\"100\" rx=\"3\" ry=\"9\" fill=\"#fff\"/><ellipse cx=\"184\" cy=\"100\" rx=\"3\" ry=\"9\" fill=\"#fff\"/>"
+  ],
+  "eqguinea": [
+   "Equatorial Guinea",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#3E9A00\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#E32118\"/><polygon points=\"0,0 75,100 0,200\" fill=\"#0073CE\"/><path d=\"M132,84 h36 v26 a18,18 0 0,1 -36,0 z\" fill=\"#D9D9D9\" stroke=\"#C8102E\" stroke-width=\"2\"/><rect x=\"148\" y=\"92\" width=\"4\" height=\"30\" fill=\"#7a4a1a\"/><ellipse cx=\"150\" cy=\"96\" rx=\"14\" ry=\"10\" fill=\"#2E7D32\"/><polygon points=\"125.0,67.0 126.1,70.5 129.8,70.5 126.8,72.6 127.9,76.0 125.0,73.9 122.1,76.0 123.2,72.6 120.2,70.5 123.9,70.5\" fill=\"#FCD116\"/><polygon points=\"135.0,67.0 136.1,70.5 139.8,70.5 136.8,72.6 137.9,76.0 135.0,73.9 132.1,76.0 133.2,72.6 130.2,70.5 133.9,70.5\" fill=\"#FCD116\"/><polygon points=\"145.0,67.0 146.1,70.5 149.8,70.5 146.8,72.6 147.9,76.0 145.0,73.9 142.1,76.0 143.2,72.6 140.2,70.5 143.9,70.5\" fill=\"#FCD116\"/><polygon points=\"155.0,67.0 156.1,70.5 159.8,70.5 156.8,72.6 157.9,76.0 155.0,73.9 152.1,76.0 153.2,72.6 150.2,70.5 153.9,70.5\" fill=\"#FCD116\"/><polygon points=\"165.0,67.0 166.1,70.5 169.8,70.5 166.8,72.6 167.9,76.0 165.0,73.9 162.1,76.0 163.2,72.6 160.2,70.5 163.9,70.5\" fill=\"#FCD116\"/><polygon points=\"175.0,67.0 176.1,70.5 179.8,70.5 176.8,72.6 177.9,76.0 175.0,73.9 172.1,76.0 173.2,72.6 170.2,70.5 173.9,70.5\" fill=\"#FCD116\"/>"
+  ],
+  "cyprus": [
+   "Cyprus",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#fff\"/><polygon points=\"88,98 104,84 124,86 138,72 160,74 176,66 196,56 222,40 228,44 206,62 196,76 212,82 206,90 188,98 176,112 156,118 134,122 118,112 100,112\" fill=\"#D57800\"/><path d=\"M110,148 q40,18 80,0\" fill=\"none\" stroke=\"#4E5B31\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><ellipse cx=\"116\" cy=\"146\" rx=\"5\" ry=\"2.5\" fill=\"#4E5B31\"/><ellipse cx=\"129\" cy=\"149\" rx=\"5\" ry=\"2.5\" fill=\"#4E5B31\"/><ellipse cx=\"142\" cy=\"152\" rx=\"5\" ry=\"2.5\" fill=\"#4E5B31\"/><ellipse cx=\"155\" cy=\"152\" rx=\"5\" ry=\"2.5\" fill=\"#4E5B31\"/><ellipse cx=\"168\" cy=\"149\" rx=\"5\" ry=\"2.5\" fill=\"#4E5B31\"/><ellipse cx=\"181\" cy=\"146\" rx=\"5\" ry=\"2.5\" fill=\"#4E5B31\"/>"
+  ],
+  "malta": [
+   "Malta",
+   "<rect x=\"0\" y=\"0\" width=\"150.5\" height=\"200\" fill=\"#fff\"/><rect x=\"150\" y=\"0\" width=\"150.5\" height=\"200\" fill=\"#CF142B\"/><path d=\"M24,18 h18 v14 h14 v18 h-14 v14 h-18 v-14 h-14 v-18 h14 z\" fill=\"#BBB\" stroke=\"#CF142B\" stroke-width=\"2\"/><rect x=\"27\" y=\"32\" width=\"12\" height=\"18\" fill=\"#CCC\"/>"
+  ],
+  "andorra": [
+   "Andorra",
+   "<rect x=\"0\" y=\"0\" width=\"96.5\" height=\"200\" fill=\"#10069F\"/><rect x=\"96\" y=\"0\" width=\"108.5\" height=\"200\" fill=\"#FEDF00\"/><rect x=\"204\" y=\"0\" width=\"96.5\" height=\"200\" fill=\"#D50032\"/><path d=\"M128,74 h44 v34 q0,22 -22,28 q-22,-6 -22,-28 z\" fill=\"#FEDF00\" stroke=\"#C7B37F\" stroke-width=\"3\"/><rect x=\"130\" y=\"76\" width=\"20\" height=\"28\" fill=\"#FEDF00\"/><rect x=\"150\" y=\"76\" width=\"20\" height=\"28\" fill=\"#D50032\"/><rect x=\"154\" y=\"76\" width=\"2\" height=\"28\" fill=\"#FEDF00\"/><rect x=\"159\" y=\"76\" width=\"2\" height=\"28\" fill=\"#FEDF00\"/><rect x=\"164\" y=\"76\" width=\"2\" height=\"28\" fill=\"#FEDF00\"/><rect x=\"133\" y=\"106\" width=\"2\" height=\"26\" fill=\"#D50032\"/><rect x=\"138\" y=\"106\" width=\"2\" height=\"26\" fill=\"#D50032\"/><rect x=\"143\" y=\"106\" width=\"2\" height=\"26\" fill=\"#D50032\"/><rect x=\"152\" y=\"108\" width=\"16\" height=\"16\" fill=\"#FEDF00\"/><ellipse cx=\"160\" cy=\"116\" rx=\"5\" ry=\"4\" fill=\"#D50032\"/><path d=\"M138,80 v16 M134,84 h8\" fill=\"none\" stroke=\"#D50032\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><rect x=\"128\" y=\"104\" width=\"44\" height=\"2\" fill=\"#C7B37F\"/><rect x=\"149\" y=\"74\" width=\"2\" height=\"58\" fill=\"#C7B37F\"/>"
+  ],
+  "liechtenstein": [
+   "Liechtenstein",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100.5\" fill=\"#002B7F\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"100.5\" fill=\"#CE1126\"/><path d=\"M54,62 h40 l4,-18 l-8,6 l-6,-14 l-6,12 l-4,-16 l-4,16 l-6,-12 l-6,14 l-8,-6 z\" fill=\"#FFD83D\" /><rect x=\"54\" y=\"62\" width=\"40\" height=\"7\" fill=\"#FFD83D\"/><circle cx=\"74\" cy=\"26\" r=\"4\" fill=\"#FFD83D\"/><rect x=\"72\" y=\"18\" width=\"4\" height=\"10\" fill=\"#FFD83D\"/>"
+  ],
+  "vatican": [
+   "Vatican City",
+   "<rect x=\"0\" y=\"0\" width=\"150.5\" height=\"200\" fill=\"#FFE000\"/><rect x=\"150\" y=\"0\" width=\"150.5\" height=\"200\" fill=\"#fff\"/><path d=\"M196,152 L250,78\" fill=\"none\" stroke=\"#CDA434\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M254,152 L200,78\" fill=\"none\" stroke=\"#B8B8B8\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><circle cx=\"196\" cy=\"156\" r=\"8\" fill=\"none\" stroke=\"#CDA434\" stroke-width=\"4\"/><circle cx=\"254\" cy=\"156\" r=\"8\" fill=\"none\" stroke=\"#B8B8B8\" stroke-width=\"4\"/><rect x=\"244\" y=\"70\" width=\"8\" height=\"14\" fill=\"#CDA434\"/><rect x=\"198\" y=\"70\" width=\"8\" height=\"14\" fill=\"#B8B8B8\"/><rect x=\"250\" y=\"74\" width=\"8\" height=\"5\" fill=\"#CDA434\"/><rect x=\"192\" y=\"74\" width=\"8\" height=\"5\" fill=\"#B8B8B8\"/><path d=\"M206,124 q19,10 38,0\" fill=\"none\" stroke=\"#CE1126\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M209,70 q2,-30 16,-36 q14,6 16,36 z\" fill=\"#F2F2F2\" stroke=\"#CDA434\" stroke-width=\"1.5\"/><rect x=\"209\" y=\"64\" width=\"32\" height=\"4\" fill=\"#CDA434\"/><rect x=\"211\" y=\"53\" width=\"28\" height=\"4\" fill=\"#CDA434\"/><rect x=\"214\" y=\"42\" width=\"22\" height=\"4\" fill=\"#CDA434\"/><circle cx=\"225\" cy=\"30\" r=\"4\" fill=\"#CDA434\"/><rect x=\"223\" y=\"22\" width=\"4\" height=\"6\" fill=\"#CDA434\"/>"
+  ],
+  "syria": [
+   "Syria",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"67.17\" fill=\"#007A3D\"/><rect x=\"0\" y=\"66.67\" width=\"300\" height=\"67.17\" fill=\"#fff\"/><rect x=\"0\" y=\"133.33\" width=\"300\" height=\"67.17\" fill=\"#000\"/><polygon points=\"100.0,84.0 103.6,95.1 115.2,95.1 105.8,101.9 109.4,112.9 100.0,106.1 90.6,112.9 94.2,101.9 84.8,95.1 96.4,95.1\" fill=\"#CE1126\"/><polygon points=\"150.0,84.0 153.6,95.1 165.2,95.1 155.8,101.9 159.4,112.9 150.0,106.1 140.6,112.9 144.2,101.9 134.8,95.1 146.4,95.1\" fill=\"#CE1126\"/><polygon points=\"200.0,84.0 203.6,95.1 215.2,95.1 205.8,101.9 209.4,112.9 200.0,106.1 190.6,112.9 194.2,101.9 184.8,95.1 196.4,95.1\" fill=\"#CE1126\"/>"
+  ],
+  "marshall": [
+   "Marshall Islands",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"200\" fill=\"#003893\"/><polygon points=\"0,200 300,0 300,32\" fill=\"#DD7500\"/><polygon points=\"0,200 300,36 300,70\" fill=\"#fff\"/><polygon points=\"58.0,24.0 59.9,41.7 66.3,25.1 63.5,42.7 74.0,28.3 66.8,44.6 80.6,33.4 69.4,47.2 85.7,40.0 71.3,50.5 88.9,47.7 72.3,54.1 90.0,56.0 72.3,57.9 88.9,64.3 71.3,61.5 85.7,72.0 69.4,64.8 80.6,78.6 66.8,67.4 74.0,83.7 63.5,69.3 66.3,86.9 59.9,70.3 58.0,88.0 56.1,70.3 49.7,86.9 52.5,69.3 42.0,83.7 49.2,67.4 35.4,78.6 46.6,64.8 30.3,72.0 44.7,61.5 27.1,64.3 43.7,57.9 26.0,56.0 43.7,54.1 27.1,47.7 44.7,50.5 30.3,40.0 46.6,47.2 35.4,33.4 49.2,44.6 42.0,28.3 52.5,42.7 49.7,25.1 56.1,41.7\" fill=\"#fff\"/>"
+  ],
+  "haiti": [
+   "Haiti",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100.5\" fill=\"#00209F\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"100.5\" fill=\"#D21034\"/><rect x=\"110\" y=\"70\" width=\"80\" height=\"60\" fill=\"#fff\"/><rect x=\"147\" y=\"80\" width=\"6\" height=\"30\" fill=\"#7a4a1a\"/><ellipse cx=\"150\" cy=\"80\" rx=\"16\" ry=\"7\" fill=\"#2E7D32\"/><polygon points=\"118,122 182,122 176,112 124,112\" fill=\"#2E7D32\"/><path d=\"M126,112 L140,92 M174,112 L160,92\" fill=\"none\" stroke=\"#0A2E8F\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><rect x=\"140\" y=\"106\" width=\"20\" height=\"6\" fill=\"#555\"/>"
+  ],
+  "guatemala": [
+   "Guatemala",
+   "<rect x=\"0\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#4997D0\"/><rect x=\"100\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#fff\"/><rect x=\"200\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#4997D0\"/><path d=\"M120,104 a30,30 0 0,0 60,0\" fill=\"none\" stroke=\"#4E8E2E\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M126,128 L174,76 M174,128 L126,76\" fill=\"none\" stroke=\"#9E9E9E\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /><path d=\"M136,90 h28 v22 h-28 z\" fill=\"#F5EBC8\" stroke=\"#C8A951\" stroke-width=\"2\"/><ellipse cx=\"150\" cy=\"82\" rx=\"10\" ry=\"7\" fill=\"#2E9D4E\"/><path d=\"M150,88 q8,10 2,24\" fill=\"none\" stroke=\"#2E9D4E\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />"
+  ],
+  "indonesia": [
+   "Indonesia (or Monaco, same flag)",
+   "<rect x=\"0\" y=\"0\" width=\"300\" height=\"100.5\" fill=\"#CE1126\"/><rect x=\"0\" y=\"100\" width=\"300\" height=\"100.5\" fill=\"#fff\"/>"
+  ],
+  "romania": [
+   "Romania (or Chad, near-identical)",
+   "<rect x=\"0\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#002B7F\"/><rect x=\"100\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#FCD116\"/><rect x=\"200\" y=\"0\" width=\"100.5\" height=\"200\" fill=\"#CE1126\"/>"
+  ]
+ }
+}
