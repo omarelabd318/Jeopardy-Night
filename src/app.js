@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.72`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.73`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -379,7 +379,60 @@ function placeFbBg(){
   const fit = (w, h) => [Math.max(2, Math.floor(W / (w + FB_CELL.gap))), Math.max(1, Math.round(H / (h + FB_CELL.gap)))];
   let [cols, rows] = fit(FB_CELL.w, FB_CELL.h);
   if(cols * rows > need){ const k = Math.sqrt(cols * rows / need); [cols, rows] = fit(FB_CELL.w * k, FB_CELL.h * k); }
+  if(FB_LAYOUT === "poster"){ const key = "p" + Math.round(W) + "x" + Math.round(H); if(bg.dataset.grid !== key){ bg.dataset.grid = key; footballPoster(); } return; }
+  bg.classList.remove("poster");
   if(bg.dataset.grid !== cols + "x" + rows) footballBg(cols, rows);
+}
+/* 4.73 try (Omar): blocks of uneven sizes, like the poster in v4work/football-theme-ref.avif, instead of the even grid of 4.43-4.72.
+   The space is cut into random rectangles (big, small, wide, tall) and each phrase goes where it can be drawn biggest:
+   one line, two lines or vertical. To go back to the even grid: set FB_LAYOUT to "grid" (footballBg() below is unchanged). */
+const FB_LAYOUT = "poster";
+function footballPoster(){
+  const el = $("#fbBg"); if(!el) return; el.classList.add("poster"); el.style.gridTemplateColumns = el.style.gridTemplateRows = "";
+  const G = FB_CELL.gap, W = el.clientWidth - G, H = el.clientHeight - G, MIN = Math.max(30, Math.min(W, H) / 9);
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const order = FB_PHRASES.map((_, j) => j).sort((a, b) => ((a * 7919) % 13) - ((b * 7919) % 13) || a - b).map(j => FB_PHRASES[j]);
+  const items = [...order, ...FB_FILL];
+  // cut the space: keep splitting a big rectangle (with some luck in which one) across its longer side, off-centre
+  const rects = [{x: 0, y: 0, w: W, h: H}];
+  while(rects.length < items.length){
+    let best = -1, bs = 0;
+    rects.forEach((r, i) => { const s = r.w * r.h * (0.45 + rnd()); if(Math.max(r.w, r.h) >= 2 * MIN && s > bs){ bs = s; best = i; } });
+    if(best < 0) break;
+    const r = rects[best], across = r.w / r.h > 1.15 ? true : r.h / r.w > 1.15 ? false : rnd() < .5, len = across ? r.w : r.h;
+    const cut = Math.max(MIN, Math.min(len - MIN, Math.round(len * (0.28 + 0.44 * rnd()))));
+    rects.splice(best, 1, across ? {x: r.x, y: r.y, w: cut, h: r.h} : {x: r.x, y: r.y, w: r.w, h: cut},
+                          across ? {x: r.x + cut, y: r.y, w: r.w - cut, h: r.h} : {x: r.x, y: r.y + cut, w: r.w, h: r.h - cut});
+  }
+  // how big a phrase could be drawn in a rectangle (rough: a letter is about half as wide as it is tall)
+  const two = t => { const sp = [...t.matchAll(/ /g)].map(m => m.index); if(!sp.length || t.length < 10) return null;
+    const i = sp.reduce((a, b) => Math.abs(b - t.length/2) < Math.abs(a - t.length/2) ? b : a); return [t.slice(0, i), t.slice(i + 1)]; };
+  const fits = (r, t) => { const n = Math.max(2, t.length * (/[\u0600-\u06FF]/.test(t) ? .8 : 1)) * .55, w = r.w - G - 8, h = r.h - G, o = [];
+    o.push({m: "h", s: Math.min(h * .8, w / n)});
+    const tw = two(t); if(tw) o.push({m: "2", s: Math.min(h * .8 / 2, w / (Math.max(tw[0].length, tw[1].length) * .55)), tw});
+    if(/^[A-Za-zÀ-ÿ!'-]{3,13}$/.test(t)) o.push({m: "v", s: Math.min(w * .8, h / n)});
+    return o.reduce((a, b) => b.s > a.s ? b : a); };
+  const left = rects.slice(), blocks = [];
+  const todo = items.slice(0, rects.length);
+  while(todo.length){  // place the phrase that would come out smallest first, in its best block, so none ends up tiny
+    let pick = null;
+    todo.forEach((t, ti) => { let bi = 0, bf = null; left.forEach((r, i) => { const f = fits(r, t); if(!bf || f.s > bf.s){ bf = f; bi = i; } });
+      if(!pick || bf.s < pick.f.s) pick = {ti, bi, f: bf}; });
+    blocks.push({t: todo.splice(pick.ti, 1)[0], r: left.splice(pick.bi, 1)[0], f: pick.f});
+  }
+  el.innerHTML = blocks.map(({t, r, f}) => {
+    const txt = f.m === "2" ? esc(f.tw[0]) + "<br>" + esc(f.tw[1]) : esc(t);
+    return `<div class="b f${1 + Math.floor(rnd() * 6)} c${1 + Math.floor(rnd() * 5)}${f.m === "v" ? " v" : ""}" style="left:${(r.x + G).toFixed(1)}px;top:${(r.y + G).toFixed(1)}px;width:${(r.w - G).toFixed(1)}px;height:${(r.h - G).toFixed(1)}px"><span dir="auto">${txt}</span></div>`;
+  }).join("");
+  fitPoster(); if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitPoster);
+}
+function fitPoster(){  // size each phrase to fill its block
+  document.querySelectorAll("#fbBg.poster .b span").forEach(sp => {
+    const b = sp.parentElement, v = b.classList.contains("v"); sp.style.fontSize = "100px";
+    const len = v ? sp.offsetHeight : sp.offsetWidth, thick = v ? sp.offsetWidth : sp.offsetHeight;
+    const k = Math.min(((v ? b.clientHeight : b.clientWidth) - 8) * .92 / Math.max(1, len), (v ? b.clientWidth : b.clientHeight) * .84 / Math.max(1, thick));
+    sp.style.fontSize = (100 * k).toFixed(1) + "px";
+  });
 }
 window.addEventListener("resize", placeFbBg);
 function footballBg(cols, rows){
