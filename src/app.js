@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.69`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.70`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -435,6 +435,51 @@ $("#football").onclick = () => {
 /* 4.52: Football mode title shows one of the classic match balls in v4work/balls/ (Aerow, Jabulani, Ordem 3, Seitiro, Teamgeist), a different one each new board */
 let lastBall = -1;
 function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; let i; do { i = Math.floor(Math.random() * BALLS.length); } while(BALLS.length > 1 && i === lastBall); lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
+
+/* 4.70 (Omar): Football mode kickers. Two stick figures stand on the line above the team names (the top edge of #scores),
+   one bottom left and one bottom right, and kick this board's match ball to each other forever. It only shows on the
+   Football mode board (not on a clue, the winner screen or other screens) and only animates while it's showing. */
+(() => {
+  const cv = document.getElementById("kick"); if(!cv) return; const g = cv.getContext("2d");
+  let ballImg = null, ballSrc = "", W = 0, H = 64, t0 = performance.now();
+  const FLIGHT = 2.2, KICK = 0.32;                       // seconds the ball is in the air, and the kick swing
+  const slow = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.5 : 1;
+  const fit = () => { const dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
+  addEventListener("resize", fit); fit();
+  const showing = () => S.football && !$("#game").hidden && !S.cur && $("#winBox").hidden && !$("#scores").hidden;
+  function man(x, dir, kick){                             // dir 1 faces right, -1 faces left; kick 0..1 swings the front leg
+    const y = H - 1, hip = y - 16, sh = y - 29;
+    g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
+    g.beginPath(); g.arc(x, y - 35, 5, 0, Math.PI*2); g.fill();                  // head
+    g.beginPath(); g.moveTo(x, sh + 1); g.lineTo(x, hip); g.stroke();            // body
+    g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11); g.stroke();  // arms
+    const a = Math.sin(Math.min(1, kick) * Math.PI) * 1.1;                      // front leg swing angle
+    g.beginPath(); g.moveTo(x, hip); g.lineTo(x - 6*dir, y); g.stroke();         // back leg
+    g.beginPath(); g.moveTo(x, hip); g.lineTo(x + Math.sin(0.35 + a) * 16 * dir, hip + Math.cos(0.35 + a) * 16); g.stroke();  // front (kicking) leg
+  }
+  function frame(now){
+    requestAnimationFrame(frame);
+    const on = showing(); cv.classList.toggle("on", on); if(!on){ t0 = now; return; }
+    const sc = $("#scores").getBoundingClientRect(); cv.style.top = (sc.top - H + 1) + "px";
+    const src = (typeof BALLS !== "undefined" && BALLS.length && typeof lastBall === "number" && BALLS[lastBall]) || "";
+    if(src !== ballSrc){ ballSrc = src; ballImg = null; if(src){ const im = new Image(); im.onload = () => { ballImg = im; }; im.src = src; } }
+    g.clearRect(0, 0, W, H);
+    const L = 26, R = W - 26, footL = L + 13, footR = R - 13;
+    const t = ((now - t0) / 1000) * slow, leg = t % (FLIGHT * 2), dirR = leg < FLIGHT;   // ball goes left→right, then right→left
+    const p = (leg % FLIGHT) / FLIGHT, e = p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2)/2; // ease in-out along the ground
+    const x = dirR ? footL + (footR - footL) * e : footR - (footR - footL) * e;
+    const r = 7, y = H - 1 - r - Math.sin(p * Math.PI) * 26;                          // a little lob between them
+    const kL = dirR ? (p * FLIGHT) / KICK : ((FLIGHT - p * FLIGHT) < KICK ? 1 - (FLIGHT - p * FLIGHT) / KICK : 0);
+    const kR = !dirR ? (p * FLIGHT) / KICK : ((FLIGHT - p * FLIGHT) < KICK ? 1 - (FLIGHT - p * FLIGHT) / KICK : 0);
+    man(L, 1, kL < 1 ? kL : 0); man(R, -1, kR < 1 ? kR : 0);
+    g.save(); g.translate(x, y); g.rotate((dirR ? 1 : -1) * p * Math.PI * 4);
+    if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
+    else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
+    g.restore();
+  }
+  requestAnimationFrame(frame);
+})();
 function newGame(){ pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
 const midgame = () => Object.keys(S.done).length > 0 || S.teams.some(t => t.score !== 0);
 let confirmYes = null;
