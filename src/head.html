@@ -5,7 +5,7 @@
 <script>window.echarts = { registerMap: function(name, geo){ if(name === "world") window.__WORLD_JSON = geo; } };</script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap">
 <style>
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
 :root{
@@ -40,6 +40,7 @@ body.football .pwb{background:rgba(var(--brass-rgb),.45);color:#fff}
 body.football .pod .who, body.football .win{color:#fff;background:var(--brass);border-radius:8px;padding:2px 10px}
 /* Football mode navy category titles (Omar's experiment, 4.25): delete this rule to go back to white */
 body.football .head{color:#000;text-shadow:none}  /* 4.31: black; was color:var(--brass) (navy) */  /* 4.27: shadow removed; was text-shadow:2px 2px 0 rgba(255,255,255,.35) */
+body.football .topbar h1{font-family:"Bungee Shade","Bebas Neue",sans-serif;font-size:clamp(26px,3.8vw,42px);letter-spacing:.01em}  /* 4.65 (Omar): "Joga Bonito" in Bungee Shade (option 8). Omar's other favourite was option 2, Shrikhand: font-family:"Shrikhand",sans-serif (add family=Shrikhand to the Google Fonts link). Before 4.65 this rule did not exist (Bebas Neue, the site title font) */
 body.football .topbar h1::after{content:"";display:inline-block;width:.8em;height:.8em;margin-left:.22em;vertical-align:-.02em;background:var(--ball,none) center/contain no-repeat;filter:drop-shadow(1px 2px 1px rgba(0,0,0,.35))}  /* 4.52: a classic match ball, a different one each board (was content:" ⚽";font-size:.8em;vertical-align:.05em) */
 /* 4.43 try (Omar): retro poster collage of football phrases behind the Football mode page, at 20%, styled after v4work/football-theme-ref.avif.
    To undo: delete this block down to "end 4.43" and the fbBg div in the page; footballBg() in src/app.js then does nothing. */
@@ -88,7 +89,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 a{color:var(--brass)}
 .wrap{padding-inline:16px;padding-block:18px 120px;max-width:1500px;margin:0 auto}
 h1{font-family:var(--display);font-weight:900;font-size:clamp(40px,7vw,76px);letter-spacing:.01em;line-height:.9;margin:0;text-transform:uppercase;color:var(--brass);text-wrap:balance}
-h1 span{color:var(--cream)}
+h1 span{color:var(--cream)} h1 span.t1{color:inherit}  /* 4.64: .t1 is the first word (Jeopardy, or Joga in Football mode), coloured like the h1 */
 .sub{color:var(--muted);margin:.6em 0 0;max-width:60ch}
 .eyebrow{font-family:var(--display);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--muted)}
 
@@ -332,7 +333,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.63</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.65</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -342,7 +343,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.63</div>
+      <div class="eyebrow verlabel">v4.65</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
@@ -383,7 +384,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 
   <section id="game" hidden>
     <div class="topbar">
-      <h1>Jeopardy <span>Night</span></h1>
+      <h1><span class="t1">Jeopardy</span> <span class="t2">Night</span></h1>
       <div class="row tools"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="editScores" aria-pressed="false">Edit scores</button><button class="btn small" id="newBoard">New board</button><button class="btn small" id="toSetup">Setup</button><button class="btn small" id="toHome">Title screen</button><button class="btn small endbtn" id="endGame">End game</button></div>
     </div>
     <div class="boardwrap"><div class="fbbg" id="fbBg" aria-hidden="true"></div><div class="board" id="board"></div></div>
