@@ -176,6 +176,8 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .qtext.long{font-size:clamp(18px,2.3vw,27px)}
 .qtext.lineup{text-align:center;font-size:clamp(18px,2.6vw,30px);line-height:1.45}  /* Formations: lineup drawn like a pitch, strikers on top */
 .answer{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,42px);color:var(--good);letter-spacing:.01em;line-height:1.1;border-top:1.5px dashed var(--line);padding-top:14px}
+.answer .ans-main{display:block;font-weight:900}  /* 4.60: the right option in three-option answers */
+.answer .ans-rest{display:block;margin-top:8px;font-family:var(--body,inherit);font-weight:400;font-size:.45em;letter-spacing:0;color:var(--muted);opacity:.9}  /* 4.60: the other options, smaller and lighter */
 .emoji{font-size:clamp(48px,9vw,96px);line-height:1.2;text-align:center;letter-spacing:.08em;padding:10px 0;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .pinbox{width:100%;max-width:100%;aspect-ratio:46/30;border-radius:12px;overflow:hidden;border:1.5px solid var(--line)}
 .pinbox svg{display:block;width:100%;height:100%}
@@ -328,7 +330,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.59</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.60</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -338,7 +340,7 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.59</div>
+      <div class="eyebrow verlabel">v4.60</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>
