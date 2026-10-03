@@ -1,0 +1,142 @@
+{
+ "100": [
+  [
+   "Which McDonald's burger has 'two all-beef patties, special sauce, lettuce, cheese'?",
+   "The Big Mac"
+  ],
+  [
+   "What colour are McDonald's arches?",
+   "Golden yellow"
+  ],
+  [
+   "Which coffee chain's logo is a green siren?",
+   "Starbucks"
+  ],
+  [
+   "What is McDonald's children's meal with a toy called?",
+   "A Happy Meal"
+  ],
+  [
+   "Which soft drink has McDonald's served since the 1950s?",
+   "Coca-Cola"
+  ],
+  [
+   "Which chain sells a grilled-chicken flatbread called the McArabia?",
+   "McDonald's"
+  ]
+ ],
+ "200": [
+  [
+   "What is a sausage on a stick dipped in cornmeal batter and fried?",
+   "A corn dog"
+  ],
+  [
+   "Which chain sells the Blizzard, ice cream served upside down?",
+   "Dairy Queen"
+  ],
+  [
+   "Which burger chain's logo is a smiling yellow star?",
+   "Hardee's (and Carl's Jr.)"
+  ],
+  [
+   "What is a McFlurry?",
+   "Soft-serve ice cream with sweets mixed in"
+  ],
+  [
+   "Which Egyptian chain is famous for ful, ta'meya and sandwiches?",
+   "Gad"
+  ],
+  [
+   "Which chain's slogan was 'Think outside the bun'?",
+   "Taco Bell"
+  ]
+ ],
+ "300": [
+  [
+   "Which steakhouse chain is famous for the 'Bloomin' Onion'?",
+   "Outback Steakhouse"
+  ],
+  [
+   "Which is the world's biggest pizza chain by sales?",
+   "Domino's"
+  ],
+  [
+   "Which Pizza Hut invention of 1995 hides cheese in the edge?",
+   "Stuffed Crust"
+  ],
+  [
+   "What is Burger King called in Australia?",
+   "Hungry Jack's"
+  ],
+  [
+   "Which spiced Egyptian sausage is fried with peppers and onions in a sandwich?",
+   "Sogo' (sujuk)"
+  ],
+  [
+   "Which country does the Tim Hortons chain come from?",
+   "Canada"
+  ]
+ ],
+ "400": [
+  [
+   "Which burger chain was founded in 1948 in Baldwin Park, California?",
+   "In-N-Out Burger"
+  ],
+  [
+   "Which country has the most McDonald's after the USA?",
+   "China"
+  ],
+  [
+   "Who co-founded Subway in 1965 with Peter Buck?",
+   "Fred DeLuca"
+  ],
+  [
+   "Which Japanese chain is famous for its beef bowls (gyudon)?",
+   "Yoshinoya"
+  ],
+  [
+   "Which British bakery chain is famous for its sausage rolls?",
+   "Greggs"
+  ],
+  [
+   "Which chain's ads show cows holding signs saying 'Eat Mor Chikin'?",
+   "Chick-fil-A"
+  ]
+ ],
+ "500": [
+  [
+   "In which country is Max, the oldest burger chain still running in Europe, founded in 1968?",
+   "Sweden"
+  ],
+  [
+   "Which is the oldest US hamburger chain, founded in 1921?",
+   "White Castle"
+  ],
+  [
+   "Which McDonald's franchisee invented the Big Mac in 1967?",
+   "Jim Delligatti"
+  ],
+  [
+   "What do the 'A' and 'W' in A&W stand for?",
+   "Allen and Wright (Roy Allen and Frank Wright)"
+  ],
+  [
+   "Which Burger King co-founder created the Whopper in 1957?",
+   "James McLamore"
+  ],
+  [
+   "What does the name of the Japanese chain MOS Burger stand for?",
+   "Mountain, Ocean, Sun"
+  ]
+ ],
+ "allow_dup_answers": [
+  "KFC",
+  "Wendy's",
+  "Taco Bell",
+  "Domino's",
+  "Starbucks",
+  "Chick-fil-A",
+  "McDonald's",
+  "Hardee's (and Carl's Jr.)"
+ ]
+}

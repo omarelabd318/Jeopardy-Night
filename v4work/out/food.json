@@ -172,6 +172,30 @@
    [
     "What is the main ingredient of an omelette?",
     "Eggs"
+   ],
+   [
+    "Which yellow, curved fruit do monkeys famously love?",
+    "A banana"
+   ],
+   [
+    "Which fruit do people traditionally break the Ramadan fast with?",
+    "Dates"
+   ],
+   [
+    "Espresso is a strong shot of what?",
+    "Coffee"
+   ],
+   [
+    "What is the Egyptian dessert 'roz bel laban'?",
+    "Rice pudding"
+   ],
+   [
+    "What meat is in a Big Mac?",
+    "Beef"
+   ],
+   [
+    "Which fruit, along with coconut, goes into a piña colada?",
+    "Pineapple"
    ]
   ],
   "200": [
@@ -342,6 +366,30 @@
    [
     "Which bird is stuffed with rice or freekeh in Egypt's 'hamam mahshi'?",
     "Pigeon"
+   ],
+   [
+    "Which lettuce is used in a classic Caesar salad?",
+    "Romaine lettuce"
+   ],
+   [
+    "Which fruit is the Ramadan drink 'tamr hindi' made from?",
+    "Tamarind"
+   ],
+   [
+    "What are the fried dough balls soaked in syrup, sold on Egyptian streets?",
+    "Zalabya (luqmat el qadi)"
+   ],
+   [
+    "What is tofu made from?",
+    "Soybeans"
+   ],
+   [
+    "Which fish is traditionally used in British fish and chips?",
+    "Cod (or haddock)"
+   ],
+   [
+    "What is the green Japanese paste served with sushi?",
+    "Wasabi"
    ]
   ],
   "300": [
@@ -512,6 +560,30 @@
    [
     "What is termes, a classic Egyptian street snack?",
     "Lupin beans"
+   ],
+   [
+    "What is the national dish of Hungary, a paprika stew?",
+    "Goulash"
+   ],
+   [
+    "Which Italian dessert's name means 'cooked cream'?",
+    "Panna cotta"
+   ],
+   [
+    "What is a croque monsieur?",
+    "A toasted ham and cheese sandwich"
+   ],
+   [
+    "Which butter and egg-yolk sauce goes on eggs Benedict?",
+    "Hollandaise"
+   ],
+   [
+    "What are Italian potato dumplings called?",
+    "Gnocchi"
+   ],
+   [
+    "Which 'nut' is really a legume that grows underground?",
+    "The peanut"
    ]
   ],
   "400": [
@@ -678,6 +750,30 @@
    [
     "What is Japanese matcha?",
     "Powdered green tea"
+   ],
+   [
+    "Which Mexican sauce mixes chillies with chocolate?",
+    "Mole"
+   ],
+   [
+    "What is Scottish haggis traditionally cooked in?",
+    "A sheep's stomach"
+   ],
+   [
+    "Which meat is eaten the most worldwide?",
+    "Pork"
+   ],
+   [
+    "Which West African rice dish do Nigeria and Ghana argue about?",
+    "Jollof rice"
+   ],
+   [
+    "What 'cooks' the raw fish in ceviche?",
+    "Citrus juice (lime)"
+   ],
+   [
+    "What flour is used to make French macarons?",
+    "Almond flour"
    ]
   ],
   "500": [
@@ -848,6 +944,30 @@
    [
     "What is the hot-and-sour Thai soup, often made with shrimp?",
     "Tom yum"
+   ],
+   [
+    "Which part of a chilli is the hottest?",
+    "The white pith (placenta) holding the seeds"
+   ],
+   [
+    "Which spice is the lacy red covering of the nutmeg seed?",
+    "Mace"
+   ],
+   [
+    "What is Japanese mochi made from?",
+    "Glutinous (sticky) rice"
+   ],
+   [
+    "What is Persian 'tahdig'?",
+    "The crispy rice at the bottom of the pot"
+   ],
+   [
+    "Which Spanish ham comes from black pigs fed on acorns?",
+    "Jamón ibérico de bellota"
+   ],
+   [
+    "What is burrata?",
+    "A fresh mozzarella shell filled with cream and curd"
    ]
   ]
  }

@@ -1,0 +1,132 @@
+{
+ "100": [
+  [
+   "Who co-founded Apple with Steve Wozniak?",
+   "Steve Jobs"
+  ],
+  [
+   "What is the currency of Japan?",
+   "The yen"
+  ],
+  [
+   "What do you call money borrowed from a bank that you pay back with interest?",
+   "A loan"
+  ],
+  [
+   "What does 'HQ' stand for?",
+   "Headquarters"
+  ],
+  [
+   "Which currency is the most traded in the world?",
+   "The US dollar"
+  ],
+  [
+   "What is the tax on the money you earn from your job called?",
+   "Income tax"
+  ]
+ ],
+ "200": [
+  [
+   "What does 'B2C' stand for?",
+   "Business to consumer"
+  ],
+  [
+   "What does 'CFO' stand for?",
+   "Chief Financial Officer"
+  ],
+  [
+   "Who is the CEO of Microsoft?",
+   "Satya Nadella"
+  ],
+  [
+   "Who is the CEO of Google and Alphabet?",
+   "Sundar Pichai"
+  ],
+  [
+   "Who is the CEO of OpenAI, the company behind ChatGPT?",
+   "Sam Altman"
+  ],
+  [
+   "What is Saudi Arabia's plan to move its economy away from oil called?",
+   "Vision 2030"
+  ]
+ ],
+ "300": [
+  [
+   "Who co-founded Nvidia and is its CEO?",
+   "Jensen Huang"
+  ],
+  [
+   "Who co-founded Oracle?",
+   "Larry Ellison"
+  ],
+  [
+   "Who does Forbes rank as Egypt's richest person?",
+   "Nassef Sawiris"
+  ],
+  [
+   "What does 'GNP' stand for?",
+   "Gross National Product"
+  ],
+  [
+   "What does 'OPEC' stand for?",
+   "Organization of the Petroleum Exporting Countries"
+  ],
+  [
+   "What is the Pareto principle often called?",
+   "The 80/20 rule"
+  ]
+ ],
+ "400": [
+  [
+   "Which Egyptian developer built Madinaty?",
+   "Talaat Moustafa Group"
+  ],
+  [
+   "What do you call a start-up valued at over $10 billion?",
+   "A decacorn"
+  ],
+  [
+   "Who wrote 'Das Kapital'?",
+   "Karl Marx"
+  ],
+  [
+   "Which Egyptian buy-now-pay-later app belongs to EFG Holding?",
+   "valU"
+  ],
+  [
+   "What does 'ROE' stand for?",
+   "Return on Equity"
+  ],
+  [
+   "Which African country printed a 100-trillion-dollar note in 2008?",
+   "Zimbabwe"
+  ]
+ ],
+ "500": [
+  [
+   "What are a company's own shares that it has bought back and holds called?",
+   "Treasury stock (treasury shares)"
+  ],
+  [
+   "Which law says work expands to fill the time available?",
+   "Parkinson's law"
+  ],
+  [
+   "Which economist made 'creative destruction' famous?",
+   "Joseph Schumpeter"
+  ],
+  [
+   "Why is water cheap but diamonds expensive, though water is more useful? What is this puzzle called?",
+   "The paradox of value (the diamond–water paradox)"
+  ],
+  [
+   "Which economist warned that population would grow faster than food supply?",
+   "Thomas Malthus"
+  ],
+  [
+   "What does Goodhart's law say?",
+   "When a measure becomes a target, it stops being a good measure"
+  ]
+ ]
+}
