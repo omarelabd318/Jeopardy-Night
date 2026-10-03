@@ -145,17 +145,17 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.77`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.79`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
-  ["Egypt & Arab World", ["egy","egh","cairo","arab","prov"]],
-  ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","st","office","tvmix","friends","himym","hp","hgames","marvel","toons","romcom","quote","quoteeg","qblank","mus","songt","song","lyric","spot","igf"]],
+  ["Egypt & Arab World", ["egy","egh","cairo","arab","prov","ramadan","memeeg"]],
+  ["Football & Sports", ["fb","egfb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
+  ["Entertainment", ["tv","ecin","plot","ploteg","lit","got","peaky","bb","pb","gta","vgames","st","office","tvmix","friends","himym","hp","hgames","marvel","toons","romcom","pixar","quote","quoteeg","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
-  ["Party Games", ["act","acteg","emov","emeg","emsen","emseg","pw","rid","link","near"]]
+  ["Party Games", ["act","acteg","emov","emeg","emsen","emseg","pw","rid","link","near","headl"]]
 ];
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}</button>`;
@@ -365,7 +365,7 @@ function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S
   if(t1) t1.textContent = on ? "Joga" : "Jeopardy"; if(t2) t2.textContent = on ? "Bonito" : "Night"; }
 /* 4.43: retro poster collage of football phrases behind the Football mode board.
    4.48: packed into exactly the whole rows and columns that fit, and each phrase shrunk to fit its block, so nothing is cut off. */
-const FB_PHRASES = ["SIIIIIUUUUUU!","BAR-CO-LA","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
+const FB_PHRASES = ["SIIIIIUUUUUU!","BAR-CO-LA","NO FAIR","ظالم ظلم","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
 const FB_FILL = ["Calma","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
 /* 4.76 (Omar): phrases drawn with a different font for each part between the dashes (Alfa Slab One, Lobster, Bebas Neue) */
 const FB_MIXED = {"BAR-CO-LA": [2, 3, 1]};

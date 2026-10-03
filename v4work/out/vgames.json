@@ -1,0 +1,258 @@
+{
+ "id": "vgames",
+ "name": "Video Games",
+ "type": "text",
+ "desc": "Consoles, classics and mobile games, from Mario and PES nights to PUBG and Elden Ring.",
+ "data": {
+  "100": [
+   [
+    "Which mustachioed Italian plumber is Nintendo's mascot?",
+    "Mario"
+   ],
+   [
+    "In which game do you build with blocks and run from exploding green Creepers?",
+    "Minecraft"
+   ],
+   [
+    "Which yellow electric Pokémon is Ash's partner?",
+    "Pikachu"
+   ],
+   [
+    "Which battle royale game starts with players jumping out of a 'Battle Bus'?",
+    "Fortnite"
+   ],
+   [
+    "Which speedy blue hedgehog is Sega's mascot?",
+    "Sonic"
+   ],
+   [
+    "In which mobile game do you run along train tracks, away from an inspector and his dog?",
+    "Subway Surfers"
+   ],
+   [
+    "In which game do crewmates try to find the impostor among them?",
+    "Among Us"
+   ],
+   [
+    "In which game do you sling birds at green pigs?",
+    "Angry Birds"
+   ],
+   [
+    "Which Konami football series was FIFA's big rival on Egyptian PlayStations?",
+    "PES (Pro Evolution Soccer)"
+   ],
+   [
+    "Which company makes the PlayStation?",
+    "Sony"
+   ],
+   [
+    "Which yellow circle eats dots in a maze while dodging ghosts?",
+    "Pac-Man"
+   ],
+   [
+    "Which battle royale, huge on Egyptian phones, drops 100 players onto the island of Erangel?",
+    "PUBG (PUBG Mobile)"
+   ]
+  ],
+  "200": [
+   [
+    "What was EA's FIFA series renamed in 2023?",
+    "EA Sports FC"
+   ],
+   [
+    "Which Nintendo series follows Link through the land of Hyrule?",
+    "The Legend of Zelda"
+   ],
+   [
+    "Which game series stars Kratos, the 'Ghost of Sparta'?",
+    "God of War"
+   ],
+   [
+    "Which Mortal Kombat ninja yells 'Get over here!'?",
+    "Scorpion"
+   ],
+   [
+    "Which orange marsupial was PlayStation's mascot in the late '90s?",
+    "Crash Bandicoot"
+   ],
+   [
+    "Which Rockstar western follows outlaw Arthur Morgan?",
+    "Red Dead Redemption 2"
+   ],
+   [
+    "Which game series follows assassins like Altaïr and Ezio?",
+    "Assassin's Creed"
+   ],
+   [
+    "In which shooter do terrorists try to plant the bomb on maps like Dust 2?",
+    "Counter-Strike"
+   ],
+   [
+    "Which 2017 Nintendo console plays both on the TV and as a handheld?",
+    "Nintendo Switch"
+   ],
+   [
+    "In which Supercell mobile game do you build a village and raid others with Barbarians and Giants?",
+    "Clash of Clans"
+   ],
+   [
+    "Which falling-block puzzle game was created in the Soviet Union in 1984?",
+    "Tetris"
+   ],
+   [
+    "What are Mortal Kombat's gruesome finishing moves called?",
+    "Fatalities"
+   ]
+  ],
+  "300": [
+   [
+    "Which game follows Joel and Ellie across a United States ruined by a fungal outbreak?",
+    "The Last of Us"
+   ],
+   [
+    "What is the name of the white-haired monster hunter in The Witcher?",
+    "Geralt of Rivia"
+   ],
+   [
+    "Which 2022 FromSoftware open-world game is set in the Lands Between?",
+    "Elden Ring"
+   ],
+   [
+    "Which Command & Conquer game, an internet-café classic, pits the Allies against the Soviets?",
+    "Red Alert"
+   ],
+   [
+    "In which 2003 game does a prince rewind time with the Dagger of Time?",
+    "Prince of Persia: The Sands of Time"
+   ],
+   [
+    "Which Microsoft strategy series has you advance from the Dark Age to the Imperial Age?",
+    "Age of Empires"
+   ],
+   [
+    "Which racing series includes Underground and Most Wanted?",
+    "Need for Speed"
+   ],
+   [
+    "What is the fighting tournament in Tekken called?",
+    "The King of Iron Fist Tournament"
+   ],
+   [
+    "What is the made-up language spoken in The Sims called?",
+    "Simlish"
+   ],
+   [
+    "Which striker was on the cover of the first EA Sports FC game, FC 24?",
+    "Erling Haaland"
+   ],
+   [
+    "Which Japanese company makes Street Fighter and Resident Evil?",
+    "Capcom"
+   ],
+   [
+    "Which Valve game stars physicist Gordon Freeman and his crowbar?",
+    "Half-Life"
+   ]
+  ],
+  "400": [
+   [
+    "Which game is set in Rapture, a ruined city under the sea?",
+    "BioShock"
+   ],
+   [
+    "Which Hideo Kojima series stars the soldier Solid Snake?",
+    "Metal Gear (Solid)"
+   ],
+   [
+    "Which company created the T-virus in Resident Evil?",
+    "Umbrella Corporation"
+   ],
+   [
+    "In which puzzle game does the robot GLaDOS promise you cake?",
+    "Portal"
+   ],
+   [
+    "Which game gave the world the 'Leeroy Jenkins!' meme in 2005?",
+    "World of Warcraft"
+   ],
+   [
+    "Which game is played on a map called Summoner's Rift?",
+    "League of Legends"
+   ],
+   [
+    "Which 1997 PlayStation game stars Cloud Strife?",
+    "Final Fantasy VII"
+   ],
+   [
+    "Which game opens with 'Hey, you. You're finally awake'?",
+    "The Elder Scrolls V: Skyrim"
+   ],
+   [
+    "What is the nickname of Markus Persson, who created Minecraft?",
+    "Notch"
+   ],
+   [
+    "Who is Crash Bandicoot's big-headed arch-enemy?",
+    "Doctor Neo Cortex"
+   ],
+   [
+    "Which Pokémon is number 1 in the Pokédex?",
+    "Bulbasaur"
+   ],
+   [
+    "Which Nintendo 64 launch game was Mario's first in 3D?",
+    "Super Mario 64"
+   ]
+  ],
+  "500": [
+   [
+    "What was Mario called when he first appeared in Donkey Kong (1981)?",
+    "Jumpman"
+   ],
+   [
+    "Which famous cheat code goes 'Up, Up, Down, Down, Left, Right, Left, Right, B, A'?",
+    "The Konami Code"
+   ],
+   [
+    "What is the name of the red ghost in Pac-Man?",
+    "Blinky"
+   ],
+   [
+    "What is the name of the fairy who keeps shouting 'Hey! Listen!' at Link in Ocarina of Time?",
+    "Navi"
+   ],
+   [
+    "What is Geralt's horse called in The Witcher games?",
+    "Roach"
+   ],
+   [
+    "In which year was the first PlayStation released in Japan?",
+    "1994"
+   ],
+   [
+    "Which studio made the first Pokémon games?",
+    "Game Freak"
+   ],
+   [
+    "What was Sega's last home console, discontinued in 2001?",
+    "Dreamcast"
+   ],
+   [
+    "Which Pokémon is said to be the very first one ever designed?",
+    "Rhydon"
+   ],
+   [
+    "Which Street Fighter II yoga master stretches his limbs and breathes fire?",
+    "Dhalsim"
+   ],
+   [
+    "What was the very first EA FIFA game, released in 1993, called?",
+    "FIFA International Soccer"
+   ],
+   [
+    "In which 1984 Nintendo light-gun game does a dog laugh at you when you miss?",
+    "Duck Hunt"
+   ]
+  ]
+ }
+}

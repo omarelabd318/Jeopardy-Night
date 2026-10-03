@@ -1,0 +1,258 @@
+{
+ "id": "shirt",
+ "name": "Shirt Numbers",
+ "type": "text",
+ "desc": "Name the shirt number a famous player wore at a club or for his country.",
+ "data": {
+  "100": [
+   [
+    "What shirt number did Cristiano Ronaldo make famous at Manchester United?",
+    "7"
+   ],
+   [
+    "What shirt number did Lionel Messi wear at Barcelona from 2008 until he left?",
+    "10"
+   ],
+   [
+    "What shirt number does Mohamed Salah wear at Liverpool?",
+    "11"
+   ],
+   [
+    "What shirt number did Pelé wear for Brazil?",
+    "10"
+   ],
+   [
+    "What shirt number did David Beckham wear at Manchester United?",
+    "7"
+   ],
+   [
+    "What shirt number did Thierry Henry wear at Arsenal?",
+    "14"
+   ],
+   [
+    "What shirt number does Mohamed Salah wear for Egypt?",
+    "10"
+   ],
+   [
+    "What shirt number does Erling Haaland wear at Manchester City?",
+    "9"
+   ],
+   [
+    "What shirt number did Steven Gerrard wear at Liverpool?",
+    "8"
+   ],
+   [
+    "What shirt number did Diego Maradona wear at Napoli and for Argentina?",
+    "10"
+   ],
+   [
+    "What shirt number does Cristiano Ronaldo wear at Al Nassr?",
+    "7"
+   ],
+   [
+    "What shirt number does Bukayo Saka wear at Arsenal?",
+    "7"
+   ]
+  ],
+  "200": [
+   [
+    "What shirt number did Frank Lampard wear at Chelsea?",
+    "8"
+   ],
+   [
+    "What shirt number did Ronaldinho wear at Barcelona?",
+    "10"
+   ],
+   [
+    "What shirt number did Neymar wear at Barcelona?",
+    "11"
+   ],
+   [
+    "What shirt number did Eric Cantona wear at Manchester United?",
+    "7"
+   ],
+   [
+    "What shirt number did Zinedine Zidane wear for France?",
+    "10"
+   ],
+   [
+    "What shirt number did Kevin De Bruyne wear at Manchester City?",
+    "17"
+   ],
+   [
+    "What shirt number does Virgil van Dijk wear at Liverpool?",
+    "4"
+   ],
+   [
+    "What shirt number did Son Heung-min wear at Tottenham?",
+    "7"
+   ],
+   [
+    "What shirt number does Shikabala wear at Zamalek?",
+    "10"
+   ],
+   [
+    "What shirt number did Raúl wear at Real Madrid?",
+    "7"
+   ],
+   [
+    "What shirt number did Alan Shearer wear at Newcastle?",
+    "9"
+   ],
+   [
+    "What shirt number does Omar Marmoush wear at Manchester City?",
+    "7"
+   ]
+  ],
+  "300": [
+   [
+    "What shirt number did Zinedine Zidane wear at Real Madrid?",
+    "5"
+   ],
+   [
+    "What shirt number did David Beckham wear at Real Madrid, because Raúl had the 7?",
+    "23"
+   ],
+   [
+    "What shirt number did Kaká wear at AC Milan?",
+    "22"
+   ],
+   [
+    "What shirt number did Dennis Bergkamp wear at Arsenal?",
+    "10"
+   ],
+   [
+    "What shirt number did Ryan Giggs wear at Manchester United?",
+    "11"
+   ],
+   [
+    "What shirt number did Sergio Ramos wear at Real Madrid?",
+    "4"
+   ],
+   [
+    "What shirt number did Xavi wear at Barcelona?",
+    "6"
+   ],
+   [
+    "What shirt number did Toni Kroos wear at Real Madrid?",
+    "8"
+   ],
+   [
+    "What shirt number did Thomas Müller wear at Bayern Munich?",
+    "25"
+   ],
+   [
+    "What shirt number did Mahmoud El Khatib wear at Al Ahly?",
+    "10"
+   ],
+   [
+    "What shirt number did Kylian Mbappé wear for most of his time at PSG?",
+    "7"
+   ],
+   [
+    "What shirt number did Didier Drogba wear for most of his Chelsea career?",
+    "11"
+   ]
+  ],
+  "400": [
+   [
+    "What shirt number did Sergio Agüero wear when he scored the 93:20 title winner in 2012?",
+    "16"
+   ],
+   [
+    "What shirt number did Ronaldinho wear at AC Milan?",
+    "80"
+   ],
+   [
+    "What shirt number did Andrea Pirlo wear at Milan and Juventus?",
+    "21"
+   ],
+   [
+    "What shirt number did Cristiano Ronaldo wear in his first season at Real Madrid?",
+    "9"
+   ],
+   [
+    "What shirt number did Lionel Messi wear at Barcelona before taking the 10 from Ronaldinho?",
+    "19"
+   ],
+   [
+    "What shirt number did Paul Scholes wear at Manchester United?",
+    "18"
+   ],
+   [
+    "What shirt number did Jamie Carragher wear at Liverpool?",
+    "23"
+   ],
+   [
+    "What shirt number did Ole Gunnar Solskjær wear at Manchester United?",
+    "20"
+   ],
+   [
+    "What shirt number did Yaya Touré wear at Manchester City?",
+    "42"
+   ],
+   [
+    "What shirt number did Mario Balotelli wear at Manchester City?",
+    "45"
+   ],
+   [
+    "What shirt number did Thierry Henry wear for France?",
+    "12"
+   ],
+   [
+    "What shirt number did Petr Čech wear at Arsenal?",
+    "33"
+   ]
+  ],
+  "500": [
+   [
+    "What shirt number did Mohamed Salah wear at Fiorentina, in tribute to the victims of the Port Said disaster?",
+    "74"
+   ],
+   [
+    "What shirt number did Cristiano Ronaldo wear at Sporting, and ask for at United before being handed the 7?",
+    "28"
+   ],
+   [
+    "What shirt number did Iván Zamorano wear at Inter after Ronaldo took his 9?",
+    "1+8 (an 18 with a plus sign)"
+   ],
+   [
+    "What shirt number did Hicham Zerouali wear at Aberdeen, earning the nickname 'Zero'?",
+    "0"
+   ],
+   [
+    "What shirt number did Gianluigi Buffon wear at Parma in 2000, before switching after complaints?",
+    "88"
+   ],
+   [
+    "What shirt number did David Beckham wear at PSG and AC Milan?",
+    "32"
+   ],
+   [
+    "What shirt number did Lionel Messi wear for Argentina at the 2006 World Cup?",
+    "19"
+   ],
+   [
+    "What shirt number did Luka Modrić wear at Real Madrid before inheriting the 10?",
+    "19"
+   ],
+   [
+    "What shirt number did Vinícius Júnior wear at Real Madrid before taking the 7?",
+    "20"
+   ],
+   [
+    "What shirt number did Lamine Yamal wear for Spain at Euro 2024?",
+    "19"
+   ],
+   [
+    "Which shirt number did Arsène Wenger give defender William Gallas in 2006, straight after Dennis Bergkamp retired?",
+    "10"
+   ],
+   [
+    "What shirt number did Mohamed Salah wear at Roma?",
+    "11"
+   ]
+  ]
+ }
+}

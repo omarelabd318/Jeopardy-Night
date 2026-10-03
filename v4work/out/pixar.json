@@ -1,0 +1,258 @@
+{
+ "id": "pixar",
+ "name": "Pixar & DreamWorks",
+ "type": "text",
+ "desc": "Animated films from Pixar and DreamWorks, from Shrek and Kung Fu Panda to Toy Story and Elemental.",
+ "data": {
+  "100": [
+   [
+    "Which grumpy green ogre lives in a swamp?",
+    "Shrek"
+   ],
+   [
+    "Which talking animal is Shrek's sidekick, voiced by Eddie Murphy?",
+    "Donkey"
+   ],
+   [
+    "Which clumsy panda becomes the Dragon Warrior?",
+    "Po (Kung Fu Panda)"
+   ],
+   [
+    "Which DreamWorks film follows zoo animals Alex, Marty, Melman and Gloria?",
+    "Madagascar"
+   ],
+   [
+    "In which film does a Viking boy befriend a dragon called Toothless?",
+    "How to Train Your Dragon"
+   ],
+   [
+    "Which Pixar film is set in a city where monsters scare children to power the town?",
+    "Monsters, Inc."
+   ],
+   [
+    "Which Toy Story space ranger says 'To infinity and beyond!'?",
+    "Buzz Lightyear"
+   ],
+   [
+    "What is the name of the princess Shrek marries?",
+    "Fiona"
+   ],
+   [
+    "Which sword-fighting cat in boots joins Shrek in Shrek 2?",
+    "Puss in Boots"
+   ],
+   [
+    "What does Sulley call the little girl in Monsters, Inc.?",
+    "Boo"
+   ],
+   [
+    "What is the name of the boy who owns the toys in Toy Story?",
+    "Andy"
+   ],
+   [
+    "In Madagascar, what kind of animal is Melman?",
+    "A giraffe"
+   ]
+  ],
+  "200": [
+   [
+    "Which 1998 DreamWorks film tells the story of Moses and Rameses?",
+    "The Prince of Egypt"
+   ],
+   [
+    "Which Pixar film stars Merida, a Scottish princess and archer?",
+    "Brave"
+   ],
+   [
+    "Which Pixar film follows two sea-monster boys on the Italian Riviera?",
+    "Luca"
+   ],
+   [
+    "In which Pixar film does a 13-year-old girl turn into a giant red panda?",
+    "Turning Red"
+   ],
+   [
+    "In which Pixar film is jazz teacher Joe Gardner's soul separated from his body?",
+    "Soul"
+   ],
+   [
+    "What is the name of Po's red panda kung fu master?",
+    "Master Shifu"
+   ],
+   [
+    "What is the name of the Viking boy in How to Train Your Dragon?",
+    "Hiccup"
+   ],
+   [
+    "In Madagascar, which lemur king sings 'I Like to Move It'?",
+    "King Julien"
+   ],
+   [
+    "Name the two monsters who work as a scaring team in Monsters, Inc.",
+    "Mike and Sulley"
+   ],
+   [
+    "What is the name of the rusty tow truck in Cars?",
+    "Mater"
+   ],
+   [
+    "Which Smash Mouth song plays at the start of Shrek?",
+    "All Star"
+   ],
+   [
+    "Who voiced Shrek?",
+    "Mike Myers"
+   ]
+  ],
+  "300": [
+   [
+    "In which Pixar film do two elf brothers go on a quest to bring their dad back for one day?",
+    "Onward"
+   ],
+   [
+    "Which Pixar film follows Ember, a fire girl, and Wade, a water guy?",
+    "Elemental"
+   ],
+   [
+    "Which 2024 DreamWorks film follows the robot Roz, stranded on a wild island?",
+    "The Wild Robot"
+   ],
+   [
+    "Which Apple co-founder bought the company that became Pixar in 1986?",
+    "Steve Jobs"
+   ],
+   [
+    "Which tiger leads the Furious Five in Kung Fu Panda?",
+    "Tigress"
+   ],
+   [
+    "Which costume designer in The Incredibles insists 'No capes!'?",
+    "Edna Mode"
+   ],
+   [
+    "What address does Dory keep repeating in Finding Nemo?",
+    "P. Sherman, 42 Wallaby Way, Sydney"
+   ],
+   [
+    "What is the name of the toy-torturing boy next door in Toy Story?",
+    "Sid"
+   ],
+   [
+    "What is the name of the strawberry-scented bear who rules the daycare in Toy Story 3?",
+    "Lotso"
+   ],
+   [
+    "What is the name of the boy scout who stows away on Carl's flying house in Up?",
+    "Russell"
+   ],
+   [
+    "What number is on Lightning McQueen?",
+    "95"
+   ],
+   [
+    "What kind of bird is Po's adoptive dad, Mr. Ping?",
+    "A goose"
+   ]
+  ],
+  "400": [
+   [
+    "Which song from The Prince of Egypt won the Oscar for Best Original Song?",
+    "When You Believe"
+   ],
+   [
+    "Which 2002 DreamWorks film follows a wild mustang in the American West?",
+    "Spirit: Stallion of the Cimarron"
+   ],
+   [
+    "What was DreamWorks Animation's first film (1998), starring Woody Allen as an ant?",
+    "Antz"
+   ],
+   [
+    "Which snow leopard is the villain of the first Kung Fu Panda?",
+    "Tai Lung"
+   ],
+   [
+    "What is the name of Hiccup's Viking island?",
+    "Berk"
+   ],
+   [
+    "Which insects bully the ants in A Bug's Life?",
+    "Grasshoppers"
+   ],
+   [
+    "What is the name of the harsh food critic in Ratatouille?",
+    "Anton Ego"
+   ],
+   [
+    "Which prospector toy turns out to be the villain of Toy Story 2?",
+    "Stinky Pete"
+   ],
+   [
+    "What is the name of Miguel's street dog in Coco?",
+    "Dante"
+   ],
+   [
+    "Who is Riley's forgotten imaginary friend in Inside Out?",
+    "Bing Bong"
+   ],
+   [
+    "Which film won the first-ever Oscar for Best Animated Feature, in 2002?",
+    "Shrek"
+   ],
+   [
+    "Which 2000 DreamWorks film follows two con men who find a city of gold?",
+    "The Road to El Dorado"
+   ]
+  ],
+  "500": [
+   [
+    "What is the name of the hopping desk lamp in Pixar's logo?",
+    "Luxo Jr."
+   ],
+   [
+    "Who is the strict, centipede-like dean in Monsters University?",
+    "Dean Hardscrabble"
+   ],
+   [
+    "Which Oscar-winning Pixar short is about a dumpling that comes to life?",
+    "Bao"
+   ],
+   [
+    "Which 2006 DreamWorks–Aardman film follows a pet rat flushed into London's sewers?",
+    "Flushed Away"
+   ],
+   [
+    "Which shape-shifting villain does Po face in Kung Fu Panda 4?",
+    "The Chameleon"
+   ],
+   [
+    "Which 2025 Pixar film follows a boy mistaken by aliens for Earth's ambassador?",
+    "Elio"
+   ],
+   [
+    "In Kung Fu Panda, what is the secret ingredient of Mr. Ping's soup?",
+    "Nothing (there is no secret ingredient)"
+   ],
+   [
+    "What is the name of the young Apatosaurus in The Good Dinosaur?",
+    "Arlo"
+   ],
+   [
+    "Who is the crab-like boss of Monsters, Inc.?",
+    "Mr. Waternoose"
+   ],
+   [
+    "What is the name of Lord Farquaad's kingdom in Shrek?",
+    "Duloc"
+   ],
+   [
+    "The code 'A113' hides in every Pixar film. It's a classroom at which art school?",
+    "CalArts (California Institute of the Arts)"
+   ],
+   [
+    "What is the name of Buzz's robot cat in Lightyear (2022)?",
+    "Sox"
+   ]
+  ]
+ }
+}

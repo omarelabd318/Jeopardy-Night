@@ -1,0 +1,258 @@
+{
+ "id": "mgr",
+ "name": "Managers",
+ "type": "text",
+ "desc": "Name the football manager or national team coach from his clubs, trophies and moments.",
+ "data": {
+  "100": [
+   [
+    "Which Scottish manager led Manchester United for 26 years, retiring in 2013?",
+    "Sir Alex Ferguson"
+   ],
+   [
+    "Which Spanish manager won four Premier League titles in a row with Manchester City (2021–2024)?",
+    "Pep Guardiola"
+   ],
+   [
+    "Which German manager won the 2019 Champions League and the 2020 Premier League with Liverpool?",
+    "Jürgen Klopp"
+   ],
+   [
+    "Which Portuguese manager won the Champions League with Porto in 2004 and Inter in 2010?",
+    "José Mourinho"
+   ],
+   [
+    "Which Italian manager won the Champions League twice with AC Milan and three times with Real Madrid?",
+    "Carlo Ancelotti"
+   ],
+   [
+    "Which Frenchman managed Arsenal's 'Invincibles', unbeaten through the 2003–04 league season?",
+    "Arsène Wenger"
+   ],
+   [
+    "Which French legend won three Champions Leagues in a row as Real Madrid coach (2016–2018)?",
+    "Zinedine Zidane"
+   ],
+   [
+    "Which former Arsenal captain, once Guardiola's assistant at Man City, became Arsenal manager in 2019?",
+    "Mikel Arteta"
+   ],
+   [
+    "Which Argentine, known for his all-black outfits, took over Atlético Madrid in 2011 and won La Liga with them in 2014 and 2021?",
+    "Diego Simeone"
+   ],
+   [
+    "Which Dutch manager replaced Jürgen Klopp and won the Premier League in his first season at Liverpool?",
+    "Arne Slot"
+   ],
+   [
+    "Who coached Argentina to the 2022 World Cup?",
+    "Lionel Scaloni"
+   ],
+   [
+    "Which Norwegian, who scored United's 1999 Champions League winner, managed Manchester United from 2018 to 2021?",
+    "Ole Gunnar Solskjær"
+   ]
+  ],
+  "200": [
+   [
+    "Who coached Barcelona's MSN (Messi, Suárez, Neymar) to the 2015 treble?",
+    "Luis Enrique"
+   ],
+   [
+    "Which Italian won the 2016–17 Premier League in his first season at Chelsea, switching to a back three?",
+    "Antonio Conte"
+   ],
+   [
+    "Which Italian, nicknamed 'the Tinkerman', won the 2015–16 Premier League with 5000–1 outsiders Leicester?",
+    "Claudio Ranieri"
+   ],
+   [
+    "Which Argentine took Tottenham to the 2019 Champions League final?",
+    "Mauricio Pochettino"
+   ],
+   [
+    "Who coached Germany to the 2014 World Cup, including a 7–1 win over Brazil?",
+    "Joachim Löw"
+   ],
+   [
+    "Who won the 2018 World Cup as France's coach, 20 years after lifting it as captain?",
+    "Didier Deschamps"
+   ],
+   [
+    "Which German, who won the 2021 Champions League with Chelsea, became England head coach in 2025?",
+    "Thomas Tuchel"
+   ],
+   [
+    "Which Brazilian coach, nicknamed 'Big Phil', won the 2002 World Cup?",
+    "Luiz Felipe Scolari"
+   ],
+   [
+    "Which Spaniard led Bayer Leverkusen to an unbeaten Bundesliga title in 2023–24, then took over Real Madrid?",
+    "Xabi Alonso"
+   ],
+   [
+    "Which Australian ended Tottenham's 17-year wait for a trophy by winning the 2025 Europa League?",
+    "Ange Postecoglou"
+   ],
+   [
+    "Which Dutchman managed Ajax, then won the FA Cup (2024) and the League Cup (2023) with Manchester United?",
+    "Erik ten Hag"
+   ],
+   [
+    "Which Spaniard managed Liverpool to the 2005 'Miracle of Istanbul'?",
+    "Rafael Benítez"
+   ]
+  ],
+  "300": [
+   [
+    "Which chain-smoking Italian won the 2019 Europa League with Chelsea and Serie A with Juventus a year later?",
+    "Maurizio Sarri"
+   ],
+   [
+    "Which Spaniard won the Europa League three times with Sevilla and once with Villarreal?",
+    "Unai Emery"
+   ],
+   [
+    "Which Italian coached AC Milan to a 4–0 win over Barcelona in the 1994 Champions League final?",
+    "Fabio Capello"
+   ],
+   [
+    "Which Dutchman coached co-hosts South Korea to the 2002 World Cup semi-finals?",
+    "Guus Hiddink"
+   ],
+   [
+    "Which Chilean won the 2013–14 Premier League with Manchester City?",
+    "Manuel Pellegrini"
+   ],
+   [
+    "Which Italian managed Manchester City to the 2011–12 title, won by Agüero's last-minute goal?",
+    "Roberto Mancini"
+   ],
+   [
+    "Which Italian coached Italy to the 2006 World Cup?",
+    "Marcello Lippi"
+   ],
+   [
+    "Which Portuguese coach took Egypt to the final of the 2021 Africa Cup of Nations, lost on penalties to Senegal?",
+    "Carlos Queiroz"
+   ],
+   [
+    "Which South African coach won the CAF Champions League with Al Ahly in 2020 and 2021?",
+    "Pitso Mosimane"
+   ],
+   [
+    "Which Italian led Napoli to the 2022–23 Serie A, their first title in 33 years?",
+    "Luciano Spalletti"
+   ],
+   [
+    "Who coached Croatia to the 2018 World Cup final?",
+    "Zlatko Dalić"
+   ],
+   [
+    "Which Dutch legend managed Barcelona's 'Dream Team' to their first European Cup in 1992?",
+    "Johan Cruyff"
+   ]
+  ],
+  "400": [
+   [
+    "Which German coached Greece to their shock Euro 2004 title?",
+    "Otto Rehhagel"
+   ],
+   [
+    "Which Portuguese coach won the 2011 Europa League with Porto aged just 33, then joined Chelsea?",
+    "André Villas-Boas"
+   ],
+   [
+    "Which coach led Spain to Euro 2008, starting their run of three major titles?",
+    "Luis Aragonés"
+   ],
+   [
+    "Which Frenchman led Liverpool to a cup treble (FA Cup, League Cup and UEFA Cup) in 2001?",
+    "Gérard Houllier"
+   ],
+   [
+    "Which Portuguese coach won four CAF Champions Leagues with Al Ahly (2001, 2005, 2006 and 2008)?",
+    "Manuel José"
+   ],
+   [
+    "Which American coached Egypt from 2011 to 2013, a spell that ended with a 6–1 loss to Ghana?",
+    "Bob Bradley"
+   ],
+   [
+    "Which Mexican coached Egypt at the 2019 Africa Cup of Nations on home soil?",
+    "Javier Aguirre"
+   ],
+   [
+    "Who coached France to the 1998 World Cup on home soil?",
+    "Aimé Jacquet"
+   ],
+   [
+    "Which outspoken Englishman won two European Cups in a row (1979, 1980) with Nottingham Forest?",
+    "Brian Clough"
+   ],
+   [
+    "Which Swiss coach won the CAF Champions League with Al Ahly in 2023 and 2024?",
+    "Marcel Koller"
+   ],
+   [
+    "Which German, called the 'godfather of gegenpressing', was Manchester United's interim manager in 2021–22?",
+    "Ralf Rangnick"
+   ],
+   [
+    "Who managed England to the 1966 World Cup?",
+    "Sir Alf Ramsey"
+   ]
+  ],
+  "500": [
+   [
+    "Which Scot managed Celtic's 'Lisbon Lions' to the 1967 European Cup?",
+    "Jock Stein"
+   ],
+   [
+    "Who coached Denmark to Euro 1992, after they were called up late to replace Yugoslavia?",
+    "Richard Møller Nielsen"
+   ],
+   [
+    "Which Hungarian coach supposedly cursed Benfica never to win another European trophy, after leaving in 1962?",
+    "Béla Guttmann"
+   ],
+   [
+    "Who coached Argentina to the 1978 World Cup on home soil?",
+    "César Luis Menotti"
+   ],
+   [
+    "Who managed Liverpool to three European Cups (1977, 1978 and 1981)?",
+    "Bob Paisley"
+   ],
+   [
+    "Who managed Blackburn Rovers to the 1994–95 Premier League title?",
+    "Kenny Dalglish"
+   ],
+   [
+    "Who coached Egypt at the 1990 World Cup in Italy?",
+    "Mahmoud El-Gohary"
+   ],
+   [
+    "Who took over Ivory Coast mid-tournament as interim coach and won the 2023 Africa Cup of Nations?",
+    "Emerse Faé"
+   ],
+   [
+    "Which Argentine coached River Plate to the 2018 Copa Libertadores, beating Boca Juniors in a final played in Madrid?",
+    "Marcelo Gallardo"
+   ],
+   [
+    "Which former Al Ahly coach led Egypt, unbeaten, from 2019 until he was sacked in 2021 after a draw with Gabon?",
+    "Hossam El-Badry"
+   ],
+   [
+    "Who won the World Cup as a player in 1958 and 1962, then as Brazil's coach in 1970?",
+    "Mário Zagallo"
+   ],
+   [
+    "Which Portuguese coach led Zamalek to the 2024 CAF Confederation Cup and the CAF Super Cup?",
+    "José Gomes"
+   ]
+  ]
+ }
+}
