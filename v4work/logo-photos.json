@@ -483,5 +483,192 @@
   "value": 500,
   "name": "Pringles",
   "wiki": "Pringles"
+ },
+ {
+  "key": "logo-facebook",
+  "value": 100,
+  "name": "Facebook",
+  "wiki": "Facebook"
+ },
+ {
+  "key": "logo-twitter",
+  "value": 100,
+  "name": "Twitter (now X)",
+  "wiki": "Twitter",
+  "file": "Logo of Twitter.svg"
+ },
+ {
+  "key": "logo-samsung",
+  "value": 100,
+  "name": "Samsung",
+  "wiki": "Samsung"
+ },
+ {
+  "key": "logo-disney",
+  "value": 100,
+  "name": "Disney",
+  "wiki": "The Walt Disney Company"
+ },
+ {
+  "key": "logo-lays",
+  "value": 100,
+  "name": "Lay's",
+  "wiki": "Lay's"
+ },
+ {
+  "key": "logo-ford",
+  "value": 100,
+  "name": "Ford",
+  "wiki": "Ford Motor Company"
+ },
+ {
+  "key": "logo-honda",
+  "value": 200,
+  "name": "Honda",
+  "wiki": "Honda"
+ },
+ {
+  "key": "logo-nissan",
+  "value": 200,
+  "name": "Nissan",
+  "wiki": "Nissan"
+ },
+ {
+  "key": "logo-hyundai",
+  "value": 200,
+  "name": "Hyundai",
+  "wiki": "Hyundai Motor Company"
+ },
+ {
+  "key": "logo-chanel",
+  "value": 200,
+  "name": "Chanel",
+  "wiki": "Chanel"
+ },
+ {
+  "key": "logo-louisvuitton",
+  "value": 200,
+  "name": "Louis Vuitton",
+  "wiki": "Louis Vuitton"
+ },
+ {
+  "key": "logo-jordan",
+  "value": 200,
+  "name": "Air Jordan",
+  "wiki": "Air Jordan",
+  "file": "Jumpman logo.svg"
+ },
+ {
+  "key": "logo-skype",
+  "value": 300,
+  "name": "Skype",
+  "wiki": "Skype"
+ },
+ {
+  "key": "logo-jaguar",
+  "value": 300,
+  "name": "Jaguar",
+  "wiki": "Jaguar Cars",
+  "file": "Jaguar logo 2021.svg"
+ },
+ {
+  "key": "logo-nintendo",
+  "value": 300,
+  "name": "Nintendo",
+  "wiki": "Nintendo"
+ },
+ {
+  "key": "logo-xbox",
+  "value": 300,
+  "name": "Xbox",
+  "wiki": "Xbox"
+ },
+ {
+  "key": "logo-pinterest",
+  "value": 300,
+  "name": "Pinterest",
+  "wiki": "Pinterest"
+ },
+ {
+  "key": "logo-linkedin",
+  "value": 300,
+  "name": "LinkedIn",
+  "wiki": "LinkedIn"
+ },
+ {
+  "key": "logo-ismaily",
+  "value": 400,
+  "name": "Ismaily",
+  "wiki": "Ismaily SC",
+  "file": "Ismaily_SC_logo.png"
+ },
+ {
+  "key": "logo-eand",
+  "value": 400,
+  "name": "e& (Etisalat)",
+  "wiki": "E&"
+ },
+ {
+  "key": "logo-aljazeera",
+  "value": 400,
+  "name": "Al Jazeera",
+  "wiki": "Al Jazeera"
+ },
+ {
+  "key": "logo-mbc",
+  "value": 400,
+  "name": "MBC",
+  "wiki": "MBC Group"
+ },
+ {
+  "key": "logo-arsenal",
+  "value": 400,
+  "name": "Arsenal",
+  "wiki": "Arsenal F.C.",
+  "file": "Arsenal FC.svg"
+ },
+ {
+  "key": "logo-bayern",
+  "value": 400,
+  "name": "Bayern Munich",
+  "wiki": "FC Bayern Munich",
+  "file": "FC Bayern München logo (2024).svg"
+ },
+ {
+  "key": "logo-astonmartin",
+  "value": 500,
+  "name": "Aston Martin",
+  "wiki": "Aston Martin"
+ },
+ {
+  "key": "logo-bentley",
+  "value": 500,
+  "name": "Bentley",
+  "wiki": "Bentley"
+ },
+ {
+  "key": "logo-skoda",
+  "value": 500,
+  "name": "Škoda",
+  "wiki": "Škoda Auto"
+ },
+ {
+  "key": "logo-opel",
+  "value": 500,
+  "name": "Opel",
+  "wiki": "Opel"
+ },
+ {
+  "key": "logo-kia",
+  "value": 500,
+  "name": "Kia",
+  "wiki": "Kia"
+ },
+ {
+  "key": "logo-seat",
+  "value": 500,
+  "name": "SEAT",
+  "wiki": "SEAT",
+  "file": "SEAT Logo from 2017.svg"
  }
 ]
