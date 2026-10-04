@@ -13,5 +13,5 @@ Don't edit index.html by hand. It's generated. Edit the sources, then rebuild fr
 - **src/extra.js:** adds the v4 categories, such as Who Am I?, Stadiums, Formations and Guess the Food.
 - **v4work/out/<id>.json:** each file replaces that category's clues at build time.
 - **Photo clues:** a photo clue is used only when its `photos/<key>.jpg` exists in this folder.
-- **Version number:** the label is the `v4.NN` string in src/head.html and src/app.js. Bump it with `sed -i 's/v4\.NN/v4.MM/g' src/head.html src/app.js`.
+- **Version number:** the label is the `v5.N` string in src/head.html and src/app.js. Bump it with `sed -i 's/v5\.N\b/v5.M/g' src/head.html src/app.js`.
 - **Publishing:** the live artifact serves index.html plus photos/ and sounds/. It holds at most 511 files, which is why the food photos ship as five .js bundles.
