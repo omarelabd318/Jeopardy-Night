@@ -88,7 +88,7 @@ const Snd = (() => {
   let ac = null, out = null;
   /* 4.59: every sound goes through one master volume, then a limiter so loud moments don't distort.
      VOL 4 makes the ticks, chime and fanfare about 4x louder (12 dB) so they carry over a room; set VOL = 1 to go back to the 4.58 levels. */
-  const VOL = 4;
+  const VOL = 3.2, CHIME = 0.86;  /* 4.90 (Omar): everything 20% quieter (VOL was 4), and the end-of-timer chime 30% quieter in all (CHIME was 1). Measured on the output: ticks/blips ×0.80, chime ×0.70 */
   const ctx = () => { if(!ac){ try{ ac = new (window.AudioContext || window.webkitAudioContext)();
       const lim = ac.createDynamicsCompressor(); lim.threshold.value = -6; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.1;
       out = ac.createGain(); out.gain.value = VOL; out.connect(lim).connect(ac.destination);
@@ -100,7 +100,7 @@ const Snd = (() => {
   return {
     unlock(){ if(S.sound) ctx(); },
     tick(){ if(!S.sound) return; tone(1320, 0, 0.09, 0.05, "triangle"); tone(660, 0, 0.07, 0.03, "sine"); },
-    chime(){ if(!S.sound) return; const f = 784; [[1,0.11],[2.01,0.04],[3.0,0.025],[4.16,0.012]].forEach(([m,v]) => tone(f*m, 0, 2.8/Math.sqrt(m), v, "sine", 0.01)); tone(f*1.5, 0.12, 2.2, 0.035, "sine", 0.02); },
+    chime(){ if(!S.sound) return; const f = 784; [[1,0.11],[2.01,0.04],[3.0,0.025],[4.16,0.012]].forEach(([m,v]) => tone(f*m, 0, 2.8/Math.sqrt(m), v*CHIME, "sine", 0.01)); tone(f*1.5, 0.12, 2.2, 0.035*CHIME, "sine", 0.02); },
     blip(){ if(!S.sound) return; tone(988, 0, 0.12, 0.04, "sine"); tone(1480, 0.06, 0.14, 0.03, "sine"); },
     fanfare(){ if(!S.sound) return; [523, 659, 784, 1047].forEach((f,i) => { tone(f, i*0.13, 0.9, 0.06, "triangle", 0.01); tone(f*2, i*0.13, 0.6, 0.015, "sine", 0.01); }); }
   };
@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.89`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.90`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
