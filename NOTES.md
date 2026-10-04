@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.3. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.5. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -350,3 +350,14 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
     - Swap clue still picks a fresh clue at random.
   - Tested: once a board with Guess the Food, Guess the Logo, Cars, Actors and Footballers was shown, its 30 photos were downloaded before any tile was opened. The food, logo and car tiles then opened with the photo already loaded, with no errors.
   - To undo: in `src/app.js`, have `openClue()` call `pickIdx()` instead of `takePick()`, and put the old `prefetchPacks()` and `packSrc()` back (the old versions are described in the 5.3 comment there).
+- 5.4 (2026-10-04): Omar said 5.3 made things worse. Some clue photos never appeared, and a refresh still took about 15 s on fast Wi-Fi. The Pages deploys were fine, and the page loads in about 0.5 s here, so his connection to GitHub Pages looks slow. At about 50 KB/s, a 0.5 MB page takes around 10–15 s.
+  - What went wrong in 5.3: it started all ~30 tile photos downloading at once, so on a slow line the photo being looked at shared the bandwidth with 29 others.
+  - What changed: background photo downloads (`WQ` and `wPump()` in `src/app.js`) now run two at a time at low priority and pause while a clue is open. The open clue's photo is fetched at high priority (`fetchpriority="high"`). If a food photo is still waiting in the queue, it starts right away when its tile is opened.
+  - Measured on a simulated 60 KB/s line, opening a tile just after the board appeared: a Cars photo took 26 s in 5.3 and 8 s now; a Guess the Food photo took 44 s in 5.3 and 9 s now.
+  - New `speed.html` next to `index.html`: it downloads the page, a few photos and a CDN file, then shows the speed of each, so we can see how fast this site really is from Omar's laptop.
+  - To undo: in `warmImg()` and `warmRef()`, start each download directly instead of pushing it onto `WQ`, and remove `wPump()` from `closeCard()`.
+- 5.5 (2026-10-04): Omar asked for a section next to Photo rounds that lists every photo category and how many of its photos have loaded, and then for "anything that needs loading" to go in its own section called Status. The new collapsible **Status** panel on the setup screen (`#statusPanel` in `src/head.html`; `renderDl()` and `renderTools()` in `src/app.js`) has two parts:
+  - **Tools, fonts and sounds:** whether Google Fonts, the world map, the QR code tool, the photo export/import tool and the 5 sound clips have loaded. Each shows ✓, "still loading", or "couldn't load" (an `onerror` on each CDN tag sets `window.__cdnErr`).
+  - **Photos:** one row per category that has pictures (Stadiums, Guess the Food, Logo, Car, Actor, Footballer, Person) with a progress bar, "downloaded / total" and a Download button.
+  - **Download everything** queues every photo and sound. On the setup screen the queue runs 4 downloads at a time (2 during a game). Whatever the browser has downloaded stays in its cache, so on a later visit the counts fill up quickly.
+  - To undo: delete the `#statusPanel` block in `src/head.html`, the 5.5 `.dlbox`/`.dlrow` CSS, and the 5.5 block before `prefetchPacks()` in `src/app.js`.

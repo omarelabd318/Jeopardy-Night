@@ -3,6 +3,20 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.5",
+  "date": "2026-10-04",
+  "items": [
+   "New Status section in setup: see how many photos of each photo round are downloaded, whether fonts, the world map, QR codes and sounds are ready, and download everything before guests arrive."
+  ]
+ },
+ {
+  "v": "5.4",
+  "date": "2026-10-04",
+  "items": [
+   "Fixed photos that could take ages (or seem never to appear) on a slow connection: the photo on screen now always comes first, and other photos download quietly in the background."
+  ]
+ },
+ {
   "v": "5.3",
   "date": "2026-10-04",
   "items": [

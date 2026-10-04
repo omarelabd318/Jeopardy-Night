@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jeopardy Night speed test</title>
+<!-- 5.4: open this next to index.html (…/Jeopardy-Night/speed.html) to see how fast this device downloads the game's files from where it is hosted. -->
+<style>
+:root{--bg:#050A5E;--fg:#fff;--muted:#AEB6FF;--gold:#FFCC33;--line:#2B36B8}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,sans-serif}
+main{max-width:720px;margin:0 auto;padding:24px 16px 48px}
+h1{color:var(--gold);margin:0 0 4px;font-size:28px}
+p{color:var(--muted);margin:0 0 16px}
+button{font:inherit;font-weight:700;background:var(--gold);color:#1C1606;border:0;border-radius:10px;padding:10px 20px;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:14px}
+td.n{text-align:right}
+#sum{margin-top:18px;font-weight:700;white-space:pre-line}
+</style></head><body><main>
+<h1>Speed test</h1>
+<p>Downloads a few of the game's files from this site (and one from a CDN to compare) and shows how long each took. Send Claude a screenshot of the result.</p>
+<button id="go">Run test</button>
+<table><thead><tr><th>File</th><th class="n">Size</th><th class="n">Time</th><th class="n">Speed</th></tr></thead><tbody id="rows"></tbody></table>
+<div id="sum"></div>
+</main>
+<script>
+const FILES = [
+  ["The game page (index.html)", "index.html"],
+  ["A Guess the Food photo", "photos/food-pizza.jpg"],
+  ["A Cars photo", "photos/paganizonda.jpg"],
+  ["A Footballers photo", "photos/harrykane.jpg"],
+  ["A Guess the Logo bundle", "photos/logo-100.js"],
+  ["CDN file, for comparison (cdnjs)", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"],
+  ["Google Fonts list, for comparison", "https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap"]
+];
+const kb = b => b >= 1e6 ? (b/1e6).toFixed(1) + " MB" : Math.round(b/1e3) + " KB";
+async function one(label, url, tr){
+  const t0 = performance.now();
+  try{
+    const r = await fetch(url + (url.includes("?") ? "&" : "?") + "nocache=" + Date.now(), {cache:"no-store"});
+    const buf = await r.arrayBuffer(); const ms = performance.now() - t0;
+    tr.innerHTML = `<td>${label}${r.ok ? "" : " (error " + r.status + ")"}</td><td class="n">${kb(buf.byteLength)}</td><td class="n">${(ms/1000).toFixed(1)} s</td><td class="n">${kb(buf.byteLength/(ms/1000))}/s</td>`;
+    return {label, bytes:buf.byteLength, ms};
+  }catch(e){ tr.innerHTML = `<td>${label}</td><td class="n">–</td><td class="n">failed</td><td class="n">${String(e.message||e).slice(0,40)}</td>`; return null; }
+}
+document.getElementById("go").onclick = async () => {
+  const rows = document.getElementById("rows"), sum = document.getElementById("sum"); rows.innerHTML = ""; sum.textContent = "Testing…";
+  const res = [];
+  for(const [label, url] of FILES){ const tr = document.createElement("tr"); tr.innerHTML = `<td>${label}</td><td colspan="3">…</td>`; rows.appendChild(tr); res.push(await one(label, url, tr)); }
+  const site = res.slice(0,5).filter(Boolean), b = site.reduce((a,x)=>a+x.bytes,0), ms = site.reduce((a,x)=>a+x.ms,0);
+  const c = navigator.connection;
+  sum.textContent = `This site: ${kb(b/(ms/1000))}/s on average.` + (c && c.downlink ? `\nThe browser thinks your connection is about ${c.downlink} Mbit/s.` : "") + `\nTested ${new Date().toLocaleString()} at ${location.host}.`;
+};
+</script>
+</body></html>

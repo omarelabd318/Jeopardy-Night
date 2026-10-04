@@ -1,13 +1,13 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Jeopardy Night</title>
 <!-- 5.1: the three CDN scripts load with async, so a slow CDN no longer holds up the page (they used to block it). QR codes, photo export/import and the world map are only needed later. To undo: remove "async" (and the onload) from these three tags, and in src/app.js go back to calling the initWorld() body directly. -->
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" onerror="(window.__cdnErr=window.__cdnErr||{}).qr=1"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" onerror="(window.__cdnErr=window.__cdnErr||{}).zip=1"></script>
 <script>window.echarts = { registerMap: function(name, geo){ if(name === "world") window.__WORLD_JSON = geo; } };</script>
-<script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()"></script>
+<script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()" onerror="(window.__cdnErr=window.__cdnErr||{}).map=1"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- 5.2: Google Fonts load in the background, so a slow fonts server no longer keeps the page blank (a render-blocking stylesheet did). Text shows in a fallback font for a moment, then the game re-fits its text when the fonts arrive (jn-fonts in src/app.js). To undo: swap this back to <link rel="stylesheet" href="…same URL…"> and drop the noscript. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
+<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap"></noscript>
 <style>
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
@@ -133,6 +133,14 @@ details.photopanel>summary{cursor:pointer;list-style:none;display:flex;align-ite
 details.photopanel>summary::-webkit-details-marker{display:none}
 details.photopanel>summary::before{content:"▸";font-size:14px;transition:transform .15s}
 details.photopanel[open]>summary::before{transform:rotate(90deg)}
+/* 5.5: photo download status in the Photo rounds panel */
+.dlbox{margin:4px 0 14px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px}
+.dlrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.dlrow:last-child{border-bottom:0}
+.dlrow .bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:4px}
+.dlrow .bar i{display:block;height:100%;background:var(--brass);width:0;transition:width .3s}
+.dlrow .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.dlrow.full .num{color:var(--brass);font-weight:700}
 .catcount{color:var(--brass);letter-spacing:.06em;margin-left:6px}
 .phcount{color:var(--brass);letter-spacing:.06em}
 .photobody{display:grid;gap:12px;margin-top:12px}
@@ -358,7 +366,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.3</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.5</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -368,7 +376,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.3</div>
+      <div class="eyebrow verlabel">v5.5</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -397,6 +405,16 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
       <div class="row"><label class="btn small" for="pack">Load photo pack</label><input id="pack" type="file" accept="image/*" multiple hidden><span class="note" id="packStatus">No photos loaded</span></div>
       <div class="row"><button class="btn small" id="exportPhotos">Export photos</button><label class="btn small" for="importPhotos">Import photos</label><input id="importPhotos" type="file" accept=".zip,application/zip" hidden><span class="note" id="xferStatus">Export saves the photos you've added or replaced on this device (not the ones already built in), matched and with zoom spots, in one file. Import it on another device, or send it to Claude to build the photos into the game.</span></div>
       <details id="prepBox"><summary>Photo checklist: preview, zoom spot or replace</summary><div id="prep"></div></details><input id="assign" type="file" accept="image/*" hidden>
+      </div>
+    </details>
+    <!-- 5.5 (Omar): Status, everything the game downloads and how much of it is on this device. Fetch it all before guests arrive. -->
+    <details class="panel photopanel" id="statusPanel">
+      <summary class="eyebrow">Status <span class="phcount" id="stCount"></span></summary>
+      <div class="photobody">
+      <p class="note">What the game downloads, and how much is already on this device. Press Download everything before guests arrive so nothing has to load during the game. The browser keeps what it has downloaded.</p>
+      <div class="dlbox"><div class="eyebrow">Tools, fonts and sounds</div><div id="stTools"></div></div>
+      <div class="dlbox"><div class="eyebrow">Photos</div><div id="dlStatus"></div></div>
+      <div class="row"><button class="btn small" id="dlAll">Download everything</button><span class="note" id="dlNote"></span></div>
       </div>
     </details>
     <div class="row">
