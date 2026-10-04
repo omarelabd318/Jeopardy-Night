@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.86`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.88`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -576,7 +576,7 @@ $("#confirmNo").onclick = () => { $("#confirmBox").hidden = true; confirmYes = n
 $("#confirmYes").onclick = () => { $("#confirmBox").hidden = true; const f = confirmYes; confirmYes = null; if(f) f(); };
 $("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", goSetup);
 function goSetup(){ setFootball(false); $("#setup").hidden = false; $("#game").hidden = true; $("#scores").hidden = true; renderTeamInputs(); histNote(); }
-/* 4.84 (Omar): in Football mode, opening Edit scores plays the first 6.7 seconds of the "After review... number 10 Paraguay covered his mouth" VAR call
+/* 4.84 (Omar): in Football mode, opening Edit scores plays the first 6.65 seconds of the "After review... number 10 Paraguay covered his mouth" VAR call
    (sounds/after-review.mp3, cut from v4work/sounds-src/after-review-original.mp3). Only when sound is on, and not on "Done editing". To remove: delete this block and the playReview() call below. */
 let reviewA = null;
 function playReview(){ try{ if(!reviewA) reviewA = new Audio("sounds/after-review.mp3"); reviewA.currentTime = 0; const pr = reviewA.play(); if(pr) pr.catch(() => {}); }catch(e){} }
@@ -618,7 +618,7 @@ function showWinner(){
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b class="${t.score<0?"neg":""}">${t.score}</b></li>`).join("") : "";
   $("#winBoard").hidden = S.cats.length*5 - Object.keys(S.done).length === 0;
   $("#winBox").hidden = false; $("#playAgain").focus();
-  confetti(); ledStart(); if(S.sound){ if(S.football) playEnd(); else playSiu(); }  /* 4.86 (Omar): the intros are Football mode only; normal mode keeps Siuuu alone */  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
+  confetti(); ledStart(); if(S.sound) playEnd(S.football ? nextIntro() : NORMAL_INTRO);  /* 4.87 (Omar): normal mode plays "no fair" then Siuuu; Football mode alternates the two intros. 4.86: normal mode was Siuuu alone (playSiu()) */  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
 }
 /* Football mode winner sound: the last 9 seconds of Ronaldo's "Siuuu" clip, in place of the fanfare */
 let siuA = null;
@@ -626,21 +626,25 @@ const SIU_VOL = 1;  /* 4.63 (Omar): the clip is half as loud, done in sounds/siu
 /* 4.85 (Omar): before the Siuuu clip, the winner screen plays one of two intros: Messi's "¿Qué mirás, bobo?" (sounds/que-miras.mp3, 3.8–9.8 s of
    v4work/sounds-src/que-miras-original.mp3) or "Referee, no fair" (sounds/no-fair.mp3). The very first one is random; after that they take turns,
    remembered on this device (jn_endIntro). To go back to Siuuu alone: in showWinner() call playSiu() instead of playEnd(). */
-const END_INTROS = ["sounds/que-miras.mp3", "sounds/no-fair.mp3"];
+const END_INTROS = ["sounds/que-miras.mp3", "sounds/no-fair.mp3"], NORMAL_INTRO = "sounds/no-fair.mp3";
 const introA = {};
 let introPlaying = null;
 function nextIntro(){ const last = store.get("jn_endIntro", null); const i = last === null ? Math.floor(Math.random() * END_INTROS.length) : (last + 1) % END_INTROS.length; store.set("jn_endIntro", i); return END_INTROS[i]; }
 /* 4.86 (Omar): smoother hand-over. Siuuu starts END_OVERLAP seconds before the intro ends, so the intro's fade-out (baked into the file) runs under
    Siuuu's fade-in (also baked in: iPhones ignore volume changes from code). 4.85 waited for the intro to end completely: set END_OVERLAP to 0 for that. */
 const END_OVERLAP = 0.5;
-let introTimer = 0;
-function playEnd(){ stopIntro(); const src = nextIntro();
+const INTRO_LEN = {"sounds/que-miras.mp3": 6.03, "sounds/no-fair.mp3": 9.64};  // seconds; update if a clip is re-cut
+function playEnd(src){ stopIntro();
   try{ const a = introA[src] || (introA[src] = new Audio(src)); a.muted = false; a.currentTime = 0; introPlaying = a;
-    const go = () => { if(introPlaying !== a) return; introPlaying = null; clearTimeout(introTimer); if(S.sound && !$("#winBox").hidden) playSiu(); };
+    const go = () => { if(introPlaying !== a) return; introPlaying = null; a.ontimeupdate = null; if(S.sound && !$("#winBox").hidden) playSiu(); };
     a.onended = go;
-    a.onplaying = () => { clearTimeout(introTimer); if(isFinite(a.duration)) introTimer = setTimeout(go, Math.max(0, (a.duration - a.currentTime - END_OVERLAP) * 1000)); };
+    /* 4.88: hand over by watching how far the intro has actually played, against its known length. 4.86–4.87 set a timer from a.duration when playback
+       started; a browser still loading the file can report a wrong length then (or an old position on a replay), which started Siuuu right away and cut the intro. */
+    const len = INTRO_LEN[src] || 0; let fromStart = false;   // only count it once it has really (re)started near 0
+    a.ontimeupdate = () => { const t = a.currentTime, L = len || (isFinite(a.duration) ? a.duration : 0); if(t < 1) fromStart = true;
+      if(fromStart && L && t >= L - END_OVERLAP) go(); };
     const pr = a.play(); if(pr) pr.catch(() => { if(introPlaying === a){ introPlaying = null; playSiu(); } }); }catch(e){ playSiu(); } }
-function stopIntro(){ clearTimeout(introTimer); const a = introPlaying; introPlaying = null; if(a){ a.onended = a.onplaying = null; a.pause(); a.currentTime = 0; } }
+function stopIntro(){ const a = introPlaying; introPlaying = null; if(a){ a.onended = a.ontimeupdate = null; a.pause(); a.currentTime = 0; } }
 function playSiu(){ try{ if(!siuA) siuA = new Audio("sounds/siuuu.mp3"); siuA.muted = false; siuA.volume = SIU_VOL; siuA.currentTime = 0; const pr = siuA.play(); if(pr) pr.catch(() => Snd.fanfare()); }catch(e){ Snd.fanfare(); } }
 /* 4.59: browsers (Safari, iPhone) block audio that starts without a tap (the timer sounds' AudioContext too), and the winner screen can open on a timer after the last tile.
    So on the first tap, load the clip and play it muted for an instant; after that it's allowed to play at any time. */

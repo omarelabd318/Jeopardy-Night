@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.86. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.88. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -266,7 +266,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 
   Both are built from `v4work/out/ctry.json` and `ctryar.json`, added in `src/extra.js` and listed in `CAT_GROUPS`. To remove one: delete its file and its id in `CAT_GROUPS`.
 - 4.84 (2026-10-04): Omar sent two clips: the "After review, number 10 Paraguay covered his mouth. Decision is red card" VAR call, and Messi's "¿Qué mirás, bobo?". He asked for the first 6 seconds of the VAR call to play when someone opens Edit scores in Football mode; he'll say later what the Messi clip is for.
-  - `sounds/after-review.mp3` is the first 6.7 s of the VAR clip (Omar first asked for 6 s, then for a bit more so the line isn't cut off; 6.7 s is the pause after it), with a 0.3 s fade at the end so it doesn't click. Its level was raised 3.6 dB to match `sounds/siuuu.mp3`.
+  - `sounds/after-review.mp3` is the first 6.65 s of the VAR clip (Omar first asked for 6 s, then a bit more so the line isn't cut off (6.7 s, the pause after it), then 0.05 s less), with a 0.3 s fade at the end so it doesn't click. Its level was raised 3.6 dB to match `sounds/siuuu.mp3`.
   - `playReview()`, next to the Edit scores handler in `src/app.js`, plays it when Edit scores is switched on, but only in Football mode with sound on, and not on "Done editing". Turning sound off stops it.
   - Both original clips are kept in `v4work/sounds-src/` (`after-review-original.mp3`, `que-miras-original.mp3`).
   - To remove: delete the 4.84 block and the `playReview()` call in `src/app.js`, and `sounds/after-review.mp3`.
@@ -283,3 +283,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Tested: Siuuu starts 5.5 s into the 6.0 s Messi clip and 9.1 s into the 9.6 s no-fair clip.
   - `showWinner()` plays the intro only in Football mode. Normal mode plays the Siuuu alone, as before 4.85.
   - To undo: set `END_OVERLAP` to 0 for no overlap. Re-cutting the files from `v4work/sounds-src/` gives the old fades back. To bring the intros back to normal mode, call `playEnd()` in both modes in `showWinner()`.
+- 4.87 (2026-10-04): Omar changed his mind about normal mode. Its winner screen now plays the "Referee, no fair" clip (`NORMAL_INTRO`) and then the Siuuu, with the same 0.5 s overlap, every game. Football mode still alternates the Messi and "no fair" intros. Normal mode doesn't move Football mode's turn, so Football's alternation isn't affected. To undo (Siuuu alone in normal mode): in `showWinner()`, call `playSiu()` when not in Football mode, as in 4.86.
+- 4.88 (2026-10-04): Omar reported that clicking End game sometimes played only the Siuuu. I couldn't reproduce it in desktop Chrome, where 12 games in a row all played their intro.
+  - The likely cause was in 4.86's overlap. It set a timer from the intro's `duration` and `currentTime` the moment playback started. A browser still loading the file from GitHub Pages can report a wrong length at that moment, and so can a replay that still shows the old end position. Either one started the Siuuu straight away, and on iPhones starting it stops the intro.
+  - `playEnd()` now watches the intro's real playing position (`timeupdate`) against its known length (`INTRO_LEN` in `src/app.js`, which needs updating if a clip is re-cut). The Siuuu starts only once the intro has really played from near the start to its last half second. If the intro fails to play at all, the Siuuu still plays on its own.
+  - Tested with 12 games in both modes, including a simulated slow rewind. Every game played intro, then Siuuu. The overlap is now 0.1–0.4 s, because `timeupdate` only fires about four times a second.
+  - Also: Omar asked for 0.05 s off the end of the VAR clip, so `sounds/after-review.mp3` is now the first 6.65 s.
