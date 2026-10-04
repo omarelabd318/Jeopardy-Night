@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.4`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.5`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -822,7 +822,7 @@ function imgRefFor(cat,lvl,idx){ const c = catById(cat); if(!c) return null; con
 /* 5.4: background downloads go one or two at a time, at low priority, and pause while a clue is open, so the photo you
    are looking at never has to share the connection with 29 others (5.3 started them all at once). */
 const WQ = []; let wBusy = 0;
-function wPump(){ while(wBusy < 2 && WQ.length && !S.cur){ const job = WQ.shift(); wBusy++; job(() => { wBusy--; wPump(); }); } }
+function wPump(){ const max = $("#game").hidden ? 4 : 2; while(wBusy < max && WQ.length && !S.cur){ const job = WQ.shift(); wBusy++; job(() => { wBusy--; wPump(); }); } }
 function wLoad(src, onload, onerror){ const im = new Image(); im.decoding = "async"; try{ im.fetchPriority = "low"; }catch(e){}
   return new Promise(done => { im.onload = () => { done(); onload && onload(im); }; im.onerror = () => { done(); onerror && onerror(im); }; im.src = src; }).then(() => im); }
 function warmImg(src){ if(!src || WARM[src] || src.startsWith("blob:") || src.startsWith("data:")) return; WARM[src] = true;
@@ -840,6 +840,43 @@ function prepick(cat,lvl){ const k = `${cat}-${lvl}`; if(PICKS[k] !== undefined 
 function takePick(cat,lvl,exclude){ const k = `${cat}-${lvl}`, i = PICKS[k]; delete PICKS[k];
   if(exclude === undefined && i !== undefined && i < pool(cat,lvl).length && !S.used.has(`${k}-${i}`)) return i;
   return pickIdx(cat,lvl,exclude); }
+/* 5.5 (Omar): Photo rounds panel lists every photo category with how many of its photos are downloaded, and can fetch them all. */
+const LOADED = new Set();
+function refUrl(ref){ return ref.startsWith("pack:") ? null : ref; }
+function refLoaded(ref){ if(LOADED.has(ref)) return true;
+  if(ref.startsWith("pack:")){ const key = ref.split(":")[2], d = DIRECT[key]; return !!((window.__fp || {})[key] || (d && d.complete && d.naturalWidth)); }
+  const w = WARM[ref]; return !!(w && w.complete && w.naturalWidth); }
+function photoRefs(cat){ const out = new Set(); LV.forEach(l => pool(cat,l).forEach((e,i) => { const r = imgRefFor(cat,l,i); if(r && !r.startsWith("blob:") && !r.startsWith("data:")) out.add(r); })); return [...out]; }
+function dlCats(){ return CATS.filter(c => c.type === "photo" || (c.type === "text" && LV.some(l => pool(c.id,l).some(e => typeof e[2] === "string")))).map(c => c.id); }
+let dlTimer = null;
+function renderDl(){ const box = $("#dlStatus"); if(!box) return; let all = 0, got = 0;
+  box.innerHTML = dlCats().map(id => { const refs = photoRefs(id), n = refs.filter(refLoaded).length; all += refs.length; got += n;
+    const pct = refs.length ? Math.round(100 * n / refs.length) : 0;
+    return `<div class="dlrow${n === refs.length ? " full" : ""}"><div>${esc(catById(id).name)}<div class="bar"><i style="width:${pct}%"></i></div></div><span class="num">${n} / ${refs.length}</span><button class="mini" data-dl="${id}">${n === refs.length ? "Done" : "Download"}</button></div>`; }).join("");
+  $("#dlAll").textContent = got === all ? "All photos downloaded" : `Download everything (${all - got} photos to go)`; renderTools();
+  if(dlTimer === null && WQ.length + wBusy > 0) dlTimer = setInterval(() => { renderDl(); if(!WQ.length && !wBusy){ clearInterval(dlTimer); dlTimer = null; renderDl(); } }, 700); }
+function dlCat(id){ photoRefs(id).forEach(r => { if(!refLoaded(r)) warmRef(r); }); renderDl(); }
+$("#dlStatus").addEventListener("click", e => { const b = e.target.closest("[data-dl]"); if(b) dlCat(b.dataset.dl); });
+$("#dlAll").onclick = () => { dlCats().forEach(dlCat); SOUNDS.forEach(warmSound); renderDl(); };
+$("#statusPanel").addEventListener("toggle", () => { if($("#statusPanel").open){ renderDl(); if(!stTimer) stTimer = setInterval(() => { if(!$("#statusPanel").open || $("#setup").hidden){ clearInterval(stTimer); stTimer = null; return; } renderTools(); }, 1000); } });
+/* tools, fonts and sounds */
+const SOUNDS = ["sounds/siuuu.mp3","sounds/no-fair.mp3","sounds/que-miras.mp3","sounds/after-review.mp3","sounds/after-review-short.mp3"], SND = {};
+let stTimer = null;
+function warmSound(src){ if(SND[src]) return; const a = new Audio(); a.preload = "auto"; a.muted = true; SND[src] = a; a.addEventListener("canplaythrough", renderTools); a.src = src; a.load(); }
+function fontsState(){ if(!document.fonts) return [true, "ready"]; const fs = [...document.fonts]; if(!fs.length) return [false, "waiting for Google Fonts"];
+  const ok = fs.filter(f => f.status === "loaded").length; return [document.fonts.status === "loaded" && ok > 0, ok ? `${ok} font files in` : "list in, files load as text needs them"]; }
+function renderTools(){ const box = $("#stTools"); if(!box) return;
+  const snd = SOUNDS.filter(s => SND[s] && SND[s].readyState >= 4).length;
+  const [fOk, fTxt] = fontsState(), err = window.__cdnErr || {};
+  const rows = [
+    ["Fonts (Google Fonts)", fOk, err.fonts ? "couldn't load" : fTxt],
+    ["World map (Country Outlines, Map Pin)", !!WORLD.feats, WORLD.feats ? "ready" : err.map ? "couldn't load" : "still loading"],
+    ["QR codes (Act It Out, Impostor, One Word)", !!window.QRCode, window.QRCode ? "ready" : err.qr ? "couldn't load" : "still loading"],
+    ["Photo export and import", !!window.JSZip, window.JSZip ? "ready" : err.zip ? "couldn't load" : "still loading"],
+    ["Sounds (winner clips, VAR clip)", snd === SOUNDS.length, `${snd} / ${SOUNDS.length}`]];
+  box.innerHTML = rows.map(([n, ok, t]) => `<div class="dlrow${ok ? " full" : ""}"><div>${esc(n)}</div><span class="num">${esc(t)}</span><span>${ok ? "✓" : t === "couldn't load" ? "✕" : "…"}</span></div>`).join("");
+  const toolsOk = rows.filter(r => r[1]).length; $("#stCount").textContent = `${toolsOk}/${rows.length} tools ready`; }
+document.addEventListener("load", e => { const im = e.target; if(im && im.tagName === "IMG" && im.closest && im.closest("#clue")){ const c = S.cur; const r = c && imgRefFor(c.cat,c.lvl,c.idx); if(r) LOADED.add(r); } }, true);
 function prefetchPacks(){ for(const id of S.cats || []){ if(!catById(id)) continue; for(const v of [100,200,300,400,500]) if(!(S.done && S.done[`${id}-${v}`])) prepick(id,v); } }
 /* 4.60: three-option answers ("B) Name: 381M followers\n(others: A) 68M, C) 67M)") show the winner big and bold
    and the other figures on a smaller, lighter line underneath. Every other answer is shown as before. */
