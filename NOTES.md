@@ -294,16 +294,16 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Timer sounds (`Snd` in `src/app.js`): the master `VOL` goes from 4 to 3.2, and the chime has an extra `CHIME` factor of 0.86. Measured on the actual output (through the limiter), ticks, blips and the fanfare are ×0.80 and the chime is ×0.70.
   - Clips: iPhones ignore volume set from code, so every mp3 was made 20% quieter (about −2 dB) in the file itself. The four cut clips were re-cut from `v4work/sounds-src/` with the same cut points and fades, at a lower level. `sounds/siuuu.mp3` was scaled ×0.8.
   - To undo: `VOL = 4, CHIME = 1`. For the clips, re-cut them about 1.9 dB louder (or take them from the 4.89 commit).
-- 4.91 (2026-10-04): Omar asked for a Price Is Right category with Egyptian items then and now, plus other items. **The Price Is Right** (`price`, Party Games, after Closest Wins) uses the Closest Wins format: every team types a number and the closest wins. It has 40 clues, 8 per value. Every clue gives its date, because prices keep changing.
-  - Egyptian then-and-now prices, checked against news reports:
-    - subsidised bread, 5 piastres until June 2024, then 20
-    - Metro tickets, 1 EGP before July 2017, 3 EGP for the cheapest in 2018, 8 to 20 EGP since August 2024
-    - 92-octane petrol: 5 EGP in 2017, 6.75 in 2018, 19.25 after October 2025, 22.25 as of October 2026
-    - the dollar: 0.70 EGP in 1979, 8.88 before the 2016 float, about 50 after March 2024
-    - the minimum wage: 700 EGP in 2012, 1,200 in 2014, 7,000 since March 2025
-    - 21k gold: about 222 EGP a gram in January 2011, about 5,830 at the end of 2025
-    - Cleopatra cigarettes: 30 EGP in February 2024, 48 in 2026
-  - World prices: iPhone and PlayStation launch prices, the Game Boy, the Apple I ($666.66), Air Jordan 1 ($65), the Model T, Coca-Cola's 5 cents, the Big Mac, a Super Bowl ad, Salvator Mundi, the Mona Lisa's insurance, big acquisitions (Instagram, WhatsApp, Marvel) and transfer fees (Neymar, Ronaldo, Mbappé, Bellingham).
-  - `src/extra.js` now uses each file's own `type`, instead of always "text", so this category works as a number-guessing round. The other categories are all text anyway, so nothing else changes.
-  - The current prices (petrol, cigarettes, wage, gold) will go out of date. Each clue names its date, so the answers stay correct.
+- 4.91 (2026-10-04): Omar asked for a Price Is Right category with Egyptian items then and now, everyday things like Nutella or a kilo of apples, and other items. He wanted both teams to answer, as in Closest Wins, and the currency made clear.
+  - **The Price Is Right** (`price`, Party Games, after Closest Wins) uses the Closest Wins format: every team types a number and the closest wins. It has 50 clues, 10 per value. Every question says which currency to answer in (Egyptian pounds, piastres, US dollars, euros) and when the price applies.
+  - Everyday Egyptian prices, from market and news reports around 1–3 October 2026, usually given as "about" with the range in the answer:
+    - eggs (about 140 a carton of 30), beef (about 430/kg), chicken (about 95/kg), apples (about 50/kg)
+    - bananas, oranges, tomatoes, potatoes, sugar
+    - a Pepsi can (14.5) and a 1 L bottle (29.75), Juhayna milk (about 45)
+    - a 350 g jar of Nutella (about 240 at Carrefour, 120–400 elsewhere), a Big Mac in Egypt (about 165), koshary (about 20 for the smallest portion)
+  - The same items back then: eggs 17 EGP a carton in 2010, beef about 50/kg in 2010, sugar 4.5/kg in 2010, koshary about 5 before the 2016 float.
+  - Official Egyptian prices: bread (5 → 20 piastres in June 2024), Metro tickets (1 EGP before 2017, 8–20 since August 2024), 92-octane petrol (5 → 19.25 → 22.25), the dollar (0.70 in 1979, 8.88 before 2016, about 50 after 2024), the minimum wage, 21k gold, Cleopatra cigarettes.
+  - World prices: iPhone and PlayStation launch prices, Apple I, Air Jordan 1, Coca-Cola's 5 cents, the US Big Mac, a Super Bowl ad, Salvator Mundi, Instagram, and transfer fees.
+  - `src/extra.js` now uses each file's own `type`, instead of always "text", so this works as a number-guessing round. The other categories are all text anyway.
+  - The "now" prices will drift. Each clue names its date, so the answers stay correct for that date.
   - To remove: delete `v4work/out/price.json` and "price" from `CAT_GROUPS`.

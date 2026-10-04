@@ -2,28 +2,48 @@
  "id": "price",
  "name": "The Price Is Right",
  "type": "closest",
- "desc": "Guess the price. Every team types a number and the closest wins. Egyptian prices then and now, plus famous prices from around the world. Each clue gives the date, because prices keep changing.",
+ "desc": "Guess the price. Every team types a number and the closest wins. Everyday Egyptian prices (eggs, fruit, Pepsi, Nutella, koshary) then and now, official prices like bread and the Metro, and famous prices from around the world. Each clue says the currency and the date, because prices keep changing.",
  "data": {
   "100": [
    [
-    "How much did a loaf of subsidised baladi bread cost in Egypt before June 2024, in piastres?",
+    "How much is a 330 ml can of Pepsi in Egypt since July 2026, in Egyptian pounds?",
+    14.5,
+    "EGP"
+   ],
+   [
+    "How much did a loaf of subsidised baladi bread cost before June 2024, in piastres?",
     5,
     "piastres"
    ],
    [
-    "How much was a Cairo Metro ticket before July 2017, in pounds?",
+    "How much was a Cairo Metro ticket before July 2017, in Egyptian pounds?",
     1,
     "EGP"
    ],
    [
-    "What was the US launch price of the PlayStation 5 (disc version, 2020), in dollars?",
+    "How much is a carton of 30 eggs in Egypt in October 2026, in Egyptian pounds?",
+    140,
+    "EGP (about; 125–150 depending on the shop)"
+   ],
+   [
+    "How much is a kilo of beef (kandouz) in Egypt in October 2026, in Egyptian pounds?",
+    430,
+    "EGP (about; 400–500)"
+   ],
+   [
+    "After the March 2024 float, about how many Egyptian pounds did one US dollar cost?",
+    50,
+    "EGP (about 49–50)"
+   ],
+   [
+    "What was the US launch price of the PlayStation 5 (disc version, 2020), in US dollars?",
     499,
     "$ (499.99)"
    ],
    [
-    "What did a Big Mac cost on average in the US in January 2025, in dollars?",
+    "How much did a Big Mac cost on average in the US in January 2025, in US dollars?",
     5.79,
-    "$ (Economist Big Mac index)"
+    "$"
    ],
    [
     "How much did PSG pay Barcelona for Neymar in 2017, in millions of euros?",
@@ -31,34 +51,54 @@
     "million €"
    ],
    [
-    "After Egypt floated the pound in March 2024, about how many pounds did one US dollar cost?",
-    50,
-    "EGP (about 49–50)"
-   ],
-   [
-    "How much does a pack of Cleopatra cigarettes cost in Egypt in 2026, in pounds?",
-    48,
-    "EGP (since February 2026)"
-   ],
-   [
-    "What was the US launch price of the iPhone 16 Pro Max (2024), in dollars?",
-    1199,
-    "$"
+    "How much is the smallest portion of koshary at a local shop in 2026, in Egyptian pounds?",
+    20,
+    "EGP (about; a full portion is 60–90)"
    ]
   ],
   "200": [
    [
-    "How much does a loaf of subsidised baladi bread cost in Egypt since June 2024, in piastres?",
+    "How much does a loaf of subsidised baladi bread cost since June 2024, in piastres?",
     20,
     "piastres"
    ],
    [
-    "How much is the cheapest Cairo Metro ticket (up to 9 stations) since August 2024, in pounds?",
+    "How much is the cheapest Cairo Metro ticket (up to 9 stations) since August 2024, in Egyptian pounds?",
     8,
     "EGP"
    ],
    [
-    "What was the launch price of the very first iPhone (4 GB, 2007), in dollars?",
+    "How much is a kilo of chicken in Egypt in October 2026, in Egyptian pounds?",
+    95,
+    "EGP (about; 85–100)"
+   ],
+   [
+    "How much is a kilo of Egyptian apples in October 2026, in Egyptian pounds?",
+    50,
+    "EGP (about; 35–65, imported ones 80+)"
+   ],
+   [
+    "How much is a kilo of tomatoes at the market in October 2026, in Egyptian pounds?",
+    20,
+    "EGP (about; 15–22)"
+   ],
+   [
+    "How much is a 1-litre carton of Juhayna full-cream milk in 2026, in Egyptian pounds?",
+    45,
+    "EGP (about; 43–48)"
+   ],
+   [
+    "How much is a pack of Cleopatra cigarettes since February 2026, in Egyptian pounds?",
+    48,
+    "EGP"
+   ],
+   [
+    "What is Egypt's private-sector minimum monthly wage since March 2025, in Egyptian pounds?",
+    7000,
+    "EGP"
+   ],
+   [
+    "What was the launch price of the very first iPhone (4 GB, 2007), in US dollars?",
     499,
     "$"
    ],
@@ -66,58 +106,152 @@
     "How much did Juventus pay Real Madrid for Cristiano Ronaldo in 2018, in millions of euros?",
     100,
     "million €"
-   ],
-   [
-    "How much did a pack of Cleopatra cigarettes cost after the February 2024 price rise, in pounds?",
-    30,
-    "EGP"
-   ],
-   [
-    "What is Egypt's private-sector minimum wage per month since March 2025, in pounds?",
-    7000,
-    "EGP"
-   ],
-   [
-    "How much was a litre of 92-octane petrol in Egypt after the October 2025 rise, in pounds?",
-    19.25,
-    "EGP"
-   ],
-   [
-    "About how much did a 30-second Super Bowl ad cost in 2025, in millions of dollars?",
-    8,
-    "million $"
    ]
   ],
   "300": [
    [
-    "What was Egypt's official dollar rate before the November 2016 float, in pounds per dollar?",
-    8.88,
+    "How much is a kilo of potatoes at the market in October 2026, in Egyptian pounds?",
+    16,
+    "EGP (about; 14–18)"
+   ],
+   [
+    "How much is a kilo of baladi bananas in October 2026, in Egyptian pounds?",
+    41,
+    "EGP (about)"
+   ],
+   [
+    "How much is a 350 g jar of Nutella at Carrefour Egypt in 2026, in Egyptian pounds?",
+    240,
+    "EGP (about; other shops 120–400)"
+   ],
+   [
+    "How much is a Big Mac sandwich (not the meal) at McDonald's Egypt in 2026, in Egyptian pounds?",
+    165,
+    "EGP (about)"
+   ],
+   [
+    "How much is a 1-litre bottle of Pepsi in Egypt since July 2026, in Egyptian pounds?",
+    29.75,
     "EGP"
    ],
    [
-    "How much was a litre of 92-octane petrol in Egypt after the June 2017 rise, in pounds?",
-    5,
+    "How much is a kilo of packaged sugar in Egypt in October 2026, in Egyptian pounds?",
+    37,
+    "EGP (about 37.40)"
+   ],
+   [
+    "How much was a litre of 92-octane petrol after the October 2025 rise, in Egyptian pounds?",
+    19.25,
     "EGP"
    ],
    [
-    "How much is the longest Cairo Metro trip (more than 23 stations) since August 2024, in pounds?",
+    "How much is the longest Cairo Metro trip (more than 23 stations) since August 2024, in Egyptian pounds?",
     20,
     "EGP"
    ],
    [
-    "What was the US launch price of the first PlayStation (1995), in dollars?",
+    "What was Egypt's official dollar rate before the November 2016 float, in Egyptian pounds per dollar?",
+    8.88,
+    "EGP"
+   ],
+   [
+    "How much did Facebook pay for Instagram in 2012, in billions of US dollars?",
+    1,
+    "billion $"
+   ]
+  ],
+  "400": [
+   [
+    "How much was a carton of 30 eggs in Egypt in 2010, in Egyptian pounds?",
+    17,
+    "EGP"
+   ],
+   [
+    "How much was a kilo of beef (kandouz) in Egypt in 2010, in Egyptian pounds?",
+    50,
+    "EGP (about; 45–60)"
+   ],
+   [
+    "How much was a small portion of koshary before the 2016 float, in Egyptian pounds?",
+    5,
+    "EGP (about 5–6)"
+   ],
+   [
+    "What was Egypt's minimum monthly wage in 2012, in Egyptian pounds?",
+    700,
+    "EGP"
+   ],
+   [
+    "Roughly how much was a gram of 21-karat gold in Egypt in January 2011, in Egyptian pounds?",
+    222,
+    "EGP (about)"
+   ],
+   [
+    "Roughly how much was a gram of 21-karat gold in Egypt at the end of 2025, in Egyptian pounds?",
+    5830,
+    "EGP (about)"
+   ],
+   [
+    "What did Leonardo da Vinci's 'Salvator Mundi' sell for in 2017, the record for a painting, in millions of US dollars?",
+    450.3,
+    "million $"
+   ],
+   [
+    "About how much did a 30-second Super Bowl ad cost in 2025, in millions of US dollars?",
+    8,
+    "million $"
+   ],
+   [
+    "What was the US launch price of the first PlayStation (1995), in US dollars?",
     299,
     "$"
    ],
    [
-    "For about 70 years (1886–1959), how many cents did a bottle of Coca-Cola cost?",
+    "How much did Real Madrid pay Dortmund for Jude Bellingham (2023), in millions of euros (before add-ons)?",
+    103,
+    "million €"
+   ]
+  ],
+  "500": [
+   [
+    "How much was a kilo of sugar in Egypt in 2010, in Egyptian pounds?",
+    4.5,
+    "EGP"
+   ],
+   [
+    "In 1979, how many Egyptian pounds did one US dollar cost?",
+    0.7,
+    "EGP"
+   ],
+   [
+    "What was the price of the Apple I computer in 1976, in US dollars?",
+    666.66,
+    "$"
+   ],
+   [
+    "What did the first Air Jordan 1 cost in 1985, in US dollars?",
+    65,
+    "$"
+   ],
+   [
+    "For about 70 years (1886–1959), how many US cents did a bottle of Coca-Cola cost?",
     5,
     "cents"
    ],
    [
-    "How much did Facebook pay for Instagram in 2012, in billions of dollars?",
-    1,
-    "billion $"
+    "How much is a litre of 92-octane petrol in Egypt as of October 2026, in Egyptian pounds?",
+    22.25,
+    "EGP"
+   ],
+   [
+    "How much was a pack of Cleopatra cigarettes after the February 2024 rise, in Egyptian pounds?",
+    30,
+    "EGP"
+   ],
+   [
+    "What was the US launch price of the iPhone 16 Pro Max (2024), in US dollars?",
+    1199,
+    "$"
    ],
    [
     "How much did PSG pay Monaco for Kylian Mbappé (2018), in millions of euros?",
@@ -125,93 +259,9 @@
     "million €"
    ],
    [
-    "Roughly how much did a gram of 21-karat gold cost in Egypt at the end of 2025, in pounds?",
-    5830,
+    "How much is a kilo of baladi oranges in October 2026, in Egyptian pounds?",
+    27,
     "EGP (about)"
-   ]
-  ],
-  "400": [
-   [
-    "What was Egypt's minimum wage per month in 2012, in pounds?",
-    700,
-    "EGP"
-   ],
-   [
-    "Roughly how much did a gram of 21-karat gold cost in Egypt in January 2011, in pounds?",
-    222,
-    "EGP (about)"
-   ],
-   [
-    "What was the US launch price of the original Game Boy (1989), in dollars?",
-    89.99,
-    "$"
-   ],
-   [
-    "What did Leonardo da Vinci's 'Salvator Mundi' sell for in 2017, the record for a painting, in millions of dollars?",
-    450.3,
-    "million $"
-   ],
-   [
-    "How much did Facebook pay for WhatsApp in 2014, in billions of dollars?",
-    19,
-    "billion $"
-   ],
-   [
-    "How much did Disney pay for Marvel in 2009, in billions of dollars?",
-    4,
-    "billion $"
-   ],
-   [
-    "How much did Real Madrid pay Dortmund for Jude Bellingham (2023), in millions of euros (before add-ons)?",
-    103,
-    "million €"
-   ],
-   [
-    "How much is a litre of 92-octane petrol in Egypt as of October 2026, in pounds?",
-    22.25,
-    "EGP"
-   ]
-  ],
-  "500": [
-   [
-    "In 1979, how many Egyptian pounds did one US dollar cost?",
-    0.7,
-    "EGP"
-   ],
-   [
-    "What was the price of the Apple I computer in 1976, in dollars?",
-    666.66,
-    "$"
-   ],
-   [
-    "What did the first Air Jordan 1 cost in 1985, in dollars?",
-    65,
-    "$"
-   ],
-   [
-    "What did a Ford Model T cost when it launched in 1908, in dollars?",
-    850,
-    "$"
-   ],
-   [
-    "For how much was the Mona Lisa insured in 1962, a world record, in millions of dollars?",
-    100,
-    "million $"
-   ],
-   [
-    "What was Egypt's minimum wage per month in 2014, in pounds?",
-    1200,
-    "EGP"
-   ],
-   [
-    "How much was the cheapest Cairo Metro ticket (up to 9 stations) after the May 2018 rise, in pounds?",
-    3,
-    "EGP"
-   ],
-   [
-    "How much was a litre of 92-octane petrol in Egypt after the 2018 rise, in pounds?",
-    6.75,
-    "EGP"
    ]
   ]
  }
