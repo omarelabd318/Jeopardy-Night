@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.83. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.85. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -265,3 +265,15 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Which Country? Arab Edition** (`ctryar`, end of Egypt & Arab World): 80 clues across the Arab countries from Morocco and Mauritania to Iraq and Oman, plus Sudan. Egyptian cities are left out because everyone at the party would know them. Tripoli (Libya or Lebanon) and Sur (Oman, also the Arabic name of Tyre) accept both.
 
   Both are built from `v4work/out/ctry.json` and `ctryar.json`, added in `src/extra.js` and listed in `CAT_GROUPS`. To remove one: delete its file and its id in `CAT_GROUPS`.
+- 4.84 (2026-10-04): Omar sent two clips: the "After review, number 10 Paraguay covered his mouth. Decision is red card" VAR call, and Messi's "¿Qué mirás, bobo?". He asked for the first 6 seconds of the VAR call to play when someone opens Edit scores in Football mode; he'll say later what the Messi clip is for.
+  - `sounds/after-review.mp3` is the first 6.7 s of the VAR clip (Omar first asked for 6 s, then for a bit more so the line isn't cut off; 6.7 s is the pause after it), with a 0.3 s fade at the end so it doesn't click. Its level was raised 3.6 dB to match `sounds/siuuu.mp3`.
+  - `playReview()`, next to the Edit scores handler in `src/app.js`, plays it when Edit scores is switched on, but only in Football mode with sound on, and not on "Done editing". Turning sound off stops it.
+  - Both original clips are kept in `v4work/sounds-src/` (`after-review-original.mp3`, `que-miras-original.mp3`).
+  - To remove: delete the 4.84 block and the `playReview()` call in `src/app.js`, and `sounds/after-review.mp3`.
+- 4.84 (continued): Omar sent a third clip, an Egypt player shouting "Referee, no fair", to be used from second 2 to second 11, then asked for it to start 0.2 s later and end 0.8 s later. `sounds/no-fair.mp3` is the cut from 2.2 s to 11.8 s (9.6 s), with short fades and the level lowered 5.3 dB to match the other clips. The original is in `v4work/sounds-src/no-fair-original.mp3`. It isn't played anywhere yet; Omar will say where it goes.
+- 4.85 (2026-10-04): Omar asked for the Messi clip and the "no fair" clip to play before the Siuuu on the winner screen, one per game: random the first time, then taking turns.
+  - `sounds/que-miras.mp3` is seconds 3.8–9.8 of Messi's "¿Qué mirás, bobo?" (`v4work/sounds-src/que-miras-original.mp3`). Omar picked the cut in several small steps. Its level is matched to the other clips.
+  - `playEnd()` in `src/app.js` plays one intro, then `playSiu()` when it ends. The first pick is random. After that it alternates, and the last one is remembered on the device (`jn_endIntro`), so the next game plays the other even after a reload.
+  - It happens in both modes, because the Siuuu plays in both since 4.63. Closing the winner screen or turning sound off stops the intro and skips the Siuuu.
+  - Both intros are unlocked on the first tap, the same way as the Siuuu, so iPhones allow them even when the winner screen opens on its own after the last tile.
+  - To go back to Siuuu alone: in `showWinner()` call `playSiu()` instead of `playEnd()`.
