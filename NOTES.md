@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.95. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.96. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -320,3 +320,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Ramadan facts were checked against Arabic Wikipedia; a few Ramadan clues were reworded so they don't repeat Egyptian Cinema or Egyptian Memes answers.
   - To undo: `git checkout ab75f68 -- v4work/out/` (the 4.93 commit) and rebuild.
 - 4.95 (2026-10-04): Omar found the "After review" sound on Edit scores played only the first time in Football mode. `playReview()` in `src/app.js` reused one audio element and rewound it, which some browsers (likely iPhone Safari) won't replay once it has ended. It now makes a fresh audio element on every click (the old line is in a comment next to it). Normal mode's short clip gets the same fix.
+- 4.96 (2026-10-04): Omar asked for every clickable button to highlight on hover the way the board tiles do. A rule in `src/head.html` (right after the `.tile` rules) adds a light white wash and a 2px lift to any button, plus the fold-out `summary` headers, when the mouse is over it. It only applies on devices with a mouse or trackpad, so phone taps don't leave buttons stuck lit. Tiles keep their own hover. To undo: delete the `@media (hover:hover)` block marked 4.96.
