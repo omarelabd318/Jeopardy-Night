@@ -42,7 +42,8 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
     CATS.splice(CATS.findIndex(c=>c.id==="fyear")+1,0,{id:"form",name:o.name,type:"text",desc:o.desc}); DATA.form=o.data; } }
   // v4.39: Egyptian Proverbs, How I Met Your Mother, Guess the Score, Space & Planets, Most Spotify Listeners, Most Instagram Followers
   [['prov','arab'],['islam','his'],['romcom','toons'],['lyric','song'],['hgames','hp'],['himym','friends'],['score','form'],['space','sci'],['spot','song'],['igf','spot'],
-   /* 4.79 */ ['ramadan','prov'],['memeeg','ramadan'],['shirt','whoami'],['mgr','shirt'],['vgames','gta'],['pixar','romcom'],['headl','near']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
+   /* 4.79 */ ['ramadan','prov'],['memeeg','ramadan'],['shirt','whoami'],['mgr','shirt'],['vgames','gta'],['pixar','romcom'],['headl','near'],
+   /* 4.83 */ ['ctry','pin'],['ctryar','emseg']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
     const o=JSON.parse(fs.readFileSync(f,'utf8')), at=CATS.findIndex(c=>c.id===after);
     CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:"text",desc:o.desc}); DATA[id]=o.data; });
   // v4.39: Guess the Logo, blurred logos bundled in photos/logo-<value>.js (built by mkpacks.js logo); 4th element = starting blur (share of image width)

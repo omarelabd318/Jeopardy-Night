@@ -1,0 +1,338 @@
+{
+ "id": "ctryar",
+ "name": "Which Country? Arab Edition",
+ "type": "text",
+ "desc": "The host names a city in the Arab world. Name the country it's in. Cities in historic Palestine count as Palestine.",
+ "data": {
+  "100": [
+   [
+    "Which country is this city in? Dubai",
+    "UAE"
+   ],
+   [
+    "Which country is this city in? Riyadh",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Doha",
+    "Qatar"
+   ],
+   [
+    "Which country is this city in? Beirut",
+    "Lebanon"
+   ],
+   [
+    "Which country is this city in? Amman",
+    "Jordan"
+   ],
+   [
+    "Which country is this city in? Baghdad",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Damascus",
+    "Syria"
+   ],
+   [
+    "Which country is this city in? Marrakesh",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Tunis",
+    "Tunisia"
+   ],
+   [
+    "Which country is this city in? Algiers",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Jeddah",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Gaza",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Muscat",
+    "Oman"
+   ],
+   [
+    "Which country is this city in? Khartoum",
+    "Sudan"
+   ],
+   [
+    "Which country is this city in? Benghazi",
+    "Libya"
+   ],
+   [
+    "Which country is this city in? Manama",
+    "Bahrain"
+   ]
+  ],
+  "200": [
+   [
+    "Which country is this city in? Casablanca",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Aleppo",
+    "Syria"
+   ],
+   [
+    "Which country is this city in? Basra",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Medina",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Sharjah",
+    "UAE"
+   ],
+   [
+    "Which country is this city in? Aqaba",
+    "Jordan"
+   ],
+   [
+    "Which country is this city in? Jerusalem (Al-Quds)",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Sanaa",
+    "Yemen"
+   ],
+   [
+    "Which country is this city in? Oran",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Sfax",
+    "Tunisia"
+   ],
+   [
+    "Which country is this city in? Misrata",
+    "Libya"
+   ],
+   [
+    "Which country is this city in? Sidon (Saida)",
+    "Lebanon"
+   ],
+   [
+    "Which country is this city in? Erbil",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Salalah",
+    "Oman"
+   ],
+   [
+    "Which country is this city in? Ramallah",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Nouakchott",
+    "Mauritania"
+   ]
+  ],
+  "300": [
+   [
+    "Which country is this city in? Tel Aviv",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Haifa",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Homs",
+    "Syria"
+   ],
+   [
+    "Which country is this city in? Mosul",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Aden",
+    "Yemen"
+   ],
+   [
+    "Which country is this city in? Dammam",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Ras Al Khaimah",
+    "UAE"
+   ],
+   [
+    "Which country is this city in? Irbid",
+    "Jordan"
+   ],
+   [
+    "Which country is this city in? Tangier",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Constantine",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Sousse",
+    "Tunisia"
+   ],
+   [
+    "Which country is this city in? Byblos (Jbeil)",
+    "Lebanon"
+   ],
+   [
+    "Which country is this city in? Omdurman",
+    "Sudan"
+   ],
+   [
+    "Which country is this city in? Nablus",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Tripoli",
+    "Libya or Lebanon (both have a Tripoli)"
+   ],
+   [
+    "Which country is this city in? Agadir",
+    "Morocco"
+   ]
+  ],
+  "400": [
+   [
+    "Which country is this city in? Latakia",
+    "Syria"
+   ],
+   [
+    "Which country is this city in? Najaf",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Taiz",
+    "Yemen"
+   ],
+   [
+    "Which country is this city in? Tabuk",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Al Ain",
+    "UAE"
+   ],
+   [
+    "Which country is this city in? Zarqa",
+    "Jordan"
+   ],
+   [
+    "Which country is this city in? Annaba",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Kairouan",
+    "Tunisia"
+   ],
+   [
+    "Which country is this city in? Chefchaouen",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Baalbek",
+    "Lebanon"
+   ],
+   [
+    "Which country is this city in? Port Sudan",
+    "Sudan"
+   ],
+   [
+    "Which country is this city in? Nizwa",
+    "Oman"
+   ],
+   [
+    "Which country is this city in? Acre (Akka)",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Muharraq",
+    "Bahrain"
+   ],
+   [
+    "Which country is this city in? Al Khor",
+    "Qatar"
+   ],
+   [
+    "Which country is this city in? Tobruk",
+    "Libya"
+   ]
+  ],
+  "500": [
+   [
+    "Which country is this city in? Nouadhibou",
+    "Mauritania"
+   ],
+   [
+    "Which country is this city in? Tamanrasset",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Ghadames",
+    "Libya"
+   ],
+   [
+    "Which country is this city in? Tozeur",
+    "Tunisia"
+   ],
+   [
+    "Which country is this city in? Ouarzazate",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Sulaymaniyah",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Mukalla",
+    "Yemen"
+   ],
+   [
+    "Which country is this city in? Abha",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Fujairah",
+    "UAE"
+   ],
+   [
+    "Which country is this city in? Madaba",
+    "Jordan"
+   ],
+   [
+    "Which country is this city in? Zahle",
+    "Lebanon"
+   ],
+   [
+    "Which country is this city in? Kassala",
+    "Sudan"
+   ],
+   [
+    "Which country is this city in? Beersheba (Bir al-Sab')",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Al Wakrah",
+    "Qatar"
+   ],
+   [
+    "Which country is this city in? Hama",
+    "Syria"
+   ],
+   [
+    "Which country is this city in? Sur",
+    "Oman (Sur is also the Arabic name of Tyre in Lebanon)"
+   ]
+  ]
+ }
+}
