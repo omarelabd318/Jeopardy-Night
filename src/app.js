@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.1`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.3`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -438,6 +438,9 @@ function fitPoster(){  // size each phrase to fill its block
   });
 }
 window.addEventListener("resize", placeFbBg);
+/* 5.2: the font stylesheet now loads in the background; once its fonts are in, re-fit anything that was sized with the fallback font. */
+window.addEventListener("jn-fonts", () => { const go = () => { const bg = $("#fbBg"); if(bg && bg.classList.contains("poster")) fitPoster(); else fitFbBg(); window.dispatchEvent(new Event("resize")); };
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go(); });
 function footballBg(cols, rows){
   const el = $("#fbBg"); if(!el || !cols) return;
   el.dataset.grid = cols + "x" + rows;
@@ -768,7 +771,7 @@ function pickIdx(cat,lvl,exclude){
 }
 function openClue(cat,lvl,exclude,forceIdx){
   const preview = forceIdx !== undefined;
-  const idx = preview ? forceIdx : pickIdx(cat,lvl,exclude);
+  const idx = preview ? forceIdx : takePick(cat,lvl,exclude);
   const type = catById(cat).type;
   const zoomStart = {100:3.5,200:4.2,300:4.8,400:5.4,500:6}[lvl];
   S.cur = {cat,lvl,idx,type,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
@@ -799,12 +802,35 @@ const PACKS = {}, BLANK = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 function loadPack(pack){ return PACKS[pack] || (PACKS[pack] = new Promise(r => { const s = document.createElement("script"); s.src = `photos/${pack}.js`; s.onload = r; s.onerror = r; document.head.appendChild(s); })); }
 function packSrc(ref, cur){
   if(!ref.startsWith("pack:")) return ref;
-  const [, pack, key] = ref.split(":"), got = () => (window.__fp || {})[key];
-  if(got()) return got();
-  loadPack(pack).then(() => { const im = $("#clue .zoom img"); if(im && S.cur === cur && got()) im.src = got(); });
-  return BLANK;
+  const [, , key] = ref.split(":"), got = (window.__fp || {})[key];
+  if(got) return got;
+  if(DIRECT[key] === undefined) warmRef(ref);
+  const d = DIRECT[key]; if(d && d.complete && d.naturalWidth) return d.src;
+  return BLANK;  // showPack() swaps it in when the single photo or its bundle arrives
 }
-function prefetchPacks(){ for(const id of S.cats || []) for(const v of [100,200,300,400,500]) for(const e of (DATA[id] && DATA[id][v]) || []) if(typeof e[2] === "string" && e[2].startsWith("pack:")) loadPack(e[2].split(":")[1]); }
+function showPack(key, src){ const c = S.cur; if(!c || !src) return; const r = imgRefFor(c.cat,c.lvl,c.idx);
+  if(r && r.endsWith(":" + key)){ const im = $("#clue .zoom img"); if(im && im.src !== src) im.src = src; } }
+/* 5.3 (Omar: photos took a long time to appear). Each tile's clue is picked as soon as the board is drawn and its photo starts
+   downloading in the background, so it's usually there before the tile is opened. Pack photos (Guess the Food) are fetched
+   one by one from photos/<key>.jpg when that file exists (GitHub Pages); a pack bundle is only downloaded if the single
+   file isn't there (e.g. Guess the Logo, or the artifact). Was: prefetchPacks() loaded every bundle for the chosen categories
+   at once (about 22 MB for Guess the Food), and photos only started loading when a tile was opened. */
+const PICKS = {}, WARM = {}, DIRECT = {};
+function imgRefFor(cat,lvl,idx){ const c = catById(cat); if(!c) return null; const e = pool(cat,lvl)[idx]; if(!e) return null;
+  if(c.type === "photo") return photos[norm(e[0])] || null;
+  if(c.type === "text" && typeof e[2] === "string") return e[2]; return null; }
+function warmImg(src){ if(!src || WARM[src] || src.startsWith("blob:") || src.startsWith("data:")) return; const im = new Image(); im.decoding = "async"; WARM[src] = im; im.src = src; }
+function warmRef(ref){ if(!ref) return;
+  if(!ref.startsWith("pack:")){ warmImg(ref); return; }
+  const [, pack, key] = ref.split(":"); if((window.__fp || {})[key] || DIRECT[key]) return;
+  const im = new Image(); DIRECT[key] = im; im.onload = () => showPack(key, im.src);
+  im.onerror = () => { DIRECT[key] = null; loadPack(pack).then(() => showPack(key, (window.__fp || {})[key])); }; im.src = `photos/${key}.jpg`; }
+function prepick(cat,lvl){ const k = `${cat}-${lvl}`; if(PICKS[k] !== undefined && !S.used.has(`${k}-${PICKS[k]}`)) return;
+  const n = pool(cat,lvl).length; if(!n) return; PICKS[k] = pickIdx(cat,lvl); warmRef(imgRefFor(cat,lvl,PICKS[k])); }
+function takePick(cat,lvl,exclude){ const k = `${cat}-${lvl}`, i = PICKS[k]; delete PICKS[k];
+  if(exclude === undefined && i !== undefined && i < pool(cat,lvl).length && !S.used.has(`${k}-${i}`)) return i;
+  return pickIdx(cat,lvl,exclude); }
+function prefetchPacks(){ for(const id of S.cats || []){ if(!catById(id)) continue; for(const v of [100,200,300,400,500]) if(!(S.done && S.done[`${id}-${v}`])) prepick(id,v); } }
 /* 4.60: three-option answers ("B) Name: 381M followers\n(others: A) 68M, C) 67M)") show the winner big and bold
    and the other figures on a smaller, lighter line underneath. Every other answer is shown as before. */
 function fmtAns(a){ const m = String(a).match(/^([\s\S]*?)\s*\n\s*(\(others:[\s\S]*\))\s*$/);
