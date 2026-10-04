@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.89. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.90. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -290,3 +290,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Tested with 12 games in both modes, including a simulated slow rewind. Every game played intro, then Siuuu. The overlap is now 0.1–0.4 s, because `timeupdate` only fires about four times a second.
   - Also: Omar asked for 0.05 s off the end of the VAR clip, so `sounds/after-review.mp3` is now the first 6.65 s.
 - 4.89 (2026-10-04): Omar asked for the start of the VAR clip on Edit scores in normal mode too. `sounds/after-review-short.mp3` is the first 1.9 s of `v4work/sounds-src/after-review-original.mp3` (Omar picked it from 1.5 s, then 1.7 s, then 1.9 s), with a 0.15 s fade at the end. Its level matches the other clips. `playReview()` in `src/app.js` now takes the file to play: the full 6.65 s clip in Football mode, the short one in normal mode. It still plays only when sound is on, and not on "Done editing". To undo for normal mode: in the Edit scores handler, go back to `if(S.editing && S.football && S.sound) playReview("sounds/after-review.mp3")`.
+- 4.90 (2026-10-04): Omar said the chime at the end of the timer was far too loud. He asked for every sound to be 20% quieter, and the chime 30% quieter in all (the 20% plus another 10%).
+  - Timer sounds (`Snd` in `src/app.js`): the master `VOL` goes from 4 to 3.2, and the chime has an extra `CHIME` factor of 0.86. Measured on the actual output (through the limiter), ticks, blips and the fanfare are ×0.80 and the chime is ×0.70.
+  - Clips: iPhones ignore volume set from code, so every mp3 was made 20% quieter (about −2 dB) in the file itself. The four cut clips were re-cut from `v4work/sounds-src/` with the same cut points and fades, at a lower level. `sounds/siuuu.mp3` was scaled ×0.8.
+  - To undo: `VOL = 4, CHIME = 1`. For the clips, re-cut them about 1.9 dB louder (or take them from the 4.89 commit).
