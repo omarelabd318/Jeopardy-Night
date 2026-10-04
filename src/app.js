@@ -145,17 +145,17 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.81`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.82`); }
 
 /* ---------- setup ---------- */
-const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
-  ["Egypt & Arab World", ["egy","egh","cairo","arab","prov","ramadan","memeeg","ecin","ploteg","quoteeg","egfb","acteg","emeg","emseg"]],
+const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
+  ["Egypt & Arab World", ["egy","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","emeg","emseg"]],
   ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
   ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","tvmix","friends","himym","hp","hgames","marvel","toons","romcom","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
-  ["Party Games", ["act","emov","emsen","pw","rid","link","near","headl"]]
+  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","headl"]]
 ];
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}</button>`;
