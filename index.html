@@ -1028,7 +1028,7 @@ $("#confirmNo").onclick = () => { $("#confirmBox").hidden = true; confirmYes = n
 $("#confirmYes").onclick = () => { $("#confirmBox").hidden = true; const f = confirmYes; confirmYes = null; if(f) f(); };
 $("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", goSetup);
 function goSetup(){ setFootball(false); $("#setup").hidden = false; $("#game").hidden = true; $("#scores").hidden = true; renderTeamInputs(); histNote(); }
-/* 4.84 (Omar): in Football mode, opening Edit scores plays the first 6 seconds of the "After review... number 10 Paraguay covered his mouth" VAR call
+/* 4.84 (Omar): in Football mode, opening Edit scores plays the first 6.7 seconds of the "After review... number 10 Paraguay covered his mouth" VAR call
    (sounds/after-review.mp3, cut from v4work/sounds-src/after-review-original.mp3). Only when sound is on, and not on "Done editing". To remove: delete this block and the playReview() call below. */
 let reviewA = null;
 function playReview(){ try{ if(!reviewA) reviewA = new Audio("sounds/after-review.mp3"); reviewA.currentTime = 0; const pr = reviewA.play(); if(pr) pr.catch(() => {}); }catch(e){} }
