@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.0. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.1. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -336,3 +336,6 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - a picked button turns a lighter blue #2A4A9E.
   - To undo: delete those five lines.
   - Omar chose to call this 5.0 rather than 4.100, so it starts the 5.x section of the version history ("Every Category at 100+", a working name he can rename in `src/changelog.json`).
+- 5.1 (2026-10-04): Omar said the site was taking forever to load. Before the page could show anything, it waited for three scripts from outside sites (CDNs): the QR code maker, JSZip for photo export/import, and the world map for Country Outlines and Map Pin. If one of those sites was slow, the page stayed blank. They now load in the background (`async` in `src/head.html`), and the world map is set up whenever it arrives (`initWorld()` in `src/app.js`). In a test with the CDNs answering after 8 seconds, the title screen took 8.2 s before and 0.24 s after.
+  - Still loading as before: Google Fonts (the text can briefly show in a fallback font), and the photo bundles for Guess the Food and Guess the Logo (4–5 MB each), which start downloading when a board with those categories is shown.
+  - To undo: remove `async` (and the `onload`) from the three script tags, and replace `initWorld()` with its body run directly.
