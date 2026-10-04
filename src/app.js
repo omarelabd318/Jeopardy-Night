@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.80`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.81`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -357,7 +357,7 @@ $("#start").onclick = () => {
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
 /* Football mode: a fixed football board on a green pitch theme; setup and title go back to blue and the usual picks */
-const FOOTBALL = ["cclub","path","whoami","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"];
+const FOOTBALL = ["cclub","path","whoami","shirt","mgr","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"];  /* 4.81 (Omar): added "shirt" and "mgr" (Shirt Numbers, Managers) */
 function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S.football && S.prevCats){ S.cats = S.prevCats; S.prevCats = null; renderChips(); }
   S.football = on; document.body.classList.toggle("football", on);
   /* 4.65 (Omar): the Football mode board is titled "Joga Bonito" (4.64: "Joga Night"); normal mode keeps "Jeopardy Night" */
@@ -482,7 +482,7 @@ function fitFbBg(){  // shrink any phrase that is wider (or taller, if vertical)
     if(r < 1) sp.style.fontSize = (parseFloat(getComputedStyle(sp).fontSize) * r).toFixed(1) + "px";
   });
 }
-const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 13, in pool order
+const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 15, in pool order
 $("#football").onclick = () => {
   setFootball(true); S.cats = footballPick(); newGame();
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
