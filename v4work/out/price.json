@@ -54,6 +54,56 @@
     "How much is the smallest portion of koshary at a local shop in 2026, in Egyptian pounds?",
     20,
     "EGP (about; a full portion is 60–90)"
+   ],
+   [
+    "How much is a kilo of packaged rice in Egypt in October 2026, in Egyptian pounds?",
+    35,
+    "EGP (about 35)"
+   ],
+   [
+    "How much is a kilo of packaged pasta in Egypt in October 2026, in Egyptian pounds?",
+    30,
+    "EGP (about 29.80)"
+   ],
+   [
+    "How much is a kilo of red onions at the market in October 2026, in Egyptian pounds?",
+    18,
+    "EGP (about; 12–18)"
+   ],
+   [
+    "How much is a month of Spotify Premium (Individual) in Egypt in 2026, in Egyptian pounds?",
+    70,
+    "EGP (about 69.99)"
+   ],
+   [
+    "How much is ChatGPT Plus per month, in US dollars?",
+    20,
+    "$"
+   ],
+   [
+    "What was the US launch price of the Nintendo Switch (2017), in US dollars?",
+    299.99,
+    "$"
+   ],
+   [
+    "How much did Liverpool pay Roma for Mohamed Salah in 2017, in millions of euros?",
+    42,
+    "million € (about £36.9 million)"
+   ],
+   [
+    "What was the US launch price of the first iPad (2010), in US dollars?",
+    499,
+    "$"
+   ],
+   [
+    "How much did Liverpool pay Newcastle for Alexander Isak in 2025, the British record, in millions of British pounds?",
+    125,
+    "million £"
+   ],
+   [
+    "What was the US launch price of Disney+ per month (2019), in US dollars?",
+    6.99,
+    "$"
    ]
   ],
   "200": [
@@ -106,6 +156,56 @@
     "How much did Juventus pay Real Madrid for Cristiano Ronaldo in 2018, in millions of euros?",
     100,
     "million €"
+   ],
+   [
+    "How much is a litre of sunflower oil in Egypt in October 2026, in Egyptian pounds?",
+    104,
+    "EGP (about 103.80)"
+   ],
+   [
+    "How much is a kilo of packaged ful (fava beans) in Egypt in October 2026, in Egyptian pounds?",
+    67,
+    "EGP (about 66.80)"
+   ],
+   [
+    "How much is a home butane gas cylinder (12.5 kg) in Egypt in 2026, in Egyptian pounds?",
+    275,
+    "EGP"
+   ],
+   [
+    "How much is Netflix's Standard plan per month in Egypt in 2026, in Egyptian pounds?",
+    190,
+    "EGP (about)"
+   ],
+   [
+    "How much is a litre of 95-octane petrol in Egypt as of October 2026, in Egyptian pounds?",
+    24,
+    "EGP"
+   ],
+   [
+    "What was the US launch price of the Xbox Series X (2020), in US dollars?",
+    499,
+    "$"
+   ],
+   [
+    "What was the US launch price of the first AirPods (2016), in US dollars?",
+    159,
+    "$"
+   ],
+   [
+    "What was the starting US price of the first Apple Watch (2015), in US dollars?",
+    349,
+    "$"
+   ],
+   [
+    "How much did Arsenal pay West Ham for Declan Rice (2023), in millions of British pounds?",
+    105,
+    "million £"
+   ],
+   [
+    "How much did Manchester City pay Aston Villa for Jack Grealish (2021), in millions of British pounds?",
+    100,
+    "million £"
    ]
   ],
   "300": [
@@ -158,6 +258,56 @@
     "How much did Facebook pay for Instagram in 2012, in billions of US dollars?",
     1,
     "billion $"
+   ],
+   [
+    "How much is a litre of diesel (solar) in Egypt as of October 2026, in Egyptian pounds?",
+    20.5,
+    "EGP"
+   ],
+   [
+    "How much is a litre of 80-octane petrol in Egypt as of October 2026, in Egyptian pounds?",
+    20.75,
+    "EGP"
+   ],
+   [
+    "How much was the cheapest Cairo Metro ticket in January 2024, before the August rise, in Egyptian pounds?",
+    6,
+    "EGP"
+   ],
+   [
+    "What was Egypt's private-sector minimum monthly wage from 2024, in Egyptian pounds?",
+    6000,
+    "EGP"
+   ],
+   [
+    "How much was a litre of 92-octane petrol after the October 2024 rise, in Egyptian pounds?",
+    15.25,
+    "EGP"
+   ],
+   [
+    "What was the US launch price of the Nintendo Switch 2 (2025), in US dollars?",
+    449.99,
+    "$"
+   ],
+   [
+    "What was the US launch price of the Nintendo Wii (2006), in US dollars?",
+    249.99,
+    "$"
+   ],
+   [
+    "How much did Manchester United pay Juventus for Paul Pogba (2016), in millions of euros?",
+    105,
+    "million €"
+   ],
+   [
+    "How much did Atlético Madrid pay Benfica for João Félix (2019), in millions of euros?",
+    126,
+    "million €"
+   ],
+   [
+    "How much did Chelsea pay Brighton for Moisés Caicedo (2023), in millions of British pounds?",
+    115,
+    "million £"
    ]
   ],
   "400": [
@@ -210,6 +360,56 @@
     "How much did Real Madrid pay Dortmund for Jude Bellingham (2023), in millions of euros (before add-ons)?",
     103,
     "million €"
+   ],
+   [
+    "How much was the cheapest Cairo Metro ticket after the August 2020 rise, in Egyptian pounds?",
+    5,
+    "EGP"
+   ],
+   [
+    "What was Egypt's minimum monthly wage in 2019, in Egyptian pounds?",
+    2000,
+    "EGP"
+   ],
+   [
+    "How much was a litre of 92-octane petrol in April 2025, in Egyptian pounds?",
+    17.25,
+    "EGP"
+   ],
+   [
+    "Roughly how much was a gram of 21-karat gold in Egypt at the start of 2025, in Egyptian pounds?",
+    3740,
+    "EGP (about)"
+   ],
+   [
+    "About how many Egyptian pounds did one US dollar cost at the end of 2016, after the float?",
+    18,
+    "EGP (about)"
+   ],
+   [
+    "What was the US launch price of the Xbox 360 (2005, with hard drive), in US dollars?",
+    399,
+    "$"
+   ],
+   [
+    "What was the launch price of the first iPod (2001), in US dollars?",
+    399,
+    "$"
+   ],
+   [
+    "What was the US launch price of the Apple Vision Pro (2024), in US dollars?",
+    3499,
+    "$"
+   ],
+   [
+    "How much did Google pay for YouTube in 2006, in billions of US dollars?",
+    1.65,
+    "billion $"
+   ],
+   [
+    "How much did Disney pay for Lucasfilm (Star Wars) in 2012, in billions of US dollars?",
+    4.05,
+    "billion $"
    ]
   ],
   "500": [
@@ -262,6 +462,56 @@
     "How much is a kilo of baladi oranges in October 2026, in Egyptian pounds?",
     27,
     "EGP (about)"
+   ],
+   [
+    "How much was the cheapest Cairo Metro ticket after the May 2018 rise, in Egyptian pounds?",
+    3,
+    "EGP"
+   ],
+   [
+    "What was Egypt's minimum monthly wage in 2014, in Egyptian pounds?",
+    1200,
+    "EGP"
+   ],
+   [
+    "How much was a litre of 92-octane petrol after the 2018 rise, in Egyptian pounds?",
+    6.75,
+    "EGP"
+   ],
+   [
+    "How much did a McDonald's hamburger cost when Ray Kroc opened his first restaurant in 1955, in US cents?",
+    15,
+    "cents"
+   ],
+   [
+    "What was the launch price of the first Apple Macintosh (1984), in US dollars?",
+    2495,
+    "$"
+   ],
+   [
+    "What was the US launch price of the Nintendo 64 (1996), in US dollars?",
+    199.99,
+    "$"
+   ],
+   [
+    "What did Beeple's NFT 'Everydays: The First 5000 Days' sell for in 2021, in millions of US dollars?",
+    69.3,
+    "million $"
+   ],
+   [
+    "What did a 1955 Mercedes 300 SLR 'Uhlenhaut Coupé' sell for in 2022, the record for a car, in millions of euros?",
+    135,
+    "million €"
+   ],
+   [
+    "What did a Pikachu Illustrator card sell for in 2022, the record for a Pokémon card, in millions of US dollars?",
+    5.275,
+    "million $"
+   ],
+   [
+    "How much did Microsoft pay for Activision Blizzard (2023), in billions of US dollars?",
+    68.7,
+    "billion $"
    ]
   ]
  }
