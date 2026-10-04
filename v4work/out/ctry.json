@@ -1,0 +1,338 @@
+{
+ "id": "ctry",
+ "name": "Which Country?",
+ "type": "text",
+ "desc": "The host names a city. Name the country it's in.",
+ "data": {
+  "100": [
+   [
+    "Which country is this city in? Barcelona",
+    "Spain"
+   ],
+   [
+    "Which country is this city in? Rio de Janeiro",
+    "Brazil"
+   ],
+   [
+    "Which country is this city in? Sydney",
+    "Australia"
+   ],
+   [
+    "Which country is this city in? Istanbul",
+    "Turkey"
+   ],
+   [
+    "Which country is this city in? Milan",
+    "Italy"
+   ],
+   [
+    "Which country is this city in? Munich",
+    "Germany"
+   ],
+   [
+    "Which country is this city in? Manchester",
+    "England (UK)"
+   ],
+   [
+    "Which country is this city in? Toronto",
+    "Canada"
+   ],
+   [
+    "Which country is this city in? Los Angeles",
+    "USA"
+   ],
+   [
+    "Which country is this city in? Mumbai",
+    "India"
+   ],
+   [
+    "Which country is this city in? Amsterdam",
+    "Netherlands"
+   ],
+   [
+    "Which country is this city in? Tokyo",
+    "Japan"
+   ],
+   [
+    "Which country is this city in? Moscow",
+    "Russia"
+   ],
+   [
+    "Which country is this city in? Buenos Aires",
+    "Argentina"
+   ],
+   [
+    "Which country is this city in? Lisbon",
+    "Portugal"
+   ],
+   [
+    "Which country is this city in? Athens",
+    "Greece"
+   ]
+  ],
+  "200": [
+   [
+    "Which country is this city in? Marseille",
+    "France"
+   ],
+   [
+    "Which country is this city in? Porto",
+    "Portugal"
+   ],
+   [
+    "Which country is this city in? Zurich",
+    "Switzerland"
+   ],
+   [
+    "Which country is this city in? Seoul",
+    "South Korea"
+   ],
+   [
+    "Which country is this city in? Bangkok",
+    "Thailand"
+   ],
+   [
+    "Which country is this city in? Cape Town",
+    "South Africa"
+   ],
+   [
+    "Which country is this city in? Cancún",
+    "Mexico"
+   ],
+   [
+    "Which country is this city in? Kuala Lumpur",
+    "Malaysia"
+   ],
+   [
+    "Which country is this city in? Prague",
+    "Czech Republic (Czechia)"
+   ],
+   [
+    "Which country is this city in? Vienna",
+    "Austria"
+   ],
+   [
+    "Which country is this city in? Brussels",
+    "Belgium"
+   ],
+   [
+    "Which country is this city in? Copenhagen",
+    "Denmark"
+   ],
+   [
+    "Which country is this city in? Stockholm",
+    "Sweden"
+   ],
+   [
+    "Which country is this city in? Dublin",
+    "Ireland"
+   ],
+   [
+    "Which country is this city in? Edinburgh",
+    "Scotland (UK)"
+   ],
+   [
+    "Which country is this city in? Lagos",
+    "Nigeria (there's also a Lagos in Portugal)"
+   ]
+  ],
+  "300": [
+   [
+    "Which country is this city in? Kraków",
+    "Poland"
+   ],
+   [
+    "Which country is this city in? Budapest",
+    "Hungary"
+   ],
+   [
+    "Which country is this city in? Medellín",
+    "Colombia"
+   ],
+   [
+    "Which country is this city in? Oslo",
+    "Norway"
+   ],
+   [
+    "Which country is this city in? Helsinki",
+    "Finland"
+   ],
+   [
+    "Which country is this city in? Hanoi",
+    "Vietnam"
+   ],
+   [
+    "Which country is this city in? Manila",
+    "Philippines"
+   ],
+   [
+    "Which country is this city in? Jakarta",
+    "Indonesia"
+   ],
+   [
+    "Which country is this city in? Nairobi",
+    "Kenya"
+   ],
+   [
+    "Which country is this city in? Lima",
+    "Peru"
+   ],
+   [
+    "Which country is this city in? Santiago",
+    "Chile (Spain and Cuba have smaller Santiagos)"
+   ],
+   [
+    "Which country is this city in? Montevideo",
+    "Uruguay"
+   ],
+   [
+    "Which country is this city in? Bucharest",
+    "Romania"
+   ],
+   [
+    "Which country is this city in? Kyiv",
+    "Ukraine"
+   ],
+   [
+    "Which country is this city in? Addis Ababa",
+    "Ethiopia"
+   ],
+   [
+    "Which country is this city in? Dubrovnik",
+    "Croatia"
+   ]
+  ],
+  "400": [
+   [
+    "Which country is this city in? Tbilisi",
+    "Georgia (the country)"
+   ],
+   [
+    "Which country is this city in? Baku",
+    "Azerbaijan"
+   ],
+   [
+    "Which country is this city in? Yerevan",
+    "Armenia"
+   ],
+   [
+    "Which country is this city in? Almaty",
+    "Kazakhstan"
+   ],
+   [
+    "Which country is this city in? Tashkent",
+    "Uzbekistan"
+   ],
+   [
+    "Which country is this city in? Kathmandu",
+    "Nepal"
+   ],
+   [
+    "Which country is this city in? Colombo",
+    "Sri Lanka"
+   ],
+   [
+    "Which country is this city in? Dhaka",
+    "Bangladesh"
+   ],
+   [
+    "Which country is this city in? Accra",
+    "Ghana"
+   ],
+   [
+    "Which country is this city in? Dakar",
+    "Senegal"
+   ],
+   [
+    "Which country is this city in? Kigali",
+    "Rwanda"
+   ],
+   [
+    "Which country is this city in? Quito",
+    "Ecuador"
+   ],
+   [
+    "Which country is this city in? La Paz",
+    "Bolivia (there's also a La Paz in Mexico)"
+   ],
+   [
+    "Which country is this city in? Havana",
+    "Cuba"
+   ],
+   [
+    "Which country is this city in? Reykjavík",
+    "Iceland"
+   ],
+   [
+    "Which country is this city in? Ljubljana",
+    "Slovenia"
+   ]
+  ],
+  "500": [
+   [
+    "Which country is this city in? Ouagadougou",
+    "Burkina Faso"
+   ],
+   [
+    "Which country is this city in? Thimphu",
+    "Bhutan"
+   ],
+   [
+    "Which country is this city in? Ulaanbaatar",
+    "Mongolia"
+   ],
+   [
+    "Which country is this city in? Bishkek",
+    "Kyrgyzstan"
+   ],
+   [
+    "Which country is this city in? Asunción",
+    "Paraguay"
+   ],
+   [
+    "Which country is this city in? Tegucigalpa",
+    "Honduras"
+   ],
+   [
+    "Which country is this city in? Antananarivo",
+    "Madagascar"
+   ],
+   [
+    "Which country is this city in? Windhoek",
+    "Namibia"
+   ],
+   [
+    "Which country is this city in? Vientiane",
+    "Laos"
+   ],
+   [
+    "Which country is this city in? Chișinău",
+    "Moldova"
+   ],
+   [
+    "Which country is this city in? Skopje",
+    "North Macedonia"
+   ],
+   [
+    "Which country is this city in? Paramaribo",
+    "Suriname"
+   ],
+   [
+    "Which country is this city in? Lusaka",
+    "Zambia"
+   ],
+   [
+    "Which country is this city in? Timbuktu",
+    "Mali"
+   ],
+   [
+    "Which country is this city in? Port Moresby",
+    "Papua New Guinea"
+   ],
+   [
+    "Which country is this city in? Dushanbe",
+    "Tajikistan"
+   ]
+  ]
+ }
+}
