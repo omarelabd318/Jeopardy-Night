@@ -4,6 +4,8 @@
 {
   "name": "jeopardy-night",
   "compatibility_date": "2026-10-01",
+  // Keep the free jeopardy-night.<account>.workers.dev address switched on with every deploy.
+  "workers_dev": true,
   "build": {
     "command": "rm -rf dist && mkdir dist && cp -r index.html speed.html photos sounds dist/"
   },
