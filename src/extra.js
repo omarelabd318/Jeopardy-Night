@@ -18,7 +18,7 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
   // v4.08: Fast Food and Most Calories (inserted after Food & Drink)
   [['ffood','food'],['cal','ffood']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
     const o=JSON.parse(fs.readFileSync(f,'utf8')); const at=CATS.findIndex(c=>c.id===after);
-    CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:"text",desc:o.desc}); DATA[id]=o.data; });
+    CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:o.type||"text",desc:o.desc}); DATA[id]=o.data; });
   // v4.11: Who Am I? (three clues about a footballer), after Career Path
   { const f=W+'/out/whoami.json'; if(fs.existsSync(f)){ const o=JSON.parse(fs.readFileSync(f,'utf8'));
     CATS.splice(CATS.findIndex(c=>c.id==="path")+1,0,{id:"whoami",name:o.name,type:"text",desc:o.desc}); DATA.whoami=o.data; } }
@@ -43,9 +43,10 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
   // v4.39: Egyptian Proverbs, How I Met Your Mother, Guess the Score, Space & Planets, Most Spotify Listeners, Most Instagram Followers
   [['prov','arab'],['islam','his'],['romcom','toons'],['lyric','song'],['hgames','hp'],['himym','friends'],['score','form'],['space','sci'],['spot','song'],['igf','spot'],
    /* 4.79 */ ['ramadan','prov'],['memeeg','ramadan'],['shirt','whoami'],['mgr','shirt'],['vgames','gta'],['pixar','romcom'],['headl','near'],
-   /* 4.83 */ ['ctry','pin'],['ctryar','emseg']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
+   /* 4.83 */ ['ctry','pin'],['ctryar','emseg'],
+   /* 4.91 */ ['price','near']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
     const o=JSON.parse(fs.readFileSync(f,'utf8')), at=CATS.findIndex(c=>c.id===after);
-    CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:"text",desc:o.desc}); DATA[id]=o.data; });
+    CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:o.type||"text",desc:o.desc}); DATA[id]=o.data; });
   // v4.39: Guess the Logo, blurred logos bundled in photos/logo-<value>.js (built by mkpacks.js logo); 4th element = starting blur (share of image width)
   { const lf=W+'/logo-photos.json'; if(fs.existsSync(lf)){ const d={100:[],200:[],300:[],400:[],500:[]}, BLUR={100:.024,200:.022,300:.02,400:.018,500:.016};  // v4.40 values: 100:.03,200:.027,300:.024,400:.021,500:.018
     JSON.parse(fs.readFileSync(lf,'utf8')).forEach(e=>{ if(fs.existsSync(`${W}/logo-photos/${e.key}.png`)) d[e.value].push(["Name this brand.",e.name,`pack:logo-${e.value}:${e.key}`,BLUR[e.value]]); });
