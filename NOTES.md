@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.90. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.92. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -294,3 +294,23 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Timer sounds (`Snd` in `src/app.js`): the master `VOL` goes from 4 to 3.2, and the chime has an extra `CHIME` factor of 0.86. Measured on the actual output (through the limiter), ticks, blips and the fanfare are ×0.80 and the chime is ×0.70.
   - Clips: iPhones ignore volume set from code, so every mp3 was made 20% quieter (about −2 dB) in the file itself. The four cut clips were re-cut from `v4work/sounds-src/` with the same cut points and fades, at a lower level. `sounds/siuuu.mp3` was scaled ×0.8.
   - To undo: `VOL = 4, CHIME = 1`. For the clips, re-cut them about 1.9 dB louder (or take them from the 4.89 commit).
+- 4.91 (2026-10-04): Omar asked for a Price Is Right category with Egyptian items then and now, everyday things like Nutella or a kilo of apples, and other items. He wanted both teams to answer, as in Closest Wins, and the currency made clear.
+  - **The Price Is Right** (`price`, Party Games, after Closest Wins) uses the Closest Wins format: every team types a number and the closest wins. It had 50 clues, 10 per value (100 since 4.92). Every question says which currency to answer in (Egyptian pounds, piastres, US dollars, euros) and when the price applies.
+  - Everyday Egyptian prices, from market and news reports around 1–3 October 2026, usually given as "about" with the range in the answer:
+    - eggs (about 140 a carton of 30), beef (about 430/kg), chicken (about 95/kg), apples (about 50/kg)
+    - bananas, oranges, tomatoes, potatoes, sugar
+    - a Pepsi can (14.5) and a 1 L bottle (29.75), Juhayna milk (about 45)
+    - a 350 g jar of Nutella (about 240 at Carrefour, 120–400 elsewhere), a Big Mac in Egypt (about 165), koshary (about 20 for the smallest portion)
+  - The same items back then: eggs 17 EGP a carton in 2010, beef about 50/kg in 2010, sugar 4.5/kg in 2010, koshary about 5 before the 2016 float.
+  - Official Egyptian prices: bread (5 → 20 piastres in June 2024), Metro tickets (1 EGP before 2017, 8–20 since August 2024), 92-octane petrol (5 → 19.25 → 22.25), the dollar (0.70 in 1979, 8.88 before 2016, about 50 after 2024), the minimum wage, 21k gold, Cleopatra cigarettes.
+  - World prices: iPhone and PlayStation launch prices, Apple I, Air Jordan 1, Coca-Cola's 5 cents, the US Big Mac, a Super Bowl ad, Salvator Mundi, Instagram, and transfer fees.
+  - `src/extra.js` now uses each file's own `type`, instead of always "text", so this works as a number-guessing round. The other categories are all text anyway.
+  - The "now" prices will drift. Each clue names its date, so the answers stay correct for that date.
+  - To remove: delete `v4work/out/price.json` and "price" from `CAT_GROUPS`.- 4.92 (2026-10-04): Omar asked for a Currencies round and 50 more Price Is Right clues.
+  - **Currencies** (`curr`, Knowledge, after Money & Business): 60 clues, 12 per value. Name the currency or the country that uses it, from the yen and riyal to the tögrög, lempira and ouguiya. It includes pre-euro currencies (peseta, drachma, guilder, markka; Croatia's kuna in 2023 and Bulgaria's lev in January 2026) and Bitcoin. Egyptian clues: 100 piastres to the pound, the 10 and 20 pound notes going plastic in 2022 and 2023, and "geneih" coming from the British guinea. No Israeli currency, in line with how the game treats Palestine.
+  - **The Price Is Right** now has 100 clues, 20 per value.
+    - New Egyptian prices from October 2026 reports: rice, pasta, onions, sunflower oil, ful, the 12.5 kg butane cylinder (275), 80 and 95 octane and diesel, Netflix Standard (about 190) and Spotify Premium (about 70).
+    - More "then" prices: Metro in 2018, 2020 and January 2024, the minimum wage in 2014, 2019 and 2024, petrol in 2018, 2024 and 2025, the dollar at the end of 2016, gold at the start of 2025.
+    - World: console and Apple launch prices (Switch, Switch 2, Xbox, Wii, N64, iPod, iPad, AirPods, Apple Watch, Macintosh, Vision Pro), ChatGPT Plus and Disney+, the 1955 McDonald's hamburger, record sales (Beeple NFT, Mercedes 300 SLR, Pikachu Illustrator), acquisitions (YouTube, Lucasfilm, Activision), and transfer fees (Salah, Isak, Rice, Grealish, Pogba, João Félix, Caicedo).
+    - Every question still names its currency (Egyptian pounds, piastres, US dollars or cents, euros, British pounds).
+  - To remove Currencies: delete `v4work/out/curr.json` and "curr" from `CAT_GROUPS`.

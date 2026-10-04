@@ -1,0 +1,258 @@
+{
+ "id": "curr",
+ "name": "Currencies",
+ "type": "text",
+ "desc": "Name the currency, or the country that uses it. Includes old currencies from before the euro.",
+ "data": {
+  "100": [
+   [
+    "Which country uses the yen?",
+    "Japan"
+   ],
+   [
+    "What is the currency of the United Kingdom called?",
+    "The pound sterling"
+   ],
+   [
+    "What is Saudi Arabia's currency called?",
+    "The riyal"
+   ],
+   [
+    "Which currency do most European Union countries share?",
+    "The euro"
+   ],
+   [
+    "What is the currency of the United Arab Emirates?",
+    "The dirham"
+   ],
+   [
+    "What is India's currency?",
+    "The rupee"
+   ],
+   [
+    "What is Turkey's currency?",
+    "The lira"
+   ],
+   [
+    "How many piastres make one Egyptian pound?",
+    "100"
+   ],
+   [
+    "What is Russia's currency?",
+    "The ruble"
+   ],
+   [
+    "What is China's currency, the unit people count prices in?",
+    "The yuan (officially the renminbi)"
+   ],
+   [
+    "Kuwait, Jordan and Iraq all call their currency what?",
+    "The dinar"
+   ],
+   [
+    "Which country uses the franc as its currency and is home to the Alps and banks of Zurich?",
+    "Switzerland"
+   ]
+  ],
+  "200": [
+   [
+    "Which country's currency is the rand?",
+    "South Africa"
+   ],
+   [
+    "What is Brazil's currency?",
+    "The real"
+   ],
+   [
+    "What is Mexico's currency?",
+    "The peso"
+   ],
+   [
+    "What is South Korea's currency?",
+    "The won"
+   ],
+   [
+    "Which North African country also calls its currency the dirham?",
+    "Morocco"
+   ],
+   [
+    "Which country's currency is the baht?",
+    "Thailand"
+   ],
+   [
+    "Which currency uses the symbol ₹?",
+    "The Indian rupee"
+   ],
+   [
+    "What is Sweden's currency?",
+    "The krona"
+   ],
+   [
+    "Which country's currency is the naira?",
+    "Nigeria"
+   ],
+   [
+    "What is Lebanon's currency called?",
+    "The Lebanese pound (lira)"
+   ],
+   [
+    "Which currency did Germany use before the euro?",
+    "The Deutsche Mark"
+   ],
+   [
+    "Which currency is nicknamed the 'greenback'?",
+    "The US dollar"
+   ]
+  ],
+  "300": [
+   [
+    "Which currency did Spain use before the euro?",
+    "The peseta"
+   ],
+   [
+    "Which currency did Greece use before the euro?",
+    "The drachma"
+   ],
+   [
+    "Which currency did Italy use before the euro?",
+    "The lira"
+   ],
+   [
+    "What is Poland's currency?",
+    "The złoty"
+   ],
+   [
+    "Which country's currency is the đồng (dong)?",
+    "Vietnam"
+   ],
+   [
+    "What is Malaysia's currency?",
+    "The ringgit"
+   ],
+   [
+    "What is Indonesia's currency?",
+    "The rupiah"
+   ],
+   [
+    "Which country's currency is the cedi?",
+    "Ghana"
+   ],
+   [
+    "Which country's currency is the sol?",
+    "Peru"
+   ],
+   [
+    "Which country's currency is worth the most per unit in the world?",
+    "Kuwait (the Kuwaiti dinar)"
+   ],
+   [
+    "Which two Egyptian banknotes became plastic (polymer), in 2022 and 2023?",
+    "The 10-pound and 20-pound notes"
+   ],
+   [
+    "Which currency uses the symbol ₺?",
+    "The Turkish lira"
+   ]
+  ],
+  "400": [
+   [
+    "What is Hungary's currency?",
+    "The forint"
+   ],
+   [
+    "What is the Czech Republic's currency?",
+    "The koruna (Czech crown)"
+   ],
+   [
+    "What is Ukraine's currency?",
+    "The hryvnia"
+   ],
+   [
+    "Which country's currency is the lari?",
+    "Georgia"
+   ],
+   [
+    "Which country's currency is the taka?",
+    "Bangladesh"
+   ],
+   [
+    "Which country's currency is the birr?",
+    "Ethiopia"
+   ],
+   [
+    "Which currency did the Netherlands use before the euro?",
+    "The guilder"
+   ],
+   [
+    "Which currency did Portugal use before the euro?",
+    "The escudo"
+   ],
+   [
+    "Which currency did Croatia give up when it joined the euro in 2023?",
+    "The kuna"
+   ],
+   [
+    "Under what name did the unknown creator of Bitcoin publish it?",
+    "Satoshi Nakamoto"
+   ],
+   [
+    "Which country made Bitcoin legal tender in 2021, the first to do so?",
+    "El Salvador"
+   ],
+   [
+    "Which country's currency is the dram?",
+    "Armenia"
+   ]
+  ],
+  "500": [
+   [
+    "Which country's currency is the tögrög (tugrik)?",
+    "Mongolia"
+   ],
+   [
+    "Which currency did Bulgaria give up when it joined the euro in January 2026?",
+    "The lev"
+   ],
+   [
+    "Which currency did Finland use before the euro?",
+    "The markka"
+   ],
+   [
+    "Which country's currency is the kip?",
+    "Laos"
+   ],
+   [
+    "Which country's currency is the guaraní?",
+    "Paraguay"
+   ],
+   [
+    "Which country's currency is the pula, meaning 'rain'?",
+    "Botswana"
+   ],
+   [
+    "Zambia and Malawi both call their currency what?",
+    "The kwacha"
+   ],
+   [
+    "Which country's currency is the lempira?",
+    "Honduras"
+   ],
+   [
+    "The Arabic word 'geneih' (جنيه) comes from which old British gold coin?",
+    "The guinea"
+   ],
+   [
+    "Which Arab country's currency is the ouguiya?",
+    "Mauritania"
+   ],
+   [
+    "Which country's currency is the quetzal, named after a bird?",
+    "Guatemala"
+   ],
+   [
+    "Which country's currency is the riel?",
+    "Cambodia"
+   ]
+  ]
+ }
+}
