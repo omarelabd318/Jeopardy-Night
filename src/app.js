@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.6`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.7`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -858,22 +858,26 @@ function renderDl(){ const box = $("#dlStatus"); if(!box) return; let all = 0, g
 function dlCat(id){ photoRefs(id).forEach(r => { if(!refLoaded(r)) warmRef(r); }); renderDl(); }
 $("#dlStatus").addEventListener("click", e => { const b = e.target.closest("[data-dl]"); if(b) dlCat(b.dataset.dl); });
 $("#dlAll").onclick = () => { dlCats().forEach(dlCat); SOUNDS.forEach(warmSound); renderDl(); };
-$("#statusPanel").addEventListener("toggle", () => { if($("#statusPanel").open){ renderDl(); if(!stTimer) stTimer = setInterval(() => { if(!$("#statusPanel").open || $("#setup").hidden){ clearInterval(stTimer); stTimer = null; return; } renderTools(); }, 1000); } });
+$("#statusPanel").addEventListener("toggle", () => { if($("#statusPanel").open){ SOUNDS.forEach(warmSound); renderDl(); if(!stTimer) stTimer = setInterval(() => { if(!$("#statusPanel").open || $("#setup").hidden){ clearInterval(stTimer); stTimer = null; return; } renderTools(); }, 1000); } });
 /* tools, fonts and sounds */
 const SOUNDS = ["sounds/siuuu.mp3","sounds/no-fair.mp3","sounds/que-miras.mp3","sounds/after-review.mp3","sounds/after-review-short.mp3"], SND = {};
 let stTimer = null;
-function warmSound(src){ if(SND[src]) return; const a = new Audio(); a.preload = "auto"; a.muted = true; SND[src] = a; a.addEventListener("canplaythrough", renderTools); a.src = src; a.load(); }
+/* 5.7: sounds are fetched as plain files (into the browser cache) instead of preloading <audio>, which Safari won't do before
+   a click, so the count stayed at 0. They start downloading as soon as Status is opened (about 0.5 MB in all).
+   Was: new Audio() with preload="auto", counted ready at readyState 4. */
+function warmSound(src){ if(SND[src]) return; SND[src] = "loading";
+  fetch(src).then(r => r.ok ? r.arrayBuffer() : Promise.reject(r.status)).then(() => { SND[src] = "ok"; }, () => { SND[src] = "err"; }).then(renderTools); }
 function fontsState(){ if(!document.fonts) return [true, "ready"]; const fs = [...document.fonts]; if(!fs.length) return [false, "waiting for Google Fonts"];
   const ok = fs.filter(f => f.status === "loaded").length; return [document.fonts.status === "loaded" && ok > 0, ok ? `${ok} font files in` : "list in, files load as text needs them"]; }
 function renderTools(){ const box = $("#stTools"); if(!box) return;
-  const snd = SOUNDS.filter(s => SND[s] && SND[s].readyState >= 4).length;
+  const snd = SOUNDS.filter(s => SND[s] === "ok").length, sndErr = SOUNDS.some(s => SND[s] === "err");
   const [fOk, fTxt] = fontsState(), err = window.__cdnErr || {};
   const rows = [
     ["Fonts (Google Fonts)", fOk, err.fonts ? "couldn't load" : fTxt],
     ["World map (Country Outlines, Map Pin)", !!WORLD.feats, WORLD.feats ? "ready" : err.map ? "couldn't load" : "still loading"],
     ["QR codes (Act It Out, Impostor, One Word)", !!window.QRCode, window.QRCode ? "ready" : err.qr ? "couldn't load" : "still loading"],
     ["Photo export and import", !!window.JSZip, window.JSZip ? "ready" : err.zip ? "couldn't load" : "still loading"],
-    ["Sounds (winner clips, VAR clip)", snd === SOUNDS.length, `${snd} / ${SOUNDS.length}`]];
+    ["Sounds (winner clips, VAR clip)", snd === SOUNDS.length, sndErr && snd < SOUNDS.length ? "couldn't load" : `${snd} / ${SOUNDS.length}`]];
   box.innerHTML = rows.map(([n, ok, t]) => `<div class="dlrow${ok ? " full" : ""}"><div>${esc(n)}</div><span class="num">${esc(t)}</span><span>${ok ? "✓" : t === "couldn't load" ? "✕" : "…"}</span></div>`).join("");
   const toolsOk = rows.filter(r => r[1]).length; $("#stCount").textContent = `${toolsOk}/${rows.length} tools ready`; }
 document.addEventListener("load", e => { const im = e.target; if(im && im.tagName === "IMG" && im.closest && im.closest("#clue")){ const c = S.cur; const r = c && imgRefFor(c.cat,c.lvl,c.idx); if(r) LOADED.add(r); } }, true);

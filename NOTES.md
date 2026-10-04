@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.6. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.7. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -368,3 +368,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - `speed.html` now also times a bigger Cloudflare file and the same game page and photo from jsDelivr (a free mirror of public GitHub repos), to show whether moving the game to another host would help.
   - To undo the photo change: copy the originals back over `photos/` (`cp v4work/food-photos/food-*.jpg v4work/stadium-photos/stadium-*.jpg photos/`).
 - Hosting (2026-10-04, no game change): Omar's second `speed.html` run showed GitHub Pages at 7–42 KB/s, jsDelivr at 112–453 KB/s and Cloudflare at 2 MB/s, so he is setting up Cloudflare (Workers & Pages, connected to this repo). Added `wrangler.jsonc`: on each deploy it copies `index.html`, `speed.html`, `photos/` and `sounds/` into `dist/` (688 files, 119 MB, none over Cloudflare's 25 MB file limit) and serves that as a static site. `dist/` and `.wrangler/` are in `.gitignore`. GitHub Pages keeps working as before. Checked with `npx wrangler deploy --dry-run`.
+- 5.7 (2026-10-04): Omar saw "Sounds 0 / 5" in Status even though everything else was ready. There were two reasons:
+  - The sounds only started downloading after Download everything was pressed.
+  - Safari won't fully preload an `<audio>` until the user has clicked to play something, so its ready count never went up.
+  - Now `warmSound()` downloads each clip as a plain file with `fetch()`, which puts it in the browser cache that the game's audio then plays from. All five clips (about 0.5 MB) start as soon as Status is opened. The row shows "couldn't load" if one fails.
+  - Tested over http: 5 / 5 within a couple of seconds.
+  - To undo: put back the old `warmSound()` (described in the comment above it) and remove `SOUNDS.forEach(warmSound)` from the Status toggle handler.
