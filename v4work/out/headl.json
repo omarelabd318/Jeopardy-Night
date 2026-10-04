@@ -44,6 +44,46 @@
    [
     "Only one of these headlines is real. Which one?\nA) The Pyramids of Giza close for a year of restoration\nB) The Grand Egyptian Museum officially opens\nC) Tutankhamun's tomb moved to the New Administrative Capital",
     "B) The Grand Egyptian Museum officially opens (November 2025)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) France beat Argentina on penalties in the World Cup final\nB) Messi finally wins the World Cup with Argentina\nC) Brazil win their sixth World Cup in Qatar",
+    "B) Messi finally wins the World Cup with Argentina (2022)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Egypt reach the World Cup semi-finals\nB) Egypt chosen to host the 2034 World Cup\nC) Egypt qualify for the 2026 World Cup",
+    "C) Egypt qualify for the 2026 World Cup (they played in North America in 2026)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Dubai's Burj Khalifa opens as the world's tallest building\nB) Cairo Tower named the world's tallest tower\nC) Saudi Arabia's Jeddah Tower opens as the first 1 km building",
+    "A) Dubai's Burj Khalifa opens as the world's tallest building (2010)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) WHO declares phone addiction a pandemic\nB) FIFA moves the World Cup to 2023 because of COVID\nC) WHO declares COVID-19 a pandemic",
+    "C) WHO declares COVID-19 a pandemic (March 2020)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Paris Olympics moved to Cairo\nB) Tokyo Olympics postponed by a year\nC) Qatar World Cup moved to the summer",
+    "B) Tokyo Olympics postponed by a year (the 2020 Games were held in 2021)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) American cardinal becomes Pope Leo XIV\nB) Pope Francis resigns and moves back to Argentina\nC) A woman is elected pope for the first time",
+    "A) American cardinal becomes Pope Leo XIV (May 2025)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Brazil thrash Germany 7–1 at a World Cup\nB) Germany thrash Brazil 7–1 at a World Cup\nC) Argentina thrash Brazil 7–1 at a World Cup",
+    "B) Germany thrash Brazil 7–1 at a World Cup (2014 semi-final, in Brazil)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Zidane sent off for a headbutt in his last-ever match\nB) Zidane scores a hat-trick in his last-ever match\nC) Zidane retires at half-time of the World Cup final",
+    "A) Zidane sent off for a headbutt in his last-ever match (2006 World Cup final)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Neymar becomes the first man to score 100 goals for Brazil\nB) Mbappé scores in three World Cup finals\nC) Ronaldo becomes the first man to score at five World Cups",
+    "C) Ronaldo becomes the first man to score at five World Cups (2022)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Cleopatra's palace found under the Cairo Metro\nB) Lost city of Atlantis found off Greece\nC) Titanic wreck found nearly 4 km under the Atlantic",
+    "C) Titanic wreck found nearly 4 km under the Atlantic (1985)\n(others: A and B are made up)"
    ]
   ],
   "200": [
@@ -86,6 +126,46 @@
    [
     "Only one of these headlines is real. Which one?\nA) Google shuts down Search after 25 years\nB) ChatGPT reaches 100 million users in two months\nC) TikTok bans videos longer than 10 seconds",
     "B) ChatGPT reaches 100 million users in two months (2023)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Elon Musk launches his own Tesla into space, with a dummy at the wheel\nB) Jeff Bezos sends a camel into orbit\nC) SpaceX launches a McDonald's restaurant into space",
+    "A) Elon Musk launches his own Tesla into space, with a dummy at the wheel ('Starman', 2018)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Saudi Arabia lets fans vote for the national team coach\nB) Saudi Arabia lifts its ban on women driving\nC) Kuwait bans cars on Fridays",
+    "B) Saudi Arabia lifts its ban on women driving (2018)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Archaeologists find the Sphinx's missing nose in a Giza garden\nB) Howard Carter finds Tutankhamun's tomb almost untouched\nC) Archaeologists find Cleopatra's tomb under Alexandria's Corniche",
+    "B) Howard Carter finds Tutankhamun's tomb almost untouched (1922)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Leicester go a whole Premier League season unbeaten\nB) Manchester City win every Premier League match in a season\nC) Arsenal go a whole Premier League season unbeaten",
+    "C) Arsenal go a whole Premier League season unbeaten (2003–04, the 'Invincibles')\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Greece win Euro 2004 as huge outsiders\nB) Iceland win Euro 2016\nC) Wales win Euro 2016",
+    "A) Greece win Euro 2004 as huge outsiders (2004)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) The Cinnamon Challenge raises $50 million for asthma\nB) The Mannequin Challenge raises $100 million for museums\nC) The Ice Bucket Challenge raises over $100 million for ALS",
+    "C) The Ice Bucket Challenge raises over $100 million for ALS (2014)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Lamine Yamal wins the 2025 Ballon d'Or\nB) Ousmane Dembélé wins the 2025 Ballon d'Or\nC) Mohamed Salah wins the 2025 Ballon d'Or",
+    "B) Ousmane Dembélé wins the 2025 Ballon d'Or (September 2025)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) PSG win their first Champions League, thrashing Inter 5–0\nB) Arsenal win their first Champions League, beating Inter\nC) Newcastle win their first Champions League",
+    "A) PSG win their first Champions League, thrashing Inter 5–0 (2025)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Rihanna wears a dress made of bubble wrap to the Grammys\nB) Lady Gaga wears a dress made of raw meat to the VMAs\nC) Kanye West wears a suit made of $100 bills to the Met Gala",
+    "B) Lady Gaga wears a dress made of raw meat to the VMAs (2010)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Netflix's 'Squid Game' becomes its most-watched series ever\nB) Netflix buys Disney\nC) Netflix launches its own smartphone",
+    "A) Netflix's 'Squid Game' becomes its most-watched series ever (2021)\n(others: B and C are made up)"
    ]
   ],
   "300": [
@@ -128,6 +208,46 @@
    [
     "Only one of these headlines is real. Which one?\nA) Mo Salah statue unveiled in Sharm El Sheikh, and fans say it looks nothing like him\nB) Liverpool rename the Kop 'The Salah Stand'\nC) Egypt puts Salah's face on the new 200-pound note",
     "A) Mo Salah statue unveiled in Sharm El Sheikh, and fans say it looks nothing like him (2018)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Sudan win the Africa Cup of Nations\nB) Mauritania reach the Africa Cup of Nations final\nC) Zambia win the Africa Cup of Nations in Gabon, near where their 1993 team died in a plane crash",
+    "C) Zambia win the Africa Cup of Nations in Gabon, near where their 1993 team died in a plane crash (2012)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Egypt beat Brazil 4–3 at the Confederations Cup\nB) Egypt beat Spain 2–0 at the Confederations Cup\nC) Egypt beat world champions Italy 1–0 at the Confederations Cup",
+    "C) Egypt beat world champions Italy 1–0 at the Confederations Cup (2009 (Egypt lost 4–3 to Brazil, and it was the USA who beat Spain 2–0))\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) An Icelandic volcano grounds flights across Europe for days\nB) A sandstorm grounds every flight in the Middle East for a week\nC) Egypt closes its airspace for a solar eclipse",
+    "A) An Icelandic volcano grounds flights across Europe for days (Eyjafjallajökull, 2010)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Ronaldinho jailed in Brazil over unpaid parking fines\nB) Ronaldinho jailed in Paraguay for using a fake passport\nC) Kaká jailed in Italy for using a fake ID",
+    "B) Ronaldinho jailed in Paraguay for using a fake passport (2020)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) San Marino knock Italy out of Euro 2016\nB) Iceland knock England out of Euro 2016\nC) Faroe Islands knock Denmark out of Euro 2016",
+    "B) Iceland knock England out of Euro 2016 (2–1 in Nice)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Racing camel sells for €16 million in Dubai\nB) Racing snail sells for €160,000 in France\nC) Racing pigeon sells for €1.6 million",
+    "C) Racing pigeon sells for €1.6 million ('New Kim', 2020)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Messi leaves Barcelona for PSG in a tearful farewell\nB) Messi leaves Barcelona for Manchester City in a tearful farewell\nC) Messi leaves Barcelona for Juventus in a tearful farewell",
+    "A) Messi leaves Barcelona for PSG in a tearful farewell (2021)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Kylian Mbappé joins Liverpool for a world-record fee\nB) Kylian Mbappé retires from international football at 25\nC) Kylian Mbappé joins Real Madrid on a free transfer",
+    "C) Kylian Mbappé joins Real Madrid on a free transfer (2024)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) England beat Italy on penalties to win the Euros at Wembley\nB) Italy beat England on penalties to win the Euros at Wembley\nC) Denmark beat England on penalties to win the Euros at Wembley",
+    "B) Italy beat England on penalties to win the Euros at Wembley (Euro 2020, played in 2021)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Jamie Vardy scores in 11 Premier League games in a row\nB) Harry Kane scores in 15 Premier League games in a row\nC) Peter Crouch scores in 9 Premier League games in a row",
+    "A) Jamie Vardy scores in 11 Premier League games in a row (2015, a record)\n(others: B and C are made up)"
    ]
   ],
   "400": [
@@ -170,6 +290,46 @@
    [
     "Only one of these headlines is real. Which one?\nA) NASA loses a Mars rover after a typo in its password\nB) NASA loses a $125 million Mars orbiter over a mix-up between metric and imperial units\nC) European rocket explodes because someone forgot to charge its battery",
     "B) NASA loses a $125 million Mars orbiter over a mix-up between metric and imperial units (Mars Climate Orbiter, 1999)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) A goat crashes a live BBC weather report\nB) Two llamas on the run in Arizona become a live-streamed sensation\nC) A camel rides the Dubai Metro for three stops",
+    "B) Two llamas on the run in Arizona become a live-streamed sensation (2015)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) 'Boaty McBoatface' wins a public vote to name a UK research ship\nB) 'Planey McPlaneface' chosen as the name of a British Airways jet\nC) 'Tubey McTubeface' chosen as the name of a new London Tube line",
+    "A) 'Boaty McBoatface' wins a public vote to name a UK research ship (2016 (the ship became the RRS Sir David Attenborough; a submarine got the name))\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Man pays for his whole wedding with one bitcoin\nB) Man swaps a bitcoin for a ful sandwich in Cairo\nC) Man buys two pizzas for 10,000 bitcoins",
+    "C) Man buys two pizzas for 10,000 bitcoins (2010, now 'Bitcoin Pizza Day')\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) A Dutch town moves its centre 3 km away from the sea\nB) A Swiss town moves its centre 3 km away from a glacier\nC) A Swedish town moves its centre 3 km to make room for an iron mine",
+    "C) A Swedish town moves its centre 3 km to make room for an iron mine (Kiruna; its church was moved in 2025)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Turkey asks the UN to call it 'Türkiye' in English\nB) Egypt asks the UN to call it 'Misr' in English\nC) Greece asks the UN to call it 'Hellas' in English",
+    "A) Turkey asks the UN to call it 'Türkiye' in English (2022)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Google Search goes down worldwide for a full day\nB) Facebook, Instagram and WhatsApp go down worldwide for about six hours\nC) YouTube deletes every video uploaded before 2010",
+    "B) Facebook, Instagram and WhatsApp go down worldwide for about six hours (October 2021)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) A dog called Rex holds the title 'Chief Barker' at the White House\nB) A cat called Larry holds the title 'Chief Mouser' at 10 Downing Street\nC) A parrot called Polly holds the title 'Chief Speaker' at the Élysée",
+    "B) A cat called Larry holds the title 'Chief Mouser' at 10 Downing Street (since 2011)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) German zoo names a giraffe its official mayor\nB) Swiss zoo lets a giraffe vote in a referendum\nC) Danish zoo puts down a healthy young giraffe and dissects it in front of visitors",
+    "C) Danish zoo puts down a healthy young giraffe and dissects it in front of visitors (Marius, Copenhagen Zoo, 2014)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Queen Elizabeth 'skydives' into the London Olympics opening with James Bond\nB) King Charles 'skydives' into his coronation with James Bond\nC) Prince William 'skydives' into Wembley before the FA Cup final",
+    "A) Queen Elizabeth 'skydives' into the London Olympics opening with James Bond (2012 (a stunt double did the jump))\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Disney says Goofy is not a dog\nB) Nintendo says Yoshi is not a dinosaur\nC) Sanrio says Hello Kitty is not a cat",
+    "C) Sanrio says Hello Kitty is not a cat (2014; Sanrio said she is a little girl)\n(others: A and B are made up)"
    ]
   ],
   "500": [
@@ -212,6 +372,46 @@
    [
     "Only one of these headlines is real. Which one?\nA) Japanese man earns a living by renting himself out to do nothing\nB) Dutch man rents himself out to finish other people's crosswords\nC) Canadian man rents himself out to laugh at your jokes, $5 a joke",
     "A) Japanese man earns a living by renting himself out to do nothing (Shoji Morimoto)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) KFC opens a restaurant at a Moon base\nB) Pizza Hut delivers a pizza to the International Space Station\nC) Domino's delivers a pizza to the summit of Everest",
+    "B) Pizza Hut delivers a pizza to the International Space Station (2001)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Magnus Carlsen quits a tournament after being told to change out of his jeans\nB) Magnus Carlsen banned for wearing sunglasses at the board\nC) Magnus Carlsen fined for eating during a game",
+    "A) Magnus Carlsen quits a tournament after being told to change out of his jeans (World Rapid Championship, December 2024)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Scientists clone a living woolly mammoth\nB) Scientists announce gene-edited 'dire wolf' pups\nC) Scientists bring back the dodo from DNA",
+    "B) Scientists announce gene-edited 'dire wolf' pups (Colossal Biosciences, 2025)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Hackers steal about $600 million in crypto, then give it back\nB) A hacker sells Elon Musk's X account for $1\nC) A bank lets a student keep $1 billion it paid her by mistake",
+    "A) Hackers steal about $600 million in crypto, then give it back (Poly Network, 2021)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) The Danish queen reveals she secretly drove Copenhagen buses for 10 years\nB) The Belgian king reveals he secretly worked as a chocolatier for 15 years\nC) The Dutch king reveals he secretly flew KLM airliners as a co-pilot for 21 years",
+    "C) The Dutch king reveals he secretly flew KLM airliners as a co-pilot for 21 years (King Willem-Alexander, 2017)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) A city in Scotland has an official dragon-hunter on its payroll\nB) A city in Norway has an official troll on its payroll\nC) A city in New Zealand has an official wizard on its payroll",
+    "C) A city in New Zealand has an official wizard on its payroll (the Wizard of Christchurch, until 2021)\n(others: A and B are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Italian villages sell empty houses for €1 to bring in new residents\nB) Spanish villages pay people €100,000 to marry a local\nC) Greek islands give free houses to anyone who can swim around them",
+    "A) Italian villages sell empty houses for €1 to bring in new residents (Sambuca, Mussomeli and others)\n(others: B and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Italy's president makes pineapple on pizza illegal\nB) Iceland's president jokes he'd ban pineapple on pizza if he could\nC) Hawaii's governor bans pizza without pineapple",
+    "B) Iceland's president jokes he'd ban pineapple on pizza if he could (Guðni Jóhannesson, 2017)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) Rubber ducks from a 1992 spill block the Suez Canal\nB) Lego from a 1997 shipping spill still washes up on Cornish beaches\nC) Barbie dolls from a 2001 spill wash up in Alexandria every summer",
+    "B) Lego from a 1997 shipping spill still washes up on Cornish beaches (the Tokio Express spill)\n(others: A and C are made up)"
+   ],
+   [
+    "Only one of these headlines is real. Which one?\nA) German company fines a worker for sneezing too loudly\nB) Swiss bank sacks a worker for arriving one minute early\nC) Japanese city apologises because a worker left for lunch three minutes early",
+    "C) Japanese city apologises because a worker left for lunch three minutes early (Kobe, 2018)\n(others: A and B are made up)"
    ]
   ]
  }

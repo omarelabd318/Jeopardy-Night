@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.93. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.94. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -315,3 +315,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
     - Every question still names its currency (Egyptian pounds, piastres, US dollars or cents, euros, British pounds).
   - To remove Currencies: delete `v4work/out/curr.json` and "curr" from `CAT_GROUPS`.
 - 4.93 (2026-10-04): Omar asked to rename "The Price Is Right" to "Price Is Right" (the `name` in `v4work/out/price.json`). Nothing else changed.
+- 4.94 (2026-10-04): Omar said "yes top up" to bring the small categories up to 20 clues per value. Egyptian Memes (+60), Ramadan Series (+50), Real Headline (+50), Shirt Numbers (+40), Managers (+40), Video Games (+40), Pixar & DreamWorks (+40) and Currencies (+40) now have 100 clues each, 20 per value. Only `v4work/out/<id>.json` changed; no clue was removed.
+  - Real Headline's real answer is spread across A, B and C.
+  - Ramadan facts were checked against Arabic Wikipedia; a few Ramadan clues were reworded so they don't repeat Egyptian Cinema or Egyptian Memes answers.
+  - To undo: `git checkout ab75f68 -- v4work/out/` (the 4.93 commit) and rebuild.
