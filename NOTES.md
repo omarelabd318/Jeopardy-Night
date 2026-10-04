@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.79. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 95 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.80. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 95 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -257,3 +257,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Real Headline** (`headl`, Party Games, after Closest Wins): 50 clues. Three headlines, only one real. The answer gives the real one in bold with its year; the other two are made up. Real stories run from the Ever Given and the Golden Parade (100) to the Whopper Detour and the Swedish Number (500). The real one's letter changes from clue to clue.
 
   The setup screen now offers 95 categories. To remove any of them: delete its `v4work/out/<id>.json` (or its entry in the 4.79 line of `src/extra.js`) and its id in `CAT_GROUPS`.
+- 4.80 (2026-10-04): Omar asked to put all the Egypt categories in Egypt & Arab World. `CAT_GROUPS` in `src/app.js` moves seven of them there from other groups: Egyptian Cinema & Ramadan Series, Badly Explained Plots: Egypt Edition, Movie & TV Quotes: Egypt Edition, Egyptian Football, Act It Out: Egypt Edition, Emoji Movies & TV: Egypt Edition and Emoji Sentences: Egypt Edition. The group now has 14 categories. Clues are unchanged, and Football mode still draws Egyptian Football from its own `FOOTBALL` list. To undo: the comment on `CAT_GROUPS` says where each one was before.
