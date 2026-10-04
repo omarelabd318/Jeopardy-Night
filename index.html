@@ -1,9 +1,10 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Jeopardy Night</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<!-- 5.1: the three CDN scripts load with async, so a slow CDN no longer holds up the page (they used to block it). QR codes, photo export/import and the world map are only needed later. To undo: remove "async" (and the onload) from these three tags, and in src/app.js go back to calling the initWorld() body directly. -->
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>window.echarts = { registerMap: function(name, geo){ if(name === "world") window.__WORLD_JSON = geo; } };</script>
-<script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+<script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap">
 <style>
@@ -355,7 +356,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.0</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.1</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -365,7 +366,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.0</div>
+      <div class="eyebrow verlabel">v5.1</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -612,7 +613,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.0`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.1`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1438,8 +1439,10 @@ $("#clue").addEventListener("input", e => {
 });
 document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(!$("#newsBox").hidden){ closeNews(); return; } if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
 
-try{ if(window.__WORLD_JSON){ WORLD.feats = decodeWorld(window.__WORLD_JSON);
-  LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; }
+/* 5.1: world.js now loads async, so this runs whenever it arrives (at once if it is already here). */
+function initWorld(){ try{ if(window.__WORLD_JSON && !WORLD.feats){ WORLD.feats = decodeWorld(window.__WORLD_JSON);
+  LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; } }
+if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");

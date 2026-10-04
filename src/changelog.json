@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.1",
+  "date": "2026-10-04",
+  "items": [
+   "The game opens much faster on a slow connection: it no longer waits for the map, QR code and photo-export tools before showing the title screen."
+  ]
+ },
+ {
   "v": "5.0",
   "date": "2026-10-04",
   "items": [

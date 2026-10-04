@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.0`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.1`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -971,8 +971,10 @@ $("#clue").addEventListener("input", e => {
 });
 document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(!$("#newsBox").hidden){ closeNews(); return; } if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
 
-try{ if(window.__WORLD_JSON){ WORLD.feats = decodeWorld(window.__WORLD_JSON);
-  LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; }
+/* 5.1: world.js now loads async, so this runs whenever it arrives (at once if it is already here). */
+function initWorld(){ try{ if(window.__WORLD_JSON && !WORLD.feats){ WORLD.feats = decodeWorld(window.__WORLD_JSON);
+  LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; } }
+if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
