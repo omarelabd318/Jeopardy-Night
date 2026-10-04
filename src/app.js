@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.3`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.4`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -804,7 +804,7 @@ function packSrc(ref, cur){
   if(!ref.startsWith("pack:")) return ref;
   const [, , key] = ref.split(":"), got = (window.__fp || {})[key];
   if(got) return got;
-  if(DIRECT[key] === undefined) warmRef(ref);
+  if(DIRECT[key] === undefined || DIRECT[key] === "queued"){ if(DIRECT[key] === "queued") delete DIRECT[key]; warmRef(ref, true); }
   const d = DIRECT[key]; if(d && d.complete && d.naturalWidth) return d.src;
   return BLANK;  // showPack() swaps it in when the single photo or its bundle arrives
 }
@@ -819,12 +819,22 @@ const PICKS = {}, WARM = {}, DIRECT = {};
 function imgRefFor(cat,lvl,idx){ const c = catById(cat); if(!c) return null; const e = pool(cat,lvl)[idx]; if(!e) return null;
   if(c.type === "photo") return photos[norm(e[0])] || null;
   if(c.type === "text" && typeof e[2] === "string") return e[2]; return null; }
-function warmImg(src){ if(!src || WARM[src] || src.startsWith("blob:") || src.startsWith("data:")) return; const im = new Image(); im.decoding = "async"; WARM[src] = im; im.src = src; }
-function warmRef(ref){ if(!ref) return;
+/* 5.4: background downloads go one or two at a time, at low priority, and pause while a clue is open, so the photo you
+   are looking at never has to share the connection with 29 others (5.3 started them all at once). */
+const WQ = []; let wBusy = 0;
+function wPump(){ while(wBusy < 2 && WQ.length && !S.cur){ const job = WQ.shift(); wBusy++; job(() => { wBusy--; wPump(); }); } }
+function wLoad(src, onload, onerror){ const im = new Image(); im.decoding = "async"; try{ im.fetchPriority = "low"; }catch(e){}
+  return new Promise(done => { im.onload = () => { done(); onload && onload(im); }; im.onerror = () => { done(); onerror && onerror(im); }; im.src = src; }).then(() => im); }
+function warmImg(src){ if(!src || WARM[src] || src.startsWith("blob:") || src.startsWith("data:")) return; WARM[src] = true;
+  WQ.push(next => wLoad(src).then(im => { WARM[src] = im; next(); })); wPump(); }
+function warmRef(ref, now){ if(!ref) return;
   if(!ref.startsWith("pack:")){ warmImg(ref); return; }
-  const [, pack, key] = ref.split(":"); if((window.__fp || {})[key] || DIRECT[key]) return;
-  const im = new Image(); DIRECT[key] = im; im.onload = () => showPack(key, im.src);
-  im.onerror = () => { DIRECT[key] = null; loadPack(pack).then(() => showPack(key, (window.__fp || {})[key])); }; im.src = `photos/${key}.jpg`; }
+  const [, pack, key] = ref.split(":"); if((window.__fp || {})[key] || DIRECT[key] !== undefined) return;
+  DIRECT[key] = "queued";
+  const go = next => { if(!now && DIRECT[key] !== "queued"){ next(); return; } const im = new Image(); DIRECT[key] = im; if(now) try{ im.fetchPriority = "high"; }catch(e){}
+    im.onload = () => { showPack(key, im.src); next(); };
+    im.onerror = () => { DIRECT[key] = null; next(); loadPack(pack).then(() => showPack(key, (window.__fp || {})[key])); }; im.src = `photos/${key}.jpg`; };
+  if(now) go(() => {}); else { WQ.push(go); wPump(); } }
 function prepick(cat,lvl){ const k = `${cat}-${lvl}`; if(PICKS[k] !== undefined && !S.used.has(`${k}-${PICKS[k]}`)) return;
   const n = pool(cat,lvl).length; if(!n) return; PICKS[k] = pickIdx(cat,lvl); warmRef(imgRefFor(cat,lvl,PICKS[k])); }
 function takePick(cat,lvl,exclude){ const k = `${cat}-${lvl}`, i = PICKS[k]; delete PICKS[k];
@@ -845,14 +855,14 @@ function renderClue(){
     /* Guess the Logo: the image starts blurred (p.blur = blur radius as a share of the image width) and the host can step it down */
     if(p.blur && c.blurIdx !== c.idx){ c.blurIdx = c.idx; c.blur = p.blur; }
     const b = p.blur && !c.revealed ? c.blur : 0;
-    media = `<div class="zoom${p.blur ? " logo" : ""}"><img src="${esc(packSrc(p.img, c))}" alt="${p.blur ? "Blurred logo" : "Photo clue"}" style="object-fit:contain${b ? `;filter:blur(${(b*100).toFixed(2)}cqw)` : ""}"></div>${b ? `<div class="row"><button class="btn small" data-act="unblur">Less blur</button></div>` : ""}`;
+    media = `<div class="zoom${p.blur ? " logo" : ""}"><img fetchpriority="high" src="${esc(packSrc(p.img, c))}" alt="${p.blur ? "Blurred logo" : "Photo clue"}" style="object-fit:contain${b ? `;filter:blur(${(b*100).toFixed(2)}cqw)` : ""}"></div>${b ? `<div class="row"><button class="btn small" data-act="unblur">Less blur</button></div>` : ""}`;
   }
   if(p.emoji) media = `<div class="emoji" role="img" aria-label="Emoji clue">${esc(p.emoji)}</div>`;
   if(c.type==="photo"){
     const url = photos[norm(p.a)];
     media = `<div class="zoom">${url
       ? (() => { const f = focus[norm(p.a)] || {x:c.ox, y:c.oy}; const full = c.revealed || c.zoom <= 1.01;
-          return `<img src="${url}" alt="Zoomed photo to identify" style="object-fit:${full?"contain":"cover"};object-position:${full ? "50% 50%" : f.x+"% "+f.y+"%"};transform-origin:${f.x}% ${f.y}%;transform:scale(${full?1:c.zoom})">`; })()
+          return `<img fetchpriority="high" src="${url}" alt="Zoomed photo to identify" style="object-fit:${full?"contain":"cover"};object-position:${full ? "50% 50%" : f.x+"% "+f.y+"%"};transform-origin:${f.x}% ${f.y}%;transform:scale(${full?1:c.zoom})">`; })()
       : `<div class="empty"><div>No photo loaded for this clue.</div><div class="row" style="justify-content:center"><label class="btn small" for="one">Add photo</label><a class="btn small" href="https://en.wikipedia.org/wiki/${encodeURIComponent(p.wiki)}" target="_blank" rel="noopener">Find one on Wikipedia</a></div><div class="note">Host only: answer is hidden until you tap Reveal.</div></div>`}
       </div><input id="one" type="file" accept="image/*" hidden>
       <div class="row">${url && !c.revealed ? `<button class="btn small" data-act="zoomout">Zoom out</button>` : ""}</div>`;
@@ -936,7 +946,7 @@ function tick(){
   if(i) i.style.width = (100*c.left/c.secs)+"%"; if(t) t.textContent = Math.ceil(c.left);
 }
 function stopTimer(){ if(timer){ clearInterval(timer); timer = null; } }
-function closeCard(){ stopTimer(); $("#card").hidden = true; S.cur = null; }
+function closeCard(){ stopTimer(); $("#card").hidden = true; S.cur = null; wPump(); }
 
 $("#clue").addEventListener("click", e => {
   const c = S.cur; if(!c) return;
