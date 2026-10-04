@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.6",
+  "date": "2026-10-04",
+  "items": [
+   "Guess the Food and Stadium photos are about a third of their old size, so they load about three times faster."
+  ]
+ },
+ {
   "v": "5.5",
   "date": "2026-10-04",
   "items": [

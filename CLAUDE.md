@@ -18,7 +18,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `v4work/*.json`: lists of photo clues (`new-photos.json`, `stadium-photos.json`, `food-photos.json`) and zoom spots (`new-photo-spots.json`).
 - `v4work/BRIEF.md`: the clue-writing brief, covering audience, difficulty per value and the entry format for each category type. Read it before writing clues.
 - `v4work/form/`, `form-sources.txt`, `form-gen.js`: Formations sources and generators.
-- `photos/`: `<key>.jpg` photos for the photo rounds, plus `food-*.js` bundles. Each `photos/food-*.jpg` is kept because the build only adds a food clue when its jpg exists. The game itself loads the bundles.
+- `photos/`: `<key>.jpg` photos for the photo rounds, plus `food-*.js` and `logo-*.js` bundles. Since 5.3 the game loads each `photos/food-*.jpg` directly and only uses a bundle when the single file is missing. Since 5.6 the food and `stadium-*` jpgs are web-sized copies (1024 px, quality 76) of the originals in `v4work/food-photos/` and `v4work/stadium-photos/`; re-make them from there if a photo changes.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.
 - `NOTES.md`: project notes, the full version history and how to undo each experiment.

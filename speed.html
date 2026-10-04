@@ -16,7 +16,7 @@ td.n{text-align:right}
 #sum{margin-top:18px;font-weight:700;white-space:pre-line}
 </style></head><body><main>
 <h1>Speed test</h1>
-<p>Downloads a few of the game's files from this site (and one from a CDN to compare) and shows how long each took. Send Claude a screenshot of the result.</p>
+<p>Downloads a few of the game's files from this site (and the same kind of files from other servers to compare) and shows how long each took. Send Claude a screenshot of the result.</p>
 <button id="go">Run test</button>
 <table><thead><tr><th>File</th><th class="n">Size</th><th class="n">Time</th><th class="n">Speed</th></tr></thead><tbody id="rows"></tbody></table>
 <div id="sum"></div>
@@ -29,6 +29,9 @@ const FILES = [
   ["A Footballers photo", "photos/harrykane.jpg"],
   ["A Guess the Logo bundle", "photos/logo-100.js"],
   ["CDN file, for comparison (cdnjs)", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"],
+  ["Bigger CDN file, for comparison (cdnjs, Cloudflare)", "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"],
+  ["The game page from jsDelivr (a GitHub mirror)", "https://cdn.jsdelivr.net/gh/omarelabd318/Jeopardy-Night@main/index.html"],
+  ["The same Food photo from jsDelivr", "https://cdn.jsdelivr.net/gh/omarelabd318/Jeopardy-Night@main/photos/food-pizza.jpg"],
   ["Google Fonts list, for comparison", "https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap"]
 ];
 const kb = b => b >= 1e6 ? (b/1e6).toFixed(1) + " MB" : Math.round(b/1e3) + " KB";
@@ -47,7 +50,8 @@ document.getElementById("go").onclick = async () => {
   for(const [label, url] of FILES){ const tr = document.createElement("tr"); tr.innerHTML = `<td>${label}</td><td colspan="3">…</td>`; rows.appendChild(tr); res.push(await one(label, url, tr)); }
   const site = res.slice(0,5).filter(Boolean), b = site.reduce((a,x)=>a+x.bytes,0), ms = site.reduce((a,x)=>a+x.ms,0);
   const c = navigator.connection;
-  sum.textContent = `This site: ${kb(b/(ms/1000))}/s on average.` + (c && c.downlink ? `\nThe browser thinks your connection is about ${c.downlink} Mbit/s.` : "") + `\nTested ${new Date().toLocaleString()} at ${location.host}.`;
+  const sp = i => res[i] ? res[i].bytes/(res[i].ms/1000) : 0;
+  sum.textContent = `This site: ${kb(b/(ms/1000))}/s on average.` + `\nCloudflare (bigger cdnjs file): ${kb(sp(6))}/s.` + `\njsDelivr: ${kb((sp(7)+sp(8))/2)}/s on average.` + (c && c.downlink ? `\nThe browser thinks your connection is about ${c.downlink} Mbit/s.` : "") + `\nTested ${new Date().toLocaleString()} at ${location.host}.`;
 };
 </script>
 </body></html>
