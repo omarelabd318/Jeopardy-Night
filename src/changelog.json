@@ -3,6 +3,13 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.100",
+  "date": "2026-10-04",
+  "items": [
+   "Football mode: the scoring buttons under each answer are now solid navy, with the +100 in green."
+  ]
+ },
+ {
   "v": "4.99",
   "date": "2026-10-04",
   "items": [

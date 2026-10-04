@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.99. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.100. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -329,3 +329,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Guess the Food: 20 more photos (4 per value), from pizza and mango up to breadfruit, ackee, sapodilla and salak. All from Wikimedia Commons, with sources and licences in `v4work/food-photos/STATUS.md`. Each one is in `v4work/food-photos/`, with a matching `photos/<key>.jpg` so the build includes it. `node mkpacks.js` was re-run, and each `photos/food-*.js` bundle is now 4–5 MB.
   - Swapped while picking photos: kofta (the Commons photo was Persian koofteh) became spring rolls, and tabbouleh became fattoush (no usable Commons photo).
   - To undo: `git checkout eb5b7a8 -- v4work/ photos/` and rebuild.
+- 4.100 (2026-10-04): Omar asked for the Football mode scoring buttons (Team name · +100 · +50 · −100) to be solid navy, with the + number in green and the team names in a darker navy. Five `body.football .award` rules in `src/head.html`, after the `.pwb` rule:
+  - the box is navy #0F2557 and the team-name cell is a darker navy #071433 with white text (navy text on navy wouldn't be readable);
+  - +100 is green #3EE06A, +50 stays yellow (from 4.61), and −100 is a brighter red #FF6B5E so it shows on navy;
+  - a picked button turns a lighter blue #2A4A9E.
+  - To undo: delete those five lines.
+  - Kept at 4.100 rather than 5.0 until Omar names the 5.x section.
