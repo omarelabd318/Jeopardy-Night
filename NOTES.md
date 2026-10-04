@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.92. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.93. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -314,3 +314,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
     - World: console and Apple launch prices (Switch, Switch 2, Xbox, Wii, N64, iPod, iPad, AirPods, Apple Watch, Macintosh, Vision Pro), ChatGPT Plus and Disney+, the 1955 McDonald's hamburger, record sales (Beeple NFT, Mercedes 300 SLR, Pikachu Illustrator), acquisitions (YouTube, Lucasfilm, Activision), and transfer fees (Salah, Isak, Rice, Grealish, Pogba, João Félix, Caicedo).
     - Every question still names its currency (Egyptian pounds, piastres, US dollars or cents, euros, British pounds).
   - To remove Currencies: delete `v4work/out/curr.json` and "curr" from `CAT_GROUPS`.
+- 4.93 (2026-10-04): Omar asked to rename "The Price Is Right" to "Price Is Right" (the `name` in `v4work/out/price.json`). Nothing else changed.
