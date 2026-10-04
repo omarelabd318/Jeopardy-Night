@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.86. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.87. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -283,3 +283,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Tested: Siuuu starts 5.5 s into the 6.0 s Messi clip and 9.1 s into the 9.6 s no-fair clip.
   - `showWinner()` plays the intro only in Football mode. Normal mode plays the Siuuu alone, as before 4.85.
   - To undo: set `END_OVERLAP` to 0 for no overlap. Re-cutting the files from `v4work/sounds-src/` gives the old fades back. To bring the intros back to normal mode, call `playEnd()` in both modes in `showWinner()`.
+- 4.87 (2026-10-04): Omar changed his mind about normal mode. Its winner screen now plays the "Referee, no fair" clip (`NORMAL_INTRO`) and then the Siuuu, with the same 0.5 s overlap, every game. Football mode still alternates the Messi and "no fair" intros. Normal mode doesn't move Football mode's turn, so Football's alternation isn't affected. To undo (Siuuu alone in normal mode): in `showWinner()`, call `playSiu()` when not in Football mode, as in 4.86.
