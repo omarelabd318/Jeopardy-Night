@@ -271,3 +271,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Both original clips are kept in `v4work/sounds-src/` (`after-review-original.mp3`, `que-miras-original.mp3`).
   - The cut is at exactly 6 s as asked. The speech runs past that point; the next pause is at about 6.6–6.8 s, if the cut sounds clipped.
   - To remove: delete the 4.84 block and the `playReview()` call in `src/app.js`, and `sounds/after-review.mp3`.
+- 4.84 (continued): Omar sent a third clip, an Egypt player shouting "Referee, no fair", to be used from second 2 to second 11. `sounds/no-fair.mp3` is that 9 s cut, with 0.1 s fades and the level lowered 5.5 dB to match the other clips. The original is in `v4work/sounds-src/no-fair-original.mp3`. It isn't played anywhere yet; Omar will say where it goes.
