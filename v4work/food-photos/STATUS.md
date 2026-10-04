@@ -1,6 +1,6 @@
 # Guess the Food photos: status
 
-80 of 80 saved as `<key>.jpg` (landscape JPEG, 1600px wide). All picked and checked by eye from contact sheets; sources are Wikimedia Commons (licences below).
+100 of 100 saved as `<key>.jpg` (landscape JPEG, 1600px wide). All picked and checked by eye from contact sheets; sources are Wikimedia Commons (licences below).
 
 ## Doubtful or edited
 
@@ -14,6 +14,8 @@
 - **food-ceviche**: top edge trimmed to drop a small label.
 - **food-salsify**: black and white salsify roots on a board; hard to tell from other roots, as expected at 500.
 - Cut open as asked: dragon fruit, kiwano, mangosteen, pomegranate, durian, plus kiwi, avocado, persimmon, tamarillo, feijoa, cherimoya, kumquat, Jerusalem artichoke.
+
+- **4.99 batch (20 more)**: food-corn padded on white (cut-out photo); food-ratatouille padded with a blurred copy of itself (portrait); food-kimchi is a six-bowl collage; food-salak has a small scale bar; food-breadfruit and food-fig padded to landscape.
 
 ## Sources
 
@@ -99,3 +101,23 @@
 | food-chayote | [Chayote from Kattappana, Kerala.jpg](https://commons.wikimedia.org/wiki/File:Chayote_from_Kattappana,_Kerala.jpg) | CC BY-SA 4.0 |
 | food-salsify | [Schwarzwurzel Haferwurzel.jpg](https://commons.wikimedia.org/wiki/File:Schwarzwurzel_Haferwurzel.jpg) | CC BY-SA 4.0 |
 | food-galangal | [Galangal (562251733).jpg](https://commons.wikimedia.org/wiki/File:Galangal_(562251733).jpg) | CC BY 2.0 |
+| food-pizza | [Pizza-3007395.jpg](https://commons.wikimedia.org/wiki/File:Pizza-3007395.jpg) | Pixabay licence |
+| food-fries | [French Fries.JPG](https://commons.wikimedia.org/wiki/File:French_Fries.JPG) | Pixabay licence |
+| food-strawberry | [Garden strawberry (Fragaria × ananassa) single2.jpg](https://commons.wikimedia.org/wiki/File:Garden_strawberry_(Fragaria_×_ananassa)_single2.jpg) | CC BY-SA 4.0 |
+| food-corn | [Corn on the cob (Clovis, Ca 2022).png](https://commons.wikimedia.org/wiki/File:Corn_on_the_cob_(Clovis,_Ca_2022).png) | CC BY-SA 4.0 |
+| food-springroll | [Spring Rolls (3357696061).jpg](https://commons.wikimedia.org/wiki/File:Spring_Rolls_(3357696061).jpg) | CC BY-SA 2.0 |
+| food-burrito | [Burrito.JPG](https://commons.wikimedia.org/wiki/File:Burrito.JPG) | Pixabay licence |
+| food-waffle | [Waffles with Strawberries.jpg](https://commons.wikimedia.org/wiki/File:Waffles_with_Strawberries.jpg) | CC BY 2.0 |
+| food-mango | [Mangos - single and halved.jpg](https://commons.wikimedia.org/wiki/File:Mangos_-_single_and_halved.jpg) | CC BY-SA 4.0 |
+| food-fattoush | [Fattoush mixed-salad.jpg](https://commons.wikimedia.org/wiki/File:Fattoush_mixed-salad.jpg) | CC BY-SA 3.0 / GFDL |
+| food-pierogi | [Pierogi z masłem - 2023.03.31.jpg](https://commons.wikimedia.org/wiki/File:Pierogi_z_masłem_-_2023.03.31.jpg) | CC BY-SA 4.0 |
+| food-fig | [Fig (Ficus carica) fruit halved.jpg](https://commons.wikimedia.org/wiki/File:Fig_(Ficus_carica)_fruit_halved.jpg) | CC BY-SA 4.0 |
+| food-quiche | [Quiche.jpg](https://commons.wikimedia.org/wiki/File:Quiche.jpg) | CC0 |
+| food-passionfruit | [Passionfruit and cross section.jpg](https://commons.wikimedia.org/wiki/File:Passionfruit_and_cross_section.jpg) | GFDL 1.2 (or CC BY-NC 3.0) |
+| food-ratatouille | [Ratatouille home cooked.jpg](https://commons.wikimedia.org/wiki/File:Ratatouille_home_cooked.jpg) | CC0 |
+| food-kimchi | [Various kimchi.jpg](https://commons.wikimedia.org/wiki/File:Various_kimchi.jpg) | CC BY-SA 2.0 KR |
+| food-borscht | [Bowl of Ukrainian Borscht.jpg](https://commons.wikimedia.org/wiki/File:Bowl_of_Ukrainian_Borscht.jpg) | Public domain |
+| food-breadfruit | [Artocarpus altilis (fruit).jpg](https://commons.wikimedia.org/wiki/File:Artocarpus_altilis_(fruit).jpg) | CC BY-SA 3.0 |
+| food-ackee | [Ackee 001.jpg](https://commons.wikimedia.org/wiki/File:Ackee_001.jpg) | GFDL / CC BY-SA 3.0 |
+| food-sapodilla | [സപ്പോട്ട.jpg](https://commons.wikimedia.org/wiki/File:സപ്പോട്ട.jpg) | CC BY-SA 3.0 / GFDL |
+| food-salak | [Salak (Salacca zalacca), 2015-05-17.jpg](https://commons.wikimedia.org/wiki/File:Salak_(Salacca_zalacca),_2015-05-17.jpg) | CC BY-SA 4.0 |

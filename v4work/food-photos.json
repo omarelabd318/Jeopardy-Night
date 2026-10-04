@@ -478,5 +478,125 @@
   "value": 500,
   "name": "Galangal",
   "wiki": "Galangal"
+ },
+ {
+  "key": "food-pizza",
+  "value": 100,
+  "name": "Pizza",
+  "wiki": "Pizza"
+ },
+ {
+  "key": "food-fries",
+  "value": 100,
+  "name": "French fries",
+  "wiki": "French fries"
+ },
+ {
+  "key": "food-strawberry",
+  "value": 100,
+  "name": "Strawberry",
+  "wiki": "Strawberry"
+ },
+ {
+  "key": "food-corn",
+  "value": 100,
+  "name": "Corn on the cob",
+  "wiki": "Corn on the cob"
+ },
+ {
+  "key": "food-springroll",
+  "value": 200,
+  "name": "Spring rolls",
+  "wiki": "Spring roll"
+ },
+ {
+  "key": "food-burrito",
+  "value": 200,
+  "name": "Burrito",
+  "wiki": "Burrito"
+ },
+ {
+  "key": "food-waffle",
+  "value": 200,
+  "name": "Waffles",
+  "wiki": "Waffle"
+ },
+ {
+  "key": "food-mango",
+  "value": 200,
+  "name": "Mango",
+  "wiki": "Mango"
+ },
+ {
+  "key": "food-fattoush",
+  "value": 300,
+  "name": "Fattoush",
+  "wiki": "Fattoush"
+ },
+ {
+  "key": "food-pierogi",
+  "value": 300,
+  "name": "Pierogi",
+  "wiki": "Pierogi"
+ },
+ {
+  "key": "food-fig",
+  "value": 300,
+  "name": "Fig",
+  "wiki": "Common fig"
+ },
+ {
+  "key": "food-quiche",
+  "value": 300,
+  "name": "Quiche",
+  "wiki": "Quiche"
+ },
+ {
+  "key": "food-passionfruit",
+  "value": 400,
+  "name": "Passion fruit",
+  "wiki": "Passion fruit (fruit)"
+ },
+ {
+  "key": "food-ratatouille",
+  "value": 400,
+  "name": "Ratatouille",
+  "wiki": "Ratatouille"
+ },
+ {
+  "key": "food-kimchi",
+  "value": 400,
+  "name": "Kimchi",
+  "wiki": "Kimchi"
+ },
+ {
+  "key": "food-borscht",
+  "value": 400,
+  "name": "Borscht",
+  "wiki": "Borscht"
+ },
+ {
+  "key": "food-breadfruit",
+  "value": 500,
+  "name": "Breadfruit",
+  "wiki": "Breadfruit"
+ },
+ {
+  "key": "food-ackee",
+  "value": 500,
+  "name": "Ackee",
+  "wiki": "Ackee"
+ },
+ {
+  "key": "food-sapodilla",
+  "value": 500,
+  "name": "Sapodilla (chikoo)",
+  "wiki": "Manilkara zapota"
+ },
+ {
+  "key": "food-salak",
+  "value": 500,
+  "name": "Salak (snake fruit)",
+  "wiki": "Salak"
  }
 ]

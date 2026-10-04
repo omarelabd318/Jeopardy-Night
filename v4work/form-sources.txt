@@ -91,3 +91,10 @@
 500 | Leeds United, 2001 (Champions League semi-final 2nd leg v Valencia) | https://www.11v11.com/matches/valencia-v-leeds-united-08-may-2001-7086/ ; https://www.besoccer.com/match/valencia-cf/leeds-united-afc/200125621/lineups
 500 | Deportivo La Coruña, 2004 (Champions League quarter-final 2nd leg v AC Milan, won 4-0) | https://imortaisdofutebol.com/deportivo-la-coruna-4x0-milan-2004/ ; https://www.skysports.com/football/deportivo-la-coruna-vs-ac-milan/teams/47528
 500 | Al Ahly, 2020 (CAF Champions League final v Zamalek, played Nov 2020) | https://english.ahram.org.eg/NewsContent/6/51/395717/Sports/Egyptian-Football/Starting-lineups-Ahly-vs-Zamalek.aspx ; https://www.besoccer.com/match/zamalek-sc/al-ahly/2020495823/lineups
+100 | Real Madrid, 2018 (Champions League final v Liverpool) | https://www.skysports.com/football/real-madrid-vs-liverpool/teams/389182
+100 | England, 2021 (Euro 2020 final v Italy) | https://www.uefa.com/uefaeuro/history/news/0269-1262855338b0-a7a22fe4ebb4-1000--euro-2020-final-italy-vs-england-line-ups-all-the-finalists-/
+200 | Real Madrid, 2016 (Champions League final v Atlético) | https://www.skysports.com/football/real-madrid-vs-atletico-madrid/teams/355010
+200 | Liverpool, 2022 (Champions League final v Real Madrid) | https://en.wikipedia.org/wiki/2022_UEFA_Champions_League_final
+300 | Italy, 2021 (Euro 2020 final v England) | https://www.uefa.com/uefaeuro/history/news/0269-1262855338b0-a7a22fe4ebb4-1000--euro-2020-final-italy-vs-england-line-ups-all-the-finalists-/
+400 | Liverpool, 2016 (Europa League final v Sevilla) | https://www.skysports.com/football/liverpool-vs-sevilla/teams/355015
+500 | Porto, 2011 (Europa League final v Braga) | https://www.worldfootball.net/match-report/ma137687/lineup/

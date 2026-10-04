@@ -68,6 +68,22 @@
    [
     "Which country is this city in? Athens",
     "Greece"
+   ],
+   [
+    "Which country is this city in? Paris",
+    "France"
+   ],
+   [
+    "Which country is this city in? Rome",
+    "Italy"
+   ],
+   [
+    "Which country is this city in? Beijing",
+    "China"
+   ],
+   [
+    "Which country is this city in? New York",
+    "USA"
    ]
   ],
   "200": [
@@ -134,6 +150,22 @@
    [
     "Which country is this city in? Lagos",
     "Nigeria (there's also a Lagos in Portugal)"
+   ],
+   [
+    "Which country is this city in? Melbourne",
+    "Australia"
+   ],
+   [
+    "Which country is this city in? Shanghai",
+    "China"
+   ],
+   [
+    "Which country is this city in? São Paulo",
+    "Brazil"
+   ],
+   [
+    "Which country is this city in? Warsaw",
+    "Poland"
    ]
   ],
   "300": [
@@ -200,6 +232,22 @@
    [
     "Which country is this city in? Dubrovnik",
     "Croatia"
+   ],
+   [
+    "Which country is this city in? Belgrade",
+    "Serbia"
+   ],
+   [
+    "Which country is this city in? Bogotá",
+    "Colombia"
+   ],
+   [
+    "Which country is this city in? Karachi",
+    "Pakistan"
+   ],
+   [
+    "Which country is this city in? Caracas",
+    "Venezuela"
    ]
   ],
   "400": [
@@ -266,6 +314,22 @@
    [
     "Which country is this city in? Ljubljana",
     "Slovenia"
+   ],
+   [
+    "Which country is this city in? Riga",
+    "Latvia"
+   ],
+   [
+    "Which country is this city in? Phnom Penh",
+    "Cambodia"
+   ],
+   [
+    "Which country is this city in? Kampala",
+    "Uganda"
+   ],
+   [
+    "Which country is this city in? Sarajevo",
+    "Bosnia and Herzegovina"
    ]
   ],
   "500": [
@@ -332,6 +396,22 @@
    [
     "Which country is this city in? Dushanbe",
     "Tajikistan"
+   ],
+   [
+    "Which country is this city in? Ashgabat",
+    "Turkmenistan"
+   ],
+   [
+    "Which country is this city in? Managua",
+    "Nicaragua"
+   ],
+   [
+    "Which country is this city in? Lilongwe",
+    "Malawi"
+   ],
+   [
+    "Which country is this city in? Podgorica",
+    "Montenegro"
    ]
   ]
  }

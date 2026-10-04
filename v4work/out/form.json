@@ -76,6 +76,14 @@
    [
     "3-2-4-1\nHaaland\nBernardo Silva · De Bruyne · Gündoğan · Grealish\nStones · Rodri\nAkanji · Dias · Aké\nEderson",
     "Manchester City, 2023 (Champions League final v Inter)"
+   ],
+   [
+    "4-3-1-2\nBenzema · Ronaldo\nIsco\nModrić · Casemiro · Kroos\nCarvajal · Varane · Ramos · Marcelo\nNavas",
+    "Real Madrid, 2018 (Champions League final v Liverpool)"
+   ],
+   [
+    "3-4-2-1\nKane\nMount · Sterling\nTrippier · Rice · Phillips · Shaw\nWalker · Stones · Maguire\nPickford",
+    "England, 2021 (Euro 2020 final v Italy)"
    ]
   ],
   "200": [
@@ -150,6 +158,14 @@
    [
     "4-3-3\nPolitano · Osimhen · Kvaratskhelia\nAnguissa · Lobotka · Zieliński\nDi Lorenzo · Rrahmani · Kim Min-jae · Mário Rui\nMeret",
     "Napoli, 2022–23 (the Scudetto season)"
+   ],
+   [
+    "4-3-3\nBale · Benzema · Ronaldo\nModrić · Casemiro · Kroos\nCarvajal · Pepe · Ramos · Marcelo\nNavas",
+    "Real Madrid, 2016 (Champions League final v Atlético)"
+   ],
+   [
+    "4-3-3\nSalah · Mané · Luis Díaz\nHenderson · Fabinho · Thiago\nAlexander-Arnold · Konaté · Van Dijk · Robertson\nAlisson",
+    "Liverpool, 2022 (Champions League final v Real Madrid)"
    ]
   ],
   "300": [
@@ -228,6 +244,10 @@
    [
     "4-3-3\nMahrez · Gabriel Jesus · Foden\nDe Bruyne · Rodri · Bernardo Silva\nStones · Fernandinho · Laporte · Cancelo\nEderson",
     "Manchester City, 2022 (final-day title decider v Aston Villa)"
+   ],
+   [
+    "4-3-3\nChiesa · Immobile · Insigne\nBarella · Jorginho · Verratti\nDi Lorenzo · Bonucci · Chiellini · Emerson\nDonnarumma",
+    "Italy, 2021 (Euro 2020 final v England)"
    ]
   ],
   "400": [
@@ -306,6 +326,10 @@
    [
     "4-1-2-1-2\nZidan · Moteab\nAhmed Hassan\nHossam Ghaly · Abd Rabo\nEl-Mohamady\nAhmed Fathy · Wael Gomaa · Hany Said · Moawad\nEl-Hadary",
     "Egypt, 2010 (Africa Cup of Nations final v Ghana)"
+   ],
+   [
+    "4-2-3-1\nSturridge\nLallana · Firmino · Coutinho\nCan · Milner\nClyne · Lovren · Touré · Moreno\nMignolet",
+    "Liverpool, 2016 (Europa League final v Sevilla)"
    ]
   ],
   "500": [
@@ -384,6 +408,10 @@
    [
     "4-3-3\nEl Shahat · Marwan Mohsen · Ajayi\nEl Solia · Hamdi Fathi · Afsha\nMohamed Hany · Yasser Ibrahim · Ayman Ashraf · Maaloul\nEl Shenawy",
     "Al Ahly, 2020 (CAF Champions League final v Zamalek)"
+   ],
+   [
+    "4-3-3\nHulk · Falcao · Varela\nGuarín · Fernando · Moutinho\nSăpunaru · Rolando · Otamendi · Álvaro Pereira\nHélton",
+    "Porto, 2011 (Europa League final v Braga)"
    ]
   ]
  }

@@ -68,6 +68,22 @@
    [
     "Which country is this city in? Manama",
     "Bahrain"
+   ],
+   [
+    "Which country is this city in? Kuwait City",
+    "Kuwait"
+   ],
+   [
+    "Which country is this city in? Abu Dhabi",
+    "UAE"
+   ],
+   [
+    "Which country is this city in? Mecca",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is this city in? Rabat",
+    "Morocco"
    ]
   ],
   "200": [
@@ -134,6 +150,22 @@
    [
     "Which country is this city in? Nouakchott",
     "Mauritania"
+   ],
+   [
+    "Which country is this city in? Fez",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Hebron (Al-Khalil)",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Mogadishu",
+    "Somalia"
+   ],
+   [
+    "Which country is this city in? Taif",
+    "Saudi Arabia"
    ]
   ],
   "300": [
@@ -200,6 +232,22 @@
    [
     "Which country is this city in? Agadir",
     "Morocco"
+   ],
+   [
+    "Which country is this city in? Karbala",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Essaouira",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Jenin",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Bizerte",
+    "Tunisia"
    ]
   ],
   "400": [
@@ -266,6 +314,22 @@
    [
     "Which country is this city in? Tobruk",
     "Libya"
+   ],
+   [
+    "Which country is this city in? Moroni",
+    "Comoros"
+   ],
+   [
+    "Which country is this city in? Kirkuk",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Tlemcen",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Jerash",
+    "Jordan"
    ]
   ],
   "500": [
@@ -332,6 +396,22 @@
    [
     "Which country is this city in? Sur",
     "Oman (Sur is also the Arabic name of Tyre in Lebanon)"
+   ],
+   [
+    "Which country is this city in? Shibam",
+    "Yemen"
+   ],
+   [
+    "Which country is this city in? Ghardaïa",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Atbara",
+    "Sudan"
+   ],
+   [
+    "Which country is this city in? Sabha",
+    "Libya"
    ]
   ]
  }
