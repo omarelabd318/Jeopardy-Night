@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.2. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.3. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -341,3 +341,12 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - To undo: remove `async` (and the `onload`) from the three script tags, and replace `initWorld()` with its body run directly.
 - 5.2 (2026-10-04): Omar said the title screen still took about 15 seconds after 5.1. The other thing that blocked the first paint was the Google Fonts stylesheet: a browser draws nothing until such a stylesheet arrives. It now loads in the background (`rel="preload"`, which turns into a stylesheet when it arrives, in `src/head.html`). When the fonts are in, a `jn-fonts` event in `src/app.js` re-fits the Football poster text and anything sized on resize. In a test with the fonts server answering after 10 s, the page showed after 0.8 s instead of 10.3 s, and the real fonts were applied once they arrived. Locally, with nothing to wait for, the page is ready in about 0.5 s. The page itself is 1.5 MB (about 0.5 MB as GitHub Pages sends it).
   - To undo: put back the plain `<link rel="stylesheet" href="…">` for the fonts and delete the `jn-fonts` listener.
+- 5.3 (2026-10-04): Omar said photos took an awfully long time to appear. There were two causes:
+  - A photo round's picture only started downloading when its tile was opened.
+  - Every Guess the Food tile waited for a whole 4–5 MB bundle of 20 photos. As soon as the board was shown, the game downloaded about 22 MB of food bundles at once, which also slowed down everything else.
+  - What changed:
+    - When the board is drawn, each open tile's clue is now picked in advance (`prepick()` / `takePick()` in `src/app.js`), and its photo starts downloading in the background, so it's usually ready before anyone opens the tile.
+    - Guess the Food now uses the single `photos/<key>.jpg` for each photo (those files already exist for the build). It only falls back to a bundle when that file is missing, which happens for Guess the Logo (its bundles are small, about 0.7 MB each) and on the artifact.
+    - Swap clue still picks a fresh clue at random.
+  - Tested: once a board with Guess the Food, Guess the Logo, Cars, Actors and Footballers was shown, its 30 photos were downloaded before any tile was opened. The food, logo and car tiles then opened with the photo already loaded, with no errors.
+  - To undo: in `src/app.js`, have `openClue()` call `pickIdx()` instead of `takePick()`, and put the old `prefetchPacks()` and `packSrc()` back (the old versions are described in the 5.3 comment there).
