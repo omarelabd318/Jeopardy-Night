@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.2",
+  "date": "2026-10-04",
+  "items": [
+   "Faster start: the game no longer waits for Google Fonts before showing anything. Text may show in a plain font for a moment."
+  ]
+ },
+ {
   "v": "5.1",
   "date": "2026-10-04",
   "items": [

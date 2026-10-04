@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.1`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.2`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -438,6 +438,9 @@ function fitPoster(){  // size each phrase to fill its block
   });
 }
 window.addEventListener("resize", placeFbBg);
+/* 5.2: the font stylesheet now loads in the background; once its fonts are in, re-fit anything that was sized with the fallback font. */
+window.addEventListener("jn-fonts", () => { const go = () => { const bg = $("#fbBg"); if(bg && bg.classList.contains("poster")) fitPoster(); else fitFbBg(); window.dispatchEvent(new Event("resize")); };
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go(); });
 function footballBg(cols, rows){
   const el = $("#fbBg"); if(!el || !cols) return;
   el.dataset.grid = cols + "x" + rows;
