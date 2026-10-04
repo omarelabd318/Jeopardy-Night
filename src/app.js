@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.84`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.85`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -618,20 +618,34 @@ function showWinner(){
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b class="${t.score<0?"neg":""}">${t.score}</b></li>`).join("") : "";
   $("#winBoard").hidden = S.cats.length*5 - Object.keys(S.done).length === 0;
   $("#winBox").hidden = false; $("#playAgain").focus();
-  confetti(); ledStart(); if(S.sound) playSiu();  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
+  confetti(); ledStart(); if(S.sound) playEnd();  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
 }
 /* Football mode winner sound: the last 9 seconds of Ronaldo's "Siuuu" clip, in place of the fanfare */
 let siuA = null;
 const SIU_VOL = 1;  /* 4.63 (Omar): the clip is half as loud, done in sounds/siuuu.mp3 itself because iPhones ignore this volume setting */
+/* 4.85 (Omar): before the Siuuu clip, the winner screen plays one of two intros: Messi's "¿Qué mirás, bobo?" (sounds/que-miras.mp3, 3.8–9.8 s of
+   v4work/sounds-src/que-miras-original.mp3) or "Referee, no fair" (sounds/no-fair.mp3). The very first one is random; after that they take turns,
+   remembered on this device (jn_endIntro). To go back to Siuuu alone: in showWinner() call playSiu() instead of playEnd(). */
+const END_INTROS = ["sounds/que-miras.mp3", "sounds/no-fair.mp3"];
+const introA = {};
+let introPlaying = null;
+function nextIntro(){ const last = store.get("jn_endIntro", null); const i = last === null ? Math.floor(Math.random() * END_INTROS.length) : (last + 1) % END_INTROS.length; store.set("jn_endIntro", i); return END_INTROS[i]; }
+function playEnd(){ stopIntro(); const src = nextIntro();
+  try{ const a = introA[src] || (introA[src] = new Audio(src)); a.muted = false; a.currentTime = 0; introPlaying = a;
+    a.onended = () => { if(introPlaying === a){ introPlaying = null; if(S.sound && !$("#winBox").hidden) playSiu(); } };
+    const pr = a.play(); if(pr) pr.catch(() => { if(introPlaying === a){ introPlaying = null; playSiu(); } }); }catch(e){ playSiu(); } }
+function stopIntro(){ const a = introPlaying; introPlaying = null; if(a){ a.onended = null; a.pause(); a.currentTime = 0; } }
 function playSiu(){ try{ if(!siuA) siuA = new Audio("sounds/siuuu.mp3"); siuA.muted = false; siuA.volume = SIU_VOL; siuA.currentTime = 0; const pr = siuA.play(); if(pr) pr.catch(() => Snd.fanfare()); }catch(e){ Snd.fanfare(); } }
 /* 4.59: browsers (Safari, iPhone) block audio that starts without a tap (the timer sounds' AudioContext too), and the winner screen can open on a timer after the last tile.
    So on the first tap, load the clip and play it muted for an instant; after that it's allowed to play at any time. */
-function primeSiu(){ Snd.unlock(); try{ if(siuA) return; siuA = new Audio("sounds/siuuu.mp3"); siuA.preload = "auto"; siuA.muted = true;
+function primeSiu(){ Snd.unlock(); primeIntros(); try{ if(siuA) return; siuA = new Audio("sounds/siuuu.mp3"); siuA.preload = "auto"; siuA.muted = true;
   const pr = siuA.play(); const done = () => { if(siuA.muted){ siuA.pause(); siuA.currentTime = 0; } };
   if(pr) pr.then(done).catch(() => {}); else done(); }catch(e){} }
 document.addEventListener("pointerdown", primeSiu, {once:true, capture:true});
 document.addEventListener("keydown", primeSiu, {once:true, capture:true});
-function stopSiu(){ if(siuA){ siuA.pause(); siuA.currentTime = 0; } }
+function primeIntros(){ END_INTROS.forEach(src => { try{ if(introA[src]) return; const a = introA[src] = new Audio(src); a.preload = "auto"; a.muted = true;
+  const pr = a.play(), done = () => { if(a.muted){ a.pause(); a.currentTime = 0; } }; if(pr) pr.then(done).catch(() => {}); else done(); }catch(e){} }); }
+function stopSiu(){ stopIntro(); if(siuA){ siuA.pause(); siuA.currentTime = 0; } }
 function hideWinner(){ $("#winBox").hidden = true; stopConfetti(); stopSiu(); ledStop(); }
 /* 4.51: the winner LED strip reads SSSIIIIIIII once, then U's that never end, at 65 px/s (32 with reduced motion; 4.50 was 130) */
 let ledRaf = null;
