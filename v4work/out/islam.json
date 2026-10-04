@@ -68,6 +68,22 @@
    [
     "What is the person who calls the adhan called?",
     "The muezzin"
+   ],
+   [
+    "What is food that is allowed in Islam called?",
+    "Halal"
+   ],
+   [
+    "What phrase, meaning 'In the name of God', do Muslims say before eating?",
+    "Bismillah"
+   ],
+   [
+    "What is a Muslim house of worship called?",
+    "A mosque (masjid)"
+   ],
+   [
+    "Which animal's meat is forbidden in Islam?",
+    "The pig (pork)"
    ]
   ],
   "200": [
@@ -134,6 +150,22 @@
    [
     "Who was the first caliph after the Prophet?",
     "Abu Bakr al-Siddiq"
+   ],
+   [
+    "What is the yearly charity Muslims pay on their savings called?",
+    "Zakat"
+   ],
+   [
+    "What is the Islamic declaration of faith called?",
+    "The Shahada"
+   ],
+   [
+    "What are the extra night prayers held in Ramadan called?",
+    "Taraweeh"
+   ],
+   [
+    "How many rak'ahs is the Fajr prayer?",
+    "Two"
    ]
   ],
   "300": [
@@ -200,6 +232,22 @@
    [
     "Which Cairo mosque and university was founded by the Fatimids in 970?",
     "Al-Azhar"
+   ],
+   [
+    "What are the Prophet's sayings, actions and way of life called?",
+    "The Sunnah"
+   ],
+   [
+    "Which prophet is called Khalil Allah, 'the friend of God'?",
+    "Ibrahim (Abraham)"
+   ],
+   [
+    "Which prophet was given the Zabur (the Psalms)?",
+    "Dawud (David)"
+   ],
+   [
+    "In which year CE did the Prophet pass away?",
+    "632"
    ]
   ],
   "400": [
@@ -266,6 +314,22 @@
    [
     "Which caliph started the Hijri calendar?",
     "Umar ibn al-Khattab"
+   ],
+   [
+    "Who is the mother of Ismail, who ran between Safa and Marwa looking for water?",
+    "Hajar (Hagar)"
+   ],
+   [
+    "Which short surah is said to equal a third of the Quran?",
+    "Al-Ikhlas"
+   ],
+   [
+    "What is the last surah of the Quran?",
+    "An-Nas"
+   ],
+   [
+    "Which prophet could talk to animals and command the jinn?",
+    "Sulayman (Solomon)"
    ]
   ],
   "500": [
@@ -332,6 +396,22 @@
    [
     "What is the Prophet's farewell speech, given during his only Hajj, called?",
     "The Farewell Sermon (Khutbat al-Wada')"
+   ],
+   [
+    "Which companion was given the title 'Sword of God' (Sayf Allah)?",
+    "Khalid ibn al-Walid"
+   ],
+   [
+    "What was the name of the Prophet's mother?",
+    "Amina bint Wahb"
+   ],
+   [
+    "Which famous Egyptian reciter is Sheikh Mohamed Siddiq ___?",
+    "El Minshawi"
+   ],
+   [
+    "What is the year of the Prophet's birth known as?",
+    "The Year of the Elephant (around 570 CE)"
    ]
   ]
  }
