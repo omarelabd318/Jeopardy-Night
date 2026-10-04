@@ -3,6 +3,34 @@
   "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
+  "v": "4.96",
+  "date": "2026-10-04",
+  "items": [
+   "Buttons now light up and lift slightly when you hover over them, like the clue tiles on the board."
+  ]
+ },
+ {
+  "v": "4.95",
+  "date": "2026-10-04",
+  "items": [
+   "Fixed: the \"After review\" sound now plays every time you open Edit scores, not just the first time."
+  ]
+ },
+ {
+  "v": "4.94",
+  "date": "2026-10-04",
+  "items": [
+   "More clues for Egyptian Memes, Ramadan Series, Real Headline, Shirt Numbers, Managers, Video Games, Pixar & DreamWorks and Currencies: each now has 100 (20 per tile value)."
+  ]
+ },
+ {
+  "v": "4.93",
+  "date": "2026-10-04",
+  "items": [
+   "\"The Price Is Right\" is now just \"Price Is Right\"."
+  ]
+ },
+ {
   "v": "4.92",
   "date": "2026-10-04",
   "items": [

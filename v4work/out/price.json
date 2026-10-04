@@ -1,6 +1,6 @@
 {
  "id": "price",
- "name": "The Price Is Right",
+ "name": "Price Is Right",
  "type": "closest",
  "desc": "Guess the price. Every team types a number and the closest wins. Everyday Egyptian prices (eggs, fruit, Pepsi, Nutella, koshary) then and now, official prices like bread and the Metro, and famous prices from around the world. Each clue says the currency and the date, because prices keep changing.",
  "data": {

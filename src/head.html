@@ -154,6 +154,12 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .tile{background:var(--tile);border:0;border-radius:2px;text-shadow:3px 3px 0 #000;min-height:clamp(62px,9vh,96px);font-family:var(--display);font-weight:900;font-size:clamp(28px,3.6vw,46px);color:var(--brass);font-variant-numeric:tabular-nums;transition:background .15s, transform .15s}
 .tile:hover{background:var(--tile-hi);transform:translateY(-2px)}
 .tile.done{background:var(--tile);color:transparent;text-shadow:none;transform:none;cursor:default}
+/* 4.96 (Omar): every clickable button lights up and lifts a little on hover, like the board tiles. The white wash sits on top of each button's own colour,
+   so it works on brass, felt and see-through buttons alike. Mouse/trackpad only, so taps on phones don't leave a button stuck lit. To remove: delete this block. */
+@media (hover:hover){
+  button:not(.tile):not(:disabled),summary,.verbtn{transition:background-color .15s,transform .15s,box-shadow .15s}
+  button:not(.tile):not(:disabled):hover,summary:hover{background-image:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16));transform:translateY(-2px)}
+}
 
 /* scoreboard */
 /* 4.70 (Omar): Football mode, two stick figures kick the ball back and forth on the line above the team names, while the board is showing. To remove: delete #kick here, the canvas, and kickLoop() in app.js */
@@ -341,7 +347,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.92</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v4.96</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -351,7 +357,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v4.92</div>
+      <div class="eyebrow verlabel">v4.96</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
     </div>

@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.92`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.96`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -580,7 +580,9 @@ function goSetup(){ setFootball(false); $("#setup").hidden = false; $("#game").h
    (sounds/after-review.mp3, cut from v4work/sounds-src/after-review-original.mp3). Only when sound is on, and not on "Done editing". To remove: delete this block and the playReview() call below. */
 /* 4.89 (Omar): normal mode gets just the first 1.9 s ("After review…"), sounds/after-review-short.mp3. */
 const reviewA = {};
-function playReview(src){ stopReview(); try{ const a = reviewA[src] || (reviewA[src] = new Audio(src)); a.currentTime = 0; const pr = a.play(); if(pr) pr.catch(() => {}); }catch(e){} }
+/* 4.95: a fresh Audio on every click, because some browsers (iPhone Safari) wouldn't replay the same element after it had ended.
+   Was: const a = reviewA[src] || (reviewA[src] = new Audio(src)); a.currentTime = 0; */
+function playReview(src){ stopReview(); try{ const a = reviewA[src] = new Audio(src); const pr = a.play(); if(pr) pr.catch(() => {}); }catch(e){} }
 function stopReview(){ Object.values(reviewA).forEach(a => { a.pause(); a.currentTime = 0; }); }
 $("#editScores").onclick = e => { S.editing = !S.editing; if(S.editing && S.sound) playReview(S.football ? "sounds/after-review.mp3" : "sounds/after-review-short.mp3"); e.currentTarget.setAttribute("aria-pressed", S.editing); e.currentTarget.textContent = S.editing ? "Done editing" : "Edit scores"; renderScores(); };
 $("#newBoard").onclick = () => askConfirm("Start a new board?", "Every tile comes back with new clues. Scores stay as they are.", "New board", () => { pickBall(); S.done = {}; S.ended = false; renderBoard(); });

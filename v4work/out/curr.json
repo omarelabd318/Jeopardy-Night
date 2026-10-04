@@ -52,6 +52,38 @@
    [
     "Which country uses the franc as its currency and is home to the Alps and banks of Zurich?",
     "Switzerland"
+   ],
+   [
+    "What is Canada's currency?",
+    "The Canadian dollar"
+   ],
+   [
+    "What is Australia's currency?",
+    "The Australian dollar"
+   ],
+   [
+    "Which currency does the symbol € stand for?",
+    "The euro"
+   ],
+   [
+    "Which currency does the symbol £ stand for?",
+    "The pound (sterling)"
+   ],
+   [
+    "What is Qatar's currency called?",
+    "The riyal (Qatari riyal)"
+   ],
+   [
+    "What is Kuwait's currency called?",
+    "The dinar (Kuwaiti dinar)"
+   ],
+   [
+    "What is one hundredth of a US dollar called?",
+    "A cent (a penny)"
+   ],
+   [
+    "What is Pakistan's currency?",
+    "The rupee (Pakistani rupee)"
    ]
   ],
   "200": [
@@ -102,6 +134,38 @@
    [
     "Which currency is nicknamed the 'greenback'?",
     "The US dollar"
+   ],
+   [
+    "What is the three-letter code for the Egyptian pound?",
+    "EGP"
+   ],
+   [
+    "What is Denmark's currency?",
+    "The krone"
+   ],
+   [
+    "What is New Zealand's currency?",
+    "The New Zealand dollar"
+   ],
+   [
+    "What is Iran's currency?",
+    "The rial"
+   ],
+   [
+    "What is Argentina's currency?",
+    "The peso"
+   ],
+   [
+    "What is Oman's currency?",
+    "The rial (Omani rial)"
+   ],
+   [
+    "What is Singapore's currency?",
+    "The Singapore dollar"
+   ],
+   [
+    "What is Hong Kong's currency?",
+    "The Hong Kong dollar"
    ]
   ],
   "300": [
@@ -152,6 +216,38 @@
    [
     "Which currency uses the symbol ₺?",
     "The Turkish lira"
+   ],
+   [
+    "Which country's one-dollar coin is nicknamed the 'loonie'?",
+    "Canada"
+   ],
+   [
+    "What is Iceland's currency?",
+    "The króna"
+   ],
+   [
+    "What is Romania's currency?",
+    "The leu"
+   ],
+   [
+    "What is Kenya's currency?",
+    "The shilling (Kenyan shilling)"
+   ],
+   [
+    "Which currency did France use before the euro?",
+    "The franc"
+   ],
+   [
+    "What is Syria's currency called?",
+    "The Syrian pound (lira)"
+   ],
+   [
+    "What is one hundredth of a British pound called?",
+    "A penny"
+   ],
+   [
+    "Which country used the schilling before the euro?",
+    "Austria"
    ]
   ],
   "400": [
@@ -202,6 +298,38 @@
    [
     "Which country's currency is the dram?",
     "Armenia"
+   ],
+   [
+    "What is one hundredth of a Saudi riyal called?",
+    "A halala"
+   ],
+   [
+    "Which currency did Ireland use before the euro?",
+    "The punt (Irish pound)"
+   ],
+   [
+    "What is Kazakhstan's currency?",
+    "The tenge"
+   ],
+   [
+    "What is Azerbaijan's currency?",
+    "The manat"
+   ],
+   [
+    "What is Albania's currency?",
+    "The lek"
+   ],
+   [
+    "What is Myanmar's currency?",
+    "The kyat"
+   ],
+   [
+    "Which cryptocurrency has a Shiba Inu dog as its logo?",
+    "Dogecoin"
+   ],
+   [
+    "Which currency has the code CHF?",
+    "The Swiss franc (CH for Confoederatio Helvetica)"
    ]
   ],
   "500": [
@@ -252,6 +380,38 @@
    [
     "Which country's currency is the riel?",
     "Cambodia"
+   ],
+   [
+    "Which country's currency is the dalasi?",
+    "The Gambia"
+   ],
+   [
+    "Which country's currency is the ngultrum?",
+    "Bhutan"
+   ],
+   [
+    "Which country's currency is the paʻanga?",
+    "Tonga"
+   ],
+   [
+    "Which country's currency is the gourde?",
+    "Haiti"
+   ],
+   [
+    "Which country's currency is the rufiyaa?",
+    "The Maldives"
+   ],
+   [
+    "As well as 100 piastres, the Egyptian pound used to be divided into 1,000 of which smaller unit?",
+    "Milliemes (مليم)"
+   ],
+   [
+    "Which country's currency is the leone?",
+    "Sierra Leone"
+   ],
+   [
+    "Which country's currency is the kwanza?",
+    "Angola"
    ]
   ]
  }
