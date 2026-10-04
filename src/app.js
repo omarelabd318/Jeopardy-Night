@@ -109,7 +109,7 @@ function syncSound(){
   document.querySelectorAll(".sndbtn").forEach(b => { b.setAttribute("aria-pressed", S.sound); b.textContent = S.sound ? "Sound on" : "Sound off"; b.title = S.sound ? "Tap to mute the timer sounds" : "Tap to turn the timer sounds on"; });
   $("#optSound").setAttribute("aria-pressed", S.sound);
 }
-function setSound(on){ S.sound = on; store.set("jn_sound", on); syncSound(); if(on){ Snd.unlock(); Snd.blip(); } else stopSiu(); }
+function setSound(on){ S.sound = on; store.set("jn_sound", on); syncSound(); if(on){ Snd.unlock(); Snd.blip(); } else { stopSiu(); stopReview(); } }
 document.querySelectorAll(".sndbtn").forEach(b => b.addEventListener("click", () => setSound(!S.sound)));
 $("#optSound").onclick = () => setSound(!S.sound);
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
@@ -145,7 +145,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.83`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v4.84`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -576,7 +576,12 @@ $("#confirmNo").onclick = () => { $("#confirmBox").hidden = true; confirmYes = n
 $("#confirmYes").onclick = () => { $("#confirmBox").hidden = true; const f = confirmYes; confirmYes = null; if(f) f(); };
 $("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", goSetup);
 function goSetup(){ setFootball(false); $("#setup").hidden = false; $("#game").hidden = true; $("#scores").hidden = true; renderTeamInputs(); histNote(); }
-$("#editScores").onclick = e => { S.editing = !S.editing; e.currentTarget.setAttribute("aria-pressed", S.editing); e.currentTarget.textContent = S.editing ? "Done editing" : "Edit scores"; renderScores(); };
+/* 4.84 (Omar): in Football mode, opening Edit scores plays the first 6 seconds of the "After review... number 10 Paraguay covered his mouth" VAR call
+   (sounds/after-review.mp3, cut from v4work/sounds-src/after-review-original.mp3). Only when sound is on, and not on "Done editing". To remove: delete this block and the playReview() call below. */
+let reviewA = null;
+function playReview(){ try{ if(!reviewA) reviewA = new Audio("sounds/after-review.mp3"); reviewA.currentTime = 0; const pr = reviewA.play(); if(pr) pr.catch(() => {}); }catch(e){} }
+function stopReview(){ if(reviewA){ reviewA.pause(); reviewA.currentTime = 0; } }
+$("#editScores").onclick = e => { S.editing = !S.editing; if(S.editing && S.football && S.sound) playReview(); e.currentTarget.setAttribute("aria-pressed", S.editing); e.currentTarget.textContent = S.editing ? "Done editing" : "Edit scores"; renderScores(); };
 $("#newBoard").onclick = () => askConfirm("Start a new board?", "Every tile comes back with new clues. Scores stay as they are.", "New board", () => { pickBall(); S.done = {}; S.ended = false; renderBoard(); });
 
 /* ---------- board ---------- */

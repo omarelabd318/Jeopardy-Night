@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v4.83. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v4.84. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 97 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -265,3 +265,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Which Country? Arab Edition** (`ctryar`, end of Egypt & Arab World): 80 clues across the Arab countries from Morocco and Mauritania to Iraq and Oman, plus Sudan. Egyptian cities are left out because everyone at the party would know them. Tripoli (Libya or Lebanon) and Sur (Oman, also the Arabic name of Tyre) accept both.
 
   Both are built from `v4work/out/ctry.json` and `ctryar.json`, added in `src/extra.js` and listed in `CAT_GROUPS`. To remove one: delete its file and its id in `CAT_GROUPS`.
+- 4.84 (2026-10-04): Omar sent two clips: the "After review, number 10 Paraguay covered his mouth. Decision is red card" VAR call, and Messi's "¿Qué mirás, bobo?". He asked for the first 6 seconds of the VAR call to play when someone opens Edit scores in Football mode; he'll say later what the Messi clip is for.
+  - `sounds/after-review.mp3` is the first 6.0 s of the VAR clip, with a 0.3 s fade at the end so it doesn't click. Its level was raised 3.5 dB to match `sounds/siuuu.mp3`.
+  - `playReview()`, next to the Edit scores handler in `src/app.js`, plays it when Edit scores is switched on, but only in Football mode with sound on, and not on "Done editing". Turning sound off stops it.
+  - Both original clips are kept in `v4work/sounds-src/` (`after-review-original.mp3`, `que-miras-original.mp3`).
+  - The cut is at exactly 6 s as asked. The speech runs past that point; the next pause is at about 6.6–6.8 s, if the cut sounds clipped.
+  - To remove: delete the 4.84 block and the `playReview()` call in `src/app.js`, and `sounds/after-review.mp3`.
