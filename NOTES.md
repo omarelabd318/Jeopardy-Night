@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.5. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.6. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -361,3 +361,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Photos:** one row per category that has pictures (Stadiums, Guess the Food, Logo, Car, Actor, Footballer, Person) with a progress bar, "downloaded / total" and a Download button.
   - **Download everything** queues every photo and sound. On the setup screen the queue runs 4 downloads at a time (2 during a game). Whatever the browser has downloaded stays in its cache, so on a later visit the counts fill up quickly.
   - To undo: delete the `#statusPanel` block in `src/head.html`, the 5.5 `.dlbox`/`.dlrow` CSS, and the 5.5 block before `prefetchPacks()` in `src/app.js`.
+- 5.6 (2026-10-04): Omar ran `speed.html`. GitHub Pages reached his laptop at only 10–65 KB/s, with a 29 KB/s average. The 1.6 MB game page took 24 s and a Guess the Food photo (547 KB) took 53 s, while a cdnjs (Cloudflare) file came at 283 KB/s. So the slowness is the route between his connection and GitHub Pages, not the game.
+  - Smaller photos: the 100 `photos/food-*.jpg` (35 MB → 9.7 MB) and 30 `photos/stadium-*.jpg` (16 MB → 5 MB) are now 1024 px, quality 76 and progressive. On a TV they look the same (checked side by side).
+  - The full-size originals stay in `v4work/food-photos/` and the new `v4work/stadium-photos/`.
+  - The zoom rounds (cars, actors, footballers, people) are untouched, since zooming needs the detail.
+  - `speed.html` now also times a bigger Cloudflare file and the same game page and photo from jsDelivr (a free mirror of public GitHub repos), to show whether moving the game to another host would help.
+  - To undo the photo change: copy the originals back over `photos/` (`cp v4work/food-photos/food-*.jpg v4work/stadium-photos/stadium-*.jpg photos/`).
