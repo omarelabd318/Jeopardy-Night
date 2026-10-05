@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.38`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.39`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -550,18 +550,20 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const turned = dt => dt > -0.5 && dt < 0.45;                                          // back to the ball for a heel flick
   const LEAN = 0.38;                                                                        // how far he leans back for a chest control (radians)
   const leanBack = dt => dt < -0.5 || dt > 0.45 ? 0 : dt < 0 ? sm((dt + 0.5) / 0.5) : 1 - sm(dt / 0.45);
+  /* 5.39 (Omar): headers wind up: head and shoulders go back, then snap forward through the ball (e = 0 at contact; +1 = full lean back, negative leans forward) */
+  const headWind = e => e < -0.45 || e > 0.4 ? 0 : e < -0.12 ? sm((e + 0.45) / 0.33) : e < 0.04 ? 1 - 1.6 * sm((e + 0.12) / 0.16) : -0.6 * (1 - sm((e - 0.04) / 0.36));
   const bikeAmt = e => e < -0.55 || e > 0.5 ? 0 : e < 0 ? sm((e + 0.55) / 0.55) : 1 - sm(e / 0.5);   // bicycle kick, full at contact (e = 0)
   const hop = dt => Math.abs(dt) < 0.3 ? 4 * Math.cos(dt / 0.3 * Math.PI / 2) : 0;          // a little jump for the header
-  function man(x, dir, ang, knee, jump, heel, turn, lean = 0, bike = 0){   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee; lean 0..1 leans back (chest control); bike 0..1 bicycle kick
+  function man(x, dir, ang, knee, jump, heel, turn, lean = 0, bike = 0, lie = 0){   // lie 0..1: lying on the ground after a bicycle kick   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee; lean 0..1 leans back (chest control); bike 0..1 bicycle kick
     if(turn){ dir = -dir; if(!bike) ang = 0.35; }            // facing away for the heel flick or the bicycle kick
     const y = H - 1 - jump, hip = y - 16, a = lean * LEAN + bike * 1.15;   // a bicycle kick lays him back towards the other player
     const up = d => [x - Math.sin(a) * d * dir, hip - Math.cos(a) * d];          // a point d px up the body, which tilts back from the hip
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
     const hd = up(19); g.beginPath(); g.arc(hd[0], hd[1], 5, 0, Math.PI*2); g.fill();   // head
     const nk = up(12); g.beginPath(); g.moveTo(nk[0], nk[1]); g.lineTo(x, hip); g.stroke();  // body
-    const arm = Math.min(jump, 4) / 4 * 6, out = (lean + bike) * 5, ap = up(9);                         // arms come up a little on a header, and out to the sides for balance on a chest control
+    const arm = Math.max(0, Math.min(jump, 4)) / 4 * 6, out = Math.min(1.3, Math.abs(lean) + bike) * 5, ap = up(9);                         // arms come up a little on a header, and out to the sides for balance on a chest control
     g.beginPath(); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] - (7 + out)*dir, ap[1] + 9 - arm - out); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] + (8 + out*0.6)*dir, ap[1] + 7 - arm - out); g.stroke();  // arms
-    const bk = x - Math.sin(0.35) * 8 * dir, bky = hip + Math.cos(0.35) * 8, bs = 0.35 + heel * 2.3;   // back leg, bending up behind for a heel flick
+    const ba = 0.35 - lie * 1.7, bk = x - Math.sin(ba) * 8 * dir, bky = hip + Math.cos(ba) * 8, bs = ba + heel * 2.3;   // lying down, both legs go out flat   // back leg, bending up behind for a heel flick
     g.beginPath(); g.moveTo(x, hip); g.lineTo(bk, bky); g.lineTo(bk - Math.sin(bs) * 8 * dir, bky + Math.cos(bs) * 8); g.stroke();
     const th = ang + knee * (Math.PI/2 - ang), kx = x + Math.sin(th) * 8 * dir, ky = hip + Math.cos(th) * 8, sa = ang * (1 - knee);
     g.beginPath(); g.moveTo(x, hip); g.lineTo(kx, ky); g.lineTo(kx + Math.sin(sa) * 8 * dir, ky + Math.cos(sa) * 8); g.stroke();  // front leg
@@ -593,15 +595,18 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     else if(how === "chestbike"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4];   // off the chest down to his foot, then flicked up high and bicycle-kicked
       pos = ub < FLICK ? seg(C, F, ub / FLICK, (C[1] + F[1]) / 2 - (C[1] - 10)) : seg(F, V, (ub - FLICK) / (BIKE - FLICK), (F[1] + V[1]) / 2 - (V[1] - UP.chestbike)); }
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
-    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0;
+    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0, ly = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = START[i] + FLIGHT + sh, dt = t - tc;
-          if(hw === "kneehead"){ knee += kneeUp(dt); jump += hop(dt - POP); continue; }   // knee it up, then a header instead of a volley
-          if(hw === "chestbike"){ const b = bikeAmt(dt - BIKE); lean += leanBack(dt); ang += footUp(dt - FLICK) + b * 3.05; jump += b * 10; bk = Math.max(bk, b);
-            turn = turn || (dt - BIKE > -0.75 && dt - BIKE < 0.5); continue; }   // chest, foot flick, then turn and bicycle kick
-          if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest") lean += leanBack(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else jump += hop(dt);
+          if(hw === "kneehead"){ knee += kneeUp(dt); jump += hop(dt - POP); lean += headWind(dt - POP); continue; }   // knee it up, then a header instead of a volley
+          if(hw === "chestbike"){ const e = dt - BIKE;   // chest, foot flick, turn and bicycle kick (e = 0), then 5.39 (Omar): he falls flat on the ground, lies there a moment and gets up
+            const amt = e < 0 ? bikeAmt(e) : e < 1.0 ? 1 : 1 - sm((e - 1.0) / 0.8), fall = e < 0 ? 0 : sm(e / 0.35);
+            lean += leanBack(dt); ang += footUp(dt - FLICK) + amt * (3.05 - 2.0 * fall); jump += amt * (10 - 23 * fall);
+            bk = Math.max(bk, amt * (1 + 0.3 * fall)); ly = Math.max(ly, amt * fall);
+            turn = turn || (e > -0.75 && e < 1.8); continue; }
+          if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest") lean += leanBack(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else { jump += hop(dt); lean += headWind(dt); }
           ang += swing(dt - POP); } });
-      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(1, lean), bk]; };
+      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(1, lean), bk, ly]; };
     man(L, 1, ...pose("L")); man(R, -1, ...pose("R"));
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
