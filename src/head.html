@@ -425,7 +425,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.27</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.28</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -437,7 +437,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.27</div>
+      <div class="eyebrow verlabel">v5.28</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -456,8 +456,8 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div class="eyebrow">Game options</div>
       <div class="opts">
         <button class="opt" id="optPower" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Power-ups</b><small>Each team gets one ×2 (double points on a tile they pick) and one 2 answers (two guesses on an open clue).</small></span></button>
-        <button class="opt" id="optQrAns" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Answer QR codes</b><small>Each team's phones scan one code at the start (or later from Join code at the top). Closest Wins and Price Is Right then pop up on them to send the team's number. Works on the Cloudflare link.</small></span></button>
-        <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steal QR codes</b><small>Teams that aren't playing a tile get a steal box on their phones (they join once at the start, like Answer QR codes). A right steal is worth half the points (the ½ button).</small></span></button>
+        <button class="opt" id="optQrAns" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Phone answers for Closest Wins and Price Is Right</b><small>Each team's phones scan one join code at the start (or later from Join code at the top), then send the team's number for these two rounds. Works on the Cloudflare link.</small></span></button>
+        <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steals from phones</b><small>Teams that aren't playing a tile get a steal box on their phones (they join once at the start with the same join code). A right steal is worth half the points (the ½ button).</small></span></button>
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
       </div>
     </div>
@@ -483,7 +483,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
     <!-- 5.26 (Omar): Free-for-all, at the bottom of setup. To remove: delete this panel, #lobby below, #ffaJoin in the game bar and the 5.26 block in src/app.js -->
     <div class="panel" id="ffaPanel">
       <div class="eyebrow">Play mode</div>
-      <div class="opts"><button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone. At the start, everyone scans one code and types their name. After that, every clue's answer box pops up on their phone. Everyone who's right scores the points, and nobody loses points. Act It Out, One Word Clues and Who's the Impostor are left out. Works on the Cloudflare link.</small></span></button></div>
+      <div class="opts"><button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone. At the start, everyone scans one code and types their name. After that, every clue's answer box pops up on their phone. Everyone who's right scores the points, and nobody loses points. Act It Out, One Word Clues and Who's the Impostor are left out, and so are power-ups and steals. Works on the Cloudflare link.</small></span></button></div>
     </div>
     <div class="row">
       <button class="btn primary" id="start">Start game</button>

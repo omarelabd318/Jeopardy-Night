@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.27`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.28`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1091,7 +1091,7 @@ function renderTools(){ const box = $("#stTools"); if(!box) return;
     ["World map (Country Outlines, Map Pin)", !!WORLD.feats, WORLD.feats ? "ready" : err.map ? "couldn't load" : "still loading"],
     ["QR codes (Act It Out, Impostor, One Word)", !!window.QRCode, window.QRCode ? "ready" : err.qr ? "couldn't load" : "still loading"],
     ["Photo export and import", !!window.JSZip, window.JSZip ? "ready" : err.zip ? "couldn't load" : "still loading"],
-    ["Phone answers (QR codes on clues)", RELAY === true, RELAY === true ? "ready" : RELAY === false ? "only on the Cloudflare link" : "checking"],
+    ["Phone answers (join code)", RELAY === true, RELAY === true ? "ready" : RELAY === false ? "only on the Cloudflare link" : "checking"],
     ["Sounds (winner clips, VAR clip)", snd === SOUNDS.length, sndErr && snd < SOUNDS.length ? "couldn't load" : `${snd} / ${SOUNDS.length}`]];
   box.innerHTML = rows.map(([n, ok, t]) => `<div class="dlrow${ok ? " full" : ""}"><div>${esc(n)}</div><span class="num">${esc(t)}</span><span>${ok ? "✓" : t === "couldn't load" ? "✕" : "…"}</span></div>`).join("");
   const toolsOk = rows.filter(r => r[1]).length; $("#stCount").textContent = `${toolsOk}/${rows.length} tools ready`; }

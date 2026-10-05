@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.28",
+  "date": "2026-10-05",
+  "items": [
+   "Setup: \"Answer QR codes\" is now \"Phone answers for Closest Wins and Price Is Right\", and \"Steal QR codes\" is now \"Steals from phones\" (there's only one join code now).",
+   "Egypt: Photo Edition has all 100 photos."
+  ]
+ },
+ {
   "v": "5.27",
   "date": "2026-10-05",
   "items": [
