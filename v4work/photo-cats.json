@@ -345,8 +345,8 @@
    {
     "key": "egp-portfouad",
     "value": 300,
-    "q": "Which town, across the canal from Port Said, is this?",
-    "a": "Port Fouad"
+    "q": "Which canal city's waterfront is this, seen from the water?",
+    "a": "Port Said (the green domes are the Suez Canal Authority building)"
    },
    {
     "key": "egp-damietta",
