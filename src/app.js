@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.33`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.34`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -523,7 +523,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
   /* 5.33 (Omar): a fifth touch, chest control: he leans back, cushions it on his chest so it pops up, straightens and volleys it.
      The rotation is now ten touches (4.77-5.32: the first eight below, without the two chest touches). */
-  const ROT = [["L","knee"],["R","foot"],["L","head"],["R","heel"],["L","foot"],["R","knee"],["L","heel"],["R","head"],["L","chest"],["R","chest"]], POP = 1.1, SPIN = 0.35;
+  /* 5.34 (Omar): reordered so the two chest controls are half a cycle apart, not back to back; no move twice in a row.
+     5.33 order: L knee, R foot, L head, R heel, L foot, R knee, L heel, R head, L chest, R chest */
+  const ROT = [["L","knee"],["R","foot"],["L","chest"],["R","heel"],["L","head"],["R","knee"],["L","foot"],["R","chest"],["L","heel"],["R","head"]], POP = 1.1, SPIN = 0.35;
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
   const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16};             // how far the ball pops up above the touch
