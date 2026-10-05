@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.7. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.17. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -374,3 +374,52 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Now `warmSound()` downloads each clip as a plain file with `fetch()`, which puts it in the browser cache that the game's audio then plays from. All five clips (about 0.5 MB) start as soon as Status is opened. The row shows "couldn't load" if one fails.
   - Tested over http: 5 / 5 within a couple of seconds.
   - To undo: put back the old `warmSound()` (described in the comment above it) and remove `SOUNDS.forEach(warmSound)` from the Status toggle handler.
+- 5.8 (2026-10-05): Omar asked for resume-after-refresh and a Netflix Hits category.
+  - **Resume game:** after every change, the game in progress is saved in the browser (`jn_game` in localStorage, via `saveGame()` in `renderScores()`/`renderBoard()`). It holds the teams and scores, whose turn it is, the played tiles, the board's categories, Football mode and its ball, and the power-ups.
+    - When a saved game exists, the title screen shows **Resume game** (and **Discard**) with a line like "Team A 900 · Team B 600 · 3 of 30 tiles played · 5 min ago".
+    - It is cleared when you confirm leaving to Setup or the title screen, when the winner screen shows, or when you press Discard. It is ignored after two days.
+    - A clue that was open at the moment of the refresh just goes back to being an unplayed tile.
+    - Tested in normal and Football mode: everything came back identical, and leaving the game cleared it.
+    - To undo: delete the 5.8 block before `renderScores()`, the two `saveGame()` calls, the `clearGame()` calls in the leave handlers and `showWinner()`, and `#resumeBox` in `src/head.html`.
+  - **Netflix Hits** (`netflix`, Entertainment, after The Office): 100 clues, 20 per value, in `v4work/out/netflix.json`.
+    - Coverage: Money Heist, Squid Game, Wednesday, Narcos, Dark, The Crown, Bridgerton, The Witcher, Ozark, You and Elite; Arab and Egyptian originals (Paranormal, AlRawabi School for Girls, Jinn, Ashab wala Aaz); K-dramas; and newer hits (KPop Demon Hunters, Baby Reindeer, Adolescence).
+    - It appears in setup but not in Football mode or TV Show Mix.
+    - To remove: delete `v4work/out/netflix.json`, the `['netflix','office']` line in `src/extra.js`, and "netflix" from `CAT_GROUPS`.
+- 5.9 (2026-10-05): Omar asked to trial QR codes on clues that teams scan to send answers from their phones, first for Closest Wins and Price Is Right. He also asked for a "Steal QR codes" switch in setup, so teams that aren't playing can send a steal for half points; he'll say which categories shouldn't get one.
+  - **How it works:**
+    - Each game gets a random room code (saved with the resumable game).
+    - The clue shows a QR code that opens `answer.html` (served at `/answer`) on the phone. The phone page shows the category and value, team buttons (it remembers the team per game), an input and **Lock in**.
+    - Answers go to `worker/index.js` on Cloudflare: one Durable Object per room, which deletes itself after a day.
+    - The laptop polls every 1.5 s. When the host presses Reveal, the clue is closed on the relay (late answers get "Too late"), the last answers are fetched, and then the answer shows.
+  - **Closest Wins and Price Is Right** ("Answer QR codes" switch, on by default): each team's box shows "Locked in ✓" without the number. On reveal the numbers appear and the existing closest-wins logic awards the points. The host can still type a number, which replaces the phone one.
+  - **Steal QR codes** (off by default): on text, photo, flag, map pin, outline and emoji clues, the code is for the teams that aren't playing; the playing team (the one whose turn it is) isn't offered on the phone. Before the reveal the TV shows only "Team B ✓ sent a steal". After it, it shows "Team B steals with: Cairo", and the host gives the ½ button if it's right. Act It Out, One Word Clues and the closest-number rounds never get a steal code. Other categories can be left out by adding their ids to `STEAL_SKIP` in `src/app.js` (empty for now, waiting on Omar's list).
+  - **Where it works:** only on the Cloudflare link. GitHub Pages and `file://` have no `/api`, so the codes don't show and the game plays as before. Status has a new "Phone answers" row.
+  - **Cloudflare setup:** `wrangler.jsonc` now has `main`, an `ASSETS` binding, the `ROOMS` Durable Object and a `new_sqlite_classes` migration (SQLite Durable Objects are on the free plan). There's nothing extra to click.
+  - **Tested** locally with `wrangler dev`, one laptop page and three phone pages:
+    - Price Is Right: three teams locked in, the numbers stayed hidden, the closest team won on reveal, and a late answer was refused.
+    - Steal: the playing team wasn't offered, and the steal answer showed after the reveal.
+    - No page errors. Not yet tested on real phones over the internet.
+  - To undo: turn both switches off in setup, or remove the 5.9 block in `src/app.js` (with `ansPanel(c)`, the `#ansQr` drawing and the reveal hook), the two switches in `src/head.html`, `answer.html`, `worker/` and the `main`/`durable_objects`/`migrations` lines in `wrangler.jsonc`.
+- 5.10 (2026-10-05): Omar said the empty number boxes on Closest Wins / Price Is Right were redundant with phone answers. He also asked for the answer to show once the last team has sent theirs. Two changes, plus a note about setup:
+  - **Status boxes:** when phone answers are on, each team's box shows **Waiting…** or **Locked in ✓** (or "Typed in ✓"), with a small **Type** button that turns it into an input so the host can enter a number. The duplicate list under the QR code is gone. After the reveal the boxes show each guess and how far off it was, as before. If a phone answer arrives while the host is typing in a box, the other boxes update straight away.
+  - **Auto-reveal:** once every team has a number in, the game reveals the answer by itself 1.5 s later, with the same close-the-relay, fetch-last-answers, then reveal sequence. It waits while the host is typing in a box.
+  - **Cloudflare setup:** on the "extra setup step" question, there isn't one. Everything the relay needs is in `wrangler.jsonc` and is set up by the normal deploy.
+  - **Tested** with `wrangler dev` and three simulated phones: the boxes went from Waiting… to Locked in ✓, the answer revealed itself with the right winner, and the Type path and steals still worked, with no errors.
+  - To undo the auto-reveal: delete the 5.10 `c.autoRev` block in `pollAns()`. To bring back the inputs: delete the 5.10 status branch in the closest-wins part of `renderClue()`.
+- 5.11 (2026-10-05): Omar asked for no steal codes on anything with three answers to pick from. Four categories are A/B/C in every clue, so they're now in `STEAL_SKIP` in `src/app.js`: Most Spotify Listeners (`spot`), Most Instagram Followers (`igf`), Most Calories (`cal`) and Real Headline (`headl`). Act It Out (both), One Word Clues, Closest Wins and Price Is Right never had one. He then asked for no steal codes on the photo rounds either: every category in the Photo Rounds group (Car, Actor, Footballer, Person, Food, Logo) is skipped through `noStealGroup()`. Football Stadiums, which has photos but sits in Football & Sports, still gets one. To give a category its steal code back, remove its id from `STEAL_SKIP` (or, for the photo rounds, delete the `noStealGroup` check).
+- 5.12 (2026-10-05): Omar asked for the steal code to just say "Scan to steal", and for a team's name to pop up when it sends a steal.
+  - **Steal panel:** it now reads only **Scan to steal**. The "waiting…" rows are gone. When a team sends a steal, "**Eagles is stealing!**" pops in (a scale-up animation, plus the soft blip when sound is on). After the reveal the panel lists what each stealing team sent ("Eagles steals with: …"), or "No steals".
+  - **Layout:** steal codes are smaller (150 px). On photo clues (Football Stadiums) the code sits beside the photo (`.withqr`) instead of under it, so Reveal answer stays on screen. On a narrow screen it drops below again.
+  - **Tested** with `wrangler dev` on a stadium clue and a text clue, with a simulated phone. No errors.
+  - To undo: restore the old `ansPanel()` (its old wording is in the 5.12 comment), and drop the `.withqr` wrapper in `renderClue()` and the 5.12 CSS.
+- 5.13 (2026-10-05): Omar asked for revealed steals to read just "Team: answer" (for example "Eagles: Craven Cottage") instead of "Eagles steals with: Craven Cottage". It's one line in `ansPanel()` in `src/app.js`, with the old wording in a comment next to it.
+- 5.14 (2026-10-05): Omar asked that on a photo clue, a team that has sent a steal shows as just its name and a check mark ("Eagles ✓"). Other clues still say "Eagles is stealing!". The pop-up animation is unchanged. It's one line in `ansPanel()` in `src/app.js`: it shows the short form whenever the clue has a picture.
+- 5.15 (2026-10-05): Omar meant "Team ✓" for both kinds of clue, so every clue now shows the short form; "is stealing!" is gone. The 5.14 entry was taken out of the player-facing changelog.
+- 5.16 (2026-10-05): Omar asked to remove the pale outline around the QR code and its "Scan to steal" text. The `.ansqr` box now has `border:0` (the old value is in a comment next to it). This applies to both the steal code and the Closest Wins / Price Is Right code.
+  - The QR's own white margin stays: I tried removing it first, and a QR reader (jsQR) then couldn't read the code; with the margin back, it reads every time.
+  - **Checked:** a short question, a 126-character question, a Formations lineup (the tallest clue) and a stadium photo. All fit with Reveal answer on screen, and every code decoded.
+- 5.17 (2026-10-05): Omar said the code looked off-centre with "Scan to steal" beside it. He asked for it centred and a bit smaller, with the text below and the team names still on the right when a steal comes in.
+  - **Text clues:** the code (130 px for steals, 170 px for Closest Wins / Price Is Right) sits in the middle of the card with its caption underneath. Stealing teams' names ("Eagles ✓") pop up to the right of it, and the code stays centred however many names there are (a three-column grid in `.ansqr`).
+  - **Photo clues:** the code stays beside the picture, with its caption under it and the names under that.
+  - **After the reveal:** the steals are listed centred ("Pharaohs: Lima").
+  - **Checked** with `wrangler dev`: a text clue before and after two steals, a stadium photo with a steal, and Price Is Right. All codes decoded with jsQR, with no errors.
