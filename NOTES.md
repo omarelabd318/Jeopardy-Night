@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.17. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.18. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -423,3 +423,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Photo clues:** the code stays beside the picture, with its caption under it and the names under that.
   - **After the reveal:** the steals are listed centred ("Pharaohs: Lima").
   - **Checked** with `wrangler dev`: a text clue before and after two steals, a stadium photo with a steal, and Price Is Right. All codes decoded with jsQR, with no errors.
+- 5.18 (2026-10-05): Omar chose to shorten the link inside the clue QR codes so they scan from further away. A phone can usually scan a code from about 10 times its width; fewer, bigger dots at the same size helps.
+  - **What changed:** the code used to hold the whole link: room, clue, team names, category, value, unit and who's playing (~150 characters, a 45×45-dot code). It now holds only `/a?r=ROOM&c=CLUE`, which is about 70 characters on the real Cloudflare address (a ~33×33-dot code, ~35% bigger dots, so roughly 35% more scanning distance at the same size).
+  - **How the phone gets the rest:** the laptop posts the clue's details to the relay when the code is drawn (`sendMeta()` → `POST /api/meta`), and the phone page loads them from `GET /api/meta` (retrying for a few seconds).
+  - **Other changes:** room and clue ids are 8 random characters, and the worker serves `answer.html` at `/a` without a redirect. Old long links still work on the phone page.
+  - **Tested** with `wrangler dev`: Price Is Right with three phones (auto-reveal, right winner, late answer refused) and a steal both worked. jsQR read every code: 29×29 dots locally (on the longer real address it will be ~33×33).
+  - To undo: put back the old `ansUrl()` (described in the 5.18 comment) and `ansKey()`; the phone page still accepts long links.

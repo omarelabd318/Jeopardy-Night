@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.18",
+  "date": "2026-10-05",
+  "items": [
+   "QR codes on clues are less dense, so phones can scan them from further away."
+  ]
+ },
+ {
   "v": "5.17",
   "date": "2026-10-05",
   "items": [

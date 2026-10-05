@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.17`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.18`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -762,16 +762,19 @@ const STEAL_SKIP = new Set(["spot","igf","cal","headl"]);  // 5.11 (Omar): no st
 const noStealGroup = id => { const g = (typeof CAT_GROUPS !== "undefined" ? CAT_GROUPS : []).find(([name]) => name === "Photo Rounds"); return !!(g && g[1].includes(id)); };
 let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
-function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 function ansMode(c){ if(!c || c.preview || !RELAY) return null;
   if(c.type === "closest") return S.qrAns ? "num" : null;
   if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat)) return "steal";
   return null; }
-function ansKey(c){ return `${c.cat}-${c.lvl}-${c.cid}`; }
-function ansUrl(c, m){ if(!S.room) S.room = newRoom(); const u = new URL("answer", location.href);  // Cloudflare serves answer.html at /answer
-  const q = {r:S.room, c:ansKey(c), k:m, n:S.teams.map(t => t.name.replace(/\|/g,"/")).join("|"), cat:catById(c.cat).name, val:String(c.lvl)};
-  if(m === "num"){ const p = clueParts(); if(p.unit) q.u = p.unit; } else q.x = String(S.turn || 0);
-  u.search = new URLSearchParams(q).toString(); return u.href; }
+function ansKey(c){ return c.cid; }  // 5.18: just the clue's random id (was cat-value-id) to keep the QR link short
+/* 5.18 (Omar): a shorter link makes a less dense QR code that scans from further away. The code now holds only
+   /a?r=ROOM&c=CLUE; the phone fetches the rest (teams, category, value, unit, who's playing) from the relay. Was: everything in the link. */
+function ansMeta(c, m){ const q = {k:m, n:S.teams.map(t => t.name), cat:catById(c.cat).name, val:String(c.lvl)};
+  if(m === "num"){ const p = clueParts(); if(p.unit) q.u = p.unit; } else q.x = S.turn || 0; return q; }
+function sendMeta(c, m){ if(c.metaSent === m) return; c.metaSent = m;
+  fetch("api/meta", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, c:ansKey(c), m:ansMeta(c, m)})}).catch(() => { c.metaSent = null; }); }
+function ansUrl(c, m){ if(!S.room) S.room = newRoom(); return new URL(`a?r=${S.room}&c=${ansKey(c)}`, location.href).href; }
 function ansPanel(c){ const m = ansMode(c); if(!m) return "";
   const steal = m === "steal", playing = S.turn || 0, got = c.phoneAns || {};
   if(c.revealed && !steal) return "";
@@ -861,7 +864,7 @@ function openClue(cat,lvl,exclude,forceIdx){
   const type = catById(cat).type;
   const zoomStart = {100:3.5,200:4.2,300:4.8,400:5.4,500:6}[lvl];
   S.cur = {cat,lvl,idx,type,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
-           secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, cid: Date.now().toString(36) + Math.random().toString(36).slice(2,6), stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
+           secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, cid: newRoom().slice(0,8), stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
   stopTimer();
   try{ renderClue(); }catch(err){ $("#clue").innerHTML = `<div class="eyebrow">${esc(catById(cat).name)} · ${lvl}</div><p class="note">This clue couldn't be shown (${esc(err && err.message || err)}). Tell Claude this message. Tap Back to board.</p><div class="row"><button class="btn small" data-act="cancel">Back to board</button></div>`; }
   $("#card").hidden = false;
@@ -1059,7 +1062,7 @@ function renderClue(){
     const run = async () => { try{ const fs = await new window.FaceDetector({fastMode:true,maxDetectedFaces:1}).detect(zimg); if(fs[0] && S.cur===c){ const b = fs[0].boundingBox; saveFocus(k, 100*(b.x+b.width/2)/zimg.naturalWidth, 100*(b.y+b.height/2)/zimg.naturalHeight); renderClue(); } }catch(err){} };
     zimg.complete ? run() : zimg.addEventListener("load", run, {once:true});
   }
-  const aq = $("#ansQr"); if(aq){ const m = ansMode(c);
+  const aq = $("#ansQr"); if(aq){ const m = ansMode(c); sendMeta(c, m);
     if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: m === "steal" ? 130 : 170, height: m === "steal" ? 130 : 170, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
     else aq.textContent = "The code maker didn't load yet."; }
   const qb = $("#qrbox");
