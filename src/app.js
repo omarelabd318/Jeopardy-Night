@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.66`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.67`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -720,7 +720,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   addEventListener("resize", fit); fit();
   const showing = () => S.anim && !S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
   const sm = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x), cl = (x, a, b) => Math.max(a, Math.min(b, x));
-  const pnow = () => performance.now() / 1000;
+  let sceneT = 0; const pnow = () => sceneT;   // 5.67: the scene's own clock, so the little wiggles pause with it
   // ---- drawing helpers ----
   const poly = (pts, fill, stroke, lw = 1) => { g.beginPath(); pts.forEach(([a, b], i) => g[i ? "lineTo" : "moveTo"](a, b)); g.closePath();
     if(fill){ g.fillStyle = fill; g.fill(); } if(stroke){ g.strokeStyle = stroke; g.lineWidth = lw; g.stroke(); } };
@@ -969,15 +969,17 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     else for(const [o, k] of [[-6, Math.PI * 1.5], [5, 0]]) leg(o, Math.sin(ph + k) * 0.4, fur);
     head(x + 8 * stretch * d, by - 3 + (run ? 1 : 0));
   }
-  let t0 = performance.now();
+  let t0 = performance.now(), last = t0;
   function frame(now){
     requestAnimationFrame(frame);
-    /* 5.59 (Omar): unlike the kickers, the street is hidden while a clue is open, but its scenes carry on running behind it
-       (5.52-5.58: drawn faintly behind the clue, like the kickers). */
+    /* 5.59 (Omar): unlike the kickers, the street is hidden while a clue is open (5.52-5.58: drawn faintly behind it).
+       5.67 (Omar): and paused: its clock stops while the clue is open, so the scene carries on from the same moment after
+       (5.59-5.66: it kept running hidden). */
     const open = !!S.cur && !$("#card").hidden, on = showing();
-    cv.classList.toggle("on", on && !open); if(!on) return;
+    if(open) t0 += now - last; last = now;
+    cv.classList.toggle("on", on && !open); if(!on || open) return;
     const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
-    const t = ((now - t0) / 1000) * slow;
+    const t = ((now - t0) / 1000) * slow; sceneT = t;
     g.clearRect(0, 0, W, H); g.save();
     if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; nextAt = t + actLen + 2.5 + Math.random() * 3; } }
     if(act >= 0 && t <= actAt + actLen){ if(flip){ g.translate(W, 0); g.scale(-1, 1); } ACTS[act].draw(t - actAt); }   // mirrored on alternate rounds

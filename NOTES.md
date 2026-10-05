@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.66. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.67. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -509,3 +509,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 5.64 (2026-10-05): Omar said the tuk-tuk should be less square and more curvy, like in his photo. `tuktuk()` now draws its body with curves (a `shape()` helper with quadratic curves): a rounded back, a bulbous nose sweeping down to the front wheel, a windscreen with rounded corners, and a thicker canvas roof that curves down at the back. He saw a preview.
 - 5.65 (2026-10-05): Omar asked for the tuk-tuk's front wheel to sit a bit more in front so it reads clearly. In `tuktuk()` the wheel and mudguard move from 16 to 19 units, the nose reaches further forward over it, and the headlamp and the honk arcs move forward to match. He saw a preview.
 - 5.66 (2026-10-05): Omar only meant the front wheel and the arc above it should move forward, so the nose, headlamp and honk arcs go back to their 5.64 positions; the wheel and mudguard stay at 19 units (from 5.65).
+- 5.67 (2026-10-05): Omar asked to pause the street scenes when a clue comes up (5.59 hid them but they kept running). The frame loop in the street block in `src/app.js` now moves `t0` forward by the time a clue is open, so the scene's clock stops, and the small wiggles (the tabbaa's arm, steam, honk arcs, waving) now run off the scene's clock (`sceneT`, through `pnow()`) instead of the page's, so they freeze too. Checked with a frozen-clock test: the frame after closing a clue held open for 5 s matches the one before it opened, and it moves again straight after.
