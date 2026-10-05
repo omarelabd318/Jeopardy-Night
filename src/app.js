@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.31`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.32`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -830,7 +830,7 @@ setInterval(pollAns, 1500);
    (forgiving small typos and surnames) and the host confirms or changes the ticks before saving. Numbers (Closest Wins,
    Price Is Right) and Put It in Order are marked automatically. Act It Out, One Word Clues and Who's the Impostor need teams,
    so they're left out; power-ups and steal codes are off. Needs the Cloudflare link (worker/index.js).
-   To remove: delete this block, the S.ffa lines it hooks into (search "ffa"), #ffaPanel and #lobby in head.html, and play.html. */
+   To remove: delete this block, the S.ffa lines it hooks into (search "ffa"), the #optFfa toggle and #lobby in head.html, and play.html. */
 const FFA_SKIP = new Set(["act","impostor","password"]);
 /* 5.27 (Omar): with Free-for-all on, Power-ups, Answer QR codes and Steal QR codes switch off and grey out; switching it off brings back what they were */
 function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#teamsPanel").hidden = S.ffa;
