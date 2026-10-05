@@ -145,13 +145,13 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.7`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.8`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","emeg","emseg","ctryar"]],
   ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","tvmix","friends","himym","hp","hgames","marvel","toons","romcom","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
+  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","tvmix","friends","himym","hp","hgames","marvel","toons","romcom","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
@@ -577,7 +577,7 @@ function askConfirm(title, text, yesLabel, onYes){
 }
 $("#confirmNo").onclick = () => { $("#confirmBox").hidden = true; confirmYes = null; };
 $("#confirmYes").onclick = () => { $("#confirmBox").hidden = true; const f = confirmYes; confirmYes = null; if(f) f(); };
-$("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", goSetup);
+$("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", () => { clearGame(); goSetup(); });
 function goSetup(){ setFootball(false); $("#setup").hidden = false; $("#game").hidden = true; $("#scores").hidden = true; renderTeamInputs(); histNote(); }
 /* 4.84 (Omar): in Football mode, opening Edit scores plays the first 6.65 seconds of the "After review... number 10 Paraguay covered his mouth" VAR call
    (sounds/after-review.mp3, cut from v4work/sounds-src/after-review-original.mp3). Only when sound is on, and not on "Done editing". To remove: delete this block and the playReview() call below. */
@@ -592,7 +592,7 @@ $("#newBoard").onclick = () => askConfirm("Start a new board?", "Every tile come
 
 /* ---------- board ---------- */
 function renderBoard(){
-  const b = $("#board"); prefetchPacks();
+  const b = $("#board"); prefetchPacks(); setTimeout(saveGame, 0);
   b.style.gridTemplateColumns = `repeat(${S.cats.length}, minmax(var(--colmin,118px), 1fr))`;
   b.classList.toggle("many", S.cats.length >= 8);
   b.style.setProperty("--hvw", `${(12/Math.max(8,S.cats.length)).toFixed(2)}vw`);
@@ -610,7 +610,7 @@ $("#board").addEventListener("click", e => {
   openClue(t.dataset.cat, +t.dataset.l);
 });
 function showWinner(){
-  closeCard(); S.ended = true;
+  closeCard(); S.ended = true; clearGame();
   const ranked = S.teams.map((t,i) => ({...t, i})).sort((a,b) => b.score - a.score);
   const max = ranked[0].score, top = ranked.filter(t => t.score === max);
   $("#winTitle").innerHTML = S.teams.length === 1 ? `Final score<br><span>${max}</span>`
@@ -740,12 +740,36 @@ function fireworks(){
   confRaf = requestAnimationFrame(step);
 }
 
+/* 5.8 (Omar): resume after a refresh. The game in progress (teams, scores, whose turn, which tiles are done, the board's
+   categories, Football mode and its ball) is saved in the browser after every change, and the title screen offers to
+   resume it. Leaving through Setup or Title (and confirming), or finishing the game, clears it. To remove: delete this
+   block, the saveGame() calls in renderScores()/renderBoard(), clearGame() in the leave handlers, and #resumeBox in head.html. */
+const GAME_KEY = "jn_game";
+function saveGame(){ if($("#game").hidden || !S.teams.length) return;
+  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power}); }
+function clearGame(){ try{ localStorage.removeItem(GAME_KEY); }catch(e){} }
+function savedGame(){ const g = store.get(GAME_KEY, null);
+  if(!g || g.v !== 1 || g.ended || !Array.isArray(g.teams) || !Array.isArray(g.cats) || !g.cats.length) return null;
+  if(Date.now() - (g.at || 0) > 2 * 24 * 3600e3) return null;  // older than two days: start fresh
+  if(!g.cats.every(id => catById(id))) return null;
+  const played = Object.keys(g.done || {}).length, pts = g.teams.some(t => t.score);
+  return played || pts ? g : null; }
+function ago(t){ const m = Math.round((Date.now() - t) / 60000); return m < 1 ? "just now" : m < 60 ? `${m} min ago` : `${Math.round(m/60)} h ago`; }
+function showResume(){ const box = $("#resumeBox"); if(!box) return; const g = savedGame(); box.hidden = !g; if(!g) return;
+  const played = Object.keys(g.done || {}).length, total = g.cats.length * LV.length;
+  $("#resumeInfo").textContent = `${g.football ? "Football mode · " : ""}${g.teams.map(t => `${t.name} ${t.score}`).join(" · ")} · ${played} of ${total} tiles played · ${ago(g.at)}`; }
+function resumeGame(){ const g = savedGame(); if(!g) return;
+  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power;
+  if(typeof BALLS !== "undefined" && BALLS.length){ const i = g.ball >= 0 && g.ball < BALLS.length ? g.ball : 0; lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
+  $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
+  renderChips(); renderTeamInputs(); renderBoard(); renderScores(); window.scrollTo(0,0); }
 function renderScores(){
   const max = Math.max(...S.teams.map(t=>t.score));
   $("#scores").innerHTML = S.teams.map((t,i) =>
     `<div class="team${t.score===max&&max>0?" lead":""}${i===(S.turn||0)?" turn":""}" data-team="${i}" role="button" tabindex="0" aria-label="${esc(t.name)}${i===(S.turn||0)?", picking now":""}. Tap to give them the pick"><div class="nm">${i===(S.turn||0)?'<span class="pick">Picking</span>':""}${esc(t.name)}</div><div class="sc${t.score<0?" neg":""}">${t.score}</div>
      ${S.power ? `<div class="pw"><button class="pwb${S.x2===i?" ready":""}${t.x2used?" used":""}" data-x2="${i}" ${t.x2used || (i!==(S.turn||0) && S.x2!==i) ? "disabled" : ""} aria-label="${esc(t.name)}: double points${t.x2used?" (used)":S.x2===i?" (ready, tap to cancel)":""}" title="${t.x2used ? "Used" : "Tap on your turn, before picking a tile"}">${S.x2===i ? `×2 <span class="lg">ready</span><span class="sm">✓</span>` : "×2"}</button><span class="pwb${t.twoUsed?" used":""}" aria-label="${esc(t.name)}: 2 answers${t.twoUsed?" (used)":" (use it on an open clue)"}" title="${t.twoUsed ? "Used" : "Use it on an open clue"}"><span class="lg">2 answers</span><span class="sm">2 ans</span></span></div>` : ""}
      ${S.editing ? `<div class="adj"><button data-i="${i}" data-d="-100" aria-label="Take 100 from ${esc(t.name)}">−100</button><button data-i="${i}" data-d="100" aria-label="Give 100 to ${esc(t.name)}">+100</button></div>` : ""}</div>`).join("");
+  saveGame();
 }
 $("#scores").addEventListener("click", e => {
   const xb = e.target.closest("[data-x2]");
@@ -1055,8 +1079,10 @@ if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
-function showHome(){ setFootball(false); closeCard(); hideWinner(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
-$("#toHome").onclick = () => askConfirm("Leave this game?", "Going to the title screen ends the current game.", "Go to title", showHome); $("#setupHome").onclick = showHome;
+function showHome(){ setFootball(false); closeCard(); hideWinner(); showResume(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+$("#resumeBtn").onclick = resumeGame;
+$("#resumeNo").onclick = () => { clearGame(); showResume(); };
+$("#toHome").onclick = () => askConfirm("Leave this game?", "Going to the title screen ends the current game.", "Go to title", () => { clearGame(); showHome(); }); $("#setupHome").onclick = showHome;
 showHome();
 /* full screen */
 const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;

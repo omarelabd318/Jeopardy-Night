@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.7. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 99 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.8. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -374,3 +374,14 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Now `warmSound()` downloads each clip as a plain file with `fetch()`, which puts it in the browser cache that the game's audio then plays from. All five clips (about 0.5 MB) start as soon as Status is opened. The row shows "couldn't load" if one fails.
   - Tested over http: 5 / 5 within a couple of seconds.
   - To undo: put back the old `warmSound()` (described in the comment above it) and remove `SOUNDS.forEach(warmSound)` from the Status toggle handler.
+- 5.8 (2026-10-05): Omar asked for resume-after-refresh and a Netflix Hits category.
+  - **Resume game:** after every change, the game in progress is saved in the browser (`jn_game` in localStorage, via `saveGame()` in `renderScores()`/`renderBoard()`). It holds the teams and scores, whose turn it is, the played tiles, the board's categories, Football mode and its ball, and the power-ups.
+    - When a saved game exists, the title screen shows **Resume game** (and **Discard**) with a line like "Team A 900 · Team B 600 · 3 of 30 tiles played · 5 min ago".
+    - It is cleared when you confirm leaving to Setup or the title screen, when the winner screen shows, or when you press Discard. It is ignored after two days.
+    - A clue that was open at the moment of the refresh just goes back to being an unplayed tile.
+    - Tested in normal and Football mode: everything came back identical, and leaving the game cleared it.
+    - To undo: delete the 5.8 block before `renderScores()`, the two `saveGame()` calls, the `clearGame()` calls in the leave handlers and `showWinner()`, and `#resumeBox` in `src/head.html`.
+  - **Netflix Hits** (`netflix`, Entertainment, after The Office): 100 clues, 20 per value, in `v4work/out/netflix.json`.
+    - Coverage: Money Heist, Squid Game, Wednesday, Narcos, Dark, The Crown, Bridgerton, The Witcher, Ozark, You and Elite; Arab and Egyptian originals (Paranormal, AlRawabi School for Girls, Jinn, Ashab wala Aaz); K-dramas; and newer hits (KPop Demon Hunters, Baby Reindeer, Adolescence).
+    - It appears in setup but not in Football mode or TV Show Mix.
+    - To remove: delete `v4work/out/netflix.json`, the `['netflix','office']` line in `src/extra.js`, and "netflix" from `CAT_GROUPS`.

@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.8",
+  "date": "2026-10-05",
+  "items": [
+   "Resume game: if the page is refreshed or closed mid-game, the title screen offers to pick up where you left off, with the same scores, turn and board.",
+   "New category: Netflix Hits (100 clues), from Money Heist and Squid Game to Wednesday, Dark and Paranormal."
+  ]
+ },
+ {
   "v": "5.7",
   "date": "2026-10-04",
   "items": [

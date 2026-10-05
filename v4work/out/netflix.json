@@ -1,0 +1,418 @@
+{
+ "id": "netflix",
+ "name": "Netflix Hits",
+ "type": "text",
+ "desc": "Netflix originals and hits, from Money Heist, Squid Game and Wednesday to Narcos, Dark and Paranormal.",
+ "data": {
+  "100": [
+   [
+    "Which Spanish series follows a gang of robbers in red jumpsuits and Dalí masks?",
+    "Money Heist (La Casa de Papel)"
+   ],
+   [
+    "Which Korean series has players competing in deadly children's games for a huge cash prize?",
+    "Squid Game"
+   ],
+   [
+    "Which Addams Family daughter got her own 2022 Netflix series, starring Jenna Ortega?",
+    "Wednesday"
+   ],
+   [
+    "Which series follows the hunt for Pablo Escobar?",
+    "Narcos"
+   ],
+   [
+    "What do the Money Heist gang call their mastermind leader?",
+    "The Professor"
+   ],
+   [
+    "Which drama follows Queen Elizabeth II's reign from the 1940s on?",
+    "The Crown"
+   ],
+   [
+    "Which Shonda Rhimes period romance is set in Regency-era London high society?",
+    "Bridgerton"
+   ],
+   [
+    "Which series stars Anya Taylor-Joy as chess prodigy Beth Harmon?",
+    "The Queen's Gambit"
+   ],
+   [
+    "Which series follows Geralt of Rivia, a monster hunter?",
+    "The Witcher"
+   ],
+   [
+    "Which British teen series follows Otis, whose mum is a sex therapist?",
+    "Sex Education"
+   ],
+   [
+    "The Money Heist robbers are code-named after what: Tokyo, Berlin, Nairobi, Rio?",
+    "Cities"
+   ],
+   [
+    "Which Egyptian Netflix series is based on Ahmed Khaled Tawfik's horror novels Ma Waraa El Tabiaa?",
+    "Paranormal"
+   ],
+   [
+    "Which Squid Game game makes players freeze whenever the giant doll turns around?",
+    "Red Light, Green Light"
+   ],
+   [
+    "In which 2018 thriller does Sandra Bullock spend most of the film blindfolded?",
+    "Bird Box"
+   ],
+   [
+    "Which series follows Joe Goldberg, a bookshop manager who stalks the women he falls for?",
+    "You"
+   ],
+   [
+    "Which series has the Devil quit Hell to run a nightclub in Los Angeles?",
+    "Lucifer"
+   ],
+   [
+    "Which Netflix series follows Eleven and her friends in the town of Hawkins?",
+    "Stranger Things"
+   ],
+   [
+    "What colour are the guards' jumpsuits in Squid Game?",
+    "Pink"
+   ],
+   [
+    "In Wednesday, what is the name of the Addams family's walking, disembodied hand?",
+    "Thing"
+   ],
+   [
+    "What is Netflix's famous two-note intro sound called?",
+    "Tudum"
+   ]
+  ],
+  "200": [
+   [
+    "Which Brazilian actor plays Pablo Escobar in Narcos?",
+    "Wagner Moura"
+   ],
+   [
+    "Which series follows Marty Byrde laundering money for a cartel in the Missouri lakes?",
+    "Ozark"
+   ],
+   [
+    "Which German time-travel series is set in the small town of Winden?",
+    "Dark"
+   ],
+   [
+    "Which actor plays The Professor in Money Heist?",
+    "Álvaro Morte"
+   ],
+   [
+    "Which Italian resistance song do the Money Heist gang sing?",
+    "Bella Ciao"
+   ],
+   [
+    "Who created Squid Game?",
+    "Hwang Dong-hyuk"
+   ],
+   [
+    "In Squid Game, players must cut a shape out of which honeycomb candy without breaking it?",
+    "Dalgona"
+   ],
+   [
+    "Who is the Bridgerton sister at the centre of season 1?",
+    "Daphne"
+   ],
+   [
+    "Who played Geralt in the first three seasons of The Witcher?",
+    "Henry Cavill"
+   ],
+   [
+    "Who plays Joe Goldberg in You?",
+    "Penn Badgley"
+   ],
+   [
+    "Which 2025 animated film about a K-pop girl group that fights demons became Netflix's most-watched film ever?",
+    "KPop Demon Hunters"
+   ],
+   [
+    "Which 2021 film stars Dwayne Johnson, Ryan Reynolds and Gal Gadot chasing Cleopatra's eggs?",
+    "Red Notice"
+   ],
+   [
+    "Which 2019 Martin Scorsese gangster film reunites De Niro, Pacino and Pesci?",
+    "The Irishman"
+   ],
+   [
+    "Cobra Kai continues the story of which 1984 film?",
+    "The Karate Kid"
+   ],
+   [
+    "Which docuseries follows big-cat zoo owner Joe Exotic?",
+    "Tiger King"
+   ],
+   [
+    "Which Spanish teen series is set at the exclusive Las Encinas school?",
+    "Elite"
+   ],
+   [
+    "Which boarding school does Wednesday Addams attend?",
+    "Nevermore Academy"
+   ],
+   [
+    "Which series follows an American marketing executive who moves to Paris?",
+    "Emily in Paris"
+   ],
+   [
+    "In which reality dating show do couples get engaged before ever seeing each other?",
+    "Love Is Blind"
+   ],
+   [
+    "Which action film stars Chris Hemsworth as mercenary Tyler Rake?",
+    "Extraction"
+   ]
+  ],
+  "300": [
+   [
+    "Which 2022 Knives Out sequel sends detective Benoit Blanc to a Greek island?",
+    "Glass Onion"
+   ],
+   [
+    "Who plays the young Queen Elizabeth in seasons 1 and 2 of The Crown?",
+    "Claire Foy"
+   ],
+   [
+    "Which Money Heist character narrates the story?",
+    "Tokyo"
+   ],
+   [
+    "What do the Money Heist gang rob in parts 1 and 2?",
+    "The Royal Mint of Spain"
+   ],
+   [
+    "What is Seong Gi-hun's player number in Squid Game?",
+    "456"
+   ],
+   [
+    "In Dark, time travel happens in cycles of how many years?",
+    "33"
+   ],
+   [
+    "Pablo Escobar ran which Colombian city's cartel?",
+    "Medellín"
+   ],
+   [
+    "Which Jordanian Netflix series follows bullying at an elite girls' school?",
+    "AlRawabi School for Girls"
+   ],
+   [
+    "Which Korean zombie series is set in a high school?",
+    "All of Us Are Dead"
+   ],
+   [
+    "What is the name of Wednesday's bubbly werewolf roommate?",
+    "Enid (Sinclair)"
+   ],
+   [
+    "Which Russian world champion does Beth Harmon face in The Queen's Gambit?",
+    "Vasily Borgov"
+   ],
+   [
+    "Which Bridgerton spin-off tells the story of a young British queen?",
+    "Queen Charlotte"
+   ],
+   [
+    "Which Egyptian actor plays Dr Refaat Ismail in Paranormal?",
+    "Ahmed Amin"
+   ],
+   [
+    "Netflix's first Arabic film, Ashab wala Aaz (2022), is a remake of which Italian film?",
+    "Perfect Strangers"
+   ],
+   [
+    "Which 2021 comet-disaster satire stars Leonardo DiCaprio and Jennifer Lawrence?",
+    "Don't Look Up"
+   ],
+   [
+    "Which NBA team is The Last Dance about?",
+    "The Chicago Bulls"
+   ],
+   [
+    "Complete the Formula 1 docuseries title: Drive to ___",
+    "Survive"
+   ],
+   [
+    "Which 2024 British series is about a comedian and his stalker, Martha?",
+    "Baby Reindeer"
+   ],
+   [
+    "Which 2025 British drama about a 13-year-old boy accused of murder filmed each episode in one continuous shot?",
+    "Adolescence"
+   ],
+   [
+    "Which French series stars Omar Sy as Assane Diop, a thief inspired by a famous gentleman burglar?",
+    "Lupin"
+   ]
+  ],
+  "400": [
+   [
+    "Which actress won three Emmys as Ruth Langmore in Ozark?",
+    "Julia Garner"
+   ],
+   [
+    "Who plays Berlin in Money Heist?",
+    "Pedro Alonso"
+   ],
+   [
+    "Which political drama starring Kevin Spacey was Netflix's first big original series, in 2013?",
+    "House of Cards"
+   ],
+   [
+    "Which 2013 Netflix series is set in a women's prison?",
+    "Orange Is the New Black"
+   ],
+   [
+    "How much is the total prize in Squid Game season 1?",
+    "45.6 billion won"
+   ],
+   [
+    "In Dark, which main character turns out to become the mysterious Adam?",
+    "Jonas"
+   ],
+   [
+    "Which Indian Netflix series pits a Mumbai police officer against a gangster?",
+    "Sacred Games"
+   ],
+   [
+    "Which Narcos spin-off follows the Guadalajara cartel?",
+    "Narcos: Mexico"
+   ],
+   [
+    "What is the name of Geralt's horse in The Witcher?",
+    "Roach"
+   ],
+   [
+    "Under what pen name does the gossip writer in Bridgerton publish?",
+    "Lady Whistledown"
+   ],
+   [
+    "Who plays Queen Elizabeth in seasons 3 and 4 of The Crown?",
+    "Olivia Colman"
+   ],
+   [
+    "Which director made the first episodes of Wednesday?",
+    "Tim Burton"
+   ],
+   [
+    "Netflix's first Arabic series, Jinn (2019), is set in which country?",
+    "Jordan (Petra)"
+   ],
+   [
+    "Which anime about bounty hunter Spike Spiegel got a 2021 live-action Netflix version?",
+    "Cowboy Bebop"
+   ],
+   [
+    "Which British sci-fi anthology about technology's dark side moved from Channel 4 to Netflix?",
+    "Black Mirror"
+   ],
+   [
+    "What did Netflix do when it started in 1997?",
+    "Rented DVDs by post"
+   ],
+   [
+    "What is The Professor's real name in Money Heist?",
+    "Sergio Marquina"
+   ],
+   [
+    "Which Netflix film won the Oscar for Best International Feature in 2023?",
+    "All Quiet on the Western Front"
+   ],
+   [
+    "Which 2022 K-drama follows a woman's long revenge on her school bullies?",
+    "The Glory"
+   ],
+   [
+    "Who plays Morticia Addams in Wednesday?",
+    "Catherine Zeta-Jones"
+   ]
+  ],
+  "500": [
+   [
+    "Which 2018 interactive Black Mirror film lets viewers choose what happens?",
+    "Bandersnatch"
+   ],
+   [
+    "Which 2018 black-and-white Alfonso Cuarón film won Netflix three Oscars?",
+    "Roma"
+   ],
+   [
+    "Who co-founded Netflix with Marc Randolph?",
+    "Reed Hastings"
+   ],
+   [
+    "What is the name of the giant doll in Squid Game?",
+    "Young-hee"
+   ],
+   [
+    "What is the old man Oh Il-nam's player number in Squid Game?",
+    "001"
+   ],
+   [
+    "What is the name of the secret society in Dark?",
+    "Sic Mundus"
+   ],
+   [
+    "Which Money Heist character is named after the capital of Kenya?",
+    "Nairobi"
+   ],
+   [
+    "Who plays DEA agent Steve Murphy, the narrator of Narcos?",
+    "Boyd Holbrook"
+   ],
+   [
+    "Which Brazilian dystopian series is named after the share of people who pass the Process?",
+    "3%"
+   ],
+   [
+    "What kind of doctor is Refaat Ismail in Paranormal?",
+    "A haematologist (blood doctor)"
+   ],
+   [
+    "Who wrote the 1983 novel The Queen's Gambit?",
+    "Walter Tevis"
+   ],
+   [
+    "Which Polish author wrote The Witcher books?",
+    "Andrzej Sapkowski"
+   ],
+   [
+    "Which Spanish TV channel first aired Money Heist before Netflix picked it up?",
+    "Antena 3"
+   ],
+   [
+    "Which failed 2017 luxury music festival in the Bahamas got its own Netflix documentary?",
+    "Fyre Festival"
+   ],
+   [
+    "Which Ottoman sultan's conquest of Constantinople is the story of Rise of Empires: Ottoman?",
+    "Mehmed II (the Conqueror)"
+   ],
+   [
+    "Which K-drama follows a South Korean heiress who paraglides into North Korea?",
+    "Crash Landing on You"
+   ],
+   [
+    "Which Bridgerton brother leads season 2?",
+    "Anthony"
+   ],
+   [
+    "Who plays Prince Philip in seasons 3 and 4 of The Crown?",
+    "Tobias Menzies"
+   ],
+   [
+    "In Squid Game, what does gganbu mean?",
+    "A close friend who shares everything"
+   ],
+   [
+    "In Squid Game, the Front Man turns out to be the brother of which character?",
+    "Detective Hwang Jun-ho"
+   ]
+  ]
+ }
+}
