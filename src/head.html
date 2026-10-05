@@ -263,6 +263,8 @@ body:not(.football) #street.on{display:block}
 .verbtn{background:none;border:0;padding:4px 8px;cursor:pointer;font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;text-decoration:underline dotted;text-underline-offset:4px}
 .verbtn:hover,.verbtn:focus-visible{color:var(--brass)}
 #newsBox{position:fixed;inset:0;background:rgba(var(--veil),.9);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}
+/* 5.80 (Omar): the locked category's code box, drawn in the page so full screen stays on (prompt() left full screen) */
+#lockBox{position:fixed;inset:0;background:rgba(var(--veil),.9);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}
 .newscard{width:min(620px,100%);max-height:86vh;overflow:auto;text-align:left}
 .newscard .val{font-family:var(--display);font-weight:900;font-size:30px;color:var(--brass);text-transform:uppercase}
 .newscard h3{margin:14px 0 4px;font-size:16px;letter-spacing:.04em}
@@ -271,6 +273,7 @@ body:not(.football) #street.on{display:block}
 .newscard li{margin:3px 0}
 .newshist{margin-top:14px}
 #newsLock{margin-top:14px} #newsLock label{display:block;font-weight:700;margin-bottom:8px} #newsLock input{flex:1;min-width:0;font:inherit;font-size:18px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--deeper);color:inherit} #newsErr{min-height:1.2em;margin-top:6px;color:var(--bad)}  /* 4.62: code lock */
+#lockForm{margin-top:14px} #lockForm label{display:block;font-weight:700;margin-bottom:8px} #lockForm input{flex:1;min-width:0;font:inherit;font-size:18px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--deeper);color:inherit} #newsErr{min-height:1.2em;margin-top:6px;color:var(--bad)}  /* 4.62: code lock */  /* 5.80: same look as the version history code box */
 .newshist summary{cursor:pointer;font-weight:700}
 .newscard .era{margin:20px 0 2px;font-family:var(--display);font-size:18px;color:var(--brass);text-transform:uppercase;letter-spacing:.04em}
 .newscard ul.compact{list-style:none;padding-left:0}
@@ -431,7 +434,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.78</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.80</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -443,7 +446,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.78</div>
+      <div class="eyebrow verlabel">v5.80</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -537,6 +540,13 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
     <div class="note" id="newsErr" role="alert"></div></form>
   <details class="newshist" hidden><summary>Version history</summary><div id="newsHist"></div></details>
   <div class="row"><button class="btn primary" id="newsClose">Close</button></div>
+</div></div>
+<div id="lockBox" hidden><div class="clue newscard" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+  <div class="val" id="lockTitle">Locked category</div>
+  <form id="lockForm" autocomplete="off"><label for="lockCode">Enter the code</label>
+    <div class="row"><input id="lockCode" type="password" inputmode="numeric" autocapitalize="off" spellcheck="false" aria-describedby="lockErr"><button class="btn primary" type="submit">Open</button></div>
+    <div class="note" id="lockErr" role="alert"></div></form>
+  <div class="row"><button class="btn small" id="lockCancel" type="button">Cancel</button></div>
 </div></div>
 <div id="confirmBox" hidden><div class="clue confirmcard" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText">
   <div class="val" id="confirmTitle">Leave this game?</div>
