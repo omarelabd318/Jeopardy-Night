@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.10`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.11`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -757,13 +757,15 @@ function fireworks(){
    STEAL_SKIP lists categories that never get a steal code (Omar to choose). To remove: delete this block, ansPanel(c) in
    renderClue, the #ansQr drawing, closeAns() on reveal, the two setup switches, worker/index.js and answer.html. */
 const STEAL_TYPES = new Set(["text","photo","flag","pin","shape","emoji"]);
-const STEAL_SKIP = new Set([]);  // category ids, e.g. "headl"
+const STEAL_SKIP = new Set(["spot","igf","cal","headl"]);  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
+/* 5.11 (Omar): no steal on the Photo Rounds group either (Car, Actor, Footballer, Person, Food, Logo); checked against CAT_GROUPS when a clue opens */
+const noStealGroup = id => { const g = (typeof CAT_GROUPS !== "undefined" ? CAT_GROUPS : []).find(([name]) => name === "Photo Rounds"); return !!(g && g[1].includes(id)); };
 let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 function ansMode(c){ if(!c || c.preview || !RELAY) return null;
   if(c.type === "closest") return S.qrAns ? "num" : null;
-  if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat)) return "steal";
+  if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat)) return "steal";
   return null; }
 function ansKey(c){ return `${c.cat}-${c.lvl}-${c.cid}`; }
 function ansUrl(c, m){ if(!S.room) S.room = newRoom(); const u = new URL("answer", location.href);  // Cloudflare serves answer.html at /answer
