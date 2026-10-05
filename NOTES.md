@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.46. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.47. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -489,3 +489,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **A natural heel pass:** Omar didn't want the ball's extra loop over his head added in 5.44. Instead he now bends right over (about 70°, `lean -= 3.2 * bend`) and swings his back leg up high behind him (the new `bl` value of `man()`), so his heel meets the ball around shoulder height behind him (`heelPass()` is now hip - 15) and its ordinary lob across clears his low back and head.
   - To undo: the 5.44 order is kept in the comment above `ROT`; for the heel pass, set `heelPass()` back to `[X - 11 * D, hip - 4]`, the bend back to `1.6`, and drop `bl`.
 - 5.46 (2026-10-05): Omar asked for the phone page to be green in Football mode like the TV. The game now sends `fb` (Football mode on or off) with every `/api/cur` post, the relay keeps it and returns it from `/api/state`, and `play.html` adds the class `football` to its page: green background, navy buttons, white text (the `body.football` rules in `play.html`). Works for Free-for-all and for team phones. To undo: delete the `body.football` rules in `play.html`.
+- 5.47 (2026-10-05): Omar pointed out the phone page still said "Jeopardy Night" in Football mode. Its join screens and browser tab title now say "Joga Bonito" when the game is in Football mode (`brand()` and `theme()` in `play.html`).

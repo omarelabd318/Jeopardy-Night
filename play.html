@@ -61,6 +61,8 @@ const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-
 function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 const ord = n => n + (["th","st","nd","rd"][(n%100>10&&n%100<14)||n%10>3?0:n%10]);
 const teamMode = () => st && st.mode === "teams";
+const brand = () => st && st.fb ? "Joga Bonito" : "Jeopardy Night";   // 5.47 (Omar): Football mode is "Joga Bonito" on the TV, so here too
+function theme(){ const fb = !!(st && st.fb); document.body.classList.toggle("football", fb); document.title = brand() + ": play"; }
 const getState = p => fetch(`api/state?r=${encodeURIComponent(r)}&p=${encodeURIComponent(p)}`, {cache:"no-store"}).then(x => x.json());
 
 async function join(n, t){
@@ -73,14 +75,14 @@ async function join(n, t){
 async function joinView(err){
   stop(); $("me").textContent = ""; $("score").textContent = "";
   if(!st){ try{ st = await getState(newId()); }catch(e){} }
-  document.body.classList.toggle("football", !!(st && st.fb));
+  theme();
   if(teamMode()){
-    $("view").innerHTML = `<div class="eyebrow">Jeopardy Night</div><h1>Which team are you?</h1><div class="teams" id="tm">${st.teams.map((n,i) => `<button type="button" data-t="${i}">${esc(n)}</button>`).join("")}</div>
+    $("view").innerHTML = `<div class="eyebrow">${brand()}</div><h1>Which team are you?</h1><div class="teams" id="tm">${st.teams.map((n,i) => `<button type="button" data-t="${i}">${esc(n)}</button>`).join("")}</div>
       ${err ? `<div class="msg err">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Number boxes and steal boxes for your team pop up here by themselves.</p>`;
     $("tm").onclick = e => { const b = e.target.closest("[data-t]"); if(b){ b.disabled = true; join(st.teams[+b.dataset.t], +b.dataset.t); } };
     return;
   }
-  $("view").innerHTML = `<div class="eyebrow">Jeopardy Night · Free-for-all</div><h1>What's your name?</h1>
+  $("view").innerHTML = `<div class="eyebrow">${brand()} · Free-for-all</div><h1>What's your name?</h1>
     <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
     <button class="go" id="jb">Join</button></form>${err ? `<div class="msg err">${esc(err)}</div>` : ""}
     <p class="hint">You play on your own. Keep this page open: every clue's answer box pops up here.</p>`;
@@ -152,7 +154,7 @@ async function poll(){
   if(busy || document.hidden) return; busy = true;
   try{ const j = await getState(me.p);
     if(j && j.name === null){ busy = false; st = j; me = null; joinView(); return; }  // the game doesn't know this phone (a new game): join again
-    if(j && "cur" in j){ st = j; document.body.classList.toggle("football", !!j.fb); draw(); } }
+    if(j && "cur" in j){ st = j; theme(); draw(); } }
   catch(e){}
   busy = false;
 }
