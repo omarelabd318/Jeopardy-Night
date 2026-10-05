@@ -226,6 +226,16 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
 .zoom .empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);gap:10px;align-content:center}
 .secret{border:2px dashed var(--brass-dim);border-radius:14px;padding:22px;text-align:center;display:grid;gap:10px}
 .secret .title{font-family:var(--display);font-weight:900;font-size:clamp(34px,6vw,64px);text-transform:uppercase;line-height:1;color:var(--cream)}
+/* 5.9: phone-answer QR panel on a clue */
+.ansqr{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px auto 4px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;max-width:640px}
+.ansqr .aq{background:#fff;padding:8px;border-radius:8px}
+.ansqr .aq img,.ansqr .aq canvas{display:block;width:180px;height:180px}
+.ansqr .ansinfo{min-width:200px;text-align:left}
+.ansqr ul{list-style:none;margin:8px 0 0;padding:0;font-size:16px}
+.ansqr li{padding:3px 0}
+.ansqr li.wait{opacity:.6}
+.ansqr li.in{color:var(--brass);font-weight:700}
+.ansqr .sv{font-size:20px}
 .qr{background:#fff;padding:12px;border-radius:10px;justify-self:center;width:fit-content;margin:0 auto}
 .qr img,.qr canvas{display:block;width:220px;height:220px}
 #confirmBox{position:fixed;inset:0;background:rgba(var(--veil),.9);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -368,7 +378,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.8</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.9</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -380,7 +390,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.8</div>
+      <div class="eyebrow verlabel">v5.9</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -399,6 +409,8 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
       <div class="eyebrow">Game options</div>
       <div class="opts">
         <button class="opt" id="optPower" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Power-ups</b><small>Each team gets one ×2 (double points on a tile they pick) and one 2 answers (two guesses on an open clue).</small></span></button>
+        <button class="opt" id="optQrAns" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Answer QR codes</b><small>Closest Wins and Price Is Right show a code; each team scans it and sends its number from a phone. Works on the Cloudflare link.</small></span></button>
+        <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steal QR codes</b><small>Clues show a code the teams that aren't playing can scan to send a steal. A right steal is worth half the points (the ½ button).</small></span></button>
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
       </div>
     </div>

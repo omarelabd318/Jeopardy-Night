@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.8. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.9. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -385,3 +385,18 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
     - Coverage: Money Heist, Squid Game, Wednesday, Narcos, Dark, The Crown, Bridgerton, The Witcher, Ozark, You and Elite; Arab and Egyptian originals (Paranormal, AlRawabi School for Girls, Jinn, Ashab wala Aaz); K-dramas; and newer hits (KPop Demon Hunters, Baby Reindeer, Adolescence).
     - It appears in setup but not in Football mode or TV Show Mix.
     - To remove: delete `v4work/out/netflix.json`, the `['netflix','office']` line in `src/extra.js`, and "netflix" from `CAT_GROUPS`.
+- 5.9 (2026-10-05): Omar asked to trial QR codes on clues that teams scan to send answers from their phones, first for Closest Wins and Price Is Right. He also asked for a "Steal QR codes" switch in setup, so teams that aren't playing can send a steal for half points; he'll say which categories shouldn't get one.
+  - **How it works:**
+    - Each game gets a random room code (saved with the resumable game).
+    - The clue shows a QR code that opens `answer.html` (served at `/answer`) on the phone. The phone page shows the category and value, team buttons (it remembers the team per game), an input and **Lock in**.
+    - Answers go to `worker/index.js` on Cloudflare: one Durable Object per room, which deletes itself after a day.
+    - The laptop polls every 1.5 s. When the host presses Reveal, the clue is closed on the relay (late answers get "Too late"), the last answers are fetched, and then the answer shows.
+  - **Closest Wins and Price Is Right** ("Answer QR codes" switch, on by default): each team's box shows "Locked in ✓" without the number. On reveal the numbers appear and the existing closest-wins logic awards the points. The host can still type a number, which replaces the phone one.
+  - **Steal QR codes** (off by default): on text, photo, flag, map pin, outline and emoji clues, the code is for the teams that aren't playing; the playing team (the one whose turn it is) isn't offered on the phone. Before the reveal the TV shows only "Team B ✓ sent a steal". After it, it shows "Team B steals with: Cairo", and the host gives the ½ button if it's right. Act It Out, One Word Clues and the closest-number rounds never get a steal code. Other categories can be left out by adding their ids to `STEAL_SKIP` in `src/app.js` (empty for now, waiting on Omar's list).
+  - **Where it works:** only on the Cloudflare link. GitHub Pages and `file://` have no `/api`, so the codes don't show and the game plays as before. Status has a new "Phone answers" row.
+  - **Cloudflare setup:** `wrangler.jsonc` now has `main`, an `ASSETS` binding, the `ROOMS` Durable Object and a `new_sqlite_classes` migration (SQLite Durable Objects are on the free plan). There's nothing extra to click.
+  - **Tested** locally with `wrangler dev`, one laptop page and three phone pages:
+    - Price Is Right: three teams locked in, the numbers stayed hidden, the closest team won on reveal, and a late answer was refused.
+    - Steal: the playing team wasn't offered, and the steal answer showed after the reveal.
+    - No page errors. Not yet tested on real phones over the internet.
+  - To undo: turn both switches off in setup, or remove the 5.9 block in `src/app.js` (with `ansPanel(c)`, the `#ansQr` drawing and the reveal hook), the two switches in `src/head.html`, `answer.html`, `worker/` and the `main`/`durable_objects`/`migrations` lines in `wrangler.jsonc`.

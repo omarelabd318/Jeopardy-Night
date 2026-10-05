@@ -76,7 +76,10 @@ const S = {
   impN: store.get("jn_impN", 6),
   power: store.get("jn_power", false),
   sound: store.get("jn_sound", true),
-  x2: null
+  x2: null,
+  qrAns: store.get("jn_qrans", true),   /* 5.9: QR answers on Closest Wins / Price Is Right */
+  steal: store.get("jn_steal", false),  /* 5.9: Steal QR codes */
+  room: null
 };
 const photos = {};  // norm(answer) -> blob url
 const catById = id => CATS.find(c => c.id === id);
@@ -114,6 +117,9 @@ document.querySelectorAll(".sndbtn").forEach(b => b.addEventListener("click", ()
 $("#optSound").onclick = () => setSound(!S.sound);
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
+$("#optQrAns").onclick = () => { S.qrAns = !S.qrAns; store.set("jn_qrans", S.qrAns); $("#optQrAns").setAttribute("aria-pressed", S.qrAns); };
+$("#optSteal").onclick = () => { S.steal = !S.steal; store.set("jn_steal", S.steal); $("#optSteal").setAttribute("aria-pressed", S.steal); };
+$("#optQrAns").setAttribute("aria-pressed", S.qrAns); $("#optSteal").setAttribute("aria-pressed", S.steal);
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 /* v4.40: version history, from src/changelog.json (newest first) */
 /* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
@@ -145,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.8`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.9`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -567,7 +573,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
   requestAnimationFrame(frame);
 })();
-function newGame(){ pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
+function newGame(){ S.room = newRoom(); pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
 const midgame = () => Object.keys(S.done).length > 0 || S.teams.some(t => t.score !== 0);
 let confirmYes = null;
 function askConfirm(title, text, yesLabel, onYes){
@@ -744,9 +750,51 @@ function fireworks(){
    categories, Football mode and its ball) is saved in the browser after every change, and the title screen offers to
    resume it. Leaving through Setup or Title (and confirming), or finishing the game, clears it. To remove: delete this
    block, the saveGame() calls in renderScores()/renderBoard(), clearGame() in the leave handlers, and #resumeBox in head.html. */
+/* 5.9 (Omar): phones send answers. A QR code on the clue opens answer.html on a team's phone, which posts to /api (worker/index.js
+   on Cloudflare). Closest Wins and Price Is Right get one for every team's number ("Answer QR codes" in setup, on by default);
+   with "Steal QR codes" on, other clues get one for the teams that aren't playing to send a steal (worth half, awarded with
+   the ½ button). Only works on the Cloudflare link: GitHub Pages and file:// have no /api, so the codes simply don't show.
+   STEAL_SKIP lists categories that never get a steal code (Omar to choose). To remove: delete this block, ansPanel(c) in
+   renderClue, the #ansQr drawing, closeAns() on reveal, the two setup switches, worker/index.js and answer.html. */
+const STEAL_TYPES = new Set(["text","photo","flag","pin","shape","emoji"]);
+const STEAL_SKIP = new Set([]);  // category ids, e.g. "headl"
+let RELAY = null;  // null = still checking, true = /api works here
+fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
+function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+function ansMode(c){ if(!c || c.preview || !RELAY) return null;
+  if(c.type === "closest") return S.qrAns ? "num" : null;
+  if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat)) return "steal";
+  return null; }
+function ansKey(c){ return `${c.cat}-${c.lvl}-${c.cid}`; }
+function ansUrl(c, m){ if(!S.room) S.room = newRoom(); const u = new URL("answer", location.href);  // Cloudflare serves answer.html at /answer
+  const q = {r:S.room, c:ansKey(c), k:m, n:S.teams.map(t => t.name.replace(/\|/g,"/")).join("|"), cat:catById(c.cat).name, val:String(c.lvl)};
+  if(m === "num"){ const p = clueParts(); if(p.unit) q.u = p.unit; } else q.x = String(S.turn || 0);
+  u.search = new URLSearchParams(q).toString(); return u.href; }
+function ansPanel(c){ const m = ansMode(c); if(!m) return "";
+  const steal = m === "steal", playing = S.turn || 0, got = c.phoneAns || {};
+  const rows = S.teams.map((t,i) => { if(steal && i === playing) return ""; const a = got[i];
+    if(!a) return c.revealed ? `<li class="wait">${esc(t.name)}: no steal</li>` : `<li class="wait">${esc(t.name)}: waiting…</li>`;
+    if(steal && c.revealed) return `<li class="in"><b>${esc(t.name)}</b> steals with: <span class="sv">${esc(a.v)}</span></li>`;
+    return `<li class="in">${esc(t.name)} ✓ ${steal ? "sent a steal" : "locked in"}</li>`; }).join("");
+  if(c.revealed && !steal) return "";
+  return `<div class="ansqr${c.revealed ? " done" : ""}">${c.revealed ? "" : `<div class="aq" id="ansQr"></div>`}<div class="ansinfo"><div class="eyebrow">${steal
+      ? (c.revealed ? "Steals (½ points if right)" : `Steal: teams not playing (${esc(S.teams[playing] ? S.teams[playing].name : "")} is), scan to answer`)
+      : "Scan with your phone to send your team's guess"}</div><ul>${rows}</ul></div></div>`; }
+async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force)) return; const m = ansMode(c); if(!m || (c.polling && !force)) return;
+  c.polling = true;
+  try{ const r = await fetch(`api/answers?r=${encodeURIComponent(S.room)}&c=${encodeURIComponent(ansKey(c))}`, {cache:"no-store"}); const j = await r.json();
+    if(S.cur !== c) return; const prev = JSON.stringify(c.phoneAns || {}); c.phoneAns = j.answers || {};
+    if(m === "num"){ c.guesses = c.guesses || {}; c.phone = c.phone || {};
+      Object.entries(c.phoneAns).forEach(([i,a]) => { const n = parseFloat(a.v); if(!isNaN(n) && S.teams[+i]){ c.guesses[+i] = n; c.phone[+i] = true; } }); }
+    if(JSON.stringify(c.phoneAns) !== prev){ const ae = document.activeElement;
+      if(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT"){ const ul = $("#clue .ansqr ul"); if(ul){ const tmp = document.createElement("div"); tmp.innerHTML = ansPanel(c); const nu = tmp.querySelector("ul"); if(nu) ul.replaceWith(nu); } }
+      else renderClue(); }
+  }catch(e){} finally{ c.polling = false; } }
+function closeAns(c){ return fetch("api/close", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, c:ansKey(c)})}).catch(() => {}); }
+setInterval(pollAns, 1500);
 const GAME_KEY = "jn_game";
 function saveGame(){ if($("#game").hidden || !S.teams.length) return;
-  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power}); }
+  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room}); }
 function clearGame(){ try{ localStorage.removeItem(GAME_KEY); }catch(e){} }
 function savedGame(){ const g = store.get(GAME_KEY, null);
   if(!g || g.v !== 1 || g.ended || !Array.isArray(g.teams) || !Array.isArray(g.cats) || !g.cats.length) return null;
@@ -759,7 +807,7 @@ function showResume(){ const box = $("#resumeBox"); if(!box) return; const g = s
   const played = Object.keys(g.done || {}).length, total = g.cats.length * LV.length;
   $("#resumeInfo").textContent = `${g.football ? "Football mode · " : ""}${g.teams.map(t => `${t.name} ${t.score}`).join(" · ")} · ${played} of ${total} tiles played · ${ago(g.at)}`; }
 function resumeGame(){ const g = savedGame(); if(!g) return;
-  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power;
+  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom();
   if(typeof BALLS !== "undefined" && BALLS.length){ const i = g.ball >= 0 && g.ball < BALLS.length ? g.ball : 0; lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
   $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderChips(); renderTeamInputs(); renderBoard(); renderScores(); window.scrollTo(0,0); }
@@ -799,7 +847,7 @@ function openClue(cat,lvl,exclude,forceIdx){
   const type = catById(cat).type;
   const zoomStart = {100:3.5,200:4.2,300:4.8,400:5.4,500:6}[lvl];
   S.cur = {cat,lvl,idx,type,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
-           secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
+           secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, cid: Date.now().toString(36) + Math.random().toString(36).slice(2,6), stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
   stopTimer();
   try{ renderClue(); }catch(err){ $("#clue").innerHTML = `<div class="eyebrow">${esc(catById(cat).name)} · ${lvl}</div><p class="note">This clue couldn't be shown (${esc(err && err.message || err)}). Tell Claude this message. Tap Back to board.</p><div class="row"><button class="btn small" data-act="cancel">Back to board</button></div>`; }
   $("#card").hidden = false;
@@ -901,6 +949,7 @@ function renderTools(){ const box = $("#stTools"); if(!box) return;
     ["World map (Country Outlines, Map Pin)", !!WORLD.feats, WORLD.feats ? "ready" : err.map ? "couldn't load" : "still loading"],
     ["QR codes (Act It Out, Impostor, One Word)", !!window.QRCode, window.QRCode ? "ready" : err.qr ? "couldn't load" : "still loading"],
     ["Photo export and import", !!window.JSZip, window.JSZip ? "ready" : err.zip ? "couldn't load" : "still loading"],
+    ["Phone answers (QR codes on clues)", RELAY === true, RELAY === true ? "ready" : RELAY === false ? "only on the Cloudflare link" : "checking"],
     ["Sounds (winner clips, VAR clip)", snd === SOUNDS.length, sndErr && snd < SOUNDS.length ? "couldn't load" : `${snd} / ${SOUNDS.length}`]];
   box.innerHTML = rows.map(([n, ok, t]) => `<div class="dlrow${ok ? " full" : ""}"><div>${esc(n)}</div><span class="num">${esc(t)}</span><span>${ok ? "✓" : t === "couldn't load" ? "✕" : "…"}</span></div>`).join("");
   const toolsOk = rows.filter(r => r[1]).length; $("#stCount").textContent = `${toolsOk}/${rows.length} tools ready`; }
@@ -958,9 +1007,9 @@ function renderClue(){
     c.guesses = c.guesses || {};
     media = `<div class="guesses">${S.teams.map((t,i) => { const g = c.guesses[i], d = c.revealed && g!=null ? Math.abs(g - p.num) : null;
       return `<label class="guess${c.revealed && c.winners && c.winners.includes(i) ? " win" : ""}"><span>${esc(t.name)}</span>
-        <input id="guess${i}" data-g="${i}" inputmode="decimal" autocomplete="off" placeholder="Guess${p.unit ? " ("+esc(p.unit)+")" : ""}" value="${g!=null ? g : ""}" ${c.revealed ? "disabled" : ""}>
+        <input id="guess${i}" data-g="${i}" inputmode="decimal" autocomplete="off" placeholder="${!c.revealed && c.phone && c.phone[i] ? "Locked in ✓" : "Guess" + (p.unit ? " ("+esc(p.unit)+")" : "")}" value="${g!=null && !(!c.revealed && c.phone && c.phone[i]) ? g : ""}" ${c.revealed ? "disabled" : ""}>
         ${d!=null ? `<em>${d===0 ? "Exact!" : "off by " + d.toLocaleString("en-US")}</em>` : ""}</label>`; }).join("")}</div>
-      ${!c.revealed ? `<div class="note">Each team agrees on one number and types it in. Closest wins; a tie means both score.</div>` : ""}`;
+      ${!c.revealed ? `<div class="note">${ansMode(c) ? "Each team scans the code and sends one number, or the host types it in." : "Each team agrees on one number and types it in."} Closest wins; a tie means both score.</div>` : ""}`;
   }
   if(c.type==="act"){
     media = `<div class="secret">${c.qr
@@ -977,6 +1026,7 @@ function renderClue(){
     ${badges ? `<div class="badges">${badges}</div>` : ""}
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
     ${media}
+    ${ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
     ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : fmtAns(p.a)}</div>` : ""}
     ${c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>`<div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button><button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button><button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button></div>`).join("")}</div>` : ""}
@@ -993,6 +1043,9 @@ function renderClue(){
     const run = async () => { try{ const fs = await new window.FaceDetector({fastMode:true,maxDetectedFaces:1}).detect(zimg); if(fs[0] && S.cur===c){ const b = fs[0].boundingBox; saveFocus(k, 100*(b.x+b.width/2)/zimg.naturalWidth, 100*(b.y+b.height/2)/zimg.naturalHeight); renderClue(); } }catch(err){} };
     zimg.complete ? run() : zimg.addEventListener("load", run, {once:true});
   }
+  const aq = $("#ansQr"); if(aq){ const m = ansMode(c);
+    if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: 180, height: 180, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
+    else aq.textContent = "The code maker didn't load yet."; }
   const qb = $("#qrbox");
   if(qb){
     const txt = (c.qrText || p.a).normalize("NFD").replace(/[\u0300-\u036f]/g,"");
@@ -1027,6 +1080,9 @@ $("#clue").addEventListener("click", e => {
     const p = clueParts(), diffs = Object.entries(c.guesses||{}).filter(([,g]) => g!=null).map(([i,g]) => [+i, Math.abs(g - p.num)]);
     if(diffs.length){ const best = Math.min(...diffs.map(d => d[1])); c.winners = diffs.filter(d => d[1]===best).map(d => d[0]); c.awards = {}; c.winners.forEach(i => c.awards[i] = 1); }
   }
+  /* 5.9: before revealing, stop phone answers and fetch the last ones, then reveal */
+  if(a==="reveal" && ansMode(c) && !c.finalPolled){ c.finalPolled = true; b.disabled = true;
+    closeAns(c).then(() => pollAns(true)).then(() => { const rb = $('#clue [data-act="reveal"]'); if(rb && S.cur === c){ rb.disabled = false; rb.click(); } }); return; }
   if(a==="reveal"){ c.revealed = true; c.fresh = true; stopTimer(); c.running = false; renderClue(); c.fresh = false; }
   if(a==="setspot"){ openFocus(norm(clueParts().a), "Host only: tap the face or the part to zoom in on"); return; }
   if(a==="unblur"){ c.blur = c.blur < 0.005 ? 0 : c.blur * 0.72; renderClue(); }  // v4.40: c.blur < 0.006 ? 0 : c.blur * 0.55
@@ -1069,6 +1125,7 @@ $("#clue").addEventListener("input", e => {
   const inp = e.target.closest("[data-g]"); if(!inp || !S.cur) return;
   const v = parseFloat(inp.value.replace(/[, ]/g, "")); S.cur.guesses = S.cur.guesses || {};
   if(isNaN(v)) delete S.cur.guesses[+inp.dataset.g]; else S.cur.guesses[+inp.dataset.g] = v;
+  if(S.cur.phone) delete S.cur.phone[+inp.dataset.g];  // 5.9: the host typing a number replaces a phone answer
 });
 document.addEventListener("keydown", e => { if(e.key!=="Escape") return; if(!$("#newsBox").hidden){ closeNews(); return; } if(S.cur) closeCard(); else if(!$("#winBox").hidden && !$("#winBoard").hidden) hideWinner(); });
 
