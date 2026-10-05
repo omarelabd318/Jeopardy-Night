@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.12",
+  "date": "2026-10-05",
+  "items": [
+   "Steal codes just say \"Scan to steal\", and a team's name pops up on screen the moment it sends a steal.",
+   "On photo clues the steal code sits beside the picture, so the buttons stay in view."
+  ]
+ },
+ {
   "v": "5.11",
   "date": "2026-10-05",
   "items": [

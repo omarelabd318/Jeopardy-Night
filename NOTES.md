@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.11. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.12. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -407,3 +407,8 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Tested** with `wrangler dev` and three simulated phones: the boxes went from Waiting… to Locked in ✓, the answer revealed itself with the right winner, and the Type path and steals still worked, with no errors.
   - To undo the auto-reveal: delete the 5.10 `c.autoRev` block in `pollAns()`. To bring back the inputs: delete the 5.10 status branch in the closest-wins part of `renderClue()`.
 - 5.11 (2026-10-05): Omar asked for no steal codes on anything with three answers to pick from. Four categories are A/B/C in every clue, so they're now in `STEAL_SKIP` in `src/app.js`: Most Spotify Listeners (`spot`), Most Instagram Followers (`igf`), Most Calories (`cal`) and Real Headline (`headl`). Act It Out (both), One Word Clues, Closest Wins and Price Is Right never had one. He then asked for no steal codes on the photo rounds either: every category in the Photo Rounds group (Car, Actor, Footballer, Person, Food, Logo) is skipped through `noStealGroup()`. Football Stadiums, which has photos but sits in Football & Sports, still gets one. To give a category its steal code back, remove its id from `STEAL_SKIP` (or, for the photo rounds, delete the `noStealGroup` check).
+- 5.12 (2026-10-05): Omar asked for the steal code to just say "Scan to steal", and for a team's name to pop up when it sends a steal.
+  - **Steal panel:** it now reads only **Scan to steal**. The "waiting…" rows are gone. When a team sends a steal, "**Eagles is stealing!**" pops in (a scale-up animation, plus the soft blip when sound is on). After the reveal the panel lists what each stealing team sent ("Eagles steals with: …"), or "No steals".
+  - **Layout:** steal codes are smaller (150 px). On photo clues (Football Stadiums) the code sits beside the photo (`.withqr`) instead of under it, so Reveal answer stays on screen. On a narrow screen it drops below again.
+  - **Tested** with `wrangler dev` on a stadium clue and a text clue, with a simulated phone. No errors.
+  - To undo: restore the old `ansPanel()` (its old wording is in the 5.12 comment), and drop the `.withqr` wrapper in `renderClue()` and the 5.12 CSS.

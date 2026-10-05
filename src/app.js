@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.11`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.12`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -774,14 +774,16 @@ function ansUrl(c, m){ if(!S.room) S.room = newRoom(); const u = new URL("answer
   u.search = new URLSearchParams(q).toString(); return u.href; }
 function ansPanel(c){ const m = ansMode(c); if(!m) return "";
   const steal = m === "steal", playing = S.turn || 0, got = c.phoneAns || {};
-  const rows = !steal ? "" : S.teams.map((t,i) => { if(steal && i === playing) return ""; const a = got[i];
-    if(!a) return c.revealed ? `<li class="wait">${esc(t.name)}: no steal</li>` : `<li class="wait">${esc(t.name)}: waiting…</li>`;
-    if(steal && c.revealed) return `<li class="in"><b>${esc(t.name)}</b> steals with: <span class="sv">${esc(a.v)}</span></li>`;
-    return `<li class="in">${esc(t.name)} ✓ ${steal ? "sent a steal" : "locked in"}</li>`; }).join("");
   if(c.revealed && !steal) return "";
-  return `<div class="ansqr${c.revealed ? " done" : ""}">${c.revealed ? "" : `<div class="aq" id="ansQr"></div>`}<div class="ansinfo"><div class="eyebrow">${steal
-      ? (c.revealed ? "Steals (½ points if right)" : `Steal: teams not playing (${esc(S.teams[playing] ? S.teams[playing].name : "")} is), scan to answer`)
-      : "Scan with your phone to send your team's guess"}</div>${rows ? `<ul>${rows}</ul>` : ""}</div></div>`; }
+  /* 5.12 (Omar): steal panel just says "Scan to steal"; a team's name pops up as soon as it sends a steal (no "waiting" rows).
+     After the reveal it lists what each stealing team sent. Was: "Steal: teams not playing (X is), scan to answer" with a row per team. */
+  c.popped = c.popped || {};
+  const rows = !steal ? "" : S.teams.map((t,i) => { if(i === playing) return ""; const a = got[i];
+    if(c.revealed) return a ? `<li class="in"><b>${esc(t.name)}</b> steals with: <span class="sv">${esc(a.v)}</span></li>` : "";
+    if(!a) return ""; const isNew = !c.popped[i]; c.popped[i] = true;
+    return `<li class="stealer${isNew ? " pop" : ""}">${esc(t.name)} is stealing!</li>`; }).join("");
+  const head = steal ? (c.revealed ? (rows ? "Steals (½ points if right)" : "No steals") : "Scan to steal") : "Scan with your phone to send your team's guess";
+  return `<div class="ansqr${steal ? " steal" : ""}${c.revealed ? " done" : ""}">${c.revealed ? "" : `<div class="aq" id="ansQr"></div>`}<div class="ansinfo"><div class="eyebrow">${head}</div>${rows ? `<ul>${rows}</ul>` : ""}</div></div>`; }
 async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force)) return; const m = ansMode(c); if(!m || (c.polling && !force)) return;
   c.polling = true;
   try{ const r = await fetch(`api/answers?r=${encodeURIComponent(S.room)}&c=${encodeURIComponent(ansKey(c))}`, {cache:"no-store"}); const j = await r.json();
@@ -789,6 +791,7 @@ async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force))
     if(m === "num"){ c.guesses = c.guesses || {}; c.phone = c.phone || {};
       Object.entries(c.phoneAns).forEach(([i,a]) => { const n = parseFloat(a.v); if(!isNaN(n) && S.teams[+i]){ c.guesses[+i] = n; c.phone[+i] = true; } }); }
     if(JSON.stringify(c.phoneAns) !== prev){ const ae = document.activeElement;
+      if(m === "steal" && S.sound) try{ Snd.blip(); }catch(e){}
       if(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT"){ c.redraw = true;
         document.querySelectorAll("#clue .guess.status").forEach(box => { const i = +box.querySelector("[data-typein]").dataset.typein;
           if(c.phone && c.phone[i]){ box.classList.remove("wait"); box.classList.add("in"); box.querySelector("b").textContent = "Locked in ✓"; } }); const ul = $("#clue .ansqr ul"); if(ul){ const tmp = document.createElement("div"); tmp.innerHTML = ansPanel(c); const nu = tmp.querySelector("ul"); if(nu) ul.replaceWith(nu); } }
@@ -1037,8 +1040,7 @@ function renderClue(){
     <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
     ${badges ? `<div class="badges">${badges}</div>` : ""}
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
-    ${media}
-    ${ansPanel(c)}
+    ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
     ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : fmtAns(p.a)}</div>` : ""}
     ${c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>`<div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button><button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button><button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button></div>`).join("")}</div>` : ""}
@@ -1056,7 +1058,7 @@ function renderClue(){
     zimg.complete ? run() : zimg.addEventListener("load", run, {once:true});
   }
   const aq = $("#ansQr"); if(aq){ const m = ansMode(c);
-    if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: 180, height: 180, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
+    if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: m === "steal" ? 150 : 180, height: m === "steal" ? 150 : 180, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
     else aq.textContent = "The code maker didn't load yet."; }
   const qb = $("#qrbox");
   if(qb){
