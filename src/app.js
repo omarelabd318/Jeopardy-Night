@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.59`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.60`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -898,7 +898,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     for(let i = 0; i < 2; i++){ const a = (u * 0.9 + i / 2) % 1; g.strokeStyle = `rgba(225,225,225,${0.35 * (1 - a)})`; g.lineWidth = 0.8;   // a thin wisp off the tip
       const bx = tip[0] + a * 4, by = tip[1] - a * 10; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 2 * Math.sin(u * 3 + i), by - 3, bx + 1, by - 5); g.stroke(); }
   }
-  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the hantour (and from 5.58 the tuk-tuk). Every other round runs
+  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour. Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
     /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
@@ -937,12 +937,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(u < tw){ x = -20 + 32 * u; ph = u * 10; }
         else { const e = u - tw, a = Math.min(e, 0.6); x = -20 + wd + 32 * e + (140 - 32) * (a * a / 1.2 + Math.max(0, e - 0.6)); run = e > 0.25; ph = tw * 10 + e * 22; }
         if(x < W + 30) drawCat(x, 1, ph, run); } },
-    { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
-    { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk, after the hantour
+    { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk (5.60: after the cat, before the hantour)
         oval(px, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(px + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");          // a pothole, on the road above the line
         const sw = Math.abs(dx) < 50 ? Math.cos(dx / 50 * Math.PI / 2) : 0;
         const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
         tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } },
+    { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
   /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
