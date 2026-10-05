@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.57`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.58`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -775,6 +775,31 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; }
 
   // ---- traffic ----
+  /* 5.58 (Omar): the tuk-tuk is back, drawn after his photo of an Egyptian Bajaj: a yellow front around the windscreen, a dark navy
+     body, a black canvas roof, a round headlamp low on the nose over one small front wheel, and an open side with two passengers on the
+     back bench (one leans out and waves). It honks (sound arcs) and swerves round a pothole. */
+  function tuktuk(x, d, rot, lean, sw, tilt, honk){
+    g.save(); g.translate(x, gy + 2.5 * sw); g.rotate(tilt); g.scale(1.3 + 0.1 * sw, 1.3 + 0.1 * sw); g.translate(-x, -gy);
+    const X = a => x + a * d, P = pts => pts.map(([a, b]) => [X(a), gy + b]), navy = "#1f2a4a", yel = "#e9a92a";
+    poly(P([[-21, -6], [-21.5, -23], [-19, -26], [-14, -26], [-14, -13], [8, -13], [9, -6]]), navy);                    // back of the body, the open side
+    rect(Math.min(X(-14), X(8)), gy - 9.5, 22, 3.5, "#151d36");                                                         // footboard
+    person(X(6.5), gy - 9, d, {sit: true, s: 0.6, shirt: "#e8e6df", pants: "#2a2f3a", skin: "#86553a", mo: true, arms: [[1.3, 1.5], [1.2, 1.4]]});   // the driver
+    person(X(-10), gy - 9, d, {sit: true, s: 0.6, hijab: "#7a3b5e", shirt: "#7a3b5e", skin: "#9a6744", arms: [[0.5, 1.0], [0.3, 0.8]]});   // passengers
+    person(X(-3), gy - 9, d, {sit: true, s: 0.6, shirt: "#c9b48a", pants: "#2b3446", skin: "#8f5d3c", mo: true, lean: 0.12 * lean, arms: lean > 0.05 ? [[0.4, 0.8], [2.4 + 0.3 * Math.sin(pnow() * 9), 2.9]] : [[0.6, 1.1], [0.4, 0.9]]});   // waves
+    poly(P([[6, -13], [9, -6], [19, -6], [20.5, -11], [18.5, -16.5], [13, -17.5], [9, -17.5]]), navy);                // dark lower front
+    poly(P([[9, -17.5], [13, -17.5], [18.5, -16.5], [17.5, -27.5], [14.5, -29.5], [9, -29.5]]), yel);                  // yellow front
+    poly(P([[10.6, -28], [14.6, -27.8], [16.6, -18.6], [11.4, -19]]), "rgba(175,210,230,.75)");                        // windscreen
+    seg(P([[-21, -16], [8, -16]]), "rgba(255,255,255,.12)", 0.6);
+    g.strokeStyle = "#141a2e"; g.lineWidth = 1.6; g.beginPath(); g.arc(X(16), gy - 4, 5.6, Math.PI * 1.05, Math.PI * 1.95); g.stroke();   // mudguard
+    disc(X(19.3), gy - 11.5, 1.7, "#fff6c8"); glow(X(24), gy - 11.5, 10, "rgba(255,240,180,.35)");                    // headlamp
+    rect(X(-21.8) - (d > 0 ? 0 : 1.4), gy - 12, 1.4, 2.4, "#e23b2e");                                                  // tail light
+    seg(P([[-14, -13], [-14, -26]]), "#141a2e", 1.2); seg(P([[8.5, -17.5], [8.5, -29]]), "#141a2e", 1.2);               // roof posts
+    poly(P([[-22.5, -25], [-21, -29.5], [-17, -31], [15, -31], [15.5, -29], [9, -29.5], [-21, -25]]), "#1c1c22");    // canvas roof
+    wheel(X(-12), gy - 4.6, 4.6, rot, "#b8bcc2"); wheel(X(16), gy - 4, 4, rot, "#b8bcc2");
+    g.restore();
+    if(honk) for(let i = 0; i < 2; i++){ const r = 4 + i * 4 + (pnow() * 12 % 4); g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1;
+      g.beginPath(); g.arc(x + 30 * d, gy - 16, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }
+  }
   function horse(x, d, ph){
     const c = "#6e4a30", X = a => x + a * d;
     [[-9, Math.PI * 1.5, true], [7, Math.PI, true]].forEach(([o, k]) => legH(X(o), d, ph + k, shade(c)));
@@ -854,7 +879,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
 
   /* The traffic takes turns. Each act gives its own length (s) and draws itself u s into the act. */
-  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the hantour. Every other round runs
+  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the hantour (and from 5.58 the tuk-tuk). Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
     /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
@@ -893,6 +918,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else { const e = u - tw, a = Math.min(e, 0.6); x = -20 + wd + 32 * e + (140 - 32) * (a * a / 1.2 + Math.max(0, e - 0.6)); run = e > 0.25; ph = tw * 10 + e * 22; }
         drawCat(x, 1, ph, run); } },
     { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
+    { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk, after the hantour
+        oval(px, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(px + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");          // a pothole, on the road above the line
+        const sw = Math.abs(dx) < 50 ? Math.cos(dx / 50 * Math.PI / 2) : 0;
+        const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
+        tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
   /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
