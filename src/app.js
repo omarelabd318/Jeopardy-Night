@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.58`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.59`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -707,7 +707,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
    a Bajaj tuk-tuk (honks, swerves round a pothole, the passenger leans out), a hantour (5.54), a white microbus (a man walks in
    from the right and waits at the kerb, it brakes hard for him, the tabbaa hangs off the door, he gets in) and a ful cart
    (stops, the vendor in his galabeya ladles a plate, steam rising). A ginger stray cat wanders past now and then.
-   It shows only on the normal mode board (and the Board animations toggle), faintly behind an open clue.
+   It shows only on the normal mode board (and the Board animations toggle); 5.59: hidden while a clue is open.
    5.57 (Omar): no café or tuk-tuk any more. The scenes play one at a time, microbus, ful cart, cat, hantour, and every other
    round runs mirrored so each comes from the other side next time; the cat walks in then runs; no pompom on the horse.
    To remove: delete #street in head.html and this block. 5.52-5.54 drew everything as line art (see NOTES 5.55). */
@@ -879,6 +879,25 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
 
   /* The traffic takes turns. Each act gives its own length (s) and draws itself u s into the act. */
+  /* 5.59 (Omar): in the cat scene, a man walks the other way smoking a cigarette. Every SMP s he lifts it to his lips and
+     draws on it (the tip glows), lowers it, then breathes out a puff of smoke that drifts up behind him and fades. */
+  const SMV = 50, SMP = 6;
+  function smoker(u){
+    const sx = te => W + 30 - SMV * te, x = sx(u), ph = u * 8.5, c = u % SMP, d = -1;
+    const draw = c > 0.4 && c < 1.6, up = c < 0.4 ? sm(c / 0.4) : c < 1.6 ? 1 : c < 2 ? 1 - sm((c - 1.6) / 0.4) : 0;
+    for(let n = Math.floor(u / SMP) - 1; n <= Math.floor(u / SMP); n++) for(let i = 0; i < 6; i++){   // breathing out: puffs left where his mouth was
+      const te = n * SMP + 2.05 + i * 0.05, a = u - te; if(n < 0 || a < 0 || a > 3.6) continue;
+      const k = a / 3.6, px = sx(te) - 5 + a * 2.5 + Math.sin(i * 2.3) * 3 * k, py = gy - 32.7 - a * 5.5 - a * a * 0.5 + Math.cos(i * 1.9) * 1.5 * k, r = 2 + 8 * Math.sqrt(k);
+      const gr = g.createRadialGradient(px, py, 0, px, py, r), al = 0.3 * (1 - k) * Math.min(1, a * 6);
+      gr.addColorStop(0, `rgba(225,225,225,${al})`); gr.addColorStop(1, "rgba(225,225,225,0)"); g.fillStyle = gr; g.beginPath(); g.arc(px, py, r, 0, Math.PI * 2); g.fill(); }
+    const P = person(x, gy, d, {ph, shirt: "#6d5b8f", pants: "#22262e", skin: "#8a5536", mo: true,
+      arms: [[0.3 + 0.9 * up, 1.4 + 1.6 * up], [Math.sin(ph) * 0.4, Math.sin(ph) * 0.4 + 0.3]]});   // the cigarette hand, and the other swinging
+    const h = P.hands[0], tip = [h[0] + 3.4 * d, h[1] - 0.6 - 1.4 * up];
+    seg([h, tip], "#f2efe6", 1.1); disc(tip[0], tip[1], draw ? 1 : 0.7, draw ? "#ff7a2a" : "#d9542a");               // the cigarette and its tip
+    if(draw) glow(tip[0], tip[1], 4, "rgba(255,120,40,.6)");
+    for(let i = 0; i < 2; i++){ const a = (u * 0.9 + i / 2) % 1; g.strokeStyle = `rgba(225,225,225,${0.35 * (1 - a)})`; g.lineWidth = 0.8;   // a thin wisp off the tip
+      const bx = tip[0] + a * 4, by = tip[1] - a * 10; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 2 * Math.sin(u * 3 + i), by - 3, bx + 1, by - 5); g.stroke(); }
+  }
   /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the hantour (and from 5.58 the tuk-tuk). Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
@@ -912,11 +931,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           const P = person(cx, gy, gone ? -1 : 1, gone ? {...C, ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {...C, ph: u * 10} : {...C, arms: [[1.1, 1.6], [0.2, 0.3]]});
           if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } } } },
     { c(){ const wd = W * 0.15 + 20, tw = wd / 32, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // walk 15% of the way, then run
-      len(){ const c = this.c(); return c.tw + 0.6 + c.tr; },
+      len(){ const c = this.c(); return Math.max(c.tw + 0.6 + c.tr, (W + 60) / SMV); },   // 5.59: as long as the smoker takes to cross
       draw(u){ const {wd, tw} = this.c(); let x, run = false, ph;
+        smoker(u);
         if(u < tw){ x = -20 + 32 * u; ph = u * 10; }
         else { const e = u - tw, a = Math.min(e, 0.6); x = -20 + wd + 32 * e + (140 - 32) * (a * a / 1.2 + Math.max(0, e - 0.6)); run = e > 0.25; ph = tw * 10 + e * 22; }
-        drawCat(x, 1, ph, run); } },
+        if(x < W + 30) drawCat(x, 1, ph, run); } },
     { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
     { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk, after the hantour
         oval(px, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(px + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");          // a pothole, on the road above the line
@@ -943,12 +963,13 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   let t0 = performance.now();
   function frame(now){
     requestAnimationFrame(frame);
-    const on = showing(); cv.classList.toggle("on", on); if(!on) return;
+    /* 5.59 (Omar): unlike the kickers, the street is hidden while a clue is open, but its scenes carry on running behind it
+       (5.52-5.58: drawn faintly behind the clue, like the kickers). */
+    const open = !!S.cur && !$("#card").hidden, on = showing();
+    cv.classList.toggle("on", on && !open); if(!on) return;
     const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
-    const open = !!S.cur && !$("#card").hidden; cv.classList.toggle("faint", open);
     const t = ((now - t0) / 1000) * slow;
     g.clearRect(0, 0, W, H); g.save();
-    if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }
     if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; nextAt = t + actLen + 2.5 + Math.random() * 3; } }
     if(act >= 0 && t <= actAt + actLen){ if(flip){ g.translate(W, 0); g.scale(-1, 1); } ACTS[act].draw(t - actAt); }   // mirrored on alternate rounds
     g.restore();
