@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.27. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.30. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -466,3 +466,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - Also adds the Al-Azhar Park photo to Egypt: Photo Edition. Port Fouad is still missing.
   - Tested both modes against a local relay with simulated phones: Free-for-all as in 5.26, plus a team game with Price Is Right (three team phones, auto-reveal, the closest team wins) and a steal (the playing team's phone shows it's their tile, a second phone of the stealing team sees "Locked in", and a steal from the playing team is refused).
   - To undo the one-scan team mode: in `src/app.js`, make `linkTeams` return false; the per-clue code would then need the 5.17 panel back from git history (`ansPanel`).
+  - Later in 5.27: the last Egypt: Photo Edition photo arrived. Its file is called Port Fouad, but the view looks like Port Said's waterfront (the green-domed Suez Canal Authority building), so the clue asks "Which canal city's waterfront is this?" with Port Said as the answer. Egypt: Photo Edition now has all 100 photos.
+- 5.28 (2026-10-05): Omar asked to rename the two phone toggles, since since 5.27 there are no QR codes on clues, only the one join code. "Answer QR codes" is now "Phone answers for Closest Wins and Price Is Right", and "Steal QR codes" is now "Steals from phones". They work exactly as before (either one on shows the join code at Start). The Status panel line is now "Phone answers (join code)". Only the labels changed; the saved settings (`jn_qrans`, `jn_steal`) are the same, so nobody's choices reset.
+- 5.29 (2026-10-05): Omar asked to rename the category "The Hunger Games" to "Hunger Games" (the `name` in `v4work/out/hgames.json`). Its id (`hgames`) and clues are unchanged.
+- 5.30 (2026-10-05): Omar asked that team games only show the join code when it's needed. `linkTeams()` in `src/app.js` is now true only when Steals from phones is on (with more than one team), or Phone answers is on and Closest Wins or Price Is Right is on the board. Football mode has neither number round, so it shows the code only with steals on. The Join code button in the game follows the same rule. Free-for-all always shows its code. To undo: set `linkTeams` back to `(S.qrAns || S.steal)` (kept in the comment).

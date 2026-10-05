@@ -3,6 +3,28 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.30",
+  "date": "2026-10-05",
+  "items": [
+   "The join code at the start only shows when phones will be used: Steals from phones on, or phone answers on with Closest Wins or Price Is Right on the board."
+  ]
+ },
+ {
+  "v": "5.29",
+  "date": "2026-10-05",
+  "items": [
+   "\"The Hunger Games\" category is now just \"Hunger Games\"."
+  ]
+ },
+ {
+  "v": "5.28",
+  "date": "2026-10-05",
+  "items": [
+   "Setup: \"Answer QR codes\" is now \"Phone answers for Closest Wins and Price Is Right\", and \"Steal QR codes\" is now \"Steals from phones\" (there's only one join code now).",
+   "Egypt: Photo Edition has all 100 photos."
+  ]
+ },
+ {
   "v": "5.27",
   "date": "2026-10-05",
   "items": [
