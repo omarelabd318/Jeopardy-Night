@@ -184,7 +184,8 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 /* scoreboard */
 /* 4.70 (Omar): Football mode, two stick figures kick the ball back and forth on the line above the team names, while the board is showing. To remove: delete #kick here, the canvas, and kickLoop() in app.js */
 #kick{position:fixed;left:0;width:100vw;height:84px;pointer-events:none;z-index:6;display:none}
-body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 64px) */
+body.football #kick.on{display:block}
+body.football #kick.on.faint{z-index:11;opacity:.3}  /* 5.38: faintly over the clue backdrop (never over the clue box, see the kickers in src/app.js) */  /* 4.75: 84px tall for the headers (was 64px) */
 .scores{position:fixed;left:0;right:0;bottom:0;background:var(--deep);border-top:2px solid var(--brass-dim);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;overflow-x:auto;z-index:5}
 .team{flex:1 0 150px;display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;padding:6px 12px;border-radius:10px;background:var(--felt-2);border:1.5px solid var(--line)}
 .team .nm{font-weight:700;font-size:clamp(17px,1.6vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -426,7 +427,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.37</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.38</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -438,7 +439,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.37</div>
+      <div class="eyebrow verlabel">v5.38</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

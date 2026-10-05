@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.37`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.38`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -517,7 +517,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const fit = () => { const dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
-  const showing = () => S.football && !$("#game").hidden && !S.cur && $("#winBox").hidden && !$("#scores").hidden;
+  /* 5.38 (Omar): they keep playing, faintly, while a clue is open: drawn over the dark backdrop at 30% (#kick.faint in
+     head.html) but never over the clue box itself, so they look like they're behind it. Was: hidden while a clue was open (!S.cur here). */
+  const showing = () => S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
   /* 4.75 (Omar): a six-touch rotation. Each player controls the ball, it pops up, and he volleys it across on the way down:
      left knee, right foot, left head, right knee, left foot, right head, then again. Each crossing takes FLIGHT seconds.
      The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
@@ -567,10 +569,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   function frame(now){
     requestAnimationFrame(frame);
     const on = showing(); cv.classList.toggle("on", on); if(!on){ t0 = now; return; }
-    const sc = $("#scores").getBoundingClientRect(); cv.style.top = (sc.top - H + 1) + "px";
+    const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
+    const open = !!S.cur && !$("#card").hidden; cv.classList.toggle("faint", open);
     const src = (typeof BALLS !== "undefined" && BALLS.length && typeof lastBall === "number" && BALLS[lastBall]) || "";
     if(src !== ballSrc){ ballSrc = src; ballImg = null; if(src){ const im = new Image(); im.onload = () => { ballImg = im; }; im.src = src; } }
-    g.clearRect(0, 0, W, H);
+    g.clearRect(0, 0, W, H); g.save();
+    if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }  // not over the clue box
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
       if(how === "chest" || how === "chestbike"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
@@ -602,7 +606,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
-    g.restore();
+    g.restore(); g.restore();
   }
   requestAnimationFrame(frame);
 })();
