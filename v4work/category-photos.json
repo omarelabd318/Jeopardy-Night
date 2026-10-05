@@ -138,5 +138,61 @@
   "key": "cairo-suhaymi",
   "q": "Name this Cairo landmark.",
   "a": "Bayt al-Suhaymi (Al-Muizz Street)"
+ },
+ {
+  "cat": "cairo",
+  "value": 100,
+  "key": "cairo-egmuseum",
+  "q": "Name this Cairo landmark.",
+  "a": "The Egyptian Museum (Tahrir)"
+ },
+ {
+  "cat": "cairo",
+  "value": 200,
+  "key": "cairo-6oct",
+  "q": "Name this Cairo landmark.",
+  "a": "6th October Bridge"
+ },
+ {
+  "cat": "cairo",
+  "value": 300,
+  "key": "cairo-coptic",
+  "q": "Name this Cairo landmark.",
+  "a": "The Coptic Museum (Old Cairo)"
+ },
+ {
+  "cat": "cairo",
+  "value": 300,
+  "key": "cairo-benezra",
+  "q": "Name this Cairo landmark.",
+  "a": "Ben Ezra Synagogue (Old Cairo)"
+ },
+ {
+  "cat": "cairo",
+  "value": 400,
+  "key": "egp-sultanhassan",
+  "q": "Name this Cairo landmark.",
+  "a": "The Qalawun complex (Al-Muizz Street)"
+ },
+ {
+  "cat": "cairo",
+  "value": 400,
+  "key": "cairo-futuh",
+  "q": "Name this Cairo landmark.",
+  "a": "Bab al-Futuh"
+ },
+ {
+  "cat": "cairo",
+  "value": 500,
+  "key": "cairo-gayer",
+  "q": "Name this Cairo landmark.",
+  "a": "The Gayer-Anderson Museum"
+ },
+ {
+  "cat": "cairo",
+  "value": 500,
+  "key": "egp-rifai",
+  "q": "Name this Cairo landmark.",
+  "a": "The Mosque of al-Hakim"
  }
 ]
