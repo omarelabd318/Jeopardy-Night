@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.73`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.74`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -924,7 +924,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           person(wx, gy, -1, walkIn || board > 0 ? {ph: u * 9, shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e"}
                                              : {shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e", arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
           g.globalAlpha = 1; }
-        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip); } },   // 5.61: on mirrored rounds he gets in on the far side
+        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, !flip); } },   // 5.74 (Omar): the door shows only when it drives right to left (the mirrored rounds); coming from the left he gets in on the far side (5.61-5.73: the other way round)
     { f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
       len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
       draw(u){ const {fx, tA} = this.f(), st = u - tA;
@@ -938,7 +938,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(cx != null){ const gone = st > 3.7, hasPlate = st > 3.3, C = {shirt: "#3f7f6e", pants: "#2b2f3a", skin: "#9a6544"};
           const P = person(cx, gy, gone ? -1 : 1, gone ? {...C, ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {...C, ph: u * 10} : {...C, arms: [[1.1, 1.6], [0.2, 0.3]]});
           if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } } } },
-    { c(){ const wd = W * 0.15 + 20, tw = wd / 32, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // walk 15% of the way, then run
+    { c(){ const tw = (W + 50) / (32 + SMV) + 1.2, wd = 32 * tw, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // 5.74 (Omar): she walks until she has passed the smoker by a bit (1.2 s), then runs (5.57-5.73: ran after 15% of the way)
       len(){ const c = this.c(); return Math.max(c.tw + 0.6 + c.tr, (W + 60) / SMV); },   // 5.59: as long as the smoker takes to cross
       draw(u){ const {wd, tw} = this.c(); let x, run = false, ph;
         smoker(u);
