@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.35`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.36`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -525,10 +525,14 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      The rotation is now ten touches (4.77-5.32: the first eight below, without the two chest touches). */
   /* 5.34 (Omar): reordered so the two chest controls are half a cycle apart, not back to back; no move twice in a row.
      5.33 order: L knee, R foot, L head, R heel, L foot, R knee, L heel, R head, L chest, R chest */
-  const ROT = [["L","knee"],["R","foot"],["L","chest"],["R","heel"],["L","head"],["R","knee"],["L","foot"],["R","chest"],["L","heel"],["R","head"]], POP = 1.1, SPIN = 0.35;
+  /* 5.36 (Omar): a sixth touch, "kneehead": he takes it on the knee and pops it up higher, over his head, then jumps and
+     heads it straight back across instead of volleying. Twelve touches now, ordered so every move is at least five touches
+     from the other player's same move, nothing comes twice in a row and the two knee touches are never next to each other.
+     5.34 order: L knee, R foot, L chest, R heel, L head, R knee, L foot, R chest, L heel, R head */
+  const ROT = [["L","knee"],["R","heel"],["L","foot"],["R","chest"],["L","head"],["R","kneehead"],["L","heel"],["R","knee"],["L","chest"],["R","foot"],["L","kneehead"],["R","head"]], POP = 1.1, SPIN = 0.35;
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
-  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16};             // how far the ball pops up above the touch
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16};   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
   const CYCLE = ROT.length * (FLIGHT + POP);
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
@@ -563,18 +567,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
       if(how === "chest"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
-      return how === "knee" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
-    const volley = side => [X[side] + 20 * D[side], hip - 3];
+      return how === "knee" || how === "kneehead" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+    const head = side => [X[side] + 2 * D[side], H - 1 - 4 - 35 - 5 - r + 1];        // where a header meets the ball (at the top of his hop)
+    const volley = (side, how) => how === "kneehead" ? head(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
     const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
     const k = Math.min(ROT.length - 1, Math.floor(t / (FLIGHT + POP))), u = t - k * (FLIGHT + POP), [side, how] = ROT[k], from = side === "L" ? "R" : "L";
-    const C = touch(side, how), V = volley(side);
+    const prev = ROT[(k + ROT.length - 1) % ROT.length][1];   // how the other player sent it (a volley, or a header after a kneehead)
+    const C = touch(side, how), V = volley(side, how);
     let pos;
-    if(u < FLIGHT){ const A = volley(from); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
+    if(u < FLIGHT){ const A = volley(from, prev); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
     const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = i * (FLIGHT + POP) + FLIGHT + sh, dt = t - tc;
+          if(hw === "kneehead"){ knee += kneeUp(dt); jump += hop(dt - POP); continue; }   // knee it up, then a header instead of a volley
           if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest") lean += leanBack(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else jump += hop(dt);
           ang += swing(dt - POP); } });
       return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(1, lean)]; };
