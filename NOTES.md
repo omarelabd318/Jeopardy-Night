@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.15. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.16. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -415,3 +415,6 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 5.13 (2026-10-05): Omar asked for revealed steals to read just "Team: answer" (for example "Eagles: Craven Cottage") instead of "Eagles steals with: Craven Cottage". It's one line in `ansPanel()` in `src/app.js`, with the old wording in a comment next to it.
 - 5.14 (2026-10-05): Omar asked that on a photo clue, a team that has sent a steal shows as just its name and a check mark ("Eagles ✓"). Other clues still say "Eagles is stealing!". The pop-up animation is unchanged. It's one line in `ansPanel()` in `src/app.js`: it shows the short form whenever the clue has a picture.
 - 5.15 (2026-10-05): Omar meant "Team ✓" for both kinds of clue, so every clue now shows the short form; "is stealing!" is gone. The 5.14 entry was taken out of the player-facing changelog.
+- 5.16 (2026-10-05): Omar asked to remove the pale outline around the QR code and its "Scan to steal" text. The `.ansqr` box now has `border:0` (the old value is in a comment next to it). This applies to both the steal code and the Closest Wins / Price Is Right code.
+  - The QR's own white margin stays: I tried removing it first, and a QR reader (jsQR) then couldn't read the code; with the margin back, it reads every time.
+  - **Checked:** a short question, a 126-character question, a Formations lineup (the tallest clue) and a stadium photo. All fit with Reveal answer on screen, and every code decoded.
