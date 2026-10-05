@@ -302,3 +302,35 @@ Lead photos from each person's Wikipedia page, all from Wikimedia Commons. Kendr
 | x18-toriblack | [Tori Black 2014.jpg](https://commons.wikimedia.org/wiki/File:Tori_Black_2014.jpg) | CC BY-SA 3.0 |
 | x18-valentinanappi | [Valentina Nappi Holly Randall Unfiltered 2022.png](https://commons.wikimedia.org/wiki/File:Valentina_Nappi_Holly_Randall_Unfiltered_2022.png) | CC BY 3.0 |
 | x18-yuamikami | [20170707 三上悠亜 パチンコイベント.jpg](https://commons.wikimedia.org/wiki/File:20170707_三上悠亜_パチンコイベント.jpg) | CC BY-SA 4.0 |
+
+## 5.68: NSFW top-up (`x18-*`)
+
+From Wikimedia Commons searches. 17 are 330px previews until their full-size versions can be downloaded (Wikimedia rate limits).
+
+| key | file | licence |
+|---|---|---|
+| x18-alettaocean | [Aletta Ocean at Venus Berlin 2010 crop.jpg](https://commons.wikimedia.org/wiki/File:Aletta_Ocean_at_Venus_Berlin_2010_crop.jpg) | CC BY 2.0 | (330px preview for now)
+| x18-avaaddams | [Ava Addams AVN Expo 2015 - 1.jpg](https://commons.wikimedia.org/wiki/File:Ava_Addams_AVN_Expo_2015_-_1.jpg) | CC BY-SA 2.0 | (330px preview for now)
+| x18-christymack | [Christy Mack 2013.jpg](https://commons.wikimedia.org/wiki/File:Christy_Mack_2013.jpg) | CC BY-SA 2.0 | (330px preview for now)
+| x18-corychase | [Cory Chase at AVN Adult Entertainment Expo 2016 (25363640410).jpg](https://commons.wikimedia.org/wiki/File:Cory_Chase_at_AVN_Adult_Entertainment_Expo_2016_(25363640410).jpg) | CC BY 2.0 |
+| x18-danidaniels | [Dani Daniels 2016 (cropped).jpg](https://commons.wikimedia.org/wiki/File:Dani_Daniels_2016_(cropped).jpg) | CC BY-SA 4.0 |
+| x18-elsajean | [Elsa Jean.jpg](https://commons.wikimedia.org/wiki/File:Elsa_Jean.jpg) | CC BY 3.0 |
+| x18-evalovia | [Eva Lovia Exxxotica NJ 2014, cropped.jpg](https://commons.wikimedia.org/wiki/File:Eva_Lovia_Exxxotica_NJ_2014,_cropped.jpg) | CC BY-SA 2.5 | (330px preview for now)
+| x18-giannamichaels | [Gianna Michaels AEE 2013 2.jpg](https://commons.wikimedia.org/wiki/File:Gianna_Michaels_AEE_2013_2.jpg) | CC BY-SA 2.0 |
+| x18-ginavalentina | [Gina Valentina at the AVN Adult Entertainment Expo 2016 (25638223156).jpg](https://commons.wikimedia.org/wiki/File:Gina_Valentina_at_the_AVN_Adult_Entertainment_Expo_2016_(25638223156).jpg) | CC BY 2.0 | (330px preview for now)
+| x18-jadastevens | [Jada Stevens 2016.jpg](https://commons.wikimedia.org/wiki/File:Jada_Stevens_2016.jpg) | CC BY-SA 3.0 | (330px preview for now)
+| x18-jynxmaze | [Jynx Maze in March 2013 (1).jpg](https://commons.wikimedia.org/wiki/File:Jynx_Maze_in_March_2013_(1).jpg) | CC BY-SA 2.0 | (330px preview for now)
+| x18-kendralust | [Kendra Lust 2015.jpg](https://commons.wikimedia.org/wiki/File:Kendra_Lust_2015.jpg) | CC BY-SA 3.0 |
+| x18-kennajames | [Kenna James at AVN Awards 2016.jpg](https://commons.wikimedia.org/wiki/File:Kenna_James_at_AVN_Awards_2016.jpg) | CC BY 2.0 | (330px preview for now)
+| x18-lenapaul | [Lena Paul (Cropped).jpg](https://commons.wikimedia.org/wiki/File:Lena_Paul_(Cropped).jpg) | CC BY-SA 4.0 | (330px preview for now)
+| x18-lexibelle | [Lexi Belle, EXXXotica Dallas 2015.jpg](https://commons.wikimedia.org/wiki/File:Lexi_Belle,_EXXXotica_Dallas_2015.jpg) | CC BY-SA 4.0 |
+| x18-madisonivy | [Madison Ivy, 2017 (cropped).jpg](https://commons.wikimedia.org/wiki/File:Madison_Ivy,_2017_(cropped).jpg) | CC BY-SA 4.0 | (330px preview for now)
+| x18-peternorth | [Peter North 2010.jpg](https://commons.wikimedia.org/wiki/File:Peter_North_2010.jpg) | CC BY-SA 3.0 |
+| x18-phoenixmarie | [Phoenix Marie in March 24, 2013.jpg](https://commons.wikimedia.org/wiki/File:Phoenix_Marie_in_March_24,_2013.jpg) | CC BY-SA 2.0 | (330px preview for now)
+| x18-rachelstarr | [Rachel Starr at Home 2020 (cropped).jpg](https://commons.wikimedia.org/wiki/File:Rachel_Starr_at_Home_2020_(cropped).jpg) | CC BY-SA 4.0 |
+| x18-romirain | [Romi Rain at AVN Awards 2016.jpg](https://commons.wikimedia.org/wiki/File:Romi_Rain_at_AVN_Awards_2016.jpg) | CC BY 2.0 | (330px preview for now)
+| x18-sarajay | [Sara Jay at Exxxotica New York 2009 Resized.jpg](https://commons.wikimedia.org/wiki/File:Sara_Jay_at_Exxxotica_New_York_2009_Resized.jpg) | CC BY-SA 3.0 | (330px preview for now)
+| x18-sophiedee | [Sophie Dee 2014.jpg](https://commons.wikimedia.org/wiki/File:Sophie_Dee_2014.jpg) | CC BY-SA 3.0 | (330px preview for now)
+| x18-tommygunn | [Tommy Gunn 2019 by Glenn Francis.jpg](https://commons.wikimedia.org/wiki/File:Tommy_Gunn_2019_by_Glenn_Francis.jpg) | CC BY-SA 4.0 | (330px preview for now)
+| x18-violetmyers | [Violet Myers (hru, 2022, 23minB).jpg](https://commons.wikimedia.org/wiki/File:Violet_Myers_(hru,_2022,_23minB).jpg) | CC BY 3.0 | (330px preview for now)
+| x18-xandercorvus | [Xander Corvus 2014.jpg](https://commons.wikimedia.org/wiki/File:Xander_Corvus_2014.jpg) | CC BY-SA 3.0 | (330px preview for now)
