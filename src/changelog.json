@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.35",
+  "date": "2026-10-05",
+  "items": [
+   "Fix: Football mode with Free-for-all on no longer asks you to pick a category first."
+  ]
+ },
+ {
   "v": "5.34",
   "date": "2026-10-05",
   "items": [

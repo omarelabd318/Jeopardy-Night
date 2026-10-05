@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.34`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.35`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -496,7 +496,7 @@ function fitFbBg(){  // shrink any phrase that is wider (or taller, if vertical)
 }
 const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 15, in pool order
 $("#football").onclick = () => {
-  if(S.ffa && !ffaReady()) return;
+  if(S.ffa && !ffaReady(true)) return;
   setFootball(true); S.cats = footballPick(); newGame();
   if(linked()){ ffaLobby(); return; }
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
@@ -847,8 +847,9 @@ function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#tea
   [["#optPower","power"],["#optQrAns","qrAns"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
   renderChips(); }
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
-function ffaReady(){
+function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check
   if(RELAY !== true){ $("#histNote").textContent = RELAY === null ? "Checking the connection for Free-for-all… try again in a second." : "Free-for-all needs the Cloudflare link: the phones send their answers through it."; return false; }
+  if(football) return true;
   S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
   if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return false; }
   return true; }
