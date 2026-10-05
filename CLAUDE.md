@@ -19,6 +19,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `v4work/BRIEF.md`: the clue-writing brief, covering audience, difficulty per value and the entry format for each category type. Read it before writing clues.
 - `v4work/form/`, `form-sources.txt`, `form-gen.js`: Formations sources and generators.
 - `photos/`: `<key>.jpg` photos for the photo rounds, plus `food-*.js` and `logo-*.js` bundles. Since 5.3 the game loads each `photos/food-*.jpg` directly and only uses a bundle when the single file is missing. Since 5.6 the food and `stadium-*` jpgs are web-sized copies (1024 px, quality 76) of the originals in `v4work/food-photos/` and `v4work/stadium-photos/`; re-make them from there if a photo changes.
+- `play.html` (5.26): the Free-for-all phone page, at `/p?r=ROOM`. Each player joins once and answers every clue from it.
 - `answer.html` and `worker/index.js` (5.9): the phone answer page that teams reach by scanning a clue's QR code, and the small Cloudflare relay (`/api/*`, one Durable Object per game room) that passes answers to the laptop. They only work on the Cloudflare link; elsewhere the game hides the codes. `STEAL_SKIP` in `src/app.js` lists categories that never get a steal code.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.

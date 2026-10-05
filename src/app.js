@@ -61,7 +61,7 @@ function pinSVG(lat, lon){
 const LV = [100,200,300,400,500];
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
-const norm = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\(.*?\)/g,"").replace(/[^a-z0-9]/g,"");
+const norm = s => String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\(.*?\)/g,"").replace(/[^a-z0-9]/g,"");
 const store = {
   get(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
   set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
@@ -79,6 +79,7 @@ const S = {
   x2: null,
   qrAns: store.get("jn_qrans", true),   /* 5.9: QR answers on Closest Wins / Price Is Right */
   steal: store.get("jn_steal", false),  /* 5.9: Steal QR codes */
+  ffa: store.get("jn_ffa", false),      /* 5.26: Free-for-all, everyone plays alone on their own phone */
   room: null
 };
 const photos = {};  // norm(answer) -> blob url
@@ -151,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.25`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.26`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -164,7 +165,7 @@ const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & A
   ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order"]]  /* 5.22: Put It in Order after Headlines */
 ];
 function renderChips(){
-  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}</button>`;
+  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}</button>`;
   const seen = new Set();
   const groups = CAT_GROUPS.map(([name,ids]) => [name, ids.map(catById).filter(Boolean)]);
   groups.forEach(([,cs]) => cs.forEach(c => seen.add(c.id)));
@@ -358,7 +359,9 @@ DB.all().then(saved => {
 
 $("#start").onclick = () => {
   if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return; }
+  if(S.ffa && !ffaReady()) return;
   newGame();
+  if(S.ffa){ ffaLobby(); return; }
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
@@ -493,7 +496,9 @@ function fitFbBg(){  // shrink any phrase that is wider (or taller, if vertical)
 }
 const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 15, in pool order
 $("#football").onclick = () => {
+  if(S.ffa && !ffaReady()) return;
   setFootball(true); S.cats = footballPick(); newGame();
+  if(S.ffa){ ffaLobby(); return; }
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
@@ -769,6 +774,7 @@ let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 function ansMode(c){ if(!c || c.preview || !RELAY) return null;
+  if(S.ffa) return FFA_SKIP.has(c.type) ? null : "ffa";
   if(c.type === "closest") return S.qrAns ? "num" : null;
   if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat)) return "steal";
   return null; }
@@ -781,6 +787,7 @@ function sendMeta(c, m){ if(c.metaSent === m) return; c.metaSent = m;
   fetch("api/meta", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, c:ansKey(c), m:ansMeta(c, m)})}).catch(() => { c.metaSent = null; }); }
 function ansUrl(c, m){ if(!S.room) S.room = newRoom(); return new URL(`a?r=${S.room}&c=${ansKey(c)}`, location.href).href; }
 function ansPanel(c){ const m = ansMode(c); if(!m) return "";
+  if(m === "ffa") return ffaPanel(c);
   const steal = m === "steal", playing = S.turn || 0, got = c.phoneAns || {};
   if(c.revealed && !steal) return "";
   /* 5.12 (Omar): steal panel just says "Scan to steal"; a team's name pops up as soon as it sends a steal (no "waiting" rows).
@@ -798,8 +805,8 @@ async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force))
   c.polling = true;
   try{ const r = await fetch(`api/answers?r=${encodeURIComponent(S.room)}&c=${encodeURIComponent(ansKey(c))}`, {cache:"no-store"}); const j = await r.json();
     if(S.cur !== c) return; const prev = JSON.stringify(c.phoneAns || {}); c.phoneAns = j.answers || {};
-    if(m === "num"){ c.guesses = c.guesses || {}; c.phone = c.phone || {};
-      Object.entries(c.phoneAns).forEach(([i,a]) => { const n = parseFloat(a.v); if(!isNaN(n) && S.teams[+i]){ c.guesses[+i] = n; c.phone[+i] = true; } }); }
+    if(m === "num" || (m === "ffa" && c.type === "closest")){ c.guesses = c.guesses || {}; c.phone = c.phone || {};
+      Object.entries(c.phoneAns).forEach(([k,a]) => { const i = m === "ffa" ? S.teams.findIndex(t => t.pid === k) : +k, n = parseFloat(a.v); if(!isNaN(n) && S.teams[i]){ c.guesses[i] = n; c.phone[i] = true; } }); }
     if(JSON.stringify(c.phoneAns) !== prev){ const ae = document.activeElement;
       if(m === "steal" && S.sound) try{ Snd.blip(); }catch(e){}
       if(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT"){ c.redraw = true;
@@ -807,16 +814,106 @@ async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force))
           if(c.phone && c.phone[i]){ box.classList.remove("wait"); box.classList.add("in"); box.querySelector("b").textContent = "Locked in ✓"; } }); const ul = $("#clue .ansqr ul"); if(ul){ const tmp = document.createElement("div"); tmp.innerHTML = ansPanel(c); const nu = tmp.querySelector("ul"); if(nu) ul.replaceWith(nu); } }
       else renderClue(); }
     /* 5.10 (Omar): once every team has a number in, reveal by itself after a short pause (not while the host is typing) */
-    if(m === "num" && !c.revealed && !c.autoRev && S.teams.every((t,i) => c.guesses && c.guesses[i] != null)){ const ae = document.activeElement;
+    if((m === "num" || (m === "ffa" && c.type === "closest")) && !c.revealed && !c.autoRev && S.teams.length && S.teams.every((t,i) => c.guesses && c.guesses[i] != null)){ const ae = document.activeElement;
       if(!(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT")){ c.autoRev = true;
         setTimeout(() => { if(S.cur !== c || c.revealed) return; const rb = $('#clue [data-act="reveal"]'); if(rb) rb.click(); }, 1500); } }
     if(c.redraw){ const ae = document.activeElement; if(!(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT")){ c.redraw = false; renderClue(); } }
   }catch(e){} finally{ c.polling = false; } }
 function closeAns(c){ return fetch("api/close", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, c:ansKey(c)})}).catch(() => {}); }
 setInterval(pollAns, 1500);
+
+/* 5.26 (Omar): Free-for-all. Everyone plays alone: at the start the TV shows one code, each player scans it on their own phone
+   (play.html at /p?r=ROOM) and types a name, and from then on every clue's answer box appears on their phone by itself.
+   Players are S.teams entries with a pid (the phone's id). Omar's choices: everyone who's right scores the tile's value and
+   there are no minus points; players take turns picking (join order); text answers are pre-ticked when they match the answer
+   (forgiving small typos and surnames) and the host confirms or changes the ticks before saving. Numbers (Closest Wins,
+   Price Is Right) and Put It in Order are marked automatically. Act It Out, One Word Clues and Who's the Impostor need teams,
+   so they're left out; power-ups and steal codes are off. Needs the Cloudflare link (worker/index.js).
+   To remove: delete this block, the S.ffa lines it hooks into (search "ffa"), #ffaPanel and #lobby in head.html, and play.html. */
+const FFA_SKIP = new Set(["act","impostor","password"]);
+function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#teamsPanel").hidden = S.ffa;
+  if(S.ffa) S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
+  renderChips(); }
+$("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
+function ffaReady(){
+  if(RELAY !== true){ $("#histNote").textContent = RELAY === null ? "Checking the connection for Free-for-all… try again in a second." : "Free-for-all needs the Cloudflare link: the phones send their answers through it."; return false; }
+  S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
+  if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return false; }
+  return true; }
+function ffaPost(b){ return fetch("api/cur", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, ...b})}).catch(() => {}); }
+function ffaUrl(){ return new URL(`p?r=${S.room}`, location.href).href; }
+/* the lobby: one big code; also reopened mid-game with "Join code" for late arrivals */
+function ffaLobby(mid){
+  if(!mid){ S.teams = []; ffaPost({cur:null, s:{}}); }
+  $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; $("#lobby").hidden = false;
+  $("#lobbyGo").textContent = mid ? "Back to the game" : "Start playing"; $("#lobbyBack").hidden = !!mid;
+  $("#lobbyUrl").textContent = ffaUrl().replace(/^https?:\/\//, "");
+  const q = $("#lobbyQr"); q.innerHTML = "";
+  const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!$("#lobby").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
+    q.innerHTML = ""; try{ new QRCode(q, {text: ffaUrl(), width: 300, height: 300, correctLevel: QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } };
+  draw(); renderLobby(); ffaPlayers(); window.scrollTo(0,0); }
+function renderLobby(){ const n = S.teams.length;
+  $("#lobbyCount").textContent = n ? `${n} player${n > 1 ? "s" : ""} in` : "Waiting for players…";
+  $("#lobbyList").innerHTML = S.teams.map(t => `<li>${esc(t.name)}</li>`).join("");
+  $("#lobbyGo").disabled = !n; }
+$("#lobbyGo").onclick = () => { $("#lobby").hidden = true; $("#game").hidden = false; $("#scores").hidden = false; renderBoard(); renderScores(); window.scrollTo(0,0); };
+$("#lobbyBack").onclick = () => { $("#lobby").hidden = true; goSetup(); };
+$("#ffaJoin").onclick = () => ffaLobby(true);
+/* players who joined (also late ones) become score cards, in join order */
+let ffaBusy = false, ffaTick = 0;
+async function ffaPlayers(){ if(ffaBusy || !S.ffa || !RELAY || !S.room) return; ffaBusy = true;
+  try{ const j = await (await fetch(`api/players?r=${encodeURIComponent(S.room)}`, {cache:"no-store"})).json(); let changed = false;
+    (j.players || []).forEach(pl => { const t = S.teams.find(x => x.pid === pl.p);
+      if(!t){ S.teams.push({name:pl.n, score:0, pid:pl.p}); changed = true; } else if(t.name !== pl.n){ t.name = pl.n; changed = true; } });
+    if(changed){ if(!$("#lobby").hidden) renderLobby(); if(!$("#game").hidden){ renderScores(); if(S.cur && !S.cur.revealed && !S.cur.typing) renderClue(); } } }
+  catch(e){} finally{ ffaBusy = false; } }
+setInterval(() => { if(!S.ffa) return; const lobby = !$("#lobby").hidden; if(lobby || ++ffaTick % 2 === 0) if(lobby || !$("#game").hidden) ffaPlayers(); }, 2000);
+/* the clue on the phones: its kind, category, value, question, unit, and the events for Put It in Order (never the answer) */
+function ffaSendCur(c){ if(c.curSent) return; c.curSent = true; const p = clueParts();
+  const cur = {c: ansKey(c), kind: c.type === "closest" ? "num" : c.type === "order" ? "order" : "text", cat: catById(c.cat).name, val: String(c.lvl), q: String(p.q || "").slice(0, 600)};
+  if(p.unit) cur.u = p.unit; if(c.type === "order") cur.ev = p.ev.map(e => e[0]);
+  ffaPost({cur}); }
+let ffaLastS = "";
+function ffaPushScores(){ const s = {}; S.teams.forEach(t => { if(t.pid) s[t.pid] = t.score; }); const k = JSON.stringify(s);
+  if(k === ffaLastS || !RELAY || !S.room) return; ffaLastS = k; ffaPost({s}); }
+const ffaAns = (c, i) => { const t = S.teams[i]; return t && c.phoneAns ? c.phoneAns[t.pid] : null; };
+function ffaShow(c, v){ if(c.type !== "order") return v; const ev = clueParts().ev; return String(v).split(",").map(i => ev[+i] ? ev[+i][0] : "?").join(" → "); }
+function ffaPanel(c){ if(c.revealed || c.type === "closest") return "";
+  const got = S.teams.filter((t,i) => ffaAns(c, i)).length;
+  return `<div class="ansqr ffa"><div class="eyebrow">Answer on your phones · ${got} of ${S.teams.length} in</div>
+    <ul class="ffain">${S.teams.map((t,i) => `<li class="${ffaAns(c, i) ? "in" : ""}">${esc(t.name)}${ffaAns(c, i) ? " ✓" : ""}</li>`).join("")}</ul></div>`; }
+/* on reveal: tick every answer that matches (closest ones are already ticked by the Closest Wins code) */
+function ffaMark(c){ if(c.marked) return; c.marked = true; const p = clueParts(); c.awards = c.type === "closest" ? (c.awards || {}) : {};
+  if(c.type === "closest") return;
+  S.teams.forEach((t,i) => { const a = ffaAns(c, i); if(!a) return;
+    if(c.type === "order" ? a.v === p.sorted.join(",") : ansMatch(a.v, p.a)) c.awards[i] = 1; }); }
+/* after the reveal: each player's answer with a tick (full points) and a half button; nobody loses points */
+function ffaAwards(c){ return `<div class="award ffaaw">${S.teams.map((t,i) => { const a = ffaAns(c, i), v = c.awards[i];
+    return `<div class="frow${v===1 ? " ok" : v===0.5 ? " half" : ""}"><span class="fn">${esc(t.name)}</span><span class="fa${a ? "" : " none"}">${a ? esc(ffaShow(c, a.v)) : "no answer"}</span>
+      <button class="y${v===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">✓ +${c.lvl}</button><button class="h${v===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">½</button></div>`; }).join("")}
+    <div class="note">Ticked answers matched automatically. Tap to change any of them, then Save scores.</div></div>`; }
+/* matching: case, accents, punctuation and "the/al/el" don't matter; small typos are forgiven (1 letter up to 8 letters, 2 above);
+   a surname alone counts for a full name ("Salah"); text in brackets is extra information and isn't needed */
+function ansNorm(s){ return String(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/['’‘`]/g, "").replace(/&/g, " and ")
+  .replace(/[^a-z0-9\u0600-\u06ff]+/g, " ").replace(/\b(the|a|an|al|el)\b/g, " ").replace(/\s+/g, " ").trim(); }
+function lev(a, b){ if(Math.abs(a.length - b.length) > 2) return 9; let prev = Array.from({length:b.length+1}, (_,j) => j);
+  let pp = null;  // two rows back, so two neighbouring letters swapped count as one typo
+  for(let i=1;i<=a.length;i++){ const cur = [i]; for(let j=1;j<=b.length;j++){ cur[j] = Math.min(prev[j]+1, cur[j-1]+1, prev[j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+      if(pp && i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1]) cur[j] = Math.min(cur[j], pp[j-2] + 1); } pp = prev; prev = cur; } return prev[b.length]; }
+function ansVariants(a){ const out = new Set(), add = x => { x = ansNorm(x); if(x) out.add(x); };
+  const s = String(a).split("\n")[0], abc = s.match(/^([A-Ca-c])\)\s*([^:]+)/);
+  if(abc){ add(abc[1]); add(abc[2]); return [...out]; }
+  const plain = s.replace(/\([^)]*\)/g, " "); add(plain); plain.split(/\s*(?:\/|;|,|\bor\b|→)\s*/).forEach(add);
+  return [...out]; }
+function ansMatch(g, a){ g = ansNorm(g); if(!g) return false;
+  const gs = g.replace(/ /g, "");
+  return ansVariants(a).some(v => { if(g === v || gs === v.replace(/ /g, "")) return true;
+    if(lev(g, v) <= (v.length <= 4 ? 0 : v.length <= 8 ? 1 : 2)) return true;
+    const w = v.split(" "); if(w.length > 1 && g.length >= 4 && lev(g, w[w.length-1]) <= (g.length <= 6 ? 0 : 1)) return true;
+    return v.length >= 5 && g.length >= 5 && (g.includes(v) || (v.includes(g) && g.length >= v.length * .6)); }); }
 const GAME_KEY = "jn_game";
 function saveGame(){ if($("#game").hidden || !S.teams.length) return;
-  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room}); }
+  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room, ffa:!!S.ffa}); }
 function clearGame(){ try{ localStorage.removeItem(GAME_KEY); }catch(e){} }
 function savedGame(){ const g = store.get(GAME_KEY, null);
   if(!g || g.v !== 1 || g.ended || !Array.isArray(g.teams) || !Array.isArray(g.cats) || !g.cats.length) return null;
@@ -829,7 +926,7 @@ function showResume(){ const box = $("#resumeBox"); if(!box) return; const g = s
   const played = Object.keys(g.done || {}).length, total = g.cats.length * LV.length;
   $("#resumeInfo").textContent = `${g.football ? "Football mode · " : ""}${g.teams.map(t => `${t.name} ${t.score}`).join(" · ")} · ${played} of ${total} tiles played · ${ago(g.at)}`; }
 function resumeGame(){ const g = savedGame(); if(!g) return;
-  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom();
+  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom(); S.ffa = !!g.ffa;
   if(typeof BALLS !== "undefined" && BALLS.length){ const i = g.ball >= 0 && g.ball < BALLS.length ? g.ball : 0; lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
   $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderChips(); renderTeamInputs(); renderBoard(); renderScores(); window.scrollTo(0,0); }
@@ -837,8 +934,10 @@ function renderScores(){
   const max = Math.max(...S.teams.map(t=>t.score));
   $("#scores").innerHTML = S.teams.map((t,i) =>
     `<div class="team${t.score===max&&max>0?" lead":""}${i===(S.turn||0)?" turn":""}" data-team="${i}" role="button" tabindex="0" aria-label="${esc(t.name)}${i===(S.turn||0)?", picking now":""}. Tap to give them the pick"><div class="nm">${i===(S.turn||0)?'<span class="pick">Picking</span>':""}${esc(t.name)}</div><div class="sc${t.score<0?" neg":""}">${t.score}</div>
-     ${S.power ? `<div class="pw"><button class="pwb${S.x2===i?" ready":""}${t.x2used?" used":""}" data-x2="${i}" ${t.x2used || (i!==(S.turn||0) && S.x2!==i) ? "disabled" : ""} aria-label="${esc(t.name)}: double points${t.x2used?" (used)":S.x2===i?" (ready, tap to cancel)":""}" title="${t.x2used ? "Used" : "Tap on your turn, before picking a tile"}">${S.x2===i ? `×2 <span class="lg">ready</span><span class="sm">✓</span>` : "×2"}</button><span class="pwb${t.twoUsed?" used":""}" aria-label="${esc(t.name)}: 2 answers${t.twoUsed?" (used)":" (use it on an open clue)"}" title="${t.twoUsed ? "Used" : "Use it on an open clue"}"><span class="lg">2 answers</span><span class="sm">2 ans</span></span></div>` : ""}
+     ${S.power && !S.ffa ? `<div class="pw"><button class="pwb${S.x2===i?" ready":""}${t.x2used?" used":""}" data-x2="${i}" ${t.x2used || (i!==(S.turn||0) && S.x2!==i) ? "disabled" : ""} aria-label="${esc(t.name)}: double points${t.x2used?" (used)":S.x2===i?" (ready, tap to cancel)":""}" title="${t.x2used ? "Used" : "Tap on your turn, before picking a tile"}">${S.x2===i ? `×2 <span class="lg">ready</span><span class="sm">✓</span>` : "×2"}</button><span class="pwb${t.twoUsed?" used":""}" aria-label="${esc(t.name)}: 2 answers${t.twoUsed?" (used)":" (use it on an open clue)"}" title="${t.twoUsed ? "Used" : "Use it on an open clue"}"><span class="lg">2 answers</span><span class="sm">2 ans</span></span></div>` : ""}
      ${S.editing ? `<div class="adj"><button data-i="${i}" data-d="-100" aria-label="Take 100 from ${esc(t.name)}">−100</button><button data-i="${i}" data-d="100" aria-label="Give 100 to ${esc(t.name)}">+100</button></div>` : ""}</div>`).join("");
+  $("#scores").classList.toggle("ffa", !!S.ffa); const jb = $("#ffaJoin"); if(jb) jb.hidden = !S.ffa;
+  if(S.ffa) ffaPushScores();
   boardX2(); saveGame();
 }
 $("#scores").addEventListener("click", e => {
@@ -1045,11 +1144,12 @@ function renderClue(){
     if(!c.order){ do{ c.order = p.sorted.slice().sort(() => Math.random() - .5); }while(c.order.every((k,i) => k === p.sorted[i])); }
     const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     const day = d => { const [y,m,dd] = String(d).split("-"); return [dd ? +dd : "", m ? MON[+m-1] : "", y].filter(Boolean).join(" "); };
-    if(!c.revealed) media = `<ol class="order">${c.order.map((k,i) => `<li draggable="true" data-oi="${i}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span>
+    if(!c.revealed && S.ffa && RELAY) media = `<ol class="order done">${c.order.map((k,i) => `<li><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span></li>`).join("")}</ol>`;  // 5.26: players order them on their phones
+    else if(!c.revealed) media = `<ol class="order">${c.order.map((k,i) => `<li draggable="true" data-oi="${i}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span>
         <span class="mv"><button class="mini" data-om="${i}" data-dir="-1" ${i ? "" : "disabled"} aria-label="Move up">▲</button><button class="mini" data-om="${i}" data-dir="1" ${i < c.order.length-1 ? "" : "disabled"} aria-label="Move down">▼</button></span></li>`).join("")}</ol>
       <div class="note">Drag the events (or tap the arrows) into the team's order, earliest at the top, then tap Reveal.</div>`;
     else { c.right = p.sorted.filter((k,i) => c.order[i] === k).length;
-      media = `<ol class="order done">${p.sorted.map((k,i) => `<li class="${c.order[i] === k ? "ok" : "no"}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span><span class="dt">${day(p.ev[k][1])}</span></li>`).join("")}</ol>`; }
+      media = `<ol class="order done">${p.sorted.map((k,i) => `<li class="${S.ffa ? "" : c.order[i] === k ? "ok" : "no"}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span><span class="dt">${day(p.ev[k][1])}</span></li>`).join("")}</ol>`; }
   }
   if(c.type==="act"){
     media = `<div class="secret">${c.qr
@@ -1060,15 +1160,15 @@ function renderClue(){
   }
   const pct = 100*c.left/c.secs;
   const badges = [c.x2!=null && S.teams[c.x2] ? `<span class="badge">×2 · ${esc(S.teams[c.x2].name)}</span>` : "", ...Object.keys(c.two).map(i => S.teams[i] ? `<span class="badge">2 answers allowed · ${esc(S.teams[i].name)}</span>` : "")].filter(Boolean).join("");
-  const canTwo = S.power && !c.preview && !c.revealed ? /* only the team whose turn it is can use 2 answers */ S.teams.map((t,i) => (i===(S.turn||0) && !t.twoUsed && !c.two[i]) ? `<button class="pwb" data-two="${i}">${esc(t.name)}: 2 answers</button>` : "").filter(Boolean).join("") : "";
+  const canTwo = S.power && !S.ffa && !c.preview && !c.revealed ? /* only the team whose turn it is can use 2 answers */ S.teams.map((t,i) => (i===(S.turn||0) && !t.twoUsed && !c.two[i]) ? `<button class="pwb" data-two="${i}">${esc(t.name)}: 2 answers</button>` : "").filter(Boolean).join("") : "";
   $("#clue").innerHTML = `
     <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
     ${badges ? `<div class="badges">${badges}</div>` : ""}
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
-    ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
-    ${c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>`<div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button><button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button><button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button></div>`).join("")}</div>` : ""}
+    ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" && !S.ffa ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
+    ${c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>`<div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button><button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button><button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button></div>`).join("")}</div>` : ""}
     ${canTwo ? `<div class="pwrow"><span class="lbl">Power-up:</span>${canTwo}</div>` : ""}
     <div class="row">
       ${c.revealed || (c.type==="impostor" && c.stage!=="play") ? "" : `<button class="btn primary" data-act="reveal">${c.type==="impostor" ? "Reveal impostor" : "Reveal answer"}</button>`}
@@ -1082,6 +1182,7 @@ function renderClue(){
     const run = async () => { try{ const fs = await new window.FaceDetector({fastMode:true,maxDetectedFaces:1}).detect(zimg); if(fs[0] && S.cur===c){ const b = fs[0].boundingBox; saveFocus(k, 100*(b.x+b.width/2)/zimg.naturalWidth, 100*(b.y+b.height/2)/zimg.naturalHeight); renderClue(); } }catch(err){} };
     zimg.complete ? run() : zimg.addEventListener("load", run, {once:true});
   }
+  if(ansMode(c) === "ffa") ffaSendCur(c);
   const aq = $("#ansQr"); if(aq){ const m = ansMode(c); sendMeta(c, m);
     if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: m === "steal" ? 130 : 170, height: m === "steal" ? 130 : 170, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
     else aq.textContent = "The code maker didn't load yet."; }
@@ -1103,7 +1204,7 @@ function tick(){
   if(i) i.style.width = (100*c.left/c.secs)+"%"; if(t) t.textContent = Math.ceil(c.left);
 }
 function stopTimer(){ if(timer){ clearInterval(timer); timer = null; } }
-function closeCard(){ stopTimer(); $("#card").hidden = true; S.cur = null; wPump(); }
+function closeCard(){ stopTimer(); $("#card").hidden = true; const was = S.cur; S.cur = null; wPump(); if(S.ffa && was && !was.preview) ffaPost({cur:null}); }
 
 $("#clue").addEventListener("click", e => {
   const c = S.cur; if(!c) return;
@@ -1126,6 +1227,7 @@ $("#clue").addEventListener("click", e => {
   /* 5.9: before revealing, stop phone answers and fetch the last ones, then reveal */
   if(a==="reveal" && ansMode(c) && !c.finalPolled){ c.finalPolled = true; b.disabled = true;
     closeAns(c).then(() => pollAns(true)).then(() => { const rb = $('#clue [data-act="reveal"]'); if(rb && S.cur === c){ rb.disabled = false; rb.click(); } }); return; }
+  if(a==="reveal" && ansMode(c) === "ffa") ffaMark(c);
   if(a==="reveal"){ c.revealed = true; c.fresh = true; stopTimer(); c.running = false; renderClue(); c.fresh = false; }
   if(a==="setspot"){ openFocus(norm(clueParts().a), "Host only: tap the face or the part to zoom in on"); return; }
   if(a==="unblur"){ c.blur = c.blur < 0.005 ? 0 : c.blur * 0.72; renderClue(); }  // v4.40: c.blur < 0.006 ? 0 : c.blur * 0.55
@@ -1185,7 +1287,7 @@ function initWorld(){ try{ if(window.__WORLD_JSON && !WORLD.feats){ WORLD.feats 
   LV.forEach(l => { const ok = DATA.shape[l].filter(([,al]) => shapeFor(al)); if(ok.length) DATA.shape[l] = ok; }); } }catch(e){ WORLD.feats = null; } }
 if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
-renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel();
+renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel(); syncFfaOpt();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
 function showHome(){ setFootball(false); closeCard(); hideWinner(); showResume(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
 $("#resumeBtn").onclick = resumeGame;

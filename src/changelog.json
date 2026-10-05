@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.26",
+  "date": "2026-10-05",
+  "items": [
+   "New: Free-for-all (bottom of setup). No teams: everyone scans one code at the start and plays on their own phone. Every clue's answer box pops up by itself, everyone who's right scores, and the host just confirms the ticks.",
+   "Works on the Cloudflare link. Act It Out, One Word Clues and Who's the Impostor are left out of it."
+  ]
+ },
+ {
   "v": "5.25",
   "date": "2026-10-05",
   "items": [

@@ -277,6 +277,27 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
 .focuswrap{position:relative;align-self:center;width:fit-content;max-width:100%;line-height:0;margin:0 auto}
 #focusImg{display:block;max-width:100%;max-height:62vh;cursor:crosshair;border-radius:8px}
 #focusMark{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border:3px solid var(--brass);border-radius:50%;box-shadow:0 0 0 3px #000;pointer-events:none}
+/* 5.26: Free-for-all */
+.lobby{max-width:760px;margin:0 auto;padding:32px 16px 60px;text-align:center;display:grid;gap:14px;justify-items:center}
+.lobby h1{margin:0}
+.lqr{background:#fff;padding:14px;border-radius:12px;line-height:0}
+.lqr img,.lqr canvas{width:300px;height:300px}
+.lurl{margin:0;font-size:16px}
+.lplayers{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.lplayers li{background:var(--panel);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;animation:stealPop .5s cubic-bezier(.2,1.6,.4,1) both}
+.ansqr.ffa{display:block;text-align:center}
+.ffain{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.ffain li{border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-weight:700;color:var(--muted)}
+.ffain li.in{border-color:var(--brass);color:var(--brass)}
+.award.ffaaw{display:grid;gap:6px}
+.ffaaw .frow{display:grid;grid-template-columns:minmax(80px,auto) 1fr auto auto;gap:10px;align-items:center;background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:6px 10px}
+.ffaaw .frow.ok{border-color:var(--good)} .ffaaw .frow.half{border-color:var(--brass)}
+.ffaaw .fn{font-weight:800} .ffaaw .fa{text-align:left;overflow-wrap:anywhere} .ffaaw .fa.none{color:var(--muted);font-style:italic}
+.ffaaw button{border:1.5px solid var(--line);border-radius:8px;background:transparent;padding:6px 12px;font-weight:800;color:var(--cream)}
+.ffaaw .y{color:var(--good)} .ffaaw .h{color:var(--brass)} .ffaaw button.on{background:var(--tile-hi)}
+.ffaaw .note{text-align:left}
+body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} body.football .ffaaw .frow.ok{box-shadow:0 0 0 2px #3EE06A}
+.scores.ffa .team{flex-basis:118px;padding:5px 10px} .scores.ffa .team .sc{font-size:26px}
 /* 5.22: Put It in Order */
 .order{list-style:none;margin:6px auto;padding:0;display:grid;gap:10px;max-width:760px;width:100%}
 .order li{display:flex;align-items:center;gap:14px;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:clamp(18px,2.2vw,26px);font-weight:700;cursor:grab;user-select:none}
@@ -400,7 +421,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.25</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.26</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -412,7 +433,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.25</div>
+      <div class="eyebrow verlabel">v5.26</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -422,7 +443,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
       <div class="chips" id="catChips"></div>
       <div class="row"><button class="btn small" id="pick6">Random 6</button><button class="btn small" id="pickNone">Clear</button></div>
     </div>
-    <div class="panel">
+    <div class="panel" id="teamsPanel">
       <div class="eyebrow">Teams</div>
       <div class="teams" id="teamInputs"></div>
       <div class="row"><button class="btn small" id="addTeam">Add team</button><button class="btn small" id="rmTeam">Remove team</button></div>
@@ -455,6 +476,11 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
       <div class="row"><button class="btn small" id="dlAll">Download everything</button><span class="note" id="dlNote"></span></div>
       </div>
     </details>
+    <!-- 5.26 (Omar): Free-for-all, at the bottom of setup. To remove: delete this panel, #lobby below, #ffaJoin in the game bar and the 5.26 block in src/app.js -->
+    <div class="panel" id="ffaPanel">
+      <div class="eyebrow">Play mode</div>
+      <div class="opts"><button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone. At the start, everyone scans one code and types their name. After that, every clue's answer box pops up on their phone. Everyone who's right scores the points, and nobody loses points. Act It Out, One Word Clues and Who's the Impostor are left out. Works on the Cloudflare link.</small></span></button></div>
+    </div>
     <div class="row">
       <button class="btn primary" id="start">Start game</button>
       <button class="btn small footbtn" id="football" title="A football-only board in green: 6 random picks from Common Club, Career Path, Who Am I?, Transfers, Football Stadiums, Guess the Footballer, Egyptian Football, Guess the Year: Football Edition, Premier League, Champions League and World Cup">Football mode</button>
@@ -464,10 +490,23 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
     </div>
   </section>
 
+  <!-- 5.26: Free-for-all lobby, one code for everyone; reopened mid-game with "Join code" -->
+  <section id="lobby" hidden>
+    <div class="lobby">
+      <div class="eyebrow">Free-for-all</div>
+      <h1>Scan to <span>join</span></h1>
+      <div class="lqr" id="lobbyQr"></div>
+      <p class="note lurl" id="lobbyUrl"></p>
+      <div class="eyebrow" id="lobbyCount">Waiting for players…</div>
+      <ul class="lplayers" id="lobbyList"></ul>
+      <div class="row" style="justify-content:center"><button class="btn primary" id="lobbyGo" disabled>Start playing</button><button class="btn small" id="lobbyBack">Back to setup</button></div>
+    </div>
+  </section>
+
   <section id="game" hidden>
     <div class="topbar">
       <h1><span class="t1">Jeopardy</span> <span class="t2">Night</span></h1>
-      <div class="row tools"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="editScores" aria-pressed="false">Edit scores</button><button class="btn small" id="newBoard">New board</button><button class="btn small" id="toSetup">Setup</button><button class="btn small" id="toHome">Title screen</button><button class="btn small endbtn" id="endGame">End game</button></div>
+      <div class="row tools"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="ffaJoin" hidden>Join code</button><button class="btn small" id="editScores" aria-pressed="false">Edit scores</button><button class="btn small" id="newBoard">New board</button><button class="btn small" id="toSetup">Setup</button><button class="btn small" id="toHome">Title screen</button><button class="btn small endbtn" id="endGame">End game</button></div>
     </div>
     <div class="boardwrap"><div class="fbbg" id="fbBg" aria-hidden="true"></div><div class="board" id="board"></div></div>
   </section>
