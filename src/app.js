@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.9`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.10`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -772,14 +772,14 @@ function ansUrl(c, m){ if(!S.room) S.room = newRoom(); const u = new URL("answer
   u.search = new URLSearchParams(q).toString(); return u.href; }
 function ansPanel(c){ const m = ansMode(c); if(!m) return "";
   const steal = m === "steal", playing = S.turn || 0, got = c.phoneAns || {};
-  const rows = S.teams.map((t,i) => { if(steal && i === playing) return ""; const a = got[i];
+  const rows = !steal ? "" : S.teams.map((t,i) => { if(steal && i === playing) return ""; const a = got[i];
     if(!a) return c.revealed ? `<li class="wait">${esc(t.name)}: no steal</li>` : `<li class="wait">${esc(t.name)}: waiting…</li>`;
     if(steal && c.revealed) return `<li class="in"><b>${esc(t.name)}</b> steals with: <span class="sv">${esc(a.v)}</span></li>`;
     return `<li class="in">${esc(t.name)} ✓ ${steal ? "sent a steal" : "locked in"}</li>`; }).join("");
   if(c.revealed && !steal) return "";
   return `<div class="ansqr${c.revealed ? " done" : ""}">${c.revealed ? "" : `<div class="aq" id="ansQr"></div>`}<div class="ansinfo"><div class="eyebrow">${steal
       ? (c.revealed ? "Steals (½ points if right)" : `Steal: teams not playing (${esc(S.teams[playing] ? S.teams[playing].name : "")} is), scan to answer`)
-      : "Scan with your phone to send your team's guess"}</div><ul>${rows}</ul></div></div>`; }
+      : "Scan with your phone to send your team's guess"}</div>${rows ? `<ul>${rows}</ul>` : ""}</div></div>`; }
 async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force)) return; const m = ansMode(c); if(!m || (c.polling && !force)) return;
   c.polling = true;
   try{ const r = await fetch(`api/answers?r=${encodeURIComponent(S.room)}&c=${encodeURIComponent(ansKey(c))}`, {cache:"no-store"}); const j = await r.json();
@@ -787,8 +787,15 @@ async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force))
     if(m === "num"){ c.guesses = c.guesses || {}; c.phone = c.phone || {};
       Object.entries(c.phoneAns).forEach(([i,a]) => { const n = parseFloat(a.v); if(!isNaN(n) && S.teams[+i]){ c.guesses[+i] = n; c.phone[+i] = true; } }); }
     if(JSON.stringify(c.phoneAns) !== prev){ const ae = document.activeElement;
-      if(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT"){ const ul = $("#clue .ansqr ul"); if(ul){ const tmp = document.createElement("div"); tmp.innerHTML = ansPanel(c); const nu = tmp.querySelector("ul"); if(nu) ul.replaceWith(nu); } }
+      if(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT"){ c.redraw = true;
+        document.querySelectorAll("#clue .guess.status").forEach(box => { const i = +box.querySelector("[data-typein]").dataset.typein;
+          if(c.phone && c.phone[i]){ box.classList.remove("wait"); box.classList.add("in"); box.querySelector("b").textContent = "Locked in ✓"; } }); const ul = $("#clue .ansqr ul"); if(ul){ const tmp = document.createElement("div"); tmp.innerHTML = ansPanel(c); const nu = tmp.querySelector("ul"); if(nu) ul.replaceWith(nu); } }
       else renderClue(); }
+    /* 5.10 (Omar): once every team has a number in, reveal by itself after a short pause (not while the host is typing) */
+    if(m === "num" && !c.revealed && !c.autoRev && S.teams.every((t,i) => c.guesses && c.guesses[i] != null)){ const ae = document.activeElement;
+      if(!(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT")){ c.autoRev = true;
+        setTimeout(() => { if(S.cur !== c || c.revealed) return; const rb = $('#clue [data-act="reveal"]'); if(rb) rb.click(); }, 1500); } }
+    if(c.redraw){ const ae = document.activeElement; if(!(ae && ae.closest && ae.closest("#clue") && ae.tagName === "INPUT")){ c.redraw = false; renderClue(); } }
   }catch(e){} finally{ c.polling = false; } }
 function closeAns(c){ return fetch("api/close", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, c:ansKey(c)})}).catch(() => {}); }
 setInterval(pollAns, 1500);
@@ -1006,10 +1013,13 @@ function renderClue(){
   if(c.type==="closest"){
     c.guesses = c.guesses || {};
     media = `<div class="guesses">${S.teams.map((t,i) => { const g = c.guesses[i], d = c.revealed && g!=null ? Math.abs(g - p.num) : null;
+      /* 5.10 (Omar): with phone answers on, each box is a status (Waiting… / Locked in ✓) with a small Type button for the host, instead of an input */
+      if(ansMode(c) && !c.revealed && !(c.typing && c.typing[i])){ const st = c.phone && c.phone[i] ? "Locked in ✓" : g!=null ? "Typed in ✓" : "Waiting…";
+        return `<div class="guess status${st==="Waiting…" ? " wait" : " in"}"><span>${esc(t.name)}</span><b>${st}</b><button class="mini" data-typein="${i}">Type</button></div>`; }
       return `<label class="guess${c.revealed && c.winners && c.winners.includes(i) ? " win" : ""}"><span>${esc(t.name)}</span>
-        <input id="guess${i}" data-g="${i}" inputmode="decimal" autocomplete="off" placeholder="${!c.revealed && c.phone && c.phone[i] ? "Locked in ✓" : "Guess" + (p.unit ? " ("+esc(p.unit)+")" : "")}" value="${g!=null && !(!c.revealed && c.phone && c.phone[i]) ? g : ""}" ${c.revealed ? "disabled" : ""}>
+        <input id="guess${i}" data-g="${i}" inputmode="decimal" autocomplete="off" placeholder="${"Guess" + (p.unit ? " ("+esc(p.unit)+")" : "")}" value="${g!=null && !(!c.revealed && c.phone && c.phone[i]) ? g : ""}" ${c.revealed ? "disabled" : ""}>
         ${d!=null ? `<em>${d===0 ? "Exact!" : "off by " + d.toLocaleString("en-US")}</em>` : ""}</label>`; }).join("")}</div>
-      ${!c.revealed ? `<div class="note">${ansMode(c) ? "Each team scans the code and sends one number, or the host types it in." : "Each team agrees on one number and types it in."} Closest wins; a tie means both score.</div>` : ""}`;
+      ${!c.revealed ? `<div class="note">${ansMode(c) ? "Each team scans the code and sends one number (or tap Type to enter it for them)." : "Each team agrees on one number and types it in."} Closest wins; a tie means both score.</div>` : ""}`;
   }
   if(c.type==="act"){
     media = `<div class="secret">${c.qr
@@ -1068,6 +1078,8 @@ function closeCard(){ stopTimer(); $("#card").hidden = true; S.cur = null; wPump
 
 $("#clue").addEventListener("click", e => {
   const c = S.cur; if(!c) return;
+  const ti = e.target.closest("[data-typein]");
+  if(ti){ const i = +ti.dataset.typein; c.typing = c.typing || {}; c.typing[i] = true; renderClue(); const inp = $("#guess" + i); if(inp) inp.focus(); return; }
   const tw = e.target.closest("[data-two]");
   if(tw){ c.two[+tw.dataset.two] = true; Snd.blip(); renderClue(); return; }
   const tb = e.target.closest("[data-turn]");

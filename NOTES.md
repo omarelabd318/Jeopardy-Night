@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.9. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.10. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -400,3 +400,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
     - Steal: the playing team wasn't offered, and the steal answer showed after the reveal.
     - No page errors. Not yet tested on real phones over the internet.
   - To undo: turn both switches off in setup, or remove the 5.9 block in `src/app.js` (with `ansPanel(c)`, the `#ansQr` drawing and the reveal hook), the two switches in `src/head.html`, `answer.html`, `worker/` and the `main`/`durable_objects`/`migrations` lines in `wrangler.jsonc`.
+- 5.10 (2026-10-05): Omar said the empty number boxes on Closest Wins / Price Is Right were redundant with phone answers. He also asked for the answer to show once the last team has sent theirs. Two changes, plus a note about setup:
+  - **Status boxes:** when phone answers are on, each team's box shows **Waiting…** or **Locked in ✓** (or "Typed in ✓"), with a small **Type** button that turns it into an input so the host can enter a number. The duplicate list under the QR code is gone. After the reveal the boxes show each guess and how far off it was, as before. If a phone answer arrives while the host is typing in a box, the other boxes update straight away.
+  - **Auto-reveal:** once every team has a number in, the game reveals the answer by itself 1.5 s later, with the same close-the-relay, fetch-last-answers, then reveal sequence. It waits while the host is typing in a box.
+  - **Cloudflare setup:** on the "extra setup step" question, there isn't one. Everything the relay needs is in `wrangler.jsonc` and is set up by the normal deploy.
+  - **Tested** with `wrangler dev` and three simulated phones: the boxes went from Waiting… to Locked in ✓, the answer revealed itself with the right winner, and the Type path and steals still worked, with no errors.
+  - To undo the auto-reveal: delete the 5.10 `c.autoRev` block in `pollAns()`. To bring back the inputs: delete the 5.10 status branch in the closest-wins part of `renderClue()`.

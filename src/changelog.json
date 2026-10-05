@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.10",
+  "date": "2026-10-05",
+  "items": [
+   "Phone answers: each team's box now just shows Waiting… or Locked in ✓ (tap Type to enter a number for a team).",
+   "The answer reveals by itself once every team has sent its number."
+  ]
+ },
+ {
   "v": "5.9",
   "date": "2026-10-05",
   "items": [
