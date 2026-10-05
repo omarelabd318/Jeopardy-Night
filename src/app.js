@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.77`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.78`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -961,11 +961,14 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     { w(){ const v = 40, sniffAt = (W * 0.45 + 40) / v; return {v, sniffAt, sniffLen: 2.2}; },
       len(){ const w = this.w(); return (W + 130) / w.v + w.sniffLen; },
       draw(u){ const {v, sniffAt, sniffLen} = this.w(), walkT = u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen, stopped = u >= sniffAt && u < sniffAt + sniffLen;
-        const x = -40 + v * walkT, ph = walkT * 8.5, dx = x + 30, talk = Math.sin(u * 1.7) > 0.3;   // she gestures with her free hand now and then
+        const x = -40 + v * walkT, ph = walkT * 8.5, dx = x + 30;
+        /* 5.78 (Omar): she takes the call a third of the way in and hangs up a bit before she leaves (5.76-5.77: on the phone throughout) */
+        const call = sm((x - W / 3) / 22) * (1 - sm((x - W * 0.85) / 22)), talk = call > 0.95 && Math.sin(u * 1.7) > 0.3;   // gestures with her free hand now and then, on the call
+        const swing = stopped ? [0.1, 0.2] : [-Math.sin(ph) * 0.35, -Math.sin(ph) * 0.35 + 0.3], mix = (a, b) => [a[0] + (b[0] - a[0]) * call, a[1] + (b[1] - a[1]) * call];
         const W2 = person(x, gy, 1, {shirt: "#d9667a", pants: "#3b5f8f", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab. 5.77 (Omar): jeans and a top (was a long blue dress, outfit "robe") */
            ...(stopped ? {} : {ph}),
-          arms: [[1.6, -2.4], talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : stopped ? [0.45, 1.0] : [Math.sin(ph) * 0.35 + 0.35, Math.sin(ph) * 0.35 + 0.9]]});
-        const ph2 = W2.hands[0]; rect(ph2[0] - 0.4, ph2[1] - 3.4, 2, 4.4, "#1b1b1f");                                       // the phone at her ear
+          arms: [mix(swing, [1.6, -2.4]), talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : stopped ? [0.45, 1.0] : [Math.sin(ph) * 0.35 + 0.35, Math.sin(ph) * 0.35 + 0.9]]});
+        const ph2 = W2.hands[0]; if(call > 0.08) rect(ph2[0] - 0.4, ph2[1] - 3.4 * call - 1, 2, 2 + 2.4 * call, "#1b1b1f");   // the phone: out of her pocket and up to her ear
         const lead = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
         g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(lead[0], lead[1]); g.quadraticCurveTo((lead[0] + collar[0]) / 2, Math.max(lead[1], collar[1]) + (stopped ? 1 : 6), collar[0], collar[1]); g.stroke();   // the lead, slack while they walk
         drawDog(dx, 1, stopped ? 0 : walkT * 13, stopped, u); } },
