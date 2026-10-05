@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.22. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 101 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.23. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 101 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -442,3 +442,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Clues:** 100, 20 per value. At 100 the events are years apart (Toy Story, Shrek, Frozen); by 300 they're a year or two apart; 400 and 500 are weeks or days apart (Saudi Arabia beat Argentina, Morocco knock out Portugal, Messi lifts the World Cup). A mix of film, TV, football, tech, Egypt and world news.
   - **No steal codes:** `order` isn't in `STEAL_TYPES`, so it never gets one.
   - In Party Games after Real Headline. To remove: delete `v4work/out/order.json` (or the `['order','headl']` line in `src/extra.js`); the code in `src/app.js` (marked 5.22) and the `.order` CSS in `src/head.html` can stay.
+- 5.23 (2026-10-05): Omar asked for the board values to double when a team uses ×2. While a team's ×2 is ready, every unplayed tile shows its doubled value (200, 400 … 1000); cancelling ×2 or finishing the tile puts them back. Going back to the board without playing keeps them doubled, since ×2 is still ready. `boardX2()` in `src/app.js` does it, called from `renderBoard()` and `renderScores()`. Scoring is unchanged (it was already doubled). To undo: delete `boardX2()` and its two calls.
