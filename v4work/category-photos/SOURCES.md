@@ -126,6 +126,7 @@ All from Wikimedia Commons. The Mali photo has its two World Heritage signs blur
 | country-uganda | [Murchison Twin Falls, Uganda (16093084916).jpg](https://commons.wikimedia.org/wiki/File:Murchison_Twin_Falls%2C_Uganda_%2816093084916%29.jpg) | CC BY-SA 2.0 |
 | country-saudi | [Qasr al Farid.JPG](https://commons.wikimedia.org/wiki/File:Qasr_al_Farid.JPG) | CC BY-SA 4.0 |
 | country-oman | [Nizwa (5).jpg](https://commons.wikimedia.org/wiki/File:Nizwa_%285%29.jpg) | CC BY-SA 2.0 |
+| country-qatar | [Museum of Islamic Art in Doha, Qatar (32673171432).jpg](https://commons.wikimedia.org/wiki/File:Museum_of_Islamic_Art_in_Doha%2C_Qatar_%2832673171432%29.jpg) | CC BY 2.0 |
 
 ## 5.24: Egypt: Photo Edition (`egp-*`)
 
@@ -224,3 +225,4 @@ The Bab al-Futuh photo has its street sign blurred. Sultan Hassan and Al-Rifa'i 
 | cairo-benezra | [Ben Ezra Synagogue-1.jpg](https://commons.wikimedia.org/wiki/File:Ben_Ezra_Synagogue-1.jpg) | CC BY-SA 3.0 |
 | cairo-futuh | [Cairo, porte settentrionali, 01.JPG](https://commons.wikimedia.org/wiki/File:Cairo%2C_porte_settentrionali%2C_01.JPG) | CC BY 3.0 |
 | cairo-gayer | [Kairo Gayer Anderson Museum BW 3.jpg](https://commons.wikimedia.org/wiki/File:Kairo_Gayer_Anderson_Museum_BW_3.jpg) | CC BY 3.0 |
+| cairo-6oct | [6th October Bridge.png](https://commons.wikimedia.org/wiki/File:6th_October_Bridge.png) | CC BY-SA 3.0 |
