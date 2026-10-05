@@ -41,6 +41,12 @@ ol.ord .mv button:disabled{opacity:.25}
 .teams button{font:inherit;font-weight:700;padding:16px 10px;border-radius:12px;border:2px solid var(--line);background:var(--panel);color:var(--fg)}
 .lock{text-align:center;padding:34px 0 10px}
 .lock .tick{font-size:56px;line-height:1;color:var(--good)}
+/* 5.46 (Omar): green like the TV when the game is in Football mode */
+body.football{--bg:#00BE00;--panel:#00A600;--line:#007E00;--fg:#fff;--muted:#E4FFE4;--gold:#fff;--ink:#0F2557;--good:#0F2557;--bad:#7A0E05}
+body.football .go{background:#0F2557;color:#fff}
+body.football input{border-color:#007E00}
+body.football .msg{background:rgba(0,0,0,.12)}
+body.football .dot{background:#fff}
 </style></head><body><main>
 <div class="top"><span class="me" id="me"></span><span class="score" id="score"></span></div>
 <div id="view"></div>
@@ -67,6 +73,7 @@ async function join(n, t){
 async function joinView(err){
   stop(); $("me").textContent = ""; $("score").textContent = "";
   if(!st){ try{ st = await getState(newId()); }catch(e){} }
+  document.body.classList.toggle("football", !!(st && st.fb));
   if(teamMode()){
     $("view").innerHTML = `<div class="eyebrow">Jeopardy Night</div><h1>Which team are you?</h1><div class="teams" id="tm">${st.teams.map((n,i) => `<button type="button" data-t="${i}">${esc(n)}</button>`).join("")}</div>
       ${err ? `<div class="msg err">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Number boxes and steal boxes for your team pop up here by themselves.</p>`;
@@ -145,7 +152,7 @@ async function poll(){
   if(busy || document.hidden) return; busy = true;
   try{ const j = await getState(me.p);
     if(j && j.name === null){ busy = false; st = j; me = null; joinView(); return; }  // the game doesn't know this phone (a new game): join again
-    if(j && "cur" in j){ st = j; draw(); } }
+    if(j && "cur" in j){ st = j; document.body.classList.toggle("football", !!j.fb); draw(); } }
   catch(e){}
   busy = false;
 }

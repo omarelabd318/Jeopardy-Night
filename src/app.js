@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.45`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.46`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -939,7 +939,7 @@ function ffaReady(football){  // 5.35: Football mode picks its own categories, s
    Closest Wins or Price Is Right on the board. Was: (S.qrAns || S.steal) */
 const linkTeams = () => !S.ffa && RELAY === true && ((S.steal && S.teams.length > 1) || (S.qrAns && S.cats.some(id => (catById(id) || {}).type === "closest")));
 const linked = () => S.ffa || linkTeams();
-function ffaPost(b){ return fetch("api/cur", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, ...b})}).catch(() => {}); }
+function ffaPost(b){ return fetch("api/cur", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, fb:!!S.football, ...b})}).catch(() => {}); }  // 5.46: fb turns the phones green in Football mode
 function ffaUrl(){ return new URL(`p?r=${S.room}`, location.href).href; }
 /* the lobby: one big code; also reopened mid-game with "Join code" for late arrivals */
 function ffaLobby(mid){
