@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.74`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.75`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -919,12 +919,17 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           else if(b < t3){ x = sx; pitch = -0.025 * Math.sin(Math.min(1, (b - t2) / 0.35) * Math.PI); }
           else { const e = b - t3; x = sx + 190 * e * e; } }
         const board = cl((b - t2 - 0.2) / 0.9, 0, 1);
-        if(board < 1){ const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 18.5 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
+        const rider = () => { if(board >= 1) return; const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 18.5 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
           g.globalAlpha = board > 0.75 ? (1 - board) * 4 : 1;
           person(wx, gy, -1, walkIn || board > 0 ? {ph: u * 9, shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e"}
                                              : {shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e", arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
-          g.globalAlpha = 1; }
-        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, !flip); } },   // 5.74 (Omar): the door shows only when it drives right to left (the mirrored rounds); coming from the left he gets in on the far side (5.61-5.73: the other way round)
+          g.globalAlpha = 1; };
+        /* 5.75 (Omar): driving in from the left we see its right side, so the door is on our side (as in 5.61-5.73), and now he walks up
+           in front of the bus and steps in through it (before, he was drawn behind the bus, so he seemed to get in on the far side).
+           Driving right to left (mirrored rounds) the door is on the far side and he goes round behind it. 5.74 had the sides swapped. */
+        if(flip) rider();
+        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip);
+        if(!flip) rider(); } },
     { f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
       len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
       draw(u){ const {fx, tA} = this.f(), st = u - tA;
