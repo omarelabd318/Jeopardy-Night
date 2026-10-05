@@ -186,6 +186,10 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 #kick{position:fixed;left:0;width:100vw;height:84px;pointer-events:none;z-index:6;display:none}
 body.football #kick.on{display:block}
 body.football #kick.on.faint{z-index:11;opacity:.3}  /* 5.38: faintly over the clue backdrop (never over the clue box, see the kickers in src/app.js) */  /* 4.75: 84px tall for the headers (was 64px) */
+/* 5.52 (Omar): normal mode street scene (shisha café, traffic, a stray cat) in the same strip. To remove: delete #street here, the canvas, and the street block in app.js */
+#street{position:fixed;left:0;width:100vw;height:84px;pointer-events:none;z-index:6;display:none}
+body:not(.football) #street.on{display:block}
+body:not(.football) #street.on.faint{z-index:11;opacity:.3}
 .scores{position:fixed;left:0;right:0;bottom:0;background:var(--deep);border-top:2px solid var(--brass-dim);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;overflow-x:auto;z-index:5}
 .team{flex:1 0 150px;display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;padding:6px 12px;border-radius:10px;background:var(--felt-2);border:1.5px solid var(--line)}
 .team .nm{font-weight:700;font-size:clamp(17px,1.6vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -427,7 +431,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.51</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.54</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -439,7 +443,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.51</div>
+      <div class="eyebrow verlabel">v5.54</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -463,6 +467,8 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
         <!-- 5.26 (Omar): Free-for-all; 5.32 (Omar): moved here, next to Steals from phones (was its own "Play mode" panel at the bottom of setup). To remove it: delete this button, #lobby, #ffaJoin and the 5.26 block in src/app.js -->
         <button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone, scanning one code at the start. Everyone who's right scores; nobody loses points. Team-only categories, power-ups and steals are left out. Works on the Cloudflare link.</small></span></button>
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
+        <!-- 5.54 (Omar): turns the board animations (the normal mode street scene and the Football mode kickers) on or off -->
+        <button class="opt" id="optAnim" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Board animations</b><small>The little street scene under the board (the kickers in Football mode). Off keeps the bottom of the screen still.</small></span></button>
       </div>
     </div>
     <!-- 5.31 (Omar): the Photo rounds section is hidden; every photo is built in now. To bring it back, remove "hidden" here (and the #photoPanel[hidden] rule) -->
@@ -517,7 +523,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 </div>
 
 <div class="scores" id="scores" hidden></div>
-<canvas id="kick" aria-hidden="true"></canvas>
+<canvas id="kick" aria-hidden="true"></canvas><canvas id="street" aria-hidden="true"></canvas>
 <div id="focusBox" hidden><div class="clue focuscard" role="dialog" aria-modal="true" aria-labelledby="focusTitle">
   <div class="eyebrow" id="focusTitle">Tap the spot to zoom in on</div>
   <div class="focuswrap"><img id="focusImg" alt="Photo to set the zoom spot on"><span id="focusMark" hidden></span></div>

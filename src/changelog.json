@@ -3,6 +3,28 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.54",
+  "date": "2026-10-05",
+  "items": [
+   "The street scene's horses are now a proper hantour: a horse pulling an Egyptian carriage, driver up front with his whip.",
+   "New setup toggle under Sound: Board animations, to switch the street scene and the Football kickers off."
+  ]
+ },
+ {
+  "v": "5.53",
+  "date": "2026-10-05",
+  "items": [
+   "Football mode: a new kicker move. He takes it on his chest, holds it there with his arms out, lets it drop and volleys it back. Arms now come out for balance on every chest control."
+  ]
+ },
+ {
+  "v": "5.52",
+  "date": "2026-10-05",
+  "items": [
+   "A little Cairo street now plays under the board in normal mode: a shisha café with two men playing tawla, plus a tuk-tuk, a packed microbus, a horse caravan, a ful cart and a stray cat passing by."
+  ]
+ },
+ {
   "v": "5.51",
   "date": "2026-10-05",
   "items": [
