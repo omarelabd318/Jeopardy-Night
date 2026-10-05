@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.64`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.65`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -790,22 +790,22 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     person(X(6.5), gy - 9, d, {sit: true, s: 0.6, shirt: "#e8e6df", pants: "#2a2f3a", skin: "#86553a", mo: true, arms: [[1.3, 1.5], [1.2, 1.4]]});   // the driver
     person(X(-10), gy - 9, d, {sit: true, s: 0.6, hijab: "#7a3b5e", shirt: "#7a3b5e", skin: "#9a6744", arms: [[0.5, 1.0], [0.3, 0.8]]});   // passengers
     person(X(-3), gy - 9, d, {sit: true, s: 0.6, shirt: "#c9b48a", pants: "#2b3446", skin: "#8f5d3c", mo: true, lean: 0.12 * lean, arms: lean > 0.05 ? [[0.4, 0.8], [2.4 + 0.3 * Math.sin(pnow() * 9), 2.9]] : [[0.6, 1.1], [0.4, 0.9]]});   // waves
-    shape([["M", 9, -17.2], ["L", 18.4, -17.2], ["Q", 22.2, -14.6, 21, -9.4], ["Q", 20.3, -6, 16.5, -6], ["L", 9, -6], ["Q", 7.4, -10.5, 9, -17.2]], navy);   // the bulbous nose
+    shape([["M", 9, -17.2], ["L", 18.4, -17.2], ["Q", 23.4, -14.8, 23, -9.4], ["Q", 22.6, -7, 20.5, -6.5], ["L", 9, -6], ["Q", 7.4, -10.5, 9, -17.2]], navy);   // the bulbous nose
     /* 5.62 (Omar): like his photo, the windscreen is one big pane and only its frame and the cap above it are yellow
        (5.58-5.61: a solid yellow front with a small windscreen in it). */
     // 5.63 (Omar): raked back more (top front was at 14.9). 5.64: rounded corners.
     shape([["M", 9.2, -17.2], ["L", 8.8, -26.4], ["Q", 8.8, -28.6, 10.8, -28.6], ["L", 11.6, -28.6], ["Q", 12.9, -28.6, 13.5, -27.1], ["L", 18.4, -17.2]], "rgba(175,210,230,.6)", yel, 1.5);   // windscreen, yellow frame
     shape([["M", 8.4, -30.2], ["L", 12.2, -30.2], ["Q", 13.8, -30, 13.6, -28.3], ["L", 8.4, -28.3]], yel);         // yellow cap above it
     seg(P([[-21, -16], [8, -16]]), "rgba(255,255,255,.12)", 0.6);
-    g.strokeStyle = "#141a2e"; g.lineWidth = 1.6; g.beginPath(); g.arc(X(16), gy - 4, 5.6, Math.PI * 1.05, Math.PI * 1.95); g.stroke();   // mudguard
-    disc(X(19.3), gy - 11.5, 1.7, "#fff6c8"); glow(X(24), gy - 11.5, 10, "rgba(255,240,180,.35)");                    // headlamp
+    g.strokeStyle = "#141a2e"; g.lineWidth = 1.6; g.beginPath(); g.arc(X(19), gy - 4, 5.6, Math.PI * 1.05, Math.PI * 1.95); g.stroke();   // mudguard (5.65: wheel and mudguard moved forward from 16)
+    disc(X(22), gy - 11.5, 1.7, "#fff6c8"); glow(X(26.5), gy - 11.5, 10, "rgba(255,240,180,.35)");                    // headlamp
     rect(X(-21.8) - (d > 0 ? 0 : 1.4), gy - 12, 1.4, 2.4, "#e23b2e");                                                  // tail light
     seg(P([[-14, -13], [-14, -26]]), "#141a2e", 1.2); seg(P([[8.3, -17.5], [8.3, -29]]), "#141a2e", 1.2);               // roof posts
     shape([["M", -23, -24.4], ["Q", -23.6, -31.6, -16.5, -31.6], ["L", 11.6, -31.6], ["Q", 14.2, -31.5, 13.9, -28.4], ["L", 9, -28.2], ["L", -16, -28], ["Q", -20.8, -28, -21, -24.6]], "#1c1c22");   // the canvas roof, curving down at the back
-    wheel(X(-12), gy - 4.6, 4.6, rot, "#b8bcc2"); wheel(X(16), gy - 4, 4, rot, "#b8bcc2");
+    wheel(X(-12), gy - 4.6, 4.6, rot, "#b8bcc2"); wheel(X(19), gy - 4, 4, rot, "#b8bcc2");
     g.restore();
     if(honk) for(let i = 0; i < 2; i++){ const r = 4 + i * 4 + (pnow() * 12 % 4); g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1;
-      g.beginPath(); g.arc(x + 30 * d, gy - 16, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }
+      g.beginPath(); g.arc(x + 33 * d, gy - 16, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }
   }
   function horse(x, d, ph){
     const c = "#6e4a30", X = a => x + a * d;
