@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.32`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.33`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -521,10 +521,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   /* 4.75 (Omar): a six-touch rotation. Each player controls the ball, it pops up, and he volleys it across on the way down:
      left knee, right foot, left head, right knee, left foot, right head, then again. Each crossing takes FLIGHT seconds.
      The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
-  const ROT = [["L","knee"],["R","foot"],["L","head"],["R","heel"],["L","foot"],["R","knee"],["L","heel"],["R","head"]], POP = 1.1, SPIN = 0.35;
+  /* 5.33 (Omar): a fifth touch, chest control: he leans back, cushions it on his chest so it pops up, straightens and volleys it.
+     The rotation is now ten touches (4.77-5.32: the first eight below, without the two chest touches). */
+  const ROT = [["L","knee"],["R","foot"],["L","head"],["R","heel"],["L","foot"],["R","knee"],["L","heel"],["R","head"],["L","chest"],["R","chest"]], POP = 1.1, SPIN = 0.35;
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
-  const UP = {knee: 18, foot: 16, head: 14, heel: 20};             // how far the ball pops up above the touch
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16};             // how far the ball pops up above the touch
   const CYCLE = ROT.length * (FLIGHT + POP);
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
@@ -532,15 +534,18 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const footUp = dt => dt < -0.3 || dt > 0.42 ? 0 : dt < 0 ? 0.25 * sm((dt + .3) / .3) : dt < .12 ? .25 + .3 * sm(dt / .12) : .55 * (1 - sm((dt - .12) / .3));
   const heelUp = dt => dt < -0.3 || dt > 0.35 ? 0 : dt < 0 ? sm((dt + 0.3) / 0.3) : 1 - sm(dt / 0.35);
   const turned = dt => dt > -0.5 && dt < 0.45;                                          // back to the ball for a heel flick
+  const LEAN = 0.38;                                                                        // how far he leans back for a chest control (radians)
+  const leanBack = dt => dt < -0.5 || dt > 0.45 ? 0 : dt < 0 ? sm((dt + 0.5) / 0.5) : 1 - sm(dt / 0.45);
   const hop = dt => Math.abs(dt) < 0.3 ? 4 * Math.cos(dt / 0.3 * Math.PI / 2) : 0;          // a little jump for the header
-  function man(x, dir, ang, knee, jump, heel, turn){                   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee
+  function man(x, dir, ang, knee, jump, heel, turn, lean = 0){        // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee; lean 0..1 leans back (chest control)
     if(turn){ dir = -dir; ang = 0.35; }                      // facing away for the heel flick
-    const y = H - 1 - jump, hip = y - 16, sh = y - 29;
+    const y = H - 1 - jump, hip = y - 16, a = lean * LEAN;
+    const up = d => [x - Math.sin(a) * d * dir, hip - Math.cos(a) * d];          // a point d px up the body, which tilts back from the hip
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
-    g.beginPath(); g.arc(x, y - 35, 5, 0, Math.PI*2); g.fill();                  // head
-    g.beginPath(); g.moveTo(x, sh + 1); g.lineTo(x, hip); g.stroke();            // body
-    const arm = jump / 4 * 6;                                                     // arms come up a little on a header
-    g.beginPath(); g.moveTo(x, sh + 4); g.lineTo(x - 7*dir, sh + 13 - arm); g.moveTo(x, sh + 4); g.lineTo(x + 8*dir, sh + 11 - arm); g.stroke();  // arms
+    const hd = up(19); g.beginPath(); g.arc(hd[0], hd[1], 5, 0, Math.PI*2); g.fill();   // head
+    const nk = up(12); g.beginPath(); g.moveTo(nk[0], nk[1]); g.lineTo(x, hip); g.stroke();  // body
+    const arm = jump / 4 * 6, out = lean * 5, ap = up(9);                         // arms come up a little on a header, and out to the sides for balance on a chest control
+    g.beginPath(); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] - (7 + out)*dir, ap[1] + 9 - arm - out); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] + (8 + out*0.6)*dir, ap[1] + 7 - arm - out); g.stroke();  // arms
     const bk = x - Math.sin(0.35) * 8 * dir, bky = hip + Math.cos(0.35) * 8, bs = 0.35 + heel * 2.3;   // back leg, bending up behind for a heel flick
     g.beginPath(); g.moveTo(x, hip); g.lineTo(bk, bky); g.lineTo(bk - Math.sin(bs) * 8 * dir, bky + Math.cos(bs) * 8); g.stroke();
     const th = ang + knee * (Math.PI/2 - ang), kx = x + Math.sin(th) * 8 * dir, ky = hip + Math.cos(th) * 8, sa = ang * (1 - knee);
@@ -555,6 +560,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     g.clearRect(0, 0, W, H);
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
+      if(how === "chest"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
       return how === "knee" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
     const volley = side => [X[side] + 20 * D[side], hip - 3];
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
@@ -564,12 +570,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     let pos;
     if(u < FLIGHT){ const A = volley(from); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
-    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false;
+    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = i * (FLIGHT + POP) + FLIGHT + sh, dt = t - tc;
-          if(hw === "knee") knee += kneeUp(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else jump += hop(dt);
+          if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest") lean += leanBack(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else jump += hop(dt);
           ang += swing(dt - POP); } });
-      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn]; };
+      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(1, lean)]; };
     man(L, 1, ...pose("L")); man(R, -1, ...pose("R"));
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
