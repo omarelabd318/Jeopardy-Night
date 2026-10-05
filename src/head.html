@@ -431,7 +431,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.68</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.69</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -443,7 +443,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.68</div>
+      <div class="eyebrow verlabel">v5.69</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -462,7 +462,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div class="eyebrow">Game options</div>
       <div class="opts">
         <button class="opt" id="optPower" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Power-ups</b><small>Each team gets one ×2 (double points on a tile they pick) and one 2 answers (two guesses on an open clue).</small></span></button>
-        <button class="opt" id="optQrAns" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Phone answers for Closest Wins and Price Is Right</b><small>Each team's phones scan one join code at the start (or later from Join code at the top), then send the team's number for these two rounds. Works on the Cloudflare link.</small></span></button>
+        <!-- 5.69 (Omar): the "Phone answers for Closest Wins and Price Is Right" toggle (#optQrAns) is gone: those games now offer the join code at the start, with a Skip button -->
         <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steals from phones</b><small>Teams that aren't playing a tile get a steal box on their phones (they join once at the start with the same join code). A right steal is worth half the points (the ½ button).</small></span></button>
         <!-- 5.26 (Omar): Free-for-all; 5.32 (Omar): moved here, next to Steals from phones (was its own "Play mode" panel at the bottom of setup). To remove it: delete this button, #lobby, #ffaJoin and the 5.26 block in src/app.js -->
         <button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone, scanning one code at the start. Everyone who's right scores; nobody loses points. Team-only categories, power-ups and steals are left out. Works on the Cloudflare link.</small></span></button>
@@ -503,13 +503,14 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <!-- 5.26: Free-for-all lobby, one code for everyone; reopened mid-game with "Join code" -->
   <section id="lobby" hidden>
     <div class="lobby">
-      <div class="eyebrow">Free-for-all</div>
+      <div class="eyebrow" id="lobbyEyebrow">Free-for-all</div>
       <h1>Scan to <span>join</span></h1>
+      <p class="note" id="lobbyWhy" hidden></p>
       <div class="lqr" id="lobbyQr"></div>
       <p class="note lurl" id="lobbyUrl"></p>
       <div class="eyebrow" id="lobbyCount">Waiting for players…</div>
       <ul class="lplayers" id="lobbyList"></ul>
-      <div class="row" style="justify-content:center"><button class="btn primary" id="lobbyGo" disabled>Start playing</button><button class="btn small" id="lobbyBack">Back to setup</button></div>
+      <div class="row" style="justify-content:center"><button class="btn primary" id="lobbyGo" disabled>Start playing</button><button class="btn small" id="lobbySkip" hidden>Skip, no phones</button><button class="btn small" id="lobbyBack">Back to setup</button></div>
     </div>
   </section>
 

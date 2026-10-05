@@ -78,7 +78,7 @@ const S = {
   sound: store.get("jn_sound", true),
   anim: store.get("jn_anim", true),   // 5.54: board animations (street scene, kickers)
   x2: null,
-  qrAns: store.get("jn_qrans", true),   /* 5.9: QR answers on Closest Wins / Price Is Right */
+  qrAns: true,   /* 5.9: phone answers on Closest Wins / Price Is Right. 5.69 (Omar): no longer a setup toggle (was store.get("jn_qrans", true)); a game can skip phones with S.skipPhones */
   steal: store.get("jn_steal", false),  /* 5.9: Steal QR codes */
   ffa: store.get("jn_ffa", false),      /* 5.26: Free-for-all, everyone plays alone on their own phone */
   room: null
@@ -121,9 +121,8 @@ $("#optAnim").setAttribute("aria-pressed", S.anim);
 $("#optAnim").onclick = () => { S.anim = !S.anim; store.set("jn_anim", S.anim); $("#optAnim").setAttribute("aria-pressed", S.anim); };   // 5.54
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
-$("#optQrAns").onclick = () => { S.qrAns = !S.qrAns; store.set("jn_qrans", S.qrAns); $("#optQrAns").setAttribute("aria-pressed", S.qrAns); };
 $("#optSteal").onclick = () => { S.steal = !S.steal; store.set("jn_steal", S.steal); $("#optSteal").setAttribute("aria-pressed", S.steal); };
-$("#optQrAns").setAttribute("aria-pressed", S.qrAns); $("#optSteal").setAttribute("aria-pressed", S.steal);
+$("#optSteal").setAttribute("aria-pressed", S.steal);
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 /* v4.40: version history, from src/changelog.json (newest first) */
 /* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
@@ -156,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.68`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.69`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -987,7 +986,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
   requestAnimationFrame(frame);
 })();
-function newGame(){ S.room = newRoom(); pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
+function newGame(){ S.skipPhones = false; S.room = newRoom(); pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
 const midgame = () => Object.keys(S.done).length > 0 || S.teams.some(t => t.score !== 0);
 let confirmYes = null;
 function askConfirm(title, text, yesLabel, onYes){
@@ -1186,7 +1185,7 @@ fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j =
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 function ansMode(c){ if(!c || c.preview || !RELAY) return null;
   if(S.ffa) return FFA_SKIP.has(c.type) ? null : "ffa";
-  if(c.type === "closest") return S.qrAns ? "num" : null;
+  if(c.type === "closest") return linkTeams() ? "num" : null;   // 5.69: whenever team phones are linked (was S.qrAns)
   if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat) && !abcClue(c)) return "steal";
   return null; }
 function ansKey(c){ return c.cid; }  // 5.18: just the clue's random id (was cat-value-id) to keep the QR link short
@@ -1247,7 +1246,7 @@ const FFA_SKIP = new Set(["act","impostor","password"]);
 function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#teamsPanel").hidden = S.ffa;
   if(S.ffa){ if(!S.preFfa) S.preFfa = {power:S.power, qrAns:S.qrAns, steal:S.steal}; S.power = S.qrAns = S.steal = false; S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type)); }
   else if(S.preFfa){ Object.assign(S, S.preFfa); S.preFfa = null; }
-  [["#optPower","power"],["#optQrAns","qrAns"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
+  [["#optPower","power"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
   renderChips(); }
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
 function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check
@@ -1261,7 +1260,9 @@ function ffaReady(football){  // 5.35: Football mode picks its own categories, s
    on them (steal boxes only for the teams not playing the tile). No more code on each clue; Join code at the top shows it again. */
 /* 5.30 (Omar): only when phones will actually be used: steals on (and more than one team), or phone answers on with
    Closest Wins or Price Is Right on the board. Was: (S.qrAns || S.steal) */
-const linkTeams = () => !S.ffa && RELAY === true && ((S.steal && S.teams.length > 1) || (S.qrAns && S.cats.some(id => (catById(id) || {}).type === "closest")));
+/* 5.69 (Omar): Closest Wins / Price Is Right always offer phones (no toggle), and the start screen has a Skip that plays this game without them */
+const hasClosest = () => S.cats.some(id => (catById(id) || {}).type === "closest");
+const linkTeams = () => !S.ffa && !S.skipPhones && RELAY === true && ((S.steal && S.teams.length > 1) || hasClosest());
 const linked = () => S.ffa || linkTeams();
 function ffaPost(b){ return fetch("api/cur", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, fb:!!S.football, ...b})}).catch(() => {}); }  // 5.46: fb turns the phones green in Football mode
 function ffaUrl(){ return new URL(`p?r=${S.room}`, location.href).href; }
@@ -1271,6 +1272,14 @@ function ffaLobby(mid){
   ffaPost(S.ffa ? {mode:"ffa"} : {mode:"teams", teams:S.teams.map(t => t.name)});
   $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; $("#lobby").hidden = false;
   $("#lobbyGo").textContent = mid ? "Back to the game" : "Start playing"; $("#lobbyBack").hidden = !!mid;
+  /* 5.69 (Omar): say what the phones are for, and offer to skip them (team games only, at the start) */
+  $("#lobbyEyebrow").textContent = S.ffa ? "Free-for-all" : "Phones";
+  const why = [];
+  if(!S.ffa && hasClosest()) why.push("Closest Wins and Price Is Right are on this board: each team types its guess on a phone, so nobody hears the other team's number.");
+  if(!S.ffa && S.steal && S.teams.length > 1) why.push("Teams that aren't playing a tile can steal it from their phones.");
+  if(!S.ffa) why.push("One phone per team is enough. No phones? Skip, and say your guesses out loud instead.");
+  $("#lobbyWhy").textContent = why.join(" "); $("#lobbyWhy").hidden = S.ffa;
+  $("#lobbySkip").hidden = S.ffa || !!mid;
   $("#lobbyUrl").textContent = ffaUrl().replace(/^https?:\/\//, "");
   const q = $("#lobbyQr"); q.innerHTML = "";
   const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!$("#lobby").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
@@ -1286,6 +1295,7 @@ function renderLobby(){ const n = S.teams.length;
   $("#lobbyGo").disabled = !n; }
 $("#lobbyGo").onclick = () => { $("#lobby").hidden = true; $("#game").hidden = false; $("#scores").hidden = false; renderBoard(); renderScores(); window.scrollTo(0,0); };
 $("#lobbyBack").onclick = () => { $("#lobby").hidden = true; goSetup(); };
+$("#lobbySkip").onclick = () => { S.skipPhones = true; $("#lobbyGo").click(); saveGame(); };   // 5.69: play this game without phones
 $("#ffaJoin").onclick = () => ffaLobby(true);
 /* players who joined (also late ones) become score cards, in join order */
 let ffaBusy = false, ffaTick = 0;
@@ -1345,7 +1355,7 @@ function ansMatch(g, a){ g = ansNorm(g); if(!g) return false;
     return v.length >= 5 && g.length >= 5 && (g.includes(v) || (v.includes(g) && g.length >= v.length * .6)); }); }
 const GAME_KEY = "jn_game";
 function saveGame(){ if($("#game").hidden || !S.teams.length) return;
-  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room, ffa:!!S.ffa}); }
+  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room, ffa:!!S.ffa, skip:!!S.skipPhones}); }
 function clearGame(){ try{ localStorage.removeItem(GAME_KEY); }catch(e){} }
 function savedGame(){ const g = store.get(GAME_KEY, null);
   if(!g || g.v !== 1 || g.ended || !Array.isArray(g.teams) || !Array.isArray(g.cats) || !g.cats.length) return null;
@@ -1358,7 +1368,7 @@ function showResume(){ const box = $("#resumeBox"); if(!box) return; const g = s
   const played = Object.keys(g.done || {}).length, total = g.cats.length * LV.length;
   $("#resumeInfo").textContent = `${g.football ? "Football mode · " : ""}${g.teams.map(t => `${t.name} ${t.score}`).join(" · ")} · ${played} of ${total} tiles played · ${ago(g.at)}`; }
 function resumeGame(){ const g = savedGame(); if(!g) return;
-  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom(); S.ffa = !!g.ffa;
+  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom(); S.ffa = !!g.ffa; S.skipPhones = !!g.skip;
   if(typeof BALLS !== "undefined" && BALLS.length){ const i = g.ball >= 0 && g.ball < BALLS.length ? g.ball : 0; lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
   $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderChips(); renderTeamInputs(); renderBoard(); renderScores(); window.scrollTo(0,0); }
