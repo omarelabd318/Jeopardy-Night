@@ -3,6 +3,36 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.60",
+  "date": "2026-10-05",
+  "items": [
+   "Street scene order: microbus, ful cart, cat, tuk-tuk, hantour."
+  ]
+ },
+ {
+  "v": "5.59",
+  "date": "2026-10-05",
+  "items": [
+   "In the cat scene, a man walks the other way smoking a cigarette, taking a drag now and then and breathing out smoke.",
+   "The street scene now hides while a clue is open (it keeps going behind it)."
+  ]
+ },
+ {
+  "v": "5.58",
+  "date": "2026-10-05",
+  "items": [
+   "The tuk-tuk is back in the street scene, now a proper Egyptian Bajaj: yellow front, navy body, black canvas roof."
+  ]
+ },
+ {
+  "v": "5.57",
+  "date": "2026-10-05",
+  "items": [
+   "The street scene now plays one scene at a time: microbus, ful cart, cat, hantour. Each comes from the other side the next time round.",
+   "The café and tuk-tuk are gone; the cat walks in then runs; no pompom on the horse."
+  ]
+ },
+ {
   "v": "5.56",
   "date": "2026-10-05",
   "items": [
