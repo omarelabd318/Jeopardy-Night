@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.79. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.80. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -522,3 +522,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 5.77 (2026-10-05): Omar asked for the woman walking her dog to wear normal jeans and a top: blue jeans and a pink top instead of the long blue dress. He saw a preview.
 - 5.78 (2026-10-05): Omar asked for the woman to start the call a third of the way in and end it a bit before she leaves the screen. In the woman-and-dog act, `call` rises from 0 to 1 around x = W/3 and falls back around x = 0.85 W. Her phone arm blends from a normal walking swing up to her ear and back, the phone only shows while she holds it, and she only gestures with her free hand on the call. He saw a preview.
 - 5.79 (2026-10-05): Omar didn't like the woman's hand gestures on the call, so they're gone (`talk = false` in the woman-and-dog act); her free hand holds the lead and swings with her walk.
+- 5.80 (2026-10-05): Omar noticed the NSFW code prompt took him out of full screen. Browsers leave full screen for their own `prompt()` and `alert()` boxes, so the code is now asked for in the page: `#lockBox` in `src/head.html` (styled like the version history's code box) and `askCode()` in `src/app.js`. It focuses the field, Enter checks the code, a wrong code shows "Wrong code." in the box, and Cancel or Escape closes it. Once unlocked, the chip toggles freely as before. Tested with Playwright: no browser dialogs are used.

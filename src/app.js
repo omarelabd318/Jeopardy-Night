@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.79`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.80`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -184,14 +184,18 @@ function renderChips(){
 const codeHash = s => { let h = 7; for(const ch of String(s).trim().toLowerCase()) h = (h*31 + ch.charCodeAt(0)) >>> 0; return h; };
 const LOCKED = {x18: 8129869};
 const unlocked = new Set();
+let lockFor = null;
+function askCode(id){ lockFor = id; $("#lockCode").value = ""; $("#lockErr").textContent = ""; $("#lockBox").hidden = false; $("#lockCode").focus(); }
+function closeLock(){ $("#lockBox").hidden = true; lockFor = null; }
+$("#lockCancel").onclick = closeLock;
+$("#lockBox").addEventListener("keydown", e => { if(e.key === "Escape"){ e.stopPropagation(); closeLock(); } });
+$("#lockForm").addEventListener("submit", e => { e.preventDefault(); const id = lockFor; if(!id) return;
+  if(codeHash($("#lockCode").value) !== LOCKED[id]){ $("#lockErr").textContent = "Wrong code."; $("#lockCode").select(); return; }
+  unlocked.add(id); closeLock(); S.cats = PICK.map(c=>c.id).filter(x => x === id || S.cats.includes(x)); renderChips(); });
 $("#catChips").addEventListener("click", e => {
   const b = e.target.closest("[data-c]"); if(!b) return;
   const id = b.dataset.c;
-  if(LOCKED[id] && !S.cats.includes(id) && !unlocked.has(id)){
-    const v = prompt("This category is locked. Enter the code:");
-    if(v == null) return;
-    if(codeHash(v) !== LOCKED[id]){ alert("Wrong code."); return; }
-    unlocked.add(id); }
+  if(LOCKED[id] && !S.cats.includes(id) && !unlocked.has(id)){ askCode(id); return; }   // 5.80: an in-page box (prompt() and alert() left full screen)
   S.cats = S.cats.includes(id) ? S.cats.filter(x => x !== id) : PICK.map(c=>c.id).filter(x => x === id || S.cats.includes(x));
   renderChips();
 });
