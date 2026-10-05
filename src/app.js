@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.41`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.42`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -560,7 +560,10 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const GETUP = [[1.0, 1.5, -13, 1.5, 1.5], [1.45, 0.25, -13, 2.3, 0.2], [1.95, -0.5, -8, 1.57, 0], [2.45, 0, 0, 0.35, 0.35]];
   const getUp = e => { let i = 0; while(i < GETUP.length - 2 && e > GETUP[i + 1][0]) i++;
     const A = GETUP[i], B = GETUP[i + 1], f = sm((e - A[0]) / (B[0] - A[0])), m = j => A[j] + (B[j] - A[j]) * f;
-    return {tilt: m(1), jump: m(2), tA: m(3), sA: m(4)}; };
+    /* 5.42 (Omar): a hand on the floor to push himself up: from sitting up until he rises out of the crouch. hx: where it's planted
+       (behind his hip while sitting, moving forward beside his feet as he crouches), in px along the way he faces */
+    const hand = e < 1.25 || e > 2.2 ? 0 : e < 1.45 ? sm((e - 1.25) / 0.2) : e < 1.95 ? 1 : 1 - sm((e - 1.95) / 0.25), hx = -6 + 19 * sm((e - 1.45) / 0.5);
+    return {tilt: m(1), jump: m(2), tA: m(3), sA: m(4), hand, hx}; };
   const bikeAmt = e => e < -0.55 || e > 0.5 ? 0 : e < 0 ? sm((e + 0.55) / 0.55) : 1 - sm(e / 0.5);   // bicycle kick, full at contact (e = 0)
   const hop = dt => Math.abs(dt) < 0.3 ? 4 * Math.cos(dt / 0.3 * Math.PI / 2) : 0;          // a little jump for the header
   function man(x, dir, ang, knee, jump, heel, turn, lean = 0, bike = 0, lie = 0, gu = null){   // lie 0..1: lying on the ground after a bicycle kick; gu: getting up (body tilt and both legs' angles)   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee; lean 0..1 leans back (chest control); bike 0..1 bicycle kick
@@ -572,7 +575,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const hd = up(19); g.beginPath(); g.arc(hd[0], hd[1], 5, 0, Math.PI*2); g.fill();   // head
     const nk = up(12); g.beginPath(); g.moveTo(nk[0], nk[1]); g.lineTo(x, hip); g.stroke();  // body
     const arm = Math.max(0, Math.min(jump, 4)) / 4 * 6, out = Math.min(1.3, Math.abs(lean) + bike) * 5, ap = up(9);                         // arms come up a little on a header, and out to the sides for balance on a chest control
-    g.beginPath(); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] - (7 + out)*dir, ap[1] + 9 - arm - out); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] + (8 + out*0.6)*dir, ap[1] + 7 - arm - out); g.stroke();  // arms
+    let hx = ap[0] - (7 + out)*dir, hy = ap[1] + 9 - arm - out;                  // back hand
+    if(gu && gu.hand){ hx += (x + gu.hx*dir - hx) * gu.hand; hy += (H - 2 - hy) * gu.hand; }   // 5.42: planted on the floor while getting up
+    g.beginPath(); g.moveTo(ap[0], ap[1]); g.lineTo(hx, hy); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] + (8 + out*0.6)*dir, ap[1] + 7 - arm - out); g.stroke();  // arms
     if(gu){ for(const [t, s] of [[gu.tA - 0.25, gu.sA - 0.1], [gu.tA, gu.sA]]){ const kx = x + Math.sin(t) * 8 * dir, ky = hip + Math.cos(t) * 8;   // both legs bent the same way
         g.beginPath(); g.moveTo(x, hip); g.lineTo(kx, ky); g.lineTo(kx + Math.sin(s) * 8 * dir, ky + Math.cos(s) * 8); g.stroke(); } return; }
     const ba = 0.35 - lie * 1.7, bk = x - Math.sin(ba) * 8 * dir, bky = hip + Math.cos(ba) * 8, bs = ba + heel * 2.3;   // lying down, both legs go out flat   // back leg, bending up behind for a heel flick
