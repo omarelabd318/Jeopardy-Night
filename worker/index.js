@@ -38,11 +38,11 @@ export class Room extends DurableObject {
       return json({ players: Object.entries(players).map(([p, v]) => ({ p, n: v.n, t: v.t, at: v.at })).sort((a, b) => a.at - b.at) });
     }
     if (op === "state") {
-      const p = url.searchParams.get("p"), [players, cur, s, mode, teams] = await Promise.all([st.get("players"), st.get("cur"), st.get("s"), st.get("mode"), st.get("teams")]);
+      const p = url.searchParams.get("p"), [players, cur, s, mode, teams, fb] = await Promise.all([st.get("players"), st.get("cur"), st.get("s"), st.get("mode"), st.get("teams"), st.get("fb")]);
       const me = (players || {})[p], scores = s || {}, team = mode === "teams" && me && me.t != null ? me.t : null;
       const key = team != null ? "t" + team : p, mineKey = team != null ? String(team) : p, mine = scores[key] ?? 0;
       const rivals = Object.entries(scores).filter(([k]) => /^t\d+$/.test(k) === (team != null)).map(([, v]) => v);
-      const out = { mode: mode || "ffa", teams: teams || [], team, cur: cur || null, name: me ? me.n : null, n: rivals.length || Object.keys(players || {}).length,
+      const out = { mode: mode || "ffa", fb: !!fb, teams: teams || [], team, cur: cur || null, name: me ? me.n : null, n: rivals.length || Object.keys(players || {}).length,
         score: mine, rank: 1 + rivals.filter(v => v > mine).length, closed: false, mine: null };
       if (cur) { const [a, x] = await Promise.all([st.get("a:" + cur.c), st.get("x:" + cur.c)]); out.closed = !!x; out.mine = a && a[mineKey] ? a[mineKey].v : null; }
       return json(out);
@@ -72,6 +72,7 @@ export class Room extends DurableObject {
       if ("cur" in b) await st.put("cur", b.cur);
       if (b.s) await st.put("s", b.s);
       if (b.mode) await st.put("mode", b.mode);
+      if ("fb" in b) await st.put("fb", b.fb);   // 5.46: Football mode, so the phones turn green too
       if (b.teams) await st.put("teams", b.teams);
       return json({ ok: true });
     }
@@ -119,6 +120,7 @@ export default {
       if ("cur" in b) { if (b.cur !== null && (typeof b.cur !== "object" || !CLUE.test(b.cur.c || "") || JSON.stringify(b.cur).length > 4000)) return json({ ok: false, error: "bad clue" }, 400); out.cur = b.cur; }
       if (b.s) { if (typeof b.s !== "object" || JSON.stringify(b.s).length > 4000) return json({ ok: false, error: "bad scores" }, 400); out.s = b.s; }
       if (b.mode) out.mode = b.mode === "teams" ? "teams" : "ffa";
+      if ("fb" in b) out.fb = !!b.fb;
       if (b.teams) { if (!Array.isArray(b.teams) || b.teams.length > 12) return json({ ok: false, error: "bad teams" }, 400); out.teams = b.teams.map(x => String(x).slice(0, 24)); }
       b = out;
     } else b = { c };

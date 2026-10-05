@@ -1,0 +1,418 @@
+{
+ "id": "blockbuster",
+ "name": "Blockbusters",
+ "type": "text",
+ "desc": "Blockbuster film trivia, from Titanic and Jurassic Park to Barbie and Oppenheimer, plus Box Office Battles: three films, which made the most worldwide? Figures are all-time worldwide totals, rounded.",
+ "data": {
+  "100": [
+   [
+    "Which James Cameron film follows Jack and Rose aboard a doomed ocean liner?",
+    "Titanic"
+   ],
+   [
+    "Which film series follows Dominic Toretto, fast cars and \"family\"?",
+    "Fast & Furious"
+   ],
+   [
+    "Which 1993 Steven Spielberg film has scientists bringing dinosaurs back to life on an island?",
+    "Jurassic Park"
+   ],
+   [
+    "What are the tall blue people of Pandora called in Avatar?",
+    "The Na'vi"
+   ],
+   [
+    "Who plays Captain Jack Sparrow in Pirates of the Caribbean?",
+    "Johnny Depp"
+   ],
+   [
+    "Which Disney film has the song \"Let It Go\"?",
+    "Frozen"
+   ],
+   [
+    "In The Lion King, what is the name of Simba's father?",
+    "Mufasa"
+   ],
+   [
+    "Which 2023 film starred Margot Robbie in a world painted pink?",
+    "Barbie"
+   ],
+   [
+    "Which film series follows a hobbit trying to destroy the One Ring?",
+    "The Lord of the Rings"
+   ],
+   [
+    "Which villain snaps his fingers to wipe out half of all life in Avengers: Infinity War?",
+    "Thanos"
+   ],
+   [
+    "In Home Alone, which city does Kevin's family fly to without him?",
+    "Paris"
+   ],
+   [
+    "Which 1982 Spielberg alien famously wants to \"phone home\"?",
+    "E.T."
+   ],
+   [
+    "Which boy wizard goes to Hogwarts?",
+    "Harry Potter"
+   ],
+   [
+    "Which yellow, goggle-wearing creatures got their own film in 2015?",
+    "The Minions"
+   ],
+   [
+    "Which superhero film franchise's 2019 finale was called Endgame?",
+    "The Avengers (Marvel)"
+   ],
+   [
+    "Which 2022 sequel saw Tom Cruise return as a fighter pilot?",
+    "Top Gun: Maverick"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Avatar\nB) Frozen\nC) Titanic",
+    "A) Avatar: $2.9B\n(others: B) $1.3B, C) $2.3B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) The Dark Knight\nB) Avengers: Endgame\nC) Joker",
+    "B) Avengers: Endgame: $2.8B\n(others: A) $1.0B, C) $1.1B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Oppenheimer\nB) Dune: Part Two\nC) Barbie",
+    "C) Barbie: $1.45B\n(others: A) $975M, B) $715M)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) The Lion King (2019)\nB) Aladdin (2019)\nC) Beauty and the Beast (2017)",
+    "A) The Lion King (2019): $1.66B\n(others: B) $1.05B, C) $1.27B)"
+   ]
+  ],
+  "200": [
+   [
+    "Who directed both Titanic and Avatar?",
+    "James Cameron"
+   ],
+   [
+    "Who played the Joker in The Dark Knight?",
+    "Heath Ledger"
+   ],
+   [
+    "Which 2010 Christopher Nolan film is about stealing secrets inside dreams?",
+    "Inception"
+   ],
+   [
+    "Who plays Neo in The Matrix?",
+    "Keanu Reeves"
+   ],
+   [
+    "Which film's most famous line is \"I'll be back\"?",
+    "The Terminator"
+   ],
+   [
+    "Who plays Ethan Hunt in the Mission: Impossible films?",
+    "Tom Cruise"
+   ],
+   [
+    "Which Pixar film follows a clownfish searching the ocean for his son?",
+    "Finding Nemo"
+   ],
+   [
+    "Who plays Rose in Titanic?",
+    "Kate Winslet"
+   ],
+   [
+    "What is Russell Crowe's character called in Gladiator?",
+    "Maximus"
+   ],
+   [
+    "Which film first introduced the Minions in 2010?",
+    "Despicable Me"
+   ],
+   [
+    "What is the name of Jack Sparrow's ship?",
+    "The Black Pearl"
+   ],
+   [
+    "Which hobbit carries the One Ring to Mordor?",
+    "Frodo Baggins"
+   ],
+   [
+    "Which director made Jaws, E.T. and Jurassic Park?",
+    "Steven Spielberg"
+   ],
+   [
+    "Who plays Paul Atreides in Dune?",
+    "Timothée Chalamet"
+   ],
+   [
+    "Which actress plays Hermione Granger?",
+    "Emma Watson"
+   ],
+   [
+    "In Forrest Gump, life is like a box of what?",
+    "Chocolates"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Mission: Impossible – Fallout\nB) Top Gun: Maverick\nC) Jurassic World Dominion",
+    "B) Top Gun: Maverick: $1.5B\n(others: A) $790M, C) $1.0B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Moana\nB) Frozen\nC) Frozen II",
+    "C) Frozen II: $1.45B\n(others: A) $690M, B) $1.29B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Doctor Strange\nB) Black Panther\nC) Captain Marvel",
+    "B) Black Panther: $1.35B\n(others: A) $680M, C) $1.13B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Spider-Man: No Way Home\nB) The Batman\nC) Joker",
+    "A) Spider-Man: No Way Home: $1.9B\n(others: B) $770M, C) $1.1B)"
+   ]
+  ],
+  "300": [
+   [
+    "Which composer wrote the music for Jaws, Star Wars and Jurassic Park?",
+    "John Williams"
+   ],
+   [
+    "Who directed Oppenheimer?",
+    "Christopher Nolan"
+   ],
+   [
+    "In The Matrix, which pill does Neo take?",
+    "The red pill"
+   ],
+   [
+    "Who plays the T-800 in Terminator 2: Judgment Day?",
+    "Arnold Schwarzenegger"
+   ],
+   [
+    "What is the name of the moon where Avatar takes place?",
+    "Pandora"
+   ],
+   [
+    "Who founded the park in Jurassic Park?",
+    "John Hammond"
+   ],
+   [
+    "Which 1999 film has the line \"I see dead people\"?",
+    "The Sixth Sense"
+   ],
+   [
+    "Which film's villain is Hans Gruber, in a skyscraper on Christmas Eve?",
+    "Die Hard"
+   ],
+   [
+    "Which 2015 Star Wars film introduced Rey, Finn and Kylo Ren?",
+    "The Force Awakens"
+   ],
+   [
+    "How many Infinity Stones does Thanos collect?",
+    "Six"
+   ],
+   [
+    "In Inception, what does Cobb use as his totem?",
+    "A spinning top"
+   ],
+   [
+    "Which fictional African country is Black Panther set in?",
+    "Wakanda"
+   ],
+   [
+    "Who sings \"My Heart Will Go On\" from Titanic?",
+    "Céline Dion"
+   ],
+   [
+    "In which year did the first Harry Potter film come out?",
+    "2001"
+   ],
+   [
+    "Which 2016 Disney film follows a Polynesian girl who sails out to restore the heart of Te Fiti?",
+    "Moana"
+   ],
+   [
+    "Which composer scored Inception, Interstellar and Dune?",
+    "Hans Zimmer"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Fast X\nB) The Fate of the Furious\nC) Furious 7",
+    "C) Furious 7: $1.52B\n(others: A) $705M, B) $1.24B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Minions\nB) The Super Mario Bros. Movie\nC) Despicable Me 3",
+    "B) The Super Mario Bros. Movie: $1.36B\n(others: A) $1.16B, C) $1.03B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Inception\nB) Oppenheimer\nC) Interstellar",
+    "B) Oppenheimer: $975M\n(others: A) $840M, C) over $700M)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Harry Potter and the Prisoner of Azkaban\nB) Harry Potter and the Deathly Hallows – Part 2\nC) Harry Potter and the Philosopher's Stone",
+    "B) Harry Potter and the Deathly Hallows – Part 2: $1.34B\n(others: A) $800M, C) $1.0B)"
+   ]
+  ],
+  "400": [
+   [
+    "How many Oscars did Titanic win?",
+    "11"
+   ],
+   [
+    "Which 2003 film tied Titanic's record of 11 Oscars?",
+    "The Lord of the Rings: The Return of the King"
+   ],
+   [
+    "In Back to the Future, what speed must the DeLorean reach to travel in time?",
+    "88 mph"
+   ],
+   [
+    "What subtitle was later added to the original 1977 Star Wars?",
+    "Episode IV – A New Hope"
+   ],
+   [
+    "Which film made the slow-motion \"bullet time\" effect famous in 1999?",
+    "The Matrix"
+   ],
+   [
+    "In which year did the first Fast & Furious film come out?",
+    "2001"
+   ],
+   [
+    "Which line from Jaws is often voted one of cinema's best: \"You're gonna need a ___ ___\"?",
+    "Bigger boat"
+   ],
+   [
+    "Who voiced Mufasa in the 1994 Lion King?",
+    "James Earl Jones"
+   ],
+   [
+    "Which 2019 film was the first R-rated film to make $1 billion?",
+    "Joker"
+   ],
+   [
+    "Who directed Dune and Dune: Part Two?",
+    "Denis Villeneuve"
+   ],
+   [
+    "Which 2004 animated sequel was the highest-grossing film of that year?",
+    "Shrek 2"
+   ],
+   [
+    "In Titanic, what is the name of the blue diamond necklace?",
+    "The Heart of the Ocean"
+   ],
+   [
+    "In Avengers: Endgame, who says \"I am inevitable\" before snapping?",
+    "Thanos"
+   ],
+   [
+    "Who wrote the novel Jurassic Park?",
+    "Michael Crichton"
+   ],
+   [
+    "Which film studio, bought by Disney in 2012, makes Star Wars?",
+    "Lucasfilm"
+   ],
+   [
+    "In Gladiator, which emperor does Maximus fight in the arena at the end?",
+    "Commodus"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) The Lion King (1994)\nB) E.T. the Extra-Terrestrial\nC) Jurassic Park",
+    "C) Jurassic Park: over $1B\n(others: A) $970M, B) $790M)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) The Lord of the Rings: The Fellowship of the Ring\nB) The Lord of the Rings: The Return of the King\nC) The Lord of the Rings: The Two Towers",
+    "B) The Lord of the Rings: The Return of the King: $1.14B\n(others: A) $890M, C) $940M)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) The Dark Knight\nB) Batman Begins\nC) The Dark Knight Rises",
+    "C) The Dark Knight Rises: $1.08B\n(others: A) $1.0B, B) $370M)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Ghost\nB) Home Alone\nC) Forrest Gump",
+    "C) Forrest Gump: $680M\n(others: A) $505M, B) $477M)"
+   ]
+  ],
+  "500": [
+   [
+    "Which film was the first to make $1 billion at the worldwide box office?",
+    "Titanic"
+   ],
+   [
+    "Which film was the first to make $2 billion at the worldwide box office?",
+    "Avatar"
+   ],
+   [
+    "Which 1975 film is often called the first summer blockbuster?",
+    "Jaws"
+   ],
+   [
+    "What did the Jaws crew nickname the mechanical shark?",
+    "Bruce"
+   ],
+   [
+    "In Back to the Future, what is Doc Brown's first name?",
+    "Emmett"
+   ],
+   [
+    "Which film did Christopher Nolan make just before Oppenheimer?",
+    "Tenet"
+   ],
+   [
+    "Which studio released Avatar in 2009?",
+    "20th Century Fox"
+   ],
+   [
+    "Which film overtook Joker in 2024 as the highest-grossing R-rated film?",
+    "Deadpool & Wolverine"
+   ],
+   [
+    "In Interstellar, on which planet does one hour equal seven years on Earth?",
+    "Miller's planet"
+   ],
+   [
+    "In Inception, what is the deepest dream level called?",
+    "Limbo"
+   ],
+   [
+    "Which 2025 Chinese film became the highest-grossing animated film of all time?",
+    "Ne Zha 2"
+   ],
+   [
+    "In The Matrix, what is the name of the ship captained by Morpheus?",
+    "The Nebuchadnezzar"
+   ],
+   [
+    "Who plays Gandalf in The Lord of the Rings films?",
+    "Ian McKellen"
+   ],
+   [
+    "Which 1980 sequel has the twist \"I am your father\"?",
+    "The Empire Strikes Back"
+   ],
+   [
+    "Which film's tagline is \"In space no one can hear you scream\"?",
+    "Alien"
+   ],
+   [
+    "Who directed The Lord of the Rings trilogy?",
+    "Peter Jackson"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Titanic\nB) Star Wars: The Force Awakens\nC) Avatar: The Way of Water",
+    "C) Avatar: The Way of Water: $2.32B\n(others: A) $2.26B, B) $2.07B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Frozen II\nB) Incredibles 2\nC) Inside Out 2",
+    "C) Inside Out 2: $1.70B\n(others: A) $1.45B, B) $1.24B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Deadpool\nB) Deadpool & Wolverine\nC) Joker",
+    "B) Deadpool & Wolverine: $1.34B\n(others: A) $780M, C) $1.08B)"
+   ],
+   [
+    "Which made the most at the worldwide box office?\nA) Avengers: Infinity War\nB) Star Wars: The Force Awakens\nC) Spider-Man: No Way Home",
+    "B) Star Wars: The Force Awakens: $2.07B\n(others: A) $2.05B, C) $1.92B)"
+   ]
+  ]
+ }
+}
