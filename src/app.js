@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.60`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.61`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -840,8 +840,10 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       g.strokeStyle = "rgba(217,178,74,.7)"; g.lineWidth = 0.5; g.beginPath(); g.arc(wx, wy, r - 2.6, 0, Math.PI * 2); g.stroke(); disc(wx, wy, 1.8, "#d9b24a"); }
     horse(x, d, ph);
   }
-  /* The microbus: white, with a blue stripe, packed, luggage on the roof, and the tabbaa hanging out of the open door. */
-  function microbus(x, d, rot, pitch, stopped){
+  /* The microbus: white, with a blue stripe, packed, luggage on the roof, and the tabbaa hanging out of the open door.
+     5.61 (Omar): Egyptian microbuses have the sliding door on the right, just behind the front seats (5.52-5.60: mid-way along).
+     farDoor: going the other way (mirrored rounds) we see its left side, so no door or tabbaa on our side. */
+  function microbus(x, d, rot, pitch, stopped, farDoor){
     g.save(); g.translate(x, gy); g.rotate(pitch * d); g.translate(-x, -gy);
     const X = a => x + a * d;
     poly([[X(-33), gy - 6], [X(-33), gy - 29], [X(-31), gy - 31], [X(20), gy - 31], [X(31), gy - 21], [X(33), gy - 19], [X(33), gy - 6]], "#e6e4dc");
@@ -850,13 +852,13 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     for(const i of [-26, -18, -10, 2, 10]){ disc(X(i), gy - 23, 2.4, "#121820"); disc(X(i + 4), gy - 22.5, 2.3, "#141a22"); }   // packed in
     for(const i of [-22, -14, -6, 6, 14]) rect(X(i) - 0.6, gy - 28, 1.2, 8.5, "#d6d3ca");
     poly([[X(20), gy - 28], [X(29.5), gy - 20], [X(20), gy - 20]], "#3a4656");                                    // windscreen
-    rect(Math.min(X(-7), X(2)), gy - 28, 9, 22, "#151a22");                                                         // the open door
+    if(!farDoor) rect(Math.min(X(3), X(12)), gy - 28, 9, 22, "#151a22");                                            // the open door
     oval(X(32.5), gy - 15, 1.2, 1.7, "#fff6c8"); glow(X(36), gy - 15, 10, "rgba(255,240,180,.35)"); rect(X(-33.5) - (d > 0 ? 0 : 1.5), gy - 16, 1.5, 3, "#e23b2e");
     rect(Math.min(X(-28), X(8)), gy - 33, 36, 2, "#3a3a3a");                                                        // roof rack
     rect(X(-26) - (d > 0 ? 0 : 12), gy - 39, 12, 6, "#2f5fa8"); rect(X(-12) - (d > 0 ? 0 : 9), gy - 38, 9, 5, "#8a5a32"); rect(X(-1) - (d > 0 ? 0 : 7), gy - 37, 7, 4, "#c9b48a");   // bags and boxes
     wheel(X(-21), gy - 5.5, 5.5, rot, "#c8ccd2"); wheel(X(21), gy - 5.5, 5.5, rot, "#c8ccd2");
     g.restore();
-    person(X(-3), gy - 6, d, {s: 0.82, shirt: "#d8cfae", pants: "#2b3446", skin: "#8b5638", mo: true, lean: -0.4,   // the tabbaa, hanging out of the door
+    if(!farDoor) person(X(7.5), gy - 6, d, {s: 0.82, shirt: "#d8cfae", pants: "#2b3446", skin: "#8b5638", mo: true, lean: -0.4,   // the tabbaa, hanging out of the door
       arms: [[2.9, 3.0], stopped ? [1.6 + 0.6 * Math.sin(pnow() * 7), 2.4] : [1.8 + 0.4 * Math.sin(pnow() * 8), 2.4]]});
   }
   /* The ful cart: a green-painted wooden cart with a big copper qidra, a stack of bread, one big spoked wheel. */
@@ -911,12 +913,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           else if(b < t3){ x = sx; pitch = -0.025 * Math.sin(Math.min(1, (b - t2) / 0.35) * Math.PI); }
           else { const e = b - t3; x = sx + 190 * e * e; } }
         const board = cl((b - t2 - 0.2) / 0.9, 0, 1);
-        if(board < 1){ const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 30 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
+        if(board < 1){ const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 18.5 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
           g.globalAlpha = board > 0.75 ? (1 - board) * 4 : 1;
           person(wx, gy, -1, walkIn || board > 0 ? {ph: u * 9, shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e"}
                                              : {shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e", arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
           g.globalAlpha = 1; }
-        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3); } },
+        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip); } },   // 5.61: on mirrored rounds he gets in on the far side
     { f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
       len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
       draw(u){ const {fx, tA} = this.f(), st = u - tA;
