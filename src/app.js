@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.20`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.21`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -756,10 +756,11 @@ function fireworks(){
    the ½ button). Only works on the Cloudflare link: GitHub Pages and file:// have no /api, so the codes simply don't show.
    STEAL_SKIP lists categories that never get a steal code (Omar to choose). To remove: delete this block, ansPanel(c) in
    renderClue, the #ansQr drawing, closeAns() on reveal, the two setup switches, worker/index.js and answer.html. */
-const STEAL_TYPES = new Set(["text","photo","flag","pin","shape","emoji"]);
-const STEAL_SKIP = new Set(["spot","igf","cal","headl"]);  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
-/* 5.11 (Omar): no steal on the Photo Rounds group either (Car, Actor, Footballer, Person, Food, Logo); checked against CAT_GROUPS when a clue opens */
-const noStealGroup = id => { const g = (typeof CAT_GROUPS !== "undefined" ? CAT_GROUPS : []).find(([name]) => name === "Photo Rounds"); return !!(g && g[1].includes(id)); };
+const STEAL_TYPES = new Set(["text","flag","pin","shape","emoji"]);  // 5.21 (Omar): "photo" (the zoom rounds: Car, Actor, Footballer, Person) dropped; was also in this list
+const STEAL_SKIP = new Set(["spot","igf","cal","headl","logo"]);  // 5.21: + Guess the Logo (blurred)  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
+/* 5.21 (Omar): only the blur and zoom photo rounds skip steals (zoom ones via STEAL_TYPES, the logo via STEAL_SKIP), so Guess the Food
+   and the plain photo categories get them. 5.11 skipped the whole Photo Rounds group with noStealGroup(); kept for an easy undo. */
+const noStealGroup = id => false;
 let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }

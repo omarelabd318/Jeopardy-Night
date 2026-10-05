@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.20. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.21. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -436,3 +436,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Cairo:** "Name this Cairo landmark": Cairo Tower and the Muhammad Ali Mosque (100), Khan el-Khalili and Al-Azhar (200), the Qasr El Nil bridge and Baron Palace (300), Bab Zuweila and the Hanging Church (400), Ibn Tulun and Bayt al-Suhaymi (500).
   - **Photos:** new photos come from Wikimedia Commons. Originals are in `v4work/category-photos/` with `SOURCES.md` (licences), and web copies (1024 px) are in `photos/`. I looked at each one before adding it.
   - To remove: delete `v4work/category-photos.json`, or the lines for one category.
+- 5.21 (2026-10-05): Omar clarified that only the photo rounds that blur or zoom should go without steal codes. Car, Actor, Footballer and Person (type `photo`, zoom) are no longer in `STEAL_TYPES`, and Guess the Logo (blur) is now in `STEAL_SKIP`. Guess the Food, and the new plain-photo categories coming next (Guess the Country, Egypt: Photo Edition), do get steal codes. The 5.11 whole-group skip (`noStealGroup`) now always returns false; to restore it, put its old body back (it's in the 5.21 comment).
