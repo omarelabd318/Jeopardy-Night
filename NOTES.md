@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.16. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.17. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -418,3 +418,8 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 5.16 (2026-10-05): Omar asked to remove the pale outline around the QR code and its "Scan to steal" text. The `.ansqr` box now has `border:0` (the old value is in a comment next to it). This applies to both the steal code and the Closest Wins / Price Is Right code.
   - The QR's own white margin stays: I tried removing it first, and a QR reader (jsQR) then couldn't read the code; with the margin back, it reads every time.
   - **Checked:** a short question, a 126-character question, a Formations lineup (the tallest clue) and a stadium photo. All fit with Reveal answer on screen, and every code decoded.
+- 5.17 (2026-10-05): Omar said the code looked off-centre with "Scan to steal" beside it. He asked for it centred and a bit smaller, with the text below and the team names still on the right when a steal comes in.
+  - **Text clues:** the code (130 px for steals, 170 px for Closest Wins / Price Is Right) sits in the middle of the card with its caption underneath. Stealing teams' names ("Eagles ✓") pop up to the right of it, and the code stays centred however many names there are (a three-column grid in `.ansqr`).
+  - **Photo clues:** the code stays beside the picture, with its caption under it and the names under that.
+  - **After the reveal:** the steals are listed centred ("Pharaohs: Lima").
+  - **Checked** with `wrangler dev`: a text clue before and after two steals, a stadium photo with a steal, and Price Is Right. All codes decoded with jsQR, with no errors.

@@ -229,25 +229,25 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
 /* 5.9: phone-answer QR panel on a clue */
 .guess.status{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .guess.status b{font-size:20px} .guess.status.in b{color:var(--brass)} .guess.status.wait b{opacity:.6}
-.ansqr{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px auto 4px;padding:12px 14px;border:0;border-radius:12px;max-width:640px}  /* 5.16 (Omar): no outline around the code and its text (was border:1.5px solid var(--line)) */
+.ansqr{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin:6px 0 4px;padding:8px 0;border:0}  /* 5.16 (Omar): no outline (was border:1.5px solid var(--line)); 5.17: code centred, caption under it, names on the right */
+.ansqr .qcol{grid-column:2;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
 .ansqr .aq{background:#fff;padding:8px;border-radius:8px}
-.ansqr .aq img,.ansqr .aq canvas{display:block;width:180px;height:180px}
-.ansqr .ansinfo{min-width:200px;text-align:left}
-.ansqr ul{list-style:none;margin:8px 0 0;padding:0;font-size:16px}
+.ansqr .aq img,.ansqr .aq canvas{display:block;width:170px;height:170px}
+.ansqr.steal .aq img,.ansqr.steal .aq canvas{width:130px;height:130px}
+.ansqr .stealers{grid-column:3;justify-self:start;list-style:none;margin:0;padding:0}
+.ansqr ul{list-style:none;margin:6px 0 0;padding:0;font-size:16px}
 .ansqr li{padding:3px 0}
-.ansqr li.wait{opacity:.6}
 .ansqr li.in{color:var(--brass);font-weight:700}
 .ansqr .sv{font-size:20px}
-/* 5.12: steal panel: smaller code, names pop up when a team sends a steal; beside the photo on picture clues */
-.ansqr.steal .aq img,.ansqr.steal .aq canvas{width:150px;height:150px}
-.ansqr.steal .ansinfo{min-width:150px}
-.ansqr li.stealer{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.02em;color:var(--brass)}
+.ansqr li.stealer{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.02em;color:var(--brass)}
 .ansqr li.pop{animation:stealPop .6s cubic-bezier(.2,1.6,.4,1) both}
 @keyframes stealPop{0%{transform:scale(.3);opacity:0}100%{transform:none;opacity:1}}
+.ansqr.done{display:block;text-align:center}
+/* photo clues: code beside the picture, caption under it, names under that */
 .withqr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center}
-.withqr .ansqr{flex-direction:column;margin:0;max-width:200px}
-.withqr .ansqr .ansinfo{text-align:center}
-@media (max-width:700px){.withqr{grid-template-columns:1fr}.withqr .ansqr{max-width:none;flex-direction:row}}
+.withqr .ansqr{display:flex;flex-direction:column;align-items:center;margin:0;padding:0}
+.withqr .ansqr .stealers{text-align:center;justify-self:auto}
+@media (max-width:700px){.withqr{grid-template-columns:1fr}}
 .qr{background:#fff;padding:12px;border-radius:10px;justify-self:center;width:fit-content;margin:0 auto}
 .qr img,.qr canvas{display:block;width:220px;height:220px}
 #confirmBox{position:fixed;inset:0;background:rgba(var(--veil),.9);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -390,7 +390,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.16</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.17</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -402,7 +402,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.16</div>
+      <div class="eyebrow verlabel">v5.17</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.16`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.17`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -783,7 +783,9 @@ function ansPanel(c){ const m = ansMode(c); if(!m) return "";
     if(!a) return ""; const isNew = !c.popped[i]; c.popped[i] = true;
     return `<li class="stealer${isNew ? " pop" : ""}">${esc(t.name)} ✓</li>`; }).join("");  /* 5.15 (Omar): just "Team ✓" on every clue (5.12 said "Team is stealing!") */
   const head = steal ? (c.revealed ? (rows ? "Steals (½ points if right)" : "No steals") : "Scan to steal") : "Scan with your phone to send your team's guess";
-  return `<div class="ansqr${steal ? " steal" : ""}${c.revealed ? " done" : ""}">${c.revealed ? "" : `<div class="aq" id="ansQr"></div>`}<div class="ansinfo"><div class="eyebrow">${head}</div>${rows ? `<ul>${rows}</ul>` : ""}</div></div>`; }
+  /* 5.17 (Omar): the code sits centred with its caption underneath; stealing teams' names show to the right of it */
+  if(c.revealed) return `<div class="ansqr steal done"><div class="eyebrow">${head}</div>${rows ? `<ul>${rows}</ul>` : ""}</div>`;
+  return `<div class="ansqr ${steal ? "steal" : "num"}"><div class="qcol"><div class="aq" id="ansQr"></div><div class="eyebrow">${head}</div></div><ul class="stealers">${rows}</ul></div>`; }
 async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force)) return; const m = ansMode(c); if(!m || (c.polling && !force)) return;
   c.polling = true;
   try{ const r = await fetch(`api/answers?r=${encodeURIComponent(S.room)}&c=${encodeURIComponent(ansKey(c))}`, {cache:"no-store"}); const j = await r.json();
@@ -1058,7 +1060,7 @@ function renderClue(){
     zimg.complete ? run() : zimg.addEventListener("load", run, {once:true});
   }
   const aq = $("#ansQr"); if(aq){ const m = ansMode(c);
-    if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: m === "steal" ? 150 : 180, height: m === "steal" ? 150 : 180, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
+    if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: m === "steal" ? 130 : 170, height: m === "steal" ? 130 : 170, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
     else aq.textContent = "The code maker didn't load yet."; }
   const qb = $("#qrbox");
   if(qb){
