@@ -50,12 +50,12 @@ function setup(m){
   $("where").textContent = [m.cat, m.val].filter(Boolean).join(" · ");
   if(k === "steal"){
     $("title").textContent = "Steal for half points"; $("lbl").textContent = "Your answer"; $("v").setAttribute("enterkeyhint", "send");
-    $("hint").textContent = `Only for teams that aren't playing this tile${x >= 0 && names[x] ? ` (${names[x]} is playing)` : ""}. If the playing team gets it wrong and you're right, you get half the points. You can change your answer until it's revealed.`;
+    $("hint").textContent = `Only for teams that aren't playing this tile${x >= 0 && names[x] ? ` (${names[x]} is playing)` : ""}. If the playing team gets it wrong and you're right, you get half the points. One go per team: it can't be changed.`;
   } else {
     $("title").textContent = "Your guess"; $("lbl").textContent = "Your number";
     $("v").setAttribute("inputmode", "decimal"); $("v").setAttribute("enterkeyhint", "send");
     if(m.u) $("unit").textContent = "In " + m.u;
-    $("hint").textContent = "Closest wins. Nobody sees your number until the answer is revealed. You can change it until then.";
+    $("hint").textContent = "Closest wins. Nobody sees your number until the answer is revealed. One go per team: it can't be changed.";
   }
   drawTeams(); $("f").hidden = false; $("msg").hidden = true;
 }
@@ -69,7 +69,8 @@ $("f").onsubmit = async e => {
   try{
     const res = await fetch("api/answer", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r, c, t: team, v, k})});
     const j = await res.json().catch(() => ({}));
-    if(res.ok && j.ok) say(`Locked in for ${names[team]}: ${v}. Watch the TV.`, "ok");
+    /* 5.27 (Omar): answers are final and hidden once sent */
+    if((res.ok && j.ok) || j.error === "locked"){ $("f").hidden = true; $("teams").hidden = true; say(`✓ Locked in for ${names[team]}. Your answer is hidden until the reveal. Watch the TV.`, "ok"); return; }
     else if(j.error === "closed") say("Too late: the answer has already been revealed.", "err");
     else say("That didn't go through. Try again.", "err");
   }catch(err){ say("No connection. Check your internet and try again.", "err"); }
