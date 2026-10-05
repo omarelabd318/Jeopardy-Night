@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.55`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.56`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -566,7 +566,10 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const BIKE = 2.2, FLICK = 0.8;                                   // chestbike: from chest to bicycle kick, and when the foot flick comes
   const HEEL = 1.7, HFLICK = 0.7;                                  // kneeheel: from knee to the heel pass, and when the foot flick comes
   const BAL = 3.0, BCATCH = 0.6, BFLICK = 2.1, BT = 1.1, BS = 1.45;   // balance: total time, when it lands on his foot, when he flicks it up; the held leg's thigh and shin angles
-  const CH = 1.25, CHOLD = 0.6;                                     // chesthold: from chest to volley, and how long it sits on his chest
+  /* 5.56 (Omar): more natural. First chest touch leaning back, it pops up a little as he steps forward (STEP px) and straightens,
+     a second chest touch where it sits for 0.6 s, then a snap of the torso flicks it down in front and he volleys it the moment
+     it reaches his foot (5.53: one touch, a 0.6 s hold, then it rolled off and fell more slowly, so it seemed to wait at his foot). */
+  const CH = 1.4, CT2 = 0.5, CHOLD = 0.6, CFLICK = 0.3, STEP = 5;   // chesthold: chest to volley; second touch; the hold; the flick down to the foot; how far he steps in
   const PD = how => how === "chesthold" ? CH : how === "chestbike" ? BIKE : how === "kneeheel" ? HEEL : how === "balance" ? BAL : POP;   // how long the ball stays with him after the first touch
   const START = []; let CYCLE = 0; ROT.forEach(([, hw]) => { START.push(CYCLE); CYCLE += FLIGHT + PD(hw); });
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
@@ -634,7 +637,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const head = side => [X[side] + 7 * D[side], H - 1 - 4 - 35 - 5 - r + 2];        // where the kneehead header meets the ball: at the top of his hop, his head thrown forward (5.40; was X + 2)
     const bike = side => [X[side] + 4 * D[side], H - 1 - 10 - 16 - 15.5 - r + 2];   // where the bicycle kick meets it, above him as he lies back
     const heelPass = side => [X[side] - 10 * D[side], hip - 15];                      // kneeheel: high behind him, where his raised heel meets it (5.45; 5.44 was hip height, X - 11, with an extra loop over his head)
-    const volley = (side, how) => how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : how === "kneeheel" ? heelPass(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
+    const volley = (side, how) => how === "chesthold" ? [X[side] + (20 + STEP) * D[side], hip - 3] : how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : how === "kneeheel" ? heelPass(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
     const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
     let k = ROT.length - 1; while(k > 0 && START[k] > t) k--;
@@ -645,20 +648,24 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     if(u < FLIGHT){ const A = volley(from, prev); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
     else if(how === "chestbike"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4];   // off the chest down to his foot, then flicked up high and bicycle-kicked
       pos = ub < FLICK ? seg(C, F, ub / FLICK, (C[1] + F[1]) / 2 - (C[1] - 10)) : seg(F, V, (ub - FLICK) / (BIKE - FLICK), (F[1] + V[1]) / 2 - (V[1] - UP.chestbike)); }
-    else if(how === "chesthold"){ const ub = u - FLIGHT;   // sits on his chest (settling a little), then rolls off forwards and falls to the volley
-      if(ub < CHOLD) pos = [C[0], C[1] - 1.2 * Math.abs(Math.sin(ub * 11)) * (1 - ub / CHOLD)];
-      else { const f = Math.min(1, (ub - CHOLD) / (CH - CHOLD)); pos = [C[0] + (V[0] - C[0]) * sm(f * 1.4), C[1] + (V[1] - C[1]) * f * f]; } }
+    else if(how === "chesthold"){ const ub = u - FLIGHT, C2 = [C[0] + STEP * D[side], C[1]];   // pops up off the first touch, settles on the second, flicked down to the volley
+      if(ub < CT2) pos = seg(C, C2, ub / CT2, 12);
+      else if(ub < CT2 + CHOLD) pos = [C2[0], C2[1] - 1 * Math.abs(Math.sin((ub - CT2) * 11)) * (1 - (ub - CT2) / CHOLD)];
+      else { const f = Math.min(1, (ub - CT2 - CHOLD) / CFLICK); pos = [C2[0] + (V[0] - C2[0]) * f, C2[1] + (V[1] - C2[1]) * (0.45 * f + 0.55 * f * f)]; } }   // straight to his foot, no waiting
     else if(how === "balance"){ const ub = u - FLIGHT, Bf = [X[side] + 13 * D[side], hip + 8 * (Math.cos(BT) + Math.cos(BS)) - r - 0.5];   // up off the foot, caught on it, held, flicked up, volleyed
       pos = ub < BCATCH ? seg(C, Bf, ub / BCATCH, (C[1] + Bf[1]) / 2 - (Bf[1] - 14)) : ub < BFLICK ? [Bf[0], Bf[1] + 0.6 * Math.sin(ub * 9)] : seg(Bf, V, (ub - BFLICK) / (BAL - BFLICK), (Bf[1] + V[1]) / 2 - (Math.min(Bf[1], V[1]) - 20)); }
     else if(how === "kneeheel"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4], over = H - 1 - 40 - r - UP.kneeheel;   // knee, drop to the foot, flicked over his head to behind him
       pos = ub < HFLICK ? seg(C, F, ub / HFLICK, (C[1] + F[1]) / 2 - (C[1] - 14)) : seg(F, V, (ub - HFLICK) / (HEEL - HFLICK), (F[1] + V[1]) / 2 - over); }
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
-    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0, ly = 0, gu = null, fl = null, bl = null, ar = 0;
+    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0, ly = 0, gu = null, fl = null, bl = null, ar = 0, step = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = START[i] + FLIGHT + sh, dt = t - tc;
-          if(hw === "chesthold"){   // leans back, holds it on his chest (CHOLD s) with his arms out, then bends forward so it drops off, and volleys it
-            lean += dt < -0.5 || dt > 1.6 ? 0 : dt < 0 ? sm((dt + 0.5) / 0.5) : dt < CHOLD ? 1 + 0.06 * Math.sin(dt * 9) : dt < CHOLD + 0.3 ? 1 - 1.7 * sm((dt - CHOLD) / 0.3) : -0.7 * (1 - sm((dt - CHOLD - 0.3) / 0.7));
-            ar += dt < -0.45 || dt > CHOLD + 0.5 ? 0 : dt < 0 ? sm((dt + 0.45) / 0.45) : dt < CHOLD ? 1 : 1 - sm((dt - CHOLD) / 0.5);
+          if(hw === "chesthold"){   // lean back for the first touch, straighten and step in, lean back for the second, hold, snap forward, volley
+            const H2 = CT2 + CHOLD;
+            lean += dt < -0.5 || dt > 2.1 ? 0 : dt < 0 ? sm((dt + 0.5) / 0.5) : dt < 0.25 ? 1 - 0.65 * sm(dt / 0.25) : dt < CT2 ? 0.35 + 0.65 * sm((dt - 0.25) / 0.25)
+              : dt < H2 ? 1 + 0.05 * Math.sin(dt * 9) : dt < H2 + 0.15 ? 1 - 1.9 * sm((dt - H2) / 0.15) : -0.9 * (1 - sm((dt - H2 - 0.15) / 0.85));
+            ar += dt < -0.45 || dt > H2 + 0.5 ? 0 : dt < 0 ? sm((dt + 0.45) / 0.45) : dt < H2 ? 1 : 1 - sm((dt - H2) / 0.5);
+            step = Math.max(step, dt < 0 || dt > 2.8 ? 0 : dt < 0.45 ? STEP * sm(dt / 0.45) : dt < 1.8 ? STEP : STEP * (1 - sm((dt - 1.8) / 1.0)));
             ang += swing(dt - CH); continue; }
           if(hw === "kneehead"){ knee += kneeUp(dt); jump += hop(dt - POP); lean += powerWind(dt - POP); continue; }   // knee it up, then a header instead of a volley
           if(hw === "balance"){   // foot control, then the foot held up with the ball on it, a flick, and the volley
@@ -683,8 +690,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
             turn = turn || (e > -0.75 && e < 1.0); continue; }
           if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest"){ lean += leanBack(dt); ar += leanBack(dt); } else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else { jump += hop(dt); lean += headWind(dt); }
           ang += swing(dt - POP); } });
-      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(2, lean), bk, ly, gu, fl, bl, Math.min(1, ar)]; };
-    man(L, 1, ...pose("L")); man(R, -1, ...pose("R"));
+      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(2, lean), bk, ly, gu, fl, bl, Math.min(1, ar), step]; };
+    const pL = pose("L"), pR = pose("R"); man(L + pL[12], 1, ...pL.slice(0, 12)); man(R - pR[12], -1, ...pR.slice(0, 12));   // step: 5.56, a small step in for the chest hold
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
