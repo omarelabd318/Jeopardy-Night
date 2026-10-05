@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.54",
+  "date": "2026-10-05",
+  "items": [
+   "The street scene's horses are now a proper hantour: a horse pulling an Egyptian carriage, driver up front with his whip.",
+   "New setup toggle under Sound: Board animations, to switch the street scene and the Football kickers off."
+  ]
+ },
+ {
   "v": "5.53",
   "date": "2026-10-05",
   "items": [

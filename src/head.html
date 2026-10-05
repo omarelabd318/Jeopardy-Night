@@ -431,7 +431,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.53</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.54</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -443,7 +443,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.53</div>
+      <div class="eyebrow verlabel">v5.54</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -467,6 +467,8 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
         <!-- 5.26 (Omar): Free-for-all; 5.32 (Omar): moved here, next to Steals from phones (was its own "Play mode" panel at the bottom of setup). To remove it: delete this button, #lobby, #ffaJoin and the 5.26 block in src/app.js -->
         <button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone, scanning one code at the start. Everyone who's right scores; nobody loses points. Team-only categories, power-ups and steals are left out. Works on the Cloudflare link.</small></span></button>
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
+        <!-- 5.54 (Omar): turns the board animations (the normal mode street scene and the Football mode kickers) on or off -->
+        <button class="opt" id="optAnim" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Board animations</b><small>The little street scene under the board (the kickers in Football mode). Off keeps the bottom of the screen still.</small></span></button>
       </div>
     </div>
     <!-- 5.31 (Omar): the Photo rounds section is hidden; every photo is built in now. To bring it back, remove "hidden" here (and the #photoPanel[hidden] rule) -->

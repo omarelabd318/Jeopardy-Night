@@ -76,6 +76,7 @@ const S = {
   impN: store.get("jn_impN", 6),
   power: store.get("jn_power", false),
   sound: store.get("jn_sound", true),
+  anim: store.get("jn_anim", true),   // 5.54: board animations (street scene, kickers)
   x2: null,
   qrAns: store.get("jn_qrans", true),   /* 5.9: QR answers on Closest Wins / Price Is Right */
   steal: store.get("jn_steal", false),  /* 5.9: Steal QR codes */
@@ -116,6 +117,8 @@ function syncSound(){
 function setSound(on){ S.sound = on; store.set("jn_sound", on); syncSound(); if(on){ Snd.unlock(); Snd.blip(); } else { stopSiu(); stopReview(); } }
 document.querySelectorAll(".sndbtn").forEach(b => b.addEventListener("click", () => setSound(!S.sound)));
 $("#optSound").onclick = () => setSound(!S.sound);
+$("#optAnim").setAttribute("aria-pressed", S.anim);
+$("#optAnim").onclick = () => { S.anim = !S.anim; store.set("jn_anim", S.anim); $("#optAnim").setAttribute("aria-pressed", S.anim); };   // 5.54
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 $("#optQrAns").onclick = () => { S.qrAns = !S.qrAns; store.set("jn_qrans", S.qrAns); $("#optQrAns").setAttribute("aria-pressed", S.qrAns); };
@@ -153,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.53`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.54`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -530,7 +533,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   addEventListener("resize", fit); fit();
   /* 5.38 (Omar): they keep playing, faintly, while a clue is open: drawn over the dark backdrop at 30% (#kick.faint in
      head.html) but never over the clue box itself, so they look like they're behind it. Was: hidden while a clue was open (!S.cur here). */
-  const showing = () => S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
+  const showing = () => S.anim && S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
   /* 4.75 (Omar): a six-touch rotation. Each player controls the ball, it pops up, and he volleys it across on the way down:
      left knee, right foot, left head, right knee, left foot, right head, then again. Each crossing takes FLIGHT seconds.
      The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
@@ -692,7 +695,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
 /* 5.52 (Omar): normal mode street scene. A shisha café sits in the middle of the strip above the team names (the same
    84px strip as the Football mode kickers): two men play tawla (slam, slam, one wins, hands up, handshake, again) and a third
    smokes shisha and blows rings. Traffic passes in front, one at a time, in turn: a tuk-tuk (honks, swerves round a pothole,
-   its passenger leans out), a horse caravan, a packed microbus (the tabbaa hangs off the door shouting "Ramses!" and it
+   its passenger leans out), a hantour (horse and carriage; 5.52 was a horse caravan), a packed microbus (the tabbaa hangs off the door shouting "Ramses!" and it
    brakes hard for one more passenger) and a ful cart (stops, ladles a plate for a customer, steam rising). A stray cat
    wanders past now and then. Like the kickers it shows only on the board, and faintly behind an open clue.
    To remove: delete #street in head.html and this block. */
@@ -703,7 +706,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const fit = () => { const dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
-  const showing = () => !S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
+  const showing = () => S.anim && !S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
   const INK = "rgba(196,206,255,.78)", DIM = "rgba(196,206,255,.4)", GOLD = "#ffcc33";
   let BG = "#0a0f5c";
   const sm = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x), cl = (x, a, b) => Math.max(a, Math.min(b, x));
@@ -815,7 +818,30 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     ink(1.6); g.beginPath(); g.moveTo(x - 12 * d, gy - 23); g.quadraticCurveTo(x - 18 * d, gy - 20 + Math.sin(ph * 0.5), x - 16 * d, gy - 11); g.stroke();   // tail
     ink(1.8); [[9, 0], [6, Math.PI], [-6, Math.PI / 2], [-9, Math.PI * 1.5]].forEach(([o, k]) => { const a = Math.sin(ph + k) * 0.35, kx = x + o * d + Math.sin(a) * 8 * d, ky = gy - 17 + Math.cos(a) * 8;
       ln(x + o * d, gy - 18, kx, ky, kx + Math.sin(a - 0.3 * Math.max(0, Math.sin(ph + k + 1))) * 8 * d, gy); });
+    if(rider === "plume"){ g.fillStyle = "rgba(255,204,51,.85)"; g.beginPath(); g.ellipse(x + 14 * d, gy - 39, 1.8, 3.2, -0.3 * d, 0, Math.PI*2); g.fill(); return; }   // the hantour horse's pompom
     if(rider){ ink(2.2); dot(x + 1 * d, gy - 46, 4.4); ln(x, gy - 40, x - 1 * d, gy - 27); ln(x - 1 * d, gy - 27, x + 4 * d, gy - 21, x + 3 * d, gy - 14); ln(x, gy - 37, x + 8 * d, gy - 31, x + 14 * d, gy - 31); }
+  }
+  /* 5.54 (Omar): a hantour (Egyptian horse carriage), not a caravan: one horse in the shafts, a four-wheeled carriage with big back
+     wheels and a folding hood over two passengers, and the driver up front on his box with the reins and a whip. */
+  function hantour(x, d, ph){                     // x: the horse; the carriage follows behind it
+    const cx = x - 52 * d, rot = -ph * 0.9;
+    ink(1.6); ln(x - 8 * d, gy - 22, cx + 14 * d, gy - 24);                                                  // the shafts
+    const spoked = (wx, wy, r) => { ink(1.8); dot(wx, wy, r, false); ink(1); for(let i = 0; i < 4; i++){ const a = rot + i * Math.PI / 4; ln(wx - Math.cos(a) * r, wy - Math.sin(a) * r, wx + Math.cos(a) * r, wy + Math.sin(a) * r); } };
+    g.beginPath(); g.moveTo(cx - 24 * d, gy - 31); g.quadraticCurveTo(cx - 24 * d, gy - 19, cx - 14 * d, gy - 19); g.lineTo(cx + 10 * d, gy - 19);
+    g.quadraticCurveTo(cx + 16 * d, gy - 20, cx + 16 * d, gy - 30); g.lineTo(cx + 6 * d, gy - 27); g.lineTo(cx - 12 * d, gy - 27); g.closePath();
+    g.fillStyle = BG; g.fill(); g.fillStyle = "rgba(255,204,51,.4)"; g.fill(); ink(1.8); g.stroke();       // the body
+    ink(2); dot(cx - 13 * d, gy - 34, 3.2); dot(cx - 5 * d, gy - 33.5, 3.2); ln(cx - 13 * d, gy - 31, cx - 13 * d, gy - 27); ln(cx - 5 * d, gy - 30, cx - 5 * d, gy - 27);   // two passengers
+    g.beginPath(); g.moveTo(cx - 24 * d, gy - 31); g.quadraticCurveTo(cx - 25 * d, gy - 47, cx - 10 * d, gy - 47); g.lineTo(cx - 1 * d, gy - 44);   // the folding hood
+    g.lineTo(cx - 1 * d, gy - 41); g.quadraticCurveTo(cx - 17 * d, gy - 43, cx - 21 * d, gy - 31); g.closePath();
+    g.fillStyle = BG; g.fill(); g.fillStyle = "rgba(196,206,255,.3)"; g.fill(); ink(1.6); g.stroke();
+    ink(1); ln(cx - 18 * d, gy - 46, cx - 22 * d, gy - 32); ln(cx - 10 * d, gy - 47, cx - 17 * d, gy - 37);   // hood ribs
+    ink(1.6); ln(cx + 12 * d, gy - 30, cx + 12 * d, gy - 36, cx + 20 * d, gy - 36);                           // the driver's box
+    const D2 = fig(cx + 15 * d, gy - 25, d, {sit: true, s: 0.85, arms: [[1.3, 1.5], [2.2 + 0.25 * Math.sin(ph * 0.7), 2.9]]});   // driver, reins in one hand, whip up in the other
+    g.strokeStyle = DIM; g.lineWidth = 1; ln(D2.hands[0][0], D2.hands[0][1], x + 18 * d, gy - 29);        // reins
+    const w = D2.hands[1]; g.beginPath(); g.moveTo(w[0], w[1]); g.quadraticCurveTo(w[0] + 8 * d, w[1] - 14, w[0] + 18 * d, w[1] - 6 + 3 * Math.sin(ph * 0.7)); g.stroke();   // whip
+    g.fillStyle = `rgba(255,204,51,${0.75 + 0.2 * Math.sin(ph)})`; dot(cx + 17 * d, gy - 21, 1.8);               // side lamp
+    spoked(cx - 10 * d, gy - 12, 11.5); spoked(cx + 13 * d, gy - 8, 7.5);
+    horse(x, d, ph, "plume");
   }
   function microbus(x, d, rot, pitch, kid){
     g.save(); g.translate(x, gy); g.rotate(pitch * d); g.translate(-x, -gy);
@@ -847,9 +873,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const sw = Math.abs(dx) < 42 ? Math.cos(dx / 42 * Math.PI / 2) : 0;
         const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
         tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 42 ? -0.07 * Math.sin(dx / 42 * Math.PI) : 0, dx > -170 && dx < -60 || (x > W * 0.78 && x < W * 0.84)); } },
-    { name: "horse", len: () => (W + 260) / 58, draw(u){ const x0 = W + 40 - 58 * u;
-        for(let i = 0; i < 3; i++){ const x = x0 + i * 46; if(i){ ink(1); g.strokeStyle = DIM; g.beginPath(); g.moveTo(x - 22, gy - 29); g.quadraticCurveTo(x - 30, gy - 20, x - 34, gy - 24); g.stroke(); }
-          horse(x, -1, (58 * u) / 9 + i * 1.3, i === 0); } } },
+    { name: "hantour", len: () => (W + 160) / 55, draw(u){ const x = W + 40 - 55 * u; hantour(x, -1, (55 * u) / 9); } },
     { name: "microbus", len(){ const m = this.m(); return m.t3 + Math.sqrt(2 * (W + 90 - m.sx) / 380); },
       m(){ const v = 270, ab = 650, sx = W * 0.72, x0 = -80, bd = v * v / (2 * ab), t1 = (sx - bd - x0) / v, t2 = t1 + v / ab, t3 = t2 + 1.9; return {v, ab, sx, x0, bd, t1, t2, t3}; },
       draw(u){ const {v, ab, sx, x0, bd, t1, t2, t3} = this.m(); let x, pitch = 0;
