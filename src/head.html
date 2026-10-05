@@ -225,6 +225,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
 .zoom.logo{background:#fff;container-type:inline-size}
 .zoom .empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);gap:10px;align-content:center}
 .secret{border:2px dashed var(--brass-dim);border-radius:14px;padding:22px;text-align:center;display:grid;gap:10px}
+.secret .note{justify-self:center;margin-inline:auto}  /* 5.19 (Omar): notes in the secret-code panels (One Word, Act It Out, Impostor) were capped in width but sat on the left */
 .secret .title{font-family:var(--display);font-weight:900;font-size:clamp(34px,6vw,64px);text-transform:uppercase;line-height:1;color:var(--cream)}
 /* 5.9: phone-answer QR panel on a clue */
 .guess.status{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
@@ -390,7 +391,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.18</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.19</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -402,7 +403,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.18</div>
+      <div class="eyebrow verlabel">v5.19</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

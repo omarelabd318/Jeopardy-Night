@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.18. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.19. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -429,3 +429,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Other changes:** room and clue ids are 8 random characters, and the worker serves `answer.html` at `/a` without a redirect. Old long links still work on the phone page.
   - **Tested** with `wrangler dev`: Price Is Right with three phones (auto-reveal, right winner, late answer refused) and a steal both worked. jsQR read every code: 29×29 dots locally (on the longer real address it will be ~33×33).
   - To undo: put back the old `ansUrl()` (described in the 5.18 comment) and `ansKey()`; the phone page still accepts long links.
+- 5.19 (2026-10-05): Omar noticed things off-centre on the One Word Clues QR screen. The `.note` lines ("Everyone else, look away.", the rules) have a maximum width, but in the centred `.secret` panel nothing centred them, so they sat on the left. Added `.secret .note{justify-self:center;margin-inline:auto}`; this fixes One Word Clues, Act It Out and Impostor alike. Checked: every part of the panel is now centred to the pixel.
