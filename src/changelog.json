@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.14",
+  "date": "2026-10-05",
+  "items": [
+   "On photo clues, a team that sends a steal shows as just \"Team ✓\"."
+  ]
+ },
+ {
   "v": "5.13",
   "date": "2026-10-05",
   "items": [
