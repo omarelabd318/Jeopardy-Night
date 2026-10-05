@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.27",
+  "date": "2026-10-05",
+  "items": [
+   "Team games: each team's phones scan one code at the start (or later from Join code at the top). After that, Closest Wins and Price Is Right number boxes and steal boxes pop up on them. No more code on every clue.",
+   "On the phones, an answer is hidden once it's sent and can't be changed. Free-for-all switches off and greys out Power-ups, Answer and Steal codes, and the team-only categories."
+  ]
+ },
+ {
   "v": "5.26",
   "date": "2026-10-05",
   "items": [

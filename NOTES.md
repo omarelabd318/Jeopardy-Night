@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.26. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.27. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -458,3 +458,11 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Only on the Cloudflare link.** Elsewhere Start says Free-for-all needs it.
   - Tested with a local copy of the relay (`wrangler dev`) and four simulated phones: joining, a late joiner, a refreshed phone keeping its name and score, text, Put It in Order and Price Is Right clues, auto-ticks, scores on the phones and the pick rotation. Team mode with QR codes still works.
   - To remove: turn the toggle off; to delete it, remove the 5.26 block in `src/app.js` and the lines marked 5.26 there and in `src/head.html`, `play.html`, and the 5.26 ops in `worker/index.js`.
+- 5.27 (2026-10-05): follow-ups Omar asked for after 5.26.
+  - **Free-for-all setup:** turning it on switches off and greys out Power-ups, Answer QR codes and Steal QR codes (turning it off brings back what they were), and the team-only categories (Act It Out, Act It Out: Egypt Edition, One Word Clues) are now visibly greyed and crossed out with "teams only". 5.26 disabled them but they looked the same as the others.
+  - **Answers are final and hidden:** on the phone, once an answer is sent the box is replaced by "✓ Locked in, your answer is hidden until the reveal", and it can't be changed (the relay refuses a second answer from the same player, or for team games the same team). After the reveal the phone shows what was sent.
+  - **Team games join once, like Free-for-all:** with Answer QR codes or Steal QR codes on (on the Cloudflare link), Start shows the join code once; each phone picks its team. Number boxes for Closest Wins and Price Is Right, and steal boxes for the teams not playing a tile, then pop up on the phones by themselves, so there's no code on each clue anymore. The team that's playing sees "It's your team's tile, answer out loud" and can't steal it. Join code at the top of the game shows the code again for a phone that missed it. The first answer from any phone of a team counts for the team. The lobby shows how many phones each team has; Start playing works even with none (the host can still type numbers with Type).
+  - `answer.html` (the old per-clue page) stays so old links keep working, but the game no longer makes codes for it.
+  - Also adds the Al-Azhar Park photo to Egypt: Photo Edition. Port Fouad is still missing.
+  - Tested both modes against a local relay with simulated phones: Free-for-all as in 5.26, plus a team game with Price Is Right (three team phones, auto-reveal, the closest team wins) and a steal (the playing team's phone shows it's their tile, a second phone of the stealing team sees "Locked in", and a steal from the playing team is refused).
+  - To undo the one-scan team mode: in `src/app.js`, make `linkTeams` return false; the per-clue code would then need the 5.17 panel back from git history (`ansPanel`).

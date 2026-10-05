@@ -213,6 +213,7 @@ All from Wikimedia Commons. Some clues reuse photos already in `photos/` (Cairo 
 | egp-hibis | [HibisComplete.jpg](https://commons.wikimedia.org/wiki/File:HibisComplete.jpg) | CC BY-SA 3.0 |
 | egp-gebelsilsila | [Rio nilo-aswan-2007 (2).JPG](https://commons.wikimedia.org/wiki/File:Rio_nilo-aswan-2007_%282%29.JPG) | CC BY-SA 3.0 |
 | egp-esna | [Egypt.Esna.Temple.01.jpg](https://commons.wikimedia.org/wiki/File:Egypt.Esna.Temple.01.jpg) | CC BY-SA 3.0 |
+| egp-azharpark | [Al Azhar Park Egypt (cropped).jpg](https://commons.wikimedia.org/wiki/File:Al_Azhar_Park_Egypt_%28cropped%29.jpg) | Public domain |
 
 ## 5.24: more Cairo Streets & Places (`cairo-*`)
 

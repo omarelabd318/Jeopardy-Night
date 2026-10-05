@@ -3,7 +3,9 @@
 <title>Jeopardy Night: play</title>
 <!-- 5.26: free-for-all. Each player scans the code on the TV once (/p?r=ROOM), joins with a name and keeps this page open;
      every clue's answer box appears here by itself. Talks to /api (worker/index.js). The player id stays in this browser, so a
-     refresh keeps the same name and score. -->
+     refresh keeps the same name and score.
+     5.27: team games too. A team's phones join once by picking their team; number boxes (Closest Wins, Price Is Right) and
+     steal boxes (for teams not playing the tile) then appear by themselves. Answers are hidden once sent and can't be changed. -->
 <style>
 :root{--bg:#050A5E;--panel:#0A1486;--line:#2B36B8;--fg:#fff;--muted:#AEB6FF;--gold:#FFCC33;--ink:#1C1606;--good:#3EE06A;--bad:#FF6B5E}
 *{box-sizing:border-box}
@@ -35,6 +37,10 @@ ol.ord .t{flex:1}
 ol.ord .mv{display:flex;flex-direction:column;gap:6px}
 ol.ord .mv button{font:inherit;font-size:16px;width:44px;height:34px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--fg)}
 ol.ord .mv button:disabled{opacity:.25}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 18px}
+.teams button{font:inherit;font-weight:700;padding:16px 10px;border-radius:12px;border:2px solid var(--line);background:var(--panel);color:var(--fg)}
+.lock{text-align:center;padding:34px 0 10px}
+.lock .tick{font-size:56px;line-height:1;color:var(--good)}
 </style></head><body><main>
 <div class="top"><span class="me" id="me"></span><span class="score" id="score"></span></div>
 <div id="view"></div>
@@ -48,68 +54,88 @@ let st = null, shown = "", order = null, timer = null, busy = false;
 const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(body)}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
 function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 const ord = n => n + (["th","st","nd","rd"][(n%100>10&&n%100<14)||n%10>3?0:n%10]);
+const teamMode = () => st && st.mode === "teams";
+const getState = p => fetch(`api/state?r=${encodeURIComponent(r)}&p=${encodeURIComponent(p)}`, {cache:"no-store"}).then(x => x.json());
 
-function joinView(err){
-  $("me").textContent = ""; $("score").textContent = "";
+async function join(n, t){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", t == null ? {r, p, n} : {r, p, n, t});
+    if(res.ok){ me = {p, n, t}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} shown = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full (30 players)." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+async function joinView(err){
+  stop(); $("me").textContent = ""; $("score").textContent = "";
+  if(!st){ try{ st = await getState(newId()); }catch(e){} }
+  if(teamMode()){
+    $("view").innerHTML = `<div class="eyebrow">Jeopardy Night</div><h1>Which team are you?</h1><div class="teams" id="tm">${st.teams.map((n,i) => `<button type="button" data-t="${i}">${esc(n)}</button>`).join("")}</div>
+      ${err ? `<div class="msg err">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Number boxes and steal boxes for your team pop up here by themselves.</p>`;
+    $("tm").onclick = e => { const b = e.target.closest("[data-t]"); if(b){ b.disabled = true; join(st.teams[+b.dataset.t], +b.dataset.t); } };
+    return;
+  }
   $("view").innerHTML = `<div class="eyebrow">Jeopardy Night · Free-for-all</div><h1>What's your name?</h1>
     <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
     <button class="go" id="jb">Join</button></form>${err ? `<div class="msg err">${esc(err)}</div>` : ""}
     <p class="hint">You play on your own. Keep this page open: every clue's answer box pops up here.</p>`;
   $("nm").focus();
-  $("jf").onsubmit = async e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true;
-    const p = (me && me.p) || newId();
-    try{ const res = await post("join", {r, p, n});
-      if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} shown = ""; loop(); return; }
-      joinView(res.j.error === "full" ? "This game is full (30 players)." : "That didn't work. Try again."); }
-    catch(e){ joinView("No connection. Check your internet and try again."); } };
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n, null); };
 }
 
 function header(){
   $("me").textContent = me.n;
   $("score").textContent = st ? `${st.score} pts · ${ord(st.rank)} of ${st.n}` : "";
 }
-
+const shownAns = (c, v) => c.kind === "order" ? orderText(c, v) : v;
 function draw(){
   header();
-  const c = st && st.cur, key = c ? c.c + (st.closed ? ":x" : "") : "wait";
+  const c = st && st.cur, key = c ? c.c + (st.closed ? ":x" : st.mine ? ":m" : "") : "wait";
   if(key === shown) return;  // keep what the player is typing
   shown = key;
+  const team = teamMode(), us = team ? "your team" : "you";
   if(!c){ $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-      <div class="big">You're in, ${esc(me.n)}!</div><div class="hint">Watch the TV. When a clue opens, your answer box appears here.</div></div>`; return; }
+      <div class="big">${team ? `You're on ${esc(me.n)}!` : `You're in, ${esc(me.n)}!`}</div><div class="hint">${team ? "Watch the TV. Number boxes and steal boxes appear here when they're needed." : "Watch the TV. When a clue opens, your answer box appears here."}</div></div>`; return; }
   const where = `<div class="eyebrow">${esc(c.cat)} · ${esc(c.val)}</div>`;
   if(st.closed){ $("view").innerHTML = `${where}<div class="wait"><div class="big">Answer revealed</div>
-      <div class="hint">${st.mine ? `You said: <b>${esc(c.kind === "order" ? orderText(c, st.mine) : st.mine)}</b>. ` : "You didn't answer this one. "}Look at the TV to see if you got it.</div></div>`; return; }
+      <div class="hint">${st.mine ? `${team ? "Your team" : "You"} said: <b>${esc(shownAns(c, st.mine))}</b>. ` : `${team ? "Your team didn't" : "You didn't"} answer this one. `}Look at the TV.</div></div>`; return; }
+  /* 5.27 (Omar): once sent, the answer is hidden (so nobody nearby can read it) and can't be changed */
+  if(st.mine){ $("view").innerHTML = `${where}<div class="lock"><div class="tick">✓</div><div class="big">Locked in</div>
+      <div class="hint">${team ? "Your team's" : "Your"} answer is hidden until the reveal. Watch the TV.</div></div>`; return; }
+  if(c.kind === "steal" && st.team === c.x){ $("view").innerHTML = `${where}<div class="wait"><div class="big">It's your team's tile</div>
+      <div class="hint">Answer out loud. The other teams can steal from their phones.</div></div>`; return; }
+  const warn = `<p class="hint">You get one go: once you lock it in, it can't be changed.</p>`;
   if(c.kind === "order"){
-    order = st.mine ? st.mine.split(",").map(Number) : shuffle(c.ev.map((e,i) => i));
+    order = shuffle(c.ev.map((e,i) => i));
     $("view").innerHTML = `${where}<p class="q">${esc(c.q || "Put these in order, earliest first.")}</p><ol class="ord" id="ord"></ol>
-      <button class="go" id="go">${st.mine ? "Update my order" : "Lock in this order"}</button><div class="msg ok" id="msg" ${st.mine ? "" : "hidden"}>Locked in. You can change it until the answer is revealed.</div>`;
+      <button class="go" id="go">Lock in this order</button><div class="msg" id="msg" hidden></div>${warn}`;
     drawOrder(c);
     $("ord").onclick = e => { const b = e.target.closest("button[data-i]"); if(!b) return; const i = +b.dataset.i, j = i + +b.dataset.d;
       [order[i], order[j]] = [order[j], order[i]]; drawOrder(c); };
     $("go").onclick = () => send(c, order.join(","));
     return;
   }
-  const num = c.kind === "num";
-  $("view").innerHTML = `${where}<p class="q">${esc(c.q || "")}</p>
-    <form id="f" autocomplete="off"><label for="v">${num ? "Your number" : "Your answer"}</label>
-    <input id="v" ${num ? 'inputmode="decimal"' : 'autocapitalize="words"'} enterkeyhint="send" maxlength="120" value="${esc(st.mine || "")}">
+  const num = c.kind === "num", steal = c.kind === "steal";
+  $("view").innerHTML = `${where}${steal ? `<h1>Steal for half points</h1>` : ""}<p class="q">${esc(c.q || "")}</p>
+    <form id="f" autocomplete="off"><label for="v">${num ? (team ? "Your team's number" : "Your number") : steal ? "Your team's answer" : "Your answer"}</label>
+    <input id="v" ${num ? 'inputmode="decimal"' : 'autocapitalize="words"'} enterkeyhint="send" maxlength="120">
     ${num && c.u ? `<div class="unit">In ${esc(c.u)}</div>` : ""}
-    <button class="go" id="go">${st.mine ? "Change my answer" : "Lock in"}</button></form>
-    <div class="msg ok" id="msg" ${st.mine ? "" : "hidden"}>Locked in: ${esc(st.mine || "")}. You can change it until the answer is revealed.</div>`;
+    <button class="go" id="go">Lock in</button></form><div class="msg" id="msg" hidden></div>
+    ${steal ? `<p class="hint">Only if ${c.xn ? esc(c.xn) : "the playing team"} gets it wrong and you're right. One go per team: the first answer from your team counts.</p>` : team ? `<p class="hint">One go per team: the first number from your team counts. Closest wins.</p>` : warn}`;
   $("f").onsubmit = e => { e.preventDefault(); let v = $("v").value.trim(); if(!v) return;
     if(num){ const n = parseFloat(v.replace(/[, ]/g, "")); if(isNaN(n)){ say("Type a number.", "err"); return; } v = String(n); }
     $("v").blur(); send(c, v); };
 }
 function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; }
-function orderText(c, v){ return v.split(",").map(i => c.ev[+i]).filter(Boolean).join(" → "); }
+function orderText(c, v){ return String(v).split(",").map(i => c.ev[+i]).filter(Boolean).join(" → "); }
 function drawOrder(c){ $("ord").innerHTML = order.map((k,i) => `<li><span class="n">${i+1}</span><span class="t">${esc(c.ev[k])}</span>
   <span class="mv"><button type="button" data-i="${i}" data-d="-1" ${i ? "" : "disabled"} aria-label="Move up">▲</button><button type="button" data-i="${i}" data-d="1" ${i < order.length-1 ? "" : "disabled"} aria-label="Move down">▼</button></span></li>`).join(""); }
 function say(text, cls){ const m = $("msg"); if(!m) return; m.hidden = false; m.className = "msg " + (cls || ""); m.textContent = text; }
 async function send(c, v){
   const b = $("go"); if(b) b.disabled = true;
-  try{ const res = await post("answer", {r, c: c.c, t: me.p, v, k: "ffa"});
-    if(res.ok){ st.mine = v; say(`Locked in: ${c.kind === "order" ? orderText(c, v) : v}. You can change it until the answer is revealed.`, "ok"); if(b) b.textContent = c.kind === "order" ? "Update my order" : "Change my answer"; }
-    else if(res.j.error === "closed") say("Too late: the answer has already been revealed.", "err");
+  const team = teamMode(), body = team ? {r, c: c.c, t: me.t, v, k: c.kind === "steal" ? "steal" : "num"} : {r, c: c.c, t: me.p, v, k: "ffa"};
+  try{ const res = await post("answer", body);
+    if(res.ok || res.j.error === "locked"){ st.mine = res.ok ? v : (res.j.v || v); draw(); return; }
+    if(res.j.error === "closed") say("Too late: the answer has already been revealed.", "err");
+    else if(res.j.error === "playing") say("Your team is playing this tile, so it can't steal it.", "err");
     else say("That didn't go through. Try again.", "err"); }
   catch(e){ say("No connection. Check your internet and try again.", "err"); }
   if(b) b.disabled = false;
@@ -117,8 +143,8 @@ async function send(c, v){
 
 async function poll(){
   if(busy || document.hidden) return; busy = true;
-  try{ const j = await (await fetch(`api/state?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
-    if(j && j.name === null){ busy = false; stop(); joinView(); return; }  // the game doesn't know this player (new game): join again
+  try{ const j = await getState(me.p);
+    if(j && j.name === null){ busy = false; st = j; me = null; joinView(); return; }  // the game doesn't know this phone (a new game): join again
     if(j && "cur" in j){ st = j; draw(); } }
   catch(e){}
   busy = false;

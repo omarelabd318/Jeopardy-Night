@@ -286,6 +286,10 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
 .lplayers{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .lplayers li{background:var(--panel);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;animation:stealPop .5s cubic-bezier(.2,1.6,.4,1) both}
 .ansqr.ffa{display:block;text-align:center}
+.ansqr.linked{display:block;text-align:center} .ansqr.linked .stealers{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center;margin:6px auto 0;width:fit-content;max-width:100%}
+.chip:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through} .chip:disabled small{text-decoration:none;font-size:.75em;margin-left:4px}  /* 5.27: team-only categories in Free-for-all */
+.opt:disabled{opacity:.4;cursor:not-allowed}
+.lplayers li.none{opacity:.55}
 .ffain{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
 .ffain li{border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-weight:700;color:var(--muted)}
 .ffain li.in{border-color:var(--brass);color:var(--brass)}
@@ -421,7 +425,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.26</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.27</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -433,7 +437,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.26</div>
+      <div class="eyebrow verlabel">v5.27</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -452,8 +456,8 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div class="eyebrow">Game options</div>
       <div class="opts">
         <button class="opt" id="optPower" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Power-ups</b><small>Each team gets one ×2 (double points on a tile they pick) and one 2 answers (two guesses on an open clue).</small></span></button>
-        <button class="opt" id="optQrAns" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Answer QR codes</b><small>Closest Wins and Price Is Right show a code; each team scans it and sends its number from a phone. Works on the Cloudflare link.</small></span></button>
-        <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steal QR codes</b><small>Clues show a code the teams that aren't playing can scan to send a steal. A right steal is worth half the points (the ½ button).</small></span></button>
+        <button class="opt" id="optQrAns" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Answer QR codes</b><small>Each team's phones scan one code at the start (or later from Join code at the top). Closest Wins and Price Is Right then pop up on them to send the team's number. Works on the Cloudflare link.</small></span></button>
+        <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steal QR codes</b><small>Teams that aren't playing a tile get a steal box on their phones (they join once at the start, like Answer QR codes). A right steal is worth half the points (the ½ button).</small></span></button>
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
       </div>
     </div>
