@@ -124,12 +124,13 @@ $("#optQrAns").setAttribute("aria-pressed", S.qrAns); $("#optSteal").setAttribut
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 /* v4.40: version history, from src/changelog.json (newest first) */
 /* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
+/* 5.49 (Omar): only the current era (the first heading, 5.x) shows each version in full; every older era, 4.x included, is one compact line per version. Was: compact only when undated. */
 function newsHTML(list){
-  let html = "", compact = [];
+  let html = "", compact = [], eras = 0;
   const flush = () => { if(compact.length){ html += `<ul class="compact">${compact.join("")}</ul>`; compact = []; } };
   list.forEach(e => {
-    if(e.era){ flush(); html += `<h4 class="era">${esc(e.era)}</h4>`; return; }
-    if(!e.date){ compact.push(`<li><b>${esc(e.v)}</b>${e.items.map(esc).join(" ")}</li>`); return; }
+    if(e.era){ flush(); eras++; html += `<h4 class="era">${esc(e.era)}</h4>`; return; }
+    if(!e.date || eras > 1){ compact.push(`<li><b>${esc(e.v)}</b>${e.items.map(esc).join(" ")}</li>`); return; }
     flush(); html += `<h3>v${esc(e.v)}<small>${esc(e.date)}</small></h3><ul>${e.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
   });
   flush(); return html;
@@ -152,7 +153,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.48`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.49`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
