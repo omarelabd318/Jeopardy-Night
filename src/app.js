@@ -153,7 +153,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.50`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.51`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -163,7 +163,7 @@ const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & A
   ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
-  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order"]]  /* 5.22: Put It in Order after Headlines */
+  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
 ];
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
@@ -177,13 +177,23 @@ function renderChips(){
   }).join("");
   const cc = $("#catCount"); if(cc) cc.textContent = `· ${S.cats.length} of ${PICK.length} chosen`;
 }
+/* 5.51 (Omar): the 18+ category asks for a code before it can be picked, so only the people he tells can play it.
+   The code is kept as a hash, not as text. To change it, put codeHash("newcode") from the browser console here. */
+const codeHash = s => { let h = 7; for(const ch of String(s).trim().toLowerCase()) h = (h*31 + ch.charCodeAt(0)) >>> 0; return h; };
+const LOCKED = {x18: 8129869};
+const unlocked = new Set();
 $("#catChips").addEventListener("click", e => {
   const b = e.target.closest("[data-c]"); if(!b) return;
   const id = b.dataset.c;
+  if(LOCKED[id] && !S.cats.includes(id) && !unlocked.has(id)){
+    const v = prompt("This category is locked. Enter the code:");
+    if(v == null) return;
+    if(codeHash(v) !== LOCKED[id]){ alert("Wrong code."); return; }
+    unlocked.add(id); }
   S.cats = S.cats.includes(id) ? S.cats.filter(x => x !== id) : PICK.map(c=>c.id).filter(x => x === id || S.cats.includes(x));
   renderChips();
 });
-$("#pick6").onclick = () => { const ids = PICK.map(c=>c.id).sort(()=>Math.random()-.5).slice(0,6); S.cats = PICK.map(c=>c.id).filter(x=>ids.includes(x)); renderChips(); };
+$("#pick6").onclick = () => { const ids = PICK.map(c=>c.id).filter(x => !LOCKED[x]).sort(()=>Math.random()-.5).slice(0,6); S.cats = PICK.map(c=>c.id).filter(x=>ids.includes(x)); renderChips(); };
 $("#pickNone").onclick = () => { S.cats = []; renderChips(); };
 
 function renderTeamInputs(){
