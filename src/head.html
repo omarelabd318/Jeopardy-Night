@@ -89,7 +89,7 @@ body.football #winBox .ledstrip::after{content:"";position:absolute;inset:0;poin
 /* end 4.49 */
 /* 4.44 try (Omar): the collage shows through the board. Tiles and headers are 60% solid green, and the board's black grid is half see-through.
    To undo: delete these three lines (down to "end 4.44"). */
-.tile.done{background:rgba(0,215,0,.35)}  /* 4.45: .5; 4.44: .6 (headers and tiles together) */
+body.football .tile, body.football .tile.done{background:rgba(0,215,0,.35)}  /* 4.45: .5; 4.44: .6 (headers and tiles together) */
 body.football .head{background:var(--tile)}  /* 4.47: solid again, the collage starts below this row (4.46: rgba(0,215,0,.72)) */
 body.football .tile:not(.done):hover{background:rgba(90,234,90,.75)}
 body.football .board{background:rgba(0,0,0,.5)}
@@ -400,7 +400,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.24</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.25</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -412,7 +412,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.24</div>
+      <div class="eyebrow verlabel">v5.25</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

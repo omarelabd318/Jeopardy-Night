@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.24. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.25. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 103 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -449,3 +449,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Cairo Streets & Places:** 8 more photo clues (Egyptian Museum, 6th October Bridge, Coptic Museum, Ben Ezra Synagogue, Sultan Hassan, Bab al-Futuh, Gayer-Anderson Museum, Al-Rifa'i). The Bab al-Futuh street sign is blurred.
   - **How it's built:** `v4work/photo-cats.json` lists both categories; `src/extra.js` adds a clue only when its `photos/<key>.jpg` exists, and a category only when every value has one. A few photos (Qatar, Port Fouad, Al-Azhar Park, 6th October Bridge) were still downloading, so those clues join automatically once their jpg is added. Web copies are 1024 px in `photos/`, originals and licences in `v4work/category-photos/`.
   - To remove: delete `v4work/photo-cats.json` (or one category from it). For the Cairo extras, delete their lines from `v4work/category-photos.json`.
+- 5.25 (2026-10-05): fixes a 5.23 mistake that Omar spotted on Cloudflare. When adding the ×2 board, an edit to `src/head.html` broke the line `body.football .tile, body.football .tile.done{background:rgba(0,215,0,.35)}` (it lost its first half), so the Football mode tiles turned solid green and hid the slogan collage behind them. The line is restored. Also adds the last photos that finished downloading: Qatar (Museum of Islamic Art, Doha) in Guess the Country and the 6th October Bridge in Cairo Streets & Places. Port Fouad and Al-Azhar Park in Egypt: Photo Edition are still missing (Wikimedia kept refusing them); their clues appear on their own if `photos/egp-portfouad.jpg` and `photos/egp-azharpark.jpg` are added.
