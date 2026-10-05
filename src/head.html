@@ -129,6 +129,7 @@ h1 span{color:var(--cream)} h1 span.t1{color:inherit}  /* 4.64: .t1 is the first
 details{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--felt-2)}
 summary{cursor:pointer;font-weight:700}
 details.photopanel{background:transparent;border:0;padding:0;display:block}
+#photoPanel[hidden]{display:none}  /* 5.31: hidden Photo rounds section */
 details.photopanel>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
 details.photopanel>summary::-webkit-details-marker{display:none}
 details.photopanel>summary::before{content:"▸";font-size:14px;transition:transform .15s}
@@ -425,7 +426,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.30</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.31</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -437,7 +438,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.30</div>
+      <div class="eyebrow verlabel">v5.31</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -461,7 +462,8 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
       </div>
     </div>
-    <details class="panel photopanel" id="photoPanel">
+    <!-- 5.31 (Omar): the Photo rounds section is hidden; every photo is built in now. To bring it back, remove "hidden" here (and the #photoPanel[hidden] rule) -->
+    <details class="panel photopanel" id="photoPanel" hidden>
       <summary class="eyebrow">Photo rounds <span class="phcount" id="phCount"></span></summary>
       <div class="photobody">
       <p class="note">Every car, actor, footballer and person already has a photo built in. Open the checklist below to preview one, change where it zooms in, or replace it with your own. To replace several at once, name your files after the answer (for example <em>Lancia Stratos.jpg</em>) and load them with the photo pack. Photos you add stay saved in this browser, so they're still there next time you open the game.<span id="otherPhotos"></span></p>
