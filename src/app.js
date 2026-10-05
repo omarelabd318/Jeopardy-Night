@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.75`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.76`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -761,7 +761,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const hc = T(17.3, 0.4); poly([T(12.5, -1), T(12.5, 1.4), T(14.6, 1.2), T(14.6, -0.8)], skin);
     if(o.hijab){ disc(hc[0], hc[1], 4.3 * s, o.hijab); poly([T(16, -4), T(11.5, -3.6), T(11.5, 2.8), T(14.5, 3)], o.hijab);
       oval(hc[0] + 1.9 * s * d, hc[1] + 0.3 * s, 2.3 * s, 3 * s, skin); }
-    else { disc(hc[0], hc[1], 3.7 * s, skin); oval(hc[0] + 3.6 * s * d, hc[1] + 0.4 * s, 0.9 * s, 1.1 * s, skin);   // nose
+    else { if(o.long) poly([[hc[0] - 3.4 * s * d, hc[1] - 1.5 * s], [hc[0] + 0.5 * s * d, hc[1] - 2 * s], [hc[0] - 1 * s * d, hc[1] + 9 * s], [hc[0] - 4.6 * s * d, hc[1] + 8 * s]], o.long);   // 5.76: long hair down her back
+      disc(hc[0], hc[1], 3.7 * s, skin); oval(hc[0] + 3.6 * s * d, hc[1] + 0.4 * s, 0.9 * s, 1.1 * s, skin);   // nose
       if(o.hat === "emma"){ oval(hc[0], hc[1] - 2.4 * s, 4.6 * s, 2.7 * s, "#ecebe4"); seg([[hc[0] - 3.6 * s, hc[1] - 2.2 * s], [hc[0] + 3.6 * s, hc[1] - 3.4 * s]], "#cfccc0", 0.7 * s); }
       else if(o.hat === "taqiya"){ g.fillStyle = "#f1efe8"; g.beginPath(); g.arc(hc[0], hc[1] - 0.6 * s, 3.8 * s, Math.PI, 0); g.fill(); }
       else { g.fillStyle = o.hair || "#1d1712"; g.beginPath(); g.arc(hc[0] - 0.3 * s * d, hc[1] - 0.2 * s, 3.9 * s, d > 0 ? Math.PI * 0.75 : Math.PI * 1.05, d > 0 ? Math.PI * 1.95 : Math.PI * 0.25 + Math.PI * 2); g.fill(); }
@@ -906,7 +907,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     for(let i = 0; i < 2; i++){ const a = (u * 0.9 + i / 2) % 1; g.strokeStyle = `rgba(225,225,225,${0.35 * (1 - a)})`; g.lineWidth = 0.8;   // a thin wisp off the tip
       const bx = tip[0] + a * 4, by = tip[1] - a * 10; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 2 * Math.sin(u * 3 + i), by - 3, bx + 1, by - 5); g.stroke(); }
   }
-  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour. Every other round runs
+  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour, and (5.76) the woman walking her dog. Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
     /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
@@ -956,8 +957,33 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
         tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } },
     { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
+    /* 5.76 (Omar): a woman walking her dog while she talks on the phone. The dog stops to sniff about halfway (she waits, still talking). */
+    { w(){ const v = 40, sniffAt = (W * 0.45 + 40) / v; return {v, sniffAt, sniffLen: 2.2}; },
+      len(){ const w = this.w(); return (W + 130) / w.v + w.sniffLen; },
+      draw(u){ const {v, sniffAt, sniffLen} = this.w(), walkT = u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen, stopped = u >= sniffAt && u < sniffAt + sniffLen;
+        const x = -40 + v * walkT, ph = walkT * 8.5, dx = x + 30, talk = Math.sin(u * 1.7) > 0.3;   // she gestures with her free hand now and then
+        const W2 = person(x, gy, 1, {outfit: "robe", robe: "#3c5a7a", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab */
+           ...(stopped ? {} : {ph}),
+          arms: [[1.6, -2.4], talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : stopped ? [0.45, 1.0] : [Math.sin(ph) * 0.35 + 0.35, Math.sin(ph) * 0.35 + 0.9]]});
+        const ph2 = W2.hands[0]; rect(ph2[0] - 0.4, ph2[1] - 3.4, 2, 4.4, "#1b1b1f");                                       // the phone at her ear
+        const lead = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
+        g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(lead[0], lead[1]); g.quadraticCurveTo((lead[0] + collar[0]) / 2, Math.max(lead[1], collar[1]) + (stopped ? 1 : 6), collar[0], collar[1]); g.stroke();   // the lead, slack while they walk
+        drawDog(dx, 1, stopped ? 0 : walkT * 13, stopped, u); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
+  /* 5.76: a small sandy dog: trots on its lead, wags, and puts its nose to the ground to sniff. */
+  function drawDog(x, d, ph, sniff, t){
+    const fur = "#d9b27c", dark = "#a8814f", by = gy - 7;
+    const leg = (o, a, col) => seg([[x + o * d, by + 1], [x + o * d + Math.sin(a) * 5 * d, gy]], col, 1.8);
+    leg(-5, Math.sin(ph + Math.PI) * 0.45, dark); leg(4, Math.sin(ph) * 0.45, dark);
+    g.strokeStyle = fur; g.lineWidth = 1.8; g.beginPath(); g.moveTo(x - 7 * d, by - 1); g.lineTo(x - 11 * d, by - 6 + 1.5 * Math.sin(t * 14)); g.stroke();   // wagging tail
+    oval(x, by, 7.5, 3.6, fur);
+    leg(-6, Math.sin(ph) * 0.45, fur); leg(5, Math.sin(ph + Math.PI) * 0.45, fur);
+    const hx = x + 8.5 * d, hy = sniff ? gy - 3.5 + 0.6 * Math.sin(t * 12) : by - 4;                          // head, down to the ground when sniffing
+    seg([[x + 5 * d, by - 1], [hx, hy]], fur, 3); oval(hx + 1 * d, hy, 3.4, 2.6, fur); oval(hx + 3.6 * d, hy + 0.6, 1.8, 1.4, fur);
+    disc(hx + 5.2 * d, hy + 0.4, 0.7, "#2b2b1a"); oval(hx - 0.8 * d, hy - 0.4, 1.3, 2.6, dark, 0.4 * d);              // nose, floppy ear
+    seg([[x + 6.5 * d, by - 2.5], [x + 7.8 * d, by + 0.5]], "#c2352c", 1.2);                                                 // collar
+  }
   /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
   function drawCat(x, d, ph, run){
     const fur = "#c9803a", dark = "#9a5a22", bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
