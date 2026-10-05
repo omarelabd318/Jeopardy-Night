@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.61`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.62`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -787,8 +787,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     person(X(-10), gy - 9, d, {sit: true, s: 0.6, hijab: "#7a3b5e", shirt: "#7a3b5e", skin: "#9a6744", arms: [[0.5, 1.0], [0.3, 0.8]]});   // passengers
     person(X(-3), gy - 9, d, {sit: true, s: 0.6, shirt: "#c9b48a", pants: "#2b3446", skin: "#8f5d3c", mo: true, lean: 0.12 * lean, arms: lean > 0.05 ? [[0.4, 0.8], [2.4 + 0.3 * Math.sin(pnow() * 9), 2.9]] : [[0.6, 1.1], [0.4, 0.9]]});   // waves
     poly(P([[6, -13], [9, -6], [19, -6], [20.5, -11], [18.5, -16.5], [13, -17.5], [9, -17.5]]), navy);                // dark lower front
-    poly(P([[9, -17.5], [13, -17.5], [18.5, -16.5], [17.5, -27.5], [14.5, -29.5], [9, -29.5]]), yel);                  // yellow front
-    poly(P([[10.6, -28], [14.6, -27.8], [16.6, -18.6], [11.4, -19]]), "rgba(175,210,230,.75)");                        // windscreen
+    /* 5.62 (Omar): like his photo, the windscreen is one big pane and only its frame and the cap above it are yellow
+       (5.58-5.61: a solid yellow front with a small windscreen in it). */
+    const ws = P([[9.2, -28.6], [14.9, -28.6], [18.4, -16.9], [9.2, -16.9]]);
+    poly(ws, "rgba(175,210,230,.6)", yel, 1.5);                                                                          // windscreen, yellow frame
+    poly(P([[9, -30], [15.4, -30], [15.9, -28.4], [9, -28.4]]), yel);                                                  // yellow cap above it
     seg(P([[-21, -16], [8, -16]]), "rgba(255,255,255,.12)", 0.6);
     g.strokeStyle = "#141a2e"; g.lineWidth = 1.6; g.beginPath(); g.arc(X(16), gy - 4, 5.6, Math.PI * 1.05, Math.PI * 1.95); g.stroke();   // mudguard
     disc(X(19.3), gy - 11.5, 1.7, "#fff6c8"); glow(X(24), gy - 11.5, 10, "rgba(255,240,180,.35)");                    // headlamp
