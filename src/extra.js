@@ -27,6 +27,16 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
     CATS.splice(CATS.findIndex(c=>c.id==="xfer")+1,0,{id:"stad",name:o.name,type:"text",desc:o.desc}); DATA.stad=o.data;
     const sp=W+'/stadium-photos.json'; if(fs.existsSync(sp)) JSON.parse(fs.readFileSync(sp,'utf8')).forEach(e=>{
       if(fs.existsSync(`photos/${e.key}.jpg`)) DATA.stad[e.value].push(["Name this stadium.",e.name,`photos/${e.key}.jpg`]); }); } }
+  // 5.20 (Omar): photo clues inside normal categories (Egypt History, Cairo Streets & Places), listed in v4work/category-photos.json
+  // as {cat, value, key, q, a}; each joins its category only when photos/<key>.jpg exists.
+  { const cp=W+'/category-photos.json'; if(fs.existsSync(cp)) JSON.parse(fs.readFileSync(cp,'utf8')).forEach(e=>{
+      if(DATA[e.cat] && DATA[e.cat][e.value] && fs.existsSync(`photos/${e.key}.jpg`)) DATA[e.cat][e.value].push([e.q,e.a,`photos/${e.key}.jpg`]); }); }
+  // 5.23 (Omar): whole photo categories (Guess the Country, Egypt: Photo Edition), listed in v4work/photo-cats.json as
+  // [{id, name, desc, after, q, items:[{key, value, a, q?}]}]; a clue is included only when photos/<key>.jpg exists, and the
+  // category only when every value has at least one. Plain photos (no zoom or blur), so steal codes work on them.
+  { const pc=W+'/photo-cats.json'; if(fs.existsSync(pc)) JSON.parse(fs.readFileSync(pc,'utf8')).forEach(c=>{ const d={100:[],200:[],300:[],400:[],500:[]};
+      c.items.forEach(e=>{ if(fs.existsSync(`photos/${e.key}.jpg`)) d[e.value].push([e.q||c.q,e.a,`photos/${e.key}.jpg`]); });
+      if(Object.values(d).every(a=>a.length)){ const at=CATS.findIndex(x=>x.id===c.after); CATS.splice(at<0?CATS.length:at+1,0,{id:c.id,name:c.name,type:"text",desc:c.desc}); DATA[c.id]=d; } }); }
   { const fp=W+'/food-photos.json'; if(fs.existsSync(fp)){ const d={100:[],200:[],300:[],400:[],500:[]};
     JSON.parse(fs.readFileSync(fp,'utf8')).forEach(e=>{ if(fs.existsSync(`photos/${e.key}.jpg`)) d[e.value].push(["Name this food.",e.name,`pack:food-${e.value}:${e.key}`]); });
     if(!Object.values(d).every(a=>a.length)){ const all=[100,200,300,400,500].flatMap(v=>d[v]); if(all.length>=10){  // photos still arriving: spread what exists across the five values in difficulty order
@@ -46,7 +56,8 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
    /* 4.83 */ ['ctry','pin'],['ctryar','emseg'],
    /* 4.91 */ ['price','near'],
    /* 4.92 */ ['curr','mb'],
-   /* 5.8 */ ['netflix','office']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
+   /* 5.8 */ ['netflix','office'],
+   /* 5.22 */ ['order','headl']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
     const o=JSON.parse(fs.readFileSync(f,'utf8')), at=CATS.findIndex(c=>c.id===after);
     CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:o.type||"text",desc:o.desc}); DATA[id]=o.data; });
   // v4.39: Guess the Logo, blurred logos bundled in photos/logo-<value>.js (built by mkpacks.js logo); 4th element = starting blur (share of image width)

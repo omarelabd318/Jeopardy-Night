@@ -1,0 +1,1120 @@
+[
+ {
+  "id": "egyph",
+  "name": "Egypt: Photo Edition",
+  "after": "egy",
+  "q": "Where in Egypt is this?",
+  "desc": "Photos from all over Egypt: temples, cities, oases, beaches, Cairo streets and more. Each one asks something different.",
+  "items": [
+   {
+    "key": "egp-giza",
+    "value": 100,
+    "q": "Where in Egypt is this?",
+    "a": "Giza (the Pyramids)"
+   },
+   {
+    "key": "egp-sphinx",
+    "value": 100,
+    "q": "What is this statue, and whose face is it thought to have?",
+    "a": "The Great Sphinx (thought to be Khafre)"
+   },
+   {
+    "key": "egp-qaitbay",
+    "value": 100,
+    "q": "Which city is this citadel in?",
+    "a": "Alexandria (Qaitbay Citadel)"
+   },
+   {
+    "key": "egp-biblio",
+    "value": 100,
+    "q": "This library was built to revive which ancient library?",
+    "a": "The Library of Alexandria (Bibliotheca Alexandrina)"
+   },
+   {
+    "key": "egp-karnak",
+    "value": 100,
+    "q": "Which city is this temple complex in?",
+    "a": "Luxor (Karnak Temple)"
+   },
+   {
+    "key": "egp-luxortemple",
+    "value": 100,
+    "q": "Name this temple, in the middle of a city of the same name.",
+    "a": "Luxor Temple"
+   },
+   {
+    "key": "egp-kings",
+    "value": 100,
+    "q": "Whose tomb was found here in 1922, almost untouched?",
+    "a": "Tutankhamun's (Valley of the Kings, Luxor)"
+   },
+   {
+    "key": "egp-philae",
+    "value": 100,
+    "q": "Which city is this island temple near?",
+    "a": "Aswan (Philae Temple)"
+   },
+   {
+    "key": "cairo-tower",
+    "value": 100,
+    "q": "Which city's skyline is this tower famous for?",
+    "a": "Cairo (Cairo Tower, Zamalek)"
+   },
+   {
+    "key": "egp-montaza",
+    "value": 100,
+    "q": "Name this royal palace in Alexandria.",
+    "a": "Montaza Palace"
+   },
+   {
+    "key": "egp-naama",
+    "value": 100,
+    "q": "Which resort town is this bay in?",
+    "a": "Sharm El Sheikh (Naama Bay)"
+   },
+   {
+    "key": "egp-hurghada",
+    "value": 100,
+    "q": "Which Red Sea city is this?",
+    "a": "Hurghada"
+   },
+   {
+    "key": "egp-bluehole",
+    "value": 100,
+    "q": "This famous dive site is near which town?",
+    "a": "Dahab (the Blue Hole)"
+   },
+   {
+    "key": "egp-sinai",
+    "value": 100,
+    "q": "Which mountain is this, where tradition says Moses received the Ten Commandments?",
+    "a": "Mount Sinai (Gabal Musa)"
+   },
+   {
+    "key": "egp-stcatherine",
+    "value": 100,
+    "q": "Name this monastery at the foot of Mount Sinai.",
+    "a": "Saint Catherine's Monastery"
+   },
+   {
+    "key": "food-koshari",
+    "value": 100,
+    "q": "Which Egyptian street-food favourite of rice, lentils, pasta and spicy tomato sauce is this?",
+    "a": "Koshari"
+   },
+   {
+    "key": "egp-whitedesert",
+    "value": 100,
+    "q": "What is this chalk desert near Farafra called?",
+    "a": "The White Desert (El Sahara El Beida)"
+   },
+   {
+    "key": "egp-memnon",
+    "value": 100,
+    "q": "What are these two giant statues on Luxor's West Bank called?",
+    "a": "The Colossi of Memnon"
+   },
+   {
+    "key": "egp-djoser",
+    "value": 100,
+    "q": "Which pharaoh's step pyramid is this?",
+    "a": "Djoser's (Saqqara)"
+   },
+   {
+    "key": "egp-suezcanal",
+    "value": 100,
+    "q": "Which waterway is this?",
+    "a": "The Suez Canal"
+   },
+   {
+    "key": "egp-gouna",
+    "value": 200,
+    "q": "Which Red Sea town, built by Samih Sawiris, is this?",
+    "a": "El Gouna"
+   },
+   {
+    "key": "cairo-khan",
+    "value": 200,
+    "q": "What is this old Cairo bazaar called?",
+    "a": "Khan el-Khalili"
+   },
+   {
+    "key": "egp-hatshepsut",
+    "value": 200,
+    "q": "Which female pharaoh's temple is this?",
+    "a": "Hatshepsut's (Deir el-Bahari, Luxor)"
+   },
+   {
+    "key": "egp-komombo",
+    "value": 200,
+    "q": "This temple is shared by Sobek and Horus. Where is it?",
+    "a": "Kom Ombo"
+   },
+   {
+    "key": "egp-edfu",
+    "value": 200,
+    "q": "Which god's temple is this, the best preserved in Egypt?",
+    "a": "Horus (Edfu Temple)"
+   },
+   {
+    "key": "egp-obelisk",
+    "value": 200,
+    "q": "Why was this obelisk in Aswan never finished?",
+    "a": "It cracked while being carved (the Unfinished Obelisk)"
+   },
+   {
+    "key": "egp-elephantine",
+    "value": 200,
+    "q": "Which island in the Nile at Aswan is this?",
+    "a": "Elephantine Island"
+   },
+   {
+    "key": "egp-rayan",
+    "value": 200,
+    "q": "Egypt's only waterfalls are here. Where?",
+    "a": "Wadi El Rayan, Fayoum"
+   },
+   {
+    "key": "egp-hitan",
+    "value": 200,
+    "q": "What kind of fossil skeletons made this valley famous?",
+    "a": "Whales (Wadi Al-Hitan, Fayoum)"
+   },
+   {
+    "key": "egp-bent",
+    "value": 200,
+    "q": "Why is this pyramid at Dahshur called the Bent Pyramid?",
+    "a": "Its slope changes angle halfway up"
+   },
+   {
+    "key": "egp-redpyr",
+    "value": 200,
+    "q": "Which pyramid at Dahshur is this, named after the colour of its stone?",
+    "a": "The Red Pyramid"
+   },
+   {
+    "key": "cairo-azhar",
+    "value": 200,
+    "q": "This mosque is home to one of the world's oldest universities. Name it.",
+    "a": "Al-Azhar"
+   },
+   {
+    "key": "egp-pompey",
+    "value": 200,
+    "q": "What is this Roman column in Alexandria called?",
+    "a": "Pompey's Pillar"
+   },
+   {
+    "key": "egp-shoqafa",
+    "value": 200,
+    "q": "Name these underground tombs in Alexandria.",
+    "a": "The Catacombs of Kom El Shoqafa"
+   },
+   {
+    "key": "cairo-muhammadali",
+    "value": 200,
+    "q": "This mosque stands inside which fortress?",
+    "a": "The Citadel of Saladin (Mosque of Muhammad Ali)"
+   },
+   {
+    "key": "egp-rasmohammed",
+    "value": 200,
+    "q": "Which national park at the tip of Sinai is this?",
+    "a": "Ras Mohammed"
+   },
+   {
+    "key": "egp-marsaalam",
+    "value": 200,
+    "q": "Which southern Red Sea town is this?",
+    "a": "Marsa Alam"
+   },
+   {
+    "key": "egp-ismailia",
+    "value": 200,
+    "q": "Which canal city is this?",
+    "a": "Ismailia"
+   },
+   {
+    "key": "cairo-qasrelnil",
+    "value": 200,
+    "q": "Which famous square is at one end of this lion-guarded bridge?",
+    "a": "Tahrir Square (Qasr El Nil Bridge)"
+   },
+   {
+    "key": "egp-mursi",
+    "value": 200,
+    "q": "Name this Alexandria mosque.",
+    "a": "El Mursi Abul Abbas Mosque"
+   },
+   {
+    "key": "cairo-baron",
+    "value": 300,
+    "q": "Which Belgian baron built this palace in Heliopolis?",
+    "a": "Baron Empain (Baron Empain Palace)"
+   },
+   {
+    "key": "egp-rosetta",
+    "value": 300,
+    "q": "Which town's old houses are these, where a famous stone was found in 1799?",
+    "a": "Rashid (Rosetta)"
+   },
+   {
+    "key": "egp-dendera",
+    "value": 300,
+    "q": "Which goddess's temple is this, near Qena?",
+    "a": "Hathor (Dendera Temple)"
+   },
+   {
+    "key": "egp-abydos",
+    "value": 300,
+    "q": "Which pharaoh's temple at Abydos, with a famous list of kings, is this?",
+    "a": "Seti I's"
+   },
+   {
+    "key": "egp-amarna",
+    "value": 300,
+    "q": "Which pharaoh built a new capital here?",
+    "a": "Akhenaten (Tell el-Amarna)"
+   },
+   {
+    "key": "egp-benihasan",
+    "value": 300,
+    "q": "Where in Minya are these rock-cut tombs?",
+    "a": "Beni Hasan"
+   },
+   {
+    "key": "egp-rastin",
+    "value": 300,
+    "q": "Where did King Farouk sign his abdication in 1952?",
+    "a": "Ras El Tin Palace, Alexandria"
+   },
+   {
+    "key": "egp-nuweiba",
+    "value": 300,
+    "q": "Which Gulf of Aqaba town is this?",
+    "a": "Nuweiba"
+   },
+   {
+    "key": "egp-taba",
+    "value": 300,
+    "q": "Which border town on the Gulf of Aqaba is this?",
+    "a": "Taba"
+   },
+   {
+    "key": "egp-blackdesert",
+    "value": 300,
+    "q": "Which desert near Bahariya is this?",
+    "a": "The Black Desert"
+   },
+   {
+    "key": "egp-dakhla",
+    "value": 300,
+    "q": "Which Western Desert oasis is this?",
+    "a": "Dakhla Oasis"
+   },
+   {
+    "key": "egp-bagawat",
+    "value": 300,
+    "q": "This early Christian cemetery is in which oasis?",
+    "a": "Kharga (El Bagawat)"
+   },
+   {
+    "key": "egp-qarun",
+    "value": 300,
+    "q": "Which lake in Fayoum is this?",
+    "a": "Lake Qarun"
+   },
+   {
+    "key": "egp-medinethabu",
+    "value": 300,
+    "q": "Which pharaoh's temple at Medinet Habu is this?",
+    "a": "Ramesses III's"
+   },
+   {
+    "key": "egp-habu2",
+    "value": 300,
+    "q": "Which pharaoh's memorial temple, the Ramesseum, is this?",
+    "a": "Ramesses II's"
+   },
+   {
+    "key": "egp-mitrahina",
+    "value": 300,
+    "q": "This giant fallen statue at Mit Rahina is of which pharaoh?",
+    "a": "Ramesses II (Memphis)"
+   },
+   {
+    "key": "egp-portfouad",
+    "value": 300,
+    "q": "Which town, across the canal from Port Said, is this?",
+    "a": "Port Fouad"
+   },
+   {
+    "key": "egp-damietta",
+    "value": 300,
+    "q": "Which Delta city, famous for furniture, is this?",
+    "a": "Damietta"
+   },
+   {
+    "key": "egp-raselbar",
+    "value": 300,
+    "q": "Which summer resort, where the Nile meets the sea, is this?",
+    "a": "Ras El Bar"
+   },
+   {
+    "key": "egp-kalabsha",
+    "value": 300,
+    "q": "This temple was moved near Aswan to escape which lake?",
+    "a": "Lake Nasser (Kalabsha Temple)"
+   },
+   {
+    "key": "egp-talaatharb",
+    "value": 400,
+    "q": "Which Downtown Cairo street is this?",
+    "a": "Talaat Harb Street"
+   },
+   {
+    "key": "egp-ramses",
+    "value": 400,
+    "q": "Which Cairo square is this, with the main train station?",
+    "a": "Ramses Square"
+   },
+   {
+    "key": "cairo-hanging",
+    "value": 400,
+    "q": "This church sits on top of an old Roman gate. What is it called?",
+    "a": "The Hanging Church (Old Cairo)"
+   },
+   {
+    "key": "egp-rifai",
+    "value": 400,
+    "q": "This mosque holds the tombs of King Farouk and the Shah of Iran. Name it.",
+    "a": "Al-Rifa'i Mosque"
+   },
+   {
+    "key": "egp-hussein",
+    "value": 400,
+    "q": "Name this mosque by Khan el-Khalili.",
+    "a": "Al-Hussein Mosque"
+   },
+   {
+    "key": "egp-cityofdead",
+    "value": 400,
+    "q": "What is this huge Cairo cemetery, where people also live, called?",
+    "a": "The City of the Dead (El Arafa)"
+   },
+   {
+    "key": "cairo-babzuweila",
+    "value": 400,
+    "q": "Sultan Qutuz hung the heads of which invaders' envoys from this gate?",
+    "a": "The Mongols (Bab Zuweila)"
+   },
+   {
+    "key": "egp-amribnalas",
+    "value": 400,
+    "q": "Which is this, the first mosque built in Egypt?",
+    "a": "The Mosque of Amr ibn al-As"
+   },
+   {
+    "key": "egp-nilometer",
+    "value": 400,
+    "q": "What was this, on Roda Island, used for?",
+    "a": "Measuring the Nile flood (the Nilometer)"
+   },
+   {
+    "key": "egp-manial",
+    "value": 400,
+    "q": "Which prince's palace on Roda Island is this?",
+    "a": "Prince Mohamed Ali's (Manial Palace)"
+   },
+   {
+    "key": "egp-abdeen",
+    "value": 400,
+    "q": "Which presidential palace in Cairo is this?",
+    "a": "Abdeen Palace"
+   },
+   {
+    "key": "cairo-suhaymi",
+    "value": 400,
+    "q": "This old house is on which famous street in historic Cairo?",
+    "a": "Al-Muizz Street (Bayt al-Suhaymi)"
+   },
+   {
+    "key": "cairo-egmuseum",
+    "value": 400,
+    "q": "Which famous square is this museum on?",
+    "a": "Tahrir Square (the Egyptian Museum)"
+   },
+   {
+    "key": "egp-sakakini",
+    "value": 400,
+    "q": "Name this palace in Daher.",
+    "a": "Sakakini Palace"
+   },
+   {
+    "key": "egp-zamalek",
+    "value": 400,
+    "q": "Which Cairo island district is this?",
+    "a": "Zamalek"
+   },
+   {
+    "key": "egp-sultanhassan",
+    "value": 400,
+    "q": "Name this Mamluk mosque below the Citadel.",
+    "a": "Sultan Hassan Mosque"
+   },
+   {
+    "key": "egp-opera",
+    "value": 400,
+    "q": "Which building is this, on Gezira Island?",
+    "a": "The Cairo Opera House"
+   },
+   {
+    "key": "egp-downtown",
+    "value": 400,
+    "q": "Which part of Cairo is this?",
+    "a": "Downtown (Wust El Balad)"
+   },
+   {
+    "key": "egp-tahrirnow",
+    "value": 400,
+    "q": "Which Cairo square is this?",
+    "a": "Tahrir Square"
+   },
+   {
+    "key": "egp-azharpark",
+    "value": 400,
+    "q": "Which Cairo park, built on an old rubbish dump, is this?",
+    "a": "Al-Azhar Park"
+   },
+   {
+    "key": "egp-iconic",
+    "value": 500,
+    "q": "What is this, the tallest building in Africa?",
+    "a": "The Iconic Tower (New Administrative Capital)"
+   },
+   {
+    "key": "egp-fattah",
+    "value": 500,
+    "q": "This is one of Egypt's biggest mosques. Which new city is it in?",
+    "a": "The New Administrative Capital (Al-Fattah Al-Aleem Mosque)"
+   },
+   {
+    "key": "egp-tanis",
+    "value": 500,
+    "q": "Which ancient Delta capital is this, made famous by Indiana Jones?",
+    "a": "Tanis (San El Hagar)"
+   },
+   {
+    "key": "egp-bubastis",
+    "value": 500,
+    "q": "Which cat goddess was worshipped here, at Bubastis?",
+    "a": "Bastet"
+   },
+   {
+    "key": "egp-bishoy",
+    "value": 500,
+    "q": "Which desert valley's monasteries is this one of?",
+    "a": "Wadi El Natrun (St Bishoy)"
+   },
+   {
+    "key": "egp-stanthony",
+    "value": 500,
+    "q": "Which saint's monastery, one of the oldest in the world, is this?",
+    "a": "Saint Anthony's"
+   },
+   {
+    "key": "egp-swimmers",
+    "value": 500,
+    "q": "Which film made this rock-art cave in the Gilf Kebir famous?",
+    "a": "The English Patient (the Cave of Swimmers)"
+   },
+   {
+    "key": "eg-tahrir2011",
+    "value": 500,
+    "q": "On what date did the protests that filled this square begin?",
+    "a": "25 January 2011 (Tahrir Square)"
+   },
+   {
+    "key": "stadium-borgelarabstadium",
+    "value": 500,
+    "q": "Egypt's biggest stadium is near which city?",
+    "a": "Alexandria (Borg El Arab Stadium)"
+   },
+   {
+    "key": "egp-qasrqarun",
+    "value": 500,
+    "q": "Name this temple near Lake Qarun.",
+    "a": "Qasr Qarun"
+   },
+   {
+    "key": "egp-meidum",
+    "value": 500,
+    "q": "Which collapsed pyramid near Beni Suef is this?",
+    "a": "The Meidum Pyramid"
+   },
+   {
+    "key": "egp-hibis",
+    "value": 500,
+    "q": "This temple in Kharga Oasis is named after the ancient town of…?",
+    "a": "Hibis"
+   },
+   {
+    "key": "eg-gem",
+    "value": 500,
+    "q": "Which museum is this, the largest in the world devoted to a single civilisation?",
+    "a": "The Grand Egyptian Museum"
+   },
+   {
+    "key": "cairo-gayer",
+    "value": 500,
+    "q": "This house museum is named after a British army major. Who?",
+    "a": "Gayer-Anderson (the Gayer-Anderson Museum)"
+   },
+   {
+    "key": "eg-crossing1973",
+    "value": 500,
+    "q": "Egypt celebrates this crossing every year on which date?",
+    "a": "6 October (the 1973 Suez Canal crossing)"
+   },
+   {
+    "key": "egp-gebelsilsila",
+    "value": 500,
+    "q": "Which ancient sandstone quarry on the Nile is this?",
+    "a": "Gebel el-Silsila"
+   },
+   {
+    "key": "egp-esna",
+    "value": 500,
+    "q": "Which ram-headed god's temple at Esna is this?",
+    "a": "Khnum"
+   },
+   {
+    "key": "stadium-cairointernationalstadium",
+    "value": 500,
+    "q": "Which Cairo district is this stadium in?",
+    "a": "Nasr City (Cairo International Stadium)"
+   },
+   {
+    "key": "cairo-ibntulun",
+    "value": 500,
+    "q": "This is Cairo's oldest mosque still in its original form. Who is it named after?",
+    "a": "Ahmad ibn Tulun (Mosque of Ibn Tulun)"
+   },
+   {
+    "key": "eg-abusimbelmove",
+    "value": 500,
+    "q": "In the 1960s this whole temple was cut into blocks and moved uphill. What was it being saved from?",
+    "a": "The rising waters of Lake Nasser, from the Aswan High Dam (Abu Simbel)"
+   }
+  ]
+ },
+ {
+  "id": "gctry",
+  "name": "Guess the Country",
+  "after": "logo",
+  "q": "Which country is this?",
+  "desc": "A photo from somewhere in the world. Name the country. Famous landmarks at 100, much harder places by 500.",
+  "items": [
+   {
+    "key": "country-france",
+    "value": 100,
+    "a": "France (Eiffel Tower)"
+   },
+   {
+    "key": "country-usa",
+    "value": 100,
+    "a": "USA (Statue of Liberty)"
+   },
+   {
+    "key": "country-italy",
+    "value": 100,
+    "a": "Italy (the Colosseum)"
+   },
+   {
+    "key": "country-uk",
+    "value": 100,
+    "a": "UK (Big Ben)"
+   },
+   {
+    "key": "country-india",
+    "value": 100,
+    "a": "India (Taj Mahal)"
+   },
+   {
+    "key": "country-china",
+    "value": 100,
+    "a": "China (the Great Wall)"
+   },
+   {
+    "key": "country-australia",
+    "value": 100,
+    "a": "Australia (Sydney Opera House)"
+   },
+   {
+    "key": "country-brazil",
+    "value": 100,
+    "a": "Brazil (Christ the Redeemer)"
+   },
+   {
+    "key": "country-uae",
+    "value": 100,
+    "a": "UAE (Burj Khalifa)"
+   },
+   {
+    "key": "country-jordan",
+    "value": 100,
+    "a": "Jordan (Petra)"
+   },
+   {
+    "key": "country-japan",
+    "value": 100,
+    "a": "Japan (Mount Fuji)"
+   },
+   {
+    "key": "country-spain",
+    "value": 100,
+    "a": "Spain (Sagrada Família)"
+   },
+   {
+    "key": "country-russia",
+    "value": 100,
+    "a": "Russia (St Basil's Cathedral)"
+   },
+   {
+    "key": "country-germany",
+    "value": 100,
+    "a": "Germany (Brandenburg Gate)"
+   },
+   {
+    "key": "country-greece",
+    "value": 100,
+    "a": "Greece (the Acropolis)"
+   },
+   {
+    "key": "country-turkey",
+    "value": 100,
+    "a": "Turkey (Hagia Sophia)"
+   },
+   {
+    "key": "country-canada",
+    "value": 100,
+    "a": "Canada (CN Tower)"
+   },
+   {
+    "key": "country-mexico",
+    "value": 100,
+    "a": "Mexico (Chichén Itzá)"
+   },
+   {
+    "key": "country-peru",
+    "value": 100,
+    "a": "Peru (Machu Picchu)"
+   },
+   {
+    "key": "country-southafrica",
+    "value": 100,
+    "a": "South Africa (Table Mountain)"
+   },
+   {
+    "key": "country-cambodia",
+    "value": 200,
+    "a": "Cambodia (Angkor Wat)"
+   },
+   {
+    "key": "country-germany2",
+    "value": 200,
+    "a": "Germany (Neuschwanstein Castle)"
+   },
+   {
+    "key": "country-japan2",
+    "value": 200,
+    "a": "Japan (Kinkaku-ji, the Golden Pavilion)"
+   },
+   {
+    "key": "country-singapore",
+    "value": 200,
+    "a": "Singapore (Marina Bay Sands)"
+   },
+   {
+    "key": "country-belgium",
+    "value": 200,
+    "a": "Belgium (the Atomium)"
+   },
+   {
+    "key": "country-denmark",
+    "value": 200,
+    "a": "Denmark (Nyhavn, Copenhagen)"
+   },
+   {
+    "key": "country-netherlands",
+    "value": 200,
+    "a": "Netherlands (Kinderdijk windmills)"
+   },
+   {
+    "key": "country-chile",
+    "value": 200,
+    "a": "Chile (Easter Island's moai)"
+   },
+   {
+    "key": "country-malaysia",
+    "value": 200,
+    "a": "Malaysia (Petronas Towers)"
+   },
+   {
+    "key": "country-czechia",
+    "value": 200,
+    "a": "Czech Republic (Charles Bridge, Prague)"
+   },
+   {
+    "key": "country-switzerland",
+    "value": 200,
+    "a": "Switzerland (the Matterhorn)"
+   },
+   {
+    "key": "country-iceland",
+    "value": 200,
+    "a": "Iceland (Hallgrímskirkja, Reykjavík)"
+   },
+   {
+    "key": "country-indonesia",
+    "value": 200,
+    "a": "Indonesia (Borobudur)"
+   },
+   {
+    "key": "country-vietnam",
+    "value": 200,
+    "a": "Vietnam (Ha Long Bay)"
+   },
+   {
+    "key": "country-thailand",
+    "value": 200,
+    "a": "Thailand (the Grand Palace, Bangkok)"
+   },
+   {
+    "key": "country-morocco",
+    "value": 200,
+    "a": "Morocco (Hassan II Mosque)"
+   },
+   {
+    "key": "country-newzealand",
+    "value": 200,
+    "a": "New Zealand (Milford Sound)"
+   },
+   {
+    "key": "country-portugal",
+    "value": 200,
+    "a": "Portugal (Belém Tower)"
+   },
+   {
+    "key": "country-ireland",
+    "value": 200,
+    "a": "Ireland (Cliffs of Moher)"
+   },
+   {
+    "key": "country-uk2",
+    "value": 200,
+    "a": "UK (Tower Bridge)"
+   },
+   {
+    "key": "country-myanmar",
+    "value": 300,
+    "a": "Myanmar (Bagan)"
+   },
+   {
+    "key": "country-croatia",
+    "value": 300,
+    "a": "Croatia (Plitvice Lakes)"
+   },
+   {
+    "key": "country-austria",
+    "value": 300,
+    "a": "Austria (Hallstatt)"
+   },
+   {
+    "key": "country-iran",
+    "value": 300,
+    "a": "Iran (Naqsh-e Jahan Square, Isfahan)"
+   },
+   {
+    "key": "country-uzbekistan",
+    "value": 300,
+    "a": "Uzbekistan (the Registan, Samarkand)"
+   },
+   {
+    "key": "country-bhutan",
+    "value": 300,
+    "a": "Bhutan (Tiger's Nest)"
+   },
+   {
+    "key": "country-srilanka",
+    "value": 300,
+    "a": "Sri Lanka (Sigiriya)"
+   },
+   {
+    "key": "country-ethiopia",
+    "value": 300,
+    "a": "Ethiopia (Lalibela rock church)"
+   },
+   {
+    "key": "country-bolivia",
+    "value": 300,
+    "a": "Bolivia (Salar de Uyuni)"
+   },
+   {
+    "key": "country-argentina",
+    "value": 300,
+    "a": "Argentina (Perito Moreno Glacier)"
+   },
+   {
+    "key": "country-romania",
+    "value": 300,
+    "a": "Romania (Bran Castle)"
+   },
+   {
+    "key": "country-poland",
+    "value": 300,
+    "a": "Poland (Wieliczka Salt Mine)"
+   },
+   {
+    "key": "country-slovenia",
+    "value": 300,
+    "a": "Slovenia (Lake Bled)"
+   },
+   {
+    "key": "country-bosnia",
+    "value": 300,
+    "a": "Bosnia and Herzegovina (Stari Most, Mostar)"
+   },
+   {
+    "key": "country-montenegro",
+    "value": 300,
+    "a": "Montenegro (Kotor)"
+   },
+   {
+    "key": "country-norway",
+    "value": 300,
+    "a": "Norway (Geirangerfjord)"
+   },
+   {
+    "key": "country-lebanon",
+    "value": 300,
+    "a": "Lebanon (Baalbek)"
+   },
+   {
+    "key": "country-mali",
+    "value": 300,
+    "a": "Mali (Great Mosque of Djenné)"
+   },
+   {
+    "key": "country-madagascar",
+    "value": 300,
+    "a": "Madagascar (Avenue of the Baobabs)"
+   },
+   {
+    "key": "country-colombia",
+    "value": 300,
+    "a": "Colombia (El Peñol rock, Guatapé)"
+   },
+   {
+    "key": "country-guatemala",
+    "value": 400,
+    "a": "Guatemala (Tikal)"
+   },
+   {
+    "key": "country-morocco2",
+    "value": 400,
+    "a": "Morocco (Aït Benhaddou)"
+   },
+   {
+    "key": "country-yemen",
+    "value": 400,
+    "a": "Yemen (Socotra's dragon's blood trees)"
+   },
+   {
+    "key": "country-tanzania",
+    "value": 400,
+    "a": "Tanzania (Mount Kilimanjaro)"
+   },
+   {
+    "key": "country-namibia",
+    "value": 400,
+    "a": "Namibia (Sossusvlei)"
+   },
+   {
+    "key": "country-sudan",
+    "value": 400,
+    "a": "Sudan (the pyramids of Meroë)"
+   },
+   {
+    "key": "country-libya",
+    "value": 400,
+    "a": "Libya (Leptis Magna)"
+   },
+   {
+    "key": "country-tunisia",
+    "value": 400,
+    "a": "Tunisia (Sidi Bou Said)"
+   },
+   {
+    "key": "country-algeria",
+    "value": 400,
+    "a": "Algeria (Timgad)"
+   },
+   {
+    "key": "country-georgia",
+    "value": 400,
+    "a": "Georgia (Gergeti Trinity Church)"
+   },
+   {
+    "key": "country-armenia",
+    "value": 400,
+    "a": "Armenia (Geghard Monastery)"
+   },
+   {
+    "key": "country-kazakhstan",
+    "value": 400,
+    "a": "Kazakhstan (Bayterek Tower, Astana)"
+   },
+   {
+    "key": "country-turkmenistan",
+    "value": 400,
+    "a": "Turkmenistan (the Darvaza gas crater)"
+   },
+   {
+    "key": "country-philippines",
+    "value": 400,
+    "a": "Philippines (Banaue Rice Terraces)"
+   },
+   {
+    "key": "country-estonia",
+    "value": 400,
+    "a": "Estonia (Tallinn Old Town)"
+   },
+   {
+    "key": "country-lithuania",
+    "value": 400,
+    "a": "Lithuania (Trakai Castle)"
+   },
+   {
+    "key": "country-bulgaria",
+    "value": 400,
+    "a": "Bulgaria (Rila Monastery)"
+   },
+   {
+    "key": "country-botswana",
+    "value": 400,
+    "a": "Botswana (Okavango Delta)"
+   },
+   {
+    "key": "country-madagascar2",
+    "value": 400,
+    "a": "Madagascar (Tsingy de Bemaraha)"
+   },
+   {
+    "key": "country-azerbaijan",
+    "value": 400,
+    "a": "Azerbaijan (Palace of the Shaki Khans)"
+   },
+   {
+    "key": "country-benin",
+    "value": 500,
+    "a": "Benin (Ganvie, the village on stilts)"
+   },
+   {
+    "key": "country-capeverde",
+    "value": 500,
+    "a": "Cape Verde (Pico do Fogo)"
+   },
+   {
+    "key": "country-guyana",
+    "value": 500,
+    "a": "Guyana (Kaieteur Falls)"
+   },
+   {
+    "key": "country-northmacedonia",
+    "value": 500,
+    "a": "North Macedonia (St John at Kaneo, Ohrid)"
+   },
+   {
+    "key": "country-albania",
+    "value": 500,
+    "a": "Albania (Berat)"
+   },
+   {
+    "key": "country-luxembourg",
+    "value": 500,
+    "a": "Luxembourg (Vianden Castle)"
+   },
+   {
+    "key": "country-liechtenstein",
+    "value": 500,
+    "a": "Liechtenstein (Vaduz Castle)"
+   },
+   {
+    "key": "country-malta",
+    "value": 500,
+    "a": "Malta (Mdina)"
+   },
+   {
+    "key": "country-cyprus",
+    "value": 500,
+    "a": "Cyprus (Kourion)"
+   },
+   {
+    "key": "country-kyrgyzstan",
+    "value": 500,
+    "a": "Kyrgyzstan (Burana Tower)"
+   },
+   {
+    "key": "country-mongolia",
+    "value": 500,
+    "a": "Mongolia (Erdene Zuu Monastery)"
+   },
+   {
+    "key": "country-laos",
+    "value": 500,
+    "a": "Laos (Luang Prabang)"
+   },
+   {
+    "key": "country-palau",
+    "value": 500,
+    "a": "Palau (the Rock Islands)"
+   },
+   {
+    "key": "country-brazil2",
+    "value": 500,
+    "a": "Brazil (Lençóis Maranhenses)"
+   },
+   {
+    "key": "country-colombia2",
+    "value": 500,
+    "a": "Colombia (Caño Cristales)"
+   },
+   {
+    "key": "country-venezuela",
+    "value": 500,
+    "a": "Venezuela (Angel Falls)"
+   },
+   {
+    "key": "country-uganda",
+    "value": 500,
+    "a": "Uganda (Murchison Falls)"
+   },
+   {
+    "key": "country-saudi",
+    "value": 500,
+    "a": "Saudi Arabia (Hegra / Mada'in Salih)"
+   },
+   {
+    "key": "country-oman",
+    "value": 500,
+    "a": "Oman (Nizwa Fort)"
+   },
+   {
+    "key": "country-qatar",
+    "value": 500,
+    "a": "Qatar (Museum of Islamic Art, Doha)"
+   }
+  ]
+ }
+]

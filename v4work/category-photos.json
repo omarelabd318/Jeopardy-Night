@@ -1,0 +1,198 @@
+[
+ {
+  "cat": "egh",
+  "value": 100,
+  "key": "gamalabdelnasser",
+  "q": "Which president is this, who nationalised the Suez Canal in 1956?",
+  "a": "Gamal Abdel Nasser"
+ },
+ {
+  "cat": "egh",
+  "value": 100,
+  "key": "anwarsadat",
+  "q": "Which president is this, who led Egypt in the October War of 1973?",
+  "a": "Anwar Sadat"
+ },
+ {
+  "cat": "egh",
+  "value": 200,
+  "key": "eg-tahrir2011",
+  "q": "Which 2011 event filled this square?",
+  "a": "The January 25 Revolution (Tahrir Square)"
+ },
+ {
+  "cat": "egh",
+  "value": 200,
+  "key": "eg-abusimbelmove",
+  "q": "Which temple is this, cut into blocks and moved in the 1960s so Lake Nasser wouldn't drown it?",
+  "a": "Abu Simbel"
+ },
+ {
+  "cat": "egh",
+  "value": 300,
+  "key": "eg-gem",
+  "q": "Which museum is this, by the Giza pyramids, fully opened in 2025?",
+  "a": "The Grand Egyptian Museum"
+ },
+ {
+  "cat": "egh",
+  "value": 300,
+  "key": "kingfarouk",
+  "q": "Who is this king, forced to abdicate in 1952?",
+  "a": "King Farouk"
+ },
+ {
+  "cat": "egh",
+  "value": 400,
+  "key": "eg-crossing1973",
+  "q": "Which war is this bridge across the Suez Canal from?",
+  "a": "The October War (1973)"
+ },
+ {
+  "cat": "egh",
+  "value": 400,
+  "key": "eg-highdam",
+  "q": "This 1970 dam, seen here from space, created which lake?",
+  "a": "Lake Nasser (the Aswan High Dam)"
+ },
+ {
+  "cat": "egh",
+  "value": 500,
+  "key": "eg-naguib",
+  "q": "Who is this, Egypt's first president?",
+  "a": "Mohamed Naguib"
+ },
+ {
+  "cat": "egh",
+  "value": 500,
+  "key": "saadzaghloul",
+  "q": "Who is this, the leader of the 1919 revolution?",
+  "a": "Saad Zaghloul"
+ },
+ {
+  "cat": "cairo",
+  "value": 100,
+  "key": "cairo-tower",
+  "q": "Name this Cairo landmark.",
+  "a": "Cairo Tower (Zamalek)"
+ },
+ {
+  "cat": "cairo",
+  "value": 100,
+  "key": "cairo-muhammadali",
+  "q": "Name this Cairo landmark.",
+  "a": "The Mosque of Muhammad Ali (the Citadel)"
+ },
+ {
+  "cat": "cairo",
+  "value": 200,
+  "key": "cairo-khan",
+  "q": "Name this Cairo landmark.",
+  "a": "Khan el-Khalili"
+ },
+ {
+  "cat": "cairo",
+  "value": 200,
+  "key": "cairo-azhar",
+  "q": "Name this Cairo landmark.",
+  "a": "Al-Azhar Mosque"
+ },
+ {
+  "cat": "cairo",
+  "value": 300,
+  "key": "cairo-qasrelnil",
+  "q": "Name this Cairo bridge.",
+  "a": "Qasr El Nil Bridge"
+ },
+ {
+  "cat": "cairo",
+  "value": 300,
+  "key": "cairo-baron",
+  "q": "Name this Cairo landmark.",
+  "a": "Baron Empain Palace (Heliopolis)"
+ },
+ {
+  "cat": "cairo",
+  "value": 400,
+  "key": "cairo-babzuweila",
+  "q": "Name this Cairo landmark.",
+  "a": "Bab Zuweila"
+ },
+ {
+  "cat": "cairo",
+  "value": 400,
+  "key": "cairo-hanging",
+  "q": "Name this Cairo landmark.",
+  "a": "The Hanging Church (Old Cairo)"
+ },
+ {
+  "cat": "cairo",
+  "value": 500,
+  "key": "cairo-ibntulun",
+  "q": "Name this Cairo landmark.",
+  "a": "The Mosque of Ibn Tulun"
+ },
+ {
+  "cat": "cairo",
+  "value": 500,
+  "key": "cairo-suhaymi",
+  "q": "Name this Cairo landmark.",
+  "a": "Bayt al-Suhaymi (Al-Muizz Street)"
+ },
+ {
+  "cat": "cairo",
+  "value": 100,
+  "key": "cairo-egmuseum",
+  "q": "Name this Cairo landmark.",
+  "a": "The Egyptian Museum (Tahrir)"
+ },
+ {
+  "cat": "cairo",
+  "value": 200,
+  "key": "cairo-6oct",
+  "q": "Name this Cairo landmark.",
+  "a": "6th October Bridge"
+ },
+ {
+  "cat": "cairo",
+  "value": 300,
+  "key": "cairo-coptic",
+  "q": "Name this Cairo landmark.",
+  "a": "The Coptic Museum (Old Cairo)"
+ },
+ {
+  "cat": "cairo",
+  "value": 300,
+  "key": "cairo-benezra",
+  "q": "Name this Cairo landmark.",
+  "a": "Ben Ezra Synagogue (Old Cairo)"
+ },
+ {
+  "cat": "cairo",
+  "value": 400,
+  "key": "egp-sultanhassan",
+  "q": "Name this Cairo landmark.",
+  "a": "The Qalawun complex (Al-Muizz Street)"
+ },
+ {
+  "cat": "cairo",
+  "value": 400,
+  "key": "cairo-futuh",
+  "q": "Name this Cairo landmark.",
+  "a": "Bab al-Futuh"
+ },
+ {
+  "cat": "cairo",
+  "value": 500,
+  "key": "cairo-gayer",
+  "q": "Name this Cairo landmark.",
+  "a": "The Gayer-Anderson Museum"
+ },
+ {
+  "cat": "cairo",
+  "value": 500,
+  "key": "egp-rifai",
+  "q": "Name this Cairo landmark.",
+  "a": "The Mosque of al-Hakim"
+ }
+]
