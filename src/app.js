@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.34`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.38`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -496,7 +496,7 @@ function fitFbBg(){  // shrink any phrase that is wider (or taller, if vertical)
 }
 const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random() - .5).slice(0, 6); return FOOTBALL.filter(x => ids.includes(x)); };  // random 6 of the 15, in pool order
 $("#football").onclick = () => {
-  if(S.ffa && !ffaReady()) return;
+  if(S.ffa && !ffaReady(true)) return;
   setFootball(true); S.cats = footballPick(); newGame();
   if(linked()){ ffaLobby(); return; }
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
@@ -517,7 +517,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const fit = () => { const dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
-  const showing = () => S.football && !$("#game").hidden && !S.cur && $("#winBox").hidden && !$("#scores").hidden;
+  /* 5.38 (Omar): they keep playing, faintly, while a clue is open: drawn over the dark backdrop at 30% (#kick.faint in
+     head.html) but never over the clue box itself, so they look like they're behind it. Was: hidden while a clue was open (!S.cur here). */
+  const showing = () => S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
   /* 4.75 (Omar): a six-touch rotation. Each player controls the ball, it pops up, and he volleys it across on the way down:
      left knee, right foot, left head, right knee, left foot, right head, then again. Each crossing takes FLIGHT seconds.
      The ball spins about a third as much as before (SPIN). 4.72 was knee (left) and a foot cushion (right) only: see NOTES 4.75. */
@@ -525,11 +527,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      The rotation is now ten touches (4.77-5.32: the first eight below, without the two chest touches). */
   /* 5.34 (Omar): reordered so the two chest controls are half a cycle apart, not back to back; no move twice in a row.
      5.33 order: L knee, R foot, L head, R heel, L foot, R knee, L heel, R head, L chest, R chest */
-  const ROT = [["L","knee"],["R","foot"],["L","chest"],["R","heel"],["L","head"],["R","knee"],["L","foot"],["R","chest"],["L","heel"],["R","head"]], POP = 1.1, SPIN = 0.35;
+  /* 5.36 (Omar): a sixth touch, "kneehead": he takes it on the knee and pops it up higher, over his head, then jumps and
+     heads it straight back across instead of volleying. Twelve touches now, ordered so every move is at least five touches
+     from the other player's same move, nothing comes twice in a row and the two knee touches are never next to each other.
+     5.34 order: L knee, R foot, L chest, R heel, L head, R knee, L foot, R chest, L heel, R head */
+  /* 5.37 (Omar): a seventh touch, "chestbike": chest control, the ball drops to his foot, he flicks it up high, turns his back
+     and bicycle-kicks ("double kick") it over his head back across. It takes longer than the others (BIKE s instead of POP).
+     Fourteen touches, each move exactly seven touches from the other player's same move.
+     5.36 order: L knee, R heel, L foot, R chest, L head, R kneehead, L heel, R knee, L chest, R foot, L kneehead, R head */
+  const ROT = [["L","knee"],["R","chest"],["L","foot"],["R","kneehead"],["L","head"],["R","chestbike"],["L","heel"],["R","knee"],["L","chest"],["R","foot"],["L","kneehead"],["R","head"],["L","chestbike"],["R","heel"]], POP = 1.1, SPIN = 0.35;
+  const BIKE = 2.2, FLICK = 0.8;                                   // chestbike: from chest to bicycle kick, and when the foot flick comes
+  const PD = how => how === "chestbike" ? BIKE : POP;              // how long the ball stays with him after the first touch
+  const START = []; let CYCLE = 0; ROT.forEach(([, hw]) => { START.push(CYCLE); CYCLE += FLIGHT + PD(hw); });
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
-  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16};             // how far the ball pops up above the touch
-  const CYCLE = ROT.length * (FLIGHT + POP);
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22};   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
   const kneeUp = dt => dt < -0.35 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.35) / 0.35) : 1 - sm(dt / 0.3);
@@ -538,15 +550,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const turned = dt => dt > -0.5 && dt < 0.45;                                          // back to the ball for a heel flick
   const LEAN = 0.38;                                                                        // how far he leans back for a chest control (radians)
   const leanBack = dt => dt < -0.5 || dt > 0.45 ? 0 : dt < 0 ? sm((dt + 0.5) / 0.5) : 1 - sm(dt / 0.45);
+  const bikeAmt = e => e < -0.55 || e > 0.5 ? 0 : e < 0 ? sm((e + 0.55) / 0.55) : 1 - sm(e / 0.5);   // bicycle kick, full at contact (e = 0)
   const hop = dt => Math.abs(dt) < 0.3 ? 4 * Math.cos(dt / 0.3 * Math.PI / 2) : 0;          // a little jump for the header
-  function man(x, dir, ang, knee, jump, heel, turn, lean = 0){        // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee; lean 0..1 leans back (chest control)
-    if(turn){ dir = -dir; ang = 0.35; }                      // facing away for the heel flick
-    const y = H - 1 - jump, hip = y - 16, a = lean * LEAN;
+  function man(x, dir, ang, knee, jump, heel, turn, lean = 0, bike = 0){   // dir 1 faces right, -1 faces left; ang = front leg angle, knee 0..1 lifts the knee; lean 0..1 leans back (chest control); bike 0..1 bicycle kick
+    if(turn){ dir = -dir; if(!bike) ang = 0.35; }            // facing away for the heel flick or the bicycle kick
+    const y = H - 1 - jump, hip = y - 16, a = lean * LEAN + bike * 1.15;   // a bicycle kick lays him back towards the other player
     const up = d => [x - Math.sin(a) * d * dir, hip - Math.cos(a) * d];          // a point d px up the body, which tilts back from the hip
     g.lineWidth = 2.6; g.lineCap = "round"; g.strokeStyle = "#0b2a0b"; g.fillStyle = "#0b2a0b";
     const hd = up(19); g.beginPath(); g.arc(hd[0], hd[1], 5, 0, Math.PI*2); g.fill();   // head
     const nk = up(12); g.beginPath(); g.moveTo(nk[0], nk[1]); g.lineTo(x, hip); g.stroke();  // body
-    const arm = jump / 4 * 6, out = lean * 5, ap = up(9);                         // arms come up a little on a header, and out to the sides for balance on a chest control
+    const arm = Math.min(jump, 4) / 4 * 6, out = (lean + bike) * 5, ap = up(9);                         // arms come up a little on a header, and out to the sides for balance on a chest control
     g.beginPath(); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] - (7 + out)*dir, ap[1] + 9 - arm - out); g.moveTo(ap[0], ap[1]); g.lineTo(ap[0] + (8 + out*0.6)*dir, ap[1] + 7 - arm - out); g.stroke();  // arms
     const bk = x - Math.sin(0.35) * 8 * dir, bky = hip + Math.cos(0.35) * 8, bs = 0.35 + heel * 2.3;   // back leg, bending up behind for a heel flick
     g.beginPath(); g.moveTo(x, hip); g.lineTo(bk, bky); g.lineTo(bk - Math.sin(bs) * 8 * dir, bky + Math.cos(bs) * 8); g.stroke();
@@ -556,33 +569,44 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   function frame(now){
     requestAnimationFrame(frame);
     const on = showing(); cv.classList.toggle("on", on); if(!on){ t0 = now; return; }
-    const sc = $("#scores").getBoundingClientRect(); cv.style.top = (sc.top - H + 1) + "px";
+    const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
+    const open = !!S.cur && !$("#card").hidden; cv.classList.toggle("faint", open);
     const src = (typeof BALLS !== "undefined" && BALLS.length && typeof lastBall === "number" && BALLS[lastBall]) || "";
     if(src !== ballSrc){ ballSrc = src; ballImg = null; if(src){ const im = new Image(); im.onload = () => { ballImg = im; }; im.src = src; } }
-    g.clearRect(0, 0, W, H);
+    g.clearRect(0, 0, W, H); g.save();
+    if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }  // not over the clue box
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
-      if(how === "chest"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
-      return how === "knee" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
-    const volley = side => [X[side] + 20 * D[side], hip - 3];
+      if(how === "chest" || how === "chestbike"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
+      return how === "knee" || how === "kneehead" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+    const head = side => [X[side] + 2 * D[side], H - 1 - 4 - 35 - 5 - r + 1];        // where a header meets the ball (at the top of his hop)
+    const bike = side => [X[side] + 4 * D[side], H - 1 - 10 - 16 - 15.5 - r + 2];   // where the bicycle kick meets it, above him as he lies back
+    const volley = (side, how) => how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
     const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
-    const k = Math.min(ROT.length - 1, Math.floor(t / (FLIGHT + POP))), u = t - k * (FLIGHT + POP), [side, how] = ROT[k], from = side === "L" ? "R" : "L";
-    const C = touch(side, how), V = volley(side);
+    let k = ROT.length - 1; while(k > 0 && START[k] > t) k--;
+    const u = t - START[k], [side, how] = ROT[k], from = side === "L" ? "R" : "L";
+    const prev = ROT[(k + ROT.length - 1) % ROT.length][1];   // how the other player sent it (a volley, or a header after a kneehead)
+    const C = touch(side, how), V = volley(side, how);
     let pos;
-    if(u < FLIGHT){ const A = volley(from); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
+    if(u < FLIGHT){ const A = volley(from, prev); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
+    else if(how === "chestbike"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4];   // off the chest down to his foot, then flicked up high and bicycle-kicked
+      pos = ub < FLICK ? seg(C, F, ub / FLICK, (C[1] + F[1]) / 2 - (C[1] - 10)) : seg(F, V, (ub - FLICK) / (BIKE - FLICK), (F[1] + V[1]) / 2 - (V[1] - UP.chestbike)); }
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
-    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0;
+    const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
-        for(const sh of [-CYCLE, 0, CYCLE]){ const tc = i * (FLIGHT + POP) + FLIGHT + sh, dt = t - tc;
+        for(const sh of [-CYCLE, 0, CYCLE]){ const tc = START[i] + FLIGHT + sh, dt = t - tc;
+          if(hw === "kneehead"){ knee += kneeUp(dt); jump += hop(dt - POP); continue; }   // knee it up, then a header instead of a volley
+          if(hw === "chestbike"){ const b = bikeAmt(dt - BIKE); lean += leanBack(dt); ang += footUp(dt - FLICK) + b * 3.05; jump += b * 10; bk = Math.max(bk, b);
+            turn = turn || (dt - BIKE > -0.75 && dt - BIKE < 0.5); continue; }   // chest, foot flick, then turn and bicycle kick
           if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest") lean += leanBack(dt); else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else jump += hop(dt);
           ang += swing(dt - POP); } });
-      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(1, lean)]; };
+      return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(1, lean), bk]; };
     man(L, 1, ...pose("L")); man(R, -1, ...pose("R"));
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
-    g.restore();
+    g.restore(); g.restore();
   }
   requestAnimationFrame(frame);
 })();
@@ -847,8 +871,9 @@ function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#tea
   [["#optPower","power"],["#optQrAns","qrAns"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
   renderChips(); }
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
-function ffaReady(){
+function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check
   if(RELAY !== true){ $("#histNote").textContent = RELAY === null ? "Checking the connection for Free-for-all… try again in a second." : "Free-for-all needs the Cloudflare link: the phones send their answers through it."; return false; }
+  if(football) return true;
   S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
   if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return false; }
   return true; }

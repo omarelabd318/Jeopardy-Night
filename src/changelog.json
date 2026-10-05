@@ -3,6 +3,34 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.38",
+  "date": "2026-10-05",
+  "items": [
+   "Football mode: the stick figures keep playing, faintly, behind an open clue."
+  ]
+ },
+ {
+  "v": "5.37",
+  "date": "2026-10-05",
+  "items": [
+   "Football mode: the stick figures can now chest it, flick it up with their foot, and send it back with a bicycle kick."
+  ]
+ },
+ {
+  "v": "5.36",
+  "date": "2026-10-05",
+  "items": [
+   "Football mode: another stick-figure move. They knee the ball up high, over their head, then jump and head it straight back."
+  ]
+ },
+ {
+  "v": "5.35",
+  "date": "2026-10-05",
+  "items": [
+   "Fix: Football mode with Free-for-all on no longer asks you to pick a category first."
+  ]
+ },
+ {
   "v": "5.34",
   "date": "2026-10-05",
   "items": [
