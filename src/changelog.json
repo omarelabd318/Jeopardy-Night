@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.67",
+  "date": "2026-10-05",
+  "items": [
+   "The street scene now pauses while a clue is open and carries on from the same moment when you close it."
+  ]
+ },
+ {
   "v": "5.66",
   "date": "2026-10-05",
   "items": [
