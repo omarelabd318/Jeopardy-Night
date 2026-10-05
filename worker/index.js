@@ -14,6 +14,9 @@
 //   POST /api/cur {r,cur?,s?}           -> the game's current clue ({c,kind,cat,val,q,u,ev} or null) and/or everyone's scores {p:score}
 //   GET  /api/state?r=ROOM&p=PLAYER     -> what the phone needs: {cur, closed, mine, score, rank, n, name}
 //   Answers use /api/answer with k "ffa" and t = the player id.
+// 5.27: team games use the same page. A team's phones join once with their team number t, and /api/cur also carries
+//   mode ("ffa" or "teams") and the team names; /api/state?r&p&t answers for that team. The first answer a player
+//   (or team) sends is final, and the team that's playing a tile can't send a steal for it.
 import { DurableObject } from "cloudflare:workers";
 
 const json = (body, status = 200) => new Response(JSON.stringify(body), {
@@ -32,14 +35,16 @@ export class Room extends DurableObject {
     }
     if (op === "players") {
       const players = (await st.get("players")) || {};
-      return json({ players: Object.entries(players).map(([p, v]) => ({ p, n: v.n, at: v.at })).sort((a, b) => a.at - b.at) });
+      return json({ players: Object.entries(players).map(([p, v]) => ({ p, n: v.n, t: v.t, at: v.at })).sort((a, b) => a.at - b.at) });
     }
     if (op === "state") {
-      const p = url.searchParams.get("p"), [players, cur, s] = await Promise.all([st.get("players"), st.get("cur"), st.get("s")]);
-      const me = (players || {})[p], scores = s || {};
-      const out = { cur: cur || null, name: me ? me.n : null, n: Object.keys(players || {}).length, score: scores[p] ?? 0,
-        rank: 1 + Object.values(scores).filter(v => v > (scores[p] ?? 0)).length, closed: false, mine: null };
-      if (cur) { const [a, x] = await Promise.all([st.get("a:" + cur.c), st.get("x:" + cur.c)]); out.closed = !!x; out.mine = a && a[p] ? a[p].v : null; }
+      const p = url.searchParams.get("p"), [players, cur, s, mode, teams] = await Promise.all([st.get("players"), st.get("cur"), st.get("s"), st.get("mode"), st.get("teams")]);
+      const me = (players || {})[p], scores = s || {}, team = mode === "teams" && me && me.t != null ? me.t : null;
+      const key = team != null ? "t" + team : p, mineKey = team != null ? String(team) : p, mine = scores[key] ?? 0;
+      const rivals = Object.entries(scores).filter(([k]) => /^t\d+$/.test(k) === (team != null)).map(([, v]) => v);
+      const out = { mode: mode || "ffa", teams: teams || [], team, cur: cur || null, name: me ? me.n : null, n: rivals.length || Object.keys(players || {}).length,
+        score: mine, rank: 1 + rivals.filter(v => v > mine).length, closed: false, mine: null };
+      if (cur) { const [a, x] = await Promise.all([st.get("a:" + cur.c), st.get("x:" + cur.c)]); out.closed = !!x; out.mine = a && a[mineKey] ? a[mineKey].v : null; }
       return json(out);
     }
     const b = await req.json();
@@ -47,8 +52,11 @@ export class Room extends DurableObject {
     if (op === "close") { await st.put("x:" + b.c, true); return json({ ok: true }); }
     if (op === "answer") {
       if (await st.get("x:" + b.c)) return json({ ok: false, error: "closed" }, 409);
-      if (b.k === "ffa") { const cur = await st.get("cur"); if (!cur || cur.c !== b.c) return json({ ok: false, error: "closed" }, 409); }
+      const cur = await st.get("cur");
+      if (b.k === "ffa" && (!cur || cur.c !== b.c)) return json({ ok: false, error: "closed" }, 409);
+      if (b.k === "steal" && cur && cur.c === b.c && cur.x === b.t) return json({ ok: false, error: "playing" }, 409);
       const answers = (await st.get("a:" + b.c)) || {};
+      if (answers[b.t]) return json({ ok: false, error: "locked", v: answers[b.t].v }, 409);  // 5.27 (Omar): an answer can't be changed
       answers[b.t] = { v: b.v, k: b.k, at: Date.now() };
       await st.put("a:" + b.c, answers);
       return json({ ok: true });
@@ -56,13 +64,15 @@ export class Room extends DurableObject {
     if (op === "join") {
       const players = (await st.get("players")) || {};
       if (!players[b.p] && Object.keys(players).length >= 30) return json({ ok: false, error: "full" }, 409);
-      players[b.p] = { n: b.n, at: players[b.p] ? players[b.p].at : Date.now() };
+      players[b.p] = { n: b.n, t: b.t, at: players[b.p] ? players[b.p].at : Date.now() };
       await st.put("players", players);
       return json({ ok: true });
     }
     if (op === "cur") {
       if ("cur" in b) await st.put("cur", b.cur);
       if (b.s) await st.put("s", b.s);
+      if (b.mode) await st.put("mode", b.mode);
+      if (b.teams) await st.put("teams", b.teams);
       return json({ ok: true });
     }
     return json({ ok: false }, 404);
@@ -101,13 +111,15 @@ export default {
       if (!m || JSON.stringify(m).length > 2000) return json({ ok: false, error: "bad meta" }, 400);
       b = { c, m };
     } else if (op === "join") {
-      const p = String(b.p || ""), n = String(b.n ?? "").trim().replace(/\s+/g, " ").slice(0, 24);
-      if (!ROOM.test(p) || !n) return json({ ok: false, error: "bad player" }, 400);
-      b = { p, n };
+      const p = String(b.p || ""), n = String(b.n ?? "").trim().replace(/\s+/g, " ").slice(0, 24), t = b.t == null ? null : Number(b.t);
+      if (!ROOM.test(p) || !n || (t !== null && (!Number.isInteger(t) || t < 0 || t > 11))) return json({ ok: false, error: "bad player" }, 400);
+      b = { p, n, t };
     } else if (op === "cur") {
       const out = {};
       if ("cur" in b) { if (b.cur !== null && (typeof b.cur !== "object" || !CLUE.test(b.cur.c || "") || JSON.stringify(b.cur).length > 4000)) return json({ ok: false, error: "bad clue" }, 400); out.cur = b.cur; }
       if (b.s) { if (typeof b.s !== "object" || JSON.stringify(b.s).length > 4000) return json({ ok: false, error: "bad scores" }, 400); out.s = b.s; }
+      if (b.mode) out.mode = b.mode === "teams" ? "teams" : "ffa";
+      if (b.teams) { if (!Array.isArray(b.teams) || b.teams.length > 12) return json({ ok: false, error: "bad teams" }, 400); out.teams = b.teams.map(x => String(x).slice(0, 24)); }
       b = out;
     } else b = { c };
     return room(r).fetch(new Request("https://room/" + op, { method: "POST", body: JSON.stringify(b) }));

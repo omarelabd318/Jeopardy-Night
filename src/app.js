@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.26`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.27`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -165,7 +165,7 @@ const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & A
   ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order"]]  /* 5.22: Put It in Order after Headlines */
 ];
 function renderChips(){
-  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}</button>`;
+  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
   const seen = new Set();
   const groups = CAT_GROUPS.map(([name,ids]) => [name, ids.map(catById).filter(Boolean)]);
   groups.forEach(([,cs]) => cs.forEach(c => seen.add(c.id)));
@@ -361,7 +361,7 @@ $("#start").onclick = () => {
   if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return; }
   if(S.ffa && !ffaReady()) return;
   newGame();
-  if(S.ffa){ ffaLobby(); return; }
+  if(linked()){ ffaLobby(); return; }
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
@@ -498,7 +498,7 @@ const footballPick = () => { const ids = FOOTBALL.slice().sort(() => Math.random
 $("#football").onclick = () => {
   if(S.ffa && !ffaReady()) return;
   setFootball(true); S.cats = footballPick(); newGame();
-  if(S.ffa){ ffaLobby(); return; }
+  if(linked()){ ffaLobby(); return; }
   $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderBoard(); renderScores(); window.scrollTo(0,0);
 };
@@ -800,7 +800,8 @@ function ansPanel(c){ const m = ansMode(c); if(!m) return "";
   const head = steal ? (c.revealed ? (rows ? "Steals (½ points if right)" : "No steals") : "Scan to steal") : "Scan with your phone to send your team's guess";
   /* 5.17 (Omar): the code sits centred with its caption underneath; stealing teams' names show to the right of it */
   if(c.revealed) return `<div class="ansqr steal done"><div class="eyebrow">${head}</div>${rows ? `<ul>${rows}</ul>` : ""}</div>`;
-  return `<div class="ansqr ${steal ? "steal" : "num"}"><div class="qcol"><div class="aq" id="ansQr"></div><div class="eyebrow">${head}</div></div><ul class="stealers">${rows}</ul></div>`; }
+  /* 5.27 (Omar): no code on the clue; the teams' phones joined once at the start (Join code at the top) */
+  return `<div class="ansqr linked ${steal ? "steal" : "num"}"><div class="eyebrow">${steal ? "Steal on your phones" : "Teams: send your number from your phones"}</div><ul class="stealers">${rows}</ul></div>`; }
 async function pollAns(force){ const c = S.cur; if(!c || (c.revealed && !force)) return; const m = ansMode(c); if(!m || (c.polling && !force)) return;
   c.polling = true;
   try{ const r = await fetch(`api/answers?r=${encodeURIComponent(S.room)}&c=${encodeURIComponent(ansKey(c))}`, {cache:"no-store"}); const j = await r.json();
@@ -831,8 +832,11 @@ setInterval(pollAns, 1500);
    so they're left out; power-ups and steal codes are off. Needs the Cloudflare link (worker/index.js).
    To remove: delete this block, the S.ffa lines it hooks into (search "ffa"), #ffaPanel and #lobby in head.html, and play.html. */
 const FFA_SKIP = new Set(["act","impostor","password"]);
+/* 5.27 (Omar): with Free-for-all on, Power-ups, Answer QR codes and Steal QR codes switch off and grey out; switching it off brings back what they were */
 function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#teamsPanel").hidden = S.ffa;
-  if(S.ffa) S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
+  if(S.ffa){ if(!S.preFfa) S.preFfa = {power:S.power, qrAns:S.qrAns, steal:S.steal}; S.power = S.qrAns = S.steal = false; S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type)); }
+  else if(S.preFfa){ Object.assign(S, S.preFfa); S.preFfa = null; }
+  [["#optPower","power"],["#optQrAns","qrAns"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
   renderChips(); }
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
 function ffaReady(){
@@ -840,11 +844,17 @@ function ffaReady(){
   S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
   if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return false; }
   return true; }
+/* 5.27 (Omar): team games work the same way. With Answer QR codes or Steal QR codes on, Start shows the join code once;
+   each team's phones pick their team, and from then on Closest Wins / Price Is Right number boxes and steal boxes pop up
+   on them (steal boxes only for the teams not playing the tile). No more code on each clue; Join code at the top shows it again. */
+const linkTeams = () => !S.ffa && RELAY === true && (S.qrAns || S.steal);
+const linked = () => S.ffa || linkTeams();
 function ffaPost(b){ return fetch("api/cur", {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify({r:S.room, ...b})}).catch(() => {}); }
 function ffaUrl(){ return new URL(`p?r=${S.room}`, location.href).href; }
 /* the lobby: one big code; also reopened mid-game with "Join code" for late arrivals */
 function ffaLobby(mid){
-  if(!mid){ S.teams = []; ffaPost({cur:null, s:{}}); }
+  if(!mid){ if(S.ffa) S.teams = []; S.linkCount = {}; ffaPost({cur:null, s:{}}); ffaLastS = ""; }
+  ffaPost(S.ffa ? {mode:"ffa"} : {mode:"teams", teams:S.teams.map(t => t.name)});
   $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; $("#lobby").hidden = false;
   $("#lobbyGo").textContent = mid ? "Back to the game" : "Start playing"; $("#lobbyBack").hidden = !!mid;
   $("#lobbyUrl").textContent = ffaUrl().replace(/^https?:\/\//, "");
@@ -853,6 +863,10 @@ function ffaLobby(mid){
     q.innerHTML = ""; try{ new QRCode(q, {text: ffaUrl(), width: 300, height: 300, correctLevel: QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } };
   draw(); renderLobby(); ffaPlayers(); window.scrollTo(0,0); }
 function renderLobby(){ const n = S.teams.length;
+  if(!S.ffa){ const k = S.linkCount || {};
+    $("#lobbyCount").textContent = "Each team: scan with at least one phone and pick your team";
+    $("#lobbyList").innerHTML = S.teams.map((t,i) => `<li class="${k[i] ? "" : "none"}">${esc(t.name)} · ${k[i] ? `${k[i]} phone${k[i] > 1 ? "s" : ""}` : "no phone yet"}</li>`).join("");
+    $("#lobbyGo").disabled = false; return; }
   $("#lobbyCount").textContent = n ? `${n} player${n > 1 ? "s" : ""} in` : "Waiting for players…";
   $("#lobbyList").innerHTML = S.teams.map(t => `<li>${esc(t.name)}</li>`).join("");
   $("#lobbyGo").disabled = !n; }
@@ -861,21 +875,25 @@ $("#lobbyBack").onclick = () => { $("#lobby").hidden = true; goSetup(); };
 $("#ffaJoin").onclick = () => ffaLobby(true);
 /* players who joined (also late ones) become score cards, in join order */
 let ffaBusy = false, ffaTick = 0;
-async function ffaPlayers(){ if(ffaBusy || !S.ffa || !RELAY || !S.room) return; ffaBusy = true;
+async function ffaPlayers(){ if(ffaBusy || !linked() || !RELAY || !S.room) return; ffaBusy = true;
   try{ const j = await (await fetch(`api/players?r=${encodeURIComponent(S.room)}`, {cache:"no-store"})).json(); let changed = false;
+    if(!S.ffa){ const k = {}; (j.players || []).forEach(pl => { if(pl.t != null) k[pl.t] = (k[pl.t] || 0) + 1; });
+      if(JSON.stringify(k) !== JSON.stringify(S.linkCount || {})){ S.linkCount = k; if(!$("#lobby").hidden) renderLobby(); } return; }
     (j.players || []).forEach(pl => { const t = S.teams.find(x => x.pid === pl.p);
       if(!t){ S.teams.push({name:pl.n, score:0, pid:pl.p}); changed = true; } else if(t.name !== pl.n){ t.name = pl.n; changed = true; } });
     if(changed){ if(!$("#lobby").hidden) renderLobby(); if(!$("#game").hidden){ renderScores(); if(S.cur && !S.cur.revealed && !S.cur.typing) renderClue(); } } }
   catch(e){} finally{ ffaBusy = false; } }
-setInterval(() => { if(!S.ffa) return; const lobby = !$("#lobby").hidden; if(lobby || ++ffaTick % 2 === 0) if(lobby || !$("#game").hidden) ffaPlayers(); }, 2000);
+setInterval(() => { if(!linked()) return; const lobby = !$("#lobby").hidden; if(lobby || ++ffaTick % 2 === 0) if(lobby || !$("#game").hidden) ffaPlayers(); }, 2000);
 /* the clue on the phones: its kind, category, value, question, unit, and the events for Put It in Order (never the answer) */
-function ffaSendCur(c){ if(c.curSent) return; c.curSent = true; const p = clueParts();
-  const cur = {c: ansKey(c), kind: c.type === "closest" ? "num" : c.type === "order" ? "order" : "text", cat: catById(c.cat).name, val: String(c.lvl), q: String(p.q || "").slice(0, 600)};
+function ffaSendCur(c){ if(c.curSent) return; c.curSent = true; const p = clueParts(), m = ansMode(c);
+  const cur = {c: ansKey(c), kind: m !== "ffa" ? m : c.type === "closest" ? "num" : c.type === "order" ? "order" : "text", cat: catById(c.cat).name, val: String(c.lvl), q: String(p.q || "").slice(0, 600)};
+  if(m === "steal"){ cur.x = S.turn || 0; cur.xn = (S.teams[cur.x] || {}).name || ""; }
   if(p.unit) cur.u = p.unit; if(c.type === "order") cur.ev = p.ev.map(e => e[0]);
   ffaPost({cur}); }
 let ffaLastS = "";
-function ffaPushScores(){ const s = {}; S.teams.forEach(t => { if(t.pid) s[t.pid] = t.score; }); const k = JSON.stringify(s);
-  if(k === ffaLastS || !RELAY || !S.room) return; ffaLastS = k; ffaPost({s}); }
+function ffaPushScores(){ const s = {}; S.teams.forEach((t,i) => { if(S.ffa){ if(t.pid) s[t.pid] = t.score; } else s["t" + i] = t.score; });
+  const names = S.ffa ? null : S.teams.map(t => t.name), k = JSON.stringify([s, names]);
+  if(k === ffaLastS || !RELAY || !S.room) return; ffaLastS = k; ffaPost(names ? {s, teams:names} : {s}); }
 const ffaAns = (c, i) => { const t = S.teams[i]; return t && c.phoneAns ? c.phoneAns[t.pid] : null; };
 function ffaShow(c, v){ if(c.type !== "order") return v; const ev = clueParts().ev; return String(v).split(",").map(i => ev[+i] ? ev[+i][0] : "?").join(" → "); }
 function ffaPanel(c){ if(c.revealed || c.type === "closest") return "";
@@ -936,8 +954,8 @@ function renderScores(){
     `<div class="team${t.score===max&&max>0?" lead":""}${i===(S.turn||0)?" turn":""}" data-team="${i}" role="button" tabindex="0" aria-label="${esc(t.name)}${i===(S.turn||0)?", picking now":""}. Tap to give them the pick"><div class="nm">${i===(S.turn||0)?'<span class="pick">Picking</span>':""}${esc(t.name)}</div><div class="sc${t.score<0?" neg":""}">${t.score}</div>
      ${S.power && !S.ffa ? `<div class="pw"><button class="pwb${S.x2===i?" ready":""}${t.x2used?" used":""}" data-x2="${i}" ${t.x2used || (i!==(S.turn||0) && S.x2!==i) ? "disabled" : ""} aria-label="${esc(t.name)}: double points${t.x2used?" (used)":S.x2===i?" (ready, tap to cancel)":""}" title="${t.x2used ? "Used" : "Tap on your turn, before picking a tile"}">${S.x2===i ? `×2 <span class="lg">ready</span><span class="sm">✓</span>` : "×2"}</button><span class="pwb${t.twoUsed?" used":""}" aria-label="${esc(t.name)}: 2 answers${t.twoUsed?" (used)":" (use it on an open clue)"}" title="${t.twoUsed ? "Used" : "Use it on an open clue"}"><span class="lg">2 answers</span><span class="sm">2 ans</span></span></div>` : ""}
      ${S.editing ? `<div class="adj"><button data-i="${i}" data-d="-100" aria-label="Take 100 from ${esc(t.name)}">−100</button><button data-i="${i}" data-d="100" aria-label="Give 100 to ${esc(t.name)}">+100</button></div>` : ""}</div>`).join("");
-  $("#scores").classList.toggle("ffa", !!S.ffa); const jb = $("#ffaJoin"); if(jb) jb.hidden = !S.ffa;
-  if(S.ffa) ffaPushScores();
+  $("#scores").classList.toggle("ffa", !!S.ffa); const jb = $("#ffaJoin"); if(jb) jb.hidden = !linked();
+  if(linked()) ffaPushScores();
   boardX2(); saveGame();
 }
 $("#scores").addEventListener("click", e => {
@@ -1182,7 +1200,7 @@ function renderClue(){
     const run = async () => { try{ const fs = await new window.FaceDetector({fastMode:true,maxDetectedFaces:1}).detect(zimg); if(fs[0] && S.cur===c){ const b = fs[0].boundingBox; saveFocus(k, 100*(b.x+b.width/2)/zimg.naturalWidth, 100*(b.y+b.height/2)/zimg.naturalHeight); renderClue(); } }catch(err){} };
     zimg.complete ? run() : zimg.addEventListener("load", run, {once:true});
   }
-  if(ansMode(c) === "ffa") ffaSendCur(c);
+  if(ansMode(c)) ffaSendCur(c);
   const aq = $("#ansQr"); if(aq){ const m = ansMode(c); sendMeta(c, m);
     if(window.QRCode){ try{ new QRCode(aq, {text: ansUrl(c, m), width: m === "steal" ? 130 : 170, height: m === "steal" ? 130 : 170, correctLevel: QRCode.CorrectLevel.L}); }catch(err){ aq.textContent = "Couldn't draw the code."; } }
     else aq.textContent = "The code maker didn't load yet."; }
@@ -1204,7 +1222,7 @@ function tick(){
   if(i) i.style.width = (100*c.left/c.secs)+"%"; if(t) t.textContent = Math.ceil(c.left);
 }
 function stopTimer(){ if(timer){ clearInterval(timer); timer = null; } }
-function closeCard(){ stopTimer(); $("#card").hidden = true; const was = S.cur; S.cur = null; wPump(); if(S.ffa && was && !was.preview) ffaPost({cur:null}); }
+function closeCard(){ stopTimer(); $("#card").hidden = true; const was = S.cur; S.cur = null; wPump(); if(linked() && was && !was.preview) ffaPost({cur:null}); }
 
 $("#clue").addEventListener("click", e => {
   const c = S.cur; if(!c) return;
