@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.62`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.63`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -789,15 +789,15 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     poly(P([[6, -13], [9, -6], [19, -6], [20.5, -11], [18.5, -16.5], [13, -17.5], [9, -17.5]]), navy);                // dark lower front
     /* 5.62 (Omar): like his photo, the windscreen is one big pane and only its frame and the cap above it are yellow
        (5.58-5.61: a solid yellow front with a small windscreen in it). */
-    const ws = P([[9.2, -28.6], [14.9, -28.6], [18.4, -16.9], [9.2, -16.9]]);
+    const ws = P([[8.6, -28.6], [12.6, -28.6], [18.4, -16.9], [9.2, -16.9]]);   // 5.63 (Omar): raked back more (top front was at 14.9)
     poly(ws, "rgba(175,210,230,.6)", yel, 1.5);                                                                          // windscreen, yellow frame
-    poly(P([[9, -30], [15.4, -30], [15.9, -28.4], [9, -28.4]]), yel);                                                  // yellow cap above it
+    poly(P([[8.4, -30], [13, -30], [13.5, -28.4], [8.4, -28.4]]), yel);                                                  // yellow cap above it
     seg(P([[-21, -16], [8, -16]]), "rgba(255,255,255,.12)", 0.6);
     g.strokeStyle = "#141a2e"; g.lineWidth = 1.6; g.beginPath(); g.arc(X(16), gy - 4, 5.6, Math.PI * 1.05, Math.PI * 1.95); g.stroke();   // mudguard
     disc(X(19.3), gy - 11.5, 1.7, "#fff6c8"); glow(X(24), gy - 11.5, 10, "rgba(255,240,180,.35)");                    // headlamp
     rect(X(-21.8) - (d > 0 ? 0 : 1.4), gy - 12, 1.4, 2.4, "#e23b2e");                                                  // tail light
-    seg(P([[-14, -13], [-14, -26]]), "#141a2e", 1.2); seg(P([[8.5, -17.5], [8.5, -29]]), "#141a2e", 1.2);               // roof posts
-    poly(P([[-22.5, -25], [-21, -29.5], [-17, -31], [15, -31], [15.5, -29], [9, -29.5], [-21, -25]]), "#1c1c22");    // canvas roof
+    seg(P([[-14, -13], [-14, -26]]), "#141a2e", 1.2); seg(P([[8.3, -17.5], [8.3, -29]]), "#141a2e", 1.2);               // roof posts
+    poly(P([[-22.5, -25], [-21, -29.5], [-17, -31], [13, -31], [13.4, -29.4], [9, -29.5], [-21, -25]]), "#1c1c22");    // canvas roof
     wheel(X(-12), gy - 4.6, 4.6, rot, "#b8bcc2"); wheel(X(16), gy - 4, 4, rot, "#b8bcc2");
     g.restore();
     if(honk) for(let i = 0; i < 2; i++){ const r = 4 + i * 4 + (pnow() * 12 % 4); g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1;
