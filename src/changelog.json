@@ -1,6 +1,13 @@
 [
  {
-  "era": "5.x: Every Category at 100+ (4–5 Oct 2026, ongoing)"
+  "era": "5.x: Every Category at 100+"
+ },
+ {
+  "v": "5.71",
+  "date": "2026-10-05",
+  "items": [
+   "Era dates taken back out of the version history."
+  ]
  },
  {
   "v": "5.70",
@@ -508,7 +515,7 @@
   ]
  },
  {
-  "era": "4.x: The Big Check, Football Mode & New Rounds (2–4 Oct 2026)"
+  "era": "4.x: The Big Check, Football Mode & New Rounds"
  },
  {
   "v": "4.99",
@@ -1225,7 +1232,7 @@
   ]
  },
  {
-  "era": "3.x: The Big Refill, Football & History (before 2 Oct 2026)"
+  "era": "3.x: The Big Refill, Football & History"
  },
  {
   "v": "3.59",
@@ -1546,7 +1553,7 @@
   ]
  },
  {
-  "era": "2.x: Party, Smart Zoom, Fandoms & Photos Everywhere (before 2 Oct 2026)"
+  "era": "2.x: Party, Smart Zoom, Fandoms & Photos Everywhere"
  },
  {
   "v": "2.42",
@@ -1807,7 +1814,7 @@
   ]
  },
  {
-  "era": "1.x: Launch & The Egypt Update (before 2 Oct 2026)"
+  "era": "1.x: Launch & The Egypt Update"
  },
  {
   "v": "1.14",
