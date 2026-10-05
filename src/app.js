@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.76`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.77`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -962,7 +962,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       len(){ const w = this.w(); return (W + 130) / w.v + w.sniffLen; },
       draw(u){ const {v, sniffAt, sniffLen} = this.w(), walkT = u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen, stopped = u >= sniffAt && u < sniffAt + sniffLen;
         const x = -40 + v * walkT, ph = walkT * 8.5, dx = x + 30, talk = Math.sin(u * 1.7) > 0.3;   // she gestures with her free hand now and then
-        const W2 = person(x, gy, 1, {outfit: "robe", robe: "#3c5a7a", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab */
+        const W2 = person(x, gy, 1, {shirt: "#d9667a", pants: "#3b5f8f", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab. 5.77 (Omar): jeans and a top (was a long blue dress, outfit "robe") */
            ...(stopped ? {} : {ph}),
           arms: [[1.6, -2.4], talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : stopped ? [0.45, 1.0] : [Math.sin(ph) * 0.35 + 0.35, Math.sin(ph) * 0.35 + 0.9]]});
         const ph2 = W2.hands[0]; rect(ph2[0] - 0.4, ph2[1] - 3.4, 2, 4.4, "#1b1b1f");                                       // the phone at her ear
