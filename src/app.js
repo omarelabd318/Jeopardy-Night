@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.54`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.55`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -692,13 +692,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
   requestAnimationFrame(frame);
 })();
-/* 5.52 (Omar): normal mode street scene. A shisha café sits in the middle of the strip above the team names (the same
-   84px strip as the Football mode kickers): two men play tawla (slam, slam, one wins, hands up, handshake, again) and a third
-   smokes shisha and blows rings. Traffic passes in front, one at a time, in turn: a tuk-tuk (honks, swerves round a pothole,
-   its passenger leans out), a hantour (horse and carriage; 5.52 was a horse caravan), a packed microbus (the tabbaa hangs off the door shouting "Ramses!" and it
-   brakes hard for one more passenger) and a ful cart (stops, ladles a plate for a customer, steam rising). A stray cat
-   wanders past now and then. Like the kickers it shows only on the board, and faintly behind an open clue.
-   To remove: delete #street in head.html and this block. */
+/* 5.52 (Omar): normal mode street scene, in the same 84px strip above the team names as the Football mode kickers.
+   5.55 (Omar): redrawn to look real rather than stick figures, and no speech bubbles. An ahwa in the middle (a lit shopfront with
+   shelves of tea glasses and a brass kettle, a green "قهوة" sign, a striped valance and a string of bulbs, wooden chairs out front):
+   two men in a galabeya and a shirt play tawla (slam, slam, one wins, hands up, handshake, again; the winner alternates) and a
+   third smokes shisha, blowing smoke rings one time and a big rising cloud the next. Traffic passes in front, one at a time:
+   a Bajaj tuk-tuk (honks, swerves round a pothole, the passenger leans out), a hantour (5.54), a white microbus (a man walks in
+   from the right and waits at the kerb, it brakes hard for him, the tabbaa hangs off the door, he gets in) and a ful cart
+   (stops, the vendor in his galabeya ladles a plate, steam rising). A ginger stray cat wanders past now and then.
+   It shows only on the normal mode board (and the Board animations toggle), faintly behind an open clue.
+   To remove: delete #street in head.html and this block. 5.52-5.54 drew everything as line art (see NOTES 5.55). */
 (() => {
   const cv = document.getElementById("street"); if(!cv) return; const g = cv.getContext("2d");
   let W = 0; const H = 84, gy = H - 1;
@@ -707,59 +710,90 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + "px"; g.setTransform(dpr,0,0,dpr,0,0); };
   addEventListener("resize", fit); fit();
   const showing = () => S.anim && !S.football && !$("#game").hidden && $("#winBox").hidden && !$("#scores").hidden;
-  const INK = "rgba(196,206,255,.78)", DIM = "rgba(196,206,255,.4)", GOLD = "#ffcc33";
-  let BG = "#0a0f5c";
   const sm = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x), cl = (x, a, b) => Math.max(a, Math.min(b, x));
-  const ln = (...p) => { g.beginPath(); g.moveTo(p[0], p[1]); for(let i = 2; i < p.length; i += 2) g.lineTo(p[i], p[i+1]); g.stroke(); };
-  const dot = (x, y, r, fill = true) => { g.beginPath(); g.arc(x, y, r, 0, Math.PI*2); fill ? g.fill() : g.stroke(); };
-  const ink = (w = 2) => { g.lineWidth = w; g.lineCap = "round"; g.lineJoin = "round"; g.strokeStyle = INK; g.fillStyle = INK; };
-  function bubble(x, y, text){ g.font = "bold 10px system-ui, sans-serif"; const w = g.measureText(text).width + 10;
-    g.fillStyle = "rgba(255,248,225,.92)"; g.beginPath(); g.roundRect(x - w/2, y - 9, w, 15, 6); g.fill();
-    g.beginPath(); g.moveTo(x - 3, y + 5); g.lineTo(x + 1, y + 10); g.lineTo(x + 4, y + 5); g.fill();
-    g.fillStyle = "#0a0f5c"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(text, x, y - 1); }
+  const pnow = () => performance.now() / 1000;
+  // ---- drawing helpers ----
+  const poly = (pts, fill, stroke, lw = 1) => { g.beginPath(); pts.forEach(([a, b], i) => g[i ? "lineTo" : "moveTo"](a, b)); g.closePath();
+    if(fill){ g.fillStyle = fill; g.fill(); } if(stroke){ g.strokeStyle = stroke; g.lineWidth = lw; g.stroke(); } };
+  const seg = (pts, col, lw) => { g.strokeStyle = col; g.lineWidth = lw; g.lineCap = "round"; g.lineJoin = "round"; g.beginPath();
+    pts.forEach(([a, b], i) => g[i ? "lineTo" : "moveTo"](a, b)); g.stroke(); };
+  const disc = (x, y, r, col) => { g.fillStyle = col; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); };
+  const oval = (x, y, rx, ry, col, rot = 0) => { g.fillStyle = col; g.beginPath(); g.ellipse(x, y, rx, ry, rot, 0, Math.PI * 2); g.fill(); };
+  const rect = (x, y, w, h, col) => { g.fillStyle = col; g.fillRect(x, y, w, h); };
+  const glow = (x, y, r, col) => { const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, col); gr.addColorStop(1, "rgba(255,200,120,0)"); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); };
+  const wheel = (x, y, r, rot, hub = "#9aa0a6") => { disc(x, y, r, "#141414"); disc(x, y, r * 0.55, "#3a3d42"); disc(x, y, r * 0.3, hub);
+    seg([[x + Math.cos(rot) * r * 0.5, y + Math.sin(rot) * r * 0.5], [x - Math.cos(rot) * r * 0.5, y - Math.sin(rot) * r * 0.5]], "#61656b", 0.8); };
 
-  /* A stick figure in the kickers' proportions. d = 1 faces right. Angles are from straight down, + is forwards (towards d).
-     o: sit (on a stool, thighs forward), ph (walking phase), lean, arms [[upper, fore], [upper, fore]], s (scale), hop. */
-  function fig(x, y, d, o = {}){
-    const s = o.s || 1, lean = o.lean || 0, hip = (o.sit ? y - 11*s : y - 16*s) - (o.hop || 0);
-    const up = k => [x + Math.sin(lean) * k * s * d, hip - Math.cos(lean) * k * s];
-    const hd = up(19), nk = up(12), sh = up(10);
-    ink(2.3 * s); dot(hd[0], hd[1], 4.6 * s); ln(nk[0], nk[1], x, hip);
-    const leg = (a, b) => { const kx = x + Math.sin(a) * 8*s*d, ky = hip + Math.cos(a) * 8*s; ln(x, hip, kx, ky, kx + Math.sin(b) * 8*s*d, ky + Math.cos(b) * 8*s); };
-    if(o.sit){ leg(Math.PI/2, 0.05); leg(Math.PI/2 - 0.15, -0.05); }
-    else if(o.ph == null){ leg(0.12, 0.12); leg(-0.12, -0.12); }
-    else for(const k of [0, Math.PI]){ const a = Math.sin(o.ph + k) * 0.45; leg(a, a - 0.5 * Math.max(0, Math.sin(o.ph + k + 1.2))); }
-    const arms = o.arms || (o.ph != null ? [[-Math.sin(o.ph) * 0.4, -Math.sin(o.ph) * 0.4 + 0.3], [Math.sin(o.ph) * 0.4, Math.sin(o.ph) * 0.4 + 0.3]] : [[0.2, 0.3], [-0.2, -0.1]]);
-    const hands = arms.map(([u, f]) => { const ex = sh[0] + Math.sin(u) * 7*s*d, ey = sh[1] + Math.cos(u) * 7*s, hx = ex + Math.sin(f) * 7*s*d, hy = ey + Math.cos(f) * 7*s; ln(sh[0], sh[1], ex, ey, hx, hy); return [hx, hy]; });
-    return {hd, hands};
+  /* An Egyptian man or woman, side on. d = 1 faces right. Angles from straight down, + is forwards. o: outfit "robe" (galabeya)
+     or "shirt"; robe/shirt/pants colours; skin; hat "taqiya" (white skullcap) / "emma" (turban); hijab (colour); mo (moustache);
+     sit; ph (walking phase); lean (+ forwards); arms [[upper, fore] x2]; s (scale); hop. Returns the head and hands. */
+  function person(x, y, d, o = {}){
+    const s = o.s || 1, lean = o.lean || 0, robe = o.outfit === "robe";
+    const hip = (o.sit ? y - 12 * s : y - 17 * s) - (o.hop || 0);
+    const T = (k, f = 0) => [x + (Math.sin(lean) * k + Math.cos(lean) * f) * s * d, hip - (Math.cos(lean) * k - Math.sin(lean) * f) * s];
+    const skin = o.skin || "#8f5a38", cloth = robe ? o.robe : o.shirt || "#5a7aa0", pants = o.pants || "#28303f";
+    // legs
+    const legs = [];
+    if(o.sit) for(const k of [0, 1]) legs.push({k: [x + (8.5 - k) * s * d, hip + 0.5 * s], f: [x + (9.5 - k) * s * d, y]});
+    else for(const k of [0, Math.PI]){ const a = o.ph == null ? (k ? -0.1 : 0.1) : Math.sin(o.ph + k) * 0.45, b = a - (o.ph == null ? 0 : 0.5 * Math.max(0, Math.sin(o.ph + k + 1.2)));
+      const kx = x + Math.sin(a) * 8.5 * s * d, ky = hip + Math.cos(a) * 8.5 * s; legs.push({k: [kx, ky], f: [kx + Math.sin(b) * 8.5 * s * d, ky + Math.cos(b) * 8.5 * s]}); }
+    const legCol = robe ? (o.sit ? o.robe : "#5b3b28") : pants;
+    legs.forEach((L, i) => { seg([[x, hip], L.k, L.f], i ? shade(legCol) : legCol, (robe && o.sit ? 4.6 : 3.4) * s);
+      oval(L.f[0] + 1.2 * s * d, L.f[1] - 0.8 * s, 2.3 * s, 1.1 * s, "#1c1612"); });
+    const sh = T(12.5), arms = o.arms || (o.ph != null ? [[-Math.sin(o.ph) * 0.4, -Math.sin(o.ph) * 0.4 + 0.3], [Math.sin(o.ph) * 0.4, Math.sin(o.ph) * 0.4 + 0.3]] : [[0.15, 0.25], [-0.15, -0.05]]);
+    const hands = arms.map(([u, f]) => { const ex = sh[0] + Math.sin(u) * 6.8 * s * d, ey = sh[1] + Math.cos(u) * 6.8 * s; return {e: [ex, ey], h: [ex + Math.sin(f) * 6.3 * s * d, ey + Math.cos(f) * 6.3 * s]}; });
+    const arm = (A, back) => { seg([sh, A.e, A.h], back ? shade(cloth) : cloth, (robe ? 3.3 : 2.8) * s); disc(A.h[0], A.h[1], 1.5 * s, skin); };
+    arm(hands[1], true);
+    // body
+    if(robe && !o.sit){ const fx = legs.map(L => (L.f[0] - x) * d), fr = Math.max(...fx) + 3, bk = Math.min(...fx) - 3;
+      poly([T(13, -3.2), T(13, 3.3), T(7, 3.9), [x + fr * s * d, y - 3.5 * s], [x + bk * s * d, y - 3.5 * s], T(2, -3.8)], o.robe); }
+    else poly([T(13, -3.1), T(13, 3.2), T(6, 3.6), T(0, 3.5), T(-0.5, -3.4)], cloth);
+    if(!robe && !o.sit) poly([T(0.5, -3.4), T(0.5, 3.5), T(-1.5, 3.4), T(-1.5, -3.3)], pants);
+    // head
+    const hc = T(17.3, 0.4); poly([T(12.5, -1), T(12.5, 1.4), T(14.6, 1.2), T(14.6, -0.8)], skin);
+    if(o.hijab){ disc(hc[0], hc[1], 4.3 * s, o.hijab); poly([T(16, -4), T(11.5, -3.6), T(11.5, 2.8), T(14.5, 3)], o.hijab);
+      oval(hc[0] + 1.9 * s * d, hc[1] + 0.3 * s, 2.3 * s, 3 * s, skin); }
+    else { disc(hc[0], hc[1], 3.7 * s, skin); oval(hc[0] + 3.6 * s * d, hc[1] + 0.4 * s, 0.9 * s, 1.1 * s, skin);   // nose
+      if(o.hat === "emma"){ oval(hc[0], hc[1] - 2.4 * s, 4.6 * s, 2.7 * s, "#ecebe4"); seg([[hc[0] - 3.6 * s, hc[1] - 2.2 * s], [hc[0] + 3.6 * s, hc[1] - 3.4 * s]], "#cfccc0", 0.7 * s); }
+      else if(o.hat === "taqiya"){ g.fillStyle = "#f1efe8"; g.beginPath(); g.arc(hc[0], hc[1] - 0.6 * s, 3.8 * s, Math.PI, 0); g.fill(); }
+      else { g.fillStyle = o.hair || "#1d1712"; g.beginPath(); g.arc(hc[0] - 0.3 * s * d, hc[1] - 0.2 * s, 3.9 * s, d > 0 ? Math.PI * 0.75 : Math.PI * 1.05, d > 0 ? Math.PI * 1.95 : Math.PI * 0.25 + Math.PI * 2); g.fill(); }
+      if(o.mo) seg([[hc[0] + 1.8 * s * d, hc[1] + 1.7 * s], [hc[0] + 3.5 * s * d, hc[1] + 1.7 * s]], "#1d1712", 0.9 * s); }
+    arm(hands[0], false);
+    return {hd: hc, hands: hands.map(A => A.h), mouth: [hc[0] + 3.2 * s * d, hc[1] + 1.6 * s]};
   }
+  function shade(c){ // a darker version of a #rrggbb colour, for the far arm and leg
+    if(!/^#[0-9a-f]{6}$/i.test(c)) return c; const n = parseInt(c.slice(1), 16), f = v => Math.round(v * 0.72);
+    return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; }
 
-  // ---- the café ----
-  function cafe(t, cx){
-    ink(2);
-    const L = cx - 100, R = cx + 100, top = 22, edge = 31;
-    ln(L + 4, edge, L + 4, gy); ln(R - 4, edge, R - 4, gy);                            // poles
-    g.save(); g.beginPath(); g.moveTo(L - 6, top); g.lineTo(R + 6, top); g.lineTo(R + 2, edge); g.lineTo(L - 2, edge); g.closePath(); g.clip();
-    for(let x = L - 6, i = 0; x < R + 6; x += 12, i++){ g.fillStyle = i % 2 ? "rgba(255,204,51,.55)" : "rgba(196,206,255,.22)"; g.fillRect(x, top, 12, edge - top); }
-    g.restore(); ink(1.6); ln(L - 6, top, R + 6, top, R + 2, edge); ln(L - 6, top, L - 2, edge);
-    g.beginPath(); for(let x = L - 2; x < R + 2; x += 12){ g.moveTo(x, edge); g.quadraticCurveTo(x + 6, edge + 5, x + 12, edge); } g.stroke();   // scalloped edge
-    g.fillStyle = "rgba(10,15,92,.85)"; g.strokeStyle = GOLD; g.lineWidth = 1.4; g.beginPath(); g.roundRect(cx - 24, 3, 48, 15, 3); g.fill(); g.stroke();   // sign
-    g.fillStyle = GOLD; g.font = "bold 11px system-ui, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("قهوة", cx, 11);
-    ink(1.2); ln(cx - 12, 18, cx - 12, top); ln(cx + 12, 18, cx + 12, top);
-    const sw = Math.sin(t * 1.3) * 1.5; ink(1); ln(cx - 58, edge, cx - 58 + sw, edge + 7);                // lantern, swaying a little
-    g.fillStyle = `rgba(255,204,51,${0.7 + 0.25 * Math.sin(t * 3.1)})`; g.beginPath(); g.roundRect(cx - 61 + sw, edge + 7, 6, 8, 2); g.fill();
-    tawla(t, cx - 46); shisha(t, cx + 44);
+  // ---- the ahwa ----
+  function ahwa(t, cx){
+    const L = cx - 125, R = cx + 125, oL = cx - 82, oR = cx + 82, top = 30;
+    rect(L, 6, R - L, gy - 6, "#4d3f33"); rect(L, 6, R - L, 3, "#5d4d3e");                                    // the building
+    for(let x = L + 6; x < R; x += 14) rect(x, 10, 1, 14, "rgba(0,0,0,.12)");                                  // plaster seams
+    const gr = g.createLinearGradient(0, top, 0, gy); gr.addColorStop(0, "#f7c977"); gr.addColorStop(1, "#b9762f");
+    rect(oL, top, oR - oL, gy - top, gr);                                                                       // the lit shopfront
+    rect(oL + 6, top + 12, oR - oL - 12, 1.6, "#6b4423"); rect(oL + 6, top + 24, oR - oL - 12, 1.6, "#6b4423");   // shelves
+    for(let i = 0; i < 18; i++){ const x = oL + 10 + i * 8.3; if(x > oR - 10) break; rect(x, top + 8, 2.4, 4, i % 3 ? "rgba(255,255,255,.55)" : "rgba(170,90,30,.8)"); }   // tea glasses
+    for(let i = 0; i < 9; i++) rect(oL + 14 + i * 16, top + 19, 4, 5, ["#2f6e52", "#a8322d", "#d9b24a"][i % 3]);    // tins of tea and sugar
+    const k = cx + 52; oval(k, top + 7, 4.5, 4, "#c9963a"); rect(k - 1, top + 1.5, 2, 2.5, "#c9963a"); seg([[k + 4, top + 6], [k + 7.5, top + 3]], "#c9963a", 1.4);   // brass kettle
+    rect(oL - 3, top - 1, 3, gy - top + 1, "#3a2f26"); rect(oR, top - 1, 3, gy - top + 1, "#3a2f26");              // door frame
+    rect(cx - 50, 10, 100, 14, "#1f5a3a"); g.strokeStyle = "#d9b24a"; g.lineWidth = 1; g.strokeRect(cx - 49.5, 10.5, 99, 13);   // the sign
+    g.fillStyle = "#f5f1e4"; g.font = "bold 11px system-ui, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("قهوة", cx, 17.5);
+    for(let x = oL - 4, i = 0; x < oR + 4; x += 10, i++){ rect(x, top - 4, 10, 6, i % 2 ? "#e8dcc4" : "#a8322d");   // striped valance
+      g.fillStyle = i % 2 ? "#e8dcc4" : "#a8322d"; g.beginPath(); g.arc(x + 5, top + 2, 5, 0, Math.PI); g.fill(); }
+    for(let x = L + 8, i = 0; x < R - 4; x += 15, i++){ const on = 0.7 + 0.3 * Math.sin(t * 2 + i * 1.7); glow(x, 27, 5, `rgba(255,214,120,${0.45 * on})`); disc(x, 27, 1.5, `rgba(255,226,150,${on})`); }   // string of bulbs
+    seg([[L + 4, 26], [R - 4, 26]], "rgba(30,25,20,.6)", 0.6);
+    rect(L, gy - 2, R - L, 2, "#2e261f");                                                                        // the kerb
+    tawla(t, cx - 46); shisha(t, cx + 38);
   }
+  function chair(x, d){ const c = "#7a5434"; seg([[x - 5 * d, gy], [x - 5 * d, gy - 27]], c, 1.8); seg([[x - 5 * d, gy - 12], [x + 5 * d, gy - 12]], c, 2.2); seg([[x + 5 * d, gy - 12], [x + 5 * d, gy]], c, 1.6); seg([[x - 5 * d, gy - 21], [x - 5 * d, gy - 25]], "#5d3f26", 2.6); }
 
   /* Tawla: an 18 s round. They take turns slamming pieces down (1.25 s each), then one wins and throws his hands up while the
-     other slumps, they shake hands across the table, and start again. The winner alternates. */
+     other slumps with a hand on his head, they shake hands across the table, and start again. The winner alternates. */
   function tawla(t, tx){
     const u = t % 18, aWins = Math.floor(t / 18) % 2 === 0;
-    ink(2); ln(tx - 14, gy - 15, tx + 14, gy - 15); ln(tx, gy - 15, tx, gy); ln(tx - 5, gy, tx + 5, gy);   // table
-    g.fillStyle = "rgba(255,204,51,.7)"; g.fillRect(tx - 9, gy - 18, 18, 3);                              // the board
-    for(const sx of [tx - 21, tx + 21]){ ink(2); ln(sx - 4, gy - 11, sx + 4, gy - 11); ln(sx, gy - 11, sx, gy); }  // stools
     const rest = [[0.9, 1.6], [0.6, 1.4]];
-    const pose = me => {                                       // me: 0 = left player (A), 1 = right (B)
+    const pose = me => {
       if(u < 10){ const turn = Math.floor(u / 1.25) % 2, f = (u % 1.25) / 1.25;
         if(turn !== me) return {arms: rest};
         const raise = f < 0.6 ? sm(f / 0.6) : 1 - sm((f - 0.6) / 0.1);
@@ -767,171 +801,213 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       const won = (me === 0) === aWins;
       if(u < 12.5){ const k = sm((u - 10) / 0.4);
         return won ? {arms: [[0.9 + 1.9 * k, 1.6 + 1.5 * k], [0.6 + 2.0 * k, 1.4 + 1.6 * k]], hop: 2 * Math.abs(Math.sin(u * 9)) * k}
-                   : {arms: [[0.9 - 0.7 * k, 1.6 - 1.4 * k], [0.6 + 1.7 * k, 1.4 - 4.0 * k]], lean: -0.18 * k}; }   // slumps back, a hand on his head
+                   : {arms: [[0.9 - 0.7 * k, 1.6 - 1.4 * k], [0.6 + 1.7 * k, 1.4 - 4.0 * k]], lean: -0.18 * k}; }
       if(u < 15.2){ const k = sm((u - 12.5) / 0.5), w = 0.12 * Math.sin(u * 22) * sm((u - 13) / 0.3);
-        return {arms: [[0.9 + 0.55 * k + w, 1.6 - 0.05 * k + w], rest[1]], lean: 0.45 * k}; }   // reach across and shake
+        return {arms: [[0.9 + 0.55 * k + w, 1.6 - 0.05 * k + w], rest[1]], lean: 0.45 * k}; }
       return {arms: rest};
     };
     const A = pose(0), B = pose(1);
-    fig(tx - 21, gy, 1, {sit: true, ...A}); fig(tx + 21, gy, -1, {sit: true, ...B});
-    for(const [p, x] of [[A, tx - 5], [B, tx + 5]]) if(p.clack){ ink(1.2); ln(x - 4, gy - 22, x - 6, gy - 25); ln(x, gy - 23, x, gy - 27); ln(x + 4, gy - 22, x + 6, gy - 25); }
+    chair(tx - 21, 1); chair(tx + 21, -1);
+    person(tx - 21, gy, 1, {sit: true, outfit: "robe", robe: "#8e959c", hat: "emma", mo: true, skin: "#7f4f31", ...A});
+    person(tx + 21, gy, -1, {sit: true, shirt: "#5b6f8c", pants: "#2a2f3a", mo: true, skin: "#9a6342", ...B});
+    seg([[tx, gy - 16], [tx, gy]], "#5a3c24", 2); seg([[tx - 5, gy], [tx + 5, gy]], "#5a3c24", 1.6); rect(tx - 13, gy - 17, 26, 2.2, "#6e4b2e");   // table
+    rect(tx - 10, gy - 20, 20, 3, "#7a4a26"); rect(tx - 9, gy - 19.6, 8.5, 2, "#d9b783"); rect(tx + 0.5, gy - 19.6, 8.5, 2, "#d9b783");   // the open board
+    for(let i = 0; i < 5; i++){ disc(tx - 7.5 + i * 1.6, gy - 18.6, 0.6, i % 2 ? "#f2efe6" : "#1a1a1a"); disc(tx + 2 + i * 1.6, gy - 18.6, 0.6, i % 2 ? "#1a1a1a" : "#f2efe6"); }
+    rect(tx + 10.5, gy - 21, 2.2, 3.8, "rgba(190,110,40,.9)"); rect(tx + 10.5, gy - 21, 2.2, 0.8, "rgba(255,255,255,.8)");   // a glass of tea
+    for(const [p, x] of [[A, tx - 5], [B, tx + 5]]) if(p.clack) for(const [a, b, c, e] of [[-4, -23, -6, -26], [0, -24, 0, -28], [4, -23, 6, -26]]) seg([[x + a, gy + b], [x + c, gy + e]], "rgba(255,240,200,.85)", 1);
   }
 
-  /* Shisha: an 8 s cycle. He draws on the hose (the water bubbles, the coal glows), lowers it, and blows three smoke rings. */
+  /* Shisha: an 8 s draw. He pulls on the hose (the water bubbles, the coal glows), lowers it, and breathes out: three smoke rings
+     one time, a big cloud of smoke that rises and spreads the next. */
   function shisha(t, sx){
-    const u = t % 8, px = sx + 18, draw = u < 2.2;
-    const S2 = fig(sx, gy, 1, {sit: true, arms: draw || u < 2.6 ? [[1.2, 3.0], [0.5, 1.4]] : [[0.5, 1.2], [0.4, 1.3]]});
-    ink(2); ln(sx - 4, gy - 11, sx + 4, gy - 11); ln(sx, gy - 11, sx, gy);       // stool
-    g.strokeStyle = INK; g.lineWidth = 1.8; g.beginPath(); g.ellipse(px, gy - 5, 5, 5, 0, 0, Math.PI*2); g.stroke();   // the base
-    ln(px, gy - 10, px, gy - 25); ln(px - 4, gy - 27, px + 4, gy - 27, px + 2, gy - 25, px - 2, gy - 25, px - 4, gy - 27);   // stem and bowl
-    g.fillStyle = `rgba(255,${draw ? 120 : 160},40,${draw ? 0.95 : 0.55})`; dot(px, gy - 28.5, draw ? 2.2 : 1.6);              // the coal
-    const m = draw || u < 2.6 ? [S2.hd[0] + 4, S2.hd[1] + 2] : S2.hands[0];                                          // mouthpiece: at his lips, or in his hand
-    g.strokeStyle = DIM; g.lineWidth = 1.4; g.beginPath(); g.moveTo(px - 2, gy - 14); g.quadraticCurveTo(px - 8, gy + 2, m[0], m[1]); g.stroke();
-    if(draw){ g.fillStyle = DIM; for(let i = 0; i < 3; i++){ const b = ((u * 2.5 + i / 3) % 1); dot(px - 2 + i * 2, gy - 3 - b * 5, 0.9); } }
-    for(let i = 0; i < 3; i++){ const a = u - 3 - i * 0.45; if(a < 0 || a > 3.4) continue;       // rings
-      const k = a / 3.4, r = 1.5 + 6 * k; g.strokeStyle = `rgba(230,235,255,${0.7 * (1 - k)})`; g.lineWidth = 1.3;
-      g.beginPath(); g.ellipse(S2.hd[0] + 6 + a * 7, S2.hd[1] - a * 9, r, r * 0.45, -0.3, 0, Math.PI*2); g.stroke(); }
+    const u = t % 8, cloud = Math.floor(t / 8) % 2 === 1, px = sx + 19, draw = u < 2.2;
+    chair(sx, 1);
+    const P = person(sx, gy, 1, {sit: true, shirt: "#a3563a", pants: "#2c3442", hair: "#1a1410", skin: "#8a5536",
+      arms: draw || u < 2.6 ? [[1.2, 3.0], [0.5, 1.4]] : [[0.5, 1.2], [0.4, 1.3]]});
+    oval(px, gy - 6, 5.2, 5.8, "rgba(70,170,120,.82)"); oval(px - 1.8, gy - 8, 1.2, 2.4, "rgba(255,255,255,.35)");   // green glass base
+    rect(px - 1, gy - 28, 2, 17, "#c9a24a"); oval(px, gy - 24, 5, 1.3, "#d4ae55");                                  // brass stem and tray
+    poly([[px - 3.2, gy - 31.5], [px + 3.2, gy - 31.5], [px + 1.8, gy - 27.5], [px - 1.8, gy - 27.5]], "#8a4b2e");    // clay bowl
+    glow(px, gy - 32.5, draw ? 6 : 4, draw ? "rgba(255,120,40,.7)" : "rgba(255,120,40,.35)"); oval(px, gy - 32.5, 2.6, 1.1, draw ? "#ff7a2a" : "#b8562a");
+    const m = draw || u < 2.6 ? P.mouth : P.hands[0];
+    g.strokeStyle = "#262626"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(px - 2, gy - 15); g.quadraticCurveTo(px - 8, gy + 1, m[0], m[1]); g.stroke();
+    if(draw) for(let i = 0; i < 3; i++){ const b = (u * 2.5 + i / 3) % 1; disc(px - 2 + i * 2, gy - 3 - b * 5, 0.9, "rgba(255,255,255,.6)"); }
+    const mo = P.mouth;
+    if(!cloud) for(let i = 0; i < 3; i++){ const a = u - 3 - i * 0.45; if(a < 0 || a > 3.4) continue;
+      const k = a / 3.4, r = 1.5 + 6 * k; g.strokeStyle = `rgba(235,235,235,${0.75 * (1 - k)})`; g.lineWidth = 1.4;
+      g.beginPath(); g.ellipse(mo[0] + 4 + a * 7, mo[1] - a * 9, r, r * 0.45, -0.3, 0, Math.PI * 2); g.stroke(); }
+    else for(let i = 0; i < 9; i++){ const a = u - 2.9 - i * 0.12; if(a < 0 || a > 4.6) continue;      // a big cloud, rising and spreading
+      const k = a / 4.6, r = 2.5 + 11 * Math.sqrt(k), x = mo[0] + 3 + a * 6 + Math.sin(i * 2.1) * 4 * k, y = mo[1] - a * 7 - a * a * 0.9 + Math.cos(i * 1.7) * 2;
+      const gr = g.createRadialGradient(x, y, 0, x, y, r), al = 0.42 * (1 - k) * Math.min(1, a * 5);
+      gr.addColorStop(0, `rgba(235,235,235,${al})`); gr.addColorStop(1, "rgba(235,235,235,0)"); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); }
   }
 
   // ---- traffic ----
-  const wheel = (x, y, r, rot) => { ink(1.8); dot(x, y, r, false); ink(1.2); ln(x - Math.cos(rot) * r, y - Math.sin(rot) * r, x + Math.cos(rot) * r, y + Math.sin(rot) * r); };
-  function tuktuk(x, d, rot, lean, sw, tilt, honk){   // sw 0..1: swerving towards us round the pothole (lower and a touch bigger), tilt: leaning into it
-    g.save(); g.translate(x, gy + 2.5 * sw); g.scale(1 + 0.08 * sw, 1 + 0.08 * sw); g.rotate(tilt); g.translate(-x, -gy);
-    g.translate(x, gy); g.scale(1.25, 1.25); g.translate(-x, -gy);                                         // a touch bigger than the people
-    const poly = (P, fill) => { g.beginPath(); P.forEach(([a, b], i) => g[i ? "lineTo" : "moveTo"](x + a * d, gy + b)); g.closePath();
-      g.fillStyle = BG; g.fill(); g.fillStyle = fill; g.fill(); ink(1.8); g.stroke(); };
-    ink(2); dot(x + 4 * d, gy - 19, 3); ln(x + 3 * d, gy - 16, x + 2 * d, gy - 12); ln(x + 3 * d, gy - 15, x + 9 * d, gy - 16);   // driver, hands on the bars
-    const ly = lean, px = x - (9 + 13 * ly) * d, py = gy - 18 - 3 * ly;                                // passenger: leans out past the back pillar
-    ink(2); dot(px, py, 3); ln(px + 1 * d, py + 3, x - 9 * d, gy - 12);
-    if(lean > 0.05){ ink(1.6); const w = Math.sin(performance.now() / 90) * 2.5; ln(px + 1 * d, py + 4, px - 4 * d, py - 2, px - 6 * d + w, py - 8); }   // waving
-    poly([[-18, -5], [-18, -13], [12, -13], [17, -9], [17, -5]], "rgba(255,204,51,.45)");               // body
-    poly([[-19, -24], [-15, -28], [7, -28], [9, -24]], "rgba(255,204,51,.45)");                         // canopy
-    ink(1.6); ln(x - 18 * d, gy - 24, x - 18 * d, gy - 13); ln(x + 8 * d, gy - 24, x + 14 * d, gy - 13);  // back pillar, windscreen
-    ink(1); for(let i = -16; i <= 6; i += 3.5) ln(x + i * d, gy - 24, x + i * d, gy - 22.5);              // fringe
-    wheel(x - 10 * d, gy - 4, 4.2, rot); wheel(x + 13 * d, gy - 3.6, 3.6, rot);
+  /* The tuk-tuk: a Bajaj like the ones all over Cairo. One small front wheel under a rounded nose with the headlamp, a black canvas
+     roof with coloured tassels, open sides, the driver up front and a bench seat behind. */
+  function tuktuk(x, d, rot, lean, sw, tilt, honk){
+    g.save(); g.translate(x, gy + 2.5 * sw); g.rotate(tilt); g.scale(1.32 + 0.1 * sw, 1.32 + 0.1 * sw); g.translate(-x, -gy);
+    const X = a => x + a * d, body = "#8c1d22", trim = "#e3c15a";
+    person(X(-9), gy - 6, d, {sit: true, s: 0.62, shirt: "#d9a441", pants: "#30394a", skin: "#93603d", lean: -0.15 * (1 - lean),   // the passenger on the back bench
+      arms: lean > 0.05 ? [[0.3, 0.4], [2.6 + 0.3 * Math.sin(pnow() * 9), 3.0]] : [[0.4, 1.0], [0.2, 0.6]]});
+    person(X(5), gy - 6, d, {sit: true, s: 0.62, shirt: "#3a66a8", pants: "#262c38", skin: "#8a5536", mo: true, arms: [[1.2, 1.5], [1.1, 1.4]]});   // the driver, hands on the bars
+    poly([[X(-19), gy - 4], [X(-20), gy - 9], [X(-18), gy - 14], [X(-7), gy - 14], [X(-4), gy - 10], [X(9), gy - 10], [X(12), gy - 14], [X(15), gy - 14], [X(18.5), gy - 9], [X(18), gy - 4]], body);   // the tub
+    poly([[X(12), gy - 14], [X(13.5), gy - 25.5], [X(15.5), gy - 25], [X(18.5), gy - 9], [X(15), gy - 14]], body);    // the rounded nose
+    poly([[X(13.6), gy - 24.5], [X(15.4), gy - 24.2], [X(17), gy - 15], [X(15), gy - 15]], "rgba(170,205,225,.55)");   // windscreen
+    seg([[X(-19), gy - 9], [X(18), gy - 9]], trim, 0.8);                                                             // chrome strip
+    oval(X(18.2), gy - 11, 1.2, 1.6, "#fff6c8"); glow(X(22), gy - 11, 9, "rgba(255,240,180,.35)");                     // headlamp
+    rect(X(-20.5) - (d > 0 ? 0 : 1.5), gy - 9, 1.5, 2.5, "#e23b2e");                                                   // tail light
+    seg([[X(-18.5), gy - 14], [X(-18.5), gy - 27]], "#1b1b1b", 1.3); seg([[X(1.5), gy - 10], [X(1.5), gy - 27]], "#1b1b1b", 1);   // roof posts
+    poly([[X(-21), gy - 26], [X(-18), gy - 30.5], [X(13.5), gy - 30.5], [X(15.5), gy - 26]], "#1d1d1f");              // canvas roof
+    for(let i = -19, j = 0; i <= 14; i += 3, j++) seg([[X(i), gy - 26], [X(i), gy - 24 + (j % 2)]], ["#e3c15a", "#c2352c", "#3d8fd1", "#3fae6a"][j % 4], 1.1);   // tassels
+    wheel(X(-12), gy - 4.2, 4.2, rot); wheel(X(14.5), gy - 3.8, 3.8, rot);
     g.restore();
-    if(honk) bubble(x + 22 * d, gy - 42, "beep beep!");
+    if(honk) for(let i = 0; i < 2; i++){ const r = 4 + i * 4 + (pnow() * 12 % 4); g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1;
+      g.beginPath(); g.arc(x + 26 * d, gy - 18, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }
   }
-  function horse(x, d, ph, rider){
-    ink(2); g.beginPath(); g.ellipse(x, gy - 21, 12, 5.5, 0, 0, Math.PI*2); g.fillStyle = BG; g.fill(); g.stroke();
-    ln(x + 9 * d, gy - 24, x + 16 * d, gy - 32); ink(3.4); ln(x + 16 * d, gy - 32, x + 23 * d, gy - 27); ink(1.4); ln(x + 15 * d, gy - 33, x + 14 * d, gy - 36);   // neck, head, ear
-    ink(1.6); g.beginPath(); g.moveTo(x - 12 * d, gy - 23); g.quadraticCurveTo(x - 18 * d, gy - 20 + Math.sin(ph * 0.5), x - 16 * d, gy - 11); g.stroke();   // tail
-    ink(1.8); [[9, 0], [6, Math.PI], [-6, Math.PI / 2], [-9, Math.PI * 1.5]].forEach(([o, k]) => { const a = Math.sin(ph + k) * 0.35, kx = x + o * d + Math.sin(a) * 8 * d, ky = gy - 17 + Math.cos(a) * 8;
-      ln(x + o * d, gy - 18, kx, ky, kx + Math.sin(a - 0.3 * Math.max(0, Math.sin(ph + k + 1))) * 8 * d, gy); });
-    if(rider === "plume"){ g.fillStyle = "rgba(255,204,51,.85)"; g.beginPath(); g.ellipse(x + 14 * d, gy - 39, 1.8, 3.2, -0.3 * d, 0, Math.PI*2); g.fill(); return; }   // the hantour horse's pompom
-    if(rider){ ink(2.2); dot(x + 1 * d, gy - 46, 4.4); ln(x, gy - 40, x - 1 * d, gy - 27); ln(x - 1 * d, gy - 27, x + 4 * d, gy - 21, x + 3 * d, gy - 14); ln(x, gy - 37, x + 8 * d, gy - 31, x + 14 * d, gy - 31); }
+  function horse(x, d, ph){
+    const c = "#6e4a30", X = a => x + a * d;
+    [[-9, Math.PI * 1.5, true], [7, Math.PI, true]].forEach(([o, k]) => legH(X(o), d, ph + k, shade(c)));
+    oval(x, gy - 21, 12.5, 6.4, c);                                                                              // body
+    poly([[X(7), gy - 26], [X(10), gy - 17], [X(15), gy - 27], [X(18.5), gy - 33], [X(15), gy - 36.5], [X(11), gy - 31]], c);   // neck
+    poly([[X(15), gy - 36.5], [X(18.5), gy - 37.5], [X(24.5), gy - 29.5], [X(23.5), gy - 27], [X(20), gy - 28.5], [X(17.5), gy - 32]], c);   // head
+    poly([[X(16), gy - 37], [X(16.5), gy - 40.5], [X(18), gy - 37.5]], c);                                       // ear
+    seg([[X(10.5), gy - 31], [X(14.5), gy - 36.5]], "#2a1a10", 2.2);                                              // mane
+    g.strokeStyle = "#2a1a10"; g.lineWidth = 2.4; g.beginPath(); g.moveTo(X(-12), gy - 23); g.quadraticCurveTo(X(-17), gy - 19 + Math.sin(ph * 0.5), X(-15), gy - 11); g.stroke();   // tail
+    [[-6, Math.PI / 2], [9, 0]].forEach(([o, k]) => legH(X(o), d, ph + k, c));
+    seg([[X(19), gy - 35], [X(22.5), gy - 29.5]], "#1d1410", 1); seg([[X(8.5), gy - 24], [X(10.5), gy - 18]], "#1d1410", 1.4); seg([[X(-2), gy - 27], [X(-2), gy - 15]], "#1d1410", 1.6);   // bridle, collar, girth
+    disc(X(-2), gy - 22, 0.9, "#d9b24a"); disc(X(9.4), gy - 21, 0.9, "#d9b24a");
+    oval(X(17), gy - 40.5, 1.8, 3, "#c2352c", -0.3 * d); oval(X(17), gy - 42.5, 1.2, 1.4, "#e3c15a");               // pompom
   }
-  /* 5.54 (Omar): a hantour (Egyptian horse carriage), not a caravan: one horse in the shafts, a four-wheeled carriage with big back
-     wheels and a folding hood over two passengers, and the driver up front on his box with the reins and a whip. */
-  function hantour(x, d, ph){                     // x: the horse; the carriage follows behind it
-    const cx = x - 52 * d, rot = -ph * 0.9;
-    ink(1.6); ln(x - 8 * d, gy - 22, cx + 14 * d, gy - 24);                                                  // the shafts
-    const spoked = (wx, wy, r) => { ink(1.8); dot(wx, wy, r, false); ink(1); for(let i = 0; i < 4; i++){ const a = rot + i * Math.PI / 4; ln(wx - Math.cos(a) * r, wy - Math.sin(a) * r, wx + Math.cos(a) * r, wy + Math.sin(a) * r); } };
-    g.beginPath(); g.moveTo(cx - 24 * d, gy - 31); g.quadraticCurveTo(cx - 24 * d, gy - 19, cx - 14 * d, gy - 19); g.lineTo(cx + 10 * d, gy - 19);
-    g.quadraticCurveTo(cx + 16 * d, gy - 20, cx + 16 * d, gy - 30); g.lineTo(cx + 6 * d, gy - 27); g.lineTo(cx - 12 * d, gy - 27); g.closePath();
-    g.fillStyle = BG; g.fill(); g.fillStyle = "rgba(255,204,51,.4)"; g.fill(); ink(1.8); g.stroke();       // the body
-    ink(2); dot(cx - 13 * d, gy - 34, 3.2); dot(cx - 5 * d, gy - 33.5, 3.2); ln(cx - 13 * d, gy - 31, cx - 13 * d, gy - 27); ln(cx - 5 * d, gy - 30, cx - 5 * d, gy - 27);   // two passengers
-    g.beginPath(); g.moveTo(cx - 24 * d, gy - 31); g.quadraticCurveTo(cx - 25 * d, gy - 47, cx - 10 * d, gy - 47); g.lineTo(cx - 1 * d, gy - 44);   // the folding hood
-    g.lineTo(cx - 1 * d, gy - 41); g.quadraticCurveTo(cx - 17 * d, gy - 43, cx - 21 * d, gy - 31); g.closePath();
-    g.fillStyle = BG; g.fill(); g.fillStyle = "rgba(196,206,255,.3)"; g.fill(); ink(1.6); g.stroke();
-    ink(1); ln(cx - 18 * d, gy - 46, cx - 22 * d, gy - 32); ln(cx - 10 * d, gy - 47, cx - 17 * d, gy - 37);   // hood ribs
-    ink(1.6); ln(cx + 12 * d, gy - 30, cx + 12 * d, gy - 36, cx + 20 * d, gy - 36);                           // the driver's box
-    const D2 = fig(cx + 15 * d, gy - 25, d, {sit: true, s: 0.85, arms: [[1.3, 1.5], [2.2 + 0.25 * Math.sin(ph * 0.7), 2.9]]});   // driver, reins in one hand, whip up in the other
-    g.strokeStyle = DIM; g.lineWidth = 1; ln(D2.hands[0][0], D2.hands[0][1], x + 18 * d, gy - 29);        // reins
-    const w = D2.hands[1]; g.beginPath(); g.moveTo(w[0], w[1]); g.quadraticCurveTo(w[0] + 8 * d, w[1] - 14, w[0] + 18 * d, w[1] - 6 + 3 * Math.sin(ph * 0.7)); g.stroke();   // whip
-    g.fillStyle = `rgba(255,204,51,${0.75 + 0.2 * Math.sin(ph)})`; dot(cx + 17 * d, gy - 21, 1.8);               // side lamp
-    spoked(cx - 10 * d, gy - 12, 11.5); spoked(cx + 13 * d, gy - 8, 7.5);
-    horse(x, d, ph, "plume");
+  function legH(x, d, ph, c){ const a = Math.sin(ph) * 0.35, kx = x + Math.sin(a) * 8 * d, ky = gy - 17 + Math.cos(a) * 8, b = a - 0.3 * Math.max(0, Math.sin(ph + 1));
+    const fx = kx + Math.sin(b) * 8 * d; seg([[x, gy - 19], [kx, ky]], c, 3); seg([[kx, ky], [fx, gy - 1]], c, 2.1); rect(fx - 1.4, gy - 2, 2.8, 2, "#1a1410"); }
+  /* 5.54 (Omar): a hantour (Egyptian horse carriage): one horse in the shafts, a black four-wheeled carriage with big back wheels
+     and a folding hood over two passengers, and the driver in his galabeya and emma up front with the reins and a whip. */
+  function hantour(x, d, ph){
+    const cx = x - 52 * d, rot = -ph * 0.9, X = a => cx + a * d;
+    seg([[x - 8 * d, gy - 22], [X(14), gy - 24]], "#2a1d14", 1.6);                                                  // shafts
+    person(X(-12), gy - 21, d, {sit: true, s: 0.75, hijab: "#c0567d", shirt: "#c0567d", skin: "#9a6744", arms: [[0.6, 1.0], [0.4, 0.9]]});   // passengers
+    person(X(-4), gy - 21, d, {sit: true, s: 0.75, shirt: "#e0e0e0", pants: "#31394a", skin: "#86553a", arms: [[0.5, 1.1], [0.3, 0.8]]});
+    g.beginPath(); g.moveTo(X(-24), gy - 31); g.quadraticCurveTo(X(-24), gy - 19, X(-14), gy - 19); g.lineTo(X(10), gy - 19);
+    g.quadraticCurveTo(X(16), gy - 20, X(16), gy - 30); g.lineTo(X(6), gy - 26); g.lineTo(X(-12), gy - 26); g.closePath();
+    g.fillStyle = "#18181d"; g.fill(); g.strokeStyle = "#d9b24a"; g.lineWidth = 0.8; g.stroke();                      // the body, gold-lined
+    g.beginPath(); g.moveTo(X(-24), gy - 31); g.quadraticCurveTo(X(-25), gy - 47, X(-10), gy - 47); g.lineTo(X(-1), gy - 44);
+    g.lineTo(X(-1), gy - 41.5); g.quadraticCurveTo(X(-17), gy - 43, X(-21), gy - 31); g.closePath(); g.fillStyle = "#2a2a30"; g.fill();   // the hood
+    seg([[X(-18), gy - 46], [X(-22), gy - 32]], "#3c3c44", 1); seg([[X(-10), gy - 46.5], [X(-17), gy - 37]], "#3c3c44", 1);
+    seg([[X(12), gy - 30], [X(12), gy - 36], [X(20), gy - 36]], "#18181d", 1.8);                                   // the driver's box
+    const D2 = person(X(15), gy - 25, d, {sit: true, s: 0.8, outfit: "robe", robe: "#5d5a54", hat: "emma", mo: true, skin: "#7a4b2f",
+      arms: [[1.3, 1.5], [2.2 + 0.25 * Math.sin(ph * 0.7), 2.9]]});
+    seg([D2.hands[0], [x + 18 * d, gy - 29]], "rgba(40,30,20,.9)", 0.8);                                             // reins
+    const w = D2.hands[1]; g.strokeStyle = "#2a1d14"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(w[0], w[1]); g.quadraticCurveTo(w[0] + 8 * d, w[1] - 14, w[0] + 18 * d, w[1] - 6 + 3 * Math.sin(ph * 0.7)); g.stroke();   // whip
+    glow(X(17), gy - 21, 5, "rgba(255,210,120,.6)"); disc(X(17), gy - 21, 1.6, "#ffe39a");                           // side lamp
+    for(const [wx, wy, r] of [[X(-10), gy - 11.5, 11.5], [X(13), gy - 7.5, 7.5]]){
+      for(let i = 0; i < 5; i++){ const a = rot + i * Math.PI / 5; seg([[wx - Math.cos(a) * (r - 1.5), wy - Math.sin(a) * (r - 1.5)], [wx + Math.cos(a) * (r - 1.5), wy + Math.sin(a) * (r - 1.5)]], "#5a2a20", 0.7); }
+      g.strokeStyle = "#141414"; g.lineWidth = 2.4; g.beginPath(); g.arc(wx, wy, r - 1.2, 0, Math.PI * 2); g.stroke();
+      g.strokeStyle = "rgba(217,178,74,.7)"; g.lineWidth = 0.5; g.beginPath(); g.arc(wx, wy, r - 2.6, 0, Math.PI * 2); g.stroke(); disc(wx, wy, 1.8, "#d9b24a"); }
+    horse(x, d, ph);
   }
-  function microbus(x, d, rot, pitch, kid){
+  /* The microbus: white, with a blue stripe, packed, luggage on the roof, and the tabbaa hanging out of the open door. */
+  function microbus(x, d, rot, pitch, stopped){
     g.save(); g.translate(x, gy); g.rotate(pitch * d); g.translate(-x, -gy);
-    g.beginPath(); g.moveTo(x - 33 * d, gy - 6); g.lineTo(x - 33 * d, gy - 30); g.lineTo(x + 22 * d, gy - 30); g.lineTo(x + 33 * d, gy - 19); g.lineTo(x + 33 * d, gy - 6); g.closePath();
-    g.fillStyle = BG; g.fill(); g.fillStyle = "rgba(255,255,255,.12)"; g.fill(); ink(2); g.stroke();
-    ink(1.2); for(const i of [-30, -22, -14, -2, 6, 14]) g.strokeRect(x + (d > 0 ? i : -i - 7), gy - 28, 7, 8);   // windows
-    g.fillStyle = INK; for(const i of [-26, -18, -10, 2, 10, 18]) for(const j of [-1.8, 1.8]) dot(x + (i + j) * d, gy - 22, 2.2);   // packed in, two to a window
-    g.fillStyle = "rgba(0,0,10,.45)"; g.fillRect(x + (d > 0 ? -7 : -1), gy - 28, 8, 22);                    // the open door
-    ink(1.4); g.strokeRect(x - 24, gy - 36, 14, 6); g.strokeRect(x - 8, gy - 35, 10, 5); ln(x - 28, gy - 30, x - 28, gy - 34, x + 8, gy - 34, x + 8, gy - 30);   // luggage on the roof rack
-    wheel(x - 21 * d, gy - 5, 5, rot); wheel(x + 21 * d, gy - 5, 5, rot);
+    const X = a => x + a * d;
+    poly([[X(-33), gy - 6], [X(-33), gy - 29], [X(-31), gy - 31], [X(20), gy - 31], [X(31), gy - 21], [X(33), gy - 19], [X(33), gy - 6]], "#e6e4dc");
+    rect(Math.min(X(-33), X(33)), gy - 14, 66, 3, "#2d5c9a");
+    poly([[X(-31), gy - 28], [X(18), gy - 28], [X(18), gy - 19.5], [X(-31), gy - 19.5]], "#28323f");                  // tinted windows
+    for(const i of [-26, -18, -10, 2, 10]){ disc(X(i), gy - 23, 2.4, "#121820"); disc(X(i + 4), gy - 22.5, 2.3, "#141a22"); }   // packed in
+    for(const i of [-22, -14, -6, 6, 14]) rect(X(i) - 0.6, gy - 28, 1.2, 8.5, "#d6d3ca");
+    poly([[X(20), gy - 28], [X(29.5), gy - 20], [X(20), gy - 20]], "#3a4656");                                    // windscreen
+    rect(Math.min(X(-7), X(2)), gy - 28, 9, 22, "#151a22");                                                         // the open door
+    oval(X(32.5), gy - 15, 1.2, 1.7, "#fff6c8"); glow(X(36), gy - 15, 10, "rgba(255,240,180,.35)"); rect(X(-33.5) - (d > 0 ? 0 : 1.5), gy - 16, 1.5, 3, "#e23b2e");
+    rect(Math.min(X(-28), X(8)), gy - 33, 36, 2, "#3a3a3a");                                                        // roof rack
+    rect(X(-26) - (d > 0 ? 0 : 12), gy - 39, 12, 6, "#2f5fa8"); rect(X(-12) - (d > 0 ? 0 : 9), gy - 38, 9, 5, "#8a5a32"); rect(X(-1) - (d > 0 ? 0 : 7), gy - 37, 7, 4, "#c9b48a");   // bags and boxes
+    wheel(X(-21), gy - 5.5, 5.5, rot, "#c8ccd2"); wheel(X(21), gy - 5.5, 5.5, rot, "#c8ccd2");
     g.restore();
-    if(kid){ fig(x - 3 * d, gy - 6, d, {lean: -0.45, arms: [[2.9, 3.0], [1.8 + 0.4 * Math.sin(performance.now() / 120), 2.4]], s: 0.85}); }   // the tabbaa, hanging off the door
+    person(X(-3), gy - 6, d, {s: 0.82, shirt: "#d8cfae", pants: "#2b3446", skin: "#8b5638", mo: true, lean: -0.4,   // the tabbaa, hanging out of the door
+      arms: [[2.9, 3.0], stopped ? [1.6 + 0.6 * Math.sin(pnow() * 7), 2.4] : [1.8 + 0.4 * Math.sin(pnow() * 8), 2.4]]});
   }
+  /* The ful cart: a green-painted wooden cart with a big copper qidra, a stack of bread, one big spoked wheel. */
   function fulCart(x, d, rot, lidOff, t){
-    ink(2); g.beginPath(); g.roundRect(x - 16, gy - 20, 32, 8, 2); g.fillStyle = BG; g.fill(); g.fillStyle = "rgba(255,204,51,.3)"; g.fill(); g.stroke();
-    ln(x - 16 * d, gy - 16, x - 28 * d, gy - 20);                                                         // handle
-    wheel(x - 6 * d, gy - 7, 7, rot); ln(x + 13 * d, gy - 12, x + 13 * d, gy - 1);
-    g.fillStyle = BG; g.beginPath(); g.ellipse(x + 3 * d, gy - 27, 8, 7, 0, 0, Math.PI*2); g.fill(); ink(2); g.stroke();   // the qidra
-    ln(x + 3 * d - 3, gy - 33, x + 3 * d - 3, gy - 37); ln(x + 3 * d + 3, gy - 33, x + 3 * d + 3, gy - 37);
-    ink(1.8); if(lidOff) ln(x + 3 * d + 4, gy - 39, x + 3 * d + 9, gy - 43); else ln(x + 3 * d - 5, gy - 38, x + 3 * d + 5, gy - 38);
-    const n = lidOff ? 3 : 2;
-    for(let i = 0; i < n; i++){ const a = (t * 0.7 + i / n) % 1; g.strokeStyle = `rgba(230,235,255,${0.55 * (1 - a)})`; g.lineWidth = 1.3;   // steam
-      const bx = x + 3 * d + (i - 1) * 2.5, by = gy - 39 - a * 14; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 3 * Math.sin(t * 3 + i), by - 4, bx, by - 7); g.stroke(); }
+    const X = a => x + a * d;
+    seg([[X(-16), gy - 16], [X(-28), gy - 20]], "#6b4a2f", 1.8);                                                   // handles
+    rect(x - 17, gy - 22, 34, 10, "#2f6e52"); g.strokeStyle = "#e3c15a"; g.lineWidth = 0.9; g.strokeRect(x - 15.5, gy - 20.5, 31, 7);   // painted box
+    for(let i = 0; i < 4; i++) disc(x - 10 + i * 6.5, gy - 17, 1.1, ["#c2352c", "#e3c15a"][i % 2]);
+    for(let i = 0; i < 3; i++) oval(X(-11 + i * 3.5), gy - 23.5, 3.2, 1.2, "#d6a75e");                                // bread
+    const qx = X(4), gr = g.createRadialGradient(qx - 2, gy - 32, 1, qx, gy - 29, 9); gr.addColorStop(0, "#f0a35f"); gr.addColorStop(1, "#8a4520");
+    g.fillStyle = gr; g.beginPath(); g.ellipse(qx, gy - 29, 8.5, 7.5, 0, 0, Math.PI * 2); g.fill();                  // the copper qidra
+    rect(qx - 3.4, gy - 40, 6.8, 5, "#b0612d");
+    if(lidOff) oval(qx + 6 * d, gy - 43, 3.6, 1.3, "#c97a3c", 0.5 * d); else oval(qx, gy - 40.5, 4, 1.5, "#c97a3c");
+    const n = lidOff ? 4 : 2;
+    for(let i = 0; i < n; i++){ const a = (t * 0.7 + i / n) % 1; g.strokeStyle = `rgba(240,240,240,${0.6 * (1 - a)})`; g.lineWidth = 1.4;   // steam
+      const bx = qx + (i - 1.5) * 2, by = gy - 42 - a * 15; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 3 * Math.sin(t * 3 + i), by - 4, bx, by - 7); g.stroke(); }
+    const wx = X(-5), wy = gy - 7; g.strokeStyle = "#4a3220"; g.lineWidth = 1.8; g.beginPath(); g.arc(wx, wy, 6.5, 0, Math.PI * 2); g.stroke();
+    for(let i = 0; i < 4; i++){ const a = rot + i * Math.PI / 4; seg([[wx - Math.cos(a) * 6, wy - Math.sin(a) * 6], [wx + Math.cos(a) * 6, wy + Math.sin(a) * 6]], "#6b4a2f", 0.9); }
+    seg([[X(13), gy - 12], [X(13), gy - 1]], "#4a3220", 1.6);
   }
 
-  /* The traffic takes turns. Each act returns its own length (s) and draws itself at time u into the act. */
+  /* The traffic takes turns. Each act gives its own length (s) and draws itself u s into the act. */
   const ACTS = [
-    { name: "tuktuk", len: () => (W + 100) / 105, draw(u){ const x = -50 + 105 * u, px = W * 0.2, dx = x - px;
-        const sw = Math.abs(dx) < 42 ? Math.cos(dx / 42 * Math.PI / 2) : 0;
+    { len: () => (W + 120) / 105, draw(u){ const x = -60 + 105 * u, px = W * 0.2, dx = x - px;
+        const sw = Math.abs(dx) < 46 ? Math.cos(dx / 46 * Math.PI / 2) : 0;
         const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
-        tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 42 ? -0.07 * Math.sin(dx / 42 * Math.PI) : 0, dx > -170 && dx < -60 || (x > W * 0.78 && x < W * 0.84)); } },
-    { name: "hantour", len: () => (W + 160) / 55, draw(u){ const x = W + 40 - 55 * u; hantour(x, -1, (55 * u) / 9); } },
-    { name: "microbus", len(){ const m = this.m(); return m.t3 + Math.sqrt(2 * (W + 90 - m.sx) / 380); },
-      m(){ const v = 270, ab = 650, sx = W * 0.72, x0 = -80, bd = v * v / (2 * ab), t1 = (sx - bd - x0) / v, t2 = t1 + v / ab, t3 = t2 + 1.9; return {v, ab, sx, x0, bd, t1, t2, t3}; },
-      draw(u){ const {v, ab, sx, x0, bd, t1, t2, t3} = this.m(); let x, pitch = 0;
-        if(u < t1) x = x0 + v * u;
-        else if(u < t2){ const e = u - t1; x = sx - bd + v * e - ab * e * e / 2; pitch = 0.06 * Math.sin(Math.PI * e / (t2 - t1));
-          ink(1.2); for(const o of [-21, 21]) ln(x + o - 6, gy - 1, x + o - 16, gy - 1); }              // skid marks
-        else if(u < t3){ x = sx; pitch = -0.025 * Math.sin(Math.min(1, (u - t2) / 0.35) * Math.PI); }
-        else { const e = u - t3; x = sx + 190 * e * e; }
-        const board = cl((u - t2 - 0.2) / 0.9, 0, 1);                                                    // the new passenger jogs to the door and squeezes in
-        if(board < 1){ const wx = sx + 26 - 30 * sm(board); g.globalAlpha = board > 0.75 ? (1 - board) * 4 : 1;
-          fig(wx, gy, -1, board > 0 ? {ph: u * 14} : {arms: [[0.2, 0.3], [2.5, 2.9]]}); g.globalAlpha = 1; }   // waving it down
-        microbus(x, 1, x / 5, pitch, true);
-        if((u % 2.2) < 1.4 && u < t3 + 1.5) bubble(x - 8, gy - 52, u > t2 - 0.3 && u < t3 ? "يلا يلا!" : "رمسيس! رمسيس!"); } },
-    { name: "ful", len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
-      f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
-      draw(u){ const {fx, tA} = this.f(); const st = u - tA;                                                // st: time since it stopped
+        tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 46 ? -0.06 * Math.sin(dx / 46 * Math.PI) : 0, (dx > -170 && dx < -70) || (x > W * 0.78 && x < W * 0.84)); } },
+    { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
+    /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
+    { m(){ const v = 270, ab = 650, sx = W * 0.72, x0 = -80, bd = v * v / (2 * ab), t1 = (sx - bd - x0) / v, t2 = t1 + v / ab, t3 = t2 + 1.9;
+        const px = sx + 26, tw = (W + 20 - px) / 42, B = Math.max(0, tw + 1.2 - t1); return {v, ab, sx, x0, bd, t1, t2, t3, px, tw, B}; },
+      len(){ const m = this.m(); return m.B + m.t3 + Math.sqrt((W + 90 - m.sx) / 190); },
+      draw(u){ const {v, ab, sx, x0, bd, t1, t2, t3, px, tw, B} = this.m(), b = u - B; let x = null, pitch = 0;
+        if(b >= 0){ if(b < t1) x = x0 + v * b;
+          else if(b < t2){ const e = b - t1; x = sx - bd + v * e - ab * e * e / 2; pitch = 0.06 * Math.sin(Math.PI * e / (t2 - t1)); for(const o of [-21, 21]) seg([[x + o - 6, gy - 0.5], [x + o - 18, gy - 0.5]], "rgba(20,20,20,.8)", 1.4); }
+          else if(b < t3){ x = sx; pitch = -0.025 * Math.sin(Math.min(1, (b - t2) / 0.35) * Math.PI); }
+          else { const e = b - t3; x = sx + 190 * e * e; } }
+        const board = cl((b - t2 - 0.2) / 0.9, 0, 1);
+        if(board < 1){ const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 30 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
+          g.globalAlpha = board > 0.75 ? (1 - board) * 4 : 1;
+          person(wx, gy, -1, walkIn || board > 0 ? {ph: u * 9, shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e"}
+                                             : {shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e", arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
+          g.globalAlpha = 1; }
+        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3); } },
+    { f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
+      len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
+      draw(u){ const {fx, tA} = this.f(), st = u - tA;
         const x = st < 0 ? W + 60 - 45 * u : st < 5.5 ? fx : fx - 45 * (st - 5.5);
-        const cIn = u - (tA - 11);                                                                       // the customer walks in from the left, waits, and leaves with his plate
-        const cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);
+        const cIn = u - (tA - 11), cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);
         const lad = st > 0.8 && st < 3.6, k = lad ? ((st - 0.8) % 1.4) / 1.4 : 0;
-        const vx = st < 0 || st > 5.5 ? x + 28 : st < 0.8 ? fx + 28 - 18 * sm(st / 0.8) : st < 4.4 ? fx + 10 : fx + 10 + 18 * sm((st - 4.4) / 0.8);
-        fulCart(x, -1, x / 7, lad && k < 0.5, performance.now() / 1000);
-        const walking = st < 0 || st > 5.5 || (st < 0.8) || (st > 4.4 && st < 5.2);
-        fig(vx, gy, -1, st < 0 || st > 5.5 ? {ph: u * 9, lean: 0.25, arms: [[1.3, 1.5], [1.2, 1.4]]} : lad ? {arms: [[1.6 + 1.2 * Math.sin(k * Math.PI * 2), 2.2], [0.4, 0.9]]} : walking ? {ph: u * 9} : {});
-        if(cx != null){ const gone = st > 3.7, hasPlate = st > 3.3;
-          const C2 = fig(cx, gy, gone ? -1 : 1, gone ? {ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {ph: u * 10} : {arms: [[1.1, 1.6], [0.2, 0.3]]});
-          if(hasPlate || (st > 0.8 && !gone)){ const h = C2.hands[0]; g.fillStyle = "rgba(255,248,225,.85)"; g.beginPath(); g.ellipse(h[0], h[1] - 1, 5, 1.6, 0, 0, Math.PI*2); g.fill();
-            if(hasPlate){ g.fillStyle = "rgba(160,110,40,.95)"; g.beginPath(); g.ellipse(h[0], h[1] - 2.2, 3.2, 1.3, 0, 0, Math.PI*2); g.fill(); } } } } },
+        const vx = st < 0 || st > 5.5 ? x + 30 : st < 0.8 ? fx + 30 - 19 * sm(st / 0.8) : st < 4.4 ? fx + 11 : fx + 11 + 19 * sm((st - 4.4) / 0.8);
+        fulCart(x, -1, x / 7, lad && k < 0.5, pnow());
+        const walking = st < 0 || st > 5.5 || st < 0.8 || (st > 4.4 && st < 5.2), V = {outfit: "robe", robe: "#cbb894", hat: "taqiya", mo: true, skin: "#80502f"};
+        person(vx, gy, -1, st < 0 || st > 5.5 ? {...V, ph: u * 9, lean: 0.25, arms: [[1.3, 1.5], [1.2, 1.4]]} : lad ? {...V, arms: [[1.6 + 1.2 * Math.sin(k * Math.PI * 2), 2.2], [0.4, 0.9]]} : walking ? {...V, ph: u * 9} : V);
+        if(cx != null){ const gone = st > 3.7, hasPlate = st > 3.3, C = {shirt: "#3f7f6e", pants: "#2b2f3a", skin: "#9a6544"};
+          const P = person(cx, gy, gone ? -1 : 1, gone ? {...C, ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {...C, ph: u * 10} : {...C, arms: [[1.1, 1.6], [0.2, 0.3]]});
+          if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } } } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2;
-  // A stray cat now and then: walks across, and half the time sits down for a lick 30% of the way in (away from the café).
+  // A ginger stray cat now and then: walks across, and half the time sits down for a lick 30% of the way in.
   let cat = null, catAt = 12 + Math.random() * 20;
   function drawCat(c, u){
     const walkT = (W + 40) / 32, sitAt = c.sit ? (W * 0.3 + 20) / 32 : 1e9, sitLen = c.sit ? 3 : 0;
     const wt = u < sitAt ? u : u < sitAt + sitLen ? sitAt : u - sitLen, sitting = u >= sitAt && u < sitAt + sitLen;
-    const x = c.d > 0 ? -20 + 32 * wt : W + 20 - 32 * wt, d = c.d, ph = wt * 10;
-    ink(1.8);
-    if(sitting){ g.beginPath(); g.ellipse(x, gy - 6, 4.5, 6, -0.35 * d, 0, Math.PI*2); g.fillStyle = BG; g.fill(); g.stroke();
-      dot(x + 3 * d, gy - 14, 3); ln(x + 1.5 * d, gy - 16, x + 1 * d, gy - 19.5, x + 3.5 * d, gy - 17); ln(x + 4 * d, gy - 17, x + 5.5 * d, gy - 19.5, x + 5.5 * d, gy - 16);
-      g.beginPath(); g.moveTo(x - 3 * d, gy - 1); g.quadraticCurveTo(x - 12 * d, gy - 2 + Math.sin(u * 4) * 2, x - 9 * d, gy - 8); g.stroke();   // tail flicking
-      if(Math.sin(u * 6) > 0){ ln(x + 4 * d, gy - 8, x + 5 * d, gy - 12); } return u > sitAt + sitLen + walkT; }
-    g.beginPath(); g.ellipse(x, gy - 7, 7, 3, 0, 0, Math.PI*2); g.fillStyle = BG; g.fill(); g.stroke();
-    dot(x + 8 * d, gy - 10, 3); ln(x + 6.5 * d, gy - 12, x + 6.5 * d, gy - 15.5, x + 8.5 * d, gy - 13); ln(x + 9 * d, gy - 13, x + 10.5 * d, gy - 15.5, x + 10.5 * d, gy - 12);   // head and ears
-    g.beginPath(); g.moveTo(x - 7 * d, gy - 8); g.quadraticCurveTo(x - 12 * d, gy - 12, x - 10 * d, gy - 18 + Math.sin(ph * 0.5)); g.stroke();   // tail up
-    for(const [o, k] of [[5, 0], [3, Math.PI], [-4, Math.PI / 2], [-6, Math.PI * 1.5]]){ const a = Math.sin(ph + k) * 0.4; ln(x + o * d, gy - 6, x + o * d + Math.sin(a) * 5 * d, gy); }
-    return false;
+    const x = c.d > 0 ? -20 + 32 * wt : W + 20 - 32 * wt, d = c.d, ph = wt * 10, fur = "#c9803a", dark = "#9a5a22";
+    const head = (hx, hy) => { disc(hx, hy, 3, fur); poly([[hx - 2.4 * d, hy - 1.5], [hx - 1.6 * d, hy - 5], [hx - 0.2 * d, hy - 2.4]], fur); poly([[hx + 0.6 * d, hy - 2.6], [hx + 2 * d, hy - 5], [hx + 2.7 * d, hy - 1.4]], fur); disc(hx + 1.6 * d, hy - 0.3, 0.5, "#2b2b1a"); };
+    if(sitting){ g.strokeStyle = fur; g.lineWidth = 2; g.beginPath(); g.moveTo(x - 3 * d, gy - 1); g.quadraticCurveTo(x - 12 * d, gy - 2 + Math.sin(u * 4) * 2, x - 9 * d, gy - 8); g.stroke();
+      oval(x, gy - 6, 4.8, 6.2, fur, -0.35 * d); seg([[x - 2 * d, gy - 9], [x + 1 * d, gy - 10]], dark, 0.8); head(x + 3 * d, gy - 14);
+      if(Math.sin(u * 6) > 0) seg([[x + 3.5 * d, gy - 6], [x + 5 * d, gy - 11.5]], fur, 1.6); return u > sitAt + sitLen + walkT; }
+    for(const [o, k] of [[-4, Math.PI / 2], [3, Math.PI]]){ const a = Math.sin(ph + k) * 0.4; seg([[x + o * d, gy - 6], [x + o * d + Math.sin(a) * 5 * d, gy]], dark, 1.5); }
+    g.strokeStyle = fur; g.lineWidth = 2; g.beginPath(); g.moveTo(x - 7 * d, gy - 8); g.quadraticCurveTo(x - 12 * d, gy - 12, x - 10 * d, gy - 18 + Math.sin(ph * 0.5)); g.stroke();
+    oval(x, gy - 7, 7.5, 3.3, fur); for(const o of [-3, 0, 3]) seg([[x + o * d, gy - 10], [x + (o + 1) * d, gy - 6]], dark, 0.8);
+    for(const [o, k] of [[-6, Math.PI * 1.5], [5, 0]]){ const a = Math.sin(ph + k) * 0.4; seg([[x + o * d, gy - 6], [x + o * d + Math.sin(a) * 5 * d, gy]], fur, 1.6); }
+    head(x + 8 * d, gy - 10); return false;
   }
-  let t0 = performance.now(), wasOn = false;
+  let t0 = performance.now();
   function frame(now){
     requestAnimationFrame(frame);
-    const on = showing(); cv.classList.toggle("on", on); if(!on){ wasOn = false; return; }
+    const on = showing(); cv.classList.toggle("on", on); if(!on) return;
     const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
     const open = !!S.cur && !$("#card").hidden; cv.classList.toggle("faint", open);
-    const t = ((now - t0) / 1000) * slow; if(!wasOn) BG = getComputedStyle(document.body).backgroundColor || BG; wasOn = true;
+    const t = ((now - t0) / 1000) * slow;
     g.clearRect(0, 0, W, H); g.save();
     if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }
-    cafe(t, W / 2);
-    g.fillStyle = "rgba(0,0,20,.55)"; g.beginPath(); g.ellipse(W * 0.2, gy + 0.5, 9, 1.8, 0, 0, Math.PI*2); g.fill();   // the pothole
+    ahwa(t, W / 2);
+    oval(W * 0.2, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(W * 0.2 + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");   // the pothole, on the road above the line (5.55: was on the line and cut it)
     if(!cat && t > catAt) cat = {at: t, d: Math.random() < 0.5 ? 1 : -1, sit: Math.random() < 0.5};
     if(cat){ const u = t - cat.at, walkT = (W + 40) / 32; if(drawCat(cat, u) || u > walkT + 3.5){ cat = null; catAt = t + 25 + Math.random() * 35; } }
     if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); nextAt = t + actLen + 2.5 + Math.random() * 3; } }
