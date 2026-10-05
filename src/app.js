@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.72`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.73`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1173,8 +1173,8 @@ function fireworks(){
    the ½ button). Only works on the Cloudflare link: GitHub Pages and file:// have no /api, so the codes simply don't show.
    STEAL_SKIP lists categories that never get a steal code (Omar to choose). To remove: delete this block, ansPanel(c) in
    renderClue, the #ansQr drawing, closeAns() on reveal, the two setup switches, worker/index.js and answer.html. */
-const STEAL_TYPES = new Set(["text","flag","pin","shape","emoji"]);  // 5.21 (Omar): "photo" (the zoom rounds: Car, Actor, Footballer, Person) dropped; was also in this list
-const STEAL_SKIP = new Set(["spot","igf","cal","headl","logo"]);  // 5.21: + Guess the Logo (blurred)  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
+const STEAL_TYPES = new Set(["text","flag","pin","shape","emoji","photo","order"]);  /* 5.73 (Omar): steals on the photo rounds and Put It in Order too (5.21-5.72: ["text","flag","pin","shape","emoji"]) */  // 5.21 (Omar): "photo" (the zoom rounds: Car, Actor, Footballer, Person) dropped; was also in this list
+const STEAL_SKIP = new Set(["spot","igf","cal","headl"]);  /* 5.73: Guess the Logo gets steals again (was in this list from 5.21) */  // 5.21: + Guess the Logo (blurred)  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
 /* 5.21 (Omar): only the blur and zoom photo rounds skip steals (zoom ones via STEAL_TYPES, the logo via STEAL_SKIP), so Guess the Food
    and the plain photo categories get them. 5.11 skipped the whole Photo Rounds group with noStealGroup(); kept for an easy undo. */
 const noStealGroup = id => false;
@@ -1204,7 +1204,8 @@ function ansPanel(c){ const m = ansMode(c); if(!m) return "";
      After the reveal it lists what each stealing team sent. Was: "Steal: teams not playing (X is), scan to answer" with a row per team. */
   c.popped = c.popped || {};
   const rows = !steal ? "" : S.teams.map((t,i) => { if(i === playing) return ""; const a = got[i];
-    if(c.revealed) return a ? `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(a.v)}</span></li>` : "";  /* 5.13 (Omar): just "Team: answer" (was "Team steals with: answer") */
+    if(c.revealed){ if(!a) return ""; if(c.type !== "order") return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(a.v)}</span></li>`;   /* 5.73: an order steal shows as A → B → C, ticked if exactly right */
+      const right = a.v === clueParts().sorted.join(","); return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(ffaShow(c, a.v))}</span> ${right ? "✓" : "✗"}</li>`; }  /* 5.13 (Omar): just "Team: answer" (was "Team steals with: answer") */
     if(!a) return ""; const isNew = !c.popped[i]; c.popped[i] = true;
     return `<li class="stealer${isNew ? " pop" : ""}">${esc(t.name)} ✓</li>`; }).join("");  /* 5.15 (Omar): just "Team ✓" on every clue (5.12 said "Team is stealing!") */
   const head = steal ? (c.revealed ? (rows ? "Steals (½ points if right)" : "No steals") : "Scan to steal") : "Scan with your phone to send your team's guess";

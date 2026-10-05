@@ -95,7 +95,7 @@ function header(){
   $("me").textContent = me.n;
   $("score").textContent = st ? `${st.score} pts · ${ord(st.rank)} of ${st.n}` : "";
 }
-const shownAns = (c, v) => c.kind === "order" ? orderText(c, v) : v;
+const shownAns = (c, v) => c.kind === "order" || (c.kind === "steal" && c.ev) ? orderText(c, v) : v;   // 5.73: order steals too
 function draw(){
   header();
   const c = st && st.cur, key = c ? c.c + (st.closed ? ":x" : st.mine ? ":m" : "") : "wait";
@@ -113,10 +113,11 @@ function draw(){
   if(c.kind === "steal" && st.team === c.x){ $("view").innerHTML = `${where}<div class="wait"><div class="big">It's your team's tile</div>
       <div class="hint">Answer out loud. The other teams can steal from their phones.</div></div>`; return; }
   const warn = `<p class="hint">You get one go: once you lock it in, it can't be changed.</p>`;
-  if(c.kind === "order"){
+  if(c.kind === "order" || (c.kind === "steal" && c.ev)){   // 5.73 (Omar): Put It in Order can be stolen too, with the same list
+    const st = c.kind === "steal";
     order = shuffle(c.ev.map((e,i) => i));
-    $("view").innerHTML = `${where}<p class="q">${esc(c.q || "Put these in order, earliest first.")}</p><ol class="ord" id="ord"></ol>
-      <button class="go" id="go">Lock in this order</button><div class="msg" id="msg" hidden></div>${warn}`;
+    $("view").innerHTML = `${where}${st ? `<h1>Steal for half points</h1>` : ""}<p class="q">${esc(c.q || "Put these in order, earliest first.")}</p><ol class="ord" id="ord"></ol>
+      <button class="go" id="go">Lock in this order</button><div class="msg" id="msg" hidden></div>${st ? `<p class="hint">Only if ${c.xn ? esc(c.xn) : "the playing team"} gets it wrong and you're right. One go per team: the first answer from your team counts.</p>` : warn}`;
     drawOrder(c);
     $("ord").onclick = e => { const b = e.target.closest("button[data-i]"); if(!b) return; const i = +b.dataset.i, j = i + +b.dataset.d;
       [order[i], order[j]] = [order[j], order[i]]; drawOrder(c); };

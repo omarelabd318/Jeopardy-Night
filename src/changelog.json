@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.73",
+  "date": "2026-10-05",
+  "items": [
+   "Steals now work on the photo rounds and on Put It in Order (the phone shows the order list)."
+  ]
+ },
+ {
   "v": "5.72",
   "date": "2026-10-05",
   "items": [
