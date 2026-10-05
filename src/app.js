@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.69`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.78`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -761,7 +761,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const hc = T(17.3, 0.4); poly([T(12.5, -1), T(12.5, 1.4), T(14.6, 1.2), T(14.6, -0.8)], skin);
     if(o.hijab){ disc(hc[0], hc[1], 4.3 * s, o.hijab); poly([T(16, -4), T(11.5, -3.6), T(11.5, 2.8), T(14.5, 3)], o.hijab);
       oval(hc[0] + 1.9 * s * d, hc[1] + 0.3 * s, 2.3 * s, 3 * s, skin); }
-    else { disc(hc[0], hc[1], 3.7 * s, skin); oval(hc[0] + 3.6 * s * d, hc[1] + 0.4 * s, 0.9 * s, 1.1 * s, skin);   // nose
+    else { if(o.long) poly([[hc[0] - 3.4 * s * d, hc[1] - 1.5 * s], [hc[0] + 0.5 * s * d, hc[1] - 2 * s], [hc[0] - 1 * s * d, hc[1] + 9 * s], [hc[0] - 4.6 * s * d, hc[1] + 8 * s]], o.long);   // 5.76: long hair down her back
+      disc(hc[0], hc[1], 3.7 * s, skin); oval(hc[0] + 3.6 * s * d, hc[1] + 0.4 * s, 0.9 * s, 1.1 * s, skin);   // nose
       if(o.hat === "emma"){ oval(hc[0], hc[1] - 2.4 * s, 4.6 * s, 2.7 * s, "#ecebe4"); seg([[hc[0] - 3.6 * s, hc[1] - 2.2 * s], [hc[0] + 3.6 * s, hc[1] - 3.4 * s]], "#cfccc0", 0.7 * s); }
       else if(o.hat === "taqiya"){ g.fillStyle = "#f1efe8"; g.beginPath(); g.arc(hc[0], hc[1] - 0.6 * s, 3.8 * s, Math.PI, 0); g.fill(); }
       else { g.fillStyle = o.hair || "#1d1712"; g.beginPath(); g.arc(hc[0] - 0.3 * s * d, hc[1] - 0.2 * s, 3.9 * s, d > 0 ? Math.PI * 0.75 : Math.PI * 1.05, d > 0 ? Math.PI * 1.95 : Math.PI * 0.25 + Math.PI * 2); g.fill(); }
@@ -906,7 +907,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     for(let i = 0; i < 2; i++){ const a = (u * 0.9 + i / 2) % 1; g.strokeStyle = `rgba(225,225,225,${0.35 * (1 - a)})`; g.lineWidth = 0.8;   // a thin wisp off the tip
       const bx = tip[0] + a * 4, by = tip[1] - a * 10; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 2 * Math.sin(u * 3 + i), by - 3, bx + 1, by - 5); g.stroke(); }
   }
-  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour. Every other round runs
+  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour, and (5.76) the woman walking her dog. Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
     /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
@@ -919,12 +920,17 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           else if(b < t3){ x = sx; pitch = -0.025 * Math.sin(Math.min(1, (b - t2) / 0.35) * Math.PI); }
           else { const e = b - t3; x = sx + 190 * e * e; } }
         const board = cl((b - t2 - 0.2) / 0.9, 0, 1);
-        if(board < 1){ const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 18.5 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
+        const rider = () => { if(board >= 1) return; const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 18.5 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
           g.globalAlpha = board > 0.75 ? (1 - board) * 4 : 1;
           person(wx, gy, -1, walkIn || board > 0 ? {ph: u * 9, shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e"}
                                              : {shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e", arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
-          g.globalAlpha = 1; }
-        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip); } },   // 5.61: on mirrored rounds he gets in on the far side
+          g.globalAlpha = 1; };
+        /* 5.75 (Omar): driving in from the left we see its right side, so the door is on our side (as in 5.61-5.73), and now he walks up
+           in front of the bus and steps in through it (before, he was drawn behind the bus, so he seemed to get in on the far side).
+           Driving right to left (mirrored rounds) the door is on the far side and he goes round behind it. 5.74 had the sides swapped. */
+        if(flip) rider();
+        if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip);
+        if(!flip) rider(); } },
     { f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
       len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
       draw(u){ const {fx, tA} = this.f(), st = u - tA;
@@ -938,7 +944,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(cx != null){ const gone = st > 3.7, hasPlate = st > 3.3, C = {shirt: "#3f7f6e", pants: "#2b2f3a", skin: "#9a6544"};
           const P = person(cx, gy, gone ? -1 : 1, gone ? {...C, ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {...C, ph: u * 10} : {...C, arms: [[1.1, 1.6], [0.2, 0.3]]});
           if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } } } },
-    { c(){ const wd = W * 0.15 + 20, tw = wd / 32, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // walk 15% of the way, then run
+    { c(){ const tw = (W + 50) / (32 + SMV) + 1.2, wd = 32 * tw, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // 5.74 (Omar): she walks until she has passed the smoker by a bit (1.2 s), then runs (5.57-5.73: ran after 15% of the way)
       len(){ const c = this.c(); return Math.max(c.tw + 0.6 + c.tr, (W + 60) / SMV); },   // 5.59: as long as the smoker takes to cross
       draw(u){ const {wd, tw} = this.c(); let x, run = false, ph;
         smoker(u);
@@ -951,8 +957,36 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
         tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } },
     { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
+    /* 5.76 (Omar): a woman walking her dog while she talks on the phone. The dog stops to sniff about halfway (she waits, still talking). */
+    { w(){ const v = 40, sniffAt = (W * 0.45 + 40) / v; return {v, sniffAt, sniffLen: 2.2}; },
+      len(){ const w = this.w(); return (W + 130) / w.v + w.sniffLen; },
+      draw(u){ const {v, sniffAt, sniffLen} = this.w(), walkT = u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen, stopped = u >= sniffAt && u < sniffAt + sniffLen;
+        const x = -40 + v * walkT, ph = walkT * 8.5, dx = x + 30;
+        /* 5.78 (Omar): she takes the call a third of the way in and hangs up a bit before she leaves (5.76-5.77: on the phone throughout) */
+        const call = sm((x - W / 3) / 22) * (1 - sm((x - W * 0.85) / 22)), talk = call > 0.95 && Math.sin(u * 1.7) > 0.3;   // gestures with her free hand now and then, on the call
+        const swing = stopped ? [0.1, 0.2] : [-Math.sin(ph) * 0.35, -Math.sin(ph) * 0.35 + 0.3], mix = (a, b) => [a[0] + (b[0] - a[0]) * call, a[1] + (b[1] - a[1]) * call];
+        const W2 = person(x, gy, 1, {shirt: "#d9667a", pants: "#3b5f8f", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab. 5.77 (Omar): jeans and a top (was a long blue dress, outfit "robe") */
+           ...(stopped ? {} : {ph}),
+          arms: [mix(swing, [1.6, -2.4]), talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : stopped ? [0.45, 1.0] : [Math.sin(ph) * 0.35 + 0.35, Math.sin(ph) * 0.35 + 0.9]]});
+        const ph2 = W2.hands[0]; if(call > 0.08) rect(ph2[0] - 0.4, ph2[1] - 3.4 * call - 1, 2, 2 + 2.4 * call, "#1b1b1f");   // the phone: out of her pocket and up to her ear
+        const lead = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
+        g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(lead[0], lead[1]); g.quadraticCurveTo((lead[0] + collar[0]) / 2, Math.max(lead[1], collar[1]) + (stopped ? 1 : 6), collar[0], collar[1]); g.stroke();   // the lead, slack while they walk
+        drawDog(dx, 1, stopped ? 0 : walkT * 13, stopped, u); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
+  /* 5.76: a small sandy dog: trots on its lead, wags, and puts its nose to the ground to sniff. */
+  function drawDog(x, d, ph, sniff, t){
+    const fur = "#d9b27c", dark = "#a8814f", by = gy - 7;
+    const leg = (o, a, col) => seg([[x + o * d, by + 1], [x + o * d + Math.sin(a) * 5 * d, gy]], col, 1.8);
+    leg(-5, Math.sin(ph + Math.PI) * 0.45, dark); leg(4, Math.sin(ph) * 0.45, dark);
+    g.strokeStyle = fur; g.lineWidth = 1.8; g.beginPath(); g.moveTo(x - 7 * d, by - 1); g.lineTo(x - 11 * d, by - 6 + 1.5 * Math.sin(t * 14)); g.stroke();   // wagging tail
+    oval(x, by, 7.5, 3.6, fur);
+    leg(-6, Math.sin(ph) * 0.45, fur); leg(5, Math.sin(ph + Math.PI) * 0.45, fur);
+    const hx = x + 8.5 * d, hy = sniff ? gy - 3.5 + 0.6 * Math.sin(t * 12) : by - 4;                          // head, down to the ground when sniffing
+    seg([[x + 5 * d, by - 1], [hx, hy]], fur, 3); oval(hx + 1 * d, hy, 3.4, 2.6, fur); oval(hx + 3.6 * d, hy + 0.6, 1.8, 1.4, fur);
+    disc(hx + 5.2 * d, hy + 0.4, 0.7, "#2b2b1a"); oval(hx - 0.8 * d, hy - 0.4, 1.3, 2.6, dark, 0.4 * d);              // nose, floppy ear
+    seg([[x + 6.5 * d, by - 2.5], [x + 7.8 * d, by + 0.5]], "#c2352c", 1.2);                                                 // collar
+  }
   /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
   function drawCat(x, d, ph, run){
     const fur = "#c9803a", dark = "#9a5a22", bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
@@ -1173,8 +1207,8 @@ function fireworks(){
    the ½ button). Only works on the Cloudflare link: GitHub Pages and file:// have no /api, so the codes simply don't show.
    STEAL_SKIP lists categories that never get a steal code (Omar to choose). To remove: delete this block, ansPanel(c) in
    renderClue, the #ansQr drawing, closeAns() on reveal, the two setup switches, worker/index.js and answer.html. */
-const STEAL_TYPES = new Set(["text","flag","pin","shape","emoji"]);  // 5.21 (Omar): "photo" (the zoom rounds: Car, Actor, Footballer, Person) dropped; was also in this list
-const STEAL_SKIP = new Set(["spot","igf","cal","headl","logo"]);  // 5.21: + Guess the Logo (blurred)  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
+const STEAL_TYPES = new Set(["text","flag","pin","shape","emoji","photo","order"]);  /* 5.73 (Omar): steals on the photo rounds and Put It in Order too (5.21-5.72: ["text","flag","pin","shape","emoji"]) */  // 5.21 (Omar): "photo" (the zoom rounds: Car, Actor, Footballer, Person) dropped; was also in this list
+const STEAL_SKIP = new Set(["spot","igf","cal","headl"]);  /* 5.73: Guess the Logo gets steals again (was in this list from 5.21) */  // 5.21: + Guess the Logo (blurred)  // 5.11 (Omar): no steal on three-option (A/B/C) rounds: Most Spotify Listeners, Most Instagram Followers, Most Calories, Real Headline
 /* 5.21 (Omar): only the blur and zoom photo rounds skip steals (zoom ones via STEAL_TYPES, the logo via STEAL_SKIP), so Guess the Food
    and the plain photo categories get them. 5.11 skipped the whole Photo Rounds group with noStealGroup(); kept for an easy undo. */
 const noStealGroup = id => false;
@@ -1204,7 +1238,8 @@ function ansPanel(c){ const m = ansMode(c); if(!m) return "";
      After the reveal it lists what each stealing team sent. Was: "Steal: teams not playing (X is), scan to answer" with a row per team. */
   c.popped = c.popped || {};
   const rows = !steal ? "" : S.teams.map((t,i) => { if(i === playing) return ""; const a = got[i];
-    if(c.revealed) return a ? `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(a.v)}</span></li>` : "";  /* 5.13 (Omar): just "Team: answer" (was "Team steals with: answer") */
+    if(c.revealed){ if(!a) return ""; if(c.type !== "order") return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(a.v)}</span></li>`;   /* 5.73: an order steal shows as A → B → C, ticked if exactly right */
+      const right = a.v === clueParts().sorted.join(","); return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(ffaShow(c, a.v))}</span> ${right ? "✓" : "✗"}</li>`; }  /* 5.13 (Omar): just "Team: answer" (was "Team steals with: answer") */
     if(!a) return ""; const isNew = !c.popped[i]; c.popped[i] = true;
     return `<li class="stealer${isNew ? " pop" : ""}">${esc(t.name)} ✓</li>`; }).join("");  /* 5.15 (Omar): just "Team ✓" on every clue (5.12 said "Team is stealing!") */
   const head = steal ? (c.revealed ? (rows ? "Steals (½ points if right)" : "No steals") : "Scan to steal") : "Scan with your phone to send your team's guess";
@@ -1422,7 +1457,9 @@ function clueParts(){
   if(type==="flag"){ const id = pool(cat,lvl)[idx]; return {q:"Name the country this flag belongs to.", a:F[id][0], flag:id}; }
   if(type==="impostor"){ const [ic,w] = pool(cat,lvl)[idx]; return {q:"Who's the Impostor? Everyone plays. Each player scans their own code; one of you is secretly the impostor.", a:w, icat:ic}; }
   if(type==="password"){ const w = pool(cat,lvl)[idx]; return {q:"Each team picks one clue-giver. Both scan the same code. Take turns giving ONE-word clues; after each clue, that team gets one guess.", a:w}; }
-  if(type==="closest"){ const [q,v,u] = pool(cat,lvl)[idx]; return {q, a:`${v.toLocaleString("en-US")} ${u}`.trim(), num:v, unit:u}; }
+  /* 5.72 (Omar): some units carry a note for the reveal, e.g. "EGP (about; 125–150 depending on the shop)" or "$ (499.99)". Before the
+     reveal (the phones' "In …" line and the guess boxes) only the plain unit shows, so the note can't give the answer away; the answer keeps it. */
+  if(type==="closest"){ const [q,v,u] = pool(cat,lvl)[idx]; return {q, a:`${v.toLocaleString("en-US")} ${u}`.trim(), num:v, unit:String(u).replace(/\s*\(.*\)\s*$/, "").trim()}; }
   /* 5.22: Put It in Order. Each clue is three [event, "YYYY", "YYYY-MM" or "YYYY-MM-DD"] pairs; ev keeps the stored order, sorted is earliest first */
   if(type==="order"){ const ev = pool(cat,lvl)[idx], sorted = ev.map((e,i) => i).sort((x,y) => ev[x][1] < ev[y][1] ? -1 : 1);
     return {q:"Put these three in order, earliest first.", a: sorted.map(i => ev[i][0]).join(" → "), ev, sorted}; }
