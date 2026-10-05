@@ -156,7 +156,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.56`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.57`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -708,6 +708,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
    from the right and waits at the kerb, it brakes hard for him, the tabbaa hangs off the door, he gets in) and a ful cart
    (stops, the vendor in his galabeya ladles a plate, steam rising). A ginger stray cat wanders past now and then.
    It shows only on the normal mode board (and the Board animations toggle), faintly behind an open clue.
+   5.57 (Omar): no café or tuk-tuk any more. The scenes play one at a time, microbus, ful cart, cat, hantour, and every other
+   round runs mirrored so each comes from the other side next time; the cat walks in then runs; no pompom on the horse.
    To remove: delete #street in head.html and this block. 5.52-5.54 drew everything as line art (see NOTES 5.55). */
 (() => {
   const cv = document.getElementById("street"); if(!cv) return; const g = cv.getContext("2d");
@@ -772,105 +774,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     if(!/^#[0-9a-f]{6}$/i.test(c)) return c; const n = parseInt(c.slice(1), 16), f = v => Math.round(v * 0.72);
     return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; }
 
-  // ---- the ahwa ----
-  function ahwa(t, cx){
-    const L = cx - 125, R = cx + 125, oL = cx - 82, oR = cx + 82, top = 30;
-    rect(L, 6, R - L, gy - 6, "#4d3f33"); rect(L, 6, R - L, 3, "#5d4d3e");                                    // the building
-    for(let x = L + 6; x < R; x += 14) rect(x, 10, 1, 14, "rgba(0,0,0,.12)");                                  // plaster seams
-    const gr = g.createLinearGradient(0, top, 0, gy); gr.addColorStop(0, "#f7c977"); gr.addColorStop(1, "#b9762f");
-    rect(oL, top, oR - oL, gy - top, gr);                                                                       // the lit shopfront
-    rect(oL + 6, top + 12, oR - oL - 12, 1.6, "#6b4423"); rect(oL + 6, top + 24, oR - oL - 12, 1.6, "#6b4423");   // shelves
-    for(let i = 0; i < 18; i++){ const x = oL + 10 + i * 8.3; if(x > oR - 10) break; rect(x, top + 8, 2.4, 4, i % 3 ? "rgba(255,255,255,.55)" : "rgba(170,90,30,.8)"); }   // tea glasses
-    for(let i = 0; i < 9; i++) rect(oL + 14 + i * 16, top + 19, 4, 5, ["#2f6e52", "#a8322d", "#d9b24a"][i % 3]);    // tins of tea and sugar
-    const k = cx + 52; oval(k, top + 7, 4.5, 4, "#c9963a"); rect(k - 1, top + 1.5, 2, 2.5, "#c9963a"); seg([[k + 4, top + 6], [k + 7.5, top + 3]], "#c9963a", 1.4);   // brass kettle
-    rect(oL - 3, top - 1, 3, gy - top + 1, "#3a2f26"); rect(oR, top - 1, 3, gy - top + 1, "#3a2f26");              // door frame
-    rect(cx - 50, 10, 100, 14, "#1f5a3a"); g.strokeStyle = "#d9b24a"; g.lineWidth = 1; g.strokeRect(cx - 49.5, 10.5, 99, 13);   // the sign
-    g.fillStyle = "#f5f1e4"; g.font = "bold 11px system-ui, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("قهوة", cx, 17.5);
-    for(let x = oL - 4, i = 0; x < oR + 4; x += 10, i++){ rect(x, top - 4, 10, 6, i % 2 ? "#e8dcc4" : "#a8322d");   // striped valance
-      g.fillStyle = i % 2 ? "#e8dcc4" : "#a8322d"; g.beginPath(); g.arc(x + 5, top + 2, 5, 0, Math.PI); g.fill(); }
-    for(let x = L + 8, i = 0; x < R - 4; x += 15, i++){ const on = 0.7 + 0.3 * Math.sin(t * 2 + i * 1.7); glow(x, 27, 5, `rgba(255,214,120,${0.45 * on})`); disc(x, 27, 1.5, `rgba(255,226,150,${on})`); }   // string of bulbs
-    seg([[L + 4, 26], [R - 4, 26]], "rgba(30,25,20,.6)", 0.6);
-    rect(L, gy - 2, R - L, 2, "#2e261f");                                                                        // the kerb
-    tawla(t, cx - 46); shisha(t, cx + 38);
-  }
-  function chair(x, d){ const c = "#7a5434"; seg([[x - 5 * d, gy], [x - 5 * d, gy - 27]], c, 1.8); seg([[x - 5 * d, gy - 12], [x + 5 * d, gy - 12]], c, 2.2); seg([[x + 5 * d, gy - 12], [x + 5 * d, gy]], c, 1.6); seg([[x - 5 * d, gy - 21], [x - 5 * d, gy - 25]], "#5d3f26", 2.6); }
-
-  /* Tawla: an 18 s round. They take turns slamming pieces down (1.25 s each), then one wins and throws his hands up while the
-     other slumps with a hand on his head, they shake hands across the table, and start again. The winner alternates. */
-  function tawla(t, tx){
-    const u = t % 18, aWins = Math.floor(t / 18) % 2 === 0;
-    const rest = [[0.9, 1.6], [0.6, 1.4]];
-    const pose = me => {
-      if(u < 10){ const turn = Math.floor(u / 1.25) % 2, f = (u % 1.25) / 1.25;
-        if(turn !== me) return {arms: rest};
-        const raise = f < 0.6 ? sm(f / 0.6) : 1 - sm((f - 0.6) / 0.1);
-        return {arms: [[0.9 + 1.2 * raise, 1.6 + 1.3 * raise], rest[1]], clack: f > 0.7 && f < 0.85}; }
-      const won = (me === 0) === aWins;
-      if(u < 12.5){ const k = sm((u - 10) / 0.4);
-        return won ? {arms: [[0.9 + 1.9 * k, 1.6 + 1.5 * k], [0.6 + 2.0 * k, 1.4 + 1.6 * k]], hop: 2 * Math.abs(Math.sin(u * 9)) * k}
-                   : {arms: [[0.9 - 0.7 * k, 1.6 - 1.4 * k], [0.6 + 1.7 * k, 1.4 - 4.0 * k]], lean: -0.18 * k}; }
-      if(u < 15.2){ const k = sm((u - 12.5) / 0.5), w = 0.12 * Math.sin(u * 22) * sm((u - 13) / 0.3);
-        return {arms: [[0.9 + 0.55 * k + w, 1.6 - 0.05 * k + w], rest[1]], lean: 0.45 * k}; }
-      return {arms: rest};
-    };
-    const A = pose(0), B = pose(1);
-    chair(tx - 21, 1); chair(tx + 21, -1);
-    person(tx - 21, gy, 1, {sit: true, outfit: "robe", robe: "#8e959c", hat: "emma", mo: true, skin: "#7f4f31", ...A});
-    person(tx + 21, gy, -1, {sit: true, shirt: "#5b6f8c", pants: "#2a2f3a", mo: true, skin: "#9a6342", ...B});
-    seg([[tx, gy - 16], [tx, gy]], "#5a3c24", 2); seg([[tx - 5, gy], [tx + 5, gy]], "#5a3c24", 1.6); rect(tx - 13, gy - 17, 26, 2.2, "#6e4b2e");   // table
-    rect(tx - 10, gy - 20, 20, 3, "#7a4a26"); rect(tx - 9, gy - 19.6, 8.5, 2, "#d9b783"); rect(tx + 0.5, gy - 19.6, 8.5, 2, "#d9b783");   // the open board
-    for(let i = 0; i < 5; i++){ disc(tx - 7.5 + i * 1.6, gy - 18.6, 0.6, i % 2 ? "#f2efe6" : "#1a1a1a"); disc(tx + 2 + i * 1.6, gy - 18.6, 0.6, i % 2 ? "#1a1a1a" : "#f2efe6"); }
-    rect(tx + 10.5, gy - 21, 2.2, 3.8, "rgba(190,110,40,.9)"); rect(tx + 10.5, gy - 21, 2.2, 0.8, "rgba(255,255,255,.8)");   // a glass of tea
-    for(const [p, x] of [[A, tx - 5], [B, tx + 5]]) if(p.clack) for(const [a, b, c, e] of [[-4, -23, -6, -26], [0, -24, 0, -28], [4, -23, 6, -26]]) seg([[x + a, gy + b], [x + c, gy + e]], "rgba(255,240,200,.85)", 1);
-  }
-
-  /* Shisha: an 8 s draw. He pulls on the hose (the water bubbles, the coal glows), lowers it, and breathes out: three smoke rings
-     one time, a big cloud of smoke that rises and spreads the next. */
-  function shisha(t, sx){
-    const u = t % 8, cloud = Math.floor(t / 8) % 2 === 1, px = sx + 19, draw = u < 2.2;
-    chair(sx, 1);
-    const P = person(sx, gy, 1, {sit: true, shirt: "#a3563a", pants: "#2c3442", hair: "#1a1410", skin: "#8a5536",
-      arms: draw || u < 2.6 ? [[1.2, 3.0], [0.5, 1.4]] : [[0.5, 1.2], [0.4, 1.3]]});
-    oval(px, gy - 6, 5.2, 5.8, "rgba(70,170,120,.82)"); oval(px - 1.8, gy - 8, 1.2, 2.4, "rgba(255,255,255,.35)");   // green glass base
-    rect(px - 1, gy - 28, 2, 17, "#c9a24a"); oval(px, gy - 24, 5, 1.3, "#d4ae55");                                  // brass stem and tray
-    poly([[px - 3.2, gy - 31.5], [px + 3.2, gy - 31.5], [px + 1.8, gy - 27.5], [px - 1.8, gy - 27.5]], "#8a4b2e");    // clay bowl
-    glow(px, gy - 32.5, draw ? 6 : 4, draw ? "rgba(255,120,40,.7)" : "rgba(255,120,40,.35)"); oval(px, gy - 32.5, 2.6, 1.1, draw ? "#ff7a2a" : "#b8562a");
-    const m = draw || u < 2.6 ? P.mouth : P.hands[0];
-    g.strokeStyle = "#262626"; g.lineWidth = 1.5; g.beginPath(); g.moveTo(px - 2, gy - 15); g.quadraticCurveTo(px - 8, gy + 1, m[0], m[1]); g.stroke();
-    if(draw) for(let i = 0; i < 3; i++){ const b = (u * 2.5 + i / 3) % 1; disc(px - 2 + i * 2, gy - 3 - b * 5, 0.9, "rgba(255,255,255,.6)"); }
-    const mo = P.mouth;
-    if(!cloud) for(let i = 0; i < 3; i++){ const a = u - 3 - i * 0.45; if(a < 0 || a > 3.4) continue;
-      const k = a / 3.4, r = 1.5 + 6 * k; g.strokeStyle = `rgba(235,235,235,${0.75 * (1 - k)})`; g.lineWidth = 1.4;
-      g.beginPath(); g.ellipse(mo[0] + 4 + a * 7, mo[1] - a * 9, r, r * 0.45, -0.3, 0, Math.PI * 2); g.stroke(); }
-    else for(let i = 0; i < 9; i++){ const a = u - 2.9 - i * 0.12; if(a < 0 || a > 4.6) continue;      // a big cloud, rising and spreading
-      const k = a / 4.6, r = 2.5 + 11 * Math.sqrt(k), x = mo[0] + 3 + a * 6 + Math.sin(i * 2.1) * 4 * k, y = mo[1] - a * 7 - a * a * 0.9 + Math.cos(i * 1.7) * 2;
-      const gr = g.createRadialGradient(x, y, 0, x, y, r), al = 0.42 * (1 - k) * Math.min(1, a * 5);
-      gr.addColorStop(0, `rgba(235,235,235,${al})`); gr.addColorStop(1, "rgba(235,235,235,0)"); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); }
-  }
-
   // ---- traffic ----
-  /* The tuk-tuk: a Bajaj like the ones all over Cairo. One small front wheel under a rounded nose with the headlamp, a black canvas
-     roof with coloured tassels, open sides, the driver up front and a bench seat behind. */
-  function tuktuk(x, d, rot, lean, sw, tilt, honk){
-    g.save(); g.translate(x, gy + 2.5 * sw); g.rotate(tilt); g.scale(1.32 + 0.1 * sw, 1.32 + 0.1 * sw); g.translate(-x, -gy);
-    const X = a => x + a * d, body = "#8c1d22", trim = "#e3c15a";
-    person(X(-9), gy - 6, d, {sit: true, s: 0.62, shirt: "#d9a441", pants: "#30394a", skin: "#93603d", lean: -0.15 * (1 - lean),   // the passenger on the back bench
-      arms: lean > 0.05 ? [[0.3, 0.4], [2.6 + 0.3 * Math.sin(pnow() * 9), 3.0]] : [[0.4, 1.0], [0.2, 0.6]]});
-    person(X(5), gy - 6, d, {sit: true, s: 0.62, shirt: "#3a66a8", pants: "#262c38", skin: "#8a5536", mo: true, arms: [[1.2, 1.5], [1.1, 1.4]]});   // the driver, hands on the bars
-    poly([[X(-19), gy - 4], [X(-20), gy - 9], [X(-18), gy - 14], [X(-7), gy - 14], [X(-4), gy - 10], [X(9), gy - 10], [X(12), gy - 14], [X(15), gy - 14], [X(18.5), gy - 9], [X(18), gy - 4]], body);   // the tub
-    poly([[X(12), gy - 14], [X(13.5), gy - 25.5], [X(15.5), gy - 25], [X(18.5), gy - 9], [X(15), gy - 14]], body);    // the rounded nose
-    poly([[X(13.6), gy - 24.5], [X(15.4), gy - 24.2], [X(17), gy - 15], [X(15), gy - 15]], "rgba(170,205,225,.55)");   // windscreen
-    seg([[X(-19), gy - 9], [X(18), gy - 9]], trim, 0.8);                                                             // chrome strip
-    oval(X(18.2), gy - 11, 1.2, 1.6, "#fff6c8"); glow(X(22), gy - 11, 9, "rgba(255,240,180,.35)");                     // headlamp
-    rect(X(-20.5) - (d > 0 ? 0 : 1.5), gy - 9, 1.5, 2.5, "#e23b2e");                                                   // tail light
-    seg([[X(-18.5), gy - 14], [X(-18.5), gy - 27]], "#1b1b1b", 1.3); seg([[X(1.5), gy - 10], [X(1.5), gy - 27]], "#1b1b1b", 1);   // roof posts
-    poly([[X(-21), gy - 26], [X(-18), gy - 30.5], [X(13.5), gy - 30.5], [X(15.5), gy - 26]], "#1d1d1f");              // canvas roof
-    for(let i = -19, j = 0; i <= 14; i += 3, j++) seg([[X(i), gy - 26], [X(i), gy - 24 + (j % 2)]], ["#e3c15a", "#c2352c", "#3d8fd1", "#3fae6a"][j % 4], 1.1);   // tassels
-    wheel(X(-12), gy - 4.2, 4.2, rot); wheel(X(14.5), gy - 3.8, 3.8, rot);
-    g.restore();
-    if(honk) for(let i = 0; i < 2; i++){ const r = 4 + i * 4 + (pnow() * 12 % 4); g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1;
-      g.beginPath(); g.arc(x + 26 * d, gy - 18, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }
-  }
   function horse(x, d, ph){
     const c = "#6e4a30", X = a => x + a * d;
     [[-9, Math.PI * 1.5, true], [7, Math.PI, true]].forEach(([o, k]) => legH(X(o), d, ph + k, shade(c)));
@@ -883,7 +787,6 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     [[-6, Math.PI / 2], [9, 0]].forEach(([o, k]) => legH(X(o), d, ph + k, c));
     seg([[X(19), gy - 35], [X(22.5), gy - 29.5]], "#1d1410", 1); seg([[X(8.5), gy - 24], [X(10.5), gy - 18]], "#1d1410", 1.4); seg([[X(-2), gy - 27], [X(-2), gy - 15]], "#1d1410", 1.6);   // bridle, collar, girth
     disc(X(-2), gy - 22, 0.9, "#d9b24a"); disc(X(9.4), gy - 21, 0.9, "#d9b24a");
-    oval(X(17), gy - 40.5, 1.8, 3, "#c2352c", -0.3 * d); oval(X(17), gy - 42.5, 1.2, 1.4, "#e3c15a");               // pompom
   }
   function legH(x, d, ph, c){ const a = Math.sin(ph) * 0.35, kx = x + Math.sin(a) * 8 * d, ky = gy - 17 + Math.cos(a) * 8, b = a - 0.3 * Math.max(0, Math.sin(ph + 1));
     const fx = kx + Math.sin(b) * 8 * d; seg([[x, gy - 19], [kx, ky]], c, 3); seg([[kx, ky], [fx, gy - 1]], c, 2.1); rect(fx - 1.4, gy - 2, 2.8, 2, "#1a1410"); }
@@ -951,12 +854,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
 
   /* The traffic takes turns. Each act gives its own length (s) and draws itself u s into the act. */
+  /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the hantour. Every other round runs
+     mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
-    { len: () => (W + 120) / 105, draw(u){ const x = -60 + 105 * u, px = W * 0.2, dx = x - px;
-        const sw = Math.abs(dx) < 46 ? Math.cos(dx / 46 * Math.PI / 2) : 0;
-        const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
-        tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 46 ? -0.06 * Math.sin(dx / 46 * Math.PI) : 0, (dx > -170 && dx < -70) || (x > W * 0.78 && x < W * 0.84)); } },
-    { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
     /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
     { m(){ const v = 270, ab = 650, sx = W * 0.72, x0 = -80, bd = v * v / (2 * ab), t1 = (sx - bd - x0) / v, t2 = t1 + v / ab, t3 = t2 + 1.9;
         const px = sx + 26, tw = (W + 20 - px) / 42, B = Math.max(0, tw + 1.2 - t1); return {v, ab, sx, x0, bd, t1, t2, t3, px, tw, B}; },
@@ -986,23 +886,29 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(cx != null){ const gone = st > 3.7, hasPlate = st > 3.3, C = {shirt: "#3f7f6e", pants: "#2b2f3a", skin: "#9a6544"};
           const P = person(cx, gy, gone ? -1 : 1, gone ? {...C, ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {...C, ph: u * 10} : {...C, arms: [[1.1, 1.6], [0.2, 0.3]]});
           if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } } } },
+    { c(){ const wd = W * 0.15 + 20, tw = wd / 32, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // walk 15% of the way, then run
+      len(){ const c = this.c(); return c.tw + 0.6 + c.tr; },
+      draw(u){ const {wd, tw} = this.c(); let x, run = false, ph;
+        if(u < tw){ x = -20 + 32 * u; ph = u * 10; }
+        else { const e = u - tw, a = Math.min(e, 0.6); x = -20 + wd + 32 * e + (140 - 32) * (a * a / 1.2 + Math.max(0, e - 0.6)); run = e > 0.25; ph = tw * 10 + e * 22; }
+        drawCat(x, 1, ph, run); } },
+    { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
   ];
-  let act = -1, actAt = 0, actLen = 0, nextAt = 2;
-  // A ginger stray cat now and then: walks across, and half the time sits down for a lick 30% of the way in.
-  let cat = null, catAt = 12 + Math.random() * 20;
-  function drawCat(c, u){
-    const walkT = (W + 40) / 32, sitAt = c.sit ? (W * 0.3 + 20) / 32 : 1e9, sitLen = c.sit ? 3 : 0;
-    const wt = u < sitAt ? u : u < sitAt + sitLen ? sitAt : u - sitLen, sitting = u >= sitAt && u < sitAt + sitLen;
-    const x = c.d > 0 ? -20 + 32 * wt : W + 20 - 32 * wt, d = c.d, ph = wt * 10, fur = "#c9803a", dark = "#9a5a22";
+  let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
+  /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
+  function drawCat(x, d, ph, run){
+    const fur = "#c9803a", dark = "#9a5a22", bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
     const head = (hx, hy) => { disc(hx, hy, 3, fur); poly([[hx - 2.4 * d, hy - 1.5], [hx - 1.6 * d, hy - 5], [hx - 0.2 * d, hy - 2.4]], fur); poly([[hx + 0.6 * d, hy - 2.6], [hx + 2 * d, hy - 5], [hx + 2.7 * d, hy - 1.4]], fur); disc(hx + 1.6 * d, hy - 0.3, 0.5, "#2b2b1a"); };
-    if(sitting){ g.strokeStyle = fur; g.lineWidth = 2; g.beginPath(); g.moveTo(x - 3 * d, gy - 1); g.quadraticCurveTo(x - 12 * d, gy - 2 + Math.sin(u * 4) * 2, x - 9 * d, gy - 8); g.stroke();
-      oval(x, gy - 6, 4.8, 6.2, fur, -0.35 * d); seg([[x - 2 * d, gy - 9], [x + 1 * d, gy - 10]], dark, 0.8); head(x + 3 * d, gy - 14);
-      if(Math.sin(u * 6) > 0) seg([[x + 3.5 * d, gy - 6], [x + 5 * d, gy - 11.5]], fur, 1.6); return u > sitAt + sitLen + walkT; }
-    for(const [o, k] of [[-4, Math.PI / 2], [3, Math.PI]]){ const a = Math.sin(ph + k) * 0.4; seg([[x + o * d, gy - 6], [x + o * d + Math.sin(a) * 5 * d, gy]], dark, 1.5); }
-    g.strokeStyle = fur; g.lineWidth = 2; g.beginPath(); g.moveTo(x - 7 * d, gy - 8); g.quadraticCurveTo(x - 12 * d, gy - 12, x - 10 * d, gy - 18 + Math.sin(ph * 0.5)); g.stroke();
-    oval(x, gy - 7, 7.5, 3.3, fur); for(const o of [-3, 0, 3]) seg([[x + o * d, gy - 10], [x + (o + 1) * d, gy - 6]], dark, 0.8);
-    for(const [o, k] of [[-6, Math.PI * 1.5], [5, 0]]){ const a = Math.sin(ph + k) * 0.4; seg([[x + o * d, gy - 6], [x + o * d + Math.sin(a) * 5 * d, gy]], fur, 1.6); }
-    head(x + 8 * d, gy - 10); return false;
+    const leg = (o, a, col) => seg([[x + o * d, by + 1], [x + o * d + Math.sin(a) * 5.5 * d, gy]], col, 1.6);
+    if(run){ leg(-5, -0.8 * Math.sin(ph) - 0.2, dark); leg(4, 0.8 * Math.sin(ph) + 0.2, dark); }   // bounding: back pair and front pair
+    else for(const [o, k] of [[-4, Math.PI / 2], [3, Math.PI]]) leg(o, Math.sin(ph + k) * 0.4, dark);
+    g.strokeStyle = fur; g.lineWidth = 2; g.beginPath(); g.moveTo(x - 7 * stretch * d, by - 1);
+    if(run) g.quadraticCurveTo(x - 12 * d, by - 3, x - 17 * d, by - 4 + Math.sin(ph) * 1.5); else g.quadraticCurveTo(x - 12 * d, by - 5, x - 10 * d, by - 11 + Math.sin(ph * 0.5));
+    g.stroke();                                                                                                   // tail: straight out behind when she runs
+    oval(x, by, 7.5 * stretch, 3.3, fur); for(const o of [-3, 0, 3]) seg([[x + o * d, by - 3], [x + (o + 1) * d, by + 1]], dark, 0.8);
+    if(run){ leg(-6, -0.8 * Math.sin(ph) - 0.3, fur); leg(5, 0.8 * Math.sin(ph) + 0.3, fur); }
+    else for(const [o, k] of [[-6, Math.PI * 1.5], [5, 0]]) leg(o, Math.sin(ph + k) * 0.4, fur);
+    head(x + 8 * stretch * d, by - 3 + (run ? 1 : 0));
   }
   let t0 = performance.now();
   function frame(now){
@@ -1013,12 +919,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const t = ((now - t0) / 1000) * slow;
     g.clearRect(0, 0, W, H); g.save();
     if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }
-    ahwa(t, W / 2);
-    oval(W * 0.2, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(W * 0.2 + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");   // the pothole, on the road above the line (5.55: was on the line and cut it)
-    if(!cat && t > catAt) cat = {at: t, d: Math.random() < 0.5 ? 1 : -1, sit: Math.random() < 0.5};
-    if(cat){ const u = t - cat.at, walkT = (W + 40) / 32; if(drawCat(cat, u) || u > walkT + 3.5){ cat = null; catAt = t + 25 + Math.random() * 35; } }
-    if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); nextAt = t + actLen + 2.5 + Math.random() * 3; } }
-    if(act >= 0 && t <= actAt + actLen) ACTS[act].draw(t - actAt);
+    if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; nextAt = t + actLen + 2.5 + Math.random() * 3; } }
+    if(act >= 0 && t <= actAt + actLen){ if(flip){ g.translate(W, 0); g.scale(-1, 1); } ACTS[act].draw(t - actAt); }   // mirrored on alternate rounds
     g.restore();
   }
   requestAnimationFrame(frame);
