@@ -1,6 +1,6 @@
 // 5.7: lets Cloudflare ("npx wrangler deploy" in Workers & Pages) serve the game as a plain static site.
 // Every merge to main redeploys it. The build step copies only what the browser needs into dist/
-// (the page, the phone answer page, the speed test, photos and sounds), so src/, v4work/ and .git are never uploaded.
+// (the page, the phone answer page, the free-for-all player page (5.26), the speed test, photos and sounds), so src/, v4work/ and .git are never uploaded.
 // 5.9: worker/index.js answers /api/* (the phone-answer relay); everything else is served straight from dist/.
 {
   "name": "jeopardy-night",
@@ -9,7 +9,7 @@
   "workers_dev": true,
   "main": "worker/index.js",
   "build": {
-    "command": "rm -rf dist && mkdir dist && cp -r index.html answer.html speed.html photos sounds dist/"
+    "command": "rm -rf dist && mkdir dist && cp -r index.html answer.html play.html speed.html photos sounds dist/"
   },
   "assets": {
     "directory": "./dist",
