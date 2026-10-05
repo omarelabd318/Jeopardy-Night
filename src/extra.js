@@ -27,6 +27,10 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
     CATS.splice(CATS.findIndex(c=>c.id==="xfer")+1,0,{id:"stad",name:o.name,type:"text",desc:o.desc}); DATA.stad=o.data;
     const sp=W+'/stadium-photos.json'; if(fs.existsSync(sp)) JSON.parse(fs.readFileSync(sp,'utf8')).forEach(e=>{
       if(fs.existsSync(`photos/${e.key}.jpg`)) DATA.stad[e.value].push(["Name this stadium.",e.name,`photos/${e.key}.jpg`]); }); } }
+  // 5.20 (Omar): photo clues inside normal categories (Egypt History, Cairo Streets & Places), listed in v4work/category-photos.json
+  // as {cat, value, key, q, a}; each joins its category only when photos/<key>.jpg exists.
+  { const cp=W+'/category-photos.json'; if(fs.existsSync(cp)) JSON.parse(fs.readFileSync(cp,'utf8')).forEach(e=>{
+      if(DATA[e.cat] && DATA[e.cat][e.value] && fs.existsSync(`photos/${e.key}.jpg`)) DATA[e.cat][e.value].push([e.q,e.a,`photos/${e.key}.jpg`]); }); }
   { const fp=W+'/food-photos.json'; if(fs.existsSync(fp)){ const d={100:[],200:[],300:[],400:[],500:[]};
     JSON.parse(fs.readFileSync(fp,'utf8')).forEach(e=>{ if(fs.existsSync(`photos/${e.key}.jpg`)) d[e.value].push(["Name this food.",e.name,`pack:food-${e.value}:${e.key}`]); });
     if(!Object.values(d).every(a=>a.length)){ const all=[100,200,300,400,500].flatMap(v=>d[v]); if(all.length>=10){  // photos still arriving: spread what exists across the five values in difficulty order

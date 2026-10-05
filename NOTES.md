@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.19. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.20. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -430,3 +430,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Tested** with `wrangler dev`: Price Is Right with three phones (auto-reveal, right winner, late answer refused) and a steal both worked. jsQR read every code: 29×29 dots locally (on the longer real address it will be ~33×33).
   - To undo: put back the old `ansUrl()` (described in the 5.18 comment) and `ansKey()`; the phone page still accepts long links.
 - 5.19 (2026-10-05): Omar noticed things off-centre on the One Word Clues QR screen. The `.note` lines ("Everyone else, look away.", the rules) have a maximum width, but in the centred `.secret` panel nothing centred them, so they sat on the left. Added `.secret .note{justify-self:center;margin-inline:auto}`; this fixes One Word Clues, Act It Out and Impostor alike. Checked: every part of the panel is now centred to the pixel.
+- 5.20 (2026-10-05): Omar asked for some photo clues in Egypt History and Cairo Streets & Places. Each now has 10 (2 per value, so the counts stay even: Egypt History 33 per value, Cairo 41–42).
+  - **New list:** `v4work/category-photos.json` lists photo clues for normal categories as `{cat, value, key, q, a}`. `src/extra.js` adds each one when `photos/<key>.jpg` exists, just like the stadium photos.
+  - **Egypt History:** Nasser and Sadat (100); Tahrir Square in 2011 and Abu Simbel (200); the Grand Egyptian Museum and King Farouk (300); the 1973 Suez Canal crossing and the High Dam seen from space, "which lake did it create?" (400); Mohamed Naguib and Saad Zaghloul (500). The four leaders reuse the Guess the Person photos.
+  - **Cairo:** "Name this Cairo landmark": Cairo Tower and the Muhammad Ali Mosque (100), Khan el-Khalili and Al-Azhar (200), the Qasr El Nil bridge and Baron Palace (300), Bab Zuweila and the Hanging Church (400), Ibn Tulun and Bayt al-Suhaymi (500).
+  - **Photos:** new photos come from Wikimedia Commons. Originals are in `v4work/category-photos/` with `SOURCES.md` (licences), and web copies (1024 px) are in `photos/`. I looked at each one before adding it.
+  - To remove: delete `v4work/category-photos.json`, or the lines for one category.
