@@ -152,7 +152,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.43`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.44`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -535,13 +535,18 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      and bicycle-kicks ("double kick") it over his head back across. It takes longer than the others (BIKE s instead of POP).
      Fourteen touches, each move exactly seven touches from the other player's same move.
      5.36 order: L knee, R heel, L foot, R chest, L head, R kneehead, L heel, R knee, L chest, R foot, L kneehead, R head */
-  const ROT = [["L","knee"],["R","chest"],["L","foot"],["R","kneehead"],["L","head"],["R","chestbike"],["L","heel"],["R","knee"],["L","chest"],["R","foot"],["L","kneehead"],["R","head"],["L","chestbike"],["R","heel"]], POP = 1.1, SPIN = 0.35;
+  /* 5.44 (Omar): an eighth touch, "kneeheel": knee control, it drops to his foot, he flicks it up over his head so it drops
+     behind him, then bends forward and swings his back heel up into it, sending it up and over him back across (HEEL s with him).
+     Sixteen touches, every move exactly seven touches from the other player's same move, no similar moves next to each other.
+     5.37 order: L knee, R chest, L foot, R kneehead, L head, R chestbike, L heel, R knee, L chest, R foot, L kneehead, R head, L chestbike, R heel */
+  const ROT = [["L","knee"],["R","heel"],["L","foot"],["R","chestbike"],["L","head"],["R","kneeheel"],["L","chest"],["R","kneehead"],["L","heel"],["R","knee"],["L","chestbike"],["R","foot"],["L","kneeheel"],["R","head"],["L","kneehead"],["R","chest"]], POP = 1.1, SPIN = 0.35;
   const BIKE = 2.2, FLICK = 0.8;                                   // chestbike: from chest to bicycle kick, and when the foot flick comes
-  const PD = how => how === "chestbike" ? BIKE : POP;              // how long the ball stays with him after the first touch
+  const HEEL = 1.7, HFLICK = 0.7;                                  // kneeheel: from knee to the heel pass, and when the foot flick comes
+  const PD = how => how === "chestbike" ? BIKE : how === "kneeheel" ? HEEL : POP;   // how long the ball stays with him after the first touch
   const START = []; let CYCLE = 0; ROT.forEach(([, hw]) => { START.push(CYCLE); CYCLE += FLIGHT + PD(hw); });
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
-  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22};   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22, kneeheel: 12};   // kneeheel: how high it goes over his head   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
   const kneeUp = dt => dt < -0.35 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.35) / 0.35) : 1 - sm(dt / 0.3);
@@ -600,10 +605,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
       if(how === "chest" || how === "chestbike"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
-      return how === "knee" || how === "kneehead" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+      return how === "knee" || how === "kneehead" || how === "kneeheel" ? [x + 9*d, hip - r - 1] : how === "foot" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
     const head = side => [X[side] + 7 * D[side], H - 1 - 4 - 35 - 5 - r + 2];        // where the kneehead header meets the ball: at the top of his hop, his head thrown forward (5.40; was X + 2)
     const bike = side => [X[side] + 4 * D[side], H - 1 - 10 - 16 - 15.5 - r + 2];   // where the bicycle kick meets it, above him as he lies back
-    const volley = (side, how) => how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
+    const heelPass = side => [X[side] - 11 * D[side], hip - 4];                       // kneeheel: behind him, where his heel meets it
+    const volley = (side, how) => how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : how === "kneeheel" ? heelPass(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
     const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
     let k = ROT.length - 1; while(k > 0 && START[k] > t) k--;
@@ -611,14 +617,24 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const prev = ROT[(k + ROT.length - 1) % ROT.length][1];   // how the other player sent it (a volley, or a header after a kneehead)
     const C = touch(side, how), V = volley(side, how);
     let pos;
-    if(u < FLIGHT){ const A = volley(from, prev); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
+    const UPO = 0.5;   // 5.44: after a heel pass (kneeheel) the ball first loops steeply up over his head, then the long lob
+    if(u < FLIGHT && prev === "kneeheel" && u < UPO){ const A = volley(from, prev), Q = [A[0], hip - 40], P2 = [X[from] + 6 * D[from], hip - 42], w = u / UPO;
+      pos = [(1-w)*(1-w)*A[0] + 2*w*(1-w)*Q[0] + w*w*P2[0], (1-w)*(1-w)*A[1] + 2*w*(1-w)*Q[1] + w*w*P2[1]]; }
+    else if(u < FLIGHT && prev === "kneeheel"){ const A = [X[from] + 6 * D[from], hip - 42]; pos = seg(A, C, (u - UPO) / (FLIGHT - UPO), (A[1] + C[1]) / 2 - (H - 76)); }
+    else if(u < FLIGHT){ const A = volley(from, prev); pos = seg(A, C, u / FLIGHT, (A[1] + C[1]) / 2 - (H - 76)); }            // the long volley across, peaking near the top
     else if(how === "chestbike"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4];   // off the chest down to his foot, then flicked up high and bicycle-kicked
       pos = ub < FLICK ? seg(C, F, ub / FLICK, (C[1] + F[1]) / 2 - (C[1] - 10)) : seg(F, V, (ub - FLICK) / (BIKE - FLICK), (F[1] + V[1]) / 2 - (V[1] - UP.chestbike)); }
+    else if(how === "kneeheel"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4], over = H - 1 - 40 - r - UP.kneeheel;   // knee, drop to the foot, flicked over his head to behind him
+      pos = ub < HFLICK ? seg(C, F, ub / HFLICK, (C[1] + F[1]) / 2 - (C[1] - 14)) : seg(F, V, (ub - HFLICK) / (HEEL - HFLICK), (F[1] + V[1]) / 2 - over); }
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
     const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0, ly = 0, gu = null;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = START[i] + FLIGHT + sh, dt = t - tc;
           if(hw === "kneehead"){ knee += kneeUp(dt); jump += hop(dt - POP); lean += powerWind(dt - POP); continue; }   // knee it up, then a header instead of a volley
+          if(hw === "kneeheel"){ const e = dt - HEEL;   // knee control, foot flick, then bends forward and heels it up and over (e = 0 at the heel)
+            knee += kneeUp(dt); ang += footUp(dt - HFLICK);
+            const bend = e < -0.5 || e > 0.45 ? 0 : e < 0 ? sm((e + 0.5) / 0.5) : 1 - sm(e / 0.45);
+            lean -= 1.6 * bend; heel += e < -0.3 || e > 0.35 ? 0 : e < 0 ? sm((e + 0.3) / 0.3) : 1 - sm(e / 0.35); continue; }
           if(hw === "chestbike"){ const e = dt - BIKE;   // chest, foot flick, turn and bicycle kick (e = 0), then 5.39 (Omar): he falls flat on the ground, lies there a moment and gets up
             if(e >= GETUP[0][0] && e < GETUP[GETUP.length - 1][0]){ gu = getUp(e); turn = true; continue; }   // 5.41: getting up (5.39-5.40: amt = 1 - sm((e - 1.0) / 0.8) after 1.0 s)
             const amt = e < 0 ? bikeAmt(e) : e < 1.0 ? 1 : 0, fall = e < 0 ? 0 : sm(e / 0.35);
