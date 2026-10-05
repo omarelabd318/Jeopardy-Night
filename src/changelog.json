@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.72",
+  "date": "2026-10-05",
+  "items": [
+   "Price Is Right and Closest Wins no longer give hints like a price range under the answer box; the note only shows with the answer."
+  ]
+ },
+ {
   "v": "5.71",
   "date": "2026-10-05",
   "items": [
