@@ -277,6 +277,15 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
 .focuswrap{position:relative;align-self:center;width:fit-content;max-width:100%;line-height:0;margin:0 auto}
 #focusImg{display:block;max-width:100%;max-height:62vh;cursor:crosshair;border-radius:8px}
 #focusMark{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border:3px solid var(--brass);border-radius:50%;box-shadow:0 0 0 3px #000;pointer-events:none}
+/* 5.22: Put It in Order */
+.order{list-style:none;margin:6px auto;padding:0;display:grid;gap:10px;max-width:760px;width:100%}
+.order li{display:flex;align-items:center;gap:14px;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:clamp(18px,2.2vw,26px);font-weight:700;cursor:grab;user-select:none}
+.order li .n{font-family:var(--display);font-weight:800;color:var(--brass);min-width:1.4ch;text-align:center}
+.order li .ev{flex:1;text-align:left}
+.order li .mv{display:flex;flex-direction:column;gap:4px} .order li .mv .mini{font-size:14px;padding:2px 10px} .order li .mv .mini:disabled{opacity:.25}
+.order li.dragging{opacity:.4} .order li.over{border-color:var(--brass);box-shadow:0 0 0 2px var(--brass)}
+.order.done li{cursor:default} .order li .dt{color:var(--muted);font-size:.8em;font-weight:600;white-space:nowrap}
+.order.done li.ok{border-color:var(--good)} .order.done li.no{border-color:var(--bad);opacity:.85}
 .guesses{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
 .guess{display:grid;gap:6px;background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
 .guess span{font-weight:700}
@@ -391,7 +400,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.21</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.22</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -403,7 +412,7 @@ body.football #kick.on{display:block}  /* 4.75: 84px tall for the headers (was 6
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.21</div>
+      <div class="eyebrow verlabel">v5.22</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

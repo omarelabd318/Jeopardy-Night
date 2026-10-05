@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.21. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 100 categories in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.22. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 101 categories in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -437,3 +437,8 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Photos:** new photos come from Wikimedia Commons. Originals are in `v4work/category-photos/` with `SOURCES.md` (licences), and web copies (1024 px) are in `photos/`. I looked at each one before adding it.
   - To remove: delete `v4work/category-photos.json`, or the lines for one category.
 - 5.21 (2026-10-05): Omar clarified that only the photo rounds that blur or zoom should go without steal codes. Car, Actor, Footballer and Person (type `photo`, zoom) are no longer in `STEAL_TYPES`, and Guess the Logo (blur) is now in `STEAL_SKIP`. Guess the Food, and the new plain-photo categories coming next (Guess the Country, Egypt: Photo Edition), do get steal codes. The 5.11 whole-group skip (`noStealGroup`) now always returns false; to restore it, put its old body back (it's in the 5.21 comment).
+- 5.22 (2026-10-05): Omar asked for a Put It in Order category: three notable events per clue (like the Queen dying, Elon Musk buying Twitter, a film coming out), teams put them in order, no steal codes, and the events can be dragged into the team's order.
+  - **New clue type `order`:** each clue in `v4work/out/order.json` is three `[event, date]` pairs, with the date as `YYYY`, `YYYY-MM` or `YYYY-MM-DD`. The events start shuffled and never already in order. The host drags them (or taps ▲▼) into the team's order and taps Reveal; the reveal lists the right order with dates, marks each row green or red, and says how many were in the right place. Scoring stays the usual +, half, − buttons.
+  - **Clues:** 100, 20 per value. At 100 the events are years apart (Toy Story, Shrek, Frozen); by 300 they're a year or two apart; 400 and 500 are weeks or days apart (Saudi Arabia beat Argentina, Morocco knock out Portugal, Messi lifts the World Cup). A mix of film, TV, football, tech, Egypt and world news.
+  - **No steal codes:** `order` isn't in `STEAL_TYPES`, so it never gets one.
+  - In Party Games after Real Headline. To remove: delete `v4work/out/order.json` (or the `['order','headl']` line in `src/extra.js`); the code in `src/app.js` (marked 5.22) and the `.order` CSS in `src/head.html` can stay.

@@ -151,7 +151,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.21`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.22`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -161,7 +161,7 @@ const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & A
   ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo"]],
-  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl"]]
+  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order"]]  /* 5.22: Put It in Order after Headlines */
 ];
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}</button>`;
@@ -878,6 +878,9 @@ function clueParts(){
   if(type==="impostor"){ const [ic,w] = pool(cat,lvl)[idx]; return {q:"Who's the Impostor? Everyone plays. Each player scans their own code; one of you is secretly the impostor.", a:w, icat:ic}; }
   if(type==="password"){ const w = pool(cat,lvl)[idx]; return {q:"Each team picks one clue-giver. Both scan the same code. Take turns giving ONE-word clues; after each clue, that team gets one guess.", a:w}; }
   if(type==="closest"){ const [q,v,u] = pool(cat,lvl)[idx]; return {q, a:`${v.toLocaleString("en-US")} ${u}`.trim(), num:v, unit:u}; }
+  /* 5.22: Put It in Order. Each clue is three [event, "YYYY", "YYYY-MM" or "YYYY-MM-DD"] pairs; ev keeps the stored order, sorted is earliest first */
+  if(type==="order"){ const ev = pool(cat,lvl)[idx], sorted = ev.map((e,i) => i).sort((x,y) => ev[x][1] < ev[y][1] ? -1 : 1);
+    return {q:"Put these three in order, earliest first.", a: sorted.map(i => ev[i][0]).join(" → "), ev, sorted}; }
   if(type==="pin"){ const [city,country,lat,lon] = pool(cat,lvl)[idx]; return {q:"Name the city at the pin. Just the country gets half points.", a:`${city}, ${country}`, pin:[lat,lon]}; }
   if(type==="shape"){ const [n,al] = pool(cat,lvl)[idx]; return {q:"Name the country from its outline.", a:n, shape:al}; }
   if(type==="emoji"){ const [e,ans] = pool(cat,lvl)[idx]; const ar = typeof AR_EMOJI !== "undefined" && AR_EMOJI.has(ans) ? " (Arabic)" : ""; return {q: (cat==="emov" ? "Name the film or TV show." : cat==="emeg" ? "Name the Egyptian film, series or play." : cat==="emseg" ? "Decode the Egyptian phrase or saying." : "Decode the phrase or proverb.") + ar, a:ans, emoji:e}; }
@@ -1032,6 +1035,18 @@ function renderClue(){
         ${d!=null ? `<em>${d===0 ? "Exact!" : "off by " + d.toLocaleString("en-US")}</em>` : ""}</label>`; }).join("")}</div>
       ${!c.revealed ? `<div class="note">${ansMode(c) ? "Each team scans the code and sends one number (or tap Type to enter it for them)." : "Each team agrees on one number and types it in."} Closest wins; a tie means both score.</div>` : ""}`;
   }
+  /* 5.22 (Omar): Put It in Order. The events start shuffled (never already in order); the team's order is set by dragging
+     them, or with the arrows. Reveal shows the right order with dates and how many the team had in the right place. */
+  if(c.type==="order"){
+    if(!c.order){ do{ c.order = p.sorted.slice().sort(() => Math.random() - .5); }while(c.order.every((k,i) => k === p.sorted[i])); }
+    const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const day = d => { const [y,m,dd] = String(d).split("-"); return [dd ? +dd : "", m ? MON[+m-1] : "", y].filter(Boolean).join(" "); };
+    if(!c.revealed) media = `<ol class="order">${c.order.map((k,i) => `<li draggable="true" data-oi="${i}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span>
+        <span class="mv"><button class="mini" data-om="${i}" data-dir="-1" ${i ? "" : "disabled"} aria-label="Move up">▲</button><button class="mini" data-om="${i}" data-dir="1" ${i < c.order.length-1 ? "" : "disabled"} aria-label="Move down">▼</button></span></li>`).join("")}</ol>
+      <div class="note">Drag the events (or tap the arrows) into the team's order, earliest at the top, then tap Reveal.</div>`;
+    else { c.right = p.sorted.filter((k,i) => c.order[i] === k).length;
+      media = `<ol class="order done">${p.sorted.map((k,i) => `<li class="${c.order[i] === k ? "ok" : "no"}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span><span class="dt">${day(p.ev[k][1])}</span></li>`).join("")}</ol>`; }
+  }
   if(c.type==="act"){
     media = `<div class="secret">${c.qr
       ? `<div class="eyebrow">Actor: scan this with your phone camera</div><div class="qr" id="qrbox"></div><div class="note">The film title pops up as text on the actor's phone. Everyone else, look away. Tap Start when the actor is ready.</div><div><button class="btn small" data-act="hide">Hide code</button></div>`
@@ -1048,7 +1063,7 @@ function renderClue(){
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
-    ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : fmtAns(p.a)}</div>` : ""}
+    ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
     ${c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>`<div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button><button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button><button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button></div>`).join("")}</div>` : ""}
     ${canTwo ? `<div class="pwrow"><span class="lbl">Power-up:</span>${canTwo}</div>` : ""}
     <div class="row">
@@ -1090,6 +1105,8 @@ $("#clue").addEventListener("click", e => {
   const c = S.cur; if(!c) return;
   const ti = e.target.closest("[data-typein]");
   if(ti){ const i = +ti.dataset.typein; c.typing = c.typing || {}; c.typing[i] = true; renderClue(); const inp = $("#guess" + i); if(inp) inp.focus(); return; }
+  const om = e.target.closest("[data-om]");
+  if(om && c.order && !c.revealed){ const i = +om.dataset.om, j = i + +om.dataset.dir; if(j >= 0 && j < c.order.length){ [c.order[i], c.order[j]] = [c.order[j], c.order[i]]; Snd.blip(); renderClue(); } return; }
   const tw = e.target.closest("[data-two]");
   if(tw){ c.two[+tw.dataset.two] = true; Snd.blip(); renderClue(); return; }
   const tb = e.target.closest("[data-turn]");
@@ -1138,6 +1155,14 @@ $("#clue").addEventListener("click", e => {
     closeCard(); renderBoard(); renderScores();
   }
 });
+/* 5.22: dragging the events in Put It in Order */
+let dragOi = null;
+$("#clue").addEventListener("dragstart", e => { const li = e.target.closest && e.target.closest("[data-oi]"); if(!li) return; dragOi = +li.dataset.oi; li.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; try{ e.dataTransfer.setData("text/plain", String(dragOi)); }catch(err){} });
+$("#clue").addEventListener("dragover", e => { const li = e.target.closest && e.target.closest("[data-oi]"); if(!li || dragOi === null) return; e.preventDefault();
+  document.querySelectorAll("#clue .order li.over").forEach(x => x !== li && x.classList.remove("over")); li.classList.add("over"); });
+$("#clue").addEventListener("drop", e => { const li = e.target.closest && e.target.closest("[data-oi]"), c = S.cur; if(!li || dragOi === null || !c || !c.order) return; e.preventDefault();
+  const to = +li.dataset.oi; if(to !== dragOi){ const [k] = c.order.splice(dragOi, 1); c.order.splice(to, 0, k); Snd.blip(); } dragOi = null; renderClue(); });
+$("#clue").addEventListener("dragend", () => { dragOi = null; document.querySelectorAll("#clue .order li").forEach(x => x.classList.remove("dragging","over")); });
 $("#focusImg").addEventListener("click", e => {
   const r = e.currentTarget.getBoundingClientRect(), x = 100*(e.clientX-r.left)/r.width, y = 100*(e.clientY-r.top)/r.height;
   if(focusKey){ saveFocus(focusKey, x, y); const m = $("#focusMark"); m.hidden = false; m.style.left = x+"%"; m.style.top = y+"%"; }
