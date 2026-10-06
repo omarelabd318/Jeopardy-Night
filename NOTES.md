@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.3. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.4. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -586,3 +586,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Family motorbike:** it's no longer its own scene. It rides in from the same side 5 s after the woman and overtakes her. The old scene line is in a comment in that act.
   - **Wedding escort bike:** it weaves, drifting about 7 px forwards and back and leaning into each swerve.
   - **Bus chase:** once the man has been on the step for a moment, he holds the door at chest height and lowers his free hand. Before, he gripped above his head and kept waving.
+- 6.4 (2026-10-06): Omar asked for more Egyptian items in Price Is Right, so there are 30 more (6 per value), all Egyptian. Current prices were checked in Egyptian news in October 2026 and are dated in each question. They cover museum and pyramid tickets, ful, ta'meya, ahwa tea, El Abd kahk, Eid sheep, mango, the monorail and LRT, the cinema, the tourist visa and iPhone prices. There are also some bigger numbers: Ras El Hekma, Suez Canal revenue, the IMF programme, Al Ahly's Club World Cup fee and the cost of the GEM. Sources are listed in `v4work/out/price.log.md`. The category now has 160 clues.
