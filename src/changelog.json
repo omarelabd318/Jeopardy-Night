@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.21",
+  "date": "2026-10-06",
+  "items": [
+   "Mix clues no longer say which category they came from, just the mix and the value.",
+   "Guess the… Mix is now the photo rounds only."
+  ]
+ },
+ {
   "v": "6.20",
   "date": "2026-10-06",
   "items": [

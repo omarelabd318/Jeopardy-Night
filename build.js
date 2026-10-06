@@ -42,11 +42,11 @@ DATA.tvmix = {};
 });
 })();
 /* 6.20 (Omar): mix categories. A mix holds no clues of its own: each tile picks one of its sources (each source equally likely) and opens
-   a clue from it exactly as that category would, labelled "Mix · Source" (see mixPick and openClue in src/app.js). */
+   a clue from it exactly as that category would, headed with the mix's name only, 6.21 (6.20: "Mix · Source"; see mixPick and openClue in src/app.js). */
 const MIXES = [
   ["mixeg1", "Egypt Mix 1", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
   ["mixeg2", "Egypt Mix 2", ["egy","egh","cairo","egyph"]],
-  ["mixguess", "Guess the… Mix", ["year","song","fyear","score","foodpic","logo","car","actor","footy","person","gctry"]],
+  ["mixguess", "Guess the… Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
   ["mixmap", "Maps & World Mix", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["mixparty", "Party Games Mix", ["emov","link","near","price","headl","order"]],
   ["mixkn1", "Knowledge Mix 1", ["his","islam","year","sci","cal","brand"]],
