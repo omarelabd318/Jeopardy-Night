@@ -13,3 +13,6 @@
 - New clues use Salah's 2026 move (Trabzonspor with Trezeguet) and Egyptian trios (Al Ahly, Pyramids, ENPPI, PAOK with Warda, Hossam Hassan and Shikabala, Mainz with Zidan and Klopp).
 - A few big clubs (Liverpool, Man United, Napoli, PSG) now appear twice, with completely different trios.
 - Rebalanced: LA Galaxy (400>300) and Real Sociedad (500>400) are easier. Nantes (300>400) and Shakhtar (400>500) are harder.
+
+## 6.2 (2026-10-06)
+Added 25 clues (5 per value), none removed. Omar asked for more in this category.

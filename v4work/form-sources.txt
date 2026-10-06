@@ -98,3 +98,28 @@
 300 | Italy, 2021 (Euro 2020 final v England) | https://www.uefa.com/uefaeuro/history/news/0269-1262855338b0-a7a22fe4ebb4-1000--euro-2020-final-italy-vs-england-line-ups-all-the-finalists-/
 400 | Liverpool, 2016 (Europa League final v Sevilla) | https://www.skysports.com/football/liverpool-vs-sevilla/teams/355015
 500 | Porto, 2011 (Europa League final v Braga) | https://www.worldfootball.net/match-report/ma137687/lineup/
+100 | France, 1998 (World Cup final v Brazil) | https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_final
+100 | Spain, 2008 (Euro final v Germany) | https://en.wikipedia.org/wiki/UEFA_Euro_2008_final
+100 | France, 2022 (World Cup final v Argentina) | https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final
+100 | Brazil, 2014 (World Cup semi-final v Germany, lost 7–1) | https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)
+100 | Argentina, 2014 (World Cup final v Germany) | https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final
+200 | Manchester United, 2011 (Champions League final v Barcelona) | https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final
+200 | AC Milan, 2005 (Champions League final v Liverpool) | https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final
+200 | Germany, 2008 (Euro final v Spain) | https://en.wikipedia.org/wiki/UEFA_Euro_2008_final
+200 | Bayern Munich, 2012 (Champions League final v Chelsea) | https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final
+200 | Brazil, 1998 (World Cup final v France) | https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_final
+300 | Real Madrid, 2000 (Champions League final v Valencia) | https://en.wikipedia.org/wiki/2000_UEFA_Champions_League_final
+300 | Juventus, 2003 (Champions League final v AC Milan) | https://en.wikipedia.org/wiki/2003_UEFA_Champions_League_final
+300 | AC Milan, 2003 (Champions League final v Juventus) | https://en.wikipedia.org/wiki/2003_UEFA_Champions_League_final
+300 | Portugal, 2004 (Euro final v Greece) | https://en.wikipedia.org/wiki/UEFA_Euro_2004_final
+300 | France, 2016 (Euro final v Portugal) | https://en.wikipedia.org/wiki/UEFA_Euro_2016_final
+400 | Ajax, 1995 (Champions League final v AC Milan) | https://en.wikipedia.org/wiki/1995_UEFA_Champions_League_final
+400 | Bayern Munich, 2001 (Champions League final v Valencia) | https://en.wikipedia.org/wiki/2001_UEFA_Champions_League_final
+400 | Italy, 2012 (Euro final v Spain) | https://en.wikipedia.org/wiki/UEFA_Euro_2012_final
+400 | Egypt, 2006 (Africa Cup of Nations final v Ivory Coast) | https://en.wikipedia.org/wiki/2006_Africa_Cup_of_Nations_final
+400 | Valencia, 2000 (Champions League final v Real Madrid) | https://en.wikipedia.org/wiki/2000_UEFA_Champions_League_final
+500 | Sevilla, 2006 (UEFA Cup final v Middlesbrough) | https://en.wikipedia.org/wiki/2006_UEFA_Cup_final
+500 | Porto, 2003 (UEFA Cup final v Celtic) | https://en.wikipedia.org/wiki/2003_UEFA_Cup_final
+500 | Werder Bremen, 2009 (UEFA Cup final v Shakhtar Donetsk) | https://en.wikipedia.org/wiki/2009_UEFA_Cup_final
+500 | Feyenoord, 2002 (UEFA Cup final v Borussia Dortmund) | https://en.wikipedia.org/wiki/2002_UEFA_Cup_final
+500 | Ghana, 2010 (Africa Cup of Nations final v Egypt) | https://en.wikipedia.org/wiki/2010_Africa_Cup_of_Nations_final

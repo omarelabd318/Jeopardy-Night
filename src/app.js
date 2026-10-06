@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.1`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.2`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -213,7 +213,7 @@ const TIPS = {
   flag: "Name the country from its flag.",
   shape: "Name the country from its outline.",
   pin: "A pin on a blank map. Name the city, or the country for half points.",
-  ctry: "A city. Name the country it's in.",
+  ctry: "A city or a fact about a country. Name the country.",
   sci: "Science: the human body, chemistry, physics and nature.",
   space: "Planets, moons, stars, space missions and astronauts.",
   fb: "Football from around the world: players, clubs and big moments.",
@@ -256,7 +256,7 @@ const TIPS = {
   emeg: "Name the Egyptian film, series or play from the emojis.",
   emsen: "Work out the saying from the emojis.",
   emseg: "Work out the Egyptian phrase or proverb from the emojis.",
-  ctryar: "A city in the Arab world. Name the country it's in.",
+  ctryar: "A city or a fact about an Arab country. Name the country.",
   rid: "Riddles. Think sideways.",
   link: "Four clues with something in common. What links them?",
   mb: "Money, business, famous companies and the people who run them.",

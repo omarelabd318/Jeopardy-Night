@@ -15,3 +15,6 @@
 - Easy clues moved down, e.g. 'how many emirates in the UAE' (400 to 100), Algeria's 1962 independence, Marrakesh 'Red City', Jeddah 'Bride of the Red Sea', the Nabataean capital Petra.
 - Harder clues moved up, e.g. Wadih El Safi, Comoros in the Arab League, Ras Al Khaimah, Mahmoud Darwish, the Marib Dam, Constantine.
 - New clues include recent checked facts: Morocco won the 2025 Arab Cup over Jordan; Jordan played its first World Cup in 2026; Morocco co-hosts 2030 with Spain and Portugal.
+
+## 6.2 (2026-10-06)
+Added 30 clues (6 per value), none removed. Omar asked for more in this category.

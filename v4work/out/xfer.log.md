@@ -12,3 +12,6 @@
 - Added the summer 2026 window: Salah to Trabzonspor (free), Marmoush's loan to Spurs, Enzo Fernández to Man City, Barcola to Liverpool, Morgan Rogers to Chelsea, Elliot Anderson to Man City, Bruno Guimarães to Arsenal, Anthony Gordon to Barcelona, Tonali to Spurs, plus Semenyo to Man City (January 2026). Fees checked against several reports. Barcola's fee was reported anywhere from £106m to £123m, so the clue just says "over £100m".
 - Moved some clues to a better value: Salah's Basel to Chelsea and Henry's Arsenal to Barcelona moves are easier now (300). Özil to Arsenal and Lewandowski to Barcelona are easy enough for 200. Older or less famous moves (Berbatov, Robinho, Kepa, Higuaín) went up.
 - New Egyptian/Arab picks: Salah to Trabzonspor, Marmoush to Spurs, Hakimi to PSG, Mahrez's £450k move to Leicester.
+
+## 6.2 (2026-10-06)
+Added 25 clues (5 per value), none removed. Omar asked for more in this category.

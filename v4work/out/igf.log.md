@@ -4,3 +4,6 @@
 - The winner always leads by at least 12% when both top figures come from Wikipedia, 30% otherwise, so small changes don't flip the answer. Value goes up as the race gets closer.
 - Left out on purpose: Bad Bunny (wiped his account in Feb 2026), Nancy Ajram, Haifa Wehbe, Vinícius, Bella Hadid (sources disagreed).
 - Re-run gen.js with fresh numbers to update.
+
+## 6.2 (2026-10-06)
+Omar asked for more clues and a harder category. Regenerated with v4work/rank/gen.js: 28 clues per value (was 22), with tighter winner/second-place bands at every value, so the races are closer. The figures themselves are unchanged.

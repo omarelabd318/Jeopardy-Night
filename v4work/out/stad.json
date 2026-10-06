@@ -92,6 +92,26 @@
    [
     "What is Barcelona's stadium called?",
     "Camp Nou"
+   ],
+   [
+    "Which national team plays its home games at Wembley?",
+    "England"
+   ],
+   [
+    "Which club moved into a new stadium in 2019, named after the club itself?",
+    "Tottenham Hotspur"
+   ],
+   [
+    "Which club plays at the Santiago Bernabéu?",
+    "Real Madrid"
+   ],
+   [
+    "Which club plays at Villa Park?",
+    "Aston Villa"
+   ],
+   [
+    "Which club plays at the Signal Iduna Park?",
+    "Borussia Dortmund"
    ]
   ],
   "200": [
@@ -182,6 +202,26 @@
    [
     "Which club plays at the Stadium of Light?",
     "Sunderland"
+   ],
+   [
+    "Which Cairo stadium hosted the Africa Cup of Nations finals of 2006 and 2019?",
+    "Cairo International Stadium"
+   ],
+   [
+    "Which club plays at the Stade Vélodrome?",
+    "Marseille"
+   ],
+   [
+    "Which club plays at the London Stadium?",
+    "West Ham United"
+   ],
+   [
+    "Which club plays at the Estádio do Dragão?",
+    "Porto"
+   ],
+   [
+    "Which club plays at Craven Cottage?",
+    "Fulham"
    ]
   ],
   "300": [
@@ -272,6 +312,26 @@
    [
     "Which club plays at the Deutsche Bank Park?",
     "Eintracht Frankfurt"
+   ],
+   [
+    "Which two Rio de Janeiro clubs share the Maracanã?",
+    "Flamengo and Fluminense"
+   ],
+   [
+    "Which Berlin club plays at the Olympiastadion?",
+    "Hertha Berlin"
+   ],
+   [
+    "Which club plays at Carrow Road?",
+    "Norwich City"
+   ],
+   [
+    "Which club plays at Portman Road?",
+    "Ipswich Town"
+   ],
+   [
+    "Which club plays at The Hawthorns?",
+    "West Bromwich Albion"
    ]
   ],
   "400": [
@@ -362,6 +422,26 @@
    [
     "Which club plays at Vodafone Park (Tüpraş Stadium)?",
     "Beşiktaş"
+   ],
+   [
+    "Which Berlin club plays at the Stadion An der Alten Försterei?",
+    "Union Berlin"
+   ],
+   [
+    "What is Everton's new stadium, opened in 2025, called?",
+    "Hill Dickinson Stadium (Everton Stadium)"
+   ],
+   [
+    "Which stadium hosted the opening game of the 2022 World Cup, Qatar vs Ecuador?",
+    "Al Bayt Stadium"
+   ],
+   [
+    "Which club plays at Vicarage Road?",
+    "Watford"
+   ],
+   [
+    "Which Belgian club plays at the Jan Breydel Stadium?",
+    "Club Brugge (shared with Cercle Brugge)"
    ]
   ],
   "500": [
@@ -452,6 +532,26 @@
    [
     "Which stadium, opened in 1929, is Egypt's oldest?",
     "Alexandria Stadium"
+   ],
+   [
+    "Which two clubs share the Mineirão in Belo Horizonte?",
+    "Cruzeiro and Atlético Mineiro"
+   ],
+   [
+    "Which two Jeddah clubs play at the King Abdullah Sports City stadium?",
+    "Al-Ittihad and Al-Ahli"
+   ],
+   [
+    "Which club plays at Stadium MK?",
+    "MK Dons"
+   ],
+   [
+    "Which club plays at the Estadio Nuevo Mirandilla (formerly Ramón de Carranza)?",
+    "Cádiz"
+   ],
+   [
+    "Which Edinburgh club plays at Tynecastle?",
+    "Hearts (Heart of Midlothian)"
    ]
   ]
  }

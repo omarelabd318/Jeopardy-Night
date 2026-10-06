@@ -180,6 +180,30 @@
    [
     "What is the largest planet in the Solar System?",
     "Jupiter"
+   ],
+   [
+    "What is the largest ocean on Earth?",
+    "The Pacific Ocean"
+   ],
+   [
+    "Which gas do plants take in from the air to make food?",
+    "Carbon dioxide"
+   ],
+   [
+    "Which is the longest river in Africa?",
+    "The Nile"
+   ],
+   [
+    "Which instrument has 88 keys?",
+    "The piano"
+   ],
+   [
+    "At what temperature does water boil at sea level, in degrees Celsius?",
+    "100 °C"
+   ],
+   [
+    "Which country is home to the kangaroo?",
+    "Australia"
    ]
   ],
   "200": [
@@ -354,6 +378,30 @@
    [
     "How many sides does a decagon have?",
     "10"
+   ],
+   [
+    "What is the chemical symbol for sodium?",
+    "Na"
+   ],
+   [
+    "Which blood cells fight infection?",
+    "White blood cells"
+   ],
+   [
+    "Who painted 'The Starry Night'?",
+    "Vincent van Gogh"
+   ],
+   [
+    "What does HTML stand for?",
+    "HyperText Markup Language"
+   ],
+   [
+    "What is the smallest prime number?",
+    "2"
+   ],
+   [
+    "What is the capital of Canada?",
+    "Ottawa"
    ]
   ],
   "300": [
@@ -536,6 +584,30 @@
    [
     "What does 'ATM' stand for?",
     "Automated Teller Machine"
+   ],
+   [
+    "What is the largest hot desert in the world?",
+    "The Sahara"
+   ],
+   [
+    "Which element has the chemical symbol K?",
+    "Potassium"
+   ],
+   [
+    "Which organ produces insulin?",
+    "The pancreas"
+   ],
+   [
+    "What is Turkey's currency?",
+    "The Turkish lira"
+   ],
+   [
+    "Who composed the 'Moonlight Sonata'?",
+    "Ludwig van Beethoven"
+   ],
+   [
+    "Which Egyptian scientist won the 1999 Nobel Prize in Chemistry?",
+    "Ahmed Zewail"
    ]
   ],
   "400": [
@@ -718,6 +790,30 @@
    [
     "What is a female fox called?",
     "A vixen"
+   ],
+   [
+    "Roughly how fast does light travel, in kilometres per second?",
+    "About 300,000"
+   ],
+   [
+    "Which country covers the most time zones, counting its overseas territories?",
+    "France"
+   ],
+   [
+    "What is the smallest country in the world?",
+    "Vatican City"
+   ],
+   [
+    "In which year did the Berlin Wall fall?",
+    "1989"
+   ],
+   [
+    "What is the capital of Australia?",
+    "Canberra"
+   ],
+   [
+    "Which element makes up the most of the Earth's crust?",
+    "Oxygen"
    ]
   ],
   "500": [
@@ -896,6 +992,30 @@
    [
     "What is the fear of the number 666 called?",
     "Hexakosioihexekontahexaphobia"
+   ],
+   [
+    "What is the study of fungi called?",
+    "Mycology"
+   ],
+   [
+    "Which country has the most islands, over 200,000?",
+    "Sweden"
+   ],
+   [
+    "What is the smallest bone in the human body?",
+    "The stapes (stirrup), in the ear"
+   ],
+   [
+    "Which planet has the most known moons?",
+    "Saturn"
+   ],
+   [
+    "What is the opposite of the nadir?",
+    "The zenith"
+   ],
+   [
+    "What is the line on a ship's hull that shows how deep it can safely sit in the water?",
+    "The Plimsoll line"
    ]
   ]
  }

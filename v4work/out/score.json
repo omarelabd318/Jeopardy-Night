@@ -92,6 +92,26 @@
    [
     "What was the final score? Barcelona vs Man United, 2009 Champions League final in Rome",
     "Barcelona 2–0 Man United"
+   ],
+   [
+    "What was the final score? Portugal vs Spain, 2018 World Cup group stage (Ronaldo's hat-trick)",
+    "3–3"
+   ],
+   [
+    "What was the final score? Man City vs Real Madrid, 2023 Champions League semi-final, second leg",
+    "Man City 4–0 Real Madrid"
+   ],
+   [
+    "What was the final score? Arsenal vs Real Madrid, 2025 Champions League quarter-final, first leg (Declan Rice's two free kicks)",
+    "Arsenal 3–0 Real Madrid"
+   ],
+   [
+    "What was the final score? Tottenham vs Man United, 2025 Europa League final in Bilbao",
+    "Tottenham 1–0 Man United"
+   ],
+   [
+    "What was the final score? Spain vs France, Euro 2024 semi-final",
+    "Spain 2–1 France"
    ]
   ],
   "200": [
@@ -182,6 +202,26 @@
    [
     "What was the final score? Netherlands vs Argentina, 2014 World Cup semi-final",
     "0–0 (Argentina won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Barcelona at the Bernabéu, October 2024",
+    "Barcelona 4–0 Real Madrid"
+   ],
+   [
+    "What was the final score? Spain vs Germany, Euro 2008 final",
+    "Spain 1–0 Germany (Torres)"
+   ],
+   [
+    "What was the final score? Crystal Palace vs Man City, 2025 FA Cup final",
+    "Crystal Palace 1–0 Man City"
+   ],
+   [
+    "What was the final score? Newcastle vs Liverpool, 2025 League Cup final",
+    "Newcastle 2–1 Liverpool"
+   ],
+   [
+    "What was the final score? Real Madrid vs PSG, 2022 Champions League last 16, second leg (Benzema's hat-trick)",
+    "Real Madrid 3–1 PSG"
    ]
   ],
   "300": [
@@ -272,6 +312,26 @@
    [
     "What was the final score? France vs Argentina, 2018 World Cup last 16",
     "France 4–3 Argentina"
+   ],
+   [
+    "What was the final score? AC Milan vs Liverpool, 2007 Champions League final in Athens",
+    "AC Milan 2–1 Liverpool"
+   ],
+   [
+    "What was the final score? Man City vs Man United, 2023 FA Cup final",
+    "Man City 2–1 Man United"
+   ],
+   [
+    "What was the final score? Brazil vs Serbia, 2022 World Cup group stage (Richarlison's scissor kick)",
+    "Brazil 2–0 Serbia"
+   ],
+   [
+    "What was the final score? Egypt vs Morocco, 2021 Africa Cup of Nations quarter-final",
+    "Egypt 2–1 Morocco (after extra time)"
+   ],
+   [
+    "What was the final score? Barcelona vs Inter, 2025 Champions League semi-final, first leg",
+    "3–3"
    ]
   ],
   "400": [
@@ -362,6 +422,26 @@
    [
     "What was the final score? Morocco vs Spain, 2022 World Cup last 16",
     "0–0 (Morocco won 3–0 on penalties)"
+   ],
+   [
+    "What was the final score? Inter vs Barcelona, 2025 Champions League semi-final, second leg",
+    "Inter 4–3 Barcelona (after extra time)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Man City, 2024 Champions League quarter-final, first leg",
+    "3–3"
+   ],
+   [
+    "What was the final score? England vs Colombia, 2018 World Cup last 16",
+    "1–1 (England won 4–3 on penalties)"
+   ],
+   [
+    "What was the final score? France vs Italy, Euro 2000 final",
+    "France 2–1 Italy (Trezeguet's golden goal)"
+   ],
+   [
+    "What was the final score? Man United vs Liverpool, 2024 FA Cup quarter-final",
+    "Man United 4–3 Liverpool (after extra time)"
    ]
   ],
   "500": [
@@ -452,6 +532,26 @@
    [
     "What was the final score? Egypt vs Cameroon, 2021 Africa Cup of Nations semi-final",
     "0–0 (Egypt won 3–1 on penalties)"
+   ],
+   [
+    "What was the final score? Inter Miami vs Al Ahly, opening game of the 2025 Club World Cup",
+    "0–0"
+   ],
+   [
+    "What was the final score? Palmeiras vs Al Ahly, 2025 Club World Cup group stage",
+    "Palmeiras 2–0 Al Ahly"
+   ],
+   [
+    "What was the final score? Al Ahly vs Porto, 2025 Club World Cup group stage",
+    "4–4"
+   ],
+   [
+    "What was the final score? Senegal vs Egypt, 2022 World Cup play-off, second leg in Dakar",
+    "Senegal 1–0 Egypt (1–1 on aggregate; Senegal won 3–1 on penalties)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Bayern, 2024 Champions League semi-final, second leg (Joselu's late double)",
+    "Real Madrid 2–1 Bayern"
    ]
   ]
  }

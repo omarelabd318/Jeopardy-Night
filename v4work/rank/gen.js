@@ -9,8 +9,9 @@ const SP={"Bruno Mars":[131.3,"w"],"Rihanna":[116.4,"w"],"The Weeknd":[114.8,"w"
 "Imagine Dragons":[52.2,"s"],"Queen":[50.6,"s"],"Lil Wayne":[47.6,"s"],"Red Hot Chili Peppers":[45.7,"s"],"50 Cent":[45,"s"],"Guns N' Roses":[40,"s"],"Metallica":[33,"s"],"Lewis Capaldi":[32.8,"s"],"Sherine":[6,"s"],"Amr Diab":[5,"s"],"Elissa":[3,"s"],"Tamer Hosny":[2.3,"s"],"Mohamed Ramadan":[2,"s"],"Wegz":[1.7,"s"],"Marwan Pablo":[1,"s"]};
 const EG=new Set(["Mohamed Salah","Tamer Hosny","Mohamed Ramadan","Amr Diab","Achraf Hakimi","Mustafa Hosny","Yasmine Sabri","Hannah El-Zahed","Yasmin Abdulaziz","Mai Ezz Eldin","Dina El Sherbiny","Mona Zaki","Sherine","Elissa","Wegz","Marwan Pablo"]);
 // value bands by winner/second ratio
-let BANDS={100:[2.2,99],200:[1.6,2.2],300:[1.35,1.6],400:[1.2,1.35],500:[1.12,1.2]};
-let seed=7, CAP=7, WCAP=4; /* v4.54: was CAP=5, WCAP=3 with 16 per value */ const rnd=()=>(seed=(seed*1103515245+12345)%2147483648)/2147483648;
+/* 6.2 (Omar): harder, so every value needs a closer race (4.39-6.1: 100:[2.2,99] 200:[1.6,2.2] 300:[1.35,1.6] 400:[1.2,1.35] 500:[1.12,1.2]) */
+let BANDS={100:[1.6,99],200:[1.38,1.6],300:[1.25,1.38],400:[1.16,1.25],500:[1.12,1.16]};
+let seed=7, CAP=9, WCAP=6;  /* 6.2: was CAP=7, WCAP=4 with 22 per value */ /* v4.54: was CAP=5, WCAP=3 with 16 per value */ const rnd=()=>(seed=(seed*1103515245+12345)%2147483648)/2147483648;
 function gen(D,q,fmt,unit,perVal){
   const names=Object.keys(D), out={}, used={}, wins={}, seen=new Set();
   for(const v of [500,400,300,200,100]){ out[v]=[]; const [lo,hi]=BANDS[v]; let tries=0, egN=0;
@@ -34,7 +35,7 @@ function gen(D,q,fmt,unit,perVal){
 }
 const fm=x=>x>=10?`${Math.round(x)}M`:`${x}M`;
 const W=path.join(__dirname,'..','out');
-fs.writeFileSync(W+'/igf.json',JSON.stringify({id:"igf",name:"Most Instagram Followers",type:"text",desc:"Three famous people. Who has the most Instagram followers? Figures are from September 2026 and keep changing, so the host's answer is what counts.",data:gen(IG,"Who has the most Instagram followers?",fm," followers",22)},null,1));
-seed=11; CAP=8; WCAP=5; /* v4.54: was CAP=6, WCAP=4 */ BANDS={100:[1.9,99],200:[1.5,1.9],300:[1.3,1.5],400:[1.2,1.3],500:[1.12,1.2]};
-fs.writeFileSync(W+'/spot.json',JSON.stringify({id:"spot",name:"Most Spotify Listeners",type:"text",desc:"Three artists. Who has the most monthly listeners on Spotify? Figures are from early October 2026 and change every month.",data:gen(SP,"Who has the most monthly listeners on Spotify?",fm," monthly listeners",22)},null,1));
+fs.writeFileSync(W+'/igf.json',JSON.stringify({id:"igf",name:"Most Instagram Followers",type:"text",desc:"Three famous people. Who has the most Instagram followers? Figures are from September 2026 and keep changing, so the host's answer is what counts.",data:gen(IG,"Who has the most Instagram followers?",fm," followers",28)},null,1));
+seed=11; CAP=10; WCAP=7; /* v4.54: was CAP=6, WCAP=4. 6.2: was CAP=8, WCAP=5 and 100:[1.9,99] 200:[1.5,1.9] 300:[1.3,1.5] 400:[1.2,1.3] 500:[1.12,1.2] */ BANDS={100:[1.5,99],200:[1.33,1.5],300:[1.22,1.33],400:[1.15,1.22],500:[1.12,1.15]};
+fs.writeFileSync(W+'/spot.json',JSON.stringify({id:"spot",name:"Most Spotify Listeners",type:"text",desc:"Three artists. Who has the most monthly listeners on Spotify? Figures are from early October 2026 and change every month.",data:gen(SP,"Who has the most monthly listeners on Spotify?",fm," monthly listeners",28)},null,1));
 console.log("ok");
