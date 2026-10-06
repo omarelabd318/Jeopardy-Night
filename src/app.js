@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.34`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.35`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1376,7 +1376,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       len(){ const f = this.f(); return Math.max(f.tA + 5.5 + (f.fx + 60) / 45, f.tT + (W + 140) / 105); },
       draw(u){ const {fx, tA, tT} = this.f(), st = u - tA;
         const x = st < 0 ? W + 60 - 45 * u : st < 5.5 ? fx : fx - 45 * (st - 5.5);
-        const cIn = u - (tA - 11), cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);
+        const cIn = u - (tA - (fx - 14) / 40 - 0.2), cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);   // 6.35 (Omar): he sets off so he reaches his spot just as the cart stops, at any screen width (5.x-6.34: tA - 11, so on a small screen he waited several seconds)
         const lad = st > 0.8 && st < 3.6, k = lad ? ((st - 0.8) % 1.4) / 1.4 : 0;
         const vx = st < 0 || st > 5.5 ? x + 30 : st < 0.8 ? fx + 30 - 19 * sm(st / 0.8) : st < 4.4 ? fx + 11 : fx + 11 + 19 * sm((st - 4.4) / 0.8);
         fulCart(x, -1, x / 7, lad && k < 0.5, pnow());
