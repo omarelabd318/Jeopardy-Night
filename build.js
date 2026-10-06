@@ -13,13 +13,18 @@ for(const c of CATS){const f=`${W}/out/${c.id}.json`; if(!fs.existsSync(f)) cont
 const extra=fs.existsSync('src/extra.js')?require('./src/extra.js'):{};
 if(extra.apply) extra.apply({CATS,DATA,F,ACT,AR});
 // keep only flags that are used
+const FLAGCODE=Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync(W+'/flag-codes.json','utf8'))).filter(([id,c])=>fs.existsSync(`photos/flags/${c}.svg`)));   // 6.19
 const J=x=>JSON.stringify(x);
 const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8'), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}
 const CATS = ${J(CATS)};
 const DATA = ${J(DATA)};
 const F = ${J(F)};
-const flagSVG = id => \`<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flag to identify">\${F[id][1]}</svg>\`;
+const flagInline = id => \`<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flag to identify">\${F[id][1]}</svg>\`;
+/* 6.19 (Omar): flags are the accurate flag-icons drawings (photos/flags/<code>.svg, MIT), loaded only when shown. If one can't load,
+   the old hand-drawn flag (F) is shown instead. (4.x-6.18: const flagSVG = flagInline) */
+const FLAGCODE = ${J(FLAGCODE)};
+const flagSVG = id => FLAGCODE[id] ? \`<img src="photos/flags/\${FLAGCODE[id]}.svg" alt="Flag to identify" onerror="this.outerHTML=flagInline('\${id}')">\` : flagInline(id);
 const AR_EMOJI = new Set(${J([...AR])});
 const ACT_KIND = ${J(ACT)};
 const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
