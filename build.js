@@ -46,7 +46,7 @@ DATA.tvmix = {};
 const MIXES = [
   ["mixeg1", "Egypt Mix 1", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
   ["mixeg2", "Egypt Mix 2", ["egy","egh","cairo","egyph"]],
-  ["mixguess", "Guess the… Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
+  ["mixguess", "Guess the … Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   /* 6.26 (Omar): a space before the ellipsis (was "Guess the… Mix") */ // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
   ["mixmap", "Maps & World Mix", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["mixparty", "Party Games Mix", ["emov","link","near","price","headl","order"]],
   ["mixkn1", "Knowledge Mix 1", ["his","islam","year","sci","cal","brand"]],
