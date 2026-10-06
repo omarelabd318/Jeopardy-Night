@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.87. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.88. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -538,3 +538,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - The bawab (`bawab`, `bawabOnAct()`, `drawBawab()`) runs alongside the scenes rather than as one. Every six scenes he walks in with a white plastic chair from one side (alternating), sits near that edge and dozes (head down, z's) through three scenes, wakes for 1.6 s whenever anything passes within 60 px, then picks up his chair and leaves the way he came. Everything drawn now reports its position through `mark()` so he knows when to wake.
   Omar saw previews of each.
 - 5.87 (2026-10-06): Omar asked for a second cat in the cat-and-smoker scene: it walks in from the opposite side a few seconds in, and when the original cat passes the man it sees the other one, which runs away while the original chases it. In the cat act, a grey tabby (`drawCat()` now takes fur colours) walks in from the right 3 s in; 0.6 s after the ginger cat passes the smoker she turns and bolts back to the right (150 px/s) as the ginger cat breaks into its run after her (140 px/s, so she stays ahead), and both run off.
+- 5.88 (2026-10-06): Omar didn't want the street sweeper to raise the money in thanks, so after the BMW driver hands it over he puts it in his pocket (the note disappears at his hip) and walks off. The old raised-hand pose is in a comment on that line in `src/app.js` if he wants it back.

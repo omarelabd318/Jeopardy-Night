@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.87`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.88`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1164,12 +1164,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else if(u < tG + 2){ pose = {arms: [[0.3, 0.4], [0.2, 0.3]], lean: -0.12}; }                                 // watching it blow away
         else if(u < tC){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
         else if(u < tC + stop){ const e = u - tC; x = sx + 12 * sm(e / 0.8); pose = e > 1 && e < 2.6 ? {arms: [[1.6, 1.8], [0.2, 0.3]]} : e < 0.8 ? {ph: u * 8.5} : {}; }
-        else if(u < tOut){ x = sx + 12; pose = {arms: [[2.4, 2.8], [0.2, 0.3]]}; }                                  // thanks, a hand up
+        else if(u < tOut){ x = sx + 12; pose = {arms: [[0.1, -0.35], [0.2, 0.3]]}; }                                 // 5.88 (Omar): puts it in his pocket (5.86-5.87: raised it in thanks)
         else { x = sx + 12 - v * (u - tOut); d = -1; pose = {ph: u * 8.5}; }
         const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(u >= tIn && u < tC){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
-        const note = u > tC + 1.0 && u < tC + 2.6 ? cx - 10 : u >= tC + 2.6 && u < tOut + 0.6 ? S2.hands[0][0] : null;   // the money: out of the window, then in his hand
+        const note = u > tC + 1.0 && u < tC + 2.6 ? cx - 10 : u >= tC + 2.6 && u < tC + 3.3 ? S2.hands[0][0] : null;   // the money: out of the window, then in his hand
         if(note != null) rect(note - 2, (u < tC + 2.6 ? gy - 18 : S2.hands[0][1] - 1.5), 4.5, 2.5, "#6fae5a"); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
