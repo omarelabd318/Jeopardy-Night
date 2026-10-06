@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.10`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.11`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1366,8 +1366,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         for(let i = -3; i <= 3; i++){ oval(x + i * 5, by - 1.4, 2.7, 1.3, "#d6a65c"); if(Math.abs(i) < 3) oval(x + i * 5 + 2.5, by - 3, 2.6, 1.2, "#e0b26a"); if(Math.abs(i) < 2) oval(x + i * 5, by - 4.5, 2.5, 1.2, "#d6a65c"); }   // eish baladi
         const bx = W + 60 - bv * (u - b0); if(u > b0 && bx > -60) deliveryBike(bx, -1, -bx / 6.5); } },
     /* 5.86 (Omar): a wedding car, slow, honking. 5.89 (Omar): led by a motorbike, the passenger waving a flare to celebrate them */
-    { len: () => (W + 250) / 70, draw(u){ const x = -80 + 70 * u; weddingCar(x, 1, x / 5.5, u); { const bx = x + 78 + 7 * Math.sin(u * 1.3), lean = 0.09 * Math.sin(u * 2.6);   // 6.3 (Omar): it weaves about to celebrate, leaning into each swerve
-        g.save(); g.translate(bx, gy); g.rotate(lean); g.translate(-bx, -gy); escortBike(bx, 1, bx / 6.5, u); g.restore(); } } },
+    { len: () => (W + 250) / 70, draw(u){ const x = -80 + 70 * u; weddingCar(x, 1, x / 5.5, u); { const bx = x + 78;   /* 6.11 (Omar): no weaving; instead it pulls three wheelies, spread across the screen, of 2, 3 and 2 s
+          (6.3-6.10: it weaved, bx + 7 sin(1.3u) with a lean of 0.09 sin(2.6u)) */
+        let lift = 0; [[0.2, 2], [0.5, 3], [0.8, 2]].forEach(([f, len]) => { const s0 = (W * f - len * 35 + 2) / 70, e = u - s0;   // centred on that part of the screen
+          if(e > 0 && e < len) lift = Math.max(lift, sm(Math.min(e / 0.35, 1)) * sm(Math.min((len - e) / 0.35, 1))); });
+        const ang = -lift * (0.32 + 0.03 * Math.sin(u * 9)), rx = bx - 17;                                   // up on the back wheel, bobbing a little
+        g.save(); g.translate(rx, gy); g.rotate(ang); g.translate(-rx, -gy); escortBike(bx, 1, bx / 6.5, u); g.restore(); } } },
     /* 5.86 (Omar): a man runs after a city bus, catches the door and swings on. 5.97 (Omar): the door is at the front, so he runs up alongside the bus to reach it */
     { k(){ const v = 60, a = 45, mStart = 3.3, mv = 100,   /* 5.93 (Omar): he sets off later, so the bus gets further before he catches it (5.97: 3.3, as he now has to run further; 5.93-5.96: 4; 5.86-5.92: 2.5) */ meet = (mv * mStart + 2) / (mv - v);   // when he reaches the door (32 px ahead of the bus's middle)
         const on = meet + 0.35, xb = u => -60 + v * u + (u > on ? a * (u - on) * (u - on) : 0); let end = on; while(xb(end) - 46 < W + 40) end += 0.1; return {v, mStart, mv, meet, on, xb, end}; },

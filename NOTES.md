@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.10. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.11. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -598,3 +598,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 6.8 (2026-10-06): Omar asked for the family motorbike to come in a bit later in the dog-walk scene. It now enters 10 s after the woman (was 5 s) and overtakes her about halfway across.
 - 6.9 (2026-10-06): Omar said the bus-chaser's hand stayed up a moment too long. His reaching hand now comes down to door height over the last half-second of his run. From the moment he jumps on, he holds the door at chest height with his free hand down. Before, he grabbed high and waved for 0.8 s first.
 - 6.10 (2026-10-06): Omar asked for the sweeper's traffic light to be at least twice as big and to look like a traffic light. `trafficLight()` now draws a weighted base and a pole with reflective bands. On top is a 27 px tall head with a black housing on a yellow backboard, three 6 px lamps with hoods, and a stronger glow. The whole light is about 58 px tall (was 27). He carries it by the pole with its base just off the ground. The version after 6.9 is 6.10.
+- 6.11 (2026-10-06): Omar asked for the wedding escort bike to stop swerving and do wheelies instead. It rides straight, and pulls three wheelies centred at 20%, 50% and 80% of the screen width, lasting 2, 3 and 2 s. Each one tips the bike up on its back wheel by about 18° (0.32 rad, bobbing slightly), easing up and down over 0.35 s. The 6.3 weave is in a comment in that act.
