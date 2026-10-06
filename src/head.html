@@ -140,6 +140,10 @@ details.photopanel>summary{cursor:pointer;list-style:none;display:flex;align-ite
 details.photopanel>summary::-webkit-details-marker{display:none}
 details.photopanel>summary::before{content:"▸";font-size:14px;transition:transform .15s}
 details.photopanel[open]>summary::before{transform:rotate(90deg)}
+/* 6.27: Edit mixes panel */
+.mixrow{display:grid;gap:8px;padding:12px 0;border-top:1px solid var(--line)} .mixrow:first-child{border-top:0}
+.mixrow h5{margin:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:15px} .mixrow h5 small{font-weight:500;opacity:.7}
+.mixrow .mini{margin-left:auto}
 /* 5.5: photo download status in the Photo rounds panel */
 .dlbox{margin:4px 0 14px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px}
 .dlrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
@@ -440,7 +444,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.26</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.29</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -452,7 +456,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.26</div>
+      <div class="eyebrow verlabel">v6.29</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -488,6 +492,14 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div class="row"><label class="btn small" for="pack">Load photo pack</label><input id="pack" type="file" accept="image/*" multiple hidden><span class="note" id="packStatus">No photos loaded</span></div>
       <div class="row"><button class="btn small" id="exportPhotos">Export photos</button><label class="btn small" for="importPhotos">Import photos</label><input id="importPhotos" type="file" accept=".zip,application/zip" hidden><span class="note" id="xferStatus">Export saves the photos you've added or replaced on this device (not the ones already built in), matched and with zoom spots, in one file. Import it on another device, or send it to Claude to build the photos into the game.</span></div>
       <details id="prepBox"><summary>Photo checklist: preview, zoom spot or replace</summary><div id="prep"></div></details><input id="assign" type="file" accept="image/*" hidden>
+      </div>
+    </details>
+    <!-- 6.27 (Omar): pick what each mix draws from, limited to that mix's own section. Saved on this device. To remove: delete this panel and the 6.27 block in src/app.js -->
+    <details class="panel photopanel" id="mixPanel">
+      <summary class="eyebrow">Edit mixes <span class="phcount" id="mixCount"></span></summary>
+      <div class="photobody">
+      <p class="note">Choose which categories each mix draws its clues from. Each mix can only use categories from its own section. Changes are saved on this device and apply to the next tile you open.</p>
+      <div id="mixEdit"></div>
       </div>
     </details>
     <!-- 5.5 (Omar): Status, everything the game downloads and how much of it is on this device. Fetch it all before guests arrive. -->

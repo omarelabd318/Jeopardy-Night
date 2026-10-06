@@ -3,6 +3,27 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.29",
+  "date": "2026-10-06",
+  "items": [
+   "Edit mixes: in Free-for-all, Act It Out and One Word Clues are greyed out (they need teams)."
+  ]
+ },
+ {
+  "v": "6.28",
+  "date": "2026-10-06",
+  "items": [
+   "Edit mixes: Party Games Mix can now include Act It Out, Act It Out: Egypt Edition and One Word Clues."
+  ]
+ },
+ {
+  "v": "6.27",
+  "date": "2026-10-06",
+  "items": [
+   "New Edit mixes panel at the bottom of setup: choose which categories each mix uses, from its own section. Saved on this device, with a Reset per mix."
+  ]
+ },
+ {
   "v": "6.26",
   "date": "2026-10-06",
   "items": [
