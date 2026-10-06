@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.92. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.93. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -548,3 +548,7 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Eid sheep:** no rope. The man walks behind the five sheep with a stick, guiding them across. Halfway, the last sheep stops to graze. He stops behind it and taps it on, and it trots to catch up. `sheep()` lost its `brace` pose and gained `graze` (head down).
   - **Street sweeper:** his patch is at `W * 0.25` (was `W * 0.42`), nearer the side he walks in from. He carries the broom in his other hand when walking in, at the car and when leaving.
 - 5.92 (2026-10-06): Omar asked to remove the thing sticking out of the wedding car's back window: an arm waving out of it since 5.86. The line is kept as a comment in `weddingCar()`, so uncommenting it brings the arm back.
+- 5.93 (2026-10-06): More street-scene changes Omar asked for:
+  - **Eid sheep:** they're a loose flock, not a train. Each sheep has its own spot (`B`) and depth (`DY`) and drifts forward and back on its own (`wob`). The shepherd walks about 40 px behind with his stick planted like a staff. He only closes in and reaches out to tap the last sheep while it's stopped to graze, then drops back.
+  - **Bus chase:** the man sets off at 4 s (was 2.5 s), so the bus is further along when he catches it.
+  - **Street sweeper:** the leaves and the gust of wind are gone, and he just sweeps for 6 s before the BMW arrives. The 5.86 leaves and wind code is in git history (the 5.92 commit) if wanted back.

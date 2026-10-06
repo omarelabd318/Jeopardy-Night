@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.92`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.93`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1146,7 +1146,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     /* 5.86 (Omar): a wedding car, slow, honking. 5.89 (Omar): led by a motorbike, the passenger waving a flare to celebrate them */
     { len: () => (W + 250) / 70, draw(u){ const x = -80 + 70 * u; weddingCar(x, 1, x / 5.5, u); escortBike(x + 78, 1, (x + 78) / 6.5, u); } },
     /* 5.86 (Omar): a man runs after a city bus, catches the back door and swings on */
-    { k(){ const v = 60, a = 45, mStart = 2.5, mv = 100, meet = (mv * mStart - 68) / (mv - v);   // when he reaches the door (it's 38 px behind the bus's middle)
+    { k(){ const v = 60, a = 45, mStart = 4, mv = 100,   /* 5.93 (Omar): he sets off later, so the bus gets further before he catches it (was 2.5) */ meet = (mv * mStart - 68) / (mv - v);   // when he reaches the door (it's 38 px behind the bus's middle)
         const on = meet + 0.35, xb = u => -60 + v * u + (u > on ? a * (u - on) * (u - on) : 0); let end = on; while(xb(end) - 46 < W + 40) end += 0.1; return {v, mStart, mv, meet, on, xb, end}; },
       len(){ return this.k().end; },
       draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x - 38;
@@ -1159,42 +1159,40 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     /* 5.86 (Omar): five sheep for Eid. 5.91 (Omar): no rope; the man walks behind them with a stick, guiding them across. Halfway the
        last one stops to graze, he stops behind it and taps it on with the stick, and it trots to catch up with the others (5.86-5.90: he
        led them on a rope and tugged the first one along). */
+    /* 5.93 (Omar): a loose flock rather than a train: each sheep has its own place and depth and drifts forward and back on its own,
+       and he walks a little way behind with his stick planted like a staff. He only reaches out and taps the last one when it stops. */
     { s(){ const v = 38, stopAt = (W * 0.5) / v, stopLen = 2.6, catchV = 70; return {v, stopAt, stopLen, catchV}; },
-      len(){ const s = this.s(); return (W + 170) / s.v + 1; },
+      len(){ const s = this.s(); return (W + 190) / s.v + 1; },
       draw(u){ const {v, stopAt, stopLen, catchV} = this.s(), st = u - stopAt, stuck = st > 0 && st < stopLen, L = -20 + v * u;
         const lag = st <= 0 ? 0 : stuck ? v * st : Math.max(0, v * stopLen - (catchV - v) * (st - stopLen));        // how far the stray falls behind
-        for(let i = 4; i >= 0; i--){ const sx = L - 22 * i - (i === 4 ? lag : 0); sheep(sx, 1, i === 4 && stuck ? 0.6 : sx * 0.26 + i * 1.7, i === 4 && stuck); }
-        const mx = L - 88 - lag - 28, tap = stuck && st > 0.5 ? Math.max(0, Math.sin(u * 7)) : 0;
+        const B = [0, -14, -31, -44, -63], DY = [-2.5, 0, -1.5, 0.5, -1];                                            // where each sits in the flock, and how far back
+        const wob = (i, t) => 7 * Math.sin(t * 0.9 * (1 + i * 0.17) + i * 2.1) + 3 * Math.sin(t * 2.3 + i * 4.7);
+        const tw4 = st <= 0 ? u : stuck ? stopAt : u - stopLen, stray = L - lag + B[4] + wob(4, tw4);
+        const xs = B.map((b, i) => i === 4 ? stray : L + b + wob(i, u));
+        [0, 2, 4, 1, 3].sort((a, b) => DY[a] - DY[b]).forEach(i => { g.save(); g.translate(0, DY[i]);
+          sheep(xs[i], 1, i === 4 && stuck ? 0.6 : xs[i] * 0.26 + i * 1.7, i === 4 && stuck); g.restore(); });
+        const k = stuck ? sm(st / 0.8) : st > 0 ? 1 - sm((st - stopLen) / 1.5) : 0;                                  // closing in on the stray, then dropping back
+        const mx = (1 - k) * (L - lag + B[4] - 42) + k * (stray - 26), tap = stuck && st > 0.6 ? Math.max(0, Math.sin(u * 7)) : 0;
         const M = person(mx, gy, 1, {outfit: "robe", robe: "#7b6a58", hat: "emma", mo: true, skin: "#7f4f31",
-          ...(stuck ? {} : {ph: mx * 0.22}), arms: [[0.75 + 0.45 * tap, 1.15 + 0.3 * tap], stuck ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
-        const [hx, hy] = M.hands[0], ang = 0.75 - 0.5 * tap;                                                        // the stick, pointing down at the sheep
-        seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1); } },
-    /* 5.86 (Omar): a street sweeper sweeps a pile together, the wind blows it away, then a black BMW stops and gives him money */
+          ...(stuck && st > 0.6 ? {} : {ph: mx * 0.22}), arms: [stuck ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], stuck ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
+        const [hx, hy] = M.hands[0], ang = 0.75 - 0.5 * tap;
+        if(stuck) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
+        else seg([[hx - 2, hy - 7], [hx + 5, gy]], "#7a5634", 1.1); } },                                            // planted like a staff
+    /* 5.86 (Omar): a street sweeper sweeps a pile together, the wind blows it away, then a black BMW stops and gives him money. 5.93 (Omar): no leaves or wind now */
     { w(){ const sx = W * 0.25, v = 45,   // 5.91 (Omar): his patch is nearer the side he comes from (was W * 0.42)
-        tIn = (sx + 30) / v, tG = tIn + 5, tC = tG + 4.2, cv = 160, stop = 3.2, tOut = tC + stop + 0.8;
-        return {sx, v, tIn, tG, tC, cv, stop, tOut}; },
+        tIn = (sx + 30) / v, tC = tIn + 6,   /* 5.93 (Omar): no leaves or wind any more, he just sweeps (was tG = tIn + 5, tC = tG + 4.2) */ cv = 160, stop = 3.2, tOut = tC + stop + 0.8;
+        return {sx, v, tIn, tC, cv, stop, tOut}; },
       len(){ const w = this.w(); return w.tOut + (w.sx + 40) / w.v; },
-      draw(u){ const {sx, v, tIn, tG, tC, cv, stop, tOut} = this.w(), pile = sx + 22;
+      draw(u){ const {sx, v, tIn, tC, cv, stop, tOut} = this.w();
         // the car: comes in from the right, slows, stops by him, then drives off to the left
         const dc = W + 90 - sx - 40, arriveT = 2 * dc / cv;                                                          // decelerating to a stop over dc
         let cx = null; if(u > tC - arriveT && u < tC){ const e = u - (tC - arriveT); cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
         else if(u >= tC && u < tC + stop) cx = sx + 40; else if(u >= tC + stop){ const e = u - tC - stop; cx = sx + 40 - 120 * e * e; }
         if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black");
-        // the leaves: swept into a pile, blown back by the wind, swept again
-        const sweep1 = cl((u - tIn) / 5, 0, 1), gust = cl((u - tG) / 1.6, 0, 1), sweep2 = cl((u - tG - 2) / 2.2, 0, 1) * 0.35;
-        for(let i = 0; i < 16; i++){ const r1 = Math.sin(i * 12.9898) * 0.5 + 0.5, r2 = Math.sin(i * 78.233) * 0.5 + 0.5;
-          const home = sx - 40 + r1 * 110, far = sx - 150 + r2 * 120, gather = pile - 8 + r2 * 16;
-          let lx = home + (gather - home) * sm(sweep1), ly = gy - 1;
-          if(gust > 0){ lx = gather + (far - gather) * sm(gust); ly = gy - 1 - Math.sin(gust * Math.PI) * (10 + r1 * 14); lx = lx + (gather - lx) * sm(sweep2); }
-          oval(lx, ly, 1.6, 0.9, ["#8a6a3a", "#a8834a", "#6f7a3a"][i % 3], i); }
-        if(gust > 0 && gust < 1) for(let i = 0; i < 4; i++){ const a = (gust * 1.4 + i * 0.25) % 1; g.strokeStyle = `rgba(230,235,255,${0.35 * (1 - a)})`; g.lineWidth = 1;   // gusts of wind
-          g.beginPath(); g.moveTo(pile + 30 - a * 160, gy - 10 - i * 6); g.quadraticCurveTo(pile - a * 160, gy - 16 - i * 6, pile - 30 - a * 160, gy - 10 - i * 6); g.stroke(); }
-        // him: walks in, sweeps, slumps when it blows away, sweeps again, goes to the car window, then walks off
+        // him: walks in, sweeps, goes to the car window, then walks off
         let x = sx, d = 1, pose = {}; const sw = Math.sin(u * 6);
         const carry = (ph, a0) => ({ph, arms: [a0 || [-Math.sin(ph) * 0.4, -Math.sin(ph) * 0.4 + 0.3], [0.45, 0.8]]});   // 5.91 (Omar): the broom in his other hand
         if(u < tIn){ x = -30 + v * u; pose = carry(u * 8.5); }
-        else if(u < tG){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
-        else if(u < tG + 2){ pose = {arms: [[0.3, 0.4], [0.2, 0.3]], lean: -0.12}; }                                 // watching it blow away
         else if(u < tC){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
         else if(u < tC + stop){ const e = u - tC; x = sx + 12 * sm(e / 0.8); pose = e > 1 && e < 2.6 ? {arms: [[1.6, 1.8], [0.45, 0.8]]} : e < 0.8 ? carry(u * 8.5) : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }
         else if(u < tOut){ x = sx + 12; pose = {arms: [[0.1, -0.35], [0.45, 0.8]]}; }                                 // 5.88 (Omar): puts it in his pocket (5.86-5.87: raised it in thanks)
