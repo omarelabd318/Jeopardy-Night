@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.7`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.8`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1348,7 +1348,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         drawDog(dx, 1, stopped ? 0 : walkT * 13, stopped, u);
         /* 6.3 (Omar): the family of four on a motorbike is part of this scene now: it comes in from the same side a little after her and
            overtakes (5.86-6.2: its own scene, { len: () => (W + 140) / 115, draw(u){ const x = -70 + 115 * u; familyBike(x, 1, x / 6.5); } }) */
-        const fb = -70 + 115 * (u - 5); if(fb > -70 && fb < W + 80) familyBike(fb, 1, fb / 6.5); } },
+        const fb = -70 + 115 * (u - 10); if(fb > -70 && fb < W + 80) familyBike(fb, 1, fb / 6.5); } },   // 6.8 (Omar): comes in 10 s after her (6.3-6.7: 5 s)
     /* 5.86 (Omar): a woman carrying a board of bread on her head; a delivery motorbike passes her going the other way */
     { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv; return {v, bv, b0}; },
       len(){ return (W + 80) / this.b().v; },

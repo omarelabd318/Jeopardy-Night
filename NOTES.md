@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.7. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.8. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -595,3 +595,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **More people:** to make room, Omar asked for more people on Instagram. Added from Wikipedia's list as of 3 October 2026: Narendra Modi, Priyanka Chopra, Jennie (Blackpink) and Snoop Dogg. Dua Lipa and David Beckham now use the Wikipedia figures too. Lewis Hamilton (about 43M, from a search) was also added.
   - Both categories are still 28 per value.
 - 6.7 (2026-10-06): Omar asked for the original (ginger) cat to start running first, then the grey cat to run away. The grey cat now turns and bolts 0.55 s after the ginger cat breaks into its run (`seeAt = tw + 0.55`; in 5.87-6.6 it was `tw - 0.6`, so she ran first).
+- 6.8 (2026-10-06): Omar asked for the family motorbike to come in a bit later in the dog-walk scene. It now enters 10 s after the woman (was 5 s) and overtakes her about halfway across.
