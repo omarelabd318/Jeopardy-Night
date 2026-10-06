@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.12`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.13`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1339,23 +1339,42 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } },
     { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
     /* 5.76 (Omar): a woman walking her dog while she talks on the phone. The dog stops to sniff about halfway (she waits, still talking). */
-    { w(){ const v = 40, sniffAt = (W * 0.45 + 40) / v; return {v, sniffAt, sniffLen: 2.2}; },
-      len(){ const w = this.w(); return (W + 130) / w.v + w.sniffLen; },
-      draw(u){ const {v, sniffAt, sniffLen} = this.w(), walkT = u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen, stopped = u >= sniffAt && u < sniffAt + sniffLen;
-        const x = -40 + v * walkT, ph = walkT * 8.5, dx = x + 30;
+    /* 6.13 (Omar): when the family bike goes past, the dog bolts after it. The jerk pulls the lead out of her hand, the dog runs off
+       with it trailing on the ground, and she drops the phone call and runs after him. (5.76-6.12: they walked on and off the far side;
+       len was (W + 130) / v + sniffLen, and nothing happened when the bike passed.) */
+    { w(){ const v = 40, sniffAt = (W * 0.45 + 40) / v, sniffLen = 2.2, bikeAt = 10, bv = 115, dv = 112, rv = 95;
+        const walkT = u => u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen;
+        let tc = bikeAt; while(-70 + bv * (tc - bikeAt) < -10 + v * walkT(tc) + 45) tc += 0.02;   // the moment the bike has just gone past the dog
+        const xc = -40 + v * walkT(tc), run = (t, sp, a) => t <= 0 ? 0 : t < a ? sp * t * t / (2 * a) : sp * (t - a / 2);   // eases up to speed over a seconds
+        const end = Math.max(bikeAt + (W + 150) / bv, tc + 0.6 + (W + 60 - xc) / rv + 0.2);
+        return {v, sniffAt, sniffLen, bikeAt, bv, dv, rv, walkT, tc, xc, run, end}; },
+      len(){ return this.w().end; },
+      draw(u){ const {v, sniffAt, sniffLen, bikeAt, bv, dv, rv, walkT: wt, tc, xc, run} = this.w(), chase = u >= tc, k = u - tc;
+        const walkT = chase ? wt(tc) : wt(u), stopped = !chase && u >= sniffAt && u < sniffAt + sniffLen;
+        const startled = chase && k < 0.6, running = chase && !startled;
+        const x = chase ? xc + run(k - 0.6, rv, 0.4) : -40 + v * walkT, ph = running ? u * 15 : walkT * 8.5;
+        const dx = chase ? xc + 30 + run(k, dv, 0.3) : x + 30;
         /* 5.78 (Omar): she takes the call a third of the way in and hangs up a bit before she leaves (5.76-5.77: on the phone throughout) */
-        const call = sm((x - W / 3) / 22) * (1 - sm((x - W * 0.85) / 22)), talk = false;   // 5.79 (Omar): no hand gestures on the call; her free hand just holds the lead (5.76-5.78: it gestured now and then)
-        const swing = stopped ? [0.1, 0.2] : [-Math.sin(ph) * 0.35, -Math.sin(ph) * 0.35 + 0.3], mix = (a, b) => [a[0] + (b[0] - a[0]) * call, a[1] + (b[1] - a[1]) * call];
+        const call = sm((x - W / 3) / 22) * (1 - sm((x - W * 0.85) / 22)) * (1 - sm(k / 0.35)), talk = false;   // 5.79 (Omar): no hand gestures on the call; her free hand just holds the lead (5.76-5.78: it gestured now and then). 6.13: she drops the call when the dog bolts
+        const swing = stopped || startled ? [0.1, 0.2] : [-Math.sin(ph) * 0.35, -Math.sin(ph) * 0.35 + 0.3], mix = (a, b) => [a[0] + (b[0] - a[0]) * call, a[1] + (b[1] - a[1]) * call];
+        const leadArm = !chase ? (stopped ? [0.45, 1.0] : [0.4 + Math.sin(ph) * 0.05, 0.95 + Math.sin(ph) * 0.05])
+          : startled ? (j => [0.4 + 1.0 * j, 0.95 + 0.7 * j])(sm(Math.min(k / 0.15, 1)))   // yanked forward, and the lead slips out
+          : [1.3 + 0.15 * Math.sin(ph), 1.6];                                               // reaching after him as she runs
         const W2 = person(x, gy, 1, {shirt: "#d9667a", pants: "#3b5f8f", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab. 5.77 (Omar): jeans and a top (was a long blue dress, outfit "robe") */
-           ...(stopped ? {} : {ph}),
-          arms: [mix(swing, [1.6, -2.4]), talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : stopped ? [0.45, 1.0] : [0.4 + Math.sin(ph) * 0.05, 0.95 + Math.sin(ph) * 0.05]]});   // 6.3 (Omar): the lead hand barely moves (5.76-6.2: swung by 0.35)
+           ...(stopped || startled ? {} : {ph}), lean: running ? 0.22 : startled ? 0.12 * sm(k / 0.15) : 0,
+          arms: [running ? [-Math.sin(ph) * 0.8, -Math.sin(ph) * 0.8 + 0.9] : mix(swing, [1.6, -2.4]), talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : leadArm]});   // 6.3 (Omar): the lead hand barely moves (5.76-6.2: swung by 0.35)
         const ph2 = W2.hands[0]; if(call > 0.08) rect(ph2[0] - 0.4, ph2[1] - 3.4 * call - 1, 2, 2 + 2.4 * call, "#1b1b1f");   // the phone: out of her pocket and up to her ear
-        const lead = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
-        g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(lead[0], lead[1]); g.quadraticCurveTo((lead[0] + collar[0]) / 2, Math.max(lead[1], collar[1]) + (stopped ? 1 : 6), collar[0], collar[1]); g.stroke();   // the lead, slack while they walk
-        drawDog(dx, 1, stopped ? 0 : walkT * 13, stopped, u);
+        const hand = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
+        g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath();
+        if(!chase || k < 0.12){ g.moveTo(hand[0], hand[1]); g.quadraticCurveTo((hand[0] + collar[0]) / 2, Math.max(hand[1], collar[1]) + (chase ? 0 : stopped ? 1 : 6), collar[0], collar[1]); }   // the lead, slack while they walk, taut when he bolts
+        else { const f = sm((k - 0.12) / 0.3), tail = [collar[0] - 30, gy - 0.6 - 0.8 * Math.abs(Math.sin(u * 20))];   // let go: the loose end drops and drags behind him
+          const e = [hand[0] + (tail[0] - hand[0]) * f, hand[1] + (tail[1] - hand[1]) * f];
+          g.moveTo(e[0], e[1]); g.quadraticCurveTo((e[0] + collar[0]) / 2, Math.max(e[1], collar[1]) + 2 * f, collar[0], collar[1]); }
+        g.stroke();
+        drawDog(dx, 1, chase ? u * 26 : stopped ? 0 : walkT * 13, stopped, u);
         /* 6.3 (Omar): the family of four on a motorbike is part of this scene now: it comes in from the same side a little after her and
            overtakes (5.86-6.2: its own scene, { len: () => (W + 140) / 115, draw(u){ const x = -70 + 115 * u; familyBike(x, 1, x / 6.5); } }) */
-        const fb = -70 + 115 * (u - 10); if(fb > -70 && fb < W + 80) familyBike(fb, 1, fb / 6.5); } },   // 6.8 (Omar): comes in 10 s after her (6.3-6.7: 5 s)
+        const fb = -70 + bv * (u - bikeAt); if(fb > -70 && fb < W + 80) familyBike(fb, 1, fb / 6.5); } },   // 6.8 (Omar): comes in 10 s after her (6.3-6.7: 5 s)
     /* 5.86 (Omar): a woman carrying a board of bread on her head; a delivery motorbike passes her going the other way */
     { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv; return {v, bv, b0}; },
       len(){ return (W + 80) / this.b().v; },
