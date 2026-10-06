@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.11`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.12`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1412,7 +1412,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        and flips the light to green, so it drives off on green (6.3-6.4: it left on red). */
     { w(){ const sx = (W * 0.25 - 30) / 2, v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
         const t1 = (L - 8 + 30) / v, t2 = t1 + 0.9, tIn = t2 + 26 / v, tC = tIn + arriveT;    // walk in, set the light down, walk back, sweep until the car stops
-        const cx0 = L + 39, wx = cx0 - 2, t5 = tC + 0.3 + (wx - sx) / v, tP = t5 + 2.0;   // the car stops with its nose just past the light; he walks to its window
+        const cx0 = L + 39, wx = cx0 - 22,   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, tP = t5 + 2.0;   // the car stops with its nose just past the light; he walks to its window
         const tF = tP + (wx - L - 7) / v, tG = tF + 0.4, tD = tF + 0.9, t6 = tD + 1.3, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;   // 6.5 (Omar): back at the light he flips it to green (tG), the car goes (tD), then he picks it up
         return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, tF, tG, t6, t7, cv}; },
       len(){ const w = this.w(); return w.t7 + (w.L + 7 + 40) / w.v; },
@@ -1430,8 +1430,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else if(u < tIn){ x = L - 8 - v * (u - t2); d = -1; pose = walk(u * 8.5); }
         else if(u < tC + 0.3){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
         else if(u < t5){ x = sx + v * (u - tC - 0.3); pose = walk(u * 8.5); }
-        else if(u < t5 + 1.4){ x = wx; pose = {arms: [[1.6, 1.8], [0.45, 0.8]], lean: 0.1}; }             // hand out at the window
-        else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]]}; }                           // pockets it
+        else if(u < t5 + 1.4){ x = wx; const k = sm(Math.min((u - t5) / 0.4, 1)); pose = {arms: [[0.4 + 0.9 * k, 0.6 + 1.0 * k], [0.45 + 0.75 * k, 0.8 + 0.8 * k]], lean: 0.38 * k}; }   // 6.12 (Omar): bends down with both hands out to the window (was one hand out, standing)
+        else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]], lean: 0.38 * (1 - sm((u - t5 - 1.4) / 0.4))}; }   // straightens up and pockets it
         else if(u < tF){ x = wx - v * (u - tP); d = -1; pose = walk(u * 8.5); }
         else if(u < t6){ x = L + 7; d = -1; pose = u < tF + 0.7 ? {arms: [[1.2 + 0.15 * sm((u - tF) / 0.35), 1.3], [0.45, 0.8]]} : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }   // reaches up and flips it to green, then waits for the car to go
         else if(u < t7){ x = L + 7; d = -1; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = sm((u - t6 - 0.2) / 0.6); }   // picks it up
@@ -1446,7 +1446,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
         else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
           poly([[bx - 1.5, gy - 4], [bx + 1.5, gy - 4], [bx + 4.5, gy], [bx - 4.5, gy]], "#b8935a"); }
-        const note = u > t5 + 0.6 && u < t5 + 1.1 ? cx0 - 7 : u >= t5 + 1.1 && u < t5 + 1.7 ? S2.hands[0][0] : null;   // the money: out of the window, then in his hand
+        const note = u > t5 + 0.6 && u < t5 + 1.1 ? cx0 - 10 - 8 * (u - t5 - 0.6) / 0.5 : u >= t5 + 1.1 && u < t5 + 1.7 ? S2.hands[0][0] : null;   // 6.12: from the driver's window out to his hands   // the money: out of the window, then in his hand
         if(note != null) rect(note - 2, (u < t5 + 1.1 ? gy - 18 : S2.hands[0][1] - 1.5), 4.5, 2.5, "#6fae5a"); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
