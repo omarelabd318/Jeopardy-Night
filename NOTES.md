@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.0. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.1. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -573,3 +573,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 6.0 (2026-10-06): Two changes Omar asked for, and Omar asked for this to be 6.0, the start of a new era ("6.x: Category Descriptions" in `src/changelog.json`, so the 5.x versions now show as one line each in the version history):
   - **Category descriptions:** every one of the 106 categories now has a short, plain description, kept in `TIPS` in `src/app.js` (falling back to the category's `desc`). Hovering with a mouse over a setup chip or a board header shows it in a large box (`#tip`): the category name in the display font, then the description at 19 px, readable from the couch. The box sits under the item, or above it if there's no room, appears after 0.35 s, and hides on a click, a key or a scroll. Touch screens don't get it. Before this, 85 categories showed their longer `desc` as the browser's small tooltip (`title`).
   - **Join screen:** the free-for-all join screen no longer shows the link under the code. `#lobbyUrl` is `hidden` in `src/head.html`; remove that to bring it back.
+- 6.1 (2026-10-06): Omar asked why Which Country? said the host names a city. The clue shows the city on screen, so the hover descriptions (`TIPS`) for Which Country?, Which Country? Arab Edition and Guess the Song no longer say the host names or reads it. Those lines had come from the categories' old `desc`.
