@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.27",
+  "date": "2026-10-06",
+  "items": [
+   "New Edit mixes panel at the bottom of setup: choose which categories each mix uses, from its own section. Saved on this device, with a Reset per mix."
+  ]
+ },
+ {
   "v": "6.26",
   "date": "2026-10-06",
   "items": [

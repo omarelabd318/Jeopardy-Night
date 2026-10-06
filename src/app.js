@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.26`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.27`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -280,6 +280,34 @@ const TIPS = {
   gctry: "A photo from somewhere in the world. Name the country.",
   x18: "Name the adult film star from the photo. Needs a code."
 };
+/* 6.27 (Omar): the Edit mixes panel at the bottom of setup. Each mix may draw from its own section's categories (plus the ones it
+   had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Act It Out, One
+   Word Clues and locked categories are left out, as mixes don't suit them. Choices are saved per device in "jn_mixes". */
+const MIX_SECTION = {mixeg1:"Egypt & Arab World", mixeg2:"Egypt & Arab World", mixfb:"Football & Sports", mixent1:"Entertainment", mixent2:"Entertainment",
+  mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games"};
+const MIX_DEFAULT = Object.fromEntries(CATS.filter(c => c.type === "mix").map(c => [c.id, c.src.slice()]));
+const mixAllowed = id => { const g = (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
+  return [...new Set([...g, ...(MIX_DEFAULT[id] || [])])].filter(s => { const c = catById(s); return c && c.type !== "mix" && !["act","password","impostor"].includes(c.type) && !LOCKED_IDS.has(s); }); };
+const LOCKED_IDS = new Set(["x18"]);
+function applyMixes(){ const saved = store.get("jn_mixes", {});
+  CATS.filter(c => c.type === "mix").forEach(c => { const ok = mixAllowed(c.id), want = (saved[c.id] || MIX_DEFAULT[c.id]).filter(s => ok.includes(s));
+    c.src = want.length ? want : MIX_DEFAULT[c.id].slice(); }); }
+applyMixes();
+function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
+  box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(Boolean).map(m => { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
+    return `<div class="mixrow"><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id])}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5>
+      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}">${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}</button>`).join("")}</div></div>`; }).join("");
+  const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset]"); if(!b || !$("#mixEdit").contains(b)) return;
+  const saved = store.get("jn_mixes", {});
+  if(b.dataset.mixreset){ delete saved[b.dataset.mixreset]; }
+  else { const m = catById(b.dataset.mix), s = b.dataset.src, cur = m.src.includes(s) ? m.src.filter(x => x !== s) : [...m.src, s];
+    if(!cur.length){ b.animate && b.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"none"}], {duration:200}); return; }   // a mix needs at least one category
+    const order = mixAllowed(m.id); saved[m.id] = order.filter(x => cur.includes(x));
+    if(saved[m.id].length === MIX_DEFAULT[m.id].length && MIX_DEFAULT[m.id].every(x => saved[m.id].includes(x))) delete saved[m.id]; }
+  store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
+  renderMixEdit(); renderChips(); });
+$("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });
 const tipOf = c => TIPS[c.id] || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
