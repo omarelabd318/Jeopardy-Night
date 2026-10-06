@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.9`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.10`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1074,12 +1074,19 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     if((t % 1.4) >= 0.7) for(let i = 0; i < 2; i++){ const r = 3 + i * 3.5; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(21), gy - 18.5, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // 5.90 (Omar): honking too, in turn with the car
   }
   // 6.3 (Omar): the sweeper's portable traffic light: a weighted base, a pole and a three-lamp head. yb is the bottom of the base.
+  /* 6.10 (Omar): twice the size and more like a real one: a weighted base, a striped pole, a tall black head on a yellow
+     backboard, three big lamps with hoods over them (6.3-6.9: 27 px tall with small dots for lamps) */
   function trafficLight(x, yb, lit){   // lit: "red", "green" or nothing (off, while carried)
-    oval(x, yb - 0.8, 4.5, 1.3, "#2a2d33"); seg([[x, yb - 1], [x, yb - 17]], "#5b6068", 1.4);
-    rect(x - 2.6, yb - 27, 5.2, 11, "#1b1d22");
+    oval(x, yb - 1.2, 8, 2.2, "#2a2d33"); rect(x - 5, yb - 4, 10, 3, "#3a3e45");                               // weighted base
+    rect(x - 1.3, yb - 33, 2.6, 30, "#5b6068");
+    for(let i = 0; i < 3; i++) rect(x - 1.3, yb - 14 - i * 6, 2.6, 2.5, "#e9ecef");                            // reflective bands on the pole
+    rect(x - 7, yb - 58, 14, 27, "#e2b52a");                                                                    // yellow backboard
+    rect(x - 5, yb - 56.5, 10, 24, "#16181c");                                                                  // the black head
     const on = lit === "red" ? 0 : lit === "green" ? 2 : -1;
-    [["#ff3b30", "#5a1f1c"], ["#ffcc33", "#5a4a1c"], ["#3ddc6b", "#1c4a2a"]].forEach(([c1, c0], i) => disc(x, yb - 24.6 + i * 3.4, 1.25, i === on ? c1 : c0));
-    if(on >= 0) glow(x, yb - 24.6 + on * 3.4, 6, on ? "rgba(60,220,110,.45)" : "rgba(255,60,50,.45)");
+    [["#ff3b30", "#4a1a18"], ["#ffcc33", "#4a3e18"], ["#3ddc6b", "#183e24"]].forEach(([c1, c0], i) => {
+      const ly = yb - 51 + i * 7.5; disc(x, ly, 3, i === on ? c1 : c0);
+      g.fillStyle = "#0c0d10"; g.beginPath(); g.moveTo(x - 4.2, ly - 2.4); g.lineTo(x + 4.2, ly - 2.4); g.lineTo(x + 3.2, ly - 4.2); g.lineTo(x - 3.2, ly - 4.2); g.fill(); });   // hoods
+    if(on >= 0) glow(x, yb - 51 + on * 7.5, 13, on ? "rgba(60,220,110,.5)" : "rgba(255,60,50,.5)");
   }
   // A car, side on: "white" (the wedding car) or "black" (the BMW, with a hint of the kidney grille).
   function car(x, d, rot, kind){
@@ -1430,7 +1437,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(!carried && lightAt == null) trafficLight(L, gy, state);                                   // standing: red, until he flips it to green
         const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(carried || lightAt != null){ const [hx, hy] = S2.hands[0], k = carried ? 1 : lightAt;        // in his hand, or on its way between hand and ground
-          trafficLight(L + (hx - L) * k, gy + (hy + 8 - gy) * k, !carried && k < 0.5 ? state : null); }
+          trafficLight(L + (hx - L) * k, gy - 3 * k, !carried && k < 0.5 ? state : null); }   // 6.10: carried by the pole, its base just off the ground
         if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
         else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
