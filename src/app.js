@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.27`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.28`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -281,13 +281,13 @@ const TIPS = {
   x18: "Name the adult film star from the photo. Needs a code."
 };
 /* 6.27 (Omar): the Edit mixes panel at the bottom of setup. Each mix may draw from its own section's categories (plus the ones it
-   had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Act It Out, One
-   Word Clues and locked categories are left out, as mixes don't suit them. Choices are saved per device in "jn_mixes". */
+   had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Locked categories
+   are left out (6.27 also left out Act It Out and One Word Clues; 6.28 allows them). Choices are saved per device in "jn_mixes". */
 const MIX_SECTION = {mixeg1:"Egypt & Arab World", mixeg2:"Egypt & Arab World", mixfb:"Football & Sports", mixent1:"Entertainment", mixent2:"Entertainment",
   mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games"};
 const MIX_DEFAULT = Object.fromEntries(CATS.filter(c => c.type === "mix").map(c => [c.id, c.src.slice()]));
 const mixAllowed = id => { const g = (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
-  return [...new Set([...g, ...(MIX_DEFAULT[id] || [])])].filter(s => { const c = catById(s); return c && c.type !== "mix" && !["act","password","impostor"].includes(c.type) && !LOCKED_IDS.has(s); }); };
+  return [...new Set([...g, ...(MIX_DEFAULT[id] || [])])].filter(s => { const c = catById(s); return c && c.type !== "mix" && c.type !== "impostor" && !LOCKED_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
 const LOCKED_IDS = new Set(["x18"]);
 function applyMixes(){ const saved = store.get("jn_mixes", {});
   CATS.filter(c => c.type === "mix").forEach(c => { const ok = mixAllowed(c.id), want = (saved[c.id] || MIX_DEFAULT[c.id]).filter(s => ok.includes(s));
@@ -2076,7 +2076,9 @@ function warmRef(ref, now){ if(!ref) return;
    has clues at that value), then a clue from it. A source can itself be a mix-like category such as TV Show Mix. */
 const isMix = id => (catById(id) || {}).type === "mix";
 function mixPick(cat,lvl){
-  const src = catById(cat).src.filter(s => catById(s) && (pool(s,lvl) || []).length), off = src.filter(s => !(S.cats || []).includes(s));
+  let src = catById(cat).src.filter(s => catById(s) && (pool(s,lvl) || []).length);
+  if(S.ffa){ const solo = src.filter(s => !FFA_SKIP.has(catById(s).type)); if(solo.length) src = solo; }   // 6.28: Free-for-all has no teams, so a mix skips Act It Out and One Word Clues there
+  const off = src.filter(s => !(S.cats || []).includes(s));
   const from = off.length ? off : src, s = from[Math.floor(Math.random() * from.length)];
   return {src: s, i: pickIdx(s,lvl)}; }
 function prepick(cat,lvl){ const k = `${cat}-${lvl}`;
