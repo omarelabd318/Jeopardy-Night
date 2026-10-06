@@ -116,6 +116,12 @@ h1 span{color:var(--cream)} h1 span.t1{color:inherit}  /* 4.64: .t1 is the first
 .cgroup{margin-top:14px}.cgroup:first-child{margin-top:4px}
 .cgroup h4{margin:0 0 8px;font-family:var(--display);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:15px;color:var(--brass)}
 .cgroup h4 .gc{font-family:var(--body);font-weight:600;text-transform:none;letter-spacing:0;font-size:13px;opacity:.75;margin-left:6px;color:inherit}
+/* 5.100 (Omar): the category hover box, big enough to read from the couch */
+#tip{position:fixed;z-index:9999;left:0;top:0;max-width:min(400px,calc(100vw - 24px));background:var(--deeper);color:#fff;border:2px solid var(--brass);border-radius:14px;padding:12px 16px 14px;font:500 19px/1.35 var(--body);text-wrap:pretty;box-shadow:0 12px 32px rgba(0,0,0,.5);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s}
+#tip.on{opacity:1;transform:none}
+#tip b{display:block;font:800 21px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--brass);margin-bottom:5px}
+body.football #tip{background:#063d06;border-color:#fff}
+body.football #tip b{color:#fff}
 .chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px}
 .chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:var(--on-brass)}
 .teams{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
@@ -434,7 +440,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.99</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v5.100</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -446,7 +452,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v5.99</div>
+      <div class="eyebrow verlabel">v5.100</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -510,7 +516,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <h1>Scan to <span>join</span></h1>
       <p class="note" id="lobbyWhy" hidden></p>
       <div class="lqr" id="lobbyQr"></div>
-      <p class="note lurl" id="lobbyUrl"></p>
+      <p class="note lurl" id="lobbyUrl" hidden></p>  <!-- 5.100 (Omar): the link under the code is hidden, scanning is enough; remove "hidden" to bring it back -->
       <div class="eyebrow" id="lobbyCount">Waiting for players…</div>
       <ul class="lplayers" id="lobbyList"></ul>
       <div class="row" style="justify-content:center"><button class="btn primary" id="lobbyGo" disabled>Start playing</button><button class="btn small" id="lobbySkip" hidden>Skip, no phones</button><button class="btn small" id="lobbyBack">Back to setup</button></div>

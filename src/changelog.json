@@ -3,6 +3,14 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.100",
+  "date": "2026-10-06",
+  "items": [
+   "Hover over a category in setup or on the board to see a short, easy description in a big box you can read from the couch.",
+   "The join screen shows just the code, without the link under it."
+  ]
+ },
+ {
   "v": "5.99",
   "date": "2026-10-06",
   "items": [

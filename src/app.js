@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.99`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.100`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -167,8 +167,119 @@ const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & A
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
   ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
 ];
+/* 5.100 (Omar): a short, easy description of every category, shown in a big hover box (#tip) over its setup chip and its board
+   header, readable from the couch. Falls back to the category's longer desc (5.99 and before: desc as a small browser tooltip). */
+const TIPS = {
+  geo: "Countries, capitals, rivers, mountains and where things are on the map.",
+  his: "World history: empires, wars, leaders and the big moments.",
+  islam: "The Quran, the five pillars, Ramadan and Hajj, and the Prophet's life.",
+  ww2: "The Second World War: battles, leaders and the big moments.",
+  year: "Three things that happened in the same year. Name the year.",
+  myth: "Gods, heroes and monsters from Greek, Egyptian, Norse and other myths.",
+  mus: "Singers, bands, albums and music history, Arabic and international.",
+  songt: "A famous song title with one word missing. Name the word.",
+  song: "The host reads a line from a song. Name the song and the singer. Half points for just one.",
+  spot: "Three artists. Who has the most monthly Spotify listeners?",
+  igf: "Three famous people. Who has the most Instagram followers?",
+  lyric: "A famous English or international song lyric with the end missing. Finish it.",
+  lyricar: "A famous Arabic song lyric, mostly Egyptian, with the end missing. Finish it.",
+  tv: "Films and TV shows: actors, characters, plots and famous scenes.",
+  ecin: "Egyptian films and Ramadan series: stars, characters and classic scenes.",
+  plot: "A famous film or TV show, explained badly. Name it.",
+  ploteg: "An Egyptian film, series or play, explained badly. Name it.",
+  lit: "A film or series title translated word for word. Name the original.",
+  got: "Game of Thrones: the houses, the battles and who sat on the Iron Throne.",
+  peaky: "Peaky Blinders: Tommy Shelby, the family and Birmingham's gangs.",
+  bb: "Breaking Bad: Walter White, Jesse Pinkman and the Albuquerque crew.",
+  pb: "Prison Break: Michael Scofield, Lincoln Burrows and Fox River.",
+  gta: "Grand Theft Auto V: the story, Los Santos and GTA Online.",
+  vgames: "Consoles, classics and mobile games, from Mario and PES to PUBG.",
+  st: "Stranger Things: Hawkins, the Upside Down and the gang.",
+  office: "The Office: Dunder Mifflin Scranton, from Michael to Dwight.",
+  tvmix: "A mix of questions from all the TV show categories in one.",
+  netflix: "Netflix hits, from Money Heist and Squid Game to Dark and Wednesday.",
+  friends: "Friends: Ross, Rachel, Monica, Chandler, Joey and Phoebe.",
+  himym: "How I Met Your Mother: Ted, Marshall, Lily, Robin and Barney.",
+  hp: "Harry Potter: Hogwarts, spells, characters and the films.",
+  hgames: "The Hunger Games: Katniss, Panem and the arena.",
+  marvel: "Marvel and DC heroes, villains, films and shows.",
+  blockbuster: "Big Hollywood films, plus which of three films made the most money.",
+  toons: "Cartoons from Disney, Cartoon Network and Nickelodeon.",
+  romcom: "Romantic comedies, from Hollywood classics to Egyptian favourites.",
+  pixar: "Animated films from Pixar and DreamWorks.",
+  gk: "A bit of everything.",
+  lang: "Name the language, translate a word, or say where a word came from.",
+  trans: "A Spanish, French or Italian word. Say it in English or Arabic.",
+  flag: "Name the country from its flag.",
+  shape: "Name the country from its outline.",
+  pin: "A pin on a blank map. Name the city, or the country for half points.",
+  ctry: "The host names a city. Name the country it's in.",
+  sci: "Science: the human body, chemistry, physics and nature.",
+  space: "Planets, moons, stars, space missions and astronauts.",
+  fb: "Football from around the world: players, clubs and big moments.",
+  egfb: "Al Ahly, Zamalek, the Egyptian league and the Pharaohs.",
+  pl: "The Premier League from 2000 to today.",
+  wc: "The World Cup, mostly from 1998 onwards.",
+  wc26: "The 2026 World Cup in Canada, Mexico and the USA.",
+  ucl: "The Champions League from 2000 to today.",
+  xfer: "Clubs, year and fee. Name the player who moved.",
+  stad: "Name the club from its stadium, or the stadium from its club or a photo.",
+  cclub: "Three footballers who all played for one club. Name the club.",
+  path: "A footballer's clubs in order. Name the player.",
+  whoami: "Three clues about a footballer, getting easier. Name him.",
+  shirt: "What number did this famous player wear?",
+  mgr: "Name the manager or national team coach.",
+  fyear: "Three football events from the same year. Name the year.",
+  form: "A full starting lineup. Name the team and the year.",
+  score: "A famous match. Name the final score.",
+  sport: "Every sport except football.",
+  food: "Dishes, drinks and food from around the world and Egypt.",
+  ffood: "Fast food chains, famous menu items and Egyptian street food.",
+  cal: "Three foods or drinks. Which has the most calories?",
+  foodpic: "A photo of a dish, snack, fruit or vegetable. Name it.",
+  logo: "A blurred logo. Name the brand or club.",
+  act: "One player acts out a film or show. No talking, no sounds. 60 seconds.",
+  acteg: "Act out an Egyptian film, series or play. No talking, no sounds. 60 seconds.",
+  car: "A zoomed-in photo of a car. Name the make and model.",
+  actor: "A zoomed-in photo of an actor. Name them.",
+  footy: "A zoomed-in photo of a footballer. Name him.",
+  person: "A zoomed-in photo of someone famous, half of them Egyptian. Name them.",
+  egy: "All about Egypt: places, people, culture and everyday life.",
+  egyph: "Photos from all over Egypt. Each one asks something different.",
+  egh: "Modern Egyptian history, from the British era to today.",
+  cairo: "Cairo's neighbourhoods, bridges, squares, metro stations and streets.",
+  arab: "Countries, capitals, people and culture across the Arab world.",
+  prov: "The start of an Egyptian proverb. Finish it.",
+  ramadan: "Egyptian and Arab Ramadan series, old and new.",
+  memeeg: "Egyptian meme faces, viral moments and internet legends.",
+  emov: "Name the film or TV show from the emojis.",
+  emeg: "Name the Egyptian film, series or play from the emojis.",
+  emsen: "Work out the saying from the emojis.",
+  emseg: "Work out the Egyptian phrase or proverb from the emojis.",
+  ctryar: "The host names an Arab city. Name the country it's in.",
+  rid: "Riddles. Think sideways.",
+  link: "Four clues with something in common. What links them?",
+  mb: "Money, business, famous companies and the people who run them.",
+  curr: "Name the currency, or the country that uses it.",
+  brand: "Where brands came from: logos, slogans and original names.",
+  cars: "Car brands, badges, famous models and motorsport.",
+  tg: "Tech companies, gadgets, apps and gaming.",
+  nick: "Who or what goes by this nickname?",
+  books: "The books from school: Pride and Prejudice, The Giver, Fahrenheit 451 and more.",
+  pw: "One word at a time, clue-givers take turns. First team to guess wins.",
+  quote: "A famous line. Name the film or TV show.",
+  quoteeg: "A famous line from an Egyptian film, series or play. Name it.",
+  qblank: "A famous film or TV line with one word missing. Say the word.",
+  near: "Every team guesses a number. Closest wins.",
+  price: "Guess the price. Every team guesses and the closest wins.",
+  headl: "Three headlines, only one is real. Pick it.",
+  order: "Three events. Put them in order, earliest first.",
+  gctry: "A photo from somewhere in the world. Name the country.",
+  x18: "Name the adult film star from the photo. Needs a code."
+};
+const tipOf = c => TIPS[c.id] || c.desc || "";
 function renderChips(){
-  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : c.desc ? ` title="${esc(c.desc)}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
+  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
   const seen = new Set();
   const groups = CAT_GROUPS.map(([name,ids]) => [name, ids.map(catById).filter(Boolean)]);
   groups.forEach(([,cs]) => cs.forEach(c => seen.add(c.id)));
@@ -1382,7 +1493,7 @@ function renderBoard(){
   b.style.gridTemplateColumns = `repeat(${S.cats.length}, minmax(var(--colmin,118px), 1fr))`;
   b.classList.toggle("many", S.cats.length >= 8);
   b.style.setProperty("--hvw", `${(12/Math.max(8,S.cats.length)).toFixed(2)}vw`);
-  let html = S.cats.map(id => `<div class="head">${esc(catById(id).name)}</div>`).join("");
+  let html = S.cats.map(id => `<div class="head" data-tip="${esc(tipOf(catById(id)))}">${esc(catById(id).name)}</div>`).join("");
   LV.forEach(l => S.cats.forEach(id => {
     const d = S.done[`${id}-${l}`];
     html += `<button class="tile${d?" done":""}" data-cat="${id}" data-l="${l}" ${d?'disabled aria-label="Played"':`aria-label="${esc(catById(id).name)} for ${l}"`}>${l}</button>`;
@@ -2123,5 +2234,23 @@ async function toggleFs(){
 }
 document.querySelectorAll(".fsbtn").forEach(b => b.onclick = toggleFs);
 document.addEventListener("fullscreenchange", fsLabel); document.addEventListener("webkitfullscreenchange", fsLabel);
+/* 5.100 (Omar): the category hover box. Any [data-tip] element (setup chips, board headers) shows its name and tip in a large box
+   under it (above it if there's no room) after a short pause. Mouse only: touch screens never see it. */
+(() => {
+  const tip = document.createElement("div"); tip.id = "tip"; tip.setAttribute("role", "tooltip"); document.body.appendChild(tip);
+  let timer = 0, on = null;
+  const hide = () => { clearTimeout(timer); on = null; tip.classList.remove("on"); };
+  const show = el => {
+    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").trim())}</b>${esc(el.dataset.tip)}`; tip.classList.add("on");
+    const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, m = 12;
+    const x = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m), below = r.bottom + 10 + h < innerHeight - m;
+    tip.style.left = x + "px"; tip.style.top = (below ? r.bottom + 10 : Math.max(m, r.top - 10 - h)) + "px"; };
+  document.addEventListener("mouseover", e => {
+    if(e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents) return;
+    const el = e.target.closest && e.target.closest("[data-tip]");
+    if(el === on) return; hide(); if(!el || !el.dataset.tip) return;
+    on = el; timer = setTimeout(() => { if(on === el && el.isConnected) show(el); }, 350); });
+  ["scroll", "mousedown", "keydown", "touchstart"].forEach(k => addEventListener(k, hide, {capture: true, passive: true}));
+})();
 $("#play").onclick = () => { $("#titleScreen").hidden = true; $("#setup").hidden = false; window.scrollTo(0,0); };
 })();
