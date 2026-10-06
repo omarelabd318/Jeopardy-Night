@@ -2,7 +2,7 @@
  "id": "ptrap",
  "name": "The Parent Trap",
  "type": "text",
- "desc": "The 1998 film The Parent Trap: the twins, the camp, the swap, Meredith, and who said which line. Hard, and no questions about the actors.",
+ "desc": "The 1998 film The Parent Trap: the twins, the camp, the swap, Meredith, and who said which line (including which twin). Hard, and no questions about the actors.",
  "data": {
   "100": [
    [
@@ -66,8 +66,28 @@
     "Meredith Blake"
    ],
    [
-    "Who says it? \"We have a butler?\"",
+    "Hallie or Annie? Which twin really says this: \"We have a butler?\"",
+    "Hallie (meeting Martin)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"My dad had this old picture of her hidden in his sock drawer.\"",
     "Hallie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Mom's incredible! I cannot believe I lived my entire life without knowing her!\"",
+    "Hallie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Hallie, what was your mother like?\"",
+    "Annie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Start unzipping, Parker.\"",
+    "Annie (at the poker game)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"You're good, James… but you're just not good enough.\"",
+    "Hallie (at the poker game)"
    ]
   ],
   "200": [
@@ -128,12 +148,32 @@
     "He flies on Concorde"
    ],
    [
-    "Who says it? \"Start unzipping, Parker.\"",
-    "Annie (at the poker game)"
-   ],
-   [
     "Who says it? \"Don't look at me. I don't know a thing.\"",
     "Chessy"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Sisters? Hallie, we're like twins!\"",
+    "Annie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"I never met her. She and my dad split up when I was a baby, maybe even before.\"",
+    "Hallie (about her mother)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"I know how to fence and you don't. Or, I have class and you don't. Take your pick.\"",
+    "Annie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Mom's amazing, Dad. I don't know how you ever let her go.\"",
+    "Hallie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"In your honour, a royal flush.\"",
+    "Hallie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Annie, wake up, you're related to a bona fide genius.\"",
+    "Hallie"
    ]
   ],
   "300": [
@@ -200,6 +240,26 @@
    [
     "At the very end, who proposes to Chessy?",
     "Martin"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Loser jumps into the lake after the game.\"",
+    "Hallie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Excellent.\"",
+    "Annie (agreeing to the poker bet)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"I have a brilliant beyond brilliant idea. I'm a genius.\"",
+    "Hallie (her plan to swap)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"I think it's an awesome idea. Inspired. Brilliant, really.\"",
+    "Annie (pretending to be Hallie, about Nick and Meredith)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Marry her? That's insane! How can you marry a woman young enough to be my big sister?\"",
+    "Annie (pretending to be Hallie)"
    ]
   ],
   "400": [
@@ -266,6 +326,26 @@
    [
     "Before the swap, what does Hallie have to learn so Martin won't suspect a thing?",
     "Annie and Martin's secret handshake"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Straight, in diamonds.\"",
+    "Annie (her losing poker hand)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"You do? That is so weird… So do I!\"",
+    "Hallie (about Oreos with peanut butter)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"We can pull it off. We're twins, aren't we?\"",
+    "Hallie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Totally, it's like a dream come true. I've always wanted a big sister.\"",
+    "Annie (pretending to be Hallie)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"You wanna know the real difference between us?\"",
+    "Hallie"
    ]
   ],
   "500": [
@@ -278,10 +358,6 @@
     "Erich Kästner"
    ],
    [
-    "Who says it? \"This is beyond coincidence, this is beyond imagination!\"",
-    "Annie (in the Isolation Cabin)"
-   ],
-   [
     "Who says it? \"I knew I always liked her!\"",
     "Chessy (about Elizabeth)"
    ],
@@ -292,14 +368,6 @@
    [
     "Who calls Annie \"Queen of my heart\"?",
     "Martin"
-   ],
-   [
-    "Who says it? \"Excellent.\" … \"Even more excellent.\"",
-    "Annie (agreeing to the poker bet)"
-   ],
-   [
-    "Who says it? \"I know how to fence and you don't.\"",
-    "Annie (to Hallie)"
    ],
    [
     "Which twin already had pierced ears before camp?",
@@ -332,6 +400,34 @@
    [
     "Who flies with Hallie from London to California?",
     "Elizabeth (her mother)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"At home, I eat them with… I eat them with peanut butter.\"",
+    "Annie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Most people find that totally disgusting!\"",
+    "Annie (about Oreos with peanut butter)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Right down the middle?\"",
+    "Annie (about the torn photos)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"This is beyond coincidence, this is beyond imagination!\"",
+    "Annie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"Butt naked.\"",
+    "Hallie (the poker bet)"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"I'll be 12 on October 11th.\"",
+    "Annie"
+   ],
+   [
+    "Hallie or Annie? Which twin really says this: \"In Napa, with her father Nick Parker.\"",
+    "Hallie (pretending to be Annie, telling Elizabeth where Annie is)"
    ]
   ]
  }
