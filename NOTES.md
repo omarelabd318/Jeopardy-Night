@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.2. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.3. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -580,3 +580,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Most Spotify Listeners and Most Instagram Followers:** Omar asked for more clues and a harder category. `v4work/rank/gen.js` now makes 28 per value (was 22) with tighter winner/runner-up bands, so the races are closer at every value. The old bands are in a comment there, and the figures are unchanged.
   - **Which Country? and Which Country? Arab Edition, +100 each (20 per value):** clues about facts, not cities, to balance the 100 city clues, as Omar asked. Both descriptions and their hover text now say "a city or a fact about a country".
   - Each changed category's `v4work/out/<id>.log.md` has a 6.2 note.
+- 6.3 (2026-10-06): Street-scene changes Omar asked for:
+  - **Street sweeper:** he walks in carrying a portable traffic light (`trafficLight()`) as well as his broom. He sets it down on red a little ahead of his patch, then walks back and sweeps. The BMW, which only appears once he's sweeping, brakes to a stop with its nose just past the light. He walks to the window with his hand out, gets the note, pockets it, and the car drives off. He then picks up the light and leaves with it and the broom. The 5.96 version is in git history (the 6.2 commit).
+  - **Woman walking her dog:** her lead hand barely moves now (swing 0.05, was 0.35).
+  - **Family motorbike:** it's no longer its own scene. It rides in from the same side 5 s after the woman and overtakes her. The old scene line is in a comment in that act.
+  - **Wedding escort bike:** it weaves, drifting about 7 px forwards and back and leaning into each swerve.
+  - **Bus chase:** once the man has been on the step for a moment, he holds the door at chest height and lowers his free hand. Before, he gripped above his head and kept waving.
