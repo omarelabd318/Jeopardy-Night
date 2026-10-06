@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.36",
+  "date": "2026-10-06",
+  "items": [
+   "The category count on the title screen no longer counts the mixes."
+  ]
+ },
+ {
   "v": "6.35",
   "date": "2026-10-06",
   "items": [
