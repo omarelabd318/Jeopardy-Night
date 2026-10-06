@@ -194,5 +194,75 @@
   "key": "egp-rifai",
   "q": "Name this Cairo landmark.",
   "a": "The Mosque of al-Hakim"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-hallie-1",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Hallie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-hallie-2",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Hallie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-hallie-3",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Hallie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-hallie-4",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Hallie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-hallie-5",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Hallie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-annie-1",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Annie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-annie-2",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Annie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-annie-3",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Annie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-annie-4",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Annie"
+ },
+ {
+  "cat": "ptrap",
+  "value": 200,
+  "key": "ptrap-annie-5",
+  "q": "Which twin is this: Hallie or Annie?",
+  "a": "Annie"
  }
 ]

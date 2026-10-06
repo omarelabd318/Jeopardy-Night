@@ -27,10 +27,7 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
     CATS.splice(CATS.findIndex(c=>c.id==="xfer")+1,0,{id:"stad",name:o.name,type:"text",desc:o.desc}); DATA.stad=o.data;
     const sp=W+'/stadium-photos.json'; if(fs.existsSync(sp)) JSON.parse(fs.readFileSync(sp,'utf8')).forEach(e=>{
       if(fs.existsSync(`photos/${e.key}.jpg`)) DATA.stad[e.value].push(["Name this stadium.",e.name,`photos/${e.key}.jpg`]); }); } }
-  // 5.20 (Omar): photo clues inside normal categories (Egypt History, Cairo Streets & Places), listed in v4work/category-photos.json
-  // as {cat, value, key, q, a}; each joins its category only when photos/<key>.jpg exists.
-  { const cp=W+'/category-photos.json'; if(fs.existsSync(cp)) JSON.parse(fs.readFileSync(cp,'utf8')).forEach(e=>{
-      if(DATA[e.cat] && DATA[e.cat][e.value] && fs.existsSync(`photos/${e.key}.jpg`)) DATA[e.cat][e.value].push([e.q,e.a,`photos/${e.key}.jpg`]); }); }
+  // 6.22: the category-photos step (5.20) moved below, after every category is added, so later categories such as The Parent Trap can have photo clues
   // 5.23 (Omar): whole photo categories (Guess the Country, Egypt: Photo Edition), listed in v4work/photo-cats.json as
   // [{id, name, desc, after, q, items:[{key, value, a, q?}]}]; a clue is included only when photos/<key>.jpg exists, and the
   // category only when every value has at least one. Plain photos (no zoom or blur), so steal codes work on them.
@@ -65,6 +62,10 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
   { const lf=W+'/logo-photos.json'; if(fs.existsSync(lf)){ const d={100:[],200:[],300:[],400:[],500:[]}, BLUR={100:.024,200:.022,300:.02,400:.018,500:.016};  // v4.40 values: 100:.03,200:.027,300:.024,400:.021,500:.018
     JSON.parse(fs.readFileSync(lf,'utf8')).forEach(e=>{ if(fs.existsSync(`${W}/logo-photos/${e.key}.png`)) d[e.value].push(["Name this brand.",e.name,`pack:logo-${e.value}:${e.key}`,BLUR[e.value]]); });
     if(Object.values(d).every(a=>a.length)){ CATS.splice(CATS.findIndex(c=>c.id==="foodpic")+1,0,{id:"logo",name:"Guess the Logo",type:"text",desc:"A blurred logo. Name the brand or club. The host can tap Less blur if nobody gets it."}); DATA.logo=d; } } }
+  // 5.20 (Omar): photo clues inside normal categories (Egypt History, Cairo Streets & Places), listed in v4work/category-photos.json (6.22: also The Parent Trap)
+  // as {cat, value, key, q, a}; each joins its category only when photos/<key>.jpg exists.
+  { const cp=W+'/category-photos.json'; if(fs.existsSync(cp)) JSON.parse(fs.readFileSync(cp,'utf8')).forEach(e=>{
+      if(DATA[e.cat] && DATA[e.cat][e.value] && fs.existsSync(`photos/${e.key}.jpg`)) DATA[e.cat][e.value].push([e.q,e.a,`photos/${e.key}.jpg`]); }); }
   // v4.10: Football mode's World Cup, every World Cup clue plus the 2026 ones (labelled), not shown in setup
   CATS.push({id:"fwc",name:"World Cup",type:"text",mode:"football",desc:"World Cup history plus the 2026 tournament in Canada, Mexico and the USA."});
   DATA.fwc={}; [100,200,300,400,500].forEach(l=>{ DATA.fwc[l]=[...(DATA.wc[l]||[]),...(DATA.wc26[l]||[]).map(([q,a])=>[`2026: ${q}`,a])]; });

@@ -2,7 +2,7 @@
  "id": "ptrap",
  "name": "The Parent Trap",
  "type": "text",
- "desc": "The 1998 film The Parent Trap: the twins, the camp, the swap, Meredith and the making of the film. Hard, and no questions about the actors.",
+ "desc": "The 1998 film The Parent Trap: the twins, the camp, the swap, Meredith, and who said which line. Hard, and no questions about the actors.",
  "data": {
   "100": [
    [
@@ -64,13 +64,13 @@
    [
     "Who is Nick engaged to when Annie arrives in California as Hallie?",
     "Meredith Blake"
+   ],
+   [
+    "Who says it? \"We have a butler?\"",
+    "Hallie"
    ]
   ],
   "200": [
-   [
-    "In which year did the remake come out?",
-    "1998"
-   ],
    [
     "What is the name of the cabin the twins are sent to as a punishment?",
     "The Isolation Cabin"
@@ -126,21 +126,17 @@
    [
     "How does Nick get to London before Elizabeth at the end?",
     "He flies on Concorde"
+   ],
+   [
+    "Who says it? \"Start unzipping, Parker.\"",
+    "Annie (at the poker game)"
+   ],
+   [
+    "Who says it? \"Don't look at me. I don't know a thing.\"",
+    "Chessy"
    ]
   ],
   "300": [
-   [
-    "Which studio made the film?",
-    "Disney"
-   ],
-   [
-    "Who directed the film?",
-    "Nancy Meyers"
-   ],
-   [
-    "The film is a remake of a Disney film from which year?",
-    "1961"
-   ],
    [
     "Which poker hand does Hallie win with?",
     "A royal flush"
@@ -188,6 +184,22 @@
    [
     "How old is Meredith?",
     "26"
+   ],
+   [
+    "Who says it? \"Sure you'll help me. Right over a cliff you'll help me.\"",
+    "Meredith (on the camping trip)"
+   ],
+   [
+    "Who says it? \"Maybe you'll actually find someone on this continent who can whip your tush at poker.\"",
+    "Martin (giving Annie a deck of cards)"
+   ],
+   [
+    "Who says it? \"So, how exactly are we paying for this?\"",
+    "Nick (at the yacht dinner)"
+   ],
+   [
+    "At the very end, who proposes to Chessy?",
+    "Martin"
    ]
   ],
   "400": [
@@ -220,14 +232,6 @@
     "\"L-O-V-E\""
    ],
    [
-    "Which George Thorogood song plays during the poker game?",
-    "\"Bad to the Bone\""
-   ],
-   [
-    "The theme from which war film plays as the twins march to the Isolation Cabin?",
-    "The Great Escape"
-   ],
-   [
     "In which year did Nick and Elizabeth get married, according to the opening?",
     "1986"
    ],
@@ -244,12 +248,24 @@
     "11"
    ],
    [
-    "Which DJ Jazzy Jeff & the Fresh Prince song plays when Meredith first appears?",
-    "\"Parents Just Don't Understand\""
+    "Who says it? \"6 pounds, 11 ounces, 21 inches long.\"",
+    "Chessy (about the day \"Hallie\" came home from hospital)"
    ],
    [
-    "Which OMC song plays at the campfire?",
-    "\"How Bizarre\""
+    "Who says it? \"Got on my very first 747, and you didn't come after me.\"",
+    "Elizabeth (to Nick at the yacht dinner)"
+   ],
+   [
+    "Who says it? \"Who are you, Robert De Niro?\"",
+    "Meredith"
+   ],
+   [
+    "Who says it? \"Sun block, lip balm, insect repellent, stationery, stamps…\"",
+    "Martin (packing Annie off to camp)"
+   ],
+   [
+    "Before the swap, what does Hallie have to learn so Martin won't suspect a thing?",
+    "Annie and Martin's secret handshake"
    ]
   ],
   "500": [
@@ -262,56 +278,60 @@
     "Erich Kästner"
    ],
    [
-    "In which year was that novel published?",
-    "1949"
+    "Who says it? \"This is beyond coincidence, this is beyond imagination!\"",
+    "Annie (in the Isolation Cabin)"
    ],
    [
-    "Which real camp in California was used for Camp Walden?",
-    "Camp Seely (Crestline, California)"
+    "Who says it? \"I knew I always liked her!\"",
+    "Chessy (about Elizabeth)"
    ],
    [
-    "Which real Napa winery was used for the Parker vineyard?",
-    "Staglin Family Vineyard"
+    "Who says it? \"First change I make is to send that two-faced little brat off to boarding school in Timbuktu.\"",
+    "Meredith"
    ],
    [
-    "Which monarch attended the film's London premiere in November 1998?",
-    "Queen Elizabeth II"
+    "Who calls Annie \"Queen of my heart\"?",
+    "Martin"
    ],
    [
-    "What was the film's production budget, to within $5 million?",
-    "$15 million"
+    "Who says it? \"Excellent.\" … \"Even more excellent.\"",
+    "Annie (agreeing to the poker bet)"
    ],
    [
-    "Roughly how much did the film make worldwide?",
-    "About $92 million"
+    "Who says it? \"I know how to fence and you don't.\"",
+    "Annie (to Hallie)"
    ],
    [
-    "Who composed the film's score?",
-    "Alan Silvestri"
+    "Which twin already had pierced ears before camp?",
+    "Hallie"
    ],
    [
-    "Which Natalie Cole song plays over the end credits?",
-    "\"This Will Be (An Everlasting Love)\""
+    "Before piercing Annie's ear, what does Hallie have her hold behind it first?",
+    "An ice cube"
    ],
    [
-    "The director's two daughters appear in small cameos. Which characters share their first names?",
-    "The twins, Hallie and Annie"
+    "What gets the twins sent to the Isolation Cabin?",
+    "The counsellors fall into one of Hallie's booby traps"
    ],
    [
-    "How long is the film? It's the same running time as the 1961 original.",
-    "128 minutes"
+    "What does Martin give Annie when he drops her off at camp?",
+    "A brand-new deck of cards"
    ],
    [
-    "Which San Francisco building was filmed as the outside of the hotel?",
-    "The Administration Building on Treasure Island"
+    "Name one move in Annie and Martin's secret handshake.",
+    "Any of: a bum bump, a wave under the chin, a shimmy"
    ],
    [
-    "Besides Nancy Meyers, who are the film's two credited screenwriters?",
-    "David Swift and Charles Shyer"
+    "The twins' grandfather Charles is whose father?",
+    "Elizabeth's"
    ],
    [
-    "Roughly how many girls auditioned for the role of the twins?",
-    "More than 1,500"
+    "What finally makes Nick call off his engagement to Meredith?",
+    "Her \"It's me or them\" ultimatum after the air-mattress prank"
+   ],
+   [
+    "Who flies with Hallie from London to California?",
+    "Elizabeth (her mother)"
    ]
   ]
  }
