@@ -2,7 +2,7 @@
  "id": "lyric",
  "name": "Finish the Lyric",
  "type": "text",
- "desc": "A famous line from a song with the last words missing. Finish it. Half the songs are Arabic, mostly Egyptian.",
+ "desc": "A famous line from an English or international song with the last words missing. Finish it.",
  "data": {
   "100": [
    [
@@ -38,38 +38,6 @@
     "crazy (Call Me Maybe, Carly Rae Jepsen)"
    ],
    [
-    "Finish the lyric: “⁧تملّي معاك ولو حتى ___⁩”",
-    "بعيد عني (Tamally Maak, Amr Diab)"
-   ],
-   [
-    "Finish the lyric: “⁧حبيبي يا نور ___⁩”",
-    "العين (Nour El Ain, Amr Diab)"
-   ],
-   [
-    "Finish the lyric: “⁧أنا لك على طول ___ ليا⁩”",
-    "خليك (Ana Lak Ala Tool, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧يا حبيبتي يا ___⁩”",
-    "مصر (Ya Habibti Ya Masr, Shadia)"
-   ],
-   [
-    "Finish the lyric: “⁧زي الهوا يا ___⁩”",
-    "حبيبي (Zay El Hawa, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧أهواك وأتمنى لو ___⁩”",
-    "أنساك (Ahwak, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧ألف ليلة و___⁩”",
-    "ليلة (Alf Leila w Leila, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧يا ليلة العيد ___⁩”",
-    "آنستينا (Ya Leilet El Eid, Umm Kulthum)"
-   ],
-   [
     "Finish the lyric: “I'm a Barbie girl in a Barbie ___”",
     "world (Barbie Girl, Aqua)"
    ],
@@ -78,12 +46,44 @@
     "no (Baby, Justin Bieber)"
    ],
    [
-    "Finish the lyric: “⁧جانا الهوى جانا، ورمانا الهوى ___⁩”",
-    "رمانا (Gana El Hawa, Abdel Halim Hafez)"
+    "Finish the lyric: “'Cause the players gonna play, play, play, play, ___”",
+    "play (Shake It Off, Taylor Swift)"
    ],
    [
-    "Finish the lyric: “⁧بلادي بلادي بلادي، لكِ حبي و___⁩”",
-    "فؤادي (Biladi Biladi, Sayed Darwish)"
+    "Finish the lyric: “We were both young when I first ___ you”",
+    "saw (Love Story, Taylor Swift)"
+   ],
+   [
+    "Finish the lyric: “I gotta feeling that tonight's gonna be a ___ night”",
+    "good (I Gotta Feeling, Black Eyed Peas)"
+   ],
+   [
+    "Finish the lyric: “Let it go, let it go, can't hold it back ___”",
+    "anymore (Let It Go, Idina Menzel)"
+   ],
+   [
+    "Finish the lyric: “Don't believe me, just ___”",
+    "watch (Uptown Funk, Mark Ronson ft. Bruno Mars)"
+   ],
+   [
+    "Finish the lyric: “Oops!... I did it ___”",
+    "again (Oops!... I Did It Again, Britney Spears)"
+   ],
+   [
+    "Finish the lyric: “And I will always love ___”",
+    "you (I Will Always Love You, Whitney Houston)"
+   ],
+   [
+    "Finish the lyric: “Waka waka, eh eh... This time for ___”",
+    "Africa (Waka Waka, Shakira)"
+   ],
+   [
+    "Finish the lyric: “Hello, is it me you're looking ___”",
+    "for (Hello, Lionel Richie)"
+   ],
+   [
+    "Finish the lyric: “'Cause baby, now we've got bad ___”",
+    "blood (Bad Blood, Taylor Swift)"
    ]
   ],
   "200": [
@@ -120,38 +120,6 @@
     "happy (Happy, Pharrell Williams)"
    ],
    [
-    "Finish the lyric: “⁧إنت عمري اللي ابتدا ___⁩”",
-    "بنورك صباحه (Enta Omri, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧على حسب وداد قلبي يا ___⁩”",
-    "بوي (Ala Hesb Wedad, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧علّي صوتك بالغنا، لسه الأغاني ___⁩”",
-    "ممكنة (Ally Sotak, Mohamed Mounir)"
-   ],
-   [
-    "Finish the lyric: “⁧حبيتك بالصيف، حبيتك ___⁩”",
-    "بالشتي (Habaytak Bel Sayf, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧نسّم علينا الهوا من مفرق ___⁩”",
-    "الوادي (Nassam Alayna El Hawa, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧أنا وشادي ___ سوا⁩”",
-    "غنّينا (Shadi, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧يا مسافر وحدك وفايتني، ليه ___⁩”",
-    "تبعد عني (Ya Msafer Wahdak, Mohamed Abdel Wahab)"
-   ],
-   [
-    "Finish the lyric: “⁧بتونّس بيك وانت ___⁩”",
-    "معايا (Batwannis Beek, Warda)"
-   ],
-   [
     "Finish the lyric: “Hit me, baby, one more ___”",
     "time (...Baby One More Time, Britney Spears)"
    ],
@@ -160,12 +128,44 @@
     "wrecking ball (Wrecking Ball, Miley Cyrus)"
    ],
    [
-    "Finish the lyric: “⁧سوّاح وماشي في البلاد سوّاح، والخطوة بيني وبين حبيبي ___⁩”",
-    "براح (Sawwah, Abdel Halim Hafez)"
+    "Finish the lyric: “Hey Jude, don't make it ___”",
+    "bad (Hey Jude, The Beatles)"
    ],
    [
-    "Finish the lyric: “⁧سألوني الناس عنك يا ___⁩”",
-    "حبيبي (Saalouni El Nas, Fairuz)"
+    "Finish the lyric: “Tell me why... I want it that ___”",
+    "way (I Want It That Way, Backstreet Boys)"
+   ],
+   [
+    "Finish the lyric: “We found love in a hopeless ___”",
+    "place (We Found Love, Rihanna)"
+   ],
+   [
+    "Finish the lyric: “You're just too good to be ___”",
+    "true (Can't Take My Eyes Off You, Frankie Valli)"
+   ],
+   [
+    "Finish the lyric: “Dancing queen, young and sweet, only ___”",
+    "seventeen (Dancing Queen, ABBA)"
+   ],
+   [
+    "Finish the lyric: “Near, far, wherever you are, I believe that the heart does go ___”",
+    "on (My Heart Will Go On, Celine Dion)"
+   ],
+   [
+    "Finish the lyric: “Let it be, let it be... whisper words of ___”",
+    "wisdom (Let It Be, The Beatles)"
+   ],
+   [
+    "Finish the lyric: “You can stand under my ___”",
+    "umbrella (Umbrella, Rihanna)"
+   ],
+   [
+    "Finish the lyric: “You had a bad ___”",
+    "day (Bad Day, Daniel Powter)"
+   ],
+   [
+    "Finish the lyric: “We could have had it all, rolling in the ___”",
+    "deep (Rolling in the Deep, Adele)"
    ]
   ],
   "300": [
@@ -202,38 +202,6 @@
     "di (Blue (Da Ba Dee), Eiffel 65)"
    ],
    [
-    "Finish the lyric: “⁧جلست والخوف بعينيها تتأمل فنجاني ___⁩”",
-    "المقلوب (Qariat El Fengan, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧أخاصمك آه، أسيبك ___⁩”",
-    "لا (Akhasmak Ah, Nancy Ajram)"
-   ],
-   [
-    "Finish the lyric: “⁧يا بنت السلطان، حنّي على ___⁩”",
-    "الغلبان (Ya Bent El Sultan, Ahmed Adaweya)"
-   ],
-   [
-    "Finish the lyric: “⁧زيديني عشقاً زيديني، يا أحلى ___⁩”",
-    "نوبات جنوني (Zidini Ishqan, Kadim Al Sahir)"
-   ],
-   [
-    "Finish the lyric: “⁧شبابيك، الدنيا كلها ___⁩”",
-    "شبابيك (Shababeek, Mohamed Mounir)"
-   ],
-   [
-    "Finish the lyric: “⁧يا الميدان، كنت فين من ___⁩”",
-    "زمان (Ya El Midan, Cairokee)"
-   ],
-   [
-    "Finish the lyric: “⁧السح الدح ___⁩”",
-    "إمبو (El Sah El Dah Embo, Ahmed Adaweya)"
-   ],
-   [
-    "Finish the lyric: “⁧ساكن في حي السيدة، وحبيبي ساكن في ___⁩”",
-    "الحسين (Saken Fi Hay El Sayeda, Mohamed Abdel Muttalib)"
-   ],
-   [
     "Finish the lyric: “I kissed a girl and I ___ it”",
     "liked (I Kissed a Girl, Katy Perry)"
    ],
@@ -242,12 +210,44 @@
     "fight (Eye of the Tiger, Survivor)"
    ],
    [
-    "Finish the lyric: “⁧هذه ليلتي وحلم ___⁩”",
-    "حياتي (Hazihi Laylati, Umm Kulthum)"
+    "Finish the lyric: “Wake me up when ___ ends”",
+    "September (Wake Me Up When September Ends, Green Day)"
    ],
    [
-    "Finish the lyric: “⁧كيفك إنت؟ ___ إنت⁩”",
-    "ملّا (Kifak Inta, Fairuz)"
+    "Finish the lyric: “Don't worry about a thing, 'cause every little thing gonna be ___”",
+    "all right (Three Little Birds, Bob Marley)"
+   ],
+   [
+    "Finish the lyric: “Purple rain, purple ___”",
+    "rain (Purple Rain, Prince)"
+   ],
+   [
+    "Finish the lyric: “I'm on the highway to ___”",
+    "hell (Highway to Hell, AC/DC)"
+   ],
+   [
+    "Finish the lyric: “Welcome to the jungle, we've got fun and ___”",
+    "games (Welcome to the Jungle, Guns N' Roses)"
+   ],
+   [
+    "Finish the lyric: “Smoke on the water, fire in the ___”",
+    "sky (Smoke on the Water, Deep Purple)"
+   ],
+   [
+    "Finish the lyric: “I just called to say I ___ you”",
+    "love (I Just Called to Say I Love You, Stevie Wonder)"
+   ],
+   [
+    "Finish the lyric: “Should I stay or should I ___”",
+    "go (Should I Stay or Should I Go, The Clash)"
+   ],
+   [
+    "Finish the lyric: “She's livin' la vida ___”",
+    "loca (Livin' la Vida Loca, Ricky Martin)"
+   ],
+   [
+    "Finish the lyric: “I'm on tonight, you know my hips don't ___”",
+    "lie (Hips Don't Lie, Shakira)"
    ]
   ],
   "400": [
@@ -284,38 +284,6 @@
     "free (I Want to Break Free, Queen)"
    ],
    [
-    "Finish the lyric: “⁧حب إيه اللي انت جاي ___ عليه⁩”",
-    "تقول (Hob Eh, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧غنيلي شوية شوية، غنيلي وخد ___⁩”",
-    "عينيا (Ghanili Shwaya Shwaya, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧ست الحبايب يا ___⁩”",
-    "حبيبة (Set El Habayeb, Fayza Ahmed)"
-   ],
-   [
-    "Finish the lyric: “⁧أمل حياتي، يا حب غالي ما ___⁩”",
-    "ينتهيش (Amal Hayati, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧لبيروت، من قلبي ___ لبيروت⁩”",
-    "سلامٌ (Li Beirut, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧دارت الأيام ومرّت ___⁩”",
-    "الأيام (Daret El Ayam, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧زوروني كل سنة ___⁩”",
-    "مرة (Zuruni Kul Sana Marra, Sayed Darwish / Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧سالمة يا سلامة، رحنا وجينا ___⁩”",
-    "بالسلامة (Salma Ya Salama, Sayed Darwish)"
-   ],
-   [
     "Finish the lyric: “'Cause this is thriller, thriller ___”",
     "night (Thriller, Michael Jackson)"
    ],
@@ -324,12 +292,48 @@
     "lover (Billie Jean, Michael Jackson)"
    ],
    [
-    "Finish the lyric: “⁧لبنان يا قطعة ___⁩”",
-    "سما (Lebnan Ya Oteit Sama, Wadih El Safi)"
+    "Finish the lyric: “Ob-la-di, ob-la-da, life goes on, bra, la-la, how the life goes ___”",
+    "on (Ob-La-Di, Ob-La-Da, The Beatles)"
    ],
    [
-    "Finish the lyric: “⁧طول عمري بخاف من الحب، وسيرة الحب، وظلم ___⁩”",
-    "الحب (Seeret El Hob, Umm Kulthum)"
+    "Finish the lyric: “I see a red door and I want it painted ___”",
+    "black (Paint It Black, The Rolling Stones)"
+   ],
+   [
+    "Finish the lyric: “I can't get no ___”",
+    "satisfaction ((I Can't Get No) Satisfaction, The Rolling Stones)"
+   ],
+   [
+    "Finish the lyric: “Born in the ___”",
+    "U.S.A. (Born in the U.S.A., Bruce Springsteen)"
+   ],
+   [
+    "Finish the lyric: “Let's dance, put on your red shoes and dance the ___”",
+    "blues (Let's Dance, David Bowie)"
+   ],
+   [
+    "Finish the lyric: “Sweet home ___”",
+    "Alabama (Sweet Home Alabama, Lynyrd Skynyrd)"
+   ],
+   [
+    "Finish the lyric: “'Cause we are living in a material world, and I am a material ___”",
+    "girl (Material Girl, Madonna)"
+   ],
+   [
+    "Finish the lyric: “Turn around, bright eyes... total eclipse of the ___”",
+    "heart (Total Eclipse of the Heart, Bonnie Tyler)"
+   ],
+   [
+    "Finish the lyric: “Don't you forget about ___”",
+    "me (Don't You (Forget About Me), Simple Minds)"
+   ],
+   [
+    "Finish the lyric: “I'm walking on ___”",
+    "sunshine (Walking on Sunshine, Katrina and the Waves)"
+   ],
+   [
+    "Finish the lyric: “Despacito, ___ ___ ___ ___ despacito”",
+    "quiero respirar tu cuello (Despacito, Luis Fonsi ft. Daddy Yankee)"
    ]
   ],
   "500": [
@@ -366,38 +370,6 @@
     "on (Take On Me, a-ha)"
    ],
    [
-    "Finish the lyric: “⁧أعطني الناي و___⁩”",
-    "غنِّ (Aatini El Nay, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧يا فؤادي لا تسل أين ___⁩”",
-    "الهوى (Al Atlal, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧أهو ده اللي صار، وادي اللي ___⁩”",
-    "كان (Aho Da Elli Sar, Sayed Darwish)"
-   ],
-   [
-    "Finish the lyric: “⁧مصر يامّا يا ___⁩”",
-    "بهية (Masr Yamma Ya Bahiya, Sheikh Imam)"
-   ],
-   [
-    "Finish the lyric: “⁧أنا قلبي دليلي، قال لي ___⁩”",
-    "هتحبي (Ana Albi Dalili, Laila Mourad)"
-   ],
-   [
-    "Finish the lyric: “⁧الحلوة دي قامت تعجن في ___⁩”",
-    "البدرية (El Helwa Di, Sayed Darwish)"
-   ],
-   [
-    "Finish the lyric: “⁧يا حلو صبّح، يا حلو ___⁩”",
-    "طُل (Ya Helw Sabbah, Mohamed Qandil)"
-   ],
-   [
-    "Finish the lyric: “⁧على بلد المحبوب ___⁩”",
-    "وديني (Ala Balad El Mahboub, Umm Kulthum)"
-   ],
-   [
     "Finish the lyric: “Wake me up before you ___”",
     "go-go (Wake Me Up Before You Go-Go, Wham!)"
    ],
@@ -406,12 +378,44 @@
     "dime (Like a Rolling Stone, Bob Dylan)"
    ],
    [
-    "Finish the lyric: “⁧أخي جاوز الظالمون المدى، فحقّ الجهاد وحقّ ___⁩”",
-    "الفدا (Akhi Jawaz El Zalimoun, Mohamed Abdel Wahab)"
+    "Finish the lyric: “Heal the world, make it a better ___”",
+    "place (Heal the World, Michael Jackson)"
    ],
    [
-    "Finish the lyric: “⁧ليالي الأنس في ___⁩”",
-    "فيينا (Layali El Ons, Asmahan)"
+    "Finish the lyric: “Somewhere over the rainbow, way up ___”",
+    "high (Over the Rainbow, Judy Garland)"
+   ],
+   [
+    "Finish the lyric: “And now, the end is near, and so I face the final ___”",
+    "curtain (My Way, Frank Sinatra)"
+   ],
+   [
+    "Finish the lyric: “Que sera, sera, whatever will be, will ___”",
+    "be (Que Sera, Sera, Doris Day)"
+   ],
+   [
+    "Finish the lyric: “Like a bridge over troubled ___”",
+    "water (Bridge over Troubled Water, Simon & Garfunkel)"
+   ],
+   [
+    "Finish the lyric: “Don't cry for me, ___”",
+    "Argentina (Don't Cry for Me Argentina, Evita)"
+   ],
+   [
+    "Finish the lyric: “Video killed the radio ___”",
+    "star (Video Killed the Radio Star, The Buggles)"
+   ],
+   [
+    "Finish the lyric: “Karma karma karma karma karma ___”",
+    "chameleon (Karma Chameleon, Culture Club)"
+   ],
+   [
+    "Finish the lyric: “You spin me right round, baby, right round, like a ___”",
+    "record (You Spin Me Round, Dead or Alive)"
+   ],
+   [
+    "Finish the lyric: “Once I ran to you, now I run from you, this tainted ___”",
+    "love (Tainted Love, Soft Cell)"
    ]
   ]
  }
