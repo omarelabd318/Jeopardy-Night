@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.84`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.90`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -740,6 +740,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      or "shirt"; robe/shirt/pants colours; skin; hat "taqiya" (white skullcap) / "emma" (turban); hijab (colour); mo (moustache);
      sit; ph (walking phase); lean (+ forwards); arms [[upper, fore] x2]; s (scale); hop. Returns the head and hands. */
   function person(x, y, d, o = {}){
+    if(!o.nomark) mark(x);   // 5.86: for the bawab
     const s = o.s || 1, lean = o.lean || 0, robe = o.outfit === "robe";
     const hip = (o.sit ? y - 12 * s : y - 17 * s) - (o.hop || 0);
     const T = (k, f = 0) => [x + (Math.sin(lean) * k + Math.cos(lean) * f) * s * d, hip - (Math.cos(lean) * k - Math.sin(lean) * f) * s];
@@ -874,6 +875,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
   /* The ful cart: a green-painted wooden cart with a big copper qidra, a stack of bread, one big spoked wheel. */
   function fulCart(x, d, rot, lidOff, t){
+    mark(x);
     const X = a => x + a * d;
     seg([[X(-16), gy - 16], [X(-28), gy - 20]], "#6b4a2f", 1.8);                                                   // handles
     rect(x - 17, gy - 22, 34, 10, "#2f6e52"); g.strokeStyle = "#e3c15a"; g.lineWidth = 0.9; g.strokeRect(x - 15.5, gy - 20.5, 31, 7);   // painted box
@@ -910,6 +912,137 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     if(draw) glow(tip[0], tip[1], 4, "rgba(255,120,40,.6)");
     for(let i = 0; i < 2; i++){ const a = (u * 0.9 + i / 2) % 1; g.strokeStyle = `rgba(225,225,225,${0.35 * (1 - a)})`; g.lineWidth = 0.8;   // a thin wisp off the tip
       const bx = tip[0] + a * 4, by = tip[1] - a * 10; g.beginPath(); g.moveTo(bx, by); g.quadraticCurveTo(bx + 2 * Math.sin(u * 3 + i), by - 3, bx + 1, by - 5); g.stroke(); }
+  }
+  /* 5.86: everything moving reports where it is (screen x) through mark(), so the bawab can wake when something passes him */
+  let marks = [], lastMarks = [];
+  const mark = x => { marks.push(flip ? W - x : x); };
+  /* 5.86 (Omar): seven more street scenes, after his photos: a family of four on a motorbike, a woman carrying bread on her head
+     while a delivery motorbike passes, a wedding car, a man chasing a city bus, a man leading five sheep for Eid, and a street
+     sweeper whose pile blows away before a black BMW stops and gives him money. Plus a bawab who wanders in with his plastic chair,
+     dozes through a few scenes (waking when something passes close), then leaves with it. */
+  // The motorbike, black like his photos: X(a) is along the way it faces.
+  function motorbike(x, d, rot){
+    const X = a => x + a * d;
+    g.strokeStyle = "#141414"; g.lineWidth = 1.6; g.beginPath(); g.arc(X(-17), gy - 6.5, 8, Math.PI * 1.05, Math.PI * 1.7); g.stroke();   // rear mudguard
+    seg([[X(-6), gy - 9], [X(-21), gy - 10]], "#b8bcc2", 1.6);                                                       // exhaust
+    poly([[X(-5), gy - 13], [X(7), gy - 13], [X(7), gy - 7], [X(-4), gy - 7]], "#4a4d52");                            // engine
+    poly([[X(-6), gy - 15], [X(8), gy - 15], [X(11), gy - 19], [X(-1), gy - 21.5]], "#16171b");                      // tank
+    poly([[X(-20), gy - 17], [X(2), gy - 17], [X(2), gy - 19.5], [X(-19), gy - 19.5]], "#1d1e22");                  // seat
+    seg([[X(12), gy - 22], [X(17), gy - 6.5]], "#9aa0a6", 1.5); seg([[X(10), gy - 24.5], [X(14), gy - 23]], "#1d1e22", 1.6);   // fork, bars
+    oval(X(14.5), gy - 18.5, 1.7, 2, "#fff6c8"); glow(X(19), gy - 18.5, 8, "rgba(255,240,180,.3)");                     // headlight
+    wheel(X(-17), gy - 6.5, 6.5, rot, "#9aa0a6"); wheel(X(17), gy - 6.5, 6.5, rot, "#9aa0a6");
+    mark(x);
+  }
+  // A family of four on one motorbike: dad in sunglasses driving, a little girl on the tank, mum side-saddle at the back with a toddler.
+  function familyBike(x, d, rot){
+    const X = a => x + a * d, seat = gy - 18, sit = s => seat + 12 * s;
+    motorbike(x, d, rot);
+    person(X(-14), sit(0.8), d, {sit: true, s: 0.8, outfit: "robe", robe: "#17171b", hijab: "#e3a6b8", skin: "#a06a45", arms: [[0.9, 1.6], [0.7, 1.5]]});
+    person(X(-9.5), gy - 18.5, d, {sit: true, s: 0.42, shirt: "#8a1f2b", pants: "#2b3446", skin: "#a87a52", arms: [[0.6, 1.2], [0.5, 1.0]]});
+    const F = person(X(-3), sit(0.82), d, {sit: true, s: 0.82, shirt: "#8fc3d9", pants: "#3b5f8f", hair: "#1d1712", skin: "#9a6342", arms: [[1.3, 1.6], [1.25, 1.55]]});
+    rect(F.hd[0] + (d > 0 ? 0.6 : -3.8), F.hd[1] - 1.2, 3.2, 1.3, "#0d0d0f");                                          // sunglasses
+    person(X(6.5), sit(0.55), d, {sit: true, s: 0.55, shirt: "#f08a24", pants: "#8a7a5a", hair: "#5a3a1a", long: "#5a3a1a", skin: "#c08a60", arms: [[1.1, 1.4], [1.05, 1.35]]});
+  }
+  // The delivery motorbike: orange box on the back, the rider in a black jacket.
+  function deliveryBike(x, d, rot){
+    const X = a => x + a * d;
+    motorbike(x, d, rot);
+    person(X(-6), gy - 18 + 12 * 0.84, d, {sit: true, s: 0.84, shirt: "#1d1d22", pants: "#2a2f3a", hair: "#1a1410", skin: "#9a6744", arms: [[1.3, 1.6], [1.25, 1.55]]});
+    const bx = Math.min(X(-26), X(-12)); rect(bx, gy - 33, 14, 13, "#f26a1b"); rect(bx, gy - 28.5, 14, 2, "#c94e10"); rect(bx + 2, gy - 25, 10, 1.4, "#ffd6b8");   // the box
+  }
+  // 5.89 (Omar): the bike leading the wedding car: a rider and a passenger behind him, standing up a little, waving a red flare.
+  function escortBike(x, d, rot, t){
+    const X = a => x + a * d, w = Math.sin(t * 7);
+    motorbike(x, d, rot);
+    const P = person(X(-12), gy - 18 + 12 * 0.82, d, {sit: true, s: 0.82, shirt: "#f4f2ee", pants: "#2b3446", hair: "#1a1410", skin: "#8a5536", lean: -0.1,
+      arms: [[2.7 + 0.25 * w, 3.0 + 0.2 * w], [0.6, 1.0]]});
+    person(X(-3), gy - 18 + 12 * 0.84, d, {sit: true, s: 0.84, shirt: "#1d1d22", pants: "#2a2f3a", hair: "#1a1410", skin: "#9a6744", arms: [[1.3, 1.6], [1.25, 1.55]]});
+    const [hx, hy] = P.hands[0]; seg([[hx, hy + 1], [hx, hy - 4]], "#8a1f2b", 1.4);                          // the flare
+    glow(hx, hy - 5, 10, "rgba(255,90,60,.45)"); disc(hx, hy - 5, 1.6, "#fff0c8");
+    for(let i = 0; i < 4; i++){ const a = (t * 1.2 + i / 4) % 1; disc(hx - (6 + a * 22) * d, hy - 5 - a * 6 + Math.sin(i * 3 + t * 4) * 2, 2 + a * 4, `rgba(220,215,225,${0.35 * (1 - a)})`); }   // its smoke trailing back
+    if((t % 1.4) >= 0.7) for(let i = 0; i < 2; i++){ const r = 3 + i * 3.5; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(21), gy - 18.5, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // 5.90 (Omar): honking too, in turn with the car
+  }
+  // A car, side on: "white" (the wedding car) or "black" (the BMW, with a hint of the kidney grille).
+  function car(x, d, rot, kind){
+    const X = a => x + a * d, body = kind === "black" ? "#121418" : "#f4f2ee";
+    const P = kind === "black" ? [[-32, -6], [-32, -13], [-26, -15], [-15, -22.5], [7, -23], [17, -15], [31, -13], [32, -6]] : [[-30, -6], [-30, -14], [-24, -16], [-15, -25], [10, -25], [18, -16], [30, -14], [31, -6]];
+    poly(P.map(([a, b]) => [X(a), gy + b]), body);
+    poly((kind === "black" ? [[-13, -21.5], [5.5, -21.8], [13.5, -15.6], [-23, -15.6]] : [[-13, -23.5], [8, -23.5], [15, -16.4], [-21, -16.4]]).map(([a, b]) => [X(a), gy + b]), "#2a3442");   // windows
+    seg([[X(-4), gy - 24], [X(-4), gy - 15.5]], body, 1.4);
+    if(kind === "black"){ rect(Math.min(X(30), X(31.6)), gy - 12, 1.6, 2.6, "#c8ccd2"); rect(Math.min(X(30), X(31.6)), gy - 9, 1.6, 2.6, "#c8ccd2"); }   // grille
+    oval(X(30.5), gy - 13.5, 1.3, 1.5, "#fff6c8"); glow(X(35), gy - 13.5, 9, "rgba(255,240,180,.3)"); rect(X(-31.5) - (d > 0 ? 0 : 1.4), gy - 13, 1.4, 2.6, "#e23b2e");
+    wheel(X(-19), gy - 5.5, 5.5, rot, kind === "black" ? "#c8ccd2" : "#9aa0a6"); wheel(X(20), gy - 5.5, 5.5, rot, kind === "black" ? "#c8ccd2" : "#9aa0a6");
+    mark(x);
+  }
+  // The wedding car: white, pink ribbons from the bonnet to the roof, a bow and flowers on the bonnet, the bride and groom inside, a hand waving.
+  function weddingCar(x, d, rot, t){
+    const X = a => x + a * d;
+    car(x, d, rot, "white");
+    disc(X(-8), gy - 19.5, 2.6, "#1d1712"); disc(X(1), gy - 19.5, 2.8, "#f7f5f0"); disc(X(1.3), gy - 19, 1.8, "#c08a60");          // groom, bride with veil
+    g.strokeStyle = "#f2a7c3"; g.lineWidth = 1.2;
+    for(const [a, b] of [[[26, -14], [6, -25]], [[26, -14], [-14, -25]]]){ g.beginPath(); g.moveTo(X(a[0]), gy + a[1]); g.quadraticCurveTo(X((a[0] + b[0]) / 2), gy + Math.min(a[1], b[1]) - 4, X(b[0]), gy + b[1]); g.stroke(); }
+    oval(X(23), gy - 16, 2.4, 1.6, "#f2a7c3"); oval(X(26), gy - 16, 2.4, 1.6, "#f2a7c3"); disc(X(24.5), gy - 16, 1.1, "#e0779f");   // bow
+    ["#ffffff", "#f7c6d9", "#ffe08a", "#ffffff", "#f7c6d9"].forEach((c, i) => disc(X(15 + i * 2), gy - 16.5 - (i % 2), 1.2, c));   // flowers
+    const w = Math.sin(t * 9) * 0.5; seg([[X(-12), gy - 21], [X(-15), gy - 28], [X(-15 + 3 * w), gy - 33]], "#c08a60", 1.6);      // a hand waving from the back window
+    if((t % 1.4) < 0.7) for(let i = 0; i < 2; i++){ const r = 4 + i * 4; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(36), gy - 13, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // honking
+  }
+  // A Cairo city bus: white, a red band, windows full of heads, the back door open.
+  function cityBus(x, d, rot){
+    const X = a => x + a * d;
+    poly([[X(-46), gy - 7], [X(-46), gy - 36], [X(-44), gy - 38], [X(42), gy - 38], [X(46), gy - 34], [X(46), gy - 7]], "#efece4");
+    rect(Math.min(X(-46), X(46)), gy - 15, 92, 4, "#c23a2e"); rect(Math.min(X(-46), X(46)), gy - 36, 92, 2, "#2d5c9a");
+    poly([[X(-30), gy - 32], [X(36), gy - 32], [X(36), gy - 22], [X(-30), gy - 22]], "#28323f");
+    for(const i of [-24, -14, -4, 6, 16, 26]) disc(X(i), gy - 25.5, 2.4, "#121820");
+    for(const i of [-19, -9, 1, 11, 21, 31]) rect(X(i) - 0.6, gy - 32, 1.2, 10, "#d6d3ca");
+    poly([[X(38), gy - 32], [X(45), gy - 32], [X(45), gy - 18], [X(38), gy - 18]], "#3a4656");                       // windscreen
+    rect(Math.min(X(-42), X(-34)), gy - 33, 8, 26, "#151a22");                                                     // back door, open
+    oval(X(45.5), gy - 11, 1.3, 1.6, "#fff6c8"); rect(X(-46.5) - (d > 0 ? 0 : 1.5), gy - 13, 1.5, 3, "#e23b2e");
+    wheel(X(-28), gy - 6, 6, rot, "#9aa0a6"); wheel(X(30), gy - 6, 6, rot, "#9aa0a6");
+    mark(x);
+  }
+  // A sheep: a woolly cloud with a dark face. brace: digging its heels in, head back.
+  function sheep(x, d, ph, brace){
+    const X = a => x + a * d, wool = "#ece6d6", dark = "#3a2e28";
+    for(const [o, k] of [[-5, 0], [4, Math.PI]]){ const a = brace ? -0.45 : Math.sin(ph + k) * 0.4; seg([[X(o), gy - 7], [X(o) + Math.sin(a) * 6.5 * d, gy]], dark, 1.4); }
+    for(const [a, b, r] of [[-5, -12, 5], [0, -13.5, 5.5], [5, -12, 5], [0, -9.5, 5], [-4, -9, 4]]) disc(X(a), gy + b, r, wool);
+    for(const [a, b] of [[-3, -15], [3, -14.5], [-6, -10]]) disc(X(a), gy + b, 1.6, "#ddd5c2");                     // curls
+    const hy = brace ? gy - 13 : gy - 15 + Math.sin(ph) * 0.5, hx = X(brace ? 7.5 : 9);
+    oval(hx, hy, 3, 2.3, dark, 0.3 * d); oval(hx - 1.5 * d, hy - 1.8, 1.4, 0.8, dark, -0.5 * d);                      // face, ear
+    for(const [o, k] of [[-3, Math.PI / 2], [6, Math.PI * 1.5]]){ const a = brace ? -0.5 : Math.sin(ph + k) * 0.4; seg([[X(o), gy - 7], [X(o) + Math.sin(a) * 6.5 * d, gy]], dark, 1.4); }
+    mark(x);
+  }
+  // The bawab's white plastic chair.
+  function plasticChair(x, d){
+    const c = "#e9ecef";
+    seg([[x - 5 * d, gy - 12], [x - 6.5 * d, gy - 25]], c, 2); seg([[x - 5 * d, gy - 12], [x + 5 * d, gy - 12]], c, 2.4);
+    seg([[x - 5 * d, gy - 12], [x - 6 * d, gy]], c, 1.6); seg([[x + 5 * d, gy - 12], [x + 6 * d, gy]], c, 1.6);
+    seg([[x - 6.3 * d, gy - 22], [x - 4.5 * d, gy - 15]], c, 1);
+  }
+  /* 5.86 (Omar): the bawab. Now and then, as a scene starts, he walks in with his white plastic chair from one side, puts it down near
+     that edge and sits. He dozes (head down, a few z's) through about three scenes, wakes for a moment whenever anything passes close
+     (everything drawn reports where it is through mark()), then gets up, picks up his chair and goes back the way he came. Alternate
+     visits use the other side. */
+  const bawab = {phase: "off", at: 0, side: 1, acts: 0, awake: 0, visits: 0};
+  function bawabOnAct(t){                                                                       // called whenever a new scene starts
+    if(bawab.phase === "off" && shown % 6 === 2){ bawab.phase = "in"; bawab.at = t; bawab.side = bawab.visits++ % 2 ? -1 : 1; }
+    else if(bawab.phase === "sit" && --bawab.acts <= 0){ bawab.phase = "out"; bawab.at = t; } }
+  function drawBawab(t, near){
+    if(bawab.phase === "off") return;
+    const s = bawab.side, home = s > 0 ? 46 : W - 46, edge = s > 0 ? -30 : W + 30, v = 38, walkT = Math.abs(home - edge) / v, d = s;   // he faces into the street
+    const B = {outfit: "robe", robe: "#6b6f74", hat: "taqiya", mo: true, skin: "#7a4b2f", nomark: true};
+    if(bawab.phase === "in" || bawab.phase === "out"){
+      const e = t - bawab.at, k = cl(e / walkT, 0, 1), goingIn = bawab.phase === "in";
+      const x = goingIn ? edge + (home - edge) * k : home + (edge - home) * k, dir = goingIn ? s : -s;
+      plasticChair(x - 8 * dir, dir);                                                               // carried at his side
+      person(x, gy, dir, {...B, ph: e * 8, arms: [[-0.5, -0.3], [Math.sin(e * 8) * 0.35, 0.3]]});
+      if(k >= 1){ if(goingIn){ bawab.phase = "sit"; bawab.acts = 3; } else bawab.phase = "off"; }
+      return; }
+    if(near) bawab.awake = t + 1.6;                                                                 // something went past: he looks up
+    const up = t < bawab.awake;
+    plasticChair(home, d);
+    const P = person(home, gy, d, {...B, sit: true, lean: up ? -0.05 : 0.32, arms: up ? [[0.5, 1.3], [0.4, 1.2]] : [[0.4, 1.5], [0.35, 1.45]]});
+    if(!up) for(let i = 0; i < 3; i++){ const a = (t * 0.35 + i / 3) % 1, zx = P.hd[0] + (4 + a * 8) * d, zy = P.hd[1] - 6 - a * 12, z = 2 + a * 1.5;   // z's floating up
+      g.strokeStyle = `rgba(230,235,255,${0.7 * (1 - a)})`; g.lineWidth = 0.9; g.beginPath(); g.moveTo(zx - z, zy - z); g.lineTo(zx + z, zy - z); g.lineTo(zx - z, zy + z); g.lineTo(zx + z, zy + z); g.stroke(); }
   }
   /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour, and (5.76) the woman walking her dog. Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
@@ -954,7 +1087,13 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         smoker(u);
         if(u < tw){ x = -20 + 32 * u; ph = u * 10; }
         else { const e = u - tw, a = Math.min(e, 0.6); x = -20 + wd + 32 * e + (140 - 32) * (a * a / 1.2 + Math.max(0, e - 0.6)); run = e > 0.25; ph = tw * 10 + e * 22; }
-        if(x < W + 30) drawCat(x, 1, ph, run); } },
+        if(x < W + 30) drawCat(x, 1, ph, run);
+        /* 5.87 (Omar): a grey cat wanders in from the other side a few seconds in. Just as the ginger cat passes the man it spots her:
+           she turns and bolts back the way she came, and the ginger cat runs after her. */
+        const seeAt = tw - 0.6, gIn = 3, gx0 = W + 25;
+        if(u > gIn){ if(u < seeAt) drawCat(gx0 - 30 * (u - gIn), -1, (u - gIn) * 10, false, "#8f9095", "#5d5e63");
+          else { const e = u - seeAt, sx = gx0 - 30 * (seeAt - gIn), a = Math.min(e, 0.35); const gx = sx + 150 * (a * a / 0.7 + Math.max(0, e - 0.35));
+            if(gx < W + 30) drawCat(gx, 1, e * 24, e > 0.15, "#8f9095", "#5d5e63"); } } } },
     { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk (5.60: after the cat, before the hantour)
         oval(px, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(px + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");          // a pothole, on the road above the line
         const sw = Math.abs(dx) < 50 ? Math.cos(dx / 50 * Math.PI / 2) : 0;
@@ -976,10 +1115,79 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const lead = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
         g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(lead[0], lead[1]); g.quadraticCurveTo((lead[0] + collar[0]) / 2, Math.max(lead[1], collar[1]) + (stopped ? 1 : 6), collar[0], collar[1]); g.stroke();   // the lead, slack while they walk
         drawDog(dx, 1, stopped ? 0 : walkT * 13, stopped, u); } },
+    /* 5.86 (Omar): the family of four on a motorbike */
+    { len: () => (W + 140) / 115, draw(u){ const x = -70 + 115 * u; familyBike(x, 1, x / 6.5); } },
+    /* 5.86 (Omar): a woman carrying a board of bread on her head; a delivery motorbike passes her going the other way */
+    { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv; return {v, bv, b0}; },
+      len(){ return (W + 80) / this.b().v; },
+      draw(u){ const {v, bv, b0} = this.b(), x = -40 + v * u, ph = u * 8;
+        const L = person(x, gy, 1, {outfit: "robe", robe: "#141418", hijab: "#1d1d22", skin: "#9a6744", ph,
+          arms: [[2.85, 3.05], [Math.sin(ph) * 0.35, Math.sin(ph) * 0.35 + 0.3]]});
+        const by = L.hd[1] - 6 + Math.sin(ph * 2) * 0.4; rect(x - 18, by, 36, 1.8, "#7a5634");                       // the board, on her head
+        for(let i = -3; i <= 3; i++){ oval(x + i * 5, by - 1.4, 2.7, 1.3, "#d6a65c"); if(Math.abs(i) < 3) oval(x + i * 5 + 2.5, by - 3, 2.6, 1.2, "#e0b26a"); if(Math.abs(i) < 2) oval(x + i * 5, by - 4.5, 2.5, 1.2, "#d6a65c"); }   // eish baladi
+        const bx = W + 60 - bv * (u - b0); if(u > b0 && bx > -60) deliveryBike(bx, -1, -bx / 6.5); } },
+    /* 5.86 (Omar): a wedding car, slow, honking. 5.89 (Omar): led by a motorbike, the passenger waving a flare to celebrate them */
+    { len: () => (W + 250) / 70, draw(u){ const x = -80 + 70 * u; weddingCar(x, 1, x / 5.5, u); escortBike(x + 78, 1, (x + 78) / 6.5, u); } },
+    /* 5.86 (Omar): a man runs after a city bus, catches the back door and swings on */
+    { k(){ const v = 60, a = 45, mStart = 2.5, mv = 100, meet = (mv * mStart - 68) / (mv - v);   // when he reaches the door (it's 38 px behind the bus's middle)
+        const on = meet + 0.35, xb = u => -60 + v * u + (u > on ? a * (u - on) * (u - on) : 0); let end = on; while(xb(end) - 46 < W + 40) end += 0.1; return {v, mStart, mv, meet, on, xb, end}; },
+      len(){ return this.k().end; },
+      draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x - 38;
+        cityBus(x, 1, x / 6);
+        if(u < mStart) return;
+        if(u < meet){ const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: [[2.0, 2.2], [-0.6, -0.2]]}); return; }
+        const hop = cl((u - meet) / 0.35, 0, 1);                                                                    // the jump onto the step
+        person(door, gy - 5 * hop - 3 * Math.sin(hop * Math.PI), 1, {lean: -0.15 * hop, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true,
+          arms: [[2.6, 2.9], u > on ? [1.5 + 0.5 * Math.sin(u * 8), 2.4] : [-0.4, -0.2]], ...(hop < 1 ? {ph: u * 15} : {})}); } },
+    /* 5.86 (Omar): a man leading five sheep for Eid; the first one digs its heels in and he has to tug it along */
+    { s(){ const v = 38, stopAt = (W * 0.5) / v, stopLen = 2.8; return {v, stopAt, stopLen}; },
+      len(){ const s = this.s(); return (W + 26 + 22 * 4 + 90) / s.v + s.stopLen; },
+      draw(u){ const {v, stopAt, stopLen} = this.s(), st = u - stopAt, stuck = st > 0 && st < stopLen;
+        const wt = st <= 0 ? u : st < stopLen ? stopAt : u - stopLen, p = -20 + v * wt;
+        const gap = st <= 0 ? 0 : st < stopLen ? 14 * sm(st / 0.6) : 14 * (1 - sm((st - stopLen) / 0.7));               // he keeps going a bit, the rope goes taut
+        const mx = p + 26 + gap, tug = stuck && st > 0.6 ? 1 : 0;
+        for(let i = 4; i >= 0; i--) sheep(p - 22 * i, 1, stuck ? 0 : wt * 10 + i * 1.7, i === 0 && tug);
+        const M = person(mx, gy, 1, {outfit: "robe", robe: "#7b6a58", hat: "emma", mo: true, skin: "#7f4f31", lean: tug ? -0.35 + 0.08 * Math.sin(u * 10) : 0,
+          ...(stuck && st > 0.6 ? {} : {ph: (wt + gap / v) * 8.5}), arms: [[-0.7 - 0.6 * tug, -0.5 - 0.6 * tug], [0.2, 0.3]]});
+        g.strokeStyle = "#8a6a3a"; g.lineWidth = 0.9; g.beginPath(); g.moveTo(M.hands[0][0], M.hands[0][1]); g.quadraticCurveTo((M.hands[0][0] + p + 10) / 2, gy - 8 + (tug ? -2 : 4), p + 9, gy - 13); g.stroke(); } },   // the rope
+    /* 5.86 (Omar): a street sweeper sweeps a pile together, the wind blows it away, then a black BMW stops and gives him money */
+    { w(){ const sx = W * 0.42, v = 45, tIn = (sx + 30) / v, tG = tIn + 5, tC = tG + 4.2, cv = 160, stop = 3.2, tOut = tC + stop + 0.8;
+        return {sx, v, tIn, tG, tC, cv, stop, tOut}; },
+      len(){ const w = this.w(); return w.tOut + (w.sx + 40) / w.v; },
+      draw(u){ const {sx, v, tIn, tG, tC, cv, stop, tOut} = this.w(), pile = sx + 22;
+        // the car: comes in from the right, slows, stops by him, then drives off to the left
+        const dc = W + 90 - sx - 40, arriveT = 2 * dc / cv;                                                          // decelerating to a stop over dc
+        let cx = null; if(u > tC - arriveT && u < tC){ const e = u - (tC - arriveT); cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
+        else if(u >= tC && u < tC + stop) cx = sx + 40; else if(u >= tC + stop){ const e = u - tC - stop; cx = sx + 40 - 120 * e * e; }
+        if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black");
+        // the leaves: swept into a pile, blown back by the wind, swept again
+        const sweep1 = cl((u - tIn) / 5, 0, 1), gust = cl((u - tG) / 1.6, 0, 1), sweep2 = cl((u - tG - 2) / 2.2, 0, 1) * 0.35;
+        for(let i = 0; i < 16; i++){ const r1 = Math.sin(i * 12.9898) * 0.5 + 0.5, r2 = Math.sin(i * 78.233) * 0.5 + 0.5;
+          const home = sx - 40 + r1 * 110, far = sx - 150 + r2 * 120, gather = pile - 8 + r2 * 16;
+          let lx = home + (gather - home) * sm(sweep1), ly = gy - 1;
+          if(gust > 0){ lx = gather + (far - gather) * sm(gust); ly = gy - 1 - Math.sin(gust * Math.PI) * (10 + r1 * 14); lx = lx + (gather - lx) * sm(sweep2); }
+          oval(lx, ly, 1.6, 0.9, ["#8a6a3a", "#a8834a", "#6f7a3a"][i % 3], i); }
+        if(gust > 0 && gust < 1) for(let i = 0; i < 4; i++){ const a = (gust * 1.4 + i * 0.25) % 1; g.strokeStyle = `rgba(230,235,255,${0.35 * (1 - a)})`; g.lineWidth = 1;   // gusts of wind
+          g.beginPath(); g.moveTo(pile + 30 - a * 160, gy - 10 - i * 6); g.quadraticCurveTo(pile - a * 160, gy - 16 - i * 6, pile - 30 - a * 160, gy - 10 - i * 6); g.stroke(); }
+        // him: walks in, sweeps, slumps when it blows away, sweeps again, goes to the car window, then walks off
+        let x = sx, d = 1, pose = {}; const sw = Math.sin(u * 6);
+        if(u < tIn){ x = -30 + v * u; pose = {ph: u * 8.5}; }
+        else if(u < tG){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
+        else if(u < tG + 2){ pose = {arms: [[0.3, 0.4], [0.2, 0.3]], lean: -0.12}; }                                 // watching it blow away
+        else if(u < tC){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
+        else if(u < tC + stop){ const e = u - tC; x = sx + 12 * sm(e / 0.8); pose = e > 1 && e < 2.6 ? {arms: [[1.6, 1.8], [0.2, 0.3]]} : e < 0.8 ? {ph: u * 8.5} : {}; }
+        else if(u < tOut){ x = sx + 12; pose = {arms: [[0.1, -0.35], [0.2, 0.3]]}; }                                 // 5.88 (Omar): puts it in his pocket (5.86-5.87: raised it in thanks)
+        else { x = sx + 12 - v * (u - tOut); d = -1; pose = {ph: u * 8.5}; }
+        const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
+        if(u >= tIn && u < tC){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom
+          poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
+        const note = u > tC + 1.0 && u < tC + 2.6 ? cx - 10 : u >= tC + 2.6 && u < tC + 3.3 ? S2.hands[0][0] : null;   // the money: out of the window, then in his hand
+        if(note != null) rect(note - 2, (u < tC + 2.6 ? gy - 18 : S2.hands[0][1] - 1.5), 4.5, 2.5, "#6fae5a"); } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
   /* 5.76: a small sandy dog: trots on its lead, wags, and puts its nose to the ground to sniff. */
   function drawDog(x, d, ph, sniff, t){
+    mark(x);
     const fur = "#d9b27c", dark = "#a8814f", by = gy - 7;
     const leg = (o, a, col) => seg([[x + o * d, by + 1], [x + o * d + Math.sin(a) * 5 * d, gy]], col, 1.8);
     leg(-5, Math.sin(ph + Math.PI) * 0.45, dark); leg(4, Math.sin(ph) * 0.45, dark);
@@ -992,8 +1200,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     seg([[x + 6.5 * d, by - 2.5], [x + 7.8 * d, by + 0.5]], "#c2352c", 1.2);                                                 // collar
   }
   /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
-  function drawCat(x, d, ph, run){
-    const fur = "#c9803a", dark = "#9a5a22", bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
+  function drawCat(x, d, ph, run, fur = "#c9803a", dark = "#9a5a22"){   // 5.87: colours, for the second (grey) cat
+    mark(x);
+    const bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
     const head = (hx, hy) => { disc(hx, hy, 3, fur); poly([[hx - 2.4 * d, hy - 1.5], [hx - 1.6 * d, hy - 5], [hx - 0.2 * d, hy - 2.4]], fur); poly([[hx + 0.6 * d, hy - 2.6], [hx + 2 * d, hy - 5], [hx + 2.7 * d, hy - 1.4]], fur); disc(hx + 1.6 * d, hy - 0.3, 0.5, "#2b2b1a"); };
     const leg = (o, a, col) => seg([[x + o * d, by + 1], [x + o * d + Math.sin(a) * 5.5 * d, gy]], col, 1.6);
     if(run){ leg(-5, -0.8 * Math.sin(ph) - 0.2, dark); leg(4, 0.8 * Math.sin(ph) + 0.2, dark); }   // bounding: back pair and front pair
@@ -1018,7 +1227,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
     const t = ((now - t0) / 1000) * slow; sceneT = t;
     g.clearRect(0, 0, W, H); g.save();
-    if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; nextAt = t + actLen + 2.5 + Math.random() * 3; } }
+    if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; bawabOnAct(t); nextAt = t + actLen + 2.5 + Math.random() * 3; } }
+    lastMarks = marks; marks = [];   // 5.86: the bawab sits on the street's own edge, outside the mirroring
+    drawBawab(t, lastMarks.some(m => Math.abs(m - (bawab.side > 0 ? 46 : W - 46)) < 60));
     if(act >= 0 && t <= actAt + actLen){ if(flip){ g.translate(W, 0); g.scale(-1, 1); } ACTS[act].draw(t - actAt); }   // mirrored on alternate rounds
     g.restore();
   }
@@ -1453,6 +1664,9 @@ function openClue(cat,lvl,exclude,forceIdx){
   stopTimer();
   try{ renderClue(); }catch(err){ $("#clue").innerHTML = `<div class="eyebrow">${esc(catById(cat).name)} · ${lvl}</div><p class="note">This clue couldn't be shown (${esc(err && err.message || err)}). Tell Claude this message. Tap Back to board.</p><div class="row"><button class="btn small" data-act="cancel">Back to board</button></div>`; }
   $("#card").hidden = false;
+  /* 5.85 (Omar): the timer starts by itself as the clue opens (was: the host pressed Start). Act It Out, Who's the Impostor? and
+     One Word Clues keep their Start button, since players scan a code before they're ready. */
+  if(!preview && !["act","impostor","password"].includes(type)){ S.cur.running = true; try{ Snd.unlock(); }catch(e){} timer = setInterval(tick, 250); renderClue(); }
   $("#clue").focus?.();
 }
 function clueParts(){
