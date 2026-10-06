@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.95`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.96`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1028,7 +1028,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      and leaves (that visit ends with the cigarette, not after three scenes). */
   const bawab = {phase: "off", at: 0, side: 1, acts: 0, awake: 0, visits: 0, kind: 0, sitAt: 0, roach: null, roachAt: 0};
   const CIG = 80;                                                                               // seconds one cigarette lasts
-  const SHP = 10, CGP = 7;                                                                      // 5.95 (Omar): seconds between shisha pulls and cigarette drags (5.94: 5 for both)
+  const SHP = 12, CGP = 10;                                                                      // seconds between shisha pulls and cigarette drags: 5.96 (Omar) 12 / 10 (5.95: 10 / 7; 5.94: 5 / 5)
   function bawabOnAct(t){                                                                       // called whenever a new scene starts
     if(bawab.phase === "off" && shown % 6 === 2){ bawab.phase = "in"; bawab.at = t; bawab.side = bawab.visits % 2 ? -1 : 1; bawab.kind = bawab.visits % 3; bawab.visits++; bawab.roach = null; }
     else if(bawab.phase === "sit" && bawab.kind !== 2 && --bawab.acts <= 0){ bawab.phase = "out"; bawab.at = t; } }
@@ -1094,8 +1094,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   function puff(x, y, p, big){
     if(p <= 0 || p >= 1) return;
     for(let i = 0; i < 6; i++){ const q = cl(p * 1.25 - i * 0.05, 0, 1); if(q <= 0) continue;
-      const px = x - q * (big ? 6 : 3) + Math.sin(i * 2.3) * q * (big ? 6 : 3), py = y - q * (big ? 15 : 9) - i * q * (big ? 1.4 : 0.7), r = (big ? 2 : 1.1) + q * (big ? 5.5 : 2.6);
-      disc(px, py, r, `rgba(226,226,234,${(big ? 0.5 : 0.38) * (1 - q)})`); } }
+      const px = x - q * (big ? 8 : 4.5) + Math.sin(i * 2.3) * q * (big ? 8 : 4.5), py = y - q * (big ? 19 : 12) - i * q * (big ? 1.8 : 1), r = (big ? 2.6 : 1.5) + q * (big ? 7.5 : 3.8);   // 5.96 (Omar): a bit more smoke (5.94: 6/3, 15/9, 1.4/0.7, 2+5.5q / 1.1+2.6q, alpha 0.5/0.38)
+      disc(px, py, r, `rgba(226,226,234,${(big ? 0.55 : 0.45) * (1 - q)})`); } }
   // 5.94: a shisha standing on the ground (yb), glow 0 to 1 for the coal; returns where the hose comes out.
   function shisha(x, yb, gl){
     oval(x, yb - 4, 4, 4.3, "#2f6b52"); oval(x - 1.4, yb - 5.2, 1, 1.6, "rgba(255,255,255,.25)");                   // glass base
@@ -1257,13 +1257,15 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(stuck) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
         else seg([[hx - 2, hy - 7], [hx + 5, gy]], "#7a5634", 1.1); } },                                            // planted like a staff
     /* 5.86 (Omar): a street sweeper sweeps a pile together, the wind blows it away, then a black BMW stops and gives him money. 5.93 (Omar): no leaves or wind now */
-    { w(){ const sx = W * 0.25, v = 45,   // 5.91 (Omar): his patch is nearer the side he comes from (was W * 0.42)
-        tIn = (sx + 30) / v, tC = tIn + 6,   /* 5.93 (Omar): no leaves or wind any more, he just sweeps (was tG = tIn + 5, tC = tG + 4.2) */ cv = 160, stop = 3.2, tOut = tC + stop + 0.8;
-        return {sx, v, tIn, tC, cv, stop, tOut}; },
+    /* 5.96 (Omar): he walks half as far in before he starts sweeping (5.91-5.95: sx = W * 0.25; 5.86-5.90: W * 0.42), and the BMW only
+       appears once he has started: it comes in quicker and brakes to a stop by him over arriveT s (5.86-5.95: it came in at 160 px/s
+       and was already on its way before he reached his spot). */
+    { w(){ const sx = (W * 0.25 - 30) / 2, v = 45, arriveT = 8,
+        tIn = (sx + 30) / v, tC = tIn + arriveT,   /* 5.93 (Omar): no leaves or wind any more, he just sweeps */ stop = 3.2, tOut = tC + stop + 0.8, cv = 2 * (W + 90 - sx - 40) / arriveT;
+        return {sx, v, tIn, tC, cv, stop, tOut, arriveT}; },
       len(){ const w = this.w(); return w.tOut + (w.sx + 40) / w.v; },
-      draw(u){ const {sx, v, tIn, tC, cv, stop, tOut} = this.w();
+      draw(u){ const {sx, v, tIn, tC, cv, stop, tOut, arriveT} = this.w();
         // the car: comes in from the right, slows, stops by him, then drives off to the left
-        const dc = W + 90 - sx - 40, arriveT = 2 * dc / cv;                                                          // decelerating to a stop over dc
         let cx = null; if(u > tC - arriveT && u < tC){ const e = u - (tC - arriveT); cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
         else if(u >= tC && u < tC + stop) cx = sx + 40; else if(u >= tC + stop){ const e = u - tC - stop; cx = sx + 40 - 120 * e * e; }
         if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black");
