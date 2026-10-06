@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.1",
+  "date": "2026-10-06",
+  "items": [
+   "Fixed the descriptions for Which Country?, Which Country? Arab Edition and Guess the Song: the city or lyric is on screen, the host doesn't read it out."
+  ]
+ },
+ {
   "v": "6.0",
   "date": "2026-10-06",
   "items": [
