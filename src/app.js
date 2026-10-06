@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.15`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.16`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1327,9 +1327,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(flip) rider();
         if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip);
         if(!flip) rider(); } },
-    { f(){ const fx = W * 0.3; return {fx, tA: (W + 60 - fx) / 45}; },
-      len(){ const f = this.f(); return f.tA + 5.5 + (f.fx + 60) / 45; },
-      draw(u){ const {fx, tA} = this.f(), st = u - tA;
+    /* 6.16 (Omar): the ful cart and the tuk-tuk are one scene now: the tuk-tuk comes the other way and passes the cart while he is
+       ladling (tT is when it sets off; it reaches the cart 2 s into the serving). Before, the tuk-tuk was its own scene after the cat. */
+    { f(){ const fx = W * 0.3, tA = (W + 60 - fx) / 45; return {fx, tA, tT: tA + 2 - (fx + 70) / 105}; },
+      len(){ const f = this.f(); return Math.max(f.tA + 5.5 + (f.fx + 60) / 45, f.tT + (W + 140) / 105); },
+      draw(u){ const {fx, tA, tT} = this.f(), st = u - tA;
+        oval(W * 0.2, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(W * 0.2 + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");   // the tuk-tuk's pothole, on the road above the line
         const x = st < 0 ? W + 60 - 45 * u : st < 5.5 ? fx : fx - 45 * (st - 5.5);
         const cIn = u - (tA - 11), cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);
         const lad = st > 0.8 && st < 3.6, k = lad ? ((st - 0.8) % 1.4) / 1.4 : 0;
@@ -1339,7 +1342,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         person(vx, gy, -1, st < 0 || st > 5.5 ? {...V, ph: u * 9, lean: 0.25, arms: [[1.3, 1.5], [1.2, 1.4]]} : lad ? {...V, arms: [[1.6 + 1.2 * Math.sin(k * Math.PI * 2), 2.2], [0.4, 0.9]]} : walking ? {...V, ph: u * 9} : V);
         if(cx != null){ const gone = st > 3.7, hasPlate = st > 3.3, C = {shirt: "#3f7f6e", pants: "#2b2f3a", skin: "#9a6544"};
           const P = person(cx, gy, gone ? -1 : 1, gone ? {...C, ph: u * 10, arms: [[1.2, 1.6], [0.2, 0.3]]} : -20 + 40 * cIn < fx - 34 ? {...C, ph: u * 10} : {...C, arms: [[1.1, 1.6], [0.2, 0.3]]});
-          if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } } } },
+          if(hasPlate || (st > 0.8 && !gone)){ const h = P.hands[0]; oval(h[0], h[1] - 1, 5, 1.6, "#f2efe6"); if(hasPlate) oval(h[0], h[1] - 2.2, 3.2, 1.3, "#8a5a28"); } }
+        if(u > tT && u < tT + (W + 140) / 105){ const x = -70 + 105 * (u - tT), px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk (5.60: after the cat, before the hantour)
+        const sw = Math.abs(dx) < 50 ? Math.cos(dx / 50 * Math.PI / 2) : 0;
+        const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
+        tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } } },   // 5.58: the tuk-tuk
     { c(){ const tw = (W + 50) / (32 + SMV) + 1.2, wd = 32 * tw, tr = (W + 40 - wd) / 140; return {wd, tw, tr}; },   // 5.74 (Omar): she walks until she has passed the smoker by a bit (1.2 s), then runs (5.57-5.73: ran after 15% of the way)
       len(){ const c = this.c(); return Math.max(c.tw + 0.6 + c.tr, (W + 60) / SMV); },   // 5.59: as long as the smoker takes to cross
       draw(u){ const {wd, tw} = this.c(); let x, run = false, ph;
@@ -1353,11 +1360,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(u > gIn){ if(u < seeAt) drawCat(gx0 - 30 * (u - gIn), -1, (u - gIn) * 10, false, "#8f9095", "#5d5e63");
           else { const e = u - seeAt, sx = gx0 - 30 * (seeAt - gIn), a = Math.min(e, 0.35); const gx = sx + 150 * (a * a / 0.7 + Math.max(0, e - 0.35));
             if(gx < W + 30) drawCat(gx, 1, e * 24, e > 0.15, "#8f9095", "#5d5e63"); } } } },
-    { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk (5.60: after the cat, before the hantour)
-        oval(px, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(px + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");          // a pothole, on the road above the line
-        const sw = Math.abs(dx) < 50 ? Math.cos(dx / 50 * Math.PI / 2) : 0;
-        const lean = sm(cl((x - W * 0.48) / 40, 0, 1)) * (1 - sm(cl((x - W * 0.66) / 40, 0, 1)));
-        tuktuk(x, 1, x / 4, lean, sw, Math.abs(dx) < 50 ? -0.06 * Math.sin(dx / 50 * Math.PI) : 0, (dx > -180 && dx < -75) || (x > W * 0.78 && x < W * 0.84)); } },
+    /* 6.16: the tuk-tuk's own scene (5.58-6.15) moved into the ful cart scene above */
     { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
     /* 5.76 (Omar): a woman walking her dog while she talks on the phone. The dog stops to sniff about halfway (she waits, still talking). */
     /* 6.13 (Omar): when the family bike goes past, the dog bolts after it. The jerk pulls the lead out of her hand, the dog runs off
