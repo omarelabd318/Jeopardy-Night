@@ -3,6 +3,36 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.23",
+  "date": "2026-10-06",
+  "items": [
+   "Mix clues show which category they came from again, e.g. \"Party Games Mix · Price Is Right\"."
+  ]
+ },
+ {
+  "v": "6.22",
+  "date": "2026-10-06",
+  "items": [
+   "The Parent Trap is now about the film itself: more plot questions and \"Who says it?\" lines instead of budget and filming trivia."
+  ]
+ },
+ {
+  "v": "6.21",
+  "date": "2026-10-06",
+  "items": [
+   "Mix clues no longer say which category they came from, just the mix and the value.",
+   "Guess the… Mix is now the photo rounds only."
+  ]
+ },
+ {
+  "v": "6.20",
+  "date": "2026-10-06",
+  "items": [
+   "New Mixes group: ten bigger categories that pull clues from several others (Egypt Mix 1 and 2, Guess the… Mix, Maps & World Mix, Party Games Mix, Knowledge Mix 1 and 2, Entertainment Mix 1 and 2, and Football Mix). Each clue shows which category it came from.",
+   "New category: The Parent Trap (the 1998 film), 75 hard clues."
+  ]
+ },
+ {
   "v": "6.19",
   "date": "2026-10-06",
   "items": [

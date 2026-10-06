@@ -12,7 +12,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `src/app.js`: the game logic. `CAT_GROUPS` sets the setup-screen groups, and `FOOTBALL` sets the Football mode pool (a random 6 are picked per game).
 - `src/builtin.js` and `src/base.json`: the original categories and clues.
 - `src/extra.js`: adds the v4 categories (Who Am I?, Stadiums, Formations, Guess the Food and others), and adds photo clues only when their photo exists.
-- `build.js`: run `node build.js` to write `index.html`.
+- `build.js`: run `node build.js` to write `index.html`. Since 6.20 it also defines the mix categories (`MIXES`): each lists source categories, and a mix tile opens a clue from one of them as that category (`mixPick` in `src/app.js`).
 - `mkpacks.js`: run `node mkpacks.js` only when Guess the Food photos change. It rebuilds `photos/food-100.js` to `food-500.js` from `v4work/food-photos/` and needs ImageMagick's `convert`. Run `node mkpacks.js logo` when Guess the Logo images change; it rebuilds `photos/logo-100.js` to `logo-500.js` from `v4work/logo-photos/` (listed in `v4work/logo-photos.json`, downloaded by `v4work/logo-fetch.py`).
 - `v4work/out/<id>.json`: each file replaces that category's clues at build time, in the shape `{id, name, type, desc, data:{"100":[...],...,"500":[...]}}`. The matching `.log.md` files list what each v4 pass changed.
 - `v4work/*.json`: lists of photo clues (`new-photos.json`, `stadium-photos.json`, `food-photos.json`, `category-photos.json` for photo clues inside text categories, `photo-cats.json` for Guess the Country and Egypt: Photo Edition) and zoom spots (`new-photo-spots.json`).

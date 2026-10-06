@@ -155,13 +155,15 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.19`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.23`); }
 
 /* ---------- setup ---------- */
-const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
+const CAT_GROUPS = [
+  ["Mixes", ["mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb"]],   /* 6.20 (Omar): the mixes, first */
+  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egyph","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","lyricar","emeg","emseg","ctryar"]],
   ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","tvmix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
+  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","tvmix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","ptrap","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
@@ -197,6 +199,7 @@ const TIPS = {
   st: "Stranger Things: Hawkins, the Upside Down and the gang.",
   office: "The Office: Dunder Mifflin Scranton, from Michael to Dwight.",
   tvmix: "A mix of questions from all the TV show categories in one.",
+  ptrap: "The 1998 film The Parent Trap: the twins, camp, the swap and Meredith. Hard, and nothing about the actors.",
   netflix: "Netflix hits, from Money Heist and Squid Game to Dark and Wednesday.",
   friends: "Friends: Ross, Rachel, Monica, Chandler, Joey and Phoebe.",
   himym: "How I Met Your Mother: Ted, Marshall, Lily, Robin and Barney.",
@@ -277,7 +280,7 @@ const TIPS = {
   gctry: "A photo from somewhere in the world. Name the country.",
   x18: "Name the adult film star from the photo. Needs a code."
 };
-const tipOf = c => TIPS[c.id] || c.desc || "";
+const tipOf = c => TIPS[c.id] || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
   const seen = new Set();
@@ -1963,12 +1966,16 @@ function pickIdx(cat,lvl,exclude){
   }
   return avail[Math.floor(Math.random()*avail.length)];
 }
-function openClue(cat,lvl,exclude,forceIdx){
-  const preview = forceIdx !== undefined;
-  const idx = preview ? forceIdx : takePick(cat,lvl,exclude);
+function openClue(cat,lvl,exclude,forceIdx,tile){
+  /* 6.20: a mix opens the clue it picked as that source category, remembering the mix as the tile it belongs to */
+  if(isMix(cat)){ const k = `${cat}-${lvl}`; let m = PICKS[k]; delete PICKS[k];
+    if(!m || exclude !== undefined || S.used.has(`${m.src}-${lvl}-${m.i}`)) m = mixPick(cat,lvl);
+    openClue(m.src, lvl, undefined, m.i, cat); return; }
+  const preview = forceIdx !== undefined && !tile;
+  const idx = forceIdx !== undefined ? forceIdx : takePick(cat,lvl,exclude);
   const type = catById(cat).type;
   const zoomStart = {100:3.5,200:4.2,300:4.8,400:5.4,500:6}[lvl];
-  S.cur = {cat,lvl,idx,type,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
+  S.cur = {cat,lvl,idx,type,tile,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
            secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, cid: newRoom().slice(0,8), stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
   stopTimer();
   try{ renderClue(); }catch(err){ $("#clue").innerHTML = `<div class="eyebrow">${esc(catById(cat).name)} · ${lvl}</div><p class="note">This clue couldn't be shown (${esc(err && err.message || err)}). Tell Claude this message. Tap Back to board.</p><div class="row"><button class="btn small" data-act="cancel">Back to board</button></div>`; }
@@ -2037,7 +2044,15 @@ function warmRef(ref, now){ if(!ref) return;
     im.onload = () => { showPack(key, im.src); next(); };
     im.onerror = () => { DIRECT[key] = null; next(); loadPack(pack).then(() => showPack(key, (window.__fp || {})[key])); }; im.src = `photos/${key}.jpg`; };
   if(now) go(() => {}); else { WQ.push(go); wPump(); } }
-function prepick(cat,lvl){ const k = `${cat}-${lvl}`; if(PICKS[k] !== undefined && !S.used.has(`${k}-${PICKS[k]}`)) return;
+/* 6.20 (Omar): a mix tile picks one of its sources, each equally likely (sources that are also on this board only if nothing else
+   has clues at that value), then a clue from it. A source can itself be a mix-like category such as TV Show Mix. */
+const isMix = id => (catById(id) || {}).type === "mix";
+function mixPick(cat,lvl){
+  const src = catById(cat).src.filter(s => catById(s) && (pool(s,lvl) || []).length), off = src.filter(s => !(S.cats || []).includes(s));
+  const from = off.length ? off : src, s = from[Math.floor(Math.random() * from.length)];
+  return {src: s, i: pickIdx(s,lvl)}; }
+function prepick(cat,lvl){ const k = `${cat}-${lvl}`;
+  if(isMix(cat)){ const m = PICKS[k]; if(m && !S.used.has(`${m.src}-${lvl}-${m.i}`)) return; PICKS[k] = mixPick(cat,lvl); warmRef(imgRefFor(PICKS[k].src,lvl,PICKS[k].i)); return; } if(PICKS[k] !== undefined && !S.used.has(`${k}-${PICKS[k]}`)) return;
   const n = pool(cat,lvl).length; if(!n) return; PICKS[k] = pickIdx(cat,lvl); warmRef(imgRefFor(cat,lvl,PICKS[k])); }
 function takePick(cat,lvl,exclude){ const k = `${cat}-${lvl}`, i = PICKS[k]; delete PICKS[k];
   if(exclude === undefined && i !== undefined && i < pool(cat,lvl).length && !S.used.has(`${k}-${i}`)) return i;
@@ -2168,7 +2183,7 @@ function renderClue(){
   const badges = [c.x2!=null && S.teams[c.x2] ? `<span class="badge">×2 · ${esc(S.teams[c.x2].name)}</span>` : "", ...Object.keys(c.two).map(i => S.teams[i] ? `<span class="badge">2 answers allowed · ${esc(S.teams[i].name)}</span>` : "")].filter(Boolean).join("");
   const canTwo = S.power && !S.ffa && !c.preview && !c.revealed ? /* only the team whose turn it is can use 2 answers */ S.teams.map((t,i) => (i===(S.turn||0) && !t.twoUsed && !c.two[i]) ? `<button class="pwb" data-two="${i}">${esc(t.name)}: 2 answers</button>` : "").filter(Boolean).join("") : "";
   $("#clue").innerHTML = `
-    <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
+    <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${c.tile ? esc(catById(c.tile).name) + " · " : ""}${esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
     ${badges ? `<div class="badges">${badges}</div>` : ""}
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
@@ -2254,14 +2269,14 @@ $("#clue").addEventListener("click", e => {
     renderClue();
   }
   if(a==="swap"){ const turn = c.turn; S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
-    const two = c.two; openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
+    /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
   if(a==="cancel"){ closeCard(); }
   if(a==="done" && c.preview){ closeCard(); return; }
   if(a==="done"){
     Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1));
     if(c.x2!=null && S.teams[c.x2]){ S.teams[c.x2].x2used = true; } S.x2 = null;
     Object.keys(c.two).forEach(i => { if(S.teams[i]) S.teams[i].twoUsed = true; });
-    S.done[`${c.cat}-${c.lvl}`] = true;
+    S.done[`${c.tile || c.cat}-${c.lvl}`] = true;   // 6.20: a mix clue marks the mix tile
     S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]);
     S.turn = ((S.turn||0) + 1) % S.teams.length;
     closeCard(); renderBoard(); renderScores();
