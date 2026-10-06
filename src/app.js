@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.91`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.92`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -983,7 +983,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     for(const [a, b] of [[[26, -14], [6, -25]], [[26, -14], [-14, -25]]]){ g.beginPath(); g.moveTo(X(a[0]), gy + a[1]); g.quadraticCurveTo(X((a[0] + b[0]) / 2), gy + Math.min(a[1], b[1]) - 4, X(b[0]), gy + b[1]); g.stroke(); }
     oval(X(23), gy - 16, 2.4, 1.6, "#f2a7c3"); oval(X(26), gy - 16, 2.4, 1.6, "#f2a7c3"); disc(X(24.5), gy - 16, 1.1, "#e0779f");   // bow
     ["#ffffff", "#f7c6d9", "#ffe08a", "#ffffff", "#f7c6d9"].forEach((c, i) => disc(X(15 + i * 2), gy - 16.5 - (i % 2), 1.2, c));   // flowers
-    const w = Math.sin(t * 9) * 0.5; seg([[X(-12), gy - 21], [X(-15), gy - 28], [X(-15 + 3 * w), gy - 33]], "#c08a60", 1.6);      // a hand waving from the back window
+    // 5.92 (Omar): no hand waving out of the back window any more (5.86-5.91: const w = Math.sin(t * 9) * 0.5; seg([[X(-12), gy - 21], [X(-15), gy - 28], [X(-15 + 3 * w), gy - 33]], "#c08a60", 1.6);)
     if((t % 1.4) < 0.7) for(let i = 0; i < 2; i++){ const r = 4 + i * 4; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(36), gy - 13, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // honking
   }
   // A Cairo city bus: white, a red band, windows full of heads, the back door open.
