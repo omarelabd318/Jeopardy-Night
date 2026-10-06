@@ -156,7 +156,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.38`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.39`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -279,7 +279,7 @@ const TIPS = {
   headl: "Three headlines, only one is real. Pick it.",
   order: "Three events. Put them in order, earliest first.",
   gctry: "A photo from somewhere in the world. Name the country.",
-  x18: "Name the adult film star from the photo. Needs a code."
+  x18: "Name the adult film star from the photo.",   // 6.39 (Omar): shown once unlocked; before that the tip just says "Code required" (see tipOf). 6.0-6.38: "… Needs a code."
 };
 /* 6.27 (Omar): the Edit mixes panel at the bottom of setup. Each mix may draw from its own section's categories (plus the ones it
    had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Locked categories
@@ -310,7 +310,7 @@ document.addEventListener("click", e => { const b = e.target.closest && e.target
   store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
   renderMixEdit(); renderChips(); });
 $("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });
-const tipOf = c => (c.type === "mix" ? "" : TIPS[c.id]) || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
+const tipOf = c => (LOCKED_IDS.has(c.id) && !unlocked.has(c.id) ? "Code required" : "") || (c.type === "mix" ? "" : TIPS[c.id]) || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
   const seen = new Set();
