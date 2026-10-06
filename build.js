@@ -15,6 +15,7 @@ if(extra.apply) extra.apply({CATS,DATA,F,ACT,AR});
 // keep only flags that are used
 const FLAGCODE=Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync(W+'/flag-codes.json','utf8'))).filter(([id,c])=>fs.existsSync(`photos/flags/${c}.svg`)));   // 6.19
 const J=x=>JSON.stringify(x);
+const FOOTBALL_IDS=JSON.parse(fs.readFileSync('src/app.js','utf8').match(/const FOOTBALL = (\[[^\]]*\])/)[1]);   // 6.20: Football Mix = the Football mode pool
 const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8'), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}
 const CATS = ${J(CATS)};
@@ -40,6 +41,22 @@ DATA.tvmix = {};
   SHOWS.forEach(id => { const c = CATS.find(x => x.id===id); (DATA[id][l]||[]).forEach(e => { if(Array.isArray(e) && typeof e[0]==="string") DATA.tvmix[l].push([\`\${c.name}: \${e[0]}\`, e[1]]); }); });
 });
 })();
+/* 6.20 (Omar): mix categories. A mix holds no clues of its own: each tile picks one of its sources (each source equally likely) and opens
+   a clue from it exactly as that category would, labelled "Mix · Source" (see mixPick and openClue in src/app.js). */
+const MIXES = [
+  ["mixeg1", "Egypt Mix 1", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
+  ["mixeg2", "Egypt Mix 2", ["egy","egh","cairo","egyph"]],
+  ["mixguess", "Guess the… Mix", ["year","song","fyear","score","foodpic","logo","car","actor","footy","person","gctry"]],
+  ["mixmap", "Maps & World Mix", ["geo","flag","shape","pin","ctry","lang","trans"]],
+  ["mixparty", "Party Games Mix", ["emov","link","near","price","headl","order"]],
+  ["mixkn1", "Knowledge Mix 1", ["his","islam","year","sci","cal","brand"]],
+  ["mixkn2", "Knowledge Mix 2", ["ww2","space","food","ffood","mb","curr","tg"]],
+  ["mixent1", "Entertainment Mix 1", ["blockbuster","tvmix","plot","igf","lyric","song"]],
+  ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel"]],
+  ["mixfb", "Football Mix", ${J(FOOTBALL_IDS)}]];
+MIXES.forEach(([id,name,src]) => { src = src.filter(s => CATS.some(c => c.id===s));
+  CATS.push({id, name, type:"mix", src, desc:"A mix of " + src.map(s => CATS.find(c => c.id===s).name).join(", ") + ". Each tile picks one of them."});
+  DATA[id] = {100:[],200:[],300:[],400:[],500:[]}; });
 `;
 const out=`${head}\n<script>\n${data}${app}</script>\n`;
 fs.writeFileSync(process.argv[2]||'index.html',out);
