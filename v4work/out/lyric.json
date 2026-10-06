@@ -2,7 +2,7 @@
  "id": "lyric",
  "name": "Finish the Lyric",
  "type": "text",
- "desc": "A famous line from a song with the last words missing. Finish it. Half the songs are Arabic, mostly Egyptian.",
+ "desc": "A famous line from an English or international song with the last words missing. Finish it.",
  "data": {
   "100": [
    [
@@ -38,52 +38,12 @@
     "crazy (Call Me Maybe, Carly Rae Jepsen)"
    ],
    [
-    "Finish the lyric: “⁧تملّي معاك ولو حتى ___⁩”",
-    "بعيد عني (Tamally Maak, Amr Diab)"
-   ],
-   [
-    "Finish the lyric: “⁧حبيبي يا نور ___⁩”",
-    "العين (Nour El Ain, Amr Diab)"
-   ],
-   [
-    "Finish the lyric: “⁧أنا لك على طول ___ ليا⁩”",
-    "خليك (Ana Lak Ala Tool, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧يا حبيبتي يا ___⁩”",
-    "مصر (Ya Habibti Ya Masr, Shadia)"
-   ],
-   [
-    "Finish the lyric: “⁧زي الهوا يا ___⁩”",
-    "حبيبي (Zay El Hawa, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧أهواك وأتمنى لو ___⁩”",
-    "أنساك (Ahwak, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧ألف ليلة و___⁩”",
-    "ليلة (Alf Leila w Leila, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧يا ليلة العيد ___⁩”",
-    "آنستينا (Ya Leilet El Eid, Umm Kulthum)"
-   ],
-   [
     "Finish the lyric: “I'm a Barbie girl in a Barbie ___”",
     "world (Barbie Girl, Aqua)"
    ],
    [
     "Finish the lyric: “Baby, baby, baby, oh, like baby, baby, baby, ___”",
     "no (Baby, Justin Bieber)"
-   ],
-   [
-    "Finish the lyric: “⁧جانا الهوى جانا، ورمانا الهوى ___⁩”",
-    "رمانا (Gana El Hawa, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧بلادي بلادي بلادي، لكِ حبي و___⁩”",
-    "فؤادي (Biladi Biladi, Sayed Darwish)"
    ]
   ],
   "200": [
@@ -120,52 +80,12 @@
     "happy (Happy, Pharrell Williams)"
    ],
    [
-    "Finish the lyric: “⁧إنت عمري اللي ابتدا ___⁩”",
-    "بنورك صباحه (Enta Omri, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧على حسب وداد قلبي يا ___⁩”",
-    "بوي (Ala Hesb Wedad, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧علّي صوتك بالغنا، لسه الأغاني ___⁩”",
-    "ممكنة (Ally Sotak, Mohamed Mounir)"
-   ],
-   [
-    "Finish the lyric: “⁧حبيتك بالصيف، حبيتك ___⁩”",
-    "بالشتي (Habaytak Bel Sayf, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧نسّم علينا الهوا من مفرق ___⁩”",
-    "الوادي (Nassam Alayna El Hawa, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧أنا وشادي ___ سوا⁩”",
-    "غنّينا (Shadi, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧يا مسافر وحدك وفايتني، ليه ___⁩”",
-    "تبعد عني (Ya Msafer Wahdak, Mohamed Abdel Wahab)"
-   ],
-   [
-    "Finish the lyric: “⁧بتونّس بيك وانت ___⁩”",
-    "معايا (Batwannis Beek, Warda)"
-   ],
-   [
     "Finish the lyric: “Hit me, baby, one more ___”",
     "time (...Baby One More Time, Britney Spears)"
    ],
    [
     "Finish the lyric: “I came in like a ___”",
     "wrecking ball (Wrecking Ball, Miley Cyrus)"
-   ],
-   [
-    "Finish the lyric: “⁧سوّاح وماشي في البلاد سوّاح، والخطوة بيني وبين حبيبي ___⁩”",
-    "براح (Sawwah, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧سألوني الناس عنك يا ___⁩”",
-    "حبيبي (Saalouni El Nas, Fairuz)"
    ]
   ],
   "300": [
@@ -202,52 +122,12 @@
     "di (Blue (Da Ba Dee), Eiffel 65)"
    ],
    [
-    "Finish the lyric: “⁧جلست والخوف بعينيها تتأمل فنجاني ___⁩”",
-    "المقلوب (Qariat El Fengan, Abdel Halim Hafez)"
-   ],
-   [
-    "Finish the lyric: “⁧أخاصمك آه، أسيبك ___⁩”",
-    "لا (Akhasmak Ah, Nancy Ajram)"
-   ],
-   [
-    "Finish the lyric: “⁧يا بنت السلطان، حنّي على ___⁩”",
-    "الغلبان (Ya Bent El Sultan, Ahmed Adaweya)"
-   ],
-   [
-    "Finish the lyric: “⁧زيديني عشقاً زيديني، يا أحلى ___⁩”",
-    "نوبات جنوني (Zidini Ishqan, Kadim Al Sahir)"
-   ],
-   [
-    "Finish the lyric: “⁧شبابيك، الدنيا كلها ___⁩”",
-    "شبابيك (Shababeek, Mohamed Mounir)"
-   ],
-   [
-    "Finish the lyric: “⁧يا الميدان، كنت فين من ___⁩”",
-    "زمان (Ya El Midan, Cairokee)"
-   ],
-   [
-    "Finish the lyric: “⁧السح الدح ___⁩”",
-    "إمبو (El Sah El Dah Embo, Ahmed Adaweya)"
-   ],
-   [
-    "Finish the lyric: “⁧ساكن في حي السيدة، وحبيبي ساكن في ___⁩”",
-    "الحسين (Saken Fi Hay El Sayeda, Mohamed Abdel Muttalib)"
-   ],
-   [
     "Finish the lyric: “I kissed a girl and I ___ it”",
     "liked (I Kissed a Girl, Katy Perry)"
    ],
    [
     "Finish the lyric: “It's the eye of the tiger, it's the thrill of the ___”",
     "fight (Eye of the Tiger, Survivor)"
-   ],
-   [
-    "Finish the lyric: “⁧هذه ليلتي وحلم ___⁩”",
-    "حياتي (Hazihi Laylati, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧كيفك إنت؟ ___ إنت⁩”",
-    "ملّا (Kifak Inta, Fairuz)"
    ]
   ],
   "400": [
@@ -284,52 +164,12 @@
     "free (I Want to Break Free, Queen)"
    ],
    [
-    "Finish the lyric: “⁧حب إيه اللي انت جاي ___ عليه⁩”",
-    "تقول (Hob Eh, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧غنيلي شوية شوية، غنيلي وخد ___⁩”",
-    "عينيا (Ghanili Shwaya Shwaya, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧ست الحبايب يا ___⁩”",
-    "حبيبة (Set El Habayeb, Fayza Ahmed)"
-   ],
-   [
-    "Finish the lyric: “⁧أمل حياتي، يا حب غالي ما ___⁩”",
-    "ينتهيش (Amal Hayati, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧لبيروت، من قلبي ___ لبيروت⁩”",
-    "سلامٌ (Li Beirut, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧دارت الأيام ومرّت ___⁩”",
-    "الأيام (Daret El Ayam, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧زوروني كل سنة ___⁩”",
-    "مرة (Zuruni Kul Sana Marra, Sayed Darwish / Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧سالمة يا سلامة، رحنا وجينا ___⁩”",
-    "بالسلامة (Salma Ya Salama, Sayed Darwish)"
-   ],
-   [
     "Finish the lyric: “'Cause this is thriller, thriller ___”",
     "night (Thriller, Michael Jackson)"
    ],
    [
     "Finish the lyric: “Billie Jean is not my ___”",
     "lover (Billie Jean, Michael Jackson)"
-   ],
-   [
-    "Finish the lyric: “⁧لبنان يا قطعة ___⁩”",
-    "سما (Lebnan Ya Oteit Sama, Wadih El Safi)"
-   ],
-   [
-    "Finish the lyric: “⁧طول عمري بخاف من الحب، وسيرة الحب، وظلم ___⁩”",
-    "الحب (Seeret El Hob, Umm Kulthum)"
    ]
   ],
   "500": [
@@ -366,52 +206,12 @@
     "on (Take On Me, a-ha)"
    ],
    [
-    "Finish the lyric: “⁧أعطني الناي و___⁩”",
-    "غنِّ (Aatini El Nay, Fairuz)"
-   ],
-   [
-    "Finish the lyric: “⁧يا فؤادي لا تسل أين ___⁩”",
-    "الهوى (Al Atlal, Umm Kulthum)"
-   ],
-   [
-    "Finish the lyric: “⁧أهو ده اللي صار، وادي اللي ___⁩”",
-    "كان (Aho Da Elli Sar, Sayed Darwish)"
-   ],
-   [
-    "Finish the lyric: “⁧مصر يامّا يا ___⁩”",
-    "بهية (Masr Yamma Ya Bahiya, Sheikh Imam)"
-   ],
-   [
-    "Finish the lyric: “⁧أنا قلبي دليلي، قال لي ___⁩”",
-    "هتحبي (Ana Albi Dalili, Laila Mourad)"
-   ],
-   [
-    "Finish the lyric: “⁧الحلوة دي قامت تعجن في ___⁩”",
-    "البدرية (El Helwa Di, Sayed Darwish)"
-   ],
-   [
-    "Finish the lyric: “⁧يا حلو صبّح، يا حلو ___⁩”",
-    "طُل (Ya Helw Sabbah, Mohamed Qandil)"
-   ],
-   [
-    "Finish the lyric: “⁧على بلد المحبوب ___⁩”",
-    "وديني (Ala Balad El Mahboub, Umm Kulthum)"
-   ],
-   [
     "Finish the lyric: “Wake me up before you ___”",
     "go-go (Wake Me Up Before You Go-Go, Wham!)"
    ],
    [
     "Finish the lyric: “Once upon a time you dressed so fine, you threw the bums a ___ in your prime”",
     "dime (Like a Rolling Stone, Bob Dylan)"
-   ],
-   [
-    "Finish the lyric: “⁧أخي جاوز الظالمون المدى، فحقّ الجهاد وحقّ ___⁩”",
-    "الفدا (Akhi Jawaz El Zalimoun, Mohamed Abdel Wahab)"
-   ],
-   [
-    "Finish the lyric: “⁧ليالي الأنس في ___⁩”",
-    "فيينا (Layali El Ons, Asmahan)"
    ]
   ]
  }
