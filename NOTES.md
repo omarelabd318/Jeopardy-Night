@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.4. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.5. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -587,3 +587,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Wedding escort bike:** it weaves, drifting about 7 px forwards and back and leaning into each swerve.
   - **Bus chase:** once the man has been on the step for a moment, he holds the door at chest height and lowers his free hand. Before, he gripped above his head and kept waving.
 - 6.4 (2026-10-06): Omar asked for more Egyptian items in Price Is Right, so there are 30 more (6 per value), all Egyptian. Current prices were checked in Egyptian news in October 2026 and are dated in each question. They cover museum and pyramid tickets, ful, ta'meya, ahwa tea, El Abd kahk, Eid sheep, mango, the monorail and LRT, the cinema, the tourist visa and iPhone prices. There are also some bigger numbers: Ras El Hekma, Suez Canal revenue, the IMF programme, Al Ahly's Club World Cup fee and the cost of the GEM. Sources are listed in `v4work/out/price.log.md`. The category now has 160 clues.
+- 6.5 (2026-10-06): Omar asked for the sweeper to flip the light to green. After pocketing the money, he walks back to the light and reaches up. It turns green, the BMW drives off on green, and then he picks up the light and leaves. Before, the car left while the light was still red. `trafficLight()` now takes "red", "green" or nothing (off while carried).

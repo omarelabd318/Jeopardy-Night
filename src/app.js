@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.4`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.5`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1074,11 +1074,12 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     if((t % 1.4) >= 0.7) for(let i = 0; i < 2; i++){ const r = 3 + i * 3.5; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(21), gy - 18.5, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // 5.90 (Omar): honking too, in turn with the car
   }
   // 6.3 (Omar): the sweeper's portable traffic light: a weighted base, a pole and a three-lamp head. yb is the bottom of the base.
-  function trafficLight(x, yb, red){
+  function trafficLight(x, yb, lit){   // lit: "red", "green" or nothing (off, while carried)
     oval(x, yb - 0.8, 4.5, 1.3, "#2a2d33"); seg([[x, yb - 1], [x, yb - 17]], "#5b6068", 1.4);
     rect(x - 2.6, yb - 27, 5.2, 11, "#1b1d22");
-    [["#ff3b30", "#5a1f1c"], ["#ffcc33", "#5a4a1c"], ["#3ddc6b", "#1c4a2a"]].forEach(([on, off], i) => disc(x, yb - 24.6 + i * 3.4, 1.25, i === 0 && red ? on : off));
-    if(red) glow(x, yb - 24.6, 6, "rgba(255,60,50,.45)");
+    const on = lit === "red" ? 0 : lit === "green" ? 2 : -1;
+    [["#ff3b30", "#5a1f1c"], ["#ffcc33", "#5a4a1c"], ["#3ddc6b", "#1c4a2a"]].forEach(([c1, c0], i) => disc(x, yb - 24.6 + i * 3.4, 1.25, i === on ? c1 : c0));
+    if(on >= 0) glow(x, yb - 24.6 + on * 3.4, 6, on ? "rgba(60,220,110,.45)" : "rgba(255,60,50,.45)");
   }
   // A car, side on: "white" (the wedding car) or "black" (the BMW, with a hint of the kidney grille).
   function car(x, d, rot, kind){
@@ -1396,14 +1397,15 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     /* 5.86 (Omar): a street sweeper, and a black BMW that gives him money. 5.93: no leaves or wind. 5.96: he sweeps near the side he
        comes from, and the car only appears once he's sweeping. 6.3 (Omar): he also carries a portable traffic light. He sets it down
        on red a little ahead of his patch, sweeps, the BMW stops at the light, he goes to the window to ask, it hands him money and
-       drives off, and he picks up the light and his broom and leaves. (5.86-6.2: no light; the car pulled up by him.) */
+       drives off, and he picks up the light and his broom and leaves. (5.86-6.2: no light; the car pulled up by him.) 6.5 (Omar): before the car leaves he goes back
+       and flips the light to green, so it drives off on green (6.3-6.4: it left on red). */
     { w(){ const sx = (W * 0.25 - 30) / 2, v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
         const t1 = (L - 8 + 30) / v, t2 = t1 + 0.9, tIn = t2 + 26 / v, tC = tIn + arriveT;    // walk in, set the light down, walk back, sweep until the car stops
-        const cx0 = L + 39, wx = cx0 - 2, t5 = tC + 0.3 + (wx - sx) / v, tD = t5 + 1.8, tP = t5 + 2.0;   // the car stops with its nose just past the light; he walks to its window
-        const t6 = tP + (wx - L - 7) / v, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;
-        return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, t6, t7, cv}; },
+        const cx0 = L + 39, wx = cx0 - 2, t5 = tC + 0.3 + (wx - sx) / v, tP = t5 + 2.0;   // the car stops with its nose just past the light; he walks to its window
+        const tF = tP + (wx - L - 7) / v, tG = tF + 0.4, tD = tF + 0.9, t6 = tD + 1.3, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;   // 6.5 (Omar): back at the light he flips it to green (tG), the car goes (tD), then he picks it up
+        return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, tF, tG, t6, t7, cv}; },
       len(){ const w = this.w(); return w.t7 + (w.L + 7 + 40) / w.v; },
-      draw(u){ const {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, t6, t7, cv} = this.w();
+      draw(u){ const {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, tF, tG, t6, t7, cv} = this.w();
         // the car: comes in from the right once he's sweeping, brakes to a stop at the light, then drives off to the left
         let cx = null; if(u > tIn && u < tC){ const e = u - tIn; cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
         else if(u >= tC && u < tD) cx = cx0; else if(u >= tD){ const e = u - tD; cx = cx0 - 120 * e * e; }
@@ -1419,14 +1421,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else if(u < t5){ x = sx + v * (u - tC - 0.3); pose = walk(u * 8.5); }
         else if(u < t5 + 1.4){ x = wx; pose = {arms: [[1.6, 1.8], [0.45, 0.8]], lean: 0.1}; }             // hand out at the window
         else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]]}; }                           // pockets it
-        else if(u < t6){ x = wx - v * (u - tP); d = -1; pose = walk(u * 8.5); }
+        else if(u < tF){ x = wx - v * (u - tP); d = -1; pose = walk(u * 8.5); }
+        else if(u < t6){ x = L + 7; d = -1; pose = u < tF + 0.7 ? {arms: [[1.2 + 0.15 * sm((u - tF) / 0.35), 1.3], [0.45, 0.8]]} : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }   // reaches up and flips it to green, then waits for the car to go
         else if(u < t7){ x = L + 7; d = -1; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = sm((u - t6 - 0.2) / 0.6); }   // picks it up
         else { x = L + 7 - v * (u - t7); d = -1; pose = walk(u * 8.5, holding); }
         const carried = u < t1 || u >= t7;
-        if(!carried && lightAt == null) trafficLight(L, gy, true);                                    // standing on red
+        const state = u < tG ? "red" : "green";
+        if(!carried && lightAt == null) trafficLight(L, gy, state);                                   // standing: red, until he flips it to green
         const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(carried || lightAt != null){ const [hx, hy] = S2.hands[0], k = carried ? 1 : lightAt;        // in his hand, or on its way between hand and ground
-          trafficLight(L + (hx - L) * k, gy + (hy + 8 - gy) * k, !carried && k < 0.5); }
+          trafficLight(L + (hx - L) * k, gy + (hy + 8 - gy) * k, !carried && k < 0.5 ? state : null); }
         if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
         else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
