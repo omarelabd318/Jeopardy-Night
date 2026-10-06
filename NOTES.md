@@ -55,6 +55,14 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - No free photo found: Yasmin Abdulaziz, Ahmed Belal, Taher Abouzeid, Mohamed Fouad, Marwan Pablo, Hassan Shakosh, Abu.
   - Photo too low-res, too blurry, or a painting: Ezzat Abou Aouf, Hassan Hosny, Salah Abdallah, Ahmed El Kass, Mahmoud Mokhtar El Tetsh, Ahmed Shawqi, Mohamed Hassanein Heikal.
 
+## Cloudflare deploys
+
+- Each merge to `main` should start a build in Cloudflare (Workers & Pages → jeopardy-night → Settings → Builds → Build history). A green tick there means it's live.
+- **Missed build (2026-10-06):** the merge of #88 (v6.24–6.26) never got a build. Its commit `4b63e46` wasn't in Build history at all, so the site stayed on v6.23 (#87) while GitHub had v6.26. #88 was merged about four minutes after #87, likely while the #87 build was still running. Cloudflare doesn't report its builds to GitHub, so the cause couldn't be confirmed.
+- **How to spot it:** the version on the title screen of the Cloudflare link is behind the one on GitHub, and the latest merge has no row in Build history.
+- **How to fix it:** merge any new change to `main`. Every build deploys the whole latest `main`, so it catches up. "Retry build" on an older row only rebuilds that older commit.
+- **To avoid it:** wait for the last merge's green tick in Build history before merging the next PR.
+
 ## Version history (from the original chat)
 - **1.x: Launch & The Egypt Update**
   - 1.0 First Jeopardy Night: 12 categories, 659 clues, teams and scoring, drawn flags, zoomed photo rounds, Act It Out and a timer.
