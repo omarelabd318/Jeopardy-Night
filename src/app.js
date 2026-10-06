@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.86`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.87`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1075,7 +1075,13 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         smoker(u);
         if(u < tw){ x = -20 + 32 * u; ph = u * 10; }
         else { const e = u - tw, a = Math.min(e, 0.6); x = -20 + wd + 32 * e + (140 - 32) * (a * a / 1.2 + Math.max(0, e - 0.6)); run = e > 0.25; ph = tw * 10 + e * 22; }
-        if(x < W + 30) drawCat(x, 1, ph, run); } },
+        if(x < W + 30) drawCat(x, 1, ph, run);
+        /* 5.87 (Omar): a grey cat wanders in from the other side a few seconds in. Just as the ginger cat passes the man it spots her:
+           she turns and bolts back the way she came, and the ginger cat runs after her. */
+        const seeAt = tw - 0.6, gIn = 3, gx0 = W + 25;
+        if(u > gIn){ if(u < seeAt) drawCat(gx0 - 30 * (u - gIn), -1, (u - gIn) * 10, false, "#8f9095", "#5d5e63");
+          else { const e = u - seeAt, sx = gx0 - 30 * (seeAt - gIn), a = Math.min(e, 0.35); const gx = sx + 150 * (a * a / 0.7 + Math.max(0, e - 0.35));
+            if(gx < W + 30) drawCat(gx, 1, e * 24, e > 0.15, "#8f9095", "#5d5e63"); } } } },
     { len: () => (W + 140) / 105, draw(u){ const x = -70 + 105 * u, px = W * 0.2, dx = x - px;   // 5.58: the tuk-tuk (5.60: after the cat, before the hantour)
         oval(px, gy - 2.2, 8, 1.6, "rgba(8,8,24,.75)"); oval(px + 1, gy - 2.8, 5, 0.8, "rgba(0,0,0,.5)");          // a pothole, on the road above the line
         const sw = Math.abs(dx) < 50 ? Math.cos(dx / 50 * Math.PI / 2) : 0;
@@ -1182,9 +1188,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     seg([[x + 6.5 * d, by - 2.5], [x + 7.8 * d, by + 0.5]], "#c2352c", 1.2);                                                 // collar
   }
   /* 5.57 (Omar): the cat is a scene of its own now. She walks in, then breaks into a run for the rest of the way. */
-  function drawCat(x, d, ph, run){
+  function drawCat(x, d, ph, run, fur = "#c9803a", dark = "#9a5a22"){   // 5.87: colours, for the second (grey) cat
     mark(x);
-    const fur = "#c9803a", dark = "#9a5a22", bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
+    const bob = run ? -1.6 * Math.abs(Math.sin(ph)) : 0, by = gy - 7 + bob, stretch = run ? 1.15 : 1;
     const head = (hx, hy) => { disc(hx, hy, 3, fur); poly([[hx - 2.4 * d, hy - 1.5], [hx - 1.6 * d, hy - 5], [hx - 0.2 * d, hy - 2.4]], fur); poly([[hx + 0.6 * d, hy - 2.6], [hx + 2 * d, hy - 5], [hx + 2.7 * d, hy - 1.4]], fur); disc(hx + 1.6 * d, hy - 0.3, 0.5, "#2b2b1a"); };
     const leg = (o, a, col) => seg([[x + o * d, by + 1], [x + o * d + Math.sin(a) * 5.5 * d, gy]], col, 1.6);
     if(run){ leg(-5, -0.8 * Math.sin(ph) - 0.2, dark); leg(4, 0.8 * Math.sin(ph) + 0.2, dark); }   // bounding: back pair and front pair
