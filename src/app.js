@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.6`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.7`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1321,7 +1321,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(x < W + 30) drawCat(x, 1, ph, run);
         /* 5.87 (Omar): a grey cat wanders in from the other side a few seconds in. Just as the ginger cat passes the man it spots her:
            she turns and bolts back the way she came, and the ginger cat runs after her. */
-        const seeAt = tw - 0.6, gIn = 3, gx0 = W + 25;
+        const seeAt = tw + 0.55, gIn = 3, gx0 = W + 25;   // 6.7 (Omar): the ginger cat sets off first and she bolts half a second later (5.87-6.6: tw - 0.6, she ran first)
         if(u > gIn){ if(u < seeAt) drawCat(gx0 - 30 * (u - gIn), -1, (u - gIn) * 10, false, "#8f9095", "#5d5e63");
           else { const e = u - seeAt, sx = gx0 - 30 * (seeAt - gIn), a = Math.min(e, 0.35); const gx = sx + 150 * (a * a / 0.7 + Math.max(0, e - 0.35));
             if(gx < W + 30) drawCat(gx, 1, e * 24, e > 0.15, "#8f9095", "#5d5e63"); } } } },
