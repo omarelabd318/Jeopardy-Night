@@ -42,7 +42,7 @@ DATA.tvmix = {};
 });
 })();
 /* 6.20 (Omar): mix categories. A mix holds no clues of its own: each tile picks one of its sources (each source equally likely) and opens
-   a clue from it exactly as that category would, headed with the mix's name only, 6.21 (6.20: "Mix · Source"; see mixPick and openClue in src/app.js). */
+   a clue from it exactly as that category would, headed "Mix · Source" (6.21 showed the mix's name only; 6.23 put the source back, see mixPick and openClue in src/app.js). */
 const MIXES = [
   ["mixeg1", "Egypt Mix 1", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
   ["mixeg2", "Egypt Mix 2", ["egy","egh","cairo","egyph"]],
