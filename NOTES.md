@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.85. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.86. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -528,3 +528,12 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 5.83 (2026-10-06): Omar asked for a Despacito clue in Finish the Lyric, with the four words between "Despacito" and "despacito" missing. Added at 400 (the Spanish words make it harder than a one-word gap), so Finish the Lyric is 20/20/20/21/20.
 - 5.84 (2026-10-06): Omar wanted Finish the Lyric: Arabic Edition in the first section, so in `CAT_GROUPS` it moved from Entertainment (after Finish the Lyric) to Egypt & Arab World, after Ramadan Series.
 - 5.85 (2026-10-06): Omar asked for timers to start right away. `openClue()` in `src/app.js` now starts the countdown as the clue opens (it shows Pause straight away), except for Act It Out, Who's the Impostor? and One Word Clues, where players scan a code first, so they keep the Start button. Previews don't start it. Revealing or closing still stops it.
+- 5.86 (2026-10-06): Omar asked for more street scenes, some from his photos. Six new acts after the woman and her dog in the street block in `src/app.js`, so a round is now twelve scenes, about 6.5 minutes on a 1400 px screen:
+  - A family of four on a black motorbike (`familyBike()`): dad in sunglasses and a light blue shirt, a little girl in orange on the tank, mum in a black abaya and pink hijab at the back holding a toddler.
+  - A woman in a black abaya carrying a long board of eish baladi on her head while a delivery motorbike with an orange box (`deliveryBike()`) passes her the other way.
+  - A white wedding car (`weddingCar()`) with pink ribbons, a bow and flowers, the couple inside, a hand waving and honking.
+  - A man running after a city bus (`cityBus()`): he catches the open back door, jumps onto the step and rides off waving as it speeds up.
+  - A man in a galabeya and emma leading five sheep for Eid (`sheep()`); the first one digs its heels in halfway and he leans back tugging the rope.
+  - A street sweeper in orange sweeping leaves into a pile; the wind blows them back. A black BMW-style car (`car(..., "black")`) pulls up, a hand passes him a note out of the window, he raises it in thanks and the car drives off.
+  - The bawab (`bawab`, `bawabOnAct()`, `drawBawab()`) runs alongside the scenes rather than as one. Every six scenes he walks in with a white plastic chair from one side (alternating), sits near that edge and dozes (head down, z's) through three scenes, wakes for 1.6 s whenever anything passes within 60 px, then picks up his chair and leaves the way he came. Everything drawn now reports its position through `mark()` so he knows when to wake.
+  Omar saw previews of each.
