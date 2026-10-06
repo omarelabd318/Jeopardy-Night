@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.100`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.0`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -167,7 +167,7 @@ const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & A
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
   ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
 ];
-/* 5.100 (Omar): a short, easy description of every category, shown in a big hover box (#tip) over its setup chip and its board
+/* 6.0 (Omar): a short, easy description of every category, shown in a big hover box (#tip) over its setup chip and its board
    header, readable from the couch. Falls back to the category's longer desc (5.99 and before: desc as a small browser tooltip). */
 const TIPS = {
   geo: "Countries, capitals, rivers, mountains and where things are on the map.",
@@ -2234,7 +2234,7 @@ async function toggleFs(){
 }
 document.querySelectorAll(".fsbtn").forEach(b => b.onclick = toggleFs);
 document.addEventListener("fullscreenchange", fsLabel); document.addEventListener("webkitfullscreenchange", fsLabel);
-/* 5.100 (Omar): the category hover box. Any [data-tip] element (setup chips, board headers) shows its name and tip in a large box
+/* 6.0 (Omar): the category hover box. Any [data-tip] element (setup chips, board headers) shows its name and tip in a large box
    under it (above it if there's no room) after a short pause. Mouse only: touch screens never see it. */
 (() => {
   const tip = document.createElement("div"); tip.id = "tip"; tip.setAttribute("role", "tooltip"); document.body.appendChild(tip);

@@ -29,7 +29,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 ## Making a change
 
 1. Edit `src/` or `v4work/`.
-2. Bump the version. The label is the `v5.N` string in `src/head.html` and `src/app.js`. Run `sed -i 's/v5\.3\b/v5.4/g' src/head.html src/app.js` with the current and next numbers (the `\b` stops `v5.1` also matching `v5.10`). 4.x ran from 4.00 to 4.99; 5.0 started a new era in `src/changelog.json`.
+2. Bump the version. The label is the `v6.N` string in `src/head.html` and `src/app.js`. Run `sed -i 's/v6\.3\b/v6.4/g' src/head.html src/app.js` with the current and next numbers (the `\b` stops `v6.1` also matching `v6.10`). 4.x ran from 4.00 to 4.99, 5.x from 5.0 to 5.99, and 6.0 started a new era in `src/changelog.json`.
 3. Run `node build.js`.
 4. Add the new version at the top of `src/changelog.json` (one or two short lines a player would care about; it shows in the game when you tap the version number). Then update `NOTES.md`. Change the version line under "What's here", then add a `- 5.N (YYYY-MM-DD): …` entry at the end of the version history. Write it in plain language, and say what Omar asked for when it was his call.
 5. Open `index.html` in a browser and check the change, on the board and in Football mode if it's affected.
