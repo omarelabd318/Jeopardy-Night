@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.95. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.96. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -558,3 +558,8 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **2, cigarette:** he sits up normally, lights a cigarette, and smokes it with a drag every 5 s and a small puff, while a wisp rises from the tip and the cigarette shortens. It lasts `CIG` = 80 s, and this visit ends when it's finished rather than after three scenes. He then flicks the butt about 22 px towards his nearer edge, where it stays (its ember fades) until his next visit, and he leaves with the chair.
   - To drop a visit type, change `% 3` in `bawabOnAct()`, for example `bawab.kind = 0` for dozing only.
 - 5.95 (2026-10-06): Omar wanted longer gaps between the bawab's puffs. He takes a shisha pull every 10 s and a cigarette drag every 7 s (`SHP`, `CGP`; both were 5 s in 5.94). The cigarette still lasts 80 s, which is about 11 drags.
+- 5.96 (2026-10-06): Omar asked for:
+  - **Street sweeper:** he walks in half as far before he starts sweeping, to `sx = (W * 0.25 - 30) / 2` (was `W * 0.25`).
+  - **BMW:** it only appears once he has started sweeping. It comes in faster and brakes to a stop by him over `arriveT` = 8 s, so he sweeps for those 8 s. Before this it came in at 160 px/s and was already on its way while he was still walking in.
+  - **Bawab:** a shisha pull every 12 s and a cigarette drag every 10 s (`SHP`, `CGP`). The cigarette still lasts 80 s, so about 8 drags.
+  - **Smoke:** `puff()` breathes out a bit more for both, with bigger, higher, slightly thicker puffs. The 5.94 numbers are in a comment there.
