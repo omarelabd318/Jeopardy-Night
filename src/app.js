@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.29`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.30`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1226,15 +1226,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
          does the chair (6.14: it stayed in his hand until he sat, then appeared on the ground) */
       const e = t - bawab.at, placer = (x, f, P, withShisha) => {
         const sf = withShisha ? sm(cl(f / SET, 0, 1)) : 1; if(withShisha) f -= SET;
-        const tilt = Math.acos(20 / 25), q = sm(cl(f / 0.75, 0, 1)), lift = 4 * Math.sin(Math.PI * q);   // q: dragged (0) to upright (1)
-        const p0 = x - 23.8 * s, p1 = x + 6 * s, px = p0 + (p1 - p0) * q, th = tilt * s * (1 - q);
-        g.save(); g.translate(px, gy - lift); g.rotate(th); g.translate(-px, -gy); plasticChair(px - 6 * s, -s); g.restore();
-        const chairArm = q < 1 ? [-0.6 + 0.75 * q, -0.9 + 1.15 * q] : [0.15, 0.25];
+        /* 6.30 (Omar): he set the chair down side-on, then sat in a chair facing the screen. Now he swings it round (0-0.5 s, side-on,
+           coming upright), sets it down facing the screen exactly as he'll sit in it (0.5-0.75 s), having stepped aside while it lands,
+           stands a beat, then backs into it (the last 0.4 s) and sits. 6.14-6.29: one side-on swing, q over 0.75 s, standing at x. */
+        const tilt = Math.acos(20 / 25), q = sm(cl(f / 0.5, 0, 1)), front = f >= 0.5, drop = 3 * (1 - sm(cl((f - 0.5) / 0.25, 0, 1)));
+        if(!front){ const p0 = x - 23.8 * s, p1 = x - 4 * s, px = p0 + (p1 - p0) * q, th = tilt * s * (1 - q), lift = 5 * Math.sin(Math.PI * q);
+          g.save(); g.translate(px, gy - lift); g.rotate(th); g.translate(-px, -gy); plasticChair(px - 6 * s, -s); g.restore(); }
+        else frontChair(x, bawab.kind === 0 && P === B, drop);
+        const out = sm(cl(f / 0.5, 0, 1)) * (1 - sm(cl((f - (PLACE - 0.4)) / 0.4, 0, 1))), sx = x + 11 * s * out;   // he steps aside, then back into the chair
+        const stepping = (f > 0 && f < 0.5) || f > PLACE - 0.4, ph = stepping ? f * 10 : undefined;
+        const chairArm = !front ? [-0.6 + 0.9 * q, -0.9 + 1.3 * q] : [0.15, 0.25];
         if(withShisha){ const hx = x + 7.4 * s + (-16 - 7.4 * s) * sf, hy = gy - 3.5 * (1 - sf) - 2 * Math.sin(Math.PI * sf), behind = (hx - x) * s < 0;   // to its spot at home - 16 (behind him on the left, in front of him on the right)
           const hold = sf < 1 ? [0.7 - 1.5 * sf, 0.5 - 1.2 * sf] : [-0.15, -0.05], lean = 0.25 * Math.sin(Math.PI * sf);   // he bends to put it down
-          if(behind || s < 0) shisha(hx, hy, 0.15);
-          person(x, gy, s, {...P, lean, arms: s > 0 ? [hold, chairArm] : [chairArm, hold]}); if(!behind && s > 0) shisha(hx, hy, 0.15); }
-        else person(x, gy, s, {...P, arms: [chairArm, [-0.15, -0.05]]}); };
+          shisha(hx, hy, 0.15);
+          person(sx, gy, s, {...P, lean, ...(ph !== undefined ? {ph} : {}), arms: s > 0 ? [hold, chairArm] : [chairArm, hold]}); }
+        else person(sx, gy, s, {...P, ...(ph !== undefined ? {ph} : {}), arms: [chairArm, [-0.15, -0.05]]}); };
       if(bawab.kind === 1) placer(home2, e - 0.25, PAL, false);
       placer(home, e, B, bawab.kind === 1);
       if(e >= PLACE + (bawab.kind === 1 ? SET : 0)){ bawab.phase = "sit"; bawab.sitAt = t; bawab.acts = 3; bawab.awake = t + 3; }   // 5.91 (Omar): awake for 3 s before he first nods off
@@ -1301,11 +1307,15 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
   /* 5.94: sitting up normally, facing the screen, his left hand on his knee. r (0 to 1) lifts his right hand (on the screen's left)
      from his knee to his mouth. Returns where that hand and his mouth are. */
+  /* 6.30: the white plastic chair seen from the front, as he sits in it (low: the dozing pose's lower back, from bawabFront) */
+  function frontChair(x, low, lift = 0){
+    const c = "#e9ecef", t = low ? 2 : 0; g.save(); g.translate(0, -lift);
+    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 23 + t], [x - 5.5, gy - 25.5 + t], [x + 5.5, gy - 25.5 + t], [x + 7.5, gy - 23 + t], [x + 7.5, gy - 13]], "#d5d9de");   // chair back
+    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }   // legs
+    rect(x - 9, gy - 13.5, 18, 2.5, c); g.restore(); }                                                                   // seat
   function bawabSit(x, r, P = {}){
     const c = "#e9ecef", robe = P.robe || "#6b6f74", skin = P.skin || "#7a4b2f", L = (a, b) => a + (b - a) * r;   // 5.99: P gives the friend his own galabeya, skin and hair
-    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 23], [x - 5.5, gy - 25.5], [x + 5.5, gy - 25.5], [x + 7.5, gy - 23], [x + 7.5, gy - 13]], "#d5d9de");   // chair back
-    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }
-    rect(x - 9, gy - 13.5, 18, 2.5, c);
+    frontChair(x, false);   // 6.30: shared with the placing step (was drawn here)
     for(const k of [-1, 1]){ seg([[x + 5 * k, gy - 5], [x + 5 * k, gy - 1.6]], skin, 2); oval(x + 5.6 * k, gy - 1.2, 2.4, 1.3, "#1c1612"); }   // shins, slippers
     poly([[x - 4.5, gy - 24], [x + 4.5, gy - 24], [x + 5.5, gy - 13], [x + 7.5, gy - 4.5], [x - 7.5, gy - 4.5], [x - 5.5, gy - 13]], robe);   // galabeya
     rect(x - 1.1, gy - 27, 2.2, 3.2, skin);                                                                             // neck
@@ -1320,9 +1330,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      tips his head over to one side (s) as he sleeps. (5.86-5.90: side on, leaning forward to doze.) */
   function bawabFront(x, nod, s){
     const c = "#e9ecef", robe = "#6b6f74", skin = "#7a4b2f";
-    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 21], [x - 5.5, gy - 23.5], [x + 5.5, gy - 23.5], [x + 7.5, gy - 21], [x + 7.5, gy - 13]], "#d5d9de");   // chair back, low behind his shoulders
-    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }   // legs
-    rect(x - 9, gy - 13.5, 18, 2.5, c);                                                                                 // seat
+    frontChair(x, true);    // 6.30: chair back low behind his shoulders; shared with the placing step (was drawn here)
     for(const k of [-1, 1]){ seg([[x + 3.5 * k, gy - 12], [x + 6.5 * k, gy - 3]], skin, 2); oval(x + 7 * k, gy - 1.2, 2.4, 1.3, "#1c1612"); }   // shins, slippers
     poly([[x - 4.5, gy - 20.5], [x + 4.5, gy - 20.5], [x + 6, gy - 12], [x + 8.5, gy - 5], [x - 8.5, gy - 5], [x - 6, gy - 12]], robe);   // galabeya, slid down in the seat
     rect(x - 1.1, gy - 23, 2.2, 3, skin);                                                                             // neck
