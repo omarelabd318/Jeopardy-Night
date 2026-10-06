@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.96`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.97`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -991,11 +991,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const X = a => x + a * d;
     poly([[X(-46), gy - 7], [X(-46), gy - 36], [X(-44), gy - 38], [X(42), gy - 38], [X(46), gy - 34], [X(46), gy - 7]], "#efece4");
     rect(Math.min(X(-46), X(46)), gy - 15, 92, 4, "#c23a2e"); rect(Math.min(X(-46), X(46)), gy - 36, 92, 2, "#2d5c9a");
-    poly([[X(-30), gy - 32], [X(36), gy - 32], [X(36), gy - 22], [X(-30), gy - 22]], "#28323f");
-    for(const i of [-24, -14, -4, 6, 16, 26]) disc(X(i), gy - 25.5, 2.4, "#121820");
-    for(const i of [-19, -9, 1, 11, 21, 31]) rect(X(i) - 0.6, gy - 32, 1.2, 10, "#d6d3ca");
+    poly([[X(-42), gy - 32], [X(26), gy - 32], [X(26), gy - 22], [X(-42), gy - 22]], "#28323f");
+    for(const i of [-36, -26, -16, -6, 4, 14]) disc(X(i), gy - 25.5, 2.4, "#121820");
+    for(const i of [-31, -21, -11, -1, 9, 19]) rect(X(i) - 0.6, gy - 32, 1.2, 10, "#d6d3ca");
     poly([[X(38), gy - 32], [X(45), gy - 32], [X(45), gy - 18], [X(38), gy - 18]], "#3a4656");                       // windscreen
-    rect(Math.min(X(-42), X(-34)), gy - 33, 8, 26, "#151a22");                                                     // back door, open
+    rect(Math.min(X(28), X(36)), gy - 33, 8, 26, "#151a22");                                                       // 5.97 (Omar): the open door is at the front, as in Egypt (5.86-5.96: at the back, X(-42) to X(-34))
     oval(X(45.5), gy - 11, 1.3, 1.6, "#fff6c8"); rect(X(-46.5) - (d > 0 ? 0 : 1.5), gy - 13, 1.5, 3, "#e23b2e");
     wheel(X(-28), gy - 6, 6, rot, "#9aa0a6"); wheel(X(30), gy - 6, 6, rot, "#9aa0a6");
     mark(x);
@@ -1223,11 +1223,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const bx = W + 60 - bv * (u - b0); if(u > b0 && bx > -60) deliveryBike(bx, -1, -bx / 6.5); } },
     /* 5.86 (Omar): a wedding car, slow, honking. 5.89 (Omar): led by a motorbike, the passenger waving a flare to celebrate them */
     { len: () => (W + 250) / 70, draw(u){ const x = -80 + 70 * u; weddingCar(x, 1, x / 5.5, u); escortBike(x + 78, 1, (x + 78) / 6.5, u); } },
-    /* 5.86 (Omar): a man runs after a city bus, catches the back door and swings on */
-    { k(){ const v = 60, a = 45, mStart = 4, mv = 100,   /* 5.93 (Omar): he sets off later, so the bus gets further before he catches it (was 2.5) */ meet = (mv * mStart - 68) / (mv - v);   // when he reaches the door (it's 38 px behind the bus's middle)
+    /* 5.86 (Omar): a man runs after a city bus, catches the door and swings on. 5.97 (Omar): the door is at the front, so he runs up alongside the bus to reach it */
+    { k(){ const v = 60, a = 45, mStart = 3.3, mv = 100,   /* 5.93 (Omar): he sets off later, so the bus gets further before he catches it (5.97: 3.3, as he now has to run further; 5.93-5.96: 4; 5.86-5.92: 2.5) */ meet = (mv * mStart + 2) / (mv - v);   // when he reaches the door (32 px ahead of the bus's middle)
         const on = meet + 0.35, xb = u => -60 + v * u + (u > on ? a * (u - on) * (u - on) : 0); let end = on; while(xb(end) - 46 < W + 40) end += 0.1; return {v, mStart, mv, meet, on, xb, end}; },
       len(){ return this.k().end; },
-      draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x - 38;
+      draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x + 32;
         cityBus(x, 1, x / 6);
         if(u < mStart) return;
         if(u < meet){ const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: [[2.0, 2.2], [-0.6, -0.2]]}); return; }
