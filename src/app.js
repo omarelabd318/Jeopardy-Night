@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.93`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.94`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1022,11 +1022,18 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      that edge and sits. He dozes (head down, a few z's) through about three scenes, wakes for a moment whenever anything passes close
      (everything drawn reports where it is through mark()), then gets up, picks up his chair and goes back the way he came. Alternate
      visits use the other side. */
-  const bawab = {phase: "off", at: 0, side: 1, acts: 0, awake: 0, visits: 0};
+  /* 5.94 (Omar): three kinds of visit, in turn: 0 he dozes (as above); 1 he brings a shisha in his right hand, sets it down on his
+     right, sits up normally and takes a pull every 5 s, breathing out a big cloud, then leaves with the shisha and the chair; 2 he sits
+     up normally, lights a cigarette and smokes it down; when it's finished he flicks the butt towards his nearer edge, where it stays,
+     and leaves (that visit ends with the cigarette, not after three scenes). */
+  const bawab = {phase: "off", at: 0, side: 1, acts: 0, awake: 0, visits: 0, kind: 0, sitAt: 0, roach: null, roachAt: 0};
+  const CIG = 80;                                                                               // seconds one cigarette lasts
   function bawabOnAct(t){                                                                       // called whenever a new scene starts
-    if(bawab.phase === "off" && shown % 6 === 2){ bawab.phase = "in"; bawab.at = t; bawab.side = bawab.visits++ % 2 ? -1 : 1; }
-    else if(bawab.phase === "sit" && --bawab.acts <= 0){ bawab.phase = "out"; bawab.at = t; } }
+    if(bawab.phase === "off" && shown % 6 === 2){ bawab.phase = "in"; bawab.at = t; bawab.side = bawab.visits % 2 ? -1 : 1; bawab.kind = bawab.visits % 3; bawab.visits++; bawab.roach = null; }
+    else if(bawab.phase === "sit" && bawab.kind !== 2 && --bawab.acts <= 0){ bawab.phase = "out"; bawab.at = t; } }
   function drawBawab(t, near){
+    if(bawab.roach != null){ const e = t - bawab.roachAt; rect(bawab.roach - 1.3, gy - 1.3, 2.6, 1, "#e8e2d0");   // the butt he flicked away
+      if(e < 6) disc(bawab.roach - 1.3 * bawab.side, gy - 0.8, 0.6, `rgba(255,120,50,${0.9 * (1 - e / 6)})`); }
     if(bawab.phase === "off") return;
     const s = bawab.side, home = s > 0 ? 46 : W - 46, edge = s > 0 ? -30 : W + 30, v = 38, walkT = Math.abs(home - edge) / v, d = s;   // he faces into the street
     const B = {outfit: "robe", robe: "#6b6f74", hat: "taqiya", mo: true, skin: "#7a4b2f", nomark: true};
@@ -1034,14 +1041,84 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       const e = t - bawab.at, k = cl(e / walkT, 0, 1), goingIn = bawab.phase === "in";
       const x = goingIn ? edge + (home - edge) * k : home + (edge - home) * k, dir = goingIn ? s : -s;
       plasticChair(x - 8 * dir, dir);                                                               // carried at his side
-      person(x, gy, dir, {...B, ph: e * 8, arms: [[-0.5, -0.3], [Math.sin(e * 8) * 0.35, 0.3]]});
-      if(k >= 1){ if(goingIn){ bawab.phase = "sit"; bawab.acts = 3; bawab.awake = t + 3; } else bawab.phase = "off"; }   // 5.91 (Omar): awake for 3 s before he first nods off
+      if(bawab.kind === 1){                                                                         // the shisha in his right hand: the near one when he walks right
+        const hold = [0.7, 0.5], chairArm = [-0.5, -0.3], nearRight = dir > 0, hx = x + 7.4 * dir, hy = gy - 18.8;   // held out in front, clear of his robe
+        if(!nearRight) shisha(hx, gy - 3.5, 0.15);
+        person(x, gy, dir, {...B, ph: e * 8, arms: nearRight ? [hold, chairArm] : [chairArm, hold]});
+        if(nearRight) shisha(hx, gy - 3.5, 0.15); }
+      else person(x, gy, dir, {...B, ph: e * 8, arms: [[-0.5, -0.3], [Math.sin(e * 8) * 0.35, 0.3]]});
+      if(k >= 1){ if(goingIn){ bawab.phase = "sit"; bawab.sitAt = t; bawab.acts = 3; bawab.awake = t + 3; } else bawab.phase = "off"; }   // 5.91 (Omar): awake for 3 s before he first nods off
       return; }
-    if(near) bawab.awake = Math.max(bawab.awake, t + 1.6);                                          // something went past: he looks up
-    const up = t < bawab.awake, nod = up ? 0 : sm((t - bawab.awake) / 1.2);                               // his head tips over as he drops off
-    bawabFront(home, nod, s);
-    if(nod > 0.6) for(let i = 0; i < 3; i++){ const a = (t * 0.35 + i / 3) % 1, zx = home + (7 + a * 8) * s, zy = gy - 33 - a * 12, z = 2 + a * 1.5;   // z's floating up
-      g.strokeStyle = `rgba(230,235,255,${0.7 * (1 - a) * (nod - 0.6) / 0.4})`; g.lineWidth = 0.9; g.beginPath(); g.moveTo(zx - z, zy - z); g.lineTo(zx + z, zy - z); g.lineTo(zx - z, zy + z); g.lineTo(zx + z, zy + z); g.stroke(); }
+    if(bawab.kind === 0){
+      if(near) bawab.awake = Math.max(bawab.awake, t + 1.6);                                        // something went past: he looks up
+      const up = t < bawab.awake, nod = up ? 0 : sm((t - bawab.awake) / 1.2);                             // his head tips over as he drops off
+      bawabFront(home, nod, s);
+      if(nod > 0.6) for(let i = 0; i < 3; i++){ const a = (t * 0.35 + i / 3) % 1, zx = home + (7 + a * 8) * s, zy = gy - 33 - a * 12, z = 2 + a * 1.5;   // z's floating up
+        g.strokeStyle = `rgba(230,235,255,${0.7 * (1 - a) * (nod - 0.6) / 0.4})`; g.lineWidth = 0.9; g.beginPath(); g.moveTo(zx - z, zy - z); g.lineTo(zx + z, zy - z); g.lineTo(zx - z, zy + z); g.lineTo(zx + z, zy + z); g.stroke(); }
+      return; }
+    // a pull every 5 s: hand up (0.4 s), draw (1.1 s), hand down (0.4 s), then breathe out
+    const drag = c => c < 0.4 ? sm(c / 0.4) : c < 1.5 ? 1 : c < 1.9 ? 1 - sm((c - 1.5) / 0.4) : 0;
+    if(bawab.kind === 1){
+      const e = t - bawab.sitAt - 1.5, c = e < 0 ? 4.9 : e % 5, r = e < 0 ? 0 : drag(c), pulling = e >= 0 && c > 0.4 && c < 1.5;
+      const port = shisha(home - 16, gy, pulling ? 1 : 0.2);
+      const F = bawabSit(home, r, {});
+      g.strokeStyle = "#7a4b8f"; g.lineWidth = 1.2; g.beginPath(); g.moveTo(port[0], port[1]); g.quadraticCurveTo((port[0] + F.hand[0]) / 2, gy - 0.5, F.hand[0], F.hand[1]); g.stroke();   // the hose
+      rect(F.hand[0] - 0.6, F.hand[1] - 2.2, 1.2, 2.4, "#c9b06a");                                  // mouthpiece
+      if(e > 1.7) puff(F.mouth[0], F.mouth[1], ((e - 1.7) % 5) / 3, true);
+      return; }
+    // kind 2: the cigarette
+    const tLight = bawab.sitAt + 2.3, tEnd = tLight + CIG;
+    if(t < tEnd){
+      const lighting = t < tLight, e = t - tLight, c = e % 5;
+      const r = lighting ? (t < bawab.sitAt + 0.8 ? 0 : t < bawab.sitAt + 1.2 ? sm((t - bawab.sitAt - 0.8) / 0.4) : t < bawab.sitAt + 1.9 ? 1 : 1 - sm((t - bawab.sitAt - 1.9) / 0.4)) : drag(c);
+      const F = bawabSit(home, r, {});
+      const L = 6 - 4.5 * cl(e / CIG, 0, 1), [hx, hy] = F.hand, tip = [hx - L * 0.95, hy - L * 0.3];
+      seg([[hx, hy], tip], "#f2efe6", 1.1); seg([[hx - 0.2, hy - 0.06], [hx - 1.6, hy - 0.5]], "#d9a35a", 1.1);   // the cigarette and its filter
+      if(lighting){ if(t > bawab.sitAt + 1.2 && t < bawab.sitAt + 1.9){ disc(tip[0] - 1, tip[1] - 1.2, 1.3, "#ffd65a"); glow(tip[0] - 1, tip[1] - 1.2, 5, "rgba(255,210,90,.5)"); } }   // the lighter
+      else { const pulling = c > 0.4 && c < 1.5; disc(tip[0], tip[1], pulling ? 1 : 0.7, pulling ? "#ff7a2a" : "#d9542a");
+        if(pulling) glow(tip[0], tip[1], 3.5, "rgba(255,120,50,.45)");
+        else for(let i = 0; i < 2; i++){ const a = (t * 0.6 + i / 2) % 1; disc(tip[0] - a * 2, tip[1] - 2 - a * 8, 0.8 + a * 1.5, `rgba(220,220,230,${0.25 * (1 - a)})`); }   // a wisp off the tip
+        if(e > 1.7) puff(F.mouth[0], F.mouth[1], ((e - 1.7) % 5) / 3, false); }
+      return; }
+    // done: he flicks the butt towards his nearer edge, then gets up and goes
+    const f = t - tEnd, F = bawabSit(home, f < 0.25 ? sm(f / 0.25) * 0.35 : 0.35 * (1 - sm((f - 0.25) / 0.3)), {});
+    const land = home - 22 * s;
+    if(f < 0.25){ const [hx, hy] = F.hand; seg([[hx, hy], [hx - 1.5, hy - 0.45]], "#d9a35a", 1.1); }
+    else if(f < 0.95){ const p = (f - 0.25) / 0.7, x0 = F.hand[0], y0 = F.hand[1], x = x0 + (land - x0) * p, y = y0 + (gy - 1 - y0) * p - Math.sin(p * Math.PI) * 8;
+      rect(x - 1.2, y - 0.5, 2.4, 1, "#d9a35a"); disc(x - 1.2 * s, y, 0.6, "#ff7a2a"); }
+    else if(bawab.roach == null){ bawab.roach = land; bawab.roachAt = t; }
+    if(f > 1.8){ bawab.phase = "out"; bawab.at = t; }
+  }
+  // 5.94: a puff of smoke breathed out, p from 0 to 1 over its life; big for the shisha.
+  function puff(x, y, p, big){
+    if(p <= 0 || p >= 1) return;
+    for(let i = 0; i < 6; i++){ const q = cl(p * 1.25 - i * 0.05, 0, 1); if(q <= 0) continue;
+      const px = x - q * (big ? 6 : 3) + Math.sin(i * 2.3) * q * (big ? 6 : 3), py = y - q * (big ? 15 : 9) - i * q * (big ? 1.4 : 0.7), r = (big ? 2 : 1.1) + q * (big ? 5.5 : 2.6);
+      disc(px, py, r, `rgba(226,226,234,${(big ? 0.5 : 0.38) * (1 - q)})`); } }
+  // 5.94: a shisha standing on the ground (yb), glow 0 to 1 for the coal; returns where the hose comes out.
+  function shisha(x, yb, gl){
+    oval(x, yb - 4, 4, 4.3, "#2f6b52"); oval(x - 1.4, yb - 5.2, 1, 1.6, "rgba(255,255,255,.25)");                   // glass base
+    seg([[x, yb - 8], [x, yb - 17]], "#c9b06a", 1.6); disc(x, yb - 11, 1.5, "#c9b06a"); oval(x, yb - 14.5, 4, 0.9, "#c9b06a");   // stem, collar, tray
+    poly([[x - 2.2, yb - 17], [x + 2.2, yb - 17], [x + 1.5, yb - 20], [x - 1.5, yb - 20]], "#9a4a2a"); oval(x, yb - 20.3, 2.2, 0.6, "#cfd3d8");   // clay bowl, foil
+    glow(x, yb - 21, 4 + 5 * gl, `rgba(255,120,50,${0.2 + 0.35 * gl})`); disc(x, yb - 21, 1.2, gl > 0.5 ? "#ff8a3a" : "#c4552a");   // the coal
+    return [x + 2.5, yb - 9];
+  }
+  /* 5.94: sitting up normally, facing the screen, his left hand on his knee. r (0 to 1) lifts his right hand (on the screen's left)
+     from his knee to his mouth. Returns where that hand and his mouth are. */
+  function bawabSit(x, r){
+    const c = "#e9ecef", robe = "#6b6f74", skin = "#7a4b2f", L = (a, b) => a + (b - a) * r;
+    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 23], [x - 5.5, gy - 25.5], [x + 5.5, gy - 25.5], [x + 7.5, gy - 23], [x + 7.5, gy - 13]], "#d5d9de");   // chair back
+    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }
+    rect(x - 9, gy - 13.5, 18, 2.5, c);
+    for(const k of [-1, 1]){ seg([[x + 5 * k, gy - 5], [x + 5 * k, gy - 1.6]], skin, 2); oval(x + 5.6 * k, gy - 1.2, 2.4, 1.3, "#1c1612"); }   // shins, slippers
+    poly([[x - 4.5, gy - 24], [x + 4.5, gy - 24], [x + 5.5, gy - 13], [x + 7.5, gy - 4.5], [x - 7.5, gy - 4.5], [x - 5.5, gy - 13]], robe);   // galabeya
+    rect(x - 1.1, gy - 27, 2.2, 3.2, skin);                                                                             // neck
+    seg([[x + 4.3, gy - 23], [x + 6.8, gy - 17.5], [x + 6.2, gy - 11.8]], shade(robe), 2.6); disc(x + 6.2, gy - 11.8, 1.3, skin);   // left hand on his knee
+    const hy = gy - 30.8; disc(x, hy, 3.8, skin); g.fillStyle = "#f1efe8"; g.beginPath(); g.arc(x, hy - 0.6, 3.9, Math.PI, 0); g.fill();   // head, taqiya
+    seg([[x - 1.5, hy + 1.7], [x + 1.5, hy + 1.7]], "#1d1712", 0.6); for(const k of [-1, 1]) disc(x + k * 1.4, hy - 0.3, 0.45, "#1d1712");
+    const hand = [L(x - 6.2, x - 2.2), L(gy - 11.8, gy - 28.2)];
+    seg([[x - 4.3, gy - 23], [L(x - 6.8, x - 8.2), L(gy - 17.5, gy - 22.5)], hand], robe, 2.6); disc(hand[0], hand[1], 1.3, skin);   // right arm
+    return {hand, mouth: [x - 0.5, gy - 29]};
   }
   /* 5.91 (Omar): sitting, he faces the screen, slumped back in the chair with his legs out and his hands folded on his belly. nod (0 to 1)
      tips his head over to one side (s) as he sleeps. (5.86-5.90: side on, leaning forward to doze.) */

@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.93. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.94. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -552,3 +552,8 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Eid sheep:** they're a loose flock, not a train. Each sheep has its own spot (`B`) and depth (`DY`) and drifts forward and back on its own (`wob`). The shepherd walks about 40 px behind with his stick planted like a staff. He only closes in and reaches out to tap the last sheep while it's stopped to graze, then drops back.
   - **Bus chase:** the man sets off at 4 s (was 2.5 s), so the bus is further along when he catches it.
   - **Street sweeper:** the leaves and the gust of wind are gone, and he just sweeps for 6 s before the BMW arrives. The 5.86 leaves and wind code is in git history (the 5.92 commit) if wanted back.
+- 5.94 (2026-10-06): Omar asked for three different bawab visits. They take turns (`bawab.kind = visits % 3`), and the side still alternates:
+  - **0, dozing:** as in 5.91. He comes in with his chair, slumps, and nods off after 3 s.
+  - **1, shisha:** he walks in with a shisha in his right hand and the chair in the other, and sets it down on his right (the screen's left). He sits up normally (`bawabSit()`) and every 5 s lifts the hose to his mouth, the coal glows, and he breathes out a big cloud (`puff()`). After three scenes he leaves carrying both.
+  - **2, cigarette:** he sits up normally, lights a cigarette, and smokes it with a drag every 5 s and a small puff, while a wisp rises from the tip and the cigarette shortens. It lasts `CIG` = 80 s, and this visit ends when it's finished rather than after three scenes. He then flicks the butt about 22 px towards his nearer edge, where it stays (its ember fades) until his next visit, and he leaves with the chair.
+  - To drop a visit type, change `% 3` in `bawabOnAct()`, for example `bawab.kind = 0` for dozing only.
