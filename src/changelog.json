@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.29",
+  "date": "2026-10-06",
+  "items": [
+   "Edit mixes: in Free-for-all, Act It Out and One Word Clues are greyed out (they need teams)."
+  ]
+ },
+ {
   "v": "6.28",
   "date": "2026-10-06",
   "items": [

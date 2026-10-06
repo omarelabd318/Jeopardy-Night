@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.28`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.29`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -296,7 +296,7 @@ applyMixes();
 function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
   box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(Boolean).map(m => { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
     return `<div class="mixrow"><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id])}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5>
-      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}">${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}</button>`).join("")}</div></div>`; }).join("");
+      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></div>`; }).join("");
   const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
 document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset]"); if(!b || !$("#mixEdit").contains(b)) return;
   const saved = store.get("jn_mixes", {});
@@ -1837,7 +1837,7 @@ function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#tea
   if(S.ffa){ if(!S.preFfa) S.preFfa = {power:S.power, qrAns:S.qrAns, steal:S.steal}; S.power = S.qrAns = S.steal = false; S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type)); }
   else if(S.preFfa){ Object.assign(S, S.preFfa); S.preFfa = null; }
   [["#optPower","power"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
-  renderChips(); }
+  renderChips(); renderMixEdit(); }   // 6.29: the Edit mixes panel greys out team-only categories too
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
 function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check
   if(RELAY !== true){ $("#histNote").textContent = RELAY === null ? "Checking the connection for Free-for-all… try again in a second." : "Free-for-all needs the Cloudflare link: the phones send their answers through it."; return false; }
