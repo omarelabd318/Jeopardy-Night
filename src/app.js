@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.29`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.35`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -917,6 +917,10 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     arm(hands[0], false);
     return {hd: hc, hands: hands.map(A => A.h), mouth: [hc[0] + 3.2 * s * d, hc[1] + 1.6 * s]};
   }
+  /* 6.34: the [upper arm, forearm] angles (person() arms, facing right) that put the hand at T from shoulder sh, elbow down */
+  function ikArm(sh, T){ const vx = T[0] - sh[0], vy = T[1] - sh[1], D = Math.min(Math.hypot(vx, vy), 13.0), a = Math.atan2(vx, vy);
+    const al = Math.acos(Math.max(-1, Math.min(1, (6.8 * 6.8 + D * D - 6.3 * 6.3) / (2 * 6.8 * D)))), u = a - al;
+    const ex = sh[0] + Math.sin(u) * 6.8, ey = sh[1] + Math.cos(u) * 6.8; return [u, Math.atan2(T[0] - ex, T[1] - ey)]; }
   function shade(c){ // a darker version of a #rrggbb colour, for the far arm and leg
     if(!/^#[0-9a-f]{6}$/i.test(c)) return c; const n = parseInt(c.slice(1), 16), f = v => Math.round(v * 0.72);
     return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; }
@@ -1144,7 +1148,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     if((t % 1.4) < 0.7) for(let i = 0; i < 2; i++){ const r = 4 + i * 4; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(36), gy - 13, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // honking
   }
   // A Cairo city bus: white, a red band, windows full of heads, the back door open.
-  function cityBus(x, d, rot){
+  function cityBus(x, d, rot, door = true){   // 6.33: door false = we're looking at the bus's left side, so its door is on the far side
     const X = a => x + a * d;
     poly([[X(-46), gy - 7], [X(-46), gy - 36], [X(-44), gy - 38], [X(42), gy - 38], [X(46), gy - 34], [X(46), gy - 7]], "#efece4");
     rect(Math.min(X(-46), X(46)), gy - 15, 92, 4, "#c23a2e"); rect(Math.min(X(-46), X(46)), gy - 36, 92, 2, "#2d5c9a");
@@ -1152,7 +1156,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     for(const i of [-36, -26, -16, -6, 4, 14]) disc(X(i), gy - 25.5, 2.4, "#121820");
     for(const i of [-31, -21, -11, -1, 9, 19]) rect(X(i) - 0.6, gy - 32, 1.2, 10, "#d6d3ca");
     poly([[X(38), gy - 32], [X(45), gy - 32], [X(45), gy - 18], [X(38), gy - 18]], "#3a4656");                       // windscreen
-    rect(Math.min(X(28), X(36)), gy - 33, 8, 26, "#151a22");                                                       // 5.97 (Omar): the open door is at the front, as in Egypt (5.86-5.96: at the back, X(-42) to X(-34))
+    if(door) rect(Math.min(X(28), X(36)), gy - 33, 8, 26, "#151a22");                                                       // 5.97 (Omar): the open door is at the front, as in Egypt (5.86-5.96: at the back, X(-42) to X(-34))
     oval(X(45.5), gy - 11, 1.3, 1.6, "#fff6c8"); rect(X(-46.5) - (d > 0 ? 0 : 1.5), gy - 13, 1.5, 3, "#e23b2e");
     wheel(X(-28), gy - 6, 6, rot, "#9aa0a6"); wheel(X(30), gy - 6, 6, rot, "#9aa0a6");
     mark(x);
@@ -1226,15 +1230,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
          does the chair (6.14: it stayed in his hand until he sat, then appeared on the ground) */
       const e = t - bawab.at, placer = (x, f, P, withShisha) => {
         const sf = withShisha ? sm(cl(f / SET, 0, 1)) : 1; if(withShisha) f -= SET;
-        const tilt = Math.acos(20 / 25), q = sm(cl(f / 0.75, 0, 1)), lift = 4 * Math.sin(Math.PI * q);   // q: dragged (0) to upright (1)
-        const p0 = x - 23.8 * s, p1 = x + 6 * s, px = p0 + (p1 - p0) * q, th = tilt * s * (1 - q);
-        g.save(); g.translate(px, gy - lift); g.rotate(th); g.translate(-px, -gy); plasticChair(px - 6 * s, -s); g.restore();
-        const chairArm = q < 1 ? [-0.6 + 0.75 * q, -0.9 + 1.15 * q] : [0.15, 0.25];
+        /* 6.30 (Omar): he set the chair down side-on, then sat in a chair facing the screen. Now he swings it round (0-0.5 s, side-on,
+           coming upright), sets it down facing the screen exactly as he'll sit in it (0.5-0.75 s), having stepped aside while it lands,
+           stands a beat, then backs into it (the last 0.4 s) and sits. 6.14-6.29: one side-on swing, q over 0.75 s, standing at x. */
+        const tilt = Math.acos(20 / 25), q = sm(cl(f / 0.5, 0, 1)), front = f >= 0.5, drop = 3 * (1 - sm(cl((f - 0.5) / 0.25, 0, 1)));
+        if(!front){ const p0 = x - 23.8 * s, p1 = x - 4 * s, px = p0 + (p1 - p0) * q, th = tilt * s * (1 - q), lift = 5 * Math.sin(Math.PI * q);
+          g.save(); g.translate(px, gy - lift); g.rotate(th); g.translate(-px, -gy); plasticChair(px - 6 * s, -s); g.restore(); }
+        else frontChair(x, bawab.kind === 0 && P === B, drop);
+        const out = sm(cl(f / 0.5, 0, 1)) * (1 - sm(cl((f - (PLACE - 0.4)) / 0.4, 0, 1))), sx = x + 11 * s * out;   // he steps aside, then back into the chair
+        const stepping = (f > 0 && f < 0.5) || f > PLACE - 0.4, ph = stepping ? f * 10 : undefined;
+        const chairArm = !front ? [-0.6 + 0.9 * q, -0.9 + 1.3 * q] : [0.15, 0.25];
         if(withShisha){ const hx = x + 7.4 * s + (-16 - 7.4 * s) * sf, hy = gy - 3.5 * (1 - sf) - 2 * Math.sin(Math.PI * sf), behind = (hx - x) * s < 0;   // to its spot at home - 16 (behind him on the left, in front of him on the right)
           const hold = sf < 1 ? [0.7 - 1.5 * sf, 0.5 - 1.2 * sf] : [-0.15, -0.05], lean = 0.25 * Math.sin(Math.PI * sf);   // he bends to put it down
-          if(behind || s < 0) shisha(hx, hy, 0.15);
-          person(x, gy, s, {...P, lean, arms: s > 0 ? [hold, chairArm] : [chairArm, hold]}); if(!behind && s > 0) shisha(hx, hy, 0.15); }
-        else person(x, gy, s, {...P, arms: [chairArm, [-0.15, -0.05]]}); };
+          shisha(hx, hy, 0.15);
+          person(sx, gy, s, {...P, lean, ...(ph !== undefined ? {ph} : {}), arms: s > 0 ? [hold, chairArm] : [chairArm, hold]}); }
+        else person(sx, gy, s, {...P, ...(ph !== undefined ? {ph} : {}), arms: [chairArm, [-0.15, -0.05]]}); };
       if(bawab.kind === 1) placer(home2, e - 0.25, PAL, false);
       placer(home, e, B, bawab.kind === 1);
       if(e >= PLACE + (bawab.kind === 1 ? SET : 0)){ bawab.phase = "sit"; bawab.sitAt = t; bawab.acts = 3; bawab.awake = t + 3; }   // 5.91 (Omar): awake for 3 s before he first nods off
@@ -1301,11 +1311,15 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   }
   /* 5.94: sitting up normally, facing the screen, his left hand on his knee. r (0 to 1) lifts his right hand (on the screen's left)
      from his knee to his mouth. Returns where that hand and his mouth are. */
+  /* 6.30: the white plastic chair seen from the front, as he sits in it (low: the dozing pose's lower back, from bawabFront) */
+  function frontChair(x, low, lift = 0){
+    const c = "#e9ecef", t = low ? 2 : 0; g.save(); g.translate(0, -lift);
+    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 23 + t], [x - 5.5, gy - 25.5 + t], [x + 5.5, gy - 25.5 + t], [x + 7.5, gy - 23 + t], [x + 7.5, gy - 13]], "#d5d9de");   // chair back
+    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }   // legs
+    rect(x - 9, gy - 13.5, 18, 2.5, c); g.restore(); }                                                                   // seat
   function bawabSit(x, r, P = {}){
     const c = "#e9ecef", robe = P.robe || "#6b6f74", skin = P.skin || "#7a4b2f", L = (a, b) => a + (b - a) * r;   // 5.99: P gives the friend his own galabeya, skin and hair
-    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 23], [x - 5.5, gy - 25.5], [x + 5.5, gy - 25.5], [x + 7.5, gy - 23], [x + 7.5, gy - 13]], "#d5d9de");   // chair back
-    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }
-    rect(x - 9, gy - 13.5, 18, 2.5, c);
+    frontChair(x, false);   // 6.30: shared with the placing step (was drawn here)
     for(const k of [-1, 1]){ seg([[x + 5 * k, gy - 5], [x + 5 * k, gy - 1.6]], skin, 2); oval(x + 5.6 * k, gy - 1.2, 2.4, 1.3, "#1c1612"); }   // shins, slippers
     poly([[x - 4.5, gy - 24], [x + 4.5, gy - 24], [x + 5.5, gy - 13], [x + 7.5, gy - 4.5], [x - 7.5, gy - 4.5], [x - 5.5, gy - 13]], robe);   // galabeya
     rect(x - 1.1, gy - 27, 2.2, 3.2, skin);                                                                             // neck
@@ -1320,9 +1334,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      tips his head over to one side (s) as he sleeps. (5.86-5.90: side on, leaning forward to doze.) */
   function bawabFront(x, nod, s){
     const c = "#e9ecef", robe = "#6b6f74", skin = "#7a4b2f";
-    poly([[x - 7.5, gy - 13], [x - 7.5, gy - 21], [x - 5.5, gy - 23.5], [x + 5.5, gy - 23.5], [x + 7.5, gy - 21], [x + 7.5, gy - 13]], "#d5d9de");   // chair back, low behind his shoulders
-    for(const k of [-1, 1]){ seg([[x + 7 * k, gy - 12], [x + 9 * k, gy]], c, 1.6); seg([[x + 5 * k, gy - 12], [x + 6 * k, gy]], "#cdd2d7", 1.2); }   // legs
-    rect(x - 9, gy - 13.5, 18, 2.5, c);                                                                                 // seat
+    frontChair(x, true);    // 6.30: chair back low behind his shoulders; shared with the placing step (was drawn here)
     for(const k of [-1, 1]){ seg([[x + 3.5 * k, gy - 12], [x + 6.5 * k, gy - 3]], skin, 2); oval(x + 7 * k, gy - 1.2, 2.4, 1.3, "#1c1612"); }   // shins, slippers
     poly([[x - 4.5, gy - 20.5], [x + 4.5, gy - 20.5], [x + 6, gy - 12], [x + 8.5, gy - 5], [x - 8.5, gy - 5], [x - 6, gy - 12]], robe);   // galabeya, slid down in the seat
     rect(x - 1.1, gy - 23, 2.2, 3, skin);                                                                             // neck
@@ -1364,7 +1376,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       len(){ const f = this.f(); return Math.max(f.tA + 5.5 + (f.fx + 60) / 45, f.tT + (W + 140) / 105); },
       draw(u){ const {fx, tA, tT} = this.f(), st = u - tA;
         const x = st < 0 ? W + 60 - 45 * u : st < 5.5 ? fx : fx - 45 * (st - 5.5);
-        const cIn = u - (tA - 11), cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);
+        const cIn = u - (tA - (fx - 14) / 40 - 0.2), cx = cIn < 0 ? null : st >= 3.7 ? fx - 34 - 40 * (st - 3.7) : Math.min(fx - 34, -20 + 40 * cIn);   // 6.35 (Omar): he sets off so he reaches his spot just as the cart stops, at any screen width (5.x-6.34: tA - 11, so on a small screen he waited several seconds)
         const lad = st > 0.8 && st < 3.6, k = lad ? ((st - 0.8) % 1.4) / 1.4 : 0;
         const vx = st < 0 || st > 5.5 ? x + 30 : st < 0.8 ? fx + 30 - 19 * sm(st / 0.8) : st < 4.4 ? fx + 11 : fx + 11 + 19 * sm((st - 4.4) / 0.8);
         fulCart(x, -1, x / 7, lad && k < 0.5, pnow());
@@ -1402,32 +1414,42 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const walkT = u => u < sniffAt ? u : u < sniffAt + sniffLen ? sniffAt : u - sniffLen;
         let tc = bikeAt; while(-70 + bv * (tc - bikeAt) < -10 + v * walkT(tc) + 45) tc += 0.02;   // the moment the bike has just gone past the dog
         const xc = -40 + v * walkT(tc), run = (t, sp, a) => t <= 0 ? 0 : t < a ? sp * t * t / (2 * a) : sp * (t - a / 2);   // eases up to speed over a seconds
-        const end = Math.max(bikeAt + (W + 150) / bv, tc + 0.6 + (W + 60 - xc) / rv + 0.2);
+        const end = Math.max(bikeAt + (W + 150) / bv, tc + 0.9 + (W + 60 - xc - 10) / rv + 0.2);   // 6.31: she starts running at k = 0.9, 10 px on (6.13-6.30: tc + 0.6 + (W + 60 - xc) / rv + 0.2)
         return {v, sniffAt, sniffLen, bikeAt, bv, dv, rv, walkT, tc, xc, run, end}; },
       len(){ return this.w().end; },
       draw(u){ const {v, sniffAt, sniffLen, bikeAt, bv, dv, rv, walkT: wt, tc, xc, run} = this.w(), chase = u >= tc, k = u - tc;
         const walkT = chase ? wt(tc) : wt(u), stopped = !chase && u >= sniffAt && u < sniffAt + sniffLen;
-        const startled = chase && k < 0.6, running = chase && !startled;
-        const x = chase ? xc + run(k - 0.6, rv, 0.4) : -40 + v * walkT, ph = running ? u * 15 : walkT * 8.5;
-        const dx = chase ? xc + 30 + run(k, dv, 0.3) : x + 30;
+        /* 6.31 (Omar): she seemed simply to let go. Now the lead snaps taut as he bolts (k 0-0.12), he strains at the end of it and yanks
+           her arm out straight, pulling her a stumbling step forward (to 0.55), then it rips out of her hand: the loose end whips
+           forward and drops to drag behind him. She steadies herself (to 0.9) and runs after him. 6.13-6.30: the arm swung forward
+           over 0.15 s and the lead slipped at 0.12 while she stood still; she ran from 0.6. */
+        const TAUT = 0.12, REL = 0.55, RUN = 0.9, L = 34;                                        // L: the lead's length, hand to collar
+        const yank = chase ? sm(cl((k - TAUT) / 0.2, 0, 1)) : 0, pull = chase ? 10 * sm(cl((k - 0.15) / 0.35, 0, 1)) : 0;
+        const startled = chase && k < RUN, running = chase && !startled, held = chase && k < REL;
+        const x = chase ? xc + pull + run(k - RUN, rv, 0.4) : -40 + v * walkT, ph = running ? u * 15 : held && k > 0.15 ? k * 14 : walkT * 8.5;
+        const hx = k => xc + 10 * sm(cl((k - 0.15) / 0.35, 0, 1)) + 7.7 + 8.3 * sm(cl((k - TAUT) / 0.2, 0, 1));   // roughly where her lead hand is
+        const free = xc + 30 + run(k, dv, 0.3), dx = !chase ? x + 30 : held ? Math.min(free, hx(k) + L - 9) : hx(REL) + L - 9 + dv * (k - REL);   // held back by the lead, then away
         /* 5.78 (Omar): she takes the call a third of the way in and hangs up a bit before she leaves (5.76-5.77: on the phone throughout) */
         const call = sm((x - W / 3) / 22) * (1 - sm((x - W * 0.85) / 22)) * (1 - sm(k / 0.35)), talk = false;   // 5.79 (Omar): no hand gestures on the call; her free hand just holds the lead (5.76-5.78: it gestured now and then). 6.13: she drops the call when the dog bolts
         const swing = stopped || startled ? [0.1, 0.2] : [-Math.sin(ph) * 0.35, -Math.sin(ph) * 0.35 + 0.3], mix = (a, b) => [a[0] + (b[0] - a[0]) * call, a[1] + (b[1] - a[1]) * call];
+        const after = sm(cl((k - REL) / 0.35, 0, 1));                                           // her emptied hand comes back down
         const leadArm = !chase ? (stopped ? [0.45, 1.0] : [0.4 + Math.sin(ph) * 0.05, 0.95 + Math.sin(ph) * 0.05])
-          : startled ? (j => [0.4 + 1.0 * j, 0.95 + 0.7 * j])(sm(Math.min(k / 0.15, 1)))   // yanked forward, and the lead slips out
-          : [1.3 + 0.15 * Math.sin(ph), 1.6];                                               // reaching after him as she runs
+          : held ? [0.4 + 1.1 * yank, 0.95 + 0.65 * yank]                                        // dragged out straight by the lead
+          : startled ? [1.5 - 0.8 * after, 1.6 - 0.7 * after]
+          : [1.3 + 0.15 * Math.sin(ph), 1.6];                                                    // reaching after him as she runs
         const W2 = person(x, gy, 1, {shirt: "#d9667a", pants: "#3b5f8f", hair: "#2a1a10", long: "#2a1a10", skin: "#a06a45",   /* 5.76 (Omar): no hijab. 5.77 (Omar): jeans and a top (was a long blue dress, outfit "robe") */
-           ...(stopped || startled ? {} : {ph}), lean: running ? 0.22 : startled ? 0.12 * sm(k / 0.15) : 0,
-          arms: [running ? [-Math.sin(ph) * 0.8, -Math.sin(ph) * 0.8 + 0.9] : mix(swing, [1.6, -2.4]), talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : leadArm]});   // 6.3 (Omar): the lead hand barely moves (5.76-6.2: swung by 0.35)
+           ...(stopped || (startled && !(held && k > 0.15)) ? {} : {ph}), lean: running ? 0.22 : held ? 0.24 * yank : startled ? 0.24 * (1 - after) : 0,
+          arms: [running ? [-Math.sin(ph) * 0.8, -Math.sin(ph) * 0.8 + 0.9] : held && k > 0.15 ? [-0.5 * yank, -0.2] : mix(swing, [1.6, -2.4]), talk ? [0.9 + 0.35 * Math.sin(u * 9), 1.9 + 0.3 * Math.sin(u * 9)] : leadArm]});   // 6.3 (Omar): the lead hand barely moves (5.76-6.2: swung by 0.35)
         const ph2 = W2.hands[0]; if(call > 0.08) rect(ph2[0] - 0.4, ph2[1] - 3.4 * call - 1, 2, 2 + 2.4 * call, "#1b1b1f");   // the phone: out of her pocket and up to her ear
         const hand = W2.hands[1], collar = [dx + 9, gy - 9 + (stopped ? 3 : 0)];
         g.strokeStyle = "#c2352c"; g.lineWidth = 0.9; g.beginPath();
-        if(!chase || k < 0.12){ g.moveTo(hand[0], hand[1]); g.quadraticCurveTo((hand[0] + collar[0]) / 2, Math.max(hand[1], collar[1]) + (chase ? 0 : stopped ? 1 : 6), collar[0], collar[1]); }   // the lead, slack while they walk, taut when he bolts
-        else { const f = sm((k - 0.12) / 0.3), tail = [collar[0] - 30, gy - 0.6 - 0.8 * Math.abs(Math.sin(u * 20))];   // let go: the loose end drops and drags behind him
-          const e = [hand[0] + (tail[0] - hand[0]) * f, hand[1] + (tail[1] - hand[1]) * f];
+        if(!chase || held){ const sag = !chase ? (stopped ? 1 : 6) : 6 * (1 - sm(cl(k / TAUT, 0, 1)));   // slack while they walk, snapping taut as he bolts
+          g.moveTo(hand[0], hand[1]); g.quadraticCurveTo((hand[0] + collar[0]) / 2, (chase ? (hand[1] + collar[1]) / 2 : Math.max(hand[1], collar[1])) + sag, collar[0], collar[1]); }   // pulled dead straight once taut
+        else { const f = sm(cl((k - REL) / 0.35, 0, 1)), tail = [collar[0] - 30, gy - 0.6 - 0.8 * Math.abs(Math.sin(u * 20))];   // ripped free: the end whips forward, drops and drags behind him
+          const h0 = [hx(REL) + 0, hand[1]], e = [h0[0] + (tail[0] - h0[0]) * f, h0[1] + (tail[1] - h0[1]) * f - 5 * Math.sin(Math.PI * f)];
           g.moveTo(e[0], e[1]); g.quadraticCurveTo((e[0] + collar[0]) / 2, Math.max(e[1], collar[1]) + 2 * f, collar[0], collar[1]); }
         g.stroke();
-        drawDog(dx, 1, chase ? u * 26 : stopped ? 0 : walkT * 13, stopped, u);
+        drawDog(dx, 1, chase ? u * (held ? 32 : 26) : stopped ? 0 : walkT * 13, stopped, u);   // 6.31: scrabbling faster while he strains at the lead
         /* 6.3 (Omar): the family of four on a motorbike is part of this scene now: it comes in from the same side a little after her and
            overtakes (5.86-6.2: its own scene, { len: () => (W + 140) / 115, draw(u){ const x = -70 + 115 * u; familyBike(x, 1, x / 6.5); } }) */
         const fb = -70 + bv * (u - bikeAt); if(fb > -70 && fb < W + 80) familyBike(fb, 1, fb / 6.5); } },   // 6.8 (Omar): comes in 10 s after her (6.3-6.7: 5 s)
@@ -1452,12 +1474,17 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const on = meet + 0.35, xb = u => -60 + v * u + (u > on ? a * (u - on) * (u - on) : 0); let end = on; while(xb(end) - 46 < W + 40) end += 0.1; return {v, mStart, mv, meet, on, xb, end}; },
       len(){ return this.k().end; },
       draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x + 32;
+        /* 6.33 (Omar): the door is always on the bus's right side, as in Egypt. Mirrored rounds show its left side, so the door is on the
+           far side: he runs up behind the bus (drawn before it, so it hides him alongside) and boards out of sight (5.86-6.32: the door
+           and his boarding were drawn on the near side in both directions). */
+        if(flip){ if(u >= mStart && u < meet) this.man(u, mStart, mv, meet); cityBus(x, 1, x / 6, false); return; }
         cityBus(x, 1, x / 6);
         if(u < mStart) return;
-        if(u < meet){ const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: (k => [[2.0 - 0.6 * k, 2.2 - 0.5 * k], [-0.6, -0.2]])(sm(cl((u - meet + 0.5) / 0.5, 0, 1)))}); return; }   // 6.9 (Omar): his reaching hand comes down to door height just before he gets there
+        if(u < meet){ this.man(u, mStart, mv, meet); return; }
         const hop = cl((u - meet) / 0.35, 0, 1);                                                                    // the jump onto the step
         person(door, gy - 5 * hop - 3 * Math.sin(hop * Math.PI), 1, {lean: -0.15 * hop, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true,
-          arms: [[1.4, 1.7], [0.15, 0.3]]   /* 6.9 (Omar): he grabs the door at chest height and keeps his free hand down from the moment he jumps on (6.3-6.8: grabbed high and waved for 0.8 s first; 5.86-6.2: kept waving) */, ...(hop < 1 ? {ph: u * 15} : {})}); } },
+          arms: [[1.4, 1.7], [0.15, 0.3]]   /* 6.9 (Omar): he grabs the door at chest height and keeps his free hand down from the moment he jumps on (6.3-6.8: grabbed high and waved for 0.8 s first; 5.86-6.2: kept waving) */, ...(hop < 1 ? {ph: u * 15} : {})}); },
+      man(u, mStart, mv, meet){ { const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: (k => [[2.0 - 0.6 * k, 2.2 - 0.5 * k], [-0.6, -0.2]])(sm(cl((u - meet + 0.5) / 0.5, 0, 1)))}); } } },
     /* 5.86 (Omar): five sheep for Eid. 5.91 (Omar): no rope; the man walks behind them with a stick, guiding them across. Halfway the
        last one stops to graze, he stops behind it and taps it on with the stick, and it trots to catch up with the others (5.86-5.90: he
        led them on a rope and tugged the first one along). */
@@ -1485,13 +1512,13 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        on red a little ahead of his patch, sweeps, the BMW stops at the light, he goes to the window to ask, it hands him money and
        drives off, and he picks up the light and his broom and leaves. (5.86-6.2: no light; the car pulled up by him.) 6.5 (Omar): before the car leaves he goes back
        and flips the light to green, so it drives off on green (6.3-6.4: it left on red). */
-    { w(){ const sx = (W * 0.25 - 30) / 2, v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
+    { w(){ const sx = Math.max((W * 0.25 - 30) / 2, 150),   /* 6.35: at least 150 px in, clear of the bawab's chair, shisha and friend (46-81 px) on smaller screens; unchanged from 1400 px wide (was (W * 0.25 - 30) / 2) */ v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
         const t1 = (L - 8 + 30) / v, t2 = t1 + 0.9, tIn = t2 + 26 / v, tC = tIn + arriveT;    // walk in, set the light down, walk back, sweep until the car stops
-        const cx0 = L + 39, wx = cx0 - 22,   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, tP = t5 + 2.0;   // the car stops with its nose just past the light; he walks to its window
+        const cx0 = L + 39, wx = cx0 - 22, N = [cx0 - 11, gy - 19],   /* 6.34: where the driver holds the note out */   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, PLEAD = 2.2, tR = t5 + PLEAD, tP = tR + 2.0;   // 6.32 (Omar): he pleads at the window for PLEAD s before the money comes (6.12-6.31: tP = t5 + 2.0, no pleading). The car stops with its nose just past the light; he walks to its window
         const tF = tP + (wx - L - 7) / v, tG = tF + 0.4, tD = tF + 0.9, t6 = tD + 1.3, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;   // 6.5 (Omar): back at the light he flips it to green (tG), the car goes (tD), then he picks it up
-        return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, tF, tG, t6, t7, cv}; },
+        return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, N, t5, tR, tD, tP, tF, tG, t6, t7, cv}; },
       len(){ const w = this.w(); return w.t7 + (w.L + 7 + 40) / w.v; },
-      draw(u){ const {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, t5, tD, tP, tF, tG, t6, t7, cv} = this.w();
+      draw(u){ const {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, N, t5, tR, tD, tP, tF, tG, t6, t7, cv} = this.w();
         // the car: comes in from the right once he's sweeping, brakes to a stop at the light, then drives off to the left
         let cx = null; if(u > tIn && u < tC){ const e = u - tIn; cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
         else if(u >= tC && u < tD) cx = cx0; else if(u >= tD){ const e = u - tD; cx = cx0 - 120 * e * e; }
@@ -1505,8 +1532,20 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else if(u < tIn){ x = L - 8 - v * (u - t2); d = -1; pose = walk(u * 8.5); }
         else if(u < tC + 0.3){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
         else if(u < t5){ x = sx + v * (u - tC - 0.3); pose = walk(u * 8.5); }
-        else if(u < t5 + 1.4){ x = wx; const k = sm(Math.min((u - t5) / 0.4, 1)); pose = {arms: [[0.4 + 0.9 * k, 0.6 + 1.0 * k], [0.45 + 0.75 * k, 0.8 + 0.8 * k]], lean: 0.38 * k}; }   // 6.12 (Omar): bends down with both hands out to the window (was one hand out, standing)
-        else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]], lean: 0.38 * (1 - sm((u - t5 - 1.4) / 0.4))}; }   // straightens up and pockets it
+        else if(u < tR){ x = wx; const e = u - t5, inn = sm(Math.min(e / 0.4, 1)), bob = Math.sin(u * 7);   // 6.32 (Omar): pleading at the window first
+          const pray = [[0.5, 2.5 + 0.08 * bob], [0.55, 2.45 + 0.08 * bob]], eat = [[0.3, 2.85 + 0.12 * Math.abs(Math.sin(u * 9))], [0.5, 0.9]];   // palms together, bobbing; then fingers to his mouth: "for food"
+          const blend = (a, b, f) => a.map((p, i) => [p[0] + (b[i][0] - p[0]) * f, p[1] + (b[i][1] - p[1]) * f]);
+          const arms = e < 1.3 ? blend([[0.15, 0.25], [0.45, 0.8]], pray, inn) : blend(pray, eat, sm(Math.min((e - 1.3) / 0.25, 1)));
+          pose = {arms, lean: 0.3 * inn + 0.05 * bob * inn}; }
+        /* 6.34 (Omar): he takes the note from the driver's hand. It's held out of the window at N and stays there; his near hand
+           reaches right up to it (arm angles worked out from where the note is, ikArm), closes on it, and pulls it back to his chest,
+           then he pockets it. 6.12-6.33: both hands cupped out low while the note slid down to them; lean 0 to 0.38 from tR. */
+        else if(u < tR + 1.6){ x = wx; const e = u - tR, lean = 0.3 + 0.08 * sm(Math.min(e / 0.4, 1)), sh = [x + Math.sin(lean) * 12.5, gy - 17 - Math.cos(lean) * 12.5];
+          const eat = [0.3, 2.85], bl = (a, b, f) => [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f];
+          const near = e < 1.0 ? bl(eat, ikArm(sh, N), sm(cl((e - 0.3) / 0.7, 0, 1))) : e < 1.15 ? ikArm(sh, N)   /* straight from his mouth to the note */
+            : ikArm(sh, bl(N, [x + 6, gy - 22], sm((e - 1.15) / 0.45)));
+          pose = {arms: [near, [0.35, 0.6]], lean}; }   // his other hand (with the broom) stays low
+        else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]], lean: 0.38 * (1 - sm((u - tR - 1.6) / 0.4))}; }   // straightens up and pockets it
         else if(u < tF){ x = wx - v * (u - tP); d = -1; pose = walk(u * 8.5); }
         else if(u < t6){ x = L + 7; d = -1; pose = u < tF + 0.7 ? {arms: [[1.2 + 0.15 * sm((u - tF) / 0.35), 1.3], [0.45, 0.8]]} : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }   // reaches up and flips it to green, then waits for the car to go
         else if(u < t7){ x = L + 7; d = -1; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = sm((u - t6 - 0.2) / 0.6); }   // picks it up
@@ -1521,8 +1560,10 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
         else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
           poly([[bx - 1.5, gy - 4], [bx + 1.5, gy - 4], [bx + 4.5, gy], [bx - 4.5, gy]], "#b8935a"); }
-        const note = u > t5 + 0.6 && u < t5 + 1.1 ? cx0 - 10 - 8 * (u - t5 - 0.6) / 0.5 : u >= t5 + 1.1 && u < t5 + 1.7 ? S2.hands[0][0] : null;   // 6.12: from the driver's window out to his hands   // the money: out of the window, then in his hand
-        if(note != null) rect(note - 2, (u < t5 + 1.1 ? gy - 18 : S2.hands[0][1] - 1.5), 4.5, 2.5, "#6fae5a"); } },
+        // the money: poked out of the driver's window to N (6.34), held there until he takes it, then in his hand until it's in his pocket
+        const e = u - tR, inHand = e >= 1.15 && e < 1.9, out = e > 0.2 && e < 1.15;
+        if(out || inHand){ const [nx, ny] = inHand ? S2.hands[0] : [N[0] + 5 * (1 - sm(Math.min((e - 0.2) / 0.3, 1))), N[1]];
+          rect(nx - 2.2, ny - 1.4, 4.5, 2.5, "#6fae5a"); } } },
   ];
   let act = -1, actAt = 0, actLen = 0, nextAt = 2, shown = 0, flip = false;
   /* 5.76: a small sandy dog: trots on its lead, wags, and puts its nose to the ground to sniff. */
