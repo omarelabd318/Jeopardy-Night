@@ -31,16 +31,8 @@ const ACT_KIND = ${J(ACT)};
 const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
 const CHANGELOG = ${J(JSON.parse(fs.readFileSync('src/changelog.json','utf8')))};
 const BALLS = ${J(fs.existsSync(W+'/balls') ? fs.readdirSync(W+'/balls').filter(f=>f.endsWith('.webp')).sort().map(f=>'data:image/webp;base64,'+fs.readFileSync(W+'/balls/'+f).toString('base64')) : [])};
-// TV Show Mix: every clue from the 7 single-show categories, labelled by show
-(() => {
-const SHOWS = ["got","peaky","bb","pb","st","office","friends","himym"];
-CATS.splice(CATS.findIndex(c => c.id==="office")+1, 0, {id:"tvmix", name:"TV Show Mix", type:"text", desc:"Clues from Game of Thrones, Peaky Blinders, Breaking Bad, Prison Break, Stranger Things, The Office, Friends and How I Met Your Mother, all in one."});
-DATA.tvmix = {};
-[100,200,300,400,500].forEach(l => {
-  DATA.tvmix[l] = [];
-  SHOWS.forEach(id => { const c = CATS.find(x => x.id===id); (DATA[id][l]||[]).forEach(e => { if(Array.isArray(e) && typeof e[0]==="string") DATA.tvmix[l].push([\`\${c.name}: \${e[0]}\`, e[1]]); }); });
-});
-})();
+/* 6.38 (Omar): TV Show Mix is a real mix now (see MIXES below), so its shows can be changed from Edit mixes. 5.x-6.37: built here
+   as a copy of every clue from the eight show categories, each prefixed "Show: ", in its own text category (DATA.tvmix). */
 /* 6.20 (Omar): mix categories. A mix holds no clues of its own: each tile picks one of its sources (each source equally likely) and opens
    a clue from it exactly as that category would, headed "Mix · Source" (6.21 showed the mix's name only; 6.23 put the source back, see mixPick and openClue in src/app.js). */
 const MIXES = [
@@ -52,11 +44,12 @@ const MIXES = [
   ["mixkn1", "Knowledge Mix 1", ["his","islam","year","sci","cal","brand"]],
   ["mixkn2", "Knowledge Mix 2", ["ww2","space","food","ffood","mb","curr","tg"]],
   ["mixent1", "Entertainment Mix 1", ["blockbuster","tvmix","plot","igf","lyric","song"]],
+  ["tvmix", "TV Show Mix", ["got","peaky","bb","pb","st","office","friends","himym"]],   // 6.38: the eight show categories
   ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel"]],
   ["mixfb", "Football Mix", ${J(FOOTBALL_IDS)}]];
-MIXES.forEach(([id,name,src]) => { src = src.filter(s => CATS.some(c => c.id===s));
-  CATS.push({id, name, type:"mix", src, desc:"A mix of " + src.map(s => CATS.find(c => c.id===s).name).join(", ") + ". Each tile picks one of them."});
-  DATA[id] = {100:[],200:[],300:[],400:[],500:[]}; });
+MIXES.forEach(([id,name]) => { CATS.push({id, name, type:"mix"}); DATA[id] = {100:[],200:[],300:[],400:[],500:[]}; });
+MIXES.forEach(([id,name,src]) => { const c = CATS.find(x => x.id===id); c.src = src.filter(s => CATS.some(x => x.id===s));   // 6.38: after all are added, so a mix can include another (TV Show Mix)
+  c.desc = "A mix of " + c.src.map(s => CATS.find(x => x.id===s).name).join(", ") + ". Each tile picks one of them."; });
 `;
 const out=`${head}\n<script>\n${data}${app}</script>\n`;
 fs.writeFileSync(process.argv[2]||'index.html',out);
