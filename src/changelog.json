@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.39",
+  "date": "2026-10-06",
+  "items": [
+   "The locked category's description just says \"Code required\" until the code is entered."
+  ]
+ },
+ {
   "v": "6.38",
   "date": "2026-10-06",
   "items": [
