@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.89`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.90`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -960,6 +960,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const [hx, hy] = P.hands[0]; seg([[hx, hy + 1], [hx, hy - 4]], "#8a1f2b", 1.4);                          // the flare
     glow(hx, hy - 5, 10, "rgba(255,90,60,.45)"); disc(hx, hy - 5, 1.6, "#fff0c8");
     for(let i = 0; i < 4; i++){ const a = (t * 1.2 + i / 4) % 1; disc(hx - (6 + a * 22) * d, hy - 5 - a * 6 + Math.sin(i * 3 + t * 4) * 2, 2 + a * 4, `rgba(220,215,225,${0.35 * (1 - a)})`); }   // its smoke trailing back
+    if((t % 1.4) >= 0.7) for(let i = 0; i < 2; i++){ const r = 3 + i * 3.5; g.strokeStyle = `rgba(255,240,200,${0.55 - i * 0.2})`; g.lineWidth = 1; g.beginPath(); g.arc(X(21), gy - 18.5, r, d > 0 ? -0.6 : Math.PI - 0.6, d > 0 ? 0.6 : Math.PI + 0.6); g.stroke(); }   // 5.90 (Omar): honking too, in turn with the car
   }
   // A car, side on: "white" (the wedding car) or "black" (the BMW, with a hint of the kidney grille).
   function car(x, d, rot, kind){
