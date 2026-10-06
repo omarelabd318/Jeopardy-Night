@@ -5,3 +5,6 @@
 
 ## 6.2 (2026-10-06)
 Omar asked for more clues and a harder category. Regenerated with v4work/rank/gen.js: 28 clues per value (was 22), with tighter winner/second-place bands at every value, so the races are closer. The figures themselves are unchanged.
+
+## 6.6 (2026-10-06)
+Regenerated so that at 300, 400 and 500 the third name is close as well (winner at most 2×, 1.6× and 1.4× third place), as Omar asked.
