@@ -12,3 +12,6 @@
 - Moved Liverpool's 4–0 comeback against Barcelona from 500 down to 300.
 - Checked and kept: Real Madrid are still on 15 titles, the six-title record (Gento, Carvajal, Modrić, Kroos, Nacho) still stands, Seedorf is still the only player to win with three clubs, and Ancelotti still has the most titles as a coach.
 - New clues cover PSG's back-to-back wins (1–1 against Arsenal in the 2026 final in Budapest, won 4–3 on penalties), the new league-phase format and many 2000–2025 finals.
+
+## 6.2 (2026-10-06)
+Added 25 clues (5 per value), none removed. Omar asked for more in this category.

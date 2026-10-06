@@ -16,3 +16,6 @@
 - Too easy for their value and moved down: Horus, Thoth, Nefertiti's bust, Suez nationalisation (1956), the Grand Egyptian Museum, Karnak, Faten Hamama, Sadat's Nobel, Cairo Trilogy.
 - Too hard for their value and moved up: Snøhetta, Naoum Shebib, Hikmat Abu Zayd, the Opera House fire, the Aswan Low Dam, Wadi El Hitan, the White Desert, Ras El Bar, Lake Timsah, Ahmed Shawqi.
 - New clues mix food, film, sport (Paris 2024 medals, Egypt's fourth World Cup in 2026), ancient Egypt and Egyptian literature.
+
+## 6.2 (2026-10-06)
+Added 30 clues (6 per value), none removed. Omar asked for more in this category.

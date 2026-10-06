@@ -14,3 +14,6 @@
 - New Salah clue ends at Trabzonspor (joined August 2026). Kept current players out of new clues where their 2026 club is unsettled (Mahrez, Pogba, Vardy, Sergio Ramos).
 - Hegazi 100>300, Elneny 100>200 (too hard for 100). Diego Costa 200>300. Zidan and Hossam Ghaly 300>400. Jovetić and Kežman 400>500.
 - Value counts are 25/24/25/25/26 (within the allowed spread of 2).
+
+## 6.2 (2026-10-06)
+Added 25 clues (5 per value), none removed. Omar asked for more in this category.

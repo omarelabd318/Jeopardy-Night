@@ -13,3 +13,6 @@
 - Checked and kept: Pelé is still the only player with three titles, Pozzo is still the only coach with two, and Saudi Arabia is still the 2034 host.
 - Moved down to an easier value: Morocco's 2022 semi-final to 100; England 1966 and Messi's 2022 Golden Ball to 200; Pelé's three titles, Scaloni and Deschamps to 300.
 - New clues lean on 1998–2022 (with some classics) and add Arab and Egyptian World Cup history: Algeria 1982 and 2014, Al-Owairan, Morocco 1986, Egypt in 1934 and 1990, and Tunisia beating France. The wc26 category covers 2026 in detail, so it appears here only lightly.
+
+## 6.2 (2026-10-06)
+Added 25 clues (5 per value), none removed. Omar asked for more in this category. The Football mode World Cup category (fwc) is World Cup plus World Cup 2026, so it gains these 25 too.

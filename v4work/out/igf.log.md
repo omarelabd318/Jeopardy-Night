@@ -4,3 +4,9 @@
 - The winner always leads by at least 12% when both top figures come from Wikipedia, 30% otherwise, so small changes don't flip the answer. Value goes up as the race gets closer.
 - Left out on purpose: Bad Bunny (wiped his account in Feb 2026), Nancy Ajram, Haifa Wehbe, Vinícius, Bella Hadid (sources disagreed).
 - Re-run gen.js with fresh numbers to update.
+
+## 6.2 (2026-10-06)
+Omar asked for more clues and a harder category. Regenerated with v4work/rank/gen.js: 28 clues per value (was 22), with tighter winner/second-place bands at every value, so the races are closer. The figures themselves are unchanged.
+
+## 6.6 (2026-10-06)
+Regenerated so that at 300, 400 and 500 the third name is close as well (winner at most 2×, 1.6× and 1.4× third place), as Omar asked. Added Narendra Modi, Priyanka Chopra, Jennie, Snoop Dogg and Lewis Hamilton, and moved Dua Lipa and David Beckham to the Wikipedia figures (3 October 2026).

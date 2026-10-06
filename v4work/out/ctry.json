@@ -2,7 +2,7 @@
  "id": "ctry",
  "name": "Which Country?",
  "type": "text",
- "desc": "The host names a city. Name the country it's in.",
+ "desc": "A city or a fact about a country. Name the country.",
  "data": {
   "100": [
    [
@@ -84,6 +84,86 @@
    [
     "Which country is this city in? New York",
     "USA"
+   ],
+   [
+    "Which country is shaped like a boot?",
+    "Italy"
+   ],
+   [
+    "Which country is home to the Eiffel Tower?",
+    "France"
+   ],
+   [
+    "Which country has had the world's biggest population since 2023?",
+    "India"
+   ],
+   [
+    "Which country is the largest in the world by area?",
+    "Russia"
+   ],
+   [
+    "Which country is home to the Pyramids of Giza?",
+    "Egypt"
+   ],
+   [
+    "Which country has a red maple leaf on its flag?",
+    "Canada"
+   ],
+   [
+    "Which country is home to the Great Wall?",
+    "China"
+   ],
+   [
+    "Which country hosted the 2022 World Cup?",
+    "Qatar"
+   ],
+   [
+    "Which country does sushi come from?",
+    "Japan"
+   ],
+   [
+    "Which country is home to Machu Picchu?",
+    "Peru"
+   ],
+   [
+    "Which country is famous for tulips, windmills and clogs?",
+    "The Netherlands"
+   ],
+   [
+    "Which country is home to kangaroos and koalas?",
+    "Australia"
+   ],
+   [
+    "Which country has Madrid as its capital?",
+    "Spain"
+   ],
+   [
+    "Which country is Big Ben in?",
+    "The United Kingdom"
+   ],
+   [
+    "Which country is home to the Christ the Redeemer statue?",
+    "Brazil"
+   ],
+   [
+    "Which country is Mount Everest in, on its border with China?",
+    "Nepal"
+   ],
+   [
+    "Which country is home to Mecca and Medina?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which country is the Acropolis in?",
+    "Greece"
+   ],
+   [
+    "Which country is the Statue of Liberty in?",
+    "The United States"
+   ],
+   [
+    "Which country does Cristiano Ronaldo play for?",
+    "Portugal"
    ]
   ],
   "200": [
@@ -166,6 +246,86 @@
    [
     "Which country is this city in? Warsaw",
     "Poland"
+   ],
+   [
+    "Which country is made up of more than 17,000 islands, the world's biggest archipelago?",
+    "Indonesia"
+   ],
+   [
+    "Which country is famous for chocolate, waffles and fries?",
+    "Belgium"
+   ],
+   [
+    "Which country is Table Mountain in?",
+    "South Africa"
+   ],
+   [
+    "Which country has Buenos Aires as its capital?",
+    "Argentina"
+   ],
+   [
+    "Which country is famous for its fjords?",
+    "Norway"
+   ],
+   [
+    "Which country is home to K-pop and Samsung?",
+    "South Korea"
+   ],
+   [
+    "Which country is famous for the Northern Lights and the Blue Lagoon?",
+    "Iceland"
+   ],
+   [
+    "Which country hosted the 2016 Olympics?",
+    "Brazil"
+   ],
+   [
+    "Which country is home to Bollywood?",
+    "India"
+   ],
+   [
+    "Which country is the Sagrada Família in?",
+    "Spain"
+   ],
+   [
+    "Which country is Mount Kilimanjaro in?",
+    "Tanzania"
+   ],
+   [
+    "Which country is Mount Fuji in?",
+    "Japan"
+   ],
+   [
+    "Which country does Lego come from?",
+    "Denmark"
+   ],
+   [
+    "Which country does IKEA come from?",
+    "Sweden"
+   ],
+   [
+    "Which country is Stonehenge in?",
+    "The United Kingdom (England)"
+   ],
+   [
+    "Which country is famous for neutrality, watches and the Alps, with Bern as its capital?",
+    "Switzerland"
+   ],
+   [
+    "Which country is home to the Mayan pyramid of Chichén Itzá?",
+    "Mexico"
+   ],
+   [
+    "Which country is the Hagia Sophia in?",
+    "Turkey"
+   ],
+   [
+    "Which country is famous for Oktoberfest?",
+    "Germany"
+   ],
+   [
+    "Which country were the Lord of the Rings films shot in?",
+    "New Zealand"
    ]
   ],
   "300": [
@@ -248,6 +408,86 @@
    [
     "Which country is this city in? Caracas",
     "Venezuela"
+   ],
+   [
+    "Which country produces the most coffee in the world?",
+    "Brazil"
+   ],
+   [
+    "Which country do the Galápagos Islands belong to?",
+    "Ecuador"
+   ],
+   [
+    "Which country has the longest coastline in the world?",
+    "Canada"
+   ],
+   [
+    "Which country is the Serengeti in?",
+    "Tanzania"
+   ],
+   [
+    "Which country does Nokia come from?",
+    "Finland"
+   ],
+   [
+    "Which country was called Siam until 1939?",
+    "Thailand"
+   ],
+   [
+    "Which country is famous for its long-distance runners and the Maasai Mara?",
+    "Kenya"
+   ],
+   [
+    "Which country was called Persia until 1935?",
+    "Iran"
+   ],
+   [
+    "Which country was called Ceylon until 1972?",
+    "Sri Lanka"
+   ],
+   [
+    "Which country produces the most cocoa in the world?",
+    "Ivory Coast"
+   ],
+   [
+    "Which country is home to Angel Falls, the world's tallest waterfall?",
+    "Venezuela"
+   ],
+   [
+    "Which country is the Atacama Desert in?",
+    "Chile"
+   ],
+   [
+    "Which country is home to Transylvania?",
+    "Romania"
+   ],
+   [
+    "Which country was called Burma until 1989?",
+    "Myanmar"
+   ],
+   [
+    "Which country has the most Spanish speakers in the world?",
+    "Mexico"
+   ],
+   [
+    "Which country has the biggest population in Africa?",
+    "Nigeria"
+   ],
+   [
+    "Which country does the haka come from?",
+    "New Zealand"
+   ],
+   [
+    "Which country is nicknamed 'l'Hexagone' because of its shape?",
+    "France"
+   ],
+   [
+    "Which country was Genghis Khan from?",
+    "Mongolia"
+   ],
+   [
+    "Which country is home to the Petronas Towers?",
+    "Malaysia"
    ]
   ],
   "400": [
@@ -330,6 +570,86 @@
    [
     "Which country is this city in? Sarajevo",
     "Bosnia and Herzegovina"
+   ],
+   [
+    "Which country has the most UNESCO World Heritage Sites?",
+    "Italy"
+   ],
+   [
+    "Which country is the ancient city of Troy in?",
+    "Turkey"
+   ],
+   [
+    "Which country is the largest in Africa by area?",
+    "Algeria"
+   ],
+   [
+    "Which country has the most lakes in the world?",
+    "Canada"
+   ],
+   [
+    "Which country produces the most tea in the world?",
+    "China"
+   ],
+   [
+    "Which country is the city of Timbuktu in?",
+    "Mali"
+   ],
+   [
+    "Which country has the world's largest Muslim population?",
+    "Indonesia"
+   ],
+   [
+    "Which country is home to the Black Forest and cuckoo clocks?",
+    "Germany"
+   ],
+   [
+    "Which country has more ancient pyramids than Egypt?",
+    "Sudan"
+   ],
+   [
+    "Which country is Patagonia in? (two answers)",
+    "Argentina and Chile"
+   ],
+   [
+    "Which country is called 'the land of a thousand lakes'?",
+    "Finland"
+   ],
+   [
+    "Which country is Ha Long Bay in?",
+    "Vietnam"
+   ],
+   [
+    "Which country is Lake Baikal, the world's deepest lake, in?",
+    "Russia"
+   ],
+   [
+    "Which country has La Paz, the world's highest seat of government?",
+    "Bolivia"
+   ],
+   [
+    "Which country was called Zaire from 1971 to 1997?",
+    "DR Congo"
+   ],
+   [
+    "Which country was once called Abyssinia?",
+    "Ethiopia"
+   ],
+   [
+    "Which country has produced the most oil in the world every year since 2018?",
+    "The United States"
+   ],
+   [
+    "Which country shares Lake Titicaca? (two answers)",
+    "Peru and Bolivia"
+   ],
+   [
+    "Which country has three capital cities?",
+    "South Africa"
+   ],
+   [
+    "Which country do Easter Island and its Moai statues belong to?",
+    "Chile"
    ]
   ],
   "500": [
@@ -412,6 +732,86 @@
    [
     "Which country is this city in? Podgorica",
     "Montenegro"
+   ],
+   [
+    "Which country has a dragon on its flag?",
+    "Bhutan"
+   ],
+   [
+    "Which country has the only national flag that isn't a rectangle?",
+    "Nepal"
+   ],
+   [
+    "Which country is the smallest in South America?",
+    "Suriname"
+   ],
+   [
+    "Which country is Mount Ararat in?",
+    "Turkey"
+   ],
+   [
+    "Which country is the Okavango Delta in?",
+    "Botswana"
+   ],
+   [
+    "Which country is the only one crossed by both the Equator and the Tropic of Capricorn?",
+    "Brazil"
+   ],
+   [
+    "Which country has the most languages, more than 800?",
+    "Papua New Guinea"
+   ],
+   [
+    "Which country has the oldest national flag still in use?",
+    "Denmark"
+   ],
+   [
+    "Which country is the least densely populated in the world?",
+    "Mongolia"
+   ],
+   [
+    "Which country drinks the most coffee per person?",
+    "Finland"
+   ],
+   [
+    "Which country was called Southern Rhodesia?",
+    "Zimbabwe"
+   ],
+   [
+    "Which country exports the most bananas?",
+    "Ecuador"
+   ],
+   [
+    "Which country has the world's northernmost capital city?",
+    "Iceland (Reykjavík)"
+   ],
+   [
+    "Which country is entirely surrounded by South Africa?",
+    "Lesotho"
+   ],
+   [
+    "Which country has a map of itself on its flag?",
+    "Cyprus (Kosovo's flag does too)"
+   ],
+   [
+    "Which country produces the most saffron?",
+    "Iran"
+   ],
+   [
+    "Which country in Europe is doubly landlocked?",
+    "Liechtenstein"
+   ],
+   [
+    "Which country has the most neighbouring countries, 14? (two answers)",
+    "China and Russia"
+   ],
+   [
+    "Which country was the first to give women the vote, in 1893?",
+    "New Zealand"
+   ],
+   [
+    "Which country is home to Angkor Wat, the world's largest religious monument?",
+    "Cambodia"
    ]
   ]
  }

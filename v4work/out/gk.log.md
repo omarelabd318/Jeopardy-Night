@@ -13,3 +13,6 @@
 - "Which country has the most official languages (16)? Zimbabwe" was arguable, because Bolivia recognises 37. It now asks which African country recognises 16 official languages.
 - Rebalanced 17 clues. For example, piano keys and Scotland's unicorn moved up, arachnophobia moved down from 500 to 200, and the googol moved down to 400.
 - Added 50 new clues, with Egyptian content (Koshari, konafa, Al Ahly, the piastre, Adel Emam, Umm Kulthum, Alaa Al Aswany) mixed with general trivia.
+
+## 6.2 (2026-10-06)
+Added 30 clues (6 per value), none removed. Omar asked for more in this category.

@@ -2,7 +2,7 @@
  "id": "ctryar",
  "name": "Which Country? Arab Edition",
  "type": "text",
- "desc": "The host names a city in the Arab world. Name the country it's in. Cities in historic Palestine count as Palestine.",
+ "desc": "A city or a fact about a country in the Arab world. Name the country. Cities in historic Palestine count as Palestine.",
  "data": {
   "100": [
    [
@@ -83,6 +83,86 @@
    ],
    [
     "Which country is this city in? Rabat",
+    "Morocco"
+   ],
+   [
+    "Which Arab country hosted the 2022 World Cup?",
+    "Qatar"
+   ],
+   [
+    "Which Arab country is home to the Burj Khalifa?",
+    "The UAE"
+   ],
+   [
+    "Which Arab country is home to Petra?",
+    "Jordan"
+   ],
+   [
+    "Which Arab country has the holy cities of Mecca and Medina?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Arab country reached the 2022 World Cup semi-finals?",
+    "Morocco"
+   ],
+   [
+    "Which Arab country is home to the Pyramids of Giza?",
+    "Egypt"
+   ],
+   [
+    "Which Arab country has a cedar tree on its flag?",
+    "Lebanon"
+   ],
+   [
+    "Which Arab country is the largest by area?",
+    "Algeria"
+   ],
+   [
+    "Which Arab country has the biggest population?",
+    "Egypt"
+   ],
+   [
+    "Which Arab country do the Tigris and Euphrates flow through, the land of ancient Mesopotamia?",
+    "Iraq"
+   ],
+   [
+    "Which Arab country did Iraq invade in 1990?",
+    "Kuwait"
+   ],
+   [
+    "Which Arab country started the Arab Spring in 2010–11?",
+    "Tunisia"
+   ],
+   [
+    "Which Arab country is Al-Aqsa Mosque in?",
+    "Palestine"
+   ],
+   [
+    "Which Arab country does the Nile flow through just before Egypt?",
+    "Sudan"
+   ],
+   [
+    "Which Arab country did Muammar Gaddafi rule for 42 years?",
+    "Libya"
+   ],
+   [
+    "Which Arab country does Cristiano Ronaldo play his club football in?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Arab country is the airline Emirates from?",
+    "The UAE"
+   ],
+   [
+    "Which Arab country is the singer Fairuz from?",
+    "Lebanon"
+   ],
+   [
+    "Which Arab country has Damascus, one of the world's oldest cities, as its capital?",
+    "Syria"
+   ],
+   [
+    "Which Arab country is co-hosting the 2030 World Cup with Spain and Portugal?",
     "Morocco"
    ]
   ],
@@ -166,6 +246,86 @@
    [
     "Which country is this city in? Taif",
     "Saudi Arabia"
+   ],
+   [
+    "Which Arab country was ruled for 50 years by Sultan Qaboos?",
+    "Oman"
+   ],
+   [
+    "Which Arab country is an island linked to Saudi Arabia by the King Fahd Causeway?",
+    "Bahrain"
+   ],
+   [
+    "Which Arab country sits at the southern tip of the Arabian Peninsula, next to Saudi Arabia and Oman?",
+    "Yemen"
+   ],
+   [
+    "Which Arab country is the TV channel Al Jazeera based in?",
+    "Qatar"
+   ],
+   [
+    "Which Arab country has the Wadi Rum desert, seen in films like 'The Martian' and 'Dune'?",
+    "Jordan"
+   ],
+   [
+    "Which Arab country is home to Chefchaouen, the blue city?",
+    "Morocco"
+   ],
+   [
+    "Which Arab country is home to the ruins of ancient Carthage?",
+    "Tunisia"
+   ],
+   [
+    "Which Arab country won independence from France in 1962 after a long war?",
+    "Algeria"
+   ],
+   [
+    "Which Arab country exports the most oil?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Arab country is made up of seven emirates?",
+    "The UAE"
+   ],
+   [
+    "Which Arab country is home to the ruins of ancient Babylon?",
+    "Iraq"
+   ],
+   [
+    "Which Arab country is home to the ancient citadel and souks of Aleppo?",
+    "Syria"
+   ],
+   [
+    "Which Arab country is the singer Haifa Wehbe from?",
+    "Lebanon"
+   ],
+   [
+    "Which Arab country is the Suez Canal in?",
+    "Egypt"
+   ],
+   [
+    "Which Arab country has the world's most valuable currency, the dinar?",
+    "Kuwait"
+   ],
+   [
+    "Which Arab country lies between Egypt and Tunisia on the Mediterranean?",
+    "Libya"
+   ],
+   [
+    "Which Arab country has a capital, Khartoum, where the Blue Nile and White Nile meet?",
+    "Sudan"
+   ],
+   [
+    "Which Arab country has a black, white and green flag with a red triangle and no star?",
+    "Palestine"
+   ],
+   [
+    "Which Arab country is famous for the dish mansaf?",
+    "Jordan"
+   ],
+   [
+    "Which Arab country is home to the resort island of Djerba?",
+    "Tunisia"
    ]
   ],
   "300": [
@@ -248,6 +408,86 @@
    [
     "Which country is this city in? Bizerte",
     "Tunisia"
+   ],
+   [
+    "Which Arab country lies on the Atlantic coast between Western Sahara and Senegal?",
+    "Mauritania"
+   ],
+   [
+    "Which Arab country has more ancient pyramids than Egypt?",
+    "Sudan"
+   ],
+   [
+    "Which Arab country is home to the Roman temples of Baalbek?",
+    "Lebanon"
+   ],
+   [
+    "Which Arab country was the poet Mahmoud Darwish from?",
+    "Palestine"
+   ],
+   [
+    "Which Arab country has a football team nicknamed 'the Desert Foxes'?",
+    "Algeria"
+   ],
+   [
+    "Which Arab country grows frankincense in its Dhofar region?",
+    "Oman"
+   ],
+   [
+    "Which Arab country has a Kurdistan region with its own government?",
+    "Iraq"
+   ],
+   [
+    "Which Arab country owns Socotra island, with its dragon blood trees?",
+    "Yemen"
+   ],
+   [
+    "Which Arab country is home to the ancient ruins of Palmyra?",
+    "Syria"
+   ],
+   [
+    "Which Arab country has the Dead Sea, the lowest point on land, on its western border?",
+    "Jordan"
+   ],
+   [
+    "Which Arab country is a peninsula in the Gulf with a land border only with Saudi Arabia?",
+    "Qatar"
+   ],
+   [
+    "Which Arab country hosts a Formula 1 Grand Prix at Sakhir?",
+    "Bahrain"
+   ],
+   [
+    "Which Arab country is building the futuristic city of NEOM?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Arab country is home to Siwa Oasis?",
+    "Egypt"
+   ],
+   [
+    "Which Arab country is the desert planet Tatooine from Star Wars filmed in?",
+    "Tunisia"
+   ],
+   [
+    "Which Arab country did Omar Mukhtar lead the fight against Italian rule in?",
+    "Libya"
+   ],
+   [
+    "Which Arab country opened a branch of the Louvre in 2017?",
+    "The UAE"
+   ],
+   [
+    "Which Arab country is home to the Hassan II Mosque and its 210 m minaret?",
+    "Morocco"
+   ],
+   [
+    "Which Arab country has the Arab world's only Nobel Prize winner for literature?",
+    "Egypt (Naguib Mahfouz)"
+   ],
+   [
+    "Which Arab country is most of the Empty Quarter (Rub' al Khali) in?",
+    "Saudi Arabia"
    ]
   ],
   "400": [
@@ -330,6 +570,86 @@
    [
     "Which country is this city in? Jerash",
     "Jordan"
+   ],
+   [
+    "Which Arab country has the longest coastline in mainland Africa?",
+    "Somalia"
+   ],
+   [
+    "Which Arab country hosts American, French and Chinese military bases in the Horn of Africa?",
+    "Djibouti"
+   ],
+   [
+    "Which Arab country is Mocha, the port that gave the coffee its name, in?",
+    "Yemen"
+   ],
+   [
+    "Which Arab country is home to Al-Qarawiyyin in Fez, the oldest university still running?",
+    "Morocco"
+   ],
+   [
+    "Which Arab country played at the 1982 World Cup in Spain?",
+    "Kuwait"
+   ],
+   [
+    "Which Arab country is home to the Roman ruins of Leptis Magna?",
+    "Libya"
+   ],
+   [
+    "Which Arab country was the Abbasid House of Wisdom in?",
+    "Iraq"
+   ],
+   [
+    "Which Arab country officially recognises 18 religious sects?",
+    "Lebanon"
+   ],
+   [
+    "Which Arab country is home to the Roman city of Jerash?",
+    "Jordan"
+   ],
+   [
+    "Which Arab country is the Crusader castle Krak des Chevaliers in?",
+    "Syria"
+   ],
+   [
+    "Which Arab country owns the Musandam peninsula, cut off from the rest of the country by the UAE?",
+    "Oman"
+   ],
+   [
+    "Which Arab country is building Masdar City, planned as a zero-carbon city?",
+    "The UAE"
+   ],
+   [
+    "Which Arab country celebrates its national day on 18 December, the date of the 2022 World Cup final?",
+    "Qatar"
+   ],
+   [
+    "Which Arab country was the centre of the ancient Dilmun civilisation?",
+    "Bahrain"
+   ],
+   [
+    "Which Arab country is called 'the land of a million martyrs'?",
+    "Algeria"
+   ],
+   [
+    "Which Arab country won the 2015 Nobel Peace Prize through its National Dialogue Quartet?",
+    "Tunisia"
+   ],
+   [
+    "Which Arab country was the last in the world to abolish slavery, in 1981?",
+    "Mauritania"
+   ],
+   [
+    "Which Arab country split in two in 2011 when its south became independent?",
+    "Sudan"
+   ],
+   [
+    "Which Arab country moved its Abu Simbel temples in the 1960s to save them from a dam lake?",
+    "Egypt"
+   ],
+   [
+    "Which Arab country is home to Hegra (Mada'in Salih), the Nabataean tombs at AlUla?",
+    "Saudi Arabia"
    ]
   ],
   "500": [
@@ -412,6 +732,86 @@
    [
     "Which country is this city in? Sabha",
     "Libya"
+   ],
+   [
+    "Which Arab country is an island nation in the Indian Ocean between Mozambique and Madagascar?",
+    "Comoros"
+   ],
+   [
+    "Which Arab country is the Church of the Nativity in?",
+    "Palestine"
+   ],
+   [
+    "Which Arab country is home to the Tassili n'Ajjer rock art in the Sahara?",
+    "Algeria"
+   ],
+   [
+    "Which Arab country has Wadi El Hitan, the 'Valley of the Whales' full of fossils?",
+    "Egypt"
+   ],
+   [
+    "Which Arab country had the first elected parliament in the Gulf, in 1963?",
+    "Kuwait"
+   ],
+   [
+    "Which Arab country has Lake Assal, the lowest point in Africa?",
+    "Djibouti"
+   ],
+   [
+    "Which Arab country is home to the 'Eye of the Sahara', the Richat Structure?",
+    "Mauritania"
+   ],
+   [
+    "Which Arab country has the mud-brick tower city of Shibam, 'the Manhattan of the desert'?",
+    "Yemen"
+   ],
+   [
+    "Which Arab country once ruled an empire from Zanzibar?",
+    "Oman"
+   ],
+   [
+    "Which Arab country has only about 26 km of coastline, on the Gulf of Aqaba?",
+    "Jordan"
+   ],
+   [
+    "Which Arab country is home to the Mesopotamian Marshes, the land of the Marsh Arabs?",
+    "Iraq"
+   ],
+   [
+    "Which Arab country is home to Byblos, one of the oldest continuously inhabited cities?",
+    "Lebanon"
+   ],
+   [
+    "Which Arab country was ancient Ugarit, home of one of the first alphabets, in?",
+    "Syria"
+   ],
+   [
+    "Which Arab country has a Roman amphitheatre at El Jem nearly as big as the Colosseum?",
+    "Tunisia"
+   ],
+   [
+    "Which Arab country recorded 58 °C at Al Aziziyah in 1922, long listed as the world's hottest temperature?",
+    "Libya"
+   ],
+   [
+    "Which Arab country has the 'Tree of Life', a lone tree in the desert?",
+    "Bahrain"
+   ],
+   [
+    "Which Arab country has Al Zubarah Fort as its first UNESCO World Heritage Site?",
+    "Qatar"
+   ],
+   [
+    "Which Arab country is the largest country in the world with no permanent river?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Arab country was the first country to recognise the United States, in 1777?",
+    "Morocco"
+   ],
+   [
+    "Which Arab country has the Al Ain oases, a UNESCO World Heritage Site?",
+    "The UAE"
    ]
   ]
  }

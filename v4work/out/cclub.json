@@ -128,6 +128,26 @@
    [
     "Which club did all three play for? Robert Lewandowski · Thomas Müller · Arjen Robben",
     "Bayern Munich"
+   ],
+   [
+    "Which club did all three play for? Toni Kroos · Manuel Neuer · Thomas Müller",
+    "Bayern Munich"
+   ],
+   [
+    "Which club did all three play for? David Beckham · Paul Scholes · Gary Neville",
+    "Manchester United"
+   ],
+   [
+    "Which club did all three play for? Ronaldinho · Samuel Eto'o · Deco",
+    "Barcelona"
+   ],
+   [
+    "Which club did all three play for? Zinedine Zidane · Luís Figo · Ronaldo Nazário",
+    "Real Madrid"
+   ],
+   [
+    "Which club did all three play for? Hossam Hassan · Mahmoud El Khatib · Essam El-Hadary",
+    "Al Ahly"
    ]
   ],
   "200": [
@@ -254,6 +274,26 @@
    [
     "Which club did all three play for? Antoine Griezmann · Fernando Torres · Sergio Agüero",
     "Atlético Madrid"
+   ],
+   [
+    "Which club did all three play for? Hazem Emam · Hossam Hassan · Shikabala",
+    "Zamalek"
+   ],
+   [
+    "Which club did all three play for? Paulo Dybala · Cristiano Ronaldo · Gonzalo Higuaín",
+    "Juventus"
+   ],
+   [
+    "Which club did all three play for? Francesco Totti · Daniele De Rossi · Mohamed Salah",
+    "Roma"
+   ],
+   [
+    "Which club did all three play for? Sergio Agüero · Yaya Touré · David Silva",
+    "Manchester City"
+   ],
+   [
+    "Which club did all three play for? Javier Zanetti · Ronaldo Nazário · Christian Vieri",
+    "Inter Milan"
    ]
   ],
   "300": [
@@ -380,6 +420,26 @@
    [
     "Which club did all three play for? Mido · Hossam Ghaly · Gareth Bale",
     "Tottenham Hotspur"
+   ],
+   [
+    "Which club did all three play for? Erling Haaland · Sadio Mané · Dominik Szoboszlai",
+    "Red Bull Salzburg"
+   ],
+   [
+    "Which club did all three play for? Karim Benzema · Hatem Ben Arfa · Juninho Pernambucano",
+    "Lyon"
+   ],
+   [
+    "Which club did all three play for? Wesley Sneijder · Arjen Robben · Rafael van der Vaart",
+    "Real Madrid"
+   ],
+   [
+    "Which club did all three play for? Steven Gerrard · Ashley Cole · Robbie Keane",
+    "LA Galaxy"
+   ],
+   [
+    "Which club did all three play for? Luka Modrić · Mario Mandžukić · Dani Olmo",
+    "Dinamo Zagreb"
    ]
   ],
   "400": [
@@ -506,6 +566,26 @@
    [
     "Which club did all three play for? Mostafa Mohamed · Randal Kolo Muani · Ludovic Blas",
     "Nantes"
+   ],
+   [
+    "Which club did all three play for? Miroslav Klose · Michael Ballack · Hany Ramzy",
+    "Kaiserslautern"
+   ],
+   [
+    "Which club did all three play for? Thierry Henry · Rafael Márquez · Tim Cahill",
+    "New York Red Bulls"
+   ],
+   [
+    "Which club did all three play for? Ronaldo Nazário · Roberto Carlos · Adriano",
+    "Corinthians"
+   ],
+   [
+    "Which club did all three play for? Hernán Crespo · Juan Sebastián Verón · Pavel Nedvěd",
+    "Lazio"
+   ],
+   [
+    "Which club did all three play for? Paul Gascoigne · Brian Laudrup · Ally McCoist",
+    "Rangers"
    ]
   ],
   "500": [
@@ -632,6 +712,26 @@
    [
     "Which club did all three play for? Mohamed Elneny · Xherdan Shaqiri · Mohamed Salah",
     "Basel"
+   ],
+   [
+    "Which club did all three play for? Didier Drogba · Alessandro Nesta · Marco Di Vaio",
+    "Montreal Impact (CF Montréal)"
+   ],
+   [
+    "Which club did all three play for? Sebastian Giovinco · Jermain Defoe · Michael Bradley",
+    "Toronto FC"
+   ],
+   [
+    "Which club did all three play for? Kaká · Nani · Cyle Larin",
+    "Orlando City"
+   ],
+   [
+    "Which club did all three play for? Bastian Schweinsteiger · Xherdan Shaqiri · Nemanja Nikolić",
+    "Chicago Fire"
+   ],
+   [
+    "Which club did all three play for? Paulinho · Anderson Talisca · Jackson Martínez",
+    "Guangzhou Evergrande"
    ]
   ]
  }

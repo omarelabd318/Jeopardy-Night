@@ -14,3 +14,6 @@
 - 'Most Premier League appearances: Gareth Barry (653)' was out of date because James Milner passed him in February 2026. It now asks whose record Milner broke.
 - Moved: Arne Slot down to 100; Drogba's and Lampard's 2000s moves to Chelsea up to 200; 'Haaland from Dortmund' down to 300; 'Liverpool 7–0 Man United' down to 400.
 - New clues cover the 2025–26 season (Arsenal's title, Haaland's 27 goals, the three relegated clubs, Bournemouth and Sunderland qualifying for Europe), plus Marmoush and more 2000s and 2010s favourites.
+
+## 6.2 (2026-10-06)
+Added 25 clues (5 per value), none removed. Omar asked for more in this category.
