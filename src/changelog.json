@@ -3,6 +3,27 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.38",
+  "date": "2026-10-06",
+  "items": [
+   "TV Show Mix is a real mix now: choose which shows it uses in Edit mixes (Netflix Hits can be added too)."
+  ]
+ },
+ {
+  "v": "6.37",
+  "date": "2026-10-06",
+  "items": [
+   "TV Show Mix is now in the Mixes group, after Entertainment Mix 2."
+  ]
+ },
+ {
+  "v": "6.36",
+  "date": "2026-10-06",
+  "items": [
+   "The category count on the title screen no longer counts the mixes."
+  ]
+ },
+ {
   "v": "6.35",
   "date": "2026-10-06",
   "items": [

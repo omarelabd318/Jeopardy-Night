@@ -155,15 +155,16 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.35`); }
+  const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.38`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
-  ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","mixmap","mixkn1","mixkn2","mixguess","mixparty"]],   /* 6.20 (Omar): the mixes, first. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
+  ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","tvmix","mixmap","mixkn1","mixkn2","mixguess","mixparty"]],   /* 6.20 (Omar): the mixes, first. 6.37 (Omar): TV Show Mix moved here from Entertainment, after Entertainment Mix 2. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
   /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egyph","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","lyricar","emeg","emseg","ctryar"]],
   ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","tvmix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","ptrap","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
+  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","ptrap","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
@@ -283,18 +284,19 @@ const TIPS = {
 /* 6.27 (Omar): the Edit mixes panel at the bottom of setup. Each mix may draw from its own section's categories (plus the ones it
    had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Locked categories
    are left out (6.27 also left out Act It Out and One Word Clues; 6.28 allows them). Choices are saved per device in "jn_mixes". */
-const MIX_SECTION = {mixeg1:"Egypt & Arab World", mixeg2:"Egypt & Arab World", mixfb:"Football & Sports", mixent1:"Entertainment", mixent2:"Entertainment",
+const MIX_SECTION = {tvmix:"Entertainment", mixeg1:"Egypt & Arab World", mixeg2:"Egypt & Arab World", mixfb:"Football & Sports", mixent1:"Entertainment", mixent2:"Entertainment",
   mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games"};
 const MIX_DEFAULT = Object.fromEntries(CATS.filter(c => c.type === "mix").map(c => [c.id, c.src.slice()]));
 const mixAllowed = id => { const g = (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
-  return [...new Set([...g, ...(MIX_DEFAULT[id] || [])])].filter(s => { const c = catById(s); return c && c.type !== "mix" && c.type !== "impostor" && !LOCKED_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
-const LOCKED_IDS = new Set(["x18"]);
+  if(id === "tvmix") return TV_SHOWS.filter(s => catById(s));   // 6.38: TV Show Mix picks from the TV series only
+  return [...new Set([...g, ...(MIX_SECTION[id] === "Entertainment" ? ["tvmix"] : []), ...(MIX_DEFAULT[id] || [])])]   /* 6.37: TV Show Mix moved to Mixes but stays choosable for the Entertainment mixes */.filter(s => { const c = catById(s); return c && (c.type !== "mix" || s === "tvmix") && s !== id && c.type !== "impostor" && !LOCKED_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
+const LOCKED_IDS = new Set(["x18"]), TV_SHOWS = ["got","peaky","bb","pb","st","office","netflix","friends","himym"];   // 6.38: what TV Show Mix may use (the eight shows by default, plus Netflix Hits)
 function applyMixes(){ const saved = store.get("jn_mixes", {});
   CATS.filter(c => c.type === "mix").forEach(c => { const ok = mixAllowed(c.id), want = (saved[c.id] || MIX_DEFAULT[c.id]).filter(s => ok.includes(s));
     c.src = want.length ? want : MIX_DEFAULT[c.id].slice(); }); }
 applyMixes();
 function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
-  box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(Boolean).map(m => { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
+  box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(c => c && c.type === "mix").map(m =>   /* 6.38: TV Show Mix is a mix too now (6.37: left out, fixed contents) */ { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
     return `<div class="mixrow"><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id])}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5>
       <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></div>`; }).join("");
   const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
@@ -308,7 +310,7 @@ document.addEventListener("click", e => { const b = e.target.closest && e.target
   store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
   renderMixEdit(); renderChips(); });
 $("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });
-const tipOf = c => TIPS[c.id] || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
+const tipOf = c => (c.type === "mix" ? "" : TIPS[c.id]) || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
 function renderChips(){
   const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
   const seen = new Set();
@@ -2117,11 +2119,11 @@ function warmRef(ref, now){ if(!ref) return;
    has clues at that value), then a clue from it. A source can itself be a mix-like category such as TV Show Mix. */
 const isMix = id => (catById(id) || {}).type === "mix";
 function mixPick(cat,lvl){
-  let src = catById(cat).src.filter(s => catById(s) && (pool(s,lvl) || []).length);
-  if(S.ffa){ const solo = src.filter(s => !FFA_SKIP.has(catById(s).type)); if(solo.length) src = solo; }   // 6.28: Free-for-all has no teams, so a mix skips Act It Out and One Word Clues there
+  let src = catById(cat).src.filter(s => catById(s) && (isMix(s) ? s !== cat : (pool(s,lvl) || []).length));   // 6.38: a source can itself be a mix (TV Show Mix)
+  if(S.ffa){ const solo = src.filter(s => isMix(s) || !FFA_SKIP.has(catById(s).type)); if(solo.length) src = solo; }   // 6.28: Free-for-all has no teams, so a mix skips Act It Out and One Word Clues there
   const off = src.filter(s => !(S.cats || []).includes(s));
   const from = off.length ? off : src, s = from[Math.floor(Math.random() * from.length)];
-  return {src: s, i: pickIdx(s,lvl)}; }
+  return isMix(s) ? mixPick(s,lvl) : {src: s, i: pickIdx(s,lvl)}; }   // 6.38: a mix inside a mix picks again from its own list
 function prepick(cat,lvl){ const k = `${cat}-${lvl}`;
   if(isMix(cat)){ const m = PICKS[k]; if(m && !S.used.has(`${m.src}-${lvl}-${m.i}`)) return; PICKS[k] = mixPick(cat,lvl); warmRef(imgRefFor(PICKS[k].src,lvl,PICKS[k].i)); return; } if(PICKS[k] !== undefined && !S.used.has(`${k}-${PICKS[k]}`)) return;
   const n = pool(cat,lvl).length; if(!n) return; PICKS[k] = pickIdx(cat,lvl); warmRef(imgRefFor(cat,lvl,PICKS[k])); }
