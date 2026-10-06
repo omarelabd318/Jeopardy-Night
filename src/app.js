@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.94`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v5.95`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1028,6 +1028,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      and leaves (that visit ends with the cigarette, not after three scenes). */
   const bawab = {phase: "off", at: 0, side: 1, acts: 0, awake: 0, visits: 0, kind: 0, sitAt: 0, roach: null, roachAt: 0};
   const CIG = 80;                                                                               // seconds one cigarette lasts
+  const SHP = 10, CGP = 7;                                                                      // 5.95 (Omar): seconds between shisha pulls and cigarette drags (5.94: 5 for both)
   function bawabOnAct(t){                                                                       // called whenever a new scene starts
     if(bawab.phase === "off" && shown % 6 === 2){ bawab.phase = "in"; bawab.at = t; bawab.side = bawab.visits % 2 ? -1 : 1; bawab.kind = bawab.visits % 3; bawab.visits++; bawab.roach = null; }
     else if(bawab.phase === "sit" && bawab.kind !== 2 && --bawab.acts <= 0){ bawab.phase = "out"; bawab.at = t; } }
@@ -1056,20 +1057,20 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       if(nod > 0.6) for(let i = 0; i < 3; i++){ const a = (t * 0.35 + i / 3) % 1, zx = home + (7 + a * 8) * s, zy = gy - 33 - a * 12, z = 2 + a * 1.5;   // z's floating up
         g.strokeStyle = `rgba(230,235,255,${0.7 * (1 - a) * (nod - 0.6) / 0.4})`; g.lineWidth = 0.9; g.beginPath(); g.moveTo(zx - z, zy - z); g.lineTo(zx + z, zy - z); g.lineTo(zx - z, zy + z); g.lineTo(zx + z, zy + z); g.stroke(); }
       return; }
-    // a pull every 5 s: hand up (0.4 s), draw (1.1 s), hand down (0.4 s), then breathe out
+    // a pull every SHP / CGP s: hand up (0.4 s), draw (1.1 s), hand down (0.4 s), then breathe out
     const drag = c => c < 0.4 ? sm(c / 0.4) : c < 1.5 ? 1 : c < 1.9 ? 1 - sm((c - 1.5) / 0.4) : 0;
     if(bawab.kind === 1){
-      const e = t - bawab.sitAt - 1.5, c = e < 0 ? 4.9 : e % 5, r = e < 0 ? 0 : drag(c), pulling = e >= 0 && c > 0.4 && c < 1.5;
+      const e = t - bawab.sitAt - 1.5, c = e < 0 ? 9.9 : e % SHP, r = e < 0 ? 0 : drag(c), pulling = e >= 0 && c > 0.4 && c < 1.5;
       const port = shisha(home - 16, gy, pulling ? 1 : 0.2);
       const F = bawabSit(home, r, {});
       g.strokeStyle = "#7a4b8f"; g.lineWidth = 1.2; g.beginPath(); g.moveTo(port[0], port[1]); g.quadraticCurveTo((port[0] + F.hand[0]) / 2, gy - 0.5, F.hand[0], F.hand[1]); g.stroke();   // the hose
       rect(F.hand[0] - 0.6, F.hand[1] - 2.2, 1.2, 2.4, "#c9b06a");                                  // mouthpiece
-      if(e > 1.7) puff(F.mouth[0], F.mouth[1], ((e - 1.7) % 5) / 3, true);
+      if(e > 1.7) puff(F.mouth[0], F.mouth[1], ((e - 1.7) % SHP) / 3, true);
       return; }
     // kind 2: the cigarette
     const tLight = bawab.sitAt + 2.3, tEnd = tLight + CIG;
     if(t < tEnd){
-      const lighting = t < tLight, e = t - tLight, c = e % 5;
+      const lighting = t < tLight, e = t - tLight, c = e % CGP;
       const r = lighting ? (t < bawab.sitAt + 0.8 ? 0 : t < bawab.sitAt + 1.2 ? sm((t - bawab.sitAt - 0.8) / 0.4) : t < bawab.sitAt + 1.9 ? 1 : 1 - sm((t - bawab.sitAt - 1.9) / 0.4)) : drag(c);
       const F = bawabSit(home, r, {});
       const L = 6 - 4.5 * cl(e / CIG, 0, 1), [hx, hy] = F.hand, tip = [hx - L * 0.95, hy - L * 0.3];
@@ -1078,7 +1079,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       else { const pulling = c > 0.4 && c < 1.5; disc(tip[0], tip[1], pulling ? 1 : 0.7, pulling ? "#ff7a2a" : "#d9542a");
         if(pulling) glow(tip[0], tip[1], 3.5, "rgba(255,120,50,.45)");
         else for(let i = 0; i < 2; i++){ const a = (t * 0.6 + i / 2) % 1; disc(tip[0] - a * 2, tip[1] - 2 - a * 8, 0.8 + a * 1.5, `rgba(220,220,230,${0.25 * (1 - a)})`); }   // a wisp off the tip
-        if(e > 1.7) puff(F.mouth[0], F.mouth[1], ((e - 1.7) % 5) / 3, false); }
+        if(e > 1.7) puff(F.mouth[0], F.mouth[1], ((e - 1.7) % CGP) / 3, false); }
       return; }
     // done: he flicks the butt towards his nearer edge, then gets up and goes
     const f = t - tEnd, F = bawabSit(home, f < 0.25 ? sm(f / 0.25) * 0.35 : 0.35 * (1 - sm((f - 0.25) / 0.3)), {});
