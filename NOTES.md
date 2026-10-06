@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.90. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.91. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -541,3 +541,9 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 5.88 (2026-10-06): Omar didn't want the street sweeper to raise the money in thanks, so after the BMW driver hands it over he puts it in his pocket (the note disappears at his hip) and walks off. The old raised-hand pose is in a comment on that line in `src/app.js` if he wants it back.
 - 5.89 (2026-10-06): Omar asked for the wedding car to be led by a motorbike celebrating the couple. `escortBike()` rides about 78 px ahead of the car at the same speed: a rider plus a passenger in white waving a red flare that trails smoke. To undo, drop the `escortBike(...)` call in the wedding act and set its length back to `(W + 170) / 70`.
 - 5.90 (2026-10-06): Omar asked for the wedding motorbike to honk like the car. It draws the same pulsing honk lines from its headlight, in the gaps between the car's, so the two take turns. To undo, delete the `5.90` honk line in `escortBike()`.
+- 5.91 (2026-10-06): A round of street-scene tweaks Omar asked for:
+  - **Bawab:** once seated he faces the screen (`bawabFront()`), slumped back in the chair with his legs out and his hands folded. He stays awake for 3 s after sitting down, then his head tips to one side, his eyes shut and the z's start. He still looks up when something passes. To go back to the side-on version (5.86-5.90), restore the old `plasticChair(home, d); person(home, ...)` lines, which are in the 5.90 commit.
+  - **Hantour horse:** darker, `#4a2f1e` (was `#6e4a30`, kept in a comment).
+  - **Wedding flare:** the passenger barely moves it now (arm swing 0.06 / 0.05, was 0.25 / 0.2).
+  - **Eid sheep:** no rope. The man walks behind the five sheep with a stick, guiding them across. Halfway, the last sheep stops to graze. He stops behind it and taps it on, and it trots to catch up. `sheep()` lost its `brace` pose and gained `graze` (head down).
+  - **Street sweeper:** his patch is at `W * 0.25` (was `W * 0.42`), nearer the side he walks in from. He carries the broom in his other hand when walking in, at the car and when leaving.
