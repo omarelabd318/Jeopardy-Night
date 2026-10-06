@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v5.97. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v5.98. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 106 categories (one of them, NSFW, locked behind a code) in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -564,3 +564,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Bawab:** a shisha pull every 12 s and a cigarette drag every 10 s (`SHP`, `CGP`). The cigarette still lasts 80 s, so about 8 drags.
   - **Smoke:** `puff()` breathes out a bit more for both, with bigger, higher, slightly thicker puffs. The 5.94 numbers are in a comment there.
 - 5.97 (2026-10-06): Omar pointed out that Egyptian buses don't have an open back door. `cityBus()` now has its open door at the front, just behind the windscreen, and the windows and heads have moved back to make room. In the bus chase the man runs up alongside the bus and hops onto the front step (`door = x + 32`, was `x - 38`). Because he now has further to run, he sets off at 3.3 s (was 4), so he still catches it at about the same point on the street.
+- 5.98 (2026-10-06): Omar asked for the bawab to drag his chair by the top of it. Walking in and out, the chair now trails behind him, tipped back onto its back legs with its front legs up, and the top of the backrest in his trailing hand. That arm is now `[-0.6, -0.9]` (was `[-0.5, -0.3]`). Before, it was carried upright at his side with `plasticChair(x - 8 * dir, dir)`, which is in a comment there.
