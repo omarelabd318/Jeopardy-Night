@@ -1512,7 +1512,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        on red a little ahead of his patch, sweeps, the BMW stops at the light, he goes to the window to ask, it hands him money and
        drives off, and he picks up the light and his broom and leaves. (5.86-6.2: no light; the car pulled up by him.) 6.5 (Omar): before the car leaves he goes back
        and flips the light to green, so it drives off on green (6.3-6.4: it left on red). */
-    { w(){ const sx = (W * 0.25 - 30) / 2, v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
+    { w(){ const sx = Math.max((W * 0.25 - 30) / 2, 150),   /* 6.35: at least 150 px in, clear of the bawab's chair, shisha and friend (46-81 px) on smaller screens; unchanged from 1400 px wide (was (W * 0.25 - 30) / 2) */ v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
         const t1 = (L - 8 + 30) / v, t2 = t1 + 0.9, tIn = t2 + 26 / v, tC = tIn + arriveT;    // walk in, set the light down, walk back, sweep until the car stops
         const cx0 = L + 39, wx = cx0 - 22, N = [cx0 - 11, gy - 19],   /* 6.34: where the driver holds the note out */   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, PLEAD = 2.2, tR = t5 + PLEAD, tP = tR + 2.0;   // 6.32 (Omar): he pleads at the window for PLEAD s before the money comes (6.12-6.31: tP = t5 + 2.0, no pleading). The car stops with its nose just past the light; he walks to its window
         const tF = tP + (wx - L - 7) / v, tG = tF + 0.4, tD = tF + 0.9, t6 = tD + 1.3, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;   // 6.5 (Omar): back at the light he flips it to green (tG), the car goes (tD), then he picks it up
