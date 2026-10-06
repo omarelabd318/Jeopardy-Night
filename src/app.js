@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.8`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.9`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1368,10 +1368,10 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x + 32;
         cityBus(x, 1, x / 6);
         if(u < mStart) return;
-        if(u < meet){ const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: [[2.0, 2.2], [-0.6, -0.2]]}); return; }
+        if(u < meet){ const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: (k => [[2.0 - 0.6 * k, 2.2 - 0.5 * k], [-0.6, -0.2]])(sm(cl((u - meet + 0.5) / 0.5, 0, 1)))}); return; }   // 6.9 (Omar): his reaching hand comes down to door height just before he gets there
         const hop = cl((u - meet) / 0.35, 0, 1);                                                                    // the jump onto the step
         person(door, gy - 5 * hop - 3 * Math.sin(hop * Math.PI), 1, {lean: -0.15 * hop, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true,
-          arms: [u > on + 0.8 ? [1.4, 1.7] : [2.6, 2.9], u > on + 0.8 ? [0.15, 0.3] : u > on ? [1.5 + 0.5 * Math.sin(u * 8), 2.4] : [-0.4, -0.2]]   /* 6.3 (Omar): once he's settled he holds the door at chest height and lowers his free hand (5.86-6.2: grab hand up high, free hand waving) */, ...(hop < 1 ? {ph: u * 15} : {})}); } },
+          arms: [[1.4, 1.7], [0.15, 0.3]]   /* 6.9 (Omar): he grabs the door at chest height and keeps his free hand down from the moment he jumps on (6.3-6.8: grabbed high and waved for 0.8 s first; 5.86-6.2: kept waving) */, ...(hop < 1 ? {ph: u * 15} : {})}); } },
     /* 5.86 (Omar): five sheep for Eid. 5.91 (Omar): no rope; the man walks behind them with a stick, guiding them across. Halfway the
        last one stops to graze, he stops behind it and taps it on with the stick, and it trots to catch up with the others (5.86-5.90: he
        led them on a rope and tugged the first one along). */
