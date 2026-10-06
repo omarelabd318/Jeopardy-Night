@@ -155,7 +155,7 @@ $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.13`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${PICK.length} Categories · ${n.toLocaleString("en-US")} Clues · v6.15`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [  /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
@@ -1157,6 +1157,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      leaves with him. */
   const bawab = {phase: "off", at: 0, side: 1, acts: 0, awake: 0, visits: 0, kind: 0, sitAt: 0, roach: null, roachAt: 0, pal: {roach: null, roachAt: 0}};
   const PAL = {outfit: "robe", robe: "#6e5238", mo: true, skin: "#8a5a3a", hair: "#1d1712", nomark: true}, FCIG = 60;
+  const PLACE = 1.6, SET = 0.8;                                                                           // 6.14: seconds from arriving to sitting down
   const CIG = 80;                                                                               // seconds one cigarette lasts
   const SHP = 12, CGP = 10;                                                                      // seconds between shisha pulls and cigarette drags: 5.96 (Omar) 12 / 10 (5.95: 10 / 7; 5.94: 5 / 5)
   function bawabOnAct(t){                                                                       // called whenever a new scene starts
@@ -1185,7 +1186,27 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
       const x = goingIn ? edge + (home - edge) * k : home + (edge - home) * k, dir = goingIn ? s : -s;
       if(bawab.kind === 1) walker(goingIn ? edge + (home2 - edge) * k : home2 + (edge - home2) * k, dir, e + 0.4, PAL, false);   // his friend, alongside
       walker(x, dir, e, B, bawab.kind === 1);
-      if(k >= 1){ if(goingIn){ bawab.phase = "sit"; bawab.sitAt = t; bawab.acts = 3; bawab.awake = t + 3; } else bawab.phase = "off"; }   // 5.91 (Omar): awake for 3 s before he first nods off
+      if(k >= 1){ if(goingIn){ bawab.phase = "place"; bawab.at = t; } else bawab.phase = "off"; }   // 6.14: he puts the chair down first (5.86-6.13: straight to "sit")
+      return; }
+    /* 6.14 (Omar): placing the chair and sitting were one motion. Now when he gets there he swings the chair up off its back legs and
+       sets it down upright where he'll sit (PLACE s), stands a beat, and only then sits. His friend does the same a moment behind him. */
+    if(bawab.phase === "place"){
+      /* 6.15 (Omar): on shisha visits he first reaches back and sets the shisha down where it stands while he smokes (SET s), then
+         does the chair (6.14: it stayed in his hand until he sat, then appeared on the ground) */
+      const e = t - bawab.at, placer = (x, f, P, withShisha) => {
+        const sf = withShisha ? sm(cl(f / SET, 0, 1)) : 1; if(withShisha) f -= SET;
+        const tilt = Math.acos(20 / 25), q = sm(cl(f / 0.75, 0, 1)), lift = 4 * Math.sin(Math.PI * q);   // q: dragged (0) to upright (1)
+        const p0 = x - 23.8 * s, p1 = x + 6 * s, px = p0 + (p1 - p0) * q, th = tilt * s * (1 - q);
+        g.save(); g.translate(px, gy - lift); g.rotate(th); g.translate(-px, -gy); plasticChair(px - 6 * s, -s); g.restore();
+        const chairArm = q < 1 ? [-0.6 + 0.75 * q, -0.9 + 1.15 * q] : [0.15, 0.25];
+        if(withShisha){ const hx = x + 7.4 * s + (-16 - 7.4 * s) * sf, hy = gy - 3.5 * (1 - sf) - 2 * Math.sin(Math.PI * sf), behind = (hx - x) * s < 0;   // to its spot at home - 16 (behind him on the left, in front of him on the right)
+          const hold = sf < 1 ? [0.7 - 1.5 * sf, 0.5 - 1.2 * sf] : [-0.15, -0.05], lean = 0.25 * Math.sin(Math.PI * sf);   // he bends to put it down
+          if(behind || s < 0) shisha(hx, hy, 0.15);
+          person(x, gy, s, {...P, lean, arms: s > 0 ? [hold, chairArm] : [chairArm, hold]}); if(!behind && s > 0) shisha(hx, hy, 0.15); }
+        else person(x, gy, s, {...P, arms: [chairArm, [-0.15, -0.05]]}); };
+      if(bawab.kind === 1) placer(home2, e - 0.25, PAL, false);
+      placer(home, e, B, bawab.kind === 1);
+      if(e >= PLACE + (bawab.kind === 1 ? SET : 0)){ bawab.phase = "sit"; bawab.sitAt = t; bawab.acts = 3; bawab.awake = t + 3; }   // 5.91 (Omar): awake for 3 s before he first nods off
       return; }
     if(bawab.kind === 0){
       if(near) bawab.awake = Math.max(bawab.awake, t + 1.6);                                        // something went past: he looks up
