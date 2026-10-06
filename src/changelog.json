@@ -3,6 +3,13 @@
   "era": "5.x: Every Category at 100+"
  },
  {
+  "v": "5.85",
+  "date": "2026-10-06",
+  "items": [
+   "The timer starts by itself when a clue opens (Act It Out, Who's the Impostor? and One Word Clues still wait for Start)."
+  ]
+ },
+ {
   "v": "5.84",
   "date": "2026-10-06",
   "items": [
