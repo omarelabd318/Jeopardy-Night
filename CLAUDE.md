@@ -4,6 +4,8 @@ Omar's Jeopardy party game. It's played on a TV or laptop by a group of Egyptian
 
 The game is a single page, `index.html`, that is **generated**. Don't edit it by hand. Edit the sources, then rebuild.
 
+**New session? Read `HANDOFF.md` next.** It covers the current state, how Omar likes to work, open items, the test tools in `v4work/tools/` and network quirks. Any game files kept in a Claude Project's knowledge date from v4 and are out of date: this repo is the source of truth.
+
 ## Layout
 
 - `index.html`: the built game, about 1 MB, with every clue inlined. It loads `photos/` and `sounds/` by relative path.
@@ -24,6 +26,8 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `answer.html` and `worker/index.js` (5.9): the phone answer page that teams reach by scanning a clue's QR code, and the small Cloudflare relay (`/api/*`, one Durable Object per game room) that passes answers to the laptop. They only work on the Cloudflare link; elsewhere the game hides the codes. `STEAL_SKIP` in `src/app.js` lists categories that never get a steal code.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.
+- `HANDOFF.md`: the latest handoff between sessions: state, open items, Omar's way of working, testing and network tips.
+- `v4work/tools/`: test helpers (`mktest.py`, `scene.js`, `kick.js`, `check-out.py`); see HANDOFF.md.
 - `NOTES.md`: project notes, the full version history and how to undo each experiment.
 - `BUILD.md`: a short build how-to.
 
