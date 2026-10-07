@@ -1,0 +1,426 @@
+{
+ "id": "cocktail",
+ "name": "Cocktails & Drinks",
+ "type": "text",
+ "desc": "Cocktails, spirits, beer and wine, plus a few Egyptian drinks like karkadeh and sobia.",
+ "data": {
+  "100": [
+   [
+    "Which cocktail is rum, fresh mint, lime, sugar and soda water?",
+    "Mojito"
+   ],
+   [
+    "Which cocktail is tequila, lime and orange liqueur, often with salt on the rim?",
+    "Margarita"
+   ],
+   [
+    "Which spirit is made from the agave plant?",
+    "Tequila"
+   ],
+   [
+    "Which spirit is made from sugarcane or molasses?",
+    "Rum"
+   ],
+   [
+    "Which spirit gets its flavour from juniper berries?",
+    "Gin"
+   ],
+   [
+    "Which French region gives its name to the sparkling wine that can only be made there?",
+    "Champagne"
+   ],
+   [
+    "Which cocktail is rum, pineapple juice and coconut cream?",
+    "Piña colada"
+   ],
+   [
+    "How does James Bond like his martini?",
+    "Shaken, not stirred"
+   ],
+   [
+    "Which Irish stout has a harp on its logo?",
+    "Guinness"
+   ],
+   [
+    "Which Mexican beer is usually served with a wedge of lime in the neck?",
+    "Corona"
+   ],
+   [
+    "Which Japanese drink is made from fermented rice?",
+    "Sake"
+   ],
+   [
+    "What do you call a drink made like a cocktail but with no alcohol?",
+    "A mocktail"
+   ],
+   [
+    "Which cocktail is vodka and tomato juice, with spices and a celery stick?",
+    "Bloody Mary"
+   ],
+   [
+    "What does 'on the rocks' mean?",
+    "Served over ice"
+   ],
+   [
+    "Which cocktail is tequila, orange juice and grenadine, named after the morning sky?",
+    "Tequila Sunrise"
+   ],
+   [
+    "Which Egyptian drink is made from dried hibiscus flowers?",
+    "Karkadeh"
+   ],
+   [
+    "Which Ramadan drink is made from dried apricot paste?",
+    "Qamar El Din"
+   ],
+   [
+    "What's sugarcane juice called in Egypt?",
+    "Asab"
+   ],
+   [
+    "Which energy drink 'gives you wings'?",
+    "Red Bull"
+   ],
+   [
+    "Which fruit is cider made from?",
+    "Apples"
+   ],
+   [
+    "Which Taiwanese drink has chewy tapioca pearls at the bottom?",
+    "Bubble tea"
+   ]
+  ],
+  "200": [
+   [
+    "Which cocktail of rum, lime and sugar is named after a beach in Cuba?",
+    "Daiquiri"
+   ],
+   [
+    "Which cocktail is gin, Campari and sweet vermouth in equal parts?",
+    "Negroni"
+   ],
+   [
+    "Which cocktail is whiskey, sugar, bitters and a twist of orange peel?",
+    "Old Fashioned"
+   ],
+   [
+    "Which Greek aniseed spirit turns cloudy when you add water?",
+    "Ouzo"
+   ],
+   [
+    "Which aniseed spirit is Lebanon's national drink?",
+    "Arak"
+   ],
+   [
+    "Which Munich festival is the biggest beer festival in the world?",
+    "Oktoberfest"
+   ],
+   [
+    "Which Irish cream liqueur is made from whiskey and cream?",
+    "Baileys"
+   ],
+   [
+    "Which cocktail is vodka, ginger beer and lime, served in a copper mug?",
+    "Moscow Mule"
+   ],
+   [
+    "Which Spanish drink mixes red wine with chopped fruit?",
+    "Sangria"
+   ],
+   [
+    "Which cocktail is whiskey, lemon juice and sugar, often shaken with egg white?",
+    "Whiskey Sour"
+   ],
+   [
+    "Which American whiskey has to be made from at least 51% corn?",
+    "Bourbon"
+   ],
+   [
+    "What do the British call beer mixed with lemonade?",
+    "A shandy"
+   ],
+   [
+    "Which Brazilian cocktail is cachaça, lime and sugar?",
+    "Caipirinha"
+   ],
+   [
+    "Which Egyptian beer has a star on its label and has been brewed since 1897?",
+    "Stella"
+   ],
+   [
+    "Which Italian almond-flavoured liqueur comes in a square bottle as Disaronno?",
+    "Amaretto"
+   ],
+   [
+    "What does ABV on a bottle stand for?",
+    "Alcohol by volume"
+   ],
+   [
+    "Which cocktail is Champagne and orange juice, a brunch favourite?",
+    "Mimosa"
+   ],
+   [
+    "Which cocktail is white rum, Coca-Cola and lime, whose name means 'Free Cuba'?",
+    "Cuba Libre"
+   ],
+   [
+    "Which Egyptian drink is made from tamarind?",
+    "Tamr hindi"
+   ],
+   [
+    "Which hot winter drink is milk thickened with orchid flour, topped with nuts and cinnamon?",
+    "Sahlab"
+   ],
+   [
+    "Which Moroccan drink is green tea brewed with lots of fresh mint and sugar?",
+    "Moroccan mint tea (atay)"
+   ]
+  ],
+  "300": [
+   [
+    "Which bitter red Italian liqueur goes into a Negroni?",
+    "Campari"
+   ],
+   [
+    "Which coffee cocktail is vodka, coffee liqueur and a fresh shot of espresso?",
+    "Espresso Martini"
+   ],
+   [
+    "Which beer style is named after the Czech city of Plzeň?",
+    "Pilsner"
+   ],
+   [
+    "Which cocktail is Prosecco and white peach purée, created at Harry's Bar in Venice?",
+    "Bellini"
+   ],
+   [
+    "Which rum cocktail with orgeat and orange curaçao is a tiki-bar classic?",
+    "Mai Tai"
+   ],
+   [
+    "Which green spirit, 'the green fairy', was banned in many countries for most of the 20th century?",
+    "Absinthe"
+   ],
+   [
+    "Which fortified wine comes from Portugal's Douro Valley?",
+    "Port"
+   ],
+   [
+    "Which fortified wine comes from the area around Jerez, in Spain?",
+    "Sherry"
+   ],
+   [
+    "Which smoky Mexican spirit is tequila's cousin?",
+    "Mezcal"
+   ],
+   [
+    "What do you call the foam on top of a poured beer?",
+    "The head"
+   ],
+   [
+    "Which country does Jägermeister come from?",
+    "Germany"
+   ],
+   [
+    "In which US state is Jack Daniel's made?",
+    "Tennessee"
+   ],
+   [
+    "Which cocktail is whiskey, sweet vermouth and bitters, named after a New York borough?",
+    "Manhattan"
+   ],
+   [
+    "Which cocktail is vodka, coffee liqueur and cream, the Dude's drink in The Big Lebowski?",
+    "White Russian"
+   ],
+   [
+    "What's 'hair of the dog'?",
+    "A drink to cure a hangover"
+   ],
+   [
+    "Which Korean spirit, sold in small green bottles, is one of the best-selling drinks in the world?",
+    "Soju"
+   ],
+   [
+    "Which Italian coffee is an espresso 'stained' with a spot of milk foam?",
+    "Macchiato"
+   ],
+   [
+    "What's the name of the liquorice drink poured by Egyptian street sellers from a big brass jug?",
+    "Erk soos"
+   ],
+   [
+    "Which French orange liqueur is often used in a Margarita?",
+    "Cointreau"
+   ],
+   [
+    "What does it mean to drink a spirit 'neat'?",
+    "On its own, with no ice or mixer"
+   ]
+  ],
+  "400": [
+   [
+    "How long, at least, must Scotch whisky be aged?",
+    "Three years"
+   ],
+   [
+    "Which Japanese company makes Yamazaki whisky?",
+    "Suntory"
+   ],
+   [
+    "Which cocktail of gin, lime and sugar was drunk by British sailors to fight scurvy?",
+    "Gimlet"
+   ],
+   [
+    "What do you call the beers brewed by (or under) monks in Belgian abbeys?",
+    "Trappist beers"
+   ],
+   [
+    "Which part of the agave plant is cooked to make tequila?",
+    "The heart (the piña)"
+   ],
+   [
+    "In the US, what's the 'proof' of a spirit that's 40% alcohol?",
+    "80 proof"
+   ],
+   [
+    "Which brandy cocktail with orange liqueur and lemon is named after a motorbike's passenger car?",
+    "Sidecar"
+   ],
+   [
+    "Besides bread, what were the pyramid builders at Giza paid with?",
+    "Beer"
+   ],
+   [
+    "Which coffee dessert is a scoop of ice cream 'drowned' in espresso?",
+    "Affogato"
+   ],
+   [
+    "Which fruit flavours Earl Grey tea?",
+    "Bergamot"
+   ],
+   [
+    "Which Champagne house is famous for its bright yellow-orange label?",
+    "Veuve Clicquot"
+   ],
+   [
+    "Which Champagne house makes Dom Pérignon?",
+    "Moët & Chandon"
+   ],
+   [
+    "What's the foam on top of a good Turkish coffee called in Egypt?",
+    "Wesh"
+   ],
+   [
+    "Which ginger beer and dark rum cocktail is trademarked by Gosling's in Bermuda?",
+    "Dark 'n' Stormy"
+   ],
+   [
+    "Which Egyptian Ramadan drink is made from carob pods?",
+    "Kharoub"
+   ],
+   [
+    "Which cocktail is gin, lemon juice, sugar and soda, named after a 'Tom'?",
+    "Tom Collins"
+   ],
+   [
+    "Which cloudy, sweet coconut-and-rice drink is sold in Egypt, especially in Ramadan?",
+    "Sobia"
+   ],
+   [
+    "Which grape is used to make Champagne along with Pinot Noir and Pinot Meunier?",
+    "Chardonnay"
+   ],
+   [
+    "What's the name of a whisky that comes from a single distillery?",
+    "Single malt"
+   ],
+   [
+    "Which liqueur, made in Italy from lemons, is served ice-cold after dinner?",
+    "Limoncello"
+   ]
+  ],
+  "500": [
+   [
+    "Which cocktail of gin, lemon, sugar and Champagne is named after a French First World War gun?",
+    "French 75"
+   ],
+   [
+    "The famous cocktail bitters Angostura were first made in which country?",
+    "Venezuela"
+   ],
+   [
+    "Which cocktail is said to have been invented at the Raffles Hotel?",
+    "Singapore Sling"
+   ],
+   [
+    "Which layered shot is coffee liqueur, Irish cream and Grand Marnier?",
+    "B-52"
+   ],
+   [
+    "Which old Egyptian drink, made from fermented bread or barley, is sold in 'bouza' shops?",
+    "Bouza (boza)"
+   ],
+   [
+    "Which Greek-Egyptian family name is on Egypt's oldest wine estate, founded in 1882?",
+    "Gianaclis"
+   ],
+   [
+    "In Egyptian myth, which lion goddess was tricked into drinking beer dyed red, to stop her destroying humanity?",
+    "Sekhmet"
+   ],
+   [
+    "In which city was the Bloody Mary first mixed, at Harry's New York Bar?",
+    "Paris"
+   ],
+   [
+    "Which pale blue-violet cocktail is gin, maraschino, crème de violette and lemon?",
+    "Aviation"
+   ],
+   [
+    "Which Chinese spirit, such as Moutai, is made from sorghum?",
+    "Baijiu"
+   ],
+   [
+    "What does the Gaelic name of whisky, 'uisge beatha', mean?",
+    "Water of life"
+   ],
+   [
+    "Which orange liqueur, in a round bottle with a red ribbon, is made with Cognac?",
+    "Grand Marnier"
+   ],
+   [
+    "Which Italian bitter aperitif, darker than Campari, is made from artichokes among other things?",
+    "Cynar"
+   ],
+   [
+    "What's the name of the big Champagne bottle that holds 15 litres, 20 normal bottles?",
+    "Nebuchadnezzar"
+   ],
+   [
+    "Which French brandy comes from the Gascony region, not Cognac?",
+    "Armagnac"
+   ],
+   [
+    "Which cocktail of whiskey, sugar and mint is the drink of the Kentucky Derby?",
+    "Mint Julep"
+   ],
+   [
+    "Which Peruvian and Chilean grape brandy is shaken with lime and egg white into a 'sour'?",
+    "Pisco"
+   ],
+   [
+    "Which spirit is distilled from fermented apples in Normandy?",
+    "Calvados"
+   ],
+   [
+    "Which wine-growing region is famous for Sauternes, Pomerol and Saint-Émilion?",
+    "Bordeaux"
+   ],
+   [
+    "What's the name of Egypt's own aniseed spirit, a cousin of arak and ouzo?",
+    "Zibib"
+   ]
+  ]
+ }
+}

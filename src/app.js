@@ -157,17 +157,17 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.41`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.42`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
   ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","tvmix","mixmap","mixkn1","mixkn2","mixguess","mixparty","mixall"]],   /* 6.40 (Omar): Everything Mix last */   /* 6.20 (Omar): the mixes, first. 6.37 (Omar): TV Show Mix moved here from Entertainment, after Entertainment Mix 2. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
   /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egyph","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","lyricar","emeg","emseg","ctryar"]],
-  ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","emov","quote","qblank","mus","songt","song","lyric","spot","igf"]],
-  ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
-  ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
+  ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport","tennis"]],
+  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","emov","quote","qblank","mus","songt","song","oldies","lyric","spot","igf"]],
+  ["Maps & World", ["geo","landmark","flag","shape","pin","ctry","lang","trans"]],
+  ["Knowledge", ["gk","facts","his","islam","ww2","year","myth","holi","sci","space","animal","food","ffood","cal","cocktail","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
   ["Party Games", ["act","acteg","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 6.40 (Omar): Emoji Movies & TV moved to Entertainment after Pixar (was after acteg here); The Parent Trap hidden (was after romcom, see HIDDEN_IDS). */ /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
 ];
@@ -280,7 +280,14 @@ const TIPS = {
   headl: "Three headlines, only one is real. Pick it.",
   order: "Three events. Put them in order, earliest first.",
   gctry: "A photo from somewhere in the world. Name the country.",
-  x18: "Name the adult film star from the photo.",   // 6.39 (Omar): shown once unlocked; before that the tip just says "Code required" (see tipOf). 6.0-6.38: "… Needs a code."
+  x18: "Name the adult film star from the photo.",
+  tennis: "The Grand Slams, the legends and today's stars.",   // 6.42: the seven new categories
+  oldies: "A song that will never die. Name the singer or band.",
+  facts: "Three facts, only one is true. Pick it.",
+  holi: "Feasts, festivals and customs, from Eid and Sham El Nessim to Diwali.",
+  animal: "Wild animal facts, plus photos: name the animal.",
+  cocktail: "Cocktails, spirits, beer and wine, plus Egyptian drinks like karkadeh and sobia.",
+  landmark: "Famous places around the world, plus photos: name the landmark.",   // 6.39 (Omar): shown once unlocked; before that the tip just says "Code required" (see tipOf). 6.0-6.38: "… Needs a code."
 };
 /* 6.27 (Omar): the Edit mixes panel at the bottom of setup. Each mix may draw from its own section's categories (plus the ones it
    had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Locked categories

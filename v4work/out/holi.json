@@ -1,0 +1,418 @@
+{
+ "id": "holi",
+ "name": "Holidays & Traditions",
+ "type": "text",
+ "desc": "Feasts, festivals and customs: Eid and Sham El Nessim, Diwali and Hanukkah, and how the world celebrates.",
+ "data": {
+  "100": [
+   [
+    "Which Egyptian spring holiday is celebrated with fesikh, coloured eggs and green onions?",
+    "Sham El Nessim"
+   ],
+   [
+    "Which biscuits dusted with powdered sugar are baked in Egypt for Eid al-Fitr?",
+    "Kahk"
+   ],
+   [
+    "What's the name of the lantern Egyptian children carry in Ramadan?",
+    "Fanous"
+   ],
+   [
+    "What's the money given to children on Eid called in Egypt?",
+    "Eidiya"
+   ],
+   [
+    "Which Eid is celebrated by sacrificing a sheep or cow?",
+    "Eid al-Adha"
+   ],
+   [
+    "On which date do Egypt's Copts celebrate Christmas?",
+    "7 January"
+   ],
+   [
+    "Which Hindu festival is famous for throwing coloured powder?",
+    "Holi"
+   ],
+   [
+    "Which Hindu 'festival of lights' is celebrated with lamps and fireworks?",
+    "Diwali"
+   ],
+   [
+    "Which Jewish holiday lasts eight nights and uses a nine-branched candlestick?",
+    "Hanukkah"
+   ],
+   [
+    "Which American holiday in November is all about a turkey dinner?",
+    "Thanksgiving"
+   ],
+   [
+    "Which Mexican holiday honours the dead with sugar skulls and marigolds?",
+    "Day of the Dead (Día de los Muertos)"
+   ],
+   [
+    "Which holiday on 31 October means costumes and trick-or-treating?",
+    "Halloween"
+   ],
+   [
+    "Which festival is celebrated with dragon dances and red envelopes of money?",
+    "Chinese New Year (Lunar New Year)"
+   ],
+   [
+    "On which date is Mother's Day celebrated in Egypt?",
+    "21 March"
+   ],
+   [
+    "Which saint's day on 17 March turns everything green?",
+    "St Patrick's Day"
+   ],
+   [
+    "Which day on 1 April is for pranks?",
+    "April Fools' Day"
+   ],
+   [
+    "What do Americans celebrate on 4 July?",
+    "Independence Day"
+   ],
+   [
+    "Which Brazilian city hosts the world's most famous carnival?",
+    "Rio de Janeiro"
+   ],
+   [
+    "Which day on 14 February is for couples, chocolates and red roses?",
+    "Valentine's Day"
+   ],
+   [
+    "What does the Ramadan 'mesaharati' do?",
+    "Walks the streets with a drum, waking people for suhoor"
+   ]
+  ],
+  "200": [
+   [
+    "What's the name of the sweet sugar doll sold in Egypt for the Prophet's birthday?",
+    "Arouset el Moulid"
+   ],
+   [
+    "Which fasting month ends with Eid al-Fitr?",
+    "Ramadan"
+   ],
+   [
+    "What's the night in the last ten days of Ramadan said to be 'better than a thousand months'?",
+    "Laylat al-Qadr"
+   ],
+   [
+    "What's fired every evening in Ramadan to tell Cairo it's time to break the fast?",
+    "The iftar cannon (Madfaa el Iftar)"
+   ],
+   [
+    "What do Egyptians eat for Eid al-Adha lunch: rice, bread, garlicky vinegar sauce and meat?",
+    "Fatta"
+   ],
+   [
+    "Which Thai festival is one huge water fight to celebrate the new year?",
+    "Songkran"
+   ],
+   [
+    "Which Spanish town throws tonnes of tomatoes at each other every August in La Tomatina?",
+    "Buñol"
+   ],
+   [
+    "What do Scots call New Year's Eve?",
+    "Hogmanay"
+   ],
+   [
+    "Which British night on 5 November is all bonfires and fireworks?",
+    "Guy Fawkes Night (Bonfire Night)"
+   ],
+   [
+    "Which day after Christmas is a holiday in the UK, named after the gift boxes given to servants?",
+    "Boxing Day"
+   ],
+   [
+    "Which Persian New Year is celebrated on the first day of spring?",
+    "Nowruz"
+   ],
+   [
+    "Which Jewish festival remembers the escape from Egypt, with a Seder meal?",
+    "Passover"
+   ],
+   [
+    "Which day before Lent is famous for pancakes in Britain and parades in New Orleans?",
+    "Shrove Tuesday (Mardi Gras)"
+   ],
+   [
+    "What's the French national day on 14 July called in English?",
+    "Bastille Day"
+   ],
+   [
+    "Which Japanese spring tradition means picnicking under the cherry blossoms?",
+    "Hanami"
+   ],
+   [
+    "What's the 15th day of Chinese New Year, with lanterns lit everywhere, called?",
+    "The Lantern Festival"
+   ],
+   [
+    "Which month of the Islamic year is the month of Hajj?",
+    "Dhul Hijjah"
+   ],
+   [
+    "Which Egyptian holiday on 6 October marks the 1973 crossing of the Suez Canal?",
+    "Armed Forces Day"
+   ],
+   [
+    "What do the Dutch call Santa, who arrives by boat in November?",
+    "Sinterklaas"
+   ],
+   [
+    "Which day, the eve of Eid al-Adha, is the most blessed day of the year to fast?",
+    "The Day of Arafah"
+   ]
+  ],
+  "300": [
+   [
+    "What's the horse-shaped sweet sold beside the Moulid sugar doll called?",
+    "Hosan el Moulid (the sugar horse)"
+   ],
+   [
+    "Which ancient Egyptian festival gave Sham El Nessim its roots?",
+    "Shemu (the spring harvest festival)"
+   ],
+   [
+    "What do Egyptians call the salted, fermented fish eaten on Sham El Nessim?",
+    "Fesikh"
+   ],
+   [
+    "Which national holiday on 25 April marks Israel's last withdrawal from Sinai in 1982?",
+    "Sinai Liberation Day"
+   ],
+   [
+    "Which Egyptian holiday on 23 July marks the 1952 revolution?",
+    "Revolution Day"
+   ],
+   [
+    "Which day of Muharram is Ashura, when many Muslims fast?",
+    "The 10th"
+   ],
+   [
+    "What's the night journey from Mecca to Jerusalem and up to heaven called?",
+    "Al-Isra' wal-Mi'raj"
+   ],
+   [
+    "Which Jewish day of atonement is the holiest day of the year, a full day of fasting?",
+    "Yom Kippur"
+   ],
+   [
+    "What's the Jewish New Year called?",
+    "Rosh Hashanah"
+   ],
+   [
+    "Which African-American holiday from 26 December to 1 January has seven candles?",
+    "Kwanzaa"
+   ],
+   [
+    "Which Alpine half-goat creature punishes naughty children around Christmas?",
+    "Krampus"
+   ],
+   [
+    "Which Vietnamese holiday is their Lunar New Year?",
+    "Tết"
+   ],
+   [
+    "Which Korean harvest festival is often called 'Korean Thanksgiving'?",
+    "Chuseok"
+   ],
+   [
+    "Which Japanese summer festival welcomes back the spirits of ancestors?",
+    "Obon"
+   ],
+   [
+    "Which Swedish festival in June has dancing around a maypole?",
+    "Midsummer (Midsommar)"
+   ],
+   [
+    "In which month do Canadians celebrate Thanksgiving?",
+    "October"
+   ],
+   [
+    "What do Spanish children celebrate on 6 January, when the Three Kings bring presents?",
+    "Three Kings' Day (Día de Reyes)"
+   ],
+   [
+    "What's the 40-day period before Easter called?",
+    "Lent"
+   ],
+   [
+    "Which Coptic fast before Christmas lasts 43 days, with no meat or dairy?",
+    "The Nativity Fast"
+   ],
+   [
+    "Which Hindu festival celebrates the bond between brothers and sisters with a thread on the wrist?",
+    "Raksha Bandhan"
+   ]
+  ],
+  "400": [
+   [
+    "Which Egyptian journalist started Egypt's Mother's Day in 1956?",
+    "Mustafa Amin"
+   ],
+   [
+    "What is 'Wafaa El Nil', celebrated in August?",
+    "The festival of the Nile flood"
+   ],
+   [
+    "Which date is Egypt's Police Day, the same day as the 2011 revolution?",
+    "25 January"
+   ],
+   [
+    "What do Egyptians traditionally colour on Sham El Nessim morning?",
+    "Eggs"
+   ],
+   [
+    "Which Islamic month comes right after Ramadan, when some fast six extra days?",
+    "Shawwal"
+   ],
+   [
+    "Which Egyptian Ramadan street feast, often in a whole street, is laid on free for anyone breaking their fast?",
+    "Mawa'ed el Rahman"
+   ],
+   [
+    "Which holiday marks the Prophet's birthday, on 12 Rabi' al-Awwal?",
+    "Al-Mawlid an-Nabawi"
+   ],
+   [
+    "What's the Muslim pilgrimage to Mecca that can be done at any time of year called?",
+    "Umrah"
+   ],
+   [
+    "Which days of Dhul Hijjah are the 'Days of Tashreeq'?",
+    "The 11th, 12th and 13th"
+   ],
+   [
+    "Which Indian festival honours the elephant-headed god with giant statues taken to the sea?",
+    "Ganesh Chaturthi"
+   ],
+   [
+    "Which day is 'Pi Day', celebrated by maths fans?",
+    "14 March (3/14)"
+   ],
+   [
+    "What do people in Spain eat at midnight on New Year's Eve, one for each chime?",
+    "Twelve grapes"
+   ],
+   [
+    "In which country is Saint Lucia's Day celebrated with girls wearing crowns of candles?",
+    "Sweden"
+   ],
+   [
+    "Which Italian witch brings sweets to children on the night before 6 January?",
+    "La Befana"
+   ],
+   [
+    "Which festival in Venice is famous for elaborate masks?",
+    "The Carnival of Venice"
+   ],
+   [
+    "Which Mexican Christmas tradition re-enacts Mary and Joseph's search for shelter over nine nights?",
+    "Las Posadas"
+   ],
+   [
+    "Which American holiday on the third Monday of January honours a civil-rights leader?",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "Which Jewish autumn festival is spent eating in a hut with a roof of branches?",
+    "Sukkot"
+   ],
+   [
+    "What's the old Scottish name for going door to door in costume at Halloween?",
+    "Guising"
+   ],
+   [
+    "What's the Islamic New Year's month called?",
+    "Muharram"
+   ]
+  ],
+  "500": [
+   [
+    "In which Egyptian city does the Moulid of El-Sayed El-Badawi draw millions every year?",
+    "Tanta"
+   ],
+   [
+    "Which Cairo mosque is at the heart of the Moulid of El-Hussein?",
+    "Al-Hussein Mosque"
+   ],
+   [
+    "Which Luxor saint's moulid is held for the man whose mosque sits on top of Luxor Temple?",
+    "Abu el-Haggag"
+   ],
+   [
+    "Which Fatimid-era story says Cairo's Ramadan lanterns began when people lit the way for which caliph?",
+    "Al-Mu'izz li-Din Allah"
+   ],
+   [
+    "What is 'Kiahk' in the Coptic calendar?",
+    "The month before Coptic Christmas, famous for its night praises"
+   ],
+   [
+    "Which ancient Egyptian festival in Thebes carried Amun's statue from Karnak to Luxor Temple?",
+    "The Opet Festival"
+   ],
+   [
+    "What is the Coptic New Year called, celebrated in September?",
+    "Nayrouz"
+   ],
+   [
+    "Which Coptic feast in January, the baptism of Christ, is celebrated with taro and sugarcane?",
+    "Epiphany (Eid El Ghitas)"
+   ],
+   [
+    "Which Indonesian island marks Nyepi, a 'day of silence' when even the airport shuts?",
+    "Bali"
+   ],
+   [
+    "Which Japanese festival on 3 March celebrates girls with displays of dolls?",
+    "Hinamatsuri"
+   ],
+   [
+    "What do the Chinese eat at the Mid-Autumn Festival?",
+    "Mooncakes"
+   ],
+   [
+    "Which Scottish New Year tradition says the first person through your door should be a tall, dark man?",
+    "First-footing"
+   ],
+   [
+    "Which country celebrates 'Koningsdag', when everyone dresses in orange?",
+    "The Netherlands"
+   ],
+   [
+    "What is 'Up Helly Aa' in Shetland?",
+    "A fire festival where a Viking longship is burned"
+   ],
+   [
+    "Which Hindu festival's name means 'nine nights', honouring the goddess Durga?",
+    "Navratri"
+   ],
+   [
+    "In which country is Anzac Day, 25 April, a national day of remembrance (along with New Zealand)?",
+    "Australia"
+   ],
+   [
+    "Which Jewish festival, celebrated with costumes and noisemakers, retells the story of Queen Esther?",
+    "Purim"
+   ],
+   [
+    "Which Thai festival floats small decorated baskets on rivers under the full moon?",
+    "Loy Krathong"
+   ],
+   [
+    "What do Ethiopians call their Christmas, celebrated on 7 January?",
+    "Genna (Ledet)"
+   ],
+   [
+    "Which German city is famous for the oldest Christmas market, the Striezelmarkt?",
+    "Dresden"
+   ]
+  ]
+ }
+}

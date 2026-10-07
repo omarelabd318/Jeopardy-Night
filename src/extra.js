@@ -55,7 +55,8 @@ module.exports={PHOTO_CATS:["car","actor","footy","person"],apply({CATS,DATA}){
    /* 4.92 */ ['curr','mb'],
    /* 5.8 */ ['netflix','office'],
    /* 5.22 */ ['order','headl'],
-   /* 5.50 */ ['blockbuster','marvel'], /* 5.81 */ ['lyricar','lyric'], /* 6.20 */ ['ptrap','romcom']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
+   /* 5.50 */ ['blockbuster','marvel'], /* 5.81 */ ['lyricar','lyric'], /* 6.20 */ ['ptrap','romcom'],
+   /* 6.42 */ ['tennis','sport'], ['oldies','song'], ['facts','gk'], ['holi','myth'], ['animal','space'], ['cocktail','cal'], ['landmark','geo']].forEach(([id,after])=>{ const f=W+`/out/${id}.json`; if(!fs.existsSync(f)) return;
     const o=JSON.parse(fs.readFileSync(f,'utf8')), at=CATS.findIndex(c=>c.id===after);
     CATS.splice(at<0?CATS.length:at+1,0,{id,name:o.name,type:o.type||"text",desc:o.desc}); DATA[id]=o.data; });
   // v4.39: Guess the Logo, blurred logos bundled in photos/logo-<value>.js (built by mkpacks.js logo); 4th element = starting blur (share of image width)

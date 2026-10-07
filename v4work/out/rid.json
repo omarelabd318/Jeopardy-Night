@@ -2,736 +2,444 @@
  "id": "rid",
  "name": "Riddles",
  "type": "text",
- "desc": "",
+ "desc": "Riddles with a twist: Cairo street life, wordplay and puzzles that need a second think.",
  "data": {
   "100": [
    [
-    "What has keys but can't open locks?",
-    "A piano"
+    "I talk in three colours, never out loud, and Cairo drivers argue with me all day. What am I?",
+    "A traffic light"
    ],
    [
-    "What has hands but can't clap?",
-    "A clock"
+    "I live in your pocket, I know all your secrets, and I panic when I reach 1%. What am I?",
+    "A phone"
    ],
    [
-    "What gets wetter the more it dries?",
-    "A towel"
+    "Men in shorts chase me for 90 minutes, and when they finally catch me, they kick me away. What am I?",
+    "A football"
    ],
    [
-    "What has to be broken before you can use it?",
-    "An egg"
+    "Every Eid I'm born in a cloud of flour and powdered sugar, and Grandma hides me in a tin. What am I?",
+    "Kahk"
    ],
    [
-    "What goes up but never comes down?",
-    "Your age"
+    "I'm a dessert named after a mother, not a chef. What am I?",
+    "Om Ali"
    ],
    [
-    "What has a neck but no head?",
-    "A bottle"
+    "I'm a football match with 22 players who never run, never sweat and are stuck on poles. What am I?",
+    "Table football (foosball)"
    ],
    [
-    "What has one eye but can't see?",
-    "A needle"
+    "I glow green in every cinema and only ever say one word: how to leave. What am I?",
+    "The EXIT sign"
    ],
    [
-    "What is full of holes but still holds water?",
-    "A sponge"
+    "My face changes shape every night, and at the end of Sha'ban the whole country looks for me. What am I?",
+    "The Moon (the new crescent)"
    ],
    [
-    "What can you catch but not throw?",
-    "A cold"
+    "Two people hold one knife, everyone claps, and I lose a slice of myself. What am I?",
+    "A wedding cake"
    ],
    [
-    "What has many teeth but can't bite?",
-    "A comb"
+    "I bang a drum under your window at 3 a.m. in Ramadan, and nobody's angry with me. Who am I?",
+    "The mesaharati"
    ],
    [
-    "What belongs to you, but other people use it more than you do?",
-    "Your name"
+    "Three people fight over me every night, and I always end up down the back of the sofa. What am I?",
+    "The TV remote"
    ],
    [
-    "What has a head and a tail but no body?",
-    "A coin"
+    "I'm a little kitchen on wheels that serves breakfast on the corner and is gone by noon. What am I?",
+    "The ful cart"
    ],
    [
-    "The more you take, the more you leave behind. What are they?",
-    "Footsteps"
+    "I hang out of a microbus door shouting the stops and counting everyone's change. Who am I?",
+    "The tabbaa (the fare collector)"
    ],
    [
-    "Which building has the most stories?",
-    "A library"
+    "I come out of the oven puffed up like a balloon, and I'm on every Egyptian table. What am I?",
+    "Aish baladi (Egyptian bread)"
    ],
    [
-    "What runs but never walks, and has a mouth but never talks?",
-    "A river"
+    "I'm black and white, I stop when you wave, and my meter is somehow always 'broken'. What am I?",
+    "An old Cairo taxi"
    ],
    [
-    "What has words but never speaks?",
-    "A book"
+    "I sit on a plastic chair at the building's door and know everyone's business. Who am I?",
+    "The bawab"
    ],
    [
-    "What has legs but can't walk?",
-    "A table"
+    "Fifteen pieces each, two dice and a lot of shouting at the ahwa. What game am I?",
+    "Tawla (backgammon)"
    ],
    [
-    "What goes up and down but never moves?",
-    "Stairs"
+    "I'm thrown over the bride's shoulder, and whoever catches me is 'next'. What am I?",
+    "The bouquet"
    ],
    [
-    "What can you break without touching it?",
-    "A promise"
+    "You blow on me, make a wish, and I go out. What am I?",
+    "Birthday candles"
    ],
    [
-    "What runs all the way around a house but never moves?",
-    "A fence"
+    "I have three wheels and go down streets that buses are scared of. What am I?",
+    "A tuk-tuk"
    ],
    [
-    "What is black and white and read all over?",
-    "A newspaper"
+    "I'm red, they call me 'the club of the century', and half of Egypt loves my rival in white. Who am I?",
+    "Al Ahly"
    ],
    [
-    "What has a bark but no bite?",
-    "A tree"
-   ],
-   [
-    "What kind of band never plays any music?",
-    "A rubber band"
-   ],
-   [
-    "What has a tongue but can't taste anything?",
-    "A shoe"
-   ],
-   [
-    "What do you call a bear with no teeth?",
-    "A gummy bear"
-   ],
-   [
-    "What kind of tree can you carry in your hand?",
-    "A palm"
-   ],
-   [
-    "Which room do ghosts stay out of?",
-    "The living room"
-   ],
-   [
-    "What's orange and sounds like a parrot?",
-    "A carrot"
-   ],
-   [
-    "What has lots of needles but can't sew?",
-    "A cactus (or a pine tree)"
-   ],
-   [
-    "What kind of cup can't hold water?",
-    "A cupcake"
-   ],
-   [
-    "What has lots of eyes but can't see?",
-    "A potato"
-   ],
-   [
-    "What comes down but never goes up?",
-    "Rain"
-   ],
-   [
-    "What has a neck and two arms but no head or hands?",
-    "A shirt"
-   ],
-   [
-    "What flies without wings?",
-    "Time"
-   ],
-   [
-    "What do you call a bear with no ears?",
-    "B"
-   ],
-   [
-    "What do you call a fish with no eye?",
-    "A fsh"
+    "I was born in Nagrig, I cut in from the right wing, and Anfield calls me the Egyptian King. Who am I?",
+    "Mohamed Salah"
    ]
   ],
   "200": [
    [
-    "I'm tall when I'm young and short when I'm old. What am I?",
-    "A candle"
+    "I go off with a bang at sunset every day in Ramadan, and the whole city starts eating when I do. What am I?",
+    "The iftar cannon"
    ],
    [
-    "What can travel around the world while staying in a corner?",
-    "A stamp"
+    "I've been smiling in the same room in Paris for more than 200 years, behind bulletproof glass. Who am I?",
+    "The Mona Lisa"
    ],
    [
-    "What has cities but no houses, forests but no trees, and water but no fish?",
-    "A map"
+    "I'm the drums and dancing that walk the bride and groom into the hall. What am I?",
+    "The zaffa"
    ],
    [
-    "What can you hold in your right hand but never in your left?",
-    "Your left hand (or left elbow)"
+    "A striker scores three times in a match, but his team doesn't get a single goal. How?",
+    "VAR ruled out all three"
    ],
    [
-    "What begins with T, ends with T, and has T in it?",
-    "A teapot"
+    "Two of me turn blue to prove you were ignored. What am I?",
+    "WhatsApp's read ticks"
    ],
    [
-    "What word is spelled incorrectly in every dictionary?",
-    "Incorrectly"
+    "Egyptians promise everything will be done on me, and I never quite arrive. What day am I?",
+    "Bokra (tomorrow)"
    ],
    [
-    "What has four wheels and flies?",
-    "A rubbish (garbage) truck"
+    "At the end of every exam I'm the only one allowed to make noise. What am I?",
+    "The bell"
    ],
    [
-    "What is so fragile that saying its name breaks it?",
-    "Silence"
+    "Ahmed has three daughters, and each daughter has one brother. How many children does Ahmed have?",
+    "Four"
    ],
    [
-    "I have branches but no fruit, trunk or leaves. What am I?",
-    "A bank"
+    "I'm the only fruit that wears its seeds on the outside. What am I?",
+    "A strawberry"
    ],
    [
-    "What gets bigger the more you take away from it?",
-    "A hole"
+    "Feed me coins and I give you a drink; kick me and I keep the coins. What am I?",
+    "A vending machine"
    ],
    [
-    "What can fill a room but takes up no space?",
-    "Light"
+    "I go up and down twelve floors all day without taking a step, and the bawab hates it when I break. What am I?",
+    "The lift"
    ],
    [
-    "If you drop me I crack, but smile at me and I smile back. What am I?",
-    "A mirror"
+    "I'm the pharaohs' key of life, and people still wear me on a chain. What am I?",
+    "The ankh"
    ],
    [
-    "Forward I'm heavy, backward I'm not. What am I?",
-    "A ton"
+    "I'm 'ahwa' in Cairo, 'qahwa' in the Gulf and 'kahve' in Istanbul. What am I?",
+    "Coffee"
    ],
    [
-    "What has a thumb and four fingers but isn't alive?",
-    "A glove"
+    "Every phone call in Egypt starts with me, and I mean the same in English. What word am I?",
+    "Alo (hello)"
    ],
    [
-    "What kind of room has no doors or windows?",
-    "A mushroom"
+    "I flow the 'wrong' way, from south to north, and a whole country grew up on my banks. What am I?",
+    "The Nile"
    ],
    [
-    "What has its bottom at the top?",
-    "Your legs"
+    "I'm famous for dying young, not for anything I did, and my tomb was found almost untouched. Who am I?",
+    "Tutankhamun"
    ],
    [
-    "What can you serve but never eat?",
-    "A tennis ball"
+    "I have a lion's body and a king's face, and I lost my nose long before Napoleon arrived. What am I?",
+    "The Sphinx"
    ],
    [
-    "What has a ring but no finger?",
-    "A telephone"
+    "Messi has eight of me, Ronaldo has five, and every striker dreams of one. What am I?",
+    "The Ballon d'Or"
    ],
    [
-    "What gets sharper the more you use it?",
-    "Your brain"
+    "I'm drawn in brown on the bride's hands the night before her wedding. What am I?",
+    "Henna"
    ],
    [
-    "What goes through towns and fields but never moves?",
-    "A road"
+    "Pots of me were found in the pharaohs' tombs, and I was still good to eat. What am I?",
+    "Honey"
    ],
    [
-    "What is always coming but never arrives?",
-    "Tomorrow"
-   ],
-   [
-    "The Sphinx's riddle: what walks on four legs in the morning, two at noon and three in the evening?",
-    "A human (crawls as a baby, walks, then uses a stick when old)"
-   ],
-   [
-    "What is at the end of everything?",
-    "The letter G"
-   ],
-   [
-    "What is easy to get into but hard to get out of?",
-    "Trouble"
-   ],
-   [
-    "Feed me and I live; give me a drink and I die. What am I?",
-    "Fire"
-   ],
-   [
-    "What kind of coat is always put on wet?",
-    "A coat of paint"
-   ],
-   [
-    "What has keys but no locks, and space but no room?",
-    "A keyboard"
-   ],
-   [
-    "What has no beginning, no middle and no end?",
-    "A circle"
-   ],
-   [
-    "What two things can you never eat for breakfast?",
-    "Lunch and dinner"
-   ],
-   [
-    "What has four eyes but can't see?",
-    "Mississippi"
-   ],
-   [
-    "Which letter of the alphabet holds the most water?",
-    "C (the sea)"
-   ],
-   [
-    "What has one horn and gives milk?",
-    "A milk truck"
-   ],
-   [
-    "What has no beginning, middle or end, and goes well with coffee?",
-    "A doughnut"
-   ],
-   [
-    "What has a thousand needles but can't sew?",
-    "A porcupine (or a hedgehog)"
-   ],
-   [
-    "An electric train heads north while the wind blows south. Which way does the smoke blow?",
-    "There's no smoke: it's electric"
-   ],
-   [
-    "What has a head but no brain, and grows in a garden?",
-    "A lettuce (a head of lettuce)"
-   ],
-   [
-    "What breaks on the water but never on land?",
-    "A wave"
+    "Pour hot water on me and I turn red; Egyptians drink me cold in summer and hot in winter. What am I?",
+    "Karkadeh (hibiscus)"
    ]
   ],
   "300": [
    [
-    "A man pushes his car to a hotel and tells the owner he's bankrupt. Why?",
-    "He's playing Monopoly"
+    "Add one letter to the front of 'pain' and you get a country. Add one to the front of 'ran' and you get another. Which two?",
+    "Spain and Iran"
    ],
    [
-    "What five-letter word gets shorter when you add two letters?",
-    "Short (shorter)"
+    "I sat on the pharaoh's forehead, a snake ready to strike his enemies. What am I?",
+    "The uraeus (the royal cobra)"
    ],
    [
-    "Mary's father has five daughters: Nana, Nene, Nini and Nono. What is the fifth one called?",
-    "Mary"
+    "Which is the only country whose name in English starts with O?",
+    "Oman"
    ],
    [
-    "How many months have 28 days?",
-    "All 12"
+    "My father is a donkey, my mother is a horse, and I can't have children of my own. What am I?",
+    "A mule"
    ],
    [
-    "What has 13 hearts but no other organs?",
-    "A deck of cards"
+    "In football I send you off, in snooker I'm worth one point, and in Formula 1 I mean stop. What am I?",
+    "Red"
    ],
    [
-    "A rooster lays an egg on a sloped roof. Which way does it roll?",
-    "It doesn't: roosters don't lay eggs"
+    "In football I'm a warning, in the Tour de France I'm the leader's jersey, and in tennis I'm the ball. What am I?",
+    "Yellow"
    ],
    [
-    "What is always in front of you but can't be seen?",
-    "The future"
+    "I'm a glass pyramid that guards a woman who smiles. What am I?",
+    "The Louvre Pyramid"
    ],
    [
-    "Which weighs more: a kilo of feathers or a kilo of iron?",
-    "Neither, they both weigh a kilo"
+    "I'm at the start of Aswan, the end of Giza and three times in Alexandria. What am I?",
+    "The letter A"
    ],
    [
-    "What invention lets you look right through a wall?",
-    "A window"
+    "A striker shoots, the keeper doesn't move, the ball hits the back of the net, and nobody celebrates. Why?",
+    "It was the warm-up"
    ],
    [
-    "I speak without a mouth and hear without ears. What am I?",
-    "An echo"
+    "I'm an Arab country, my capital has my name, and I sit at the top of the Gulf. What am I?",
+    "Kuwait"
    ],
    [
-    "A plane crashes exactly on the Egypt–Libya border. Where do they bury the survivors?",
-    "Nowhere, you don't bury survivors"
+    "The more cars drive over me, the bigger I get, and the government always says I'll be fixed next month. What am I?",
+    "A pothole"
    ],
    [
-    "What appears twice in a week, once in a year, but never in a day?",
-    "The letter E"
+    "A camel has one or two, the Sphinx has none, and every Cairo street has hundreds. What are they?",
+    "Humps (speed bumps)"
    ],
    [
-    "There are three apples and you take away two. How many do you have?",
-    "Two"
+    "I'm a bridge, a city, a university and a national holiday, all with the same name. What am I?",
+    "6th of October"
    ],
    [
-    "What can be cracked, made, told and played?",
-    "A joke"
+    "I'm a pharaoh, a railway station, a Cairo square and a famous hotel. What's my name?",
+    "Ramses"
    ],
    [
-    "If two's company and three's a crowd, what are four and five?",
-    "Nine"
+    "I'm a city, a canal and a crisis in 1956. What's my name?",
+    "Suez"
    ],
    [
-    "What is always answered but never asks a question?",
-    "A doorbell (or a phone)"
+    "Which African country hides inside the name of another African country?",
+    "Niger (inside Nigeria)"
    ],
    [
-    "What has one head, one foot and four legs?",
-    "A bed"
+    "The more I'm forwarded, the faster I spread, and the less true I usually am. What am I?",
+    "A rumour (or a WhatsApp forward)"
    ],
    [
-    "What is as light as a feather, yet the strongest man can't hold it for long?",
-    "His breath"
+    "In a marathon, you overtake the runner in last place. What place are you in now?",
+    "Impossible: nobody is behind the last runner"
    ],
    [
-    "Which word contains all 26 letters?",
-    "Alphabet"
+    "Nine letters, a camera icon, and everyone's dinner gets photographed before it's eaten. What app am I?",
+    "Instagram"
    ],
    [
-    "What comes next: 1, 4, 9, 16, 25, …?",
-    "36 (square numbers)"
+    "They call me the 'mother of the world', I have a thousand minarets, and my name means 'the victorious'. What am I?",
+    "Cairo"
    ],
    [
-    "What comes once in a minute, twice in a moment, but never in a thousand years?",
-    "The letter M"
+    "I'm a goddess with a cat's head, and the Egyptians made millions of mummies in my honour. Who am I?",
+    "Bastet"
    ],
    [
-    "What do you throw out when you want to use it, and take in when you don't?",
-    "An anchor"
-   ],
-   [
-    "Where does Thursday come before Wednesday?",
-    "In the dictionary"
-   ],
-   [
-    "Which vegetable has a heart that doesn't beat?",
-    "An artichoke"
-   ],
-   [
-    "What tastes better than it smells?",
-    "Your tongue"
-   ],
-   [
-    "If you have me, you want to share me. If you share me, you no longer have me. What am I?",
-    "A secret"
-   ],
-   [
-    "A farmer has 17 sheep. All but 9 run away. How many are left?",
-    "9"
-   ],
-   [
-    "How many animals of each kind did Moses take on the Ark?",
-    "None: it was Noah's Ark"
-   ],
-   [
-    "What gets dirtier the whiter it gets?",
-    "A blackboard"
-   ],
-   [
-    "What can you make that nobody can see?",
-    "Noise"
-   ],
-   [
-    "A girl was 10 on her last birthday and will be 12 on her next one. How?",
-    "Today is her 11th birthday"
-   ],
-   [
-    "Which is faster, heat or cold?",
-    "Heat, because you can catch a cold"
-   ],
-   [
-    "I am my father's child and my mother's child, but I'm nobody's son. Who am I?",
-    "A daughter"
-   ],
-   [
-    "What can be measured but has no length, width or height?",
-    "Temperature (or time)"
-   ],
-   [
-    "How can a man go eight days without sleep?",
-    "He sleeps at night"
-   ],
-   [
-    "How far can a dog run into the woods?",
-    "Halfway: after that it's running out"
-   ],
-   [
-    "What can you hold without ever touching it?",
-    "A conversation"
+    "I'm on your wrist, I count your steps, and I buzz when your mum calls. What am I?",
+    "A smartwatch"
    ]
   ],
   "400": [
    [
-    "A woman is 24 but has only had six birthdays. How?",
-    "She was born on 29 February"
+    "In snooker I'm worth seven, in karate I'm the master's belt, and the All Blacks wear me. What am I?",
+    "Black"
    ],
    [
-    "Two fathers and two sons go fishing. They catch three fish, one each. How?",
-    "It's a grandfather, father and son"
+    "A man tells his doctor that every time he drinks tea, his eye hurts. What's the cure?",
+    "Take the spoon out of the glass"
    ],
    [
-    "Which English word has three double letters in a row?",
-    "Bookkeeper"
+    "Name a country whose only vowel is A.",
+    "For example Canada, Panama, Madagascar or the Bahamas"
    ],
    [
-    "A man on the 10th floor rides the lift down every day, but going up he stops at the 7th unless it's raining. Why?",
-    "He's short; with an umbrella he can reach the 10 button"
+    "I'm a city of the dead in Cairo, and people still live in me. What am I?",
+    "The City of the Dead (the Qarafa)"
    ],
    [
-    "I'm an odd number. Take away one letter and I become even. What am I?",
-    "Seven"
+    "I was a pharaohs' capital, I'm a city in Tennessee where Elvis lived, and an NBA team carries my name. What am I?",
+    "Memphis"
    ],
    [
-    "What starts with E, ends with E, and contains only one letter?",
-    "An envelope"
+    "Which European country hides an Arab country inside its name?",
+    "Romania (Oman)"
    ],
    [
-    "Before Everest was discovered, what was the highest mountain on Earth?",
-    "Everest"
+    "If a hen and a half lays an egg and a half in a day and a half, how many eggs does one hen lay in one day?",
+    "Two thirds of an egg"
    ],
    [
-    "A cowboy rides into town on Friday, stays three days, and leaves on Friday. How?",
-    "His horse is called Friday"
+    "If 5 bakers bake 5 trays of bread in 5 minutes, how long do 100 bakers take to bake 100 trays?",
+    "5 minutes"
    ],
    [
-    "What do you get if you multiply all the numbers on a phone keypad?",
-    "Zero"
+    "Water hyacinth on a canal doubles every day and covers it completely on day 30. On which day was it half covered?",
+    "Day 29"
    ],
    [
-    "The maker sells it, the buyer doesn't use it, and the user never sees it. What is it?",
-    "A coffin"
+    "Which is bigger: 2 to the power of 10, or 10 to the power of 3?",
+    "2 to the power of 10 (1,024 against 1,000)"
    ],
    [
-    "What is black when you buy it, red when you use it and grey when you throw it away?",
-    "Charcoal"
+    "If yesterday was Friday, what is the day after the day before yesterday?",
+    "Friday"
    ],
    [
-    "What has a spine but no bones?",
-    "A book"
+    "I'm the only continent in all four hemispheres. Which am I?",
+    "Africa"
    ],
    [
-    "What can you keep after giving it to someone?",
-    "Your word (a promise)"
+    "Name a country whose capital has exactly the same name.",
+    "For example Kuwait, Djibouti, Singapore, Luxembourg, Monaco or the Vatican"
    ],
    [
-    "A man fell off a 20-foot ladder but wasn't hurt at all. How?",
-    "He fell off the bottom rung"
+    "I was Egypt's capital for nearly a thousand years; the sea swallowed my lighthouse and my library made me famous forever. What am I?",
+    "Alexandria"
    ],
    [
-    "What word has 'kst' in the middle, in the beginning, and at the end?",
-    "Inkstand ('in' at the beginning, 'kst' in the middle, 'and' at the end)"
+    "My builders changed my angle halfway up because I was going to collapse. What am I?",
+    "The Bent Pyramid"
    ],
    [
-    "How many times can you subtract 10 from 100?",
-    "Once (after that you're subtracting from 90)"
+    "I was the tallest building on Earth for almost 4,000 years, until an English cathedral took my title. What am I?",
+    "The Great Pyramid"
    ],
    [
-    "A man walked in the rain with no umbrella or hat, yet not one hair on his head got wet. How?",
-    "He was bald"
+    "A train leaves Cairo for Alexandria at 60 km/h. An hour later another leaves Alexandria for Cairo at 80 km/h. When they meet, which one is closer to Cairo?",
+    "Neither: they're in the same place"
    ],
    [
-    "What comes next: 2, 3, 5, 7, 11, …?",
-    "13 (prime numbers)"
+    "Two boys are born to the same mother on the same day, in the same hour, but they aren't twins. How?",
+    "They're two of a set of triplets"
    ],
    [
-    "Which three positive whole numbers give the same result added or multiplied?",
-    "1, 2 and 3"
+    "What do you get if you add up every number from 1 to 100?",
+    "5,050"
    ],
    [
-    "I'm a word of three letters; add two and fewer there will be. What am I?",
-    "Few (fewer)"
+    "Which number, written in English, has as many letters as its own value?",
+    "Four"
    ],
    [
-    "What has 21 eyes but can't see?",
-    "A dice (1+2+3+4+5+6 dots)"
+    "A man buys a camel for 60, sells it for 70, buys it back for 80 and sells it for 90. How much profit did he make?",
+    "20"
    ],
    [
-    "What is in the middle of March and April but not at the start or end of either?",
-    "The letter R"
-   ],
-   [
-    "A doctor gives you three pills and says take one every half hour. How long until they're all gone?",
-    "One hour"
-   ],
-   [
-    "You see a boat full of people, yet there isn't a single person on board. How?",
-    "Everyone on it is married"
-   ],
-   [
-    "What is in seasons, seconds, centuries and minutes but not in decades, years or days?",
-    "The letter N"
-   ],
-   [
-    "Divide 30 by half and add 10. What do you get?",
-    "70"
-   ],
-   [
-    "How many letters are in 'the alphabet'?",
-    "Eleven"
-   ],
-   [
-    "When is a door not a door?",
-    "When it's ajar (a jar)"
-   ],
-   [
-    "Which five-letter word reads the same upside down and backwards?",
-    "SWIMS"
-   ],
-   [
-    "What can be stolen, mistaken or changed, yet never leaves you all your life?",
-    "Your identity"
-   ],
-   [
-    "What is the last letter of 'the alphabet'?",
-    "T"
-   ],
-   [
-    "A man was born in 1990 and turned 30 in 1960. How?",
-    "The years are BC"
-   ],
-   [
-    "What has a foot on each side and one in the middle?",
-    "A yardstick (three feet long)"
-   ],
-   [
-    "What word starts with IS, ends with AND, and has LA in the middle?",
-    "Island"
-   ],
-   [
-    "What comes next: J, F, M, A, M, J, J, …?",
-    "A (for August)"
+    "In which Cairo market have gold, copper and spice sellers traded for more than 600 years?",
+    "Khan el-Khalili"
    ]
   ],
   "500": [
    [
-    "A man looks at a portrait and says: 'Brothers and sisters I have none, but that man's father is my father's son.' Who is in the portrait?",
-    "His son"
+    "Which letter doesn't appear in the name of any US state?",
+    "Q"
    ],
    [
-    "I turn once, what is out will not get in. I turn again, what is in will not get out. What am I?",
-    "A key"
+    "Which number is exactly twice the sum of its digits?",
+    "18"
    ],
    [
-    "The more of it there is, the less you see. What is it?",
-    "Darkness"
+    "A clock shows 3:15. What's the angle between the hour and minute hands?",
+    "7.5 degrees"
    ],
    [
-    "What can go up a chimney down, but not down a chimney up?",
-    "An umbrella"
+    "How many times a day do a clock's hour and minute hands lie exactly on top of each other?",
+    "22"
    ],
    [
-    "A father and son are in a crash. The surgeon says 'I can't operate, he's my son.' How?",
-    "The surgeon is his mother"
+    "Which is the only capital city that borders two other countries?",
+    "Bratislava (Austria and Hungary)"
    ],
    [
-    "Which is correct: 'the yolk of the egg is white' or 'the yolk of the egg are white'?",
-    "Neither, yolks are yellow"
+    "Which English word means 'cheeky' and has all five vowels in order, a, e, i, o, u?",
+    "Facetious"
    ],
    [
-    "What's the next letter: J, F, M, A, M, J, J, A, …?",
-    "S (the months)"
+    "What's the longest common English word you can type using only the top row of letters on a keyboard?",
+    "Typewriter"
    ],
    [
-    "What seven-letter word holds hundreds of letters?",
-    "Mailbox"
+    "A keeper is so good that no ball gets past him all season, yet his team concedes 40 goals. How?",
+    "He's the sub keeper and never played"
    ],
    [
-    "You're in a race and overtake the person in second place. What place are you in?",
-    "Second"
+    "Which number, written in English, has its letters in reverse alphabetical order?",
+    "One"
    ],
    [
-    "What's the next number: 1, 11, 21, 1211, 111221, …?",
-    "312211 (each line describes the one before)"
+    "Which great African river crosses the equator twice?",
+    "The Congo"
    ],
    [
-    "Poor people have it, rich people need it, and if you eat it you die. What is it?",
-    "Nothing"
+    "The Greeks heard the name of a Memphis temple, 'Hut-ka-Ptah', and turned it into the name of a whole country. Which?",
+    "Egypt"
    ],
    [
-    "A man lies dead in a field next to an unopened package. What happened?",
-    "His parachute didn't open"
+    "If you write every number from 1 to 100, how many times do you write the digit 9?",
+    "20"
    ],
    [
-    "How can you drop a raw egg onto a concrete floor without cracking it?",
-    "Concrete floors are very hard to crack"
+    "What's the smallest number you can divide by every number from 1 to 10 with nothing left over?",
+    "2,520"
    ],
    [
-    "What comes next: O, T, T, F, F, S, S, E, …?",
-    "N (One, Two, Three… Nine)"
+    "A snail climbs 3 m up a 10 m well every day and slides 2 m down every night. On which day does it get out?",
+    "Day 8"
    ],
    [
-    "Three doctors say Robert is their brother. Robert says he has no brothers. How?",
-    "The doctors are his sisters"
+    "You have a 3-litre jug and a 5-litre jug and a tap. How do you measure exactly 4 litres?",
+    "Fill the 5, pour into the 3 (2 left), empty the 3, pour the 2 in, fill the 5 again and top up the 3: 4 left"
    ],
    [
-    "A man builds a house with all four walls facing south. A bear walks past. What colour is the bear?",
-    "White: the house is at the North Pole, so it's a polar bear"
+    "How many people do you need in a room for it to be more likely than not that two share a birthday?",
+    "23"
    ],
    [
-    "A rope ladder hangs over a ship's side with rungs 30 cm apart, 3 rungs underwater. The tide rises 1 metre. How many rungs are underwater now?",
-    "Still 3: the ship rises with the tide"
+    "Which is the only country whose English name ends in H?",
+    "Bangladesh"
    ],
    [
-    "Turn me on my side and I'm everything. Cut me in half and I'm nothing. What am I?",
-    "The number 8"
+    "Which six-letter English word, meaning 'nearly', has its letters in alphabetical order?",
+    "Almost"
    ],
    [
-    "A butcher's assistant is 1.8 m tall and wears size 44 shoes. What does he weigh?",
-    "Meat"
+    "What comes next: 2, 3, 5, 9, 17, …?",
+    "33 (double it and take away 1)"
    ],
    [
-    "What breaks but never falls, and what falls but never breaks?",
-    "Day breaks, night falls"
-   ],
-   [
-    "Which nine-letter word stays a real word each time you remove one letter, all the way down to a single letter?",
-    "Startling (starting, staring, string, sting, sing, sin, in, I)"
-   ],
-   [
-    "A girl has as many brothers as sisters, but each brother has only half as many brothers as sisters. How many brothers and sisters are there?",
-    "Three brothers and four sisters"
-   ],
-   [
-    "A pen and a notebook cost 11 pounds together. The notebook costs 10 pounds more than the pen. How much is the pen?",
-    "50 piastres"
-   ],
-   [
-    "Which English word sounds the same even after you take away four of its five letters?",
-    "Queue"
-   ],
-   [
-    "What is the only common English word that ends in 'mt'?",
-    "Dreamt"
-   ],
-   [
-    "Which four-letter word reads the same forwards, backwards and upside down?",
-    "NOON"
-   ],
-   [
-    "A clock takes 5 seconds to strike 6 o'clock. How long does it take to strike 12?",
-    "11 seconds"
-   ],
-   [
-    "What has four letters, sometimes nine, and never five?",
-    "The words themselves: 'what' has 4, 'sometimes' has 9, 'never' has 5"
-   ],
-   [
-    "Which word is wrong if you pronounce it right, and right if you pronounce it wrong?",
-    "'Wrong'"
-   ],
-   [
-    "Which word gets longer when you remove its third letter?",
-    "Lounger (longer)"
-   ],
-   [
-    "Give me one and you have either two or none. What am I?",
-    "A choice"
-   ],
-   [
-    "What is 3/7 chicken, 2/3 cat and 2/4 goat?",
-    "Chicago"
-   ],
-   [
-    "Which number has its letters in alphabetical order?",
-    "Forty"
-   ],
-   [
-    "Which word sounds exactly the same after you take away its first letter?",
-    "Scent (cent)"
-   ],
-   [
-    "I'm a six-letter word. Take one letter away and twelve remains. What am I?",
-    "Dozens"
+    "Which planet is the only one whose English name isn't taken from a god?",
+    "Earth"
    ]
   ]
  }

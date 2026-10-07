@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.41. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.42. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -681,3 +681,17 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 ```
   - **Football mode opening:** each time the Football board appears, the ball rests at the left player's feet for a second. He puts his sole on top and rolls it back, slips his toes under it, flicks it up and volleys it across, and the rotation carries on (`INTRO`, `introPose` in the kickers). Before, it started mid-flight. To undo, set `INTRO = 0`.
   - **New Football touch, "wedge":** as the ball drops in he plants his foot out in front, it bounces up off it, and he volleys it. The rotation is now 22 touches: the same 11 moves twice, so each move is half a cycle from the other player's same move. The old 20-touch order is in the comment above `ROT`.
+- 6.42 (2026-10-07): New categories and clue work Omar asked for.
+  - **Seven new categories**, each about 100 clues (20 per value), added through the `[id, after]` list in `src/extra.js`, plus `CAT_GROUPS` and `TIPS` in `src/app.js`:
+    - **Tennis** (`tennis`, Football & Sports, after Sports): the Slams, legends and today's players. 2026's US Open and French Open results are left out because they couldn't be checked.
+    - **Oldies** (`oldies`, Entertainment, after Guess the Song): "the music that will never die". Name the singer or band of a classic from the 50s to the 90s, including Omar's examples (Africa, The Logical Song, Knockin' on Heaven's Door, Love in Portofino) and a few Arabic classics.
+    - **Facts** (`facts`, Knowledge, after General Knowledge): like Real Headline. Three facts, only one true; the false ones are usually popular myths. The true one rotates between A, B and C.
+    - **Holidays & Traditions** (`holi`, Knowledge, after Mythology): Egyptian, Islamic, Coptic and world holidays and customs.
+    - **Animal Kingdom** (`animal`, Knowledge, after Space): 15 fact clues and 5 photo clues per value ("What is this animal called?").
+    - **Cocktails & Drinks** (`cocktail`, Knowledge, after Most Calories): cocktails, spirits, beer and wine, plus Egyptian drinks such as karkadeh, sobia and erk soos.
+    - **Landmarks** (`landmark`, Maps & World, after Geography): 15 text clues and 5 photo clues per value ("Name this landmark."). The text clues never have the same answer as a photo clue.
+    - The animal and landmark photos are Wikipedia lead images (from Wikimedia Commons), listed with their licences in `v4work/category-photos/SOURCES.md`. Originals (up to 2000 px) are in `v4work/category-photos/` and web copies in `photos/`. They're `an-*` and `lm-*` entries in `v4work/category-photos.json`. Petronas Towers was dropped because its lead image is the company logo; the Forbidden City replaced it.
+  - **What's the Link? is harder.** Every clue moved down one value: the old 200s are now the 100s, and so on. The old 100 pool (planets, seasons, card suits, soft drinks…) was taken out, the three easiest old 500s (Japanese cities, New York boroughs, the giant planets) moved to 300, and there are 35 new 500s and 4 new 400s. The old file is `v4work/out/old/link-6.41.json`; copy it back over `v4work/out/link.json` to undo.
+  - **Riddles rewritten** to be more creative and less cliché, with no "keys but can't open locks". There are 107 new riddles: Cairo street life (the tabbaa, the bawab, the ful cart, iftar cannon), wordplay, country puzzles and number puzzles at 400–500. The old 180 are in `v4work/out/old/rid-6.41.json` to undo or to bring some back.
+  - **Put It in Order:** 50 new clues (10 per value, 36 per value now). Old file: `v4work/out/old/order-6.41.json`.
+  - **Fixed** a Real Headline 100 clue whose answer said Messi signed for Manchester City; it's Inter Miami.
