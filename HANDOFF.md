@@ -69,7 +69,7 @@ what's open, and how to test. `NOTES.md` has the full version history and the un
   - The Parent Trap is hidden (`HIDDEN_IDS`); its clues stay in the build.
   - NSFW (`x18`) is locked behind a code. Its tip says "Code required" until it's unlocked.
 - **Street scene** (normal mode; the big block in `src/app.js` starting "5.52 (Omar): normal mode street scene"):
-  - Ten acts play in turn, and every other full round is mirrored (`flip`).
+  - Seven acts play in turn (ten until 6.45, when three pairs were combined), and every other full round is mirrored (`flip`).
   - A bawab with his plastic chair visits now and then (`bawabOnAct`).
   - Since 6.41 it keeps playing, faint, behind an open clue.
   - Each act's NOTES entry explains its timing variables.
