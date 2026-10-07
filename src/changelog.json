@@ -3,6 +3,16 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.40",
+  "date": "2026-10-07",
+  "items": [
+   "Mix clues show their real category in gold, and a mix you've edited gets a ✎ on its chip.",
+   "Edit mixes now sits above Teams, with each mix folded until you open it. Hovering a mix lists its categories as bullets.",
+   "New Everything Mix: every category except Act It Out and One Word Clues. Guess the … Mix is now Guess the ____ Mix.",
+   "Emoji Movies & TV moved to Entertainment, after Pixar. The Parent Trap is hidden for now."
+  ]
+ },
+ {
   "v": "6.39",
   "date": "2026-10-06",
   "items": [

@@ -144,6 +144,13 @@ details.photopanel[open]>summary::before{transform:rotate(90deg)}
 .mixrow{display:grid;gap:8px;padding:12px 0;border-top:1px solid var(--line)} .mixrow:first-child{border-top:0}
 .mixrow h5{margin:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:15px} .mixrow h5 small{font-weight:500;opacity:.7}
 .mixrow .mini{margin-left:auto}
+/* 6.40 (Omar): each mix folds; click its name to open it */
+.mixrow summary{list-style:none;cursor:pointer} .mixrow summary::-webkit-details-marker{display:none}
+.mixrow summary h5::before{content:"▸";display:inline-block;width:12px;transition:transform .15s} .mixrow[open] summary h5::before{transform:rotate(90deg)}
+.mixrow[open] .chips{margin-top:8px}
+.chip .edited{display:inline-block;margin-left:4px;font-size:.85em;opacity:.85}
+#tip ul{margin:6px 0 0;padding-left:20px;font-size:17px} #tip ul.cols{columns:2;column-gap:18px;font-size:15px} #tip li{break-inside:avoid}
+.eyebrow .msrc{color:#FFCC33;font-weight:800}   /* 6.40 (Omar): a mix clue's own category in gold (fixed gold, so Football mode's navy accent doesn't change it) */
 /* 5.5: photo download status in the Photo rounds panel */
 .dlbox{margin:4px 0 14px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px}
 .dlrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
@@ -444,7 +451,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.39</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.40</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -456,7 +463,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.39</div>
+      <div class="eyebrow verlabel">v6.40</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -466,6 +473,14 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div class="chips" id="catChips"></div>
       <div class="row"><button class="btn small" id="pick6">Random 6</button><button class="btn small" id="pickNone">Clear</button></div>
     </div>
+    <!-- 6.27 (Omar): pick what each mix draws from, limited to that mix's own section. Saved on this device. To remove: delete this panel and the 6.27 block in src/app.js. 6.40 (Omar): moved here, above Teams (6.27-6.39: after the hidden Photo rounds panel, above Status) -->
+    <details class="panel photopanel" id="mixPanel">
+      <summary class="eyebrow">Edit mixes <span class="phcount" id="mixCount"></span></summary>
+      <div class="photobody">
+      <p class="note">Choose which categories each mix draws its clues from. Each mix can only use categories from its own section. Changes are saved on this device and apply to the next tile you open.</p>
+      <div id="mixEdit"></div>
+      </div>
+    </details>
     <div class="panel" id="teamsPanel">
       <div class="eyebrow">Teams</div>
       <div class="teams" id="teamInputs"></div>
@@ -492,14 +507,6 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div class="row"><label class="btn small" for="pack">Load photo pack</label><input id="pack" type="file" accept="image/*" multiple hidden><span class="note" id="packStatus">No photos loaded</span></div>
       <div class="row"><button class="btn small" id="exportPhotos">Export photos</button><label class="btn small" for="importPhotos">Import photos</label><input id="importPhotos" type="file" accept=".zip,application/zip" hidden><span class="note" id="xferStatus">Export saves the photos you've added or replaced on this device (not the ones already built in), matched and with zoom spots, in one file. Import it on another device, or send it to Claude to build the photos into the game.</span></div>
       <details id="prepBox"><summary>Photo checklist: preview, zoom spot or replace</summary><div id="prep"></div></details><input id="assign" type="file" accept="image/*" hidden>
-      </div>
-    </details>
-    <!-- 6.27 (Omar): pick what each mix draws from, limited to that mix's own section. Saved on this device. To remove: delete this panel and the 6.27 block in src/app.js -->
-    <details class="panel photopanel" id="mixPanel">
-      <summary class="eyebrow">Edit mixes <span class="phcount" id="mixCount"></span></summary>
-      <div class="photobody">
-      <p class="note">Choose which categories each mix draws its clues from. Each mix can only use categories from its own section. Changes are saved on this device and apply to the next tile you open.</p>
-      <div id="mixEdit"></div>
       </div>
     </details>
     <!-- 5.5 (Omar): Status, everything the game downloads and how much of it is on this device. Fetch it all before guests arrive. -->
@@ -603,15 +610,17 @@ const BALLS = ["data:image/webp;base64,UklGRjwPAABXRUJQVlA4WAoAAAAQAAAAfwAAfwAAQ
 const MIXES = [
   ["mixeg1", "Egypt Mix 1", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
   ["mixeg2", "Egypt Mix 2", ["egy","egh","cairo","egyph"]],
-  ["mixguess", "Guess the … Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   /* 6.26 (Omar): a space before the ellipsis (was "Guess the… Mix") */ // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
+  ["mixguess", "Guess the ____ Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   /* 6.40 (Omar): a blank line instead of the ellipsis (6.26-6.39: "Guess the … Mix"; before 6.26: "Guess the… Mix") */ // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
   ["mixmap", "Maps & World Mix", ["geo","flag","shape","pin","ctry","lang","trans"]],
-  ["mixparty", "Party Games Mix", ["emov","link","near","price","headl","order"]],
+  ["mixparty", "Party Games Mix", ["link","near","price","headl","order"]],   // 6.40: Emoji Movies & TV moved to Entertainment Mix 2 with its category (was first here)
   ["mixkn1", "Knowledge Mix 1", ["his","islam","year","sci","cal","brand"]],
   ["mixkn2", "Knowledge Mix 2", ["ww2","space","food","ffood","mb","curr","tg"]],
   ["mixent1", "Entertainment Mix 1", ["blockbuster","tvmix","plot","igf","lyric","song"]],
   ["tvmix", "TV Show Mix", ["got","peaky","bb","pb","st","office","friends","himym"]],   // 6.38: the eight show categories
-  ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel"]],
-  ["mixfb", "Football Mix", ["cclub","path","whoami","shirt","mgr","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"]]];
+  ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel","emov"]],
+  ["mixfb", "Football Mix", ["cclub","path","whoami","shirt","mgr","xfer","stad","footy","egfb","fyear","form","score","pl","ucl","fwc"]],
+  /* 6.40 (Omar): Everything Mix, last: every category except Act It Out (both), One Word Clues, the locked NSFW one and the hidden ones */
+  ["mixall", "Everything Mix", CATS.filter(c => !c.mode && !["act","acteg","pw","x18","ptrap"].includes(c.id)).map(c => c.id)]];
 MIXES.forEach(([id,name]) => { CATS.push({id, name, type:"mix"}); DATA[id] = {100:[],200:[],300:[],400:[],500:[]}; });
 MIXES.forEach(([id,name,src]) => { const c = CATS.find(x => x.id===id); c.src = src.filter(s => CATS.some(x => x.id===s));   // 6.38: after all are added, so a mix can include another (TV Show Mix)
   c.desc = "A mix of " + c.src.map(s => CATS.find(x => x.id===s).name).join(", ") + ". Each tile picks one of them."; });
@@ -702,7 +711,8 @@ const S = {
 };
 const photos = {};  // norm(answer) -> blob url
 const catById = id => CATS.find(c => c.id === id);
-const PICK = CATS.filter(c => !c.mode);  // categories offered in setup (Football mode adds its own World Cup)
+const HIDDEN_IDS = new Set(["ptrap"]);   // 6.40 (Omar): hidden from setup, mixes and the totals; its clues stay in the build. To bring one back, take it out of this set (and put it back in CAT_GROUPS)
+const PICK = CATS.filter(c => !c.mode && !HIDDEN_IDS.has(c.id));  // categories offered in setup (Football mode adds its own World Cup)
 const pool = (cat,lvl) => DATA[cat][lvl];
 
 /* ---------- sound: soft countdown ticks and a fading bell-like chime (C_soft_end) ---------- */
@@ -773,19 +783,19 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.39`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.40`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
-  ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","tvmix","mixmap","mixkn1","mixkn2","mixguess","mixparty"]],   /* 6.20 (Omar): the mixes, first. 6.37 (Omar): TV Show Mix moved here from Entertainment, after Entertainment Mix 2. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
+  ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","tvmix","mixmap","mixkn1","mixkn2","mixguess","mixparty","mixall"]],   /* 6.40 (Omar): Everything Mix last */   /* 6.20 (Omar): the mixes, first. 6.37 (Omar): TV Show Mix moved here from Entertainment, after Entertainment Mix 2. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
   /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egyph","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","lyricar","emeg","emseg","ctryar"]],
   ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","ptrap","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
+  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","emov","quote","qblank","mus","songt","song","lyric","spot","igf"]],
   ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
-  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
+  ["Party Games", ["act","acteg","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 6.40 (Omar): Emoji Movies & TV moved to Entertainment after Pixar (was after acteg here); The Parent Trap hidden (was after romcom, see HIDDEN_IDS). */ /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
 ];
 /* 6.0 (Omar): a short, easy description of every category, shown in a big hover box (#tip) over its setup chip and its board
    header, readable from the couch. Falls back to the category's longer desc (5.99 and before: desc as a small browser tooltip). */
@@ -902,24 +912,26 @@ const TIPS = {
    had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Locked categories
    are left out (6.27 also left out Act It Out and One Word Clues; 6.28 allows them). Choices are saved per device in "jn_mixes". */
 const MIX_SECTION = {tvmix:"Entertainment", mixeg1:"Egypt & Arab World", mixeg2:"Egypt & Arab World", mixfb:"Football & Sports", mixent1:"Entertainment", mixent2:"Entertainment",
-  mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games"};
+  mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games", mixall:"All"};   // 6.40: Everything Mix may use any category
 const MIX_DEFAULT = Object.fromEntries(CATS.filter(c => c.type === "mix").map(c => [c.id, c.src.slice()]));
-const mixAllowed = id => { const g = (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
+const mixAllowed = id => { const g = id === "mixall" ? CAT_GROUPS.slice(1).flatMap(x => x[1]) : (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
   if(id === "tvmix") return TV_SHOWS.filter(s => catById(s));   // 6.38: TV Show Mix picks from the TV series only
-  return [...new Set([...g, ...(MIX_SECTION[id] === "Entertainment" ? ["tvmix"] : []), ...(MIX_DEFAULT[id] || [])])]   /* 6.37: TV Show Mix moved to Mixes but stays choosable for the Entertainment mixes */.filter(s => { const c = catById(s); return c && (c.type !== "mix" || s === "tvmix") && s !== id && c.type !== "impostor" && !LOCKED_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
+  return [...new Set([...g, ...(MIX_SECTION[id] === "Entertainment" ? ["tvmix"] : []), ...(MIX_DEFAULT[id] || [])])]   /* 6.37: TV Show Mix moved to Mixes but stays choosable for the Entertainment mixes */.filter(s => { const c = catById(s); return c && (c.type !== "mix" || s === "tvmix") && s !== id && c.type !== "impostor" && !LOCKED_IDS.has(s) && !HIDDEN_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
 const LOCKED_IDS = new Set(["x18"]), TV_SHOWS = ["got","peaky","bb","pb","st","office","netflix","friends","himym"];   // 6.38: what TV Show Mix may use (the eight shows by default, plus Netflix Hits)
 function applyMixes(){ const saved = store.get("jn_mixes", {});
   CATS.filter(c => c.type === "mix").forEach(c => { const ok = mixAllowed(c.id), want = (saved[c.id] || MIX_DEFAULT[c.id]).filter(s => ok.includes(s));
     c.src = want.length ? want : MIX_DEFAULT[c.id].slice(); }); }
 applyMixes();
+const mixOpen = new Set();   // 6.40 (Omar): each mix starts folded; this remembers which ones are open while setup is shown
 function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
   box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(c => c && c.type === "mix").map(m =>   /* 6.38: TV Show Mix is a mix too now (6.37: left out, fixed contents) */ { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
-    return `<div class="mixrow"><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id])}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5>
-      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></div>`; }).join("");
+    return `<details class="mixrow" data-mixrow="${m.id}"${mixOpen.has(m.id) ? " open" : ""}><summary><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id] === "All" ? "any section" : MIX_SECTION[m.id])}${custom ? " · edited" : ""}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5></summary>
+      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></details>`; }).join("");   // 6.27-6.39: an open <div class="mixrow"> with an <h5>
+  box.querySelectorAll("details.mixrow").forEach(d => d.addEventListener("toggle", () => d.open ? mixOpen.add(d.dataset.mixrow) : mixOpen.delete(d.dataset.mixrow)));
   const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
 document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset]"); if(!b || !$("#mixEdit").contains(b)) return;
   const saved = store.get("jn_mixes", {});
-  if(b.dataset.mixreset){ delete saved[b.dataset.mixreset]; }
+  if(b.dataset.mixreset){ e.preventDefault(); delete saved[b.dataset.mixreset]; }   // preventDefault: the Reset button sits in the row's <summary>
   else { const m = catById(b.dataset.mix), s = b.dataset.src, cur = m.src.includes(s) ? m.src.filter(x => x !== s) : [...m.src, s];
     if(!cur.length){ b.animate && b.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"none"}], {duration:200}); return; }   // a mix needs at least one category
     const order = mixAllowed(m.id); saved[m.id] = order.filter(x => cur.includes(x));
@@ -927,9 +939,9 @@ document.addEventListener("click", e => { const b = e.target.closest && e.target
   store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
   renderMixEdit(); renderChips(); });
 $("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });
-const tipOf = c => (LOCKED_IDS.has(c.id) && !unlocked.has(c.id) ? "Code required" : "") || (c.type === "mix" ? "" : TIPS[c.id]) || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
+const tipOf = c => (LOCKED_IDS.has(c.id) && !unlocked.has(c.id) ? "Code required" : "") || (c.type === "mix" ? "" : TIPS[c.id]) || (c.id === "mixall" ? ((x => x.length ? "Every category except:\n" + x.join("\n") : "Every category.")(PICK.filter(o => o.type !== "mix" && !LOCKED_IDS.has(o.id) && !c.src.includes(o.id)).map(o => o.name))) : "")   /* 6.40: Everything Mix lists what it leaves out instead */ || (c.type === "mix" ? "A mix of:\n" + c.src.map(s => catById(s).name).join("\n") : "") || c.desc || "";   // 6.20: a mix lists what it mixes. 6.40 (Omar): one per line, shown as a bullet list in the hover box (6.20-6.39: "A mix of X, Y and Z.")
 function renderChips(){
-  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
+  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${c.type === "mix" && store.get("jn_mixes", {})[c.id] ? ` <span class="edited" title="Edited in Edit mixes">✎</span>` : ""}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;   // 6.40 (Omar): a pencil on mixes changed in Edit mixes
   const seen = new Set();
   const groups = CAT_GROUPS.map(([name,ids]) => [name, ids.map(catById).filter(Boolean)]);
   groups.forEach(([,cs]) => cs.forEach(c => seen.add(c.id)));
@@ -2873,7 +2885,7 @@ function renderClue(){
   const badges = [c.x2!=null && S.teams[c.x2] ? `<span class="badge">×2 · ${esc(S.teams[c.x2].name)}</span>` : "", ...Object.keys(c.two).map(i => S.teams[i] ? `<span class="badge">2 answers allowed · ${esc(S.teams[i].name)}</span>` : "")].filter(Boolean).join("");
   const canTwo = S.power && !S.ffa && !c.preview && !c.revealed ? /* only the team whose turn it is can use 2 answers */ S.teams.map((t,i) => (i===(S.turn||0) && !t.twoUsed && !c.two[i]) ? `<button class="pwb" data-two="${i}">${esc(t.name)}: 2 answers</button>` : "").filter(Boolean).join("") : "";
   $("#clue").innerHTML = `
-    <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${c.tile ? esc(catById(c.tile).name) + " · " : ""}${esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
+    <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${c.tile ? esc(catById(c.tile).name) + " · " : ""}${c.tile ? `<span class="msrc">${esc(cat.name)}</span>` : esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
     ${badges ? `<div class="badges">${badges}</div>` : ""}
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
@@ -3026,7 +3038,8 @@ document.addEventListener("fullscreenchange", fsLabel); document.addEventListene
   let timer = 0, on = null;
   const hide = () => { clearTimeout(timer); on = null; tip.classList.remove("on"); };
   const show = el => {
-    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").trim())}</b>${esc(el.dataset.tip)}`; tip.classList.add("on");
+    const [t0, ...li] = el.dataset.tip.split("\n");   // 6.40: lines after the first become a bullet list (a mix's categories)
+    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").replace(/✎/, "").trim())}</b>${esc(t0)}${li.length ? `<ul class="${li.length > 12 ? "cols" : ""}">${li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`; tip.classList.add("on");
     const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, m = 12;
     const x = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m), below = r.bottom + 10 + h < innerHeight - m;
     tip.style.left = x + "px"; tip.style.top = (below ? r.bottom + 10 : Math.max(m, r.top - 10 - h)) + "px"; };
