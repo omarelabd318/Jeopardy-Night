@@ -157,7 +157,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.42`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.43`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1577,7 +1577,11 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         // the car: comes in from the right once he's sweeping, brakes to a stop at the light, then drives off to the left
         let cx = null; if(u > tIn && u < tC){ const e = u - tIn; cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
         else if(u >= tC && u < tD) cx = cx0; else if(u >= tD){ const e = u - tD; cx = cx0 - 120 * e * e; }
-        if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black");
+        const drawCar = () => { if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black"); };
+        /* 6.43 (Omar): he always begs at the driver's window, the front left one (Egypt drives on the right). On normal rounds that's the
+           side we see. On mirrored rounds we see the passenger side, so he walks round the front of the car to the far side: from the
+           bonnet on he's drawn behind the car and a little higher up (dy), with his head and shoulders above the roof
+           (6.40-6.42: he begged at the near front window both ways, the passenger's on mirrored rounds). */
         // him
         /* 6.40 (Omar): his sweeping isn't even any more: the strokes speed up and slow down, some are short and some long, the push
            is quicker than the pull, and every few seconds he stops for a moment and straightens up (6.3-6.39: sw = Math.sin(u * 6)). */
@@ -1598,26 +1602,29 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         /* 6.34 (Omar): he takes the note from the driver's hand. It's held out of the window at N and stays there; his near hand
            reaches right up to it (arm angles worked out from where the note is, ikArm), closes on it, and pulls it back to his chest,
            then he pockets it. 6.12-6.33: both hands cupped out low while the note slid down to them; lean 0 to 0.38 from tR. */
-        else if(u < tR + 1.6){ x = wx; const e = u - tR, lean = 0.3 + 0.08 * sm(Math.min(e / 0.4, 1)), sh = [x + Math.sin(lean) * 12.5, gy - 17 - Math.cos(lean) * 12.5];
+        else if(u < tR + 1.6){ x = wx; const e = u - tR, lean = 0.3 + 0.08 * sm(Math.min(e / 0.4, 1)), sh = [x + Math.sin(lean) * 12.5, gy - 4 * (flip ? 1 : 0) - 17 - Math.cos(lean) * 12.5];   // 6.43: 4 px higher on the far side
           const eat = [0.3, 2.85], bl = (a, b, f) => [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f];
           const near = e < 1.0 ? bl(eat, ikArm(sh, N), sm(cl((e - 0.3) / 0.7, 0, 1))) : e < 1.15 ? ikArm(sh, N)   /* straight from his mouth to the note */
-            : ikArm(sh, bl(N, [x + 6, gy - 22], sm((e - 1.15) / 0.45)));
+            : ikArm(sh, bl(N, [x + 6, gy - 4 * (flip ? 1 : 0) - 22], sm((e - 1.15) / 0.45)));
           pose = {arms: [near, [0.35, 0.6]], lean}; }   // his other hand (with the broom) stays low
         else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]], lean: 0.38 * (1 - sm((u - tR - 1.6) / 0.4))}; }   // straightens up and pockets it
         else if(u < tF){ x = wx - v * (u - tP); d = -1; pose = walk(u * 8.5); }
         else if(u < t6){ x = L + 7; d = -1; pose = u < tF + 0.7 ? {arms: [[1.2 + 0.15 * sm((u - tF) / 0.35), 1.3], [0.45, 0.8]]} : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }   // reaches up and flips it to green, then waits for the car to go
         else if(u < t7){ x = L + 7; d = -1; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = sm((u - t6 - 0.2) / 0.6); }   // picks it up
         else { x = L + 7 - v * (u - t7); d = -1; pose = walk(u * 8.5, holding); }
+        const far = flip ? sm(cl((x - (cx0 - 34)) / 10, 0, 1)) * (u > tIn && u < tD + 0.5 ? 1 : 0) : 0, G = gy - 4 * far;   // how far round the car he is
+        if(far < 0.5) drawCar();
         const carried = u < t1 || u >= t7;
         const state = u < tG ? "red" : "green";
         if(!carried && lightAt == null) trafficLight(L, gy, state);                                   // standing: red, until he flips it to green
-        const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
+        const S2 = person(x, G, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(carried || lightAt != null){ const [hx, hy] = S2.hands[0], k = carried ? 1 : lightAt;        // in his hand, or on its way between hand and ground
           trafficLight(L + (hx - L) * k, gy - 3 * k, !carried && k < 0.5 ? state : null); }   // 6.10: carried by the pole, its base just off the ground
-        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3.5; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping
+        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3.5; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping (never round the car)
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
-        else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
-          poly([[bx - 1.5, gy - 4], [bx + 1.5, gy - 4], [bx + 4.5, gy], [bx - 4.5, gy]], "#b8935a"); }
+        else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, G - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
+          poly([[bx - 1.5, G - 4], [bx + 1.5, G - 4], [bx + 4.5, G], [bx - 4.5, G]], "#b8935a"); }
+        if(far >= 0.5) drawCar();   // 6.43: in front of him while he's on the far side
         // the money: poked out of the driver's window to N (6.34), held there until he takes it, then in his hand until it's in his pocket
         const e = u - tR, inHand = e >= 1.15 && e < 1.9, out = e > 0.2 && e < 1.15;
         if(out || inHand){ const [nx, ny] = inHand ? S2.hands[0] : [N[0] + 5 * (1 - sm(Math.min((e - 0.2) / 0.3, 1))), N[1]];

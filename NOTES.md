@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.42. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.43. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -695,3 +695,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **Riddles rewritten** to be more creative and less cliché, with no "keys but can't open locks". There are 107 new riddles: Cairo street life (the tabbaa, the bawab, the ful cart, iftar cannon), wordplay, country puzzles and number puzzles at 400–500. The old 180 are in `v4work/out/old/rid-6.41.json` to undo or to bring some back.
   - **Put It in Order:** 50 new clues (10 per value, 36 per value now). Old file: `v4work/out/old/order-6.41.json`.
   - **Fixed** a Real Headline 100 clue whose answer said Messi signed for Manchester City; it's Inter Miami.
+- 6.43 (2026-10-07): Omar asked for the street sweeper to always beg at the driver's window, the front left one (Egypt drives on the right). On normal rounds that's the side we see, so nothing changed. On mirrored rounds we see the passenger side, so he now walks round the front of the car to the far side: from the bonnet on he's drawn behind the car and 4 px higher (`far`, `G` in the sweeper act), with his head and shoulders showing above the roof, and takes the note there. 6.40–6.42 had him at the near front window both ways (the passenger's window on mirrored rounds). To undo, set `far` to 0.
