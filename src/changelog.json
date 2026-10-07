@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.44",
+  "date": "2026-10-07",
+  "items": [
+   "When it isn't your team's turn, the only score button you get is half points (a steal). Free-for-all, Password, Closest Wins and Impostor are unchanged.",
+   "On mirrored rounds the street sweeper and his traffic light are on the far side of the car from the start, so the car drives past in front of him."
+  ]
+ },
+ {
   "v": "6.43",
   "date": "2026-10-07",
   "items": [

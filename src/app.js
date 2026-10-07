@@ -157,7 +157,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.43`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.44`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1612,16 +1612,19 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else if(u < t6){ x = L + 7; d = -1; pose = u < tF + 0.7 ? {arms: [[1.2 + 0.15 * sm((u - tF) / 0.35), 1.3], [0.45, 0.8]]} : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }   // reaches up and flips it to green, then waits for the car to go
         else if(u < t7){ x = L + 7; d = -1; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = sm((u - t6 - 0.2) / 0.6); }   // picks it up
         else { x = L + 7 - v * (u - t7); d = -1; pose = walk(u * 8.5, holding); }
-        const far = flip ? sm(cl((x - (cx0 - 34)) / 10, 0, 1)) * (u > tIn && u < tD + 0.5 ? 1 : 0) : 0, G = gy - 4 * far;   // how far round the car he is
+        /* 6.44 (Omar): on mirrored rounds he and his light are on the car's far side (the driver's side) for the whole scene, so the car
+           passes in front of them as it comes and goes (6.43: he started on the near side, in front of the passing car, and only walked
+           round the bonnet to the window: far = flip ? sm(cl((x - (cx0 - 34)) / 10, 0, 1)) * (u > tIn && u < tD + 0.5 ? 1 : 0) : 0) */
+        const far = flip ? 1 : 0, G = gy - 4 * far;
         if(far < 0.5) drawCar();
         const carried = u < t1 || u >= t7;
         const state = u < tG ? "red" : "green";
-        if(!carried && lightAt == null) trafficLight(L, gy, state);                                   // standing: red, until he flips it to green
+        if(!carried && lightAt == null) trafficLight(L, G, state);   // 6.44: G, so 4 px higher on the far side (was gy)                                   // standing: red, until he flips it to green
         const S2 = person(x, G, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(carried || lightAt != null){ const [hx, hy] = S2.hands[0], k = carried ? 1 : lightAt;        // in his hand, or on its way between hand and ground
-          trafficLight(L + (hx - L) * k, gy - 3 * k, !carried && k < 0.5 ? state : null); }   // 6.10: carried by the pole, its base just off the ground
-        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3.5; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping (never round the car)
-          poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
+          trafficLight(L + (hx - L) * k, G - 3 * k, !carried && k < 0.5 ? state : null); }   // 6.44: G (was gy)   // 6.10: carried by the pole, its base just off the ground
+        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3.5; seg([h, [bxp + sx2, G - 2]], "#8a6a3a", 1.2);   // the broom, sweeping (never round the car); 6.44: G (was gy)
+          poly([[bxp + sx2 - 1, G - 3], [bxp + sx2 + 1, G - 3], [bxp + sx2 + 6, G], [bxp + sx2 - 3, G]], "#b8935a"); }
         else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, G - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
           poly([[bx - 1.5, G - 4], [bx + 1.5, G - 4], [bx + 4.5, G], [bx - 4.5, G]], "#b8935a"); }
         if(far >= 0.5) drawCar();   // 6.43: in front of him while he's on the far side
@@ -2029,6 +2032,11 @@ function ffaMark(c){ if(c.marked) return; c.marked = true; const p = clueParts()
   if(c.type === "closest") return;
   S.teams.forEach((t,i) => { const a = ffaAns(c, i); if(!a) return;
     if(c.type === "order" ? a.v === p.sorted.join(",") : ansMatch(a.v, p.a)) c.awards[i] = 1; }); }
+/* 6.44 (Omar): a team whose turn it isn't only gets the half points button (a steal), in team games; Free-for-all keeps its own
+   buttons. Password, Closest Wins and Impostor keep all three for every team, as their rules give the points to whoever guesses
+   or wins. (6.43 and before: every team had +full, +half and −full.) To undo, make offTurn() return false. */
+const TURN_FREE = new Set(["password","closest","impostor"]);
+function offTurn(c, i){ return !S.ffa && !TURN_FREE.has(c.type) && i !== (S.turn||0); }
 /* after the reveal: each player's answer with a tick (full points) and a half button; nobody loses points */
 function ffaAwards(c){ return `<div class="award ffaaw">${S.teams.map((t,i) => { const a = ffaAns(c, i), v = c.awards[i];
     return `<div class="frow${v===1 ? " ok" : v===0.5 ? " half" : ""}"><span class="fn">${esc(t.name)}</span><span class="fa${a ? "" : " none"}">${a ? esc(ffaShow(c, a.v)) : "no answer"}</span>
@@ -2331,7 +2339,7 @@ function renderClue(){
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
     ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" && !S.ffa ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
-    ${c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>`<div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button><button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button><button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button></div>`).join("")}</div>` : ""}
+    ${c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button>`}<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button>${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button>`}</div>`; }).join("")}</div>` : ""}
     ${canTwo ? `<div class="pwrow"><span class="lbl">Power-up:</span>${canTwo}</div>` : ""}
     <div class="row">
       ${c.revealed || (c.type==="impostor" && c.stage!=="play") ? "" : `<button class="btn primary" data-act="reveal">${c.type==="impostor" ? "Reveal impostor" : "Reveal answer"}</button>`}
