@@ -157,7 +157,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.40`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.41`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -712,7 +712,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      All the chest controls now bring the arms up and out sideways (ar in man()). Twenty touches: no similar moves next to each
      other, no player does a similar move on his next turn, and each move is 9 touches from the other player's same move (7 for two).
      5.45 order: L knee, R chest, L foot, R kneeheel, L head, R chestbike, L kneehead, R balance, L heel, R knee, L chest, R foot, L kneeheel, R head, L chestbike, R kneehead, L balance, R heel */
-  const ROT = [["L","knee"],["R","heel"],["L","chest"],["R","kneehead"],["L","balance"],["R","head"],["L","kneeheel"],["R","chesthold"],["L","heel"],["R","foot"],["L","chestbike"],["R","knee"],["L","head"],["R","chest"],["L","kneehead"],["R","balance"],["L","chesthold"],["R","kneeheel"],["L","foot"],["R","chestbike"]], POP = 1.1, SPIN = 0.35;
+  /* 6.40 (Omar): an eleventh touch, "wedge": as the ball drops in he plants his foot on the floor a little in front of him, it bounces
+     up off it and he volleys it. Twenty-two touches; the same eleven moves twice, so each move is exactly half a cycle from the other
+     player's same move, and no similar moves come within two touches of each other.
+     5.53 order: L knee, R heel, L chest, R kneehead, L balance, R head, L kneeheel, R chesthold, L heel, R foot, L chestbike, R knee, L head, R chest, L kneehead, R balance, L chesthold, R kneeheel, L foot, R chestbike */
+  const ROT = [["L","knee"],["R","wedge"],["L","head"],["R","kneeheel"],["L","chestbike"],["R","balance"],["L","kneehead"],["R","chest"],["L","heel"],["R","foot"],["L","chesthold"],["R","knee"],["L","wedge"],["R","head"],["L","kneeheel"],["R","chestbike"],["L","balance"],["R","kneehead"],["L","chest"],["R","heel"],["L","foot"],["R","chesthold"]], POP = 1.1, SPIN = 0.35;
+  /* 6.40 (Omar): every time the board appears it opens the same way: the ball rests at the left player's feet for a second, he puts
+     his sole on top and rolls it back towards him, slips his toes under it, flicks it up and volleys it across, and the rotation
+     carries on from the right player's touch (ROT[1]). INTRO s in all; IB: where the ball sits (px in front of him) before and after the roll. */
+  const INTRO = 3.5, IB = [19, 13, 11.5];
+  const legIK = (dx, dy) => { const dd = Math.min(15.6, Math.hypot(dx, dy)), ph = Math.atan2(dx, dy), al = Math.acos(dd / 16); return {t: ph + al, s: ph - al}; };   // thigh and shin angles that put his foot dx ahead of and dy below his hip (knee forward)
   const BIKE = 2.2, FLICK = 0.8;                                   // chestbike: from chest to bicycle kick, and when the foot flick comes
   const HEEL = 1.7, HFLICK = 0.7;                                  // kneeheel: from knee to the heel pass, and when the foot flick comes
   const BAL = 3.0, BCATCH = 0.6, BFLICK = 2.1, BT = 1.1, BS = 1.45;   // balance: total time, when it lands on his foot, when he flicks it up; the held leg's thigh and shin angles
@@ -724,7 +733,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const START = []; let CYCLE = 0; ROT.forEach(([, hw]) => { START.push(CYCLE); CYCLE += FLIGHT + PD(hw); });
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
-  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22, kneeheel: 12};   // kneeheel: how high it goes over his head   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22, kneeheel: 12, wedge: 15};   // kneeheel: how high it goes over his head   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
   const kneeUp = dt => dt < -0.35 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.35) / 0.35) : 1 - sm(dt / 0.3);
@@ -783,13 +792,14 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
       if(how === "chest" || how === "chestbike" || how === "chesthold"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
-      return how === "knee" || how === "kneehead" || how === "kneeheel" ? [x + 9*d, hip - r - 1] : how === "foot" || how === "balance" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+      return how === "knee" || how === "kneehead" || how === "kneeheel" ? [x + 9*d, hip - r - 1] : how === "foot" || how === "balance" ? [x + 14*d, H - 1 - r - 3] : how === "wedge" ? [x + 17*d, H - 1 - r - 1] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
     const head = side => [X[side] + 7 * D[side], H - 1 - 4 - 35 - 5 - r + 2];        // where the kneehead header meets the ball: at the top of his hop, his head thrown forward (5.40; was X + 2)
     const bike = side => [X[side] + 4 * D[side], H - 1 - 10 - 16 - 15.5 - r + 2];   // where the bicycle kick meets it, above him as he lies back
     const heelPass = side => [X[side] - 10 * D[side], hip - 15];                      // kneeheel: high behind him, where his raised heel meets it (5.45; 5.44 was hip height, X - 11, with an extra loop over his head)
     const volley = (side, how) => how === "chesthold" ? [X[side] + (20 + STEP) * D[side], hip - 3] : how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : how === "kneeheel" ? heelPass(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
-    const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
+    const T = ((now - t0) / 1000) * slow, intro = T < INTRO;   // 6.40: the opening, then the rotation from the left player's volley to ROT[1]
+    const t = intro ? START[1] : (START[1] + T - INTRO) % CYCLE;   // t = 0: the right player has just volleyed it towards the left one's first touch (4.70-6.39: t = T % CYCLE, so it began mid-flight)
     let k = ROT.length - 1; while(k > 0 && START[k] > t) k--;
     const u = t - START[k], [side, how] = ROT[k], from = side === "L" ? "R" : "L";
     const prev = ROT[(k + ROT.length - 1) % ROT.length][1];   // how the other player sent it (a volley, or a header after a kneehead)
@@ -807,6 +817,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     else if(how === "kneeheel"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4], over = H - 1 - 40 - r - UP.kneeheel;   // knee, drop to the foot, flicked over his head to behind him
       pos = ub < HFLICK ? seg(C, F, ub / HFLICK, (C[1] + F[1]) / 2 - (C[1] - 14)) : seg(F, V, (ub - HFLICK) / (HEEL - HFLICK), (F[1] + V[1]) / 2 - over); }
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
+    if(intro){ const bx = T < 1.35 ? IB[0] : T < 2.15 ? IB[0] - (IB[0] - IB[1]) * sm((T - 1.35) / 0.8) : T < 2.45 ? IB[1] - (IB[1] - IB[2]) * sm((T - 2.15) / 0.3) : IB[2];
+      if(T < 2.5) pos = [L + bx, H - 1 - r];   // resting, then rolled back under his sole
+      else { const F = [L + IB[2], H - 1 - r], V0 = volley("L", ROT[0][1]); pos = seg(F, V0, (T - 2.5) / (INTRO - 2.5), (F[1] + V0[1]) / 2 - (Math.min(F[1], V0[1]) - 18)); } }   // flicked up, dropping onto the volley
     const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0, ly = 0, gu = null, fl = null, bl = null, ar = 0, step = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = START[i] + FLIGHT + sh, dt = t - tc;
@@ -838,10 +851,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
             lean += leanBack(dt); ar += leanBack(dt); ang += footUp(dt - FLICK) + amt * (3.05 - 2.0 * fall); jump += amt * (10 - 23 * fall);
             bk = Math.max(bk, amt * (1 + 0.3 * fall)); ly = Math.max(ly, amt * fall);
             turn = turn || (e > -0.75 && e < 1.0); continue; }
+          if(hw === "wedge"){ const w = dt < -0.45 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.45) / 0.45) : 1 - sm(dt / 0.3);   // 6.40: foot planted out in front as it lands, then back for the volley
+            if(w > 0.001) fl = {t: 0.35 + 0.55 * w, s: 0.35 + 0.4 * w}; lean += 0.25 * w; ang += swing(dt - POP); continue; }
           if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest"){ lean += leanBack(dt); ar += leanBack(dt); } else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else { jump += hop(dt); lean += headWind(dt); }
           ang += swing(dt - POP); } });
       return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(2, lean), bk, ly, gu, fl, bl, Math.min(1, ar), step]; };
-    const pL = pose("L"), pR = pose("R"); man(L + pL[12], 1, ...pL.slice(0, 12)); man(R - pR[12], -1, ...pR.slice(0, 12));   // step: 5.56, a small step in for the chest hold
+    const introPose = () => { const bx = pos[0] - L, step = T < 1.0 ? 0 : T < 1.35 ? 3 * sm((T - 1.0) / 0.35) : T < 2.15 ? 3 * (1 - sm((T - 1.35) / 0.8)) : 0;   // he leans in onto the ball, then draws back with it
+      const top = [bx - 5 - step, 4], under = [IB[2] - 4, 14], flick = [IB[2] - 1, 9], lerp = (A, B, f) => [A[0] + (B[0] - A[0]) * f, A[1] + (B[1] - A[1]) * f];
+      let w = 0, tg = null;
+      if(T >= 1.0 && T < 2.15){ w = sm((T - 1.0) / 0.35); tg = top; }                                     // sole up onto the top of the ball, then rolling it back
+      else if(T >= 2.15 && T < 2.45){ w = 1; tg = lerp([IB[1] - 5, 4], under, sm((T - 2.15) / 0.3)); }       // slides down behind it as it rolls onto his toes
+      else if(T >= 2.45 && T < 2.6){ w = 1; tg = lerp(under, flick, sm((T - 2.45) / 0.15)); }                // flicks it up
+      else if(T >= 2.6 && T < 2.95){ w = 1 - sm((T - 2.6) / 0.35); tg = flick; }                           // foot back down for the volley
+      const ik = tg && legIK(tg[0], tg[1]), fl = ik && w > 0.001 ? {t: 0.35 + (ik.t - 0.35) * w, s: 0.35 + (ik.s - 0.35) * w} : null;
+      return [0.35 + swing(T - INTRO), 0, 0, 0, false, 0, 0, 0, null, fl, null, 0, step]; };
+    const pL = intro ? introPose() : pose("L"), pR = intro ? [0.35, 0, 0, 0, false, 0, 0, 0, null, null, null, 0, 0] : pose("R"); man(L + pL[12], 1, ...pL.slice(0, 12)); man(R - pR[12], -1, ...pR.slice(0, 12));   // step: 5.56, a small step in for the chest hold
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
@@ -1495,22 +1519,41 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        led them on a rope and tugged the first one along). */
     /* 5.93 (Omar): a loose flock rather than a train: each sheep has its own place and depth and drifts forward and back on its own,
        and he walks a little way behind with his stick planted like a staff. He only reaches out and taps the last one when it stops. */
-    { s(){ const v = 38, stopAt = (W * 0.5) / v, stopLen = 2.6, catchV = 70; return {v, stopAt, stopLen, catchV}; },
-      len(){ const s = this.s(); return (W + 190) / s.v + 1; },
-      draw(u){ const {v, stopAt, stopLen, catchV} = this.s(), st = u - stopAt, stuck = st > 0 && st < stopLen, L = -20 + v * u;
-        const lag = st <= 0 ? 0 : stuck ? v * st : Math.max(0, v * stopLen - (catchV - v) * (st - stopLen));        // how far the stray falls behind
-        const B = [0, -14, -31, -44, -63], DY = [-2.5, 0, -1.5, 0.5, -1];                                            // where each sits in the flock, and how far back
+    /* 6.40 (Omar): the last sheep stops twice: halfway across (as before) and again just as the flock is about to leave on the far
+       side. The man keeps his own steady pace: each time he slows to a stop behind it, taps it on, and walks on at the same speed
+       (before, he dropped back with it and then sped up unnaturally to catch the flock). After the halfway stop the sheep trots to
+       rejoin the flock and he simply stays further back, so at the second stop it waits until he reaches it and taps it.
+       The 5.93-6.39 version is in NOTES 6.40. */
+    { s(){ const v = 38, B4 = -63, trotV = 70, E = 0.4, TAP = 1.5;
         const wob = (i, t) => 7 * Math.sin(t * 0.9 * (1 + i * 0.17) + i * 2.1) + 3 * Math.sin(t * 2.3 + i * 4.7);
-        const tw4 = st <= 0 ? u : stuck ? stopAt : u - stopLen, stray = L - lag + B[4] + wob(4, tw4);
-        const xs = B.map((b, i) => i === 4 ? stray : L + b + wob(i, u));
+        const flock4 = u => -20 + v * u + B4 + wob(4, u), trot = e => trotV * (e - 0.3 * (1 - Math.exp(-e / 0.3)));
+        const smin = (a, b) => Math.min(a, b) - 6 * Math.log(1 + Math.exp(-Math.abs(a - b) / 6));
+        const s1 = (W * 0.5) / v, x1 = flock4(s1), a1 = (x1 - 26 - v * E + 125) / v, r1 = Math.max(s1 + 2.6, a1 + 2 * E + TAP);   // halfway: stops, he arrives (brakes from a1), taps until r1
+        const pre = u => smin(x1 + trot(u - r1), flock4(u));                                                         // trotting back into the flock
+        const s2 = (W - 130 + 20 - B4) / v, x2 = pre(s2), d1 = r1 - a1;                                              // 130 px from the edge, clear of the bawab (the last 81 px)
+        const a2 = (x2 - 26 - v * E + 125) / v + d1, r2 = Math.max(s2 + 2.6, a2 + 2 * E + TAP), d2 = d1 + r2 - a2;
+        const stray = u => u < s1 ? flock4(u) : u < r1 ? x1 : u < s2 ? pre(u) : u < r2 ? x2 : x2 + trot(u - r2);
+        return {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, x1, x2, stray}; },
+      len(){ const s = this.s(); return s.r2 + 2 * s.E + (W + 40 - (s.x2 - 26)) / s.v; },
+      draw(u){ const {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, stray} = this.s(), L = -20 + v * u;
+        const stuck = (u > s1 && u < r1) || (u > s2 && u < r2);
+        const B = [0, -14, -31, -44, B4], DY = [-2.5, 0, -1.5, 0.5, -1];                                              // where each sits in the flock, and how far back
+        const xs = B.map((b, i) => i === 4 ? stray(u) : L + b + wob(i, u));
         [0, 2, 4, 1, 3].sort((a, b) => DY[a] - DY[b]).forEach(i => { g.save(); g.translate(0, DY[i]);
           sheep(xs[i], 1, i === 4 && stuck ? 0.6 : xs[i] * 0.26 + i * 1.7, i === 4 && stuck); g.restore(); });
-        const k = stuck ? sm(st / 0.8) : st > 0 ? 1 - sm((st - stopLen) / 1.5) : 0;                                  // closing in on the stray, then dropping back
-        const mx = (1 - k) * (L - lag + B[4] - 42) + k * (stray - 26), tap = stuck && st > 0.6 ? Math.max(0, Math.sin(u * 7)) : 0;
+        // him: walking at v, except that at each stop he brakes to a halt behind the sheep (over 2E s), taps it, and eases off again
+        const walkAt = (t, dl) => v * (t - dl) - 125;
+        let mx, still = false, tapFrom = 0;
+        for(const [a0, r, dl] of [[a1, r1, 0], [a2, r2, d1]]){ if(u >= a0 && u < r + 2 * E){ const xa = walkAt(a0, dl);
+            if(u < a0 + 2 * E){ const tau = u - a0; mx = xa + v * tau - v * tau * tau / (4 * E); }
+            else if(u < r){ mx = xa + v * E; still = true; tapFrom = a0 + 2 * E + 0.2; }
+            else { const tau = u - r; mx = xa + v * E + v * tau * tau / (4 * E); } } }
+        if(mx === undefined) mx = walkAt(u, u < a1 ? 0 : u < a2 ? d1 : d2);
+        const tapping = still && u > tapFrom, tap = tapping ? Math.max(0, Math.sin(u * 7)) : 0;
         const M = person(mx, gy, 1, {outfit: "robe", robe: "#7b6a58", hat: "emma", mo: true, skin: "#7f4f31",
-          ...(stuck && st > 0.6 ? {} : {ph: mx * 0.22}), arms: [stuck ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], stuck ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
+          ...(still ? {} : {ph: mx * 0.22}), arms: [tapping ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], tapping ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
         const [hx, hy] = M.hands[0], ang = 0.75 - 0.5 * tap;
-        if(stuck) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
+        if(tapping) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
         else seg([[hx - 2, hy - 7], [hx + 5, gy]], "#7a5634", 1.1); } },                                            // planted like a staff
     /* 5.86 (Omar): a street sweeper, and a black BMW that gives him money. 5.93: no leaves or wind. 5.96: he sweeps near the side he
        comes from, and the car only appears once he's sweeping. 6.3 (Omar): he also carries a portable traffic light. He sets it down
@@ -1519,7 +1562,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        and flips the light to green, so it drives off on green (6.3-6.4: it left on red). */
     { w(){ const sx = Math.max((W * 0.25 - 30) / 2, 150),   /* 6.35: at least 150 px in, clear of the bawab's chair, shisha and friend (46-81 px) on smaller screens; unchanged from 1400 px wide (was (W * 0.25 - 30) / 2) */ v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
         const t1 = (L - 8 + 30) / v, t2 = t1 + 0.9, tIn = t2 + 26 / v, tC = tIn + arriveT;    // walk in, set the light down, walk back, sweep until the car stops
-        const cx0 = L + 39, wx = cx0 - 22, N = [cx0 - 11, gy - 19],   /* 6.34: where the driver holds the note out */   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, PLEAD = 2.2, tR = t5 + PLEAD, tP = tR + 2.0;   // 6.32 (Omar): he pleads at the window for PLEAD s before the money comes (6.12-6.31: tP = t5 + 2.0, no pleading). The car stops with its nose just past the light; he walks to its window
+        const cx0 = L + 39, wx = cx0 - 11, N = [cx0, gy - 19],   /* 6.40 (Omar): he stands at the driver's front side window (the car's front window runs from cx0 - 13 to cx0 + 4), not ahead of it by the bonnet (6.12-6.39: wx = cx0 - 22, N = [cx0 - 11, gy - 19]); mirrored rounds put it on the right */   /* 6.34: where the driver holds the note out */   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, PLEAD = 2.2, tR = t5 + PLEAD, tP = tR + 2.0;   // 6.32 (Omar): he pleads at the window for PLEAD s before the money comes (6.12-6.31: tP = t5 + 2.0, no pleading). The car stops with its nose just past the light; he walks to its window
         const tF = tP + (wx - L - 7) / v, tG = tF + 0.4, tD = tF + 0.9, t6 = tD + 1.3, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;   // 6.5 (Omar): back at the light he flips it to green (tG), the car goes (tD), then he picks it up
         return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, N, t5, tR, tD, tP, tF, tG, t6, t7, cv}; },
       len(){ const w = this.w(); return w.t7 + (w.L + 7 + 40) / w.v; },
@@ -1529,13 +1572,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         else if(u >= tC && u < tD) cx = cx0; else if(u >= tD){ const e = u - tD; cx = cx0 - 120 * e * e; }
         if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black");
         // him
-        let x = sx, d = 1, pose = {}, lightAt = null; const sw = Math.sin(u * 6);
+        /* 6.40 (Omar): his sweeping isn't even any more: the strokes speed up and slow down, some are short and some long, the push
+           is quicker than the pull, and every few seconds he stops for a moment and straightens up (6.3-6.39: sw = Math.sin(u * 6)). */
+        const sp = 6 * u - 1.67 * Math.cos(0.9 * u) - 0.39 * Math.cos(2.3 * u), rest = sm(cl((Math.sin(u * 1.1 + 0.5) - 0.82) / 0.12, 0, 1));
+        let x = sx, d = 1, pose = {}, lightAt = null; const sw = (Math.sin(sp) + 0.25 * Math.sin(2 * sp)) * (0.75 + 0.25 * Math.sin(u * 1.3 + 1)) * (1 - rest);
         const walk = (ph, a0) => ({ph, arms: [a0 || [-Math.sin(ph) * 0.4, -Math.sin(ph) * 0.4 + 0.3], [0.45, 0.8]]});   // broom in his other hand
         const holding = [0.55, 0.4];                                                                   // the hand that carries the light
         if(u < t1){ x = -30 + v * u; pose = walk(u * 8.5, holding); }
         else if(u < t2){ x = L - 8; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = 1 - sm((u - t1) / 0.6); }   // bends to set it down
         else if(u < tIn){ x = L - 8 - v * (u - t2); d = -1; pose = walk(u * 8.5); }
-        else if(u < tC + 0.3){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
+        else if(u < tC + 0.3){ x = sx + 3 * Math.sin(2 * Math.PI * (u - tIn) / (tC + 0.3 - tIn)); pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2 - 0.12 * rest + 0.03 * sw}; }   // 6.40: shuffles a little along his patch
         else if(u < t5){ x = sx + v * (u - tC - 0.3); pose = walk(u * 8.5); }
         else if(u < tR){ x = wx; const e = u - t5, inn = sm(Math.min(e / 0.4, 1)), bob = Math.sin(u * 7);   // 6.32 (Omar): pleading at the window first
           const pray = [[0.5, 2.5 + 0.08 * bob], [0.55, 2.45 + 0.08 * bob]], eat = [[0.3, 2.85 + 0.12 * Math.abs(Math.sin(u * 9))], [0.5, 0.9]];   // palms together, bobbing; then fingers to his mouth: "for food"
@@ -1561,7 +1607,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(carried || lightAt != null){ const [hx, hy] = S2.hands[0], k = carried ? 1 : lightAt;        // in his hand, or on its way between hand and ground
           trafficLight(L + (hx - L) * k, gy - 3 * k, !carried && k < 0.5 ? state : null); }   // 6.10: carried by the pole, its base just off the ground
-        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping
+        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3.5; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
         else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
           poly([[bx - 1.5, gy - 4], [bx + 1.5, gy - 4], [bx + 4.5, gy], [bx - 4.5, gy]], "#b8935a"); }
@@ -1606,13 +1652,17 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     requestAnimationFrame(frame);
     /* 5.59 (Omar): unlike the kickers, the street is hidden while a clue is open (5.52-5.58: drawn faintly behind it).
        5.67 (Omar): and paused: its clock stops while the clue is open, so the scene carries on from the same moment after
-       (5.59-5.66: it kept running hidden). */
+       (5.59-5.66: it kept running hidden).
+       6.40 (Omar): it plays on while a clue is open, faintly, like the kickers (#street.faint): its clock keeps running and it's
+       drawn at 30% over the dark backdrop but never over the clue box. To go back to 5.67, restore:
+         if(open) t0 += now - last; last = now; cv.classList.toggle("on", on && !open); if(!on || open) return; */
     const open = !!S.cur && !$("#card").hidden, on = showing();
-    if(open) t0 += now - last; last = now;
-    cv.classList.toggle("on", on && !open); if(!on || open) return;
+    last = now;
+    cv.classList.toggle("on", on); cv.classList.toggle("faint", on && open); if(!on) return;
     const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
     const t = ((now - t0) / 1000) * slow; sceneT = t;
     g.clearRect(0, 0, W, H); g.save();
+    if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }  // not over the clue box
     if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; bawabOnAct(t); nextAt = t + actLen + 2.5 + Math.random() * 3; } }
     lastMarks = marks; marks = [];   // 5.86: the bawab sits on the street's own edge, outside the mirroring
     drawBawab(t, lastMarks.some(m => Math.abs(m - (bawab.side > 0 ? 46 : W - 46)) < 60));
@@ -2101,7 +2151,9 @@ function showPack(key, src){ const c = S.cur; if(!c || !src) return; const r = i
 const PICKS = {}, WARM = {}, DIRECT = {};
 function imgRefFor(cat,lvl,idx){ const c = catById(cat); if(!c) return null; const e = pool(cat,lvl)[idx]; if(!e) return null;
   if(c.type === "photo") return photos[norm(e[0])] || null;
-  if(c.type === "text" && typeof e[2] === "string") return e[2]; return null; }
+  if(c.type === "text" && typeof e[2] === "string") return e[2];
+  if(c.type === "flag" && FLAGCODE[e]) return `photos/flags/${FLAGCODE[e]}.svg`;   // 6.40 (Omar: flags lagged): each tile's flag downloads with the board, like photos (6.19-6.39: only when its clue opened)
+  return null; }
 /* 5.4: background downloads go one or two at a time, at low priority, and pause while a clue is open, so the photo you
    are looking at never has to share the connection with 29 others (5.3 started them all at once). */
 const WQ = []; let wBusy = 0;

@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.40. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.41. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 105 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -655,3 +655,29 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
   - **New Everything Mix**, last in Mixes (`mixall` in `build.js`): every category except Act It Out, Act It Out: Egypt Edition, One Word Clues, the locked NSFW one and hidden ones. New categories join it automatically. In Edit mixes it can use any category. To remove, delete its `MIXES` line and "mixall" from `CAT_GROUPS`.
   - **Emoji Movies & TV moved to Entertainment, after Pixar** (it was in Party Games after Act It Out: Egypt Edition). It moved from Party Games Mix to Entertainment Mix 2 with it.
   - **The Parent Trap is hidden** (`HIDDEN_IDS` in `src/app.js`): it's gone from setup, the mixes and the totals, but its clues stay in the build. To bring it back, empty `HIDDEN_IDS`, put "ptrap" back after "romcom" in `CAT_GROUPS`, and drop "ptrap" from the Everything Mix exclusions.
+- 6.41 (2026-10-07): Scene changes and a flag fix Omar asked for.
+  - **The street scene plays on behind an open clue**, faint (30%) and never over the clue box, like the Football mode kickers. This undoes 5.59 (hidden) and 5.67 (paused). To go back, follow the comment in the street `frame()` in `src/app.js` and delete the `#street.on.faint` rule in `src/head.html`.
+  - **Flags load with the board.** Omar asked why flags were slow to appear. Since 6.19 each flag's drawing was only downloaded when its clue opened, and some are big (Serbia's is 180 KB). `imgRefFor` now returns the flag file, so the board downloads each tile's flag in the background, the way it already did for photos. To undo, remove the `flag` line in `imgRefFor`.
+  - **Street sweeper:** his sweeping is uneven now. Strokes speed up and slow down, vary in length and push quicker than they pull, and every few seconds he pauses and straightens up while shuffling along his patch (6.3–6.40: `sw = Math.sin(u * 6)`). He begs at the driver's front side window (`wx = cx0 - 11`, the note at `cx0`), not ahead of it by the bonnet (6.12–6.40: `wx = cx0 - 22`, `N = [cx0 - 11, gy - 19]`). On mirrored rounds that window is on the right.
+  - **Sheep:** the last sheep now stops twice: halfway (as before) and again about 130 px before the far edge, just before the flock leaves (clear of the bawab's chair). The man never walks faster than his normal pace. Each time he slows to a stop behind the sheep, taps it on, and eases back into his walk. After the halfway stop the sheep trots to rejoin the flock and he just stays further behind, so at the second stop it waits until he reaches it. Before, he dropped back with the stray and then sped up to catch the flock. Omar first asked for the stop near the exit and then for the halfway stop as well. The old act (5.93–6.40), to paste back in place of the new one:
+```
+    { s(){ const v = 38, stopAt = (W * 0.5) / v, stopLen = 2.6, catchV = 70; return {v, stopAt, stopLen, catchV}; },
+      len(){ const s = this.s(); return (W + 190) / s.v + 1; },
+      draw(u){ const {v, stopAt, stopLen, catchV} = this.s(), st = u - stopAt, stuck = st > 0 && st < stopLen, L = -20 + v * u;
+        const lag = st <= 0 ? 0 : stuck ? v * st : Math.max(0, v * stopLen - (catchV - v) * (st - stopLen));        // how far the stray falls behind
+        const B = [0, -14, -31, -44, -63], DY = [-2.5, 0, -1.5, 0.5, -1];                                            // where each sits in the flock, and how far back
+        const wob = (i, t) => 7 * Math.sin(t * 0.9 * (1 + i * 0.17) + i * 2.1) + 3 * Math.sin(t * 2.3 + i * 4.7);
+        const tw4 = st <= 0 ? u : stuck ? stopAt : u - stopLen, stray = L - lag + B[4] + wob(4, tw4);
+        const xs = B.map((b, i) => i === 4 ? stray : L + b + wob(i, u));
+        [0, 2, 4, 1, 3].sort((a, b) => DY[a] - DY[b]).forEach(i => { g.save(); g.translate(0, DY[i]);
+          sheep(xs[i], 1, i === 4 && stuck ? 0.6 : xs[i] * 0.26 + i * 1.7, i === 4 && stuck); g.restore(); });
+        const k = stuck ? sm(st / 0.8) : st > 0 ? 1 - sm((st - stopLen) / 1.5) : 0;                                  // closing in on the stray, then dropping back
+        const mx = (1 - k) * (L - lag + B[4] - 42) + k * (stray - 26), tap = stuck && st > 0.6 ? Math.max(0, Math.sin(u * 7)) : 0;
+        const M = person(mx, gy, 1, {outfit: "robe", robe: "#7b6a58", hat: "emma", mo: true, skin: "#7f4f31",
+          ...(stuck && st > 0.6 ? {} : {ph: mx * 0.22}), arms: [stuck ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], stuck ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
+        const [hx, hy] = M.hands[0], ang = 0.75 - 0.5 * tap;
+        if(stuck) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
+        else seg([[hx - 2, hy - 7], [hx + 5, gy]], "#7a5634", 1.1); } },                                            // planted like a staff
+```
+  - **Football mode opening:** each time the Football board appears, the ball rests at the left player's feet for a second. He puts his sole on top and rolls it back, slips his toes under it, flicks it up and volleys it across, and the rotation carries on (`INTRO`, `introPose` in the kickers). Before, it started mid-flight. To undo, set `INTRO = 0`.
+  - **New Football touch, "wedge":** as the ball drops in he plants his foot out in front, it bounces up off it, and he volleys it. The rotation is now 22 touches: the same 11 moves twice, so each move is half a cycle from the other player's same move. The old 20-touch order is in the comment above `ROT`.
