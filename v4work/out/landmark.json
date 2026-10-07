@@ -1,0 +1,318 @@
+{
+ "id": "landmark",
+ "name": "Landmarks",
+ "type": "text",
+ "desc": "Famous places around the world, plus photos: name the landmark.",
+ "data": {
+  "100": [
+   [
+    "In which city is the Eiffel Tower?",
+    "Paris"
+   ],
+   [
+    "In which country is the Taj Mahal?",
+    "India"
+   ],
+   [
+    "Which wall, thousands of kilometres long, was built to protect China's north?",
+    "The Great Wall of China"
+   ],
+   [
+    "In which city is the Colosseum?",
+    "Rome"
+   ],
+   [
+    "What's the tallest building in the world, in Dubai?",
+    "The Burj Khalifa"
+   ],
+   [
+    "In which Italian city is the Leaning Tower?",
+    "Pisa"
+   ],
+   [
+    "In which US city is the Statue of Liberty?",
+    "New York"
+   ],
+   [
+    "Which Paris avenue runs up to the Arc de Triomphe?",
+    "The Champs-Élysées"
+   ],
+   [
+    "Which Cairo tower has a lattice top shaped like a lotus?",
+    "The Cairo Tower"
+   ],
+   [
+    "In which city is the Kaaba?",
+    "Mecca"
+   ],
+   [
+    "Which ancient wonder near Cairo is the only one of the Seven Wonders still standing?",
+    "The Great Pyramid of Giza"
+   ],
+   [
+    "Which park runs for 4 km through the middle of Manhattan?",
+    "Central Park"
+   ],
+   [
+    "Which giant wheel on the Thames gives views over London?",
+    "The London Eye"
+   ],
+   [
+    "Which royal palace in London is home to the British monarch?",
+    "Buckingham Palace"
+   ],
+   [
+    "In which country is Machu Picchu?",
+    "Peru"
+   ]
+  ],
+  "200": [
+   [
+    "In which country is the rose-red city of Petra?",
+    "Jordan"
+   ],
+   [
+    "Which architect designed Barcelona's Casa Batlló and Sagrada Família?",
+    "Antoni Gaudí"
+   ],
+   [
+    "Which Paris museum has a glass pyramid at its entrance?",
+    "The Louvre"
+   ],
+   [
+    "Which ancient temple on the Athens Acropolis was dedicated to Athena?",
+    "The Parthenon"
+   ],
+   [
+    "In which city is the Kremlin and St Basil's Cathedral?",
+    "Moscow"
+   ],
+   [
+    "Which Istanbul market is one of the oldest and biggest covered markets in the world?",
+    "The Grand Bazaar"
+   ],
+   [
+    "In which country is the ancient temple of Angkor Wat?",
+    "Cambodia"
+   ],
+   [
+    "Which mountain on the Nepal–China border is the highest in the world?",
+    "Mount Everest"
+   ],
+   [
+    "Which Sydney bridge is nicknamed 'the Coathanger'?",
+    "Sydney Harbour Bridge"
+   ],
+   [
+    "Which waterfall sits on the border of the USA and Canada?",
+    "Niagara Falls"
+   ],
+   [
+    "In which Indian city is the Taj Mahal?",
+    "Agra"
+   ],
+   [
+    "Which Paris cathedral was badly damaged by fire in 2019?",
+    "Notre-Dame"
+   ],
+   [
+    "Which canyon in Arizona was carved by the Colorado River?",
+    "The Grand Canyon"
+   ],
+   [
+    "Which Dubai hotel is shaped like a sail, on its own island?",
+    "Burj Al Arab"
+   ],
+   [
+    "In which city is the Brandenburg Gate?",
+    "Berlin"
+   ]
+  ],
+  "300": [
+   [
+    "On which Pacific island do the giant Moai statues stand?",
+    "Easter Island (Rapa Nui)"
+   ],
+   [
+    "Which ancient city near Mexico City has the Pyramids of the Sun and the Moon?",
+    "Teotihuacan"
+   ],
+   [
+    "In which Spanish city is the Alhambra?",
+    "Granada"
+   ],
+   [
+    "Which Paris hill is topped by the Sacré-Cœur basilica?",
+    "Montmartre"
+   ],
+   [
+    "In which city are the Petronas Towers?",
+    "Kuala Lumpur"
+   ],
+   [
+    "Which water show dances in a lake at the foot of the Burj Khalifa?",
+    "The Dubai Fountain"
+   ],
+   [
+    "In which city is the Potala Palace, once home of the Dalai Lamas?",
+    "Lhasa"
+   ],
+   [
+    "In which city is the Forbidden City?",
+    "Beijing"
+   ],
+   [
+    "Which prehistoric stone circle stands on Salisbury Plain?",
+    "Stonehenge"
+   ],
+   [
+    "Which Rio mountain do you take a cable car up, its name meaning 'Sugarloaf'?",
+    "Sugarloaf Mountain (Pão de Açúcar)"
+   ],
+   [
+    "Which famous bridge in Venice crosses the Grand Canal with shops on it?",
+    "The Rialto Bridge"
+   ],
+   [
+    "Which waterfall in Venezuela is the highest in the world?",
+    "Angel Falls"
+   ],
+   [
+    "Which Indian landmark, a 'Gateway', stands on Mumbai's waterfront?",
+    "The Gateway of India"
+   ],
+   [
+    "Which Cairo mosque sits on top of the Citadel?",
+    "The Mosque of Muhammad Ali"
+   ],
+   [
+    "In which country is the ancient city of Palmyra?",
+    "Syria"
+   ]
+  ],
+  "400": [
+   [
+    "Which Bavarian king built Neuschwanstein Castle?",
+    "Ludwig II"
+   ],
+   [
+    "Which Icelandic hot spring gave its name to every geyser in the world?",
+    "Geysir"
+   ],
+   [
+    "Which little bronze statue of a boy weeing is a Brussels icon?",
+    "Manneken Pis"
+   ],
+   [
+    "On which Indonesian island are the temples of Borobudur and Prambanan?",
+    "Java"
+   ],
+   [
+    "In which Japanese city is the Golden Pavilion, Kinkaku-ji?",
+    "Kyoto"
+   ],
+   [
+    "Which 9th-century temple is the largest Buddhist temple in the world?",
+    "Borobudur"
+   ],
+   [
+    "Which Scottish castle sits on a volcanic rock in the capital?",
+    "Edinburgh Castle"
+   ],
+   [
+    "Which Roman amphitheatre in Tunisia is one of the best-preserved in the world?",
+    "El Jem"
+   ],
+   [
+    "Which Moroccan city's main square is Jemaa el-Fnaa?",
+    "Marrakesh"
+   ],
+   [
+    "Which ancient city in Lebanon has giant Roman temples to Jupiter and Bacchus?",
+    "Baalbek"
+   ],
+   [
+    "Which Buenos Aires street is said to be the widest in the world?",
+    "Avenida 9 de Julio"
+   ],
+   [
+    "Which cliff-top fortress in Israel was the site of a famous Roman siege?",
+    "Masada"
+   ],
+   [
+    "Which Indian 'Pink City' has the Palace of the Winds?",
+    "Jaipur"
+   ],
+   [
+    "Which 'Blue Mosque' faces Hagia Sophia in Istanbul?",
+    "The Sultan Ahmed Mosque"
+   ],
+   [
+    "Which Nubian temple was moved, block by block, to save it from Lake Nasser?",
+    "Abu Simbel"
+   ]
+  ],
+  "500": [
+   [
+    "Which Ethiopian town has churches carved down into solid rock?",
+    "Lalibela"
+   ],
+   [
+    "Which Iranian city has the huge Naqsh-e Jahan Square?",
+    "Isfahan"
+   ],
+   [
+    "Which Malian city is famous for its Great Mosque built of mud?",
+    "Djenné"
+   ],
+   [
+    "Which Myanmar plain is covered in over 2,000 ancient temples?",
+    "Bagan"
+   ],
+   [
+    "In which country are the rock-cut tombs of Mada'in Salih (Hegra)?",
+    "Saudi Arabia"
+   ],
+   [
+    "Which Barcelona park by Gaudí has a famous mosaic lizard?",
+    "Park Güell"
+   ],
+   [
+    "Which Turkish site has 'fairy chimneys' and hot-air balloons at sunrise?",
+    "Cappadocia"
+   ],
+   [
+    "Which Chinese city has the Terracotta Army?",
+    "Xi'an"
+   ],
+   [
+    "In which country is the 'Door to Hell', a gas crater that has burned since 1971?",
+    "Turkmenistan"
+   ],
+   [
+    "Which Bolivian salt flat is the largest in the world?",
+    "Salar de Uyuni"
+   ],
+   [
+    "Which ancient Persian ceremonial capital was burned by Alexander the Great?",
+    "Persepolis"
+   ],
+   [
+    "Which Prague bridge is lined with 30 statues of saints?",
+    "Charles Bridge"
+   ],
+   [
+    "Which Croatian national park is famous for its 16 terraced turquoise lakes?",
+    "Plitvice Lakes"
+   ],
+   [
+    "Which ancient Nabataean tomb at Petra is called 'the Monastery' in Arabic?",
+    "Ad Deir"
+   ],
+   [
+    "Which Indian Sikh shrine in Amritsar is covered in gold?",
+    "The Golden Temple (Harmandir Sahib)"
+   ]
+  ]
+ }
+}

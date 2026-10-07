@@ -1,0 +1,422 @@
+{
+ "id": "tennis",
+ "name": "Tennis",
+ "type": "text",
+ "desc": "The Grand Slams, the legends and today's stars, from Federer and Serena to Alcaraz and Ons Jabeur.",
+ "data": {
+  "100": [
+   [
+    "Which Swiss player won 20 Grand Slam singles titles with his famous one-handed backhand?",
+    "Roger Federer"
+   ],
+   [
+    "Which Spaniard won the French Open a record 14 times?",
+    "Rafael Nadal"
+   ],
+   [
+    "Which Serbian became the first man to win 24 Grand Slam singles titles?",
+    "Novak Djokovic"
+   ],
+   [
+    "Which American sisters won 30 Grand Slam singles titles between them?",
+    "The Williams sisters (Venus and Serena)"
+   ],
+   [
+    "Which Grand Slam is played on grass in London?",
+    "Wimbledon"
+   ],
+   [
+    "Which Grand Slam is played on red clay in Paris?",
+    "The French Open (Roland-Garros)"
+   ],
+   [
+    "In tennis scoring, which word means zero?",
+    "Love"
+   ],
+   [
+    "What's the score called when it's 40–40?",
+    "Deuce"
+   ],
+   [
+    "What colour do players have to wear at Wimbledon?",
+    "White"
+   ],
+   [
+    "In which city is the Australian Open played?",
+    "Melbourne"
+   ],
+   [
+    "Which Grand Slam is played every summer in New York?",
+    "The US Open"
+   ],
+   [
+    "What do you call a serve the opponent can't even touch?",
+    "An ace"
+   ],
+   [
+    "Which fruit, eaten with cream, is the famous snack at Wimbledon?",
+    "Strawberries"
+   ],
+   [
+    "Which young Spaniard, nicknamed Carlitos, won Wimbledon in 2023 and 2024?",
+    "Carlos Alcaraz"
+   ],
+   [
+    "How many sets does a man need to win a Grand Slam match?",
+    "Three (best of five)"
+   ],
+   [
+    "What do you call a shot hit before the ball bounces?",
+    "A volley"
+   ],
+   [
+    "Which tennis star married Reddit co-founder Alexis Ohanian?",
+    "Serena Williams"
+   ],
+   [
+    "Which Grand Slam's main court is the Rod Laver Arena?",
+    "The Australian Open"
+   ],
+   [
+    "Which Russian won Wimbledon at 17 in 2004 and was the world's highest-paid sportswoman for years?",
+    "Maria Sharapova"
+   ],
+   [
+    "Which Scot won Wimbledon in 2013, Britain's first men's champion in 77 years?",
+    "Andy Murray"
+   ]
+  ],
+  "200": [
+   [
+    "Which Italian became the first player from his country to be world No. 1 in men's singles, in 2024?",
+    "Jannik Sinner"
+   ],
+   [
+    "Which Polish player won the French Open in 2020, 2022, 2023 and 2024?",
+    "Iga Świątek"
+   ],
+   [
+    "Which Belarusian won the Australian Open in 2023 and 2024?",
+    "Aryna Sabalenka"
+   ],
+   [
+    "Which Japanese four-time Grand Slam champion lit the Olympic cauldron at Tokyo 2020?",
+    "Naomi Osaka"
+   ],
+   [
+    "Which Tunisian became the first Arab woman to reach a Grand Slam singles final, at Wimbledon 2022?",
+    "Ons Jabeur"
+   ],
+   [
+    "What surface is the US Open played on?",
+    "Hard court"
+   ],
+   [
+    "What's the name of Wimbledon's main stadium?",
+    "Centre Court"
+   ],
+   [
+    "What's the name of the ball-tracking system players use to challenge line calls?",
+    "Hawk-Eye"
+   ],
+   [
+    "What is it called when a player wins all four Grand Slams in the same year?",
+    "A Calendar Grand Slam"
+   ],
+   [
+    "Which two rivals played the 2008 Wimbledon final, often called the greatest match ever?",
+    "Federer and Nadal (Nadal won)"
+   ],
+   [
+    "What's the slang for winning a set 6–0?",
+    "A bagel"
+   ],
+   [
+    "What's it called when the receiving player wins a game against the server?",
+    "A break (of serve)"
+   ],
+   [
+    "Which German won all four Slams and Olympic gold in 1988, the 'Golden Slam'?",
+    "Steffi Graf"
+   ],
+   [
+    "Which American with a famous temper yelled 'You cannot be serious!' at an umpire?",
+    "John McEnroe"
+   ],
+   [
+    "Which Swede won five Wimbledons in a row, from 1976 to 1980?",
+    "Björn Borg"
+   ],
+   [
+    "What's the name of men's tennis's big national-team competition?",
+    "The Davis Cup"
+   ],
+   [
+    "In a normal tiebreak, how many points do you need to win it (by two)?",
+    "Seven"
+   ],
+   [
+    "Which American beat Aryna Sabalenka in the 2025 Australian Open final?",
+    "Madison Keys"
+   ],
+   [
+    "Which American won the 2023 US Open at 19?",
+    "Coco Gauff"
+   ],
+   [
+    "Which Swiss player won three Grand Slams, including the 2015 French Open final against Djokovic?",
+    "Stan Wawrinka"
+   ],
+   [
+    "What's it called when a serve clips the net and still lands in, so it's played again?",
+    "A let"
+   ]
+  ],
+  "300": [
+   [
+    "What's the slang for winning a set 6–1?",
+    "A breadstick"
+   ],
+   [
+    "What's the main court at Roland-Garros called?",
+    "Court Philippe-Chatrier"
+   ],
+   [
+    "Which Grand Slam did Roger Federer win a record eight times?",
+    "Wimbledon"
+   ],
+   [
+    "Which Australian won the calendar Grand Slam twice, in 1962 and 1969?",
+    "Rod Laver"
+   ],
+   [
+    "Which country has won the Davis Cup the most times?",
+    "The USA"
+   ],
+   [
+    "Which three men are called tennis's 'Big Three'?",
+    "Federer, Nadal and Djokovic"
+   ],
+   [
+    "How many Grand Slam singles titles did Andy Murray win?",
+    "Three"
+   ],
+   [
+    "Which Argentine beat Federer in the 2009 US Open final?",
+    "Juan Martín del Potro"
+   ],
+   [
+    "Which big-serving Croatian won the 2014 US Open?",
+    "Marin Čilić"
+   ],
+   [
+    "Which Austrian won the 2020 US Open in a fifth-set tiebreak?",
+    "Dominic Thiem"
+   ],
+   [
+    "Which Russian beat Djokovic in the 2021 US Open final, ending his bid for the calendar Grand Slam?",
+    "Daniil Medvedev"
+   ],
+   [
+    "Which Canadian teenager won the 2019 US Open, beating Serena Williams in the final?",
+    "Bianca Andreescu"
+   ],
+   [
+    "Which British teenager won the 2021 US Open as a qualifier without dropping a set?",
+    "Emma Raducanu"
+   ],
+   [
+    "What's the name of the season-ending event for the top eight men?",
+    "The ATP Finals"
+   ],
+   [
+    "Which Czech-born legend won Wimbledon a record nine times?",
+    "Martina Navratilova"
+   ],
+   [
+    "Which Moscow-born player won Wimbledon 2022 playing for Kazakhstan?",
+    "Elena Rybakina"
+   ],
+   [
+    "Who beat Bobby Riggs in 1973's 'Battle of the Sexes'?",
+    "Billie Jean King"
+   ],
+   [
+    "Which racket brand did Roger Federer use for his whole career?",
+    "Wilson"
+   ],
+   [
+    "Which German won Wimbledon at 17 in 1985, still its youngest men's champion?",
+    "Boris Becker"
+   ],
+   [
+    "Which American won 14 Grand Slams and retired after winning the 2002 US Open?",
+    "Pete Sampras"
+   ]
+  ],
+  "400": [
+   [
+    "Which two players played the longest match in history, 11 hours over three days at Wimbledon 2010?",
+    "John Isner and Nicolas Mahut"
+   ],
+   [
+    "In which year did the Open Era begin, letting professionals play the Grand Slams?",
+    "1968"
+   ],
+   [
+    "Which Brazilian won three French Opens and drew a giant heart on the clay in 2001?",
+    "Gustavo Kuerten (Guga)"
+   ],
+   [
+    "Which brand has made the balls for Wimbledon since 1902?",
+    "Slazenger"
+   ],
+   [
+    "Which Czech won Wimbledon in 2023 as an unseeded player?",
+    "Markéta Vondroušová"
+   ],
+   [
+    "Which Egyptian became the first woman from her country to win a WTA singles title, in Parma in 2022?",
+    "Mayar Sherif"
+   ],
+   [
+    "What's the women's national-team competition, formerly the Fed Cup, now called?",
+    "The Billie Jean King Cup"
+   ],
+   [
+    "Which big tournament is played in the California desert every March?",
+    "Indian Wells"
+   ],
+   [
+    "Who won the 2025 French Open final after saving three championship points against Sinner?",
+    "Carlos Alcaraz"
+   ],
+   [
+    "Which Swiss player became world No. 1 at 16 and won three of the four Slams in 1997?",
+    "Martina Hingis"
+   ],
+   [
+    "Which Belgian rival of Kim Clijsters won seven Grand Slams, four of them at the French Open?",
+    "Justine Henin"
+   ],
+   [
+    "Who became the first Black man to win Wimbledon, in 1975?",
+    "Arthur Ashe"
+   ],
+   [
+    "What do players call the area between the service line and the baseline?",
+    "No man's land"
+   ],
+   [
+    "Which Croatian won Wimbledon in 2001 as a wild card ranked 125th?",
+    "Goran Ivanišević"
+   ],
+   [
+    "Which country does Stefanos Tsitsipas play for?",
+    "Greece"
+   ],
+   [
+    "How many Grand Slam singles titles has Venus Williams won?",
+    "Seven"
+   ],
+   [
+    "Which Serbian won the 2008 French Open and became world No. 1?",
+    "Ana Ivanović"
+   ],
+   [
+    "Which Dane became world No. 1 in 2010 before she had won a Grand Slam?",
+    "Caroline Wozniacki"
+   ],
+   [
+    "Which German won men's singles gold at the Tokyo 2020 Olympics?",
+    "Alexander Zverev"
+   ],
+   [
+    "Which Spaniard won the French Open in 2016 and Wimbledon in 2017?",
+    "Garbiñe Muguruza"
+   ]
+  ],
+  "500": [
+   [
+    "Which Swede was the first man to beat Nadal at the French Open, in 2009?",
+    "Robin Söderling"
+   ],
+   [
+    "What's a 'golden set'?",
+    "A set won without losing a single point"
+   ],
+   [
+    "Which tournament was played on blue clay in 2012, to the players' fury?",
+    "The Madrid Open"
+   ],
+   [
+    "Which Argentine won the 2004 French Open after saving two match points in the final?",
+    "Gastón Gaudio"
+   ],
+   [
+    "Which Russian won the 2004 US Open, beating fellow Russian Elena Dementieva in the final?",
+    "Svetlana Kuznetsova"
+   ],
+   [
+    "Which Italian beat Serena Williams in the 2015 US Open semi-final, ending her calendar Grand Slam bid?",
+    "Roberta Vinci"
+   ],
+   [
+    "Which Briton won the Wimbledon women's title in 1977, the Queen's Silver Jubilee year?",
+    "Virginia Wade"
+   ],
+   [
+    "In which year was the retractable roof first used on Centre Court?",
+    "2009"
+   ],
+   [
+    "Which 1998 French Open champion later coached Rafael Nadal?",
+    "Carlos Moyá"
+   ],
+   [
+    "What surface was the US Open played on from 1975 to 1977?",
+    "Clay"
+   ],
+   [
+    "Which Egyptian beat a young Björn Borg at Wimbledon in 1974?",
+    "Ismail El Shafei"
+   ],
+   [
+    "In which year did Roger Federer win his first Wimbledon?",
+    "2003"
+   ],
+   [
+    "How old was Federer when he won his last Grand Slam, the 2018 Australian Open?",
+    "36"
+   ],
+   [
+    "What's the name of the trophy given to the Wimbledon women's champion?",
+    "The Venus Rosewater Dish"
+   ],
+   [
+    "Which 17-year-old American won the 1989 French Open, the youngest man ever to win a Slam?",
+    "Michael Chang"
+   ],
+   [
+    "Which Russian crushed Pete Sampras in the 2000 US Open final?",
+    "Marat Safin"
+   ],
+   [
+    "How many ranking points does a man get for winning a Grand Slam?",
+    "2,000"
+   ],
+   [
+    "Which Japanese player reached the 2014 US Open final?",
+    "Kei Nishikori"
+   ],
+   [
+    "Which Frenchwoman won Wimbledon in 2013 and retired weeks later?",
+    "Marion Bartoli"
+   ],
+   [
+    "Which 2003 French Open champion and former world No. 1 later coached Carlos Alcaraz?",
+    "Juan Carlos Ferrero"
+   ]
+  ]
+ }
+}

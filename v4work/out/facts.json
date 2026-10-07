@@ -1,0 +1,422 @@
+{
+ "id": "facts",
+ "name": "Facts",
+ "type": "text",
+ "desc": "Three facts, only one is true. The other two are myths or made up. Pick the true one.",
+ "data": {
+  "100": [
+   [
+    "Only one of these facts is true. Which one?\nA) A day on Venus is longer than its year\nB) The Great Wall of China can be seen from the Moon with the naked eye\nC) Lightning never strikes the same place twice",
+    "A) A day on Venus is longer than its year\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Goldfish only remember things for three seconds\nB) Octopuses have three hearts\nC) Bats are blind",
+    "B) Octopuses have three hearts\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Strawberries are berries\nB) Peanuts are nuts\nC) Bananas are berries",
+    "C) Bananas are berries\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Honey can stay edible for thousands of years\nB) Bulls get angry at the colour red\nC) Humans only use 10% of their brains",
+    "A) Honey can stay edible for thousands of years\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Camels store water in their humps\nB) Sharks have been around longer than trees\nC) Ostriches bury their heads in the sand when they're scared",
+    "B) Sharks have been around longer than trees\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Statue of Liberty was a gift from Britain\nB) The Leaning Tower of Pisa was built to lean on purpose\nC) The Eiffel Tower can grow over 10 cm taller in the summer heat",
+    "C) The Eiffel Tower can grow over 10 cm taller in the summer heat\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) A group of flamingos is called a flamboyance\nB) A group of crows is called a parliament\nC) A group of lions is called a herd",
+    "A) A group of flamingos is called a flamboyance\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Swallowed chewing gum stays in your stomach for seven years\nB) Your stomach gets a new lining every few days\nC) Cracking your knuckles causes arthritis",
+    "B) Your stomach gets a new lining every few days\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Spiders are insects\nB) Dolphins are fish\nC) A shrimp's heart is in its head",
+    "C) A shrimp's heart is in its head\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) An ostrich's eye is bigger than its brain\nB) Penguins live at the North Pole\nC) Polar bears have white skin under their fur",
+    "A) An ostrich's eye is bigger than its brain\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Elvis Presley wrote most of his own songs\nB) Michael Jackson's Thriller is the best-selling album ever\nC) ABBA are from Norway",
+    "B) Michael Jackson's Thriller is the best-selling album ever\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Mona Lisa was painted by Michelangelo\nB) The Mona Lisa hangs in the British Museum\nC) The Mona Lisa has no eyebrows",
+    "C) The Mona Lisa has no eyebrows\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Scotland's national animal is the unicorn\nB) France's national animal is the eagle\nC) The turkey is the national bird of the USA",
+    "A) Scotland's national animal is the unicorn\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Napoleon was unusually short\nB) Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid\nC) The pyramids were built by slaves",
+    "B) Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Diamonds are made from squashed coal\nB) Old church windows are thicker at the bottom because glass slowly flows\nC) There are more trees on Earth than stars in the Milky Way",
+    "C) There are more trees on Earth than stars in the Milky Way\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Saturn is light enough that it would float in a giant bathtub\nB) Mercury is the hottest planet\nC) Mars is hotter than Earth",
+    "A) Saturn is light enough that it would float in a giant bathtub\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Facebook was open to everyone from day one\nB) The first YouTube video was filmed at a zoo\nC) Instagram was created by Google",
+    "B) The first YouTube video was filmed at a zoo\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Messi was born in Buenos Aires\nB) Neymar came through Barcelona's academy\nC) Cristiano Ronaldo was named after US president Ronald Reagan",
+    "C) Cristiano Ronaldo was named after US president Ronald Reagan\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Omar Sharif was born in Alexandria\nB) Omar Sharif never acted in a Hollywood film\nC) Omar Sharif won an Oscar",
+    "A) Omar Sharif was born in Alexandria\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Egypt have never won the Africa Cup of Nations\nB) Egypt was the first African and Arab team to play at a World Cup\nC) Al Ahly have never won the CAF Champions League",
+    "B) Egypt was the first African and Arab team to play at a World Cup\n(others: A and C are false)"
+   ]
+  ],
+  "200": [
+   [
+    "Only one of these facts is true. Which one?\nA) The Sahara is the biggest desert in the world\nB) Mount Everest is the tallest mountain measured from base to top\nC) The Nile flows from south to north",
+    "C) The Nile flows from south to north\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The 1950 World Cup had no single final match\nB) Brazil have won the World Cup six times\nC) The first World Cup was held in Italy",
+    "A) The 1950 World Cup had no single final match\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Zero was invented in Ancient Greece\nB) Our everyday numbers (1, 2, 3…) first came from India\nC) The Romans had a numeral for zero",
+    "B) Our everyday numbers (1, 2, 3…) first came from India\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Fanta was invented in Italy\nB) Pepsi is older than Coca-Cola\nC) Coca-Cola was first sold as a medicine",
+    "C) Coca-Cola was first sold as a medicine\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Mount Everest grows a few millimetres every year\nB) Mount Kilimanjaro is in Kenya\nC) The Dead Sea is the lowest point in Africa",
+    "A) Mount Everest grows a few millimetres every year\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Houseflies only live for 24 hours\nB) Butterflies taste with their feet\nC) The daddy longlegs is the world's most venomous spider",
+    "B) Butterflies taste with their feet\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Napoleon's soldiers shot the nose off the Sphinx\nB) Tutankhamun's tomb was found in 1952\nC) The Great Pyramid was once covered in smooth white limestone",
+    "C) The Great Pyramid was once covered in smooth white limestone\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Arabic is written right to left, but its numbers are read left to right\nB) Mandarin Chinese has no tones\nC) English has the most native speakers in the world",
+    "A) Arabic is written right to left, but its numbers are read left to right\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Mars has no moons\nB) Venus spins the opposite way to most planets\nC) Saturn is the only planet with rings",
+    "B) Venus spins the opposite way to most planets\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Hieroglyphs have never been deciphered\nB) Ancient Egyptians only wrote on stone\nC) Ancient Egyptians mummified cats, crocodiles and even birds",
+    "C) Ancient Egyptians mummified cats, crocodiles and even birds\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Islamic year is about 11 days shorter than the Gregorian year\nB) Ramadan always falls in the summer\nC) The Islamic calendar starts with the Prophet's birth",
+    "A) The Islamic year is about 11 days shorter than the Gregorian year\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Maradona never played in Europe\nB) Pelé's real name is Edson Arantes do Nascimento\nC) Ronaldo Nazário won the 1998 World Cup with Brazil",
+    "B) Pelé's real name is Edson Arantes do Nascimento\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The '@' sign was invented for email in 1971\nB) The '#' sign was invented for Twitter\nC) The '&' sign comes from the Latin word 'et'",
+    "C) The '&' sign comes from the Latin word 'et'\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Burj Khalifa is more than twice as tall as the Eiffel Tower\nB) The Cairo Tower is taller than the Burj Khalifa\nC) The Empire State Building is the tallest building in the USA",
+    "A) The Burj Khalifa is more than twice as tall as the Eiffel Tower\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Hedgehogs are a kind of porcupine\nB) Sea otters hold hands while they sleep so they don't drift apart\nC) Koalas are a kind of bear",
+    "B) Sea otters hold hands while they sleep so they don't drift apart\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Blue whales are the biggest fish in the sea\nB) Blue whales eat mostly squid\nC) Blue whales are the biggest animals known to have ever lived",
+    "C) Blue whales are the biggest animals known to have ever lived\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) About half the oxygen we breathe comes from tiny plants in the ocean (plankton)\nB) Plants don't need oxygen at all\nC) Cactuses store water in their spines",
+    "A) About half the oxygen we breathe comes from tiny plants in the ocean (plankton)\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Peppers are vegetables, not fruit\nB) Tomatoes are fruit\nC) Avocados are vegetables",
+    "B) Tomatoes are fruit\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Cristiano Ronaldo has won the World Cup\nB) Mohamed Salah has won the Ballon d'Or\nC) Messi has won the Ballon d'Or more times than any other player",
+    "C) Messi has won the Ballon d'Or more times than any other player\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Ancient Egyptians had a god with a crocodile's head, Sobek\nB) Anubis had a lion's head\nC) Horus had a cat's head",
+    "A) Ancient Egyptians had a god with a crocodile's head, Sobek\n(others: B and C are false)"
+   ]
+  ],
+  "300": [
+   [
+    "Only one of these facts is true. Which one?\nA) Harvard is older than Al-Azhar\nB) Oxford University is older than the Aztec Empire\nC) Cambridge University is older than Oxford",
+    "B) Oxford University is older than the Aztec Empire\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Hundred Years' War lasted exactly 100 years\nB) The Great Wall of China was built all at once by one emperor\nC) The shortest war in history lasted less than an hour",
+    "C) The shortest war in history lasted less than an hour\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Saudi Arabia has imported camels from Australia\nB) Kuwait has a river running through it\nC) Egypt has the biggest population in Africa",
+    "A) Saudi Arabia has imported camels from Australia\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Ramses II ruled Egypt for only seven years\nB) Tutankhamun was about 19 when he died\nC) Cleopatra was the first queen of Ancient Egypt",
+    "B) Tutankhamun was about 19 when he died\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Moon has no gravity\nB) The Sun is the biggest star in our galaxy\nC) A teaspoon of neutron star would weigh billions of tonnes",
+    "C) A teaspoon of neutron star would weigh billions of tonnes\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Water can boil and freeze at the same time\nB) Pure water is an excellent conductor of electricity\nC) Ice is heavier than the same amount of liquid water",
+    "A) Water can boil and freeze at the same time\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The word 'coffee' comes from French\nB) The word 'algebra' comes from Arabic\nC) The word 'sugar' comes from Latin",
+    "B) The word 'algebra' comes from Arabic\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Naguib Mahfouz won the Nobel Peace Prize\nB) Ahmed Zewail won the Nobel Prize in Physics\nC) Anwar Sadat was the first Egyptian to win a Nobel Prize",
+    "C) Anwar Sadat was the first Egyptian to win a Nobel Prize\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Mohamed Salah was born in the village of Nagrig, in Gharbia\nB) Salah started his career at Zamalek\nC) Salah's first European club was Chelsea",
+    "A) Mohamed Salah was born in the village of Nagrig, in Gharbia\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Suez Canal opened in 1956\nB) The Suez Canal has no locks\nC) The Panama Canal is older than the Suez Canal",
+    "B) The Suez Canal has no locks\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Greenland is mostly covered in green grass\nB) Finland has no lakes\nC) Ireland has no native snakes",
+    "C) Ireland has no native snakes\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) A lightning bolt is about five times hotter than the surface of the Sun\nB) Rubber shoes protect you from lightning\nC) Thunder can happen without lightning",
+    "A) A lightning bolt is about five times hotter than the surface of the Sun\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Orcas are whales, not dolphins\nB) A blue whale's tongue can weigh as much as an elephant\nC) Whales breathe through gills",
+    "B) A blue whale's tongue can weigh as much as an elephant\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Owls can turn their heads all the way round, 360 degrees\nB) Hummingbirds can't fly backwards\nC) Crows can recognise human faces and hold grudges",
+    "C) Crows can recognise human faces and hold grudges\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Tomatoes and potatoes belong to the same plant family\nB) Peanuts grow on trees\nC) Pineapples grow on trees",
+    "A) Tomatoes and potatoes belong to the same plant family\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Rosetta Stone was found in Luxor\nB) The Rosetta Stone is in the British Museum\nC) The Rosetta Stone is written in two scripts",
+    "B) The Rosetta Stone is in the British Museum\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) A baker's dozen is 12\nB) A fortnight is ten days\nC) A 'jiffy' is a real unit of time",
+    "C) A 'jiffy' is a real unit of time\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The first iPhone had no App Store\nB) Apple was founded in 1990\nC) Google was first called Yahoo",
+    "A) The first iPhone had no App Store\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Babies have fewer bones than adults\nB) Humans and giraffes have the same number of neck bones\nC) Your hair and nails keep growing after you die",
+    "B) Humans and giraffes have the same number of neck bones\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Louvre was built as an art museum\nB) The Eiffel Tower was built for the 1900 Olympics\nC) The Mona Lisa was stolen from the Louvre in 1911",
+    "C) The Mona Lisa was stolen from the Louvre in 1911\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Russia spans 11 time zones\nB) China has five time zones\nC) The whole of the USA uses one time zone",
+    "A) Russia spans 11 time zones\n(others: B and C are false)"
+   ]
+  ],
+  "400": [
+   [
+    "Only one of these facts is true. Which one?\nA) The Statue of Liberty is covered in gold\nB) The Statue of Liberty's sculptor first designed a similar statue for Egypt's Suez Canal\nC) The Statue of Liberty was a gift from Spain",
+    "B) The Statue of Liberty's sculptor first designed a similar statue for Egypt's Suez Canal\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The word 'alphabet' comes from Latin\nB) Shakespeare invented the letter J\nC) The dot over an 'i' is called a tittle",
+    "C) The dot over an 'i' is called a tittle\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) 'Checkmate' comes from Persian words meaning 'the king is helpless'\nB) Chess was invented in Ancient Rome\nC) The queen has always been the strongest chess piece",
+    "A) 'Checkmate' comes from Persian words meaning 'the king is helpless'\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Australia is bigger than Russia\nB) Russia is bigger than Pluto\nC) Canada has more people than the USA",
+    "B) Russia is bigger than Pluto\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Hawaii is closer to Japan than to California\nB) New York City is the capital of New York State\nC) Alaska is the westernmost and the easternmost US state",
+    "C) Alaska is the westernmost and the easternmost US state\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Hundred Years' War lasted 116 years\nB) The Great Fire of London killed tens of thousands of people\nC) Vikings wore horned helmets into battle",
+    "A) The Hundred Years' War lasted 116 years\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Soviet Union existed during World War I\nB) The Ottoman Empire still existed when the Titanic sank\nC) The Berlin Wall stood until 1999",
+    "B) The Ottoman Empire still existed when the Titanic sank\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Every zebra has the same stripe pattern\nB) A tiger's skin underneath its fur is plain orange\nC) Koalas have fingerprints almost identical to humans'",
+    "C) Koalas have fingerprints almost identical to humans'\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Ketchup was once sold as a medicine\nB) The Aztecs ate chocolate as solid bars\nC) Fortune cookies were invented in China",
+    "A) Ketchup was once sold as a medicine\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) White chocolate contains cocoa solids\nB) Carrots were mostly purple before orange ones became common\nC) The word 'sushi' means raw fish",
+    "B) Carrots were mostly purple before orange ones became common\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Samsung started as a phone maker\nB) Nokia started as a car maker\nC) Nintendo started in 1889 as a playing-card company",
+    "C) Nintendo started in 1889 as a playing-card company\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Olympic rings' colours were picked so every country's flag had at least one of them\nB) The marathon has always been 42.195 km\nC) The first modern Olympics were held in Paris",
+    "A) The Olympic rings' colours were picked so every country's flag had at least one of them\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The first Ballon d'Or was won by Pelé\nB) The Champions League anthem is based on music by Handel\nC) The offside rule was only introduced in the 1990s",
+    "B) The Champions League anthem is based on music by Handel\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) George Washington had wooden teeth\nB) Albert Einstein failed maths at school\nC) Abraham Lincoln was a licensed bar owner",
+    "C) Abraham Lincoln was a licensed bar owner\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Amazon River has no bridges across it\nB) The Amazon flows into the Pacific Ocean\nC) The Amazon starts in Brazil",
+    "A) The Amazon River has no bridges across it\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Sahara is mostly sand dunes\nB) The Sahara was green with lakes and grassland a few thousand years ago\nC) It has never snowed in the Sahara",
+    "B) The Sahara was green with lakes and grassland a few thousand years ago\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Winston Churchill was born in America\nB) King Charles III was crowned in 2020\nC) Queen Elizabeth II trained as a mechanic and truck driver in World War II",
+    "C) Queen Elizabeth II trained as a mechanic and truck driver in World War II\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The first text message ever sent said 'Merry Christmas'\nB) The first email was sent in 1995\nC) Bluetooth is named after a dental problem",
+    "A) The first text message ever sent said 'Merry Christmas'\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Basketball was invented in Canada\nB) Golf has been played on the Moon\nC) Table tennis was invented in China",
+    "B) Golf has been played on the Moon\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Ful medames was brought to Egypt by the Ottomans\nB) Koshary was invented in the 1990s\nC) Egypt's Molokhia was once banned by a Fatimid ruler",
+    "C) Egypt's Molokhia was once banned by a Fatimid ruler\n(others: A and B are false)"
+   ]
+  ],
+  "500": [
+   [
+    "Only one of these facts is true. Which one?\nA) The first person caught speeding was doing about 13 km/h\nB) The first car was invented in the USA\nC) Traffic lights were invented after the car",
+    "A) The first person caught speeding was doing about 13 km/h\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Some dinosaurs and early humans lived at the same time\nB) Woolly mammoths were still alive when the Great Pyramid was built\nC) T. rex lived closer in time to Stegosaurus than to us",
+    "B) Woolly mammoths were still alive when the Great Pyramid was built\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) A deck of 52 cards can only be shuffled into a few million different orders\nB) Pi has been worked out exactly\nC) There are more possible chess games than atoms in the observable universe",
+    "C) There are more possible chess games than atoms in the observable universe\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Sloths can hold their breath longer than dolphins\nB) Hippos are excellent swimmers\nC) Elephants are scared of mice",
+    "A) Sloths can hold their breath longer than dolphins\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The microwave oven was invented by a chef\nB) The man who designed the Pringles can was buried in one\nC) Post-it Notes were invented on purpose as bookmarks",
+    "B) The man who designed the Pringles can was buried in one\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Monopoly was invented by Parker Brothers\nB) The Rubik's Cube was invented in Japan\nC) LEGO makes more tyres than any other company in the world",
+    "C) LEGO makes more tyres than any other company in the world\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Alexandria was Egypt's capital for nearly a thousand years\nB) Luxor was Egypt's capital under the Ottomans\nC) Port Said is older than Alexandria",
+    "A) Alexandria was Egypt's capital for nearly a thousand years\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) An apple fell on Isaac Newton's head\nB) Albert Einstein was offered the presidency of Israel\nC) Marie Curie never won a Nobel Prize",
+    "B) Albert Einstein was offered the presidency of Israel\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Blue Nile starts in Uganda\nB) The Nile flows into the Red Sea\nC) The Blue Nile and the White Nile meet in Khartoum",
+    "C) The Blue Nile and the White Nile meet in Khartoum\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) A single song at an Umm Kulthum concert could last more than an hour\nB) Abdel Halim Hafez was born in Cairo\nC) Fairuz is Egyptian",
+    "A) A single song at an Umm Kulthum concert could last more than an hour\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Pluto is bigger than our Moon\nB) Neptune has completed only one full orbit of the Sun since it was discovered\nC) Jupiter has a solid surface you could stand on",
+    "B) Neptune has completed only one full orbit of the Sun since it was discovered\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Great Pyramid has exactly 100 steps\nB) The Sphinx was carved after the Romans arrived\nC) The Great Pyramid was the tallest building on Earth for about 3,800 years",
+    "C) The Great Pyramid was the tallest building on Earth for about 3,800 years\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Cleopatra VII was the first of her dynasty to learn Egyptian\nB) Cleopatra was Persian\nC) Cleopatra ruled Egypt for 60 years",
+    "A) Cleopatra VII was the first of her dynasty to learn Egyptian\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Raindrops are shaped like tears\nB) A cloud can weigh hundreds of tonnes\nC) Snowflakes are always six-sided and identical",
+    "B) A cloud can weigh hundreds of tonnes\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Library of Alexandria was destroyed in a single night\nB) The Library of Congress is in New York\nC) Oxford's Bodleian Library is a 'legal deposit' library that gets a copy of every UK book",
+    "C) Oxford's Bodleian Library is a 'legal deposit' library that gets a copy of every UK book\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The word 'safari' comes, through Swahili, from the Arabic word for a journey\nB) The word 'admiral' comes from Greek\nC) 'Magazine' comes from German",
+    "A) The word 'safari' comes, through Swahili, from the Arabic word for a journey\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Eiffel Tower is painted gold\nB) The Eiffel Tower was meant to stand for only 20 years\nC) The Eiffel Tower was built in 1925",
+    "B) The Eiffel Tower was meant to stand for only 20 years\n(others: A and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Worker bees are male\nB) Bees can only see in black and white\nC) Honey bees communicate by dancing",
+    "C) Honey bees communicate by dancing\n(others: A and B are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) Egypt's Aswan High Dam created one of the biggest man-made lakes in the world\nB) The Aswan High Dam was finished in 1990\nC) The Aswan High Dam is on the Suez Canal",
+    "A) Egypt's Aswan High Dam created one of the biggest man-made lakes in the world\n(others: B and C are false)"
+   ],
+   [
+    "Only one of these facts is true. Which one?\nA) The Titanic sank on its return trip from New York\nB) The Titanic's sister ship Olympic sailed for over 20 years\nC) The Titanic was the first ship to use an SOS signal",
+    "B) The Titanic's sister ship Olympic sailed for over 20 years\n(others: A and C are false)"
+   ]
+  ]
+ }
+}

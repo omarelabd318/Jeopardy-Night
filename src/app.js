@@ -85,7 +85,8 @@ const S = {
 };
 const photos = {};  // norm(answer) -> blob url
 const catById = id => CATS.find(c => c.id === id);
-const PICK = CATS.filter(c => !c.mode);  // categories offered in setup (Football mode adds its own World Cup)
+const HIDDEN_IDS = new Set(["ptrap"]);   // 6.40 (Omar): hidden from setup, mixes and the totals; its clues stay in the build. To bring one back, take it out of this set (and put it back in CAT_GROUPS)
+const PICK = CATS.filter(c => !c.mode && !HIDDEN_IDS.has(c.id));  // categories offered in setup (Football mode adds its own World Cup)
 const pool = (cat,lvl) => DATA[cat][lvl];
 
 /* ---------- sound: soft countdown ticks and a fading bell-like chime (C_soft_end) ---------- */
@@ -156,19 +157,19 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.39`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.43`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
-  ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","tvmix","mixmap","mixkn1","mixkn2","mixguess","mixparty"]],   /* 6.20 (Omar): the mixes, first. 6.37 (Omar): TV Show Mix moved here from Entertainment, after Entertainment Mix 2. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
+  ["Mixes", ["mixeg1","mixeg2","mixfb","mixent1","mixent2","tvmix","mixmap","mixkn1","mixkn2","mixguess","mixparty","mixall"]],   /* 6.40 (Omar): Everything Mix last */   /* 6.20 (Omar): the mixes, first. 6.37 (Omar): TV Show Mix moved here from Entertainment, after Entertainment Mix 2. 6.25 (Omar): in the same order as the sections below (6.20-6.24: "mixeg1","mixeg2","mixguess","mixmap","mixparty","mixkn1","mixkn2","mixent1","mixent2","mixfb") */
   /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egyph","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","lyricar","emeg","emseg","ctryar"]],
-  ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","ptrap","pixar","quote","qblank","mus","songt","song","lyric","spot","igf"]],
-  ["Maps & World", ["geo","flag","shape","pin","ctry","lang","trans"]],
-  ["Knowledge", ["gk","his","islam","ww2","year","myth","sci","space","food","ffood","cal","mb","curr","brand","cars","tg","nick","books"]],
+  ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport","tennis"]],
+  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","emov","quote","qblank","mus","songt","song","oldies","lyric","spot","igf"]],
+  ["Maps & World", ["geo","landmark","flag","shape","pin","ctry","lang","trans"]],
+  ["Knowledge", ["gk","facts","his","islam","ww2","year","myth","holi","sci","space","animal","food","ffood","cal","cocktail","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
-  ["Party Games", ["act","acteg","emov","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
+  ["Party Games", ["act","acteg","emsen","pw","rid","link","near","price","headl","order","x18"]]  /* 6.40 (Omar): Emoji Movies & TV moved to Entertainment after Pixar (was after acteg here); The Parent Trap hidden (was after romcom, see HIDDEN_IDS). */ /* 5.22: Put It in Order after Headlines. 5.51 (Omar): NSFW (x18) last, locked behind a code, see LOCKED */
 ];
 /* 6.0 (Omar): a short, easy description of every category, shown in a big hover box (#tip) over its setup chip and its board
    header, readable from the couch. Falls back to the category's longer desc (5.99 and before: desc as a small browser tooltip). */
@@ -279,30 +280,39 @@ const TIPS = {
   headl: "Three headlines, only one is real. Pick it.",
   order: "Three events. Put them in order, earliest first.",
   gctry: "A photo from somewhere in the world. Name the country.",
-  x18: "Name the adult film star from the photo.",   // 6.39 (Omar): shown once unlocked; before that the tip just says "Code required" (see tipOf). 6.0-6.38: "… Needs a code."
+  x18: "Name the adult film star from the photo.",
+  tennis: "The Grand Slams, the legends and today's stars.",   // 6.42: the seven new categories
+  oldies: "A song that will never die. Name the singer or band.",
+  facts: "Three facts, only one is true. Pick it.",
+  holi: "Feasts, festivals and customs, from Eid and Sham El Nessim to Diwali.",
+  animal: "Wild animal facts, plus photos: name the animal.",
+  cocktail: "Cocktails, spirits, beer and wine, plus Egyptian drinks like karkadeh and sobia.",
+  landmark: "Famous places around the world, plus photos: name the landmark.",   // 6.39 (Omar): shown once unlocked; before that the tip just says "Code required" (see tipOf). 6.0-6.38: "… Needs a code."
 };
 /* 6.27 (Omar): the Edit mixes panel at the bottom of setup. Each mix may draw from its own section's categories (plus the ones it
    had by default, e.g. Football Mix's Egyptian Football and Football mode's World Cup), never another section's. Locked categories
    are left out (6.27 also left out Act It Out and One Word Clues; 6.28 allows them). Choices are saved per device in "jn_mixes". */
 const MIX_SECTION = {tvmix:"Entertainment", mixeg1:"Egypt & Arab World", mixeg2:"Egypt & Arab World", mixfb:"Football & Sports", mixent1:"Entertainment", mixent2:"Entertainment",
-  mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games"};
+  mixmap:"Maps & World", mixkn1:"Knowledge", mixkn2:"Knowledge", mixguess:"Photo Rounds", mixparty:"Party Games", mixall:"All"};   // 6.40: Everything Mix may use any category
 const MIX_DEFAULT = Object.fromEntries(CATS.filter(c => c.type === "mix").map(c => [c.id, c.src.slice()]));
-const mixAllowed = id => { const g = (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
+const mixAllowed = id => { const g = id === "mixall" ? CAT_GROUPS.slice(1).flatMap(x => x[1]) : (CAT_GROUPS.find(x => x && x[0] === MIX_SECTION[id]) || [,[]])[1];
   if(id === "tvmix") return TV_SHOWS.filter(s => catById(s));   // 6.38: TV Show Mix picks from the TV series only
-  return [...new Set([...g, ...(MIX_SECTION[id] === "Entertainment" ? ["tvmix"] : []), ...(MIX_DEFAULT[id] || [])])]   /* 6.37: TV Show Mix moved to Mixes but stays choosable for the Entertainment mixes */.filter(s => { const c = catById(s); return c && (c.type !== "mix" || s === "tvmix") && s !== id && c.type !== "impostor" && !LOCKED_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
+  return [...new Set([...g, ...(MIX_SECTION[id] === "Entertainment" ? ["tvmix"] : []), ...(MIX_DEFAULT[id] || [])])]   /* 6.37: TV Show Mix moved to Mixes but stays choosable for the Entertainment mixes */.filter(s => { const c = catById(s); return c && (c.type !== "mix" || s === "tvmix") && s !== id && c.type !== "impostor" && !LOCKED_IDS.has(s) && !HIDDEN_IDS.has(s); }); };   // 6.28 (Omar): Act It Out and One Word Clues may be chosen too (6.27 left out "act" and "password")
 const LOCKED_IDS = new Set(["x18"]), TV_SHOWS = ["got","peaky","bb","pb","st","office","netflix","friends","himym"];   // 6.38: what TV Show Mix may use (the eight shows by default, plus Netflix Hits)
 function applyMixes(){ const saved = store.get("jn_mixes", {});
   CATS.filter(c => c.type === "mix").forEach(c => { const ok = mixAllowed(c.id), want = (saved[c.id] || MIX_DEFAULT[c.id]).filter(s => ok.includes(s));
     c.src = want.length ? want : MIX_DEFAULT[c.id].slice(); }); }
 applyMixes();
+const mixOpen = new Set();   // 6.40 (Omar): each mix starts folded; this remembers which ones are open while setup is shown
 function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
   box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(c => c && c.type === "mix").map(m =>   /* 6.38: TV Show Mix is a mix too now (6.37: left out, fixed contents) */ { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
-    return `<div class="mixrow"><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id])}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5>
-      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></div>`; }).join("");
+    return `<details class="mixrow" data-mixrow="${m.id}"${mixOpen.has(m.id) ? " open" : ""}><summary><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id] === "All" ? "any section" : MIX_SECTION[m.id])}${custom ? " · edited" : ""}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5></summary>
+      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></details>`; }).join("");   // 6.27-6.39: an open <div class="mixrow"> with an <h5>
+  box.querySelectorAll("details.mixrow").forEach(d => d.addEventListener("toggle", () => d.open ? mixOpen.add(d.dataset.mixrow) : mixOpen.delete(d.dataset.mixrow)));
   const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
 document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset]"); if(!b || !$("#mixEdit").contains(b)) return;
   const saved = store.get("jn_mixes", {});
-  if(b.dataset.mixreset){ delete saved[b.dataset.mixreset]; }
+  if(b.dataset.mixreset){ e.preventDefault(); delete saved[b.dataset.mixreset]; }   // preventDefault: the Reset button sits in the row's <summary>
   else { const m = catById(b.dataset.mix), s = b.dataset.src, cur = m.src.includes(s) ? m.src.filter(x => x !== s) : [...m.src, s];
     if(!cur.length){ b.animate && b.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"none"}], {duration:200}); return; }   // a mix needs at least one category
     const order = mixAllowed(m.id); saved[m.id] = order.filter(x => cur.includes(x));
@@ -310,9 +320,9 @@ document.addEventListener("click", e => { const b = e.target.closest && e.target
   store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
   renderMixEdit(); renderChips(); });
 $("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });
-const tipOf = c => (LOCKED_IDS.has(c.id) && !unlocked.has(c.id) ? "Code required" : "") || (c.type === "mix" ? "" : TIPS[c.id]) || (c.type === "mix" ? "A mix of " + c.src.map(s => catById(s).name).join(", ") + "." : "") || c.desc || "";   // 6.20: a mix lists what it mixes
+const tipOf = c => (LOCKED_IDS.has(c.id) && !unlocked.has(c.id) ? "Code required" : "") || (c.type === "mix" ? "" : TIPS[c.id]) || (c.id === "mixall" ? ((x => x.length ? "Every category except:\n" + x.join("\n") : "Every category.")(PICK.filter(o => o.type !== "mix" && !LOCKED_IDS.has(o.id) && !c.src.includes(o.id)).map(o => o.name))) : "")   /* 6.40: Everything Mix lists what it leaves out instead */ || (c.type === "mix" ? "A mix of:\n" + c.src.map(s => catById(s).name).join("\n") : "") || c.desc || "";   // 6.20: a mix lists what it mixes. 6.40 (Omar): one per line, shown as a bullet list in the hover box (6.20-6.39: "A mix of X, Y and Z.")
 function renderChips(){
-  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;
+  const chip = c => `<button class="chip" aria-pressed="${S.cats.includes(c.id)}" data-c="${c.id}"${S.ffa && FFA_SKIP.has(c.type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : tipOf(c) ? ` data-tip="${esc(tipOf(c))}"` : ""}>${esc(c.name)}${c.type === "mix" && store.get("jn_mixes", {})[c.id] ? ` <span class="edited" title="Edited in Edit mixes">✎</span>` : ""}${S.ffa && FFA_SKIP.has(c.type) ? ` <small>teams only</small>` : ""}</button>`;   // 6.40 (Omar): a pencil on mixes changed in Edit mixes
   const seen = new Set();
   const groups = CAT_GROUPS.map(([name,ids]) => [name, ids.map(catById).filter(Boolean)]);
   groups.forEach(([,cs]) => cs.forEach(c => seen.add(c.id)));
@@ -709,7 +719,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
      All the chest controls now bring the arms up and out sideways (ar in man()). Twenty touches: no similar moves next to each
      other, no player does a similar move on his next turn, and each move is 9 touches from the other player's same move (7 for two).
      5.45 order: L knee, R chest, L foot, R kneeheel, L head, R chestbike, L kneehead, R balance, L heel, R knee, L chest, R foot, L kneeheel, R head, L chestbike, R kneehead, L balance, R heel */
-  const ROT = [["L","knee"],["R","heel"],["L","chest"],["R","kneehead"],["L","balance"],["R","head"],["L","kneeheel"],["R","chesthold"],["L","heel"],["R","foot"],["L","chestbike"],["R","knee"],["L","head"],["R","chest"],["L","kneehead"],["R","balance"],["L","chesthold"],["R","kneeheel"],["L","foot"],["R","chestbike"]], POP = 1.1, SPIN = 0.35;
+  /* 6.40 (Omar): an eleventh touch, "wedge": as the ball drops in he plants his foot on the floor a little in front of him, it bounces
+     up off it and he volleys it. Twenty-two touches; the same eleven moves twice, so each move is exactly half a cycle from the other
+     player's same move, and no similar moves come within two touches of each other.
+     5.53 order: L knee, R heel, L chest, R kneehead, L balance, R head, L kneeheel, R chesthold, L heel, R foot, L chestbike, R knee, L head, R chest, L kneehead, R balance, L chesthold, R kneeheel, L foot, R chestbike */
+  const ROT = [["L","knee"],["R","wedge"],["L","head"],["R","kneeheel"],["L","chestbike"],["R","balance"],["L","kneehead"],["R","chest"],["L","heel"],["R","foot"],["L","chesthold"],["R","knee"],["L","wedge"],["R","head"],["L","kneeheel"],["R","chestbike"],["L","balance"],["R","kneehead"],["L","chest"],["R","heel"],["L","foot"],["R","chesthold"]], POP = 1.1, SPIN = 0.35;
+  /* 6.40 (Omar): every time the board appears it opens the same way: the ball rests at the left player's feet for a second, he puts
+     his sole on top and rolls it back towards him, slips his toes under it, flicks it up and volleys it across, and the rotation
+     carries on from the right player's touch (ROT[1]). INTRO s in all; IB: where the ball sits (px in front of him) before and after the roll. */
+  const INTRO = 3.5, IB = [19, 13, 11.5];
+  const legIK = (dx, dy) => { const dd = Math.min(15.6, Math.hypot(dx, dy)), ph = Math.atan2(dx, dy), al = Math.acos(dd / 16); return {t: ph + al, s: ph - al}; };   // thigh and shin angles that put his foot dx ahead of and dy below his hip (knee forward)
   const BIKE = 2.2, FLICK = 0.8;                                   // chestbike: from chest to bicycle kick, and when the foot flick comes
   const HEEL = 1.7, HFLICK = 0.7;                                  // kneeheel: from knee to the heel pass, and when the foot flick comes
   const BAL = 3.0, BCATCH = 0.6, BFLICK = 2.1, BT = 1.1, BS = 1.45;   // balance: total time, when it lands on his foot, when he flicks it up; the held leg's thigh and shin angles
@@ -721,7 +740,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   const START = []; let CYCLE = 0; ROT.forEach(([, hw]) => { START.push(CYCLE); CYCLE += FLIGHT + PD(hw); });
   /* 4.77 (Omar): a fourth touch, the heel: he turns his back to the ball, flicks it up with his heel, turns round and volleys it.
      The rotation is now eight touches so each player does all four (4.75-4.76: [L knee, R foot, L head, R knee, L foot, R head]). */
-  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22, kneeheel: 12};   // kneeheel: how high it goes over his head   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
+  const UP = {knee: 18, foot: 16, head: 14, heel: 20, chest: 16, kneehead: 16, chestbike: 22, kneeheel: 12, wedge: 15};   // kneeheel: how high it goes over his head   // kneehead: how far it rises above the header point             // how far the ball pops up above the touch
   const sm = v => { v = Math.max(0, Math.min(1, v)); return v*v*(3 - 2*v); };
   const swing = dt => Math.abs(dt) < KICK ? Math.sin((dt/KICK + 1)/2 * Math.PI) * 1.1 : 0;   // volley swing, strongest at contact (dt = 0)
   const kneeUp = dt => dt < -0.35 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.35) / 0.35) : 1 - sm(dt / 0.3);
@@ -780,13 +799,14 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     const L = 26, R = W - 26, r = 7, hip = H - 17, X = {L, R}, D = {L: 1, R: -1};
     const touch = (side, how) => { const x = X[side], d = D[side];       // where the ball meets him
       if(how === "chest" || how === "chestbike" || how === "chesthold"){ const c = Math.cos(LEAN), s = Math.sin(LEAN); return [x - s*10*d + c*(r + 1.5)*d, hip - c*10 - s*(r + 1.5)]; }  // on his chest, leaning back
-      return how === "knee" || how === "kneehead" || how === "kneeheel" ? [x + 9*d, hip - r - 1] : how === "foot" || how === "balance" ? [x + 14*d, H - 1 - r - 3] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
+      return how === "knee" || how === "kneehead" || how === "kneeheel" ? [x + 9*d, hip - r - 1] : how === "foot" || how === "balance" ? [x + 14*d, H - 1 - r - 3] : how === "wedge" ? [x + 17*d, H - 1 - r - 1] : how === "heel" ? [x + 15*d, hip - 3] : [x + 2*d, H - 1 - 4 - 35 - 5 - r + 1]; };
     const head = side => [X[side] + 7 * D[side], H - 1 - 4 - 35 - 5 - r + 2];        // where the kneehead header meets the ball: at the top of his hop, his head thrown forward (5.40; was X + 2)
     const bike = side => [X[side] + 4 * D[side], H - 1 - 10 - 16 - 15.5 - r + 2];   // where the bicycle kick meets it, above him as he lies back
     const heelPass = side => [X[side] - 10 * D[side], hip - 15];                      // kneeheel: high behind him, where his raised heel meets it (5.45; 5.44 was hip height, X - 11, with an extra loop over his head)
     const volley = (side, how) => how === "chesthold" ? [X[side] + (20 + STEP) * D[side], hip - 3] : how === "kneehead" ? head(side) : how === "chestbike" ? bike(side) : how === "kneeheel" ? heelPass(side) : [X[side] + 20 * D[side], hip - 3];   // where the ball leaves him
     const seg = (A, B, s, h) => [A[0] + (B[0] - A[0]) * s, A[1] + (B[1] - A[1]) * s - 4 * h * s * (1 - s)];  // a lob from A to B, h px above the line
-    const t = (((now - t0) / 1000) * slow) % CYCLE;       // t = 0: the right player has just volleyed it towards the left one's knee
+    const T = ((now - t0) / 1000) * slow, intro = T < INTRO;   // 6.40: the opening, then the rotation from the left player's volley to ROT[1]
+    const t = intro ? START[1] : (START[1] + T - INTRO) % CYCLE;   // t = 0: the right player has just volleyed it towards the left one's first touch (4.70-6.39: t = T % CYCLE, so it began mid-flight)
     let k = ROT.length - 1; while(k > 0 && START[k] > t) k--;
     const u = t - START[k], [side, how] = ROT[k], from = side === "L" ? "R" : "L";
     const prev = ROT[(k + ROT.length - 1) % ROT.length][1];   // how the other player sent it (a volley, or a header after a kneehead)
@@ -804,6 +824,9 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     else if(how === "kneeheel"){ const ub = u - FLIGHT, F = [X[side] + 12 * D[side], H - 1 - r - 4], over = H - 1 - 40 - r - UP.kneeheel;   // knee, drop to the foot, flicked over his head to behind him
       pos = ub < HFLICK ? seg(C, F, ub / HFLICK, (C[1] + F[1]) / 2 - (C[1] - 14)) : seg(F, V, (ub - HFLICK) / (HEEL - HFLICK), (F[1] + V[1]) / 2 - over); }
     else { const top = Math.min(C[1], V[1]) - UP[how]; pos = seg(C, V, (u - FLIGHT) / POP, (C[1] + V[1]) / 2 - top); }  // popped up off the touch
+    if(intro){ const bx = T < 1.35 ? IB[0] : T < 2.15 ? IB[0] - (IB[0] - IB[1]) * sm((T - 1.35) / 0.8) : T < 2.45 ? IB[1] - (IB[1] - IB[2]) * sm((T - 2.15) / 0.3) : IB[2];
+      if(T < 2.5) pos = [L + bx, H - 1 - r];   // resting, then rolled back under his sole
+      else { const F = [L + IB[2], H - 1 - r], V0 = volley("L", ROT[0][1]); pos = seg(F, V0, (T - 2.5) / (INTRO - 2.5), (F[1] + V0[1]) / 2 - (Math.min(F[1], V0[1]) - 18)); } }   // flicked up, dropping onto the volley
     const pose = s => { let ang = 0.35, knee = 0, jump = 0, heel = 0, turn = false, lean = 0, bk = 0, ly = 0, gu = null, fl = null, bl = null, ar = 0, step = 0;
       ROT.forEach(([sd, hw], i) => { if(sd !== s) return;
         for(const sh of [-CYCLE, 0, CYCLE]){ const tc = START[i] + FLIGHT + sh, dt = t - tc;
@@ -835,10 +858,21 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
             lean += leanBack(dt); ar += leanBack(dt); ang += footUp(dt - FLICK) + amt * (3.05 - 2.0 * fall); jump += amt * (10 - 23 * fall);
             bk = Math.max(bk, amt * (1 + 0.3 * fall)); ly = Math.max(ly, amt * fall);
             turn = turn || (e > -0.75 && e < 1.0); continue; }
+          if(hw === "wedge"){ const w = dt < -0.45 || dt > 0.3 ? 0 : dt < 0 ? sm((dt + 0.45) / 0.45) : 1 - sm(dt / 0.3);   // 6.40: foot planted out in front as it lands, then back for the volley
+            if(w > 0.001) fl = {t: 0.35 + 0.55 * w, s: 0.35 + 0.4 * w}; lean += 0.25 * w; ang += swing(dt - POP); continue; }
           if(hw === "knee") knee += kneeUp(dt); else if(hw === "chest"){ lean += leanBack(dt); ar += leanBack(dt); } else if(hw === "foot") ang += footUp(dt); else if(hw === "heel"){ heel += heelUp(dt); turn = turn || turned(dt); } else { jump += hop(dt); lean += headWind(dt); }
           ang += swing(dt - POP); } });
       return [ang, Math.min(1, knee), jump, Math.min(1, heel), turn, Math.min(2, lean), bk, ly, gu, fl, bl, Math.min(1, ar), step]; };
-    const pL = pose("L"), pR = pose("R"); man(L + pL[12], 1, ...pL.slice(0, 12)); man(R - pR[12], -1, ...pR.slice(0, 12));   // step: 5.56, a small step in for the chest hold
+    const introPose = () => { const bx = pos[0] - L, step = T < 1.0 ? 0 : T < 1.35 ? 3 * sm((T - 1.0) / 0.35) : T < 2.15 ? 3 * (1 - sm((T - 1.35) / 0.8)) : 0;   // he leans in onto the ball, then draws back with it
+      const top = [bx - 5 - step, 4], under = [IB[2] - 4, 14], flick = [IB[2] - 1, 9], lerp = (A, B, f) => [A[0] + (B[0] - A[0]) * f, A[1] + (B[1] - A[1]) * f];
+      let w = 0, tg = null;
+      if(T >= 1.0 && T < 2.15){ w = sm((T - 1.0) / 0.35); tg = top; }                                     // sole up onto the top of the ball, then rolling it back
+      else if(T >= 2.15 && T < 2.45){ w = 1; tg = lerp([IB[1] - 5, 4], under, sm((T - 2.15) / 0.3)); }       // slides down behind it as it rolls onto his toes
+      else if(T >= 2.45 && T < 2.6){ w = 1; tg = lerp(under, flick, sm((T - 2.45) / 0.15)); }                // flicks it up
+      else if(T >= 2.6 && T < 2.95){ w = 1 - sm((T - 2.6) / 0.35); tg = flick; }                           // foot back down for the volley
+      const ik = tg && legIK(tg[0], tg[1]), fl = ik && w > 0.001 ? {t: 0.35 + (ik.t - 0.35) * w, s: 0.35 + (ik.s - 0.35) * w} : null;
+      return [0.35 + swing(T - INTRO), 0, 0, 0, false, 0, 0, 0, null, fl, null, 0, step]; };
+    const pL = intro ? introPose() : pose("L"), pR = intro ? [0.35, 0, 0, 0, false, 0, 0, 0, null, null, null, 0, 0] : pose("R"); man(L + pL[12], 1, ...pL.slice(0, 12)); man(R - pR[12], -1, ...pR.slice(0, 12));   // step: 5.56, a small step in for the chest hold
     g.save(); g.translate(pos[0], pos[1]); g.rotate((pos[0] - L) / r * SPIN);   // spins a little as it travels (4.70-4.74: (pos[0] - L) / r)
     if(ballImg) g.drawImage(ballImg, -r, -r, r*2, r*2);
     else { g.fillStyle = "#fff"; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.fill(); g.lineWidth = 1.2; g.strokeStyle = "#111"; g.stroke(); }
@@ -1492,22 +1526,41 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        led them on a rope and tugged the first one along). */
     /* 5.93 (Omar): a loose flock rather than a train: each sheep has its own place and depth and drifts forward and back on its own,
        and he walks a little way behind with his stick planted like a staff. He only reaches out and taps the last one when it stops. */
-    { s(){ const v = 38, stopAt = (W * 0.5) / v, stopLen = 2.6, catchV = 70; return {v, stopAt, stopLen, catchV}; },
-      len(){ const s = this.s(); return (W + 190) / s.v + 1; },
-      draw(u){ const {v, stopAt, stopLen, catchV} = this.s(), st = u - stopAt, stuck = st > 0 && st < stopLen, L = -20 + v * u;
-        const lag = st <= 0 ? 0 : stuck ? v * st : Math.max(0, v * stopLen - (catchV - v) * (st - stopLen));        // how far the stray falls behind
-        const B = [0, -14, -31, -44, -63], DY = [-2.5, 0, -1.5, 0.5, -1];                                            // where each sits in the flock, and how far back
+    /* 6.40 (Omar): the last sheep stops twice: halfway across (as before) and again just as the flock is about to leave on the far
+       side. The man keeps his own steady pace: each time he slows to a stop behind it, taps it on, and walks on at the same speed
+       (before, he dropped back with it and then sped up unnaturally to catch the flock). After the halfway stop the sheep trots to
+       rejoin the flock and he simply stays further back, so at the second stop it waits until he reaches it and taps it.
+       The 5.93-6.39 version is in NOTES 6.40. */
+    { s(){ const v = 38, B4 = -63, trotV = 70, E = 0.4, TAP = 1.5;
         const wob = (i, t) => 7 * Math.sin(t * 0.9 * (1 + i * 0.17) + i * 2.1) + 3 * Math.sin(t * 2.3 + i * 4.7);
-        const tw4 = st <= 0 ? u : stuck ? stopAt : u - stopLen, stray = L - lag + B[4] + wob(4, tw4);
-        const xs = B.map((b, i) => i === 4 ? stray : L + b + wob(i, u));
+        const flock4 = u => -20 + v * u + B4 + wob(4, u), trot = e => trotV * (e - 0.3 * (1 - Math.exp(-e / 0.3)));
+        const smin = (a, b) => Math.min(a, b) - 6 * Math.log(1 + Math.exp(-Math.abs(a - b) / 6));
+        const s1 = (W * 0.5) / v, x1 = flock4(s1), a1 = (x1 - 26 - v * E + 125) / v, r1 = Math.max(s1 + 2.6, a1 + 2 * E + TAP);   // halfway: stops, he arrives (brakes from a1), taps until r1
+        const pre = u => smin(x1 + trot(u - r1), flock4(u));                                                         // trotting back into the flock
+        const s2 = (W - 130 + 20 - B4) / v, x2 = pre(s2), d1 = r1 - a1;                                              // 130 px from the edge, clear of the bawab (the last 81 px)
+        const a2 = (x2 - 26 - v * E + 125) / v + d1, r2 = Math.max(s2 + 2.6, a2 + 2 * E + TAP), d2 = d1 + r2 - a2;
+        const stray = u => u < s1 ? flock4(u) : u < r1 ? x1 : u < s2 ? pre(u) : u < r2 ? x2 : x2 + trot(u - r2);
+        return {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, x1, x2, stray}; },
+      len(){ const s = this.s(); return s.r2 + 2 * s.E + (W + 40 - (s.x2 - 26)) / s.v; },
+      draw(u){ const {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, stray} = this.s(), L = -20 + v * u;
+        const stuck = (u > s1 && u < r1) || (u > s2 && u < r2);
+        const B = [0, -14, -31, -44, B4], DY = [-2.5, 0, -1.5, 0.5, -1];                                              // where each sits in the flock, and how far back
+        const xs = B.map((b, i) => i === 4 ? stray(u) : L + b + wob(i, u));
         [0, 2, 4, 1, 3].sort((a, b) => DY[a] - DY[b]).forEach(i => { g.save(); g.translate(0, DY[i]);
           sheep(xs[i], 1, i === 4 && stuck ? 0.6 : xs[i] * 0.26 + i * 1.7, i === 4 && stuck); g.restore(); });
-        const k = stuck ? sm(st / 0.8) : st > 0 ? 1 - sm((st - stopLen) / 1.5) : 0;                                  // closing in on the stray, then dropping back
-        const mx = (1 - k) * (L - lag + B[4] - 42) + k * (stray - 26), tap = stuck && st > 0.6 ? Math.max(0, Math.sin(u * 7)) : 0;
+        // him: walking at v, except that at each stop he brakes to a halt behind the sheep (over 2E s), taps it, and eases off again
+        const walkAt = (t, dl) => v * (t - dl) - 125;
+        let mx, still = false, tapFrom = 0;
+        for(const [a0, r, dl] of [[a1, r1, 0], [a2, r2, d1]]){ if(u >= a0 && u < r + 2 * E){ const xa = walkAt(a0, dl);
+            if(u < a0 + 2 * E){ const tau = u - a0; mx = xa + v * tau - v * tau * tau / (4 * E); }
+            else if(u < r){ mx = xa + v * E; still = true; tapFrom = a0 + 2 * E + 0.2; }
+            else { const tau = u - r; mx = xa + v * E + v * tau * tau / (4 * E); } } }
+        if(mx === undefined) mx = walkAt(u, u < a1 ? 0 : u < a2 ? d1 : d2);
+        const tapping = still && u > tapFrom, tap = tapping ? Math.max(0, Math.sin(u * 7)) : 0;
         const M = person(mx, gy, 1, {outfit: "robe", robe: "#7b6a58", hat: "emma", mo: true, skin: "#7f4f31",
-          ...(stuck && st > 0.6 ? {} : {ph: mx * 0.22}), arms: [stuck ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], stuck ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
+          ...(still ? {} : {ph: mx * 0.22}), arms: [tapping ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], tapping ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
         const [hx, hy] = M.hands[0], ang = 0.75 - 0.5 * tap;
-        if(stuck) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
+        if(tapping) seg([[hx - 3 * Math.cos(ang), hy - 3 * Math.sin(ang)], [hx + 15 * Math.cos(ang), hy + 15 * Math.sin(ang)]], "#7a5634", 1.1);   // reaching out to tap it
         else seg([[hx - 2, hy - 7], [hx + 5, gy]], "#7a5634", 1.1); } },                                            // planted like a staff
     /* 5.86 (Omar): a street sweeper, and a black BMW that gives him money. 5.93: no leaves or wind. 5.96: he sweeps near the side he
        comes from, and the car only appears once he's sweeping. 6.3 (Omar): he also carries a portable traffic light. He sets it down
@@ -1516,7 +1569,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        and flips the light to green, so it drives off on green (6.3-6.4: it left on red). */
     { w(){ const sx = Math.max((W * 0.25 - 30) / 2, 150),   /* 6.35: at least 150 px in, clear of the bawab's chair, shisha and friend (46-81 px) on smaller screens; unchanged from 1400 px wide (was (W * 0.25 - 30) / 2) */ v = 45, arriveT = 8, L = sx + 34;               // L: where the light stands
         const t1 = (L - 8 + 30) / v, t2 = t1 + 0.9, tIn = t2 + 26 / v, tC = tIn + arriveT;    // walk in, set the light down, walk back, sweep until the car stops
-        const cx0 = L + 39, wx = cx0 - 22, N = [cx0 - 11, gy - 19],   /* 6.34: where the driver holds the note out */   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, PLEAD = 2.2, tR = t5 + PLEAD, tP = tR + 2.0;   // 6.32 (Omar): he pleads at the window for PLEAD s before the money comes (6.12-6.31: tP = t5 + 2.0, no pleading). The car stops with its nose just past the light; he walks to its window
+        const cx0 = L + 39, wx = cx0 - 11, N = [cx0, gy - 19],   /* 6.40 (Omar): he stands at the driver's front side window (the car's front window runs from cx0 - 13 to cx0 + 4), not ahead of it by the bonnet (6.12-6.39: wx = cx0 - 22, N = [cx0 - 11, gy - 19]); mirrored rounds put it on the right */   /* 6.34: where the driver holds the note out */   /* 6.12 (Omar): he stops a couple of steps short of the window (was cx0 - 2) */ t5 = tC + 0.3 + (wx - sx) / v, PLEAD = 2.2, tR = t5 + PLEAD, tP = tR + 2.0;   // 6.32 (Omar): he pleads at the window for PLEAD s before the money comes (6.12-6.31: tP = t5 + 2.0, no pleading). The car stops with its nose just past the light; he walks to its window
         const tF = tP + (wx - L - 7) / v, tG = tF + 0.4, tD = tF + 0.9, t6 = tD + 1.3, t7 = t6 + 0.8, cv = 2 * (W + 90 - cx0) / arriveT;   // 6.5 (Omar): back at the light he flips it to green (tG), the car goes (tD), then he picks it up
         return {sx, v, arriveT, L, t1, t2, tIn, tC, cx0, wx, N, t5, tR, tD, tP, tF, tG, t6, t7, cv}; },
       len(){ const w = this.w(); return w.t7 + (w.L + 7 + 40) / w.v; },
@@ -1524,15 +1577,22 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         // the car: comes in from the right once he's sweeping, brakes to a stop at the light, then drives off to the left
         let cx = null; if(u > tIn && u < tC){ const e = u - tIn; cx = W + 90 - (cv * e - cv * e * e / (2 * arriveT)); }
         else if(u >= tC && u < tD) cx = cx0; else if(u >= tD){ const e = u - tD; cx = cx0 - 120 * e * e; }
-        if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black");
+        const drawCar = () => { if(cx != null && cx > -90) car(cx, -1, -cx / 5.5, "black"); };
+        /* 6.43 (Omar): he always begs at the driver's window, the front left one (Egypt drives on the right). On normal rounds that's the
+           side we see. On mirrored rounds we see the passenger side, so he walks round the front of the car to the far side: from the
+           bonnet on he's drawn behind the car and a little higher up (dy), with his head and shoulders above the roof
+           (6.40-6.42: he begged at the near front window both ways, the passenger's on mirrored rounds). */
         // him
-        let x = sx, d = 1, pose = {}, lightAt = null; const sw = Math.sin(u * 6);
+        /* 6.40 (Omar): his sweeping isn't even any more: the strokes speed up and slow down, some are short and some long, the push
+           is quicker than the pull, and every few seconds he stops for a moment and straightens up (6.3-6.39: sw = Math.sin(u * 6)). */
+        const sp = 6 * u - 1.67 * Math.cos(0.9 * u) - 0.39 * Math.cos(2.3 * u), rest = sm(cl((Math.sin(u * 1.1 + 0.5) - 0.82) / 0.12, 0, 1));
+        let x = sx, d = 1, pose = {}, lightAt = null; const sw = (Math.sin(sp) + 0.25 * Math.sin(2 * sp)) * (0.75 + 0.25 * Math.sin(u * 1.3 + 1)) * (1 - rest);
         const walk = (ph, a0) => ({ph, arms: [a0 || [-Math.sin(ph) * 0.4, -Math.sin(ph) * 0.4 + 0.3], [0.45, 0.8]]});   // broom in his other hand
         const holding = [0.55, 0.4];                                                                   // the hand that carries the light
         if(u < t1){ x = -30 + v * u; pose = walk(u * 8.5, holding); }
         else if(u < t2){ x = L - 8; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = 1 - sm((u - t1) / 0.6); }   // bends to set it down
         else if(u < tIn){ x = L - 8 - v * (u - t2); d = -1; pose = walk(u * 8.5); }
-        else if(u < tC + 0.3){ pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2}; }
+        else if(u < tC + 0.3){ x = sx + 3 * Math.sin(2 * Math.PI * (u - tIn) / (tC + 0.3 - tIn)); pose = {arms: [[0.9 + 0.35 * sw, 1.2 + 0.35 * sw], [0.6 + 0.35 * sw, 1.0 + 0.35 * sw]], lean: 0.2 - 0.12 * rest + 0.03 * sw}; }   // 6.40: shuffles a little along his patch
         else if(u < t5){ x = sx + v * (u - tC - 0.3); pose = walk(u * 8.5); }
         else if(u < tR){ x = wx; const e = u - t5, inn = sm(Math.min(e / 0.4, 1)), bob = Math.sin(u * 7);   // 6.32 (Omar): pleading at the window first
           const pray = [[0.5, 2.5 + 0.08 * bob], [0.55, 2.45 + 0.08 * bob]], eat = [[0.3, 2.85 + 0.12 * Math.abs(Math.sin(u * 9))], [0.5, 0.9]];   // palms together, bobbing; then fingers to his mouth: "for food"
@@ -1542,26 +1602,29 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         /* 6.34 (Omar): he takes the note from the driver's hand. It's held out of the window at N and stays there; his near hand
            reaches right up to it (arm angles worked out from where the note is, ikArm), closes on it, and pulls it back to his chest,
            then he pockets it. 6.12-6.33: both hands cupped out low while the note slid down to them; lean 0 to 0.38 from tR. */
-        else if(u < tR + 1.6){ x = wx; const e = u - tR, lean = 0.3 + 0.08 * sm(Math.min(e / 0.4, 1)), sh = [x + Math.sin(lean) * 12.5, gy - 17 - Math.cos(lean) * 12.5];
+        else if(u < tR + 1.6){ x = wx; const e = u - tR, lean = 0.3 + 0.08 * sm(Math.min(e / 0.4, 1)), sh = [x + Math.sin(lean) * 12.5, gy - 4 * (flip ? 1 : 0) - 17 - Math.cos(lean) * 12.5];   // 6.43: 4 px higher on the far side
           const eat = [0.3, 2.85], bl = (a, b, f) => [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f];
           const near = e < 1.0 ? bl(eat, ikArm(sh, N), sm(cl((e - 0.3) / 0.7, 0, 1))) : e < 1.15 ? ikArm(sh, N)   /* straight from his mouth to the note */
-            : ikArm(sh, bl(N, [x + 6, gy - 22], sm((e - 1.15) / 0.45)));
+            : ikArm(sh, bl(N, [x + 6, gy - 4 * (flip ? 1 : 0) - 22], sm((e - 1.15) / 0.45)));
           pose = {arms: [near, [0.35, 0.6]], lean}; }   // his other hand (with the broom) stays low
         else if(u < tP){ x = wx; pose = {arms: [[0.1, -0.35], [0.45, 0.8]], lean: 0.38 * (1 - sm((u - tR - 1.6) / 0.4))}; }   // straightens up and pockets it
         else if(u < tF){ x = wx - v * (u - tP); d = -1; pose = walk(u * 8.5); }
         else if(u < t6){ x = L + 7; d = -1; pose = u < tF + 0.7 ? {arms: [[1.2 + 0.15 * sm((u - tF) / 0.35), 1.3], [0.45, 0.8]]} : {arms: [[0.15, 0.25], [0.45, 0.8]]}; }   // reaches up and flips it to green, then waits for the car to go
         else if(u < t7){ x = L + 7; d = -1; pose = {arms: [[0.9, 1.2], [0.45, 0.8]], lean: 0.35}; lightAt = sm((u - t6 - 0.2) / 0.6); }   // picks it up
         else { x = L + 7 - v * (u - t7); d = -1; pose = walk(u * 8.5, holding); }
+        const far = flip ? sm(cl((x - (cx0 - 34)) / 10, 0, 1)) * (u > tIn && u < tD + 0.5 ? 1 : 0) : 0, G = gy - 4 * far;   // how far round the car he is
+        if(far < 0.5) drawCar();
         const carried = u < t1 || u >= t7;
         const state = u < tG ? "red" : "green";
         if(!carried && lightAt == null) trafficLight(L, gy, state);                                   // standing: red, until he flips it to green
-        const S2 = person(x, gy, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
+        const S2 = person(x, G, d, {shirt: "#f07c1e", pants: "#e5701a", hair: "#1a1410", skin: "#7f4f31", mo: true, ...pose});
         if(carried || lightAt != null){ const [hx, hy] = S2.hands[0], k = carried ? 1 : lightAt;        // in his hand, or on its way between hand and ground
           trafficLight(L + (hx - L) * k, gy - 3 * k, !carried && k < 0.5 ? state : null); }   // 6.10: carried by the pole, its base just off the ground
-        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping
+        if(u >= tIn && u < tC + 0.3){ const h = S2.hands[0], bxp = h[0] + 13, sx2 = sw * 3.5; seg([h, [bxp + sx2, gy - 2]], "#8a6a3a", 1.2);   // the broom, sweeping (never round the car)
           poly([[bxp + sx2 - 1, gy - 3], [bxp + sx2 + 1, gy - 3], [bxp + sx2 + 6, gy], [bxp + sx2 - 3, gy]], "#b8935a"); }
-        else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, gy - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
-          poly([[bx - 1.5, gy - 4], [bx + 1.5, gy - 4], [bx + 4.5, gy], [bx - 4.5, gy]], "#b8935a"); }
+        else { const [hx, hy] = S2.hands[1], bx = hx - 6 * d; seg([[hx + 5 * d, hy - 8], [bx, G - 3]], "#8a6a3a", 1.2);   // carried, head trailing on the ground
+          poly([[bx - 1.5, G - 4], [bx + 1.5, G - 4], [bx + 4.5, G], [bx - 4.5, G]], "#b8935a"); }
+        if(far >= 0.5) drawCar();   // 6.43: in front of him while he's on the far side
         // the money: poked out of the driver's window to N (6.34), held there until he takes it, then in his hand until it's in his pocket
         const e = u - tR, inHand = e >= 1.15 && e < 1.9, out = e > 0.2 && e < 1.15;
         if(out || inHand){ const [nx, ny] = inHand ? S2.hands[0] : [N[0] + 5 * (1 - sm(Math.min((e - 0.2) / 0.3, 1))), N[1]];
@@ -1603,13 +1666,17 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     requestAnimationFrame(frame);
     /* 5.59 (Omar): unlike the kickers, the street is hidden while a clue is open (5.52-5.58: drawn faintly behind it).
        5.67 (Omar): and paused: its clock stops while the clue is open, so the scene carries on from the same moment after
-       (5.59-5.66: it kept running hidden). */
+       (5.59-5.66: it kept running hidden).
+       6.40 (Omar): it plays on while a clue is open, faintly, like the kickers (#street.faint): its clock keeps running and it's
+       drawn at 30% over the dark backdrop but never over the clue box. To go back to 5.67, restore:
+         if(open) t0 += now - last; last = now; cv.classList.toggle("on", on && !open); if(!on || open) return; */
     const open = !!S.cur && !$("#card").hidden, on = showing();
-    if(open) t0 += now - last; last = now;
-    cv.classList.toggle("on", on && !open); if(!on || open) return;
+    last = now;
+    cv.classList.toggle("on", on); cv.classList.toggle("faint", on && open); if(!on) return;
     const sc = $("#scores").getBoundingClientRect(), top = sc.top - H + 1; cv.style.top = top + "px";
     const t = ((now - t0) / 1000) * slow; sceneT = t;
     g.clearRect(0, 0, W, H); g.save();
+    if(open){ const b = $("#clue").getBoundingClientRect(); g.beginPath(); g.rect(0, 0, W, H); g.rect(b.left, b.top - top, b.width, b.height); g.clip("evenodd"); }  // not over the clue box
     if(act < 0 || t > actAt + actLen){ if(t >= nextAt){ act = (act + 1) % ACTS.length; actAt = t; actLen = ACTS[act].len(); flip = Math.floor(shown++ / ACTS.length) % 2 === 1; bawabOnAct(t); nextAt = t + actLen + 2.5 + Math.random() * 3; } }
     lastMarks = marks; marks = [];   // 5.86: the bawab sits on the street's own edge, outside the mirroring
     drawBawab(t, lastMarks.some(m => Math.abs(m - (bawab.side > 0 ? 46 : W - 46)) < 60));
@@ -2098,7 +2165,9 @@ function showPack(key, src){ const c = S.cur; if(!c || !src) return; const r = i
 const PICKS = {}, WARM = {}, DIRECT = {};
 function imgRefFor(cat,lvl,idx){ const c = catById(cat); if(!c) return null; const e = pool(cat,lvl)[idx]; if(!e) return null;
   if(c.type === "photo") return photos[norm(e[0])] || null;
-  if(c.type === "text" && typeof e[2] === "string") return e[2]; return null; }
+  if(c.type === "text" && typeof e[2] === "string") return e[2];
+  if(c.type === "flag" && FLAGCODE[e]) return `photos/flags/${FLAGCODE[e]}.svg`;   // 6.40 (Omar: flags lagged): each tile's flag downloads with the board, like photos (6.19-6.39: only when its clue opened)
+  return null; }
 /* 5.4: background downloads go one or two at a time, at low priority, and pause while a clue is open, so the photo you
    are looking at never has to share the connection with 29 others (5.3 started them all at once). */
 const WQ = []; let wBusy = 0;
@@ -2256,7 +2325,7 @@ function renderClue(){
   const badges = [c.x2!=null && S.teams[c.x2] ? `<span class="badge">×2 · ${esc(S.teams[c.x2].name)}</span>` : "", ...Object.keys(c.two).map(i => S.teams[i] ? `<span class="badge">2 answers allowed · ${esc(S.teams[i].name)}</span>` : "")].filter(Boolean).join("");
   const canTwo = S.power && !S.ffa && !c.preview && !c.revealed ? /* only the team whose turn it is can use 2 answers */ S.teams.map((t,i) => (i===(S.turn||0) && !t.twoUsed && !c.two[i]) ? `<button class="pwb" data-two="${i}">${esc(t.name)}: 2 answers</button>` : "").filter(Boolean).join("") : "";
   $("#clue").innerHTML = `
-    <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${c.tile ? esc(catById(c.tile).name) + " · " : ""}${esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
+    <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${c.tile ? esc(catById(c.tile).name) + " · " : ""}${c.tile ? `<span class="msrc">${esc(cat.name)}</span>` : esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
     ${badges ? `<div class="badges">${badges}</div>` : ""}
     <p class="qtext${(p.q||"").length > 150 ? " long" : ""}${S.cur.cat==="form" ? " lineup" : ""}">${esc(p.q)}</p>
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
@@ -2409,7 +2478,8 @@ document.addEventListener("fullscreenchange", fsLabel); document.addEventListene
   let timer = 0, on = null;
   const hide = () => { clearTimeout(timer); on = null; tip.classList.remove("on"); };
   const show = el => {
-    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").trim())}</b>${esc(el.dataset.tip)}`; tip.classList.add("on");
+    const [t0, ...li] = el.dataset.tip.split("\n");   // 6.40: lines after the first become a bullet list (a mix's categories)
+    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").replace(/✎/, "").trim())}</b>${esc(t0)}${li.length ? `<ul class="${li.length > 12 ? "cols" : ""}">${li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`; tip.classList.add("on");
     const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, m = 12;
     const x = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m), below = r.bottom + 10 + h < innerHeight - m;
     tip.style.left = x + "px"; tip.style.top = (below ? r.bottom + 10 : Math.max(m, r.top - 10 - h)) + "px"; };

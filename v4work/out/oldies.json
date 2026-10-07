@@ -1,0 +1,422 @@
+{
+ "id": "oldies",
+ "name": "Oldies",
+ "type": "text",
+ "desc": "The songs that will never die, from the 50s to the 90s: name the singer or band. Plus a few classics in Arabic.",
+ "data": {
+  "100": [
+   [
+    "Which band sang 'Africa' (1982)?",
+    "Toto"
+   ],
+   [
+    "Who wrote and first recorded 'Knockin' on Heaven's Door' (1973)?",
+    "Bob Dylan"
+   ],
+   [
+    "Which band sang 'Hotel California'?",
+    "Eagles"
+   ],
+   [
+    "Which Queen song is a six-minute 'mock opera' with 'Galileo' in it?",
+    "Bohemian Rhapsody"
+   ],
+   [
+    "Who sang 'Billie Jean'?",
+    "Michael Jackson"
+   ],
+   [
+    "Which Swedish band sang 'Dancing Queen'?",
+    "ABBA"
+   ],
+   [
+    "Which band sang 'Hey Jude'?",
+    "The Beatles"
+   ],
+   [
+    "Who sang 'Imagine' (1971)?",
+    "John Lennon"
+   ],
+   [
+    "Who sang 'Careless Whisper', with its famous sax riff?",
+    "George Michael"
+   ],
+   [
+    "Which band sang 'Smells Like Teen Spirit'?",
+    "Nirvana"
+   ],
+   [
+    "Who sang 'Like a Prayer'?",
+    "Madonna"
+   ],
+   [
+    "Which Bon Jovi song is about Tommy and Gina?",
+    "Livin' on a Prayer"
+   ],
+   [
+    "Who sang 'I Will Always Love You' in The Bodyguard?",
+    "Whitney Houston"
+   ],
+   [
+    "Which band sang 'Sweet Child o' Mine'?",
+    "Guns N' Roses"
+   ],
+   [
+    "Which brothers sang 'Stayin' Alive'?",
+    "Bee Gees"
+   ],
+   [
+    "Who sang 'My Heart Will Go On' from Titanic?",
+    "Celine Dion"
+   ],
+   [
+    "Which Norwegian band sang 'Take On Me'?",
+    "a-ha"
+   ],
+   [
+    "Who sang 'Enta Omri' (1964)?",
+    "Umm Kulthum"
+   ],
+   [
+    "Who sang 'Habibi Ya Nour El Ein' (1996)?",
+    "Amr Diab"
+   ],
+   [
+    "Which band sang 'Wonderwall'?",
+    "Oasis"
+   ]
+  ],
+  "200": [
+   [
+    "Which band sang 'The Logical Song' (1979)?",
+    "Supertramp"
+   ],
+   [
+    "Which German band whistled their way through 'Wind of Change'?",
+    "Scorpions"
+   ],
+   [
+    "Which band sang 'Every Breath You Take'?",
+    "The Police"
+   ],
+   [
+    "Which Irish band sang 'Zombie' (1994)?",
+    "The Cranberries"
+   ],
+   [
+    "Who wrote and first recorded 'Hallelujah' (1984)?",
+    "Leonard Cohen"
+   ],
+   [
+    "Which band sang 'Losing My Religion'?",
+    "R.E.M."
+   ],
+   [
+    "Which band sang 'Stairway to Heaven'?",
+    "Led Zeppelin"
+   ],
+   [
+    "Which band sang 'Another Brick in the Wall'?",
+    "Pink Floyd"
+   ],
+   [
+    "Who sang 'What a Wonderful World'?",
+    "Louis Armstrong"
+   ],
+   [
+    "Who sang 'Purple Rain'?",
+    "Prince"
+   ],
+   [
+    "Which band sang 'Don't Stop Believin''?",
+    "Journey"
+   ],
+   [
+    "Who sang 'Your Song' (1970)?",
+    "Elton John"
+   ],
+   [
+    "Who sang 'Gangsta's Paradise' (1995)?",
+    "Coolio"
+   ],
+   [
+    "Which band sang '(I Can't Get No) Satisfaction'?",
+    "The Rolling Stones"
+   ],
+   [
+    "Who sang 'Ain't No Mountain High Enough' with Tammi Terrell?",
+    "Marvin Gaye"
+   ],
+   [
+    "Who sang 'Hello' (1984), with the clay-head music video?",
+    "Lionel Richie"
+   ],
+   [
+    "Who sang 'Respect' (1967)?",
+    "Aretha Franklin"
+   ],
+   [
+    "Which duo sang 'The Sound of Silence'?",
+    "Simon & Garfunkel"
+   ],
+   [
+    "Who sang 'Ahwak'?",
+    "Abdel Halim Hafez"
+   ],
+   [
+    "Who sang 'I Will Survive'?",
+    "Gloria Gaynor"
+   ]
+  ],
+  "300": [
+   [
+    "Which band sang 'Tainted Love' (1981)?",
+    "Soft Cell"
+   ],
+   [
+    "Which band recorded 'The Final Countdown'?",
+    "Europe"
+   ],
+   [
+    "Whose 'Video Killed the Radio Star' was the first video ever shown on MTV?",
+    "The Buggles"
+   ],
+   [
+    "Who sang 'Space Oddity' about Major Tom?",
+    "David Bowie"
+   ],
+   [
+    "Which band sang 'Bitter Sweet Symphony'?",
+    "The Verve"
+   ],
+   [
+    "Who sang 'The Lady in Red'?",
+    "Chris de Burgh"
+   ],
+   [
+    "Which band sang 'Creep' (1992)?",
+    "Radiohead"
+   ],
+   [
+    "Which band's 'Dreams' (1977) went viral again on TikTok in 2020?",
+    "Fleetwood Mac"
+   ],
+   [
+    "Which band sang 'Everybody Wants to Rule the World'?",
+    "Tears for Fears"
+   ],
+   [
+    "Which group sang 'Rasputin' and 'Ma Baker'?",
+    "Boney M."
+   ],
+   [
+    "Who sang 'Running Up That Hill', a hit again after Stranger Things?",
+    "Kate Bush"
+   ],
+   [
+    "Who sang 'Brown Eyed Girl'?",
+    "Van Morrison"
+   ],
+   [
+    "Which band sang 'The House of the Rising Sun' (1964)?",
+    "The Animals"
+   ],
+   [
+    "Who sang 'Stand by Me' (1961)?",
+    "Ben E. King"
+   ],
+   [
+    "Who sang 'Sweet Caroline'?",
+    "Neil Diamond"
+   ],
+   [
+    "Who sang 'Take Me Home, Country Roads'?",
+    "John Denver"
+   ],
+   [
+    "Which Spanish duo sang 'Macarena'?",
+    "Los del Río"
+   ],
+   [
+    "Which band sang 'Heart of Glass'?",
+    "Blondie"
+   ],
+   [
+    "Who sang 'Girls Just Want to Have Fun'?",
+    "Cyndi Lauper"
+   ],
+   [
+    "Who sang 'Kiss from a Rose'?",
+    "Seal"
+   ],
+   [
+    "Who sang 'Ain't No Sunshine'?",
+    "Bill Withers"
+   ]
+  ],
+  "400": [
+   [
+    "Which Supertramp album has 'The Logical Song' on it?",
+    "Breakfast in America"
+   ],
+   [
+    "Who sang 'La Bamba' in 1958, months before dying in the plane crash of 'the day the music died'?",
+    "Ritchie Valens"
+   ],
+   [
+    "Which band sang 'Black Hole Sun'?",
+    "Soundgarden"
+   ],
+   [
+    "Which group had a worldwide hit with 'Lambada' (1989)?",
+    "Kaoma"
+   ],
+   [
+    "Which girl group's 1986 cover of 'Venus' went to No. 1 in the US?",
+    "Bananarama"
+   ],
+   [
+    "Which Italian group sang 'Sarà perché ti amo'?",
+    "Ricchi e Poveri"
+   ],
+   [
+    "Which Alexandria-born Greek singer sang 'Forever and Ever' (1973)?",
+    "Demis Roussos"
+   ],
+   [
+    "Which band sang 'Boys Don't Cry' and 'Friday I'm in Love'?",
+    "The Cure"
+   ],
+   [
+    "Which band sang 'Don't You (Forget About Me)' from The Breakfast Club?",
+    "Simple Minds"
+   ],
+   [
+    "Which group sang 'Rhythm Is a Dancer'?",
+    "Snap!"
+   ],
+   [
+    "Who sang 'What Is Love' (1993)?",
+    "Haddaway"
+   ],
+   [
+    "Who sang and composed 'Ya Msafer Wahdak'?",
+    "Mohamed Abdel Wahab"
+   ],
+   [
+    "Which band sang 'Mr. Blue Sky'?",
+    "Electric Light Orchestra (ELO)"
+   ],
+   [
+    "Which Italian tenor named his 2013 album and concert film 'Love in Portofino'?",
+    "Andrea Bocelli"
+   ],
+   [
+    "Who sang 'Ya Bent El Sultan'?",
+    "Ahmed Adaweya"
+   ],
+   [
+    "Who sang 'Li Beirut'?",
+    "Fairuz"
+   ],
+   [
+    "Who sang 'In the Air Tonight', with its famous drum break?",
+    "Phil Collins"
+   ],
+   [
+    "Who sang 'Englishman in New York'?",
+    "Sting"
+   ],
+   [
+    "Who sang 'Mambo No. 5' (1999)?",
+    "Lou Bega"
+   ],
+   [
+    "Which Italian group sang 'Blue (Da Ba Dee)'?",
+    "Eiffel 65"
+   ]
+  ],
+  "500": [
+   [
+    "Which Cairo-born singer turned 'Love in Portofino' into a hit in 1959?",
+    "Dalida"
+   ],
+   [
+    "Which band sang 'Smalltown Boy' (1984)?",
+    "Bronski Beat"
+   ],
+   [
+    "Who sang 'Self Control' (1984)?",
+    "Laura Branigan"
+   ],
+   [
+    "Who sang 'Je t'aime… moi non plus' with Jane Birkin?",
+    "Serge Gainsbourg"
+   ],
+   [
+    "Who sang 'Volare' ('Nel blu dipinto di blu') in 1958?",
+    "Domenico Modugno"
+   ],
+   [
+    "Which Italian group sang 'Tarzan Boy' (1985)?",
+    "Baltimora"
+   ],
+   [
+    "Which Brazilian singer had a worldwide hit with 'Feelings' (1975)?",
+    "Morris Albert"
+   ],
+   [
+    "Which group sang 'The Lion Sleeps Tonight' (1961)?",
+    "The Tokens"
+   ],
+   [
+    "Who sang 'Tom's Diner'?",
+    "Suzanne Vega"
+   ],
+   [
+    "Which band sang 'Le Freak'?",
+    "Chic"
+   ],
+   [
+    "Which band sang 'Living Next Door to Alice'?",
+    "Smokie"
+   ],
+   [
+    "Who wrote 'Moonlight Shadow' (1983), sung by Maggie Reilly?",
+    "Mike Oldfield"
+   ],
+   [
+    "Which band sang 'Owner of a Lonely Heart'?",
+    "Yes"
+   ],
+   [
+    "Which band sang 'Hold the Line' and 'Rosanna'?",
+    "Toto (yes, the 'Africa' band)"
+   ],
+   [
+    "Which Dutch band sang 'Venus' first, in 1969?",
+    "Shocking Blue"
+   ],
+   [
+    "Which band sang 'Kayleigh' (1985)?",
+    "Marillion"
+   ],
+   [
+    "Who sang 'Sailing' (1975)?",
+    "Rod Stewart"
+   ],
+   [
+    "Which German group sang 'Moskau' and 'Dschinghis Khan'?",
+    "Dschinghis Khan"
+   ],
+   [
+    "Which band sang 'Brother Louie' (1986)?",
+    "Modern Talking"
+   ],
+   [
+    "Which band sang 'Wish You Were Here' (1975)?",
+    "Pink Floyd"
+   ]
+  ]
+ }
+}

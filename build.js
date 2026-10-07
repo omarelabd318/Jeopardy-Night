@@ -38,15 +38,17 @@ const BALLS = ${J(fs.existsSync(W+'/balls') ? fs.readdirSync(W+'/balls').filter(
 const MIXES = [
   ["mixeg1", "Egypt Mix 1", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
   ["mixeg2", "Egypt Mix 2", ["egy","egh","cairo","egyph"]],
-  ["mixguess", "Guess the … Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   /* 6.26 (Omar): a space before the ellipsis (was "Guess the… Mix") */ // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
+  ["mixguess", "Guess the ____ Mix", ["car","actor","footy","person","foodpic","logo","gctry"]],   /* 6.40 (Omar): a blank line instead of the ellipsis (6.26-6.39: "Guess the … Mix"; before 6.26: "Guess the… Mix") */ // 6.21 (Omar): the photo rounds only (6.20 also had Guess the Year, Song, Year: Football and Score)
   ["mixmap", "Maps & World Mix", ["geo","flag","shape","pin","ctry","lang","trans"]],
-  ["mixparty", "Party Games Mix", ["emov","link","near","price","headl","order"]],
+  ["mixparty", "Party Games Mix", ["link","near","price","headl","order"]],   // 6.40: Emoji Movies & TV moved to Entertainment Mix 2 with its category (was first here)
   ["mixkn1", "Knowledge Mix 1", ["his","islam","year","sci","cal","brand"]],
   ["mixkn2", "Knowledge Mix 2", ["ww2","space","food","ffood","mb","curr","tg"]],
   ["mixent1", "Entertainment Mix 1", ["blockbuster","tvmix","plot","igf","lyric","song"]],
   ["tvmix", "TV Show Mix", ["got","peaky","bb","pb","st","office","friends","himym"]],   // 6.38: the eight show categories
-  ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel"]],
-  ["mixfb", "Football Mix", ${J(FOOTBALL_IDS)}]];
+  ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel","emov"]],
+  ["mixfb", "Football Mix", ${J(FOOTBALL_IDS)}],
+  /* 6.40 (Omar): Everything Mix, last: every category except Act It Out (both), One Word Clues, the locked NSFW one and the hidden ones */
+  ["mixall", "Everything Mix", CATS.filter(c => !c.mode && !["act","acteg","pw","x18","ptrap"].includes(c.id)).map(c => c.id)]];
 MIXES.forEach(([id,name]) => { CATS.push({id, name, type:"mix"}); DATA[id] = {100:[],200:[],300:[],400:[],500:[]}; });
 MIXES.forEach(([id,name,src]) => { const c = CATS.find(x => x.id===id); c.src = src.filter(s => CATS.some(x => x.id===s));   // 6.38: after all are added, so a mix can include another (TV Show Mix)
   c.desc = "A mix of " + c.src.map(s => CATS.find(x => x.id===s).name).join(", ") + ". Each tile picks one of them."; });

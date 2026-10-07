@@ -1,0 +1,722 @@
+{
+ "id": "link",
+ "name": "What's the Link?",
+ "type": "text",
+ "desc": "Four clues with something in common. Say what links them.",
+ "data": {
+  "100": [
+   [
+    "What's the link? Mercury · Venus · Mars · Jupiter",
+    "Planets"
+   ],
+   [
+    "What's the link? Messi · Ronaldo · Modrić · Benzema",
+    "Ballon d'Or winners"
+   ],
+   [
+    "What's the link? Ross · Rachel · Monica · Chandler",
+    "Friends characters"
+   ],
+   [
+    "What's the link? Amazon · Nile · Danube · Thames",
+    "Rivers"
+   ],
+   [
+    "What's the link? Pepsi · Sprite · Fanta · 7Up",
+    "Soft drinks"
+   ],
+   [
+    "What's the link? Hearts · Clubs · Spades · Diamonds",
+    "Playing-card suits"
+   ],
+   [
+    "What's the link? Iron Man · Thor · Hulk · Black Widow",
+    "Avengers"
+   ],
+   [
+    "What's the link? Harry · Hermione · Ron · Neville",
+    "Gryffindor students (Harry Potter)"
+   ],
+   [
+    "What's the link? Arsenal · Chelsea · Tottenham · Fulham",
+    "London football clubs"
+   ],
+   [
+    "What's the link? Python · Java · Ruby · Swift",
+    "Programming languages"
+   ],
+   [
+    "What's the link? Mario · Luigi · Peach · Bowser",
+    "Super Mario characters"
+   ],
+   [
+    "What's the link? Karnak · Abu Simbel · Valley of the Kings · Philae",
+    "Ancient Egyptian sites"
+   ],
+   [
+    "What's the link? Shrek · Donkey · Fiona · Lord Farquaad",
+    "Characters in Shrek"
+   ],
+   [
+    "What's the link? Instagram · WhatsApp · Facebook · Threads",
+    "Apps owned by Meta"
+   ],
+   [
+    "What's the link? Juventus · AC Milan · Inter · Napoli",
+    "Italian (Serie A) football clubs"
+   ],
+   [
+    "What's the link? Nike · Puma · Reebok · Under Armour",
+    "Sportswear brands"
+   ],
+   [
+    "What's the link? Hurghada · El Gouna · Marsa Alam · Sharm El Sheikh",
+    "Egyptian Red Sea resorts"
+   ],
+   [
+    "What's the link? Oxygen · Hydrogen · Nitrogen · Helium",
+    "Elements that are gases at room temperature"
+   ],
+   [
+    "What's the link? John · Paul · George · Ringo",
+    "The Beatles"
+   ],
+   [
+    "What's the link? Apple · Samsung · Huawei · Xiaomi",
+    "Smartphone brands"
+   ],
+   [
+    "What's the link? Real Madrid · Barcelona · Atlético · Sevilla",
+    "Spanish (La Liga) football clubs"
+   ],
+   [
+    "What's the link? Woody · Buzz · Jessie · Rex",
+    "Toy Story characters"
+   ],
+   [
+    "What's the link? Lion · Tiger · Leopard · Cheetah",
+    "Big cats"
+   ],
+   [
+    "What's the link? Koshari · Molokhia · Ful · Ta'ameya",
+    "Egyptian dishes"
+   ],
+   [
+    "What's the link? Mickey · Minnie · Donald · Goofy",
+    "Disney cartoon characters"
+   ],
+   [
+    "What's the link? Cairo · Alexandria · Giza · Luxor",
+    "Egyptian cities"
+   ],
+   [
+    "What's the link? Piano · Guitar · Violin · Drums",
+    "Musical instruments"
+   ],
+   [
+    "What's the link? Paris · London · Rome · Madrid",
+    "European capitals"
+   ],
+   [
+    "What's the link? Elsa · Anna · Olaf · Kristoff",
+    "Frozen characters"
+   ],
+   [
+    "What's the link? Spring · Summer · Autumn · Winter",
+    "The seasons"
+   ],
+   [
+    "What's the link? Pikachu · Charmander · Bulbasaur · Squirtle",
+    "Pokémon"
+   ],
+   [
+    "What's the link? Rock · Paper · Scissors",
+    "The hand game rock, paper, scissors"
+   ],
+   [
+    "What's the link? Batman · Superman · Wonder Woman · Aquaman",
+    "The Justice League"
+   ],
+   [
+    "What's the link? Gold · Silver · Bronze",
+    "Olympic medals"
+   ],
+   [
+    "What's the link? Cappuccino · Latte · Espresso · Mocha",
+    "Coffee drinks"
+   ]
+  ],
+  "200": [
+   [
+    "What's the link? Bat · Spider · Iron · Super",
+    "Add '-man' to make a superhero"
+   ],
+   [
+    "What's the link? Apple · BlackBerry · Orange · Mango",
+    "Fruits that are also brand names"
+   ],
+   [
+    "What's the link? Gemini · Leo · Aries · Libra",
+    "Star signs"
+   ],
+   [
+    "What's the link? Everest · K2 · Kilimanjaro · Mont Blanc",
+    "Mountains"
+   ],
+   [
+    "What's the link? Big Ben · Eiffel · Pisa · CN",
+    "Famous towers"
+   ],
+   [
+    "What's the link? Anfield · Camp Nou · San Siro · Bernabéu",
+    "Football stadiums"
+   ],
+   [
+    "What's the link? Ahly · Zamalek · Ismaily · Al Masry",
+    "Egyptian football clubs"
+   ],
+   [
+    "What's the link? Venice · Amsterdam · Bruges · Copenhagen",
+    "Cities famous for canals"
+   ],
+   [
+    "What's the link? Pac-Man · Tetris · Snake · Space Invaders",
+    "Classic video games"
+   ],
+   [
+    "What's the link? Thor · Loki · Odin · Freya",
+    "Norse gods"
+   ],
+   [
+    "What's the link? Sahara · Gobi · Atacama · Kalahari",
+    "Deserts"
+   ],
+   [
+    "What's the link? Scar · Jafar · Ursula · Hades",
+    "Disney villains"
+   ],
+   [
+    "What's the link? Mars · Snickers · Twix · Bounty",
+    "Chocolate bars made by Mars"
+   ],
+   [
+    "What's the link? Fire · Water · Earth · Air",
+    "The four classical elements"
+   ],
+   [
+    "What's the link? Toyota · Honda · Nissan · Mazda",
+    "Japanese car brands"
+   ],
+   [
+    "What's the link? Cyprus · Malta · Sicily · Crete",
+    "Mediterranean islands"
+   ],
+   [
+    "What's the link? Fairuz · Umm Kulthum · Warda · Asmahan",
+    "Legendary Arab female singers"
+   ],
+   [
+    "What's the link? Sun · Mon · Fri · Satur",
+    "Add '-day' to make a day of the week"
+   ],
+   [
+    "What's the link? Kevin · Stuart · Bob · Dave",
+    "Minions"
+   ],
+   [
+    "What's the link? Racecar · Level · Radar · Kayak",
+    "Palindromes (read the same backwards)"
+   ],
+   [
+    "What's the link? Ramadan · Shawwal · Rajab · Muharram",
+    "Months of the Islamic (Hijri) calendar"
+   ],
+   [
+    "What's the link? Simba · Nala · Mufasa · Timon",
+    "The Lion King characters"
+   ],
+   [
+    "What's the link? Snow White · Cinderella · Ariel · Belle",
+    "Disney princesses"
+   ],
+   [
+    "What's the link? Burger King · KFC · McDonald's · Subway",
+    "Fast-food chains"
+   ],
+   [
+    "What's the link? Lakers · Bulls · Celtics · Warriors",
+    "NBA teams"
+   ],
+   [
+    "What's the link? Sonic · Mario · Pikachu · Link",
+    "Video game characters"
+   ],
+   [
+    "What's the link? Penne · Fusilli · Spaghetti · Farfalle",
+    "Pasta shapes"
+   ],
+   [
+    "What's the link? Hamlet · Macbeth · Othello · King Lear",
+    "Shakespeare tragedies"
+   ],
+   [
+    "What's the link? Adel Emam · Mohamed Henedy · Ahmed Helmy · Mohamed Saad",
+    "Egyptian comedy film stars"
+   ],
+   [
+    "What's the link? Rose · Tulip · Jasmine · Lotus",
+    "Flowers"
+   ],
+   [
+    "What's the link? Leonardo · Raphael · Donatello · Michelangelo",
+    "Ninja Turtles (and Renaissance artists)"
+   ],
+   [
+    "What's the link? Bugs Bunny · Daffy Duck · Porky Pig · Tweety",
+    "Looney Tunes characters"
+   ],
+   [
+    "What's the link? Do · Re · Mi · Fa",
+    "Notes of the musical scale (solfège)"
+   ],
+   [
+    "What's the link? Nasser · Sadat · Mubarak · Morsi",
+    "Egyptian presidents"
+   ],
+   [
+    "What's the link? Poker · Bridge · Solitaire · Blackjack",
+    "Card games"
+   ],
+   [
+    "What's the link? Salah · Trezeguet · Marmoush · Elneny",
+    "Egypt national team players"
+   ]
+  ],
+  "300": [
+   [
+    "What's the link? Freddie · Brian · Roger · John",
+    "Members of Queen"
+   ],
+   [
+    "What's the link? Washington · Jefferson · Roosevelt · Lincoln",
+    "Faces on Mount Rushmore"
+   ],
+   [
+    "What's the link? Kiwi · Dodo · Penguin · Ostrich",
+    "Birds that can't fly"
+   ],
+   [
+    "What's the link? Rand · Peso · Won · Rupee",
+    "Currencies"
+   ],
+   [
+    "What's the link? Beetle · Mustang · Jaguar · Impala",
+    "Cars named after animals"
+   ],
+   [
+    "What's the link? Hamilton · Schumacher · Senna · Verstappen",
+    "F1 world champions"
+   ],
+   [
+    "What's the link? Salah · Elneny · Trezeguet · Marmoush",
+    "Egyptians who played in the Premier League"
+   ],
+   [
+    "What's the link? Stark · Lannister · Targaryen · Baratheon",
+    "Game of Thrones houses"
+   ],
+   [
+    "What's the link? Rio · Sydney · Tokyo · Athens",
+    "Summer Olympics host cities"
+   ],
+   [
+    "What's the link? Netflix · Shahid · Disney+ · Hulu",
+    "Streaming services"
+   ],
+   [
+    "What's the link? Neo · Morpheus · Trinity · Agent Smith",
+    "Characters in The Matrix"
+   ],
+   [
+    "What's the link? Holmes · Poirot · Marple · Columbo",
+    "Fictional detectives"
+   ],
+   [
+    "What's the link? The Godfather · Rocky · Titanic · Parasite",
+    "Best Picture Oscar winners"
+   ],
+   [
+    "What's the link? Mourinho · Guardiola · Zidane · Ancelotti",
+    "Managers who've won the Champions League"
+   ],
+   [
+    "What's the link? Breaking Bad · Better Call Saul · El Camino",
+    "Created by Vince Gilligan (the Breaking Bad universe)"
+   ],
+   [
+    "What's the link? Nepal · Bolivia · Switzerland · Paraguay",
+    "Landlocked countries"
+   ],
+   [
+    "What's the link? Femur · Tibia · Fibula · Patella",
+    "Bones in the leg"
+   ],
+   [
+    "What's the link? Mahfouz · Sadat · ElBaradei · Zewail",
+    "Egyptian Nobel Prize winners"
+   ],
+   [
+    "What's the link? Puma · Lynx · Dove · Red Bull",
+    "Brands named after animals"
+   ],
+   [
+    "What's the link? Off the Wall · Thriller · Bad · Dangerous",
+    "Michael Jackson albums"
+   ],
+   [
+    "What's the link? Kafr El Sheikh · Sohag · Matrouh · Damietta",
+    "Egyptian governorates"
+   ],
+   [
+    "What's the link? Watson · Hudson · Moriarty · Lestrade",
+    "Sherlock Holmes characters"
+   ],
+   [
+    "What's the link? Mercury · Gemini · Apollo · Artemis",
+    "NASA space programmes"
+   ],
+   [
+    "What's the link? Golden Gate · Tower · Brooklyn · Qasr El Nil",
+    "Famous bridges"
+   ],
+   [
+    "What's the link? Henry · Shearer · Kane · Salah",
+    "Premier League Golden Boot winners"
+   ],
+   [
+    "What's the link? Dumbledore · Snape · McGonagall · Lupin",
+    "Hogwarts teachers"
+   ],
+   [
+    "What's the link? Oslo · Stockholm · Copenhagen · Helsinki",
+    "Nordic capitals"
+   ],
+   [
+    "What's the link? Ra · Osiris · Isis · Anubis",
+    "Ancient Egyptian gods"
+   ],
+   [
+    "What's the link? Pepper · Rhodey · Happy · Jarvis",
+    "Iron Man's inner circle (Marvel)"
+   ],
+   [
+    "What's the link? Oud · Qanun · Ney · Tabla",
+    "Arabic musical instruments"
+   ],
+   [
+    "What's the link? Amr Diab · Mohamed Mounir · Tamer Hosny · Hamaki",
+    "Egyptian pop singers"
+   ],
+   [
+    "What's the link? Diamond · Ruby · Emerald · Sapphire",
+    "Gemstones"
+   ],
+   [
+    "What's the link? Venus · Serena · Steffi · Martina",
+    "Women's tennis champions (the Williams sisters, Graf, Navratilova)"
+   ],
+   [
+    "What's the link? Messi · Suárez · Neymar",
+    "Barcelona's 'MSN' front three"
+   ],
+   [
+    "What's the link? Avatar · Titanic · Terminator · Aliens",
+    "James Cameron films"
+   ],
+   [
+    "What's the link? Jaws · E.T. · Jurassic Park · Schindler's List",
+    "Steven Spielberg films"
+   ]
+  ],
+  "400": [
+   [
+    "What's the link? Mercury · Saturn · Lincoln · Ford",
+    "American car brands (Mercury and Saturn are now defunct)"
+   ],
+   [
+    "What's the link? Uruguay · Mexico · Qatar · Brazil",
+    "World Cup hosts"
+   ],
+   [
+    "What's the link? Pluto · Ceres · Eris · Haumea",
+    "Dwarf planets"
+   ],
+   [
+    "What's the link? Ankara · Canberra · Brasília · Ottawa",
+    "Capitals that aren't their country's biggest city"
+   ],
+   [
+    "What's the link? Diamond · Pearl · Ruby · Sapphire",
+    "Pokémon games"
+   ],
+   [
+    "What's the link? Mona Lisa · The Last Supper · Vitruvian Man · Lady with an Ermine",
+    "Works by Leonardo da Vinci"
+   ],
+   [
+    "What's the link? Romeo · Juliet · Oscar · Charlie",
+    "Words in the NATO phonetic alphabet"
+   ],
+   [
+    "What's the link? Barcelona · Bayern · Inter · Man United",
+    "Clubs that won the treble"
+   ],
+   [
+    "What's the link? Neon · Argon · Krypton · Xenon",
+    "Noble gases"
+   ],
+   [
+    "What's the link? Abbey Road · Revolver · Let It Be · Help!",
+    "Beatles albums"
+   ],
+   [
+    "What's the link? Trezeguet · Kahraba · Afsha · Shikabala",
+    "Egyptian footballers known by nicknames"
+   ],
+   [
+    "What's the link? Morocco · Senegal · Tunisia · Cameroon",
+    "African teams at the 2022 World Cup"
+   ],
+   [
+    "What's the link? Vatican City · Monaco · San Marino · Liechtenstein",
+    "Europe's smallest countries"
+   ],
+   [
+    "What's the link? Memento · The Prestige · Dunkirk · Tenet",
+    "Christopher Nolan films"
+   ],
+   [
+    "What's the link? Lady Gaga · Elton John · Freddie Mercury · Bruno Mars",
+    "Stage names (Germanotta, Dwight, Bulsara, Hernandez)"
+   ],
+   [
+    "What's the link? Sudan · Libya · Israel · Gaza Strip",
+    "Egypt's land neighbours"
+   ],
+   [
+    "What's the link? Diamond · Graphite · Graphene · Buckminsterfullerene",
+    "Forms (allotropes) of carbon"
+   ],
+   [
+    "What's the link? Abedi Pele · Kanu · Drogba · Salah",
+    "African Footballer of the Year winners"
+   ],
+   [
+    "What's the link? Spanish · Portuguese · French · Italian",
+    "Romance languages (from Latin)"
+   ],
+   [
+    "What's the link? Dior · Chanel · Givenchy · Hermès",
+    "French fashion houses"
+   ],
+   [
+    "What's the link? Nasser · Qarun · Manzala · Burullus",
+    "Lakes in Egypt"
+   ],
+   [
+    "What's the link? Ronaldinho · Kaká · Rivaldo · Ronaldo",
+    "Brazilian Ballon d'Or winners"
+   ],
+   [
+    "What's the link? Al-Azhar · Ibn Tulun · Sultan Hassan · Al-Rifa'i",
+    "Historic mosques in Cairo"
+   ],
+   [
+    "What's the link? Pulp Fiction · Kill Bill · Django Unchained · Inglourious Basterds",
+    "Quentin Tarantino films"
+   ],
+   [
+    "What's the link? Penguin · Riddler · Joker · Bane",
+    "Batman villains"
+   ],
+   [
+    "What's the link? Hydrogen · Helium · Lithium · Beryllium",
+    "The first four elements of the periodic table"
+   ],
+   [
+    "What's the link? Adel Emam · Said Saleh · Younes Shalaby · Ahmed Zaki",
+    "Stars of the play 'Madrasat El Moshaghebeen'"
+   ],
+   [
+    "What's the link? Clooney · Pitt · Damon · Garcia",
+    "Ocean's Eleven (2001) cast"
+   ],
+   [
+    "What's the link? Harvard · Yale · Princeton · Columbia",
+    "Ivy League universities"
+   ],
+   [
+    "What's the link? Pi · Phi · Sigma · Omega",
+    "Greek letters"
+   ],
+   [
+    "What's the link? Waterloo · Hastings · Agincourt · Trafalgar",
+    "Famous battles"
+   ],
+   [
+    "What's the link? Khufu · Khafre · Menkaure",
+    "Pharaohs of the three Giza pyramids"
+   ],
+   [
+    "What's the link? Romeo · Mercutio · Tybalt · Benvolio",
+    "Characters in Romeo and Juliet"
+   ],
+   [
+    "What's the link? Turing · Lovelace · Babbage · Berners-Lee",
+    "Computing pioneers"
+   ]
+  ],
+  "500": [
+   [
+    "What's the link? Ben-Hur · Titanic · The Return of the King",
+    "Films that won 11 Oscars (the record)"
+   ],
+   [
+    "What's the link? Damascus · Baghdad · Córdoba · Cairo",
+    "Capitals of Islamic caliphates"
+   ],
+   [
+    "What's the link? Uranium · Neptunium · Plutonium",
+    "Elements named after planets (Pluto counted at the time)"
+   ],
+   [
+    "What's the link? Fez · Panama · Jersey · Bikini",
+    "Places that gave their names to clothes"
+   ],
+   [
+    "What's the link? Jobs · Gates · Zuckerberg · Dell",
+    "Tech founders who dropped out of university"
+   ],
+   [
+    "What's the link? K · Q · R · N",
+    "Letters for chess pieces"
+   ],
+   [
+    "What's the link? X · Meta · Alphabet · Block",
+    "New names of big tech companies (Twitter, Facebook, Google's parent, Square)"
+   ],
+   [
+    "What's the link? Coca-Cola · Pepsi · Dr Pepper",
+    "Drinks invented by pharmacists"
+   ],
+   [
+    "What's the link? Cleopatra · Hatshepsut · Sobekneferu · Shajar al-Durr",
+    "Women who ruled Egypt"
+   ],
+   [
+    "What's the link? Siam · Persia · Ceylon · Burma",
+    "Old names of countries (Thailand, Iran, Sri Lanka, Myanmar)"
+   ],
+   [
+    "What's the link? Figo · Ronaldo · Zidane · Beckham",
+    "Real Madrid's Galácticos"
+   ],
+   [
+    "What's the link? Mercury · Venus",
+    "Planets with no moons"
+   ],
+   [
+    "What's the link? ATM machine · PIN number · Sahara Desert · HIV virus",
+    "Phrases that say the same thing twice ('Sahara' already means desert)"
+   ],
+   [
+    "What's the link? Qutuz · Baybars · Qalawun · Barquq",
+    "Mamluk sultans of Egypt"
+   ],
+   [
+    "What's the link? Curie · Einstein · Fermi · Bohr",
+    "Scientists with elements named after them (curium, einsteinium, fermium, bohrium)"
+   ],
+   [
+    "What's the link? Lesotho · Vatican City · San Marino",
+    "Countries completely surrounded by one other country"
+   ],
+   [
+    "What's the link? Sandwich · Saxophone · Nicotine · Diesel",
+    "Words named after people (Earl of Sandwich, Adolphe Sax, Jean Nicot, Rudolf Diesel)"
+   ],
+   [
+    "What's the link? Haribo · IKEA · Adidas",
+    "Brand names made from their founder's name (Hans Riegel Bonn, Ingvar Kamprad Elmtaryd Agunnaryd, Adi Dassler)"
+   ],
+   [
+    "What's the link? Porto · Celtic · Steaua Bucharest · Red Star Belgrade",
+    "European Cup / Champions League winners"
+   ],
+   [
+    "What's the link? Abdel Wahab · Baligh Hamdi · Riad Al Sunbati · Zakariyya Ahmed",
+    "Composers who wrote for Umm Kulthum"
+   ],
+   [
+    "What's the link? Byzantium · Constantinople · Istanbul",
+    "Names of the same city"
+   ],
+   [
+    "What's the link? Thebes · Memphis · Amarna · Alexandria",
+    "Capitals of ancient Egypt"
+   ],
+   [
+    "What's the link? Fustat · Al-Askar · Al-Qata'i · Al-Qahira",
+    "Earlier capitals that grew into today's Cairo"
+   ],
+   [
+    "What's the link? Pavarotti · Domingo · Carreras",
+    "The Three Tenors"
+   ],
+   [
+    "What's the link? Mozart · Schubert · Chopin · Gershwin",
+    "Composers who died before 40"
+   ],
+   [
+    "What's the link? Nefertiti · Nefertari · Tiye · Ankhesenamun",
+    "Queens (royal wives) of ancient Egypt"
+   ],
+   [
+    "What's the link? Rumi · Hafez · Omar Khayyam · Ferdowsi",
+    "Persian poets"
+   ],
+   [
+    "What's the link? Ibn Sina · Al-Khwarizmi · Ibn al-Haytham · Al-Biruni",
+    "Scholars of the Islamic Golden Age"
+   ],
+   [
+    "What's the link? Ethiopia · Liberia",
+    "African countries never colonised (Ethiopia was only briefly occupied by Italy)"
+   ],
+   [
+    "What's the link? Io · Europa · Ganymede · Callisto",
+    "Jupiter's Galilean moons"
+   ],
+   [
+    "What's the link? Lima · Quito · Bogotá · La Paz",
+    "Capitals in the Andes"
+   ],
+   [
+    "What's the link? Dune · Arrival · Sicario · Blade Runner 2049",
+    "Denis Villeneuve films"
+   ],
+   [
+    "What's the link? Kyoto · Osaka · Nagoya · Sapporo",
+    "Japanese cities"
+   ],
+   [
+    "What's the link? Manhattan · Brooklyn · Queens · The Bronx",
+    "New York City boroughs"
+   ],
+   [
+    "What's the link? Jupiter · Saturn · Uranus · Neptune",
+    "The giant planets"
+   ]
+  ]
+ }
+}

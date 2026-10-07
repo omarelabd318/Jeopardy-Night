@@ -1,0 +1,318 @@
+{
+ "id": "animal",
+ "name": "Animal Kingdom",
+ "type": "text",
+ "desc": "Wild facts about animals, plus photos: name the animal.",
+ "data": {
+  "100": [
+   [
+    "What's the fastest land animal?",
+    "The cheetah"
+   ],
+   [
+    "What's the largest animal that has ever lived?",
+    "The blue whale"
+   ],
+   [
+    "What's the tallest animal in the world?",
+    "The giraffe"
+   ],
+   [
+    "What's a baby kangaroo called?",
+    "A joey"
+   ],
+   [
+    "Which flightless black-and-white bird waddles on land and 'flies' underwater?",
+    "The penguin"
+   ],
+   [
+    "What's the only mammal that can truly fly?",
+    "The bat"
+   ],
+   [
+    "What do you call an animal that eats only plants?",
+    "A herbivore"
+   ],
+   [
+    "Which black-and-white bear eats almost nothing but bamboo?",
+    "The giant panda"
+   ],
+   [
+    "Which animal is called 'man's best friend'?",
+    "The dog"
+   ],
+   [
+    "Which animal is called the 'ship of the desert'?",
+    "The camel"
+   ],
+   [
+    "What's a group of wolves called?",
+    "A pack"
+   ],
+   [
+    "Which animal has black-and-white stripes and lives on the African plains?",
+    "The zebra"
+   ],
+   [
+    "Which big cat lives in a group called a pride?",
+    "The lion"
+   ],
+   [
+    "What's a baby cow called?",
+    "A calf"
+   ],
+   [
+    "Which sea creature has eight arms?",
+    "The octopus"
+   ]
+  ],
+  "200": [
+   [
+    "Which sea creature has no brain, no heart and no bones, and can sting?",
+    "The jellyfish"
+   ],
+   [
+    "Which reptile can change colour and move each eye separately?",
+    "The chameleon"
+   ],
+   [
+    "Which is the largest living bird?",
+    "The ostrich"
+   ],
+   [
+    "How many legs does a spider have?",
+    "Eight"
+   ],
+   [
+    "What's the largest big cat?",
+    "The tiger"
+   ],
+   [
+    "Which hopping animal stands on Australia's coat of arms next to the emu?",
+    "The kangaroo"
+   ],
+   [
+    "Which island country, home of the kiwi bird, has no native land snakes?",
+    "New Zealand"
+   ],
+   [
+    "Which bird is the symbol of peace?",
+    "The dove"
+   ],
+   [
+    "What do you call animals that are active at night?",
+    "Nocturnal"
+   ],
+   [
+    "Which animal's milk is used to make mozzarella di bufala?",
+    "The water buffalo"
+   ],
+   [
+    "What's the largest wild member of the dog family?",
+    "The grey wolf"
+   ],
+   [
+    "What's a male duck called?",
+    "A drake"
+   ],
+   [
+    "What's a female fox called?",
+    "A vixen"
+   ],
+   [
+    "Which crocodile lives in the Nile?",
+    "The Nile crocodile"
+   ],
+   [
+    "Which animal sleeps up to 22 hours a day and eats eucalyptus leaves?",
+    "The koala"
+   ]
+  ],
+  "300": [
+   [
+    "What's the biggest lizard in the world?",
+    "The Komodo dragon"
+   ],
+   [
+    "Which beetle was sacred in Ancient Egypt?",
+    "The scarab (dung beetle)"
+   ],
+   [
+    "What's the fastest bird, diving at over 300 km/h?",
+    "The peregrine falcon"
+   ],
+   [
+    "Which mammal lays eggs and has a duck's bill?",
+    "The platypus"
+   ],
+   [
+    "How many hearts does an octopus have?",
+    "Three"
+   ],
+   [
+    "Which animal's horn is made of the same stuff as your fingernails?",
+    "The rhinoceros (keratin)"
+   ],
+   [
+    "Which Nile fish, 'bolti' in Egypt, is the country's most eaten fish?",
+    "Tilapia"
+   ],
+   [
+    "What's the largest primate?",
+    "The gorilla"
+   ],
+   [
+    "Which bird has the biggest wingspan?",
+    "The wandering albatross"
+   ],
+   [
+    "What's a group of crows called?",
+    "A murder"
+   ],
+   [
+    "Which ape shares about 98–99% of our DNA?",
+    "The chimpanzee (and the bonobo)"
+   ],
+   [
+    "What's the only bird that can fly backwards?",
+    "The hummingbird"
+   ],
+   [
+    "What's a baby hare called?",
+    "A leveret"
+   ],
+   [
+    "What's the biggest fish in the sea?",
+    "The whale shark"
+   ],
+   [
+    "Which jackal-headed god of the dead did Ancient Egyptians worship?",
+    "Anubis"
+   ]
+  ],
+  "400": [
+   [
+    "What's the name of a group of owls?",
+    "A parliament"
+   ],
+   [
+    "Which animal has the longest pregnancy, about 22 months?",
+    "The elephant"
+   ],
+   [
+    "Which bird is on Egypt's flag and coat of arms?",
+    "An eagle (the Eagle of Saladin)"
+   ],
+   [
+    "What's the loudest animal on Earth?",
+    "The sperm whale"
+   ],
+   [
+    "Which animal can sleep standing up by locking its legs?",
+    "The horse"
+   ],
+   [
+    "Which animal has the strongest bite ever measured?",
+    "The saltwater crocodile"
+   ],
+   [
+    "Which tiny animal can survive in space, boiling and freezing, and is nicknamed the 'water bear'?",
+    "The tardigrade"
+   ],
+   [
+    "Which Egyptian god had the head of an ibis?",
+    "Thoth"
+   ],
+   [
+    "Which snake was the symbol on the pharaoh's crown?",
+    "The cobra (uraeus)"
+   ],
+   [
+    "What's the only mammal covered in scales?",
+    "The pangolin"
+   ],
+   [
+    "What colour is a polar bear's skin?",
+    "Black"
+   ],
+   [
+    "Which bird's chicks are fed 'milk' made in their parents' throats, along with pigeons?",
+    "The flamingo"
+   ],
+   [
+    "Which animal can regrow its heart, brain and legs, and never really grows up?",
+    "The axolotl"
+   ],
+   [
+    "Which Australian animal's poop is cube-shaped?",
+    "The wombat"
+   ],
+   [
+    "What's the smallest antelope, about the size of a rabbit?",
+    "The royal antelope"
+   ]
+  ],
+  "500": [
+   [
+    "What's a baby platypus called?",
+    "A puggle"
+   ],
+   [
+    "Which bird can stay in the air for up to ten months without landing, even sleeping on the wing?",
+    "The common swift"
+   ],
+   [
+    "Which animal is the closest living relative of the hippopotamus?",
+    "The whale"
+   ],
+   [
+    "What's the only venomous primate?",
+    "The slow loris"
+   ],
+   [
+    "Which mammal has the densest fur in the world?",
+    "The sea otter"
+   ],
+   [
+    "Which shark can live for about 400 years, the longest-lived vertebrate known?",
+    "The Greenland shark"
+   ],
+   [
+    "Which giant extinct bird lived in Madagascar and laid eggs bigger than a dinosaur's?",
+    "The elephant bird"
+   ],
+   [
+    "How many stomach chambers does a cow have?",
+    "Four"
+   ],
+   [
+    "What's the name of the long-nosed monkey from Borneo?",
+    "The proboscis monkey"
+   ],
+   [
+    "Which lizard squirts blood from its eyes to scare predators?",
+    "The horned lizard"
+   ],
+   [
+    "Which egg-laying mammal, besides the platypus, is covered in spines?",
+    "The echidna"
+   ],
+   [
+    "Which fish do Egyptians salt and ferment for Sham El Nessim fesikh?",
+    "Grey mullet (bouri)"
+   ],
+   [
+    "Which flightless bird, gone by the late 1600s, lived only on Mauritius?",
+    "The dodo"
+   ],
+   [
+    "Which flightless New Zealand parrot is the heaviest parrot in the world?",
+    "The kākāpō"
+   ],
+   [
+    "What's the only bird known to have no wings at all on its skeleton, extinct in New Zealand?",
+    "The moa"
+   ]
+  ]
+ }
+}

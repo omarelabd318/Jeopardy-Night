@@ -264,5 +264,355 @@
   "key": "ptrap-annie-5",
   "q": "Which twin is this: Hallie or Annie?",
   "a": "Annie"
+ },
+ {
+  "cat": "animal",
+  "value": 100,
+  "key": "an-redpanda",
+  "q": "What is this animal called?",
+  "a": "Red panda"
+ },
+ {
+  "cat": "animal",
+  "value": 100,
+  "key": "an-sloth",
+  "q": "What is this animal called?",
+  "a": "Sloth"
+ },
+ {
+  "cat": "animal",
+  "value": 100,
+  "key": "an-platypus",
+  "q": "What is this animal called?",
+  "a": "Platypus"
+ },
+ {
+  "cat": "animal",
+  "value": 100,
+  "key": "an-toucan",
+  "q": "What is this animal called?",
+  "a": "Toucan"
+ },
+ {
+  "cat": "animal",
+  "value": 100,
+  "key": "an-chameleon",
+  "q": "What is this animal called?",
+  "a": "Chameleon"
+ },
+ {
+  "cat": "animal",
+  "value": 200,
+  "key": "an-axolotl",
+  "q": "What is this animal called?",
+  "a": "Axolotl"
+ },
+ {
+  "cat": "animal",
+  "value": 200,
+  "key": "an-pangolin",
+  "q": "What is this animal called?",
+  "a": "Pangolin"
+ },
+ {
+  "cat": "animal",
+  "value": 200,
+  "key": "an-capybara",
+  "q": "What is this animal called?",
+  "a": "Capybara"
+ },
+ {
+  "cat": "animal",
+  "value": 200,
+  "key": "an-meerkat",
+  "q": "What is this animal called?",
+  "a": "Meerkat"
+ },
+ {
+  "cat": "animal",
+  "value": 200,
+  "key": "an-narwhal",
+  "q": "What is this animal called?",
+  "a": "Narwhal"
+ },
+ {
+  "cat": "animal",
+  "value": 300,
+  "key": "an-okapi",
+  "q": "What is this animal called?",
+  "a": "Okapi"
+ },
+ {
+  "cat": "animal",
+  "value": 300,
+  "key": "an-fennec",
+  "q": "What is this animal called?",
+  "a": "Fennec fox"
+ },
+ {
+  "cat": "animal",
+  "value": 300,
+  "key": "an-tapir",
+  "q": "What is this animal called?",
+  "a": "Tapir"
+ },
+ {
+  "cat": "animal",
+  "value": 300,
+  "key": "an-manatee",
+  "q": "What is this animal called?",
+  "a": "Manatee"
+ },
+ {
+  "cat": "animal",
+  "value": 300,
+  "key": "an-quokka",
+  "q": "What is this animal called?",
+  "a": "Quokka"
+ },
+ {
+  "cat": "animal",
+  "value": 400,
+  "key": "an-ayeaye",
+  "q": "What is this animal called?",
+  "a": "Aye-aye"
+ },
+ {
+  "cat": "animal",
+  "value": 400,
+  "key": "an-shoebill",
+  "q": "What is this animal called?",
+  "a": "Shoebill"
+ },
+ {
+  "cat": "animal",
+  "value": 400,
+  "key": "an-starnosedmole",
+  "q": "What is this animal called?",
+  "a": "Star-nosed mole"
+ },
+ {
+  "cat": "animal",
+  "value": 400,
+  "key": "an-saiga",
+  "q": "What is this animal called?",
+  "a": "Saiga antelope"
+ },
+ {
+  "cat": "animal",
+  "value": 400,
+  "key": "an-manedwolf",
+  "q": "What is this animal called?",
+  "a": "Maned wolf"
+ },
+ {
+  "cat": "animal",
+  "value": 500,
+  "key": "an-babirusa",
+  "q": "What is this animal called?",
+  "a": "Babirusa"
+ },
+ {
+  "cat": "animal",
+  "value": 500,
+  "key": "an-gerenuk",
+  "q": "What is this animal called?",
+  "a": "Gerenuk"
+ },
+ {
+  "cat": "animal",
+  "value": 500,
+  "key": "an-binturong",
+  "q": "What is this animal called?",
+  "a": "Binturong (bearcat)"
+ },
+ {
+  "cat": "animal",
+  "value": 500,
+  "key": "an-fossa",
+  "q": "What is this animal called?",
+  "a": "Fossa"
+ },
+ {
+  "cat": "animal",
+  "value": 500,
+  "key": "an-takin",
+  "q": "What is this animal called?",
+  "a": "Takin"
+ },
+ {
+  "cat": "landmark",
+  "value": 100,
+  "key": "lm-colosseum",
+  "q": "Name this landmark.",
+  "a": "The Colosseum"
+ },
+ {
+  "cat": "landmark",
+  "value": 100,
+  "key": "lm-tajmahal",
+  "q": "Name this landmark.",
+  "a": "The Taj Mahal"
+ },
+ {
+  "cat": "landmark",
+  "value": 100,
+  "key": "lm-liberty",
+  "q": "Name this landmark.",
+  "a": "The Statue of Liberty"
+ },
+ {
+  "cat": "landmark",
+  "value": 100,
+  "key": "lm-bigben",
+  "q": "Name this landmark.",
+  "a": "Big Ben (the Elizabeth Tower)"
+ },
+ {
+  "cat": "landmark",
+  "value": 100,
+  "key": "lm-sydneyopera",
+  "q": "Name this landmark.",
+  "a": "Sydney Opera House"
+ },
+ {
+  "cat": "landmark",
+  "value": 200,
+  "key": "lm-petra",
+  "q": "Name this landmark.",
+  "a": "The Treasury at Petra (Al-Khazneh)"
+ },
+ {
+  "cat": "landmark",
+  "value": 200,
+  "key": "lm-machupicchu",
+  "q": "Name this landmark.",
+  "a": "Machu Picchu"
+ },
+ {
+  "cat": "landmark",
+  "value": 200,
+  "key": "lm-christ",
+  "q": "Name this landmark.",
+  "a": "Christ the Redeemer"
+ },
+ {
+  "cat": "landmark",
+  "value": 200,
+  "key": "lm-sagrada",
+  "q": "Name this landmark.",
+  "a": "The Sagrada Família"
+ },
+ {
+  "cat": "landmark",
+  "value": 200,
+  "key": "lm-goldengate",
+  "q": "Name this landmark.",
+  "a": "The Golden Gate Bridge"
+ },
+ {
+  "cat": "landmark",
+  "value": 300,
+  "key": "lm-angkor",
+  "q": "Name this landmark.",
+  "a": "Angkor Wat"
+ },
+ {
+  "cat": "landmark",
+  "value": 300,
+  "key": "lm-neuschwanstein",
+  "q": "Name this landmark.",
+  "a": "Neuschwanstein Castle"
+ },
+ {
+  "cat": "landmark",
+  "value": 300,
+  "key": "lm-hagiasophia",
+  "q": "Name this landmark.",
+  "a": "Hagia Sophia"
+ },
+ {
+  "cat": "landmark",
+  "value": 300,
+  "key": "lm-chichenitza",
+  "q": "Name this landmark.",
+  "a": "El Castillo, Chichén Itzá"
+ },
+ {
+  "cat": "landmark",
+  "value": 300,
+  "key": "lm-moai",
+  "q": "Name this landmark.",
+  "a": "The Moai of Easter Island"
+ },
+ {
+  "cat": "landmark",
+  "value": 400,
+  "key": "lm-alhambra",
+  "q": "Name this landmark.",
+  "a": "The Alhambra"
+ },
+ {
+  "cat": "landmark",
+  "value": 400,
+  "key": "lm-potala",
+  "q": "Name this landmark.",
+  "a": "The Potala Palace"
+ },
+ {
+  "cat": "landmark",
+  "value": 400,
+  "key": "lm-zayedmosque",
+  "q": "Name this landmark.",
+  "a": "The Sheikh Zayed Grand Mosque"
+ },
+ {
+  "cat": "landmark",
+  "value": 400,
+  "key": "lm-montstmichel",
+  "q": "Name this landmark.",
+  "a": "Mont-Saint-Michel"
+ },
+ {
+  "cat": "landmark",
+  "value": 400,
+  "key": "lm-forbidden",
+  "q": "Name this landmark.",
+  "a": "The Forbidden City"
+ },
+ {
+  "cat": "landmark",
+  "value": 500,
+  "key": "lm-meteora",
+  "q": "Name this landmark.",
+  "a": "Meteora"
+ },
+ {
+  "cat": "landmark",
+  "value": 500,
+  "key": "lm-hallgrims",
+  "q": "Name this landmark.",
+  "a": "Hallgrímskirkja (Reykjavík)"
+ },
+ {
+  "cat": "landmark",
+  "value": 500,
+  "key": "lm-atomium",
+  "q": "Name this landmark.",
+  "a": "The Atomium (Brussels)"
+ },
+ {
+  "cat": "landmark",
+  "value": 500,
+  "key": "lm-prambanan",
+  "q": "Name this landmark.",
+  "a": "Prambanan"
+ },
+ {
+  "cat": "landmark",
+  "value": 500,
+  "key": "lm-fushimi",
+  "q": "Name this landmark.",
+  "a": "Fushimi Inari-taisha (Kyoto)"
  }
 ]

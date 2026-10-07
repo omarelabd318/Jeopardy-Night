@@ -1,0 +1,738 @@
+{
+ "id": "rid",
+ "name": "Riddles",
+ "type": "text",
+ "desc": "",
+ "data": {
+  "100": [
+   [
+    "What has keys but can't open locks?",
+    "A piano"
+   ],
+   [
+    "What has hands but can't clap?",
+    "A clock"
+   ],
+   [
+    "What gets wetter the more it dries?",
+    "A towel"
+   ],
+   [
+    "What has to be broken before you can use it?",
+    "An egg"
+   ],
+   [
+    "What goes up but never comes down?",
+    "Your age"
+   ],
+   [
+    "What has a neck but no head?",
+    "A bottle"
+   ],
+   [
+    "What has one eye but can't see?",
+    "A needle"
+   ],
+   [
+    "What is full of holes but still holds water?",
+    "A sponge"
+   ],
+   [
+    "What can you catch but not throw?",
+    "A cold"
+   ],
+   [
+    "What has many teeth but can't bite?",
+    "A comb"
+   ],
+   [
+    "What belongs to you, but other people use it more than you do?",
+    "Your name"
+   ],
+   [
+    "What has a head and a tail but no body?",
+    "A coin"
+   ],
+   [
+    "The more you take, the more you leave behind. What are they?",
+    "Footsteps"
+   ],
+   [
+    "Which building has the most stories?",
+    "A library"
+   ],
+   [
+    "What runs but never walks, and has a mouth but never talks?",
+    "A river"
+   ],
+   [
+    "What has words but never speaks?",
+    "A book"
+   ],
+   [
+    "What has legs but can't walk?",
+    "A table"
+   ],
+   [
+    "What goes up and down but never moves?",
+    "Stairs"
+   ],
+   [
+    "What can you break without touching it?",
+    "A promise"
+   ],
+   [
+    "What runs all the way around a house but never moves?",
+    "A fence"
+   ],
+   [
+    "What is black and white and read all over?",
+    "A newspaper"
+   ],
+   [
+    "What has a bark but no bite?",
+    "A tree"
+   ],
+   [
+    "What kind of band never plays any music?",
+    "A rubber band"
+   ],
+   [
+    "What has a tongue but can't taste anything?",
+    "A shoe"
+   ],
+   [
+    "What do you call a bear with no teeth?",
+    "A gummy bear"
+   ],
+   [
+    "What kind of tree can you carry in your hand?",
+    "A palm"
+   ],
+   [
+    "Which room do ghosts stay out of?",
+    "The living room"
+   ],
+   [
+    "What's orange and sounds like a parrot?",
+    "A carrot"
+   ],
+   [
+    "What has lots of needles but can't sew?",
+    "A cactus (or a pine tree)"
+   ],
+   [
+    "What kind of cup can't hold water?",
+    "A cupcake"
+   ],
+   [
+    "What has lots of eyes but can't see?",
+    "A potato"
+   ],
+   [
+    "What comes down but never goes up?",
+    "Rain"
+   ],
+   [
+    "What has a neck and two arms but no head or hands?",
+    "A shirt"
+   ],
+   [
+    "What flies without wings?",
+    "Time"
+   ],
+   [
+    "What do you call a bear with no ears?",
+    "B"
+   ],
+   [
+    "What do you call a fish with no eye?",
+    "A fsh"
+   ]
+  ],
+  "200": [
+   [
+    "I'm tall when I'm young and short when I'm old. What am I?",
+    "A candle"
+   ],
+   [
+    "What can travel around the world while staying in a corner?",
+    "A stamp"
+   ],
+   [
+    "What has cities but no houses, forests but no trees, and water but no fish?",
+    "A map"
+   ],
+   [
+    "What can you hold in your right hand but never in your left?",
+    "Your left hand (or left elbow)"
+   ],
+   [
+    "What begins with T, ends with T, and has T in it?",
+    "A teapot"
+   ],
+   [
+    "What word is spelled incorrectly in every dictionary?",
+    "Incorrectly"
+   ],
+   [
+    "What has four wheels and flies?",
+    "A rubbish (garbage) truck"
+   ],
+   [
+    "What is so fragile that saying its name breaks it?",
+    "Silence"
+   ],
+   [
+    "I have branches but no fruit, trunk or leaves. What am I?",
+    "A bank"
+   ],
+   [
+    "What gets bigger the more you take away from it?",
+    "A hole"
+   ],
+   [
+    "What can fill a room but takes up no space?",
+    "Light"
+   ],
+   [
+    "If you drop me I crack, but smile at me and I smile back. What am I?",
+    "A mirror"
+   ],
+   [
+    "Forward I'm heavy, backward I'm not. What am I?",
+    "A ton"
+   ],
+   [
+    "What has a thumb and four fingers but isn't alive?",
+    "A glove"
+   ],
+   [
+    "What kind of room has no doors or windows?",
+    "A mushroom"
+   ],
+   [
+    "What has its bottom at the top?",
+    "Your legs"
+   ],
+   [
+    "What can you serve but never eat?",
+    "A tennis ball"
+   ],
+   [
+    "What has a ring but no finger?",
+    "A telephone"
+   ],
+   [
+    "What gets sharper the more you use it?",
+    "Your brain"
+   ],
+   [
+    "What goes through towns and fields but never moves?",
+    "A road"
+   ],
+   [
+    "What is always coming but never arrives?",
+    "Tomorrow"
+   ],
+   [
+    "The Sphinx's riddle: what walks on four legs in the morning, two at noon and three in the evening?",
+    "A human (crawls as a baby, walks, then uses a stick when old)"
+   ],
+   [
+    "What is at the end of everything?",
+    "The letter G"
+   ],
+   [
+    "What is easy to get into but hard to get out of?",
+    "Trouble"
+   ],
+   [
+    "Feed me and I live; give me a drink and I die. What am I?",
+    "Fire"
+   ],
+   [
+    "What kind of coat is always put on wet?",
+    "A coat of paint"
+   ],
+   [
+    "What has keys but no locks, and space but no room?",
+    "A keyboard"
+   ],
+   [
+    "What has no beginning, no middle and no end?",
+    "A circle"
+   ],
+   [
+    "What two things can you never eat for breakfast?",
+    "Lunch and dinner"
+   ],
+   [
+    "What has four eyes but can't see?",
+    "Mississippi"
+   ],
+   [
+    "Which letter of the alphabet holds the most water?",
+    "C (the sea)"
+   ],
+   [
+    "What has one horn and gives milk?",
+    "A milk truck"
+   ],
+   [
+    "What has no beginning, middle or end, and goes well with coffee?",
+    "A doughnut"
+   ],
+   [
+    "What has a thousand needles but can't sew?",
+    "A porcupine (or a hedgehog)"
+   ],
+   [
+    "An electric train heads north while the wind blows south. Which way does the smoke blow?",
+    "There's no smoke: it's electric"
+   ],
+   [
+    "What has a head but no brain, and grows in a garden?",
+    "A lettuce (a head of lettuce)"
+   ],
+   [
+    "What breaks on the water but never on land?",
+    "A wave"
+   ]
+  ],
+  "300": [
+   [
+    "A man pushes his car to a hotel and tells the owner he's bankrupt. Why?",
+    "He's playing Monopoly"
+   ],
+   [
+    "What five-letter word gets shorter when you add two letters?",
+    "Short (shorter)"
+   ],
+   [
+    "Mary's father has five daughters: Nana, Nene, Nini and Nono. What is the fifth one called?",
+    "Mary"
+   ],
+   [
+    "How many months have 28 days?",
+    "All 12"
+   ],
+   [
+    "What has 13 hearts but no other organs?",
+    "A deck of cards"
+   ],
+   [
+    "A rooster lays an egg on a sloped roof. Which way does it roll?",
+    "It doesn't: roosters don't lay eggs"
+   ],
+   [
+    "What is always in front of you but can't be seen?",
+    "The future"
+   ],
+   [
+    "Which weighs more: a kilo of feathers or a kilo of iron?",
+    "Neither, they both weigh a kilo"
+   ],
+   [
+    "What invention lets you look right through a wall?",
+    "A window"
+   ],
+   [
+    "I speak without a mouth and hear without ears. What am I?",
+    "An echo"
+   ],
+   [
+    "A plane crashes exactly on the Egypt–Libya border. Where do they bury the survivors?",
+    "Nowhere, you don't bury survivors"
+   ],
+   [
+    "What appears twice in a week, once in a year, but never in a day?",
+    "The letter E"
+   ],
+   [
+    "There are three apples and you take away two. How many do you have?",
+    "Two"
+   ],
+   [
+    "What can be cracked, made, told and played?",
+    "A joke"
+   ],
+   [
+    "If two's company and three's a crowd, what are four and five?",
+    "Nine"
+   ],
+   [
+    "What is always answered but never asks a question?",
+    "A doorbell (or a phone)"
+   ],
+   [
+    "What has one head, one foot and four legs?",
+    "A bed"
+   ],
+   [
+    "What is as light as a feather, yet the strongest man can't hold it for long?",
+    "His breath"
+   ],
+   [
+    "Which word contains all 26 letters?",
+    "Alphabet"
+   ],
+   [
+    "What comes next: 1, 4, 9, 16, 25, …?",
+    "36 (square numbers)"
+   ],
+   [
+    "What comes once in a minute, twice in a moment, but never in a thousand years?",
+    "The letter M"
+   ],
+   [
+    "What do you throw out when you want to use it, and take in when you don't?",
+    "An anchor"
+   ],
+   [
+    "Where does Thursday come before Wednesday?",
+    "In the dictionary"
+   ],
+   [
+    "Which vegetable has a heart that doesn't beat?",
+    "An artichoke"
+   ],
+   [
+    "What tastes better than it smells?",
+    "Your tongue"
+   ],
+   [
+    "If you have me, you want to share me. If you share me, you no longer have me. What am I?",
+    "A secret"
+   ],
+   [
+    "A farmer has 17 sheep. All but 9 run away. How many are left?",
+    "9"
+   ],
+   [
+    "How many animals of each kind did Moses take on the Ark?",
+    "None: it was Noah's Ark"
+   ],
+   [
+    "What gets dirtier the whiter it gets?",
+    "A blackboard"
+   ],
+   [
+    "What can you make that nobody can see?",
+    "Noise"
+   ],
+   [
+    "A girl was 10 on her last birthday and will be 12 on her next one. How?",
+    "Today is her 11th birthday"
+   ],
+   [
+    "Which is faster, heat or cold?",
+    "Heat, because you can catch a cold"
+   ],
+   [
+    "I am my father's child and my mother's child, but I'm nobody's son. Who am I?",
+    "A daughter"
+   ],
+   [
+    "What can be measured but has no length, width or height?",
+    "Temperature (or time)"
+   ],
+   [
+    "How can a man go eight days without sleep?",
+    "He sleeps at night"
+   ],
+   [
+    "How far can a dog run into the woods?",
+    "Halfway: after that it's running out"
+   ],
+   [
+    "What can you hold without ever touching it?",
+    "A conversation"
+   ]
+  ],
+  "400": [
+   [
+    "A woman is 24 but has only had six birthdays. How?",
+    "She was born on 29 February"
+   ],
+   [
+    "Two fathers and two sons go fishing. They catch three fish, one each. How?",
+    "It's a grandfather, father and son"
+   ],
+   [
+    "Which English word has three double letters in a row?",
+    "Bookkeeper"
+   ],
+   [
+    "A man on the 10th floor rides the lift down every day, but going up he stops at the 7th unless it's raining. Why?",
+    "He's short; with an umbrella he can reach the 10 button"
+   ],
+   [
+    "I'm an odd number. Take away one letter and I become even. What am I?",
+    "Seven"
+   ],
+   [
+    "What starts with E, ends with E, and contains only one letter?",
+    "An envelope"
+   ],
+   [
+    "Before Everest was discovered, what was the highest mountain on Earth?",
+    "Everest"
+   ],
+   [
+    "A cowboy rides into town on Friday, stays three days, and leaves on Friday. How?",
+    "His horse is called Friday"
+   ],
+   [
+    "What do you get if you multiply all the numbers on a phone keypad?",
+    "Zero"
+   ],
+   [
+    "The maker sells it, the buyer doesn't use it, and the user never sees it. What is it?",
+    "A coffin"
+   ],
+   [
+    "What is black when you buy it, red when you use it and grey when you throw it away?",
+    "Charcoal"
+   ],
+   [
+    "What has a spine but no bones?",
+    "A book"
+   ],
+   [
+    "What can you keep after giving it to someone?",
+    "Your word (a promise)"
+   ],
+   [
+    "A man fell off a 20-foot ladder but wasn't hurt at all. How?",
+    "He fell off the bottom rung"
+   ],
+   [
+    "What word has 'kst' in the middle, in the beginning, and at the end?",
+    "Inkstand ('in' at the beginning, 'kst' in the middle, 'and' at the end)"
+   ],
+   [
+    "How many times can you subtract 10 from 100?",
+    "Once (after that you're subtracting from 90)"
+   ],
+   [
+    "A man walked in the rain with no umbrella or hat, yet not one hair on his head got wet. How?",
+    "He was bald"
+   ],
+   [
+    "What comes next: 2, 3, 5, 7, 11, …?",
+    "13 (prime numbers)"
+   ],
+   [
+    "Which three positive whole numbers give the same result added or multiplied?",
+    "1, 2 and 3"
+   ],
+   [
+    "I'm a word of three letters; add two and fewer there will be. What am I?",
+    "Few (fewer)"
+   ],
+   [
+    "What has 21 eyes but can't see?",
+    "A dice (1+2+3+4+5+6 dots)"
+   ],
+   [
+    "What is in the middle of March and April but not at the start or end of either?",
+    "The letter R"
+   ],
+   [
+    "A doctor gives you three pills and says take one every half hour. How long until they're all gone?",
+    "One hour"
+   ],
+   [
+    "You see a boat full of people, yet there isn't a single person on board. How?",
+    "Everyone on it is married"
+   ],
+   [
+    "What is in seasons, seconds, centuries and minutes but not in decades, years or days?",
+    "The letter N"
+   ],
+   [
+    "Divide 30 by half and add 10. What do you get?",
+    "70"
+   ],
+   [
+    "How many letters are in 'the alphabet'?",
+    "Eleven"
+   ],
+   [
+    "When is a door not a door?",
+    "When it's ajar (a jar)"
+   ],
+   [
+    "Which five-letter word reads the same upside down and backwards?",
+    "SWIMS"
+   ],
+   [
+    "What can be stolen, mistaken or changed, yet never leaves you all your life?",
+    "Your identity"
+   ],
+   [
+    "What is the last letter of 'the alphabet'?",
+    "T"
+   ],
+   [
+    "A man was born in 1990 and turned 30 in 1960. How?",
+    "The years are BC"
+   ],
+   [
+    "What has a foot on each side and one in the middle?",
+    "A yardstick (three feet long)"
+   ],
+   [
+    "What word starts with IS, ends with AND, and has LA in the middle?",
+    "Island"
+   ],
+   [
+    "What comes next: J, F, M, A, M, J, J, …?",
+    "A (for August)"
+   ]
+  ],
+  "500": [
+   [
+    "A man looks at a portrait and says: 'Brothers and sisters I have none, but that man's father is my father's son.' Who is in the portrait?",
+    "His son"
+   ],
+   [
+    "I turn once, what is out will not get in. I turn again, what is in will not get out. What am I?",
+    "A key"
+   ],
+   [
+    "The more of it there is, the less you see. What is it?",
+    "Darkness"
+   ],
+   [
+    "What can go up a chimney down, but not down a chimney up?",
+    "An umbrella"
+   ],
+   [
+    "A father and son are in a crash. The surgeon says 'I can't operate, he's my son.' How?",
+    "The surgeon is his mother"
+   ],
+   [
+    "Which is correct: 'the yolk of the egg is white' or 'the yolk of the egg are white'?",
+    "Neither, yolks are yellow"
+   ],
+   [
+    "What's the next letter: J, F, M, A, M, J, J, A, …?",
+    "S (the months)"
+   ],
+   [
+    "What seven-letter word holds hundreds of letters?",
+    "Mailbox"
+   ],
+   [
+    "You're in a race and overtake the person in second place. What place are you in?",
+    "Second"
+   ],
+   [
+    "What's the next number: 1, 11, 21, 1211, 111221, …?",
+    "312211 (each line describes the one before)"
+   ],
+   [
+    "Poor people have it, rich people need it, and if you eat it you die. What is it?",
+    "Nothing"
+   ],
+   [
+    "A man lies dead in a field next to an unopened package. What happened?",
+    "His parachute didn't open"
+   ],
+   [
+    "How can you drop a raw egg onto a concrete floor without cracking it?",
+    "Concrete floors are very hard to crack"
+   ],
+   [
+    "What comes next: O, T, T, F, F, S, S, E, …?",
+    "N (One, Two, Three… Nine)"
+   ],
+   [
+    "Three doctors say Robert is their brother. Robert says he has no brothers. How?",
+    "The doctors are his sisters"
+   ],
+   [
+    "A man builds a house with all four walls facing south. A bear walks past. What colour is the bear?",
+    "White: the house is at the North Pole, so it's a polar bear"
+   ],
+   [
+    "A rope ladder hangs over a ship's side with rungs 30 cm apart, 3 rungs underwater. The tide rises 1 metre. How many rungs are underwater now?",
+    "Still 3: the ship rises with the tide"
+   ],
+   [
+    "Turn me on my side and I'm everything. Cut me in half and I'm nothing. What am I?",
+    "The number 8"
+   ],
+   [
+    "A butcher's assistant is 1.8 m tall and wears size 44 shoes. What does he weigh?",
+    "Meat"
+   ],
+   [
+    "What breaks but never falls, and what falls but never breaks?",
+    "Day breaks, night falls"
+   ],
+   [
+    "Which nine-letter word stays a real word each time you remove one letter, all the way down to a single letter?",
+    "Startling (starting, staring, string, sting, sing, sin, in, I)"
+   ],
+   [
+    "A girl has as many brothers as sisters, but each brother has only half as many brothers as sisters. How many brothers and sisters are there?",
+    "Three brothers and four sisters"
+   ],
+   [
+    "A pen and a notebook cost 11 pounds together. The notebook costs 10 pounds more than the pen. How much is the pen?",
+    "50 piastres"
+   ],
+   [
+    "Which English word sounds the same even after you take away four of its five letters?",
+    "Queue"
+   ],
+   [
+    "What is the only common English word that ends in 'mt'?",
+    "Dreamt"
+   ],
+   [
+    "Which four-letter word reads the same forwards, backwards and upside down?",
+    "NOON"
+   ],
+   [
+    "A clock takes 5 seconds to strike 6 o'clock. How long does it take to strike 12?",
+    "11 seconds"
+   ],
+   [
+    "What has four letters, sometimes nine, and never five?",
+    "The words themselves: 'what' has 4, 'sometimes' has 9, 'never' has 5"
+   ],
+   [
+    "Which word is wrong if you pronounce it right, and right if you pronounce it wrong?",
+    "'Wrong'"
+   ],
+   [
+    "Which word gets longer when you remove its third letter?",
+    "Lounger (longer)"
+   ],
+   [
+    "Give me one and you have either two or none. What am I?",
+    "A choice"
+   ],
+   [
+    "What is 3/7 chicken, 2/3 cat and 2/4 goat?",
+    "Chicago"
+   ],
+   [
+    "Which number has its letters in alphabetical order?",
+    "Forty"
+   ],
+   [
+    "Which word sounds exactly the same after you take away its first letter?",
+    "Scent (cent)"
+   ],
+   [
+    "I'm a six-letter word. Take one letter away and twelve remains. What am I?",
+    "Dozens"
+   ]
+  ]
+ }
+}
