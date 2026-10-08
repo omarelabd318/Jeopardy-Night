@@ -51,7 +51,13 @@
    "Deadpool",
    "Transformers",
    "Paddington",
-   "Alice in Wonderland"
+   "Alice in Wonderland",
+   "Hulk",
+   "Zorro",
+   "Robin Hood",
+   "Popeye",
+   "Teenage Mutant Ninja Turtles",
+   "Pokémon"
   ],
   "200": [
    "Gladiator",
@@ -100,7 +106,13 @@
    "Mary Poppins",
    "Space Jam",
    "Scooby-Doo",
-   "The Super Mario Bros. Movie"
+   "The Super Mario Bros. Movie",
+   "The Wizard of Oz",
+   "Mr. & Mrs. Smith",
+   "RoboCop",
+   "Alien",
+   "WALL-E",
+   "El Kebeer Awi"
   ],
   "300": [
    "Forrest Gump",
@@ -149,7 +161,13 @@
    "Encanto",
    "Lilo & Stitch",
    "The Flintstones",
-   "Planet of the Apes"
+   "Planet of the Apes",
+   "Matilda",
+   "Hachi: A Dog's Tale",
+   "Romeo and Juliet",
+   "Emily in Paris",
+   "Spartacus",
+   "Asal Eswed"
   ],
   "400": [
    "Whiplash",
@@ -198,7 +216,13 @@
    "Ted",
    "Dracula",
    "Zombieland",
-   "The Chronicles of Narnia"
+   "The Chronicles of Narnia",
+   "Gremlins",
+   "Footloose",
+   "Marley & Me",
+   "The Big Bang Theory",
+   "Raya wa Sakina",
+   "The Last of Us"
   ],
   "500": [
    "Birdman",
@@ -247,7 +271,13 @@
    "Jojo Rabbit",
    "Minority Report",
    "Blade Runner",
-   "The Departed"
+   "The Departed",
+   "The Green Mile",
+   "The Butterfly Effect",
+   "Inglourious Basterds",
+   "There Will Be Blood",
+   "Better Call Saul",
+   "Rear Window"
   ]
  },
  "act_kind": {
@@ -456,6 +486,36 @@
   "Million Dollar Baby": "film",
   "The Bear": "series",
   "Mindhunter": "series",
-  "The Flintstones": "series"
+  "The Flintstones": "series",
+  "Hulk": "film",
+  "Zorro": "film",
+  "Robin Hood": "film",
+  "Popeye": "series",
+  "Teenage Mutant Ninja Turtles": "film",
+  "Pokémon": "series",
+  "The Wizard of Oz": "film",
+  "Mr. & Mrs. Smith": "film",
+  "RoboCop": "film",
+  "Alien": "film",
+  "WALL-E": "film",
+  "El Kebeer Awi": "series",
+  "Matilda": "film",
+  "Hachi: A Dog's Tale": "film",
+  "Romeo and Juliet": "film",
+  "Emily in Paris": "series",
+  "Spartacus": "series",
+  "Asal Eswed": "film",
+  "Gremlins": "film",
+  "Footloose": "film",
+  "Marley & Me": "film",
+  "The Big Bang Theory": "series",
+  "Raya wa Sakina": "film",
+  "The Last of Us": "series",
+  "The Green Mile": "film",
+  "The Butterfly Effect": "film",
+  "Inglourious Basterds": "film",
+  "There Will Be Blood": "film",
+  "Better Call Saul": "series",
+  "Rear Window": "film"
  }
 }

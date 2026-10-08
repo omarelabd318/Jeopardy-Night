@@ -1,0 +1,132 @@
+{
+ "100": [
+  [
+   "Only one of these facts is true. Which one?\nA) Shaving makes hair grow back thicker\nB) An octopus has blue blood\nC) The tongue has separate zones for sweet, salty and bitter",
+   "B) An octopus has blue blood\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Egypt's flag has an eagle on it\nB) Egypt's current flag has a green crescent and three stars\nC) Egypt's flag has only two colours",
+   "A) Egypt's flag has an eagle on it\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) We lose most of our body heat through our heads\nB) Eating carrots lets you see in the dark\nC) Sound travels faster through water than through air",
+   "C) Sound travels faster through water than through air\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Pizza Margherita was named after an Italian queen\nB) Pizza was invented in America\nC) Pizza Hut was founded in Italy",
+   "A) Pizza Margherita was named after an Italian queen\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) A coin dropped from a skyscraper can kill someone below\nB) Mother birds abandon chicks that humans have touched\nC) Venus is the hottest planet in the Solar System",
+   "C) Venus is the hottest planet in the Solar System\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Messi has only ever played club football in Spain\nB) Mohamed Salah once played for Chelsea\nC) Cristiano Ronaldo has never played in England",
+   "B) Mohamed Salah once played for Chelsea\n(others: A and C are false)"
+  ]
+ ],
+ "200": [
+  [
+   "Only one of these facts is true. Which one?\nA) Flamingos are born pink\nB) Flamingos get their pink colour from their food\nC) Flamingos sleep lying down",
+   "B) Flamingos get their pink colour from their food\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Jupiter has no moons\nB) Pluto is still officially a planet\nC) A day on Mars lasts about 24 hours and 40 minutes",
+   "C) A day on Mars lasts about 24 hours and 40 minutes\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) There's no gravity on the International Space Station\nB) The far side of the Moon never gets sunlight\nC) The Moon is slowly moving away from Earth",
+   "C) The Moon is slowly moving away from Earth\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Fingernails grow faster than toenails\nB) Your blood is blue inside your veins\nC) Humans have only five senses",
+   "A) Fingernails grow faster than toenails\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The word 'ketchup' comes from French\nB) The word 'robot' comes from a Czech word for forced labour\nC) 'Kangaroo' means 'I don't understand' in an Aboriginal language",
+   "B) The word 'robot' comes from a Czech word for forced labour\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Ancient Egyptians used iron tools to build the Great Pyramid\nB) Ancient Egypt had a calendar of 365 days\nC) Ancient Egypt invented paper money",
+   "B) Ancient Egypt had a calendar of 365 days\n(others: A and C are false)"
+  ]
+ ],
+ "300": [
+  [
+   "Only one of these facts is true. Which one?\nA) Vikings reached North America before Columbus\nB) Columbus proved the Earth was round\nC) Most medieval Europeans believed the Earth was flat",
+   "A) Vikings reached North America before Columbus\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Hippos are closely related to horses\nB) Hippos make a reddish oily liquid that works like sunscreen\nC) Hippos never eat meat",
+   "B) Hippos make a reddish oily liquid that works like sunscreen\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) K2 is taller than Mount Everest\nB) Mount Everest is in India\nC) Ecuador's Chimborazo, not Everest, is the point farthest from Earth's centre",
+   "C) Ecuador's Chimborazo, not Everest, is the point farthest from Earth's centre\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Canada and Russia share a land border\nB) Russia and the USA are less than 4 km apart at their closest point\nC) Spain and Morocco share no land border",
+   "B) Russia and the USA are less than 4 km apart at their closest point\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Barcelona were relegated in the 1990s\nB) Real Madrid have never been relegated\nC) Man United have never been relegated",
+   "B) Real Madrid have never been relegated\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Bob Marley was born in Trinidad\nB) Michael Jackson was the oldest of the Jackson siblings\nC) Freddie Mercury was born in Zanzibar",
+   "C) Freddie Mercury was born in Zanzibar\n(others: A and B are false)"
+  ]
+ ],
+ "400": [
+  [
+   "Only one of these facts is true. Which one?\nA) Coffee was first brewed as a drink in Brazil\nB) The first coffee houses opened in Paris\nC) Coffee drinking spread from Yemen, where Sufis drank it to stay awake at night",
+   "C) Coffee drinking spread from Yemen, where Sufis drank it to stay awake at night\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Ancient Egyptian tomb builders staged the first recorded strike in history\nB) Ancient Egyptians had no doctors\nC) Camels were used to haul the stones for the Giza pyramids",
+   "A) Ancient Egyptian tomb builders staged the first recorded strike in history\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Jellyfish have a heart\nB) Starfish have no brain\nC) Sharks have bony skeletons",
+   "B) Starfish have no brain\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Wimbledon uses white tennis balls\nB) The US Open is played on grass\nC) Wimbledon is the oldest tennis tournament in the world",
+   "C) Wimbledon is the oldest tennis tournament in the world\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Mohamed Salah was the first Egyptian to play in the Premier League\nB) Egypt have won the Africa Cup of Nations seven times\nC) Hassan Shehata coached Egypt at a World Cup",
+   "B) Egypt have won the Africa Cup of Nations seven times\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The first webcam was pointed at a coffee pot\nB) The first website was made at Google\nC) The first mobile phone call was made in Japan",
+   "A) The first webcam was pointed at a coffee pot\n(others: B and C are false)"
+  ]
+ ],
+ "500": [
+  [
+   "Only one of these facts is true. Which one?\nA) The Great Pyramid was originally about 146 metres tall\nB) The Great Pyramid is built from exactly one million blocks\nC) The Great Pyramid's entrance is on its south side",
+   "A) The Great Pyramid was originally about 146 metres tall\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Antarctica has no insects at all\nB) Iceland has no mosquitoes\nC) Hawaii has no mosquitoes",
+   "B) Iceland has no mosquitoes\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Tower Bridge is the oldest bridge over the Thames\nB) Buckingham Palace was built for Queen Victoria\nC) Big Ben is the name of the bell, not the clock tower",
+   "C) Big Ben is the name of the bell, not the clock tower\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The Suez Canal was closed for eight years after the 1967 war\nB) The Suez Canal was built by the British\nC) The Suez Canal is shorter than the Panama Canal",
+   "A) The Suez Canal was closed for eight years after the 1967 war\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Bananas grow pointing down towards the ground\nB) Bananas are slightly radioactive\nC) Banana plants are trees",
+   "B) Bananas are slightly radioactive\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The Cairo Metro opened in the 1960s\nB) The Cairo Metro was built by an American company\nC) Cairo was the first city in Africa to open a full metro system",
+   "C) Cairo was the first city in Africa to open a full metro system\n(others: A and B are false)"
+  ]
+ ]
+}

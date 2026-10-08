@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.47`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.48`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1392,7 +1392,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        reaches the door it pulls away (pa). He slows to a stop, throws his hands up, bends over with his hands on his thighs to get his
        breath back, then turns round and hails the microbus coming along behind. It stops for him and he climbs in, as the microbus man
        did (5.55-6.44), and it drives off. On mirrored rounds both doors are on the far side, so he stays behind them throughout.
-       The two separate scenes (the microbus was first in ACTS, the bus chaser eighth) are in git at v6.46. */
+       The two separate scenes (the microbus was first in ACTS, the bus chaser eighth) are in git at v6.47. */
     { k(){ const v = 60, a = 45, mStart = 3.3, mv = 100, meet = (mv * mStart + 2) / (mv - v), pa = meet - 1.2;   // meet: when he would have reached the door
         const xb = u => -60 + v * u + (u > pa ? a * (u - pa) * (u - pa) : 0);
         const r0 = pa + 0.8, DEC = 1.0, ts = r0 + DEC;                                                      // he keeps running 0.8 s, then slows to a stop over DEC s
@@ -1515,7 +1515,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     /* 6.46 (Omar): the wedding car is part of this scene now. After the delivery bike, the wedding convoy (the escort bike with its
        flare, then the honking white car) comes the other way. She stops to let it by and lets out a zaghrouta, one hand at her mouth
        and the other still steadying the bread, then walks on. The convoy's three wheelies (6.11) are spread across the screen as before,
-       clear of her. 5.86-6.44: the wedding car was a scene of its own, driving left to right (in git at v6.46). */
+       clear of her. 5.86-6.44: the wedding car was a scene of its own, driving left to right (in git at v6.47). */
     { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv;
         const xm = W * 0.7, tm = (xm + 40) / v, P = 6, w0 = tm + 3.2 - (W + 120 - xm) / 70;    // she stops at xm from tm for P s; the car passes her 3.2 s in
         return {v, bv, b0, xm, tm, P, w0}; },
@@ -1908,7 +1908,7 @@ const abcClue = c => c.type === "text" && /\nA\) /.test(String((pool(c.cat, c.lv
 let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
-function ansMode(c){ if(!c || c.preview || !RELAY || S.mode) return null;   // 6.47: no phone answers or steal codes in Category Bingo
+function ansMode(c){ if(!c || c.preview || !RELAY || S.mode) return null;   // 6.48: no phone answers or steal codes in Category Bingo
   if(S.ffa) return FFA_SKIP.has(c.type) ? null : "ffa";
   if(c.type === "closest") return linkTeams() ? "num" : null;   // 5.69: whenever team phones are linked (was S.qrAns)
   if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat) && !abcClue(c)) return "steal";
@@ -2482,7 +2482,7 @@ $("#clue").addEventListener("click", e => {
     /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; S.keepBets = c.bets || null; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
   if(a==="cancel"){ closeCard(); }
   if(a==="done" && c.preview){ closeCard(); return; }
-  if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.47: Category Bingo takes the result instead of adding points
+  if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.48: Category Bingo takes the result instead of adding points
   if(a==="done"){
     Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += awardPts(c, +i, v));   // 6.45: was v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1), which awardPts still gives outside Wager mode
     if(c.x2!=null && S.teams[c.x2]){ S.teams[c.x2].x2used = true; } S.x2 = null;

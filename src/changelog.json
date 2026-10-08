@@ -3,11 +3,18 @@
   "era": "6.x: Category Descriptions"
  },
  {
-  "v": "6.47",
+  "v": "6.48",
   "date": "2026-10-08",
   "items": [
    "New game mode: Category Bingo, a button at the bottom of the title screen. A 7x7 board of 49 categories: teams take turns claiming squares by answering, and the first to get 5 in a row wins. Each team has 1 or 2 steals to take an opponent's square.",
    "Three board looks to choose from (Classic, Bingo card, Neon), and you can flip between them with the Look button while you play. Squares show the category name; harder squares sit in the middle."
+  ]
+ },
+ {
+  "v": "6.47",
+  "date": "2026-10-08",
+  "items": [
+   "About 2,900 new clues: 30 more in almost every non-photo category, with the new 200s and 300s pitched harder than before."
   ]
  },
  {

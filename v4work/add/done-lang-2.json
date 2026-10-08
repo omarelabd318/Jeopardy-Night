@@ -1,0 +1,140 @@
+{
+ "100": [
+  [
+   "What does “hola” mean?",
+   "Hello (Spanish)"
+  ],
+  [
+   "What does “uno, dos, tres” mean?",
+   "One, two, three (Spanish)"
+  ],
+  [
+   "What does “bella” mean?",
+   "Beautiful (Italian)"
+  ],
+  [
+   "Which is the biggest country in the world where Portuguese is the main language?",
+   "Brazil"
+  ],
+  [
+   "What does “arigato” mean?",
+   "Thank you (Japanese)"
+  ],
+  [
+   "What does “mademoiselle” mean?",
+   "Miss / young lady (French)"
+  ]
+ ],
+ "200": [
+  [
+   "What does “faux pas” mean?",
+   "A social blunder (French, 'false step')"
+  ],
+  [
+   "What does “la dolce vita” mean?",
+   "The sweet life (Italian)"
+  ],
+  [
+   "The Egyptian word “بوسطة” (post / mail) comes from which language?",
+   "Italian (posta)"
+  ],
+  [
+   "The Egyptian word “شيك” (stylish, smart) comes from which language?",
+   "French (chic)"
+  ],
+  [
+   "What does “bona fide” mean?",
+   "Genuine, real (Latin, 'in good faith')"
+  ],
+  [
+   "Latin is an official language of which state, run by the Pope?",
+   "The Holy See (Vatican City)"
+  ]
+ ],
+ "300": [
+  [
+   "What does “quid pro quo” mean?",
+   "Something for something (Latin)"
+  ],
+  [
+   "What does the German word “kindergarten” literally mean?",
+   "Children's garden"
+  ],
+  [
+   "What does “tabula rasa” mean?",
+   "A blank slate (Latin)"
+  ],
+  [
+   "The Egyptian word “بشكير” (towel) comes from which language?",
+   "Turkish (peşkir)"
+  ],
+  [
+   "The Egyptian word “أوكازيون” (sale season) comes from which language?",
+   "French (occasion)"
+  ],
+  [
+   "Arabic, Hebrew and Amharic belong to which language family?",
+   "Semitic"
+  ]
+ ],
+ "400": [
+  [
+   "What does the German word “doppelgänger” literally mean?",
+   "Double-goer"
+  ],
+  [
+   "What does “fait accompli” mean?",
+   "A done deal (French, 'accomplished fact')"
+  ],
+  [
+   "The English word “monsoon” comes from which language?",
+   "Arabic (mawsim, 'season'), via Portuguese"
+  ],
+  [
+   "The English word “ghoul” comes from which language?",
+   "Arabic (ghūl)"
+  ],
+  [
+   "The Egyptian word “كمنجة” (violin) comes from which language?",
+   "Persian (kamancheh)"
+  ],
+  [
+   "Which invented language, launched in 1887, is the most widely spoken constructed language?",
+   "Esperanto"
+  ]
+ ],
+ "500": [
+  [
+   "What does “hygge” mean?",
+   "Cosy contentment (Danish)"
+  ],
+  [
+   "What does “ikigai” mean?",
+   "A reason for being (Japanese)"
+  ],
+  [
+   "The English word “sequin” comes from which language?",
+   "Arabic (sikka, 'coin die'), via Italian"
+  ],
+  [
+   "The Egyptian baby word “امبو” (water) comes from which language?",
+   "Coptic / Ancient Egyptian (mou, 'water')"
+  ],
+  [
+   "Afghanistan's two main languages are Pashto and which form of Persian?",
+   "Dari"
+  ],
+  [
+   "What language is this? “Ngiyabonga” (it means 'thank you')",
+   "Zulu"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Italian",
+  "French",
+  "Turkish",
+  "Arabic",
+  "Persian",
+  "Coptic"
+ ]
+}

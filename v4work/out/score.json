@@ -112,6 +112,30 @@
    [
     "What was the final score? Spain vs France, Euro 2024 semi-final",
     "Spain 2–1 France"
+   ],
+   [
+    "What was the final score? Argentina vs Egypt, 2026 World Cup round of 16",
+    "Argentina 3–2 Egypt"
+   ],
+   [
+    "What was the final score? New Zealand vs Egypt, 2026 World Cup group stage (Egypt's first-ever World Cup win)",
+    "Egypt 3–1 New Zealand"
+   ],
+   [
+    "What was the final score? Australia vs Egypt, 2026 World Cup round of 32",
+    "1–1 (Egypt won 4–2 on penalties)"
+   ],
+   [
+    "What was the final score? France vs England, 2026 World Cup third-place match",
+    "England 6–4 France"
+   ],
+   [
+    "What was the final score? France vs Morocco, 2022 World Cup semi-final",
+    "France 2–0 Morocco"
+   ],
+   [
+    "What was the final score? Brazil vs Argentina, 2021 Copa América final at the Maracanã",
+    "Argentina 1–0 Brazil (Di María)"
    ]
   ],
   "200": [
@@ -222,6 +246,30 @@
    [
     "What was the final score? Real Madrid vs PSG, 2022 Champions League last 16, second leg (Benzema's hat-trick)",
     "Real Madrid 3–1 PSG"
+   ],
+   [
+    "What was the final score? England vs Argentina, 2026 World Cup semi-final",
+    "Argentina 2–1 England"
+   ],
+   [
+    "What was the final score? France vs Spain, 2026 World Cup semi-final",
+    "Spain 2–0 France"
+   ],
+   [
+    "What was the final score? Brazil vs Norway, 2026 World Cup round of 16",
+    "Norway 2–1 Brazil"
+   ],
+   [
+    "What was the final score? Ghana vs Egypt, 2014 World Cup play-off, first leg in Kumasi (October 2013)",
+    "Ghana 6–1 Egypt"
+   ],
+   [
+    "What was the final score? Barcelona vs Real Madrid at Montjuïc, May 2025 (Mbappé hat-trick)",
+    "Barcelona 4–3 Real Madrid"
+   ],
+   [
+    "What was the final score? Man City vs Al Hilal, 2025 Club World Cup last 16",
+    "Al Hilal 4–3 Man City (after extra time)"
    ]
   ],
   "300": [
@@ -332,6 +380,30 @@
    [
     "What was the final score? Barcelona vs Inter, 2025 Champions League semi-final, first leg",
     "3–3"
+   ],
+   [
+    "What was the final score? Netherlands vs England, Euro 2024 semi-final",
+    "England 2–1 Netherlands (Watkins)"
+   ],
+   [
+    "What was the final score? Germany vs Scotland, Euro 2024 opening game",
+    "Germany 5–1 Scotland"
+   ],
+   [
+    "What was the final score? Argentina vs Colombia, 2024 Copa América final in Miami",
+    "Argentina 1–0 Colombia (Lautaro, extra time)"
+   ],
+   [
+    "What was the final score? Egypt vs South Africa, 2019 Africa Cup of Nations last 16 in Cairo",
+    "South Africa 1–0 Egypt"
+   ],
+   [
+    "What was the final score? PSG vs Real Madrid, 2025 Club World Cup semi-final",
+    "PSG 4–0 Real Madrid"
+   ],
+   [
+    "What was the final score? Barcelona vs Real Madrid, 2025 Copa del Rey final in Seville",
+    "Barcelona 3–2 Real Madrid (after extra time)"
    ]
   ],
   "400": [
@@ -442,6 +514,30 @@
    [
     "What was the final score? Man United vs Liverpool, 2024 FA Cup quarter-final",
     "Man United 4–3 Liverpool (after extra time)"
+   ],
+   [
+    "What was the final score? Argentina vs Brazil in Buenos Aires, March 2025 World Cup qualifier",
+    "Argentina 4–1 Brazil"
+   ],
+   [
+    "What was the final score? Al Ahly vs Real Madrid, 2022 Club World Cup semi-final (played February 2023)",
+    "Real Madrid 4–1 Al Ahly"
+   ],
+   [
+    "What was the final score? Egypt vs DR Congo, 2023 Africa Cup of Nations last 16 (played January 2024)",
+    "1–1 (DR Congo won 8–7 on penalties)"
+   ],
+   [
+    "What was the final score? Qatar vs Jordan, 2023 Asian Cup final (played February 2024)",
+    "Qatar 3–1 Jordan"
+   ],
+   [
+    "What was the final score? Real Madrid vs Dortmund, Champions League, October 2024 (Real came back from 2–0 down)",
+    "Real Madrid 5–2 Dortmund"
+   ],
+   [
+    "What was the final score? Morocco vs Jordan, 2025 FIFA Arab Cup final",
+    "Morocco 3–2 Jordan (after extra time)"
    ]
   ],
   "500": [
@@ -552,6 +648,30 @@
    [
     "What was the final score? Real Madrid vs Bayern, 2024 Champions League semi-final, second leg (Joselu's late double)",
     "Real Madrid 2–1 Bayern"
+   ],
+   [
+    "What was the final score? Pyramids vs Mamelodi Sundowns, 2025 CAF Champions League final, aggregate over two legs",
+    "Pyramids 3–2 Sundowns (1–1 in Pretoria, 2–1 in Cairo)"
+   ],
+   [
+    "What was the final score? Al Ahly vs Zamalek, 2024 CAF Super Cup in Riyadh",
+    "1–1 (Zamalek won 4–3 on penalties)"
+   ],
+   [
+    "What was the final score? Zamalek vs RS Berkane, 2024 CAF Confederation Cup final, aggregate over two legs",
+    "2–2 (Zamalek won on away goals: 1–2 in Berkane, 1–0 in Cairo)"
+   ],
+   [
+    "What was the final score? Fluminense vs Al Ahly, 2023 Club World Cup semi-final",
+    "Fluminense 2–0 Al Ahly"
+   ],
+   [
+    "What was the final score? Egypt vs Burkina Faso, 2017 Africa Cup of Nations semi-final",
+    "1–1 (Egypt won 4–3 on penalties)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Al Hilal, 2025 Club World Cup group stage",
+    "1–1"
    ]
   ]
  }
