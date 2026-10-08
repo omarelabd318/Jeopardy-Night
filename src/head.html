@@ -480,7 +480,11 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 #bingo .bt i{width:16px;height:16px;border-radius:50%;flex:none;background:var(--tc)} #bingo .bt b{font-family:var(--display);font-size:22px}
 #bingo .bt.on{border-color:var(--tc);box-shadow:0 0 0 2px var(--tc),0 0 18px -2px var(--tc)} #bingo .bt .stl{letter-spacing:2px;color:var(--brass);font-size:13px}
 #bingo .bstat{text-align:center;font-weight:700;min-height:26px;margin:2px 0 8px} #bingo .bstat .row{justify-content:center;display:inline-flex;vertical-align:middle;margin-left:8px}
-#bingo .bgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(3px,.6vw,7px);width:min(100%,calc(100vh - 200px));min-width:min(100%,320px);margin:0 auto;padding:clamp(4px,.8vw,10px);border-radius:14px;background:var(--bg)}
+#bingo .bframe{--g:clamp(3px,.6vw,7px);--p:clamp(4px,.8vw,10px);display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto 1fr auto;column-gap:4px;width:min(100%,calc(100vh - 235px));min-width:min(100%,320px);margin:0 auto;align-items:stretch}
+#bingo .bax{display:grid;gap:var(--g);color:rgba(255,255,255,.3);font-family:var(--display);font-weight:800;font-size:clamp(11px,1.5vw,18px);letter-spacing:.04em;text-align:center;align-items:center;justify-items:center;user-select:none}
+#bingo .bax.h{grid-template-columns:repeat(7,1fr);padding:0 var(--p)} #bingo .bax.v{grid-template-rows:repeat(7,1fr);padding:var(--p) 0;min-width:1.1em}
+#bingo .bax i{font-style:normal;line-height:1}
+#bingo .bgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:var(--g);padding:var(--p);border-radius:14px;background:var(--bg)}
 #bingo .sq{position:relative;aspect-ratio:1;container-type:size;border:2px solid var(--sqline);border-radius:10px;background:var(--sqbg);color:var(--sqink);padding:0;overflow:hidden;display:block;cursor:pointer;transition:transform .12s}
 #bingo .sq:hover{transform:scale(1.04)} #bingo .sq .nm{position:absolute;inset:14% 6% 10%;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.95;font-size:19cqw;letter-spacing:.01em;text-wrap:balance;overflow-wrap:anywhere}
 #bingo .sq .nm.l{font-size:15.5cqw} #bingo .sq .v{position:absolute;top:8%;right:8%;font-family:var(--display);font-weight:900;font-size:15cqw;color:var(--valink)}
@@ -505,7 +509,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 #bingo[data-look="neon"] .sq.own{background:var(--tc);border-color:#fff;color:#06070f;box-shadow:0 0 18px 0 var(--tc)} #bingo[data-look="neon"] .sq.own .nm{text-shadow:none}
 #bingo .bbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0 0}
 #bingo .sq.pv{cursor:pointer}
-@media (max-width:640px){#bingo .bgrid{width:100%} #bingo .sq .nm{font-size:17cqw} #bingo .sq .nm.l{font-size:14cqw}}
+@media (max-width:640px){#bingo .bframe{width:100%} #bingo .sq .nm{font-size:17cqw} #bingo .sq .nm.l{font-size:14cqw}}
 /* end 6.48 */
 </style>
 

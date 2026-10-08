@@ -101,10 +101,11 @@ function renderBingo(){
     : `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}'s turn: pick an open square <span class="row"><button class="btn small" data-b="steal" ${team.steals > 0 && anyOpp ? "" : "disabled"}>Steal (${team.steals} left)</button></span></div>`;
   const grid = st.cells.map((c, i) => { const cat = catById(c.cat), nm = bgShort(c.cat), long = nm.length > 15 || nm.split(/\s+/).some(w => w.length > 9), o = c.own;
     const cls = ["sq", o != null ? "own" : "", o != null && o !== t ? "opp" : "", thr.has(i) ? "thr" : "", winSet.has(i) ? "win" : "", !st.preview && team.lock === i && o != null ? "lk" : "", st.preview ? "pv" : ""].filter(Boolean).join(" ");
-    return `<button class="${cls}" data-i="${i}" style="--sc:var(--s${c.ss});${o != null ? `--tc:${BG_TEAMCOL[o]}` : ""}" aria-label="${esc(cat.name)} for ${c.v}${o != null ? ", owned by " + esc(st.teams[o].name) : ""}"><span class="sec"></span><span class="v">${c.v}</span><span class="nm${long ? " l" : ""}">${esc(nm)}</span><span class="who">${o != null ? bgInit1(st, o) : ""}</span></button>`; }).join("");
+    return `<button class="${cls}" data-i="${i}" style="--sc:var(--s${c.ss});${o != null ? `--tc:${BG_TEAMCOL[o]}` : ""}" aria-label="${"ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1)}: ${esc(cat.name)} for ${c.v}${o != null ? ", owned by " + esc(st.teams[o].name) : ""}"><span class="sec"></span><span class="v">${c.v}</span><span class="nm${long ? " l" : ""}">${esc(nm)}</span><span class="who">${o != null ? bgInit1(st, o) : ""}</span></button>`; }).join("");
   const foot = st.preview ? `<div class="bbar"><button class="btn" data-b="back">Back to setup</button><button class="btn" data-b="shuffle">Shuffle board</button><button class="btn primary" data-b="start">Start game</button></div>`
     : st.over ? `<div class="bbar"><button class="btn" data-b="again">New board</button><button class="btn" data-b="back">Setup</button></div>` : "";
-  $("#bingoBody").innerHTML = bar + stat + `<div class="bgrid">${grid}</div>` + foot;
+  const lets = `<div class="bax h">${[..."ABCDEFG"].map(l => `<i>${l}</i>`).join("")}</div>`, nums = `<div class="bax v">${[1, 2, 3, 4, 5, 6, 7].map(n => `<i>${n}</i>`).join("")}</div>`;   // faint letter x number guide on all four sides so squares can be called out like C4
+  $("#bingoBody").innerHTML = bar + stat + `<div class="bframe"><span></span>${lets}<span></span>${nums}<div class="bgrid">${grid}</div>${nums}<span></span>${lets}<span></span></div>` + foot;
 }
 $("#bingoBody").addEventListener("click", e => {
   const st = BG.st; if(!st) return;
@@ -126,9 +127,10 @@ function bingoClickSq(i){
   if(!BG.cfg.auto && S.cur){ stopTimer(); S.cur.running = false; renderClue(); }
 }
 const bgInit1 = (st, i) => { const l = n => (n.trim()[0] || "?").toUpperCase(), m = st.teams[i], dup = st.teams.some((x, k) => k !== i && l(x.name) === l(m.name)); return esc(dup ? String(i + 1) : l(m.name)); };
+const bgName = i => "ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1);
 const bgPersist = () => store.set("jn_bingo", BG.st);
 function bingoBanner(c){ const st = BG.st, p = st && st.pend; if(!p) return ""; const t = st.teams[st.turn], from = st.cells[p.sq].own;
-  return `<p class="note" style="margin:0;font-weight:700;color:${BG_TEAMCOL[st.turn]}">${p.kind === "steal" ? `${esc(t.name)} is stealing this square from ${esc(st.teams[from].name)}. Wrong and the steal is gone and ${esc(t.name)} can't pick it next turn.` : `${esc(t.name)} is going for this square.`}</p>`; }
+  return `<p class="note" style="margin:0;font-weight:700;color:${BG_TEAMCOL[st.turn]}">${p.kind === "steal" ? `${esc(t.name)} is stealing ${bgName(p.sq)} from ${esc(st.teams[from].name)}. Wrong and the steal is gone and ${esc(t.name)} can't pick it next turn.` : `${esc(t.name)} is going for ${bgName(p.sq)}.`}</p>`; }
 function bingoAwards(c){ const st = BG.st, i = st.turn, t = st.teams[i], p = st.pend;
   return `<div class="award"><div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">${p && p.kind === "steal" ? "Correct: steal it" : "Correct: claim it"}</button><button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong</button></div></div>`; }
 function bingoDone(c){
