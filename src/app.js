@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.47`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.48`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1830,9 +1830,9 @@ function ledStart(){
   };
   ledRaf = requestAnimationFrame(step);
 }
-$("#playAgain").onclick = () => { hideWinner(); if(S.football) S.cats = footballPick(); newGame(); renderBoard(); renderScores(); window.scrollTo(0,0); };
+$("#playAgain").onclick = () => { if(S.mode === "bingo"){ bingoAgain(); return; } hideWinner(); if(S.football) S.cats = footballPick(); newGame(); renderBoard(); renderScores(); window.scrollTo(0,0); };
 $("#winBoard").onclick = () => { hideWinner(); };
-$("#winSetup").onclick = () => { hideWinner(); goSetup(); };
+$("#winSetup").onclick = () => { if(S.mode === "bingo"){ bingoSetupAgain(); return; } hideWinner(); goSetup(); };
 $("#endGame").onclick = () => askConfirm("End the game now?", "This shows the winner screen with the current scores. You can go back to the board afterwards.", "End game", showWinner);
 /* confetti: a light canvas burst, skipped when reduced motion is on */
 let confRaf = null;
@@ -1908,7 +1908,7 @@ const abcClue = c => c.type === "text" && /\nA\) /.test(String((pool(c.cat, c.lv
 let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
-function ansMode(c){ if(!c || c.preview || !RELAY) return null;
+function ansMode(c){ if(!c || c.preview || !RELAY || S.mode) return null;   // 6.48: no phone answers or steal codes in Category Bingo
   if(S.ffa) return FFA_SKIP.has(c.type) ? null : "ffa";
   if(c.type === "closest") return linkTeams() ? "num" : null;   // 5.69: whenever team phones are linked (was S.qrAns)
   if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat) && !abcClue(c)) return "steal";
@@ -2171,7 +2171,7 @@ function openClue(cat,lvl,exclude,forceIdx,tile){
   const zoomStart = {100:3.5,200:4.2,300:4.8,400:5.4,500:6}[lvl];
   S.cur = {cat,lvl,idx,type,tile,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
            secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, cid: newRoom().slice(0,8), stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
-  if(S.wager && !S.ffa && !preview){ const c = S.cur; c.picker = S.turn||0; c.x2 = null;   // 6.45: Wager mode
+  if(S.wager && !S.ffa && !S.mode && !preview){ const c = S.cur; c.picker = S.turn||0; c.x2 = null;   // 6.45: Wager mode
     if(S.keepBets){ c.bets = S.keepBets; c.wagerStage = false; } else { c.bets = {}; bettors(c).forEach(i => c.bets[i] = lvl); c.wagerStage = true; } }
   S.keepBets = null;
   stopTimer();
@@ -2391,11 +2391,12 @@ function renderClue(){
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
     ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" && !S.ffa ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
-    ${c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${awardPts(c,i,1)}</button>`}${noHalf(c,i) ? "" : `<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${awardPts(c,i,0.5)}</button>`}${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${-awardPts(c,i,-1)}</button>`}</div>`; }).join("")}</div>` : ""}
+    ${S.mode === "bingo" && !c.preview ? bingoBanner(c) : ""}
+    ${S.mode === "bingo" && c.revealed && !c.preview ? bingoAwards(c) : c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${awardPts(c,i,1)}</button>`}${noHalf(c,i) ? "" : `<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${awardPts(c,i,0.5)}</button>`}${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${-awardPts(c,i,-1)}</button>`}</div>`; }).join("")}</div>` : ""}
     ${canTwo ? `<div class="pwrow"><span class="lbl">Power-up:</span>${canTwo}</div>` : ""}
     <div class="row">
       ${c.revealed || (c.type==="impostor" && c.stage!=="play") ? "" : `<button class="btn primary" data-act="reveal">${c.type==="impostor" ? "Reveal impostor" : "Reveal answer"}</button>`}
-      <button class="btn" data-act="done">${c.preview ? "Close preview" : Object.keys(c.awards).length ? "Save scores and close" : "Close tile"}</button>
+      <button class="btn" data-act="done">${c.preview ? "Close preview" : S.mode === "bingo" ? (Object.keys(c.awards).length ? "Save and close" : "Close, no result") : Object.keys(c.awards).length ? "Save scores and close" : "Close tile"}</button>
       ${c.preview || c.revealed ? "" : `<button class="btn small" data-act="swap" title="Already played this one? Get a different clue from the same category and value">Swap clue</button>`}
       ${c.preview ? "" : `<button class="btn small" data-act="cancel">Back to board</button>`}
     </div>`;
@@ -2481,6 +2482,7 @@ $("#clue").addEventListener("click", e => {
     /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; S.keepBets = c.bets || null; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
   if(a==="cancel"){ closeCard(); }
   if(a==="done" && c.preview){ closeCard(); return; }
+  if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.48: Category Bingo takes the result instead of adding points
   if(a==="done"){
     Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += awardPts(c, +i, v));   // 6.45: was v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1), which awardPts still gives outside Wager mode
     if(c.x2!=null && S.teams[c.x2]){ S.teams[c.x2].x2used = true; } S.x2 = null;
@@ -2519,7 +2521,8 @@ if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel(); syncFfaOpt();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
-function showHome(){ setFootball(false); closeCard(); hideWinner(); showResume(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+function showHome(){ bingoLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+/*@modes*/
 $("#resumeBtn").onclick = resumeGame;
 $("#resumeNo").onclick = () => { clearGame(); showResume(); };
 $("#toHome").onclick = () => askConfirm("Leave this game?", "Going to the title screen ends the current game.", "Go to title", () => { clearGame(); showHome(); }); $("#setupHome").onclick = showHome;
