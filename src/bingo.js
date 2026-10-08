@@ -17,18 +17,23 @@ const BG_CNT = (() => { const n = Array(BG_N*BG_N).fill(0); BG_LINES.forEach(L =
 /* values by position: the more winning lines run through a square, the more it is worth. 8 squares of 100, 8 of 200, 12 of 300, 12 of 400, 9 of 500
    (Omar: fewer 100s, a few more 500s than 100s). Setup can switch to random or one flat value. */
 const bgPosVal = i => { const n = BG_CNT[i], r = Math.floor(i / BG_N), c = i % BG_N; return n === 3 ? 100 : n === 4 ? (r === 3 || c === 3 ? 100 : 200) : n <= 6 ? 300 : n === 7 ? 400 : 500; };
-function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"balanced", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, start:"random", look:"classic"}; }
+function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"balanced", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, start:"random", look:"classic"}; }
 BG.cfg = Object.assign(bgDefaults(), store.get("jn_bingoCfg", {}));
 const bgSave = () => { store.set("jn_bingoCfg", BG.cfg); };
-const bgSecIds = () => BG_SECS.map(g => g[1].filter(bgOk));
+/* Photo rounds switch (Omar): off takes the whole Photo Rounds section, plus Egypt: Photo Edition, off the board. Egypt, Football, Entertainment and Knowledge each have 14+ categories, so
+   one of them fills the seventh group of squares (picked at random) and the board stays 49 different-feeling squares. */
+const BG_PHOTO = BG_SECS.findIndex(g => g[0] === "Photo Rounds"), BG_PHOTO_EXTRA = new Set(["egyph"]);
+const bgSecIds = () => BG_SECS.map((g, i) => BG.cfg.photos === false ? (i === BG_PHOTO ? [] : g[1].filter(id => bgOk(id) && !BG_PHOTO_EXTRA.has(id))) : g[1].filter(bgOk));
 const bgShares = (a, b) => { const ra = Math.floor(a / BG_N), ca = a % BG_N, rb = Math.floor(b / BG_N), cb = b % BG_N; return ra === rb || ca === cb || ra - ca === rb - cb || ra + ca === rb + cb; };
 function bgFill(cfg){
   const secs = bgSecIds(), all = secs.map((_, i) => i).filter(i => secs[i].length);
   const chosen = cfg.fill === "sections" && cfg.sections.filter(i => secs[i] && secs[i].length).length ? cfg.sections.filter(i => secs[i] && secs[i].length) : all;
-  const perm = bgShuffle(chosen.slice()), want = new Set(cfg.fill === "hand" ? cfg.picks : []), seq = {};
+  const perm = bgShuffle(chosen.slice());
+  while(perm.length < BG_N){ const big = chosen.filter(si => secs[si].length >= 2 * Math.ceil(BG_N / chosen.length) + 6), pool = big.length ? big : chosen; perm.push(pool[Math.floor(Math.random() * pool.length)]); }
+  const want = new Set(cfg.fill === "hand" ? cfg.picks : []), seq = {};
   const draw = si => { if(!seq[si] || !seq[si].length) seq[si] = bgShuffle(secs[si].filter(id => want.has(id))).concat(bgShuffle(secs[si].filter(id => !want.has(id)))); return seq[si].shift(); };
   const cells = [];
-  for(let i = 0; i < BG_N*BG_N; i++){ const g = (2*Math.floor(i / BG_N) + i % BG_N) % BG_N, ss = perm[g % perm.length];
+  for(let i = 0; i < BG_N*BG_N; i++){ const g = (2*Math.floor(i / BG_N) + i % BG_N) % BG_N, ss = perm[g];
     cells.push({cat:draw(ss), ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : bgPosVal(i), own:null}); }
   /* with fewer than 7 sections a category can repeat; move twins out of each other's row, column and diagonals */
   const bad = () => { let n = 0; for(let a = 0; a < cells.length; a++) for(let b = a + 1; b < cells.length; b++) if(cells[a].cat === cells[b].cat && bgShares(a, b)) n++; return n; };
@@ -61,9 +66,10 @@ function renderBingoSetup(){
     <div class="panel opt"><div class="eyebrow">Teams</div><div class="bteams">${c.teams.map((n, i) => `<div class="bteam"><i style="background:${BG_TEAMCOL[i]}"></i><input type="text" data-bn="${i}" value="${esc(n)}" maxlength="24" aria-label="Team ${i + 1} name">${c.teams.length > 2 ? `<button class="btn small" data-rm="${i}">Remove</button>` : ""}</div>`).join("")}</div>${c.teams.length < 4 ? `<div class="row"><button class="btn small" id="bgAddTeam">Add a team</button></div>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Look of the board</div><div class="looks">${BG_LOOKS.map(([k, n, d]) => `<button class="look" data-set="look" data-v="${k}" aria-pressed="${c.look === k}"><b>${n}</b><span class="d">${d}</span>${bgSwatch(k)}</button>`).join("")}</div><p class="note">You can also flip between the looks on the board with the Look button.</p></div>
     <div class="panel opt"><div class="eyebrow">Steals per team</div>${seg("steals", [[1, "1 steal"], [2, "2 steals"]], c.steals)}</div>
+    <div class="panel opt"><div class="eyebrow">Photo rounds</div>${seg("photos", [["true", "On: photo rounds on the board"], ["false", "Off: no photo rounds"]], c.photos !== false)}${c.photos === false ? `<p class="note">Takes Guess the Car, Actor, Footballer, Person, Food, Logo and Country, and Egypt: Photo Edition, off the board. One of the other sections gets two groups of squares instead.</p>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["balanced", "Balanced (7 from each section)"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
-      ${c.fill === "sections" ? `<div class="seg">${BG_SECS.map((g, i) => `<button data-sec="${i}" aria-pressed="${c.sections.includes(i)}">${esc(g[0])}</button>`).join("")}</div><p class="note">The 49 squares are shared out evenly between the sections you tick; a category can appear more than once, never in the same row, column or diagonal if it can be helped.</p>` : ""}
-      ${c.fill === "hand" ? `<p class="note">Tap the categories you want on the board (${c.picks.length} picked). The rest of the board is topped up from each section.</p><div class="hp">${BG_SECS.map((g, i) => `<div><h4>${esc(g[0])}</h4><div class="seg">${secs[i].map(id => `<button data-pick="${id}" aria-pressed="${c.picks.includes(id)}">${esc(bgShort(id))}</button>`).join("")}</div></div>`).join("")}</div>` : ""}</div>
+      ${c.fill === "sections" ? `<div class="seg">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<button data-sec="${i}" aria-pressed="${c.sections.includes(i)}">${esc(g[0])}</button>`).join("")}</div><p class="note">The 49 squares are shared out evenly between the sections you tick; a category can appear more than once, never in the same row, column or diagonal if it can be helped.</p>` : ""}
+      ${c.fill === "hand" ? `<p class="note">Tap the categories you want on the board (${c.picks.length} picked). The rest of the board is topped up from each section.</p><div class="hp">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<div><h4>${esc(g[0])}</h4><div class="seg">${secs[i].map(id => `<button data-pick="${id}" aria-pressed="${c.picks.includes(id)}">${esc(bgShort(id))}</button>`).join("")}</div></div>`).join("")}</div>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Square values</div>${seg("values", [["pos", "By position (centre is 500)"], ["random", "Random"], ["flat", "All the same"]], c.values)}
       ${c.values === "flat" ? seg("flat", [100, 200, 300, 400, 500].map(v => [v, v]), c.flat) : ""}</div>
     <div class="panel opt"><div class="eyebrow">Clue timer</div>${seg("auto", [["true", "Starts by itself"], ["false", "Host starts it"]], c.auto)}</div>
@@ -74,7 +80,7 @@ function bgSwatch(k){ const bg = {classic:"#000", card:"#0E5A3B", neon:"#05060f"
   return `<div class="swatch" style="background:${bg}">${cols.map((c, i) => `<i style="background:${i === 1 ? BG_TEAMCOL[0] : sq};border:2px solid ${k === "neon" ? c : k === "card" ? "#d9cfb4" : "#2B36B8"}${k === "card" && i === 1 ? ";box-shadow:inset 0 0 0 5px " + BG_TEAMCOL[0] + "cc" : ""}"></i>`).join("")}</div>`; }
 $("#bingoSetup").addEventListener("click", e => {
   const c = BG.cfg, set = e.target.closest("[data-set]");
-  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "steals" || k === "flat") v = +v; if(k === "auto") v = v === "true"; c[k] = v; bgSave(); renderBingoSetup(); return; }
+  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "steals" || k === "flat") v = +v; if(k === "auto" || k === "photos") v = v === "true"; c[k] = v; bgSave(); renderBingoSetup(); return; }
   const sec = e.target.closest("[data-sec]"); if(sec){ const i = +sec.dataset.sec; c.sections = c.sections.includes(i) ? c.sections.filter(x => x !== i) : c.sections.concat(i); if(!c.sections.length) c.sections = [i]; bgSave(); renderBingoSetup(); return; }
   const pk = e.target.closest("[data-pick]"); if(pk){ const id = pk.dataset.pick; c.picks = c.picks.includes(id) ? c.picks.filter(x => x !== id) : c.picks.concat(id); bgSave(); renderBingoSetup(); return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ c.teams.splice(+rm.dataset.rm, 1); bgSave(); renderBingoSetup(); return; }
