@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.50",
+  "date": "2026-10-08",
+  "items": [
+   "Category Bingo and Bidding Wars games can't be resumed any more: the Resume Bingo and Resume Bidding buttons are gone, and leaving one of those games mid-way now asks you to confirm first. Normal, Football and Wager games still resume after a refresh."
+  ]
+ },
+ {
   "v": "6.49",
   "date": "2026-10-08",
   "items": [

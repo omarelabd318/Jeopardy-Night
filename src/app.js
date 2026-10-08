@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.49`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.50`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1714,8 +1714,8 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
 function newGame(){ S.skipPhones = false; S.room = newRoom(); pickBall(); S.done = {}; S.turn = 0; S.x2 = null; S.ended = false; S.teams.forEach(t => { t.score = 0; t.x2used = false; t.twoUsed = false; }); }
 const midgame = () => Object.keys(S.done).length > 0 || S.teams.some(t => t.score !== 0);
 let confirmYes = null;
-function askConfirm(title, text, yesLabel, onYes){
-  if(!midgame()){ onYes(); return; }
+function askConfirm(title, text, yesLabel, onYes, force){   // 6.50: force asks even outside a normal game (Bingo, Bidding Wars)
+  if(!force && !midgame()){ onYes(); return; }
   $("#confirmTitle").textContent = title; $("#confirmText").textContent = text; $("#confirmYes").textContent = yesLabel;
   confirmYes = onYes; $("#confirmBox").hidden = false; $("#confirmNo").focus();
 }

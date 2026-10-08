@@ -1,7 +1,7 @@
 /* 6.48 (Omar): Category Bingo. A 7x7 board of 49 categories; teams take turns claiming squares by answering a clue and the first to get 5 in a row
    wins. Each team has 1 or 2 steals to take an opponent's square. No points: a right answer claims, a wrong one leaves the square open.
    It reuses the clue card (openClue / renderClue) and the winner screen; app.js only calls bingoBanner, bingoAwards, bingoDone, bingoAgain,
-   bingoSetupAgain and bingoLeave. Saved on this device in jn_bingo (game) and jn_bingoCfg (setup). To remove: see the 6.48 NOTES entry. */
+   bingoSetupAgain and bingoLeave. Setup is saved on this device in jn_bingoCfg (the game itself is not saved since 6.50). To remove: see the 6.48 NOTES entry. */
 const BG = {cfg:null, st:null};
 const BG_N = 7, BG_SKIP = new Set(["spot","igf","cal","headl"]);   // A/B/C rounds are left out: a one-in-three guess would hand over a free square
 const BG_LOOKS = [["classic","Classic","The game's own blue tiles with gold numbers. Claimed squares fill with the team colour."],["card","Bingo card","Paper-white squares on green felt. Claimed squares get a marker daub, like a real bingo card."],["neon","Neon","Dark board, every square glows in its section colour. Claimed squares light up solid."]];
@@ -43,7 +43,9 @@ const bgInit = () => ({v:1, cells:bgFill(BG.cfg), teams:BG.cfg.teams.map(n => ({
 
 /* ---------- screens ---------- */
 function bingoEnter(){ if(S.mode === "bingo") return; S.preMode = {power:S.power, wager:S.wager, steal:S.steal, ffa:S.ffa, qrAns:S.qrAns, skipPhones:S.skipPhones}; S.power = S.wager = S.steal = S.ffa = false; S.mode = "bingo"; }
-function bingoResumeBtn(){ const b = $("#bingoResume"); if(!b) return; const g = store.get("jn_bingo", null); b.hidden = !(g && !g.over && !g.preview); }
+/* 6.50 (Omar): no resuming a Bingo game. It isn't saved any more, and an old save is cleared. To undo: restore this function,
+   bgPersist and the #bingoResume click handler from 6.49, the #bingoResume button in head.html, and the plain bgHome handler. */
+function bingoResumeBtn(){ try{ localStorage.removeItem("jn_bingo"); }catch(e){} }
 function bingoLeave(){ bingoResumeBtn(); if(S.mode !== "bingo") return;
   closeCard(); Object.assign(S, S.preMode || {}); S.mode = null; S.preMode = null; $("#bingo").hidden = true; $("#bingoSetup").hidden = true; $("#winEyebrow").textContent = "Final scores"; $("#playAgain").textContent = "Play again";
   try{ syncFfaOpt(); }catch(e){} }
@@ -82,8 +84,7 @@ $("#bingoSetup").addEventListener("click", e => {
 });
 $("#bingoSetup").addEventListener("input", e => { const i = e.target.dataset && e.target.dataset.bn; if(i !== undefined){ BG.cfg.teams[+i] = e.target.value; bgSave(); } });
 $("#modeBingo").onclick = bingoSetupShow;
-$("#bingoResume").onclick = () => { const g = store.get("jn_bingo", null); if(!g) return; BG.st = g; bingoEnter(); bingoBoardShow(); };
-$("#bgHome").onclick = () => showHome();
+$("#bgHome").onclick = () => { const st = BG.st; if(st && !st.over && !st.preview && st.cells.some(x => x.own != null)) askConfirm("Leave this game?", "Going to the title screen ends this Bingo game. It can't be resumed.", "Go to title", showHome, true); else showHome(); };
 $("#bgLook").onclick = () => { const i = BG_LOOKS.findIndex(x => x[0] === BG.cfg.look); BG.cfg.look = BG_LOOKS[(i + 1) % BG_LOOKS.length][0]; bgSave(); Snd.blip(); renderBingo(); };
 
 /* ---------- board ---------- */
@@ -128,7 +129,7 @@ function bingoClickSq(i){
 }
 const bgInit1 = (st, i) => { const l = n => (n.trim()[0] || "?").toUpperCase(), m = st.teams[i], dup = st.teams.some((x, k) => k !== i && l(x.name) === l(m.name)); return esc(dup ? String(i + 1) : l(m.name)); };
 const bgName = i => "ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1);
-const bgPersist = () => store.set("jn_bingo", BG.st);
+const bgPersist = () => {};   // 6.50: Bingo games aren't saved (was store.set("jn_bingo", BG.st))
 function bingoBanner(c){ const st = BG.st, p = st && st.pend; if(!p) return ""; const t = st.teams[st.turn], from = st.cells[p.sq].own;
   return `<p class="note" style="margin:0;font-weight:700;color:${BG_TEAMCOL[st.turn]}">${p.kind === "steal" ? `${esc(t.name)} is stealing ${bgName(p.sq)} from ${esc(st.teams[from].name)}. Wrong and the steal is gone and ${esc(t.name)} can't pick it next turn.` : `${esc(t.name)} is going for ${bgName(p.sq)}.`}</p>`; }
 function bingoAwards(c){ const st = BG.st, i = st.turn, t = st.teams[i], p = st.pend;
