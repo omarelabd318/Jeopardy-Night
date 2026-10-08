@@ -6,7 +6,7 @@
    To remove: see the 6.49 NOTES entry. */
 const BW = {cfg:null, st:null, timer:null, left:0};
 const BW_TIERS = [{k:"Entry", lv:[200,300], cap:600}, {k:"Medium", lv:[300,400], cap:1200}, {k:"Expert", lv:[400,500], cap:1500}];
-const BW_WINNOTE = $("#winNote").textContent, BW_STEP = 50, BW_HALF = new Set(["song","pin"]);   // the two categories that give half points (song or singer; country only); half the bid there
+const BW_WINNOTE = $("#winNote").textContent, BW_STEP = 50, BW_RAISES = [50,100,200], BW_HALF = new Set(["song","pin"]);   // the two categories that give half points (song or singer; country only); half the bid there
 /* the titles shown while bidding; each groups related categories from one setup section. photo: needs the photo rounds on. off: off by default */
 const BW_TITLES = [
   ["egfilm", "Egyptian Film, TV & Music", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
@@ -85,7 +85,7 @@ function renderBidSetup(){
   $("#bidSetup").innerHTML = `
     <div><div class="bweye">Game mode</div><h1>Bidding <span>Wars</span></h1>
       <p class="sub">Every lot shows a title, the categories it includes and a difficulty range. Teams bid for the right to answer; the highest bid buys it and only the buyer answers. Right wins the bid, wrong loses it. Scores can go negative and any team can still bid up to the max.</p>
-      <div class="bwtiers">${BW_TIERS.map(t => `<div><b>${t.k}</b><span>$${t.lv[0]}–$${t.lv[1]}</span><small>Opens at $${t.lv[0]} · up $${BW_STEP} · max ${bwMoney(t.cap)}</small></div>`).join("")}</div></div>
+      <div class="bwtiers">${BW_TIERS.map(t => `<div><b>${t.k}</b><span>$${t.lv[0]}–$${t.lv[1]}</span><small>Opens at $${t.lv[0]} · raise $${BW_RAISES.join("/$")} · max ${bwMoney(t.cap)}</small></div>`).join("")}</div></div>
     <div class="bwpanel"><div class="bweye">Teams</div><div class="bwteams">${c.teams.map((n, i) => `<div class="bwteam"><input type="text" id="bwTeam${i}" data-bn="${i}" value="${esc(n)}" maxlength="24" aria-label="Team ${i + 1} name">${c.teams.length > 2 ? `<button class="bwbtn ghost" data-rm="${i}" aria-label="Remove ${esc(n)}">Remove</button>` : ""}</div>`).join("")}</div>
       ${c.teams.length < 6 ? `<div><button class="bwbtn ghost" id="bwAddTeam">Add team</button></div>` : ""}</div>
     <div class="bwpanel"><div class="bweye">Number of lots</div>${seg("lots", [10, 11, 12, 13, 14, 15].map(n => [n, n]), c.lots)}<p class="note">Each lot gets a random tier. With 10 or more, every tier comes up at least three times.</p></div>
@@ -123,7 +123,7 @@ function bwCount(){ bwStop(); if(!BW.cfg.secs) return; BW.left = BW.cfg.secs; co
 function renderBid(){
   const st = BW.st, root = $("#bidBody"); if(!st) return;
   if(st.over){ root.innerHTML = ""; return; }
-  const lot = bwLotNow(), tier = BW_TIERS[lot.tier], t = bwTitle(lot.title), next = st.bid ? st.bid + BW_STEP : tier.lv[0];
+  const lot = bwLotNow(), tier = BW_TIERS[lot.tier], t = bwTitle(lot.title);
   const cats = bwCats(t).map(id => catById(id).name);
   const lead = Math.max(...st.teams.map(m => m.score));
   const ticker = st.teams.map(m => `${esc(m.name.toUpperCase())} ${m.score >= 0 ? "▲" : "▼"} ${bwMoney(m.score)}`).join("  ·  ") + `  ·  LOT ${st.i + 1} OF ${st.lots.length}  ·  ${esc(t[1].toUpperCase())}  ·  ${tier.k.toUpperCase()} $${tier.lv[0]}–$${tier.lv[1]}  ·  MAX BID ${bwMoney(tier.cap)}  ·  `;
@@ -144,17 +144,21 @@ function renderBid(){
       </div>
     </div>
     <div class="bwbottom">
-      <div class="bwteamsrow" style="--n:${st.teams.length}">${st.teams.map((m, i) => { const can = i !== st.leader && next <= tier.cap;
+      <div class="bwteamsrow" style="--n:${st.teams.length}">${st.teams.map((m, i) => { const next = bwNext(i), can = i !== st.leader && next > 0, r = bwRaise(i);
         return `<div class="bwt${i === st.leader ? " lead" : ""}${m.score === lead && lead !== 0 ? " top" : ""}"><div class="bwtn"><span>${esc(m.name)}</span><span class="bwts${m.score < 0 ? " neg" : ""}">${bwMoney(m.score)}</span></div>
-          <button data-bid="${i}" ${can ? "" : "disabled"}>${i === st.leader ? "Leading" : next > tier.cap ? "At max" : "Bid " + bwMoney(next)}</button></div>`; }).join("")}</div>
+          <div class="bwraise" role="group" aria-label="${esc(m.name)} raises by">${BW_RAISES.map(v => `<button data-raise="${i}" data-v="${v}" class="${v === r ? "on" : ""}" aria-pressed="${v === r}">+${v}</button>`).join("")}</div>
+          <button data-bid="${i}" ${can ? "" : "disabled"}>${i === st.leader ? "Leading" : !next ? "At max" : "Bid " + bwMoney(next)}</button></div>`; }).join("")}</div>
       <div class="bwhost"><button class="sold" data-bw="sold" ${st.leader < 0 ? "disabled" : ""}>SOLD</button><button data-bw="unsold" ${st.leader < 0 ? "" : "disabled"}>Unsold</button></div>
     </div>
     <div class="bwticker" aria-hidden="true"><span>${ticker}${ticker}</span></div>
     <div class="bwsoldv" id="bwSoldV" hidden></div>`;
   if(st.phase !== "lot") bwShowSold(true);
 }
+/* 6.52: each team picks how much its next bid raises by (+$50/$100/$200, kept for the whole game); a raise past the max stops at the max. The first bid still opens at the range minimum */
+function bwRaise(i){ const r = BW.st.teams[i].raise; return BW_RAISES.includes(r) ? r : BW_STEP; }
+function bwNext(i){ const st = BW.st, tier = BW_TIERS[bwLotNow().tier]; if(!st.bid) return tier.lv[0]; return st.bid >= tier.cap ? 0 : Math.min(st.bid + bwRaise(i), tier.cap); }
 function bwPlace(i){ const st = BW.st, lot = bwLotNow(), tier = BW_TIERS[lot.tier]; if(st.phase !== "lot" || i === st.leader) return;
-  const next = st.bid ? st.bid + BW_STEP : tier.lv[0]; if(next > tier.cap) return;
+  const next = bwNext(i); if(!next) return;
   st.bid = next; st.leader = i; Snd.unlock(); Snd.blip(); bwCount(); renderBid(); const b = $("#bwBid"); if(b){ b.classList.add("pop"); setTimeout(() => b.classList.remove("pop"), 160); }
   if(next === tier.cap) setTimeout(() => { if(BW.st === st && st.phase === "lot" && st.bid === tier.cap) bwSold(); }, 900); }   // nobody can go higher
 function bwSold(){ const st = BW.st, lot = bwLotNow(); bwStop(); if(st.phase !== "lot" || st.leader < 0) return;
@@ -171,6 +175,7 @@ function bwUnsold(){ const st = BW.st, lot = bwLotNow(); bwStop(); if(st.phase !
 function bwOpen(){ const st = BW.st, lot = bwLotNow(); st.phase = "clue"; bwPersist();
   S.turn = lot.buyer; PICKS[`${lot.cat}-${lot.lvl}`] = lot.idx; openClue(lot.cat, lot.lvl); }
 $("#bidBody").addEventListener("click", e => {
+  const r = e.target.closest("[data-raise]"); if(r){ if(BW.st.phase === "lot"){ BW.st.teams[+r.dataset.raise].raise = +r.dataset.v; bwPersist(); renderBid(); } return; }
   const b = e.target.closest("[data-bid]"); if(b){ bwPlace(+b.dataset.bid); return; }
   const a = e.target.closest("[data-bw]"); if(!a) return; const k = a.dataset.bw;
   if(k === "sold") bwSold(); else if(k === "unsold") bwUnsold(); else if(k === "open") bwOpen(); else if(k === "next") renderBid();
