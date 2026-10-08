@@ -231,6 +231,14 @@ body:not(.football) #street.on.faint{z-index:11;opacity:.3}  /* 6.40 (Omar): fai
 .cluehead{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .cluehead .val{font-family:var(--display);font-weight:900;font-size:34px;color:var(--brass)}
 .qtext{font-size:clamp(22px,3.2vw,36px);font-weight:600;line-height:1.25;text-wrap:balance;margin:0;white-space:pre-line}
+/* 6.45: Wager mode's bet card */
+.wager{display:grid;gap:18px;justify-items:center;text-align:center;margin:8px 0}
+.wager .wrow{display:grid;gap:10px;justify-items:center}
+.wager .wq{font-size:clamp(20px,2.6vw,30px);font-weight:600}
+.wager .wctl{display:flex;align-items:center;gap:18px}
+.wager .wctl .btn{font-size:26px;min-width:56px}
+.wager .wamt{font-family:var(--display);font-weight:900;font-size:clamp(44px,6vw,72px);min-width:3.2ch;color:var(--brass)}
+.wager .wquick{justify-content:center;flex-wrap:wrap}
 .qtext.long{font-size:clamp(18px,2.3vw,27px)}
 .qtext.lineup{text-align:center;font-size:clamp(18px,2.6vw,30px);line-height:1.45}  /* Formations: lineup drawn like a pitch, strikers on top */
 .answer{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,42px);color:var(--good);letter-spacing:.01em;line-height:1.1;border-top:1.5px dashed var(--line);padding-top:14px}
@@ -451,7 +459,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.44</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.46</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -463,7 +471,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.44</div>
+      <div class="eyebrow verlabel">v6.46</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -494,6 +502,8 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
         <button class="opt" id="optSteal" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Steals from phones</b><small>Teams that aren't playing a tile get a steal box on their phones (they join once at the start with the same join code). A right steal is worth half the points (the ½ button).</small></span></button>
         <!-- 5.26 (Omar): Free-for-all; 5.32 (Omar): moved here, next to Steals from phones (was its own "Play mode" panel at the bottom of setup). To remove it: delete this button, #lobby, #ffaJoin and the 5.26 block in src/app.js -->
         <button class="opt" id="optFfa" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Free-for-all</b><small>No teams: everyone plays alone on their own phone, scanning one code at the start. Everyone who's right scores; nobody loses points. Team-only categories, power-ups and steals are left out. Works on the Cloudflare link.</small></span></button>
+        <!-- 6.45 (Omar): Wager mode, right after Free-for-all. To remove it: delete this button and the 6.45 lines in src/app.js -->
+        <button class="opt" id="optWager" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span><b>Wager mode</b><small>The team that picks a tile bets 0 to double its value before seeing the clue. Right adds the bet, wrong takes it away, and scores can go below zero. On Closest Wins and Price Is Right every team bets.</small></span></button>
         <button class="opt sndopt" id="optSound" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Sound</b><small>Soft ticks in the last 5 seconds of the timer, then a gentle chime.</small></span></button>
         <!-- 5.54 (Omar): turns the board animations (the normal mode street scene and the Football mode kickers) on or off -->
         <button class="opt" id="optAnim" aria-pressed="true"><span class="sw" aria-hidden="true"></span><span><b>Board animations</b><small>The little street scene under the board (the kickers in Football mode). Off keeps the bottom of the screen still.</small></span></button>
