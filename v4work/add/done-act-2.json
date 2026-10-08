@@ -1,0 +1,10 @@
+{"100":["Hulk","Zorro","Robin Hood","Popeye","Teenage Mutant Ninja Turtles","Pokémon"],
+"200":["The Wizard of Oz","Mr. & Mrs. Smith","RoboCop","Alien","WALL-E","El Kebeer Awi"],
+"300":["Matilda","Hachi: A Dog's Tale","Romeo and Juliet","Emily in Paris","Spartacus","Asal Eswed"],
+"400":["Gremlins","Footloose","Marley & Me","The Big Bang Theory","Raya wa Sakina","The Last of Us"],
+"500":["The Green Mile","The Butterfly Effect","Inglourious Basterds","There Will Be Blood","Better Call Saul","Rear Window"],
+"act_kind":{"Hulk":"film","Zorro":"film","Robin Hood":"film","Popeye":"series","Teenage Mutant Ninja Turtles":"film","Pokémon":"series",
+"The Wizard of Oz":"film","Mr. & Mrs. Smith":"film","RoboCop":"film","Alien":"film","WALL-E":"film","El Kebeer Awi":"series",
+"Matilda":"film","Hachi: A Dog's Tale":"film","Romeo and Juliet":"film","Emily in Paris":"series","Spartacus":"series","Asal Eswed":"film",
+"Gremlins":"film","Footloose":"film","Marley & Me":"film","The Big Bang Theory":"series","Raya wa Sakina":"film","The Last of Us":"series",
+"The Green Mile":"film","The Butterfly Effect":"film","Inglourious Basterds":"film","There Will Be Blood":"film","Better Call Saul":"series","Rear Window":"film"}}

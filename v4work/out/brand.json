@@ -148,6 +148,30 @@
    [
     "Which car brand makes the Corolla?",
     "Toyota"
+   ],
+   [
+    "Which chocolate bar shares its name with the Red Planet?",
+    "Mars"
+   ],
+   [
+    "Which car brand makes the Model 3 and Model Y?",
+    "Tesla"
+   ],
+   [
+    "Which video-call app became famous for online classes and meetings during COVID?",
+    "Zoom"
+   ],
+   [
+    "Which Japanese car brand makes the Civic?",
+    "Honda"
+   ],
+   [
+    "Which Indonesian instant-noodle brand is hugely popular in Egypt?",
+    "Indomie"
+   ],
+   [
+    "Which orange fizzy drink is made by Coca-Cola?",
+    "Fanta"
    ]
   ],
   "200": [
@@ -294,6 +318,30 @@
    [
     "Which company makes the Kindle?",
     "Amazon"
+   ],
+   [
+    "Which chocolate bar's ads say 'You're not you when you're hungry'?",
+    "Snickers"
+   ],
+   [
+    "Which British luxury car brand's logo is a winged 'B'?",
+    "Bentley"
+   ],
+   [
+    "Which watch brand's logo is a five-pointed crown?",
+    "Rolex"
+   ],
+   [
+    "Which card brand's ads end 'There are some things money can't buy. For everything else, there's…'?",
+    "Mastercard"
+   ],
+   [
+    "Which energy drink's logo is a green 'M' that looks like claw marks?",
+    "Monster"
+   ],
+   [
+    "Which Arabic streaming service is owned by the MBC Group?",
+    "Shahid"
    ]
   ],
   "300": [
@@ -440,6 +488,30 @@
    [
     "Which company created the Oreo?",
     "Nabisco (now Mondelēz)"
+   ],
+   [
+    "Which Japanese clothing brand's name is short for 'Unique Clothing Warehouse'?",
+    "Uniqlo"
+   ],
+   [
+    "Which Chinese tech giant's phones lost access to Google apps after US sanctions in 2019?",
+    "Huawei"
+   ],
+   [
+    "Which car brand's logo shows six stars?",
+    "Subaru"
+   ],
+   [
+    "Which Saudi company is the Middle East's biggest dairy brand?",
+    "Almarai"
+   ],
+   [
+    "Which Egyptian ceramics and tiles brand is named after a famous queen?",
+    "Cleopatra (Ceramica Cleopatra)"
+   ],
+   [
+    "Which company was founded in a Palo Alto garage in 1939 by two Stanford friends?",
+    "HP (Hewlett-Packard)"
    ]
   ],
   "400": [
@@ -582,6 +654,30 @@
    [
     "Which brand's slogan is 'Never Stop Exploring'?",
     "The North Face"
+   ],
+   [
+    "Which Spanish car brand, owned by Volkswagen, spun off its sporty Cupra range as a separate brand?",
+    "SEAT"
+   ],
+   [
+    "What does 'IBM' stand for?",
+    "International Business Machines"
+   ],
+   [
+    "What was Facebook called when it launched in 2004?",
+    "TheFacebook"
+   ],
+   [
+    "Which Italian fashion house's logo is an eagle?",
+    "Armani (Emporio Armani)"
+   ],
+   [
+    "What did 'BP' originally stand for?",
+    "British Petroleum"
+   ],
+   [
+    "Lacoste's crocodile logo comes from its founder's nickname. Who was he?",
+    "René Lacoste (a French tennis star)"
    ]
   ],
   "500": [
@@ -720,6 +816,30 @@
    [
     "What does the Swiss German name 'Nestlé' mean?",
     "Little nest"
+   ],
+   [
+    "What does the sportswear name 'ASICS' come from?",
+    "Anima Sana In Corpore Sano (a healthy soul in a healthy body)"
+   ],
+   [
+    "Which camera company's name was made up because its founder liked the letter K?",
+    "Kodak"
+   ],
+   [
+    "Which British bank's logo is a black horse?",
+    "Lloyds"
+   ],
+   [
+    "The fuel brand 'Esso' comes from the initials of which company?",
+    "Standard Oil (S.O.)"
+   ],
+   [
+    "Which US electronics chain was originally called 'Sound of Music'?",
+    "Best Buy"
+   ],
+   [
+    "What did the toy company name 'Hasbro' originally stand for?",
+    "Hassenfeld Brothers"
    ]
   ]
  }

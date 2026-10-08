@@ -220,6 +220,42 @@
     "Belgium",
     50.85,
     4.35
+   ],
+   [
+    "Florence",
+    "Italy",
+    43.77,
+    11.26
+   ],
+   [
+    "Kyoto",
+    "Japan",
+    35.01,
+    135.77
+   ],
+   [
+    "Turin",
+    "Italy",
+    45.07,
+    7.69
+   ],
+   [
+    "El Alamein",
+    "Egypt",
+    30.83,
+    28.95
+   ],
+   [
+    "Orlando",
+    "United States",
+    28.54,
+    -81.38
+   ],
+   [
+    "Nice",
+    "France",
+    43.7,
+    7.27
    ]
   ],
   "200": [
@@ -432,6 +468,42 @@
     "United States",
     29.76,
     -95.37
+   ],
+   [
+    "Seattle",
+    "United States",
+    47.61,
+    -122.33
+   ],
+   [
+    "Agra",
+    "India",
+    27.18,
+    78.01
+   ],
+   [
+    "Dahab",
+    "Egypt",
+    28.5,
+    34.51
+   ],
+   [
+    "Mansoura",
+    "Egypt",
+    31.04,
+    31.38
+   ],
+   [
+    "Rotterdam",
+    "Netherlands",
+    51.92,
+    4.48
+   ],
+   [
+    "Valencia",
+    "Spain",
+    39.47,
+    -0.38
    ]
   ],
   "300": [
@@ -644,6 +716,42 @@
     "Norway",
     59.91,
     10.75
+   ],
+   [
+    "Hamburg",
+    "Germany",
+    53.55,
+    9.99
+   ],
+   [
+    "Ismailia",
+    "Egypt",
+    30.6,
+    32.27
+   ],
+   [
+    "Guangzhou",
+    "China",
+    23.13,
+    113.26
+   ],
+   [
+    "Phuket",
+    "Thailand",
+    7.88,
+    98.39
+   ],
+   [
+    "Salvador",
+    "Brazil",
+    -12.97,
+    -38.5
+   ],
+   [
+    "Belfast",
+    "United Kingdom",
+    54.6,
+    -5.93
    ]
   ],
   "400": [
@@ -856,6 +964,42 @@
     "Finland",
     60.17,
     24.94
+   ],
+   [
+    "Minsk",
+    "Belarus",
+    53.9,
+    27.56
+   ],
+   [
+    "Mosul",
+    "Iraq",
+    36.34,
+    43.13
+   ],
+   [
+    "Asunción",
+    "Paraguay",
+    -25.26,
+    -57.58
+   ],
+   [
+    "Faiyum",
+    "Egypt",
+    29.31,
+    30.84
+   ],
+   [
+    "Phnom Penh",
+    "Cambodia",
+    11.56,
+    104.92
+   ],
+   [
+    "Lahore",
+    "Pakistan",
+    31.55,
+    74.34
    ]
   ],
   "500": [
@@ -1068,6 +1212,42 @@
     "Bhutan",
     27.47,
     89.64
+   ],
+   [
+    "Nuuk",
+    "Greenland (Denmark)",
+    64.18,
+    -51.72
+   ],
+   [
+    "Mogadishu",
+    "Somalia",
+    2.05,
+    45.32
+   ],
+   [
+    "Kharga",
+    "Egypt",
+    25.44,
+    30.55
+   ],
+   [
+    "Yakutsk",
+    "Russia",
+    62.03,
+    129.73
+   ],
+   [
+    "Chișinău",
+    "Moldova",
+    47.01,
+    28.86
+   ],
+   [
+    "Port Moresby",
+    "Papua New Guinea",
+    -9.44,
+    147.18
    ]
   ]
  }

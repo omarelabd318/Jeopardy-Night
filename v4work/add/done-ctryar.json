@@ -1,0 +1,150 @@
+{
+ "100": [
+  [
+   "Which country is this city in? Bethlehem",
+   "Palestine"
+  ],
+  [
+   "Which Arab country's national team has Riyad Mahrez captained?",
+   "Algeria"
+  ],
+  [
+   "Which Arab country is the singer Nancy Ajram from?",
+   "Lebanon"
+  ],
+  [
+   "Which Arab country did Saddam Hussein rule?",
+   "Iraq"
+  ],
+  [
+   "Which Arab country is the tennis star Ons Jabeur from?",
+   "Tunisia"
+  ],
+  [
+   "Which Arab country did Bashar al-Assad rule until December 2024?",
+   "Syria"
+  ]
+ ],
+ "200": [
+  [
+   "Which country is this city in? Ajman",
+   "UAE"
+  ],
+  [
+   "Which country is this city in? Tyre (Sour)",
+   "Lebanon"
+  ],
+  [
+   "Which country is this city in? Hodeidah",
+   "Yemen"
+  ],
+  [
+   "Which Arab country won the 2007 AFC Asian Cup?",
+   "Iraq"
+  ],
+  [
+   "Which Arab country is home to Jebel Toubkal, the highest peak of the Atlas Mountains?",
+   "Morocco"
+  ],
+  [
+   "Which Arab country's 2011 protests centred on Pearl Roundabout?",
+   "Bahrain"
+  ]
+ ],
+ "300": [
+  [
+   "Which country is this city in? Sohar",
+   "Oman"
+  ],
+  [
+   "Which country is this city in? Meknes",
+   "Morocco"
+  ],
+  [
+   "Which country is this city in? Jericho",
+   "Palestine"
+  ],
+  [
+   "Which Arab country is the singer Kadim Al Sahir from?",
+   "Iraq"
+  ],
+  [
+   "Which Arab country saw the 2005 'Cedar Revolution'?",
+   "Lebanon"
+  ],
+  [
+   "Which Arab country is the novelist Tayeb Salih from?",
+   "Sudan"
+  ]
+ ],
+ "400": [
+  [
+   "Which country is this city in? Tartus",
+   "Syria"
+  ],
+  [
+   "Which country is this city in? Derna",
+   "Libya"
+  ],
+  [
+   "Which country is this city in? Oujda",
+   "Morocco"
+  ],
+  [
+   "Which Arab country is ruled by the Al Khalifa family?",
+   "Bahrain"
+  ],
+  [
+   "Which Arab country shares Lake Nasser with Egypt, calling its part Lake Nubia?",
+   "Sudan"
+  ],
+  [
+   "Which Arab country is home to the Wahiba Sands desert?",
+   "Oman"
+  ]
+ ],
+ "500": [
+  [
+   "Which country is this city in? Ibb",
+   "Yemen"
+  ],
+  [
+   "Which country is this city in? Buraidah",
+   "Saudi Arabia"
+  ],
+  [
+   "Which country is this city in? Gabès",
+   "Tunisia"
+  ],
+  [
+   "Which country is this city in? Duhok",
+   "Iraq"
+  ],
+  [
+   "Which Arab country is home to Banc d'Arguin, a huge bird sanctuary on the Atlantic coast?",
+   "Mauritania"
+  ],
+  [
+   "Which Arab country was known as the Trucial States before 1971?",
+   "The UAE"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Algeria",
+  "Bahrain",
+  "Iraq",
+  "Lebanon",
+  "Libya",
+  "Mauritania",
+  "Morocco",
+  "Oman",
+  "Palestine",
+  "Saudi Arabia",
+  "Sudan",
+  "Syria",
+  "The UAE",
+  "Tunisia",
+  "UAE",
+  "Yemen"
+ ]
+}

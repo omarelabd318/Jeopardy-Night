@@ -40,7 +40,13 @@
    "Pillow",
    "Candle",
    "Spoon",
-   "Butterfly"
+   "Butterfly",
+   "Horse",
+   "Pencil",
+   "Rocket",
+   "Clock",
+   "Mango",
+   "Taxi"
   ],
   "200": [
    "Ramadan",
@@ -79,7 +85,13 @@
    "Helmet",
    "Waiter",
    "Scarecrow",
-   "Hammock"
+   "Hammock",
+   "Escalator",
+   "Stethoscope",
+   "Sandcastle",
+   "Thermometer",
+   "Wheelchair",
+   "Trampoline"
   ],
   "300": [
    "Tattoo",
@@ -117,7 +129,13 @@
    "Fingerprint",
    "Avalanche",
    "Mosquito",
-   "Satellite"
+   "Satellite",
+   "Hiccups",
+   "Insomnia",
+   "Quarantine",
+   "Sunburn",
+   "Allergy",
+   "Dowry"
   ],
   "400": [
    "Jealousy",
@@ -154,7 +172,13 @@
    "Rumour",
    "Deadline",
    "Shadow",
-   "Habit"
+   "Habit",
+   "Greed",
+   "Fame",
+   "Trust",
+   "Panic",
+   "Boredom",
+   "Ego"
   ],
   "500": [
    "Nostalgia",
@@ -192,7 +216,13 @@
    "Legacy",
    "Temptation",
    "Solitude",
-   "Curiosity"
+   "Curiosity",
+   "Nepotism",
+   "Mediocrity",
+   "Wasta",
+   "Moulid",
+   "Ambiguity",
+   "Redemption"
   ]
  }
 }

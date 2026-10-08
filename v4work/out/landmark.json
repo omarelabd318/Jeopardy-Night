@@ -64,6 +64,30 @@
    [
     "In which country is Machu Picchu?",
     "Peru"
+   ],
+   [
+    "Which giant statue with a lion's body and a human head guards the Giza pyramids?",
+    "The Great Sphinx"
+   ],
+   [
+    "In which city is the Burj Khalifa?",
+    "Dubai"
+   ],
+   [
+    "In which city is the Acropolis?",
+    "Athens"
+   ],
+   [
+    "Which huge Paris arch stands at the top of the Champs-Élysées?",
+    "The Arc de Triomphe"
+   ],
+   [
+    "In which US city is the Hollywood sign?",
+    "Los Angeles"
+   ],
+   [
+    "In which city is the Prophet's Mosque (Al-Masjid an-Nabawi)?",
+    "Medina"
    ]
   ],
   "200": [
@@ -126,6 +150,30 @@
    [
     "In which city is the Brandenburg Gate?",
     "Berlin"
+   ],
+   [
+    "In which city is Topkapı Palace, home of the Ottoman sultans?",
+    "Istanbul"
+   ],
+   [
+    "In which US city is the Space Needle?",
+    "Seattle"
+   ],
+   [
+    "In which city is the CN Tower?",
+    "Toronto"
+   ],
+   [
+    "In which city does the Little Mermaid statue sit by the harbour?",
+    "Copenhagen"
+   ],
+   [
+    "Which Greek island is famous for white houses, blue domes and the sunsets at Oia?",
+    "Santorini"
+   ],
+   [
+    "Which Rome fountain do visitors throw coins into to make sure they return?",
+    "The Trevi Fountain"
    ]
   ],
   "300": [
@@ -188,6 +236,30 @@
    [
     "In which country is the ancient city of Palmyra?",
     "Syria"
+   ],
+   [
+    "Which Luxor temple complex is the largest ancient religious site in the world?",
+    "Karnak"
+   ],
+   [
+    "Which Amsterdam house hid a Jewish teenage diarist during World War II?",
+    "The Anne Frank House"
+   ],
+   [
+    "Which female pharaoh's terraced temple stands at Deir el-Bahari in Luxor?",
+    "Hatshepsut"
+   ],
+   [
+    "In which city is Marina Bay Sands, the hotel with a 'ship' on its three towers?",
+    "Singapore"
+   ],
+   [
+    "In which Indian city is the Qutb Minar?",
+    "Delhi"
+   ],
+   [
+    "Which Jerusalem shrine is topped by a golden dome?",
+    "The Dome of the Rock"
    ]
   ],
   "400": [
@@ -250,6 +322,30 @@
    [
     "Which Nubian temple was moved, block by block, to save it from Lake Nasser?",
     "Abu Simbel"
+   ],
+   [
+    "Which St Petersburg palace, once home of the tsars, is the main building of the Hermitage Museum?",
+    "The Winter Palace"
+   ],
+   [
+    "Which ancient city in Turkey has the Library of Celsus?",
+    "Ephesus"
+   ],
+   [
+    "Which Spanish city has the Mezquita, a great mosque later turned into a cathedral?",
+    "Córdoba"
+   ],
+   [
+    "Which Egyptian temple north of Aswan is shared by two gods, Sobek and Horus?",
+    "Kom Ombo"
+   ],
+   [
+    "Which Egyptian island temple of Isis was moved to Agilkia Island to save it from the Nile?",
+    "Philae"
+   ],
+   [
+    "Which London cathedral, with its great dome, was designed by Christopher Wren?",
+    "St Paul's Cathedral"
    ]
   ],
   "500": [
@@ -312,6 +408,30 @@
    [
     "Which Indian Sikh shrine in Amritsar is covered in gold?",
     "The Golden Temple (Harmandir Sahib)"
+   ],
+   [
+    "Which temple in Angkor Thom, Cambodia, is covered in giant smiling stone faces?",
+    "The Bayon"
+   ],
+   [
+    "In which Uzbek city is the Registan, a square framed by three madrasas?",
+    "Samarkand"
+   ],
+   [
+    "Which Jordanian desert, the 'Valley of the Moon', stood in for Mars in The Martian?",
+    "Wadi Rum"
+   ],
+   [
+    "Which Chinese park's sandstone pillars inspired the floating mountains in Avatar?",
+    "Zhangjiajie"
+   ],
+   [
+    "Which Sri Lankan rock fortress has a giant lion's-paw gateway?",
+    "Sigiriya"
+   ],
+   [
+    "Which Crusader castle in Syria is one of the best-preserved medieval castles in the world?",
+    "Krak des Chevaliers"
    ]
   ]
  }

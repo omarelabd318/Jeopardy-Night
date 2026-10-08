@@ -128,6 +128,30 @@
    [
     "Translate from Italian: “bambino”",
     "Child / baby"
+   ],
+   [
+    "Translate from Spanish: “hola”",
+    "Hello"
+   ],
+   [
+    "Translate from French: “merci”",
+    "Thank you"
+   ],
+   [
+    "Translate from Italian: “vino”",
+    "Wine"
+   ],
+   [
+    "Translate from Italian: “piccolo”",
+    "Small"
+   ],
+   [
+    "Translate from French: “garçon”",
+    "Boy"
+   ],
+   [
+    "Translate from Spanish: “pollo”",
+    "Chicken"
    ]
   ],
   "200": [
@@ -254,6 +278,30 @@
    [
     "Translate from Italian: “cuore”",
     "Heart"
+   ],
+   [
+    "Translate from Spanish: “manta”",
+    "Blanket"
+   ],
+   [
+    "Translate from French: “mouton”",
+    "Sheep"
+   ],
+   [
+    "Translate from Spanish: “azúcar”",
+    "Sugar"
+   ],
+   [
+    "Translate from Italian: “melanzana”",
+    "Aubergine (eggplant)"
+   ],
+   [
+    "Translate from French: “ours”",
+    "Bear"
+   ],
+   [
+    "Translate from Italian: “gamberetto”",
+    "Prawn / shrimp"
    ]
   ],
   "300": [
@@ -380,6 +428,30 @@
    [
     "Translate from Italian: “ciliegia”",
     "Cherry"
+   ],
+   [
+    "Translate from French: “tiroir”",
+    "Drawer"
+   ],
+   [
+    "Translate from Spanish: “alfombra”",
+    "Carpet / rug"
+   ],
+   [
+    "Translate from French: “framboise”",
+    "Raspberry"
+   ],
+   [
+    "Translate from Italian: “cetriolo”",
+    "Cucumber"
+   ],
+   [
+    "Translate from Spanish: “cangrejo”",
+    "Crab"
+   ],
+   [
+    "Translate from Italian: “gabbiano”",
+    "Seagull"
    ]
   ],
   "400": [
@@ -506,6 +578,30 @@
    [
     "Translate from Spanish: “almendra”",
     "Almond"
+   ],
+   [
+    "Translate from Spanish: “fábrica”",
+    "Factory (not fabric)"
+   ],
+   [
+    "Translate from French: “lecture”",
+    "Reading (not lecture)"
+   ],
+   [
+    "Translate from Italian: “magazzino”",
+    "Warehouse (not magazine)"
+   ],
+   [
+    "Translate from French: “hérisson”",
+    "Hedgehog"
+   ],
+   [
+    "Translate from Spanish: “aceituna”",
+    "Olive"
+   ],
+   [
+    "Translate from Italian: “coccinella”",
+    "Ladybird (ladybug)"
    ]
   ],
   "500": [
@@ -632,6 +728,30 @@
    [
     "Translate from Italian: “estate”",
     "Summer (not estate)"
+   ],
+   [
+    "Translate from French: “l'esprit de l'escalier”",
+    "Thinking of the perfect reply too late"
+   ],
+   [
+    "Translate from Spanish: “anteayer”",
+    "The day before yesterday"
+   ],
+   [
+    "Translate from Italian: “dopodomani”",
+    "The day after tomorrow"
+   ],
+   [
+    "Translate from French: “pot-de-vin”",
+    "A bribe"
+   ],
+   [
+    "Translate from Spanish: “compromiso”",
+    "Commitment / engagement (not compromise)"
+   ],
+   [
+    "Translate from Italian: “collegio”",
+    "Boarding school (not college)"
    ]
   ]
  }

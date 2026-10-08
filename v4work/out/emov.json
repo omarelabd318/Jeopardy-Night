@@ -4,7 +4,8 @@
  "type": "emoji",
  "desc": "Name the film or TV show from the emojis.",
  "arabic_answers": [
-  "El Feel El Azraq"
+  "El Feel El Azraq",
+  "El Irhab wel Kabab"
  ],
  "data": {
   "100": [
@@ -171,6 +172,30 @@
    [
     "🐶🐾🚒",
     "PAW Patrol (TV)"
+   ],
+   [
+    "💇‍♀️🗼🍳",
+    "Tangled"
+   ],
+   [
+    "👦🐻🐯🌴",
+    "The Jungle Book"
+   ],
+   [
+    "🧚‍♀️👦🏴‍☠️🐊",
+    "Peter Pan"
+   ],
+   [
+    "👧👽🌺",
+    "Lilo & Stitch"
+   ],
+   [
+    "🦔💨💍",
+    "Sonic the Hedgehog"
+   ],
+   [
+    "👧⚔️🐉🇨🇳",
+    "Mulan"
    ]
   ],
   "200": [
@@ -337,6 +362,30 @@
    [
     "🧪💚👊",
     "The Incredible Hulk"
+   ],
+   [
+    "✈️😎🏍️",
+    "Top Gun"
+   ],
+   [
+    "👮‍♂️🏢🎄💥",
+    "Die Hard"
+   ],
+   [
+    "👰🇬🇷👨👨👨",
+    "Mamma Mia!"
+   ],
+   [
+    "🐯👶🦷🎰",
+    "The Hangover"
+   ],
+   [
+    "🧛‍♂️✨🐺❤️",
+    "Twilight"
+   ],
+   [
+    "👰💛⚔️",
+    "Kill Bill"
    ]
   ],
   "300": [
@@ -503,6 +552,30 @@
    [
     "🐎🪵🏰",
     "Troy"
+   ],
+   [
+    "💼🍔💉💃",
+    "Pulp Fiction"
+   ],
+   [
+    "💰❓🇮🇳",
+    "Slumdog Millionaire"
+   ],
+   [
+    "🧨🥙🏢",
+    "El Irhab wel Kabab"
+   ],
+   [
+    "🏜️🚛🔥🎸",
+    "Mad Max: Fury Road"
+   ],
+   [
+    "🤫👂👽",
+    "A Quiet Place"
+   ],
+   [
+    "🙈🚣‍♀️🐦",
+    "Bird Box"
    ]
   ],
   "400": [
@@ -669,6 +742,30 @@
    [
     "🐷🕸️",
     "Charlotte's Web"
+   ],
+   [
+    "👩‍🚀🛰️💥🌍",
+    "Gravity"
+   ],
+   [
+    "🐰👦🪖",
+    "Jojo Rabbit"
+   ],
+   [
+    "⚾💻📊",
+    "Moneyball"
+   ],
+   [
+    "🧗‍♂️🪨✋🔪",
+    "127 Hours"
+   ],
+   [
+    "🚗🎧💰",
+    "Baby Driver"
+   ],
+   [
+    "👱‍♀️❓📔🔪",
+    "Gone Girl"
    ]
   ],
   "500": [
@@ -831,6 +928,30 @@
    [
     "🥐💎🌅",
     "Breakfast at Tiffany's"
+   ],
+   [
+    "🤖☔🦄",
+    "Blade Runner"
+   ],
+   [
+    "🫏✂️🇮🇪",
+    "The Banshees of Inisherin"
+   ],
+   [
+    "🗼🧔🧔🐦",
+    "The Lighthouse"
+   ],
+   [
+    "🔮👁️🚔",
+    "Minority Report"
+   ],
+   [
+    "🥊👩💵",
+    "Million Dollar Baby"
+   ],
+   [
+    "🦂🧥🚗",
+    "Drive"
    ]
   ]
  }
