@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.51",
+  "date": "2026-10-08",
+  "items": [
+   "Category Bingo: a new Photo rounds switch in setup. Turn it off and no photo categories (Guess the Car, Actor, Footballer, Person, Food, Logo, Country, Egypt: Photo Edition) show up on the board."
+  ]
+ },
+ {
   "v": "6.50",
   "date": "2026-10-08",
   "items": [
