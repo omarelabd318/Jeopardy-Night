@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.45",
+  "date": "2026-10-08",
+  "items": [
+   "New in setup: Wager mode. The team that picks a tile bets 0 to double its value before seeing the clue. Right adds the bet, wrong takes it away, and scores can go below zero.",
+   "On Closest Wins and Price Is Right every team bets: the closest wins its bet and the rest lose theirs."
+  ]
+ },
+ {
   "v": "6.44",
   "date": "2026-10-07",
   "items": [
