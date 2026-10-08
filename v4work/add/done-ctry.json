@@ -1,35 +1,132 @@
-{"100":[
-["Which country is this city in? Marrakesh","Morocco"],
-["Which country is this city in? Dubai","The United Arab Emirates"],
-["Which country has a cedar tree on its flag?","Lebanon"],
-["Which country is home to the ancient city of Petra?","Jordan"],
-["Which country is this city in? Tunis","Tunisia"],
-["Which country is this city in? Baghdad","Iraq"]],
-"200":[
-["Which country is this city in? Valletta","Malta"],
-["Which country is this city in? Benghazi","Libya"],
-["Which country is this city in? Aleppo","Syria"],
-["Which country is this city in? Muscat","Oman"],
-["Which country has a canal linking the Atlantic and the Pacific?","Panama"],
-["Which country does Usain Bolt come from?","Jamaica"]],
-"300":[
-["Which country is this city in? Tallinn","Estonia"],
-["Which country is this city in? Sofia","Bulgaria"],
-["Which country is this city in? Bratislava","Slovakia"],
-["Which country is home to Monte Carlo and its Formula 1 street race?","Monaco"],
-["Which country is this city in? Kabul","Afghanistan"],
-["Which Central American country abolished its army in 1948 and is famous for 'pura vida'?","Costa Rica"]],
-"400":[
-["Which country is this city in? Tirana","Albania"],
-["Which country is this city in? Maputo","Mozambique"],
-["Which country is this city in? Mogadishu","Somalia"],
-["Which country is this city in? Minsk","Belarus"],
-["Which country is this city in? Luanda","Angola"],
-["Which country is this city in? Malé","The Maldives"]],
-"500":[
-["Which country is this city in? Nouakchott","Mauritania"],
-["Which country is this city in? N'Djamena","Chad"],
-["Which country is this city in? Niamey","Niger"],
-["Which country is this city in? Libreville","Gabon"],
-["Which country is this city in? Bujumbura","Burundi"],
-["Which is the only country in Africa with Spanish as an official language?","Equatorial Guinea"]]}
+{
+ "100": [
+  [
+   "Which country is this city in? Marrakesh",
+   "Morocco"
+  ],
+  [
+   "Which country is this city in? Dubai",
+   "The United Arab Emirates"
+  ],
+  [
+   "Which country has a cedar tree on its flag?",
+   "Lebanon"
+  ],
+  [
+   "Which country is home to the ancient city of Petra?",
+   "Jordan"
+  ],
+  [
+   "Which country is this city in? Tunis",
+   "Tunisia"
+  ],
+  [
+   "Which country is this city in? Baghdad",
+   "Iraq"
+  ]
+ ],
+ "200": [
+  [
+   "Which country is this city in? Valletta",
+   "Malta"
+  ],
+  [
+   "Which country is this city in? Benghazi",
+   "Libya"
+  ],
+  [
+   "Which country is this city in? Aleppo",
+   "Syria"
+  ],
+  [
+   "Which country is this city in? Muscat",
+   "Oman"
+  ],
+  [
+   "Which country is Cappadocia in, famous for its hot-air balloons and cave hotels?",
+   "Turkey"
+  ],
+  [
+   "Which country is home to the ruins of ancient Carthage?",
+   "Tunisia"
+  ]
+ ],
+ "300": [
+  [
+   "Which country is this city in? Tallinn",
+   "Estonia"
+  ],
+  [
+   "Which country is this city in? Sofia",
+   "Bulgaria"
+  ],
+  [
+   "Which country is this city in? Bratislava",
+   "Slovakia"
+  ],
+  [
+   "Which country is home to Chefchaouen, the 'Blue City'?",
+   "Morocco"
+  ],
+  [
+   "Which country is this city in? Kabul",
+   "Afghanistan"
+  ],
+  [
+   "Which Central American country abolished its army in 1948 and is famous for 'pura vida'?",
+   "Costa Rica"
+  ]
+ ],
+ "400": [
+  [
+   "Which country is this city in? Tirana",
+   "Albania"
+  ],
+  [
+   "Which country is this city in? Maputo",
+   "Mozambique"
+  ],
+  [
+   "Which country is this city in? Mogadishu",
+   "Somalia"
+  ],
+  [
+   "Which country is this city in? Minsk",
+   "Belarus"
+  ],
+  [
+   "Which country is this city in? Luanda",
+   "Angola"
+  ],
+  [
+   "Which country is this city in? Malé",
+   "The Maldives"
+  ]
+ ],
+ "500": [
+  [
+   "Which country is this city in? Nouakchott",
+   "Mauritania"
+  ],
+  [
+   "Which country is this city in? N'Djamena",
+   "Chad"
+  ],
+  [
+   "Which country is this city in? Niamey",
+   "Niger"
+  ],
+  [
+   "Which country is this city in? Libreville",
+   "Gabon"
+  ],
+  [
+   "Which country is this city in? Bujumbura",
+   "Burundi"
+  ],
+  [
+   "Which is the only country in Africa with Spanish as an official language?",
+   "Equatorial Guinea"
+  ]
+ ]
+}

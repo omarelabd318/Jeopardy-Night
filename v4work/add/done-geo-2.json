@@ -1,35 +1,132 @@
-{"100":[
-["What is the capital of France?","Paris"],
-["What is the capital of the United Kingdom?","London"],
-["What is the capital of Egypt?","Cairo"],
-["Which US state is a chain of Pacific islands, with Honolulu as its capital?","Hawaii"],
-["Which Egyptian city is nicknamed the 'Bride of the Mediterranean'?","Alexandria"],
-["Which ocean surrounds the North Pole?","The Arctic Ocean"]],
-"200":[
-["What is the capital of Finland?","Helsinki"],
-["What is the largest lake in Africa?","Lake Victoria"],
-["The Canary Islands belong to which country?","Spain"],
-["What is the capital of Colombia?","Bogotá"],
-["What is the largest country lying entirely within Europe?","Ukraine"],
-["Which huge reservoir was created on the Nile by the Aswan High Dam?","Lake Nasser"]],
-"300":[
-["What is the capital of Azerbaijan?","Baku"],
-["Victoria Falls is on which African river?","The Zambezi"],
-["What is Morocco's largest city?","Casablanca"],
-["Which Egyptian city sits at the Mediterranean end of the Suez Canal?","Port Said"],
-["The Mekong Delta is in which country?","Vietnam"],
-["What is the largest island in the Caribbean?","Cuba"]],
-"400":[
-["What is the highest mountain on mainland Australia?","Mount Kosciuszko"],
-["What is the capital of Estonia?","Tallinn"],
-["Which is the only country with coastline on both the Caspian Sea and the Persian Gulf?","Iran"],
-["The Nile splits into two branches in the Delta: Rosetta and which other?","Damietta"],
-["Which country was called East Pakistan until 1971?","Bangladesh"],
-["What is the highest mountain in North America?","Denali (Mount McKinley)"]],
-"500":[
-["What is the capital of Tajikistan?","Dushanbe"],
-["Which African country is surrounded by Senegal on every side except its coast?","The Gambia"],
-["The White Desert lies near which Egyptian oasis?","Farafra"],
-["What is the capital of Namibia?","Windhoek"],
-["Together with the Neisse, which river forms most of the border between Germany and Poland?","The Oder"],
-["What is the capital of Liberia?","Monrovia"]]}
+{
+ "100": [
+  [
+   "What is the capital of France?",
+   "Paris"
+  ],
+  [
+   "What is the capital of the United Kingdom?",
+   "London"
+  ],
+  [
+   "What is the capital of Egypt?",
+   "Cairo"
+  ],
+  [
+   "Which US state is a chain of Pacific islands, with Honolulu as its capital?",
+   "Hawaii"
+  ],
+  [
+   "Which Egyptian city is nicknamed the 'Bride of the Mediterranean'?",
+   "Alexandria"
+  ],
+  [
+   "Which ocean surrounds the North Pole?",
+   "The Arctic Ocean"
+  ]
+ ],
+ "200": [
+  [
+   "What is the capital of Finland?",
+   "Helsinki"
+  ],
+  [
+   "What is the capital of Ecuador?",
+   "Quito"
+  ],
+  [
+   "The Azores belong to which country?",
+   "Portugal"
+  ],
+  [
+   "What is the capital of Colombia?",
+   "Bogotá"
+  ],
+  [
+   "What is the largest country lying entirely within Europe?",
+   "Ukraine"
+  ],
+  [
+   "Which huge reservoir was created on the Nile by the Aswan High Dam?",
+   "Lake Nasser"
+  ]
+ ],
+ "300": [
+  [
+   "What is the capital of Azerbaijan?",
+   "Baku"
+  ],
+  [
+   "Victoria Falls is on which African river?",
+   "The Zambezi"
+  ],
+  [
+   "What is Morocco's largest city?",
+   "Casablanca"
+  ],
+  [
+   "Which Egyptian city sits halfway along the Suez Canal, on Lake Timsah?",
+   "Ismailia"
+  ],
+  [
+   "The Mekong Delta is in which country?",
+   "Vietnam"
+  ],
+  [
+   "What is the second-largest island in the Mediterranean?",
+   "Sardinia"
+  ]
+ ],
+ "400": [
+  [
+   "What is the highest mountain on mainland Australia?",
+   "Mount Kosciuszko"
+  ],
+  [
+   "What is the capital of Estonia?",
+   "Tallinn"
+  ],
+  [
+   "Which is the only country with coastline on both the Caspian Sea and the Persian Gulf?",
+   "Iran"
+  ],
+  [
+   "The Nile splits into two branches in the Delta: Rosetta and which other?",
+   "Damietta"
+  ],
+  [
+   "Which country was called East Pakistan until 1971?",
+   "Bangladesh"
+  ],
+  [
+   "What is the highest mountain in North America?",
+   "Denali (Mount McKinley)"
+  ]
+ ],
+ "500": [
+  [
+   "What is the capital of Tajikistan?",
+   "Dushanbe"
+  ],
+  [
+   "Which African country is surrounded by Senegal on every side except its coast?",
+   "The Gambia"
+  ],
+  [
+   "The White Desert lies near which Egyptian oasis?",
+   "Farafra"
+  ],
+  [
+   "What is the capital of Namibia?",
+   "Windhoek"
+  ],
+  [
+   "Together with the Neisse, which river forms most of the border between Germany and Poland?",
+   "The Oder"
+  ],
+  [
+   "What is the capital of Liberia?",
+   "Monrovia"
+  ]
+ ]
+}

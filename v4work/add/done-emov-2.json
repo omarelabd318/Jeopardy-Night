@@ -1,41 +1,133 @@
-{"100":[
-["💇‍♀️🗼🍳","Tangled"],
-["👦🐻🐯🌴","The Jungle Book"],
-["🧚‍♀️👦🏴‍☠️🐊","Peter Pan"],
-["👧👽🌺","Lilo & Stitch"],
-["🦔💨💍","Sonic the Hedgehog"],
-["👧⚔️🐉🇨🇳","Mulan"]
-],
-"200":[
-["✈️😎🏍️","Top Gun"],
-["👮‍♂️🏢🎄💥","Die Hard"],
-["👰🇬🇷👨👨👨","Mamma Mia!"],
-["🐯👶🦷🎰","The Hangover"],
-["🧛‍♂️✨🐺❤️","Twilight"],
-["👰💛⚔️","Kill Bill"]
-],
-"300":[
-["💼🍔💉💃","Pulp Fiction"],
-["💰❓🇮🇳","Slumdog Millionaire"],
-["🧨🥙🏢","El Irhab wel Kabab"],
-["🏜️🚛🔥🎸","Mad Max: Fury Road"],
-["🤫👂👽","A Quiet Place"],
-["🙈🚣‍♀️🐦","Bird Box"]
-],
-"400":[
-["👩‍🚀🛰️💥🌍","Gravity"],
-["🐰👦🪖","Jojo Rabbit"],
-["⚾💻📊","Moneyball"],
-["🧗‍♂️🪨✋🔪","127 Hours"],
-["🚗🎧💰","Baby Driver"],
-["👱‍♀️❓📔🔪","Gone Girl"]
-],
-"500":[
-["🤖☔🦄","Blade Runner"],
-["🫏✂️🇮🇪","The Banshees of Inisherin"],
-["🗼🧔🧔🐦","The Lighthouse"],
-["🔮👁️🚔","Minority Report"],
-["🥊👩💵","Million Dollar Baby"],
-["🦂🧥🚗","Drive"]
-],
-"arabic_answers":["El Irhab wel Kabab"]}
+{
+ "100": [
+  [
+   "💇‍♀️🗼🍳",
+   "Tangled"
+  ],
+  [
+   "👦🐻🐯🌴",
+   "The Jungle Book"
+  ],
+  [
+   "🧚‍♀️👦🏴‍☠️🐊",
+   "Peter Pan"
+  ],
+  [
+   "👧👽🌺",
+   "Lilo & Stitch"
+  ],
+  [
+   "🦔💨💍",
+   "Sonic the Hedgehog"
+  ],
+  [
+   "👧⚔️🐉🇨🇳",
+   "Mulan"
+  ]
+ ],
+ "200": [
+  [
+   "✈️😎🏍️",
+   "Top Gun"
+  ],
+  [
+   "👮‍♂️🏢🎄💥",
+   "Die Hard"
+  ],
+  [
+   "👰🇬🇷👨👨👨",
+   "Mamma Mia!"
+  ],
+  [
+   "🐯👶🦷🎰",
+   "The Hangover"
+  ],
+  [
+   "⭐👶🎤",
+   "A Star Is Born"
+  ],
+  [
+   "👰💛⚔️",
+   "Kill Bill"
+  ]
+ ],
+ "300": [
+  [
+   "💼🍔💉💃",
+   "Pulp Fiction"
+  ],
+  [
+   "💰❓🇮🇳",
+   "Slumdog Millionaire"
+  ],
+  [
+   "🏃‍♂️😊👨‍👦",
+   "The Pursuit of Happyness"
+  ],
+  [
+   "🏜️🚛🔥🎸",
+   "Mad Max: Fury Road"
+  ],
+  [
+   "🤫👂👽",
+   "A Quiet Place"
+  ],
+  [
+   "🙈🚣‍♀️🐦",
+   "Bird Box"
+  ]
+ ],
+ "400": [
+  [
+   "👩‍🚀🛰️💥🌍",
+   "Gravity"
+  ],
+  [
+   "🐰👦🪖",
+   "Jojo Rabbit"
+  ],
+  [
+   "⚾💻📊",
+   "Moneyball"
+  ],
+  [
+   "🧗‍♂️🪨✋🔪",
+   "127 Hours"
+  ],
+  [
+   "🚗🎧💰",
+   "Baby Driver"
+  ],
+  [
+   "👱‍♀️❓📔🔪",
+   "Gone Girl"
+  ]
+ ],
+ "500": [
+  [
+   "🤖☔🦄",
+   "Blade Runner"
+  ],
+  [
+   "🫏✂️🇮🇪",
+   "The Banshees of Inisherin"
+  ],
+  [
+   "🗼🧔🧔🐦",
+   "The Lighthouse"
+  ],
+  [
+   "🔮👁️🚔",
+   "Minority Report"
+  ],
+  [
+   "🥊👩💵",
+   "Million Dollar Baby"
+  ],
+  [
+   "🦂🧥🚗",
+   "Drive"
+  ]
+ ],
+ "arabic_answers": []
+}
