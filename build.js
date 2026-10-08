@@ -16,7 +16,8 @@ if(extra.apply) extra.apply({CATS,DATA,F,ACT,AR});
 const FLAGCODE=Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync(W+'/flag-codes.json','utf8'))).filter(([id,c])=>fs.existsSync(`photos/flags/${c}.svg`)));   // 6.19
 const J=x=>JSON.stringify(x);
 const FOOTBALL_IDS=JSON.parse(fs.readFileSync('src/app.js','utf8').match(/const FOOTBALL = (\[[^\]]*\])/)[1]);   // 6.20: Football Mix = the Football mode pool
-const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8'), builtin=fs.readFileSync('src/builtin.js','utf8');
+const MODE_FILES=['bidding','bingo'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.46: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
+const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8').replace('/*@modes*/',()=>MODE_FILES.map(m=>fs.readFileSync(`src/${m}.js`,'utf8')).join('\n')), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}
 const CATS = ${J(CATS)};
 const DATA = ${J(DATA)};
