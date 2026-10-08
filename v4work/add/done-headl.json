@@ -1,0 +1,132 @@
+{
+ "100": [
+  [
+   "Only one of these headlines is real. Which one?\nA) Big Ben's clock tower destroyed by fire\nB) Notre-Dame cathedral's roof and spire destroyed by fire\nC) The Leaning Tower of Pisa finally falls over",
+   "B) Notre-Dame cathedral's roof and spire destroyed by fire (2019)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Liverpool win their first league title in 30 years\nB) Everton win their first league title in 40 years\nC) Aston Villa win the Premier League for the first time",
+   "A) Liverpool win their first league title in 30 years (2020)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Marvel and DC release a joint film, nicknamed 'MarvDC'\nB) Shrek and Frozen open on the same day, and 'Shrozen' is born\nC) Barbie and Oppenheimer open on the same day, and 'Barbenheimer' is born",
+   "C) Barbie and Oppenheimer open on the same day, and 'Barbenheimer' is born (July 2023)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Mark Zuckerberg flies around the Moon in his own spaceship\nB) Jeff Bezos flies to space in his own company's rocket\nC) Bill Gates becomes the first billionaire to walk in space",
+   "B) Jeff Bezos flies to space in his own company's rocket (Blue Origin, 2021)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Cristiano Ronaldo signs for Zamalek\nB) Cristiano Ronaldo signs for Saudi club Al Nassr\nC) Cristiano Ronaldo signs for Boca Juniors",
+   "B) Cristiano Ronaldo signs for Saudi club Al Nassr (December 2022)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Salah joins Real Madrid for a world-record €300 million\nB) Mbappé joins Chelsea for a world-record €250 million\nC) Neymar joins PSG for a world-record €222 million",
+   "C) Neymar joins PSG for a world-record €222 million (2017)\n(others: A and B are made up)"
+  ]
+ ],
+ "200": [
+  [
+   "Only one of these headlines is real. Which one?\nA) Panama go to the 2018 World Cup with a schoolteacher as head coach\nB) Iceland go to the 2018 World Cup with a part-time dentist as head coach\nC) Peru go to the 2018 World Cup with a TV chef as head coach",
+   "B) Iceland go to the 2018 World Cup with a part-time dentist as head coach (Heimir Hallgrímsson)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Man begs his council to let him dig up a landfill for a hard drive holding thousands of bitcoins\nB) Man finds a lost bitcoin wallet inside a Cairo taxi\nC) Man pays off his mortgage with a bitcoin he found in an old sock",
+   "A) Man begs his council to let him dig up a landfill for a hard drive holding thousands of bitcoins (James Howells, Wales; he threw the drive away in 2013)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Taylor Swift deletes Instagram and its value halves in a day\nB) A Beyoncé post doubles the price of lemons worldwide\nC) A tweet from Kylie Jenner wipes about $1.3 billion off Snapchat's value",
+   "C) A tweet from Kylie Jenner wipes about $1.3 billion off Snapchat's value (2018)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Tom Cruise finally wins an Oscar, for Top Gun: Maverick\nB) Brad Pitt turns down his Oscar on stage\nC) Leonardo DiCaprio finally wins an Oscar, for The Revenant",
+   "C) Leonardo DiCaprio finally wins an Oscar, for The Revenant (2016)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Keanu Reeves buys Scottish club Hearts\nB) Tom Holland buys Fulham\nC) Ryan Reynolds and Rob McElhenney buy Welsh club Wrexham",
+   "C) Ryan Reynolds and Rob McElhenney buy Welsh club Wrexham (2021)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) FIFA's Sepp Blatter knighted by the Queen for services to football\nB) UEFA's Michel Platini elected president of France\nC) FIFA's Sepp Blatter and UEFA's Michel Platini banned from football",
+   "C) FIFA's Sepp Blatter and UEFA's Michel Platini banned from football (December 2015)\n(others: A and B are made up)"
+  ]
+ ],
+ "300": [
+  [
+   "Only one of these headlines is real. Which one?\nA) McDonald's ad shows a Big Mac that never goes off\nB) Burger King's ad shows a Whopper slowly going mouldy\nC) KFC's ad shows a chicken bucket being eaten by ants",
+   "B) Burger King's ad shows a Whopper slowly going mouldy (the 'Moldy Whopper', 2020)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) NASA smashes a spacecraft into an asteroid on purpose and changes its orbit\nB) NASA lassos an asteroid and parks it next to the Moon\nC) NASA sends a drill to split an asteroid in half",
+   "A) NASA smashes a spacecraft into an asteroid on purpose and changes its orbit (the DART mission, 2022)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) WHO certifies Egypt as malaria-free\nB) Egypt becomes the first African country to host the Summer Olympics\nC) Egypt win their first Olympic gold medal in football",
+   "A) WHO certifies Egypt as malaria-free (October 2024)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) A baby giraffe called Tall Boy wins a Thai beauty contest\nB) A baby pygmy hippo called Moo Deng becomes a global internet star\nC) A baby elephant called Jumbo becomes Thailand's tourism minister",
+   "B) A baby pygmy hippo called Moo Deng becomes a global internet star (Thailand, 2024)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Protesters throw tomato soup over Van Gogh's 'Sunflowers' in London\nB) Protesters glue the Mona Lisa to the wall of the Louvre\nC) Protesters paint a moustache on Michelangelo's David",
+   "A) Protesters throw tomato soup over Van Gogh's 'Sunflowers' in London (October 2022)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Luxor's Valley of the Kings gets a cable car\nB) Karnak Temple fully rebuilt using 3D-printed stone\nC) Luxor's 3 km Avenue of Sphinxes reopens with a grand night parade",
+   "C) Luxor's 3 km Avenue of Sphinxes reopens with a grand night parade (November 2021)\n(others: A and B are made up)"
+  ]
+ ],
+ "400": [
+  [
+   "Only one of these headlines is real. Which one?\nA) Japanese man marries his robot vacuum cleaner in a Tokyo hotel\nB) Japanese man spends about $14,000 on a hyper-realistic costume to live as a collie\nC) Japanese man spends $50,000 to be cloned as a cat",
+   "B) Japanese man spends about $14,000 on a hyper-realistic costume to live as a collie ('Toco', 2022)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Egypt sells the Saqqara step pyramid to a hotel chain\nB) Egypt opens a sealed 2,500-year-old coffin live in front of the world's press at Saqqara\nC) Egypt finds a mobile phone inside a pharaoh's tomb",
+   "B) Egypt opens a sealed 2,500-year-old coffin live in front of the world's press at Saqqara (October 2020)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Nicolas Cage buys the Sphinx's missing nose at auction\nB) Nicolas Cage named king of a Pacific island\nC) Nicolas Cage hands back a stolen dinosaur skull he bought at auction",
+   "C) Nicolas Cage hands back a stolen dinosaur skull he bought at auction (the skull went back to Mongolia, 2015)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Luxembourg turns all its prisons into museums after a year with no crime\nB) The Netherlands has so few prisoners that it rents a prison to Norway\nC) Switzerland turns its last prison into a five-star hotel",
+   "B) The Netherlands has so few prisoners that it rents a prison to Norway (Norgerhaven, from 2015)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Guinness strips 'Bobi' of the title 'world's oldest dog ever'\nB) Guinness names a 45-year-old goldfish the 'world's oldest pet ever'\nC) Guinness strips a parrot of its 'world's biggest vocabulary' record",
+   "A) Guinness strips 'Bobi' of the title 'world's oldest dog ever' (2024)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Ramses II's statue is flown to Paris for a one-year exhibition\nB) Ramses II's statue is cut into three pieces to fit through the museum doors\nC) Ramses II's 83-tonne statue is driven through Cairo to the Grand Egyptian Museum",
+   "C) Ramses II's 83-tonne statue is driven through Cairo to the Grand Egyptian Museum (January 2018)\n(others: A and B are made up)"
+  ]
+ ],
+ "500": [
+  [
+   "Only one of these headlines is real. Which one?\nA) Wales's village of Grumpy pairs up with Moody, Texas\nB) England's town of Sleepy pairs up with Snooze, Ontario\nC) Scotland's village of Dull pairs up with Boring, Oregon",
+   "C) Scotland's village of Dull pairs up with Boring, Oregon (2012)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Belgium goes 541 days without a government\nB) Switzerland goes three years without a president\nC) Luxembourg goes a year without a single law being passed",
+   "A) Belgium goes 541 days without a government (2010–11)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Danish man arrested for trying to launch a rocket from his balcony\nB) Norwegian man arrested for trying to clone his dog in his garage\nC) Swedish man arrested for trying to build a nuclear reactor in his kitchen",
+   "C) Swedish man arrested for trying to build a nuclear reactor in his kitchen (Richard Handl, 2011)\n(others: A and B are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Student makes $1 million selling single emojis for $10 each\nB) Student makes $1 million selling the pixels of one web page for $1 each\nC) Student makes $1 million selling 'shares' in his own life",
+   "B) Student makes $1 million selling the pixels of one web page for $1 each (the Million Dollar Homepage, 2005)\n(others: A and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Shohei Ohtani's interpreter admits stealing about $17 million from him to pay gambling debts\nB) Shohei Ohtani's agent admits selling his signature as an NFT\nC) Shohei Ohtani's driver admits taking his car to play baseball himself",
+   "A) Shohei Ohtani's interpreter admits stealing about $17 million from him to pay gambling debts (Ippei Mizuhara, 2024)\n(others: B and C are made up)"
+  ],
+  [
+   "Only one of these headlines is real. Which one?\nA) Khufu's 4,500-year-old boat moved in one piece to the Grand Egyptian Museum\nB) Khufu's boat sails down the Nile again in a royal parade\nC) Khufu's boat sold to the British Museum in a secret deal",
+   "A) Khufu's 4,500-year-old boat moved in one piece to the Grand Egyptian Museum (August 2021)\n(others: B and C are made up)"
+  ]
+ ]
+}

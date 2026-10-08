@@ -4,32 +4,37 @@
  "type": "emoji",
  "desc": "Decode the saying from the emojis. Higher values include Egyptian proverbs.",
  "arabic_answers": [
-  "El erd fi 'ein ommo ghazal: the monkey is a gazelle in its mother's eyes",
-  "El 'ersh el abyad yenfa' fel yom el eswed: the white piastre helps on the black day",
-  "Ekfi el 'edra 'ala bo'aha, tetla' el bent le ommaha: flip the pot on its mouth, the daughter turns out like her mother",
-  "Elli ekhtasho mato: the shy ones have died",
-  "Elli ma ye'rafsh ye'ool 'ads: he who doesn't know says it's lentils",
-  "Ya wakhed el 'erd 'ala malo, yerooh el mal wel 'erd yefdal 'ala halo: marry the monkey for its money, the money goes and the monkey stays",
-  "El 'ein ma tetla'sh 'an el hageb: the eye doesn't rise above the eyebrow",
-  "Ba'd ma shab waddoh el kottab: after he grew old they sent him to school",
-  "Zay el atrash fel zaffa: like the deaf man at the wedding",
-  "El bab elli yegilak meno el reeh, seddo w estereeh: the door that brings in wind, shut it and rest",
-  "Ibn el wezz 'awwam: the duckling is a swimmer",
-  "Elli fat mat: what's past is dead",
   "'Ala 'ad lehafak med reglak: stretch your legs only as far as your blanket",
-  "Kol ta'khira fiha khira: every delay hides something good",
-  "El ba'ara lamma te'a' tekter sakakinha: when the cow falls, the knives multiply",
-  "Elli yetlese' men el shorba yenfokh fel zabadi: burned by soup, he blows on yoghurt",
+  "Ana amir w enta amir, meen hayso' el hameer: I'm a prince and you're a prince, so who'll drive the donkeys?",
+  "Ba'd ma shab waddoh el kottab: after he grew old they sent him to school",
+  "Ekfi el 'edra 'ala bo'aha, tetla' el bent le ommaha: flip the pot on its mouth, the daughter turns out like her mother",
   "El 'ein basira wel eid 'asira: the eye sees but the hand is short",
-  "Ye'mel men el habba 'obba: he makes a dome out of a seed (a mountain out of a molehill)",
-  "Elli 'al bar 'awwam: the one on the shore is a great swimmer",
-  "El shoghl mesh 'eib: work is no shame",
-  "Mesh kol marra teslam el garra: the jar doesn't come out safe every time",
-  "El kelab tenbah wel 'afla tesir: the dogs bark and the caravan moves on",
-  "Gih yekahhalha 'amaha: he came to line her eyes with kohl and blinded her",
+  "El 'ein ma tetla'sh 'an el hageb: the eye doesn't rise above the eyebrow",
+  "El 'ersh el abyad yenfa' fel yom el eswed: the white piastre helps on the black day",
+  "El ba'ara lamma te'a' tekter sakakinha: when the cow falls, the knives multiply",
+  "El bab elli yegilak meno el reeh, seddo w estereeh: the door that brings in wind, shut it and rest",
+  "El erd fi 'ein ommo ghazal: the monkey is a gazelle in its mother's eyes",
   "El gar 'abl el dar: (choose) the neighbour before the house",
+  "El kelab tenbah wel 'afla tesir: the dogs bark and the caravan moves on",
+  "El shoghl mesh 'eib: work is no shame",
+  "El tamaa' ye'ell ma gama': greed loses what it gathered",
+  "Elli 'al bar 'awwam: the one on the shore is a great swimmer",
+  "Elli ekhtasho mato: the shy ones have died",
+  "Elli fat mat: what's past is dead",
+  "Elli ma ye'rafsh ye'ool 'ads: he who doesn't know says it's lentils",
+  "Elli yeshoof balwet gheiro tehoon 'aleih balweto: see others' troubles and yours feel lighter",
+  "Elli yetlese' men el shorba yenfokh fel zabadi: burned by soup, he blows on yoghurt",
+  "Gih yekahhalha 'amaha: he came to line her eyes with kohl and blinded her",
+  "Ibn el wezz 'awwam: the duckling is a swimmer",
+  "Kol ta'khira fiha khira: every delay hides something good",
+  "Mesh kol marra teslam el garra: the jar doesn't come out safe every time",
+  "Ya gariya etbakhi, ya seedi kallef: cook, girl! Then pay for the food, sir",
+  "Ya ghareeb kon adeeb: stranger, mind your manners",
   "Ya ma fel habs mazaleem: so many innocent people are in prison",
-  "Elli yeshoof balwet gheiro tehoon 'aleih balweto: see others' troubles and yours feel lighter"
+  "Ya me'amena lel regal, ya me'amena lel maya fel gharbal: trusting men is like trusting water in a sieve",
+  "Ya wakhed el 'erd 'ala malo, yerooh el mal wel 'erd yefdal 'ala halo: marry the monkey for its money, the money goes and the monkey stays",
+  "Ye'mel men el habba 'obba: he makes a dome out of a seed (a mountain out of a molehill)",
+  "Zay el atrash fel zaffa: like the deaf man at the wedding"
  ],
  "data": {
   "100": [
@@ -176,6 +181,30 @@
    [
     "🐒👀🐒🤲",
     "Monkey see, monkey do"
+   ],
+   [
+    "😎🥒",
+    "Cool as a cucumber"
+   ],
+   [
+    "😃🌙",
+    "Over the moon"
+   ],
+   [
+    "⬆️☀️",
+    "Rise and shine"
+   ],
+   [
+    "🌙🦉",
+    "Night owl"
+   ],
+   [
+    "🚫🤕🚫💪",
+    "No pain, no gain"
+   ],
+   [
+    "❤️🥇",
+    "Heart of gold"
    ]
   ],
   "200": [
@@ -322,6 +351,30 @@
    [
     "🐍🌿",
     "A snake in the grass"
+   ],
+   [
+    "👤🔄👠❤️",
+    "Head over heels"
+   ],
+   [
+    "⬇️🌦️🤒",
+    "Under the weather"
+   ],
+   [
+    "🪓⬇️🕳️🤝",
+    "Bury the hatchet"
+   ],
+   [
+    "🎾🏟️🫵",
+    "The ball is in your court"
+   ],
+   [
+    "🔥🌉",
+    "Burn bridges"
+   ],
+   [
+    "🗣️😈",
+    "Speak of the devil"
    ]
   ],
   "300": [
@@ -468,6 +521,30 @@
    [
     "🖌️🏙️🔴",
     "Paint the town red"
+   ],
+   [
+    "💧⬇️🌉",
+    "Water under the bridge"
+   ],
+   [
+    "🪙➡️💭",
+    "A penny for your thoughts"
+   ],
+   [
+    "⬅️🔵❗",
+    "Out of the blue"
+   ],
+   [
+    "🚶🥚🥚",
+    "Walk on eggshells"
+   ],
+   [
+    "🥁🔄🌳",
+    "Beat around the bush"
+   ],
+   [
+    "👶🥈🥄👄",
+    "Born with a silver spoon in your mouth"
    ]
   ],
   "400": [
@@ -614,6 +691,30 @@
    [
     "🛏️❌⬆️",
     "Got out of bed on the wrong side"
+   ],
+   [
+    "🦷🍖➕😵",
+    "Bite off more than you can chew"
+   ],
+   [
+    "✨🚫🥇",
+    "All that glitters is not gold"
+   ],
+   [
+    "🔥🕛🛢️",
+    "Burn the midnight oil"
+   ],
+   [
+    "1️⃣🦷2️⃣😳",
+    "Once bitten, twice shy"
+   ],
+   [
+    "🤑➖💰",
+    "El tamaa' ye'ell ma gama': greed loses what it gathered"
+   ],
+   [
+    "🧳🎩🙇",
+    "Ya ghareeb kon adeeb: stranger, mind your manners"
    ]
   ],
   "500": [
@@ -760,6 +861,30 @@
    [
     "🍎🛒🙃",
     "Upset the apple cart"
+   ],
+   [
+    "🚫👶🛁🗑️",
+    "Don't throw the baby out with the bathwater"
+   ],
+   [
+    "🛞🔊🛢️",
+    "The squeaky wheel gets the grease"
+   ],
+   [
+    "🐆🚫🔄⚫",
+    "A leopard can't change its spots"
+   ],
+   [
+    "👩‍🍳🍳➡️💰👨",
+    "Ya gariya etbakhi, ya seedi kallef: cook, girl! Then pay for the food, sir"
+   ],
+   [
+    "👨🤝💧🥅",
+    "Ya me'amena lel regal, ya me'amena lel maya fel gharbal: trusting men is like trusting water in a sieve"
+   ],
+   [
+    "👑👑❓🐴",
+    "Ana amir w enta amir, meen hayso' el hameer: I'm a prince and you're a prince, so who'll drive the donkeys?"
    ]
   ]
  }

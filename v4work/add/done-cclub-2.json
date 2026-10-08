@@ -1,0 +1,147 @@
+{
+ "100": [
+  [
+   "Which club did all three play for? Bukayo Saka · Declan Rice · Kai Havertz",
+   "Arsenal"
+  ],
+  [
+   "Which club did all three play for? Florian Wirtz · Alexander Isak · Hugo Ekitiké",
+   "Liverpool"
+  ],
+  [
+   "Which club did all three play for? Cristiano Ronaldo · Sadio Mané · João Félix",
+   "Al Nassr"
+  ],
+  [
+   "Which club did all three play for? Lamine Yamal · Pedri · Raphinha",
+   "Barcelona"
+  ],
+  [
+   "Which club did all three play for? Cole Palmer · Enzo Fernández · Moisés Caicedo",
+   "Chelsea"
+  ],
+  [
+   "Which club did all three play for? Percy Tau · Wessam Abou Ali · Mohamed El Shenawy",
+   "Al Ahly"
+  ]
+ ],
+ "200": [
+  [
+   "Which club did all three play for? Shikabala · Zizo · Emam Ashour",
+   "Zamalek"
+  ],
+  [
+   "Which club did all three play for? Mason Greenwood · Pierre-Emerick Aubameyang · Didier Drogba",
+   "Marseille"
+  ],
+  [
+   "Which club did all three play for? Emiliano Martínez · Gabriel Agbonlahor · Douglas Luiz",
+   "Aston Villa"
+  ],
+  [
+   "Which club did all three play for? Ángel Di María · João Félix · Darwin Núñez",
+   "Benfica"
+  ],
+  [
+   "Which club did all three play for? Luis Díaz · Radamel Falcao · James Rodríguez",
+   "Porto"
+  ],
+  [
+   "Which club did all three play for? Kylian Mbappé · Bernardo Silva · Aurélien Tchouaméni",
+   "Monaco"
+  ]
+ ],
+ "300": [
+  [
+   "Which club did all three play for? Kevin De Bruyne · Thibaut Courtois · Leandro Trossard",
+   "Genk"
+  ],
+  [
+   "Which club did all three play for? Kevin-Prince Boateng · Jérôme Boateng · Sami Khedira",
+   "Hertha Berlin"
+  ],
+  [
+   "Which club did all three play for? Fernando Llorente · Ander Herrera · Aymeric Laporte",
+   "Athletic Bilbao"
+  ],
+  [
+   "Which club did all three play for? Marco Reus · Marc-André ter Stegen · Granit Xhaka",
+   "Borussia Mönchengladbach"
+  ],
+  [
+   "Which club did all three play for? Victor Osimhen · Leroy Sané · Wesley Sneijder",
+   "Galatasaray"
+  ],
+  [
+   "Which club did all three play for? Kieran Trippier · Danny Ings · Kyle Walker",
+   "Burnley"
+  ]
+ ],
+ "400": [
+  [
+   "Which club did all three play for? Ahmed Fathy · Kyle Walker · Harry Maguire",
+   "Sheffield United"
+  ],
+  [
+   "Which club did all three play for? Raphaël Varane · Seko Fofana · Loïs Openda",
+   "Lens"
+  ],
+  [
+   "Which club did all three play for? Dimitri Payet · Pierre-Emerick Aubameyang · Wesley Fofana",
+   "Saint-Étienne"
+  ],
+  [
+   "Which club did all three play for? Olivier Giroud · Younès Belhanda · Benjamin Mendy",
+   "Montpellier"
+  ],
+  [
+   "Which club did all three play for? Andrés Iniesta · Lukas Podolski · David Villa",
+   "Vissel Kobe"
+  ],
+  [
+   "Which club did all three play for? Hans Vanaken · Charles De Ketelaere · Percy Tau",
+   "Club Brugge"
+  ]
+ ],
+ "500": [
+  [
+   "Which club did all three play for? Essam El-Hadary · Gennaro Gattuso · Mario Balotelli",
+   "Sion"
+  ],
+  [
+   "Which club did all three play for? Jordan Henderson · Georginio Wijnaldum · Moussa Dembélé",
+   "Al-Ettifaq"
+  ],
+  [
+   "Which club did all three play for? Pierre-Emerick Aubameyang · Nacho · Julián Quiñones",
+   "Al-Qadsiah"
+  ],
+  [
+   "Which club did all three play for? Graziano Pellè · Marouane Fellaini · Papiss Cissé",
+   "Shandong Taishan (Shandong Luneng)"
+  ],
+  [
+   "Which club did all three play for? Clarence Seedorf · Diego Costa · Thiago Almada",
+   "Botafogo"
+  ],
+  [
+   "Which club did all three play for? Mohamed El Shenawy · Mostafa Mohamed · Omar Gaber",
+   "Tala'ea El Gaish"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Arsenal",
+  "Liverpool",
+  "Al Nassr",
+  "Barcelona",
+  "Chelsea",
+  "Al Ahly",
+  "Zamalek",
+  "Marseille",
+  "Aston Villa",
+  "Benfica",
+  "Porto",
+  "Monaco",
+  "Galatasaray"
+ ]
+}

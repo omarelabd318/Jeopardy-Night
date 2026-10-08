@@ -40,7 +40,13 @@
    "El Feel El Azraq",
    "Ibn El Qunsul",
    "Harameya fi KG2",
-   "Alf Mabrouk"
+   "Alf Mabrouk",
+   "Saeedi fil Gamaa El Amrikia",
+   "El Irhab wel Kabab",
+   "Ghabi Menno Fih",
+   "Zarf Tarek",
+   "El Prince",
+   "El Maddah"
   ],
   "200": [
    "Kalbash",
@@ -78,7 +84,13 @@
    "Ashghal Shaqa",
    "Embraatoreyet Meen",
    "Nadi El Regala El Serri",
-   "Le'bet Newton"
+   "Le'bet Newton",
+   "Sahar El Layali",
+   "Captain Hima",
+   "Karkar",
+   "Nelly w Sherihan",
+   "Segn El Nesa",
+   "Captain Masr"
   ],
   "300": [
    "Raafat El Haggan",
@@ -116,7 +128,13 @@
    "Omar Effendi",
    "El Malek Farouk",
    "Aboud Ala El Hedoud",
-   "El Keif"
+   "El Keif",
+   "Hekayat Zog Moaser",
+   "Bodyguard",
+   "Haza El Masaa",
+   "Wanous",
+   "El Halfout",
+   "Saraya Abdeen"
   ],
   "400": [
    "Bab El Hadid",
@@ -154,7 +172,13 @@
    "El Arraf",
    "Leilat Sokoot Baghdad",
    "El Hafeed",
-   "Om El Arousa"
+   "Om El Arousa",
+   "Esha'et Hob",
+   "El Ens wel Gen",
+   "El Mashbouh",
+   "Ragab Fawq Safih Sakhin",
+   "El Beedh wal Hagar",
+   "Hello Shalaby"
   ],
   "500": [
    "El Eyal Kebret",
@@ -192,7 +216,13 @@
    "Hayat aw Mawt",
    "El Fetewa",
    "Ahlam Hind wa Kamilia",
-   "Ismail Yassine fil Ostool"
+   "Ismail Yassine fil Ostool",
+   "El Zawga Talattashar",
+   "Saghira Ala El Hob",
+   "Zuqaq El Midaq",
+   "El Les wel Kilab",
+   "Sayidati El Gamila",
+   "Amir El Dahaa"
   ]
  },
  "act_kind": {
@@ -354,6 +384,36 @@
   "Omar Effendi": "series",
   "El Malek Farouk": "series",
   "Om Kalthoum": "series",
-  "El Arraf": "series"
+  "El Arraf": "series",
+  "Saeedi fil Gamaa El Amrikia": "film",
+  "El Irhab wel Kabab": "film",
+  "Ghabi Menno Fih": "film",
+  "Zarf Tarek": "film",
+  "El Prince": "series",
+  "El Maddah": "series",
+  "Sahar El Layali": "film",
+  "Captain Hima": "film",
+  "Karkar": "film",
+  "Nelly w Sherihan": "series",
+  "Segn El Nesa": "series",
+  "Captain Masr": "film",
+  "Hekayat Zog Moaser": "series",
+  "Bodyguard": "play",
+  "Haza El Masaa": "series",
+  "Wanous": "series",
+  "El Halfout": "film",
+  "Saraya Abdeen": "series",
+  "Esha'et Hob": "film",
+  "El Ens wel Gen": "film",
+  "El Mashbouh": "film",
+  "Ragab Fawq Safih Sakhin": "film",
+  "El Beedh wal Hagar": "film",
+  "Hello Shalaby": "play",
+  "El Zawga Talattashar": "film",
+  "Saghira Ala El Hob": "film",
+  "Zuqaq El Midaq": "film",
+  "El Les wel Kilab": "film",
+  "Sayidati El Gamila": "play",
+  "Amir El Dahaa": "film"
  }
 }

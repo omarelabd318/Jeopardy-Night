@@ -148,6 +148,30 @@
    [
     "Fill in the missing word: “Why so ___?”",
     "serious (The Dark Knight)"
+   ],
+   [
+    "Fill in the missing word: “Hakuna ___!”",
+    "matata (The Lion King)"
+   ],
+   [
+    "Fill in the missing word: “Run, Forrest, ___!”",
+    "run (Forrest Gump)"
+   ],
+   [
+    "Fill in the missing word: “Hasta la vista, ___.”",
+    "baby (Terminator 2: Judgment Day)"
+   ],
+   [
+    "Fill in the missing word: “You shall not ___!”",
+    "pass (The Lord of the Rings)"
+   ],
+   [
+    "Fill in the missing word: “How you ___?”",
+    "doin' (Friends)"
+   ],
+   [
+    "Fill in the missing word: “My mama always said life was like a box of ___.”",
+    "chocolates (Forrest Gump)"
    ]
   ],
   "200": [
@@ -294,6 +318,30 @@
    [
     "Fill in the missing word: “Winter is ___.”",
     "coming (Game of Thrones)"
+   ],
+   [
+    "Fill in the missing word: “Do or do not. There is no ___.”",
+    "try (Star Wars: The Empire Strikes Back)"
+   ],
+   [
+    "Fill in the missing word: “I am the one who ___.”",
+    "knocks (Breaking Bad)"
+   ],
+   [
+    "Fill in the missing word: “I volunteer as ___!”",
+    "tribute (The Hunger Games)"
+   ],
+   [
+    "Fill in the missing word: “Here's ___!”",
+    "Johnny (The Shining)"
+   ],
+   [
+    "Fill in the missing word: “Expecto ___!”",
+    "Patronum (Harry Potter and the Prisoner of Azkaban)"
+   ],
+   [
+    "Fill in the missing word: “Are you not ___?”",
+    "entertained (Gladiator)"
    ]
   ],
   "300": [
@@ -440,6 +488,30 @@
    [
     "Fill in the missing word: “There is no ___.”",
     "spoon (The Matrix)"
+   ],
+   [
+    "Fill in the missing word: “Ogres are like ___.”",
+    "onions (Shrek)"
+   ],
+   [
+    "Fill in the missing word: “But why is the rum always ___?”",
+    "gone (Pirates of the Caribbean)"
+   ],
+   [
+    "Fill in the missing word: “Sell me this ___.”",
+    "pen (The Wolf of Wall Street)"
+   ],
+   [
+    "Fill in the missing word: “This is ___!”",
+    "Sparta (300)"
+   ],
+   [
+    "Fill in the missing word: “They may take our lives, but they'll never take our ___!”",
+    "freedom (Braveheart)"
+   ],
+   [
+    "Fill in the missing word: “I'm flying, ___!”",
+    "Jack (Titanic)"
    ]
   ],
   "400": [
@@ -582,6 +654,30 @@
    [
     "Fill in the missing word: “My name is Maximus Decimus ___.”",
     "Meridius (Gladiator)"
+   ],
+   [
+    "Fill in the missing word: “Leave the gun. Take the ___.”",
+    "cannoli (The Godfather)"
+   ],
+   [
+    "Fill in the missing word: “You is kind. You is smart. You is ___.”",
+    "important (The Help)"
+   ],
+   [
+    "Fill in the missing word: “I'll have what she's ___.”",
+    "having (When Harry Met Sally)"
+   ],
+   [
+    "Fill in the missing word: “Here's looking at you, ___.”",
+    "kid (Casablanca)"
+   ],
+   [
+    "Fill in the missing word: “Look at me. I'm the captain ___.”",
+    "now (Captain Phillips)"
+   ],
+   [
+    "Fill in the missing word: “Hello. My name is Inigo ___. You killed my father. Prepare to die.”",
+    "Montoya (The Princess Bride)"
    ]
   ],
   "500": [
@@ -724,6 +820,30 @@
    [
     "Fill in the missing word: “I'm sorry, Dave. I'm afraid I can't do ___.”",
     "that (2001: A Space Odyssey)"
+   ],
+   [
+    "Fill in the missing word: “Well, nobody's ___.”",
+    "perfect (Some Like It Hot)"
+   ],
+   [
+    "Fill in the missing word: “That'll do, ___. That'll do.”",
+    "pig (Babe)"
+   ],
+   [
+    "Fill in the missing word: “Gentlemen, you can't fight in here! This is the War ___!”",
+    "Room (Dr. Strangelove)"
+   ],
+   [
+    "Fill in the missing word: “I love the smell of ___ in the morning.”",
+    "napalm (Apocalypse Now)"
+   ],
+   [
+    "Fill in the missing word: “Open the pod bay doors, ___.”",
+    "HAL (2001: A Space Odyssey)"
+   ],
+   [
+    "Fill in the missing word: “Mrs. Robinson, you're trying to ___ me.”",
+    "seduce (The Graduate)"
    ]
   ]
  }

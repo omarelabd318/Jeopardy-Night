@@ -1,0 +1,164 @@
+{
+ "100": [
+  [
+   "What year? Joe Biden drops out of the US election · Argentina win the Copa América again · Deadpool & Wolverine is released",
+   "2024"
+  ],
+  [
+   "What year? The Eras Tour begins · Spider-Man: Across the Spider-Verse is released · Harry Kane joins Bayern Munich",
+   "2023"
+  ],
+  [
+   "What year? House of the Dragon premieres · Wednesday becomes a Netflix hit · Benzema wins the Ballon d'Or",
+   "2022"
+  ],
+  [
+   "What year? Cristiano Ronaldo returns to Man United · Spider-Man: No Way Home is released · Christian Eriksen collapses at the Euros",
+   "2021"
+  ],
+  [
+   "What year? Donald Trump starts his second term · Wildfires sweep through Los Angeles · Squid Game's final season is released",
+   "2025"
+  ],
+  [
+   "What year? Donald Trump is sworn in for his first term · Real Madrid win the Champions League in Cardiff · Pixar's Coco is released",
+   "2017"
+  ]
+ ],
+ "200": [
+  [
+   "What year? Saddam Hussein is captured · Arnold Schwarzenegger becomes California's governor · The first Pirates of the Caribbean film is released",
+   "2003"
+  ],
+  [
+   "What year? Tiger Woods wins his first Masters · Deep Blue beats Kasparov at chess · Ronaldo Nazário joins Inter Milan",
+   "1997"
+  ],
+  [
+   "What year? Angela Merkel becomes Germany's chancellor · Pope Benedict XVI is elected · Star Wars: Revenge of the Sith is released",
+   "2005"
+  ],
+  [
+   "What year? Magic Johnson announces he has HIV · The World Wide Web opens to the public · Terminator 2 is released",
+   "1991"
+  ],
+  [
+   "What year? The Srebrenica massacre · eBay is founded · The O.J. Simpson trial verdict",
+   "1995"
+  ],
+  [
+   "What year? Barack Obama gives his speech at Cairo University · Air France Flight 447 vanishes over the Atlantic · Kaká joins Real Madrid",
+   "2009"
+  ]
+ ],
+ "300": [
+  [
+   "What year? Ayatollah Khomeini dies · The Simpsons series premieres · Egypt is readmitted to the Arab League",
+   "1989"
+  ],
+  [
+   "What year? Bob Marley dies · IBM releases its first PC · The first Space Shuttle launches",
+   "1981"
+  ],
+  [
+   "What year? Gorbachev takes power in the USSR · Super Mario Bros. is released · The Rainbow Warrior is sunk",
+   "1985"
+  ],
+  [
+   "What year? Thatcher wins a third election · Michael Jackson releases Bad · The first Palestinian Intifada begins",
+   "1987"
+  ],
+  [
+   "What year? The new Cairo Opera House opens · George H. W. Bush is elected president · Rain Man is released",
+   "1988"
+  ],
+  [
+   "What year? The Falklands War · E.T. is released · The first CD player goes on sale",
+   "1982"
+  ]
+ ],
+ "400": [
+  [
+   "What year? Margaret Thatcher becomes prime minister · Mother Teresa wins the Nobel Peace Prize · The Soviet Union invades Afghanistan",
+   "1979"
+  ],
+  [
+   "What year? Saigon falls and the Vietnam War ends · The Suez Canal reopens after eight years · Saturday Night Live premieres",
+   "1975"
+  ],
+  [
+   "What year? Nelson Mandela is sentenced to life in prison · The PLO is founded · Mary Poppins is released",
+   "1964"
+  ],
+  [
+   "What year? Three popes in one year · Grease is released · Space Invaders hits arcades",
+   "1978"
+  ],
+  [
+   "What year? The Tutankhamun exhibition opens at the British Museum · Bobby Fischer beats Boris Spassky · The Godfather is released",
+   "1972"
+  ],
+  [
+   "What year? Walt Disney dies · Indira Gandhi becomes India's prime minister · The Beach Boys release Pet Sounds",
+   "1966"
+  ]
+ ],
+ "500": [
+  [
+   "What year? World War II begins · Gone with the Wind and The Wizard of Oz are released · Batman first appears",
+   "1939"
+  ],
+  [
+   "What year? The Russian Revolution · The Balfour Declaration · Fuad becomes Sultan of Egypt",
+   "1917"
+  ],
+  [
+   "What year? World War I ends · The Spanish flu pandemic spreads · Some British women get the vote for the first time",
+   "1918"
+  ],
+  [
+   "What year? Tutankhamun's golden mask is uncovered · The Great Gatsby is published · Hitler publishes Mein Kampf",
+   "1925"
+  ],
+  [
+   "What year? The Egyptian University (now Cairo University) is founded · The Ford Model T goes on sale · The Tunguska explosion in Siberia",
+   "1908"
+  ],
+  [
+   "What year? Hitler becomes Germany's chancellor · King Kong is released · Prohibition ends in the USA",
+   "1933"
+  ]
+ ],
+ "allow_dup_answers": [
+  "1908",
+  "1917",
+  "1918",
+  "1925",
+  "1933",
+  "1939",
+  "1964",
+  "1966",
+  "1972",
+  "1975",
+  "1978",
+  "1979",
+  "1981",
+  "1982",
+  "1985",
+  "1987",
+  "1988",
+  "1989",
+  "1991",
+  "1995",
+  "1997",
+  "2003",
+  "2005",
+  "2006",
+  "2017",
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025"
+ ]
+}

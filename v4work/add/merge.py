@@ -9,6 +9,7 @@ def keys(e,typ):
     if typ=='act' or typ=='password': return norm(e), norm(e)
     if typ=='pin': return norm(e[0]+e[1]), norm(e[0])
     if typ=='closest': return norm(e[0]), None
+    if typ=='order': return '|'.join(sorted(norm(x[0]) for x in e)), None   # 6.46: three [event, date] pairs; a set repeats only if all three events match
     if typ=='emoji': return e[0].strip(), norm(e[1])  # compare emoji strings raw: norm() strips emoji (and keeps only digits)
     q,a=e[0],e[1]; a=re.sub(r'\(.*?\)','',a)  # ignore bracketed extras when comparing answers
     return norm(q), norm(a)
@@ -26,7 +27,7 @@ for cid in [a for a in sys.argv[1:] if not a.startswith('--')]:
         for e in add.get(v,[]):
             q,a=keys(e,typ); n+=1
             if q in seenq: probs.append(f'  {v} question repeats ({seenq[q]}): {e if typ in ("act","password") else e[0]}')
-            elif typ not in ('closest','pin') and a and a in seena and a not in allow: probs.append(f'  {v} answer repeats ({seena[a]}): {e if typ in ("act","password") else e[1]}  <- {e if typ in ("act","password") else e[0]}')
+            elif typ not in ('closest','pin','order') and a and a in seena and a not in allow: probs.append(f'  {v} answer repeats ({seena[a]}): {e if typ in ("act","password") else e[1]}  <- {e if typ in ("act","password") else e[0]}')
             seenq[q]=v
             if a: seena[a]=v
     counts=[len(o['data'][v])+len(add.get(v,[])) for v in ['100','200','300','400','500']]
@@ -38,4 +39,6 @@ for cid in [a for a in sys.argv[1:] if not a.startswith('--')]:
     if add.get('act_kind'): o.setdefault('act_kind',{}).update(add['act_kind'])
     if add.get('arabic_answers'): o['arabic_answers']=sorted(set(o.get('arabic_answers',[]))|set(add['arabic_answers']))
     json.dump(o,open(f'{OUT}/{cid}.json','w'),ensure_ascii=False,indent=1)
-    os.rename(f'{here}/{cid}.json',f'{here}/done-{cid}.json')
+    done=f'{here}/done-{cid}.json'; k=2
+    while os.path.exists(done): done=f'{here}/done-{cid}-{k}.json'; k+=1   # 6.46: second pass on a category keeps the 4.54 batch
+    os.rename(f'{here}/{cid}.json',done)
