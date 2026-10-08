@@ -2,7 +2,7 @@
    and a tier; the buyer answers and wins or loses exactly the bid. Entry $200–$300 (max bid $600), Medium $300–$400 ($1,200), Expert $400–$500
    ($1,500). Bidding opens at the bottom of the range and goes up $50 at a time. 10–15 lots, each with a random tier. Trading Floor look (black,
    amber LED numbers, green bid buttons, a score ticker), chosen by Omar from three previews. It reuses the clue card and the winner screen; app.js
-   only calls bidBanner, bidAwards, bidDone, bidAgain, bidSetupAgain and bidLeave. Saved on this device in jn_bid (game) and jn_bidCfg (setup).
+   only calls bidBanner, bidAwards, bidDone, bidAgain, bidSetupAgain and bidLeave. Setup is saved on this device in jn_bidCfg (the game itself is not saved since 6.50).
    To remove: see the 6.49 NOTES entry. */
 const BW = {cfg:null, st:null, timer:null, left:0};
 const BW_TIERS = [{k:"Entry", lv:[200,300], cap:600}, {k:"Medium", lv:[300,400], cap:1200}, {k:"Expert", lv:[400,500], cap:1500}];
@@ -44,7 +44,7 @@ function bwDefaults(){ const names = S.teams.map(t => t.name).slice(0, 6); while
   return {teams:names, lots:12, secs:6, photos:true, titles:{}}; }
 BW.cfg = Object.assign(bwDefaults(), store.get("jn_bidCfg", {}));
 const bwSave = () => store.set("jn_bidCfg", BW.cfg);
-const bwPersist = () => { if(BW.st) store.set("jn_bid", BW.st); };
+const bwPersist = () => {};   // 6.50: Bidding Wars games aren't saved (was: if(BW.st) store.set("jn_bid", BW.st))
 
 /* ---------- dealing lots ---------- */
 function bwIdx(cat, lvl){   // an unplayed clue; with photo rounds off, never one that shows a photo
@@ -70,7 +70,9 @@ const bwInit = () => ({v:1, lots:bwDeal(BW.cfg.lots), i:0, teams:BW.cfg.teams.ma
 /* ---------- screens ---------- */
 function bidEnter(){ if(S.mode === "bidding") return; bingoLeave(); S.preMode = {power:S.power, wager:S.wager, steal:S.steal, ffa:S.ffa, skipPhones:S.skipPhones};
   S.power = S.wager = S.steal = S.ffa = false; S.mode = "bidding"; document.body.classList.add("bidmode"); }
-function bidResumeBtn(){ const b = $("#bidResume"); if(!b) return; const g = store.get("jn_bid", null); b.hidden = !(g && !g.over && g.lots && g.lots.length); }
+/* 6.50 (Omar): no resuming a Bidding Wars game. It isn't saved any more, and an old save is cleared. To undo: restore this function,
+   bwPersist and the #bidResume click handler from 6.49, the #bidResume button in head.html, and the plain bwHome handler. */
+function bidResumeBtn(){ try{ localStorage.removeItem("jn_bid"); }catch(e){} }
 function bidLeave(){ bidResumeBtn(); if(S.mode !== "bidding") return; bwStop();
   closeCard(); Object.assign(S, S.preMode || {}); S.mode = null; S.preMode = null; document.body.classList.remove("bidmode");
   $("#bidding").hidden = true; $("#bidSetup").hidden = true; $("#winEyebrow").textContent = "Final scores"; $("#playAgain").textContent = "Play again"; $("#winNote").textContent = BW_WINNOTE;
@@ -110,7 +112,6 @@ $("#bidSetup").addEventListener("input", e => { const i = e.target.dataset && e.
   if(i !== undefined){ BW.cfg.teams[+i] = e.target.value; bwSave(); return; }
   if(e.target.id === "bwSecs"){ BW.cfg.secs = +e.target.value; $("#bwSecsOut").textContent = BW.cfg.secs + " seconds"; bwSave(); } });
 $("#modeBid").onclick = bidSetupShow;
-$("#bidResume").onclick = () => { const g = store.get("jn_bid", null); if(!g) return; BW.st = g; if(g.phase === "lot"){ g.bid = 0; g.leader = -1; } else g.phase = "sold"; bidShow(); };
 
 /* ---------- the auction ---------- */
 const bwLotNow = () => BW.st && BW.st.lots[BW.st.i];
@@ -174,7 +175,7 @@ $("#bidBody").addEventListener("click", e => {
   const a = e.target.closest("[data-bw]"); if(!a) return; const k = a.dataset.bw;
   if(k === "sold") bwSold(); else if(k === "unsold") bwUnsold(); else if(k === "open") bwOpen(); else if(k === "next") renderBid();
 });
-$("#bwHome").onclick = () => { bwStop(); showHome(); };   // no need to confirm: Resume Bidding on the title screen picks the game up again
+$("#bwHome").onclick = () => { const st = BW.st; if(st && !st.over && (st.i > 0 || st.leader >= 0)) askConfirm("Leave this game?", "Going to the title screen ends this Bidding Wars game. It can't be resumed.", "Go to title", () => { bwStop(); showHome(); }, true); else { bwStop(); showHome(); } };   // 6.50: confirm, since there's no Resume Bidding any more
 
 /* ---------- the clue card (called from renderClue and the Done button in app.js) ---------- */
 function bidBanner(c){ const st = BW.st, lot = bwLotNow(); if(!st || !lot || lot.buyer == null) return "";
