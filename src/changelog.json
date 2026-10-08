@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.52",
+  "date": "2026-10-08",
+  "items": [
+   "Bidding Wars: each team now picks how much it raises by (+$50, +$100 or +$200) with the chips on its card. A raise past the lot's max stops at the max."
+  ]
+ },
+ {
   "v": "6.51",
   "date": "2026-10-08",
   "items": [

@@ -578,6 +578,10 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
 .bwts{font-family:var(--bw-mono);font-size:1.6cqw;color:var(--bw-green)} .bwts.neg{color:var(--bw-red)}
 .bwt button{font:700 1.7cqw var(--bw-cond);letter-spacing:.03em;padding:.75cqw;border:0;border-radius:0;cursor:pointer;background:var(--bw-green);color:var(--bw-on-green)}
 .bwt button:disabled{opacity:.4;cursor:default}
+.bwraise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4cqw}   /* 6.52 raise chips */
+.bwt .bwraise button{font:700 1.3cqw var(--bw-mono,monospace);padding:.45cqw 0;background:transparent;color:var(--bw-ink);border:.12cqw solid var(--bw-line)}
+.bwt .bwraise button.on{background:var(--bw-amber);color:#000;border-color:var(--bw-amber)}
+.bwt .bwraise button:disabled{opacity:.35}
 .bwhost{display:grid;gap:.7cqw}
 .bwhost button{font:700 1.7cqw var(--bw-cond);letter-spacing:.06em;padding:.8cqw 2.2cqw;border-radius:0;cursor:pointer;border:.15cqw solid var(--bw-amber);background:transparent;color:var(--bw-amber)}
 .bwhost button.sold{background:var(--bw-amber);color:#07090c}
@@ -605,7 +609,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.51</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.52</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -630,7 +634,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.51</div>
+      <div class="eyebrow verlabel">v6.52</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
