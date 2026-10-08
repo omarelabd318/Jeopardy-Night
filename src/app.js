@@ -1392,7 +1392,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
        reaches the door it pulls away (pa). He slows to a stop, throws his hands up, bends over with his hands on his thighs to get his
        breath back, then turns round and hails the microbus coming along behind. It stops for him and he climbs in, as the microbus man
        did (5.55-6.44), and it drives off. On mirrored rounds both doors are on the far side, so he stays behind them throughout.
-       The two separate scenes (the microbus was first in ACTS, the bus chaser eighth) are in git at v6.47. */
+       The two separate scenes (the microbus was first in ACTS, the bus chaser eighth) are in git at v6.46. */
     { k(){ const v = 60, a = 45, mStart = 3.3, mv = 100, meet = (mv * mStart + 2) / (mv - v), pa = meet - 1.2;   // meet: when he would have reached the door
         const xb = u => -60 + v * u + (u > pa ? a * (u - pa) * (u - pa) : 0);
         const r0 = pa + 0.8, DEC = 1.0, ts = r0 + DEC;                                                      // he keeps running 0.8 s, then slows to a stop over DEC s
@@ -1515,7 +1515,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
     /* 6.46 (Omar): the wedding car is part of this scene now. After the delivery bike, the wedding convoy (the escort bike with its
        flare, then the honking white car) comes the other way. She stops to let it by and lets out a zaghrouta, one hand at her mouth
        and the other still steadying the bread, then walks on. The convoy's three wheelies (6.11) are spread across the screen as before,
-       clear of her. 5.86-6.44: the wedding car was a scene of its own, driving left to right (in git at v6.47). */
+       clear of her. 5.86-6.44: the wedding car was a scene of its own, driving left to right (in git at v6.46). */
     { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv;
         const xm = W * 0.7, tm = (xm + 40) / v, P = 6, w0 = tm + 3.2 - (W + 120 - xm) / 70;    // she stops at xm from tm for P s; the car passes her 3.2 s in
         return {v, bv, b0, xm, tm, P, w0}; },
