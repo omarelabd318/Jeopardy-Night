@@ -3,6 +3,15 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.49",
+  "date": "2026-10-08",
+  "items": [
+   "New game mode: Bidding Wars, a button at the bottom of the title screen. Teams bid on lots that show only a title, the categories it includes and a difficulty range; the highest bidder answers and wins or loses exactly what they bid.",
+   "Entry $200–$300 (max bid $600), Medium $300–$400 ($1,200) and Expert $400–$500 ($1,500). Bidding opens at the bottom of the range and goes up $50 a time. 10 to 15 lots, each a random tier.",
+   "A trading floor look of its own: black screen, amber numbers, green bid buttons and a ticker of the scores. In setup: the sold timer (3 to 20 seconds, or off), photo rounds on or off, and which titles come up."
+  ]
+ },
+ {
   "v": "6.48",
   "date": "2026-10-08",
   "items": [

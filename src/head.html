@@ -7,8 +7,8 @@
 <script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()" onerror="(window.__cdnErr=window.__cdnErr||{}).map=1"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- 5.2: Google Fonts load in the background, so a slow fonts server no longer keeps the page blank (a render-blocking stylesheet did). Text shows in a fallback font for a moment, then the game re-fits its text when the fonts arrive (jn-fonts in src/app.js). To undo: swap this back to <link rel="stylesheet" href="…same URL…"> and drop the noscript. -->
-<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&display=swap"></noscript>
+<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&display=swap"></noscript>
 <style>
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
 :root{
@@ -511,13 +511,101 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 #bingo .sq.pv{cursor:pointer}
 @media (max-width:640px){#bingo .bframe{width:100%} #bingo .sq .nm{font-size:17cqw} #bingo .sq .nm.l{font-size:14cqw}}
 /* end 6.48 */
+/* 6.49 (Omar): Bidding Wars, Trading Floor look (his pick of three previews): black, amber LED numbers, green bid buttons, a score ticker.
+   Sizes on the auction screen are in cqw (1% of the screen's width) so it scales like a TV picture. */
+#bidSetup,#bidding{--bw-bg:#07090c;--bw-panel:#11161c;--bw-line:#26313b;--bw-ink:#e8f1f2;--bw-muted:#7d8b93;--bw-amber:#ffb21a;--bw-green:#38e07b;--bw-on-green:#04160b;--bw-red:#ff5a4f;--bw-track:#1b232b;
+  --bw-cond:"Barlow Condensed","Arial Narrow",sans-serif;--bw-mono:"Share Tech Mono",ui-monospace,Menlo,monospace;color:var(--bw-ink)}
+body.bidmode{background:#07090c}
+body.bidmode #winBox{--winhi:#2a2006;--felt:#0b0f14;--deeper:#050608;--brass:#ffb21a;--on-brass:#07090c;--tile:#11161c;--line:#26313b}
+body.bidmode #card{--felt:#0b0f14;--felt-2:#11161c;--panel:#0d1218;--deep:#07090c;--deeper:#050608;--line:#26313b;--brass:#ffb21a;--brass-dim:#c98a10;--on-brass:#07090c;--brass-rgb:255,178,26;--muted:#9aa7ae;--veil:4,6,8}
+body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
+.bidbtn{border-color:#ffb21a;color:#ffb21a}
+.bwbtn{font:700 16px var(--bw-cond,sans-serif);letter-spacing:.04em;text-transform:uppercase;padding:10px 20px;border-radius:0;cursor:pointer;border:1.5px solid var(--bw-amber);background:transparent;color:var(--bw-amber)}
+.bwbtn.go{background:var(--bw-green);border-color:var(--bw-green);color:var(--bw-on-green);font-size:18px;padding:12px 28px}
+.bwbtn.ghost{border-color:var(--bw-line);color:var(--bw-ink)}
+.bwbtn:disabled{opacity:.4;cursor:default}
+#bidSetup{display:grid;gap:14px;max-width:900px;margin:0 auto;padding:8px 0 40px;font-family:var(--bw-cond)}
+#bidSetup h1{font-family:var(--bw-cond);font-weight:800;text-transform:uppercase;font-size:clamp(36px,6vw,64px);letter-spacing:.01em;margin:4px 0;color:var(--bw-ink)}
+#bidSetup h1 span{color:var(--bw-amber);text-shadow:0 0 18px rgba(255,178,26,.45)}
+#bidSetup .sub{font-family:var(--body);color:var(--bw-muted);max-width:70ch}
+#bidSetup .note{font-family:var(--body);color:var(--bw-muted)}
+.bweye{font-family:var(--bw-mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--bw-amber)}
+.bwtiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:10px}
+.bwtiers div{border:1.5px solid var(--bw-line);background:var(--bw-panel);padding:10px 14px;display:grid;gap:2px}
+.bwtiers b{font-size:20px;text-transform:uppercase;letter-spacing:.04em} .bwtiers span{font-family:var(--bw-mono);font-size:22px;color:var(--bw-amber)} .bwtiers small{font-family:var(--body);color:var(--bw-muted);font-size:13px}
+.bwpanel{border:1.5px solid var(--bw-line);background:var(--bw-panel);padding:14px 16px;display:grid;gap:8px}
+#bidSetup .seg{display:flex;flex-wrap:wrap;gap:6px}
+#bidSetup .seg button,.bwtitles button{font:700 16px var(--bw-cond);border:1.5px solid var(--bw-line);background:var(--bw-bg);color:var(--bw-ink);border-radius:0;padding:8px 16px;cursor:pointer}
+#bidSetup .seg button[aria-pressed="true"]{background:var(--bw-amber);border-color:var(--bw-amber);color:#07090c}
+.bwteams{display:grid;gap:8px} .bwteam{display:flex;gap:8px;align-items:center}
+.bwteam input{flex:1;min-width:0;background:var(--bw-bg);border:1.5px solid var(--bw-line);border-radius:0;padding:10px 12px;color:var(--bw-ink);font:600 17px var(--body)}
+.bwslide{display:flex;flex-wrap:wrap;gap:12px;align-items:center} .bwslide input{width:min(260px,100%);accent-color:var(--bw-amber)}
+.bwslide output{font-family:var(--bw-mono);font-size:20px;color:var(--bw-amber);min-width:7ch}
+.bwtitles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.bwtitles button{text-align:left;display:grid;gap:2px;padding:8px 12px;opacity:.55}
+.bwtitles button[aria-pressed="true"]{opacity:1;border-color:var(--bw-green);box-shadow:inset 3px 0 0 var(--bw-green)}
+.bwtitles button:disabled{opacity:.25;cursor:default}
+.bwtitles b{font-size:16px} .bwtitles small{font:12px/1.3 var(--body);color:var(--bw-muted)}
+#bidding{padding:0 0 10px}
+.bwtools{justify-content:flex-end;gap:6px;margin:0 0 6px} .bwtools .bwbtn{font-size:13px;padding:6px 12px}
+.bwstage{container-type:inline-size;width:min(100%,calc((100vh - 70px)*16/9));margin:0 auto}
+.bwscreen{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bw-bg);border:1px solid var(--bw-line);font-family:var(--bw-cond);
+  display:grid;grid-template-rows:auto 1fr auto;padding:2.2cqw 3cqw 4.2cqw;gap:1.2cqw}
+.bwscreen::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 0 49%,rgba(255,255,255,.025) 50%,transparent 51%) 0 0/100% .5cqw}
+.bwscreen>*{position:relative}
+.bwtop{display:flex;justify-content:space-between;align-items:baseline}
+.bwbrand{font-weight:800;font-size:2.4cqw;letter-spacing:.06em;text-transform:uppercase;color:var(--bw-amber)}
+.bwlotno{font-family:var(--bw-mono);font-size:1.6cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--bw-muted)}
+.bwmid{display:grid;grid-template-columns:1.25fr 1fr;gap:3cqw;align-items:center;min-height:0}
+.bwtier{display:inline-block;font-family:var(--bw-mono);font-size:1.6cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--bw-amber);border:.12cqw solid var(--bw-amber);padding:.5cqw 1.1cqw}
+.bwtitle{font-weight:800;font-size:4.8cqw;line-height:1.02;margin:1.3cqw 0 1.1cqw;text-transform:uppercase;text-wrap:balance}
+.bwinc{font-family:var(--body);font-size:1.7cqw;color:#b8c4ca;line-height:1.45;max-width:46ch}
+.bwinc b{display:block;font-family:var(--bw-mono);font-weight:400;font-size:1.25cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--bw-muted);margin-bottom:.4cqw}
+.bwbidbox{display:grid;gap:1cqw;justify-items:center;text-align:center}
+.bwlab{font-family:var(--bw-mono);font-size:1.4cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--bw-muted)}
+.bwbid{font-family:var(--bw-mono);font-size:9.5cqw;line-height:.95;color:var(--bw-amber);text-shadow:0 0 2cqw rgba(255,178,26,.55);transition:transform .15s}
+.bwbid.pop{transform:scale(1.08)}
+.bwleader{font-size:2cqw;font-weight:700;min-height:2.6cqw}
+.bwcap{width:100%;display:grid;gap:.4cqw} .bwcapbar{height:1cqw;background:var(--bw-track);overflow:hidden} .bwcapbar i{display:block;height:100%;background:var(--bw-amber);transition:width .25s}
+.bwcaplab{display:flex;justify-content:space-between;font-family:var(--bw-mono);font-size:1.25cqw;color:var(--bw-muted)}
+.bwcount{font-family:var(--bw-mono);font-size:1.9cqw;letter-spacing:.08em;text-transform:uppercase;color:var(--bw-green);min-height:2.6cqw}
+.bwbottom{display:grid;grid-template-columns:1fr auto;gap:2cqw;align-items:end}
+.bwteamsrow{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:1.1cqw}
+.bwt{background:var(--bw-panel);border:.12cqw solid var(--bw-line);padding:1cqw 1.2cqw;display:grid;gap:.6cqw;transition:box-shadow .2s,border-color .2s}
+.bwt.lead{border-color:var(--bw-amber);box-shadow:0 0 0 .25cqw var(--bw-amber),0 0 2.5cqw rgba(255,178,26,.35)}
+.bwtn{display:flex;justify-content:space-between;align-items:baseline;gap:.6cqw;font-weight:700;font-size:1.75cqw;min-width:0}
+.bwtn span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bwts{font-family:var(--bw-mono);font-size:1.6cqw;color:var(--bw-green)} .bwts.neg{color:var(--bw-red)}
+.bwt button{font:700 1.7cqw var(--bw-cond);letter-spacing:.03em;padding:.75cqw;border:0;border-radius:0;cursor:pointer;background:var(--bw-green);color:var(--bw-on-green)}
+.bwt button:disabled{opacity:.4;cursor:default}
+.bwhost{display:grid;gap:.7cqw}
+.bwhost button{font:700 1.7cqw var(--bw-cond);letter-spacing:.06em;padding:.8cqw 2.2cqw;border-radius:0;cursor:pointer;border:.15cqw solid var(--bw-amber);background:transparent;color:var(--bw-amber)}
+.bwhost button.sold{background:var(--bw-amber);color:#07090c}
+.bwhost button:disabled{opacity:.3;cursor:default}
+.bwticker{position:absolute;left:0;right:0;bottom:0;height:2.6cqw;background:var(--bw-amber);color:#07090c;font:1.5cqw/2.6cqw var(--bw-mono);white-space:nowrap;overflow:hidden}
+.bwticker span{display:inline-block;animation:bwtick 40s linear infinite}
+@keyframes bwtick{to{transform:translateX(-50%)}}
+.bwsoldv{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1.4cqw;background:rgba(4,6,8,.95);text-align:center;z-index:2}
+.bwsoldv h2{margin:0;font-family:var(--bw-mono);font-weight:400;font-size:10cqw;line-height:1;color:var(--bw-amber);text-shadow:0 0 3cqw rgba(255,178,26,.6);animation:bwstamp .35s ease-out}
+.bwsoldv h2.uns{color:var(--bw-red);text-shadow:none}
+.bwsoldv .who{font-size:2.6cqw;font-weight:700}
+.bwsoldv .real{font-weight:800;font-size:4cqw;text-transform:uppercase;opacity:0;animation:bwfade .5s .9s forwards}
+.bwsoldv .real small{display:block;font-family:var(--bw-mono);font-weight:400;font-size:1.5cqw;color:var(--bw-muted);letter-spacing:.16em;margin-bottom:.4cqw}
+.bwsoldv .note{font-family:var(--body);font-size:1.5cqw;color:var(--bw-muted);margin:0}
+.bwsoldv .bwbtn{font-size:2cqw;padding:1cqw 3cqw;opacity:0;animation:bwfade .4s 1.3s forwards}
+@keyframes bwstamp{from{transform:scale(1.8);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes bwfade{to{opacity:1}}
+#card .bwbanner{margin:0;font-weight:700;color:#ffb21a}
+@media (prefers-reduced-motion:reduce){.bwticker span,.bwsoldv h2,.bwsoldv .real,.bwsoldv .bwbtn{animation:none;opacity:1}}
+@media (max-width:700px){.bwstage{overflow-x:auto} .bwscreen{min-width:640px}}
+/* end 6.49 */
 </style>
 
 <div class="wrap">
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.48</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.49</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -525,9 +613,15 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div id="resumeBox" class="resumebox" hidden><button class="btn primary" id="resumeBtn">Resume game</button><button class="btn small" id="resumeNo">Discard</button><p class="note" id="resumeInfo"></p></div>
       <div class="row" style="justify-content:center"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button></div>
       <p class="note" id="fsNote" hidden></p>
-      <!-- 6.48: game modes. Bingo is the first button; Bidding Wars will sit on its left. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn" id="modeBingo">Category Bingo</button><button class="btn small" id="bingoResume" hidden>Resume Bingo</button></div>
+      <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. -->
+      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn small" id="bidResume" hidden>Resume Bidding</button><button class="btn modebtn" id="modeBingo">Category Bingo</button><button class="btn small" id="bingoResume" hidden>Resume Bingo</button></div>
     </div>
+  </section>
+  <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
+  <section id="bidSetup" hidden></section>
+  <section id="bidding" hidden>
+    <div class="bwtools row"><button class="bwbtn ghost fsbtn">Full screen</button><button class="bwbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="bwbtn ghost" id="bwHome">Title screen</button></div>
+    <div class="bwstage"><div class="bwscreen" id="bidBody"></div></div>
   </section>
   <section id="bingoSetup" hidden></section>
   <section id="bingo" hidden>
@@ -536,7 +630,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.48</div>
+      <div class="eyebrow verlabel">v6.49</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -659,6 +753,6 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   <div class="podium" id="podium"></div>
   <ol class="standings" id="standings"></ol>
   <div class="row" style="justify-content:center"><button class="btn primary" id="playAgain">Play again</button><button class="btn" id="winBoard">Back to board</button><button class="btn" id="winSetup">New setup</button></div>
-  <p class="note" style="margin:0 auto;text-align:center">Play again keeps the same teams and categories, resets the scores and deals a fresh board.</p>
+  <p class="note" id="winNote" style="margin:0 auto;text-align:center">Play again keeps the same teams and categories, resets the scores and deals a fresh board.</p>
 </div><div class="ledstrip" aria-hidden="true"><div class="ledtrack" id="ledTrack"></div></div></div>
 <div id="card" hidden><div class="clue" id="clue" role="dialog" aria-modal="true"></div></div>
