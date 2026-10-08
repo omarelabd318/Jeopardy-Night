@@ -104,8 +104,8 @@ function renderBingo(){
     return `<button class="${cls}" data-i="${i}" style="--sc:var(--s${c.ss});${o != null ? `--tc:${BG_TEAMCOL[o]}` : ""}" aria-label="${"ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1)}: ${esc(cat.name)} for ${c.v}${o != null ? ", owned by " + esc(st.teams[o].name) : ""}"><span class="sec"></span><span class="v">${c.v}</span><span class="nm${long ? " l" : ""}">${esc(nm)}</span><span class="who">${o != null ? bgInit1(st, o) : ""}</span></button>`; }).join("");
   const foot = st.preview ? `<div class="bbar"><button class="btn" data-b="back">Back to setup</button><button class="btn" data-b="shuffle">Shuffle board</button><button class="btn primary" data-b="start">Start game</button></div>`
     : st.over ? `<div class="bbar"><button class="btn" data-b="again">New board</button><button class="btn" data-b="back">Setup</button></div>` : "";
-  const lets = `<div class="bax h">${[..."ABCDEFG"].map(l => `<i>${l}</i>`).join("")}</div>`, nums = `<div class="bax v">${[1, 2, 3, 4, 5, 6, 7].map(n => `<i>${n}</i>`).join("")}</div>`;   // faint letter x number guide on all four sides so squares can be called out like C4
-  $("#bingoBody").innerHTML = bar + stat + `<div class="bframe"><span></span>${lets}<span></span>${nums}<div class="bgrid">${grid}</div>${nums}<span></span>${lets}<span></span></div>` + foot;
+  const lets = `<div class="bax h">${[..."ABCDEFG"].map(l => `<i>${l}</i>`).join("")}</div>`, nums = `<div class="bax v">${[1, 2, 3, 4, 5, 6, 7].map(n => `<i>${n}</i>`).join("")}</div>`;   // faint letter x number guide on the top and left (Omar) so squares can be called out like C4
+  $("#bingoBody").innerHTML = bar + stat + `<div class="bframe"><span></span>${lets}${nums}<div class="bgrid">${grid}</div></div>` + foot;
 }
 $("#bingoBody").addEventListener("click", e => {
   const st = BG.st; if(!st) return;
