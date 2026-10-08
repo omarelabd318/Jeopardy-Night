@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.46`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.47`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1388,27 +1388,47 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
   /* 5.57 (Omar): one scene at a time, in this order: the microbus, the ful cart, the cat, the tuk-tuk (5.58; 5.60 moved it before the hantour), the hantour, and (5.76) the woman walking her dog. Every other round runs
      mirrored, so each scene comes from the other side the next time. Each act gives its length (s) and draws itself u s in. */
   const ACTS = [
-    /* 5.55 (Omar): the man walks in from the right and waits at the kerb before the microbus comes (5.52: he was already there). */
-    { m(){ const v = 270, ab = 650, sx = W * 0.72, x0 = -80, bd = v * v / (2 * ab), t1 = (sx - bd - x0) / v, t2 = t1 + v / ab, t3 = t2 + 1.9;
-        const px = sx + 26, tw = (W + 20 - px) / 42, B = Math.max(0, tw + 1.2 - t1); return {v, ab, sx, x0, bd, t1, t2, t3, px, tw, B}; },
-      len(){ const m = this.m(); return m.B + m.t3 + Math.sqrt((W + 90 - m.sx) / 190); },
-      draw(u){ const {v, ab, sx, x0, bd, t1, t2, t3, px, tw, B} = this.m(), b = u - B; let x = null, pitch = 0;
-        if(b >= 0){ if(b < t1) x = x0 + v * b;
-          else if(b < t2){ const e = b - t1; x = sx - bd + v * e - ab * e * e / 2; pitch = 0.06 * Math.sin(Math.PI * e / (t2 - t1)); for(const o of [-21, 21]) seg([[x + o - 6, gy - 0.5], [x + o - 18, gy - 0.5]], "rgba(20,20,20,.8)", 1.4); }
+    /* 6.46 (Omar): the bus chaser and the microbus are one scene. He runs after the city bus as before (5.86-6.44), but just before he
+       reaches the door it pulls away (pa). He slows to a stop, throws his hands up, bends over with his hands on his thighs to get his
+       breath back, then turns round and hails the microbus coming along behind. It stops for him and he climbs in, as the microbus man
+       did (5.55-6.44), and it drives off. On mirrored rounds both doors are on the far side, so he stays behind them throughout.
+       The two separate scenes (the microbus was first in ACTS, the bus chaser eighth) are in git at v6.47. */
+    { k(){ const v = 60, a = 45, mStart = 3.3, mv = 100, meet = (mv * mStart + 2) / (mv - v), pa = meet - 1.2;   // meet: when he would have reached the door
+        const xb = u => -60 + v * u + (u > pa ? a * (u - pa) * (u - pa) : 0);
+        const r0 = pa + 0.8, DEC = 1.0, ts = r0 + DEC;                                                      // he keeps running 0.8 s, then slows to a stop over DEC s
+        const run = u => -30 + mv * (Math.min(u, r0) - mStart) + (u > r0 ? (e => mv * e - mv * e * e / (2 * DEC))(Math.min(u, ts) - r0) : 0);
+        const mx = run(ts), UP = ts + 0.8;                                                                     // where he stops; hands up until UP, then bent over
+        const v2 = 270, ab = 650, sx = mx - 26, x0 = -80, bd = v2 * v2 / (2 * ab), t1 = (sx - bd - x0) / v2, t2 = t1 + v2 / ab, t3 = t2 + 1.9;   // the microbus (5.55), stopping with its door just behind him
+        const B = ts + 4.0 - t2, hailAt = B + t1 - 1.3;
+        return {v, mStart, mv, pa, xb, r0, ts, run, mx, UP, v2, ab, sx, x0, bd, t1, t2, t3, B, hailAt}; },
+      len(){ const k = this.k(); return k.B + k.t3 + Math.sqrt((W + 90 - k.sx) / 190); },
+      draw(u){ const {mStart, pa, xb, r0, ts, run, mx, UP, v2, ab, sx, x0, bd, t1, t2, t3, B, hailAt} = this.k(), b = u - B;
+        const look = {shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true};
+        // the microbus: comes in from the left, brakes, waits while he gets in, then pulls away
+        let x = null, pitch = 0;
+        if(b >= 0){ if(b < t1) x = x0 + v2 * b;
+          else if(b < t2){ const e = b - t1; x = sx - bd + v2 * e - ab * e * e / 2; pitch = 0.06 * Math.sin(Math.PI * e / (t2 - t1)); for(const o of [-21, 21]) seg([[x + o - 6, gy - 0.5], [x + o - 18, gy - 0.5]], "rgba(20,20,20,.8)", 1.4); }
           else if(b < t3){ x = sx; pitch = -0.025 * Math.sin(Math.min(1, (b - t2) / 0.35) * Math.PI); }
           else { const e = b - t3; x = sx + 190 * e * e; } }
         const board = cl((b - t2 - 0.2) / 0.9, 0, 1);
-        const rider = () => { if(board >= 1) return; const walkIn = u < tw, wx = walkIn ? W + 20 - 42 * u : px - 18.5 * sm(board), hail = !walkIn && b > t1 - 1.3 && board === 0;
+        const him = () => { if(u < mStart || board >= 1) return;
+          if(u < ts){ const mxu = run(u), slow = cl((u - r0) / (ts - r0), 0, 1), reach = sm(cl((u - pa + 0.6) / 0.5, 0, 1)) * (1 - sm(cl((u - pa) / 0.6, 0, 1)));   // reaches for the door, then drops his arm as it goes
+            person(mxu, gy, 1, {ph: mxu * 0.15, lean: 0.3 * (1 - slow), ...look, arms: [[2.0 - 0.6 * reach - 1.6 * slow * (1 - reach), 2.2 - 0.5 * reach - 1.7 * slow * (1 - reach)], [-0.6 * (1 - slow), -0.2 * (1 - slow)]]}); return; }
+          if(u < UP){ const e = sm(Math.min((u - ts) / 0.25, 1)) * (1 - sm(cl((u - UP + 0.25) / 0.25, 0, 1)));    // throws both hands up
+            person(mx, gy, 1, {...look, arms: [[0.15 + 2.45 * e, 0.25 + 2.65 * e], [-0.1 + 2.5 * e, 2.6 * e]]}); return; }
+          if(u < hailAt - 0.4){ const pant = Math.sin(u * 9), bend = sm(Math.min((u - UP) / 0.35, 1));       // bent over, hands on his thighs, panting
+            person(mx, gy, 1, {...look, lean: (0.55 + 0.04 * pant) * bend, arms: [[-0.05 + 0.35 * bend, -0.2 + 0.1 * bend], [0.25 * bend, -0.25 + 0.15 * bend]]}); return; }
+          // straightens up, turns to the microbus and hails it, then steps in through the door (5.55)
           g.globalAlpha = board > 0.75 ? (1 - board) * 4 : 1;
-          person(wx, gy, -1, walkIn || board > 0 ? {ph: u * 9, shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e"}
-                                             : {shirt: "#b33a3a", pants: "#2a3550", skin: "#94603e", arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
+          const hail = b > t1 - 1.3 && board === 0;
+          person(mx - 18.5 * sm(board), gy, -1, board > 0 ? {ph: u * 9, ...look} : {...look, arms: hail ? [[0.2, 0.3], [2.5, 2.9 + 0.15 * Math.sin(u * 10)]] : [[0.1, 0.2], [-0.1, -0.05]]});
           g.globalAlpha = 1; };
-        /* 5.75 (Omar): driving in from the left we see its right side, so the door is on our side (as in 5.61-5.73), and now he walks up
-           in front of the bus and steps in through it (before, he was drawn behind the bus, so he seemed to get in on the far side).
-           Driving right to left (mirrored rounds) the door is on the far side and he goes round behind it. 5.74 had the sides swapped. */
-        if(flip) rider();
+        /* 6.33 (Omar): the bus door is always on its right side, as in Egypt; mirrored rounds show its left side, so he runs up behind it.
+           5.75: the same for the microbus door, so on mirrored rounds he is drawn behind both. */
+        if(flip) him();
+        const bx = xb(u); if(bx - 46 < W + 40) cityBus(bx, 1, bx / 6, !flip);
         if(x != null) microbus(x, 1, x / 5, pitch, b > t2 && b < t3, flip);
-        if(!flip) rider(); } },
+        if(!flip) him(); } },
     /* 6.16 (Omar): the ful cart and the tuk-tuk are one scene now: the tuk-tuk comes the other way and passes the cart while he is
        ladling (tT is when it sets off; it reaches the cart 2 s into the serving). Before, the tuk-tuk was its own scene after the cat. */
     { f(){ const fx = W * 0.3, tA = (W + 60 - fx) / 45; return {fx, tA, tT: tA + 2 - (fx + 70) / 105}; },
@@ -1443,8 +1463,7 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         if(u > gIn){ if(u < seeAt) drawCat(gx0 - 30 * (u - gIn), -1, (u - gIn) * 10, false, "#8f9095", "#5d5e63");
           else { const e = u - seeAt, sx = gx0 - 30 * (seeAt - gIn), a = Math.min(e, 0.35); const gx = sx + 150 * (a * a / 0.7 + Math.max(0, e - 0.35));
             if(gx < W + 30) drawCat(gx, 1, e * 24, e > 0.15, "#8f9095", "#5d5e63"); } } } },
-    /* 6.16: the tuk-tuk's own scene (5.58-6.15) moved into the ful cart scene above */
-    { len: () => (W + 170) / 55, draw(u){ hantour(W + 40 - 55 * u, -1, 55 * u / 9); } },
+    /* 6.16: the tuk-tuk's own scene (5.58-6.15) moved into the ful cart scene above. 6.46: the hantour's own scene (5.54-6.44) moved into the sheep scene below */
     /* 5.76 (Omar): a woman walking her dog while she talks on the phone. The dog stops to sniff about halfway (she waits, still talking). */
     /* 6.13 (Omar): when the family bike goes past, the dog bolts after it. The jerk pulls the lead out of her hand, the dog runs off
        with it trailing on the ground, and she drops the phone call and runs after him. (5.76-6.12: they walked on and off the far side;
@@ -1493,37 +1512,29 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
            overtakes (5.86-6.2: its own scene, { len: () => (W + 140) / 115, draw(u){ const x = -70 + 115 * u; familyBike(x, 1, x / 6.5); } }) */
         const fb = -70 + bv * (u - bikeAt); if(fb > -70 && fb < W + 80) familyBike(fb, 1, fb / 6.5); } },   // 6.8 (Omar): comes in 10 s after her (6.3-6.7: 5 s)
     /* 5.86 (Omar): a woman carrying a board of bread on her head; a delivery motorbike passes her going the other way */
-    { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv; return {v, bv, b0}; },
-      len(){ return (W + 80) / this.b().v; },
-      draw(u){ const {v, bv, b0} = this.b(), x = -40 + v * u, ph = u * 8;
-        const L = person(x, gy, 1, {outfit: "robe", robe: "#141418", hijab: "#1d1d22", skin: "#9a6744", ph,
-          arms: [[2.85, 3.05], [Math.sin(ph) * 0.35, Math.sin(ph) * 0.35 + 0.3]]});
-        const by = L.hd[1] - 6 + Math.sin(ph * 2) * 0.4; rect(x - 18, by, 36, 1.8, "#7a5634");                       // the board, on her head
+    /* 6.46 (Omar): the wedding car is part of this scene now. After the delivery bike, the wedding convoy (the escort bike with its
+       flare, then the honking white car) comes the other way. She stops to let it by and lets out a zaghrouta, one hand at her mouth
+       and the other still steadying the bread, then walks on. The convoy's three wheelies (6.11) are spread across the screen as before,
+       clear of her. 5.86-6.44: the wedding car was a scene of its own, driving left to right (in git at v6.47). */
+    { b(){ const v = 34, meet = (W * 0.5 + 40) / v, bv = 150, b0 = meet - (W * 0.5 + 60) / bv;
+        const xm = W * 0.7, tm = (xm + 40) / v, P = 6, w0 = tm + 3.2 - (W + 120 - xm) / 70;    // she stops at xm from tm for P s; the car passes her 3.2 s in
+        return {v, bv, b0, xm, tm, P, w0}; },
+      len(){ const b = this.b(); return Math.max((W + 80) / b.v + b.P, b.w0 + (W + 300) / 70); },
+      draw(u){ const {v, bv, b0, xm, tm, P, w0} = this.b(), stop = u > tm && u < tm + P, walked = u < tm ? u : stop ? tm : u - P;
+        const x = -40 + v * walked, ph = walked * 8, z = stop ? sm(Math.min((u - tm - 0.6) / 0.4, 1)) * (1 - sm(cl((u - tm - P + 0.8) / 0.4, 0, 1))) : 0;   // z: her hand up at her mouth
+        const L = person(x, gy, 1, {outfit: "robe", robe: "#141418", hijab: "#1d1d22", skin: "#9a6744", ...(stop ? {} : {ph}),
+          arms: [[2.85, 3.05], stop ? [0.15 + 1.45 * z, 0.25 + (3.6 + 0.1 * Math.sin(u * 30)) * z] : [Math.sin(ph) * 0.35, Math.sin(ph) * 0.35 + 0.3]]});
+        const by = L.hd[1] - 6 + (stop ? 0 : Math.sin(ph * 2) * 0.4); rect(x - 18, by, 36, 1.8, "#7a5634");          // the board, on her head
         for(let i = -3; i <= 3; i++){ oval(x + i * 5, by - 1.4, 2.7, 1.3, "#d6a65c"); if(Math.abs(i) < 3) oval(x + i * 5 + 2.5, by - 3, 2.6, 1.2, "#e0b26a"); if(Math.abs(i) < 2) oval(x + i * 5, by - 4.5, 2.5, 1.2, "#d6a65c"); }   // eish baladi
-        const bx = W + 60 - bv * (u - b0); if(u > b0 && bx > -60) deliveryBike(bx, -1, -bx / 6.5); } },
-    /* 5.86 (Omar): a wedding car, slow, honking. 5.89 (Omar): led by a motorbike, the passenger waving a flare to celebrate them */
-    { len: () => (W + 250) / 70, draw(u){ const x = -80 + 70 * u; weddingCar(x, 1, x / 5.5, u); { const bx = x + 78;   /* 6.11 (Omar): no weaving; instead it pulls three wheelies, spread across the screen, of 2, 3 and 2 s
-          (6.3-6.10: it weaved, bx + 7 sin(1.3u) with a lean of 0.09 sin(2.6u)) */
-        let lift = 0; [[0.2, 2], [0.5, 3], [0.8, 2]].forEach(([f, len]) => { const s0 = (W * f - len * 35 + 2) / 70, e = u - s0;   // centred on that part of the screen
-          if(e > 0 && e < len) lift = Math.max(lift, sm(Math.min(e / 0.35, 1)) * sm(Math.min((len - e) / 0.35, 1))); });
-        const ang = -lift * (0.32 + 0.03 * Math.sin(u * 9)), rx = bx - 17;                                   // up on the back wheel, bobbing a little
-        g.save(); g.translate(rx, gy); g.rotate(ang); g.translate(-rx, -gy); escortBike(bx, 1, bx / 6.5, u); g.restore(); } } },
-    /* 5.86 (Omar): a man runs after a city bus, catches the door and swings on. 5.97 (Omar): the door is at the front, so he runs up alongside the bus to reach it */
-    { k(){ const v = 60, a = 45, mStart = 3.3, mv = 100,   /* 5.93 (Omar): he sets off later, so the bus gets further before he catches it (5.97: 3.3, as he now has to run further; 5.93-5.96: 4; 5.86-5.92: 2.5) */ meet = (mv * mStart + 2) / (mv - v);   // when he reaches the door (32 px ahead of the bus's middle)
-        const on = meet + 0.35, xb = u => -60 + v * u + (u > on ? a * (u - on) * (u - on) : 0); let end = on; while(xb(end) - 46 < W + 40) end += 0.1; return {v, mStart, mv, meet, on, xb, end}; },
-      len(){ return this.k().end; },
-      draw(u){ const {mStart, mv, meet, on, xb} = this.k(), x = xb(u), door = x + 32;
-        /* 6.33 (Omar): the door is always on the bus's right side, as in Egypt. Mirrored rounds show its left side, so the door is on the
-           far side: he runs up behind the bus (drawn before it, so it hides him alongside) and boards out of sight (5.86-6.32: the door
-           and his boarding were drawn on the near side in both directions). */
-        if(flip){ if(u >= mStart && u < meet) this.man(u, mStart, mv, meet); cityBus(x, 1, x / 6, false); return; }
-        cityBus(x, 1, x / 6);
-        if(u < mStart) return;
-        if(u < meet){ this.man(u, mStart, mv, meet); return; }
-        const hop = cl((u - meet) / 0.35, 0, 1);                                                                    // the jump onto the step
-        person(door, gy - 5 * hop - 3 * Math.sin(hop * Math.PI), 1, {lean: -0.15 * hop, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true,
-          arms: [[1.4, 1.7], [0.15, 0.3]]   /* 6.9 (Omar): he grabs the door at chest height and keeps his free hand down from the moment he jumps on (6.3-6.8: grabbed high and waved for 0.8 s first; 5.86-6.2: kept waving) */, ...(hop < 1 ? {ph: u * 15} : {})}); },
-      man(u, mStart, mv, meet){ { const mx = -30 + mv * (u - mStart); person(mx, gy, 1, {ph: u * 15, lean: 0.3, shirt: "#c9a24a", pants: "#2b3446", skin: "#8a5536", mo: true, arms: (k => [[2.0 - 0.6 * k, 2.2 - 0.5 * k], [-0.6, -0.2]])(sm(cl((u - meet + 0.5) / 0.5, 0, 1)))}); } } },
+        if(z > 0.9) for(let i = 0; i < 3; i++){ const a = (u * 1.6 + i / 3) % 1, r = 3 + a * 9;                       // the zaghrouta: rings from her mouth
+          g.strokeStyle = `rgba(255,214,232,${0.7 * (1 - a)})`; g.lineWidth = 1; g.beginPath(); g.arc(L.hd[0] + 4, L.hd[1] + 1.5, r, -0.7, 0.7); g.stroke(); }
+        const dbx = W + 60 - bv * (u - b0); if(u > b0 && dbx > -60) deliveryBike(dbx, -1, -dbx / 6.5);
+        // the convoy, right to left: the car, with the escort bike 78 px ahead of it
+        const cx = W + 120 - 70 * (u - w0); if(u > w0 && cx > -120){ weddingCar(cx, -1, -cx / 5.5, u); const ex = cx - 78;
+          let lift = 0; [[0.92, 2], [0.45, 3], [0.18, 2]].forEach(([f, len]) => { const s0 = w0 + (W + 42 - W * f) / 70 - len / 2, e = u - s0;   // 6.11: wheelies of 2, 3 and 2 s, centred on those parts of the screen
+            if(e > 0 && e < len) lift = Math.max(lift, sm(Math.min(e / 0.35, 1)) * sm(Math.min((len - e) / 0.35, 1))); });
+          const ang = lift * (0.32 + 0.03 * Math.sin(u * 9)), rx = ex + 17;                                   // up on its back wheel (the right one, going left)
+          g.save(); g.translate(rx, gy); g.rotate(ang); g.translate(-rx, -gy); escortBike(ex, -1, -ex / 6.5, u); g.restore(); } } },
     /* 5.86 (Omar): five sheep for Eid. 5.91 (Omar): no rope; the man walks behind them with a stick, guiding them across. Halfway the
        last one stops to graze, he stops behind it and taps it on with the stick, and it trots to catch up with the others (5.86-5.90: he
        led them on a rope and tugged the first one along). */
@@ -1543,15 +1554,14 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
         const s2 = (W - 130 + 20 - B4) / v, x2 = pre(s2), d1 = r1 - a1;                                              // 130 px from the edge, clear of the bawab (the last 81 px)
         const a2 = (x2 - 26 - v * E + 125) / v + d1, r2 = Math.max(s2 + 2.6, a2 + 2 * E + TAP), d2 = d1 + r2 - a2;
         const stray = u => u < s1 ? flock4(u) : u < r1 ? x1 : u < s2 ? pre(u) : u < r2 ? x2 : x2 + trot(u - r2);
-        return {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, x1, x2, stray}; },
-      len(){ const s = this.s(); return s.r2 + 2 * s.E + (W + 40 - (s.x2 - 26)) / s.v; },
-      draw(u){ const {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, stray} = this.s(), L = -20 + v * u;
-        const stuck = (u > s1 && u < r1) || (u > s2 && u < r2);
-        const B = [0, -14, -31, -44, B4], DY = [-2.5, 0, -1.5, 0.5, -1];                                              // where each sits in the flock, and how far back
-        const xs = B.map((b, i) => i === 4 ? stray(u) : L + b + wob(i, u));
-        [0, 2, 4, 1, 3].sort((a, b) => DY[a] - DY[b]).forEach(i => { g.save(); g.translate(0, DY[i]);
-          sheep(xs[i], 1, i === 4 && stuck ? 0.6 : xs[i] * 0.26 + i * 1.7, i === 4 && stuck); g.restore(); });
-        // him: walking at v, except that at each stop he brakes to a halt behind the sheep (over 2E s), taps it, and eases off again
+        /* 6.46 (Omar): the hantour comes up behind him, catching him just as he slows for the first stop. It then crawls along G px
+           behind him, stopping when he stops, and once he is off the far side it speeds back up to HV and drives off. */
+        const HV = 55, G = 50, uex = (W + 20 + 125) / v + d2, hStart = a1 - (v * a1 - 125 - G + 30) / HV;
+        const S = {v, B4, E, wob, s1, r1, s2, r2, a1, a2, d1, d2, x1, x2, stray, HV, G, uex, hStart};
+        S.hx = u => { const free = -30 + HV * (u - hStart), e = u - uex, lead = e < 0 ? this.man(u, S).mx - G : W + 20 - G + v * e + 25 * e * e;
+          return Math.min(free, lead) - 8 * Math.log(1 + Math.exp(-Math.abs(free - lead) / 8)); };                // a soft min, so it eases in behind him
+        return S; },
+      man(u, {v, E, a1, a2, r1, r2, d1, d2}){   // 6.46: moved out of draw() so the hantour can follow him. Walking at v, except that at each stop he brakes to a halt behind the sheep (over 2E s), taps it, and eases off
         const walkAt = (t, dl) => v * (t - dl) - 125;
         let mx, still = false, tapFrom = 0;
         for(const [a0, r, dl] of [[a1, r1, 0], [a2, r2, d1]]){ if(u >= a0 && u < r + 2 * E){ const xa = walkAt(a0, dl);
@@ -1559,6 +1569,16 @@ function pickBall(){ if(typeof BALLS === "undefined" || !BALLS.length) return; l
             else if(u < r){ mx = xa + v * E; still = true; tapFrom = a0 + 2 * E + 0.2; }
             else { const tau = u - r; mx = xa + v * E + v * tau * tau / (4 * E); } } }
         if(mx === undefined) mx = walkAt(u, u < a1 ? 0 : u < a2 ? d1 : d2);
+        return {mx, still, tapFrom}; },
+      len(){ const s = this.s(); let end = s.r2 + 2 * s.E + (W + 40 - (s.x2 - 26)) / s.v; while(s.hx(end) - 76 < W + 40) end += 0.1; return end; },   // 6.46: until the hantour is off too
+      draw(u){ const S = this.s(), {v, B4, E, wob, s1, r1, s2, r2, stray} = S, L = -20 + v * u;
+        { const hx = S.hx(u); if(hx > -40 && hx - 76 < W + 40) hantour(hx, 1, hx / 9); }                       // 6.46: the hantour, behind them
+        const stuck = (u > s1 && u < r1) || (u > s2 && u < r2);
+        const B = [0, -14, -31, -44, B4], DY = [-2.5, 0, -1.5, 0.5, -1];                                              // where each sits in the flock, and how far back
+        const xs = B.map((b, i) => i === 4 ? stray(u) : L + b + wob(i, u));
+        [0, 2, 4, 1, 3].sort((a, b) => DY[a] - DY[b]).forEach(i => { g.save(); g.translate(0, DY[i]);
+          sheep(xs[i], 1, i === 4 && stuck ? 0.6 : xs[i] * 0.26 + i * 1.7, i === 4 && stuck); g.restore(); });
+        const {mx, still, tapFrom} = this.man(u, S);
         const tapping = still && u > tapFrom, tap = tapping ? Math.max(0, Math.sin(u * 7)) : 0;
         const M = person(mx, gy, 1, {outfit: "robe", robe: "#7b6a58", hat: "emma", mo: true, skin: "#7f4f31",
           ...(still ? {} : {ph: mx * 0.22}), arms: [tapping ? [0.75 + 0.45 * tap, 1.15 + 0.3 * tap] : [0.35, 0.55], tapping ? [0.2, 0.3] : [Math.sin(mx * 0.22) * 0.4, Math.sin(mx * 0.22) * 0.4 + 0.3]]});
@@ -1888,7 +1908,7 @@ const abcClue = c => c.type === "text" && /\nA\) /.test(String((pool(c.cat, c.lv
 let RELAY = null;  // null = still checking, true = /api works here
 fetch("api/ping", {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(j => { RELAY = !!(j && j.ok); }).catch(() => { RELAY = false; });
 function newRoom(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<8;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
-function ansMode(c){ if(!c || c.preview || !RELAY || S.mode) return null;   // 6.46: no phone answers or steal codes in Category Bingo
+function ansMode(c){ if(!c || c.preview || !RELAY || S.mode) return null;   // 6.47: no phone answers or steal codes in Category Bingo
   if(S.ffa) return FFA_SKIP.has(c.type) ? null : "ffa";
   if(c.type === "closest") return linkTeams() ? "num" : null;   // 5.69: whenever team phones are linked (was S.qrAns)
   if(S.steal && S.teams.length > 1 && STEAL_TYPES.has(c.type) && !STEAL_SKIP.has(c.cat) && !noStealGroup(c.cat) && !abcClue(c)) return "steal";
@@ -2462,7 +2482,7 @@ $("#clue").addEventListener("click", e => {
     /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; S.keepBets = c.bets || null; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
   if(a==="cancel"){ closeCard(); }
   if(a==="done" && c.preview){ closeCard(); return; }
-  if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.46: Category Bingo takes the result instead of adding points
+  if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.47: Category Bingo takes the result instead of adding points
   if(a==="done"){
     Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += awardPts(c, +i, v));   // 6.45: was v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1), which awardPts still gives outside Wager mode
     if(c.x2!=null && S.teams[c.x2]){ S.teams[c.x2].x2used = true; } S.x2 = null;

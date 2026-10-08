@@ -454,7 +454,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 }
 
 
-/* 6.46: Category Bingo. Three looks (Classic, Card, Neon) chosen with #bingo[data-look]. Team colours are --t0..--t3, section colours --s0..--s6.
+/* 6.47: Category Bingo. Three looks (Classic, Card, Neon) chosen with #bingo[data-look]. Team colours are --t0..--t3, section colours --s0..--s6.
    To remove Bingo: delete src/bingo.js, this block, the two sections and modeRow in this file, and the S.mode lines in src/app.js. */
 .modes{justify-content:center;margin-top:6px} .modebtn{font-family:var(--display);font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:10px 26px;border-color:var(--brass);color:var(--brass)}
 #bingo,#bingoSetup{--t0:#FFCC33;--t1:#2EC4B6;--t2:#FF6B5E;--t3:#B79CFF;--s0:#4DA3FF;--s1:#FF8A4D;--s2:#34D3A5;--s3:#8FA4C4;--s4:#FF6FA8;--s5:#5FD068;--s6:#A58BFF}
@@ -506,14 +506,14 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 #bingo .bbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0 0}
 #bingo .sq.pv{cursor:pointer}
 @media (max-width:640px){#bingo .bgrid{width:100%} #bingo .sq .nm{font-size:17cqw} #bingo .sq .nm.l{font-size:14cqw}}
-/* end 6.46 */
+/* end 6.47 */
 </style>
 
 <div class="wrap">
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.46</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.47</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -521,7 +521,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
       <div id="resumeBox" class="resumebox" hidden><button class="btn primary" id="resumeBtn">Resume game</button><button class="btn small" id="resumeNo">Discard</button><p class="note" id="resumeInfo"></p></div>
       <div class="row" style="justify-content:center"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button></div>
       <p class="note" id="fsNote" hidden></p>
-      <!-- 6.46: game modes. Bingo is the first button; Bidding Wars will sit on its left. -->
+      <!-- 6.47: game modes. Bingo is the first button; Bidding Wars will sit on its left. -->
       <div class="row modes" id="modeRow"><button class="btn modebtn" id="modeBingo">Category Bingo</button><button class="btn small" id="bingoResume" hidden>Resume Bingo</button></div>
     </div>
   </section>
@@ -532,7 +532,7 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.46</div>
+      <div class="eyebrow verlabel">v6.47</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

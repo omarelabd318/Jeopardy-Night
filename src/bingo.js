@@ -1,7 +1,7 @@
-/* 6.46 (Omar): Category Bingo. A 7x7 board of 49 categories; teams take turns claiming squares by answering a clue and the first to get 5 in a row
+/* 6.47 (Omar): Category Bingo. A 7x7 board of 49 categories; teams take turns claiming squares by answering a clue and the first to get 5 in a row
    wins. Each team has 1 or 2 steals to take an opponent's square. No points: a right answer claims, a wrong one leaves the square open.
    It reuses the clue card (openClue / renderClue) and the winner screen; app.js only calls bingoBanner, bingoAwards, bingoDone, bingoAgain,
-   bingoSetupAgain and bingoLeave. Saved on this device in jn_bingo (game) and jn_bingoCfg (setup). To remove: see the 6.46 NOTES entry. */
+   bingoSetupAgain and bingoLeave. Saved on this device in jn_bingo (game) and jn_bingoCfg (setup). To remove: see the 6.47 NOTES entry. */
 const BG = {cfg:null, st:null};
 const BG_N = 7, BG_SKIP = new Set(["spot","igf","cal","headl"]);   // A/B/C rounds are left out: a one-in-three guess would hand over a free square
 const BG_LOOKS = [["classic","Classic","The game's own blue tiles with gold numbers. Claimed squares fill with the team colour."],["card","Bingo card","Paper-white squares on green felt. Claimed squares get a marker daub, like a real bingo card."],["neon","Neon","Dark board, every square glows in its section colour. Claimed squares light up solid."]];
