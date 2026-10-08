@@ -81,6 +81,7 @@ const S = {
   qrAns: true,   /* 5.9: phone answers on Closest Wins / Price Is Right. 5.69 (Omar): no longer a setup toggle (was store.get("jn_qrans", true)); a game can skip phones with S.skipPhones */
   steal: store.get("jn_steal", false),  /* 5.9: Steal QR codes */
   ffa: store.get("jn_ffa", false),      /* 5.26: Free-for-all, everyone plays alone on their own phone */
+  wager: store.get("jn_wager", false),  /* 6.45: Wager mode, the picking team bets 0 to double the tile before the clue shows */
   room: null
 };
 const photos = {};  // norm(answer) -> blob url
@@ -124,6 +125,8 @@ $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.pow
 $("#optPower").setAttribute("aria-pressed", S.power); syncSound();
 $("#optSteal").onclick = () => { S.steal = !S.steal; store.set("jn_steal", S.steal); $("#optSteal").setAttribute("aria-pressed", S.steal); };
 $("#optSteal").setAttribute("aria-pressed", S.steal);
+$("#optWager").onclick = () => { S.wager = !S.wager; store.set("jn_wager", S.wager); $("#optWager").setAttribute("aria-pressed", S.wager); if(S.wager) S.x2 = null; if(!$("#scores").hidden) renderScores(); };
+$("#optWager").setAttribute("aria-pressed", S.wager);
 /* version label counts itself: TV Show Mix only repeats other categories' clues, so it isn't counted twice */
 /* v4.40: version history, from src/changelog.json (newest first) */
 /* entries are {era} headings or {v, date?, items}; undated ones (1.x to 3.x) show as one compact line each */
@@ -157,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.44`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.45`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1947,9 +1950,9 @@ setInterval(pollAns, 1500);
 const FFA_SKIP = new Set(["act","impostor","password"]);
 /* 5.27 (Omar): with Free-for-all on, Power-ups, Answer QR codes and Steal QR codes switch off and grey out; switching it off brings back what they were */
 function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#teamsPanel").hidden = S.ffa;
-  if(S.ffa){ if(!S.preFfa) S.preFfa = {power:S.power, qrAns:S.qrAns, steal:S.steal}; S.power = S.qrAns = S.steal = false; S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type)); }
+  if(S.ffa){ if(!S.preFfa) S.preFfa = {power:S.power, qrAns:S.qrAns, steal:S.steal, wager:S.wager}; S.power = S.qrAns = S.steal = S.wager = false; S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type)); }
   else if(S.preFfa){ Object.assign(S, S.preFfa); S.preFfa = null; }
-  [["#optPower","power"],["#optSteal","steal"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
+  [["#optPower","power"],["#optSteal","steal"],["#optWager","wager"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
   renderChips(); renderMixEdit(); }   // 6.29: the Edit mixes panel greys out team-only categories too
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
 function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check
@@ -2036,6 +2039,31 @@ function ffaMark(c){ if(c.marked) return; c.marked = true; const p = clueParts()
    buttons. Password, Closest Wins and Impostor keep all three for every team, as their rules give the points to whoever guesses
    or wins. (6.43 and before: every team had +full, +half and −full.) To undo, make offTurn() return false. */
 const TURN_FREE = new Set(["password","closest","impostor"]);
+/* 6.45 (Omar): Wager mode. When a tile opens, the team whose turn it is bets 0 to double the tile (steps of 50) on a wager card before
+   the clue shows; a mix shows only its own name until the bet is locked in. Right adds the bet, wrong takes it away (scores can go
+   below zero), and ½ pays half the bet, rounded to 50. On Closest Wins and Price Is Right (type "closest") every team bets: the
+   closest gains its bet and every other team loses its own. Put It in Order and those two are right or wrong only, so the betting
+   teams get no ½ button. Teams that don't bet score as in a normal game (half the tile on a steal). The ×2 power-up is hidden, as a
+   double bet does the same. Off in Free-for-all. To remove it: delete #optWager in src/head.html and the 6.45 lines in this file. */
+const WAGER_ALL = new Set(["closest"]);
+function bettors(c){ return WAGER_ALL.has(c.type) ? S.teams.map((t,i) => i) : [c.picker]; }
+const halfBet = b => Math.round(b / 100) * 50;
+function awardPts(c, i, v){ const b = c.bets && c.bets[i];
+  if(b != null) return v === 1 ? b : v === -1 ? -b : v === 0.5 ? halfBet(b) : 0;
+  return v*c.lvl*(i===c.x2 && v>0 ? 2 : 1); }
+function noHalf(c, i){ return !!c.bets && c.bets[i] != null && (c.type === "order" || c.type === "closest"); }
+function renderWager(c){
+  const max = c.lvl*2, ids = Object.keys(c.bets), one = ids.length === 1;
+  const quick = [["0",0],["Half",c.lvl/2],["Same",c.lvl],["1½×",c.lvl*1.5],["Double",max]];
+  $("#clue").innerHTML = `
+    <div class="cluehead"><div class="eyebrow">${esc(catById(c.tile || c.cat).name)}</div><div class="val">${c.lvl}</div></div>
+    <div class="wager">${one ? "" : `<div class="note">Every team bets on this one. The closest gains its bet; everyone else loses theirs.</div>`}
+    ${ids.map(i => { const b = c.bets[i]; return `<div class="wrow"><div class="wq">${esc(S.teams[i].name)}, how much do you bet?</div>
+      <div class="wctl"><button class="btn" data-wd="${i}" data-v="-50" ${b<=0?"disabled":""} aria-label="Bet 50 less">−</button><b class="wamt">${b}</b><button class="btn" data-wd="${i}" data-v="50" ${b>=max?"disabled":""} aria-label="Bet 50 more">+</button></div>
+      <div class="row wquick">${quick.map(([l,v]) => `<button class="chip" aria-pressed="${b===v}" data-wset="${i}" data-v="${v}">${l}${v ? ` · ${v}` : ""}</button>`).join("")}</div></div>`; }).join("")}
+    <div class="note">Bet 0 to ${max}. Right adds the bet, wrong takes it away.</div></div>
+    <div class="row"><button class="btn primary" data-act="lockbet">${one ? `Lock in ${c.bets[ids[0]]}` : "Lock in bets"}</button><button class="btn small" data-act="cancel">Back to board</button></div>`;
+}
 function offTurn(c, i){ return !S.ffa && !TURN_FREE.has(c.type) && i !== (S.turn||0); }
 /* after the reveal: each player's answer with a tick (full points) and a half button; nobody loses points */
 function ffaAwards(c){ return `<div class="award ffaaw">${S.teams.map((t,i) => { const a = ffaAns(c, i), v = c.awards[i];
@@ -2063,7 +2091,7 @@ function ansMatch(g, a){ g = ansNorm(g); if(!g) return false;
     return v.length >= 5 && g.length >= 5 && (g.includes(v) || (v.includes(g) && g.length >= v.length * .6)); }); }
 const GAME_KEY = "jn_game";
 function saveGame(){ if($("#game").hidden || !S.teams.length) return;
-  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room, ffa:!!S.ffa, skip:!!S.skipPhones}); }
+  store.set(GAME_KEY, {v:1, at:Date.now(), football:!!S.football, cats:S.cats, teams:S.teams, done:S.done, turn:S.turn||0, x2:S.x2, ended:!!S.ended, ball:lastBall, power:!!S.power, room:S.room, ffa:!!S.ffa, skip:!!S.skipPhones, wager:!!S.wager}); }
 function clearGame(){ try{ localStorage.removeItem(GAME_KEY); }catch(e){} }
 function savedGame(){ const g = store.get(GAME_KEY, null);
   if(!g || g.v !== 1 || g.ended || !Array.isArray(g.teams) || !Array.isArray(g.cats) || !g.cats.length) return null;
@@ -2076,7 +2104,7 @@ function showResume(){ const box = $("#resumeBox"); if(!box) return; const g = s
   const played = Object.keys(g.done || {}).length, total = g.cats.length * LV.length;
   $("#resumeInfo").textContent = `${g.football ? "Football mode · " : ""}${g.teams.map(t => `${t.name} ${t.score}`).join(" · ")} · ${played} of ${total} tiles played · ${ago(g.at)}`; }
 function resumeGame(){ const g = savedGame(); if(!g) return;
-  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom(); S.ffa = !!g.ffa; S.skipPhones = !!g.skip;
+  setFootball(!!g.football); S.cats = g.cats.slice(); S.teams = g.teams; S.done = g.done || {}; S.turn = g.turn || 0; S.x2 = g.x2 ?? null; S.ended = false; S.power = !!g.power; S.room = g.room || newRoom(); S.ffa = !!g.ffa; S.skipPhones = !!g.skip; S.wager = !!g.wager; $("#optWager").setAttribute("aria-pressed", S.wager);
   if(typeof BALLS !== "undefined" && BALLS.length){ const i = g.ball >= 0 && g.ball < BALLS.length ? g.ball : 0; lastBall = i; document.body.style.setProperty("--ball", `url(${BALLS[i]})`); }
   $("#titleScreen").hidden = true; $("#setup").hidden = true; $("#game").hidden = false; $("#scores").hidden = false;
   renderChips(); renderTeamInputs(); renderBoard(); renderScores(); window.scrollTo(0,0); }
@@ -2084,7 +2112,7 @@ function renderScores(){
   const max = Math.max(...S.teams.map(t=>t.score));
   $("#scores").innerHTML = S.teams.map((t,i) =>
     `<div class="team${t.score===max&&max>0?" lead":""}${i===(S.turn||0)?" turn":""}" data-team="${i}" role="button" tabindex="0" aria-label="${esc(t.name)}${i===(S.turn||0)?", picking now":""}. Tap to give them the pick"><div class="nm">${i===(S.turn||0)?'<span class="pick">Picking</span>':""}${esc(t.name)}</div><div class="sc${t.score<0?" neg":""}">${t.score}</div>
-     ${S.power && !S.ffa ? `<div class="pw"><button class="pwb${S.x2===i?" ready":""}${t.x2used?" used":""}" data-x2="${i}" ${t.x2used || (i!==(S.turn||0) && S.x2!==i) ? "disabled" : ""} aria-label="${esc(t.name)}: double points${t.x2used?" (used)":S.x2===i?" (ready, tap to cancel)":""}" title="${t.x2used ? "Used" : "Tap on your turn, before picking a tile"}">${S.x2===i ? `×2 <span class="lg">ready</span><span class="sm">✓</span>` : "×2"}</button><span class="pwb${t.twoUsed?" used":""}" aria-label="${esc(t.name)}: 2 answers${t.twoUsed?" (used)":" (use it on an open clue)"}" title="${t.twoUsed ? "Used" : "Use it on an open clue"}"><span class="lg">2 answers</span><span class="sm">2 ans</span></span></div>` : ""}
+     ${S.power && !S.ffa ? `<div class="pw">${S.wager ? "" /* 6.45: a double bet already does what ×2 does */ : `<button class="pwb${S.x2===i?" ready":""}${t.x2used?" used":""}" data-x2="${i}" ${t.x2used || (i!==(S.turn||0) && S.x2!==i) ? "disabled" : ""} aria-label="${esc(t.name)}: double points${t.x2used?" (used)":S.x2===i?" (ready, tap to cancel)":""}" title="${t.x2used ? "Used" : "Tap on your turn, before picking a tile"}">${S.x2===i ? `×2 <span class="lg">ready</span><span class="sm">✓</span>` : "×2"}</button>`}<span class="pwb${t.twoUsed?" used":""}" aria-label="${esc(t.name)}: 2 answers${t.twoUsed?" (used)":" (use it on an open clue)"}" title="${t.twoUsed ? "Used" : "Use it on an open clue"}"><span class="lg">2 answers</span><span class="sm">2 ans</span></span></div>` : ""}
      ${S.editing ? `<div class="adj"><button data-i="${i}" data-d="-100" aria-label="Take 100 from ${esc(t.name)}">−100</button><button data-i="${i}" data-d="100" aria-label="Give 100 to ${esc(t.name)}">+100</button></div>` : ""}</div>`).join("");
   $("#scores").classList.toggle("ffa", !!S.ffa); const jb = $("#ffaJoin"); if(jb) jb.hidden = !linked();
   if(linked()) ffaPushScores();
@@ -2123,12 +2151,15 @@ function openClue(cat,lvl,exclude,forceIdx,tile){
   const zoomStart = {100:3.5,200:4.2,300:4.8,400:5.4,500:6}[lvl];
   S.cur = {cat,lvl,idx,type,tile,revealed:false,awards:{},zoom:zoomStart,ox:45+Math.random()*10,oy:(cat==="actor"||cat==="person"?28:48)+Math.random()*10,shown:false,
            secs: type==="act"?60:type==="impostor"?120:45, left: type==="act"?60:type==="impostor"?120:45, running:false, cid: newRoom().slice(0,8), stage:"count", player:1, show:false, imp:0, qrText:null, preview, x2: preview ? null : S.x2, two:{}};
+  if(S.wager && !S.ffa && !preview){ const c = S.cur; c.picker = S.turn||0; c.x2 = null;   // 6.45: Wager mode
+    if(S.keepBets){ c.bets = S.keepBets; c.wagerStage = false; } else { c.bets = {}; bettors(c).forEach(i => c.bets[i] = lvl); c.wagerStage = true; } }
+  S.keepBets = null;
   stopTimer();
   try{ renderClue(); }catch(err){ $("#clue").innerHTML = `<div class="eyebrow">${esc(catById(cat).name)} · ${lvl}</div><p class="note">This clue couldn't be shown (${esc(err && err.message || err)}). Tell Claude this message. Tap Back to board.</p><div class="row"><button class="btn small" data-act="cancel">Back to board</button></div>`; }
   $("#card").hidden = false;
   /* 5.85 (Omar): the timer starts by itself as the clue opens (was: the host pressed Start). Act It Out, Who's the Impostor? and
      One Word Clues keep their Start button, since players scan a code before they're ready. */
-  if(!preview && !["act","impostor","password"].includes(type)){ S.cur.running = true; try{ Snd.unlock(); }catch(e){} timer = setInterval(tick, 250); renderClue(); }
+  if(!preview && !S.cur.wagerStage && !["act","impostor","password"].includes(type)){ S.cur.running = true; try{ Snd.unlock(); }catch(e){} timer = setInterval(tick, 250); renderClue(); }
   $("#clue").focus?.();
 }
 function clueParts(){
@@ -2255,6 +2286,7 @@ function prefetchPacks(){ for(const id of S.cats || []){ if(!catById(id)) contin
 function fmtAns(a){ const m = String(a).match(/^([\s\S]*?)\s*\n\s*(\(others:[\s\S]*\))\s*$/);
   return m ? `<span class="ans-main">${esc(m[1])}</span><span class="ans-rest">${esc(m[2])}</span>` : esc(a); }
 function renderClue(){
+  if(S.cur.wagerStage) return renderWager(S.cur);
   const c = S.cur, p = clueParts(), cat = catById(c.cat);
   let media = "";
   if(p.flag) media = `<div class="flagbox">${flagSVG(p.flag)}</div>`;
@@ -2330,7 +2362,7 @@ function renderClue(){
          <div class="note">The actor scans the code with their phone camera to see the film title.</div>`}</div>`;
   }
   const pct = 100*c.left/c.secs;
-  const badges = [c.x2!=null && S.teams[c.x2] ? `<span class="badge">×2 · ${esc(S.teams[c.x2].name)}</span>` : "", ...Object.keys(c.two).map(i => S.teams[i] ? `<span class="badge">2 answers allowed · ${esc(S.teams[i].name)}</span>` : "")].filter(Boolean).join("");
+  const badges = [...Object.entries(c.bets||{}).map(([i,b]) => S.teams[i] ? `<span class="badge">Bet ${b} · ${esc(S.teams[i].name)}</span>` : ""), c.x2!=null && S.teams[c.x2] ? `<span class="badge">×2 · ${esc(S.teams[c.x2].name)}</span>` : "", ...Object.keys(c.two).map(i => S.teams[i] ? `<span class="badge">2 answers allowed · ${esc(S.teams[i].name)}</span>` : "")].filter(Boolean).join("");
   const canTwo = S.power && !S.ffa && !c.preview && !c.revealed ? /* only the team whose turn it is can use 2 answers */ S.teams.map((t,i) => (i===(S.turn||0) && !t.twoUsed && !c.two[i]) ? `<button class="pwb" data-two="${i}">${esc(t.name)}: 2 answers</button>` : "").filter(Boolean).join("") : "";
   $("#clue").innerHTML = `
     <div class="cluehead"><div class="eyebrow">${c.preview ? "Preview · " : ""}${c.tile ? esc(catById(c.tile).name) + " · " : ""}${c.tile ? `<span class="msrc">${esc(cat.name)}</span>` : esc(cat.name)}</div><div class="val">${c.lvl}</div></div>
@@ -2339,7 +2371,7 @@ function renderClue(){
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
     ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" && !S.ffa ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
-    ${c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${c.lvl*(c.x2===i?2:1)}</button>`}<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${c.lvl/2*(c.x2===i?2:1)}</button>${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${c.lvl}</button>`}</div>`; }).join("")}</div>` : ""}
+    ${c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${awardPts(c,i,1)}</button>`}${noHalf(c,i) ? "" : `<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${awardPts(c,i,0.5)}</button>`}${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${-awardPts(c,i,-1)}</button>`}</div>`; }).join("")}</div>` : ""}
     ${canTwo ? `<div class="pwrow"><span class="lbl">Power-up:</span>${canTwo}</div>` : ""}
     <div class="row">
       ${c.revealed || (c.type==="impostor" && c.stage!=="play") ? "" : `<button class="btn primary" data-act="reveal">${c.type==="impostor" ? "Reveal impostor" : "Reveal answer"}</button>`}
@@ -2383,6 +2415,11 @@ $("#clue").addEventListener("click", e => {
   if(ti){ const i = +ti.dataset.typein; c.typing = c.typing || {}; c.typing[i] = true; renderClue(); const inp = $("#guess" + i); if(inp) inp.focus(); return; }
   const om = e.target.closest("[data-om]");
   if(om && c.order && !c.revealed){ const i = +om.dataset.om, j = i + +om.dataset.dir; if(j >= 0 && j < c.order.length){ [c.order[i], c.order[j]] = [c.order[j], c.order[i]]; Snd.blip(); renderClue(); } return; }
+  /* 6.45: the wager card's − / + and quick amounts */
+  const wd = e.target.closest("[data-wd]");
+  if(wd && c.wagerStage){ const i = +wd.dataset.wd; c.bets[i] = Math.max(0, Math.min(c.lvl*2, c.bets[i] + +wd.dataset.v)); renderClue(); return; }
+  const wq = e.target.closest("[data-wset]");
+  if(wq && c.wagerStage){ c.bets[+wq.dataset.wset] = +wq.dataset.v; renderClue(); return; }
   const tw = e.target.closest("[data-two]");
   if(tw){ c.two[+tw.dataset.two] = true; Snd.blip(); renderClue(); return; }
   const tb = e.target.closest("[data-turn]");
@@ -2391,9 +2428,11 @@ $("#clue").addEventListener("click", e => {
   if(aw && c.revealed){ const i = +aw.dataset.aw, v = +aw.dataset.v; c.awards[i] = c.awards[i]===v ? undefined : v; if(c.awards[i]===undefined) delete c.awards[i]; renderClue(); return; }
   const b = e.target.closest("[data-act]"); if(!b) return;
   const a = b.dataset.act;
+  if(a==="lockbet"){ c.wagerStage = false; Snd.blip(); if(!["act","impostor","password"].includes(c.type)){ c.running = true; Snd.unlock(); stopTimer(); timer = setInterval(tick, 250); } renderClue(); return; }
   if(a==="reveal" && c.type==="closest"){
     const p = clueParts(), diffs = Object.entries(c.guesses||{}).filter(([,g]) => g!=null).map(([i,g]) => [+i, Math.abs(g - p.num)]);
-    if(diffs.length){ const best = Math.min(...diffs.map(d => d[1])); c.winners = diffs.filter(d => d[1]===best).map(d => d[0]); c.awards = {}; c.winners.forEach(i => c.awards[i] = 1); }
+    if(diffs.length){ const best = Math.min(...diffs.map(d => d[1])); c.winners = diffs.filter(d => d[1]===best).map(d => d[0]); c.awards = {}; c.winners.forEach(i => c.awards[i] = 1);
+      if(c.bets) Object.keys(c.bets).forEach(i => { if(!c.winners.includes(+i)) c.awards[i] = -1; }); }   // 6.45: in Wager mode everyone else loses their bet
   }
   /* 5.9: before revealing, stop phone answers and fetch the last ones, then reveal */
   if(a==="reveal" && ansMode(c) && !c.finalPolled){ c.finalPolled = true; b.disabled = true;
@@ -2419,11 +2458,11 @@ $("#clue").addEventListener("click", e => {
     renderClue();
   }
   if(a==="swap"){ const turn = c.turn; S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
-    /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
+    /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; S.keepBets = c.bets || null; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
   if(a==="cancel"){ closeCard(); }
   if(a==="done" && c.preview){ closeCard(); return; }
   if(a==="done"){
-    Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1));
+    Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += awardPts(c, +i, v));   // 6.45: was v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1), which awardPts still gives outside Wager mode
     if(c.x2!=null && S.teams[c.x2]){ S.teams[c.x2].x2used = true; } S.x2 = null;
     Object.keys(c.two).forEach(i => { if(S.teams[i]) S.teams[i].twoUsed = true; });
     S.done[`${c.tile || c.cat}-${c.lvl}`] = true;   // 6.20: a mix clue marks the mix tile
