@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.56",
+  "date": "2026-10-09",
+  "items": [
+   "Category Bingo: Act It Out and One Word Clues are off the board. Closest Wins and Price Is Right are on it: every team guesses and the closest team takes the square.",
+   "Category Bingo: the default board is now 49 random categories from everything available, instead of 7 from each section."
+  ]
+ },
+ {
   "v": "6.55",
   "date": "2026-10-09",
   "items": [
