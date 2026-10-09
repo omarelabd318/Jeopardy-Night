@@ -1,4 +1,69 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}/* 6.59 (Omar): Survival, Cairo Cinema Poster look (his pick of five previews): yellow sunburst, tilted red banner, paper-ticket team cards with hard shadows,
+   an OUT stamp. Sizes on the round screen are in cqw so it scales like a TV picture. */
+.survbtn{border-color:#c8281f;color:#c8281f}
+body.survmode{min-height:100vh;background:repeating-conic-gradient(from 0deg at 50% 30%,#f6cf48 0 6deg,#eab820 6deg 12deg) center/cover no-repeat fixed}
+body.survmode #card{--felt:#1b1410;--felt-2:#2a1c14;--panel:#211710;--deep:#140e0a;--deeper:#0d0907;--line:#4a3326;--brass:#f2c230;--brass-dim:#c9992a;--on-brass:#1b1410;--brass-rgb:242,194,48;--muted:#c9b99a;--veil:10,6,4}
+body.survmode #winBox{--winhi:#3a2a06;--felt:#1b1410;--deeper:#0d0907;--brass:#f2c230;--on-brass:#1b1410;--tile:#2a1c14;--line:#4a3326}
+#survSetup,#survival{--sv-ink:#1b1410;--sv-yellow:#f2c230;--sv-red:#c8281f;--sv-paper:#fff3c4;--sv-green:#2d8a4e;--sv-disp:"Lalezar","Alfa Slab One",Impact,sans-serif;color:var(--sv-ink)}
+.svbtn{font:400 20px var(--sv-disp);letter-spacing:.03em;padding:8px 22px;border:3px solid var(--sv-ink);background:var(--sv-paper);color:var(--sv-ink);box-shadow:4px 4px 0 var(--sv-ink);cursor:pointer}
+.svbtn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--sv-ink)}
+.svbtn.go{background:var(--sv-red);color:#fff3c4}
+.svbtn.ghost{background:var(--sv-paper)}
+.svbtn:disabled{opacity:.45;cursor:default}
+#survSetup{display:grid;gap:16px;max-width:900px;margin:0 auto;padding:12px 14px 44px;font-family:var(--body)}
+#survSetup .svhead{display:grid;gap:6px;justify-items:start}
+#survSetup .svbadge{font:400 22px var(--sv-disp);background:var(--sv-ink);color:var(--sv-yellow);padding:2px 14px}
+#survSetup h1{font:400 clamp(52px,9vw,96px)/.95 var(--sv-disp);margin:0;color:#fff3c4;background:var(--sv-red);padding:4px 26px 8px;border:3px solid var(--sv-ink);box-shadow:6px 6px 0 var(--sv-ink);transform:rotate(-1.5deg);text-shadow:3px 3px 0 var(--sv-ink)}
+#survSetup .sub{max-width:68ch;margin:8px 0 0;font-weight:500;color:var(--sv-ink)}
+.svpanel{background:var(--sv-paper);border:3px solid var(--sv-ink);box-shadow:6px 6px 0 var(--sv-ink);padding:14px 16px;display:grid;gap:10px}
+.svpanel .note{margin:0;color:#4a3a2c}
+.sveye{font:400 22px var(--sv-disp);letter-spacing:.04em;text-transform:uppercase;color:var(--sv-red)}
+#survSetup .seg{display:flex;flex-wrap:wrap;gap:8px}
+#survSetup .seg button,.svtitles button{font:400 20px var(--sv-disp);border:3px solid var(--sv-ink);background:#fff;color:var(--sv-ink);padding:6px 18px;cursor:pointer}
+#survSetup .seg button[aria-pressed="true"]{background:var(--sv-ink);color:var(--sv-yellow)}
+.svteams{display:grid;gap:8px}.svteam{display:flex;gap:8px}
+.svteam input{flex:1;min-width:0;font:400 22px var(--sv-disp);border:3px solid var(--sv-ink);background:#fff;padding:6px 12px;color:var(--sv-ink)}
+.svladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.svladder div{border:3px solid var(--sv-ink);background:#fff;padding:6px 10px;display:grid}
+.svladder b{font:400 28px/1 var(--sv-disp);color:var(--sv-red)} .svladder span{font:400 17px var(--sv-disp)} .svladder small{color:#4a3a2c}
+.svtitles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.svtitles button{text-align:left;display:grid;gap:2px;padding:8px 12px;opacity:.5;font-size:18px}
+.svtitles button[aria-pressed="true"]{opacity:1;background:#fff;box-shadow:inset 6px 0 0 var(--sv-green)}
+.svtitles button:disabled{opacity:.25;cursor:default}
+.svtitles small{font:12px/1.3 var(--body);color:#4a3a2c}
+#survSetup>.row{justify-content:space-between;gap:10px}
+#survival{padding:0 0 10px}
+.svtools{justify-content:flex-end;gap:8px;margin:0 0 8px} .svtools .svbtn{font-size:16px;padding:4px 14px}
+.svstage{container-type:inline-size;width:min(100%,calc((100vh - 70px)*16/9));margin:0 auto}
+.svscreen{position:relative;aspect-ratio:16/9;overflow:hidden;background:repeating-conic-gradient(from 0deg at 50% 38%,#f6cf48 0 6deg,#eab820 6deg 12deg);border:4px solid var(--sv-ink);font-family:var(--sv-disp);color:var(--sv-ink)}
+.svscreen>*{position:absolute}
+.svpill{top:2.4cqw;z-index:2;font-size:2.6cqw;line-height:1.1;background:var(--sv-ink);color:var(--sv-yellow);padding:.3cqw 1.4cqw;border-radius:.6cqw}
+.svpill.l{left:3cqw} .svpill.r{right:3cqw;color:#fff3c4}
+.svband{left:-4cqw;right:-4cqw;top:8cqw;height:15cqw;background:var(--sv-red);transform:rotate(-3deg);box-shadow:0 .8cqw 0 var(--sv-ink);display:grid;place-content:center;text-align:center}
+.svband small{font:400 1.9cqw var(--sv-disp);letter-spacing:.14em;text-transform:uppercase;color:#ffd24a}
+.svcat{font-size:7.4cqw;line-height:1;color:#fff3c4;text-shadow:.45cqw .45cqw 0 var(--sv-ink);white-space:nowrap} .svcat.mid{font-size:5.8cqw} .svcat.long{font-size:4.6cqw}
+.svmid{left:0;right:0;top:25.5cqw;display:grid;justify-items:center;gap:1cqw}
+.svstamp{font-size:2.6cqw;background:var(--sv-ink);color:#fff3c4;padding:.3cqw 2cqw;transform:rotate(-2deg)}
+.svwho{font-size:2.6cqw;color:var(--sv-ink)} .svwho b{color:var(--sv-red);font-weight:400}
+.svmid .svbtn.big{font-size:2.6cqw;padding:.6cqw 2.6cqw;border-width:.35cqw;box-shadow:.5cqw .5cqw 0 var(--sv-ink)}
+.svrow{left:3cqw;right:3cqw;bottom:3cqw;display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:1.6cqw;align-items:end}
+.svt{position:relative;background:var(--sv-paper);border:.45cqw solid var(--sv-ink);box-shadow:.6cqw .6cqw 0 var(--sv-ink);padding:1cqw .8cqw 1.1cqw;text-align:center;display:grid;gap:.6cqw}
+.svt.on{background:#fff;transform:rotate(-1.5deg) scale(1.05)}
+.svt.out{background:#c9b98a;opacity:.85}
+.svn{font-size:2.4cqw;line-height:1.05;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.svhearts{display:flex;justify-content:center;gap:.5cqw}
+.svhearts i{width:2.5cqw;height:2.5cqw;border-radius:50%;background:var(--sv-red);border:.2cqw solid var(--sv-ink)} .svhearts i.x{background:transparent;border-style:dashed}
+.svdots{display:flex;justify-content:center;gap:.5cqw;min-height:1.4cqw}
+.svdots i{width:1.3cqw;height:1.3cqw;border-radius:50%;border:.2cqw solid var(--sv-ink)} .svdots i.ok{background:var(--sv-green)} .svdots i.no{background:var(--sv-red)} .svdots i.half{background:linear-gradient(90deg,var(--sv-green) 50%,#fff 50%)}
+.svsub{font:600 1.2cqw var(--body);color:#4a3a2c}
+.svstampout{position:absolute;inset:0;display:grid;place-items:center;font-size:5cqw;color:var(--sv-red);transform:rotate(-14deg);text-shadow:.3cqw .3cqw 0 var(--sv-ink);pointer-events:none}
+.svsplash{inset:0;z-index:5;background:rgba(27,20,16,.72);display:grid;place-items:center}
+.svbox{background:var(--sv-paper);border:.5cqw solid var(--sv-ink);box-shadow:1cqw 1cqw 0 var(--sv-ink);padding:2.4cqw 4cqw;text-align:center;display:grid;gap:1.2cqw;max-width:70cqw;transform:rotate(-1deg)}
+.svbox h2{margin:0;font:400 6cqw/1 var(--sv-disp);color:var(--sv-red);text-shadow:.3cqw .3cqw 0 var(--sv-ink)}
+.svbox p{margin:0;font:400 2.8cqw var(--sv-disp)} .svbox .svbtn{justify-self:center;font-size:2.4cqw;padding:.5cqw 2.4cqw}
+.svbanner.warn{color:#ff8a7a;font-weight:700}
+/* end 6.59 */
+</style></head><body>
 <title>Jeopardy Night</title>
 <!-- 5.1: the three CDN scripts load with async, so a slow CDN no longer holds up the page (they used to block it). QR codes, photo export/import and the world map are only needed later. To undo: remove "async" (and the onload) from these three tags, and in src/app.js go back to calling the initWorld() body directly. -->
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" onerror="(window.__cdnErr=window.__cdnErr||{}).qr=1"></script>
@@ -7,8 +72,8 @@
 <script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()" onerror="(window.__cdnErr=window.__cdnErr||{}).map=1"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- 5.2: Google Fonts load in the background, so a slow fonts server no longer keeps the page blank (a render-blocking stylesheet did). Text shows in a fallback font for a moment, then the game re-fits its text when the fonts arrive (jn-fonts in src/app.js). To undo: swap this back to <link rel="stylesheet" href="…same URL…"> and drop the noscript. -->
-<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&display=swap"></noscript>
+<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&display=swap"></noscript>
 <style>
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
 :root{
@@ -635,7 +700,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.58</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.59</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -644,7 +709,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
       <div class="row" style="justify-content:center"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button></div>
       <p class="note" id="fsNote" hidden></p>
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn modebtn" id="modeBingo">Category Bingo</button></div>
+      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn modebtn" id="modeBingo">Category Bingo</button><button class="btn modebtn survbtn" id="modeSurv">Survival</button></div>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -653,6 +718,12 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
     <div class="bwtools row"><button class="bwbtn ghost fsbtn">Full screen</button><button class="bwbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="bwbtn ghost" id="bwHome">Title screen</button></div>
     <div class="bwstage"><div class="bwscreen" id="bidBody"></div></div>
   </section>
+  <!-- 6.59: Survival (src/survival.js). To remove: delete these two sections, the 6.59 CSS block, the Survival mode button above and the S.mode === "survival" lines in src/app.js -->
+  <section id="survSetup" hidden></section>
+  <section id="survival" hidden>
+    <div class="svtools row"><button class="svbtn ghost fsbtn">Full screen</button><button class="svbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="svbtn ghost" id="svHome">Title screen</button></div>
+    <div class="svstage"><div class="svscreen" id="survBody"></div></div>
+  </section>
   <section id="bingoSetup" hidden></section>
   <section id="bingo" hidden>
     <div class="btop"><h1>Category <span>Bingo</span></h1><div class="row tools"><button class="btn small" id="bgLook"></button><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="bgHome">Title screen</button></div></div>
@@ -660,7 +731,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.58</div>
+      <div class="eyebrow verlabel">v6.59</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
