@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.55`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.56`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2352,7 +2352,7 @@ function renderClue(){
   }
   if(c.type==="closest"){
     c.guesses = c.guesses || {};
-    media = `<div class="guesses">${S.teams.map((t,i) => { const g = c.guesses[i], d = c.revealed && g!=null ? Math.abs(g - p.num) : null;
+    media = `<div class="guesses">${(S.mode === "bingo" ? BG.st.teams : S.teams).map((t,i) => {   /* 6.56: Bingo has its own teams */ const g = c.guesses[i], d = c.revealed && g!=null ? Math.abs(g - p.num) : null;
       /* 5.10 (Omar): with phone answers on, each box is a status (Waiting… / Locked in ✓) with a small Type button for the host, instead of an input */
       if(ansMode(c) && !c.revealed && !(c.typing && c.typing[i])){ const st = c.phone && c.phone[i] ? "Locked in ✓" : g!=null ? "Typed in ✓" : "Waiting…";
         return `<div class="guess status${st==="Waiting…" ? " wait" : " in"}"><span>${esc(t.name)}</span><b>${st}</b><button class="mini" data-typein="${i}">Type</button></div>`; }

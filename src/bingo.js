@@ -3,13 +3,15 @@
    It reuses the clue card (openClue / renderClue) and the winner screen; app.js only calls bingoBanner, bingoAwards, bingoDone, bingoAgain,
    bingoSetupAgain and bingoLeave. Setup is saved on this device in jn_bingoCfg (the game itself is not saved since 6.50). To remove: see the 6.48 NOTES entry. */
 const BG = {cfg:null, st:null};
-const BG_N = 7, BG_SKIP = new Set(["spot","igf","cal","headl"]);   // A/B/C rounds are left out: a one-in-three guess would hand over a free square
+/* 6.56 (Omar): Act It Out (both) and One Word Clues are off the board ("they would not work"); Closest Wins and Price Is Right are on it:
+   every team guesses and the closest team takes the square, even when it wasn't their pick. */
+const BG_N = 7, BG_SKIP = new Set(["spot","igf","cal","headl","act","acteg","pw"]);   // A/B/C rounds are left out: a one-in-three guess would hand over a free square
 const BG_LOOKS = [["classic","Classic","The game's own blue tiles with gold numbers. Claimed squares fill with the team colour."],["card","Bingo card","Paper-white squares on green felt. Claimed squares get a marker daub, like a real bingo card."],["neon","Neon","Dark board, every square glows in its section colour. Claimed squares light up solid."]];
 const BG_SECS = CAT_GROUPS.filter(g => g && g[0] !== "Mixes");
 const BG_TEAMCOL = ["#FFCC33","#2EC4B6","#FF6B5E","#B79CFF"];
 const BG_SHORT = {egyph:"Egypt: Photos", ecin:"Egyptian Cinema", ploteg:"Plots: Egypt", quoteeg:"Quotes: Egypt", lyricar:"Lyrics: Arabic", emeg:"Emoji: Egypt", emseg:"Emoji Sent.: Egypt", ctryar:"Which Country? Arab", pl:"Premier League", ucl:"Champions League", fyear:"Year: Football", songt:"Song Titles", plot:"Bad Plots", lit:"Translated", toons:"Cartoons", blockbuster:"Blockbusters", qblank:"Fill the Quote", quote:"Movie Quotes", mb:"Money & Business", brand:"Brands", tg:"Tech & Gaming", memeeg:"Egyptian Memes", egh:"Egypt History", cairo:"Cairo", wc26:"World Cup 2026", islam:"Islam", ww2:"World War II", holi:"Holidays", cocktail:"Cocktails", ffood:"Fast Food", vgames:"Video Games", hgames:"Hunger Games", romcom:"Rom-Coms", acteg:"Act It Out: Egypt", emsen:"Emoji Sentences", pw:"One Word Clues", gk:"General Knowledge", facts:"Facts", cclub:"Common Club", path:"Career Path", mgr:"Managers", shirt:"Shirt Numbers", stad:"Stadiums", xfer:"Transfers", whoami:"Who Am I?", foodpic:"Guess the Food", gctry:"Guess the Country", actor:"Guess the Actor", footy:"Guess the Footballer", person:"Guess the Person", car:"Guess the Car", logo:"Guess the Logo", ctry:"Which Country?", shape:"Country Outlines", pin:"Map Pin", order:"Put It in Order", link:"What's the Link?", himym:"HIMYM", st:"Stranger Things", got:"Game of Thrones", hp:"Harry Potter", bb:"Breaking Bad", pb:"Prison Break", gta:"GTA V", food:"Food & Drink"};
 const bgShort = id => BG_SHORT[id] || String(catById(id).name).replace(/\s*\(.*?\)/g, "");
-const bgOk = id => { const c = catById(id); return !!c && !c.mode && c.type !== "mix" && c.type !== "closest" && !HIDDEN_IDS.has(id) && !BG_SKIP.has(id) && (!LOCKED_IDS.has(id) || unlocked.has(id)); };
+const bgOk = id => { const c = catById(id); return !!c && !c.mode && c.type !== "mix" && !HIDDEN_IDS.has(id) && !BG_SKIP.has(id) && (!LOCKED_IDS.has(id) || unlocked.has(id)); };
 const bgShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const bgMkLines = n => { const out = []; for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]) for(let r = 0; r < BG_N; r++) for(let c = 0; c < BG_N; c++){
   const L = []; for(let k = 0; k < n; k++){ const rr = r + dr*k, cc = c + dc*k; if(rr < 0 || rr >= BG_N || cc < 0 || cc >= BG_N) break; L.push(rr*BG_N + cc); } if(L.length === n) out.push(L); } return out; };
@@ -19,8 +21,9 @@ const BG_CNT = (() => { const n = Array(BG_N*BG_N).fill(0); BG_LINES.forEach(L =
 /* values by position: the more winning lines run through a square, the more it is worth. 8 squares of 100, 8 of 200, 12 of 300, 12 of 400, 9 of 500
    (Omar: fewer 100s, a few more 500s than 100s). Setup can switch to random or one flat value. */
 const bgPosVal = i => { const n = BG_CNT[i], r = Math.floor(i / BG_N), c = i % BG_N; return n === 3 ? 100 : n === 4 ? (r === 3 || c === 3 ? 100 : 200) : n <= 6 ? 300 : n === 7 ? 400 : 500; };
-function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"balanced", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"classic"}; }
+function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"random", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"classic"}; }
 BG.cfg = Object.assign(bgDefaults(), store.get("jn_bingoCfg", {}));
+if(BG.cfg.fill === "balanced") BG.cfg.fill = "random";   // 6.56 (Omar): Balanced (7 per section) became Random from every category
 const bgSave = () => { store.set("jn_bingoCfg", BG.cfg); };
 /* Photo rounds switch (Omar): off takes the whole Photo Rounds section, plus Egypt: Photo Edition, off the board. Egypt, Football, Entertainment and Knowledge each have 14+ categories, so
    one of them fills the seventh group of squares (picked at random) and the board stays 49 different-feeling squares. */
@@ -35,7 +38,11 @@ function bgFill(cfg){
   const want = new Set(cfg.fill === "hand" ? cfg.picks : []), seq = {};
   const draw = si => { if(!seq[si] || !seq[si].length) seq[si] = bgShuffle(secs[si].filter(id => want.has(id))).concat(bgShuffle(secs[si].filter(id => !want.has(id)))); return seq[si].shift(); };
   const cells = [];
-  for(let i = 0; i < BG_N*BG_N; i++){ const g = (2*Math.floor(i / BG_N) + i % BG_N) % BG_N, ss = perm[g];
+  /* 6.56 (Omar): Random draws the 49 squares from every category available (after the photo switch), not 7 per section */
+  if(cfg.fill === "random"){ const pool = bgShuffle(secs.flatMap((ids, si) => ids.map(id => [id, si])));
+    for(let i = 0; i < BG_N*BG_N; i++){ const [cat, ss] = pool[i % pool.length];
+      cells.push({cat, ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : bgPosVal(i), own:null}); } }
+  else for(let i = 0; i < BG_N*BG_N; i++){ const g = (2*Math.floor(i / BG_N) + i % BG_N) % BG_N, ss = perm[g];
     cells.push({cat:draw(ss), ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : bgPosVal(i), own:null}); }
   /* with fewer than 7 sections a category can repeat; move twins out of each other's row, column and diagonals */
   const bad = () => { let n = 0; for(let a = 0; a < cells.length; a++) for(let b = a + 1; b < cells.length; b++) if(cells[a].cat === cells[b].cat && bgShares(a, b)) n++; return n; };
@@ -70,7 +77,7 @@ function renderBingoSetup(){
     <div class="panel opt"><div class="eyebrow">Win with</div>${seg("row", [[5, "5 in a row"], [6, "6 in a row (longer game)"]], bgRowN())}</div>
     <div class="panel opt"><div class="eyebrow">Steals per team</div>${seg("steals", [[1, "1 steal"], [2, "2 steals"]], c.steals)}</div>
     <div class="panel opt"><div class="eyebrow">Photo rounds</div>${seg("photos", [["true", "On: photo rounds on the board"], ["false", "Off: no photo rounds"]], c.photos !== false)}${c.photos === false ? `<p class="note">Takes Guess the Car, Actor, Footballer, Person, Food, Logo and Country, and Egypt: Photo Edition, off the board. One of the other sections gets two groups of squares instead.</p>` : ""}</div>
-    <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["balanced", "Balanced (7 from each section)"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
+    <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["random", "Random from every category"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
       ${c.fill === "sections" ? `<div class="seg">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<button data-sec="${i}" aria-pressed="${c.sections.includes(i)}">${esc(g[0])}</button>`).join("")}</div><p class="note">The 49 squares are shared out evenly between the sections you tick; a category can appear more than once, never in the same row, column or diagonal if it can be helped.</p>` : ""}
       ${c.fill === "hand" ? `<p class="note">Tap the categories you want on the board (${c.picks.length} picked). The rest of the board is topped up from each section.</p><div class="hp">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<div><h4>${esc(g[0])}</h4><div class="seg">${secs[i].map(id => `<button data-pick="${id}" aria-pressed="${c.picks.includes(id)}">${esc(bgShort(id))}</button>`).join("")}</div></div>`).join("")}</div>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Square values</div>${seg("values", [["pos", "By position (centre is 500)"], ["random", "Random"], ["flat", "All the same"]], c.values)}
@@ -142,11 +149,20 @@ const bgPersist = () => {};   // 6.50: Bingo games aren't saved (was store.set("
 function bingoBanner(c){ const st = BG.st, p = st && st.pend; if(!p) return ""; const t = st.teams[st.turn], from = st.cells[p.sq].own;
   return `<p class="note" style="margin:0;font-weight:700;color:${BG_TEAMCOL[st.turn]}">${p.kind === "steal" ? `${esc(t.name)} is stealing ${bgName(p.sq)} from ${esc(st.teams[from].name)}. Wrong and the steal is gone and ${esc(t.name)} can't pick it next turn.` : `${esc(t.name)} is going for ${bgName(p.sq)}.`}</p>`; }
 function bingoAwards(c){ const st = BG.st, i = st.turn, t = st.teams[i], p = st.pend;
+  if(c.type === "closest") return `<div class="award">${st.teams.map((m, k) => `<div class="grp"><span>${esc(m.name)}</span><button class="y${c.awards[k] === 1 ? " on" : ""}" data-aw="${k}" data-v="1">Closest</button></div>`).join("")}</div>
+    <p class="note">${p && p.kind === "steal" ? `The steal works only if ${esc(t.name)} is closest.` : `The closest team takes ${bgName(p ? p.sq : 0)}. On a tie, ${esc(t.name)} wins it if they're in the tie.`} Tap to change who was closest.</p>`;
   return `<div class="award"><div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">${p && p.kind === "steal" ? "Correct: steal it" : "Correct: claim it"}</button><button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong</button></div></div>`; }
 function bingoDone(c){
-  const st = BG.st, p = st.pend, t = st.turn, v = c.awards[t];
+  const st = BG.st, p = st.pend, t = st.turn; let v = c.awards[t];
   S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
   closeCard();
+  if(c.type === "closest" && p && c.revealed){   // 6.56: closest team takes the square (picker wins a tie); a steal needs the stealer to be closest
+    const near = Object.keys(c.awards).filter(k => c.awards[k] === 1).map(Number), who = near.includes(t) ? t : near.length === 1 && p.kind !== "steal" ? near[0] : null;
+    if(who != null && who !== t){ const cell = st.cells[p.sq]; cell.own = who; Snd.blip(); if(st.teams[t].lock != null) st.teams[t].lock = null; st.pend = null; st.stealing = false;
+      const line = bgWinLine(who); if(line){ st.over = true; st.winner = who; st.line = line; renderBingo(); setTimeout(() => bingoWinner(), 1800); return; }
+      if(!st.cells.some(x => x.own == null)){ st.over = true; renderBingo(); setTimeout(() => bingoWinner(), 600); return; }
+      st.turn = (t + 1) % st.teams.length; renderBingo(); return; }
+    v = who === t ? 1 : -1; }
   if(!p || v === undefined){ st.pend = null; renderBingo(); return; }   // closed with no result: nothing changes, same team picks again
   const cell = st.cells[p.sq], team = st.teams[t], prev = team.lock;
   if(v === 1){ cell.own = t; if(p.kind === "steal") team.steals--; team.lock = null; Snd.blip(); }
