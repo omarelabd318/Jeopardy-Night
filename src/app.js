@@ -1836,9 +1836,9 @@ function ledStart(){
   };
   ledRaf = requestAnimationFrame(step);
 }
-$("#playAgain").onclick = () => { if(S.mode === "bingo"){ bingoAgain(); return; } if(S.mode === "bidding"){ bidAgain(); return; }   /* 6.49 */ if(S.mode === "hotseat"){ hsAgain(); return; }   /* 6.59 */ hideWinner(); if(S.football) S.cats = footballPick(); newGame(); renderBoard(); renderScores(); window.scrollTo(0,0); };
+$("#playAgain").onclick = () => { if(S.mode === "bingo"){ bingoAgain(); return; } if(S.mode === "bidding"){ bidAgain(); return; }   /* 6.49 */ if(S.mode === "hotseat"){ hsAgain(); return; } if(S.mode === "survival"){ survAgain(); return; }   /* 6.59 */ hideWinner(); if(S.football) S.cats = footballPick(); newGame(); renderBoard(); renderScores(); window.scrollTo(0,0); };
 $("#winBoard").onclick = () => { hideWinner(); };
-$("#winSetup").onclick = () => { if(S.mode === "bingo"){ bingoSetupAgain(); return; } if(S.mode === "bidding"){ bidSetupAgain(); return; } if(S.mode === "hotseat"){ hsSetupAgain(); return; } hideWinner(); goSetup(); };
+$("#winSetup").onclick = () => { if(S.mode === "bingo"){ bingoSetupAgain(); return; } if(S.mode === "bidding"){ bidSetupAgain(); return; } if(S.mode === "hotseat"){ hsSetupAgain(); return; } if(S.mode === "survival"){ survSetupAgain(); return; } hideWinner(); goSetup(); };
 $("#endGame").onclick = () => askConfirm("End the game now?", "This shows the winner screen with the current scores. You can go back to the board afterwards.", "End game", showWinner);
 /* confetti: a light canvas burst, skipped when reduced motion is on */
 let confRaf = null;
@@ -2408,14 +2408,14 @@ function renderClue(){
     ${ansMode(c) === "steal" && /class="zoom/.test(media) ? `<div class="withqr">${media}${ansPanel(c)}</div>` : media + ansPanel(c)}
     <div class="timer${c.left<=0?" out":""}"><button class="btn small" data-act="timer">${c.running?"Pause":c.left<c.secs?"Resume":"Start "+c.secs+"s"}</button><div class="bar"><i style="width:${pct}%"></i></div><div class="t">${c.left<=0 ? "Time's up" : Math.max(0,Math.ceil(c.left))}</div></div>
     ${c.revealed ? `<div class="answer${c.fresh ? " fresh" : ""}">${c.type==="impostor" ? `Impostor: Player ${c.imp} · Word: ${esc(p.a)} <span class="note">(category: ${esc(p.icat)})</span>` : c.type==="order" && !S.ffa ? (c.right === 3 ? "All 3 in the right order!" : `${c.right} of 3 in the right place`) : fmtAns(p.a)}</div>` : ""}
-    ${S.mode === "bingo" && !c.preview ? bingoBanner(c) : ""}${S.mode === "bidding" && !c.preview ? bidBanner(c) : ""}${S.mode === "hotseat" && !c.preview ? hsBanner(c) : ""}
-    ${S.mode === "bingo" && c.revealed && !c.preview ? bingoAwards(c) : S.mode === "bidding" && c.revealed && !c.preview ? bidAwards(c) : S.mode === "hotseat" && c.revealed && !c.preview ? hsAwards(c) : c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${awardPts(c,i,1)}</button>`}${noHalf(c,i) ? "" : `<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${awardPts(c,i,0.5)}</button>`}${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${-awardPts(c,i,-1)}</button>`}</div>`; }).join("")}</div>` : ""}
+    ${S.mode === "bingo" && !c.preview ? bingoBanner(c) : ""}${S.mode === "bidding" && !c.preview ? bidBanner(c) : ""}${S.mode === "hotseat" && !c.preview ? hsBanner(c) : ""}${S.mode === "survival" && !c.preview ? survBanner(c) : ""}
+    ${S.mode === "bingo" && c.revealed && !c.preview ? bingoAwards(c) : S.mode === "bidding" && c.revealed && !c.preview ? bidAwards(c) : S.mode === "hotseat" && c.revealed && !c.preview ? hsAwards(c) : S.mode === "survival" && c.revealed && !c.preview ? survAwards(c) : c.revealed && !c.preview && S.ffa ? ffaAwards(c) : c.revealed && !c.preview ? `<div class="award">${S.teams.map((t,i)=>{ const off = offTurn(c, i); return `<div class="grp"><span>${esc(t.name)}</span>${off ? "" : `<button class="y${c.awards[i]===1?" on":""}" data-aw="${i}" data-v="1" aria-label="${esc(t.name)} correct">+${awardPts(c,i,1)}</button>`}${noHalf(c,i) ? "" : `<button class="h${c.awards[i]===0.5?" on":""}" data-aw="${i}" data-v="0.5" aria-label="${esc(t.name)} half points">+${awardPts(c,i,0.5)}</button>`}${off ? "" : `<button class="n${c.awards[i]===-1?" on":""}" data-aw="${i}" data-v="-1" aria-label="${esc(t.name)} wrong">−${-awardPts(c,i,-1)}</button>`}</div>`; }).join("")}</div>` : ""}
     ${canTwo ? `<div class="pwrow"><span class="lbl">Power-up:</span>${canTwo}</div>` : ""}
     <div class="row">
       ${c.revealed || (c.type==="impostor" && c.stage!=="play") ? "" : `<button class="btn primary" data-act="reveal">${c.type==="impostor" ? "Reveal impostor" : "Reveal answer"}</button>`}
       <button class="btn" data-act="done">${c.preview ? "Close preview" : S.mode ? (Object.keys(c.awards).length ? "Save and close" : "Close, no result") : Object.keys(c.awards).length ? "Save scores and close" : "Close tile"}</button>
       ${S.mode === "hotseat" ? hsSwapBtn(c) : c.preview || c.revealed ? "" : `<button class="btn small" data-act="swap" title="Already played this one? Get a different clue from the same category and value">Swap clue</button>`}
-      ${c.preview ? "" : `<button class="btn small" data-act="cancel">${S.mode === "bidding" ? "Back to auction" : S.mode === "hotseat" ? "Back to the table" : "Back to board"}</button>`}
+      ${c.preview ? "" : `<button class="btn small" data-act="cancel">${S.mode === "bidding" ? "Back to auction" : S.mode === "hotseat" ? "Back to the table" : S.mode === "survival" ? "Back to round" : "Back to board"}</button>`}
     </div>`;
   const zimg = $("#clue .zoom img");
   if(zimg && c.type==="photo" && !focus[norm(p.a)] && "FaceDetector" in window && (c.cat==="actor"||c.cat==="footy"||c.cat==="person")){
@@ -2502,6 +2502,7 @@ $("#clue").addEventListener("click", e => {
   if(a==="done" && c.preview){ closeCard(); return; }
   if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.48: Category Bingo takes the result instead of adding points
   if(a==="done" && S.mode === "bidding"){ bidDone(c); return; }   // 6.49: Bidding Wars adds or takes away the bid
+  if(a==="done" && S.mode === "survival"){ survDone(c); return; }   // 6.60: Survival takes lives off for wrong answers
   if(a==="done" && S.mode === "hotseat"){ hsDone(c); return; }   // 6.59: Hot Seat banks, risks or loses the pot
   if(a==="done"){
     Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += awardPts(c, +i, v));   // 6.45: was v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1), which awardPts still gives outside Wager mode
@@ -2541,7 +2542,7 @@ if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel(); syncFfaOpt();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
-function showHome(){ bingoLeave(); bidLeave(); hsLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
 /*@modes*/
 $("#resumeBtn").onclick = resumeGame;
 $("#resumeNo").onclick = () => { clearGame(); showResume(); };
