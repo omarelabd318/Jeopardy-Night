@@ -115,9 +115,9 @@ function renderBingo(){
   const stat = st.preview ? `<div class="bstat">Preview. Tap a square to swap its category, or shuffle the whole board.</div>`
     : st.over ? `<div class="bstat">Game over.</div>`
     : st.stealing ? `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}: tap an opponent's square to steal it <span class="row"><button class="btn small" data-b="nosteal">Cancel steal</button></span></div>`
-    : `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}'s turn: pick an open square <span class="row"><button class="btn small" data-b="steal" ${team.steals > 0 && anyOpp ? "" : "disabled"}>Steal (${team.steals} left)</button></span></div>`;
+    : `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}'s turn: pick an open square${team.lock != null ? ` (not ${bgName(team.lock)})` : ""} <span class="row"><button class="btn small" data-b="steal" ${team.steals > 0 && anyOpp ? "" : "disabled"}>Steal (${team.steals} left)</button></span></div>`;
   const grid = st.cells.map((c, i) => { const cat = catById(c.cat), nm = bgShort(c.cat), long = nm.length > 15 || nm.split(/\s+/).some(w => w.length > 9), o = c.own;
-    const cls = ["sq", o != null ? "own" : "", o != null && o !== t ? "opp" : "", thr.has(i) ? "thr" : "", winSet.has(i) ? "win" : "", !st.preview && team.lock === i && o != null ? "lk" : "", st.preview ? "pv" : ""].filter(Boolean).join(" ");
+    const cls = ["sq", o != null ? "own" : "", o != null && o !== t ? "opp" : "", thr.has(i) ? "thr" : "", winSet.has(i) ? "win" : "", !st.preview && team.lock === i ? "lk" : "", st.preview ? "pv" : ""].filter(Boolean).join(" ");
     return `<button class="${cls}" data-i="${i}" style="--sc:var(--s${c.ss});${o != null ? `--tc:${BG_TEAMCOL[o]}` : ""}" aria-label="${"ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1)}: ${esc(cat.name)} for ${c.v}${o != null ? ", owned by " + esc(st.teams[o].name) : ""}"><span class="sec"></span><span class="v">${c.v}</span><span class="nm${long ? " l" : ""}">${esc(nm)}</span><span class="who">${o != null ? bgInit1(st, o) : ""}</span></button>`; }).join("");
   const foot = st.preview ? `<div class="bbar"><button class="btn" data-b="back">Back to setup</button><button class="btn" data-b="shuffle">Shuffle board</button><button class="btn primary" data-b="start">Start game</button></div>`
     : st.over ? `<div class="bbar"><button class="btn" data-b="again">New board</button><button class="btn" data-b="back">Setup</button></div>` : "";
@@ -139,7 +139,7 @@ function bingoClickSq(i){
   const st = BG.st, cell = st.cells[i], t = st.turn; if(st.over) return;
   if(st.preview){ const used = new Set(st.cells.map(c => c.cat)), opts = bgSecIds()[cell.ss].filter(id => !used.has(id)); if(opts.length){ cell.cat = opts[Math.floor(Math.random() * opts.length)]; renderBingo(); } return; }
   if(st.stealing){ if(cell.own == null || cell.own === t) return; if(st.teams[t].lock === i){ Snd.blip(); return; } st.pend = {sq:i, kind:"steal"}; }
-  else { if(cell.own != null) return; st.pend = {sq:i, kind:"pick"}; }
+  else { if(cell.own != null) return; if(st.teams[t].lock === i && st.cells.some((c, k) => c.own == null && k !== i)){ Snd.blip(); return; } st.pend = {sq:i, kind:"pick"}; }
   S.turn = t; openClue(cell.cat, cell.v);
   if(!BG.cfg.auto && S.cur){ stopTimer(); S.cur.running = false; renderClue(); }
 }
@@ -147,7 +147,7 @@ const bgInit1 = (st, i) => { const l = n => (n.trim()[0] || "?").toUpperCase(), 
 const bgName = i => "ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1);
 const bgPersist = () => {};   // 6.50: Bingo games aren't saved (was store.set("jn_bingo", BG.st))
 function bingoBanner(c){ const st = BG.st, p = st && st.pend; if(!p) return ""; const t = st.teams[st.turn], from = st.cells[p.sq].own;
-  return `<p class="note" style="margin:0;font-weight:700;color:${BG_TEAMCOL[st.turn]}">${p.kind === "steal" ? `${esc(t.name)} is stealing ${bgName(p.sq)} from ${esc(st.teams[from].name)}. Wrong and the steal is gone and ${esc(t.name)} can't pick it next turn.` : `${esc(t.name)} is going for ${bgName(p.sq)}.`}</p>`; }
+  return `<p class="note" style="margin:0;font-weight:700;color:${BG_TEAMCOL[st.turn]}">${p.kind === "steal" ? `${esc(t.name)} is stealing ${bgName(p.sq)} from ${esc(st.teams[from].name)}. Wrong and the steal is gone and ${esc(t.name)} can't pick it next turn.` : `${esc(t.name)} is going for ${bgName(p.sq)}. Wrong and ${esc(t.name)} can't pick it next turn.`}</p>`; }
 function bingoAwards(c){ const st = BG.st, i = st.turn, t = st.teams[i], p = st.pend;
   if(c.type === "closest") return `<div class="award">${st.teams.map((m, k) => `<div class="grp"><span>${esc(m.name)}</span><button class="y${c.awards[k] === 1 ? " on" : ""}" data-aw="${k}" data-v="1">Closest</button></div>`).join("")}</div>
     <p class="note">${p && p.kind === "steal" ? `The steal works only if ${esc(t.name)} is closest.` : `The closest team takes ${bgName(p ? p.sq : 0)}. On a tie, ${esc(t.name)} wins it if they're in the tie.`} Tap to change who was closest.</p>`;
@@ -167,7 +167,7 @@ function bingoDone(c){
   const cell = st.cells[p.sq], team = st.teams[t], prev = team.lock;
   if(v === 1){ cell.own = t; if(p.kind === "steal") team.steals--; team.lock = null; Snd.blip(); }
   else if(p.kind === "steal"){ team.steals--; team.lock = p.sq; }
-  else if(prev != null) team.lock = null;
+  else team.lock = p.sq;   // 6.66 (Omar): a missed square is locked for that team on its next turn, like a failed steal
   st.pend = null; st.stealing = false;
   const line = v === 1 ? bgWinLine(t) : null;
   if(line){ st.over = true; st.winner = t; st.line = line; bgPersist(); renderBingo(); setTimeout(() => bingoWinner(), 1800); return; }
