@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.65",
+  "date": "2026-10-09",
+  "items": [
+   "Bidding Wars and Football mode now fill a 4K TV: the auction, setup, board, wager card, clue card and winner screen show at twice the size instead of small in the middle. 1080p screens and phones look the same as before."
+  ]
+ },
+ {
   "v": "6.64",
   "date": "2026-10-09",
   "items": [

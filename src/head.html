@@ -89,6 +89,23 @@ body.survmode #winBox{--winhi:#3a2a06;--felt:#1b1410;--deeper:#0d0907;--brass:#f
   .svstage{width:min(100%,calc((100vh - 120px)*16/9))}
 }
 /* end 6.64 */
+/* 6.65 TV pass for Bidding Wars and Football mode: 4K-wide screens only (2600px and up). At 1920x1080 and 1920x950 both modes
+   already fill the screen, so nothing changes there; at 3840x2160 every screen was drawn at its 1920 size in the middle of the TV.
+   This zooms them 2x, the same way 6.64 does for Survival. Phones, normal mode and the other modes are untouched. To undo: delete this block. */
+@media (min-width:2600px) and (orientation:landscape){
+  body.bidmode .wrap{max-width:none}
+  .bwtools{zoom:2}
+  #bidding .bwstage{width:min(100%,calc((100vh - 120px)*16/9))}
+  #bidSetup{zoom:2}
+  body.bidmode #clue{zoom:2}
+  body.bidmode .wincard{zoom:2}
+  body.football .wrap{zoom:2}
+  body.football #scores{zoom:2}
+  body.football #clue{zoom:2}
+  body.football .wincard{zoom:2}
+  body.football #winBox .ledstrip{zoom:2}
+}
+/* end 6.65 */
 </style></head><body>
 <title>Jeopardy Night</title>
 <!-- 5.1: the three CDN scripts load with async, so a slow CDN no longer holds up the page (they used to block it). QR codes, photo export/import and the world map are only needed later. To undo: remove "async" (and the onload) from these three tags, and in src/app.js go back to calling the initWorld() body directly. -->
@@ -839,7 +856,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.64</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.65</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -876,7 +893,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.64</div>
+      <div class="eyebrow verlabel">v6.65</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
