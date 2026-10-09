@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.57",
+  "date": "2026-10-09",
+  "items": [
+   "Bidding Wars: a new Raise amounts switch in setup. Teams choose (+$50/+$100/+$200 buttons) or +$50 only."
+  ]
+ },
+ {
   "v": "6.56",
   "date": "2026-10-09",
   "items": [
