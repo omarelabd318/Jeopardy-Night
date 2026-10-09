@@ -1,577 +1,1977 @@
 {
  "id": "spot",
  "name": "Most Spotify Listeners",
- "type": "text",
- "desc": "Three artists. Who has the most monthly listeners on Spotify? Figures are from early October 2026 and change every month.",
+ "type": "order",
+ "desc": "Three artists. Put them in order, most monthly Spotify listeners first. Figures are from early October 2026 and change every month, so artists within 1M of each other count either way round.",
  "data": {
   "100": [
    [
-    "Who has the most monthly listeners on Spotify?\nA) The Weeknd\nB) Adele\nC) Kanye West",
-    "A) The Weeknd: 115M monthly listeners\n(others: B) 59M, C) 71M)"
+    [
+     "The Weeknd",
+     115
+    ],
+    [
+     "Adele",
+     59
+    ],
+    [
+     "Kanye West",
+     71
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Coldplay\nB) Elissa\nC) Imagine Dragons",
-    "A) Coldplay: 95M monthly listeners\n(others: B) 3M, C) 52M)"
+    [
+     "Coldplay",
+     95
+    ],
+    [
+     "Elissa",
+     3
+    ],
+    [
+     "Imagine Dragons",
+     52
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Metallica\nB) Beyoncé\nC) Amr Diab",
-    "B) Beyoncé: 66M monthly listeners\n(others: A) 33M, C) 5M)"
+    [
+     "Metallica",
+     33
+    ],
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Amr Diab",
+     5
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Bieber\nB) Sia\nC) Lana Del Rey",
-    "A) Justin Bieber: 114M monthly listeners\n(others: B) 69M, C) 66M)"
+    [
+     "Justin Bieber",
+     114
+    ],
+    [
+     "Sia",
+     69
+    ],
+    [
+     "Lana Del Rey",
+     66
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Doja Cat\nB) Bruno Mars\nC) Kanye West",
-    "B) Bruno Mars: 131M monthly listeners\n(others: A) 55M, C) 71M)"
+    [
+     "Doja Cat",
+     55
+    ],
+    [
+     "Bruno Mars",
+     131
+    ],
+    [
+     "Kanye West",
+     71
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Elissa\nB) Wegz\nC) Lady Gaga",
-    "C) Lady Gaga: 101M monthly listeners\n(others: A) 3M, B) 1.7M)"
+    [
+     "Elissa",
+     3
+    ],
+    [
+     "Wegz",
+     1.7
+    ],
+    [
+     "Lady Gaga",
+     101
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Linkin Park\nB) Rihanna\nC) Miley Cyrus",
-    "B) Rihanna: 116M monthly listeners\n(others: A) 58M, C) 64M)"
+    [
+     "Linkin Park",
+     58
+    ],
+    [
+     "Rihanna",
+     116
+    ],
+    [
+     "Miley Cyrus",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Metallica\nB) Wegz\nC) Sherine",
-    "A) Metallica: 33M monthly listeners\n(others: B) 1.7M, C) 6M)"
+    [
+     "Metallica",
+     33
+    ],
+    [
+     "Wegz",
+     1.7
+    ],
+    [
+     "Sherine",
+     6
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Bieber\nB) Lewis Capaldi\nC) Wegz",
-    "A) Justin Bieber: 114M monthly listeners\n(others: B) 33M, C) 1.7M)"
+    [
+     "Justin Bieber",
+     114
+    ],
+    [
+     "Lewis Capaldi",
+     33
+    ],
+    [
+     "Wegz",
+     1.7
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Adele\nB) Drake\nC) Chris Brown",
-    "B) Drake: 94M monthly listeners\n(others: A) 59M, C) 57M)"
+    [
+     "Adele",
+     59
+    ],
+    [
+     "Drake",
+     94
+    ],
+    [
+     "Chris Brown",
+     57
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Bieber\nB) Daddy Yankee\nC) Zara Larsson",
-    "A) Justin Bieber: 114M monthly listeners\n(others: B) 64M, C) 55M)"
+    [
+     "Justin Bieber",
+     114
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ],
+    [
+     "Zara Larsson",
+     55
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Red Hot Chili Peppers\nB) Post Malone\nC) Sherine",
-    "B) Post Malone: 69M monthly listeners\n(others: A) 46M, C) 6M)"
+    [
+     "Red Hot Chili Peppers",
+     46
+    ],
+    [
+     "Post Malone",
+     69
+    ],
+    [
+     "Sherine",
+     6
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Rihanna\nB) Sherine\nC) Daddy Yankee",
-    "A) Rihanna: 116M monthly listeners\n(others: B) 6M, C) 64M)"
+    [
+     "Rihanna",
+     116
+    ],
+    [
+     "Sherine",
+     6
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) The Weeknd\nB) 50 Cent\nC) Linkin Park",
-    "A) The Weeknd: 115M monthly listeners\n(others: B) 45M, C) 58M)"
+    [
+     "The Weeknd",
+     115
+    ],
+    [
+     "50 Cent",
+     45
+    ],
+    [
+     "Linkin Park",
+     58
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tamer Hosny\nB) J Balvin\nC) Lewis Capaldi",
-    "B) J Balvin: 72M monthly listeners\n(others: A) 2.3M, C) 33M)"
+    [
+     "Tamer Hosny",
+     2.3
+    ],
+    [
+     "J Balvin",
+     72
+    ],
+    [
+     "Lewis Capaldi",
+     33
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lil Wayne\nB) David Guetta\nC) Tamer Hosny",
-    "B) David Guetta: 84M monthly listeners\n(others: A) 48M, C) 2.3M)"
+    [
+     "Lil Wayne",
+     48
+    ],
+    [
+     "David Guetta",
+     84
+    ],
+    [
+     "Tamer Hosny",
+     2.3
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Zara Larsson\nB) Mohamed Ramadan\nC) Michael Jackson",
-    "C) Michael Jackson: 88M monthly listeners\n(others: A) 55M, B) 2M)"
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Mohamed Ramadan",
+     2
+    ],
+    [
+     "Michael Jackson",
+     88
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Metallica\nB) Pitbull\nC) Elissa",
-    "B) Pitbull: 80M monthly listeners\n(others: A) 33M, C) 3M)"
+    [
+     "Metallica",
+     33
+    ],
+    [
+     "Pitbull",
+     80
+    ],
+    [
+     "Elissa",
+     3
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Beyoncé\nB) Wegz\nC) Sherine",
-    "A) Beyoncé: 66M monthly listeners\n(others: B) 1.7M, C) 6M)"
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Wegz",
+     1.7
+    ],
+    [
+     "Sherine",
+     6
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Elissa\nB) Amr Diab\nC) Sia",
-    "C) Sia: 69M monthly listeners\n(others: A) 3M, B) 5M)"
+    [
+     "Elissa",
+     3
+    ],
+    [
+     "Amr Diab",
+     5
+    ],
+    [
+     "Sia",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Billie Eilish\nB) Zara Larsson\nC) Bruno Mars",
-    "C) Bruno Mars: 131M monthly listeners\n(others: A) 78M, B) 55M)"
+    [
+     "Billie Eilish",
+     78
+    ],
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Bruno Mars",
+     131
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Zara Larsson\nB) Beyoncé\nC) Rihanna",
-    "C) Rihanna: 116M monthly listeners\n(others: A) 55M, B) 66M)"
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Rihanna",
+     116
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Bruno Mars\nB) Sherine\nC) Metallica",
-    "A) Bruno Mars: 131M monthly listeners\n(others: B) 6M, C) 33M)"
+    [
+     "Bruno Mars",
+     131
+    ],
+    [
+     "Sherine",
+     6
+    ],
+    [
+     "Metallica",
+     33
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Sherine\nB) 50 Cent\nC) Wegz",
-    "B) 50 Cent: 45M monthly listeners\n(others: A) 6M, C) 1.7M)"
+    [
+     "Sherine",
+     6
+    ],
+    [
+     "50 Cent",
+     45
+    ],
+    [
+     "Wegz",
+     1.7
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Timberlake\nB) Chris Brown\nC) Ariana Grande",
-    "C) Ariana Grande: 94M monthly listeners\n(others: A) 59M, B) 57M)"
+    [
+     "Justin Timberlake",
+     59
+    ],
+    [
+     "Chris Brown",
+     57
+    ],
+    [
+     "Ariana Grande",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Guns N' Roses\nB) Elissa\nC) Drake",
-    "C) Drake: 94M monthly listeners\n(others: A) 40M, B) 3M)"
+    [
+     "Guns N' Roses",
+     40
+    ],
+    [
+     "Elissa",
+     3
+    ],
+    [
+     "Drake",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) The Weeknd\nB) Lewis Capaldi\nC) Metallica",
-    "A) The Weeknd: 115M monthly listeners\n(others: B) 33M, C) 33M)"
+    [
+     "The Weeknd",
+     115
+    ],
+    [
+     "Lewis Capaldi",
+     33
+    ],
+    [
+     "Metallica",
+     33
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tame Impala\nB) Guns N' Roses\nC) Taylor Swift",
-    "C) Taylor Swift: 105M monthly listeners\n(others: A) 62M, B) 40M)"
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Guns N' Roses",
+     40
+    ],
+    [
+     "Taylor Swift",
+     105
+    ]
    ]
   ],
   "200": [
    [
-    "Who has the most monthly listeners on Spotify?\nA) Beyoncé\nB) Justin Timberlake\nC) Shakira",
-    "C) Shakira: 92M monthly listeners\n(others: A) 66M, B) 59M)"
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Justin Timberlake",
+     59
+    ],
+    [
+     "Shakira",
+     92
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tamer Hosny\nB) Travis Scott\nC) Katy Perry",
-    "C) Katy Perry: 90M monthly listeners\n(others: A) 2.3M, B) 62M)"
+    [
+     "Tamer Hosny",
+     2.3
+    ],
+    [
+     "Travis Scott",
+     62
+    ],
+    [
+     "Katy Perry",
+     90
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Amr Diab\nB) Michael Jackson\nC) Travis Scott",
-    "B) Michael Jackson: 88M monthly listeners\n(others: A) 5M, C) 62M)"
+    [
+     "Amr Diab",
+     5
+    ],
+    [
+     "Michael Jackson",
+     88
+    ],
+    [
+     "Travis Scott",
+     62
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Harry Styles\nB) Daddy Yankee\nC) Michael Jackson",
-    "C) Michael Jackson: 88M monthly listeners\n(others: A) 64M, B) 64M)"
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ],
+    [
+     "Michael Jackson",
+     88
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Shakira\nB) Karol G\nC) Justin Timberlake",
-    "A) Shakira: 92M monthly listeners\n(others: B) 69M, C) 59M)"
+    [
+     "Shakira",
+     92
+    ],
+    [
+     "Karol G",
+     69
+    ],
+    [
+     "Justin Timberlake",
+     59
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Billie Eilish\nB) Madonna\nC) Taylor Swift",
-    "C) Taylor Swift: 105M monthly listeners\n(others: A) 78M, B) 55M)"
+    [
+     "Billie Eilish",
+     78
+    ],
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "Taylor Swift",
+     105
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Amr Diab\nB) Marshmello\nC) Maroon 5",
-    "C) Maroon 5: 81M monthly listeners\n(others: A) 5M, B) 56M)"
+    [
+     "Amr Diab",
+     5
+    ],
+    [
+     "Marshmello",
+     56
+    ],
+    [
+     "Maroon 5",
+     81
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) SZA\nB) Drake\nC) Justin Timberlake",
-    "B) Drake: 94M monthly listeners\n(others: A) 66M, C) 59M)"
+    [
+     "SZA",
+     66
+    ],
+    [
+     "Drake",
+     94
+    ],
+    [
+     "Justin Timberlake",
+     59
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Bieber\nB) Maroon 5\nC) SZA",
-    "A) Justin Bieber: 114M monthly listeners\n(others: B) 81M, C) 66M)"
+    [
+     "Justin Bieber",
+     114
+    ],
+    [
+     "Maroon 5",
+     81
+    ],
+    [
+     "SZA",
+     66
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tamer Hosny\nB) David Guetta\nC) Rihanna",
-    "C) Rihanna: 116M monthly listeners\n(others: A) 2.3M, B) 84M)"
+    [
+     "Tamer Hosny",
+     2.3
+    ],
+    [
+     "David Guetta",
+     84
+    ],
+    [
+     "Rihanna",
+     116
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lewis Capaldi\nB) Sia\nC) Coldplay",
-    "C) Coldplay: 95M monthly listeners\n(others: A) 33M, B) 69M)"
+    [
+     "Lewis Capaldi",
+     33
+    ],
+    [
+     "Sia",
+     69
+    ],
+    [
+     "Coldplay",
+     95
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Katy Perry\nB) Black Eyed Peas\nC) Madonna",
-    "A) Katy Perry: 90M monthly listeners\n(others: B) 65M, C) 55M)"
+    [
+     "Katy Perry",
+     90
+    ],
+    [
+     "Black Eyed Peas",
+     65
+    ],
+    [
+     "Madonna",
+     55
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Mohamed Ramadan\nB) Travis Scott\nC) Michael Jackson",
-    "C) Michael Jackson: 88M monthly listeners\n(others: A) 2M, B) 62M)"
+    [
+     "Mohamed Ramadan",
+     2
+    ],
+    [
+     "Travis Scott",
+     62
+    ],
+    [
+     "Michael Jackson",
+     88
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Taylor Swift\nB) J Balvin\nC) Adele",
-    "A) Taylor Swift: 105M monthly listeners\n(others: B) 72M, C) 59M)"
+    [
+     "Taylor Swift",
+     105
+    ],
+    [
+     "J Balvin",
+     72
+    ],
+    [
+     "Adele",
+     59
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Marwan Pablo\nB) Tame Impala\nC) Shakira",
-    "C) Shakira: 92M monthly listeners\n(others: A) 1M, B) 62M)"
+    [
+     "Marwan Pablo",
+     1
+    ],
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Shakira",
+     92
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tamer Hosny\nB) Guns N' Roses\nC) Ellie Goulding",
-    "C) Ellie Goulding: 56M monthly listeners\n(others: A) 2.3M, B) 40M)"
+    [
+     "Tamer Hosny",
+     2.3
+    ],
+    [
+     "Guns N' Roses",
+     40
+    ],
+    [
+     "Ellie Goulding",
+     56
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) 50 Cent\nB) Tamer Hosny\nC) Tame Impala",
-    "C) Tame Impala: 62M monthly listeners\n(others: A) 45M, B) 2.3M)"
+    [
+     "50 Cent",
+     45
+    ],
+    [
+     "Tamer Hosny",
+     2.3
+    ],
+    [
+     "Tame Impala",
+     62
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Metallica\nB) Imagine Dragons\nC) Eminem",
-    "C) Eminem: 74M monthly listeners\n(others: A) 33M, B) 52M)"
+    [
+     "Metallica",
+     33
+    ],
+    [
+     "Imagine Dragons",
+     52
+    ],
+    [
+     "Eminem",
+     74
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lady Gaga\nB) Doja Cat\nC) Karol G",
-    "A) Lady Gaga: 101M monthly listeners\n(others: B) 55M, C) 69M)"
+    [
+     "Lady Gaga",
+     101
+    ],
+    [
+     "Doja Cat",
+     55
+    ],
+    [
+     "Karol G",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Michael Jackson\nB) Chris Brown\nC) Beyoncé",
-    "A) Michael Jackson: 88M monthly listeners\n(others: B) 57M, C) 66M)"
+    [
+     "Michael Jackson",
+     88
+    ],
+    [
+     "Chris Brown",
+     57
+    ],
+    [
+     "Beyoncé",
+     66
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Taylor Swift\nB) Kendrick Lamar\nC) Metallica",
-    "A) Taylor Swift: 105M monthly listeners\n(others: B) 71M, C) 33M)"
+    [
+     "Taylor Swift",
+     105
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ],
+    [
+     "Metallica",
+     33
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Arctic Monkeys\nB) Guns N' Roses\nC) Elissa",
-    "A) Arctic Monkeys: 56M monthly listeners\n(others: B) 40M, C) 3M)"
+    [
+     "Arctic Monkeys",
+     56
+    ],
+    [
+     "Guns N' Roses",
+     40
+    ],
+    [
+     "Elissa",
+     3
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Timberlake\nB) Red Hot Chili Peppers\nC) David Guetta",
-    "C) David Guetta: 84M monthly listeners\n(others: A) 59M, B) 46M)"
+    [
+     "Justin Timberlake",
+     59
+    ],
+    [
+     "Red Hot Chili Peppers",
+     46
+    ],
+    [
+     "David Guetta",
+     84
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Billie Eilish\nB) Justin Bieber\nC) Metallica",
-    "B) Justin Bieber: 114M monthly listeners\n(others: A) 78M, C) 33M)"
+    [
+     "Billie Eilish",
+     78
+    ],
+    [
+     "Justin Bieber",
+     114
+    ],
+    [
+     "Metallica",
+     33
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lil Wayne\nB) Wegz\nC) Kanye West",
-    "C) Kanye West: 71M monthly listeners\n(others: A) 48M, B) 1.7M)"
+    [
+     "Lil Wayne",
+     48
+    ],
+    [
+     "Wegz",
+     1.7
+    ],
+    [
+     "Kanye West",
+     71
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Ellie Goulding\nB) David Guetta\nC) Lewis Capaldi",
-    "B) David Guetta: 84M monthly listeners\n(others: A) 56M, C) 33M)"
+    [
+     "Ellie Goulding",
+     56
+    ],
+    [
+     "David Guetta",
+     84
+    ],
+    [
+     "Lewis Capaldi",
+     33
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Calvin Harris\nB) Beyoncé\nC) Justin Bieber",
-    "C) Justin Bieber: 114M monthly listeners\n(others: A) 77M, B) 66M)"
+    [
+     "Calvin Harris",
+     77
+    ],
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Justin Bieber",
+     114
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Eminem\nB) Taylor Swift\nC) Madonna",
-    "B) Taylor Swift: 105M monthly listeners\n(others: A) 74M, C) 55M)"
+    [
+     "Eminem",
+     74
+    ],
+    [
+     "Taylor Swift",
+     105
+    ],
+    [
+     "Madonna",
+     55
+    ]
    ]
   ],
   "300": [
    [
-    "Who has the most monthly listeners on Spotify?\nA) Ed Sheeran\nB) Lil Wayne\nC) Travis Scott",
-    "A) Ed Sheeran: 81M monthly listeners\n(others: B) 48M, C) 62M)"
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "Lil Wayne",
+     48
+    ],
+    [
+     "Travis Scott",
+     62
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Beyoncé\nB) Ed Sheeran\nC) 50 Cent",
-    "B) Ed Sheeran: 81M monthly listeners\n(others: A) 66M, C) 45M)"
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "50 Cent",
+     45
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Katy Perry\nB) Black Eyed Peas\nC) Sia",
-    "A) Katy Perry: 90M monthly listeners\n(others: B) 65M, C) 69M)"
+    [
+     "Katy Perry",
+     90
+    ],
+    [
+     "Black Eyed Peas",
+     65
+    ],
+    [
+     "Sia",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Coldplay\nB) Imagine Dragons\nC) Calvin Harris",
-    "A) Coldplay: 95M monthly listeners\n(others: B) 52M, C) 77M)"
+    [
+     "Coldplay",
+     95
+    ],
+    [
+     "Imagine Dragons",
+     52
+    ],
+    [
+     "Calvin Harris",
+     77
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Bad Bunny\nB) Tame Impala\nC) Eminem",
-    "A) Bad Bunny: 94M monthly listeners\n(others: B) 62M, C) 74M)"
+    [
+     "Bad Bunny",
+     94
+    ],
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Eminem",
+     74
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Chris Brown\nB) Madonna\nC) Kendrick Lamar",
-    "C) Kendrick Lamar: 71M monthly listeners\n(others: A) 57M, B) 55M)"
+    [
+     "Chris Brown",
+     57
+    ],
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Kendrick Lamar\nB) Ellie Goulding\nC) Drake",
-    "C) Drake: 94M monthly listeners\n(others: A) 71M, B) 56M)"
+    [
+     "Kendrick Lamar",
+     71
+    ],
+    [
+     "Ellie Goulding",
+     56
+    ],
+    [
+     "Drake",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Kanye West\nB) J Balvin\nC) Coldplay",
-    "C) Coldplay: 95M monthly listeners\n(others: A) 71M, B) 72M)"
+    [
+     "Kanye West",
+     71
+    ],
+    [
+     "J Balvin",
+     72
+    ],
+    [
+     "Coldplay",
+     95
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Ed Sheeran\nB) Lana Del Rey\nC) Justin Timberlake",
-    "A) Ed Sheeran: 81M monthly listeners\n(others: B) 66M, C) 59M)"
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "Lana Del Rey",
+     66
+    ],
+    [
+     "Justin Timberlake",
+     59
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Calvin Harris\nB) Lady Gaga\nC) Maroon 5",
-    "B) Lady Gaga: 101M monthly listeners\n(others: A) 77M, C) 81M)"
+    [
+     "Calvin Harris",
+     77
+    ],
+    [
+     "Lady Gaga",
+     101
+    ],
+    [
+     "Maroon 5",
+     81
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lady Gaga\nB) Olivia Rodrigo\nC) Dua Lipa",
-    "A) Lady Gaga: 101M monthly listeners\n(others: B) 67M, C) 78M)"
+    [
+     "Lady Gaga",
+     101
+    ],
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Dua Lipa",
+     78
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lil Wayne\nB) Kendrick Lamar\nC) Shakira",
-    "C) Shakira: 92M monthly listeners\n(others: A) 48M, B) 71M)"
+    [
+     "Lil Wayne",
+     48
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ],
+    [
+     "Shakira",
+     92
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Adele\nB) Rihanna\nC) Drake",
-    "B) Rihanna: 116M monthly listeners\n(others: A) 59M, C) 94M)"
+    [
+     "Adele",
+     59
+    ],
+    [
+     "Rihanna",
+     116
+    ],
+    [
+     "Drake",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) J Balvin\nB) Arctic Monkeys\nC) Katy Perry",
-    "C) Katy Perry: 90M monthly listeners\n(others: A) 72M, B) 56M)"
+    [
+     "J Balvin",
+     72
+    ],
+    [
+     "Arctic Monkeys",
+     56
+    ],
+    [
+     "Katy Perry",
+     90
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Zara Larsson\nB) Kanye West\nC) Katy Perry",
-    "C) Katy Perry: 90M monthly listeners\n(others: A) 55M, B) 71M)"
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Kanye West",
+     71
+    ],
+    [
+     "Katy Perry",
+     90
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Drake\nB) Eminem\nC) Kendrick Lamar",
-    "A) Drake: 94M monthly listeners\n(others: B) 74M, C) 71M)"
+    [
+     "Drake",
+     94
+    ],
+    [
+     "Eminem",
+     74
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Calvin Harris\nB) Red Hot Chili Peppers\nC) Sean Paul",
-    "A) Calvin Harris: 77M monthly listeners\n(others: B) 46M, C) 59M)"
+    [
+     "Calvin Harris",
+     77
+    ],
+    [
+     "Red Hot Chili Peppers",
+     46
+    ],
+    [
+     "Sean Paul",
+     59
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) 50 Cent\nB) Kanye West\nC) Madonna",
-    "B) Kanye West: 71M monthly listeners\n(others: A) 45M, C) 55M)"
+    [
+     "50 Cent",
+     45
+    ],
+    [
+     "Kanye West",
+     71
+    ],
+    [
+     "Madonna",
+     55
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Michael Jackson\nB) Miley Cyrus\nC) Post Malone",
-    "A) Michael Jackson: 88M monthly listeners\n(others: B) 64M, C) 69M)"
+    [
+     "Michael Jackson",
+     88
+    ],
+    [
+     "Miley Cyrus",
+     64
+    ],
+    [
+     "Post Malone",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Bad Bunny\nB) Olivia Rodrigo\nC) J Balvin",
-    "A) Bad Bunny: 94M monthly listeners\n(others: B) 67M, C) 72M)"
+    [
+     "Bad Bunny",
+     94
+    ],
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "J Balvin",
+     72
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Timberlake\nB) Ellie Goulding\nC) Eminem",
-    "C) Eminem: 74M monthly listeners\n(others: A) 59M, B) 56M)"
+    [
+     "Justin Timberlake",
+     59
+    ],
+    [
+     "Ellie Goulding",
+     56
+    ],
+    [
+     "Eminem",
+     74
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Maroon 5\nB) Miley Cyrus\nC) Taylor Swift",
-    "C) Taylor Swift: 105M monthly listeners\n(others: A) 81M, B) 64M)"
+    [
+     "Maroon 5",
+     81
+    ],
+    [
+     "Miley Cyrus",
+     64
+    ],
+    [
+     "Taylor Swift",
+     105
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lana Del Rey\nB) Kendrick Lamar\nC) Bad Bunny",
-    "C) Bad Bunny: 94M monthly listeners\n(others: A) 66M, B) 71M)"
+    [
+     "Lana Del Rey",
+     66
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ],
+    [
+     "Bad Bunny",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Guns N' Roses\nB) Pitbull\nC) Tame Impala",
-    "B) Pitbull: 80M monthly listeners\n(others: A) 40M, C) 62M)"
+    [
+     "Guns N' Roses",
+     40
+    ],
+    [
+     "Pitbull",
+     80
+    ],
+    [
+     "Tame Impala",
+     62
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Rihanna\nB) David Guetta\nC) Drake",
-    "A) Rihanna: 116M monthly listeners\n(others: B) 84M, C) 94M)"
+    [
+     "Rihanna",
+     116
+    ],
+    [
+     "David Guetta",
+     84
+    ],
+    [
+     "Drake",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Ariana Grande\nB) Harry Styles\nC) Calvin Harris",
-    "A) Ariana Grande: 94M monthly listeners\n(others: B) 64M, C) 77M)"
+    [
+     "Ariana Grande",
+     94
+    ],
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Calvin Harris",
+     77
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Harry Styles\nB) Shakira\nC) Eminem",
-    "B) Shakira: 92M monthly listeners\n(others: A) 64M, C) 74M)"
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Shakira",
+     92
+    ],
+    [
+     "Eminem",
+     74
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Olivia Rodrigo\nB) Kanye West\nC) Katy Perry",
-    "C) Katy Perry: 90M monthly listeners\n(others: A) 67M, B) 71M)"
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Kanye West",
+     71
+    ],
+    [
+     "Katy Perry",
+     90
+    ]
    ]
   ],
   "400": [
    [
-    "Who has the most monthly listeners on Spotify?\nA) Queen\nB) Sean Paul\nC) Karol G",
-    "C) Karol G: 69M monthly listeners\n(others: A) 51M, B) 59M)"
+    [
+     "Queen",
+     51
+    ],
+    [
+     "Sean Paul",
+     59
+    ],
+    [
+     "Karol G",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Olivia Rodrigo\nB) Maroon 5\nC) Arctic Monkeys",
-    "B) Maroon 5: 81M monthly listeners\n(others: A) 67M, C) 56M)"
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Maroon 5",
+     81
+    ],
+    [
+     "Arctic Monkeys",
+     56
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Harry Styles\nB) Olivia Rodrigo\nC) Billie Eilish",
-    "C) Billie Eilish: 78M monthly listeners\n(others: A) 64M, B) 67M)"
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Billie Eilish",
+     78
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Shawn Mendes\nB) Billie Eilish\nC) Harry Styles",
-    "B) Billie Eilish: 78M monthly listeners\n(others: A) 57M, C) 64M)"
+    [
+     "Shawn Mendes",
+     57
+    ],
+    [
+     "Billie Eilish",
+     78
+    ],
+    [
+     "Harry Styles",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) SZA\nB) Madonna\nC) Arctic Monkeys",
-    "A) SZA: 66M monthly listeners\n(others: B) 55M, C) 56M)"
+    [
+     "SZA",
+     66
+    ],
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "Arctic Monkeys",
+     56
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Black Eyed Peas\nB) Madonna\nC) 50 Cent",
-    "A) Black Eyed Peas: 65M monthly listeners\n(others: B) 55M, C) 45M)"
+    [
+     "Black Eyed Peas",
+     65
+    ],
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "50 Cent",
+     45
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Adele\nB) Karol G\nC) Shawn Mendes",
-    "B) Karol G: 69M monthly listeners\n(others: A) 59M, C) 57M)"
+    [
+     "Adele",
+     59
+    ],
+    [
+     "Karol G",
+     69
+    ],
+    [
+     "Shawn Mendes",
+     57
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) SZA\nB) Madonna\nC) Ed Sheeran",
-    "C) Ed Sheeran: 81M monthly listeners\n(others: A) 66M, B) 55M)"
+    [
+     "SZA",
+     66
+    ],
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Karol G\nB) Marshmello\nC) Adele",
-    "A) Karol G: 69M monthly listeners\n(others: B) 56M, C) 59M)"
+    [
+     "Karol G",
+     69
+    ],
+    [
+     "Marshmello",
+     56
+    ],
+    [
+     "Adele",
+     59
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Kanye West\nB) Ed Sheeran\nC) Coldplay",
-    "C) Coldplay: 95M monthly listeners\n(others: A) 71M, B) 81M)"
+    [
+     "Kanye West",
+     71
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "Coldplay",
+     95
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Doja Cat\nB) Tame Impala\nC) Kendrick Lamar",
-    "C) Kendrick Lamar: 71M monthly listeners\n(others: A) 55M, B) 62M)"
+    [
+     "Doja Cat",
+     55
+    ],
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Olivia Rodrigo\nB) Shawn Mendes\nC) Billie Eilish",
-    "C) Billie Eilish: 78M monthly listeners\n(others: A) 67M, B) 57M)"
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Shawn Mendes",
+     57
+    ],
+    [
+     "Billie Eilish",
+     78
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Drake\nB) Katy Perry\nC) The Weeknd",
-    "C) The Weeknd: 115M monthly listeners\n(others: A) 94M, B) 90M)"
+    [
+     "Drake",
+     94
+    ],
+    [
+     "Katy Perry",
+     90
+    ],
+    [
+     "The Weeknd",
+     115
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Coldplay\nB) Maroon 5\nC) Sia",
-    "A) Coldplay: 95M monthly listeners\n(others: B) 81M, C) 69M)"
+    [
+     "Coldplay",
+     95
+    ],
+    [
+     "Maroon 5",
+     81
+    ],
+    [
+     "Sia",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lana Del Rey\nB) Linkin Park\nC) Pitbull",
-    "C) Pitbull: 80M monthly listeners\n(others: A) 66M, B) 58M)"
+    [
+     "Lana Del Rey",
+     66
+    ],
+    [
+     "Linkin Park",
+     58
+    ],
+    [
+     "Pitbull",
+     80
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lana Del Rey\nB) Travis Scott\nC) Dua Lipa",
-    "C) Dua Lipa: 78M monthly listeners\n(others: A) 66M, B) 62M)"
+    [
+     "Lana Del Rey",
+     66
+    ],
+    [
+     "Travis Scott",
+     62
+    ],
+    [
+     "Dua Lipa",
+     78
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Kanye West\nB) David Guetta\nC) Lady Gaga",
-    "C) Lady Gaga: 101M monthly listeners\n(others: A) 71M, B) 84M)"
+    [
+     "Kanye West",
+     71
+    ],
+    [
+     "David Guetta",
+     84
+    ],
+    [
+     "Lady Gaga",
+     101
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) SZA\nB) Billie Eilish\nC) Lana Del Rey",
-    "B) Billie Eilish: 78M monthly listeners\n(others: A) 66M, C) 66M)"
+    [
+     "SZA",
+     66
+    ],
+    [
+     "Billie Eilish",
+     78
+    ],
+    [
+     "Lana Del Rey",
+     66
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Olivia Rodrigo\nB) Arctic Monkeys\nC) Dua Lipa",
-    "C) Dua Lipa: 78M monthly listeners\n(others: A) 67M, B) 56M)"
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Arctic Monkeys",
+     56
+    ],
+    [
+     "Dua Lipa",
+     78
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Lil Wayne\nB) Zara Larsson\nC) Harry Styles",
-    "C) Harry Styles: 64M monthly listeners\n(others: A) 48M, B) 55M)"
+    [
+     "Lil Wayne",
+     48
+    ],
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Harry Styles",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Beyoncé\nB) Shawn Mendes\nC) Chris Brown",
-    "A) Beyoncé: 66M monthly listeners\n(others: B) 57M, C) 57M)"
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Shawn Mendes",
+     57
+    ],
+    [
+     "Chris Brown",
+     57
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tame Impala\nB) Dua Lipa\nC) Drake",
-    "C) Drake: 94M monthly listeners\n(others: A) 62M, B) 78M)"
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Dua Lipa",
+     78
+    ],
+    [
+     "Drake",
+     94
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Eminem\nB) Harry Styles\nC) Imagine Dragons",
-    "A) Eminem: 74M monthly listeners\n(others: B) 64M, C) 52M)"
+    [
+     "Eminem",
+     74
+    ],
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Imagine Dragons",
+     52
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Olivia Rodrigo\nB) Ed Sheeran\nC) Marshmello",
-    "B) Ed Sheeran: 81M monthly listeners\n(others: A) 67M, C) 56M)"
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "Marshmello",
+     56
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Adele\nB) Linkin Park\nC) Sia",
-    "C) Sia: 69M monthly listeners\n(others: A) 59M, B) 58M)"
+    [
+     "Adele",
+     59
+    ],
+    [
+     "Linkin Park",
+     58
+    ],
+    [
+     "Sia",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Eminem\nB) Tame Impala\nC) Zara Larsson",
-    "A) Eminem: 74M monthly listeners\n(others: B) 62M, C) 55M)"
+    [
+     "Eminem",
+     74
+    ],
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Zara Larsson",
+     55
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) SZA\nB) Sia\nC) Ed Sheeran",
-    "C) Ed Sheeran: 81M monthly listeners\n(others: A) 66M, B) 69M)"
+    [
+     "SZA",
+     66
+    ],
+    [
+     "Sia",
+     69
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Coldplay\nB) Ed Sheeran\nC) J Balvin",
-    "A) Coldplay: 95M monthly listeners\n(others: B) 81M, C) 72M)"
+    [
+     "Coldplay",
+     95
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "J Balvin",
+     72
+    ]
    ]
   ],
   "500": [
    [
-    "Who has the most monthly listeners on Spotify?\nA) Calvin Harris\nB) Taylor Swift\nC) Shakira",
-    "B) Taylor Swift: 105M monthly listeners\n(others: A) 77M, C) 92M)"
+    [
+     "Calvin Harris",
+     77
+    ],
+    [
+     "Taylor Swift",
+     105
+    ],
+    [
+     "Shakira",
+     92
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Bad Bunny\nB) Sia\nC) David Guetta",
-    "A) Bad Bunny: 94M monthly listeners\n(others: B) 69M, C) 84M)"
+    [
+     "Bad Bunny",
+     94
+    ],
+    [
+     "Sia",
+     69
+    ],
+    [
+     "David Guetta",
+     84
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Michael Jackson\nB) Ed Sheeran\nC) Lady Gaga",
-    "C) Lady Gaga: 101M monthly listeners\n(others: A) 88M, B) 81M)"
+    [
+     "Michael Jackson",
+     88
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "Lady Gaga",
+     101
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Harry Styles\nB) Ellie Goulding\nC) Shawn Mendes",
-    "A) Harry Styles: 64M monthly listeners\n(others: B) 56M, C) 57M)"
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Ellie Goulding",
+     56
+    ],
+    [
+     "Shawn Mendes",
+     57
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) SZA\nB) Doja Cat\nC) Linkin Park",
-    "A) SZA: 66M monthly listeners\n(others: B) 55M, C) 58M)"
+    [
+     "SZA",
+     66
+    ],
+    [
+     "Doja Cat",
+     55
+    ],
+    [
+     "Linkin Park",
+     58
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Madonna\nB) Marshmello\nC) Daddy Yankee",
-    "C) Daddy Yankee: 64M monthly listeners\n(others: A) 55M, B) 56M)"
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "Marshmello",
+     56
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Marshmello\nB) Ellie Goulding\nC) Harry Styles",
-    "C) Harry Styles: 64M monthly listeners\n(others: A) 56M, B) 56M)"
+    [
+     "Marshmello",
+     56
+    ],
+    [
+     "Ellie Goulding",
+     56
+    ],
+    [
+     "Harry Styles",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Zara Larsson\nB) Linkin Park\nC) Black Eyed Peas",
-    "C) Black Eyed Peas: 65M monthly listeners\n(others: A) 55M, B) 58M)"
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Linkin Park",
+     58
+    ],
+    [
+     "Black Eyed Peas",
+     65
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Eminem\nB) Beyoncé\nC) Daddy Yankee",
-    "A) Eminem: 74M monthly listeners\n(others: B) 66M, C) 64M)"
+    [
+     "Eminem",
+     74
+    ],
+    [
+     "Beyoncé",
+     66
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Zara Larsson\nB) Miley Cyrus\nC) Chris Brown",
-    "B) Miley Cyrus: 64M monthly listeners\n(others: A) 55M, C) 57M)"
+    [
+     "Zara Larsson",
+     55
+    ],
+    [
+     "Miley Cyrus",
+     64
+    ],
+    [
+     "Chris Brown",
+     57
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Dua Lipa\nB) Daddy Yankee\nC) Post Malone",
-    "A) Dua Lipa: 78M monthly listeners\n(others: B) 64M, C) 69M)"
+    [
+     "Dua Lipa",
+     78
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ],
+    [
+     "Post Malone",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Linkin Park\nB) Lana Del Rey\nC) Shawn Mendes",
-    "B) Lana Del Rey: 66M monthly listeners\n(others: A) 58M, C) 57M)"
+    [
+     "Linkin Park",
+     58
+    ],
+    [
+     "Lana Del Rey",
+     66
+    ],
+    [
+     "Shawn Mendes",
+     57
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tame Impala\nB) Linkin Park\nC) Sia",
-    "C) Sia: 69M monthly listeners\n(others: A) 62M, B) 58M)"
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Linkin Park",
+     58
+    ],
+    [
+     "Sia",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Justin Timberlake\nB) Olivia Rodrigo\nC) Linkin Park",
-    "B) Olivia Rodrigo: 67M monthly listeners\n(others: A) 59M, C) 58M)"
+    [
+     "Justin Timberlake",
+     59
+    ],
+    [
+     "Olivia Rodrigo",
+     67
+    ],
+    [
+     "Linkin Park",
+     58
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Harry Styles\nB) Michael Jackson\nC) Dua Lipa",
-    "B) Michael Jackson: 88M monthly listeners\n(others: A) 64M, C) 78M)"
+    [
+     "Harry Styles",
+     64
+    ],
+    [
+     "Michael Jackson",
+     88
+    ],
+    [
+     "Dua Lipa",
+     78
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Madonna\nB) Travis Scott\nC) Lil Wayne",
-    "B) Travis Scott: 62M monthly listeners\n(others: A) 55M, C) 48M)"
+    [
+     "Madonna",
+     55
+    ],
+    [
+     "Travis Scott",
+     62
+    ],
+    [
+     "Lil Wayne",
+     48
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) J Balvin\nB) Daddy Yankee\nC) Doja Cat",
-    "A) J Balvin: 72M monthly listeners\n(others: B) 64M, C) 55M)"
+    [
+     "J Balvin",
+     72
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ],
+    [
+     "Doja Cat",
+     55
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Calvin Harris\nB) Justin Timberlake\nC) Olivia Rodrigo",
-    "A) Calvin Harris: 77M monthly listeners\n(others: B) 59M, C) 67M)"
+    [
+     "Calvin Harris",
+     77
+    ],
+    [
+     "Justin Timberlake",
+     59
+    ],
+    [
+     "Olivia Rodrigo",
+     67
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) David Guetta\nB) Ariana Grande\nC) Calvin Harris",
-    "B) Ariana Grande: 94M monthly listeners\n(others: A) 84M, C) 77M)"
+    [
+     "David Guetta",
+     84
+    ],
+    [
+     "Ariana Grande",
+     94
+    ],
+    [
+     "Calvin Harris",
+     77
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Daddy Yankee\nB) Marshmello\nC) Imagine Dragons",
-    "A) Daddy Yankee: 64M monthly listeners\n(others: B) 56M, C) 52M)"
+    [
+     "Daddy Yankee",
+     64
+    ],
+    [
+     "Marshmello",
+     56
+    ],
+    [
+     "Imagine Dragons",
+     52
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Adele\nB) Kendrick Lamar\nC) Maroon 5",
-    "C) Maroon 5: 81M monthly listeners\n(others: A) 59M, B) 71M)"
+    [
+     "Adele",
+     59
+    ],
+    [
+     "Kendrick Lamar",
+     71
+    ],
+    [
+     "Maroon 5",
+     81
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Katy Perry\nB) Pitbull\nC) Karol G",
-    "A) Katy Perry: 90M monthly listeners\n(others: B) 80M, C) 69M)"
+    [
+     "Katy Perry",
+     90
+    ],
+    [
+     "Pitbull",
+     80
+    ],
+    [
+     "Karol G",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Kendrick Lamar\nB) Ed Sheeran\nC) Karol G",
-    "B) Ed Sheeran: 81M monthly listeners\n(others: A) 71M, C) 69M)"
+    [
+     "Kendrick Lamar",
+     71
+    ],
+    [
+     "Ed Sheeran",
+     81
+    ],
+    [
+     "Karol G",
+     69
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Chris Brown\nB) Daddy Yankee\nC) Marshmello",
-    "B) Daddy Yankee: 64M monthly listeners\n(others: A) 57M, C) 56M)"
+    [
+     "Chris Brown",
+     57
+    ],
+    [
+     "Daddy Yankee",
+     64
+    ],
+    [
+     "Marshmello",
+     56
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Maroon 5\nB) Pitbull\nC) Shakira",
-    "C) Shakira: 92M monthly listeners\n(others: A) 81M, B) 80M)"
+    [
+     "Maroon 5",
+     81
+    ],
+    [
+     "Pitbull",
+     80
+    ],
+    [
+     "Shakira",
+     92
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Dua Lipa\nB) Lady Gaga\nC) Michael Jackson",
-    "B) Lady Gaga: 101M monthly listeners\n(others: A) 78M, C) 88M)"
+    [
+     "Dua Lipa",
+     78
+    ],
+    [
+     "Lady Gaga",
+     101
+    ],
+    [
+     "Michael Jackson",
+     88
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Drake\nB) Sia\nC) David Guetta",
-    "A) Drake: 94M monthly listeners\n(others: B) 69M, C) 84M)"
+    [
+     "Drake",
+     94
+    ],
+    [
+     "Sia",
+     69
+    ],
+    [
+     "David Guetta",
+     84
+    ]
    ],
    [
-    "Who has the most monthly listeners on Spotify?\nA) Tame Impala\nB) Doja Cat\nC) Red Hot Chili Peppers",
-    "A) Tame Impala: 62M monthly listeners\n(others: B) 55M, C) 46M)"
+    [
+     "Tame Impala",
+     62
+    ],
+    [
+     "Doja Cat",
+     55
+    ],
+    [
+     "Red Hot Chili Peppers",
+     46
+    ]
    ]
   ]
  }

@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.57`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.58`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -186,8 +186,8 @@ const TIPS = {
   mus: "Singers, bands, albums and music history, Arabic and international.",
   songt: "A famous song title with one word missing. Name the word.",
   song: "A line from a song. Name the song and the singer. Half points for just one.",
-  spot: "Three artists. Who has the most monthly Spotify listeners?",
-  igf: "Three famous people. Who has the most Instagram followers?",
+  spot: "Three artists. Put them in order, most monthly Spotify listeners first.",   /* 6.58 (Omar): an ordering round (was "Three artists. Who has the most monthly Spotify listeners?") */
+  igf: "Three famous people. Put them in order, most Instagram followers first.",   /* 6.58 (Omar): an ordering round (was "Three famous people. Who has the most Instagram followers?") */
   lyric: "A famous English or international song lyric with the end missing. Finish it.",
   lyricar: "A famous Arabic song lyric, mostly Egyptian, with the end missing. Finish it.",
   tv: "Films and TV shows: actors, characters, plots and famous scenes.",
@@ -1903,6 +1903,15 @@ const STEAL_SKIP = new Set(["spot","igf","cal","headl"]);  /* 5.73: Guess the Lo
 /* 5.21 (Omar): only the blur and zoom photo rounds skip steals (zoom ones via STEAL_TYPES, the logo via STEAL_SKIP), so Guess the Food
    and the plain photo categories get them. 5.11 skipped the whole Photo Rounds group with noStealGroup(); kept for an easy undo. */
 const noStealGroup = id => false;
+/* 6.58: the number-ordered rounds (see clueParts). q is the question, top/bottom label the ends of the list, unit follows each figure on the reveal */
+const ORDER_NUM = {
+  spot: {q: "Put these artists in order, most monthly Spotify listeners first.", top: "most listeners", unit: "M monthly listeners"},
+  igf: {q: "Put these people in order, most Instagram followers first.", top: "most followers", unit: "M followers"}};
+const ORDER_TIE = 1;
+/* how many places a team's order (indices into ev) has right; with figures, a near-tie counts in either place */
+const orderOk = (p, mine, i) => mine[i] === p.sorted[i] || (!!p.num && p.ev[mine[i]] != null && Math.abs(p.ev[mine[i]][1] - p.ev[p.sorted[i]][1]) <= ORDER_TIE);
+function orderRight(p, mine){ return p.sorted.filter((k,i) => orderOk(p, mine, i)).length; }
+const orderAll = (p, v) => orderRight(p, String(v).split(",").map(Number)) === p.sorted.length;
 /* 5.50: three-option (A/B/C) clues never get a steal code, even inside a mixed category like Blockbusters' Box Office Battles */
 const abcClue = c => c.type === "text" && /\nA\) /.test(String((pool(c.cat, c.lvl)[c.idx] || [])[0] || ""));
 let RELAY = null;  // null = still checking, true = /api works here
@@ -1930,7 +1939,7 @@ function ansPanel(c){ const m = ansMode(c); if(!m) return "";
   c.popped = c.popped || {};
   const rows = !steal ? "" : S.teams.map((t,i) => { if(i === playing) return ""; const a = got[i];
     if(c.revealed){ if(!a) return ""; if(c.type !== "order") return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(a.v)}</span></li>`;   /* 5.73: an order steal shows as A → B → C, ticked if exactly right */
-      const right = a.v === clueParts().sorted.join(","); return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(ffaShow(c, a.v))}</span> ${right ? "✓" : "✗"}</li>`; }  /* 5.13 (Omar): just "Team: answer" (was "Team steals with: answer") */
+      const right = orderAll(clueParts(), a.v); return `<li class="in"><b>${esc(t.name)}:</b> <span class="sv">${esc(ffaShow(c, a.v))}</span> ${right ? "✓" : "✗"}</li>`; }  /* 5.13 (Omar): just "Team: answer" (was "Team steals with: answer") */
     if(!a) return ""; const isNew = !c.popped[i]; c.popped[i] = true;
     return `<li class="stealer${isNew ? " pop" : ""}">${esc(t.name)} ✓</li>`; }).join("");  /* 5.15 (Omar): just "Team ✓" on every clue (5.12 said "Team is stealing!") */
   const head = steal ? (c.revealed ? (rows ? "Steals (½ points if right)" : "No steals") : "Scan to steal") : "Scan with your phone to send your team's guess";
@@ -2054,7 +2063,7 @@ function ffaPanel(c){ if(c.revealed || c.type === "closest") return "";
 function ffaMark(c){ if(c.marked) return; c.marked = true; const p = clueParts(); c.awards = c.type === "closest" ? (c.awards || {}) : {};
   if(c.type === "closest") return;
   S.teams.forEach((t,i) => { const a = ffaAns(c, i); if(!a) return;
-    if(c.type === "order" ? a.v === p.sorted.join(",") : ansMatch(a.v, p.a)) c.awards[i] = 1; }); }
+    if(c.type === "order" ? orderAll(p, a.v) : ansMatch(a.v, p.a)) c.awards[i] = 1; }); }
 /* 6.44 (Omar): a team whose turn it isn't only gets the half points button (a steal), in team games; Free-for-all keeps its own
    buttons. Password, Closest Wins and Impostor keep all three for every team, as their rules give the points to whoever guesses
    or wins. (6.43 and before: every team had +full, +half and −full.) To undo, make offTurn() return false. */
@@ -2192,8 +2201,10 @@ function clueParts(){
      reveal (the phones' "In …" line and the guess boxes) only the plain unit shows, so the note can't give the answer away; the answer keeps it. */
   if(type==="closest"){ const [q,v,u] = pool(cat,lvl)[idx]; return {q, a:`${v.toLocaleString("en-US")} ${u}`.trim(), num:v, unit:String(u).replace(/\s*\(.*\)\s*$/, "").trim()}; }
   /* 5.22: Put It in Order. Each clue is three [event, "YYYY", "YYYY-MM" or "YYYY-MM-DD"] pairs; ev keeps the stored order, sorted is earliest first */
-  if(type==="order"){ const ev = pool(cat,lvl)[idx], sorted = ev.map((e,i) => i).sort((x,y) => ev[x][1] < ev[y][1] ? -1 : 1);
-    return {q:"Put these three in order, earliest first.", a: sorted.map(i => ev[i][0]).join(" → "), ev, sorted}; }
+  /* 6.58 (Omar): Most Spotify Listeners and Most Instagram Followers became ordering rounds too. Their pairs are [name, millions] and sort
+     most first (ORDER_NUM); two within 1M of each other (ORDER_TIE) count either way round, since the figures are rounded and keep moving. */
+  if(type==="order"){ const ev = pool(cat,lvl)[idx], num = ORDER_NUM[cat], sorted = ev.map((e,i) => i).sort((x,y) => num ? ev[y][1] - ev[x][1] : ev[x][1] < ev[y][1] ? -1 : 1);
+    return {q: num ? num.q : "Put these three in order, earliest first.", a: sorted.map(i => ev[i][0]).join(" → "), ev, sorted, num}; }
   if(type==="pin"){ const [city,country,lat,lon] = pool(cat,lvl)[idx]; return {q:"Name the city at the pin. Just the country gets half points.", a:`${city}, ${country}`, pin:[lat,lon]}; }
   if(type==="shape"){ const [n,al] = pool(cat,lvl)[idx]; return {q:"Name the country from its outline.", a:n, shape:al}; }
   if(type==="emoji"){ const [e,ans] = pool(cat,lvl)[idx]; const ar = typeof AR_EMOJI !== "undefined" && AR_EMOJI.has(ans) ? " (Arabic)" : ""; return {q: (cat==="emov" ? "Name the film or TV show." : cat==="emeg" ? "Name the Egyptian film, series or play." : cat==="emseg" ? "Decode the Egyptian phrase or saying." : "Decode the phrase or proverb.") + ar, a:ans, emoji:e}; }
@@ -2364,15 +2375,15 @@ function renderClue(){
   /* 5.22 (Omar): Put It in Order. The events start shuffled (never already in order); the team's order is set by dragging
      them, or with the arrows. Reveal shows the right order with dates and how many the team had in the right place. */
   if(c.type==="order"){
-    if(!c.order){ do{ c.order = p.sorted.slice().sort(() => Math.random() - .5); }while(c.order.every((k,i) => k === p.sorted[i])); }
+    if(!c.order){ let n = 0; do{ c.order = p.sorted.slice().sort(() => Math.random() - .5); }while(orderRight(p, c.order) === c.order.length && ++n < 30); }
     const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     const day = d => { const [y,m,dd] = String(d).split("-"); return [dd ? +dd : "", m ? MON[+m-1] : "", y].filter(Boolean).join(" "); };
     if(!c.revealed && S.ffa && RELAY) media = `<ol class="order done">${c.order.map((k,i) => `<li><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span></li>`).join("")}</ol>`;  // 5.26: players order them on their phones
     else if(!c.revealed) media = `<ol class="order">${c.order.map((k,i) => `<li draggable="true" data-oi="${i}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span>
         <span class="mv"><button class="mini" data-om="${i}" data-dir="-1" ${i ? "" : "disabled"} aria-label="Move up">▲</button><button class="mini" data-om="${i}" data-dir="1" ${i < c.order.length-1 ? "" : "disabled"} aria-label="Move down">▼</button></span></li>`).join("")}</ol>
-      <div class="note">Drag the events (or tap the arrows) into the team's order, earliest at the top, then tap Reveal.</div>`;
-    else { c.right = p.sorted.filter((k,i) => c.order[i] === k).length;
-      media = `<ol class="order done">${p.sorted.map((k,i) => `<li class="${S.ffa ? "" : c.order[i] === k ? "ok" : "no"}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span><span class="dt">${day(p.ev[k][1])}</span></li>`).join("")}</ol>`; }
+      <div class="note">Drag the ${p.num ? "names" : "events"} (or tap the arrows) into the team's order, ${p.num ? p.num.top : "earliest"} at the top, then tap Reveal.</div>`;
+    else { c.right = orderRight(p, c.order);   /* 6.58: a near-tie in a figures round counts either way round (was p.sorted.filter((k,i) => c.order[i] === k).length) */
+      media = `<ol class="order done">${p.sorted.map((k,i) => `<li class="${S.ffa ? "" : orderOk(p, c.order, i) ? "ok" : "no"}"><span class="n">${i+1}</span><span class="ev">${esc(p.ev[k][0])}</span><span class="dt">${p.num ? p.ev[k][1] + p.num.unit : day(p.ev[k][1])}</span></li>`).join("")}</ol>`; }
   }
   if(c.type==="act"){
     media = `<div class="secret">${c.qr

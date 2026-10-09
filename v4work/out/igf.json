@@ -1,577 +1,1977 @@
 {
  "id": "igf",
  "name": "Most Instagram Followers",
- "type": "text",
- "desc": "Three famous people. Who has the most Instagram followers? Figures are from September 2026 and keep changing, so the host's answer is what counts.",
+ "type": "order",
+ "desc": "Three famous people. Put them in order, most Instagram followers first. Figures are from September 2026 and keep changing, so people within 1M of each other count either way round, and the host's answer is what counts.",
  "data": {
   "100": [
    [
-    "Who has the most Instagram followers?\nA) Priyanka Chopra\nB) Mona Zaki\nC) Justin Bieber",
-    "C) Justin Bieber: 286M followers\n(others: A) 93M, B) 10M)"
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Mona Zaki",
+     10
+    ],
+    [
+     "Justin Bieber",
+     286
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) Will Smith\nC) Taylor Swift",
-    "C) Taylor Swift: 272M followers\n(others: A) 136M, B) 68M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "Will Smith",
+     68
+    ],
+    [
+     "Taylor Swift",
+     272
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) David Beckham\nB) Chris Brown\nC) Kylie Jenner",
-    "C) Kylie Jenner: 380M followers\n(others: A) 88M, B) 139M)"
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Kylie Jenner",
+     380
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Eminem\nB) Taylor Swift\nC) Mai Ezz Eldin",
-    "B) Taylor Swift: 272M followers\n(others: A) 44M, C) 12M)"
+    [
+     "Eminem",
+     44
+    ],
+    [
+     "Taylor Swift",
+     272
+    ],
+    [
+     "Mai Ezz Eldin",
+     12
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Drake\nB) Gigi Hadid\nC) Dina El Sherbiny",
-    "A) Drake: 139M followers\n(others: B) 75M, C) 11M)"
+    [
+     "Drake",
+     139
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ],
+    [
+     "Dina El Sherbiny",
+     11
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Virat Kohli\nB) Demi Lovato\nC) LeBron James",
-    "A) Virat Kohli: 271M followers\n(others: B) 147M, C) 153M)"
+    [
+     "Virat Kohli",
+     271
+    ],
+    [
+     "Demi Lovato",
+     147
+    ],
+    [
+     "LeBron James",
+     153
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kendall Jenner\nB) Rihanna\nC) Drake",
-    "A) Kendall Jenner: 277M followers\n(others: B) 145M, C) 139M)"
+    [
+     "Kendall Jenner",
+     277
+    ],
+    [
+     "Rihanna",
+     145
+    ],
+    [
+     "Drake",
+     139
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Will Smith\nB) Kourtney Kardashian\nC) Mai Ezz Eldin",
-    "B) Kourtney Kardashian: 209M followers\n(others: A) 68M, C) 12M)"
+    [
+     "Will Smith",
+     68
+    ],
+    [
+     "Kourtney Kardashian",
+     209
+    ],
+    [
+     "Mai Ezz Eldin",
+     12
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Eminem\nB) Gigi Hadid\nC) Kylie Jenner",
-    "C) Kylie Jenner: 380M followers\n(others: A) 44M, B) 75M)"
+    [
+     "Eminem",
+     44
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ],
+    [
+     "Kylie Jenner",
+     380
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Khloé Kardashian\nB) Demi Lovato\nC) LeBron James",
-    "A) Khloé Kardashian: 291M followers\n(others: B) 147M, C) 153M)"
+    [
+     "Khloé Kardashian",
+     291
+    ],
+    [
+     "Demi Lovato",
+     147
+    ],
+    [
+     "LeBron James",
+     153
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Priyanka Chopra\nB) Tamer Hosny\nC) Justin Bieber",
-    "C) Justin Bieber: 286M followers\n(others: A) 93M, B) 51M)"
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Tamer Hosny",
+     51
+    ],
+    [
+     "Justin Bieber",
+     286
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Cardi B\nB) Lamine Yamal\nC) Mustafa Hosny",
-    "A) Cardi B: 160M followers\n(others: B) 54M, C) 25M)"
+    [
+     "Cardi B",
+     160
+    ],
+    [
+     "Lamine Yamal",
+     54
+    ],
+    [
+     "Mustafa Hosny",
+     25
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ariana Grande\nB) Karim Benzema\nC) Priyanka Chopra",
-    "A) Ariana Grande: 362M followers\n(others: B) 75M, C) 93M)"
+    [
+     "Ariana Grande",
+     362
+    ],
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Priyanka Chopra",
+     93
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) Miley Cyrus\nC) Selena Gomez",
-    "C) Selena Gomez: 403M followers\n(others: A) 136M, B) 205M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ],
+    [
+     "Selena Gomez",
+     403
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Gal Gadot\nB) Mona Zaki\nC) Lewis Hamilton",
-    "A) Gal Gadot: 103M followers\n(others: B) 10M, C) 43M)"
+    [
+     "Gal Gadot",
+     103
+    ],
+    [
+     "Mona Zaki",
+     10
+    ],
+    [
+     "Lewis Hamilton",
+     43
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) MrBeast\nB) Virat Kohli\nC) Cristiano Ronaldo",
-    "C) Cristiano Ronaldo: 679M followers\n(others: A) 89M, B) 271M)"
+    [
+     "MrBeast",
+     89
+    ],
+    [
+     "Virat Kohli",
+     271
+    ],
+    [
+     "Cristiano Ronaldo",
+     679
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Marcelo\nB) Mustafa Hosny\nC) Kevin Hart",
-    "C) Kevin Hart: 172M followers\n(others: A) 68M, B) 25M)"
+    [
+     "Marcelo",
+     68
+    ],
+    [
+     "Mustafa Hosny",
+     25
+    ],
+    [
+     "Kevin Hart",
+     172
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) Tamer Hosny\nC) Tom Holland",
-    "A) Kylian Mbappé: 136M followers\n(others: B) 51M, C) 64M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "Tamer Hosny",
+     51
+    ],
+    [
+     "Tom Holland",
+     64
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Achraf Hakimi\nB) Jude Bellingham\nC) Dwayne Johnson (The Rock)",
-    "C) Dwayne Johnson (The Rock): 381M followers\n(others: A) 25M, B) 27M)"
+    [
+     "Achraf Hakimi",
+     25
+    ],
+    [
+     "Jude Bellingham",
+     27
+    ],
+    [
+     "Dwayne Johnson (The Rock)",
+     381
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Justin Bieber\nB) Mai Ezz Eldin\nC) Kylian Mbappé",
-    "A) Justin Bieber: 286M followers\n(others: B) 12M, C) 136M)"
+    [
+     "Justin Bieber",
+     286
+    ],
+    [
+     "Mai Ezz Eldin",
+     12
+    ],
+    [
+     "Kylian Mbappé",
+     136
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Mona Zaki\nB) Tamer Hosny\nC) Rihanna",
-    "C) Rihanna: 145M followers\n(others: A) 10M, B) 51M)"
+    [
+     "Mona Zaki",
+     10
+    ],
+    [
+     "Tamer Hosny",
+     51
+    ],
+    [
+     "Rihanna",
+     145
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Yasmin Abdulaziz\nB) Mohamed Salah\nC) Justin Bieber",
-    "C) Justin Bieber: 286M followers\n(others: A) 20M, B) 67M)"
+    [
+     "Yasmin Abdulaziz",
+     20
+    ],
+    [
+     "Mohamed Salah",
+     67
+    ],
+    [
+     "Justin Bieber",
+     286
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Beyoncé\nB) Demi Lovato\nC) Zlatan Ibrahimović",
-    "A) Beyoncé: 299M followers\n(others: B) 147M, C) 65M)"
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Demi Lovato",
+     147
+    ],
+    [
+     "Zlatan Ibrahimović",
+     65
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Mustafa Hosny\nB) Mona Zaki\nC) Ronaldinho",
-    "C) Ronaldinho: 78M followers\n(others: A) 25M, B) 10M)"
+    [
+     "Mustafa Hosny",
+     25
+    ],
+    [
+     "Mona Zaki",
+     10
+    ],
+    [
+     "Ronaldinho",
+     78
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Justin Bieber\nB) Achraf Hakimi\nC) Dina El Sherbiny",
-    "A) Justin Bieber: 286M followers\n(others: B) 25M, C) 11M)"
+    [
+     "Justin Bieber",
+     286
+    ],
+    [
+     "Achraf Hakimi",
+     25
+    ],
+    [
+     "Dina El Sherbiny",
+     11
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) LeBron James\nB) Khloé Kardashian\nC) Cristiano Ronaldo",
-    "C) Cristiano Ronaldo: 679M followers\n(others: A) 153M, B) 291M)"
+    [
+     "LeBron James",
+     153
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ],
+    [
+     "Cristiano Ronaldo",
+     679
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ellen DeGeneres\nB) Ronaldinho\nC) Eminem",
-    "A) Ellen DeGeneres: 129M followers\n(others: B) 78M, C) 44M)"
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "Ronaldinho",
+     78
+    ],
+    [
+     "Eminem",
+     44
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Taylor Swift\nB) Lamine Yamal\nC) Cristiano Ronaldo",
-    "C) Cristiano Ronaldo: 679M followers\n(others: A) 272M, B) 54M)"
+    [
+     "Taylor Swift",
+     272
+    ],
+    [
+     "Lamine Yamal",
+     54
+    ],
+    [
+     "Cristiano Ronaldo",
+     679
+    ]
    ]
   ],
   "200": [
    [
-    "Who has the most Instagram followers?\nA) Ariana Grande\nB) David Beckham\nC) Neymar",
-    "A) Ariana Grande: 362M followers\n(others: B) 88M, C) 241M)"
+    [
+     "Ariana Grande",
+     362
+    ],
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Neymar",
+     241
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kendall Jenner\nB) Gigi Hadid\nC) Selena Gomez",
-    "C) Selena Gomez: 403M followers\n(others: A) 277M, B) 75M)"
+    [
+     "Kendall Jenner",
+     277
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ],
+    [
+     "Selena Gomez",
+     403
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Karim Benzema\nB) Khloé Kardashian\nC) Katy Perry",
-    "B) Khloé Kardashian: 291M followers\n(others: A) 75M, C) 195M)"
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ],
+    [
+     "Katy Perry",
+     195
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tamer Hosny\nB) Lionel Messi\nC) Ariana Grande",
-    "B) Lionel Messi: 517M followers\n(others: A) 51M, C) 362M)"
+    [
+     "Tamer Hosny",
+     51
+    ],
+    [
+     "Lionel Messi",
+     517
+    ],
+    [
+     "Ariana Grande",
+     362
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Vin Diesel\nB) Dina El Sherbiny\nC) Mohamed Salah",
-    "A) Vin Diesel: 103M followers\n(others: B) 11M, C) 67M)"
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Dina El Sherbiny",
+     11
+    ],
+    [
+     "Mohamed Salah",
+     67
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Gigi Hadid\nB) Lamine Yamal\nC) Yasmin Abdulaziz",
-    "A) Gigi Hadid: 75M followers\n(others: B) 54M, C) 20M)"
+    [
+     "Gigi Hadid",
+     75
+    ],
+    [
+     "Lamine Yamal",
+     54
+    ],
+    [
+     "Yasmin Abdulaziz",
+     20
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Priyanka Chopra\nB) Ellen DeGeneres\nC) Katy Perry",
-    "C) Katy Perry: 195M followers\n(others: A) 93M, B) 129M)"
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "Katy Perry",
+     195
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Lisa (Blackpink)\nB) Taylor Swift\nC) Kylie Jenner",
-    "C) Kylie Jenner: 380M followers\n(others: A) 105M, B) 272M)"
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "Taylor Swift",
+     272
+    ],
+    [
+     "Kylie Jenner",
+     380
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Priyanka Chopra\nB) Yasmin Abdulaziz\nC) Ellen DeGeneres",
-    "C) Ellen DeGeneres: 129M followers\n(others: A) 93M, B) 20M)"
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Yasmin Abdulaziz",
+     20
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Katy Perry\nB) Ellen DeGeneres\nC) Yasmine Sabri",
-    "A) Katy Perry: 195M followers\n(others: B) 129M, C) 23M)"
+    [
+     "Katy Perry",
+     195
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "Yasmine Sabri",
+     23
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tom Holland\nB) Amr Diab\nC) Priyanka Chopra",
-    "C) Priyanka Chopra: 93M followers\n(others: A) 64M, B) 30M)"
+    [
+     "Tom Holland",
+     64
+    ],
+    [
+     "Amr Diab",
+     30
+    ],
+    [
+     "Priyanka Chopra",
+     93
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kevin Hart\nB) Jennifer Lopez\nC) MrBeast",
-    "B) Jennifer Lopez: 240M followers\n(others: A) 172M, C) 89M)"
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Jennifer Lopez",
+     240
+    ],
+    [
+     "MrBeast",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Beyoncé\nB) Priyanka Chopra\nC) Miley Cyrus",
-    "A) Beyoncé: 299M followers\n(others: B) 93M, C) 205M)"
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Miley Cyrus\nB) Katy Perry\nC) Khloé Kardashian",
-    "C) Khloé Kardashian: 291M followers\n(others: A) 205M, B) 195M)"
+    [
+     "Miley Cyrus",
+     205
+    ],
+    [
+     "Katy Perry",
+     195
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Taylor Swift\nB) Erling Haaland\nC) Selena Gomez",
-    "C) Selena Gomez: 403M followers\n(others: A) 272M, B) 40M)"
+    [
+     "Taylor Swift",
+     272
+    ],
+    [
+     "Erling Haaland",
+     40
+    ],
+    [
+     "Selena Gomez",
+     403
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Eminem\nB) Marcelo\nC) Yasmine Sabri",
-    "B) Marcelo: 68M followers\n(others: A) 44M, C) 23M)"
+    [
+     "Eminem",
+     44
+    ],
+    [
+     "Marcelo",
+     68
+    ],
+    [
+     "Yasmine Sabri",
+     23
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) David Beckham\nB) Kylian Mbappé\nC) Zlatan Ibrahimović",
-    "B) Kylian Mbappé: 136M followers\n(others: A) 88M, C) 65M)"
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "Zlatan Ibrahimović",
+     65
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Katy Perry\nB) Sergio Ramos\nC) Chris Brown",
-    "A) Katy Perry: 195M followers\n(others: B) 67M, C) 139M)"
+    [
+     "Katy Perry",
+     195
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ],
+    [
+     "Chris Brown",
+     139
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Zendaya\nB) Sergio Ramos\nC) Taylor Swift",
-    "C) Taylor Swift: 272M followers\n(others: A) 178M, B) 67M)"
+    [
+     "Zendaya",
+     178
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ],
+    [
+     "Taylor Swift",
+     272
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) David Beckham\nB) Chris Brown\nC) Mai Ezz Eldin",
-    "B) Chris Brown: 139M followers\n(others: A) 88M, C) 12M)"
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Mai Ezz Eldin",
+     12
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) David Beckham\nC) Tamer Hosny",
-    "A) Kylian Mbappé: 136M followers\n(others: B) 88M, C) 51M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Tamer Hosny",
+     51
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Lewis Hamilton\nB) Eminem\nC) Marcelo",
-    "C) Marcelo: 68M followers\n(others: A) 43M, B) 44M)"
+    [
+     "Lewis Hamilton",
+     43
+    ],
+    [
+     "Eminem",
+     44
+    ],
+    [
+     "Marcelo",
+     68
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Selena Gomez\nB) Kevin Hart\nC) Virat Kohli",
-    "A) Selena Gomez: 403M followers\n(others: B) 172M, C) 271M)"
+    [
+     "Selena Gomez",
+     403
+    ],
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Virat Kohli",
+     271
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ronaldinho\nB) Ariana Grande\nC) Jennifer Lopez",
-    "B) Ariana Grande: 362M followers\n(others: A) 78M, C) 240M)"
+    [
+     "Ronaldinho",
+     78
+    ],
+    [
+     "Ariana Grande",
+     362
+    ],
+    [
+     "Jennifer Lopez",
+     240
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Khloé Kardashian\nB) Sergio Ramos\nC) Kourtney Kardashian",
-    "A) Khloé Kardashian: 291M followers\n(others: B) 67M, C) 209M)"
+    [
+     "Khloé Kardashian",
+     291
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ],
+    [
+     "Kourtney Kardashian",
+     209
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Drake\nB) Kourtney Kardashian\nC) Eminem",
-    "B) Kourtney Kardashian: 209M followers\n(others: A) 139M, C) 44M)"
+    [
+     "Drake",
+     139
+    ],
+    [
+     "Kourtney Kardashian",
+     209
+    ],
+    [
+     "Eminem",
+     44
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Karim Benzema\nB) Mohamed Ramadan\nC) Mona Zaki",
-    "A) Karim Benzema: 75M followers\n(others: B) 50M, C) 10M)"
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Mohamed Ramadan",
+     50
+    ],
+    [
+     "Mona Zaki",
+     10
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Karim Benzema\nB) Miley Cyrus\nC) Khloé Kardashian",
-    "C) Khloé Kardashian: 291M followers\n(others: A) 75M, B) 205M)"
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ]
    ]
   ],
   "300": [
    [
-    "Who has the most Instagram followers?\nA) Chris Brown\nB) Miley Cyrus\nC) LeBron James",
-    "B) Miley Cyrus: 205M followers\n(others: A) 139M, C) 153M)"
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ],
+    [
+     "LeBron James",
+     153
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Dua Lipa\nB) Zlatan Ibrahimović\nC) Marcelo",
-    "A) Dua Lipa: 89M followers\n(others: B) 65M, C) 68M)"
+    [
+     "Dua Lipa",
+     89
+    ],
+    [
+     "Zlatan Ibrahimović",
+     65
+    ],
+    [
+     "Marcelo",
+     68
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Beyoncé\nB) Kylie Jenner\nC) Khloé Kardashian",
-    "B) Kylie Jenner: 380M followers\n(others: A) 299M, C) 291M)"
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Kylie Jenner",
+     380
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Narendra Modi\nB) Chris Brown\nC) Snoop Dogg",
-    "B) Chris Brown: 139M followers\n(others: A) 106M, C) 87M)"
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tom Holland\nB) Vin Diesel\nC) Gigi Hadid",
-    "B) Vin Diesel: 103M followers\n(others: A) 64M, C) 75M)"
+    [
+     "Tom Holland",
+     64
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Lamine Yamal\nB) Zlatan Ibrahimović\nC) Snoop Dogg",
-    "C) Snoop Dogg: 87M followers\n(others: A) 54M, B) 65M)"
+    [
+     "Lamine Yamal",
+     54
+    ],
+    [
+     "Zlatan Ibrahimović",
+     65
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) Jennie (Blackpink)\nC) Sergio Ramos",
-    "A) Billie Eilish: 123M followers\n(others: B) 89M, C) 67M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Chris Brown\nB) Karim Benzema\nC) Gal Gadot",
-    "A) Chris Brown: 139M followers\n(others: B) 75M, C) 103M)"
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Gal Gadot",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) Gal Gadot\nC) Jennie (Blackpink)",
-    "A) Kylian Mbappé: 136M followers\n(others: B) 103M, C) 89M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "Gal Gadot",
+     103
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Dua Lipa\nB) Tom Holland\nC) Zlatan Ibrahimović",
-    "A) Dua Lipa: 89M followers\n(others: B) 64M, C) 65M)"
+    [
+     "Dua Lipa",
+     89
+    ],
+    [
+     "Tom Holland",
+     64
+    ],
+    [
+     "Zlatan Ibrahimović",
+     65
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tamer Hosny\nB) Will Smith\nC) Dua Lipa",
-    "C) Dua Lipa: 89M followers\n(others: A) 51M, B) 68M)"
+    [
+     "Tamer Hosny",
+     51
+    ],
+    [
+     "Will Smith",
+     68
+    ],
+    [
+     "Dua Lipa",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kourtney Kardashian\nB) Kylian Mbappé\nC) LeBron James",
-    "A) Kourtney Kardashian: 209M followers\n(others: B) 136M, C) 153M)"
+    [
+     "Kourtney Kardashian",
+     209
+    ],
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "LeBron James",
+     153
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Cristiano Ronaldo\nB) Lionel Messi\nC) Kylie Jenner",
-    "A) Cristiano Ronaldo: 679M followers\n(others: B) 517M, C) 380M)"
+    [
+     "Cristiano Ronaldo",
+     679
+    ],
+    [
+     "Lionel Messi",
+     517
+    ],
+    [
+     "Kylie Jenner",
+     380
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) Jennie (Blackpink)\nC) Shakira",
-    "A) Kylian Mbappé: 136M followers\n(others: B) 89M, C) 103M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Shakira",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tamer Hosny\nB) Sergio Ramos\nC) Erling Haaland",
-    "B) Sergio Ramos: 67M followers\n(others: A) 51M, C) 40M)"
+    [
+     "Tamer Hosny",
+     51
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ],
+    [
+     "Erling Haaland",
+     40
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Zendaya\nB) Kendall Jenner\nC) Miley Cyrus",
-    "B) Kendall Jenner: 277M followers\n(others: A) 178M, C) 205M)"
+    [
+     "Zendaya",
+     178
+    ],
+    [
+     "Kendall Jenner",
+     277
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Dua Lipa\nB) Lamine Yamal\nC) Sergio Ramos",
-    "A) Dua Lipa: 89M followers\n(others: B) 54M, C) 67M)"
+    [
+     "Dua Lipa",
+     89
+    ],
+    [
+     "Lamine Yamal",
+     54
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tom Holland\nB) Shakira\nC) Karim Benzema",
-    "B) Shakira: 103M followers\n(others: A) 64M, C) 75M)"
+    [
+     "Tom Holland",
+     64
+    ],
+    [
+     "Shakira",
+     103
+    ],
+    [
+     "Karim Benzema",
+     75
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Gal Gadot\nB) Will Smith\nC) Gigi Hadid",
-    "A) Gal Gadot: 103M followers\n(others: B) 68M, C) 75M)"
+    [
+     "Gal Gadot",
+     103
+    ],
+    [
+     "Will Smith",
+     68
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Jennifer Lopez\nB) Dwayne Johnson (The Rock)\nC) Khloé Kardashian",
-    "B) Dwayne Johnson (The Rock): 381M followers\n(others: A) 240M, C) 291M)"
+    [
+     "Jennifer Lopez",
+     240
+    ],
+    [
+     "Dwayne Johnson (The Rock)",
+     381
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Drake\nB) Vin Diesel\nC) Dua Lipa",
-    "A) Drake: 139M followers\n(others: B) 103M, C) 89M)"
+    [
+     "Drake",
+     139
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Dua Lipa",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Tom Holland\nB) Vin Diesel\nC) Ronaldinho",
-    "B) Vin Diesel: 103M followers\n(others: A) 64M, C) 78M)"
+    [
+     "Tom Holland",
+     64
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Ronaldinho",
+     78
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) LeBron James\nB) Lisa (Blackpink)\nC) Katy Perry",
-    "C) Katy Perry: 195M followers\n(others: A) 153M, B) 105M)"
+    [
+     "LeBron James",
+     153
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "Katy Perry",
+     195
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Chris Brown\nB) Vin Diesel\nC) Gigi Hadid",
-    "A) Chris Brown: 139M followers\n(others: B) 103M, C) 75M)"
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Priyanka Chopra\nB) Zlatan Ibrahimović\nC) Marcelo",
-    "A) Priyanka Chopra: 93M followers\n(others: B) 65M, C) 68M)"
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Zlatan Ibrahimović",
+     65
+    ],
+    [
+     "Marcelo",
+     68
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylie Jenner\nB) Kendall Jenner\nC) Khloé Kardashian",
-    "A) Kylie Jenner: 380M followers\n(others: B) 277M, C) 291M)"
+    [
+     "Kylie Jenner",
+     380
+    ],
+    [
+     "Kendall Jenner",
+     277
+    ],
+    [
+     "Khloé Kardashian",
+     291
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Lisa (Blackpink)\nB) Chris Brown\nC) Gal Gadot",
-    "B) Chris Brown: 139M followers\n(others: A) 105M, C) 103M)"
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Gal Gadot",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kim Kardashian\nB) Taylor Swift\nC) Virat Kohli",
-    "A) Kim Kardashian: 343M followers\n(others: B) 272M, C) 271M)"
+    [
+     "Kim Kardashian",
+     343
+    ],
+    [
+     "Taylor Swift",
+     272
+    ],
+    [
+     "Virat Kohli",
+     271
+    ]
    ]
   ],
   "400": [
    [
-    "Who has the most Instagram followers?\nA) Rihanna\nB) Chris Brown\nC) Zendaya",
-    "C) Zendaya: 178M followers\n(others: A) 145M, B) 139M)"
+    [
+     "Rihanna",
+     145
+    ],
+    [
+     "Chris Brown",
+     139
+    ],
+    [
+     "Zendaya",
+     178
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Jennie (Blackpink)\nB) Mohamed Salah\nC) Narendra Modi",
-    "C) Narendra Modi: 106M followers\n(others: A) 89M, B) 67M)"
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Mohamed Salah",
+     67
+    ],
+    [
+     "Narendra Modi",
+     106
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Katy Perry\nB) Kevin Hart\nC) Neymar",
-    "C) Neymar: 241M followers\n(others: A) 195M, B) 172M)"
+    [
+     "Katy Perry",
+     195
+    ],
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Neymar",
+     241
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) David Beckham\nB) Marcelo\nC) Lisa (Blackpink)",
-    "C) Lisa (Blackpink): 105M followers\n(others: A) 88M, B) 68M)"
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Marcelo",
+     68
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Virat Kohli\nB) Kim Kardashian\nC) Justin Bieber",
-    "B) Kim Kardashian: 343M followers\n(others: A) 271M, C) 286M)"
+    [
+     "Virat Kohli",
+     271
+    ],
+    [
+     "Kim Kardashian",
+     343
+    ],
+    [
+     "Justin Bieber",
+     286
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Marcelo\nB) Snoop Dogg\nC) Narendra Modi",
-    "C) Narendra Modi: 106M followers\n(others: A) 68M, B) 87M)"
+    [
+     "Marcelo",
+     68
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ],
+    [
+     "Narendra Modi",
+     106
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ellen DeGeneres\nB) Gal Gadot\nC) Narendra Modi",
-    "A) Ellen DeGeneres: 129M followers\n(others: B) 103M, C) 106M)"
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "Gal Gadot",
+     103
+    ],
+    [
+     "Narendra Modi",
+     106
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Rihanna\nB) Zendaya\nC) Kylian Mbappé",
-    "B) Zendaya: 178M followers\n(others: A) 145M, C) 136M)"
+    [
+     "Rihanna",
+     145
+    ],
+    [
+     "Zendaya",
+     178
+    ],
+    [
+     "Kylian Mbappé",
+     136
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kevin Hart\nB) Kourtney Kardashian\nC) Demi Lovato",
-    "B) Kourtney Kardashian: 209M followers\n(others: A) 172M, C) 147M)"
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Kourtney Kardashian",
+     209
+    ],
+    [
+     "Demi Lovato",
+     147
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) Kevin Hart\nC) Chris Brown",
-    "B) Kevin Hart: 172M followers\n(others: A) 123M, C) 139M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Chris Brown",
+     139
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Dua Lipa\nB) Narendra Modi\nC) Snoop Dogg",
-    "B) Narendra Modi: 106M followers\n(others: A) 89M, C) 87M)"
+    [
+     "Dua Lipa",
+     89
+    ],
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Gal Gadot\nB) Snoop Dogg\nC) Sergio Ramos",
-    "A) Gal Gadot: 103M followers\n(others: B) 87M, C) 67M)"
+    [
+     "Gal Gadot",
+     103
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ],
+    [
+     "Sergio Ramos",
+     67
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Lisa (Blackpink)\nB) David Beckham\nC) Snoop Dogg",
-    "A) Lisa (Blackpink): 105M followers\n(others: B) 88M, C) 87M)"
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) David Beckham\nC) Gal Gadot",
-    "A) Billie Eilish: 123M followers\n(others: B) 88M, C) 103M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Gal Gadot",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Shakira\nB) Billie Eilish\nC) Demi Lovato",
-    "C) Demi Lovato: 147M followers\n(others: A) 103M, B) 123M)"
+    [
+     "Shakira",
+     103
+    ],
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Demi Lovato",
+     147
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kim Kardashian\nB) Kendall Jenner\nC) Virat Kohli",
-    "A) Kim Kardashian: 343M followers\n(others: B) 277M, C) 271M)"
+    [
+     "Kim Kardashian",
+     343
+    ],
+    [
+     "Kendall Jenner",
+     277
+    ],
+    [
+     "Virat Kohli",
+     271
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Beyoncé\nB) Ariana Grande\nC) Kendall Jenner",
-    "B) Ariana Grande: 362M followers\n(others: A) 299M, C) 277M)"
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Ariana Grande",
+     362
+    ],
+    [
+     "Kendall Jenner",
+     277
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Beyoncé\nB) Neymar\nC) Katy Perry",
-    "A) Beyoncé: 299M followers\n(others: B) 241M, C) 195M)"
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Neymar",
+     241
+    ],
+    [
+     "Katy Perry",
+     195
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Snoop Dogg\nB) Vin Diesel\nC) Will Smith",
-    "B) Vin Diesel: 103M followers\n(others: A) 87M, C) 68M)"
+    [
+     "Snoop Dogg",
+     87
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Will Smith",
+     68
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Mohamed Salah\nB) Narendra Modi\nC) Dua Lipa",
-    "B) Narendra Modi: 106M followers\n(others: A) 67M, C) 89M)"
+    [
+     "Mohamed Salah",
+     67
+    ],
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "Dua Lipa",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Snoop Dogg\nB) Gigi Hadid\nC) Lisa (Blackpink)",
-    "C) Lisa (Blackpink): 105M followers\n(others: A) 87M, B) 75M)"
+    [
+     "Snoop Dogg",
+     87
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) Katy Perry\nC) Cardi B",
-    "B) Katy Perry: 195M followers\n(others: A) 123M, C) 160M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Katy Perry",
+     195
+    ],
+    [
+     "Cardi B",
+     160
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Vin Diesel\nB) Ellen DeGeneres\nC) LeBron James",
-    "C) LeBron James: 153M followers\n(others: A) 103M, B) 129M)"
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "LeBron James",
+     153
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Narendra Modi\nB) Dua Lipa\nC) Gigi Hadid",
-    "A) Narendra Modi: 106M followers\n(others: B) 89M, C) 75M)"
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "Dua Lipa",
+     89
+    ],
+    [
+     "Gigi Hadid",
+     75
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) Vin Diesel\nC) Jennie (Blackpink)",
-    "A) Billie Eilish: 123M followers\n(others: B) 103M, C) 89M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Sergio Ramos\nB) Vin Diesel\nC) Snoop Dogg",
-    "B) Vin Diesel: 103M followers\n(others: A) 67M, C) 87M)"
+    [
+     "Sergio Ramos",
+     67
+    ],
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Narendra Modi\nB) David Beckham\nC) Ronaldinho",
-    "A) Narendra Modi: 106M followers\n(others: B) 88M, C) 78M)"
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Ronaldinho",
+     78
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ellen DeGeneres\nB) Shakira\nC) Cardi B",
-    "C) Cardi B: 160M followers\n(others: A) 129M, B) 103M)"
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "Shakira",
+     103
+    ],
+    [
+     "Cardi B",
+     160
+    ]
    ]
   ],
   "500": [
    [
-    "Who has the most Instagram followers?\nA) Snoop Dogg\nB) Priyanka Chopra\nC) Lisa (Blackpink)",
-    "C) Lisa (Blackpink): 105M followers\n(others: A) 87M, B) 93M)"
+    [
+     "Snoop Dogg",
+     87
+    ],
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Cardi B\nB) Ellen DeGeneres\nC) Chris Brown",
-    "A) Cardi B: 160M followers\n(others: B) 129M, C) 139M)"
+    [
+     "Cardi B",
+     160
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ],
+    [
+     "Chris Brown",
+     139
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Selena Gomez\nB) Beyoncé\nC) Kim Kardashian",
-    "A) Selena Gomez: 403M followers\n(others: B) 299M, C) 343M)"
+    [
+     "Selena Gomez",
+     403
+    ],
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Kim Kardashian",
+     343
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kevin Hart\nB) Demi Lovato\nC) Drake",
-    "A) Kevin Hart: 172M followers\n(others: B) 147M, C) 139M)"
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Demi Lovato",
+     147
+    ],
+    [
+     "Drake",
+     139
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) LeBron James\nB) Miley Cyrus\nC) Zendaya",
-    "B) Miley Cyrus: 205M followers\n(others: A) 153M, C) 178M)"
+    [
+     "LeBron James",
+     153
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ],
+    [
+     "Zendaya",
+     178
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Jennifer Lopez\nB) Kourtney Kardashian\nC) Miley Cyrus",
-    "A) Jennifer Lopez: 240M followers\n(others: B) 209M, C) 205M)"
+    [
+     "Jennifer Lopez",
+     240
+    ],
+    [
+     "Kourtney Kardashian",
+     209
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) Narendra Modi\nC) Rihanna",
-    "C) Rihanna: 145M followers\n(others: A) 123M, B) 106M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "Rihanna",
+     145
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Zendaya\nB) Jennifer Lopez\nC) Miley Cyrus",
-    "B) Jennifer Lopez: 240M followers\n(others: A) 178M, C) 205M)"
+    [
+     "Zendaya",
+     178
+    ],
+    [
+     "Jennifer Lopez",
+     240
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Taylor Swift\nB) Neymar\nC) Jennifer Lopez",
-    "A) Taylor Swift: 272M followers\n(others: B) 241M, C) 240M)"
+    [
+     "Taylor Swift",
+     272
+    ],
+    [
+     "Neymar",
+     241
+    ],
+    [
+     "Jennifer Lopez",
+     240
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Gigi Hadid\nB) Lisa (Blackpink)\nC) Jennie (Blackpink)",
-    "B) Lisa (Blackpink): 105M followers\n(others: A) 75M, C) 89M)"
+    [
+     "Gigi Hadid",
+     75
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Neymar\nB) Katy Perry\nC) Miley Cyrus",
-    "A) Neymar: 241M followers\n(others: B) 195M, C) 205M)"
+    [
+     "Neymar",
+     241
+    ],
+    [
+     "Katy Perry",
+     195
+    ],
+    [
+     "Miley Cyrus",
+     205
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) LeBron James\nB) Zendaya\nC) Ellen DeGeneres",
-    "B) Zendaya: 178M followers\n(others: A) 153M, C) 129M)"
+    [
+     "LeBron James",
+     153
+    ],
+    [
+     "Zendaya",
+     178
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kylian Mbappé\nB) LeBron James\nC) Ellen DeGeneres",
-    "B) LeBron James: 153M followers\n(others: A) 136M, C) 129M)"
+    [
+     "Kylian Mbappé",
+     136
+    ],
+    [
+     "LeBron James",
+     153
+    ],
+    [
+     "Ellen DeGeneres",
+     129
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) MrBeast\nB) Shakira\nC) Jennie (Blackpink)",
-    "B) Shakira: 103M followers\n(others: A) 89M, C) 89M)"
+    [
+     "MrBeast",
+     89
+    ],
+    [
+     "Shakira",
+     103
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Vin Diesel\nB) Snoop Dogg\nC) Dua Lipa",
-    "A) Vin Diesel: 103M followers\n(others: B) 87M, C) 89M)"
+    [
+     "Vin Diesel",
+     103
+    ],
+    [
+     "Snoop Dogg",
+     87
+    ],
+    [
+     "Dua Lipa",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Neymar\nB) Kourtney Kardashian\nC) Zendaya",
-    "A) Neymar: 241M followers\n(others: B) 209M, C) 178M)"
+    [
+     "Neymar",
+     241
+    ],
+    [
+     "Kourtney Kardashian",
+     209
+    ],
+    [
+     "Zendaya",
+     178
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Narendra Modi\nB) MrBeast\nC) Billie Eilish",
-    "C) Billie Eilish: 123M followers\n(others: A) 106M, B) 89M)"
+    [
+     "Narendra Modi",
+     106
+    ],
+    [
+     "MrBeast",
+     89
+    ],
+    [
+     "Billie Eilish",
+     123
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) David Beckham\nB) Priyanka Chopra\nC) Narendra Modi",
-    "C) Narendra Modi: 106M followers\n(others: A) 88M, B) 93M)"
+    [
+     "David Beckham",
+     88
+    ],
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Narendra Modi",
+     106
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Beyoncé\nB) Kim Kardashian\nC) Justin Bieber",
-    "B) Kim Kardashian: 343M followers\n(others: A) 299M, C) 286M)"
+    [
+     "Beyoncé",
+     299
+    ],
+    [
+     "Kim Kardashian",
+     343
+    ],
+    [
+     "Justin Bieber",
+     286
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ronaldinho\nB) Jennie (Blackpink)\nC) Shakira",
-    "C) Shakira: 103M followers\n(others: A) 78M, B) 89M)"
+    [
+     "Ronaldinho",
+     78
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Shakira",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Kevin Hart\nB) LeBron James\nC) Billie Eilish",
-    "A) Kevin Hart: 172M followers\n(others: B) 153M, C) 123M)"
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "LeBron James",
+     153
+    ],
+    [
+     "Billie Eilish",
+     123
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Karim Benzema\nB) Jennie (Blackpink)\nC) Vin Diesel",
-    "C) Vin Diesel: 103M followers\n(others: A) 75M, B) 89M)"
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Vin Diesel",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Lisa (Blackpink)\nB) Gal Gadot\nC) Billie Eilish",
-    "C) Billie Eilish: 123M followers\n(others: A) 105M, B) 103M)"
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "Gal Gadot",
+     103
+    ],
+    [
+     "Billie Eilish",
+     123
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Billie Eilish\nB) Kevin Hart\nC) Demi Lovato",
-    "B) Kevin Hart: 172M followers\n(others: A) 123M, C) 147M)"
+    [
+     "Billie Eilish",
+     123
+    ],
+    [
+     "Kevin Hart",
+     172
+    ],
+    [
+     "Demi Lovato",
+     147
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Ronaldinho\nB) Jennie (Blackpink)\nC) Lisa (Blackpink)",
-    "C) Lisa (Blackpink): 105M followers\n(others: A) 78M, B) 89M)"
+    [
+     "Ronaldinho",
+     78
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Karim Benzema\nB) Dua Lipa\nC) Shakira",
-    "C) Shakira: 103M followers\n(others: A) 75M, B) 89M)"
+    [
+     "Karim Benzema",
+     75
+    ],
+    [
+     "Dua Lipa",
+     89
+    ],
+    [
+     "Shakira",
+     103
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Priyanka Chopra\nB) Lisa (Blackpink)\nC) Dua Lipa",
-    "B) Lisa (Blackpink): 105M followers\n(others: A) 93M, C) 89M)"
+    [
+     "Priyanka Chopra",
+     93
+    ],
+    [
+     "Lisa (Blackpink)",
+     105
+    ],
+    [
+     "Dua Lipa",
+     89
+    ]
    ],
    [
-    "Who has the most Instagram followers?\nA) Shakira\nB) Jennie (Blackpink)\nC) Karim Benzema",
-    "A) Shakira: 103M followers\n(others: B) 89M, C) 75M)"
+    [
+     "Shakira",
+     103
+    ],
+    [
+     "Jennie (Blackpink)",
+     89
+    ],
+    [
+     "Karim Benzema",
+     75
+    ]
    ]
   ]
  }
