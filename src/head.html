@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}/* 6.59 (Omar): Survival, Cairo Cinema Poster look (his pick of five previews): yellow sunburst, tilted red banner, paper-ticket team cards with hard shadows,
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}/* 6.60 (Omar): Survival, Cairo Cinema Poster look (his pick of five previews): yellow sunburst, tilted red banner, paper-ticket team cards with hard shadows,
    an OUT stamp. Sizes on the round screen are in cqw so it scales like a TV picture. */
 .survbtn{border-color:#c8281f;color:#c8281f}
 body.survmode{min-height:100vh;background:repeating-conic-gradient(from 0deg at 50% 30%,#f6cf48 0 6deg,#eab820 6deg 12deg) center/cover no-repeat fixed}
@@ -62,7 +62,7 @@ body.survmode #winBox{--winhi:#3a2a06;--felt:#1b1410;--deeper:#0d0907;--brass:#f
 .svbox h2{margin:0;font:400 6cqw/1 var(--sv-disp);color:var(--sv-red);text-shadow:.3cqw .3cqw 0 var(--sv-ink)}
 .svbox p{margin:0;font:400 2.8cqw var(--sv-disp)} .svbox .svbtn{justify-self:center;font-size:2.4cqw;padding:.5cqw 2.4cqw}
 .svbanner.warn{color:#ff8a7a;font-weight:700}
-/* end 6.59 */
+/* end 6.60 */
 </style></head><body>
 <title>Jeopardy Night</title>
 <!-- 5.1: the three CDN scripts load with async, so a slow CDN no longer holds up the page (they used to block it). QR codes, photo export/import and the world map are only needed later. To undo: remove "async" (and the onload) from these three tags, and in src/app.js go back to calling the initWorld() body directly. -->
@@ -700,7 +700,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.59</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.60</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -718,7 +718,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
     <div class="bwtools row"><button class="bwbtn ghost fsbtn">Full screen</button><button class="bwbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="bwbtn ghost" id="bwHome">Title screen</button></div>
     <div class="bwstage"><div class="bwscreen" id="bidBody"></div></div>
   </section>
-  <!-- 6.59: Survival (src/survival.js). To remove: delete these two sections, the 6.59 CSS block, the Survival mode button above and the S.mode === "survival" lines in src/app.js -->
+  <!-- 6.60: Survival (src/survival.js). To remove: delete these two sections, the 6.60 CSS block, the Survival mode button above and the S.mode === "survival" lines in src/app.js -->
   <section id="survSetup" hidden></section>
   <section id="survival" hidden>
     <div class="svtools row"><button class="svbtn ghost fsbtn">Full screen</button><button class="svbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="svbtn ghost" id="svHome">Title screen</button></div>
@@ -731,7 +731,7 @@ body.bidmode #card .val{font-family:var(--bw-mono,monospace)}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.59</div>
+      <div class="eyebrow verlabel">v6.60</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

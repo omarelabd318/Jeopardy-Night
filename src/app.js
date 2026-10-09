@@ -160,7 +160,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.59`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.60`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2495,7 +2495,7 @@ $("#clue").addEventListener("click", e => {
   if(a==="done" && c.preview){ closeCard(); return; }
   if(a==="done" && S.mode === "bingo"){ bingoDone(c); return; }   // 6.48: Category Bingo takes the result instead of adding points
   if(a==="done" && S.mode === "bidding"){ bidDone(c); return; }
-  if(a==="done" && S.mode === "survival"){ survDone(c); return; }   // 6.59: Survival takes lives off for wrong answers   // 6.49: Bidding Wars adds or takes away the bid
+  if(a==="done" && S.mode === "survival"){ survDone(c); return; }   // 6.60: Survival takes lives off for wrong answers   // 6.49: Bidding Wars adds or takes away the bid
   if(a==="done"){
     Object.entries(c.awards).forEach(([i,v]) => S.teams[+i].score += awardPts(c, +i, v));   // 6.45: was v*c.lvl*(+i===c.x2 && v>0 ? 2 : 1), which awardPts still gives outside Wager mode
     if(c.x2!=null && S.teams[c.x2]){ S.teams[c.x2].x2used = true; } S.x2 = null;

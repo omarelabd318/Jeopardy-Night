@@ -1,11 +1,11 @@
-/* 6.59 (Omar): Survival, a last-team-standing mode. Every team starts with 2 or 3 lives and loses one for each wrong clue; the last team standing wins.
+/* 6.60 (Omar): Survival, a last-team-standing mode. Every team starts with 2 or 3 lives and loses one for each wrong clue; the last team standing wins.
    Eight rounds on a fixed ladder (100s, then 200/300, 200/300, 300/400, 400/500, 400/500, 500, 500); round 1 asks one clue and every later round three.
    Each round announces one category, drawn at random from the Bidding Wars titles (so football doesn't come up four times running). Setup chooses turn by turn
    (default: each team answers its own clue) or all at once (every team answers the same clue and the host marks each one). If every team misses the same clue
    nobody loses a life. No lives come back. After round 8, if more than one team is left, sudden death rounds follow (one 500 clue each).
    Cairo Cinema Poster look (his pick of five previews): yellow sunburst, red banner, paper-ticket team cards with hard shadows, an OUT stamp.
    It reuses the clue card and the winner screen; app.js only calls survBanner, survAwards, survDone, survAgain, survSetupAgain and survLeave.
-   Setup is saved on this device in jn_survCfg; the game is not saved. To remove: see the 6.59 NOTES entry. */
+   Setup is saved on this device in jn_survCfg; the game is not saved. To remove: see the 6.60 NOTES entry. */
 const SV = {cfg:null, st:null};
 const SV_LADDER = [[100],[200,300],[200,300],[300,400],[400,500],[400,500],[500],[500]], SV_ROUNDS = SV_LADDER.length;
 const SV_WINNOTE = $("#winNote").textContent;
