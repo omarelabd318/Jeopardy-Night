@@ -128,7 +128,7 @@ function renderBid(){
   const lead = Math.max(...st.teams.map(m => m.score));
   const ticker = st.teams.map(m => `${esc(m.name.toUpperCase())} ${m.score >= 0 ? "▲" : "▼"} ${bwMoney(m.score)}`).join("  ·  ") + `  ·  LOT ${st.i + 1} OF ${st.lots.length}  ·  ${esc(t[1].toUpperCase())}  ·  ${tier.k.toUpperCase()} $${tier.lv[0]}–$${tier.lv[1]}  ·  MAX BID ${bwMoney(tier.cap)}  ·  `;
   root.innerHTML = `
-    <div class="bwtop"><div class="bwbrand">Bidding Wars</div><div class="bwlotno">Lot ${st.i + 1} of ${st.lots.length}</div></div>
+    <div class="bwtop"><div class="bwbrand">Bidding Wars</div><div class="bwscores" aria-label="Scores">${st.teams.map(m => `<span class="${m.score === lead && lead !== 0 ? "top" : ""}"><b>${esc(m.name)}</b><i class="${m.score < 0 ? "neg" : ""}">${bwMoney(m.score)}</i></span>`).join("")}</div><div class="bwlotno">Lot ${st.i + 1} of ${st.lots.length}</div></div>
     <div class="bwmid">
       <div class="bwlot">
         <span class="bwtier">${tier.k} · $${tier.lv[0]}–$${tier.lv[1]}</span>
