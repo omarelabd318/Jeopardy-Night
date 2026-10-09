@@ -79,7 +79,7 @@ function renderHs(){
   const mid = st.tb ? "" : `<div class="hsstack"><b>${hsNum(st.pot)}</b><small>${st.pot ? "IN THE POT" : "NOTHING AT RISK YET"}</small></div>
     <button class="hscp bank" data-hs="bank" ${st.pot && st.phase === "pick" ? "" : "disabled"}><div>Bank<small>${hsNum(st.pot)}</small></div></button><div class="hscp risk"><div>Risk<small>${hsNum(hsNext())}</small></div></div>`;
   let low = "", ov = "";
-  if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc" data-card="${i}"><b>${esc(catById(c.cat).name)}</b><span>Value hidden until it opens</span></button>`).join("")}</div>`;
+  if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc" data-card="${i}"><b>${esc(catById(c.cat).name)}</b><span>Value hidden</span></button>`).join("")}</div>`;
   else if(st.phase === "clue" || st.phase === "tbclue") low = `<div class="hscards one"><button class="hsb go" data-hs="reopen">Open the clue again</button></div>`;
   if(st.phase === "result"){ const r = st.res, last = st.turnNo + 1 >= hsTotal();
     ov = `<div class="hsov"><h2 class="${r.kind === "miss" && r.pts ? "lose" : ""}">${r.kind === "bank" ? "Banked!" : r.kind === "half" ? "Half answer" : r.pts ? "Busted!" : "Missed it"}</h2>
