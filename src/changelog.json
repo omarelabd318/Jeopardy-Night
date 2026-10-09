@@ -3,6 +3,20 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.63",
+  "date": "2026-10-09",
+  "items": [
+   "Hot Seat on a TV: the table is bigger and fills the screen, the setup screen uses two columns, and the clue card is larger."
+  ]
+ },
+ {
+  "v": "6.62",
+  "date": "2026-10-09",
+  "items": [
+   "Hot Seat fix: Back to the table after picking a card left the table frozen. It now shows Open the clue again."
+  ]
+ },
+ {
   "v": "6.61",
   "date": "2026-10-09",
   "items": [
