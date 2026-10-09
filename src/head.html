@@ -89,6 +89,18 @@ body.survmode #winBox{--winhi:#3a2a06;--felt:#1b1410;--deeper:#0d0907;--brass:#f
   .svstage{width:min(100%,calc((100vh - 120px)*16/9))}
 }
 /* end 6.64 */
+/* 6.65 TV pass for Bidding Wars: 4K-wide screens only (2600px and up). At 1920x1080 and 1920x950 it
+   already fills the screen, so nothing changes there; at 3840x2160 every screen was drawn at its 1920 size in the middle of the TV.
+   This zooms them 2x, the same way 6.64 does for Survival. Phones, normal mode, Football mode, Wager mode and the other modes are untouched. To undo: delete this block. */
+@media (min-width:2600px) and (orientation:landscape){
+  body.bidmode .wrap{max-width:none}
+  .bwtools{zoom:2}
+  #bidding .bwstage{width:min(100%,calc((100vh - 120px)*16/9))}
+  #bidSetup{zoom:2}
+  body.bidmode #clue{zoom:2}
+  body.bidmode .wincard{zoom:2}
+}
+/* end 6.65 */
 </style></head><body>
 <title>Jeopardy Night</title>
 <!-- 5.1: the three CDN scripts load with async, so a slow CDN no longer holds up the page (they used to block it). QR codes, photo export/import and the world map are only needed later. To undo: remove "async" (and the onload) from these three tags, and in src/app.js go back to calling the initWorld() body directly. -->
