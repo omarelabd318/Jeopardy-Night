@@ -11,13 +11,15 @@ const BG_SHORT = {egyph:"Egypt: Photos", ecin:"Egyptian Cinema", ploteg:"Plots: 
 const bgShort = id => BG_SHORT[id] || String(catById(id).name).replace(/\s*\(.*?\)/g, "");
 const bgOk = id => { const c = catById(id); return !!c && !c.mode && c.type !== "mix" && c.type !== "closest" && !HIDDEN_IDS.has(id) && !BG_SKIP.has(id) && (!LOCKED_IDS.has(id) || unlocked.has(id)); };
 const bgShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-const BG_LINES = (() => { const out = []; for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]) for(let r = 0; r < BG_N; r++) for(let c = 0; c < BG_N; c++){
-  const L = []; for(let k = 0; k < 5; k++){ const rr = r + dr*k, cc = c + dc*k; if(rr < 0 || rr >= BG_N || cc < 0 || cc >= BG_N) break; L.push(rr*BG_N + cc); } if(L.length === 5) out.push(L); } return out; })();
+const bgMkLines = n => { const out = []; for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]) for(let r = 0; r < BG_N; r++) for(let c = 0; c < BG_N; c++){
+  const L = []; for(let k = 0; k < n; k++){ const rr = r + dr*k, cc = c + dc*k; if(rr < 0 || rr >= BG_N || cc < 0 || cc >= BG_N) break; L.push(rr*BG_N + cc); } if(L.length === n) out.push(L); } return out; };
+/* 6.55 (Omar): the win can be 5 or 6 in a row (setup "Win with"). Square values by position still come from the 5-in-a-row lines. */
+const BG_LINES = bgMkLines(5), BG_LINES6 = bgMkLines(6), bgRun = () => BG.cfg.row === 6 ? BG_LINES6 : BG_LINES, bgRowN = () => BG.cfg.row === 6 ? 6 : 5;
 const BG_CNT = (() => { const n = Array(BG_N*BG_N).fill(0); BG_LINES.forEach(L => L.forEach(i => n[i]++)); return n; })();
 /* values by position: the more winning lines run through a square, the more it is worth. 8 squares of 100, 8 of 200, 12 of 300, 12 of 400, 9 of 500
    (Omar: fewer 100s, a few more 500s than 100s). Setup can switch to random or one flat value. */
 const bgPosVal = i => { const n = BG_CNT[i], r = Math.floor(i / BG_N), c = i % BG_N; return n === 3 ? 100 : n === 4 ? (r === 3 || c === 3 ? 100 : 200) : n <= 6 ? 300 : n === 7 ? 400 : 500; };
-function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"balanced", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, start:"random", look:"classic"}; }
+function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"balanced", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"classic"}; }
 BG.cfg = Object.assign(bgDefaults(), store.get("jn_bingoCfg", {}));
 const bgSave = () => { store.set("jn_bingoCfg", BG.cfg); };
 /* Photo rounds switch (Omar): off takes the whole Photo Rounds section, plus Egypt: Photo Edition, off the board. Egypt, Football, Entertainment and Knowledge each have 14+ categories, so
@@ -43,7 +45,7 @@ function bgFill(cfg){
     [cells[a].cat, cells[b].cat] = [cells[b].cat, cells[a].cat]; const n = bad(); if(n <= cur) cur = n; else [cells[a].cat, cells[b].cat] = [cells[b].cat, cells[a].cat]; }
   return cells;
 }
-const bgWinLine = t => BG_LINES.find(L => L.every(i => BG.st.cells[i].own === t));
+const bgWinLine = t => bgRun().find(L => L.every(i => BG.st.cells[i].own === t));
 const bgInit = () => ({v:1, cells:bgFill(BG.cfg), teams:BG.cfg.teams.map(n => ({name:n, steals:BG.cfg.steals, lock:null})), turn:0, pend:null, stealing:false, preview:true, over:false, winner:null, line:null});
 
 /* ---------- screens ---------- */
@@ -62,9 +64,10 @@ function renderBingoSetup(){
   const c = BG.cfg, seg = (key, opts, cur) => `<div class="seg">${opts.map(([v, t]) => `<button data-set="${key}" data-v="${v}" aria-pressed="${String(cur) === String(v)}">${t}</button>`).join("")}</div>`;
   const secs = bgSecIds();
   $("#bingoSetup").innerHTML = `
-    <div><div class="eyebrow">Game mode</div><h1>Category <span>Bingo</span></h1><p class="sub">A 7x7 board of 49 categories. Teams take turns picking a square and answering its clue; get it right and the square is yours. First to 5 in a row (across, down or diagonal) wins. Each team has a few steals to take an opponent's square.</p></div>
+    <div><div class="eyebrow">Game mode</div><h1>Category <span>Bingo</span></h1><p class="sub">A 7x7 board of 49 categories. Teams take turns picking a square and answering its clue; get it right and the square is yours. First to ${bgRowN()} in a row (across, down or diagonal) wins. Each team has a few steals to take an opponent's square.</p></div>
     <div class="panel opt"><div class="eyebrow">Teams</div><div class="bteams">${c.teams.map((n, i) => `<div class="bteam"><i style="background:${BG_TEAMCOL[i]}"></i><input type="text" data-bn="${i}" value="${esc(n)}" maxlength="24" aria-label="Team ${i + 1} name">${c.teams.length > 2 ? `<button class="btn small" data-rm="${i}">Remove</button>` : ""}</div>`).join("")}</div>${c.teams.length < 4 ? `<div class="row"><button class="btn small" id="bgAddTeam">Add a team</button></div>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Look of the board</div><div class="looks">${BG_LOOKS.map(([k, n, d]) => `<button class="look" data-set="look" data-v="${k}" aria-pressed="${c.look === k}"><b>${n}</b><span class="d">${d}</span>${bgSwatch(k)}</button>`).join("")}</div><p class="note">You can also flip between the looks on the board with the Look button.</p></div>
+    <div class="panel opt"><div class="eyebrow">Win with</div>${seg("row", [[5, "5 in a row"], [6, "6 in a row (longer game)"]], bgRowN())}</div>
     <div class="panel opt"><div class="eyebrow">Steals per team</div>${seg("steals", [[1, "1 steal"], [2, "2 steals"]], c.steals)}</div>
     <div class="panel opt"><div class="eyebrow">Photo rounds</div>${seg("photos", [["true", "On: photo rounds on the board"], ["false", "Off: no photo rounds"]], c.photos !== false)}${c.photos === false ? `<p class="note">Takes Guess the Car, Actor, Footballer, Person, Food, Logo and Country, and Egypt: Photo Edition, off the board. One of the other sections gets two groups of squares instead.</p>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["balanced", "Balanced (7 from each section)"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
@@ -80,7 +83,7 @@ function bgSwatch(k){ const bg = {classic:"#000", card:"#0E5A3B", neon:"#05060f"
   return `<div class="swatch" style="background:${bg}">${cols.map((c, i) => `<i style="background:${i === 1 ? BG_TEAMCOL[0] : sq};border:2px solid ${k === "neon" ? c : k === "card" ? "#d9cfb4" : "#2B36B8"}${k === "card" && i === 1 ? ";box-shadow:inset 0 0 0 5px " + BG_TEAMCOL[0] + "cc" : ""}"></i>`).join("")}</div>`; }
 $("#bingoSetup").addEventListener("click", e => {
   const c = BG.cfg, set = e.target.closest("[data-set]");
-  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "steals" || k === "flat") v = +v; if(k === "auto" || k === "photos") v = v === "true"; c[k] = v; bgSave(); renderBingoSetup(); return; }
+  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "steals" || k === "flat" || k === "row") v = +v; if(k === "auto" || k === "photos") v = v === "true"; c[k] = v; bgSave(); renderBingoSetup(); return; }
   const sec = e.target.closest("[data-sec]"); if(sec){ const i = +sec.dataset.sec; c.sections = c.sections.includes(i) ? c.sections.filter(x => x !== i) : c.sections.concat(i); if(!c.sections.length) c.sections = [i]; bgSave(); renderBingoSetup(); return; }
   const pk = e.target.closest("[data-pick]"); if(pk){ const id = pk.dataset.pick; c.picks = c.picks.includes(id) ? c.picks.filter(x => x !== id) : c.picks.concat(id); bgSave(); renderBingoSetup(); return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ c.teams.splice(+rm.dataset.rm, 1); bgSave(); renderBingoSetup(); return; }
@@ -94,7 +97,7 @@ $("#bgHome").onclick = () => { const st = BG.st; if(st && !st.over && !st.previe
 $("#bgLook").onclick = () => { const i = BG_LOOKS.findIndex(x => x[0] === BG.cfg.look); BG.cfg.look = BG_LOOKS[(i + 1) % BG_LOOKS.length][0]; bgSave(); Snd.blip(); renderBingo(); };
 
 /* ---------- board ---------- */
-function bgThreat(){ const st = BG.st, thr = new Set(); st.teams.forEach((_, t) => BG_LINES.forEach(L => { const mine = L.filter(i => st.cells[i].own === t); if(mine.length === 4){ const f = L.find(i => st.cells[i].own !== t); if(st.cells[f].own == null || st.cells[f].own !== t) thr.add(f); } })); return thr; }
+function bgThreat(){ const st = BG.st, thr = new Set(); st.teams.forEach((_, t) => bgRun().forEach(L => { const mine = L.filter(i => st.cells[i].own === t); if(mine.length === L.length - 1){ const f = L.find(i => st.cells[i].own !== t); if(st.cells[f].own == null || st.cells[f].own !== t) thr.add(f); } })); return thr; }
 function renderBingo(){
   const st = BG.st, root = $("#bingo"); if(!st) return;
   root.dataset.look = BG.cfg.look; root.classList.toggle("stealing", !!st.stealing); bgLookBtn();
