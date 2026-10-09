@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.59",
+  "date": "2026-10-09",
+  "items": [
+   "New mode: Hot Seat, in the mode row on the title screen. One team plays a streak of clues, and every right answer doubles the pot (100, 200, 400, 800, 1,600 and on). After each one the team banks the pot or risks it; a wrong answer loses what isn't banked and the seat passes.",
+   "Clues are random from 200 to 500 and their value stays hidden until the clue opens. Each team can swap one clue per game. High Roller look: green felt, casino chips and playing cards."
+  ]
+ },
+ {
   "v": "6.58",
   "date": "2026-10-09",
   "items": [
