@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.67",
+  "date": "2026-10-09",
+  "items": [
+   "The Survival button on the title screen is now violet, so every mode button has its own colour."
+  ]
+ },
+ {
   "v": "6.66",
   "date": "2026-10-09",
   "items": [
