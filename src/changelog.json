@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.61",
+  "date": "2026-10-09",
+  "items": [
+   "New Billboard look: a toggle on the title screen restyles the normal game as a hand-painted cinema billboard (sunburst title, ticket tiles, paint-colour categories). Football mode, Category Bingo and Bidding Wars keep their own looks."
+  ]
+ },
+ {
   "v": "6.60",
   "date": "2026-10-09",
   "items": [

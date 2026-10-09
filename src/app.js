@@ -119,6 +119,12 @@ function syncSound(){
 function setSound(on){ S.sound = on; store.set("jn_sound", on); syncSound(); if(on){ Snd.unlock(); Snd.blip(); } else { stopSiu(); stopReview(); } }
 document.querySelectorAll(".sndbtn").forEach(b => b.addEventListener("click", () => setSound(!S.sound)));
 $("#optSound").onclick = () => setSound(!S.sound);
+/* 6.60 (Omar): Painted Billboard look, a toggle on the title screen, saved per device in jn_look. It restyles the normal game only (title, setup, board, clue card, scores, winner);
+   Football mode, Category Bingo and Bidding Wars keep their own looks. To remove: delete this block, #lookBtn in src/head.html, the "c${i % 6}" classes in renderBoard and the 6.60 CSS block. */
+function setLook(on, save){ document.body.classList.toggle("billboard", on); const b = $("#lookBtn"); if(b){ b.setAttribute("aria-pressed", on); b.textContent = on ? "Billboard look: on" : "Billboard look"; }
+  if(save) store.set("jn_look", on ? "billboard" : ""); }
+$("#lookBtn").onclick = () => { setLook(!document.body.classList.contains("billboard"), true); Snd.unlock(); Snd.blip(); };
+setLook(store.get("jn_look", "") === "billboard", false);
 $("#optAnim").setAttribute("aria-pressed", S.anim);
 $("#optAnim").onclick = () => { S.anim = !S.anim; store.set("jn_anim", S.anim); $("#optAnim").setAttribute("aria-pressed", S.anim); };   // 5.54
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
@@ -160,7 +166,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.60`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.61`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1740,10 +1746,10 @@ function renderBoard(){
   b.style.gridTemplateColumns = `repeat(${S.cats.length}, minmax(var(--colmin,118px), 1fr))`;
   b.classList.toggle("many", S.cats.length >= 8);
   b.style.setProperty("--hvw", `${(12/Math.max(8,S.cats.length)).toFixed(2)}vw`);
-  let html = S.cats.map(id => `<div class="head" data-tip="${esc(tipOf(catById(id)))}">${esc(catById(id).name)}</div>`).join("");
-  LV.forEach(l => S.cats.forEach(id => {
+  let html = S.cats.map((id, i) => `<div class="head c${i % 6}" data-tip="${esc(tipOf(catById(id)))}">${esc(catById(id).name)}</div>`).join("");
+  LV.forEach(l => S.cats.forEach((id, i) => {
     const d = S.done[`${id}-${l}`];
-    html += `<button class="tile${d?" done":""}" data-cat="${id}" data-l="${l}" ${d?'disabled aria-label="Played"':`aria-label="${esc(catById(id).name)} for ${l}"`}>${l}</button>`;
+    html += `<button class="tile c${i % 6}${d?" done":""}" data-cat="${id}" data-l="${l}" ${d?'disabled aria-label="Played"':`aria-label="${esc(catById(id).name)} for ${l}"`}>${l}</button>`;
   }));
   b.innerHTML = html; placeFbBg(); boardX2();
   const left = S.cats.length*5 - Object.keys(S.done).length;
