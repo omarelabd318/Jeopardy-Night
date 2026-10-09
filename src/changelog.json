@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.60",
+  "date": "2026-10-09",
+  "items": [
+   "New mode: Survival, a third button on the title screen. Every team has 2 or 3 lives and loses one for each wrong answer, and the last team standing wins.",
+   "Eight rounds climb from 100s to 500s, with a new category each round. Play turn by turn or all at once. Cairo cinema poster look."
+  ]
+ },
+ {
   "v": "6.59",
   "date": "2026-10-09",
   "items": [
