@@ -92,7 +92,7 @@ function renderHs(){
     <div class="hsttl">${esc(t.name)} is in the Hot Seat<small>${sub}</small></div>
     <div class="hsladder">${st.tb ? "" : chips}</div>${mid}${low}${ov}`;
 }
-function hsOpen(){ const st = HS.st, c = st.cur; renderHs();   // 6.61: redraw the table first, so "Back to the table" shows "Open the clue again" (it used to show the old, dead cards)
+function hsOpen(){ const st = HS.st, c = st.cur; renderHs();   // 6.62: redraw the table first, so "Back to the table" shows "Open the clue again" (it used to show the old, dead cards)
   S.turn = hsSeat(); PICKS[`${c.cat}-${c.lvl}`] = c.idx; openClue(c.cat, c.lvl); }
 function hsResult(kind, pts){ const st = HS.st, t = st.teams[hsSeat()]; if(kind !== "miss") t.score += pts;
   st.res = {kind, pts, name:t.name}; st.phase = "result"; st.cur = null; if(kind === "miss") Snd.tick(); else Snd.chime(); renderHs(); }

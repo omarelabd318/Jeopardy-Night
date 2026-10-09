@@ -3,7 +3,7 @@
   "era": "6.x: Category Descriptions"
  },
  {
-  "v": "6.61",
+  "v": "6.62",
   "date": "2026-10-09",
   "items": [
    "Hot Seat fix: Back to the table after picking a card left the table frozen. It now shows Open the clue again."
