@@ -17,10 +17,13 @@ const bgMkLines = n => { const out = []; for(const [dr,dc] of [[0,1],[1,0],[1,1]
   const L = []; for(let k = 0; k < n; k++){ const rr = r + dr*k, cc = c + dc*k; if(rr < 0 || rr >= BG_N || cc < 0 || cc >= BG_N) break; L.push(rr*BG_N + cc); } if(L.length === n) out.push(L); } return out; };
 /* 6.55 (Omar): the win can be 5 or 6 in a row (setup "Win with"). Square values by position still come from the 5-in-a-row lines. */
 const BG_LINES = bgMkLines(5), BG_LINES6 = bgMkLines(6), bgRun = () => BG.cfg.row === 6 ? BG_LINES6 : BG_LINES, bgRowN = () => BG.cfg.row === 6 ? 6 : 5;
-const BG_CNT = (() => { const n = Array(BG_N*BG_N).fill(0); BG_LINES.forEach(L => L.forEach(i => n[i]++)); return n; })();
-/* values by position: the more winning lines run through a square, the more it is worth. 8 squares of 100, 8 of 200, 12 of 300, 12 of 400, 9 of 500
-   (Omar: fewer 100s, a few more 500s than 100s). Setup can switch to random or one flat value. */
-const bgPosVal = i => { const n = BG_CNT[i], r = Math.floor(i / BG_N), c = i % BG_N; return n === 3 ? 100 : n === 4 ? (r === 3 || c === 3 ? 100 : 200) : n <= 6 ? 300 : n === 7 ? 400 : 500; };
+/* values by position (6.70, Omar): spread out so no line is much easier than another (before, the edges were all 100s and 200s and the
+   centre all 500s, so the perimeter lines were the cheapest wins). 8 squares of 100, 8 of 200, 12 of 300, 12 of 400, 9 of 500; the four
+   corners are 400. Found by a search that evens out the average value along every 5-in-a-row and 6-in-a-row line (they now run 280 to 360,
+   they were 200 to 460) and keeps equal values from touching. Each game flips/rotates the pattern at random, so it isn't memorised.
+   Before 6.70 the value came from how many winning lines ran through the square (BG_CNT: 3 lines = 100 ... 8 lines = 500). */
+const BG_VALS = [400,300,100,400,500,200,400, 300,500,300,200,100,500,300, 200,100,400,500,400,200,100, 500,200,500,100,200,500,300, 300,400,200,300,400,300,400, 100,300,400,500,300,100,300, 400,500,100,200,400,300,400];
+const bgSym = () => { const k = Math.floor(Math.random() * 8); return i => { let r = Math.floor(i / BG_N), c = i % BG_N; if(k & 1) [r, c] = [c, r]; if(k & 2) r = BG_N - 1 - r; if(k & 4) c = BG_N - 1 - c; return BG_VALS[r * BG_N + c]; }; };
 function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"random", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"classic"}; }
 BG.cfg = Object.assign(bgDefaults(), store.get("jn_bingoCfg", {}));
 if(BG.cfg.fill === "balanced") BG.cfg.fill = "random";   // 6.56 (Omar): Balanced (7 per section) became Random from every category
@@ -37,13 +40,13 @@ function bgFill(cfg){
   while(perm.length < BG_N){ const big = chosen.filter(si => secs[si].length >= 2 * Math.ceil(BG_N / chosen.length) + 6), pool = big.length ? big : chosen; perm.push(pool[Math.floor(Math.random() * pool.length)]); }
   const want = new Set(cfg.fill === "hand" ? cfg.picks : []), seq = {};
   const draw = si => { if(!seq[si] || !seq[si].length) seq[si] = bgShuffle(secs[si].filter(id => want.has(id))).concat(bgShuffle(secs[si].filter(id => !want.has(id)))); return seq[si].shift(); };
-  const cells = [];
+  const cells = [], posVal = bgSym();
   /* 6.56 (Omar): Random draws the 49 squares from every category available (after the photo switch), not 7 per section */
   if(cfg.fill === "random"){ const pool = bgShuffle(secs.flatMap((ids, si) => ids.map(id => [id, si])));
     for(let i = 0; i < BG_N*BG_N; i++){ const [cat, ss] = pool[i % pool.length];
-      cells.push({cat, ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : bgPosVal(i), own:null}); } }
+      cells.push({cat, ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : posVal(i), own:null}); } }
   else for(let i = 0; i < BG_N*BG_N; i++){ const g = (2*Math.floor(i / BG_N) + i % BG_N) % BG_N, ss = perm[g];
-    cells.push({cat:draw(ss), ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : bgPosVal(i), own:null}); }
+    cells.push({cat:draw(ss), ss, v: cfg.values === "flat" ? cfg.flat : cfg.values === "random" ? 100 * (1 + Math.floor(Math.random() * 5)) : posVal(i), own:null}); }
   /* with fewer than 7 sections a category can repeat; move twins out of each other's row, column and diagonals */
   const bad = () => { let n = 0; for(let a = 0; a < cells.length; a++) for(let b = a + 1; b < cells.length; b++) if(cells[a].cat === cells[b].cat && bgShares(a, b)) n++; return n; };
   let cur = bad();
@@ -80,7 +83,7 @@ function renderBingoSetup(){
     <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["random", "Random from every category"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
       ${c.fill === "sections" ? `<div class="seg">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<button data-sec="${i}" aria-pressed="${c.sections.includes(i)}">${esc(g[0])}</button>`).join("")}</div><p class="note">The 49 squares are shared out evenly between the sections you tick; a category can appear more than once, never in the same row, column or diagonal if it can be helped.</p>` : ""}
       ${c.fill === "hand" ? `<p class="note">Tap the categories you want on the board (${c.picks.length} picked). The rest of the board is topped up from each section.</p><div class="hp">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<div><h4>${esc(g[0])}</h4><div class="seg">${secs[i].map(id => `<button data-pick="${id}" aria-pressed="${c.picks.includes(id)}">${esc(bgShort(id))}</button>`).join("")}</div></div>`).join("")}</div>` : ""}</div>
-    <div class="panel opt"><div class="eyebrow">Square values</div>${seg("values", [["pos", "By position (centre is 500)"], ["random", "Random"], ["flat", "All the same"]], c.values)}
+    <div class="panel opt"><div class="eyebrow">Square values</div>${seg("values", [["pos", "Spread out (mixed values)"], ["random", "Random"], ["flat", "All the same"]], c.values)}
       ${c.values === "flat" ? seg("flat", [100, 200, 300, 400, 500].map(v => [v, v]), c.flat) : ""}</div>
     <div class="panel opt"><div class="eyebrow">Clue timer</div>${seg("auto", [["true", "Starts by itself"], ["false", "Host starts it"]], c.auto)}</div>
     <div class="panel opt"><div class="eyebrow">Who starts</div>${seg("start", [["random", "Random team"], ["first", "First team"]], c.start)}</div>
