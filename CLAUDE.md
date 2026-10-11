@@ -24,6 +24,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `photos/flags/` (6.19): the Guess the Flag drawings, `<iso>.svg` from the `flag-icons` npm package (MIT), mapped to flag ids by `v4work/flag-codes.json`. The hand-drawn flags in `src/base.json` and `v4work/out/flag.json` are kept as the fallback if a file can't load.
 - `play.html` (5.26): the Free-for-all phone page, at `/p?r=ROOM`. Each player joins once and answers every clue from it.
 - `answer.html` and `worker/index.js` (5.9): the phone answer page that teams reach by scanning a clue's QR code, and the small Cloudflare relay (`/api/*`, one Durable Object per game room) that passes answers to the laptop. They only work on the Cloudflare link; elsewhere the game hides the codes. `STEAL_SKIP` in `src/app.js` lists categories that never get a steal code.
+- `spy.html` and `src/imposter.js` (6.68): the Imposter mode's phone page (at `/s?r=ROOM`) and its laptop code. The word lists are in `v4work/imposter/` (`lang-*.json`, `cards-*.json`).
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.
 - `HANDOFF.md`: the latest handoff between sessions: state, open items, Omar's way of working, testing and network tips.

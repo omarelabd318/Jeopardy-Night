@@ -1,0 +1,992 @@
+{
+ "Moroccan (Darija)": {
+  "hint": "Africa",
+  "words": [
+   [
+    "Bzaf",
+    "a lot"
+   ],
+   [
+    "Daba",
+    "now"
+   ],
+   [
+    "Mezyan",
+    "good"
+   ],
+   [
+    "Wakha",
+    "okay"
+   ],
+   [
+    "Safi",
+    "enough"
+   ],
+   [
+    "Hanout",
+    "small shop"
+   ],
+   [
+    "Zwin",
+    "beautiful"
+   ],
+   [
+    "Bghit",
+    "I want"
+   ],
+   [
+    "Shkoun",
+    "who"
+   ],
+   [
+    "Dyal",
+    "of"
+   ],
+   [
+    "Mashi",
+    "not"
+   ],
+   [
+    "Walou",
+    "nothing"
+   ],
+   [
+    "Drari",
+    "kids"
+   ],
+   [
+    "Sbitar",
+    "hospital"
+   ],
+   [
+    "Zanqa",
+    "street"
+   ],
+   [
+    "Mnin",
+    "from where"
+   ],
+   [
+    "Ghadi",
+    "going to"
+   ],
+   [
+    "Hakka",
+    "like this"
+   ],
+   [
+    "Dghya",
+    "quickly"
+   ],
+   [
+    "Lyouma",
+    "today"
+   ],
+   [
+    "Ghda",
+    "tomorrow"
+   ],
+   [
+    "Lbarah",
+    "yesterday"
+   ],
+   [
+    "Sebbat",
+    "shoes"
+   ],
+   [
+    "Ftour",
+    "breakfast"
+   ],
+   [
+    "Atay",
+    "tea"
+   ],
+   [
+    "Chhal",
+    "how much"
+   ],
+   [
+    "Hshuma",
+    "shame"
+   ],
+   [
+    "Khouya",
+    "my brother"
+   ],
+   [
+    "Jouj",
+    "two"
+   ],
+   [
+    "Besslama",
+    "goodbye"
+   ],
+   [
+    "Maticha",
+    "tomato"
+   ],
+   [
+    "Khizzou",
+    "carrot"
+   ],
+   [
+    "Jbed",
+    "pull"
+   ],
+   [
+    "Hbes",
+    "stop"
+   ],
+   [
+    "Nad",
+    "get up"
+   ],
+   [
+    "Hrira",
+    "soup"
+   ],
+   [
+    "Lma",
+    "water"
+   ],
+   [
+    "Bnin",
+    "delicious"
+   ],
+   [
+    "Tma",
+    "there"
+   ],
+   [
+    "Smana",
+    "week"
+   ]
+  ]
+ },
+ "Kuwaiti": {
+  "hint": "Gulf: Kuwait",
+  "words": [
+   [
+    "Wayed",
+    "a lot"
+   ],
+   [
+    "Zain",
+    "good"
+   ],
+   [
+    "Shlonak",
+    "how are you"
+   ],
+   [
+    "Shinu",
+    "what"
+   ],
+   [
+    "Wain",
+    "where"
+   ],
+   [
+    "Leish",
+    "why"
+   ],
+   [
+    "Mu",
+    "not"
+   ],
+   [
+    "Abi",
+    "I want"
+   ],
+   [
+    "Hagg",
+    "belonging to"
+   ],
+   [
+    "Yahil",
+    "child"
+   ],
+   [
+    "Tawni",
+    "just now"
+   ],
+   [
+    "Chidhi",
+    "like this"
+   ],
+   [
+    "Yamma",
+    "mum"
+   ],
+   [
+    "Yaba",
+    "dad"
+   ],
+   [
+    "Salfa",
+    "story"
+   ],
+   [
+    "Kashta",
+    "picnic"
+   ],
+   [
+    "Dewaniya",
+    "men's gathering"
+   ],
+   [
+    "Jamaiya",
+    "co-op store"
+   ],
+   [
+    "Ghabga",
+    "late night meal"
+   ],
+   [
+    "Shilla",
+    "group of friends"
+   ],
+   [
+    "Chebab",
+    "soft bread"
+   ],
+   [
+    "Dreesha",
+    "window"
+   ],
+   [
+    "Dawwar",
+    "roundabout"
+   ],
+   [
+    "Fareej",
+    "neighbourhood"
+   ],
+   [
+    "Wanit",
+    "pickup truck"
+   ],
+   [
+    "Fanila",
+    "undershirt"
+   ],
+   [
+    "Mukayyif",
+    "air conditioner"
+   ],
+   [
+    "Dibs",
+    "date syrup"
+   ],
+   [
+    "Machboos",
+    "spiced rice"
+   ],
+   [
+    "Hammour",
+    "grouper fish"
+   ],
+   [
+    "Ghutra",
+    "headscarf"
+   ],
+   [
+    "Agal",
+    "headband cord"
+   ],
+   [
+    "Bisht",
+    "cloak"
+   ],
+   [
+    "Wannasa",
+    "good company"
+   ],
+   [
+    "Sawwi",
+    "make"
+   ],
+   [
+    "Dazz",
+    "send"
+   ],
+   [
+    "Alheen",
+    "now"
+   ],
+   [
+    "Bachir",
+    "tomorrow"
+   ],
+   [
+    "Girgian",
+    "kids festival"
+   ],
+   [
+    "Fazaa",
+    "help"
+   ]
+  ]
+ },
+ "Emirati": {
+  "hint": "Gulf: UAE",
+  "words": [
+   [
+    "Wayed",
+    "a lot"
+   ],
+   [
+    "Zain",
+    "good"
+   ],
+   [
+    "Shlonak",
+    "how are you"
+   ],
+   [
+    "Shinu",
+    "what"
+   ],
+   [
+    "Wain",
+    "where"
+   ],
+   [
+    "Leish",
+    "why"
+   ],
+   [
+    "Mu",
+    "not"
+   ],
+   [
+    "Abi",
+    "I want"
+   ],
+   [
+    "Hagg",
+    "belonging to"
+   ],
+   [
+    "Yahil",
+    "child"
+   ],
+   [
+    "Tawni",
+    "just now"
+   ],
+   [
+    "Chidhi",
+    "like this"
+   ],
+   [
+    "Yamma",
+    "mum"
+   ],
+   [
+    "Yaba",
+    "dad"
+   ],
+   [
+    "Salfa",
+    "story"
+   ],
+   [
+    "Kandura",
+    "men's robe"
+   ],
+   [
+    "Shayla",
+    "headscarf"
+   ],
+   [
+    "Sikka",
+    "alley"
+   ],
+   [
+    "Fareej",
+    "neighbourhood"
+   ],
+   [
+    "Dooma",
+    "always"
+   ],
+   [
+    "Halhin",
+    "now"
+   ],
+   [
+    "Bachir",
+    "tomorrow"
+   ],
+   [
+    "Haq Al Laila",
+    "kids festival"
+   ],
+   [
+    "Luqaimat",
+    "sweet dumplings"
+   ],
+   [
+    "Balaleet",
+    "sweet vermicelli"
+   ],
+   [
+    "Khanfaroosh",
+    "sweet fritter"
+   ],
+   [
+    "Regag",
+    "thin bread"
+   ],
+   [
+    "Harees",
+    "wheat porridge"
+   ],
+   [
+    "Machboos",
+    "spiced rice"
+   ],
+   [
+    "Thareed",
+    "bread stew"
+   ],
+   [
+    "Hammour",
+    "grouper fish"
+   ],
+   [
+    "Karak",
+    "spiced tea"
+   ],
+   [
+    "Dibs",
+    "date syrup"
+   ],
+   [
+    "Majlis",
+    "sitting room"
+   ],
+   [
+    "Ghutra",
+    "headscarf cloth"
+   ],
+   [
+    "Agal",
+    "headband cord"
+   ],
+   [
+    "Bisht",
+    "cloak"
+   ],
+   [
+    "Dreesha",
+    "window"
+   ],
+   [
+    "Dawwar",
+    "roundabout"
+   ],
+   [
+    "Wannasa",
+    "good company"
+   ]
+  ]
+ },
+ "Saudi": {
+  "hint": "Gulf: Saudi Arabia",
+  "words": [
+   [
+    "Wajid",
+    "a lot"
+   ],
+   [
+    "Zain",
+    "good"
+   ],
+   [
+    "Wish",
+    "what"
+   ],
+   [
+    "Abgha",
+    "I want"
+   ],
+   [
+    "Lesh",
+    "why"
+   ],
+   [
+    "Wain",
+    "where"
+   ],
+   [
+    "Mu",
+    "not"
+   ],
+   [
+    "Hagg",
+    "belonging to"
+   ],
+   [
+    "Tawwi",
+    "just now"
+   ],
+   [
+    "Kabsa",
+    "spiced rice"
+   ],
+   [
+    "Mandi",
+    "smoked rice"
+   ],
+   [
+    "Mutabbaq",
+    "stuffed pancake"
+   ],
+   [
+    "Jareesh",
+    "crushed wheat"
+   ],
+   [
+    "Mishkak",
+    "grilled skewers"
+   ],
+   [
+    "Saleeg",
+    "milk rice"
+   ],
+   [
+    "Harees",
+    "wheat porridge"
+   ],
+   [
+    "Dalla",
+    "coffee pot"
+   ],
+   [
+    "Jawwal",
+    "mobile phone"
+   ],
+   [
+    "Wanit",
+    "pickup truck"
+   ],
+   [
+    "Mukayyif",
+    "air conditioner"
+   ],
+   [
+    "Kafeel",
+    "sponsor"
+   ],
+   [
+    "Sewwaq",
+    "driver"
+   ],
+   [
+    "Dreesha",
+    "window"
+   ],
+   [
+    "Dawwar",
+    "roundabout"
+   ],
+   [
+    "Ghutra",
+    "headscarf"
+   ],
+   [
+    "Agal",
+    "headband cord"
+   ],
+   [
+    "Bisht",
+    "cloak"
+   ],
+   [
+    "Shayla",
+    "women's headscarf"
+   ],
+   [
+    "Fanila",
+    "undershirt"
+   ],
+   [
+    "Majlis",
+    "sitting room"
+   ],
+   [
+    "Yahil",
+    "child"
+   ],
+   [
+    "Yamma",
+    "mum"
+   ],
+   [
+    "Yaba",
+    "dad"
+   ],
+   [
+    "Salfa",
+    "story"
+   ],
+   [
+    "Fazaa",
+    "help"
+   ],
+   [
+    "Sawwi",
+    "make"
+   ],
+   [
+    "Dazz",
+    "send"
+   ],
+   [
+    "Wannasa",
+    "good company"
+   ],
+   [
+    "Hayyak",
+    "welcome"
+   ],
+   [
+    "Shlonak",
+    "how are you"
+   ]
+  ]
+ },
+ "Qatari": {
+  "hint": "Gulf: Qatar",
+  "words": [
+   [
+    "Wayed",
+    "a lot"
+   ],
+   [
+    "Zain",
+    "good"
+   ],
+   [
+    "Shlonak",
+    "how are you"
+   ],
+   [
+    "Shinu",
+    "what"
+   ],
+   [
+    "Wain",
+    "where"
+   ],
+   [
+    "Leish",
+    "why"
+   ],
+   [
+    "Mu",
+    "not"
+   ],
+   [
+    "Abi",
+    "I want"
+   ],
+   [
+    "Hagg",
+    "belonging to"
+   ],
+   [
+    "Yahil",
+    "child"
+   ],
+   [
+    "Tawni",
+    "just now"
+   ],
+   [
+    "Chidhi",
+    "like this"
+   ],
+   [
+    "Yamma",
+    "mum"
+   ],
+   [
+    "Yaba",
+    "dad"
+   ],
+   [
+    "Salfa",
+    "story"
+   ],
+   [
+    "Garangao",
+    "kids festival"
+   ],
+   [
+    "Fareej",
+    "neighbourhood"
+   ],
+   [
+    "Jalboot",
+    "wooden boat"
+   ],
+   [
+    "Karak",
+    "spiced tea"
+   ],
+   [
+    "Machboos",
+    "spiced rice"
+   ],
+   [
+    "Harees",
+    "wheat porridge"
+   ],
+   [
+    "Thareed",
+    "bread stew"
+   ],
+   [
+    "Luqaimat",
+    "sweet dumplings"
+   ],
+   [
+    "Hammour",
+    "grouper fish"
+   ],
+   [
+    "Dibs",
+    "date syrup"
+   ],
+   [
+    "Ghutra",
+    "headscarf"
+   ],
+   [
+    "Agal",
+    "headband cord"
+   ],
+   [
+    "Bisht",
+    "cloak"
+   ],
+   [
+    "Shayla",
+    "women's headscarf"
+   ],
+   [
+    "Majlis",
+    "sitting room"
+   ],
+   [
+    "Dreesha",
+    "window"
+   ],
+   [
+    "Dawwar",
+    "roundabout"
+   ],
+   [
+    "Wanit",
+    "pickup truck"
+   ],
+   [
+    "Mukayyif",
+    "air conditioner"
+   ],
+   [
+    "Tawash",
+    "pearl dealer"
+   ],
+   [
+    "Dana",
+    "pearl"
+   ],
+   [
+    "Nakhoda",
+    "ship captain"
+   ],
+   [
+    "Ghabga",
+    "late night meal"
+   ],
+   [
+    "Alheen",
+    "now"
+   ],
+   [
+    "Kafeel",
+    "sponsor"
+   ]
+  ]
+ },
+ "Omani": {
+  "hint": "Gulf: Oman",
+  "words": [
+   [
+    "Wayed",
+    "a lot"
+   ],
+   [
+    "Zain",
+    "good"
+   ],
+   [
+    "Shlonak",
+    "how are you"
+   ],
+   [
+    "Shinu",
+    "what"
+   ],
+   [
+    "Wain",
+    "where"
+   ],
+   [
+    "Leish",
+    "why"
+   ],
+   [
+    "Mu",
+    "not"
+   ],
+   [
+    "Abi",
+    "I want"
+   ],
+   [
+    "Hagg",
+    "belonging to"
+   ],
+   [
+    "Yahil",
+    "child"
+   ],
+   [
+    "Tawni",
+    "just now"
+   ],
+   [
+    "Yamma",
+    "mum"
+   ],
+   [
+    "Yaba",
+    "dad"
+   ],
+   [
+    "Salfa",
+    "story"
+   ],
+   [
+    "Kumma",
+    "embroidered cap"
+   ],
+   [
+    "Masar",
+    "turban"
+   ],
+   [
+    "Khanjar",
+    "curved dagger"
+   ],
+   [
+    "Wizar",
+    "wrap skirt"
+   ],
+   [
+    "Falaj",
+    "irrigation channel"
+   ],
+   [
+    "Sabla",
+    "meeting house"
+   ],
+   [
+    "Hara",
+    "neighbourhood"
+   ],
+   [
+    "Houri",
+    "small boat"
+   ],
+   [
+    "Qarqiaan",
+    "kids festival"
+   ],
+   [
+    "Shuwa",
+    "underground roast"
+   ],
+   [
+    "Aseeda",
+    "wheat porridge"
+   ],
+   [
+    "Harees",
+    "meat porridge"
+   ],
+   [
+    "Mishkak",
+    "grilled skewers"
+   ],
+   [
+    "Mukayyif",
+    "air conditioner"
+   ],
+   [
+    "Dreesha",
+    "window"
+   ],
+   [
+    "Dawwar",
+    "roundabout"
+   ],
+   [
+    "Dibs",
+    "date syrup"
+   ],
+   [
+    "Regag",
+    "thin bread"
+   ],
+   [
+    "Machboos",
+    "spiced rice"
+   ],
+   [
+    "Hammour",
+    "grouper fish"
+   ],
+   [
+    "Kandura",
+    "men's robe"
+   ],
+   [
+    "Karak",
+    "spiced tea"
+   ],
+   [
+    "Sawwi",
+    "make"
+   ],
+   [
+    "Dazz",
+    "send"
+   ],
+   [
+    "Wannasa",
+    "good company"
+   ],
+   [
+    "Alheen",
+    "now"
+   ]
+  ]
+ }
+}
