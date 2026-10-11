@@ -48,6 +48,7 @@ body.psymode .wrap{max-width:none;padding:0}
 #psyo .pseye{font:600 14px var(--ps-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ps-red)}
 #psyo .note{margin:0;font-size:15px;color:var(--ps-soft)}
 #psyo .psqr{background:#fff;padding:10px;width:fit-content;border:2px solid var(--ps-ink)}
+/* 6.73 (Omar): the link under the lobby code was removed from psych.js; to bring it back, add <div class="psurl">${esc(psUrl().replace(/^https?:\/\//, ""))}</div> after #psQr */
 #psyo .psurl{font:600 18px var(--ps-mono);word-break:break-all}
 #psyo .psnames{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
 #psyo .psnames button{width:100%;font:600 17px var(--ps-mono);text-align:left;padding:6px 10px;border:2px solid var(--ps-ink);background:#fff;color:var(--ps-ink);cursor:pointer}
@@ -111,6 +112,7 @@ body.impmode{min-height:100vh;background:#1d1f21}
 #impo .imeye{font:400 14px var(--im-typ);letter-spacing:.14em;text-transform:uppercase}
 #impo .note{margin:0;font-size:15px;color:#4a4636}
 #impo .imqr{background:#fff;padding:10px;width:fit-content;border:1px solid var(--im-edge)}
+/* 6.73 (Omar): the link under the lobby code was removed from imposter.js; to bring it back, add <div class="imurl">${esc(imUrl().replace(/^https?:\/\//, ""))}</div> after #imQr */
 #impo .imurl{font:700 18px var(--im-mono);word-break:break-all}
 #impo .imnames{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
 #impo .imnames button{width:100%;font:700 17px var(--im-mono);text-align:left;padding:6px 10px;border:1px solid var(--im-edge);background:#e9e3d0;color:var(--im-ink);cursor:pointer}
@@ -984,7 +986,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.72</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.73</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -1028,7 +1030,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.72</div>
+      <div class="eyebrow verlabel">v6.73</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

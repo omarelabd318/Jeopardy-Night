@@ -133,7 +133,7 @@ function psRender(){
       <div class="psgrid">
       <div class="pspanel">${off
         ? `<div class="pseye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "Psych runs on phones, which talk to the game through the Cloudflare link. Open the game from there to play it."}</p>`
-        : `<div class="pseye">Scan to join</div><div id="psQr" class="psqr"></div><div class="psurl">${esc(psUrl().replace(/^https?:\/\//, ""))}</div><p class="note">Everyone scans once and types their name. Keep the page open for the whole game.</p>`}</div>
+        : `<div class="pseye">Scan to join</div><div id="psQr" class="psqr"></div><p class="note">Everyone scans once and types their name. Keep the page open for the whole game.</p>`}</div>
       <div class="pspanel"><div class="pseye">Players · ${ps.length}</div>${ps.length ? `<ul class="psnames">${ps.map((p, i) => `<li><button data-kick="${i}" title="Remove ${esc(p.n)}">${esc(p.n)}</button></li>`).join("")}</ul><p class="note">Tap a name to remove that player.</p>` : `<p class="note">Waiting for players… you need at least 3. Five or more is best.</p>`}</div>
       <div class="pspanel"><div class="pseye">Clues per round</div>${psSeg("per", [2, 3, 4, 5, 6, 7, 8].map(n => [n, n]), c.per)}
         <p class="note">Round 1 pays 100 for each vote on your fake and 200 for finding the truth. Round 2 doubles that, with the same number of clues. The final is one clue at 400 and 800. ${c.per * 2 + 1} clues in all.</p>
