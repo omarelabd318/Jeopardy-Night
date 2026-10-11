@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Psych</title>
+<!-- 6.72: the Psych phone page, at /y?r=ROOM. A player joins once with a name, then each clue writes a fake answer (or taps Lie for me), then votes for the one they think is real.
+     Lie Detector look (Omar's pick): chart paper, mono type, red needle on a time-left bar. Every vote option looks the same, including the player's own, which only
+     says "That's your own answer" when tapped (so nobody can tell whose it is by glancing at a phone). Talks to /api (worker/index.js): join, psystate, psyfake, psylie, psyvote. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f3e8;--grid:#c9dcc8;--ink:#1e2a26;--red:#d2232a;--blue:#1f4fa8;--ok:#1f7a4d;--soft:#58625e;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--nar:"Archivo Narrow","Arial Narrow",sans-serif}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;color:var(--ink);font:16px/1.4 var(--mono);background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px}
+main{max-width:460px;margin:0 auto;padding:18px 16px 40px;display:grid;gap:12px}
+.top{display:flex;justify-content:space-between;gap:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--red)}
+h1{margin:4px 0 6px;font:700 28px/1.1 var(--nar)}
+.q{font:700 22px/1.25 var(--nar)}
+.prize{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+input{width:100%;font:600 18px var(--mono);padding:12px;border:2px solid var(--ink);border-radius:0;background:#fff;color:var(--ink)}
+button{font:inherit;cursor:pointer;border-radius:0}
+.send{width:100%;font:700 18px var(--nar);letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:0;padding:14px}
+.send:disabled{opacity:.5}
+.lie{width:100%;font:600 14px var(--mono);background:transparent;color:var(--red);border:2px dashed var(--red);padding:12px}
+.lie:disabled{opacity:.45}
+.msg{padding:10px 12px;border:2px solid var(--ink);background:#fff;font-size:14px}
+.msg.bad{border-color:var(--red);color:var(--red)}
+.hint{color:var(--soft);font-size:13px}
+.bar{position:relative;height:10px;border:2px solid var(--ink);background:rgba(255,255,255,.75);background-image:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),rgba(30,42,38,.35) calc(10% - 1px) 10%)}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--blue);opacity:.85}
+.bar u{position:absolute;top:-6px;bottom:-6px;width:3px;margin-left:-1px;background:var(--red)}
+.opt{display:block;width:100%;text-align:left;font:600 17px var(--mono);padding:13px 12px;border:2px solid var(--ink);background:#fff;color:var(--ink)}
+.opt.picked{background:var(--ink);color:var(--paper)}
+.opt:disabled{opacity:1;cursor:default}
+.opts{display:grid;gap:8px}
+.mine{padding:14px;border:2px solid var(--ink);background:#fff}
+.mine b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+.big{font:700 34px/1.1 var(--nar)}
+.pos{color:var(--ok)}.neg{color:var(--red)}
+.wait{text-align:center;padding:40px 0 10px}.wait .big{margin:10px 0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+</style></head><body><main>
+<div class="top"><span id="me"></span><span id="rnd"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_psy_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, stAt = 0, timer = null, tick = null, busy = false, sig = "", note = null, noteAt = 0, total = 0;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+const left = () => st && st.left != null ? Math.max(0, Math.round(st.left - (Date.now() - stAt) / 1000)) : null;
+const mmss = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full (30 players)." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("rnd").textContent = "";
+  $("view").innerHTML = `<div class="prize">Psych</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="send" id="jb" style="margin-top:12px">Join</button></form>
+    ${err ? `<div class="msg bad">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Each clue appears here.</p>`;
+  $("nm").focus();
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n); };
+}
+function bar(){ const l = left(); if(l == null) return ""; if(l > total) total = l; const pct = total ? Math.round(l / total * 100) : 0;
+  return `<div class="bar"><i id="bf" style="width:${pct}%"></i><u id="bn" style="left:${pct}%"></u></div>`; }
+function head(){ return `<div class="prize">Round ${esc(st.round === 3 ? "final" : st.round)} · clue ${st.nth} of ${st.of} · fool ${st.fool} · truth ${st.truth}</div>`; }
+const ord = n => { const x = ["th","st","nd","rd"], v = n % 100; return n + (x[(v - 20) % 10] || x[v] || x[0]); };
+const signs = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
+
+function draw(){
+  $("me").textContent = me.n;
+  if(!st || !st.phase || st.phase === "wait"){ $("rnd").textContent = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. The first clue will appear here.</div></div>`; return; }
+  $("rnd").textContent = st.phase === "over" ? "" : "Round " + (st.round === 3 ? "final" : st.round);
+  const sg = [st.phase, st.c, st.fake && st.fake.v, st.vote, st.score, st.options && st.options.map(o => o.id).join(), note].join("|");
+  if(sg === sig) return; sig = sg;
+  const v = $("view"), l = left();
+  if(st.phase === "write"){
+    if(st.fake){ v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div><div class="mine"><b>Your fake${st.fake.lie ? " (Lie for me)" : ""}</b><div class="big">${esc(st.fake.v)}</div></div><p class="hint">Sent. Waiting for everyone else…</p>`; return; }
+    v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div>
+      <form id="ff" autocomplete="off"><input id="fv" maxlength="40" enterkeyhint="send" placeholder="Type a believable fake"><button class="send" id="fb" style="margin-top:10px">Send</button></form>
+      <button class="lie" id="lb">Lie for me</button>${note ? `<div class="msg bad">${esc(note)}</div>` : ""}
+      <p class="hint">Write something they'll believe. A Lie for me fake pays half.</p>`;
+    $("ff").onsubmit = async e => { e.preventDefault(); const t = $("fv").value.trim(); if(!t) return; $("fb").disabled = true; $("lb").disabled = true;
+      const res = await post("psyfake", {p: me.p, c: st.c, v: t});
+      if(res.ok || res.j.error === "locked"){ note = null; poll(true); return; }
+      note = res.j.error === "truth" ? "That's the real answer! Write a fake instead." : res.j.error === "closed" ? "Too late, time is up." : "That didn't send. Try again."; sig = ""; draw(); };
+    $("lb").onclick = async () => { $("fb").disabled = true; $("lb").disabled = true;
+      const res = await post("psylie", {p: me.p, c: st.c});
+      if(res.ok || res.j.error === "locked"){ note = null; poll(true); return; }
+      note = res.j.error === "none" ? "No more ready-made fakes for this clue. Type your own." : "That didn't work. Try again."; sig = ""; draw(); };
+    return; }
+  if(st.phase === "vote"){
+    v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div><div class="prize">Which one is real?</div>
+      <div class="opts">${(st.options || []).map(o => `<button class="opt${st.vote === o.id ? " picked" : ""}" data-o="${esc(o.id)}" ${st.vote ? "disabled" : ""}>${esc(o.t)}</button>`).join("")}</div>
+      ${note ? `<div class="msg bad">${esc(note)}</div>` : ""}${st.vote ? `<p class="hint">Vote sent. Waiting for everyone else…</p>` : `<p class="hint">Tap the answer you think is true.</p>`}`;
+    v.querySelectorAll(".opt").forEach(b => b.onclick = async () => {
+      const o = (st.options || []).find(x => x.id === b.dataset.o); if(!o || st.vote) return;
+      if(o.mine){ note = "That's your own answer. Pick another."; sig = ""; draw(); return; }
+      v.querySelectorAll(".opt").forEach(x => x.disabled = true);
+      const res = await post("psyvote", {p: me.p, c: st.c, o: o.id});
+      if(res.ok || res.j.error === "locked"){ note = null; poll(true); return; }
+      note = res.j.error === "closed" ? "Too late, voting is over." : "That didn't send. Try again."; sig = ""; draw(); });
+    return; }
+  if(st.phase === "reveal"){ v.innerHTML = `${head()}<div class="wait"><div class="big">Look at the TV</div><div class="hint">The answers are being revealed.</div></div>`; return; }
+  if(st.phase === "scores"){
+    v.innerHTML = `${head()}<div class="q">${esc(st.q)}</div><div class="mine"><b>The real answer</b><div class="big">${esc(st.answer || "")}</div></div>
+      <div class="mine"><b>This clue</b><div class="big ${st.delta > 0 ? "pos" : st.delta < 0 ? "neg" : ""}">${st.delta == null ? "0" : signs(st.delta)}</div></div>
+      <div class="mine"><b>Your score · ${ord(st.rank)} of ${st.n}</b><div class="big ${st.score < 0 ? "neg" : ""}">${signs(st.score).replace(/^\+/, "")}</div></div>`; return; }
+  if(st.phase === "over"){
+    v.innerHTML = `<div class="wait"><div class="prize">Game over</div><div class="big">You finished ${ord(st.rank)}</div><div class="mine"><b>Final score</b><div class="big ${st.score < 0 ? "neg" : ""}">${signs(st.score).replace(/^\+/, "")}</div></div><p class="hint">Look at the TV for the podium.</p></div>`; return; }
+}
+function paint(){   // between polls: the seconds and the bar move every second
+  const l = left(); if(l == null || !st) return;
+  const bf = $("bf"), bn = $("bn"); if(bf && bn){ if(l > total) total = l; const pct = total ? Math.round(l / total * 100) : 0; bf.style.width = pct + "%"; bn.style.left = pct + "%"; }
+  const rn = $("rnd"); if(rn && (st.phase === "write" || st.phase === "vote")) rn.textContent = mmss(l);
+}
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/psystate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ if(!st || st.c !== j.c || st.phase !== j.phase){ total = 0; note = null; } st = j; stAt = Date.now(); draw(); paint(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 1500); tick = setInterval(paint, 1000); }
+if(!r) $("view").innerHTML = `<div class="msg bad">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>
