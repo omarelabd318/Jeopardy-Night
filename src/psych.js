@@ -120,7 +120,7 @@ const psSeg = (key, opts, cur) => `<div class="psseg">${opts.map(([v, t]) => `<b
 function psAnsHtml(){ const ph = PS.phase;
   return `<ul class="ans">${PS.opts.map((o, i) => { let cls = "", extra = "";
     if(ph === "reveal" || ph === "scores"){ const k = PS.order.indexOf(i), shown = ph === "scores" || k < PS.step;
-      if(shown){ const r = PS.res[o.id], who = o.truth ? "The truth" : o.house ? "House fake" : "by " + psNames(o.by.map(b => psName(b.p) + (b.lie ? " (Lie for me)" : ""))),
+      if(shown){ const r = PS.res[o.id], who = o.truth ? "The truth" : o.house ? "House lie" : "by " + psNames(o.by.map(b => psName(b.p) + (b.lie ? " (Lie for me)" : ""))),
           vt = r.voters.length ? "voted: " + psNames(r.voters.map(psName)) : "no votes", pts = r.voters.length ? ` · ${psSigned(r.pts)} each` : "";
         cls = o.truth ? " truth" : o.house ? " house" : " rev"; extra = `<small>${who}</small><small>${vt}${pts}</small>`; }
       else cls = " hid"; }
@@ -129,15 +129,15 @@ function psRender(){
   const el = $("#psBody"), ph = PS.phase;
   if(ph === "lobby"){ const ps = PS.players, c = PS.cfg, off = RELAY !== true;
     el.innerHTML = `<div class="pshead"><div class="psbadge">Party game</div><h1>Psych</h1>
-      <p class="sub">Everyone gets the same clue with a word missing. Type a fake answer on your phone, then vote for the one you think is real. Fool your friends to score, and find the truth to score more.</p></div>
+      <p class="sub">Everyone gets the same clue with a word missing. Write a believable lie on your phone, then vote for the one you think is real. Fool your friends to score, and find the truth to score more.</p></div>
       <div class="psgrid">
       <div class="pspanel">${off
         ? `<div class="pseye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "Psych runs on phones, which talk to the game through the Cloudflare link. Open the game from there to play it."}</p>`
         : `<div class="pseye">Scan to join</div><div id="psQr" class="psqr"></div><p class="note">Everyone scans once and types their name. Keep the page open for the whole game.</p>`}</div>
       <div class="pspanel"><div class="pseye">Players · ${ps.length}</div>${ps.length ? `<ul class="psnames">${ps.map((p, i) => `<li><button data-kick="${i}" title="Remove ${esc(p.n)}">${esc(p.n)}</button></li>`).join("")}</ul><p class="note">Tap a name to remove that player.</p>` : `<p class="note">Waiting for players… you need at least 3. Five or more is best.</p>`}</div>
       <div class="pspanel"><div class="pseye">Clues per round</div>${psSeg("per", [2, 3, 4, 5, 6, 7, 8].map(n => [n, n]), c.per)}
-        <p class="note">Round 1 pays 100 for each vote on your fake and 200 for finding the truth. Round 2 doubles that, with the same number of clues. The final is one clue at 400 and 800. ${c.per * 2 + 1} clues in all.</p>
-        <p class="note">Voting for a house fake (one the game wrote) costs you what a fool would have earned that round.</p>
+        <p class="note">Round 1 pays 100 for each vote on your lie and 200 for finding the truth. Round 2 doubles that, with the same number of clues. The final is one clue at 400 and 800. ${c.per * 2 + 1} clues in all.</p>
+        <p class="note">Voting for a house lie (one the game wrote) costs you what a fool would have earned that round.</p>
         <button class="psbtn go" id="psGo" ${ps.length < 3 || off ? "disabled" : ""}>Start</button></div>
       </div>`;
     const q = $("#psQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(PS.phase === "lobby" && !$("#psyo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
@@ -157,7 +157,7 @@ function psRender(){
     <div class="pstop"><span>${e.round === 3 ? "Final clue" : `Round ${e.round} · clue ${e.nth} of ${e.of}`}</span><span>Fool ${fool} · Truth ${fool * 2}</span></div>
     <div class="psq">${esc(e.clue.q).replace("____", blank)}</div>
     ${live ? `<div class="pstimer"><div class="track"><div class="fill" id="psFill"></div><div class="needle" id="psNeedle"></div></div></div>` : ""}
-    ${ph === "write" ? `<div class="pshint">Everyone is typing a believable fake on their phone.</div>` : PS.opts.length ? psAnsHtml() : ""}
+    ${ph === "write" ? `<div class="pshint">Everyone is writing a believable lie on their phone.</div>` : PS.opts.length ? psAnsHtml() : ""}
     <div class="psctl">${ctl}<span class="gap"></span><button class="psbtn ghost small" data-act="end">End game</button></div>
     <div class="psstrip" id="psStrip">${psStripHtml()}</div></div></div>`;
   psTick(); }
