@@ -6,7 +6,7 @@
 /* 6.71 (Omar): every mode button on the title screen gets its own font and colours, taken from that mode's own look, so the row reads as five different games.
    Bidding Wars: Trading Floor (black panel, amber LED digits in Share Tech Mono, square corners). Category Bingo: a navy bingo card in Bowlby One with the seven section colours as a stripe.
    Hot Seat: High Roller (green felt, cream Abril Fatface, red chip rim). Survival: Cairo Cinema Poster type (Lalezar, tilted, hard black shadow) on the violet Omar chose in 6.67.
-   Imposter keeps its 6.68 Case File button and gets a tilt like a stamped file. Each button carries its own background, so it reads the same on the blue title, in Football mode and in the Billboard look.
+   Imposter keeps its 6.68 Case File button, with a hard shadow and no tilt (Omar). Each button carries its own background, so it reads the same on the blue title, in Football mode and in the Billboard look.
    The #titleScreen #modeRow selectors are strong enough to beat the Billboard look's .btn rule.
    To undo: delete this block down to "end 6.71" and put back the old rules:
    .modebtn.survbtn{border-color:#bf9bff;color:#d8bfff} body.football .modebtn.survbtn{border-color:#5a1d8f;color:#5a1d8f}
@@ -18,10 +18,10 @@
 #titleScreen #modeRow .modebtn.bingobtn{font:400 18px "Bowlby One","Bebas Neue",Impact,sans-serif;letter-spacing:.04em;background:linear-gradient(90deg,#4DA3FF 0 14.3%,#FF8A4D 0 28.6%,#34D3A5 0 42.9%,#8FA4C4 0 57.1%,#FF6FA8 0 71.4%,#5FD068 0 85.7%,#A58BFF 0) bottom/100% 6px no-repeat,#10183f;border:2px solid #FFCC33;border-radius:14px;color:#fff;text-shadow:2px 2px 0 #000}
 #titleScreen #modeRow .modebtn.hsbtn{font:400 21px "Abril Fatface","Playfair Display",Georgia,serif;letter-spacing:.05em;text-transform:none;background:radial-gradient(circle at 50% 50%,#0f5a35,#0c4a2c 70%);border:3px dashed #f6ecd0;outline:3px solid #c0392b;outline-offset:-1px;border-radius:999px;color:#f6ecd0}
 #titleScreen #modeRow .modebtn.survbtn{font:400 23px "Lalezar","Alfa Slab One",Impact,sans-serif;letter-spacing:.04em;line-height:1.1;padding:8px 26px 6px;background:#6a2bb0;border:2.5px solid #1b1410;border-radius:4px;color:#ffe066;box-shadow:4px 4px 0 #1b1410;transform:rotate(-2deg)}
-#titleScreen #modeRow .modebtn.impbtn{background:#2a1a19;color:#e6e1d3;border-color:#c8281f;border-radius:3px;border-width:2px;transform:rotate(1.5deg);box-shadow:3px 3px 0 rgba(0,0,0,.45)}
+#titleScreen #modeRow .modebtn.impbtn{background:#2a1a19;color:#e6e1d3;border-color:#c8281f;border-radius:3px;border-width:2px;box-shadow:3px 3px 0 rgba(0,0,0,.45)}
 body.football #titleScreen #modeRow .modebtn.impbtn{background:#e6e1d3;color:#1d1f21}
 #titleScreen #modeRow .modebtn:hover{transform:translateY(-2px)}
-#titleScreen #modeRow .modebtn.survbtn:hover{transform:rotate(-2deg) translateY(-2px)} #titleScreen #modeRow .modebtn.impbtn:hover{transform:rotate(1.5deg) translateY(-2px)}
+#titleScreen #modeRow .modebtn.survbtn:hover{transform:rotate(-2deg) translateY(-2px)}
 /* end 6.71 */
 /* 6.68 (Omar): Imposter, Case File look (his pick of three previews: Case File, Surveillance, Police Lineup): charcoal, typewriter text, paper cards, red stamp.
    spy.html (the phones) uses the same palette. To remove: delete this block and the #impo section. */
