@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.70",
+  "date": "2026-10-11",
+  "items": [
+   "Category Bingo: square values are spread out now. The four corners are 400s, the edges are no longer all 100s and 200s, and every line is about as hard to win as any other. The pattern also flips or turns at random each game."
+  ]
+ },
+ {
   "v": "6.69",
   "date": "2026-10-11",
   "items": [
