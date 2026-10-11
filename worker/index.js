@@ -15,6 +15,9 @@
 //   GET  /api/state?r=ROOM&p=PLAYER     -> what the phone needs: {cur, closed, mine, score, rank, n, name}
 //   6.68: Imposter. POST /api/imp {r,imp:{round,phase,first,cards:{player:card},reveal?}} deals a round; GET /api/impcard?r&p -> only that player's card;
 //   POST /api/kick {r,p} removes a player. The phone page is /s (spy.html).
+//   6.72: Psych. The laptop posts the whole round as POST /api/psy {r,psy:{pub,priv}} (pub = what the phones may see, priv = the real answer's spellings and the ready-made fakes,
+//   never sent to a phone). Phones: GET /api/psystate?r&p -> the round for that player (options carry only a "mine" flag); POST /api/psyfake {r,p,c,v}, /api/psylie {r,p,c} ("Lie for me":
+//   the room hands out the next ready-made fake), /api/psyvote {r,p,c,o}. The laptop reads everyone's fakes and votes with GET /api/psyget?r&c. The phone page is /y (psych.html).
 //   Answers use /api/answer with k "ffa" and t = the player id.
 // 5.27: team games use the same page. A team's phones join once with their team number t, and /api/cur also carries
 //   mode ("ffa" or "teams") and the team names; /api/state?r&p&t answers for that team. The first answer a player
@@ -45,6 +48,23 @@ export class Room extends DurableObject {
       if (!me) return json({ name: null });
       if (!imp || !imp.cards || !imp.cards[p]) return json({ name: me.n, round: imp ? imp.round : 0, phase: "wait" });
       return json({ name: me.n, round: imp.round, phase: imp.phase, first: imp.first, card: imp.cards[p], reveal: imp.phase === "reveal" ? imp.reveal || null : null, n: Object.keys(players).length });
+    }
+    if (op === "psystate") {
+      const p = url.searchParams.get("p"), [players, psy, at, scores] = await Promise.all([st.get("players"), st.get("psy"), st.get("psyat"), st.get("psys")]);
+      const me = (players || {})[p];
+      if (!me) return json({ name: null });
+      if (!psy || !psy.pub) return json({ name: me.n, phase: "wait" });
+      const pub = psy.pub, c = pub.c, [pf, pv] = await Promise.all([st.get("pf:" + c), st.get("pv:" + c)]);
+      const sc = pub.scores || {}, mine = sc[p] ?? 0, left = pub.secs == null ? null : Math.max(0, Math.round(pub.secs - (Date.now() - (at || Date.now())) / 1000));
+      const f = (pf || {})[p] || null;
+      return json({ name: me.n, phase: pub.phase, c, round: pub.round, nth: pub.nth, of: pub.of, fool: pub.fool, truth: pub.truth, q: pub.q, left, secs: pub.secs ?? null,
+        options: pub.phase === "vote" ? (pub.options || []).map(o => ({ id: o.id, t: o.t, mine: (o.by || []).includes(p) })) : null,
+        fake: f ? { v: f.v, lie: !!f.lie } : null, vote: ((pv || {})[p]) || null, score: mine, rank: 1 + Object.values(sc).filter(v => v > mine).length, n: Object.keys(sc).length || Object.keys(players || {}).length,
+        delta: (pub.deltas || {})[p] ?? null, answer: pub.phase === "reveal" || pub.phase === "scores" ? pub.answer || null : null });
+    }
+    if (op === "psyget") {
+      const c = url.searchParams.get("c"), [players, pf, pv, lc] = await Promise.all([st.get("players"), st.get("pf:" + c), st.get("pv:" + c), st.get("pl:" + c)]);
+      return json({ players: Object.entries(players || {}).map(([p, v]) => ({ p, n: v.n, at: v.at })).sort((a, b) => a.at - b.at), fakes: pf || {}, votes: pv || {}, lies: lc || 0 });
     }
     if (op === "state") {
       const p = url.searchParams.get("p"), [players, cur, s, mode, teams, fb] = await Promise.all([st.get("players"), st.get("cur"), st.get("s"), st.get("mode"), st.get("teams"), st.get("fb")]);
@@ -77,6 +97,31 @@ export class Room extends DurableObject {
       await st.put("players", players);
       return json({ ok: true });
     }
+    if (op === "psy") { await Promise.all([st.put("psy", b.psy), st.put("psyat", Date.now()), b.psy.pub && b.psy.pub.scores ? st.put("psys", b.psy.pub.scores) : Promise.resolve()]); return json({ ok: true }); }
+    if (op === "psyfake" || op === "psylie" || op === "psyvote") {
+      const [players, psy] = await Promise.all([st.get("players"), st.get("psy")]), pub = psy && psy.pub;
+      if (!(players || {})[b.p]) return json({ ok: false, error: "unknown" }, 409);
+      if (!pub || pub.c !== b.c || pub.phase !== (op === "psyvote" ? "vote" : "write")) return json({ ok: false, error: "closed" }, 409);
+      if (op === "psyvote") {
+        const votes = (await st.get("pv:" + b.c)) || {};
+        if (votes[b.p]) return json({ ok: false, error: "locked", o: votes[b.p] }, 409);
+        const o = (pub.options || []).find(x => x.id === b.o);
+        if (!o) return json({ ok: false, error: "bad option" }, 400);
+        if ((o.by || []).includes(b.p)) return json({ ok: false, error: "own" }, 409);
+        votes[b.p] = b.o; await st.put("pv:" + b.c, votes); return json({ ok: true });
+      }
+      const fakes = (await st.get("pf:" + b.c)) || {};
+      if (fakes[b.p]) return json({ ok: false, error: "locked", v: fakes[b.p].v }, 409);
+      if (op === "psylie") {
+        const lies = (psy.priv && psy.priv.lies) || [], used = (await st.get("pl:" + b.c)) || 0;
+        if (used >= lies.length) return json({ ok: false, error: "none" }, 409);
+        await st.put("pl:" + b.c, used + 1); fakes[b.p] = { v: lies[used], lie: true, at: Date.now() };
+        await st.put("pf:" + b.c, fakes); return json({ ok: true, v: lies[used] });
+      }
+      const norm = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\u0600-\u06ff]+/g, "").replace(/^(the|a|an)(?=.)/, "");
+      if (((psy.priv && psy.priv.ans) || []).includes(norm(b.v))) return json({ ok: false, error: "truth" }, 409);
+      fakes[b.p] = { v: b.v, lie: false, at: Date.now() }; await st.put("pf:" + b.c, fakes); return json({ ok: true });
+    }
     if (op === "imp") { await st.put("imp", b.imp); return json({ ok: true }); }
     if (op === "kick") {
       const players = (await st.get("players")) || {};
@@ -99,6 +144,7 @@ export class Room extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === "/y") return env.ASSETS.fetch(new Request(new URL("/psych" + url.search, url), req));  // 6.72: Psych phone page
     if (url.pathname === "/s") return env.ASSETS.fetch(new Request(new URL("/spy" + url.search, url), req));  // 6.68: Imposter phone page
     if (url.pathname === "/a") return env.ASSETS.fetch(new Request(new URL("/answer" + url.search, url), req));
     if (url.pathname === "/p") return env.ASSETS.fetch(new Request(new URL("/play" + url.search, url), req));  // 5.26: free-for-all phone page
@@ -106,14 +152,14 @@ export default {
     const op = url.pathname.slice(5);
     if (op === "ping") return json({ ok: true });
     const room = r => env.ROOMS.get(env.ROOMS.idFromName(r));
-    if (req.method === "GET" && ["answers", "meta", "players", "state", "impcard"].includes(op)) {
+    if (req.method === "GET" && ["answers", "meta", "players", "state", "impcard", "psystate", "psyget"].includes(op)) {
       const r = url.searchParams.get("r"), c = url.searchParams.get("c"), p = url.searchParams.get("p");
       if (!ROOM.test(r || "")) return json({ ok: false, error: "bad room" }, 400);
-      if ((op === "answers" || op === "meta") && !CLUE.test(c || "")) return json({ ok: false, error: "bad clue" }, 400);
-      if ((op === "state" || op === "impcard") && !ROOM.test(p || "")) return json({ ok: false, error: "bad player" }, 400);
-      return room(r).fetch(new Request("https://room/" + op + "?" + new URLSearchParams(op === "state" || op === "impcard" ? { p } : { c: c || "" })));
+      if ((op === "answers" || op === "meta" || op === "psyget") && !CLUE.test(c || "")) return json({ ok: false, error: "bad clue" }, 400);
+      if ((op === "state" || op === "impcard" || op === "psystate") && !ROOM.test(p || "")) return json({ ok: false, error: "bad player" }, 400);
+      return room(r).fetch(new Request("https://room/" + op + "?" + new URLSearchParams(op === "state" || op === "impcard" || op === "psystate" ? { p } : { c: c || "" })));
     }
-    if (req.method !== "POST" || !["answer", "close", "meta", "join", "cur", "imp", "kick"].includes(op)) return json({ ok: false }, 404);
+    if (req.method !== "POST" || !["answer", "close", "meta", "join", "cur", "imp", "kick", "psy", "psyfake", "psylie", "psyvote"].includes(op)) return json({ ok: false }, 404);
     let b; try { b = await req.json(); } catch (e) { return json({ ok: false, error: "bad json" }, 400); }
     const r = b.r, c = b.c;
     if (!ROOM.test(r || "")) return json({ ok: false, error: "bad room" }, 400);
@@ -135,6 +181,14 @@ export default {
       const i = b.imp;
       if (!i || typeof i !== "object" || JSON.stringify(i).length > 24000 || !i.cards || typeof i.cards !== "object") return json({ ok: false, error: "bad deal" }, 400);
       b = { imp: i };
+    } else if (op === "psy") {
+      const i = b.psy;
+      if (!i || typeof i !== "object" || JSON.stringify(i).length > 24000 || !i.pub || typeof i.pub !== "object" || !CLUE.test(i.pub.c || "")) return json({ ok: false, error: "bad round" }, 400);
+      b = { psy: i };
+    } else if (op === "psyfake" || op === "psylie" || op === "psyvote") {
+      const p = String(b.p || ""), cc = String(b.c || ""), v = String(b.v ?? "").trim().replace(/\s+/g, " ").slice(0, 40), o = String(b.o ?? "").slice(0, 8);
+      if (!ROOM.test(p) || !CLUE.test(cc) || (op === "psyfake" && !v) || (op === "psyvote" && !o)) return json({ ok: false, error: "bad request" }, 400);
+      b = { p, c: cc, v, o };
     } else if (op === "kick") {
       const p = String(b.p || "");
       if (!ROOM.test(p)) return json({ ok: false, error: "bad player" }, 400);
