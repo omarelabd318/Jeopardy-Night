@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Imposter</title>
+<!-- 6.68: the Imposter phone page, at /s?r=ROOM. A player joins once with a name, then gets a covered card each round: hold it to look, let go to hide it.
+     Every card has the same look. The imposter's card is the same layout and colours with random letters instead of the real words
+     (the random letters are redrawn each time the card is shown). Talks to /api (worker/index.js): join, impcard. Case File look. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1d1f21;--paper:#d8d2bf;--ink:#1d1f21;--edge:#8c8670;--stamp:#c8281f;--text:#e6e1d3;--muted:#a9a38e;--typ:"Special Elite","Courier Prime",Courier,monospace;--mono:"Courier Prime",Courier,monospace}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font:17px/1.45 var(--mono);-webkit-user-select:none;user-select:none}
+main{max-width:460px;margin:0 auto;padding:18px 16px 40px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px;font-family:var(--typ)}
+.eyebrow{font:13px var(--typ);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.me{font-family:var(--typ)}
+h1{margin:4px 0 14px;font:400 28px/1.15 var(--typ)}
+input{width:100%;font:inherit;font-size:22px;padding:14px;border:2px solid var(--edge);background:var(--paper);color:var(--ink);border-radius:2px;-webkit-user-select:text;user-select:text}
+.go{width:100%;margin-top:16px;font:400 20px var(--typ);letter-spacing:.14em;text-transform:uppercase;padding:15px;border:0;background:var(--stamp);color:#f4efe0;border-radius:2px}
+.go:disabled{opacity:.5}
+.msg{margin-top:16px;padding:12px 14px;border:1px solid var(--edge);background:#2a2c2e}
+.hint{color:var(--muted);font-size:15px;margin-top:14px}
+.wait{text-align:center;padding:40px 0 10px}.wait .big{font:400 24px var(--typ);margin:10px 0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--stamp);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+/* the card: paper with a dark rim, covered by a stamp until held */
+.card{position:relative;background:var(--paper);color:var(--ink);border:1px solid var(--edge);box-shadow:0 0 0 5px var(--bg),0 0 0 6px #5b5848;min-height:340px;padding:18px 16px;display:flex;flex-direction:column;touch-action:none;cursor:pointer}
+.card .who{font:13px var(--typ);opacity:.7;margin-bottom:12px}
+.card .lang{font:400 15px var(--typ);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.card .w{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid #9c967f}
+.card .w b{font-size:20px}
+.card .big{font:400 30px/1.15 var(--typ);text-align:center;margin:44px 0 10px;word-break:break-word}
+.card .sub{margin-top:auto;padding-top:16px;text-align:center;font-size:14px;opacity:.85}
+.card .cover{position:absolute;inset:0;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
+.card .cover .stamp{font:400 28px var(--typ);letter-spacing:.12em;color:var(--stamp);border:3px solid var(--stamp);padding:6px 16px;transform:rotate(-4deg)}
+.card .cover .tap{font-size:16px;color:var(--ink);opacity:.8}
+.first{margin-top:16px;text-align:center;font-family:var(--typ);color:var(--text)}
+.first b{color:#fff}
+.revealbox{margin-top:18px;border:1px solid var(--edge);padding:12px 14px;background:#2a2c2e}
+.revealbox .t{font:13px var(--typ);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+</style></head><body><main>
+<div class="top"><span class="me" id="me"></span><span class="eyebrow" id="round"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_imp_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, busy = false, shownRound = -1, holding = false;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(body)}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+/* random letters the same shape as the text (spaces and punctuation stay), first letter capital if the original had one */
+function scramble(t){ const V = "aeiou", C = "bcdfghjklmnprstvwyz"; return String(t).replace(/[A-Za-z]/g, (ch, i) => { const up = /[A-Z]/.test(ch), pool = i % 2 ? V : C, x = pool[Math.floor(Math.random() * pool.length)]; return up ? x.toUpperCase() : x; }); }
+const shape = (c, t) => c.fake ? scramble(t) : t;
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {r, p, n});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} shownRound = -1; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full (30 players)." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("round").textContent = "";
+  $("view").innerHTML = `<div class="eyebrow">Imposter</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="go" id="jb">Join</button></form>
+    ${err ? `<div class="msg">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your card appears here each round.</p>`;
+  $("nm").focus();
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n); };
+}
+function cardHtml(c){
+  const rows = (c.rows || []).map(w => `<div class="w"><b>${esc(shape(c, w[0]))}</b><span>${esc(shape(c, w[1]))}</span></div>`).join("");
+  return `<div class="who">${esc(me.n)}</div>${c.title ? `<div class="lang">${esc(c.ft ? scramble(c.title) : c.title)}</div>` : ""}${rows}${c.big ? `<div class="big">${esc(shape(c, c.big))}</div>` : ""}<div class="sub">${(c.sub || []).map(esc).join("<br>")}</div>`;
+}
+function draw(){
+  $("me").textContent = me.n;
+  const c = st && st.card;
+  if(!c){ $("round").textContent = ""; shownRound = -1;
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to deal. Your card will appear here.</div></div>`; return; }
+  $("round").textContent = "Round " + st.round;
+  if(st.round === shownRound && $("card")) { revealUpdate(); return; }   // keep the card as it is
+  shownRound = st.round; holding = false;
+  $("view").innerHTML = `<div class="card" id="card"><div class="cover" id="cover"><div class="stamp">CLASSIFIED</div><div class="tap">Hold to see your card.<br>Let go to hide it.</div></div><div id="face" hidden></div></div>
+    <div class="first">${st.first ? `<b>${esc(st.first)}</b> goes first` : ""}</div><div id="rv"></div><p class="hint">Don't show your screen. Say your word out loud when it's your turn.</p>`;
+  const card = $("card"), face = $("face"), cover = $("cover");
+  const show = e => { e.preventDefault(); holding = true; face.innerHTML = cardHtml(st.card); face.hidden = false; cover.hidden = true; };
+  const hide = () => { holding = false; face.hidden = true; face.innerHTML = ""; cover.hidden = false; };
+  card.addEventListener("pointerdown", show); ["pointerup", "pointercancel", "pointerleave"].forEach(ev => card.addEventListener(ev, hide));
+  card.addEventListener("contextmenu", e => e.preventDefault());
+  revealUpdate();
+}
+function revealUpdate(){
+  const rv = $("rv"); if(!rv) return;
+  rv.innerHTML = st.reveal ? `<div class="revealbox"><div class="t">Revealed</div>${(st.reveal.lines || []).map(l => `<div>${esc(l)}</div>`).join("")}</div>` : "";
+}
+document.addEventListener("visibilitychange", () => { if(document.hidden && holding){ const f = $("face"), c = $("cover"); if(f && c){ f.hidden = true; f.innerHTML = ""; c.hidden = false; holding = false; } } else if(!document.hidden && me && timer) poll(); });
+
+async function poll(){
+  if(busy || document.hidden) return; busy = true;
+  try{ const j = await (await fetch(`api/impcard?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ st = j; if(!holding) draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 2000); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

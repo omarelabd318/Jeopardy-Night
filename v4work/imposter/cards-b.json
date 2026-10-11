@@ -1,0 +1,708 @@
+{
+"Football": [
+[
+"Mohamed Salah",
+"Premier League",
+"Player"
+],
+[
+"Mohamed Aboutrika",
+"Egypt",
+"Player"
+],
+[
+"Mido",
+"Egypt",
+"Player"
+],
+[
+"Zizo",
+"Egypt",
+"Player"
+],
+[
+"Trezeguet",
+"Egypt",
+"Player"
+],
+[
+"Ramadan Sobhy",
+"Egypt",
+"Player"
+],
+[
+"Omar Marmoush",
+"Premier League",
+"Player"
+],
+[
+"Cristiano Ronaldo",
+"Portugal",
+"Player"
+],
+[
+"Lionel Messi",
+"Argentina",
+"Player"
+],
+[
+"Zinedine Zidane",
+"France",
+"Player"
+],
+[
+"Ronaldinho",
+"Brazil",
+"Player"
+],
+[
+"Hossam Ghaly",
+"Egypt",
+"Player"
+],
+[
+"Ahmed Hassan",
+"Egypt",
+"Player"
+],
+[
+"Essam El Hadary",
+"Egypt",
+"Player"
+],
+[
+"Kylian Mbappe",
+"France",
+"Player"
+],
+[
+"Erling Haaland",
+"Premier League",
+"Player"
+],
+[
+"Neymar",
+"Brazil",
+"Player"
+],
+[
+"Luka Modric",
+"Croatia",
+"Player"
+],
+[
+"Karim Benzema",
+"France",
+"Player"
+],
+[
+"Diego Maradona",
+"Argentina",
+"Player"
+],
+[
+"Pele",
+"Brazil",
+"Player"
+],
+[
+"Zlatan Ibrahimovic",
+"Sweden",
+"Player"
+],
+[
+"Thierry Henry",
+"Premier League",
+"Player"
+],
+[
+"Mostafa Mohamed",
+"Egypt",
+"Player"
+],
+[
+"Al Ahly",
+"Egypt",
+"Team"
+],
+[
+"Zamalek",
+"Egypt",
+"Team"
+],
+[
+"Real Madrid",
+"La Liga",
+"Team"
+],
+[
+"Barcelona",
+"La Liga",
+"Team"
+],
+[
+"Liverpool",
+"Premier League",
+"Team"
+],
+[
+"Manchester United",
+"Premier League",
+"Team"
+],
+[
+"Manchester City",
+"Premier League",
+"Team"
+],
+[
+"Arsenal",
+"Premier League",
+"Team"
+],
+[
+"Chelsea",
+"Premier League",
+"Team"
+],
+[
+"Bayern Munich",
+"Bundesliga",
+"Team"
+],
+[
+"Juventus",
+"Serie A",
+"Team"
+],
+[
+"AC Milan",
+"Serie A",
+"Team"
+],
+[
+"PSG",
+"Ligue 1",
+"Team"
+],
+[
+"Egypt national team",
+"Africa",
+"Team"
+],
+[
+"Brazil",
+"South America",
+"Team"
+],
+[
+"Argentina",
+"South America",
+"Team"
+],
+[
+"Pyramids FC",
+"Egypt",
+"Team"
+],
+[
+"Atletico Madrid",
+"La Liga",
+"Team"
+],
+[
+"Pep Guardiola",
+"Premier League",
+"Manager"
+],
+[
+"Carlo Ancelotti",
+"Italy",
+"Manager"
+],
+[
+"Jurgen Klopp",
+"Germany",
+"Manager"
+],
+[
+"Jose Mourinho",
+"Portugal",
+"Manager"
+],
+[
+"Alex Ferguson",
+"Premier League",
+"Manager"
+],
+[
+"Hassan Shehata",
+"Egypt",
+"Manager"
+],
+[
+"Hossam Hassan",
+"Egypt",
+"Manager"
+],
+[
+"Arsene Wenger",
+"Premier League",
+"Manager"
+],
+[
+"Diego Simeone",
+"La Liga",
+"Manager"
+],
+[
+"Hansi Flick",
+"Germany",
+"Manager"
+],
+[
+"Hector Cuper",
+"Argentina",
+"Manager"
+],
+[
+"Luis Enrique",
+"Spain",
+"Manager"
+]
+],
+"Egyptian food": [
+[
+"Koshari",
+"Savoury"
+],
+[
+"Feteer",
+"Savoury"
+],
+[
+"Mahshi",
+"Savoury"
+],
+[
+"Molokhia",
+"Savoury"
+],
+[
+"Ful",
+"Breakfast"
+],
+[
+"Ta'ameya",
+"Breakfast"
+],
+[
+"Basbousa",
+"Sweet"
+],
+[
+"Kunafa",
+"Sweet"
+],
+[
+"Hawawshi",
+"Street food"
+],
+[
+"Sayadiya",
+"Savoury"
+],
+[
+"Fatta",
+"Savoury"
+],
+[
+"Om Ali",
+"Sweet"
+],
+[
+"Karkade",
+"Drink"
+],
+[
+"Sobia",
+"Drink"
+],
+[
+"Asab",
+"Drink"
+],
+[
+"Kebda",
+"Street food"
+],
+[
+"Roz Bel Laban",
+"Sweet"
+],
+[
+"Betengan",
+"Savoury"
+],
+[
+"Bamya",
+"Savoury"
+],
+[
+"Shakshuka",
+"Breakfast"
+],
+[
+"Baba Ghanoush",
+"Savoury"
+],
+[
+"Konafa Bel Mango",
+"Sweet"
+],
+[
+"Zalabia",
+"Sweet"
+],
+[
+"Balah El Sham",
+"Sweet"
+],
+[
+"Lugmet El Qadi",
+"Sweet"
+],
+[
+"Qatayef",
+"Sweet"
+],
+[
+"Mombar",
+"Street food"
+],
+[
+"Fesikh",
+"Savoury"
+],
+[
+"Torly",
+"Savoury"
+],
+[
+"Kofta",
+"Savoury"
+],
+[
+"Kawarea",
+"Savoury"
+],
+[
+"Gebna Romi",
+"Breakfast"
+],
+[
+"Eish Baladi",
+"Savoury"
+],
+[
+"Tamr Hindi",
+"Drink"
+],
+[
+"Erk Sous",
+"Drink"
+],
+[
+"Sahlab",
+"Drink"
+],
+[
+"Termis",
+"Street food"
+],
+[
+"Batata Mashwi",
+"Street food"
+],
+[
+"Zorra Mashwi",
+"Street food"
+],
+[
+"Libb",
+"Street food"
+],
+[
+"Mesaa'a'a",
+"Savoury"
+],
+[
+"Aish El Saraya",
+"Sweet"
+],
+[
+"Hamam Mahshi",
+"Savoury"
+],
+[
+"Macarona Bechamel",
+"Savoury"
+],
+[
+"Kobeiba",
+"Savoury"
+]
+],
+"Food and drinks": [
+[
+"Sushi",
+"Japanese",
+"Food"
+],
+[
+"Burger",
+"Fast food",
+"Food"
+],
+[
+"Shawarma",
+"Street food",
+"Food"
+],
+[
+"Pizza",
+"Italian",
+"Food"
+],
+[
+"Ramen",
+"Japanese",
+"Food"
+],
+[
+"Tacos",
+"Mexican",
+"Food"
+],
+[
+"Pasta",
+"Italian",
+"Food"
+],
+[
+"Fried chicken",
+"Fast food",
+"Food"
+],
+[
+"Hot dog",
+"Fast food",
+"Food"
+],
+[
+"French fries",
+"Side dish",
+"Food"
+],
+[
+"Lasagna",
+"Italian",
+"Food"
+],
+[
+"Falafel",
+"Middle Eastern",
+"Food"
+],
+[
+"Hummus",
+"Middle Eastern",
+"Food"
+],
+[
+"Pancakes",
+"Breakfast",
+"Food"
+],
+[
+"Waffles",
+"Breakfast",
+"Food"
+],
+[
+"Croissant",
+"French",
+"Food"
+],
+[
+"Steak",
+"Grilled",
+"Food"
+],
+[
+"Cheesecake",
+"Dessert",
+"Food"
+],
+[
+"Ice cream",
+"Dessert",
+"Food"
+],
+[
+"Tiramisu",
+"Dessert",
+"Food"
+],
+[
+"Brownie",
+"Dessert",
+"Food"
+],
+[
+"Donut",
+"Dessert",
+"Food"
+],
+[
+"Nachos",
+"Mexican",
+"Food"
+],
+[
+"Burrito",
+"Mexican",
+"Food"
+],
+[
+"Paella",
+"Spanish",
+"Food"
+],
+[
+"Pad Thai",
+"Thai",
+"Food"
+],
+[
+"Fish and chips",
+"British",
+"Food"
+],
+[
+"Caesar salad",
+"Salad",
+"Food"
+],
+[
+"Mac and cheese",
+"American",
+"Food"
+],
+[
+"Chicken wings",
+"Fast food",
+"Food"
+],
+[
+"Mango juice",
+"Tropical",
+"Drink"
+],
+[
+"Iced latte",
+"Coffee",
+"Drink"
+],
+[
+"Cappuccino",
+"Hot drink",
+"Drink"
+],
+[
+"Lemon mint",
+"Refreshing",
+"Drink"
+],
+[
+"Pepsi",
+"Soda",
+"Drink"
+],
+[
+"Coca-Cola",
+"Soda",
+"Drink"
+],
+[
+"Espresso",
+"Coffee",
+"Drink"
+],
+[
+"Hot chocolate",
+"Hot drink",
+"Drink"
+],
+[
+"Orange juice",
+"Fresh juice",
+"Drink"
+],
+[
+"Milkshake",
+"Cold drink",
+"Drink"
+],
+[
+"Bubble tea",
+"Taiwanese",
+"Drink"
+],
+[
+"Matcha latte",
+"Japanese",
+"Drink"
+],
+[
+"Green tea",
+"Hot drink",
+"Drink"
+],
+[
+"Smoothie",
+"Fruit",
+"Drink"
+],
+[
+"Strawberry juice",
+"Fresh juice",
+"Drink"
+],
+[
+"Red Bull",
+"Energy drink",
+"Drink"
+],
+[
+"Sprite",
+"Soda",
+"Drink"
+],
+[
+"Iced coffee",
+"Coffee",
+"Drink"
+],
+[
+"Guava juice",
+"Fresh juice",
+"Drink"
+],
+[
+"Frappuccino",
+"Coffee",
+"Drink"
+]
+]
+}

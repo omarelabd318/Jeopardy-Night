@@ -1,0 +1,730 @@
+{
+"Movies": [
+[
+"Inception",
+"International"
+],
+[
+"Titanic",
+"International"
+],
+[
+"The Lion King",
+"International"
+],
+[
+"Avatar",
+"International"
+],
+[
+"The Dark Knight",
+"International"
+],
+[
+"Avengers: Endgame",
+"International"
+],
+[
+"Frozen",
+"International"
+],
+[
+"Toy Story",
+"International"
+],
+[
+"Shrek",
+"International"
+],
+[
+"Jurassic Park",
+"International"
+],
+[
+"The Matrix",
+"International"
+],
+[
+"Gladiator",
+"International"
+],
+[
+"Fast and Furious",
+"International"
+],
+[
+"Harry Potter",
+"International"
+],
+[
+"Star Wars",
+"International"
+],
+[
+"Spider-Man",
+"International"
+],
+[
+"Finding Nemo",
+"International"
+],
+[
+"The Godfather",
+"International"
+],
+[
+"Forrest Gump",
+"International"
+],
+[
+"Interstellar",
+"International"
+],
+[
+"Joker",
+"International"
+],
+[
+"Home Alone",
+"International"
+],
+[
+"Pirates of the Caribbean",
+"International"
+],
+[
+"Black Panther",
+"International"
+],
+[
+"Aladdin",
+"International"
+],
+[
+"Saidi fi el Gamaa el Amrikia",
+"Egyptian"
+],
+[
+"Hamam fi Amsterdam",
+"Egyptian"
+],
+[
+"Asfour Stah",
+"Egyptian"
+],
+[
+"Ibn Hamido",
+"Egyptian"
+],
+[
+"Terrorism and Kebab",
+"Egyptian"
+],
+[
+"Welad Rizk",
+"Egyptian"
+],
+[
+"El Limby",
+"Egyptian"
+],
+[
+"El Gezira",
+"Egyptian"
+],
+[
+"Keda Reda",
+"Egyptian"
+],
+[
+"Ramadan Mabrouk Abu El Alamein Hamouda",
+"Egyptian"
+],
+[
+"Africano",
+"Egyptian"
+],
+[
+"Mido Mashakel",
+"Egyptian"
+],
+[
+"Tito",
+"Egyptian"
+],
+[
+"Gaaly",
+"Egyptian"
+],
+[
+"Hena Maysara",
+"Egyptian"
+],
+[
+"El Tagroba El Denmarkeya",
+"Egyptian"
+],
+[
+"Bekhit we Adeela",
+"Egyptian"
+],
+[
+"Harameya fi KG2",
+"Egyptian"
+],
+[
+"El Fil El Azrak",
+"Egyptian"
+],
+[
+"El Nazer",
+"Egyptian"
+]
+],
+"TV shows": [
+[
+"Friends",
+"International"
+],
+[
+"Breaking Bad",
+"International"
+],
+[
+"Money Heist",
+"International"
+],
+[
+"Game of Thrones",
+"International"
+],
+[
+"Stranger Things",
+"International"
+],
+[
+"The Office",
+"International"
+],
+[
+"Squid Game",
+"International"
+],
+[
+"Peaky Blinders",
+"International"
+],
+[
+"How I Met Your Mother",
+"International"
+],
+[
+"The Big Bang Theory",
+"International"
+],
+[
+"Prison Break",
+"International"
+],
+[
+"Narcos",
+"International"
+],
+[
+"Dark",
+"International"
+],
+[
+"Sherlock",
+"International"
+],
+[
+"The Simpsons",
+"International"
+],
+[
+"Family Guy",
+"International"
+],
+[
+"South Park",
+"International"
+],
+[
+"Black Mirror",
+"International"
+],
+[
+"Vikings",
+"International"
+],
+[
+"The Witcher",
+"International"
+],
+[
+"Wednesday",
+"International"
+],
+[
+"Seinfeld",
+"International"
+],
+[
+"Lucifer",
+"International"
+],
+[
+"Brooklyn Nine-Nine",
+"International"
+],
+[
+"Better Call Saul",
+"International"
+],
+[
+"El Kebeer Awi",
+"Egyptian"
+],
+[
+"Ayez Atgawez",
+"Egyptian"
+],
+[
+"Layali El Helmeya",
+"Egyptian"
+],
+[
+"Raafat El Haggan",
+"Egyptian"
+],
+[
+"Zizinia",
+"Egyptian"
+],
+[
+"El Ekhteyar",
+"Egyptian"
+],
+[
+"El Hayba",
+"Egyptian"
+],
+[
+"El Ostoura",
+"Egyptian"
+],
+[
+"Taht El Saytara",
+"Egyptian"
+],
+[
+"Bab El Khalq",
+"Egyptian"
+],
+[
+"El Gama'a",
+"Egyptian"
+],
+[
+"Kalabsh",
+"Egyptian"
+],
+[
+"Gaafar El Omda",
+"Egyptian"
+],
+[
+"Fawazeer Ramadan",
+"Egyptian"
+],
+[
+"Hadouta Masreya",
+"Egyptian"
+],
+[
+"Abla Fahita",
+"Egyptian"
+],
+[
+"Al Malek Farouk",
+"Egyptian"
+],
+[
+"Ramez Majnoon Rasmi",
+"Egyptian"
+],
+[
+"Lahazat Harega",
+"Egyptian"
+],
+[
+"Wala Ala Bali",
+"Egyptian"
+]
+],
+"Places": [
+[
+"Khan el-Khalili",
+"In Egypt"
+],
+[
+"Dahab",
+"In Egypt"
+],
+[
+"Siwa Oasis",
+"In Egypt"
+],
+[
+"Zamalek",
+"In Egypt"
+],
+[
+"Alexandria Library",
+"In Egypt"
+],
+[
+"Sahel",
+"In Egypt"
+],
+[
+"Ain Sokhna",
+"In Egypt"
+],
+[
+"Giza Pyramids",
+"In Egypt"
+],
+[
+"Sharm El Sheikh",
+"In Egypt"
+],
+[
+"Hurghada",
+"In Egypt"
+],
+[
+"Luxor Temple",
+"In Egypt"
+],
+[
+"Abu Simbel",
+"In Egypt"
+],
+[
+"Cairo Tower",
+"In Egypt"
+],
+[
+"Qaitbay Citadel",
+"In Egypt"
+],
+[
+"Tahrir Square",
+"In Egypt"
+],
+[
+"Egyptian Museum",
+"In Egypt"
+],
+[
+"Mount Sinai",
+"In Egypt"
+],
+[
+"Fayoum",
+"In Egypt"
+],
+[
+"Marsa Alam",
+"In Egypt"
+],
+[
+"El Gouna",
+"In Egypt"
+],
+[
+"Maadi",
+"In Egypt"
+],
+[
+"Karnak Temple",
+"In Egypt"
+],
+[
+"Times Square",
+"North America"
+],
+[
+"Eiffel Tower",
+"Europe"
+],
+[
+"Burj Khalifa",
+"Asia"
+],
+[
+"Statue of Liberty",
+"North America"
+],
+[
+"Big Ben",
+"Europe"
+],
+[
+"Colosseum",
+"Europe"
+],
+[
+"Taj Mahal",
+"Asia"
+],
+[
+"Great Wall of China",
+"Asia"
+],
+[
+"Machu Picchu",
+"South America"
+],
+[
+"Disneyland",
+"North America"
+],
+[
+"Camp Nou",
+"Europe"
+],
+[
+"Old Trafford",
+"Europe"
+],
+[
+"Santorini",
+"Europe"
+],
+[
+"Maldives",
+"Asia"
+],
+[
+"Grand Canyon",
+"North America"
+],
+[
+"Sydney Opera House",
+"Oceania"
+],
+[
+"Niagara Falls",
+"North America"
+],
+[
+"Christ the Redeemer",
+"South America"
+],
+[
+"Hagia Sophia",
+"Asia"
+],
+[
+"Las Vegas Strip",
+"North America"
+],
+[
+"Petra",
+"Asia"
+],
+[
+"Buckingham Palace",
+"Europe"
+],
+[
+"Mount Everest",
+"Asia"
+]
+],
+"Countries": [
+[
+"France",
+"Europe"
+],
+[
+"Italy",
+"Europe"
+],
+[
+"Spain",
+"Europe"
+],
+[
+"Germany",
+"Europe"
+],
+[
+"United Kingdom",
+"Europe"
+],
+[
+"Greece",
+"Europe"
+],
+[
+"Turkey",
+"Europe"
+],
+[
+"Portugal",
+"Europe"
+],
+[
+"Netherlands",
+"Europe"
+],
+[
+"Switzerland",
+"Europe"
+],
+[
+"Russia",
+"Europe"
+],
+[
+"Sweden",
+"Europe"
+],
+[
+"Ireland",
+"Europe"
+],
+[
+"Japan",
+"Asia"
+],
+[
+"China",
+"Asia"
+],
+[
+"India",
+"Asia"
+],
+[
+"Saudi Arabia",
+"Asia"
+],
+[
+"United Arab Emirates",
+"Asia"
+],
+[
+"Lebanon",
+"Asia"
+],
+[
+"South Korea",
+"Asia"
+],
+[
+"Thailand",
+"Asia"
+],
+[
+"Qatar",
+"Asia"
+],
+[
+"Jordan",
+"Asia"
+],
+[
+"Indonesia",
+"Asia"
+],
+[
+"Egypt",
+"Africa"
+],
+[
+"Morocco",
+"Africa"
+],
+[
+"South Africa",
+"Africa"
+],
+[
+"Kenya",
+"Africa"
+],
+[
+"Nigeria",
+"Africa"
+],
+[
+"Sudan",
+"Africa"
+],
+[
+"Libya",
+"Africa"
+],
+[
+"Tunisia",
+"Africa"
+],
+[
+"Ethiopia",
+"Africa"
+],
+[
+"Algeria",
+"Africa"
+],
+[
+"United States",
+"North America"
+],
+[
+"Canada",
+"North America"
+],
+[
+"Mexico",
+"North America"
+],
+[
+"Cuba",
+"North America"
+],
+[
+"Brazil",
+"South America"
+],
+[
+"Argentina",
+"South America"
+],
+[
+"Colombia",
+"South America"
+],
+[
+"Chile",
+"South America"
+],
+[
+"Peru",
+"South America"
+],
+[
+"Australia",
+"Oceania"
+],
+[
+"New Zealand",
+"Oceania"
+]
+]
+}

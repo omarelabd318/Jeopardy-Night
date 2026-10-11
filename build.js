@@ -15,8 +15,11 @@ if(extra.apply) extra.apply({CATS,DATA,F,ACT,AR});
 // keep only flags that are used
 const FLAGCODE=Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync(W+'/flag-codes.json','utf8'))).filter(([id,c])=>fs.existsSync(`photos/flags/${c}.svg`)));   // 6.19
 const J=x=>JSON.stringify(x);
+const IMPDATA=(()=>{const d=W+'/imposter',o={langs:{},cats:{}};if(!fs.existsSync(d))return o;   // 6.68: Imposter words: lang-*.json {Language:{hint,words:[[word,meaning]]}}, cards-*.json {Category:[[secret,hint,label?]]}
+  for(const f of fs.readdirSync(d).sort()){if(!f.endsWith('.json'))continue;const j=JSON.parse(fs.readFileSync(d+'/'+f,'utf8'));Object.assign(f.startsWith('lang-')?o.langs:o.cats,j)}
+  return o})();
 const FOOTBALL_IDS=JSON.parse(fs.readFileSync('src/app.js','utf8').match(/const FOOTBALL = (\[[^\]]*\])/)[1]);   // 6.20: Football Mix = the Football mode pool
-const MODE_FILES=['bidding','bingo','hotseat','survival'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
+const MODE_FILES=['bidding','bingo','hotseat','survival','imposter'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
 const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8').replace('/*@modes*/',()=>MODE_FILES.map(m=>fs.readFileSync(`src/${m}.js`,'utf8')).join('\n')), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}
 const CATS = ${J(CATS)};
@@ -31,6 +34,7 @@ const AR_EMOJI = new Set(${J([...AR])});
 const ACT_KIND = ${J(ACT)};
 const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
 const CHANGELOG = ${J(JSON.parse(fs.readFileSync('src/changelog.json','utf8')))};
+const IMP = ${J(IMPDATA)};   /* 6.68: Imposter words (v4work/imposter/*.json) */
 const BALLS = ${J(fs.existsSync(W+'/balls') ? fs.readdirSync(W+'/balls').filter(f=>f.endsWith('.webp')).sort().map(f=>'data:image/webp;base64,'+fs.readFileSync(W+'/balls/'+f).toString('base64')) : [])};
 /* 6.38 (Omar): TV Show Mix is a real mix now (see MIXES below), so its shows can be changed from Edit mixes. 5.x-6.37: built here
    as a copy of every clue from the eight show categories, each prefixed "Show: ", in its own text category (DATA.tvmix). */

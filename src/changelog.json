@@ -3,6 +3,14 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.68",
+  "date": "2026-10-11",
+  "items": [
+   "New game mode: Imposter. Everyone scans one code and joins from their phone. Each round the phones get a secret (a language with 4 words and their meanings, or a movie, TV show, place, country, footballer, Egyptian food or food and drink), except one or two players whose card is full of random letters. Take turns saying clues out loud, then vote out the imposter. A random player goes first.",
+   "Imposter has a Hints switch and a category list in its setup, and about 60 languages including Moroccan and Gulf Arabic written in English letters."
+  ]
+ },
+ {
   "v": "6.67",
   "date": "2026-10-09",
   "items": [
