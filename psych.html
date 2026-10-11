@@ -86,19 +86,19 @@ function draw(){
   if(sg === sig) return; sig = sg;
   const v = $("view"), l = left();
   if(st.phase === "write"){
-    if(st.fake){ v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div><div class="mine"><b>Your fake${st.fake.lie ? " (Lie for me)" : ""}</b><div class="big">${esc(st.fake.v)}</div></div><p class="hint">Sent. Waiting for everyone else…</p>`; return; }
+    if(st.fake){ v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div><div class="mine"><b>Your lie${st.fake.lie ? " (Lie for me)" : ""}</b><div class="big">${esc(st.fake.v)}</div></div><p class="hint">Sent. Waiting for everyone else…</p>`; return; }
     v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div>
-      <form id="ff" autocomplete="off"><input id="fv" maxlength="40" enterkeyhint="send" placeholder="Type a believable fake"><button class="send" id="fb" style="margin-top:10px">Send</button></form>
+      <form id="ff" autocomplete="off"><input id="fv" maxlength="40" enterkeyhint="send" placeholder="Type a believable lie"><button class="send" id="fb" style="margin-top:10px">Send</button></form>
       <button class="lie" id="lb">Lie for me</button>${note ? `<div class="msg bad">${esc(note)}</div>` : ""}
-      <p class="hint">Write something they'll believe. A Lie for me fake pays half.</p>`;
+      <p class="hint">Write something they'll believe. A Lie for me answer pays half.</p>`;
     $("ff").onsubmit = async e => { e.preventDefault(); const t = $("fv").value.trim(); if(!t) return; $("fb").disabled = true; $("lb").disabled = true;
       const res = await post("psyfake", {p: me.p, c: st.c, v: t});
       if(res.ok || res.j.error === "locked"){ note = null; poll(true); return; }
-      note = res.j.error === "truth" ? "That's the real answer! Write a fake instead." : res.j.error === "closed" ? "Too late, time is up." : "That didn't send. Try again."; sig = ""; draw(); };
+      note = res.j.error === "truth" ? "That's the real answer! Write a believable lie instead." : res.j.error === "closed" ? "Too late, time is up." : "That didn't send. Try again."; sig = ""; draw(); };
     $("lb").onclick = async () => { $("fb").disabled = true; $("lb").disabled = true;
       const res = await post("psylie", {p: me.p, c: st.c});
       if(res.ok || res.j.error === "locked"){ note = null; poll(true); return; }
-      note = res.j.error === "none" ? "No more ready-made fakes for this clue. Type your own." : "That didn't work. Try again."; sig = ""; draw(); };
+      note = res.j.error === "none" ? "No more ready-made lies for this clue. Type your own." : "That didn't work. Try again."; sig = ""; draw(); };
     return; }
   if(st.phase === "vote"){
     v.innerHTML = `${head()}${bar()}<div class="q">${esc(st.q)}</div><div class="prize">Which one is real?</div>

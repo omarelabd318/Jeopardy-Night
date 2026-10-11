@@ -77,7 +77,7 @@ function renderImp(){
       <div class="impanel imjoin">${IM.local
         ? `<div class="imeye">No phones on this link</div><p class="note">Imposter works best on the Cloudflare link, where everyone scans a code. Here you can add the players below and pass this laptop round: each player holds their card to see it, then lets go.</p>
            <form id="imAddForm" class="imadd"><input id="imAdd" maxlength="24" placeholder="Player name" autocomplete="off"><button class="imbtn" type="submit">Add</button></form>`
-        : `<div class="imeye">Scan to join</div><div id="imQr" class="imqr"></div><div class="imurl">${esc(imUrl().replace(/^https?:\/\//, ""))}</div><p class="note">Everyone scans once and types their name. Same players every round, no rescanning.</p>`}</div>
+        : `<div class="imeye">Scan to join</div><div id="imQr" class="imqr"></div><p class="note">Everyone scans once and types their name. Same players every round, no rescanning.</p>`}</div>
       <div class="impanel"><div class="imeye">Players · ${ps.length}</div>${ps.length ? `<ul class="imnames">${ps.map((p, i) => `<li><button data-kick="${i}" title="Remove ${esc(p.n)}">${esc(p.n)}</button></li>`).join("")}</ul><p class="note">Tap a name to remove that player.</p>` : `<p class="note">Waiting for players… you need at least 3.</p>`}
         <button class="imbtn go" id="imDeal" ${ps.length < 3 ? "disabled" : ""}>${IM.round ? "Deal round " + (IM.round + 1) : "Deal"}</button></div>
       <div class="impanel"><div class="imeye">Imposters</div>${imSeg("imps", [["auto", "Auto"], [1, "1"], [2, "2"]], c.imps)}<p class="note">Auto: 1 imposter for 3 to 6 players, 2 for 7 or more.</p>
