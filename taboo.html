@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Taboo</title>
+<!-- 7.4: the phone page for Taboo, at /t?r=ROOM. A player joins once with a name and then taps a team. The describer sees the card (target word + 5 banned words) with Skip and Got it; the other teams' phones see the
+     same card with a buzz button per banned word; teammates see only the clock. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay the card
+     modes use) and only ever receives the card when it is the describer's or an opponent's (the laptop puts it in that player's private part). On Air look: burgundy, gold marquee bulbs, red buzzers. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#170509;--bg2:#2a0b12;--red:#e3263b;--gold:#f2c14e;--cream:#fbeedd;--head:"Bungee",Impact,sans-serif;--body:"Rubik",system-ui,sans-serif;--t0:#e3263b;--t1:#4fb3d9;--t2:#7bd88f;--t3:#c78bff}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--cream);font:16px/1.35 var(--body);background:radial-gradient(ellipse at 50% 0%,#4a1420 0%,var(--bg2) 55%,var(--bg) 100%) fixed;background-color:var(--bg)}
+.bulbs{height:16px;background:radial-gradient(circle,var(--gold) 32%,transparent 36%) 0 0/18px 16px repeat-x;opacity:.9}
+main{max-width:520px;margin:0 auto;padding:0 14px 18px;display:grid;gap:12px;align-content:start;min-height:100dvh;grid-template-rows:auto auto 1fr}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:center;font:400 14px var(--head);letter-spacing:.06em;color:var(--gold);padding-top:8px}
+.chip{padding:3px 12px;border:2px solid currentColor;border-radius:99px;background:rgba(0,0,0,.35);font-size:13px;white-space:nowrap;color:var(--tc,var(--cream))}
+h1{margin:6px 0;font:400 30px/1.1 var(--head)}
+#view{display:grid;gap:12px;align-content:start}
+.status{font:400 22px/1.2 var(--head)}
+.status.me{color:var(--gold)}
+.hint{opacity:.8;font-size:14px}
+.panel{background:rgba(255,255,255,.06);border:1px solid rgba(242,193,78,.4);border-radius:12px;padding:10px;display:grid;gap:8px}
+button{font:inherit;cursor:pointer;color:inherit}
+.send{width:100%;font:400 20px var(--head);letter-spacing:.04em;text-transform:uppercase;background:var(--gold);color:var(--bg);border:0;padding:15px;border-radius:14px}
+.send:disabled{opacity:.4}
+.ghost{background:transparent;color:var(--cream);border:2px solid rgba(251,238,221,.5);border-radius:14px;padding:12px;font:400 17px var(--head);width:100%}
+input[type=text]{width:100%;font:600 20px var(--body);padding:12px;border:2px solid var(--gold);border-radius:12px;background:#fff;color:#111}
+.msg{padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.5);border:2px solid var(--red);color:#ffb3ba;font-size:14px}
+.wait{text-align:center;padding:30px 0 6px}
+.big{font:400 36px/1.1 var(--head)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.bar{height:12px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:var(--red)}
+.tag{font:600 13px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.word{font:400 clamp(30px,11vw,48px)/1.05 var(--head);color:#fff;text-shadow:0 0 18px rgba(227,38,59,.55);word-break:break-word}
+.ban{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ban li{font:600 22px var(--body);border-bottom:2px dashed rgba(251,238,221,.28);padding-bottom:7px}
+.btns{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin-top:6px}
+.skip{border:3px solid var(--cream);border-radius:16px;padding:18px 0;text-align:center;font:400 20px var(--head);background:transparent}
+.skip:disabled{opacity:.35}
+.got{background:var(--gold);color:var(--bg);border:0;border-radius:16px;padding:18px 0;font:400 22px var(--head)}
+.bz{display:grid;gap:9px}
+.bz button{background:var(--red);color:#fff;border:0;border-radius:14px;padding:13px 16px;text-align:left;font:800 20px var(--body);box-shadow:0 5px 0 #8a0f1e}
+.bz button:active{transform:translateY(3px);box-shadow:0 2px 0 #8a0f1e}
+.bz button.alt{background:transparent;border:2px solid var(--red);box-shadow:none;font:600 17px var(--body);color:var(--cream)}
+.bz button:disabled{opacity:.5}
+.clock{font:400 clamp(60px,26vw,110px)/1 var(--head);text-align:center;font-variant-numeric:tabular-nums}
+.clock.low{color:#ff6b7c}
+.guess{text-align:center;display:grid;gap:14px;padding:26px 0 0}
+.guess .big{font-size:clamp(30px,10vw,44px);color:var(--gold)}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:15px}
+.tl li.me{font-weight:800}
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;align-items:start}
+.tcol h4{margin:0 0 4px;font:400 15px var(--head);color:var(--c)}
+.pick{font:400 18px var(--head);padding:12px 0;border-radius:12px;border:3px solid var(--c);background:rgba(0,0,0,.3);color:var(--cream)}
+.pick[aria-pressed=true]{background:var(--c);color:#fff}
+.sc{font-size:14px;opacity:.9;text-align:center}
+ul.rc{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ul.rc li{display:flex;justify-content:space-between;gap:8px;font-size:16px;border-bottom:1px solid rgba(251,238,221,.2);padding-bottom:5px}
+ul.rc .void{text-decoration:line-through;opacity:.6}
+</style></head><body><div class="bulbs"></div><main>
+<div class="top"><span id="me"></span><span id="chip"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_tb_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, tick = null, busy = false, sig = "", note = null, sending = false, dl = 0, secs = 60;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
+const tname = (p, t) => "Team " + ((p.teams[t] && p.teams[t].n) || "").trim();
+const fmt = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+
+async function join(n, t){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n, t});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("chip").innerHTML = "";
+  $("view").innerHTML = `<div class="tag">Taboo</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input type="text" id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
+    <button class="send" id="jb" style="margin-top:12px">Join</button></form>
+    ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">You pick your team next. Keep this page open for the whole game.</p>`;
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n, null); };
+}
+async function send(a){ if(sending || !st || !st.pub) return; sending = true; note = null;
+  const res = await post("crdact", {p:me.p, v:st.pub.v, a}); sending = false;
+  if(!res.ok) note = res.j.error === "stale" ? "Too late, the card moved on." : "That didn't send. Try again.";
+  sig = ""; draw(); poll(true); }
+function updateClock(){ const c = $("clk"), b = $("tbar"); if(!dl) return; const left = (dl - Date.now()) / 1000;
+  if(c){ c.textContent = fmt(left); c.classList.toggle("low", left <= 10); } if(b) b.style.width = Math.max(0, Math.min(100, left / secs * 100)) + "%"; }
+function draw(){
+  $("me").textContent = me.n;
+  if(!st || !st.pub){ $("chip").innerHTML = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to open the game.</div></div>`; return; }
+  const p = st.pub, tm = p.tm && p.tm[me.p] != null ? p.tm[me.p] : 0;
+  const sg = [p.v, tm, note, sending].join("|"); if(sg === sig) return; sig = sg;
+  $("chip").innerHTML = `<span class="chip" style="--tc:var(--t${tm})">${esc(tname(p, tm))}</span>`;
+  const v = $("view"), isDesc = p.ph === "run" && p.desc === me.p, opp = tm !== p.team, card = st.me && st.me.card, nm = x => esc((p.names && p.names[x]) || "");
+  const err = note ? `<div class="msg">${esc(note)}</div>` : "";
+  if(p.ph === "lobby"){
+    const mem = t => (p.teams[t] ? p.teams[t].m : []);
+    v.innerHTML = `<div class="status">You're in, ${esc(me.n)}</div><div class="hint">Tap your team. The host starts the game.</div>
+      <div class="teams">${[...Array(p.nt).keys()].map(t => `<div class="tcol" style="--c:var(--t${t})"><button class="pick" style="width:100%" data-t="${t}" aria-pressed="${tm === t}">${esc(tname(p, t))}</button><ul class="tl" style="margin-top:8px">${mem(t).map(x => `<li class="${x === me.p ? "me" : ""}">${nm(x)}</li>`).join("")}</ul></div>`).join("")}</div>${err}`; return; }
+  const head = `<div class="tag">Round ${p.round || ""} · ${esc(p.rname || "")}</div>`;
+  if(p.ph === "ready"){
+    if(p.desc === me.p){ v.innerHTML = `${head}<div class="status me">You're up!</div><div class="hint">${esc(tname(p, p.team))}. Get your team to say the word without using the banned ones. ${p.secs} seconds.</div><button class="send" data-a="start">Start the clock</button>${err}`; }
+    else v.innerHTML = `${head}<div class="status${tm === p.team ? " me" : ""}">${nm(p.desc)} is up next</div><div class="hint">${esc(tname(p, p.team))} · ${p.secs} seconds</div>${tm === p.team ? `<div class="hint">Get ready to guess out loud.</div>` : `<div class="hint">You'll see their card and can buzz them.</div>`}`;
+    return; }
+  if(p.ph === "run"){
+    const bar = `<div class="bar"><i id="tbar"></i></div>`;
+    if(isDesc && card){ v.innerHTML = `${bar}<div class="tag">Your word</div><div class="word">${esc(card.w)}</div><ul class="ban">${card.ban.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+      <div class="btns"><button class="skip" data-a="skip" ${p.skipsLeft > 0 ? "" : "disabled"}>Skip${p.skipsLeft < 90 ? ` · ${p.skipsLeft}` : ""}</button><button class="got" data-a="got">Got it</button></div>${err}`; }
+    else if(opp && card){ v.innerHTML = `${bar}<div class="tag">${nm(p.desc)} is describing</div><div class="word" style="font-size:clamp(26px,9vw,38px)">${esc(card.w)}</div><div class="hint">Tap what you hear them say.</div>
+      <div class="bz">${card.ban.map((b, i) => `<button data-b="${i}">${esc(b)}</button>`).join("")}<button class="alt" data-b="5">The word itself</button><button class="alt" data-b="6">Other foul</button></div>${err}`; }
+    else if(!opp){ v.innerHTML = `${bar}<div class="guess"><div class="tag">${nm(p.desc)} is describing</div><div class="big">GUESS OUT LOUD!</div><div class="clock" id="clk"></div></div>`; }
+    else v.innerHTML = `${bar}<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+    updateClock(); return; }
+  if(p.ph === "recap"){ const tot = (p.recap || []).reduce((a, e) => a + e.pts, 0);
+    v.innerHTML = `<div class="status${tm === p.team ? " me" : ""}">${esc(tname(p, p.team))}: ${tot >= 0 ? "+" : ""}${tot}</div><div class="hint">${nm(p.desc)} described ${(p.recap || []).length} card${(p.recap || []).length === 1 ? "" : "s"}. The host moves on from the TV.</div>
+      <div class="panel"><ul class="rc">${(p.recap || []).map(e => `<li class="${e.r === "void" ? "void" : ""}"><span>${esc(e.w)}</span><b>${e.r === "got" ? "+" + e.pts : e.r === "buzz" ? e.pts : e.r === "skip" ? "skip" : e.r === "time" ? "time" : "undone"}</b></li>`).join("")}</ul></div>
+      <div class="sc">${p.scores.map((s, t) => `${esc(tname(p, t))} ${s}`).join(" · ")}</div>`; return; }
+  const won = (p.winners || []).includes(tm);
+  v.innerHTML = `<div class="status ${won ? "me" : ""}">${won ? "Your team wins!" : "Good game."}</div><div class="hint">${p.winners.map(t => esc(tname(p, t))).join(" and ")} ${p.winners.length > 1 ? "share the win" : "wins"}.</div><div class="sc">${p.scores.map((s, t) => `${esc(tname(p, t))} ${s}`).join(" · ")}</div>`;
+}
+document.addEventListener("click", e => {
+  if(!st || !st.pub) return; const t = e.target.closest("button"); if(!t) return;
+  if(t.dataset.t != null){ const nt = +t.dataset.t; post("join", {p:me.p, n:me.n, t:nt}).then(() => poll(true)); return; }
+  if(t.dataset.b != null){ send({k:"buzz", b:+t.dataset.b}); return; }
+  const a = t.dataset.a; if(a) send({k:a}); });
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v) note = null; st = j;
+      if(j.pub && j.pub.ph === "run"){ secs = j.pub.secs; dl = Date.now() + j.pub.left * 1000 - (j.ago || 0); } else dl = 0; draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 500); tick = setInterval(updateClock, 250); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

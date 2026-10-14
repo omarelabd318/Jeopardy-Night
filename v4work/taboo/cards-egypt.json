@@ -1,0 +1,1894 @@
+[
+{
+"w": "Koshari",
+"ban": [
+"Lentils",
+"Pasta",
+"Rice",
+"Abou Tarek",
+"Street food"
+],
+"lvl": "e"
+},
+{
+"w": "Ful medames",
+"ban": [
+"Beans",
+"Breakfast",
+"Fava",
+"Cumin",
+"Sandwich"
+],
+"lvl": "e"
+},
+{
+"w": "Taamiya",
+"ban": [
+"Falafel",
+"Fava",
+"Fried",
+"Sandwich",
+"Green"
+],
+"lvl": "e"
+},
+{
+"w": "Molokhia",
+"ban": [
+"Green",
+"Soup",
+"Chicken",
+"Rabbit",
+"Garlic"
+],
+"lvl": "e"
+},
+{
+"w": "Fiteer",
+"ban": [
+"Pastry",
+"Layers",
+"Cheese",
+"Honey",
+"Dough"
+],
+"lvl": "e"
+},
+{
+"w": "Mahshi",
+"ban": [
+"Stuffed",
+"Rice",
+"Vine leaves",
+"Cabbage",
+"Zucchini"
+],
+"lvl": "e"
+},
+{
+"w": "Kebda",
+"ban": [
+"Liver",
+"Alexandria",
+"Sandwich",
+"Fried",
+"Spicy"
+],
+"lvl": "e"
+},
+{
+"w": "Shawarma",
+"ban": [
+"Meat",
+"Wrap",
+"Spit",
+"Garlic",
+"Sandwich"
+],
+"lvl": "e"
+},
+{
+"w": "Hawawshi",
+"ban": [
+"Meat",
+"Bread",
+"Baked",
+"Minced",
+"Spicy"
+],
+"lvl": "e"
+},
+{
+"w": "Basbousa",
+"ban": [
+"Semolina",
+"Sweet",
+"Syrup",
+"Almond",
+"Dessert"
+],
+"lvl": "e"
+},
+{
+"w": "Konafa",
+"ban": [
+"Dessert",
+"Cheese",
+"Syrup",
+"Crispy",
+"Ramadan"
+],
+"lvl": "e"
+},
+{
+"w": "Om Ali",
+"ban": [
+"Dessert",
+"Milk",
+"Pastry",
+"Nuts",
+"Hot"
+],
+"lvl": "e"
+},
+{
+"w": "Roz bel laban",
+"ban": [
+"Rice",
+"Pudding",
+"Milk",
+"Dessert",
+"Sweet"
+],
+"lvl": "e"
+},
+{
+"w": "Sugarcane juice",
+"ban": [
+"Asab",
+"Street",
+"Drink",
+"Sweet",
+"Press"
+],
+"lvl": "e"
+},
+{
+"w": "Karkade",
+"ban": [
+"Hibiscus",
+"Red",
+"Drink",
+"Cold",
+"Ramadan"
+],
+"lvl": "e"
+},
+{
+"w": "Tamarind",
+"ban": [
+"Tamr hindi",
+"Sour",
+"Drink",
+"Ramadan",
+"Brown"
+],
+"lvl": "e"
+},
+{
+"w": "Sahlab",
+"ban": [
+"Hot",
+"Winter",
+"Drink",
+"Milk",
+"Nuts"
+],
+"lvl": "e"
+},
+{
+"w": "Shisha",
+"ban": [
+"Smoke",
+"Coal",
+"Cafe",
+"Flavor",
+"Pipe"
+],
+"lvl": "e"
+},
+{
+"w": "Ahwa",
+"ban": [
+"Cafe",
+"Tea",
+"Backgammon",
+"Street",
+"Men"
+],
+"lvl": "e"
+},
+{
+"w": "Tawla",
+"ban": [
+"Backgammon",
+"Dice",
+"Board",
+"Cafe",
+"Checkers"
+],
+"lvl": "e"
+},
+{
+"w": "Fanoos",
+"ban": [
+"Ramadan",
+"Lantern",
+"Light",
+"Candle",
+"Kids"
+],
+"lvl": "e"
+},
+{
+"w": "Mesaharaty",
+"ban": [
+"Ramadan",
+"Drum",
+"Wake",
+"Suhoor",
+"Neighborhood"
+],
+"lvl": "e"
+},
+{
+"w": "Iftar",
+"ban": [
+"Ramadan",
+"Sunset",
+"Break",
+"Fast",
+"Dinner"
+],
+"lvl": "e"
+},
+{
+"w": "Suhoor",
+"ban": [
+"Ramadan",
+"Before dawn",
+"Meal",
+"Fast",
+"Wake"
+],
+"lvl": "e"
+},
+{
+"w": "Eid",
+"ban": [
+"Holiday",
+"Fast",
+"Feast",
+"Kahk",
+"Celebration"
+],
+"lvl": "e"
+},
+{
+"w": "Kahk",
+"ban": [
+"Eid",
+"Cookies",
+"Sugar",
+"Powder",
+"Biscuits"
+],
+"lvl": "e"
+},
+{
+"w": "Sham El Nessim",
+"ban": [
+"Spring",
+"Easter",
+"Eggs",
+"Fish",
+"Holiday"
+],
+"lvl": "e"
+},
+{
+"w": "Fesikh",
+"ban": [
+"Fish",
+"Smelly",
+"Salted",
+"Spring",
+"Mullet"
+],
+"lvl": "e"
+},
+{
+"w": "Mulid",
+"ban": [
+"Saint",
+"Celebration",
+"Festival",
+"Sweets",
+"Sufi"
+],
+"lvl": "e"
+},
+{
+"w": "Sebou",
+"ban": [
+"Newborn",
+"Seven days",
+"Baby",
+"Celebration",
+"Candles"
+],
+"lvl": "e"
+},
+{
+"w": "Zaffa",
+"ban": [
+"Wedding",
+"Drums",
+"Procession",
+"Bride",
+"Entrance"
+],
+"lvl": "e"
+},
+{
+"w": "Henna",
+"ban": [
+"Wedding",
+"Hands",
+"Tattoo",
+"Brown",
+"Bride"
+],
+"lvl": "e"
+},
+{
+"w": "Shabka",
+"ban": [
+"Gold",
+"Engagement",
+"Bride",
+"Gift",
+"Jewelry"
+],
+"lvl": "e"
+},
+{
+"w": "Microbus",
+"ban": [
+"Minibus",
+"Driver",
+"Fare",
+"Street",
+"Passengers"
+],
+"lvl": "e"
+},
+{
+"w": "Tuk-tuk",
+"ban": [
+"Three wheels",
+"Small",
+"Taxi",
+"Rickshaw",
+"Alley"
+],
+"lvl": "e"
+},
+{
+"w": "Metro",
+"ban": [
+"Underground",
+"Cairo",
+"Train",
+"Station",
+"Ticket"
+],
+"lvl": "e"
+},
+{
+"w": "Nile",
+"ban": [
+"River",
+"Egypt",
+"Felucca",
+"Water",
+"Cairo"
+],
+"lvl": "e"
+},
+{
+"w": "Felucca",
+"ban": [
+"Boat",
+"Sail",
+"Nile",
+"Aswan",
+"Wind"
+],
+"lvl": "e"
+},
+{
+"w": "Pyramids",
+"ban": [
+"Giza",
+"Pharaohs",
+"Tomb",
+"Egypt",
+"Sphinx"
+],
+"lvl": "e"
+},
+{
+"w": "Sphinx",
+"ban": [
+"Lion",
+"Giza",
+"Statue",
+"Head",
+"Riddle"
+],
+"lvl": "e"
+},
+{
+"w": "Tutankhamun",
+"ban": [
+"Boy king",
+"Golden",
+"Mask",
+"Tomb",
+"Pharaoh"
+],
+"lvl": "e"
+},
+{
+"w": "Cleopatra",
+"ban": [
+"Queen",
+"Last",
+"Alexandria",
+"Caesar",
+"Beauty"
+],
+"lvl": "e"
+},
+{
+"w": "Mummy",
+"ban": [
+"Wrapped",
+"Pharaoh",
+"Dead",
+"Bandages",
+"Tomb"
+],
+"lvl": "e"
+},
+{
+"w": "Hieroglyphs",
+"ban": [
+"Writing",
+"Ancient",
+"Symbols",
+"Pharaohs",
+"Rosetta"
+],
+"lvl": "e"
+},
+{
+"w": "Luxor",
+"ban": [
+"Temples",
+"Valley of the Kings",
+"Karnak",
+"Upper Egypt",
+"Ancient"
+],
+"lvl": "e"
+},
+{
+"w": "Aswan",
+"ban": [
+"Dam",
+"South",
+"Nile",
+"Nubian",
+"Philae"
+],
+"lvl": "e"
+},
+{
+"w": "Alexandria",
+"ban": [
+"Mediterranean",
+"Corniche",
+"Library",
+"Cleopatra",
+"Coastal"
+],
+"lvl": "e"
+},
+{
+"w": "Sharm El Sheikh",
+"ban": [
+"Red Sea",
+"Diving",
+"Resort",
+"Sinai",
+"Tourists"
+],
+"lvl": "e"
+},
+{
+"w": "Hurghada",
+"ban": [
+"Red Sea",
+"Resort",
+"Diving",
+"Hotels",
+"Beach"
+],
+"lvl": "e"
+},
+{
+"w": "North Coast",
+"ban": [
+"Summer",
+"Beach",
+"Marassi",
+"Sahel",
+"Villa"
+],
+"lvl": "e"
+},
+{
+"w": "Tahrir Square",
+"ban": [
+"Downtown",
+"Cairo",
+"Revolution",
+"Roundabout",
+"Midan"
+],
+"lvl": "e"
+},
+{
+"w": "Khan el-Khalili",
+"ban": [
+"Bazaar",
+"Souvenirs",
+"Market",
+"Old Cairo",
+"Tourists"
+],
+"lvl": "e"
+},
+{
+"w": "Cairo Tower",
+"ban": [
+"Gezira",
+"Tall",
+"Lotus",
+"Nile",
+"View"
+],
+"lvl": "e"
+},
+{
+"w": "Citadel",
+"ban": [
+"Saladin",
+"Muhammad Ali",
+"Mosque",
+"Cairo",
+"Fort"
+],
+"lvl": "e"
+},
+{
+"w": "Al-Azhar",
+"ban": [
+"Mosque",
+"University",
+"Cairo",
+"Islamic",
+"Scholars"
+],
+"lvl": "e"
+},
+{
+"w": "El Moez Street",
+"ban": [
+"Old Cairo",
+"Historic",
+"Islamic",
+"Lanterns",
+"Walk"
+],
+"lvl": "e"
+},
+{
+"w": "Zamalek",
+"ban": [
+"Island",
+"Cairo",
+"Club",
+"Nile",
+"Neighborhood"
+],
+"lvl": "e"
+},
+{
+"w": "Maadi",
+"ban": [
+"Cairo",
+"Quiet",
+"Neighborhood",
+"Trees",
+"Suburb"
+],
+"lvl": "e"
+},
+{
+"w": "New Capital",
+"ban": [
+"Administrative",
+"Desert",
+"Government",
+"Towers",
+"Cairo"
+],
+"lvl": "e"
+},
+{
+"w": "Ring Road",
+"ban": [
+"Cairo",
+"Highway",
+"Traffic",
+"Circle",
+"Cars"
+],
+"lvl": "e"
+},
+{
+"w": "Bawab",
+"ban": [
+"Doorman",
+"Building",
+"Door",
+"Stairs",
+"Guard"
+],
+"lvl": "e"
+},
+{
+"w": "Souk",
+"ban": [
+"Market",
+"Shopping",
+"Bargain",
+"Stalls",
+"Vendors"
+],
+"lvl": "e"
+},
+{
+"w": "Sandals",
+"ban": [
+"Slippers",
+"Feet",
+"Cheap",
+"Flip flops",
+"Wear"
+],
+"lvl": "e"
+},
+{
+"w": "Galabeya",
+"ban": [
+"Dress",
+"Robe",
+"Long",
+"Traditional",
+"Wear"
+],
+"lvl": "e"
+},
+{
+"w": "Tarboosh",
+"ban": [
+"Red",
+"Hat",
+"Ottoman",
+"Fez",
+"Tassel"
+],
+"lvl": "e"
+},
+{
+"w": "Donkey",
+"ban": [
+"Cart",
+"Ears",
+"Stubborn",
+"Farm",
+"Hee-haw"
+],
+"lvl": "e"
+},
+{
+"w": "Buffalo",
+"ban": [
+"Farm",
+"Milk",
+"Nile",
+"Water",
+"Animal"
+],
+"lvl": "e"
+},
+{
+"w": "Abdel Halim Hafez",
+"ban": [
+"Singer",
+"Romantic",
+"Hanafi",
+"Legend",
+"Classic"
+],
+"lvl": "e"
+},
+{
+"w": "Umm Kulthum",
+"ban": [
+"Singer",
+"Diva",
+"Thursday",
+"Legend",
+"Cairo"
+],
+"lvl": "e"
+},
+{
+"w": "Amr Diab",
+"ban": [
+"Singer",
+"Tamally Maak",
+"Hits",
+"Pop",
+"Habibi"
+],
+"lvl": "e"
+},
+{
+"w": "Mohamed Salah",
+"ban": [
+"Liverpool",
+"Football",
+"Egyptian King",
+"Goals",
+"Pharaoh"
+],
+"lvl": "e"
+},
+{
+"w": "Mohamed Ramadan",
+"ban": [
+"Actor",
+"Singer",
+"Number One",
+"Egyptian",
+"Star"
+],
+"lvl": "e"
+},
+{
+"w": "Ahmed Helmy",
+"ban": [
+"Actor",
+"Comedy",
+"Egyptian",
+"Films",
+"Star"
+],
+"lvl": "e"
+},
+{
+"w": "Adel Imam",
+"ban": [
+"Comedian",
+"Legend",
+"Zaeem",
+"Films",
+"Egyptian"
+],
+"lvl": "e"
+},
+{
+"w": "Mohamed Henedy",
+"ban": [
+"Comedian",
+"Films",
+"Egyptian",
+"Funny",
+"Actor"
+],
+"lvl": "e"
+},
+{
+"w": "Bassem Youssef",
+"ban": [
+"Satire",
+"Show",
+"Doctor",
+"Comedy",
+"Egyptian"
+],
+"lvl": "e"
+},
+{
+"w": "Ahly",
+"ban": [
+"Red",
+"Club",
+"Cairo",
+"Football",
+"Zamalek"
+],
+"lvl": "e"
+},
+{
+"w": "Derby",
+"ban": [
+"Match",
+"Rivals",
+"Ahly",
+"Zamalek",
+"Cairo"
+],
+"lvl": "e"
+},
+{
+"w": "Thanaweya Amma",
+"ban": [
+"High school",
+"Exams",
+"Egypt",
+"Marks",
+"Final"
+],
+"lvl": "e"
+},
+{
+"w": "Private lessons",
+"ban": [
+"Tutor",
+"Teacher",
+"Exam",
+"Study",
+"Home"
+],
+"lvl": "e"
+},
+{
+"w": "Faculty of Medicine",
+"ban": [
+"Doctor",
+"University",
+"Study",
+"Hospital",
+"Seven years"
+],
+"lvl": "e"
+},
+{
+"w": "Military service",
+"ban": [
+"Army",
+"Conscription",
+"Soldier",
+"Young men",
+"Egypt"
+],
+"lvl": "e"
+},
+{
+"w": "Yalla",
+"ban": [
+"Hurry",
+"Let's go",
+"Arabic",
+"Come on",
+"Quick"
+],
+"lvl": "h"
+},
+{
+"w": "Khalas",
+"ban": [
+"Finished",
+"Enough",
+"Done",
+"Stop",
+"Arabic"
+],
+"lvl": "h"
+},
+{
+"w": "Ya basha",
+"ban": [
+"Sir",
+"Respect",
+"Compliment",
+"Pasha",
+"Arabic"
+],
+"lvl": "h"
+},
+{
+"w": "Wasta",
+"ban": [
+"Connections",
+"Favor",
+"Know someone",
+"Job",
+"Influence"
+],
+"lvl": "h"
+},
+{
+"w": "Bakshish",
+"ban": [
+"Tip",
+"Money",
+"Service",
+"Waiter",
+"Give"
+],
+"lvl": "h"
+},
+{
+"w": "Maalesh",
+"ban": [
+"Sorry",
+"Never mind",
+"Excuse",
+"Forgive",
+"Arabic"
+],
+"lvl": "h"
+},
+{
+"w": "Inshallah",
+"ban": [
+"God willing",
+"Maybe",
+"Future",
+"Promise",
+"Arabic"
+],
+"lvl": "h"
+},
+{
+"w": "Habibi",
+"ban": [
+"Dear",
+"Darling",
+"Friend",
+"Love",
+"Arabic"
+],
+"lvl": "h"
+},
+{
+"w": "Sa7by",
+"ban": [
+"Friend",
+"Buddy",
+"Pal",
+"Mate",
+"Slang"
+],
+"lvl": "h"
+},
+{
+"w": "Fakka",
+"ban": [
+"Change",
+"Coins",
+"Small money",
+"Cashier",
+"Notes"
+],
+"lvl": "h"
+},
+{
+"w": "Eid money",
+"ban": [
+"Eidiya",
+"Kids",
+"Holiday",
+"Gift",
+"Notes"
+],
+"lvl": "h"
+},
+{
+"w": "Ahmed Zewail",
+"ban": [
+"Nobel",
+"Chemistry",
+"Scientist",
+"Femtochemistry",
+"Egyptian"
+],
+"lvl": "h"
+},
+{
+"w": "Naguib Mahfouz",
+"ban": [
+"Nobel",
+"Writer",
+"Novelist",
+"Cairo Trilogy",
+"Literature"
+],
+"lvl": "h"
+},
+{
+"w": "Anwar Sadat",
+"ban": [
+"President",
+"Peace",
+"Assassinated",
+"Camp David",
+"Egypt"
+],
+"lvl": "h"
+},
+{
+"w": "Gamal Abdel Nasser",
+"ban": [
+"President",
+"Suez",
+"Arab nationalism",
+"Revolution",
+"Leader"
+],
+"lvl": "h"
+},
+{
+"w": "Suez Canal",
+"ban": [
+"Ship",
+"Waterway",
+"Red Sea",
+"Mediterranean",
+"Cargo"
+],
+"lvl": "h"
+},
+{
+"w": "Tahrir",
+"ban": [
+"Liberation",
+"Square",
+"Cairo",
+"Downtown",
+"Revolution"
+],
+"lvl": "h"
+},
+{
+"w": "Sinai",
+"ban": [
+"Peninsula",
+"Mount",
+"Moses",
+"Desert",
+"Sharm"
+],
+"lvl": "h"
+},
+{
+"w": "Siwa",
+"ban": [
+"Oasis",
+"Desert",
+"Alexander",
+"Date palms",
+"Salt lake"
+],
+"lvl": "h"
+},
+{
+"w": "White Desert",
+"ban": [
+"Chalk",
+"Rocks",
+"Camping",
+"Farafra",
+"Mushroom"
+],
+"lvl": "h"
+},
+{
+"w": "Fayoum",
+"ban": [
+"Oasis",
+"Lake",
+"Waterwheels",
+"Tunis village",
+"Governorate"
+],
+"lvl": "h"
+},
+{
+"w": "Dahab",
+"ban": [
+"Diving",
+"Blue Hole",
+"Sinai",
+"Backpackers",
+"Chill"
+],
+"lvl": "h"
+},
+{
+"w": "Nubian",
+"ban": [
+"Aswan",
+"Colorful",
+"Houses",
+"People",
+"Culture"
+],
+"lvl": "h"
+},
+{
+"w": "Bedouin",
+"ban": [
+"Desert",
+"Tent",
+"Nomad",
+"Tea",
+"Sinai"
+],
+"lvl": "h"
+},
+{
+"w": "Mosque",
+"ban": [
+"Pray",
+"Minaret",
+"Muslims",
+"Friday",
+"Call"
+],
+"lvl": "h"
+},
+{
+"w": "Church",
+"ban": [
+"Christians",
+"Cross",
+"Sunday",
+"Coptic",
+"Bell"
+],
+"lvl": "h"
+},
+{
+"w": "Coptic",
+"ban": [
+"Christians",
+"Orthodox",
+"Egyptian",
+"Church",
+"Christmas January"
+],
+"lvl": "h"
+},
+{
+"w": "Friday prayer",
+"ban": [
+"Mosque",
+"Sermon",
+"Muslims",
+"Noon",
+"Weekly"
+],
+"lvl": "h"
+},
+{
+"w": "Azan",
+"ban": [
+"Call",
+"Prayer",
+"Mosque",
+"Minaret",
+"Muezzin"
+],
+"lvl": "h"
+},
+{
+"w": "Hajj",
+"ban": [
+"Pilgrimage",
+"Mecca",
+"Kaaba",
+"Muslims",
+"Eid"
+],
+"lvl": "h"
+},
+{
+"w": "Umrah",
+"ban": [
+"Mecca",
+"Kaaba",
+"Pilgrimage",
+"Small",
+"Saudi"
+],
+"lvl": "h"
+},
+{
+"w": "Arabic coffee",
+"ban": [
+"Cardamom",
+"Cup",
+"Gulf",
+"Dallah",
+"Bitter"
+],
+"lvl": "h"
+},
+{
+"w": "Dates",
+"ban": [
+"Palm",
+"Sweet",
+"Ramadan",
+"Fruit",
+"Fast"
+],
+"lvl": "h"
+},
+{
+"w": "Falafel",
+"ban": [
+"Chickpea",
+"Fried",
+"Balls",
+"Levant",
+"Sandwich"
+],
+"lvl": "h"
+},
+{
+"w": "Hummus",
+"ban": [
+"Chickpea",
+"Dip",
+"Tahini",
+"Levant",
+"Bread"
+],
+"lvl": "h"
+},
+{
+"w": "Mansaf",
+"ban": [
+"Jordan",
+"Lamb",
+"Yogurt",
+"Rice",
+"Bedouin"
+],
+"lvl": "h"
+},
+{
+"w": "Kabsa",
+"ban": [
+"Saudi",
+"Rice",
+"Meat",
+"Spices",
+"Gulf"
+],
+"lvl": "h"
+},
+{
+"w": "Maqluba",
+"ban": [
+"Upside down",
+"Rice",
+"Levant",
+"Eggplant",
+"Pot"
+],
+"lvl": "h"
+},
+{
+"w": "Knafeh",
+"ban": [
+"Palestinian",
+"Cheese",
+"Sweet",
+"Syrup",
+"Orange"
+],
+"lvl": "h"
+},
+{
+"w": "Baklava",
+"ban": [
+"Layers",
+"Pistachio",
+"Honey",
+"Turkish",
+"Phyllo"
+],
+"lvl": "h"
+},
+{
+"w": "Zalabia",
+"ban": [
+"Sweet",
+"Fried",
+"Syrup",
+"Ramadan",
+"Dough"
+],
+"lvl": "h"
+},
+{
+"w": "Qatayef",
+"ban": [
+"Ramadan",
+"Pancake",
+"Stuffed",
+"Nuts",
+"Sweet"
+],
+"lvl": "h"
+},
+{
+"w": "Ramadan tent",
+"ban": [
+"Charity",
+"Tables",
+"Iftar",
+"Street",
+"Free meals"
+],
+"lvl": "h"
+},
+{
+"w": "Dewan",
+"ban": [
+"Gulf",
+"Sitting",
+"Guests",
+"Majlis",
+"Tradition"
+],
+"lvl": "h"
+},
+{
+"w": "Burj Khalifa",
+"ban": [
+"Dubai",
+"Tallest",
+"Tower",
+"Skyscraper",
+"UAE"
+],
+"lvl": "h"
+},
+{
+"w": "Dubai",
+"ban": [
+"Emirates",
+"Burj",
+"Shopping",
+"Desert",
+"Skyline"
+],
+"lvl": "h"
+},
+{
+"w": "Petra",
+"ban": [
+"Jordan",
+"Rose city",
+"Treasury",
+"Carved",
+"Nabataean"
+],
+"lvl": "h"
+},
+{
+"w": "Beirut",
+"ban": [
+"Lebanon",
+"Capital",
+"Port",
+"Paris of the East",
+"Mediterranean"
+],
+"lvl": "h"
+},
+{
+"w": "Casablanca",
+"ban": [
+"Morocco",
+"Mosque",
+"Film",
+"Port",
+"Atlantic"
+],
+"lvl": "h"
+},
+{
+"w": "Marrakech",
+"ban": [
+"Morocco",
+"Medina",
+"Jemaa el-Fnaa",
+"Red city",
+"Souks"
+],
+"lvl": "h"
+},
+{
+"w": "Kaaba",
+"ban": [
+"Mecca",
+"Black",
+"Cube",
+"Pilgrims",
+"Mosque"
+],
+"lvl": "h"
+},
+{
+"w": "Mecca",
+"ban": [
+"Saudi",
+"Hajj",
+"Kaaba",
+"Holy",
+"Pilgrimage"
+],
+"lvl": "h"
+},
+{
+"w": "Dallah",
+"ban": [
+"Coffee",
+"Pot",
+"Arabic",
+"Gulf",
+"Pour"
+],
+"lvl": "h"
+},
+{
+"w": "Oud",
+"ban": [
+"Instrument",
+"Strings",
+"Arab",
+"Music",
+"Perfume"
+],
+"lvl": "h"
+},
+{
+"w": "Tabla",
+"ban": [
+"Drum",
+"Hand",
+"Arabic",
+"Rhythm",
+"Percussion"
+],
+"lvl": "h"
+},
+{
+"w": "Dabke",
+"ban": [
+"Dance",
+"Line",
+"Levant",
+"Stomp",
+"Wedding"
+],
+"lvl": "h"
+},
+{
+"w": "Belly dancer",
+"ban": [
+"Move",
+"Hips",
+"Costume",
+"Raqs",
+"Cabaret"
+],
+"lvl": "h"
+},
+{
+"w": "Tanoura",
+"ban": [
+"Skirt",
+"Spin",
+"Dance",
+"Sufi",
+"Colorful"
+],
+"lvl": "h"
+},
+{
+"w": "Shaabi",
+"ban": [
+"Folk",
+"Music",
+"Streets",
+"Weddings",
+"Mahraganat"
+],
+"lvl": "h"
+},
+{
+"w": "Mahraganat",
+"ban": [
+"Electro",
+"Street",
+"Music",
+"Weddings",
+"Egyptian"
+],
+"lvl": "h"
+},
+{
+"w": "Wedding hall",
+"ban": [
+"Reception",
+"Bride",
+"Groom",
+"Dance",
+"Guests"
+],
+"lvl": "h"
+},
+{
+"w": "Sebaa",
+"ban": [
+"Wedding",
+"Seven",
+"Bride",
+"Entertainment",
+"Tradition"
+],
+"lvl": "h"
+},
+{
+"w": "Egyptian film classic",
+"ban": [
+"Black and white",
+"Old",
+"Cinema",
+"Golden age",
+"Movies"
+],
+"lvl": "h"
+},
+{
+"w": "Ramadan series",
+"ban": [
+"TV",
+"Soap",
+"Month",
+"Fast",
+"Drama"
+],
+"lvl": "h"
+},
+{
+"w": "Sitcom",
+"ban": [
+"TV",
+"Comedy",
+"Laughter",
+"Episodes",
+"Show"
+],
+"lvl": "h"
+},
+{
+"w": "Soap opera",
+"ban": [
+"TV",
+"Drama",
+"Series",
+"Daytime",
+"Love"
+],
+"lvl": "h"
+},
+{
+"w": "Cairo traffic",
+"ban": [
+"Honking",
+"Cars",
+"Jam",
+"Roads",
+"Slow"
+],
+"lvl": "h"
+},
+{
+"w": "Cairo heat",
+"ban": [
+"Summer",
+"Hot",
+"Sun",
+"August",
+"Sweating"
+],
+"lvl": "h"
+},
+{
+"w": "Dust storm",
+"ban": [
+"Sand",
+"Wind",
+"Khamaseen",
+"Spring",
+"Desert"
+],
+"lvl": "h"
+},
+{
+"w": "Load shedding",
+"ban": [
+"Power",
+"Cuts",
+"Electricity",
+"Outage",
+"Summer"
+],
+"lvl": "h"
+},
+{
+"w": "Ahlan",
+"ban": [
+"Welcome",
+"Hello",
+"Greeting",
+"Arabic",
+"Hi"
+],
+"lvl": "h"
+},
+{
+"w": "Sabah el kheir",
+"ban": [
+"Morning",
+"Good",
+"Greeting",
+"Arabic",
+"Hello"
+],
+"lvl": "h"
+},
+{
+"w": "Eish",
+"ban": [
+"Bread",
+"Baladi",
+"Bakery",
+"Round",
+"Subsidized"
+],
+"lvl": "h"
+},
+{
+"w": "Baladi bread",
+"ban": [
+"Round",
+"Egyptian",
+"Bakery",
+"Flat",
+"Subsidized"
+],
+"lvl": "h"
+},
+{
+"w": "Sandwich cart",
+"ban": [
+"Street",
+"Vendor",
+"Food",
+"Cheap",
+"Fast"
+],
+"lvl": "h"
+},
+{
+"w": "Ful cart",
+"ban": [
+"Street",
+"Breakfast",
+"Beans",
+"Morning",
+"Vendor"
+],
+"lvl": "h"
+},
+{
+"w": "Sweet potato cart",
+"ban": [
+"Winter",
+"Street",
+"Hot",
+"Smell",
+"Vendor"
+],
+"lvl": "h"
+},
+{
+"w": "Corn on the cob",
+"ban": [
+"Grill",
+"Street",
+"Summer",
+"Salted",
+"Vendor"
+],
+"lvl": "h"
+},
+{
+"w": "Cotton candy",
+"ban": [
+"Fair",
+"Sugar",
+"Pink",
+"Sweet",
+"Fluffy"
+],
+"lvl": "h"
+},
+{
+"w": "Rooftop",
+"ban": [
+"Building",
+"Cairo",
+"Pigeons",
+"Laundry",
+"Terrace"
+],
+"lvl": "h"
+},
+{
+"w": "Pigeon tower",
+"ban": [
+"Birds",
+"Egypt",
+"Food",
+"Village",
+"Tall"
+],
+"lvl": "h"
+},
+{
+"w": "Balcony",
+"ban": [
+"Building",
+"Flowers",
+"Outside",
+"Laundry",
+"Apartment"
+],
+"lvl": "h"
+},
+{
+"w": "Cairo Opera House",
+"ban": [
+"Gezira",
+"Concerts",
+"Ballet",
+"Theatre",
+"Music"
+],
+"lvl": "h"
+},
+{
+"w": "Grand Egyptian Museum",
+"ban": [
+"Giza",
+"Treasures",
+"Pharaohs",
+"Huge",
+"Tutankhamun"
+],
+"lvl": "h"
+},
+{
+"w": "Egyptian Museum",
+"ban": [
+"Tahrir",
+"Mummies",
+"Artifacts",
+"Tutankhamun",
+"Cairo"
+],
+"lvl": "h"
+},
+{
+"w": "Nile cruise",
+"ban": [
+"Luxor",
+"Aswan",
+"Boat",
+"Temples",
+"Tourists"
+],
+"lvl": "h"
+},
+{
+"w": "Hot air balloon",
+"ban": [
+"Luxor",
+"Sunrise",
+"Fly",
+"Basket",
+"Tourists"
+],
+"lvl": "h"
+},
+{
+"w": "Scuba diving",
+"ban": [
+"Red Sea",
+"Underwater",
+"Tank",
+"Coral",
+"Fish"
+],
+"lvl": "h"
+},
+{
+"w": "Camel race",
+"ban": [
+"Desert",
+"Gulf",
+"Jockey",
+"Fast",
+"Track"
+],
+"lvl": "h"
+},
+{
+"w": "Falcon",
+"ban": [
+"Bird",
+"Hunting",
+"Gulf",
+"Prey",
+"Arab"
+],
+"lvl": "h"
+}
+]

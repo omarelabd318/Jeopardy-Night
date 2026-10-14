@@ -1,0 +1,1322 @@
+[
+{
+"w": "Goal",
+"ban": [
+"Score",
+"Net",
+"Ball",
+"Striker",
+"Celebrate"
+],
+"lvl": "e"
+},
+{
+"w": "Penalty",
+"ban": [
+"Spot",
+"Kick",
+"Goalkeeper",
+"Foul",
+"Shootout"
+],
+"lvl": "e"
+},
+{
+"w": "Offside",
+"ban": [
+"Line",
+"Flag",
+"Linesman",
+"Behind",
+"Defender"
+],
+"lvl": "e"
+},
+{
+"w": "Red card",
+"ban": [
+"Referee",
+"Sent off",
+"Foul",
+"Player",
+"Leave"
+],
+"lvl": "e"
+},
+{
+"w": "Yellow card",
+"ban": [
+"Referee",
+"Warning",
+"Foul",
+"Booking",
+"Caution"
+],
+"lvl": "e"
+},
+{
+"w": "Corner kick",
+"ban": [
+"Flag",
+"Cross",
+"Header",
+"Box",
+"Winger"
+],
+"lvl": "e"
+},
+{
+"w": "Free kick",
+"ban": [
+"Wall",
+"Foul",
+"Curl",
+"Set piece",
+"Goalkeeper"
+],
+"lvl": "e"
+},
+{
+"w": "Goalkeeper",
+"ban": [
+"Gloves",
+"Save",
+"Net",
+"Net",
+"Dive"
+],
+"lvl": "e"
+},
+{
+"w": "Striker",
+"ban": [
+"Goals",
+"Forward",
+"Score",
+"Nine",
+"Attack"
+],
+"lvl": "e"
+},
+{
+"w": "Defender",
+"ban": [
+"Tackle",
+"Back",
+"Stop",
+"Attack",
+"Clear"
+],
+"lvl": "e"
+},
+{
+"w": "Midfielder",
+"ban": [
+"Middle",
+"Pass",
+"Control",
+"Engine",
+"Pitch"
+],
+"lvl": "e"
+},
+{
+"w": "Captain",
+"ban": [
+"Armband",
+"Leader",
+"Team",
+"Skipper",
+"Lead"
+],
+"lvl": "e"
+},
+{
+"w": "VAR",
+"ban": [
+"Video",
+"Review",
+"Referee",
+"Screen",
+"Check"
+],
+"lvl": "e"
+},
+{
+"w": "Hat-trick",
+"ban": [
+"Three",
+"Goals",
+"Same",
+"Match",
+"Ball"
+],
+"lvl": "e"
+},
+{
+"w": "Header",
+"ban": [
+"Forehead",
+"Cross",
+"Jump",
+"Goal",
+"Air"
+],
+"lvl": "e"
+},
+{
+"w": "Tackle",
+"ban": [
+"Slide",
+"Ball",
+"Defender",
+"Foul",
+"Win"
+],
+"lvl": "e"
+},
+{
+"w": "Dribble",
+"ban": [
+"Past",
+"Defender",
+"Ball",
+"Skills",
+"Run"
+],
+"lvl": "e"
+},
+{
+"w": "Stadium",
+"ban": [
+"Fans",
+"Pitch",
+"Seats",
+"Match",
+"Floodlights"
+],
+"lvl": "e"
+},
+{
+"w": "Fans",
+"ban": [
+"Supporters",
+"Stadium",
+"Chant",
+"Shirt",
+"Cheer"
+],
+"lvl": "e"
+},
+{
+"w": "Ultras",
+"ban": [
+"Fans",
+"Flares",
+"Chants",
+"Stand",
+"Passionate"
+],
+"lvl": "e"
+},
+{
+"w": "World Cup",
+"ban": [
+"Trophy",
+"Four years",
+"FIFA",
+"Nations",
+"Qatar"
+],
+"lvl": "e"
+},
+{
+"w": "Champions League",
+"ban": [
+"Europe",
+"Clubs",
+"Anthem",
+"Trophy",
+"Final"
+],
+"lvl": "e"
+},
+{
+"w": "Ballon d'Or",
+"ban": [
+"Award",
+"Best",
+"Golden",
+"Player",
+"Trophy"
+],
+"lvl": "e"
+},
+{
+"w": "Premier League",
+"ban": [
+"England",
+"Clubs",
+"Liverpool",
+"Manchester",
+"Top"
+],
+"lvl": "e"
+},
+{
+"w": "La Liga",
+"ban": [
+"Spain",
+"Barcelona",
+"Madrid",
+"League",
+"Spanish"
+],
+"lvl": "e"
+},
+{
+"w": "Transfer",
+"ban": [
+"Buy",
+"Sign",
+"Window",
+"Club",
+"Fee"
+],
+"lvl": "e"
+},
+{
+"w": "Jersey",
+"ban": [
+"Shirt",
+"Number",
+"Kit",
+"Name",
+"Wear"
+],
+"lvl": "e"
+},
+{
+"w": "Shin guards",
+"ban": [
+"Legs",
+"Protect",
+"Socks",
+"Tackle",
+"Pads"
+],
+"lvl": "e"
+},
+{
+"w": "Boots",
+"ban": [
+"Studs",
+"Shoes",
+"Pitch",
+"Cleats",
+"Wear"
+],
+"lvl": "e"
+},
+{
+"w": "Pitch",
+"ban": [
+"Grass",
+"Field",
+"Lines",
+"Goals",
+"Match"
+],
+"lvl": "e"
+},
+{
+"w": "Kick-off",
+"ban": [
+"Start",
+"Center",
+"Whistle",
+"Begin",
+"Match"
+],
+"lvl": "e"
+},
+{
+"w": "Half-time",
+"ban": [
+"Break",
+"Interval",
+"Fifteen",
+"Minutes",
+"Oranges"
+],
+"lvl": "e"
+},
+{
+"w": "Extra time",
+"ban": [
+"Thirty",
+"Draw",
+"Added",
+"Minutes",
+"Cup"
+],
+"lvl": "e"
+},
+{
+"w": "Penalty shootout",
+"ban": [
+"Spot",
+"Draw",
+"Goalkeeper",
+"Five",
+"Kicks"
+],
+"lvl": "e"
+},
+{
+"w": "Siuu",
+"ban": [
+"Ronaldo",
+"Celebration",
+"Jump",
+"Shout",
+"Goal"
+],
+"lvl": "e"
+},
+{
+"w": "Bicycle kick",
+"ban": [
+"Overhead",
+"Acrobatic",
+"Goal",
+"Flying",
+"Backwards"
+],
+"lvl": "e"
+},
+{
+"w": "Nutmeg",
+"ban": [
+"Legs",
+"Through",
+"Dribble",
+"Humiliate",
+"Ball"
+],
+"lvl": "e"
+},
+{
+"w": "Clean sheet",
+"ban": [
+"No goals",
+"Goalkeeper",
+"Defense",
+"Conceded",
+"Zero"
+],
+"lvl": "e"
+},
+{
+"w": "Local derby",
+"ban": [
+"Rivals",
+"City",
+"Match",
+"Neighbours",
+"Fans"
+],
+"lvl": "e"
+},
+{
+"w": "Neymar",
+"ban": [
+"Brazil",
+"Skills",
+"PSG",
+"Dive",
+"Santos"
+],
+"lvl": "e"
+},
+{
+"w": "Kylian Mbappe",
+"ban": [
+"France",
+"Fast",
+"PSG",
+"Madrid",
+"Striker"
+],
+"lvl": "e"
+},
+{
+"w": "Erling Haaland",
+"ban": [
+"Norway",
+"City",
+"Striker",
+"Goals",
+"Giant"
+],
+"lvl": "e"
+},
+{
+"w": "Zinedine Zidane",
+"ban": [
+"French",
+"Head butt",
+"Madrid",
+"Coach",
+"Legend"
+],
+"lvl": "e"
+},
+{
+"w": "Diego Maradona",
+"ban": [
+"Argentina",
+"Hand of God",
+"Napoli",
+"Legend",
+"Short"
+],
+"lvl": "e"
+},
+{
+"w": "Pele",
+"ban": [
+"Brazil",
+"Three World Cups",
+"Legend",
+"Santos",
+"King"
+],
+"lvl": "e"
+},
+{
+"w": "Mido",
+"ban": [
+"Egyptian",
+"Tottenham",
+"Striker",
+"Ajax",
+"Pundit"
+],
+"lvl": "e"
+},
+{
+"w": "Mohamed Aboutrika",
+"ban": [
+"Egyptian",
+"Ahly",
+"Legend",
+"Magic",
+"Midfielder"
+],
+"lvl": "e"
+},
+{
+"w": "Essam El Hadary",
+"ban": [
+"Egyptian",
+"Goalkeeper",
+"Oldest",
+"Cameroon",
+"Veteran"
+],
+"lvl": "e"
+},
+{
+"w": "Hossam Hassan",
+"ban": [
+"Egyptian",
+"Striker",
+"Legend",
+"Zamalek",
+"Ahly"
+],
+"lvl": "e"
+},
+{
+"w": "Mahmoud El Khatib",
+"ban": [
+"Bibo",
+"Ahly",
+"Chairman",
+"Legend",
+"Egyptian"
+],
+"lvl": "e"
+},
+{
+"w": "Pyramids FC",
+"ban": [
+"Egyptian",
+"Club",
+"Cairo",
+"Blue",
+"Football"
+],
+"lvl": "e"
+},
+{
+"w": "Pharaohs",
+"ban": [
+"Egypt",
+"National team",
+"Football",
+"Squad",
+"Africa"
+],
+"lvl": "e"
+},
+{
+"w": "Africa Cup of Nations",
+"ban": [
+"Continental",
+"Trophy",
+"Egypt",
+"Seven",
+"Tournament"
+],
+"lvl": "e"
+},
+{
+"w": "Cairo International Stadium",
+"ban": [
+"Egyptian",
+"Arena",
+"Big",
+"Nasr City",
+"Match"
+],
+"lvl": "e"
+},
+{
+"w": "Camp Nou",
+"ban": [
+"Barcelona",
+"Stadium",
+"Spain",
+"Big",
+"Catalonia"
+],
+"lvl": "e"
+},
+{
+"w": "Santiago Bernabeu",
+"ban": [
+"Madrid",
+"Stadium",
+"Spain",
+"White",
+"Real"
+],
+"lvl": "e"
+},
+{
+"w": "Old Trafford",
+"ban": [
+"Manchester United",
+"Stadium",
+"Theatre",
+"England",
+"Red"
+],
+"lvl": "e"
+},
+{
+"w": "Anfield",
+"ban": [
+"Liverpool",
+"Stadium",
+"Kop",
+"England",
+"Reds"
+],
+"lvl": "e"
+},
+{
+"w": "Wembley",
+"ban": [
+"London",
+"England",
+"Stadium",
+"Arch",
+"Final"
+],
+"lvl": "e"
+},
+{
+"w": "El Clasico",
+"ban": [
+"Barcelona",
+"Madrid",
+"Spain",
+"Rivals",
+"Derby"
+],
+"lvl": "e"
+},
+{
+"w": "Mourinho",
+"ban": [
+"Special One",
+"Portuguese",
+"Manager",
+"Chelsea",
+"Coach"
+],
+"lvl": "e"
+},
+{
+"w": "Pep Guardiola",
+"ban": [
+"Manager",
+"Spanish",
+"City",
+"Barcelona",
+"Coach"
+],
+"lvl": "e"
+},
+{
+"w": "Sir Alex Ferguson",
+"ban": [
+"Manager",
+"Manchester United",
+"Scottish",
+"Gum",
+"Coach"
+],
+"lvl": "e"
+},
+{
+"w": "Arsene Wenger",
+"ban": [
+"Manager",
+"Arsenal",
+"French",
+"Invincibles",
+"Professor"
+],
+"lvl": "e"
+},
+{
+"w": "Jurgen Klopp",
+"ban": [
+"Manager",
+"Liverpool",
+"German",
+"Heavy metal",
+"Coach"
+],
+"lvl": "e"
+},
+{
+"w": "Offside trap",
+"ban": [
+"Defenders",
+"Line",
+"Step up",
+"Flag",
+"Strikers"
+],
+"lvl": "h"
+},
+{
+"w": "Tiki-taka",
+"ban": [
+"Spain",
+"Short",
+"Passing",
+"Possession",
+"Barcelona"
+],
+"lvl": "h"
+},
+{
+"w": "Catenaccio",
+"ban": [
+"Italian",
+"Defense",
+"Lock",
+"Tactic",
+"Bolt"
+],
+"lvl": "h"
+},
+{
+"w": "Gegenpressing",
+"ban": [
+"Counter",
+"Squeeze",
+"Klopp",
+"Win ball",
+"German"
+],
+"lvl": "h"
+},
+{
+"w": "Parking the bus",
+"ban": [
+"Defend",
+"Deep",
+"Everyone",
+"Time wasting",
+"Ten"
+],
+"lvl": "h"
+},
+{
+"w": "Golden boot",
+"ban": [
+"Top scorer",
+"Award",
+"Tournament",
+"Most goals",
+"Shoe"
+],
+"lvl": "h"
+},
+{
+"w": "Golden glove",
+"ban": [
+"Goalkeeper",
+"Award",
+"Best",
+"Clean sheets",
+"Tournament"
+],
+"lvl": "h"
+},
+{
+"w": "Fair play",
+"ban": [
+"Sportsmanship",
+"Respect",
+"Rules",
+"Honest",
+"Cards"
+],
+"lvl": "h"
+},
+{
+"w": "Own goal",
+"ban": [
+"Wrong",
+"Net",
+"Defender",
+"Accident",
+"Against"
+],
+"lvl": "h"
+},
+{
+"w": "Stoppage time",
+"ban": [
+"Added",
+"Minutes",
+"Referee",
+"End",
+"Board"
+],
+"lvl": "h"
+},
+{
+"w": "Substitute",
+"ban": [
+"Bench",
+"Replace",
+"Come on",
+"Coach",
+"Change"
+],
+"lvl": "h"
+},
+{
+"w": "Dugout",
+"ban": [
+"Manager",
+"Bench",
+"Touchline",
+"Staff",
+"Coach"
+],
+"lvl": "h"
+},
+{
+"w": "Throw-in",
+"ban": [
+"Hands",
+"Sideline",
+"Out",
+"Ball",
+"Over head"
+],
+"lvl": "h"
+},
+{
+"w": "Back-pass",
+"ban": [
+"Goalkeeper",
+"Hands",
+"Rule",
+"Defender",
+"Foot"
+],
+"lvl": "h"
+},
+{
+"w": "Wall",
+"ban": [
+"Free kick",
+"Players",
+"Line",
+"Block",
+"Defend"
+],
+"lvl": "h"
+},
+{
+"w": "Rabona",
+"ban": [
+"Cross",
+"Legs",
+"Kick",
+"Behind",
+"Skill"
+],
+"lvl": "h"
+},
+{
+"w": "Panenka",
+"ban": [
+"Penalty",
+"Chip",
+"Cheeky",
+"Czech",
+"Middle"
+],
+"lvl": "h"
+},
+{
+"w": "Volley",
+"ban": [
+"Air",
+"Strike",
+"Before it lands",
+"Kick",
+"Ball"
+],
+"lvl": "h"
+},
+{
+"w": "Cross",
+"ban": [
+"Wing",
+"Box",
+"Ball",
+"Header",
+"Delivery"
+],
+"lvl": "h"
+},
+{
+"w": "Through ball",
+"ban": [
+"Pass",
+"Defense",
+"Behind",
+"Striker",
+"Split"
+],
+"lvl": "h"
+},
+{
+"w": "One-two",
+"ban": [
+"Pass",
+"Wall",
+"Return",
+"Give and go",
+"Quick"
+],
+"lvl": "h"
+},
+{
+"w": "False nine",
+"ban": [
+"Striker",
+"Drops",
+"Deep",
+"Tactic",
+"Number"
+],
+"lvl": "h"
+},
+{
+"w": "Playmaker",
+"ban": [
+"Creative",
+"Pass",
+"Assists",
+"Midfield",
+"Create"
+],
+"lvl": "h"
+},
+{
+"w": "Sweeper",
+"ban": [
+"Libero",
+"Behind",
+"Defender",
+"Last",
+"Clear"
+],
+"lvl": "h"
+},
+{
+"w": "Wing-back",
+"ban": [
+"Wide",
+"Defender",
+"Attack",
+"Flank",
+"Overlap"
+],
+"lvl": "h"
+},
+{
+"w": "Poacher",
+"ban": [
+"Box",
+"Striker",
+"Tap in",
+"Close range",
+"Goals"
+],
+"lvl": "h"
+},
+{
+"w": "Treble",
+"ban": [
+"Three",
+"Trophies",
+"Season",
+"League",
+"Cup"
+],
+"lvl": "h"
+},
+{
+"w": "Invincibles",
+"ban": [
+"Arsenal",
+"Unbeaten",
+"Season",
+"Wenger",
+"Never lost"
+],
+"lvl": "h"
+},
+{
+"w": "Relegation",
+"ban": [
+"Drop",
+"Bottom",
+"League",
+"Down",
+"Division"
+],
+"lvl": "h"
+},
+{
+"w": "Play-offs",
+"ban": [
+"Final",
+"Promotion",
+"Extra",
+"Place",
+"Semi"
+],
+"lvl": "h"
+},
+{
+"w": "Group stage",
+"ban": [
+"Four",
+"Teams",
+"Tournament",
+"Points",
+"Round"
+],
+"lvl": "h"
+},
+{
+"w": "Knockout",
+"ban": [
+"Eliminate",
+"Round",
+"Cup",
+"Eliminate",
+"Single"
+],
+"lvl": "h"
+},
+{
+"w": "Golden goal",
+"ban": [
+"Extra time",
+"Sudden",
+"Wins",
+"Instant",
+"End"
+],
+"lvl": "h"
+},
+{
+"w": "Away goals",
+"ban": [
+"Two legs",
+"Tie",
+"Rule",
+"Visiting",
+"Double"
+],
+"lvl": "h"
+},
+{
+"w": "Transfer window",
+"ban": [
+"Summer",
+"Deadline",
+"Sign",
+"Buy",
+"Market"
+],
+"lvl": "h"
+},
+{
+"w": "Loan",
+"ban": [
+"Borrow",
+"Club",
+"Temporary",
+"Return",
+"Player"
+],
+"lvl": "h"
+},
+{
+"w": "Release clause",
+"ban": [
+"Contract",
+"Pay",
+"Buyout",
+"Fee",
+"Leave"
+],
+"lvl": "h"
+},
+{
+"w": "Agent",
+"ban": [
+"Player",
+"Deals",
+"Negotiates",
+"Commission",
+"Contract"
+],
+"lvl": "h"
+},
+{
+"w": "Youth academy",
+"ban": [
+"Young",
+"Train",
+"Club",
+"La Masia",
+"Prospects"
+],
+"lvl": "h"
+},
+{
+"w": "Scout",
+"ban": [
+"Talent",
+"Watch",
+"Spots",
+"Players",
+"Recruit"
+],
+"lvl": "h"
+},
+{
+"w": "Team sheet",
+"ban": [
+"Starting",
+"Eleven",
+"Lineup",
+"Manager",
+"Names"
+],
+"lvl": "h"
+},
+{
+"w": "Man of the match",
+"ban": [
+"Best",
+"Award",
+"Player",
+"Game",
+"Champagne"
+],
+"lvl": "h"
+},
+{
+"w": "Walkout",
+"ban": [
+"Tunnel",
+"Players",
+"Mascots",
+"Enter",
+"Anthem"
+],
+"lvl": "h"
+},
+{
+"w": "Ball boy",
+"ban": [
+"Kid",
+"Touchline",
+"Fetch",
+"Quick",
+"Pitch"
+],
+"lvl": "h"
+},
+{
+"w": "Mascot",
+"ban": [
+"Costume",
+"Fans",
+"Kids",
+"Club",
+"Furry"
+],
+"lvl": "h"
+},
+{
+"w": "Season ticket",
+"ban": [
+"Fans",
+"Every",
+"Match",
+"Seat",
+"Year"
+],
+"lvl": "h"
+},
+{
+"w": "Fantasy football",
+"ban": [
+"Pick",
+"Team",
+"Points",
+"Friends",
+"App"
+],
+"lvl": "h"
+},
+{
+"w": "Panini stickers",
+"ban": [
+"Collect",
+"Album",
+"World Cup",
+"Swap",
+"Packs"
+],
+"lvl": "h"
+},
+{
+"w": "Qatar 2022",
+"ban": [
+"World Cup",
+"Messi",
+"Argentina",
+"Doha",
+"Winter"
+],
+"lvl": "h"
+},
+{
+"w": "Egypt 1990",
+"ban": [
+"World Cup",
+"Italy",
+"Pharaohs",
+"Qualified",
+"Drawn"
+],
+"lvl": "h"
+},
+{
+"w": "Hand of God",
+"ban": [
+"Maradona",
+"Argentina",
+"England",
+"1986",
+"Goal"
+],
+"lvl": "h"
+},
+{
+"w": "Zidane headbutt",
+"ban": [
+"Materazzi",
+"Final",
+"Red card",
+"Chest",
+"2006"
+],
+"lvl": "h"
+},
+{
+"w": "Istanbul 2005",
+"ban": [
+"Liverpool",
+"Milan",
+"Comeback",
+"Final",
+"Champions"
+],
+"lvl": "h"
+},
+{
+"w": "Miracle of Anfield",
+"ban": [
+"Barcelona",
+"Comeback",
+"Four goals",
+"Liverpool",
+"Semi"
+],
+"lvl": "h"
+},
+{
+"w": "Leicester 2016",
+"ban": [
+"Fairytale",
+"Title",
+"Underdogs",
+"Ranieri",
+"Premier"
+],
+"lvl": "h"
+}
+]

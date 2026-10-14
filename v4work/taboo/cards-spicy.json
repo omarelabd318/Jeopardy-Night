@@ -1,0 +1,893 @@
+[
+{
+"w": "First date",
+"ban": [
+"Dinner",
+"Nervous",
+"Meet",
+"Love",
+"Restaurant"
+],
+"lvl": "e"
+},
+{
+"w": "Blind date",
+"ban": [
+"Stranger",
+"Set up",
+"Meet",
+"Friends",
+"Nervous"
+],
+"lvl": "e"
+},
+{
+"w": "Valentine's Day",
+"ban": [
+"Roses",
+"February",
+"Love",
+"Gift",
+"Couples"
+],
+"lvl": "e"
+},
+{
+"w": "Kiss",
+"ban": [
+"Lips",
+"Love",
+"Mouth",
+"Romantic",
+"Peck"
+],
+"lvl": "e"
+},
+{
+"w": "Hug",
+"ban": [
+"Arms",
+"Embrace",
+"Squeeze",
+"Warm",
+"Friend"
+],
+"lvl": "e"
+},
+{
+"w": "Crush",
+"ban": [
+"Like",
+"Secret",
+"Love",
+"Admire",
+"Shy"
+],
+"lvl": "e"
+},
+{
+"w": "Ex",
+"ban": [
+"Former",
+"Past",
+"Relationship",
+"Broke up",
+"Girlfriend"
+],
+"lvl": "e"
+},
+{
+"w": "Breakup",
+"ban": [
+"End",
+"Relationship",
+"Sad",
+"Dump",
+"Couple"
+],
+"lvl": "e"
+},
+{
+"w": "Wedding night",
+"ban": [
+"Married",
+"Couple",
+"First",
+"Honeymoon",
+"After"
+],
+"lvl": "e"
+},
+{
+"w": "Honeymoon",
+"ban": [
+"Married",
+"Trip",
+"Couple",
+"Newlyweds",
+"Vacation"
+],
+"lvl": "e"
+},
+{
+"w": "Proposal",
+"ban": [
+"Ring",
+"Knee",
+"Marry",
+"Question",
+"Engagement"
+],
+"lvl": "e"
+},
+{
+"w": "Engagement ring",
+"ban": [
+"Diamond",
+"Finger",
+"Proposal",
+"Marry",
+"Gold"
+],
+"lvl": "e"
+},
+{
+"w": "Love letter",
+"ban": [
+"Write",
+"Romantic",
+"Paper",
+"Confess",
+"Mail"
+],
+"lvl": "e"
+},
+{
+"w": "Flirting",
+"ban": [
+"Charm",
+"Wink",
+"Attract",
+"Smile",
+"Tease"
+],
+"lvl": "e"
+},
+{
+"w": "Pickup line",
+"ban": [
+"Cheesy",
+"Flirt",
+"Say",
+"Bar",
+"Charm"
+],
+"lvl": "e"
+},
+{
+"w": "Jealousy",
+"ban": [
+"Envy",
+"Partner",
+"Angry",
+"Possessive",
+"Green"
+],
+"lvl": "e"
+},
+{
+"w": "Cheating",
+"ban": [
+"Unfaithful",
+"Partner",
+"Lie",
+"Betray",
+"Caught"
+],
+"lvl": "e"
+},
+{
+"w": "Ghosting",
+"ban": [
+"Disappear",
+"Messages",
+"Ignore",
+"Dating",
+"Block"
+],
+"lvl": "e"
+},
+{
+"w": "Situationship",
+"ban": [
+"Not official",
+"Dating",
+"Unclear",
+"Status",
+"Casual"
+],
+"lvl": "e"
+},
+{
+"w": "Friend zone",
+"ban": [
+"Just",
+"Crush",
+"Love",
+"Stuck",
+"Platonic"
+],
+"lvl": "e"
+},
+{
+"w": "Wingman",
+"ban": [
+"Friend",
+"Help",
+"Date",
+"Bar",
+"Approach"
+],
+"lvl": "e"
+},
+{
+"w": "Matchmaker",
+"ban": [
+"Aunt",
+"Set up",
+"Marriage",
+"Introduce",
+"Couple"
+],
+"lvl": "e"
+},
+{
+"w": "Dating app",
+"ban": [
+"Swipe",
+"Profile",
+"Match",
+"Phone",
+"Tinder"
+],
+"lvl": "e"
+},
+{
+"w": "Tinder",
+"ban": [
+"Swipe",
+"Dating",
+"App",
+"Match",
+"Flame"
+],
+"lvl": "e"
+},
+{
+"w": "Profile picture",
+"ban": [
+"Photo",
+"Online",
+"Dating",
+"Social",
+"Face"
+],
+"lvl": "e"
+},
+{
+"w": "Slow dance",
+"ban": [
+"Couple",
+"Romantic",
+"Music",
+"Close",
+"Hold"
+],
+"lvl": "e"
+},
+{
+"w": "Candlelight dinner",
+"ban": [
+"Romantic",
+"Table",
+"Date",
+"Fancy",
+"Couple"
+],
+"lvl": "e"
+},
+{
+"w": "Bouquet",
+"ban": [
+"Flowers",
+"Gift",
+"Roses",
+"Wedding",
+"Bunch"
+],
+"lvl": "e"
+},
+{
+"w": "Love bite",
+"ban": [
+"Neck",
+"Mark",
+"Kiss",
+"Hickey",
+"Red"
+],
+"lvl": "e"
+},
+{
+"w": "Cologne",
+"ban": [
+"Perfume",
+"Smell",
+"Man",
+"Spray",
+"Bottle"
+],
+"lvl": "e"
+},
+{
+"w": "Lipstick",
+"ban": [
+"Red",
+"Mouth",
+"Makeup",
+"Kiss",
+"Color"
+],
+"lvl": "e"
+},
+{
+"w": "High heels",
+"ban": [
+"Shoes",
+"Women",
+"Tall",
+"Feet",
+"Dress up"
+],
+"lvl": "e"
+},
+{
+"w": "Mustache",
+"ban": [
+"Hair",
+"Face",
+"Lip",
+"Man",
+"Shave"
+],
+"lvl": "e"
+},
+{
+"w": "Six-pack",
+"ban": [
+"Abs",
+"Stomach",
+"Muscle",
+"Gym",
+"Fit"
+],
+"lvl": "e"
+},
+{
+"w": "Tattoo",
+"ban": [
+"Ink",
+"Skin",
+"Needle",
+"Design",
+"Permanent"
+],
+"lvl": "e"
+},
+{
+"w": "Bikini",
+"ban": [
+"Swimsuit",
+"Beach",
+"Two piece",
+"Women",
+"Pool"
+],
+"lvl": "e"
+},
+{
+"w": "Swimsuit",
+"ban": [
+"Beach",
+"Pool",
+"Wear",
+"Water",
+"Summer"
+],
+"lvl": "e"
+},
+{
+"w": "Pajamas",
+"ban": [
+"Sleep",
+"Night",
+"Wear",
+"Bed",
+"Comfortable"
+],
+"lvl": "e"
+},
+{
+"w": "Slippers",
+"ban": [
+"Home",
+"Feet",
+"Soft",
+"Indoors",
+"Shoes"
+],
+"lvl": "e"
+},
+{
+"w": "Karaoke night",
+"ban": [
+"Sing",
+"Drunk",
+"Friends",
+"Songs",
+"Embarrassing"
+],
+"lvl": "e"
+},
+{
+"w": "Truth or dare",
+"ban": [
+"Game",
+"Choose",
+"Confess",
+"Challenge",
+"Friends"
+],
+"lvl": "e"
+},
+{
+"w": "Spin the bottle",
+"ban": [
+"Game",
+"Kiss",
+"Party",
+"Teen",
+"Rotate"
+],
+"lvl": "e"
+},
+{
+"w": "Drinking game",
+"ban": [
+"Shots",
+"Party",
+"Rules",
+"Friends",
+"Beer"
+],
+"lvl": "e"
+},
+{
+"w": "Hangover cure",
+"ban": [
+"Morning",
+"Drink",
+"Headache",
+"Remedy",
+"Night before"
+],
+"lvl": "e"
+},
+{
+"w": "Wedding crasher",
+"ban": [
+"Uninvited",
+"Party",
+"Guest",
+"Sneak",
+"Free food"
+],
+"lvl": "e"
+},
+{
+"w": "Bachelor party",
+"ban": [
+"Groom",
+"Friends",
+"Last night",
+"Wedding",
+"Single"
+],
+"lvl": "e"
+},
+{
+"w": "Bachelorette party",
+"ban": [
+"Bride",
+"Friends",
+"Last night",
+"Wedding",
+"Single"
+],
+"lvl": "e"
+},
+{
+"w": "Matchmaking",
+"ban": [
+"Families",
+"Marriage",
+"Arranged",
+"Meet",
+"Aunt"
+],
+"lvl": "e"
+},
+{
+"w": "Salon",
+"ban": [
+"Hair",
+"Women",
+"Nails",
+"Haircut",
+"Beauty"
+],
+"lvl": "e"
+},
+{
+"w": "Mehndi",
+"ban": [
+"Henna",
+"Bride",
+"Hands",
+"Pattern",
+"Wedding"
+],
+"lvl": "e"
+},
+{
+"w": "Walk of shame",
+"ban": [
+"Morning",
+"Night before",
+"Same clothes",
+"Home",
+"Embarrassed"
+],
+"lvl": "h"
+},
+{
+"w": "Love triangle",
+"ban": [
+"Three",
+"Two",
+"Jealous",
+"Romance",
+"Choose"
+],
+"lvl": "h"
+},
+{
+"w": "Rebound",
+"ban": [
+"After",
+"Breakup",
+"New",
+"Quick",
+"Relationship"
+],
+"lvl": "h"
+},
+{
+"w": "Catfish",
+"ban": [
+"Fake",
+"Online",
+"Profile",
+"Pretend",
+"Photos"
+],
+"lvl": "h"
+},
+{
+"w": "Sugar daddy",
+"ban": [
+"Rich",
+"Older",
+"Gifts",
+"Spoils",
+"Young"
+],
+"lvl": "h"
+},
+{
+"w": "Gold digger",
+"ban": [
+"Money",
+"Marry",
+"Rich",
+"Greedy",
+"Partner"
+],
+"lvl": "h"
+},
+{
+"w": "Mid-life crisis",
+"ban": [
+"Sports car",
+"Age",
+"Forties",
+"Change",
+"Man"
+],
+"lvl": "h"
+},
+{
+"w": "Love at first sight",
+"ban": [
+"Instant",
+"Meet",
+"Eyes",
+"Fall",
+"Soulmate"
+],
+"lvl": "h"
+},
+{
+"w": "Soulmate",
+"ban": [
+"Perfect",
+"Match",
+"Love",
+"One",
+"Destiny"
+],
+"lvl": "h"
+},
+{
+"w": "Long distance",
+"ban": [
+"Relationship",
+"Far",
+"Phone",
+"Miss",
+"Countries"
+],
+"lvl": "h"
+},
+{
+"w": "Jealous ex",
+"ban": [
+"Past",
+"Stalk",
+"Angry",
+"Partner",
+"Messages"
+],
+"lvl": "h"
+},
+{
+"w": "Public display of affection",
+"ban": [
+"PDA",
+"Kissing",
+"Street",
+"Couple",
+"Embarrass"
+],
+"lvl": "h"
+},
+{
+"w": "Awkward hug",
+"ban": [
+"Wrong",
+"Friend",
+"Embrace",
+"Arms",
+"Stiff"
+],
+"lvl": "h"
+},
+{
+"w": "Drunk text",
+"ban": [
+"Night",
+"Phone",
+"Message",
+"Regret",
+"Former"
+],
+"lvl": "h"
+},
+{
+"w": "Read receipts",
+"ban": [
+"Seen",
+"Blue",
+"Message",
+"Ignore",
+"Phone"
+],
+"lvl": "h"
+},
+{
+"w": "Left on read",
+"ban": [
+"Seen",
+"Message",
+"No reply",
+"Ignore",
+"Chat"
+],
+"lvl": "h"
+},
+{
+"w": "Slide into DMs",
+"ban": [
+"Message",
+"Instagram",
+"Flirt",
+"Private",
+"Stranger"
+],
+"lvl": "h"
+},
+{
+"w": "Thirst trap",
+"ban": [
+"Photo",
+"Social",
+"Attention",
+"Selfie",
+"Flaunt"
+],
+"lvl": "h"
+},
+{
+"w": "Stalking",
+"ban": [
+"Follow",
+"Profile",
+"Watch",
+"Obsessed",
+"Social media"
+],
+"lvl": "h"
+},
+{
+"w": "Rizz",
+"ban": [
+"Charisma",
+"Flirt",
+"Smooth",
+"Game",
+"Slang"
+],
+"lvl": "h"
+},
+{
+"w": "Red flag",
+"ban": [
+"Warning",
+"Relationship",
+"Bad sign",
+"Dating",
+"Danger"
+],
+"lvl": "h"
+},
+{
+"w": "Green flag",
+"ban": [
+"Good sign",
+"Relationship",
+"Positive",
+"Dating",
+"Healthy"
+],
+"lvl": "h"
+},
+{
+"w": "Toxic",
+"ban": [
+"Relationship",
+"Poison",
+"Unhealthy",
+"Bad",
+"Ex"
+],
+"lvl": "h"
+},
+{
+"w": "Commitment",
+"ban": [
+"Relationship",
+"Promise",
+"Serious",
+"Marry",
+"Fear"
+],
+"lvl": "h"
+},
+{
+"w": "Divorce lawyer",
+"ban": [
+"Court",
+"Marriage",
+"End",
+"Legal",
+"Papers"
+],
+"lvl": "h"
+},
+{
+"w": "Mother-in-law",
+"ban": [
+"Wife",
+"Husband",
+"Visit",
+"Family",
+"Jokes"
+],
+"lvl": "h"
+},
+{
+"w": "Marriage counselor",
+"ban": [
+"Couple",
+"Therapy",
+"Fix",
+"Talk",
+"Advice"
+],
+"lvl": "h"
+},
+{
+"w": "Anniversary",
+"ban": [
+"Year",
+"Couple",
+"Celebrate",
+"Gift",
+"Wedding"
+],
+"lvl": "h"
+},
+{
+"w": "Romantic getaway",
+"ban": [
+"Trip",
+"Couple",
+"Weekend",
+"Hotel",
+"Escape"
+],
+"lvl": "h"
+},
+{
+"w": "Couples massage",
+"ban": [
+"Spa",
+"Two",
+"Relax",
+"Oil",
+"Treat"
+],
+"lvl": "h"
+},
+{
+"w": "Pillow talk",
+"ban": [
+"Bed",
+"Night",
+"Whisper",
+"Couple",
+"Chat"
+],
+"lvl": "h"
+}
+]
