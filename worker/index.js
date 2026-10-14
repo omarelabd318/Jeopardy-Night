@@ -27,6 +27,7 @@
 //   6.79: card modes (Estimation first). The laptop is the referee: POST /api/crd {r,crd:{pub,priv:{player:{hand,act}}}} posts the table (pub = what everyone sees, priv = each phone's own hand and the move it may make);
 //   a phone reads GET /api/crdstate?r&p -> {name, pub, me} (only its own priv) and sends a move with POST /api/crdact {r,p,v,a} (v = the table version it saw); the laptop reads the moves in order with
 //   GET /api/crdacts?r&since -> {n, acts:[{p,v,a}]}. The shared phone page is /c (cards.html).
+//   7.1: Liar's Bar uses the same generic crd routes (the laptop posts the table and each player's hand, phones send play / liar moves); its phone page is /l (liars.html).
 // 5.27: team games use the same page. A team's phones join once with their team number t, and /api/cur also carries
 //   mode ("ffa" or "teams") and the team names; /api/state?r&p&t answers for that team. The first answer a player
 //   (or team) sends is final, and the team that's playing a tile can't send a steal for it.
@@ -186,6 +187,7 @@ export class Room extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === "/l") return env.ASSETS.fetch(new Request(new URL("/liars" + url.search, url), req));  // 7.1: Liar's Bar phone page
     if (url.pathname === "/n") return env.ASSETS.fetch(new Request(new URL("/cn" + url.search, url), req));  // 6.82: Codenames phone page
     if (url.pathname === "/f") return env.ASSETS.fetch(new Request(new URL("/sale" + url.search, url), req));  // 7.0: For Sale? phone page
     if (url.pathname === "/d") return env.ASSETS.fetch(new Request(new URL("/dec" + url.search, url), req));  // 6.83: Decrypto phone page

@@ -1,4 +1,4 @@
-// 7.1 (adapted from tarneeb-e2e.js): plays a whole Texas Hold'em game in a headless browser against a small in-memory copy of the relay (worker/index.js): one TV page and N phone pages that click their buttons.
+// 7.2 (adapted from tarneeb-e2e.js): plays a whole Texas Hold'em game in a headless browser against a small in-memory copy of the relay (worker/index.js): one TV page and N phone pages that click their buttons.
 //   NODE_PATH=$(npm root -g) node v4work/tools/holdem-e2e.js [players=5] [shotsDir]
 // It needs a built index.html (node build.js). Screenshots of the TV and phones go to shotsDir (default: ./_hd-shots).
 const http = require("http"), fs = require("fs"), path = require("path"), {chromium} = require("playwright");

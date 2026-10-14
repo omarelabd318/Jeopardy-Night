@@ -2,7 +2,7 @@
    dependencies, so build.js splices it into index.html (before the mode files) AND copies it to cards.js at the repo root, which the phone page cards.html loads.
    What's in it: card codes ("14S" = ace of spades, "10H" = ten of hearts), the deck, shuffle, sort, the trick winner, the card faces (drawn with CSS, no image files),
    the oval table with seats and the middle trick (the TV), and three looks: "felt" (Classic Felt, Estimation's pick), "ahwa" (the coffeehouse look Omar wants for Tarneeb) and "vegas" (6.100, Texas Hold'em: green felt, walnut and gold, red card backs).
-   7.1 also adds a four-colour deck switch: data-four on the .ckw wrapper makes diamonds blue and clubs green.
+   7.2 also adds a four-colour deck switch: data-four on the .ckw wrapper makes diamonds blue and clubs green.
    A look is only a set of CSS variables on a wrapper with data-look="felt|ahwa", so adding a look never touches the layout.
    To remove: delete this file, cards.html, the cards.js copy line in build.js and the /c route in worker/index.js (and the modes that use it). */
 const CK = (() => {

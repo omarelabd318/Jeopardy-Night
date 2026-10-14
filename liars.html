@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Liar's Bar</title>
+<!-- 7.1: the phone page for Liar's Bar, at /l?r=ROOM. A player joins once with a name (no teams). It shows the table card, whose turn it is, your cylinder, and your own hand: tap 1 to 3 cards and press Play, or
+     press Liar! to call the last play. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay the card modes use) and only ever receives
+     its own hand. Saloon look (green felt, brass, Rye lettering, red card backs), the same palette as #lbo in src/head.html. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Rye&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#f0e2c2;--gold:#c9a24a;--gold2:#f3d27a;--bg:#1c120b;--bg2:#2a1810;--felt:#173d29;--red:#9b1c16;--red2:#d8342a;--card:#f0e2c2;--cardink:#1a0f09;--back:#7a1f1a;--head:"Rye",Georgia,serif;--body:"Playfair Display",Georgia,serif}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--ink);font:16px/1.35 var(--body);background:radial-gradient(120% 80% at 50% 0%,#3b2416,#1a0f09 75%) fixed;background-color:#1a0f09}
+main{max-width:520px;margin:0 auto;padding:14px 12px 16px;display:grid;gap:10px;align-content:start;min-height:100dvh;grid-template-rows:auto 1fr}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:center;font:700 14px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--gold2)}
+.chip{padding:3px 10px;border:2px solid var(--gold);border-radius:99px;background:rgba(0,0,0,.3);color:var(--ink);font-size:13px;white-space:nowrap}
+#view{display:grid;gap:10px;align-content:start}
+h1{margin:6px 0;font:400 34px/1.1 var(--head);color:var(--gold2)}
+.hint{opacity:.8;font-size:14px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
+.send{width:100%;font:400 21px var(--head);background:var(--gold);color:#1a0f09;border:2px solid var(--gold2);padding:13px;border-radius:10px}
+.send:disabled{opacity:.4}
+input[type=text]{width:100%;font:700 20px var(--body);padding:12px;border:2px solid var(--gold);border-radius:10px;background:#f0e2c2;color:#1a0f09}
+.msg{padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.5);border:2px solid var(--red2);color:#ffb3a8;font-size:14px}
+.wait{text-align:center;padding:30px 0 6px}
+.big{font:400 32px/1.15 var(--head);color:var(--gold2)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.panel{background:rgba(201,162,74,.12);border:1px solid rgba(201,162,74,.5);border-radius:12px;padding:10px;display:grid;gap:6px}
+.names{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}.names li{padding:3px 10px;border:1px solid var(--gold);border-radius:99px}.names li.me{background:var(--gold);color:#1a0f09;font-weight:700}
+.tbl{text-align:center;display:grid;gap:2px;padding:10px;border-radius:12px;background:radial-gradient(ellipse at 50% 40%,#2c6b49,#173d29);border:3px solid #6b3e1f;box-shadow:0 0 0 2px var(--gold)}
+.tbl span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.tbl strong{font:400 40px/1.05 var(--head);color:var(--gold2)}
+.status{text-align:center;font-size:17px;line-height:1.3}
+.status b{font:400 22px var(--head);color:var(--gold2);display:block}
+.status.me b{color:#fff}
+.cyl{display:flex;justify-content:center;gap:7px;align-items:center;font-size:13px}
+.cyl u{width:13px;height:13px;border-radius:50%;border:2px solid var(--gold);display:block}.cyl u.f{background:var(--gold)}
+.mini{display:grid;justify-items:center;gap:6px;font-size:14px;opacity:.9}.mini div{display:flex}
+.mini i{width:24px;height:34px;border-radius:4px;margin:0 -6px;border:1.5px solid var(--card);background:repeating-linear-gradient(45deg,#7a1f1a 0 4px,#5c1512 4px 8px)}
+.hand{display:flex;justify-content:center;flex-wrap:wrap;gap:0;padding:22px 0 8px;min-height:104px}
+.c{position:relative;width:56px;height:80px;margin:0 -4px;border-radius:8px;background:var(--card);color:var(--cardink);border:3px solid var(--gold);font:400 30px var(--head);display:grid;place-items:center;padding:0;transition:translate .15s}
+.c small{position:absolute;left:4px;top:1px;font:700 12px var(--body)}
+.c.jk{color:#9b1c16}
+.c.up{translate:0 -16px;box-shadow:0 0 0 3px var(--gold2),0 8px 14px rgba(0,0,0,.5)}
+.c:disabled{opacity:1}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btns .send:only-child{grid-column:1/-1}
+.liar{width:100%;font:400 21px var(--head);background:var(--red);color:var(--ink);border:2px solid var(--ink);padding:13px;border-radius:10px}
+.stamp{font:400 40px var(--head);color:var(--red2);border:4px solid var(--red2);border-radius:6px;padding:0 14px;transform:rotate(-8deg);justify-self:center;background:rgba(240,226,194,.95)}
+.stamp.ok{color:#2c6b49;border-color:#2c6b49}
+.reveal{display:flex;justify-content:center;gap:6px;padding:6px 0}.reveal .c{margin:0}.reveal .c.bad{color:#9b1c16;border-color:#d8342a}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}.c{transition:none}}
+</style></head><body><main>
+<div class="top"><span id="me"></span><span id="chip"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_lb_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, busy = false, sel = [], selV = -1, note = null, sending = false, seenV = -1, seenAt = 0, sig = "";
+const NAME = {K:"Kings", Q:"Queens", A:"Aces"}, ONE = {K:"King", Q:"Queen", A:"Ace", J:"Joker"};
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("chip").innerHTML = "";
+  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">Liar's Bar</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input type="text" id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
+    <button class="send" id="jb" style="margin-top:12px">Take a seat</button></form>
+    ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open for the whole game.</p>`;
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n); };
+}
+async function send(a){ if(sending || !st || !st.pub) return; sending = true; note = null; draw();
+  const res = await post("crdact", {p:me.p, v:st.pub.v, a}); sending = false;
+  if(!res.ok) note = res.j.error === "stale" ? "The table moved on. Look again." : "That didn't send. Try again.";
+  else sel = [];
+  sig = ""; draw(); poll(true); }
+const card = (c, cls = "", i = "") => `<${i === "" ? "div" : "button"} class="c ${c === "J" ? "jk " : ""}${cls}"${i === "" ? "" : ` data-i="${i}"`}>${c === "J" ? "★" : c}<small>${c === "J" ? "★" : c}</small></${i === "" ? "div" : "button"}>`;
+function secsLeft(p){ if(!p.secs) return null; return Math.max(0, p.secs - Math.floor((Date.now() - seenAt) / 1000)); }
+function draw(){
+  $("me").textContent = me.n;
+  if(!st || !st.pub){ $("chip").innerHTML = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to open the game.</div></div>`; return; }
+  const p = st.pub;
+  if(p.v !== seenV){ seenV = p.v; seenAt = Date.now(); if(selV !== p.v){ sel = []; selV = p.v; } }
+  const v = $("view");
+  if(p.ph === "lobby"){ sig = "l" + (p.order || []).join(",");
+    v.innerHTML = `<div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start.</div>
+      <div class="panel"><div class="hint">At the table · ${(p.order || []).length}</div><ul class="names">${(p.order || []).map(x => `<li class="${x === me.p ? "me" : ""}">${esc(p.names[x] || "")}</li>`).join("")}</ul></div>`; return; }
+  const seat = p.seats.find(s => s.p === me.p), mine = p.turn === me.p, hand = (st.me && st.me.hand) || [], by = x => (p.seats.find(s => s.p === x) || {n:"Someone"}).n;
+  if(!seat){ v.innerHTML = `<div class="wait"><div class="big">You're not in this game</div><div class="hint">Wait for the next one: the host starts it from the TV.</div></div>`; $("chip").innerHTML = ""; return; }
+  const left = mine ? secsLeft(p) : null;
+  $("chip").innerHTML = `<span class="chip">${seat.out ? "Busted" : left !== null ? "0:" + String(left).padStart(2, "0") : "Round " + p.round}</span>`;
+  const cyl = `<div class="cyl">Cylinder ${Array.from({length:6}, (_, k) => `<u class="${k < seat.sp ? "f" : ""}"></u>`).join("")} <span>${seat.out ? "" : "1 in " + (6 - seat.sp)}</span></div>`;
+  const tbl = p.ph === "over" ? "" : `<div class="tbl"><span>Table</span><strong>${NAME[p.tbl]}</strong></div>`;
+  const g = [p.v, sel.join(), note, sending, left].join("|"); if(g === sig) return; sig = g;
+  let body = "";
+  if(p.ph === "over"){ const won = p.winner === me.p;
+    body = `<div class="status ${won ? "me" : ""}"><b>${won ? "You are the last one standing!" : esc(by(p.winner)) + " wins"}</b>${won ? "Nobody called you out in time." : "You went out; the winner is the last one left."}</div>`; }
+  else if(seat.out){ body = `<div class="status"><b>Busted, you're watching</b>${p.ph === "turn" ? esc(by(p.turn)) + " is up" : "Look at the TV"}</div>`;
+    if(p.last) body += `<div class="mini"><div>${Array.from({length:Math.min(p.pile, 6)}, () => "<i></i>").join("")}</div>${esc(by(p.last.by))} claims ${p.last.n} ${p.last.n === 1 ? ONE[p.tbl] : NAME[p.tbl]}</div>`; }
+  else if(p.ph === "reveal"){ const r = p.rev;
+    body = `<div class="reveal">${r.cards.map(c => card(c, c === p.tbl || c === "J" ? "" : "bad")).join("")}</div><div class="stamp${r.liar ? "" : " ok"}" style="justify-self:center">${r.liar ? "LIAR!" : "TRUTH!"}</div>
+      <div class="status"><b>${esc(by(r.loser))} spins</b>${r.liar ? esc(by(r.claimer)) + " was lying" : esc(by(r.caller)) + " was wrong"}</div>`; }
+  else if(p.ph === "spin"){ const x = p.res, shown = x.bust !== null;
+    body = `<div class="status"><b>${esc(by(x.loser))} spins</b>1 in ${x.odds}</div>${shown ? `<div class="stamp${x.bust ? "" : " ok"}">${x.bust ? "BUSTED" : "SAFE"}</div>` : `<div class="wait" style="padding:6px"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`}`; }
+  else { // a turn
+    const claim = p.last ? `${esc(by(p.last.by))} played ${p.last.n} and says ${p.last.n === 1 ? "it's a" : "they're"} ${p.last.n === 1 ? ONE[p.tbl] : NAME[p.tbl]}.` : "Nothing on the table yet. You lead.";
+    body = `<div class="status ${mine ? "me" : ""}"><b>${mine ? "Your turn" : esc(by(p.turn)) + "'s turn"}</b>${claim}</div>
+      <div class="mini"><div>${Array.from({length:Math.min(p.pile, 6)}, () => "<i></i>").join("") || ""}</div>${p.pile ? p.pile + " card" + (p.pile > 1 ? "s" : "") + " face down" : ""}</div>`;
+    if(mine){ const canCall = !!p.last, lo = p.lo;
+      body += `<div class="btns">${canCall ? `<button class="liar" data-a="liar" ${sending ? "disabled" : ""}>Liar!</button>` : ""}${lo ? "" : `<button class="send" data-a="play" ${sel.length && !sending ? "" : "disabled"}>${sel.length ? "Play " + sel.length : "Pick 1 to 3 cards"}</button>`}</div>${lo ? `<div class="hint" style="text-align:center">Everyone else is out of cards, so all you can do is call Liar!</div>` : ""}`; } }
+  const showHand = !seat.out && p.ph !== "over";
+  v.innerHTML = `${tbl}${cyl}${body}${showHand && hand.length ? `<div class="hand">${hand.map((c, i) => card(c, sel.includes(i) ? "up" : "", i)).join("")}</div>` : !seat.out && p.ph === "turn" && !hand.length ? `<div class="hint" style="text-align:center">You're out of cards, so you're safe this round.</div>` : ""}${note ? `<div class="msg">${esc(note)}</div>` : ""}`;
+}
+document.addEventListener("click", e => {
+  if(!st || !st.pub) return; const p = st.pub, t = e.target.closest("button"); if(!t) return;
+  if(t.dataset.i != null){ if(p.turn !== me.p || sending) return; const i = +t.dataset.i, k = sel.indexOf(i);
+    if(k >= 0) sel.splice(k, 1); else if(sel.length < 3) sel.push(i); else { note = "You can play at most 3 cards."; } sig = ""; draw(); if(note && sel.length === 3){ setTimeout(() => { note = null; sig = ""; draw(); }, 1800); } return; }
+  const a = t.dataset.a; if(!a) return;
+  if(a === "play" && sel.length) send({k:"play", i:sel.slice().sort((x, y) => x - y)});
+  else if(a === "liar") send({k:"liar"}); });
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v){ note = null; sig = ""; } st = j; draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+function loop(){ stop(); poll(); timer = setInterval(() => { poll(); if(st && st.pub && st.pub.turn === me.p && st.pub.secs){ sig = ""; draw(); } }, 1000); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

@@ -1,4 +1,4 @@
-/* 7.1 (Omar): Texas Hold'em, no-limit poker for 2 to 9 players with play chips only. Everyone scans one code and plays from their phone (cards.html at /c?r=ROOM&g=hd, the shared card phone page);
+/* 7.2 (Omar): Texas Hold'em, no-limit poker for 2 to 9 players with play chips only. Everyone scans one code and plays from their phone (cards.html at /c?r=ROOM&g=hd, the shared card phone page);
    the TV shows the table: the shared cards, the pot, every stack and whose turn it is. Omar picked the Vegas Classic look (green felt, walnut rail with a gold edge, red card backs, gold for whose turn it is)
    and said no trivia, so the trivia comeback from the framework doc is not in the game. Everything else follows the framework doc (Claude Doc "Texas Hold'em Mode").
    Rules (defaults from the doc): everyone starts with the same chips (setup: 500, 1,000 or 2,000), blinds start 10/20 and go up every 5, 8 or 12 hands (table in BLINDS, then doubling), standard no-limit
@@ -8,7 +8,7 @@
    The rules and the referee are in the "rules" region below, which has no screen code in it, so v4work/tools/holdem-test.js can load just that region and play thousands of random games against it.
    The Game object is the referee: it holds every card; pub() is what every phone and the TV may see, priv() is one player's own two cards and the move they may make (like TNR in src/tarneeb.js).
    Built on the card kit (src/cards.js, CK, look "vegas") and the shared phone page cards.html (MODES.hd); the relay routes are the generic crd* ones. The winner screen plays the Siuuu clip.
-   To remove: delete this file, v4work/tools/holdem-test.js, the MODES.hd block in cards.html, the 'vegas' look and four-colour lines in src/cards.js, the 7.1 CSS block and #hdo section in head.html, the Texas Hold'em button,
+   To remove: delete this file, v4work/tools/holdem-test.js, the MODES.hd block in cards.html, the 'vegas' look and four-colour lines in src/cards.js, the 7.2 CSS block and #hdo section in head.html, the Texas Hold'em button,
    the modeHold entry in src/title.js, hdLeave() in showHome and 'holdem' in MODE_FILES in build.js. */
 
 /*@rules*/
