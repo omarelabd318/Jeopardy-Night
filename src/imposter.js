@@ -1,4 +1,4 @@
-/* 6.68 (Omar): Imposter, a social-deduction party mode. Everyone scans one code and joins from their phone (spy.html at /s?r=ROOM). Each round the
+/* 6.68 (Omar): Imposter, a social-deduction game mode. Everyone scans one code and joins from their phone (spy.html at /s?r=ROOM). Each round the
    laptop deals the same secret to every phone, except 1 or 2 imposters. A language round gives each player a language and 4 different words with
    their meanings; any other category gives one secret word (a movie, a footballer...). An imposter's card has the same layout and colours but random
    letters instead of the words, plus a small "you're the imposter" line (and, with Hints on, a vague hint). A random player speaks first. Talking

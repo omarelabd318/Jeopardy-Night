@@ -144,12 +144,12 @@ function hsEnd(){ const st = HS.st; st.over = true; st.tb = null; hsShow();
   const ranked = st.teams.map((t, i) => ({...t, i})).sort((a, b) => b.score - a.score || (b.i === st.tbWin) - (a.i === st.tbWin)), max = ranked[0].score;
   const top = st.tbWin != null ? [ranked[0]] : ranked.filter(t => t.score === max);
   const rankOf = (t, k) => st.tbWin != null ? k + 1 : 1 + ranked.filter(x => x.score > t.score).length;
-  $("#winEyebrow").textContent = "Hot Seat";
+  $("#winEyebrow").textContent = "Hot Seat"; winTheme("hotseat");
   $("#winTitle").innerHTML = top.length > 1 ? `It's a tie!<br><span>${esc(top.map(t => t.name).join(" & "))}</span>` : `${esc(top[0].name)}<br><span>win!</span>`;
   $("#podium").innerHTML = ranked.slice(0, 3).map((t, k) => { const r = rankOf(t, k); return `<div class="pod p${Math.min(r, 3)}"><div class="who">${esc(t.name)}</div><div class="pts">${hsNum(t.score)}</div><div class="step">${r}${["th","st","nd","rd"][(r % 100 > 10 && r % 100 < 14) || r % 10 > 3 ? 0 : r % 10]}</div></div>`; }).join("");
   $("#podium").hidden = false;
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map((t, k) => `<li><span>${rankOf(t, k + 3)}. ${esc(t.name)}</span><b>${hsNum(t.score)}</b></li>`).join("") : "";
   $("#winBoard").hidden = true; $("#winBox").hidden = false; $("#playAgain").textContent = "New game"; $("#winNote").textContent = "New game keeps the same teams and settings and resets the scores."; $("#playAgain").focus();
-  confetti(); ledStart(); if(S.sound) playEnd(NORMAL_INTRO); }
+  confetti(); ledStart(); playWinSiu(); }
 function hsAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; hsInit(); hsShow(); }
 function hsSetupAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; hsSetupShow(); }

@@ -3,6 +3,35 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.78",
+  "date": "2026-10-14",
+  "items": [
+   "Guess the Flag: the Saudi Arabia flag is redrawn properly (the shahada and sword were too small), Qatar is now its real long shape, and Nepal sits centred in its box."
+  ]
+ },
+ {
+  "v": "6.77",
+  "date": "2026-10-14",
+  "items": [
+   "Bidding Wars can now be bid on from phones. Turn on Phone bidding in setup: a QR code shows before the first lot, each team scans it and picks its team, then raises from its phone. Answers are still given out loud on the TV."
+  ]
+ },
+ {
+  "v": "6.76",
+  "date": "2026-10-14",
+  "items": [
+   "Every mode's winner screen now wears that mode's own colours and style: Bingo card, Trading Floor, High Roller felt and the Survival poster.",
+   "Winner screens of all the modes on the title screen (and Football mode) now play just the Siuuu clip. Psych says \"Game mode\" like the rest and plays it too."
+  ]
+ },
+ {
+  "v": "6.75",
+  "date": "2026-10-14",
+  "items": [
+   "Survival: every question now has its own random category, instead of one category for the whole round. The category shows on the board before each clue."
+  ]
+ },
+ {
   "v": "6.74",
   "date": "2026-10-11",
   "items": [
