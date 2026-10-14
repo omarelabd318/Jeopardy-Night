@@ -1,6 +1,6 @@
 /* 6.60 (Omar): Survival, a last-team-standing mode. Every team starts with 2 or 3 lives and loses one for each wrong clue; the last team standing wins.
    Eight rounds on a fixed ladder (100s, then 200/300, 200/300, 300/400, 400/500, 400/500, 500, 500); round 1 asks one clue and every later round three.
-   Each round announces one category, drawn at random from the Bidding Wars titles (so football doesn't come up four times running). Setup chooses turn by turn
+   Each clue announces its own category, drawn at random from the Bidding Wars titles (so football doesn't come up four times running). Setup chooses turn by turn
    (default: each team answers its own clue) or all at once (every team answers the same clue and the host marks each one). If every team misses the same clue
    nobody loses a life. No lives come back. After round 8, if more than one team is left, sudden death rounds follow (one 500 clue each).
    Cairo Cinema Poster look (his pick of five previews): yellow sunburst, red banner, paper-ticket team cards with hard shadows, an OUT stamp.
@@ -37,12 +37,12 @@ function svInit(){ const st = {v:1, teams:SV.cfg.teams.map(n => ({name:n, lives:
 function svStartRound(){ const st = SV.st; st.round++; const r = st.round, sd = r >= SV_ROUNDS;
   st.k = r === 0 || sd ? 1 : 3; const opts = sd ? [500] : SV_LADDER[r];
   st.vals = Array.from({length:st.k}, () => opts[Math.floor(Math.random() * opts.length)]); st.taken = new Set();
-  const pk = svPickCat(st.vals, st.prevTitle, st.seen) || svPickCat([st.vals[0]], null, new Set()) ;
-  st.title = pk.title; st.cat = pk.cat; st.prevTitle = pk.title; st.teams.forEach(t => t.dots = []); st.n = -1; svStartGroup(); }
+  st.teams.forEach(t => t.dots = []); st.n = -1; svStartGroup(); }
 function svStartGroup(){ const st = SV.st; st.n++; st.alive = svAlive();
   const al = st.alive, rot = st.round % al.length; st.order = al.slice(rot).concat(al.slice(0, rot)); st.pos = 0; st.res = {}; svNextClue(); }
-function svNextClue(){ const st = SV.st, lvl = st.vals[st.n]; let idx = svIdx(st.cat, lvl, st.taken);
-  if(idx == null){ const pk = svPickCat([lvl], null, new Set()); if(pk){ st.cat = pk.cat; st.title = pk.title; idx = svIdx(st.cat, lvl, st.taken); } }
+function svNextClue(){ const st = SV.st, lvl = st.vals[st.n];   // 6.75: every clue draws its own random title, then category
+  let pk = svPickCat([lvl], st.prevTitle, st.seen) || svPickCat([lvl], null, new Set()); st.cat = pk.cat; st.title = pk.title; st.prevTitle = pk.title;
+  let idx = svIdx(st.cat, lvl, st.taken);
   st.taken.add(`${st.cat}-${lvl}-${idx}`); warmRef(imgRefFor(st.cat, lvl, idx)); st.cur = {cat:st.cat, lvl, idx, seen:false}; }
 
 /* ---------- screens ---------- */
@@ -63,10 +63,10 @@ function renderSurvSetup(){
     <div class="svpanel"><div class="sveye">Teams</div><div class="svteams">${c.teams.map((n, i) => `<div class="svteam"><input type="text" id="svTeam${i}" data-bn="${i}" value="${esc(n)}" maxlength="24" aria-label="Team ${i + 1} name">${c.teams.length > 2 ? `<button class="svbtn ghost" data-rm="${i}" aria-label="Remove ${esc(n)}">Remove</button>` : ""}</div>`).join("")}</div>
       ${c.teams.length < 6 ? `<div><button class="svbtn ghost" id="svAddTeam">Add team</button></div>` : ""}</div>
     <div class="svpanel"><div class="sveye">Lives</div>${seg("lives", [[2, "2 lives"], [3, "3 lives"]], c.lives)}<p class="note">With 3 lives a game usually ends around round 5. With 2 it is shorter and sharper.</p></div>
-    <div class="svpanel"><div class="sveye">Answering</div>${seg("mode", [["turn", "Turn by turn"], ["once", "All at once"]], c.mode)}<p class="note">Turn by turn: each team gets its own clue in the round's category, and only that team answers. All at once: one clue, every team answers it (on paper or a whiteboard) and the host marks each team.</p></div>
+    <div class="svpanel"><div class="sveye">Answering</div>${seg("mode", [["turn", "Turn by turn"], ["once", "All at once"]], c.mode)}<p class="note">Turn by turn: each team gets its own clue, each from a different random category, and only that team answers. All at once: one clue, every team answers it (on paper or a whiteboard) and the host marks each team.</p></div>
     <div class="svpanel"><div class="sveye">Rounds</div><div class="svladder">${SV_LADDER.map((l, i) => `<div><b>${i + 1}</b><span>$${l.join(" / $")}</span><small>${i === 0 ? "1 clue" : "3 clues"}</small></div>`).join("")}</div><p class="note">Each clue is worth nothing on its own: it only matters whether the team gets it right. If every team misses the same clue, nobody loses a life.</p></div>
     <div class="svpanel"><div class="sveye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture, Egypt: Photo Edition and every clue that shows a photo.</p></div>
-    <div class="svpanel"><div class="sveye">Titles in the draw</div><p class="note" style="margin:0 0 8px">Each round picks a random title, then a random category inside it. A title doesn't come back until the others have had a turn.</p><div class="svtitles">${BW_TITLES.map(t => { const off = t[3] === "photo" && !c.photos;
+    <div class="svpanel"><div class="sveye">Titles in the draw</div><p class="note" style="margin:0 0 8px">Every clue picks a random title, then a random category inside it. A title doesn't come back until the others have had a turn.</p><div class="svtitles">${BW_TITLES.map(t => { const off = t[3] === "photo" && !c.photos;
       return `<button data-title="${t[0]}" aria-pressed="${svTitleOn(t) && !off}" ${off ? "disabled" : ""}><b>${esc(t[1])}</b><small>${esc(t[2].filter(id => catById(id) && !HIDDEN_IDS.has(id)).map(id => catById(id).name).join(", "))}</small></button>`; }).join("")}</div></div>
     <div class="row"><button class="svbtn ghost" id="svBack">Back to title</button><button class="svbtn go" id="svStart">Start Survival</button></div>`;
 }

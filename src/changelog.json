@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.75",
+  "date": "2026-10-14",
+  "items": [
+   "Survival: every question now has its own random category, instead of one category for the whole round. The category shows on the board before each clue."
+  ]
+ },
+ {
   "v": "6.74",
   "date": "2026-10-11",
   "items": [
