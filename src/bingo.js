@@ -24,8 +24,9 @@ const BG_LINES = bgMkLines(5), BG_LINES6 = bgMkLines(6), bgRun = () => BG.cfg.ro
    Before 6.70 the value came from how many winning lines ran through the square (BG_CNT: 3 lines = 100 ... 8 lines = 500). */
 const BG_VALS = [400,300,100,400,500,200,400, 300,500,300,200,100,500,300, 200,100,400,500,400,200,100, 500,200,500,100,200,500,300, 300,400,200,300,400,300,400, 100,300,400,500,300,100,300, 400,500,100,200,400,300,400];
 const bgSym = () => { const k = Math.floor(Math.random() * 8); return i => { let r = Math.floor(i / BG_N), c = i % BG_N; if(k & 1) [r, c] = [c, r]; if(k & 2) r = BG_N - 1 - r; if(k & 4) c = BG_N - 1 - c; return BG_VALS[r * BG_N + c]; }; };
-function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"random", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"classic"}; }
+function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"random", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"card"}; }
 BG.cfg = Object.assign(bgDefaults(), store.get("jn_bingoCfg", {}));
+if(BG.cfg.lookV !== 2){ BG.cfg.look = "card"; BG.cfg.lookV = 2; store.set("jn_bingoCfg", BG.cfg); }   // 6.75 (Omar): Bingo card is the default look; this switches saved boards over once (was "classic")
 if(BG.cfg.fill === "balanced") BG.cfg.fill = "random";   // 6.56 (Omar): Balanced (7 per section) became Random from every category
 const bgSave = () => { store.set("jn_bingoCfg", BG.cfg); };
 /* Photo rounds switch (Omar): off takes the whole Photo Rounds section, plus Egypt: Photo Edition, off the board. Egypt, Football, Entertainment and Knowledge each have 14+ categories, so
@@ -73,6 +74,7 @@ function bgLookBtn(){ const l = BG_LOOKS.find(x => x[0] === BG.cfg.look) || BG_L
 function renderBingoSetup(){
   const c = BG.cfg, seg = (key, opts, cur) => `<div class="seg">${opts.map(([v, t]) => `<button data-set="${key}" data-v="${v}" aria-pressed="${String(cur) === String(v)}">${t}</button>`).join("")}</div>`;
   const secs = bgSecIds();
+  $("#bingoSetup").dataset.look = c.look;
   $("#bingoSetup").innerHTML = `
     <div><div class="eyebrow">Game mode</div><h1>Category <span>Bingo</span></h1><p class="sub">A 7x7 board of 49 categories. Teams take turns picking a square and answering its clue; get it right and the square is yours. First to ${bgRowN()} in a row (across, down or diagonal) wins. Each team has a few steals to take an opponent's square.</p></div>
     <div class="panel opt"><div class="eyebrow">Teams</div><div class="bteams">${c.teams.map((n, i) => `<div class="bteam"><i style="background:${BG_TEAMCOL[i]}"></i><input type="text" data-bn="${i}" value="${esc(n)}" maxlength="24" aria-label="Team ${i + 1} name">${c.teams.length > 2 ? `<button class="btn small" data-rm="${i}">Remove</button>` : ""}</div>`).join("")}</div>${c.teams.length < 4 ? `<div class="row"><button class="btn small" id="bgAddTeam">Add a team</button></div>` : ""}</div>

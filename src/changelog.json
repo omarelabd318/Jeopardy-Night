@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.81",
+  "date": "2026-10-14",
+  "items": [
+   "Category Bingo: the Bingo card look (green felt, paper-white squares, navy ink and gold) is now the default, and it carries over to Bingo's setup screen, clue card and winner screen. Classic and Neon are still in Bingo's setup."
+  ]
+ },
+ {
   "v": "6.80",
   "date": "2026-10-14",
   "items": [

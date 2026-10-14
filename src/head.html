@@ -1104,6 +1104,35 @@ body.billboard:not(.football):not(.bidmode):not(.hsmode):not(.survmode):not(.imp
 body.billboard:not(.football):not(.bidmode):not(.hsmode):not(.survmode):not(.impmode):not(.psymode):not(:has(#bingo:not([hidden]),#bingoSetup:not([hidden]))) .pod .step{border-radius:0;border:3px solid #16110e;box-shadow:4px 4px 0 #16110e}
 body.billboard:not(.football):not(.bidmode):not(.hsmode):not(.survmode):not(.impmode):not(.psymode):not(:has(#bingo:not([hidden]),#bingoSetup:not([hidden]))) .standings li{border:2px solid #16110e;border-radius:0}
 /* end 6.60 */
+/* 6.81 (Omar): the Bingo card look (green felt, paper-white cards, navy ink, gold) for Category Bingo only: its setup, board, clue card and winner whenever Bingo's own look is Bingo card (now Bingo's default).
+   The rest of the game and the other modes keep their own looks. To remove: delete this block down to "end 6.81" and set look:"classic" in bgDefaults() in src/bingo.js. */
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])){--felt:#0E5A3B;--felt-2:#0b4a30;--tile:#FBF6E9;--tile-hi:#ffffff;--line:#2f8a63;--brass:#FFCC33;--brass-dim:#d9a826;--on-brass:#1c1606;--brass-rgb:255,204,51;--cream:#F7F1DE;--muted:#a9d3bd;
+  --good:#8fe0a0;--bad:#ff8f7a;--panel:#0c4f33;--deep:#083b27;--deeper:#052a1b;--veil:3,38,24;--winhi:#1a8a5a;color-scheme:dark;
+  background-color:#0E5A3B;background-image:radial-gradient(ellipse at 50% 15%,#14703f 0%,#0E5A3B 55%,#0a4a30 100%);background-attachment:fixed}
+/* title: faint paper cards behind the name */
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) #titleScreen .ghost{background:#0a4a30;opacity:.3}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) #titleScreen .ghost i{background:#FBF6E9;color:#14213d;text-shadow:none;border-radius:8px}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .bigtitle{text-shadow:5px 5px 0 #052a1b}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .tagline{text-shadow:2px 2px 0 #052a1b}
+/* board: navy header strips and paper tiles, each with its column's section colour along the bottom edge (the Bingo squares' stripe) */
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .c0{--col:#4DA3FF}body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .c1{--col:#FF8A4D}body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .c2{--col:#34D3A5}body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .c3{--col:#FF6FA8}body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .c4{--col:#5FD068}body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .c5{--col:#A58BFF}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .board{background:#083b27;border-radius:14px}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .head{background:#14213d;color:#FBF6E9;text-shadow:none;border-radius:8px 8px 0 0;border-bottom:5px solid var(--col,#FFCC33)}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .tile{position:relative;background:#FBF6E9;color:#14213d;text-shadow:none;border:2px solid #d9cfb4;border-bottom:5px solid var(--col,#d9cfb4);border-radius:8px;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .tile:hover{background:#fff}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .tile.done{background:rgba(251,246,233,.14);border-color:rgba(251,246,233,.22);box-shadow:none;color:transparent}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .tile.done::before{content:"";position:absolute;inset:20%;border-radius:50%;background:rgba(255,204,51,.35);border:3px solid rgba(255,204,51,.55)}
+/* scores: paper team cards, the team up gets the gold marker */
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .scores{background:var(--deep)}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .team{background:#FBF6E9;color:var(--cream);border:2px solid #d9cfb4;--cream:#14213d;--muted:#6f6650;--line:#d9cfb4}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .team.turn{background:var(--brass);color:var(--cream);border-color:#fff3c4;--cream:#1a1405;--muted:#4a3a05;--line:rgba(26,20,5,.35)}
+/* clue card: a paper card on the green veil. The variables are flipped inside it, so inputs, buttons and notes turn light too */
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .clue{background:#FBF6E9;color:var(--cream);border:2px solid #d9cfb4;--cream:#14213d;--muted:#6f6650;--felt:#efe6cf;--felt-2:#f4edd9;--line:#d9cfb4;--brass:#e0a800;--brass-dim:#b88900;--panel:#f4edd9;--good:#17794a;--bad:#c4301c;color-scheme:light}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .cluehead .val{color:#b07d00}
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) .clue .btn.primary{color:#1a1405}
+/* winner */
+body:has(#bingo[data-look="card"]:not([hidden]),#bingoSetup[data-look="card"]:not([hidden])) #winBox{background:radial-gradient(ellipse at 50% 30%,#1a8a5a 0%,#0E5A3B 55%,#052a1b 100%)}
+/* end 6.81 */
 /* 6.59 (Omar): Hot Seat, High Roller look (his pick of four previews): green felt, casino chips, playing cards. Sizes on the table are in cqw (1% of the screen's width) so it scales like a TV picture.
    Other looks he was shown: The Vault (steel and green LED), Furnace (ember black and orange), Balloon Ride (bright sky). To remove Hot Seat: see the 6.59 NOTES entry. */
 #hsSetup,#hotSeat{--hs-felt:#0c4a2c;--hs-felt2:#0f5a35;--hs-deep:#062a19;--hs-line:#2c7a52;--hs-cream:#f6ecd0;--hs-muted:#a9cdb6;--hs-red:#c0392b;--hs-wood:#3a1c12;color:var(--hs-cream);font-family:"Playfair Display",Georgia,serif}
@@ -1170,7 +1199,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.80</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.81</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -1224,7 +1253,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.80</div>
+      <div class="eyebrow verlabel">v6.81</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
