@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.10",
+  "date": "2026-10-14",
+  "items": [
+   "Every game now has its own drawn background on the title screen: trading charts, bingo balls, a stage spotlight, a stormy sea, a radar and more."
+  ]
+ },
+ {
   "v": "7.9",
   "date": "2026-10-14",
   "items": [
