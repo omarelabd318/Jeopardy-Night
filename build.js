@@ -20,7 +20,7 @@ const IMPDATA=(()=>{const d=W+'/imposter',o={langs:{},cats:{}};if(!fs.existsSync
   for(const f of fs.readdirSync(d).sort()){if(!f.endsWith('.json'))continue;const j=JSON.parse(fs.readFileSync(d+'/'+f,'utf8'));Object.assign(f.startsWith('lang-')?o.langs:o.cats,j)}
   return o})();
 const FOOTBALL_IDS=JSON.parse(fs.readFileSync('src/app.js','utf8').match(/const FOOTBALL = (\[[^\]]*\])/)[1]);   // 6.20: Football Mix = the Football mode pool
-const MODE_FILES=['cards','estrules','bidding','bingo','hotseat','survival','imposter','psych','estimation'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
+const MODE_FILES=['cards','estrules','bidding','bingo','hotseat','survival','imposter','psych','estimation','tarneeb'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
 fs.copyFileSync('src/cards.js','cards.js');   // 6.79: the phone page cards.html loads the same card kit as the game
 const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8').replace('/*@modes*/',()=>MODE_FILES.map(m=>fs.readFileSync(`src/${m}.js`,'utf8')).join('\n')), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}

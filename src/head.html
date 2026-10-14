@@ -122,6 +122,83 @@ body.esmode .wrap{max-width:none;padding:0}
 #esto .ckmsg small{font-size:.6em;opacity:.85;font-weight:400}
 #esto .ckmsg{font-size:calc(var(--u)*2.6)}
 /* end 6.79 */
+/* 6.80 (Omar): Tarneeb, Ahwa look (his pick of three previews: Ahwa, Royal Felt, Midnight): dark wood table with a brass rim, cream cards, tea gold for the team in seats 1 and 3 and teal for the other.
+   The table, cards and seats come from src/cards.js (data-look="ahwa", with the wood override below); this block is the lobby, the TV frame and the hand summary. cards.html (the phones) uses the same palette.
+   To undo the wood table and go back to the kit's cream Ahwa: delete the two ".ckfelt" and "--ck-" lines marked 6.80 wood. To remove Tarneeb: delete this block, the #tno section and the Tarneeb button. */
+#titleScreen #modeRow .modebtn.tnbtn{font:700 22px "Reem Kufi","Cairo",sans-serif;letter-spacing:.03em;text-transform:none;background:linear-gradient(#4a2c1a,#2a190f);color:#f6ead2;border:2.5px solid #c49a4a;border-radius:10px;box-shadow:inset 0 0 0 2px #6a4520;padding:9px 26px}
+body.tnmode{min-height:100vh;background:#1c110a}
+body.tnmode .wrap{max-width:none;padding:0}
+#tno{--tn-gold:#e0b04f;--tn-teal:#57b3a6;--tn-ink:#f6ead2;--tn-soft:#c9b79a;--tn-disp:"Reem Kufi","Cairo",sans-serif;color:var(--tn-ink);font-family:"Cairo",system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(120% 90% at 50% 30%,#4a2c1a,#1c110a 75%)}
+#tno [hidden]{display:none!important}
+#tno .tntools{display:flex;gap:8px;justify-content:flex-end;padding:6px 10px 0}
+#tno .tnrow{display:flex;gap:12px;flex-wrap:wrap}
+#tno .tnbtn{font:700 19px var(--tn-disp);letter-spacing:.03em;padding:10px 24px;border:2px solid #c49a4a;background:#2a190f;color:var(--tn-gold);cursor:pointer;border-radius:8px}
+#tno .tnbtn.go{background:var(--tn-gold);color:#2a190f}
+#tno .tnbtn.ghost{background:transparent}
+#tno .tnbtn.small{font-size:15px;padding:6px 14px}
+#tno .tnbtn:disabled{opacity:.45;cursor:default}
+#tnBody{flex:1;display:flex;flex-direction:column}
+#tnBody>.tnhead,#tnBody>.tngrid,#tnBody>.tnpod,#tnBody>.tnrow{width:min(1180px,100%);margin-inline:auto;padding-inline:20px}
+#tnBody>.tnhead{padding-top:18px}
+#tno .tnbadge{display:inline-block;font:700 14px var(--tn-disp);letter-spacing:.14em;text-transform:uppercase;border:2px solid #c49a4a;color:var(--tn-gold);padding:2px 12px;border-radius:99px}
+#tno h1{margin:10px 0 6px;font:700 clamp(40px,6vw,76px)/1.05 var(--tn-disp);color:var(--tn-ink);text-shadow:none}
+#tno .sub{margin:0 0 14px;max-width:64ch;color:var(--tn-soft);font-size:19px}
+#tno .tngrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start;padding-bottom:20px}
+#tno .tnpanel{background:rgba(20,10,4,.55);border:2px solid #c49a4a;border-radius:12px;padding:16px 18px;display:grid;gap:10px}
+#tno .tneye{font:700 14px var(--tn-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--tn-gold)}
+#tno .note{margin:0;font-size:15px;color:var(--tn-soft)}
+#tno .tnqr{background:#fff;padding:10px;width:fit-content;border-radius:8px}
+#tno .tnnames{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;counter-reset:s}
+#tno .tnnames li{counter-increment:s}
+#tno .tnnames button{width:100%;font:700 17px var(--tn-disp);text-align:left;padding:6px 10px;border:2px solid var(--tn-gold);background:#2a190f;color:var(--tn-ink);cursor:pointer;border-radius:6px}
+#tno .tnnames li.t1 button{border-color:var(--tn-teal)}
+#tno .tnnames button::before{content:counter(s) ". ";color:var(--tn-gold)}
+#tno .tnteams{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:16px}
+#tno .tnteams li{padding:4px 10px;border-left:4px solid var(--tn-gold);background:rgba(0,0,0,.25)}
+#tno .tnteams li.t1{border-left-color:var(--tn-teal)}
+#tno .tnseg{display:flex;flex-wrap:wrap;gap:6px}
+#tno .tnseg button{font:700 18px var(--tn-disp);padding:6px 14px;border:2px solid #c49a4a;background:#2a190f;color:var(--tn-ink);cursor:pointer;border-radius:6px}
+#tno .tnseg button[aria-pressed=true]{background:var(--tn-gold);color:#2a190f}
+#tno .tnpod{list-style:none;margin:0 auto 18px;padding:0 20px;display:grid;gap:8px}
+#tno .tnpod li{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:12px;font:700 34px var(--tn-disp);padding:10px 18px;border-radius:10px;background:rgba(0,0,0,.4);border:2px solid rgba(196,154,74,.4)}
+#tno .tnpod li.r1{background:var(--tn-gold);color:#2a190f;font-size:44px}
+#tno .tnpod em{font-style:normal;font-variant-numeric:tabular-nums}
+#tno .tnpod .neg{color:#ff8a8a}
+#tno .tn-tv{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 22vw;height:calc(100vh - 38px);background:transparent;--ck-bg:#1c110a}
+#tno .tn-stage{min-width:0;min-height:0}
+/* 6.80 wood: the kit's Ahwa is a cream table; Omar picked the dark wood one from the previews */
+#tno .tn-tv[data-look=ahwa]{--ck-felt:#86572f;--ck-felt2:#6d4424;--ck-felt3:#9a6638;--ck-rail:#c49a4a;--ck-gold:#e0b04f;--ck-plate:#3b2616;--ck-plate-ink:#f6ead2;--ck-ink:#f6ead2;--ck-side:#24160c;--ck-sc:rgba(224,176,79,.14);--ck-turn:#e0b04f;--ck-turn-ink:#2a190f;--ck-lead:#6a4520}
+#tno .tn-tv[data-look=ahwa] .ckfelt{background:repeating-linear-gradient(90deg,#8a5a33 0 .25%,#7d5230 .25% 1.4%,#86572f 1.4% 2.1%)}   /* 6.80 wood */
+#tno .tn-tv .ckseat.t0 .ckplate{border-color:var(--tn-gold)}
+#tno .tn-tv .ckseat.t1 .ckplate{border-color:var(--tn-teal)}
+#tno .tn-tv .ckseat.t1 .ckplate .tag{background:var(--tn-teal)}
+#tno .tn-tv .ckside .cksc.t1{box-shadow:inset 4px 0 0 var(--tn-teal)}
+#tno .tn-tv .ckside .cksc.t0{box-shadow:inset 4px 0 0 var(--tn-gold)}
+#tno .tn-tv .ckside .cksc.lead{background:var(--ck-lead)}
+#tno .tn-tools{margin-top:auto;display:flex;justify-content:flex-end}
+#tno .ckmsg small{font-size:.6em;opacity:.85;font-weight:400}
+#tno .ckmsg{font-size:calc(var(--u)*2.6)}
+#tno .tn-weak{display:flex;justify-content:center;margin:calc(var(--u)*.6) 0;font-size:calc(var(--u)*1.3)}
+#tno .tn-weak .ck{margin-left:-1.5em}#tno .tn-weak .ck:first-child{margin-left:0}
+#tno .tn-trump{position:absolute;right:calc(var(--u)*2);bottom:calc(var(--u)*2);z-index:5;width:calc(var(--u)*8);height:calc(var(--u)*8);border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.6);font-size:calc(var(--u)*5.2);box-shadow:inset 0 0 0 calc(var(--u)*.3) var(--ck-gold)}
+#tno .tn-trump b{color:#ff6b7d}#tno .tn-trump b.blk{color:#fff}
+#tno .tn-dbl{color:#ff9a9a;font-weight:700}
+#tno .tn-dblbadge{position:absolute;left:50%;top:calc(var(--u)*13);transform:translateX(-50%) rotate(-3deg);z-index:6;font:700 calc(var(--u)*2.4)/1 var(--tn-disp);letter-spacing:.06em;background:#c43b2e;color:#fff;padding:calc(var(--u)*.6) calc(var(--u)*1.6);border-radius:calc(var(--u)*.6);border:calc(var(--u)*.2) solid #f6ead2;text-align:center}
+#tno .tn-dblbadge small{display:block;font-size:.45em;letter-spacing:.04em;font-weight:400}
+#tno .tn-sum{max-width:none;width:62%}
+#tno .tn-sumhead{margin-bottom:calc(var(--u)*.8)}
+#tno .tn-sum table{border-collapse:collapse;width:100%;font-size:calc(var(--u)*1.8)}
+#tno .tn-sum th{font-size:calc(var(--u)*1.2);letter-spacing:.1em;text-transform:uppercase;color:var(--ck-gold);text-align:right;padding:calc(var(--u)*.4) calc(var(--u)*.8)}
+#tno .tn-sum td{text-align:right;padding:calc(var(--u)*.55) calc(var(--u)*.8);border-top:1px solid rgba(255,255,255,.2);font-variant-numeric:tabular-nums}
+#tno .tn-sum th:first-child,#tno .tn-sum td:first-child{text-align:left}
+#tno .tn-sum tr.miss td:nth-child(3) b{color:#ff9a9a}
+#tno .tn-sum tr.hit td:nth-child(3) b{color:#8fe3a8}
+#tno .tn-sum .tnbtn{margin-top:calc(var(--u)*.8);font-size:calc(var(--u)*1.9);padding:calc(var(--u)*.7) calc(var(--u)*2.4)}
+#tno .tn-hist{display:grid;gap:.4vw;font-size:1.2vw;font-variant-numeric:tabular-nums}
+#tno .tn-hist div{display:grid;grid-template-columns:2em 1fr 3em 3em;gap:.5vw;opacity:.9}
+#tno .tn-hist .neg{color:#ff8a8a}
+#tno .ckside .cksc small{grid-column:1/-1}
+/* end 6.80 */
 /* 6.72 (Omar): Psych, Lie Detector look (his pick of three previews: Lie Detector, Tabloid, Mirage): chart paper, mono type, a time-left bar with a red needle, a strip of every player along the bottom.
    psych.html (the phones) uses the same palette. To remove: delete this block, the #psyo section and the Psych button. */
 #titleScreen #modeRow .modebtn.psybtn{font:700 20px "Archivo Narrow","Arial Narrow",sans-serif;letter-spacing:.1em;text-transform:uppercase;background:#f6f3e8;color:#1e2a26;border:2px solid #1e2a26;border-radius:0;box-shadow:inset 0 -4px 0 #d2232a;padding:10px 26px}
@@ -1093,7 +1170,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.79</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.80</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -1102,7 +1179,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <div class="row" style="justify-content:center"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="lookBtn" aria-pressed="false" title="Painted Billboard look for the normal game">Billboard look</button></div>
       <p class="note" id="fsNote" hidden></p>
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv">Survival</button><button class="btn modebtn impbtn" id="modeImp">Imposter</button><button class="btn modebtn psybtn" id="modePsy">Psych</button><button class="btn modebtn estbtn" id="modeEst" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button></div>
+      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv">Survival</button><button class="btn modebtn impbtn" id="modeImp">Imposter</button><button class="btn modebtn psybtn" id="modePsy">Psych</button><button class="btn modebtn estbtn" id="modeEst" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button></div>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -1130,6 +1207,11 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
     <div class="estools"><button class="esbtn ghost small fsbtn">Full screen</button><button class="esbtn ghost small" id="esHome">Title screen</button></div>
     <div id="estBody"></div>
   </section>
+  <!-- 6.80: Tarneeb (src/tarneeb.js). To remove: delete this section, the 6.80 CSS block and the Tarneeb button -->
+  <section id="tno" hidden>
+    <div class="tntools"><button class="tnbtn ghost small fsbtn">Full screen</button><button class="tnbtn ghost small" id="tnHome">Title screen</button></div>
+    <div id="tnBody"></div>
+  </section>
   <section id="survSetup" hidden></section>
   <section id="survival" hidden>
     <div class="svtools row"><button class="svbtn ghost fsbtn">Full screen</button><button class="svbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="svbtn ghost" id="svHome">Title screen</button></div>
@@ -1142,7 +1224,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.79</div>
+      <div class="eyebrow verlabel">v6.80</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

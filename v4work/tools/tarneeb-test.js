@@ -1,94 +1,94 @@
-// 6.80: tests the Tarneeb rules region of src/tarneeb.js. Run: node v4work/tools/tarneeb-test.js
+// 6.80: tests the Tarneeb rules and referee in src/tarneeb.js (the "rules" region, no screen code). Run: node v4work/tools/tarneeb-test.js
 const fs = require("fs"), path = require("path"), assert = require("assert");
 const src = fs.readFileSync(path.join(__dirname, "../../src/tarneeb.js"), "utf8");
 const m = src.match(/\/\*@rules\*\/([\s\S]*?)\/\*@end-rules\*\//);
 if(!m) throw new Error("rules region not found");
-const T = new Function(m[1] + "; return {TN_SUITS,tnCallValue,tnBeats,tnTricks,tnTeam,tnNext,tnDeal,tnWeakHand,tnAuction,tnCanPass,tnCanCall,tnCanDouble,tnDoCall,tnDoPass,tnDoDouble,tnLegal,tnTrickWinner,tnScoreHand,tnWinner,tnSortHand,tnDeck};")();
-let n = 0; const ok = (c, msg) => { n++; assert(c, msg); };
+const T = new Function(m[1] + "; return TNR;")();
+let n = 0; const ok = (c, msg) => { n++; assert(c, msg); }, eq = (a, b, msg) => { n++; assert.deepStrictEqual(a, b, msg); };
 
-// calls rank by number first, then suit (clubs lowest, spades highest)
-ok(T.tnBeats({n:2, s:"S"}, {n:2, s:"H"}), "2S beats 2H");
-ok(T.tnBeats({n:3, s:"C"}, {n:2, s:"S"}), "3C beats 2S");
-ok(!T.tnBeats({n:1, s:"C"}, null) === false, "anything beats no call");
-ok(T.tnTricks({n:1}) === 7 && T.tnTricks({n:7}) === 13, "1 means 7 tricks, 7 means 13");
+// calls rank by number first, then suit (clubs lowest, spades highest); 1 means 7 tricks
+ok(T.beats({n:2, s:"S"}, {n:2, s:"H"}), "2S beats 2H");
+ok(T.beats({n:3, s:"C"}, {n:2, s:"S"}), "3C beats 2S");
+ok(!T.beats({n:2, s:"H"}, {n:2, s:"S"}) && !T.beats({n:2, s:"H"}, {n:2, s:"H"}), "lower or equal doesn't beat");
+ok(T.tricksFor({n:1}) === 7 && T.tricksFor({n:3}) === 9 && T.tricksFor({n:7}) === 13, "1 means 7 tricks, 7 means 13");
 
-// scoring examples from the doc
-const S = T.tnScoreHand;
-assert.deepStrictEqual(S(0, {n:3, s:"H"}, [10, 3], false), [10, 0]);   n++;      // made 9, took 10
-assert.deepStrictEqual(S(0, {n:3, s:"H"}, [7, 6], false), [-9, 6]);    n++;      // missed
-assert.deepStrictEqual(S(0, {n:3, s:"H"}, [13, 0], false), [16, 0]);   n++;      // all 13 without calling 7
-assert.deepStrictEqual(S(0, {n:7, s:"S"}, [13, 0], false), [26, 0]);   n++;      // called 7, made
-assert.deepStrictEqual(S(0, {n:7, s:"S"}, [12, 1], false), [-16, 1]);  n++;      // called 7, missed
-assert.deepStrictEqual(S(1, {n:3, s:"H"}, [3, 10], true), [0, 20]);    n++;      // doubled, made
-assert.deepStrictEqual(S(0, {n:3, s:"H"}, [7, 6], true), [-18, 12]);   n++;      // doubled, missed
-assert.deepStrictEqual(S(0, {n:7, s:"S"}, [13, 0], true), [52, 0]);    n++;      // doubled Kaboot
-assert.deepStrictEqual(S(0, {n:3, s:"H"}, [13, 0], true), [32, 0]);    n++;
-assert.deepStrictEqual(S(0, {n:1, s:"C"}, [8, 5], false, {defenders:true}), [8, 5]); n++;
-ok(T.tnWinner([31, 20], 31) === 0 && T.tnWinner([30, 20], 31) === -1 && T.tnWinner([33, 35], 31) === 1 && T.tnWinner([32, 32], 31) === 2, "winner");
+// scoring examples from the framework doc
+const S = T.scoreHand;
+eq(S(0, {n:3, s:"H"}, [10, 3], false), [10, 0], "made 9, took 10");
+eq(S(0, {n:3, s:"H"}, [7, 6], false), [-9, 6], "missed");
+eq(S(0, {n:3, s:"H"}, [13, 0], false), [16, 0], "all 13 without calling 7");
+eq(S(0, {n:7, s:"S"}, [13, 0], false), [26, 0], "called 7, made");
+eq(S(0, {n:7, s:"S"}, [12, 1], false), [-16, 1], "called 7, missed");
+eq(S(1, {n:3, s:"H"}, [3, 10], true), [0, 20], "doubled, made");
+eq(S(0, {n:3, s:"H"}, [7, 6], true), [-18, 12], "doubled, missed");
+eq(S(0, {n:7, s:"S"}, [13, 0], true), [52, 0], "doubled Kaboot");
+eq(S(0, {n:3, s:"H"}, [13, 0], true), [32, 0], "doubled all 13");
+eq(S(0, {n:1, s:"C"}, [8, 5], false, {defenders:true}), [8, 5], "defenders always score");
+ok(T.winner([31, 20], 31) === 0 && T.winner([30, 20], 31) === -1 && T.winner([33, 35], 31) === 1 && T.winner([32, 32], 31) === 2, "winner");
 
-// auction: basic flow, raising, three passes end it
-let a = T.tnAuction(3);                                  // dealer is seat 3, so seat 0 speaks first
+// auction: flow, raising, three passes end it
+let a = T.auction(3);                                    // dealer is seat 3, so seat 0 speaks first
 ok(a.turn === 0, "first to speak is after the dealer");
-ok(T.tnDoCall(a, 0, {n:1, s:"C"}) && a.turn === 1, "call moves the turn");
-ok(!T.tnDoCall(a, 1, {n:1, s:"C"}), "can't repeat a call");
-ok(T.tnDoCall(a, 1, {n:2, s:"D"}), "raise");
-ok(T.tnDoPass(a, 2) && T.tnDoPass(a, 3), "pass, pass");
+ok(T.doCall(a, 0, {n:1, s:"C"}) && a.turn === 1, "call moves the turn");
+ok(!T.doCall(a, 1, {n:1, s:"C"}) && !T.doCall(a, 1, {n:1.5, s:"S"}) && !T.doCall(a, 1, {n:8, s:"S"}), "can't repeat, fractions or 8");
+ok(T.doCall(a, 1, {n:2, s:"D"}), "raise");
+ok(T.doPass(a, 2) && T.doPass(a, 3), "pass, pass");
 ok(a.turn === 0 && !a.done, "outbid caller 0 may raise");
-ok(T.tnDoPass(a, 0) && a.done && a.result === "won" && a.high.seat === 1, "third pass ends it, seat 1 wins");
-// double ends the auction at once, only by an opponent of the high call
-a = T.tnAuction(3); T.tnDoCall(a, 0, {n:2, s:"S"});
-ok(!T.tnCanDouble(a, 2) && !T.tnCanDouble(a, 0) && T.tnCanDouble(a, 1) && T.tnCanDouble(a, 3), "only opponents double");
-ok(T.tnDoDouble(a, 3) && a.done && a.doubled && a.result === "won", "double ends the auction");
-ok(!T.tnDoCall(a, 1, {n:3, s:"S"}) && !T.tnDoDouble(a, 1), "nothing after a double");
-a = T.tnAuction(0); ok(!T.tnCanDouble(a, 1), "can't double before any call");
-// everybody passes: redeal; with mustCall the dealer can't pass
-a = T.tnAuction(0); T.tnDoPass(a, 1); T.tnDoPass(a, 2); T.tnDoPass(a, 3); T.tnDoPass(a, 0);
+ok(T.doPass(a, 0) && a.done && a.result === "won" && a.high.seat === 1, "third pass ends it, seat 1 wins");
+// a double ends the auction at once, only by an opponent of the high call, even one who passed
+a = T.auction(3); T.doCall(a, 0, {n:2, s:"S"});
+ok(!T.canDouble(a, 2) && !T.canDouble(a, 0) && T.canDouble(a, 1) && T.canDouble(a, 3), "only opponents double");
+T.doPass(a, 1); ok(T.canDouble(a, 1), "an opponent who passed may still double");
+ok(T.doDouble(a, 3) && a.done && a.doubled && a.result === "won", "double ends the auction");
+ok(!T.doCall(a, 1, {n:3, s:"S"}) && !T.doDouble(a, 1) && !T.doPass(a, 1), "nothing after a double");
+a = T.auction(0); ok(!T.canDouble(a, 1), "can't double before any call");
+a = T.auction(0); T.doPass(a, 1); T.doPass(a, 2); T.doPass(a, 3); T.doPass(a, 0);
 ok(a.done && a.result === "redeal", "four passes = redeal");
-a = T.tnAuction(0); T.tnDoPass(a, 1); T.tnDoPass(a, 2); T.tnDoPass(a, 3);
-ok(!T.tnCanPass(a, 0, {mustCall:true}) && T.tnCanPass(a, 0, {}), "mustCall stops the dealer passing");
+a = T.auction(0); T.doPass(a, 1); T.doPass(a, 2); T.doPass(a, 3);
+ok(!T.canPass(a, 0, {mustCall:true}) && T.canPass(a, 0, {}), "mustCall stops the dealer passing");
+a = T.auction(0); T.doPass(a, 1); T.doPass(a, 2); T.doPass(a, 3); ok(T.doCall(a, 0, {n:1, s:"C"}) && a.done && a.result === "won", "dealer calls after three passes");
 
 // legal cards and trick winners
-const h = [{s:"S", r:5}, {s:"H", r:9}, {s:"H", r:2}];
-ok(T.tnLegal(h, [{seat:0, card:{s:"H", r:12}}]).length === 2, "must follow hearts");
-ok(T.tnLegal(h, [{seat:0, card:{s:"D", r:12}}]).length === 3, "no diamonds: anything");
-ok(T.tnTrickWinner([{seat:0, card:{s:"H", r:12}}, {seat:1, card:{s:"H", r:14}}, {seat:2, card:{s:"S", r:2}}, {seat:3, card:{s:"D", r:14}}], "S") === 2, "trump wins");
-ok(T.tnTrickWinner([{seat:0, card:{s:"H", r:12}}, {seat:1, card:{s:"H", r:14}}, {seat:2, card:{s:"S", r:2}}, {seat:3, card:{s:"D", r:14}}], "C") === 1, "highest of led suit wins");
-ok(T.tnTrickWinner([{seat:0, card:{s:"H", r:3}}, {seat:1, card:{s:"D", r:14}}, {seat:2, card:{s:"S", r:2}}, {seat:3, card:{s:"S", r:9}}], "S") === 3, "highest trump wins");
+const h = ["5S", "9H", "2H"];
+ok(T.legal(h, [{seat:0, c:"12H"}]).length === 2, "must follow hearts");
+ok(T.legal(h, [{seat:0, c:"12D"}]).length === 3, "no diamonds: anything");
+const tr = [{seat:0, c:"12H"}, {seat:1, c:"14H"}, {seat:2, c:"2S"}, {seat:3, c:"14D"}];
+ok(T.trickWinner(tr, "S") === 2 && T.trickWinner(tr, "C") === 1, "trump wins, else highest of the led suit");
+ok(T.trickWinner([{seat:0, c:"3H"}, {seat:1, c:"14D"}, {seat:2, c:"2S"}, {seat:3, c:"9S"}], "S") === 3, "highest trump wins");
+const D = T.deck(); ok(D.length === 52 && new Set(D).size === 52, "deck");
+ok(T.weakHand(["10S", "9H", "2D"]) && !T.weakHand(["11S", "9H"]), "weak hand: nothing above a 10");
 
-// random full games: 13 tricks each hand, every card played once, scores are consistent, auctions always end
-let hands = 0, redeals = 0, doubled = 0, kaboots = 0;
-for(let g = 0; g < 300; g++){
-  let sc = [0, 0], dealer = g % 4, w = -1, guard = 0;
-  while(w < 0 || w === 2){
-    if(++guard > 200) throw new Error("game never ended");
-    const H = T.tnDeal();
-    ok(new Set(H.flat().map(c => c.s + c.r)).size === 52 && H.every(x => x.length === 13), "deal is 4 x 13 distinct");
-    const au = T.tnAuction(dealer);
-    while(!au.done){   // random bots: mostly pass, sometimes raise, sometimes double
-      const seat = au.turn, r = Math.random();
-      if(T.tnCanDouble(au, seat) && r < 0.08) { T.tnDoDouble(au, seat); break; }
-      if(r < 0.5){ const base = au.high ? T.tnCallValue(au.high.call) + 1 : 0; if(base <= 27){ const v = base + Math.floor(Math.random() * Math.min(5, 28 - base)); if(T.tnDoCall(au, seat, {n:Math.floor(v / 4) + 1, s:T.TN_SUITS[v % 4]})) continue; } }
-      if(!T.tnDoPass(au, seat, {})) T.tnDoCall(au, seat, {n:7, s:"S"}) || T.tnDoPass(au, seat, {});
-    }
-    ok(au.done, "auction ended");
-    dealer = T.tnNext(dealer);
-    if(au.result === "redeal"){ redeals++; continue; }
-    hands++; if(au.doubled) doubled++;
-    const trump = au.high.call.s, hs = H.map(x => x.slice()), won = [0, 0], played = [];
-    let lead = au.high.seat;
-    for(let t = 0; t < 13; t++){
-      const trick = []; let seat = lead;
-      for(let k = 0; k < 4; k++){
-        const legal = T.tnLegal(hs[seat], trick), c = legal[Math.floor(Math.random() * legal.length)];
-        hs[seat].splice(hs[seat].indexOf(c), 1); trick.push({seat, card:c}); played.push(c); seat = T.tnNext(seat);
-      }
-      lead = T.tnTrickWinner(trick, trump); won[T.tnTeam(lead)]++;
-    }
-    ok(won[0] + won[1] === 13 && played.length === 52 && hs.every(x => !x.length), "13 tricks, all cards played");
-    if(won[T.tnTeam(au.high.seat)] === 13) kaboots++;
-    const p = T.tnScoreHand(au.high.seat, au.high.call, won, au.doubled);
-    ok(p.every(Number.isInteger), "integer points");
-    sc = [sc[0] + p[0], sc[1] + p[1]]; w = T.tnWinner(sc, 31);
+// full games through the referee with random bots: every card played once, scores add up, secrets stay secret
+let hands = 0, redeals = 0, weaks = 0, doubled = 0, all13 = 0, games = 0;
+const cfgs = [{target:31, weak:true, dbl:true, mustCall:false, defenders:false}, {target:41, weak:false, dbl:false, mustCall:true, defenders:true}];
+for(let gi = 0; gi < 400; gi++){
+  const cfg = cfgs[gi % 2], g = T.Game(cfg, ["A", "B", "C", "D"], ["pa", "pb", "pc", "pd"]); g.start(); let guard = 0, handStartV = 0;
+  while(g.phase !== "over"){
+    if(++guard > 30000) throw new Error("game never ended");
+    const p = T.pub(g), pj = JSON.stringify(p);
+    if(g.phase !== "redeal") for(let i = 0; i < 4; i++) for(const c of g.hands[i]) ok(!pj.includes('"' + c + '"'), "pub leaks a card in someone's hand");
+    for(let i = 0; i < 4; i++){ const pr = T.priv(g, i); ok(pr.seat === i && pr.hand === g.hands[i], "priv is the player's own hand"); }
+    if(g.phase === "redeal"){ redeals++; if(g.redealWhy === "weak") weaks++; g.advance(); continue; }
+    if(g.phase === "trickdone" || g.phase === "handdone"){ if(g.phase === "handdone"){ hands++; const s = g.summary; if(s.doubled) doubled++; if(s.tricks[T.team(s.caller)] === 13) all13++;
+        eq(s.totals, g.scores, "totals"); ok(s.pts.every(Number.isInteger), "integer points"); ok(s.tricks[0] + s.tricks[1] === 13, "13 tricks"); } g.advance(); continue; }
+    if(g.phase === "auction"){
+      const au = g.au, r = Math.random(); let done = false;
+      for(let i = 0; i < 4 && !done; i++){ const pr = T.priv(g, i); if(pr.act.canDouble && Math.random() < 0.05){ done = g.act(i, {k:"double"}).ok; ok(done, "double accepted"); ok(g.phase === "play", "double ends the auction"); } }
+      if(done) continue;
+      for(let i = 0; i < 4; i++){ const pr = T.priv(g, i); if(pr.act.canWeak && Math.random() < 0.5){ ok(g.act(i, {k:"weak"}).ok, "weak accepted"); done = true; break; } }
+      if(done) continue;
+      const seat = au.turn;
+      ok(!g.act((seat + 1) % 4, {k:"pass"}).ok, "can't pass out of turn");
+      if(r < 0.5){ const base = au.high ? T.callValue(au.high.call) + 1 : 0; if(base <= 27){ const v = base + Math.floor(Math.random() * Math.min(5, 28 - base)); if(g.act(seat, {k:"bid", n:Math.floor(v / 4) + 1, s:T.SUITS[v % 4]}).ok) continue; } }
+      if(!g.act(seat, {k:"pass"}).ok) ok(g.act(seat, {k:"bid", n:7, s:"S"}).ok || g.act(seat, {k:"bid", n:1, s:"C"}).ok, "forced call");
+      continue; }
+    if(g.phase === "play"){
+      const seat = g.turn, pr = T.priv(g, seat); ok(pr.act.k === "play" && pr.act.legal.length > 0, "play act"); for(let i = 0; i < 4; i++) if(i !== seat) ok(T.priv(g, i).act === null, "only the player to move may play");
+      const bad = g.hands[seat].find(c => !pr.act.legal.includes(c)); if(bad) ok(!g.act(seat, {k:"play", c:bad}).ok, "illegal card refused");
+      ok(!g.act((seat + 1) % 4, {k:"play", c:g.hands[(seat + 1) % 4][0]}).ok, "out of turn refused");
+      ok(g.act(seat, {k:"play", c:pr.act.legal[Math.floor(Math.random() * pr.act.legal.length)]}).ok, "legal card accepted"); continue; }
+    throw new Error("stuck in " + g.phase);
   }
+  games++; ok(T.winner(g.scores, cfg.target) !== -1, "a game ends only with a winner");
 }
-console.log(`tarneeb rules: ${n} checks passed over ${hands} hands (${redeals} redeals, ${doubled} doubled, ${kaboots} all-13 hands)`);
+console.log(`tarneeb rules: ${n} checks passed; ${games} games, ${hands} hands (${redeals} redeals of which ${weaks} weak-hand, ${doubled} doubled, ${all13} all-13 hands)`);
