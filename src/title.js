@@ -88,10 +88,11 @@ function ttApply(id){
   const jn = id === "modeJn", th = !id ? TT.home : jn ? null : (TT[id] || ttFallback(b));
   ttSel = id || "";
   ts.dataset.sel = id || "home";
-  const art = !jn && id && typeof TTBG !== "undefined" && TTBG[id];   // 7.10: modes with a drawn background (TTBG) drop the tile wall
+  const tile = !jn && id && typeof TTTILE !== "undefined" && TTTILE[id];   // 7.20: Estimation, Tarneeb and Psych are CSS-repeated tiles (TTTILE), not an SVG with a pattern
+  const art = tile || (!jn && id && typeof TTBG !== "undefined" && TTBG[id]);   // 7.10: modes with a drawn background (TTBG) drop the tile wall
   ttGhost(th && th.g && !art ? th.g : null, jn);   /* 7.10: was ttGhost(th && th.g ? th.g : null, jn) */
   ts.style.background = th ? "transparent" : "";   // 6.86: the theme background lives on the page itself (see --ttbg in head.html), so it carries on under the scrollbar with no seam
-  document.documentElement.style.setProperty("--ttbg", art ? `linear-gradient(color-mix(in srgb, ${th.base || "#000"} 28%, transparent), color-mix(in srgb, ${th.base || "#000"} 28%, transparent)), url("${art}") center/cover no-repeat` : th ? th.bg : "none");   /* 7.12 (Omar): the art is faded a bit with a 28% wash of the mode's base colour (7.10: just url(...) center/cover no-repeat). 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
+  document.documentElement.style.setProperty("--ttbg", art ? `linear-gradient(color-mix(in srgb, ${th.base || "#000"} 28%, transparent), color-mix(in srgb, ${th.base || "#000"} 28%, transparent)), ${tile ? tile : `url("${art}") center/cover no-repeat`}` : th ? th.bg : "none");   /* 7.12 (Omar): the art is faded a bit with a 28% wash of the mode's base colour (7.10: just url(...) center/cover no-repeat). 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
   ts.style.color = th ? th.ink : "";
   $("#homeHead").hidden = !!id; $("#jnTitle").hidden = !jn; $("#brandCorner").hidden = !id;
   const mt = $("#modeTitle"); mt.hidden = !id || jn;

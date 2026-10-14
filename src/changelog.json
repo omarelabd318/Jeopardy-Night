@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.20",
+  "date": "2026-10-14",
+  "items": [
+   "Estimation, Tarneeb and Psych title backgrounds are drawn a different way so they show on every device."
+  ]
+ },
+ {
   "v": "7.19",
   "date": "2026-10-14",
   "items": [
