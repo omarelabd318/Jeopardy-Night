@@ -85,7 +85,7 @@ function ttApply(id){
   tag.innerHTML = jn ? ttJnTagHtml : esc(th.tag || "");
   const go = $("#modeGo"), play = $("#play");
   go.hidden = !id || jn; play.hidden = !jn;
-  if(id && !jn){ go.textContent = "Start " + b.textContent.trim(); go.style.cssText = `background:${th.s[0]};color:${th.s[1]};border-color:${th.s[2]};font-family:${th.ff};font-weight:${th.fw || 700}`; }
+  if(id && !jn){ go.textContent = "Start";   /* 6.87 (Omar): just "Start" (6.84-6.86: "Start " + the mode name) */ go.style.cssText = `background:${th.s[0]};color:${th.s[1]};border-color:${th.s[2]};font-family:${th.ff};font-weight:${th.fw || 700}`; }
   const look = $("#lookBtn"); if(look) look.style.display = jn ? "" : "none";   // the Billboard look only changes Jeopardy Night
   const vb = $("#verBtn"); vb.style.color = th ? th.ink : ""; vb.style.opacity = th ? ".85" : "";
   document.querySelectorAll("#modeRow .modebtn").forEach(x => { const on = x.id === id; x.classList.toggle("sel", on); x.setAttribute("aria-pressed", on); });
