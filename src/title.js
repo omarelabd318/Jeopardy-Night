@@ -78,7 +78,8 @@ function ttApply(id){
   const mt = $("#modeTitle"); mt.hidden = !id || jn;
   if(th && id){
     mt.innerHTML = th.t.map((x, i) => `<span style="color:${i ? th.c2 || th.c1 : th.c1}">${esc(x)}</span>`).join("");
-    mt.style.cssText = `font:${th.fw || 400} 1em ${th.ff};font-size:calc(clamp(46px,9.5vw,128px) * ${th.k || 1});line-height:.92;text-shadow:${th.sh || "none"};${th.x || ""}`;
+    /* 6.97 (Omar): every mode title is the same size, between the Jeopardy Night title and the old smaller ones. Was font-size:calc(clamp(46px,9.5vw,128px) * ${th.k || 1}) (k is still in TT but no longer used) */
+    mt.style.cssText = `font:${th.fw || 400} 1em ${th.ff};font-size:clamp(52px,11.5vw,150px);line-height:.92;text-shadow:${th.sh || "none"};${th.x || ""}`;
     mt.style.animation = "none"; void mt.offsetWidth; mt.style.animation = "";
   }
   const tag = $("#tagline"); tag.style.color = th ? th.ink : ""; tag.style.textShadow = th ? "none" : "";
