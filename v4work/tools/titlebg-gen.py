@@ -8,6 +8,18 @@ def wrap(body, base, scrim=.55):
             f'<defs><radialGradient id="sc" cx="50%" cy="42%" r="48%"><stop offset="0" stop-color="{base}" stop-opacity="{scrim}"/><stop offset="1" stop-color="{base}" stop-opacity="0"/></radialGradient></defs>'
             f'<rect width="{W}" height="{H}" fill="{base}"/>{body}<rect width="{W}" height="{H}" fill="url(#sc)"/></svg>')
 out = {}
+tiles = {}
+def esc(v): return v.replace('"', "'").replace('%', '%25').replace('#', '%23').replace('<', '%3C').replace('>', '%3E')
+def rgba(h, a): return f'rgba({int(h[1:3],16)},{int(h[3:5],16)},{int(h[5:7],16)},{a})'
+def css_tile(body, size, base, scrim, fade=False):
+    # 7.20: SVG patterns inside a background image did not show on Omar's device for Estimation and Tarneeb, so these are a small tile repeated by CSS
+    svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}">{body}</svg>'
+    layers = []
+    if fade: layers.append(f'linear-gradient(90deg,{rgba(base,0)} 0,{rgba(base,.95)} 85%)')
+    layers.append(f'radial-gradient(ellipse 48% 48% at 50% 42%,{rgba(base,scrim)},{rgba(base,0)})')
+    layers.append(f'url("data:image/svg+xml,{esc(svg)}") 0 0/{size}px {size}px repeat')
+    layers.append(f'linear-gradient({base},{base})')
+    return ','.join(layers)
 def star(cx, cy, r, col, op, sw=2):
     pts = []
     for i in range(16):
@@ -16,7 +28,7 @@ def star(cx, cy, r, col, op, sw=2):
     return f'<polygon points="{" ".join(pts)}" fill="none" stroke="{col}" stroke-width="{sw}" opacity="{op}"/>'
 def arabesque(c1, c2, dot):
     t = star(60, 60, 60, c1, .55) + f'<circle cx="60" cy="60" r="14" fill="{dot}" opacity=".3"/>' + star(0, 0, 42, c2, .3) + star(120, 0, 42, c2, .3) + star(0, 120, 42, c2, .3) + star(120, 120, 42, c2, .3)
-    return f'<defs><pattern id="ar" width="120" height="120" patternUnits="userSpaceOnUse"><g>{t}</g></pattern></defs><rect width="{W}" height="{H}" fill="url(#ar)"/>'
+    return t   # 7.20: just the 120px tile; it is repeated by CSS (see css_tile), not by an SVG pattern
 # Bidding Wars: trading floor
 r = random.Random(1)
 b = ''.join(f'<line x1="0" x2="{W}" y1="{y}" y2="{y}" stroke="#ffb21a" opacity=".12"/><text x="{W-14}" y="{y+5}" fill="#ffb21a" opacity=".5" font-family="monospace" font-size="18" text-anchor="end">${(H-y)*3}</text>' for y in range(110, H, 110))
@@ -69,11 +81,11 @@ b += ''.join(f'<circle cx="1260" cy="470" r="{rr}" fill="none" stroke="#c8281f" 
 b += '<text x="200" y="800" fill="#c8281f" opacity=".5" font-size="110" font-family="Special Elite, Courier, monospace" transform="rotate(-8 200 800)">CLASSIFIED</text>'
 out['modeImp'] = wrap(b, '#1d1312', .5)
 # Psych: halftone (7.13, Omar: the speech bubbles are gone; to bring them back run b += bubbles)
-b = f'<defs><pattern id="hd" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="18" cy="18" r="10" fill="#d2232a" opacity=".32"/></pattern><linearGradient id="fd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6f3e8" stop-opacity="0"/><stop offset=".85" stop-color="#f6f3e8" stop-opacity=".95"/></linearGradient></defs><rect width="{W}" height="{H}" fill="url(#hd)"/><rect width="{W}" height="{H}" fill="url(#fd)"/>'
+psy_tile = '<circle cx="18" cy="18" r="10" fill="#d2232a" opacity=".32"/>'   # 7.20: 36px tile, repeated by CSS
 bubbles = ('<g fill="#fff" stroke="#1e2a26" stroke-width="7"><path transform="translate(-130,70)" d="M170,140 h330 a44,44 0 0 1 44,44 v70 a44,44 0 0 1 -44,44 h-215 l-72,58 v-58 h-43 a44,44 0 0 1 -44,-44 v-70 a44,44 0 0 1 44,-44z"/>'
       '<path transform="translate(40,-300)" d="M1060,560 h300 a44,44 0 0 1 44,44 v60 a44,44 0 0 1 -44,44 h-44 v58 l-72,-58 h-184 a44,44 0 0 1 -44,-44 v-60 a44,44 0 0 1 44,-44z"/></g>'
       '<text x="140" y="298" font-family="Arial Black" font-size="50" fill="#1e2a26">TRUE?</text><text x="1150" y="350" font-family="Arial Black" font-size="50" fill="#d2232a">LIAR!</text>')
-out['modePsy'] = wrap(b, '#f6f3e8', .6)
+tiles['modePsy'] = css_tile(psy_tile, 36, '#f6f3e8', .6, fade=True)
 # Codenames: radar
 b = ''.join(f'<circle cx="800" cy="450" r="{rr}" fill="none" stroke="#36a3ff" stroke-width="2.5" opacity=".35"/>' for rr in range(90, 900, 110))
 b += (f'<line x1="0" x2="{W}" y1="450" y2="450" stroke="#36a3ff" opacity=".25"/><line x1="800" x2="800" y1="0" y2="{H}" stroke="#36a3ff" opacity=".25"/>'
@@ -95,9 +107,9 @@ b += '<g fill="#0b2c1c"><rect x="1020" y="400" width="22" height="500"/><path d=
 b += '<g transform="rotate(-10 1350 370)"><rect x="1250" y="310" width="240" height="110" fill="#c0392b" stroke="#fbf6e6" stroke-width="6"/><text x="1370" y="388" text-anchor="middle" font-family="Arial Black" font-size="58" fill="#fbf6e6">SOLD</text></g>'
 out['modeSale'] = wrap(b, '#144d33', .35)
 # Estimation: green arabesque (Omar: like Tarneeb's, in Estimation's green)
-out['modeEst'] = wrap(arabesque('#46c783', '#2e9a5f', '#46c783'), '#0b4a2a', .55)
+tiles['modeEst'] = css_tile(arabesque('#46c783', '#2e9a5f', '#46c783'), 120, '#0b4a2a', .55)
 # Tarneeb: brown arabesque
-out['modeTn'] = wrap(arabesque('#c49a4a', '#c49a4a', '#c49a4a'), '#2a190f', .55)
+tiles['modeTn'] = css_tile(arabesque('#c49a4a', '#c49a4a', '#c49a4a'), 120, '#2a190f', .55)
 # Hold'em: lattice and chips
 b = '<defs><radialGradient id="h" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#8a1b2d"/><stop offset="1" stop-color="#33080f"/></radialGradient></defs><rect width="1600" height="900" fill="url(#h)"/>'
 b += ''.join(f'<path d="M{x},{y} l48,48 l-48,48 l-48,-48z" fill="none" stroke="#e8c25a" opacity=".13"/>' for y in range(0, H, 96) for x in range(0, W, 96))
@@ -122,6 +134,8 @@ b += ''.join(f'<line x1="800" y1="{H}" x2="{800+1100*math.cos(math.pi*(1-i/18)):
 b += ''.join(f'<circle cx="{cx}" cy="{H}" r="{rr}" fill="none" stroke="#f4d58a" stroke-width="3" opacity="{.5-rr/1500:.2f}"/>' for cx in (0, 800, 1600) for rr in range(90, 980, 80))
 out['modeTf'] = wrap(b, '#2a1248', .3)
 js = ('/* 7.10 (Omar): a drawn background for every mode but Jeopardy Night. Generated by v4work/tools/titlebg-gen.py. Do not edit by hand. */\n'
-      'const TTBG = {\n' + ',\n'.join(f'  {k}: "data:image/svg+xml,{v.replace('"', "'").replace('%', '%25').replace('#', '%23').replace('<', '%3C').replace('>', '%3E')}"' for k, v in out.items()) + '\n};\n')
+      'const TTBG = {\n' + ',\n'.join(f'  {k}: "data:image/svg+xml,{v.replace('"', "'").replace('%', '%25').replace('#', '%23').replace('<', '%3C').replace('>', '%3E')}"' for k, v in out.items()) + '\n};\n'
+      '/* 7.20: Estimation, Tarneeb and Psych are small tiles repeated by CSS (a full CSS background value each), not SVG patterns */\n'
+      'const TTTILE = {\n' + ',\n'.join(f'  {k}: {json.dumps(v)}' for k, v in tiles.items()) + '\n};\n')
 open('src/titlebg.js', 'w').write(js)
 print({k: len(v) // 1024 for k, v in out.items()}, len(js) // 1024, 'KB')
