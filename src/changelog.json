@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.13",
+  "date": "2026-10-14",
+  "items": [
+   "Psych's title-screen background has no speech bubbles any more, just the halftone dots."
+  ]
+ },
+ {
   "v": "7.12",
   "date": "2026-10-14",
   "items": [
