@@ -91,7 +91,7 @@ const P = new URLSearchParams(location.search), $ = id => document.getElementByI
 const r = P.get("r") || "", KEY = "jn_crd_" + r;
 const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
 let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
-let st = null, timer = null, busy = false, sig = "", note = null, up = null, preHn = -1, tV = -1, tStart = 0, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0;
+let st = null, timer = null, busy = false, sig = "", note = null, up = null, preHn = -1, tV = -1, tStart = 0, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0, pick = [];
 const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
 function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 const signs = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
@@ -108,7 +108,7 @@ async function join(n){
 }
 function joinView(err){
   stop(); $("me").textContent = ""; $("chip").innerHTML = ""; $("hand").innerHTML = "";
-  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${{est:"Estimation", tn:"Tarneeb", hd:"Texas Hold'em"}[P.get("g")] || "Card game"}</div><h1>What's your name?</h1>
+  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${{est:"Estimation", tn:"Tarneeb", hd:"Texas Hold'em", tf:"3-5-8"}[P.get("g")] || "Card game"}</div><h1>What's your name?</h1>
     <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="send" id="jb" style="margin-top:12px">Join</button></form>
     ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your cards appear here.</p>`;
   $("nm").focus();
@@ -181,6 +181,43 @@ MODES.tn = {look:"ahwa",
 };
 const CK_T = i => i % 2;
 
+/* ---------- 3-5-8 (g=tf): swap cards, name trump, bury 4, then play 16 tricks to your target ---------- */
+MODES.tf = {look:"felt", watch:"This game already has its players. Look at the TV.",
+  chip(p){ const t = p.trump; return `Hand ${p.hand}${p.total ? "/" + p.total : ""}${t ? ` · Trump <b class="${t === "H" || t === "D" ? "" : "blk"}">${SYM[t] || "NT"}</b>` : ""}`; },
+  table(p, seat){ return `<div class="tbl">${p.names.map((n, i) => { const rest = i === p.roles.rest, got = p.won[i], t = p.tgt[i], turn = p.turn === i && ["swap", "trump", "bury", "play"].includes(p.phase),
+      info = rest ? "resting" : p.phase === "play" || p.phase === "trickdone" ? `needs ${t} · won ${got}` : t >= 0 ? `needs ${t}` : "";
+      return `<div class="tr${i === seat ? " me" : ""}${turn ? " turn" : ""}"><span>${esc(n)}${i === p.roles.dealer ? ` <small>Dealer</small>` : ""}</span><small>${info}</small><b>${p.scores[i] > 0 ? "+" : ""}${p.scores[i]}</b></div>`; }).join("")}</div>`; },
+  extra(p, a, seat){ const m = st.me, nm = i => esc(p.names[i]), out = [];
+    if(seat !== p.roles.rest && p.tgt[seat] >= 0 && p.phase !== "handdone") out.push(`<div class="hint">You need <b>${p.tgt[seat]}</b> tricks${p.phase === "play" || p.phase === "trickdone" ? ` · won ${p.won[seat]}` : ""}${p.phase === "play" || p.phase === "trickdone" ? "" : " this hand"}</div>`);
+    if(m && m.swaps && m.swaps.length && p.phase !== "swap") out.push(`<div class="hint">Swap: ${m.swaps.map(x => x.gave ? `you gave ${CK.face(x.gave)} and got ${CK.face(x.got)}` : `you got ${CK.face(x.recv)} and sent back ${CK.face(x.sent)}`).join(", ")}</div>`);
+    if(m && m.kitty && p.phase === "play" && p.played === 0) out.push(`<div class="hint">You picked up the kitty: ${m.kitty.map(c => CK.face(c)).join(" ")}</div>`);
+    if(p.last && (p.phase === "play" || p.phase === "trickdone")) out.push(`<div class="hint">Last trick: ${p.last.plays.map(x => nm(x.seat) + " " + CK.face(x.c)).join(" ")} → ${nm(p.last.winner)}</div>`);
+    return out.join(""); },
+  panel(p, a, seat){
+    if(!a) return "";
+    if(a.k === "give" || a.k === "bury"){ const ok = pick.length === a.n, who = a.k === "give" ? esc(p.names[a.to]) : "";
+      return `<div class="panel"><div class="q">${a.k === "give" ? `Give ${a.n} card${a.n > 1 ? "s" : ""} to ${who}` : "Bury 4 cards, then the kitty is yours"}</div><div class="hint">${a.k === "give" ? "Pick your worst cards. Their best card of each suit comes back." : "Pick 4 cards to put away face down."} Picked ${pick.length} of ${a.n}.</div>
+        <button class="send" data-tf="${a.k}" ${ok ? "" : "disabled"}>${a.k === "give" ? "Give" : "Bury"}${ok ? " " + a.n + " card" + (a.n > 1 ? "s" : "") : ""}</button></div>`; }
+    if(a.k === "trump") return `<div class="panel"><div class="q">Name trump</div><div class="hint">You need ${p.tgt[seat]} tricks. Pick the suit that suits your hand.</div>
+      <div class="grid" style="grid-template-columns:repeat(${a.nt ? 5 : 4},1fr)">${["S", "H", "D", "C"].concat(a.nt ? ["N"] : []).map(s => `<button class="b${s === "H" || s === "D" ? " red" : ""}" data-tf="trump" data-s="${s}">${SYM[s]}</button>`).join("")}</div></div>`;
+    return ""; },
+  status(p, a, seat){ const nm = i => esc(p.names[i]);
+    if(seat === p.roles.rest && p.phase !== "handdone") return "You're resting this hand";
+    if(p.phase === "swap") return a ? "Your swap" : p.swap && p.swap.to === seat ? `${nm(p.swap.from)} is giving you cards…` : p.swap ? `${nm(p.swap.from)} is giving cards to ${nm(p.swap.to)}…` : "";
+    if(p.phase === "trump") return a ? "Your call: name trump" : `${nm(p.roles.dealer)} is naming trump…`;
+    if(p.phase === "bury") return a ? "Bury 4 cards" : `${nm(p.roles.dealer)} is burying 4 cards…`;
+    if(p.phase === "play") return a ? "Your turn" + (p.trick.length ? ` · follow ${SYM[CK.suit(p.trick[0].c)]}` : " · you lead") : `${nm(p.turn)} is playing…`;
+    if(p.phase === "trickdone") return `${nm(p.winner)} takes the trick`;
+    return ""; },
+  screen(p, a, seat, mine){
+    if(p.phase === "handdone"){ const s = p.summary, row = s.rows.find(r => r.seat === seat);
+      return `<div class="hint">Hand ${s.hand} done</div><div class="status">${row ? (row.d > 0 ? `You made it, +${row.d}` : row.d < 0 ? `You fell short, ${row.d}` : "Exactly on target, 0") : "You rested this hand"}</div>
+        <div class="panel"><table class="tbl2"><tr><th></th><th>Need</th><th>Won</th><th>Hand</th><th>Total</th></tr>${s.rows.map(r => `<tr><td>${esc(p.names[r.seat])}${r.seat === seat ? " (you)" : ""}</td><td>${r.target}</td><td>${r.tricks}</td><td><b>${signs(r.d)}</b></td><td>${s.totals[r.seat]}</td></tr>`).join("")}</table></div><p class="hint">The host starts the next hand on the TV.</p>`; }
+    if(p.phase === "over"){ const rk = 1 + p.scores.filter(x => x > p.scores[seat]).length, won = p.winners.includes(seat);
+      return `<div class="wait"><div class="hint">Game over</div><div class="big ${won ? "pos" : ""}">${won ? (p.winners.length > 1 ? "You share the win!" : "You won!") : "You finished " + ord(rk)}</div><div class="panel" style="margin-top:12px"><div class="q">Final score</div><div class="big ${p.scores[seat] < 0 ? "neg" : ""}">${signs(p.scores[seat])}</div></div><p class="hint">Look at the TV.</p></div>`; }
+    return null; }
+};
+
 /* ---------- Texas Hold'em (g=hd): your two cards face down (hold to peek), the shared cards, the pot and the buttons for your move ---------- */
 const hdNum = n => Number(n).toLocaleString("en-US");
 const hdOrd = n => ord(n);
@@ -240,10 +277,10 @@ function draw(){
     $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. Your cards will appear here.</div></div>`; return; }
   const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
   if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">${M.watch || "This game already has four players. Look at the TV."}</div></div>`; return; }
-  const sg = [p.v, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending].join("|"); if(sg === sig) return; sig = sg;
+  const sg = [p.v, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending, pick.join(",")].join("|"); if(sg === sig) return; sig = sg;
   const mineNow = !!a && a.turn !== false;
   if(mineNow && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
-  wasMine = mineNow; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null; if(!a || a.k !== "bet") sel.r = null;
+  wasMine = mineNow; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null; if(!a || a.k !== "bet") sel.r = null; if(!a || (a.k !== "give" && a.k !== "bury")) pick = [];
   $("chip").innerHTML = M.chip(p); if(M.look) document.body.dataset.look = M.look; if(p.cfg && "four" in p.cfg) document.body.toggleAttribute("data-four", !!p.cfg.four);
   const v = $("view");
   if(M.screen){ const h = M.screen(p, a, seat, mine); if(h != null){ const o = typeof h === "object" ? h : {view:h, hand:""}; $("hand").innerHTML = o.hand; v.innerHTML = o.view; return; } }
@@ -253,10 +290,12 @@ function draw(){
     v.innerHTML = `<div class="hint">Round ${p.round} done</div><div class="status">You said ${p.ests[seat]} and took ${p.won[seat]}</div><div class="panel"><div class="q">This round</div><div class="big ${row.pts > 0 ? "pos" : row.pts < 0 ? "neg" : ""}">${signs(row.pts)}</div><div class="hint">${row.tags.map(esc).join(" · ")}</div></div>${M.table(p, seat)}<p class="hint">The host starts the next round on the TV.</p>`; return; }
   const trickCards = p.trick.map(t => CK.face(t.c)).join("");
   v.innerHTML = `<div class="status${a ? " me" : ""}">${M.status(p, a, seat)}</div>${M.extra ? M.extra(p, a, seat) : ""}${M.panel(p, a, seat)}${note ? `<div class="msg">${esc(note)}</div>` : ""}${p.phase === "play" || p.phase === "trickdone" ? `<div class="mini">${trickCards}</div>` : ""}${M.table(p, seat)}${a && a.k === "play" ? `<p class="hint">Tap a card to raise it, tap it again to play it.</p>` : ""}`;
-  $("hand").innerHTML = CK.hand(mine.hand, {legal: a && a.k === "play" ? a.legal : null, up});
+  $("hand").innerHTML = CK.hand(mine.hand, {legal: a && a.k === "play" ? a.legal : null, up, ups: pick});
 }
 document.addEventListener("click", e => {
   if(!st || !st.pub || !st.me) return; const a = st.me.act, t = e.target.closest("button,.ck[data-c]"); if(!t) return;
+  if(t.dataset.c && a && (a.k === "give" || a.k === "bury")){ const c = t.dataset.c; pick = pick.includes(c) ? pick.filter(x => x !== c) : pick.length < a.n ? pick.concat(c) : pick; sig = ""; draw(); return; }
+  if(t.dataset.tf){ if(t.dataset.tf === "trump") send({k:"trump", s:t.dataset.s}); else if(pick.length === a.n) send({k:t.dataset.tf, cs:pick}); return; }
   if(t.dataset.c){ if(!a || a.k !== "play" || !a.legal.includes(t.dataset.c)) return; if(up === t.dataset.c) send({k:"play", c:up}); else { up = t.dataset.c; sig = ""; draw(); } return; }
   if(t.dataset.dash != null) send({k:"dash", yes:t.dataset.dash === "1"});
   else if(t.dataset.n){ sel.n = +t.dataset.n; if(sel.s && !beats({n:sel.n, s:sel.s}, a.high)) sel.s = null; sig = ""; draw(); }
@@ -275,7 +314,7 @@ async function poll(force){
   try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
     if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
     if(j && j.pub && j.me && j.pub.v === sentV && Date.now() - sentAt < 3500) j.me.act = null;   // the laptop hasn't moved the table on yet: keep the buttons hidden
-    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v){ note = null; if(st && st.pub && j.pub && st.pub.v !== j.pub.v){ up = (j.me && j.me.act && j.me.act.k === "play" && j.me.hand.includes(up)) ? up : null; } } st = j; draw(); } }
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v){ note = null; if(st && st.pub && j.pub && st.pub.v !== j.pub.v){ up = (j.me && j.me.act && j.me.act.k === "play" && j.me.hand.includes(up)) ? up : null; pick = []; } } st = j; draw(); } }
   catch(e){}
   busy = false;
 }

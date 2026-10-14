@@ -3,10 +3,17 @@
   "era": "7.x: Party Games"
  },
  {
-  "v": "7.4",
+  "v": "7.5",
   "date": "2026-10-14",
   "items": [
    "New game: Taboo. Describe the word without saying the five banned ones while your team guesses out loud, and the other team buzzes on their phones if you slip. Scan one code to join, four rounds, On Air look."
+  ]
+ },
+ {
+  "v": "7.4",
+  "date": "2026-10-14",
+  "items": [
+   "New game: 3-5-8. Three players play 16 tricks with their cards on their phones. The dealer needs 8 tricks, the next player 5, the last 3, and it changes every hand. Swap cards after each hand, name trump, bury 4 and take the kitty. Classic Felt table on the TV."
   ]
  },
  {

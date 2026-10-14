@@ -30,7 +30,8 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `src/decrypto.js`, `dec.html` (6.83): the Decrypto mode and its phone page (at `/d?r=ROOM`). Keywords are in `v4work/decrypto/keywords.json`. Test with `node v4work/tools/decrypto-test.js` and `decrypto-e2e.js`.
 - `src/forsale.js`, `sale.html` (7.0): the For Sale? property-auction mode and its phone page (at `/f?r=ROOM`). Test with `node v4work/tools/forsale-test.js` and `forsale-e2e.js`.
 - `src/liars.js`, `liars.html` (7.1): the Liar's Bar mode and its phone page (at `/l?r=ROOM`). The rules are in the `/*@rules*/` region of `src/liars.js`. Test with `node v4work/tools/liars-test.js` (rules) and `NODE_PATH=$(npm root -g) node v4work/tools/liars-e2e.js [shotsDir] [players] [games]` (a whole game with a TV and phones against a copy of the relay).
-- `src/taboo.js`, `taboo.html` (7.4): the Taboo mode and its phone page (at `/t?r=ROOM`). The rules are in the `/*@rules*/` region (`TBR`). Cards are in `v4work/taboo/cards-*.json`. Test with `node v4work/tools/taboo-test.js` and `taboo-e2e.js`.
+- `src/taboo.js`, `taboo.html` (7.5): the Taboo mode and its phone page (at `/t?r=ROOM`). The rules are in the `/*@rules*/` region (`TBR`). Cards are in `v4work/taboo/cards-*.json`. Test with `node v4work/tools/taboo-test.js` and `taboo-e2e.js`.
+- `src/threefive.js` (7.4): the 3-5-8 card mode: the rules engine `TFR`, the TV screens and the link to the phones. The phone screens are `MODES.tf` in `cards.html`. Test with `node v4work/tools/threefive-test.js` and `threefive-e2e.js`.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.
 - `HANDOFF.md`: the latest handoff between sessions: state, open items, Omar's way of working, testing and network tips.

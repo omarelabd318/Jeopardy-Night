@@ -73,6 +73,6 @@ const CK = (() => {
 `;
   const inject = look => { if(typeof document === "undefined") return; let s = document.getElementById("ckcss"); if(!s){ s = document.createElement("style"); s.id = "ckcss"; s.textContent = css; document.head.appendChild(s); } };
   const hand = (codes, o = {}) => { const n = codes.length, per = n > 7 ? Math.ceil(n / 2) : n, rows = n > 7 ? [codes.slice(0, per), codes.slice(per)] : [codes];
-    return `<div class="ckhand">${rows.map(r => `<div class="ckrow${rows.length > 1 ? " two" : ""}">${r.map(c => face(c, (o.legal && !o.legal.includes(c) ? "off " : "") + (o.up === c ? "up" : ""))).join("")}</div>`).join("")}</div>`; };
+    return `<div class="ckhand">${rows.map(r => `<div class="ckrow${rows.length > 1 ? " two" : ""}">${r.map(c => face(c, (o.legal && !o.legal.includes(c) ? "off " : "") + (o.up === c || (o.ups && o.ups.includes(c)) ? "up" : ""))).join("")}</div>`).join("")}</div>`; };
   return {SUITS, SYM, RED, POS, code, rank, suit, label, deck, shuffle, sort, trickWinner, face, back, css, inject, hand};
 })();
