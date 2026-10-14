@@ -20,8 +20,9 @@ const IMPDATA=(()=>{const d=W+'/imposter',o={langs:{},cats:{}};if(!fs.existsSync
   for(const f of fs.readdirSync(d).sort()){if(!f.endsWith('.json'))continue;const j=JSON.parse(fs.readFileSync(d+'/'+f,'utf8'));Object.assign(f.startsWith('lang-')?o.langs:o.cats,j)}
   return o})();
 const CNDATA=(()=>{const d=W+'/codenames',o={};if(!fs.existsSync(d))return o;for(const f of fs.readdirSync(d).sort())if(/^words-.*\.json$/.test(f))o[f.slice(6,-5)]=JSON.parse(fs.readFileSync(d+'/'+f,'utf8'));return o})();   // 6.82: Codenames word packs: words-<pack>.json = [word, ...]
+const DECDATA=(()=>{const f=W+'/decrypto/keywords.json';return fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'utf8')):{packs:{},fam:[]}})();   // 6.83: Decrypto keywords: {packs:{name:[words]},fam:[[words of one family]]}
 const FOOTBALL_IDS=JSON.parse(fs.readFileSync('src/app.js','utf8').match(/const FOOTBALL = (\[[^\]]*\])/)[1]);   // 6.20: Football Mix = the Football mode pool
-const MODE_FILES=['cards','estrules','bidding','bingo','hotseat','survival','imposter','psych','estimation','tarneeb','codenames'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
+const MODE_FILES=['cards','estrules','bidding','bingo','hotseat','survival','imposter','psych','estimation','tarneeb','codenames','decrypto'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
 fs.copyFileSync('src/cards.js','cards.js');   // 6.79: the phone page cards.html loads the same card kit as the game
 const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8').replace('/*@modes*/',()=>MODE_FILES.map(m=>fs.readFileSync(`src/${m}.js`,'utf8')).join('\n')), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}
@@ -39,6 +40,7 @@ const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
 const CHANGELOG = ${J(JSON.parse(fs.readFileSync('src/changelog.json','utf8')))};
 const CNW = ${J(CNDATA)};   /* 6.82: Codenames word packs (v4work/codenames/words-*.json) */
 const PSY = ${J(PSYDATA)};   /* 6.72: Psych clues (v4work/psych.json) */
+const DECK = ${J(DECDATA)};   /* 6.83: Decrypto keywords (v4work/decrypto/keywords.json) */
 const IMP = ${J(IMPDATA)};   /* 6.68: Imposter words (v4work/imposter/*.json) */
 const BALLS = ${J(fs.existsSync(W+'/balls') ? fs.readdirSync(W+'/balls').filter(f=>f.endsWith('.webp')).sort().map(f=>'data:image/webp;base64,'+fs.readFileSync(W+'/balls/'+f).toString('base64')) : [])};
 /* 6.38 (Omar): TV Show Mix is a real mix now (see MIXES below), so its shows can be changed from Edit mixes. 5.x-6.37: built here

@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.83",
+  "date": "2026-10-14",
+  "items": [
+   "New game mode: Decrypto. Two teams join from their phones and each gets four secret keywords. Each round one player (the Encryptor) gets a secret code, like 3-1-4, and types three clues for it. Their team decodes it, and the other team tries to intercept it. The TV shows both teams' clue logs. Two interceptions win, two miscommunications lose. There are five keyword packs, including Egypt & Arab world."
+  ]
+ },
+ {
   "v": "6.82",
   "date": "2026-10-14",
   "items": [
