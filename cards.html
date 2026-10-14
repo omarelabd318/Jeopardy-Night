@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cards</title>
+<!-- 6.79: the phone page for the card modes, at /c?r=ROOM&g=est (Estimation first). A player joins once with a name, then sees only their own hand, who is to move and the buttons for their move.
+     The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact). Cards and the Classic Felt palette come from cards.js (the same file the game uses;
+     build.js copies it from src/cards.js). Another card mode adds its own screen to MODES below. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--felt:#0f6a3c;--felt2:#0a4d2b;--gold:#d8b45a;--ink:#fff;--soft:#b9d2c3;--bad:#ff9a9a;--ok:#8fe3a8;--disp:"Playfair Display",Georgia,serif}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--ink);font:16px/1.35 var(--disp);background:radial-gradient(ellipse at 50% 20%,#16884e,var(--felt2) 70%) fixed}
+main{max-width:520px;margin:0 auto;padding:14px 12px 8px;display:grid;gap:10px;min-height:100dvh;grid-template-rows:auto auto 1fr auto;align-content:start}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.chip{padding:3px 10px;border:2px solid var(--gold);border-radius:99px;background:rgba(0,0,0,.35);color:#fff;font-size:13px;white-space:nowrap}
+.chip b{color:#ff6b7d}.chip b.blk{color:#fff}
+h1{margin:6px 0;font:900 30px/1.1 var(--disp)}
+.status{font:700 22px/1.2 var(--disp)}
+.status.me{color:var(--gold)}
+.hint{color:var(--soft);font-size:14px}
+.tbl{display:grid;gap:4px}
+.tr{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:5px 10px;border-radius:8px;background:rgba(0,0,0,.3);font-size:15px}
+.tr.me{box-shadow:inset 0 0 0 2px var(--gold)}.tr.turn{background:rgba(216,180,90,.28)}
+.tr small{color:var(--soft)}
+.panel{background:rgba(0,0,0,.4);border:2px solid var(--gold);border-radius:12px;padding:10px;display:grid;gap:8px}
+.panel .q{font-weight:700;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+button{font:inherit;cursor:pointer}
+.b{font:700 20px var(--disp);padding:11px 0;border-radius:10px;border:2px solid var(--gold);background:#111;color:var(--gold)}
+.b.sel{background:var(--gold);color:#111}
+.b:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.b.red{color:#ff6b7d}.b.red.sel{color:#7a0014}
+.send{width:100%;font:700 19px var(--disp);letter-spacing:.06em;text-transform:uppercase;background:var(--gold);color:#111;border:0;padding:13px;border-radius:10px}
+.send:disabled{opacity:.4}
+.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:10px;padding:11px;font:700 18px var(--disp);width:100%}
+input{width:100%;font:700 19px var(--disp);padding:12px;border:2px solid var(--gold);border-radius:10px;background:#fff;color:#111}
+.msg{padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.5);border:2px solid var(--bad);color:var(--bad);font-size:14px}
+.mini{display:flex;gap:4px;justify-content:center;font-size:9px;min-height:32px;align-items:center}
+.big{font:900 40px/1.1 var(--disp)}.pos{color:var(--ok)}.neg{color:var(--bad)}
+.wait{text-align:center;padding:30px 0 6px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+#hand{align-self:end;position:sticky;bottom:0;padding-bottom:env(safe-area-inset-bottom,0)}
+</style></head><body class="ckw" data-look="felt"><main>
+<div class="top"><span id="me"></span><span id="chip"></span></div>
+<div id="view"></div>
+<div></div>
+<div id="hand"></div>
+</main>
+<script src="cards.js"></script>
+<script>
+CK.inject();
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_crd_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, busy = false, sig = "", note = null, up = null, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+const signs = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
+const ord = n => { const x = ["th","st","nd","rd"], v = n % 100; return n + (x[(v - 20) % 10] || x[v] || x[0]); };
+const SYM = {S:"♠", H:"♥", D:"♦", C:"♣", N:"NT"}, SR = {C:1, D:2, H:3, S:4, N:5};
+const beats = (b, h) => !h || b.n > h.n || (b.n === h.n && SR[b.s] > SR[h.s]);   // same rule as ER.beats in src/estrules.js
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("chip").innerHTML = ""; $("hand").innerHTML = "";
+  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${P.get("g") === "est" ? "Estimation" : "Card game"}</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="send" id="jb" style="margin-top:12px">Join</button></form>
+    ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your cards appear here.</p>`;
+  $("nm").focus();
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n); };
+}
+async function send(a){ if(sending || !st || !st.pub) return; sending = true; note = null;
+  const res = await post("crdact", {p: me.p, v: st.pub.v, a}); sending = false;
+  if(!res.ok) note = res.j.error === "stale" ? "The table moved on. Look again." : "That didn't send. Try again.";
+  else { sentV = st.pub.v; sentAt = Date.now(); if(st.me) st.me.act = null; }   // sent: hide the buttons right away; the next poll brings the new table
+  up = null; sig = ""; draw(); poll(true); }
+
+/* ---------- Estimation (g=est): the screens for each move ---------- */
+const MODES = {est:{
+  chip(p){ const t = p.trump; return `Round ${p.round}/${p.of}${p.rk === "speed" ? " · Speed" : ""}${t ? ` · Trump <b class="${t === "H" || t === "D" ? "" : "blk"}">${SYM[t]}</b>` : ""}`; },
+  table(p, seat){ return `<div class="tbl">${p.names.map((n, i) => { const turn = p.turn === i, e = p.ests[i], bid = p.phase === "dash" || p.phase === "auction" ? (p.dash[i] ? "Dash" : p.bids[i] || "") : (e == null ? "…" : `${e}${p.dash[i] ? " Dash" : ""} · won ${p.won[i]}`);
+    return `<div class="tr${i === seat ? " me" : ""}${turn ? " turn" : ""}"><span>${esc(n)}${p.caller === i ? ` <small>Caller</small>` : ""}</span><small>${esc(bid)}</small><b>${p.scores[i]}</b></div>`; }).join("")}</div>`; },
+  panel(p, a, seat){
+    if(!a) return "";
+    if(a.k === "dash") return `<div class="panel"><div class="q">Dash Call? Take no tricks this round.</div><div class="grid two"><button class="b" data-dash="1" ${a.can ? "" : "disabled"}>Yes</button><button class="b" data-dash="0">No</button></div></div>`;
+    if(a.k === "bid"){ const ok = sel.n != null && sel.s != null && beats({n:sel.n, s:sel.s}, a.high);
+      return `<div class="panel"><div class="q">Your call${a.high ? ` <small class="hint">(highest: ${a.high.n} ${SYM[a.high.s]})</small>` : ` <small class="hint">(minimum 4)</small>`}</div>
+        <div class="grid">${[4,5,6,7,8,9,10,11,12,13].map(n => `<button class="b${sel.n === n ? " sel" : ""}" data-n="${n}" ${a.high && (n < a.high.n || (n === a.high.n && a.high.s === "N")) ? "disabled" : ""}>${n}</button>`).join("")}</div>
+        <div class="grid">${["N","S","H","D","C"].map(s => `<button class="b${s === "H" || s === "D" ? " red" : ""}${sel.s === s ? " sel" : ""}" data-s="${s}" ${sel.n != null && !beats({n:sel.n, s}, a.high) ? "disabled" : ""}>${SYM[s]}</button>`).join("")}</div>
+        <button class="send" data-call="1" ${ok ? "" : "disabled"}>Call${ok ? " " + sel.n + " " + SYM[sel.s] : ""}</button><button class="ghost" data-pass="1">Pass</button></div>`; }
+    if(a.k === "est") return `<div class="panel"><div class="q">How many tricks will you take?${a.ban != null ? ` <small class="hint">${a.ban} is not allowed: the total can't be 13 (Risk)</small>` : ""}</div>
+      <div class="grid">${Array.from({length:a.max + 1}, (_, n) => `<button class="b${sel.e === n ? " sel" : ""}" data-e="${n}" ${n === a.ban ? "disabled" : ""}>${n}</button>`).join("")}</div>
+      <button class="send" data-est="1" ${sel.e != null && sel.e !== a.ban ? "" : "disabled"}>Estimate${sel.e != null ? " " + sel.e : ""}</button></div>`;
+    return ""; },
+  status(p, a, seat){ const nm = i => esc(p.names[i]);
+    if(p.phase === "dash") return a ? "Your turn" : `${nm(p.turn)} is deciding…`;
+    if(p.phase === "auction") return a ? "Your call" : `${nm(p.turn)} is calling…`;
+    if(p.phase === "est") return a ? "Your estimate" : `${nm(p.turn)} is estimating…`;
+    if(p.phase === "redeal") return "Everyone passed. Dealing again…";
+    if(p.phase === "play") return a ? "Your turn" + (p.trick.length ? ` · follow ${SYM[CK.suit(p.trick[0].c)]}` : " · you lead") : `${nm(p.turn)} is playing…`;
+    if(p.phase === "trickdone") return `${nm(p.winner)} takes the trick`;
+    return ""; }
+}};
+
+function draw(){
+  const M = MODES[(st && st.pub && st.pub.g) || P.get("g")] || MODES.est;
+  $("me").textContent = me.n;
+  if(!st || !st.pub){ $("chip").innerHTML = ""; $("hand").innerHTML = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. Your cards will appear here.</div></div>`; return; }
+  const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
+  if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">This game already has four players. Look at the TV.</div></div>`; return; }
+  const sg = [p.v, up, sel.n, sel.s, sel.e, note, sending].join("|"); if(sg === sig) return; sig = sg;
+  if(a && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
+  wasMine = !!a; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null;
+  $("chip").innerHTML = M.chip(p);
+  const v = $("view");
+  if(p.phase === "over"){ const rank = 1 + p.scores.filter(x => x > p.scores[seat]).length; $("hand").innerHTML = "";
+    v.innerHTML = `<div class="wait"><div class="hint">Game over</div><div class="big">You finished ${ord(rank)}</div><div class="panel" style="margin-top:12px"><div class="q">Final score</div><div class="big ${p.scores[seat] < 0 ? "neg" : ""}">${p.scores[seat]}</div></div><p class="hint">Look at the TV for the podium.</p></div>`; return; }
+  if(p.phase === "scored"){ const row = p.rows[seat]; $("hand").innerHTML = "";
+    v.innerHTML = `<div class="hint">Round ${p.round} done</div><div class="status">You said ${p.ests[seat]} and took ${p.won[seat]}</div><div class="panel"><div class="q">This round</div><div class="big ${row.pts > 0 ? "pos" : row.pts < 0 ? "neg" : ""}">${signs(row.pts)}</div><div class="hint">${row.tags.map(esc).join(" · ")}</div></div>${M.table(p, seat)}<p class="hint">The host starts the next round on the TV.</p>`; return; }
+  const trickCards = p.trick.map(t => CK.face(t.c)).join("");
+  v.innerHTML = `<div class="status${a ? " me" : ""}">${M.status(p, a, seat)}</div>${M.panel(p, a, seat)}${note ? `<div class="msg">${esc(note)}</div>` : ""}${p.phase === "play" || p.phase === "trickdone" ? `<div class="mini">${trickCards}</div>` : ""}${M.table(p, seat)}${a && a.k === "play" ? `<p class="hint">Tap a card to raise it, tap it again to play it.</p>` : ""}`;
+  $("hand").innerHTML = CK.hand(mine.hand, {legal: a && a.k === "play" ? a.legal : null, up});
+}
+document.addEventListener("click", e => {
+  if(!st || !st.pub || !st.me) return; const a = st.me.act, t = e.target.closest("button,.ck[data-c]"); if(!t) return;
+  if(t.dataset.c){ if(!a || a.k !== "play" || !a.legal.includes(t.dataset.c)) return; if(up === t.dataset.c) send({k:"play", c:up}); else { up = t.dataset.c; sig = ""; draw(); } return; }
+  if(t.dataset.dash != null) send({k:"dash", yes:t.dataset.dash === "1"});
+  else if(t.dataset.n){ sel.n = +t.dataset.n; if(sel.s && !beats({n:sel.n, s:sel.s}, a.high)) sel.s = null; sig = ""; draw(); }
+  else if(t.dataset.s){ sel.s = t.dataset.s; sig = ""; draw(); }
+  else if(t.dataset.call){ if(sel.n != null && sel.s) send({k:"bid", n:sel.n, s:sel.s}); }
+  else if(t.dataset.pass) send({k:"pass"});
+  else if(t.dataset.e){ sel.e = +t.dataset.e; sig = ""; draw(); }
+  else if(t.dataset.est){ if(sel.e != null) send({k:"est", n:sel.e}); } });
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j && j.pub && j.me && j.pub.v === sentV && Date.now() - sentAt < 3500) j.me.act = null;   // the laptop hasn't moved the table on yet: keep the buttons hidden
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v){ note = null; if(st && st.pub && j.pub && st.pub.v !== j.pub.v){ up = (j.me && j.me.act && j.me.act.k === "play" && j.me.hand.includes(up)) ? up : null; } } st = j; draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 1000); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

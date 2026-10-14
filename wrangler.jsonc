@@ -9,7 +9,7 @@
   "workers_dev": true,
   "main": "worker/index.js",
   "build": {
-    "command": "rm -rf dist && mkdir dist && cp -r index.html answer.html play.html spy.html psych.html speed.html photos sounds dist/"
+    "command": "rm -rf dist && mkdir dist && cp -r index.html answer.html play.html spy.html psych.html cards.html cards.js speed.html photos sounds dist/"
   },
   "assets": {
     "directory": "./dist",
