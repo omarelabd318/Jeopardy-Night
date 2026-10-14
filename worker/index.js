@@ -19,6 +19,8 @@
 //   never sent to a phone). Phones: GET /api/psystate?r&p -> the round for that player (options carry only a "mine" flag); POST /api/psyfake {r,p,c,v}, /api/psylie {r,p,c} ("Lie for me":
 //   the room hands out the next ready-made fake), /api/psyvote {r,p,c,o}. The laptop reads everyone's fakes and votes with GET /api/psyget?r&c. The phone page is /y (psych.html).
 //   Answers use /api/answer with k "ffa" and t = the player id.
+//   6.77: Bidding Wars on phones. A team's phone sends POST /api/bid {r,c,t,r2,b} (c = the lot, t = team, r2 = how much to raise by, b = the bid the phone saw);
+//   the laptop reads them in order with GET /api/bids?r&c&since -> {n, bids:[{t,r,b}]} and applies the valid ones. Refused once the lot is no longer the current one.
 // 5.27: team games use the same page. A team's phones join once with their team number t, and /api/cur also carries
 //   mode ("ffa" or "teams") and the team names; /api/state?r&p&t answers for that team. The first answer a player
 //   (or team) sends is final, and the team that's playing a tile can't send a steal for it.
@@ -37,6 +39,10 @@ export class Room extends DurableObject {
       const c = url.searchParams.get("c");
       const [answers, closed] = await Promise.all([st.get("a:" + c), st.get("x:" + c)]);
       return json({ closed: !!closed, answers: answers || {} });
+    }
+    if (op === "bids") {
+      const list = (await st.get("bq:" + url.searchParams.get("c"))) || [], since = Math.max(0, parseInt(url.searchParams.get("since")) || 0);
+      return json({ n: list.length, bids: list.slice(since) });
     }
     if (op === "players") {
       const players = (await st.get("players")) || {};
@@ -88,6 +94,14 @@ export class Room extends DurableObject {
       if (answers[b.t]) return json({ ok: false, error: "locked", v: answers[b.t].v }, 409);  // 5.27 (Omar): an answer can't be changed
       answers[b.t] = { v: b.v, k: b.k, at: Date.now() };
       await st.put("a:" + b.c, answers);
+      return json({ ok: true });
+    }
+    if (op === "bid") {
+      const cur = await st.get("cur");
+      if (!cur || cur.c !== b.c) return json({ ok: false, error: "closed" }, 409);
+      const list = (await st.get("bq:" + b.c)) || [];
+      if (list.length >= 300) return json({ ok: false, error: "closed" }, 409);
+      list.push({ t: b.t, r: b.r, b: b.b }); await st.put("bq:" + b.c, list);
       return json({ ok: true });
     }
     if (op === "join") {
@@ -152,18 +166,18 @@ export default {
     const op = url.pathname.slice(5);
     if (op === "ping") return json({ ok: true });
     const room = r => env.ROOMS.get(env.ROOMS.idFromName(r));
-    if (req.method === "GET" && ["answers", "meta", "players", "state", "impcard", "psystate", "psyget"].includes(op)) {
+    if (req.method === "GET" && ["answers", "meta", "players", "state", "impcard", "psystate", "psyget", "bids"].includes(op)) {
       const r = url.searchParams.get("r"), c = url.searchParams.get("c"), p = url.searchParams.get("p");
       if (!ROOM.test(r || "")) return json({ ok: false, error: "bad room" }, 400);
-      if ((op === "answers" || op === "meta" || op === "psyget") && !CLUE.test(c || "")) return json({ ok: false, error: "bad clue" }, 400);
+      if ((op === "answers" || op === "meta" || op === "psyget" || op === "bids") && !CLUE.test(c || "")) return json({ ok: false, error: "bad clue" }, 400);
       if ((op === "state" || op === "impcard" || op === "psystate") && !ROOM.test(p || "")) return json({ ok: false, error: "bad player" }, 400);
-      return room(r).fetch(new Request("https://room/" + op + "?" + new URLSearchParams(op === "state" || op === "impcard" || op === "psystate" ? { p } : { c: c || "" })));
+      return room(r).fetch(new Request("https://room/" + op + "?" + new URLSearchParams(op === "state" || op === "impcard" || op === "psystate" ? { p } : { c: c || "", since: url.searchParams.get("since") || "0" })));
     }
-    if (req.method !== "POST" || !["answer", "close", "meta", "join", "cur", "imp", "kick", "psy", "psyfake", "psylie", "psyvote"].includes(op)) return json({ ok: false }, 404);
+    if (req.method !== "POST" || !["answer", "close", "meta", "join", "cur", "imp", "kick", "psy", "psyfake", "psylie", "psyvote", "bid"].includes(op)) return json({ ok: false }, 404);
     let b; try { b = await req.json(); } catch (e) { return json({ ok: false, error: "bad json" }, 400); }
     const r = b.r, c = b.c;
     if (!ROOM.test(r || "")) return json({ ok: false, error: "bad room" }, 400);
-    if (["answer", "close", "meta"].includes(op) && !CLUE.test(c || "")) return json({ ok: false, error: "bad clue" }, 400);
+    if (["answer", "close", "meta", "bid"].includes(op) && !CLUE.test(c || "")) return json({ ok: false, error: "bad clue" }, 400);
     if (op === "answer") {
       const ffa = b.k === "ffa", v = String(b.v ?? "").trim().slice(0, 200), k = ffa ? "ffa" : b.k === "steal" ? "steal" : "num";
       const t = ffa ? String(b.t || "") : Number(b.t);
@@ -189,6 +203,10 @@ export default {
       const p = String(b.p || ""), cc = String(b.c || ""), v = String(b.v ?? "").trim().replace(/\s+/g, " ").slice(0, 40), o = String(b.o ?? "").slice(0, 8);
       if (!ROOM.test(p) || !CLUE.test(cc) || (op === "psyfake" && !v) || (op === "psyvote" && !o)) return json({ ok: false, error: "bad request" }, 400);
       b = { p, c: cc, v, o };
+    } else if (op === "bid") {
+      const t = Number(b.t), rr = Number(b.r2), bb = Number(b.b);
+      if (!CLUE.test(c || "") || !Number.isInteger(t) || t < 0 || t > 11 || ![50, 100, 200].includes(rr) || !Number.isFinite(bb)) return json({ ok: false, error: "bad bid" }, 400);
+      b = { c, t, r: rr, b: bb };
     } else if (op === "kick") {
       const p = String(b.p || "");
       if (!ROOM.test(p)) return json({ ok: false, error: "bad player" }, 400);

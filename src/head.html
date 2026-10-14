@@ -279,7 +279,7 @@ body.survmode #winBox{--winhi:#3a2a06;--felt:#1b1410;--deeper:#0d0907;--brass:#f
   body.bidmode .wrap{max-width:none}
   .bwtools{zoom:2}
   #bidding .bwstage{width:min(100%,calc((100vh - 120px)*16/9))}
-  #bidSetup{zoom:2}
+  #bidSetup,#bwLobby{zoom:2}
   body.bidmode #clue{zoom:2}
   body.bidmode .wincard{zoom:2}
 }
@@ -819,8 +819,16 @@ body.football .ffaaw .frow{background:#0F2557;border-color:#0F2557;color:#fff} b
 /* end 6.48 */
 /* 6.49 (Omar): Bidding Wars, Trading Floor look (his pick of three previews): black, amber LED numbers, green bid buttons, a score ticker.
    Sizes on the auction screen are in cqw (1% of the screen's width) so it scales like a TV picture. */
-#bidSetup,#bidding{--bw-bg:#07090c;--bw-panel:#11161c;--bw-line:#26313b;--bw-ink:#e8f1f2;--bw-muted:#7d8b93;--bw-amber:#ffb21a;--bw-green:#38e07b;--bw-on-green:#04160b;--bw-red:#ff5a4f;--bw-track:#1b232b;
+#bidSetup,#bidding,#bwLobby{--bw-bg:#07090c;--bw-panel:#11161c;--bw-line:#26313b;--bw-ink:#e8f1f2;--bw-muted:#7d8b93;--bw-amber:#ffb21a;--bw-green:#38e07b;--bw-on-green:#04160b;--bw-red:#ff5a4f;--bw-track:#1b232b;
   --bw-cond:"Barlow Condensed","Arial Narrow",sans-serif;--bw-mono:"Share Tech Mono",ui-monospace,Menlo,monospace;color:var(--bw-ink)}
+/* 6.77: the phone join code before the auction */
+#bwLobby{font-family:var(--bw-cond)}
+#bwLobby h1{font-family:var(--bw-cond);font-weight:800;text-transform:uppercase;letter-spacing:.01em;color:var(--bw-ink)}
+#bwLobby h1 span{color:var(--bw-amber);text-shadow:0 0 18px rgba(255,178,26,.45)}
+#bwLobby .eyebrow{font-family:var(--bw-mono,monospace);color:var(--bw-muted);letter-spacing:.14em}
+#bwLobby .lqr{color:#111}
+#bwLobby .note{font-family:var(--body);color:var(--bw-muted)}
+#bwLobby .lplayers li{background:var(--bw-panel);border:1.5px solid var(--bw-line);border-radius:0;color:var(--bw-ink)}
 body.bidmode{background:#07090c}
 body.bidmode #winBox{--winhi:#2a2006;--felt:#0b0f14;--deeper:#050608;--brass:#ffb21a;--on-brass:#07090c;--tile:#11161c;--line:#26313b}
 body.bidmode #card{--felt:#0b0f14;--felt-2:#11161c;--panel:#0d1218;--deep:#07090c;--deeper:#050608;--line:#26313b;--brass:#ffb21a;--brass-dim:#c98a10;--on-brass:#07090c;--brass-rgb:255,178,26;--muted:#9aa7ae;--veil:4,6,8}
@@ -1032,7 +1040,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.76</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.77</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -1047,7 +1055,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
   <section id="bidSetup" hidden></section>
   <section id="bidding" hidden>
-    <div class="bwtools row"><button class="bwbtn ghost fsbtn">Full screen</button><button class="bwbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="bwbtn ghost" id="bwHome">Title screen</button></div>
+    <div class="bwtools row"><button class="bwbtn ghost fsbtn">Full screen</button><button class="bwbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="bwbtn ghost" id="bwPhones" hidden>Join code</button><button class="bwbtn ghost" id="bwHome">Title screen</button></div>
     <div class="bwstage"><div class="bwscreen" id="bidBody"></div></div>
   </section>
   <!-- 6.59: Hot Seat (src/hotseat.js). To remove: delete these two sections, the 6.59 CSS block, the Hot Seat mode button above and the S.mode === "hotseat" lines in src/app.js -->
@@ -1076,7 +1084,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.76</div>
+      <div class="eyebrow verlabel">v6.77</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
@@ -1144,6 +1152,19 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
 
   <!-- 5.26: Free-for-all lobby, one code for everyone; reopened mid-game with "Join code" -->
+  <!-- 6.77: Bidding Wars phone join code (src/bidding.js) -->
+  <section id="bwLobby" hidden>
+    <div class="lobby">
+      <div class="eyebrow">Bidding Wars</div>
+      <h1>Scan to <span>bid</span></h1>
+      <p class="note">Each team scans with a phone and picks its team. Bids go in from the phones; answers are still given out loud on the TV.</p>
+      <div class="lqr" id="bwLqr"></div>
+      <div class="eyebrow">Teams</div>
+      <ul class="lplayers" id="bwLobbyList"></ul>
+      <div class="row" style="justify-content:center"><button class="bwbtn go" id="bwLGo">Start the auction</button><button class="bwbtn ghost" id="bwLSkip">Skip, no phones</button><button class="bwbtn ghost" id="bwLBack">Back to setup</button></div>
+    </div>
+  </section>
+
   <section id="lobby" hidden>
     <div class="lobby">
       <div class="eyebrow" id="lobbyEyebrow">Free-for-all</div>

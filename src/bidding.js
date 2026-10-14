@@ -4,7 +4,7 @@
    amber LED numbers, green bid buttons, a score ticker), chosen by Omar from three previews. It reuses the clue card and the winner screen; app.js
    only calls bidBanner, bidAwards, bidDone, bidAgain, bidSetupAgain and bidLeave. Setup is saved on this device in jn_bidCfg (the game itself is not saved since 6.50).
    To remove: see the 6.49 NOTES entry. */
-const BW = {cfg:null, st:null, timer:null, left:0};
+const BW = {cfg:null, st:null, timer:null, left:0, phones:false, gid:0, seen:{c:null, n:0}, busy:false, cnt:{}};
 const BW_TIERS = [{k:"Entry", lv:[200,300], cap:600}, {k:"Medium", lv:[300,400], cap:1200}, {k:"Expert", lv:[400,500], cap:1500}];
 const BW_WINNOTE = $("#winNote").textContent, BW_STEP = 50, BW_RAISES = [50,100,200], BW_HALF = new Set(["song","pin"]);   // the two categories that give half points (song or singer; country only); half the bid there
 /* the titles shown while bidding; each groups related categories from one setup section. photo: needs the photo rounds on. off: off by default */
@@ -41,7 +41,7 @@ const bwCats = t => t[2].filter(id => catById(id) && !HIDDEN_IDS.has(id) && (BW.
 const bwTitleOn = t => BW.cfg.titles[t[0]] !== undefined ? BW.cfg.titles[t[0]] : t[3] !== "off";
 const bwMoney = v => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US");
 function bwDefaults(){ const names = S.teams.map(t => t.name).slice(0, 6); while(names.length < 2) names.push("Team " + "ABCDEF"[names.length]);
-  return {teams:names, lots:12, secs:6, photos:true, raises:true, titles:{}}; }
+  return {teams:names, lots:12, secs:6, photos:true, raises:true, phones:false, titles:{}}; }
 BW.cfg = Object.assign(bwDefaults(), store.get("jn_bidCfg", {}));
 const bwSave = () => store.set("jn_bidCfg", BW.cfg);
 const bwPersist = () => {};   // 6.50: Bidding Wars games aren't saved (was: if(BW.st) store.set("jn_bid", BW.st))
@@ -65,7 +65,7 @@ function bwLot(tier, prev, seen){
 function bwDeal(n){ const lots = [], seen = new Set(); let prev = null;
   for(const tier of bwTiers(n)){ if(seen.size >= BW_TITLES.length - 2) seen.clear(); const l = bwLot(tier, prev, seen); if(l){ lots.push(l); prev = l.title; } }
   return lots; }
-const bwInit = () => ({v:1, lots:bwDeal(BW.cfg.lots), i:0, teams:BW.cfg.teams.map(n => ({name:n, score:0})), bid:0, leader:-1, phase:"lot", extra:0, over:false});
+const bwInit = () => (BW.gid++, {v:1, lots:bwDeal(BW.cfg.lots), i:0, teams:BW.cfg.teams.map(n => ({name:n, score:0})), bid:0, leader:-1, phase:"lot", extra:0, over:false});
 
 /* ---------- screens ---------- */
 function bidEnter(){ if(S.mode === "bidding") return; bingoLeave(); S.preMode = {power:S.power, wager:S.wager, steal:S.steal, ffa:S.ffa, skipPhones:S.skipPhones};
@@ -75,9 +75,9 @@ function bidEnter(){ if(S.mode === "bidding") return; bingoLeave(); S.preMode = 
 function bidResumeBtn(){ try{ localStorage.removeItem("jn_bid"); }catch(e){} }
 function bidLeave(){ bidResumeBtn(); if(S.mode !== "bidding") return; bwStop();
   closeCard(); Object.assign(S, S.preMode || {}); S.mode = null; S.preMode = null; document.body.classList.remove("bidmode");
-  $("#bidding").hidden = true; $("#bidSetup").hidden = true; $("#winEyebrow").textContent = "Final scores"; $("#playAgain").textContent = "Play again"; $("#winNote").textContent = BW_WINNOTE;
+  $("#bidding").hidden = true; $("#bidSetup").hidden = true; $("#bwLobby").hidden = true; if(BW.phones && RELAY === true && S.room) ffaPost({cur:null, s:{}}); BW.phones = false; $("#winEyebrow").textContent = "Final scores"; $("#playAgain").textContent = "Play again"; $("#winNote").textContent = BW_WINNOTE;
   try{ syncFfaOpt(); }catch(e){} }
-function bwHideAll(){ ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup"].forEach(s => { const e = $(s); if(e) e.hidden = true; }); }
+function bwHideAll(){ ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#bwLobby"].forEach(s => { const e = $(s); if(e) e.hidden = true; }); }
 function bidSetupShow(){ bidEnter(); bwStop(); bwHideAll(); $("#bidSetup").hidden = false; renderBidSetup(); window.scrollTo(0, 0); }
 function bidShow(){ bidEnter(); bwHideAll(); $("#bidding").hidden = false; renderBid(); window.scrollTo(0, 0); }
 function renderBidSetup(){
@@ -94,6 +94,7 @@ function renderBidSetup(){
       <button class="bwbtn ghost" data-set="secs" data-v="${c.secs ? 0 : 6}">${c.secs ? "Turn off (host taps SOLD)" : "Turn on"}</button></div>
       <p class="note">After each bid the lot is sold when this many seconds pass with no higher bid. The host can always tap SOLD early.</p></div>
     <div class="bwpanel"><div class="bweye">Raise amounts</div>${seg("raises", [["true", "Teams choose"], ["false", "+$50 only"]], c.raises)}<p class="note">Teams choose: each team card gets +$50 / +$100 / +$200 buttons. +$50 only: every bid goes up by $50.</p></div>
+    <div class="bwpanel"><div class="bweye">Phone bidding</div>${seg("phones", [["true", "On"], ["false", "Off"]], c.phones)}<p class="note">${RELAY === true || RELAY === null ? "On: a QR code shows before the first lot. Each team scans it with a phone, picks its team and bids from there; answers are still given out loud on the TV. The TV's bid buttons keep working too." : "Needs the Cloudflare link: the phones send their bids through it, so it can't be used here."}</p></div>
     <div class="bwpanel"><div class="bweye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture, Egypt: Photo Edition and every clue that shows a photo.</p></div>
     <div class="bwpanel"><div class="bweye">Titles in the auction</div><div class="bwtitles">${BW_TITLES.map(t => { const off = t[3] === "photo" && !c.photos;
       return `<button data-title="${t[0]}" aria-pressed="${bwTitleOn(t) && !off}" ${off ? "disabled" : ""}><b>${esc(t[1])}</b><small>${esc(t[2].filter(id => catById(id)).map(id => catById(id).name).join(", "))}</small></button>`; }).join("")}</div></div>
@@ -101,13 +102,13 @@ function renderBidSetup(){
 }
 $("#bidSetup").addEventListener("click", e => {
   const c = BW.cfg, set = e.target.closest("[data-set]");
-  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "lots" || k === "secs") v = +v; if(k === "photos" || k === "raises") v = v === "true"; c[k] = v; bwSave(); renderBidSetup(); return; }
+  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "lots" || k === "secs") v = +v; if(k === "photos" || k === "raises" || k === "phones") v = v === "true"; c[k] = v; bwSave(); renderBidSetup(); return; }
   const tt = e.target.closest("[data-title]"); if(tt){ const t = BW_TITLES.find(x => x[0] === tt.dataset.title); c.titles[t[0]] = !bwTitleOn(t);
     if(!BW_TITLES.some(x => bwTitleOn(x) && bwCats(x).length)) c.titles[t[0]] = true; bwSave(); renderBidSetup(); return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ c.teams.splice(+rm.dataset.rm, 1); bwSave(); renderBidSetup(); return; }
   if(e.target.closest("#bwAddTeam")){ c.teams.push("Team " + "ABCDEF"[c.teams.length]); bwSave(); renderBidSetup(); return; }
   if(e.target.closest("#bwBack")){ showHome(); return; }
-  if(e.target.closest("#bwStart")){ c.teams = c.teams.map((n, i) => n.trim() || "Team " + "ABCDEF"[i]); bwSave(); BW.st = bwInit(); bwPersist(); Snd.unlock(); bidShow(); }
+  if(e.target.closest("#bwStart")){ c.teams = c.teams.map((n, i) => n.trim() || "Team " + "ABCDEF"[i]); bwSave(); BW.st = bwInit(); BW.phones = !!c.phones && RELAY === true; bwPersist(); Snd.unlock(); if(BW.phones) bwLobby(false); else bidShow(); }
 });
 $("#bidSetup").addEventListener("input", e => { const i = e.target.dataset && e.target.dataset.bn;
   if(i !== undefined){ BW.cfg.teams[+i] = e.target.value; bwSave(); return; }
@@ -123,7 +124,7 @@ function bwCount(){ bwStop(); if(!BW.cfg.secs) return; BW.left = BW.cfg.secs; co
   BW.timer = setInterval(() => { BW.left--; if(BW.left <= 0){ bwStop(); bwSold(); return; } if(BW.left <= 3) Snd.tick(); const e = el(); if(e) e.textContent = bwCountText(); }, 1000); }
 function renderBid(){
   const st = BW.st, root = $("#bidBody"); if(!st) return;
-  if(st.over){ root.innerHTML = ""; return; }
+  if(st.over){ root.innerHTML = ""; bwSync(); return; }
   const lot = bwLotNow(), tier = BW_TIERS[lot.tier], t = bwTitle(lot.title);
   const cats = bwCats(t).map(id => catById(id).name);
   const lead = Math.max(...st.teams.map(m => m.score));
@@ -154,6 +155,8 @@ function renderBid(){
     <div class="bwticker" aria-hidden="true"><span>${ticker}${ticker}</span></div>
     <div class="bwsoldv" id="bwSoldV" hidden></div>`;
   if(st.phase !== "lot") bwShowSold(true);
+  const pb = $("#bwPhones"); if(pb) pb.hidden = !BW.phones;
+  bwSync();
 }
 /* 6.52: each team picks how much its next bid raises by (+$50/$100/$200, kept for the whole game); a raise past the max stops at the max. The first bid still opens at the range minimum */
 function bwRaise(i){ if(!BW.cfg.raises) return BW_STEP; const r = BW.st.teams[i].raise; return BW_RAISES.includes(r) ? r : BW_STEP; }
@@ -163,7 +166,7 @@ function bwPlace(i){ const st = BW.st, lot = bwLotNow(), tier = BW_TIERS[lot.tie
   st.bid = next; st.leader = i; Snd.unlock(); Snd.blip(); bwCount(); renderBid(); const b = $("#bwBid"); if(b){ b.classList.add("pop"); setTimeout(() => b.classList.remove("pop"), 160); }
   if(next === tier.cap) setTimeout(() => { if(BW.st === st && st.phase === "lot" && st.bid === tier.cap) bwSold(); }, 900); }   // nobody can go higher
 function bwSold(){ const st = BW.st, lot = bwLotNow(); bwStop(); if(st.phase !== "lot" || st.leader < 0) return;
-  st.phase = "sold"; lot.buyer = st.leader; lot.price = st.bid; bwPersist(); Snd.chime(); bwShowSold(false); }
+  st.phase = "sold"; lot.buyer = st.leader; lot.price = st.bid; bwPersist(); Snd.chime(); bwShowSold(false); bwSync(); }
 function bwShowSold(again){ const st = BW.st, lot = bwLotNow(), v = $("#bwSoldV"); if(!v || !lot || lot.buyer == null) return;
   v.innerHTML = `<h2>SOLD!</h2><div class="who">to ${esc(st.teams[lot.buyer].name)} for ${bwMoney(lot.price)}</div>
     <div class="real"${again ? ' style="opacity:1;animation:none"' : ""}><small>The category</small>${esc(catById(lot.cat).name)} · $${lot.lvl}</div>${again ? `<p class="note">No result was saved.</p>` : ""}<button class="bwbtn go" data-bw="open"${again ? ' style="opacity:1;animation:none"' : ""}>${again ? "Open the clue again" : "Open the clue"}</button>`; v.hidden = false; }
@@ -172,8 +175,8 @@ function bwUnsold(){ const st = BW.st, lot = bwLotNow(); bwStop(); if(st.phase !
   const fresh = st.extra < 5 ? bwLot(lot.tier, lot.title, new Set(st.lots.map(l => l.title))) : null;
   if(fresh){ st.lots[st.i] = fresh; st.extra++; } else { lot.res = "unsold"; st.i++; }
   st.bid = 0; st.leader = -1; bwPersist(); if(st.i >= st.lots.length) return bwEnd();
-  const v = $("#bwSoldV"); v.innerHTML = `<h2 class="uns">Unsold</h2><div class="who">Nobody opened. ${fresh ? "Here's a different lot." : "On to the next one."}</div><button class="bwbtn go" data-bw="next">Next lot</button>`; v.hidden = false; }
-function bwOpen(){ const st = BW.st, lot = bwLotNow(); st.phase = "clue"; bwPersist();
+  bwSync(); const v = $("#bwSoldV"); v.innerHTML = `<h2 class="uns">Unsold</h2><div class="who">Nobody opened. ${fresh ? "Here's a different lot." : "On to the next one."}</div><button class="bwbtn go" data-bw="next">Next lot</button>`; v.hidden = false; }
+function bwOpen(){ const st = BW.st, lot = bwLotNow(); st.phase = "clue"; bwPersist(); bwSync();
   S.turn = lot.buyer; PICKS[`${lot.cat}-${lot.lvl}`] = lot.idx; openClue(lot.cat, lot.lvl); }
 $("#bidBody").addEventListener("click", e => {
   const r = e.target.closest("[data-raise]"); if(r){ if(BW.st.phase === "lot"){ BW.st.teams[+r.dataset.raise].raise = +r.dataset.v; bwPersist(); renderBid(); } return; }
@@ -210,3 +213,48 @@ function bwEnd(){ const st = BW.st; st.over = true; bwStop(); bwPersist(); bidSh
   confetti(); ledStart(); playWinSiu(); }
 function bidAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; BW.st = bwInit(); bwPersist(); bidShow(); }
 function bidSetupAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; bidSetupShow(); }
+
+
+/* ---------- 6.77 (Omar): phone bidding ----------
+   With "Phone bidding" on in setup, Start shows a join code first. Each team's phone (play.html, the same page Free-for-all and team games use) picks its team and then
+   shows the lot, the current bid and the leader, with a button per raise amount. A tap goes to the relay (POST /api/bid); the laptop reads the bids once a second
+   (bwPoll) and applies the first valid one (the phone must have seen the current bid, and the team can't already lead), then the usual bwPlace runs, so the sold timer,
+   the max and the sounds all behave as if the host had tapped the bid button. The TV's bid buttons still work. Answering stays on the TV.
+   To remove: delete this block, the "Phone bidding" panel and the phones lines above (search "phones"), #bwLobby and #bwPhones in head.html, the "bid" parts of
+   worker/index.js and play.html (search "bid"). */
+const bwLive = () => BW.phones && RELAY === true && !!S.room;
+let bwLastSync = "";
+function bwSync(){ if(!bwLive() || !BW.st) return; const st = BW.st, s = {}; st.teams.forEach((m, i) => { s["t" + i] = m.score; });
+  let cur;
+  if(st.over) cur = {c: `bw${BW.gid}_end`, kind: "bid", bw: 1, ph: "over"};
+  else { const lot = bwLotNow(), tier = BW_TIERS[lot.tier];
+    cur = {c: `bw${BW.gid}_${st.i}`, kind: "bid", bw: 1, ph: st.phase, cat: bwTitle(lot.title)[1], val: tier.k, bid: st.bid, lo: tier.lv[0], cap: tier.cap, lead: st.leader, ln: st.leader >= 0 ? st.teams[st.leader].name : "",
+      rs: BW.cfg.raises ? BW_RAISES : [BW_STEP], rk: st.teams.map(m => BW_RAISES.includes(m.raise) ? m.raise : BW_STEP), buyer: lot.buyer, bn: lot.buyer != null ? st.teams[lot.buyer].name : "", price: lot.price, no: st.i + 1, of: st.lots.length}; }
+  const k = JSON.stringify([cur, s]); if(k === bwLastSync) return; bwLastSync = k;
+  ffaPost({cur, s, mode: "teams", teams: st.teams.map(m => m.name)}); }
+function bwLobby(mid){ bwStop(); bwHideAll(); bwLastSync = ""; if(!S.room) S.room = newRoom(); const st = BW.st, names = st.teams.map(m => m.name);
+  ffaPost(mid ? {mode: "teams", teams: names} : {mode: "teams", teams: names, cur: {c: `bwlobby${BW.gid}`, kind: "bid", bw: 1, ph: "wait"}, s: {}});
+  $("#bwLobby").hidden = false; $("#bwLGo").textContent = mid ? "Back to the auction" : "Start the auction"; $("#bwLBack").hidden = !!mid; $("#bwLSkip").hidden = !!mid;
+  const q = $("#bwLqr"); q.innerHTML = "";
+  const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!$("#bwLobby").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
+    q.innerHTML = ""; try{ new QRCode(q, {text: ffaUrl(), width: 300, height: 300, correctLevel: QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } };
+  draw(); bwLobbyList(); bwLobbyPoll(); window.scrollTo(0, 0); }
+function bwLobbyList(){ const st = BW.st; if(!st) return;
+  $("#bwLobbyList").innerHTML = st.teams.map((m, i) => { const n = BW.cnt[i] || 0; return `<li class="${n ? "" : "none"}">${esc(m.name)} · ${n ? `${n} phone${n > 1 ? "s" : ""}` : "no phone yet"}</li>`; }).join(""); }
+async function bwLobbyPoll(){ if(!bwLive() || $("#bwLobby").hidden) return;
+  try{ const j = await (await fetch(`api/players?r=${encodeURIComponent(S.room)}`, {cache: "no-store"})).json(), k = {};
+    (j.players || []).forEach(pl => { if(pl.t != null) k[pl.t] = (k[pl.t] || 0) + 1; }); BW.cnt = k; bwLobbyList(); }catch(e){}
+  setTimeout(bwLobbyPoll, 2000); }
+function bwLobbyGo(){ $("#bwLobby").hidden = true; bidShow(); const st = BW.st; if(st && st.phase === "lot" && st.leader >= 0) bwCount(); }
+$("#bwLGo").onclick = bwLobbyGo;
+$("#bwLSkip").onclick = () => { BW.phones = false; bwLobbyGo(); };
+$("#bwLBack").onclick = () => { $("#bwLobby").hidden = true; ffaPost({cur: null, s: {}}); BW.phones = false; bidSetupShow(); };
+$("#bwPhones").onclick = () => bwLobby(true);
+async function bwPoll(){ const st = BW.st; if(BW.busy || !bwLive() || !st || st.over || st.phase !== "lot" || $("#bidding").hidden) return; BW.busy = true;
+  const c = `bw${BW.gid}_${st.i}`; if(BW.seen.c !== c) BW.seen = {c, n: 0};
+  try{ const j = await (await fetch(`api/bids?r=${encodeURIComponent(S.room)}&c=${c}&since=${BW.seen.n}`, {cache: "no-store"})).json();
+    if(BW.st === st && BW.seen.c === c && Array.isArray(j.bids)){ BW.seen.n = j.n;
+      for(const x of j.bids){ if(st.phase !== "lot" || BW.st !== st) break; if(x.b !== st.bid || x.t === st.leader || !st.teams[x.t]) continue;
+        if(BW.cfg.raises && BW_RAISES.includes(x.r)) st.teams[x.t].raise = x.r; bwPlace(x.t); } } }catch(e){}
+  BW.busy = false; }
+setInterval(bwPoll, 1000);
