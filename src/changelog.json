@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.15",
+  "date": "2026-10-14",
+  "items": [
+   "3-5-8 on the title screen uses a new font so the 8 sits level with the 3 and the 5."
+  ]
+ },
+ {
   "v": "7.14",
   "date": "2026-10-14",
   "items": [
