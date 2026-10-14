@@ -1,4 +1,4 @@
-// 6.100: tests the For Sale? rules and referee in src/forsale.js (the "rules" region, no screen code). Run: node v4work/tools/forsale-test.js
+// 7.0: tests the For Sale? rules and referee in src/forsale.js (the "rules" region, no screen code). Run: node v4work/tools/forsale-test.js
 const fs = require("fs"), path = require("path"), assert = require("assert");
 const src = fs.readFileSync(path.join(__dirname, "../../src/forsale.js"), "utf8");
 const m = src.match(/\/\*@rules\*\/([\s\S]*?)\/\*@end-rules\*\//); if(!m) throw new Error("rules region not found");

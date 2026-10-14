@@ -1,4 +1,4 @@
-/* 6.100 (Omar): For Sale?, a property auction game mode (from the card game For Sale). Everyone scans one code and joins from their phone (sale.html at /f?r=ROOM, the same join step as
+/* 7.0 (Omar): For Sale?, a property auction game mode (from the card game For Sale). Everyone scans one code and joins from their phone (sale.html at /f?r=ROOM, the same join step as
    Imposter and Decrypto). Phase 1, buying: each round the TV lays out one property per player (numbered 1 to 30, from a box under a bridge to a villa with a Pyramids view). Going round the table you
    raise the top bid (+1M, +2M or +5M) or pass. A player who passes takes the CHEAPEST property still on the table and gets half their bid back (rounded down); the last one left pays their full bid and
    takes the BEST property, then opens the next round. Phase 2, selling: each round the TV lays out one cheque per player (0 to 15M); everybody secretly picks one of their properties on their phone, all
@@ -9,7 +9,7 @@
    load just that region). pub() is what every phone may see, priv(p) is one player's own coins and hand. The phones talk through the same generic relay routes as the card games (join, players, crd,
    crdstate, crdact, crdacts in worker/index.js). Needs the Cloudflare link. It doesn't use the clue card or the Jeopardy scores; app.js only calls slLeave from showHome. Bid and sell timers are saved on this
    device (jn_slCfg); a game is not saved. A timed-out bid is a pass; a timed-out sale sells your cheapest property.
-   To remove: delete this file, sale.html, v4work/tools/forsale-test.js and forsale-e2e.js, the 6.100 CSS block and #slo section in head.html, the For Sale? button, the /f route in worker/index.js,
+   To remove: delete this file, sale.html, v4work/tools/forsale-test.js and forsale-e2e.js, the 7.0 CSS block and #slo section in head.html, the For Sale? button, the /f route in worker/index.js,
    sale.html in wrangler.jsonc, the TT.modeSale entry in title.js, 'forsale' in MODE_FILES in build.js and the slLeave() call in showHome. */
 
 /*@rules*/

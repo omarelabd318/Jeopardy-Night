@@ -28,7 +28,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 - `src/cards.js`, `src/estrules.js`, `src/estimation.js`, `cards.html` (6.79): the Estimation card mode. `cards.js` is the shared card kit (`CK`: cards, table, looks `felt` and `ahwa`) that every card mode reuses and that `build.js` copies to the repo root for the phone page `cards.html` (at `/c?r=ROOM&g=<mode>`); `estrules.js` is the rules and scoring with no screen code; `estimation.js` is the TV screens and the link to the phones (relay routes `crd`, `crdstate`, `crdact`, `crdacts`). Tests: `v4work/tools/est-sim.js` and `est-e2e.js`.
 - `src/tarneeb.js` (6.80): the Tarneeb card mode: the rules engine `TNR`, the TV screens and the link to the phones. The phone screens are `MODES.tn` in `cards.html`. Test with `node v4work/tools/tarneeb-test.js` and `tarneeb-e2e.js`.
 - `src/decrypto.js`, `dec.html` (6.83): the Decrypto mode and its phone page (at `/d?r=ROOM`). Keywords are in `v4work/decrypto/keywords.json`. Test with `node v4work/tools/decrypto-test.js` and `decrypto-e2e.js`.
-- `src/forsale.js`, `sale.html` (6.100): the For Sale? property-auction mode and its phone page (at `/f?r=ROOM`). Test with `node v4work/tools/forsale-test.js` and `forsale-e2e.js`.
+- `src/forsale.js`, `sale.html` (7.0): the For Sale? property-auction mode and its phone page (at `/f?r=ROOM`). Test with `node v4work/tools/forsale-test.js` and `forsale-e2e.js`.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/balls/`: round 128px .webp match balls shown next to the Football mode title, one per board. The build embeds them, so they don't add artifact files.
 - `HANDOFF.md`: the latest handoff between sessions: state, open items, Omar's way of working, testing and network tips.
@@ -39,7 +39,7 @@ The game is a single page, `index.html`, that is **generated**. Don't edit it by
 ## Making a change
 
 1. Edit `src/` or `v4work/`.
-2. Bump the version. The label is the `v6.N` string in `src/head.html` and `src/app.js`. Run `sed -i 's/v6\.3\b/v6.4/g' src/head.html src/app.js` with the current and next numbers (the `\b` stops `v6.1` also matching `v6.10`). 4.x ran from 4.00 to 4.99, 5.x from 5.0 to 5.99, and 6.0 started a new era in `src/changelog.json`.
+2. Bump the version. The label is the `v6.N` string in `src/head.html` and `src/app.js`. Run `sed -i 's/v6\.3\b/v6.4/g' src/head.html src/app.js` with the current and next numbers (the `\b` stops `v6.1` also matching `v6.10`). 4.x ran from 4.00 to 4.99, 5.x from 5.0 to 5.99, 6.0 started a new era in `src/changelog.json`, 6.x ran to 6.99, and 7.0 (For Sale?, at Omar's request) started the 7.x era.
 3. Run `node build.js`.
 4. Add the new version at the top of `src/changelog.json` (one or two short lines a player would care about; it shows in the game when you tap the version number). Then update `NOTES.md`. Change the version line under "What's here", then add a `- 5.N (YYYY-MM-DD): …` entry at the end of the version history. Write it in plain language, and say what Omar asked for when it was his call.
 5. Open `index.html` in a browser and check the change, on the board and in Football mode if it's affected.

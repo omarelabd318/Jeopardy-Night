@@ -1,13 +1,16 @@
 [
  {
-  "era": "6.x: Category Descriptions"
+  "era": "7.x: Party Games"
  },
  {
-  "v": "6.100",
+  "v": "7.0",
   "date": "2026-10-14",
   "items": [
    "New game: For Sale?. Players join on their phones and bid on Egyptian properties, from a box under a bridge to a villa with a Pyramids view. Then everyone secretly picks which property to sell for each cheque, and the richest tycoon wins."
   ]
+ },
+ {
+  "era": "6.x: Category Descriptions"
  },
  {
   "v": "6.99",

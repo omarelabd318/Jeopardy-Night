@@ -1,4 +1,4 @@
-// 6.100 (adapted from decrypto-e2e.js): plays whole For Sale? games in a headless browser against a small in-memory copy of the relay (worker/index.js): one TV page and N phone pages
+// 7.0 (adapted from decrypto-e2e.js): plays whole For Sale? games in a headless browser against a small in-memory copy of the relay (worker/index.js): one TV page and N phone pages
 // that raise, pass, pick deeds and press Lock.   NODE_PATH=$(npm root -g) node v4work/tools/forsale-e2e.js [shotsDir] [games] [players]
 // It needs a built index.html (node build.js). Screenshots of the TV and some phones go to shotsDir (default: ./_sl-shots). TIMEOUT=1 lets the first bid run out the 15 s clock to test the auto-pass.
 const http = require("http"), fs = require("fs"), path = require("path"), {chromium} = require("playwright");
