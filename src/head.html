@@ -69,6 +69,59 @@ body:not(.football) #winBox[data-mode=survival] .btn:not(#playAgain){border:3px 
 body:not(.football) #winBox[data-mode=survival] .standings li{background:#fff3c4;color:#1b1410;border:3px solid #1b1410;border-radius:4px}
 body:not(.football) #winBox[data-mode=survival] #winNote{color:#1b1410}
 /* end 6.76 */
+/* 6.79 (Omar): Estimation, Classic Felt look (his pick of three previews: Classic Felt, Ahwa, Neon Night; Tarneeb uses Ahwa). The table, cards and seats come from src/cards.js (CK.css, injected once);
+   this block is only the lobby, the TV frame and the round summary. cards.html (the phones) uses the same palette. To remove: delete this block, the #esto section and the Estimation button. */
+#titleScreen #modeRow .modebtn.estbtn{font:700 21px "Playfair Display",Georgia,serif;letter-spacing:.04em;text-transform:none;background:radial-gradient(ellipse at 50% 40%,#16884e,#0f6a3c 55%,#0a4d2b);color:#fff;border:2.5px solid #d8b45a;border-radius:10px;box-shadow:inset 0 0 0 2px #3a1e10;padding:9px 26px}
+body.esmode{min-height:100vh;background:#0b1d14}
+body.esmode .wrap{max-width:none;padding:0}
+#esto{--es-gold:#d8b45a;--es-ink:#fff;--es-soft:#a8c2b2;--es-disp:"Playfair Display",Georgia,serif;color:var(--es-ink);font-family:var(--es-disp);min-height:100vh;display:flex;flex-direction:column}
+#esto [hidden]{display:none!important}
+#esto .estools{display:flex;gap:8px;justify-content:flex-end;padding:6px 10px 0}
+#esto .esrow{display:flex;gap:12px;flex-wrap:wrap}
+#esto .esbtn{font:700 19px var(--es-disp);letter-spacing:.04em;padding:10px 24px;border:2px solid var(--es-gold);background:#111;color:var(--es-gold);cursor:pointer;border-radius:8px}
+#esto .esbtn.go{background:var(--es-gold);color:#111}
+#esto .esbtn.ghost{background:transparent}
+#esto .esbtn.small{font-size:15px;padding:6px 14px}
+#esto .esbtn:disabled{opacity:.45;cursor:default}
+#estBody{flex:1;display:flex;flex-direction:column}
+#estBody>.eshead,#estBody>.esgrid,#estBody>.espod,#estBody>.esrow{width:min(1180px,100%);margin-inline:auto;padding-inline:20px}
+#estBody>.eshead{padding-top:18px}
+#esto .esbadge{display:inline-block;font:700 14px var(--es-disp);letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--es-gold);color:var(--es-gold);padding:2px 12px;border-radius:99px}
+#esto h1{margin:10px 0 6px;font:900 clamp(40px,6vw,76px)/1.05 var(--es-disp);color:#fff;text-shadow:none}
+#esto .sub{margin:0 0 14px;max-width:64ch;color:var(--es-soft);font-size:19px}
+#esto .esgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start;padding-bottom:20px}
+#esto .espanel{background:rgba(0,0,0,.38);border:2px solid var(--es-gold);border-radius:12px;padding:16px 18px;display:grid;gap:10px}
+#esto .eseye{font:700 14px var(--es-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--es-gold)}
+#esto .note{margin:0;font-size:15px;color:var(--es-soft)}
+#esto .esqr{background:#fff;padding:10px;width:fit-content;border-radius:8px}
+#esto .esnames{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;counter-reset:s}
+#esto .esnames li{counter-increment:s}
+#esto .esnames button{width:100%;font:700 17px var(--es-disp);text-align:left;padding:6px 10px;border:2px solid var(--es-gold);background:#111;color:#fff;cursor:pointer;border-radius:6px}
+#esto .esnames button::before{content:counter(s) ". ";color:var(--es-gold)}
+#esto .esseg{display:flex;flex-wrap:wrap;gap:6px}
+#esto .esseg button{font:700 18px var(--es-disp);padding:6px 14px;border:2px solid var(--es-gold);background:#111;color:#fff;cursor:pointer;border-radius:6px}
+#esto .esseg button[aria-pressed=true]{background:var(--es-gold);color:#111}
+#esto .espod{list-style:none;margin:0 auto 18px;padding:0 20px;display:grid;gap:8px}
+#esto .espod li{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:12px;font:700 34px var(--es-disp);padding:10px 18px;border-radius:10px;background:rgba(0,0,0,.4);border:2px solid rgba(216,180,90,.4)}
+#esto .espod li.r1{background:var(--es-gold);color:#111;font-size:44px}
+#esto .espod em{font-style:normal;font-variant-numeric:tabular-nums}
+#esto .espod .neg{color:#ff8a8a}
+#esto .es-tv{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 22vw;height:calc(100vh - 38px);background:#0b1d14}
+#esto .es-stage{min-width:0;min-height:0}
+#esto .es-tools{margin-top:auto;display:flex;justify-content:flex-end}
+#esto .es-sum{max-width:none;width:62%}
+#esto .es-sum table{border-collapse:collapse;width:100%;font-size:calc(var(--u)*1.8)}
+#esto .es-sum th{font-size:calc(var(--u)*1.2);letter-spacing:.1em;text-transform:uppercase;color:var(--ck-gold);text-align:right;padding:calc(var(--u)*.4) calc(var(--u)*.8)}
+#esto .es-sum td{text-align:right;padding:calc(var(--u)*.55) calc(var(--u)*.8);border-top:1px solid rgba(255,255,255,.2);font-variant-numeric:tabular-nums}
+#esto .es-sum th:first-child,#esto .es-sum td:first-child{text-align:left}
+#esto .es-sum td small{display:block;font-size:calc(var(--u)*1.1);opacity:.8;font-weight:400}
+#esto .es-sum tr.miss td:nth-child(4) b{color:#ff9a9a}
+#esto .es-sum tr.hit td:nth-child(4) b{color:#8fe3a8}
+#esto .es-note{margin:calc(var(--u)*.8) 0;font-size:calc(var(--u)*1.4);opacity:.85}
+#esto .es-sum .esbtn{font-size:calc(var(--u)*1.9);padding:calc(var(--u)*.7) calc(var(--u)*2.4)}
+#esto .ckmsg small{font-size:.6em;opacity:.85;font-weight:400}
+#esto .ckmsg{font-size:calc(var(--u)*2.6)}
+/* end 6.79 */
 /* 6.72 (Omar): Psych, Lie Detector look (his pick of three previews: Lie Detector, Tabloid, Mirage): chart paper, mono type, a time-left bar with a red needle, a strip of every player along the bottom.
    psych.html (the phones) uses the same palette. To remove: delete this block, the #psyo section and the Psych button. */
 #titleScreen #modeRow .modebtn.psybtn{font:700 20px "Archivo Narrow","Arial Narrow",sans-serif;letter-spacing:.1em;text-transform:uppercase;background:#f6f3e8;color:#1e2a26;border:2px solid #1e2a26;border-radius:0;box-shadow:inset 0 -4px 0 #d2232a;padding:10px 26px}
@@ -293,8 +346,8 @@ body.survmode #winBox{--winhi:#3a2a06;--felt:#1b1410;--deeper:#0d0907;--brass:#f
 <script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()" onerror="(window.__cdnErr=window.__cdnErr||{}).map=1"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- 5.2: Google Fonts load in the background, so a slow fonts server no longer keeps the page blank (a render-blocking stylesheet did). Text shows in a fallback font for a moment, then the game re-fits its text when the fonts arrive (jn-fonts in src/app.js). To undo: swap this back to <link rel="stylesheet" href="…same URL…"> and drop the noscript. -->
-<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow:wght@600;700&display=swap"></noscript>
+<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700;900&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700;900&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow:wght@600;700&display=swap"></noscript>
 <style>
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
 :root{
@@ -1040,7 +1093,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.78</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.79</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -1049,7 +1102,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <div class="row" style="justify-content:center"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="lookBtn" aria-pressed="false" title="Painted Billboard look for the normal game">Billboard look</button></div>
       <p class="note" id="fsNote" hidden></p>
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv">Survival</button><button class="btn modebtn impbtn" id="modeImp">Imposter</button><button class="btn modebtn psybtn" id="modePsy">Psych</button></div>
+      <div class="row modes" id="modeRow"><button class="btn modebtn bidbtn" id="modeBid">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv">Survival</button><button class="btn modebtn impbtn" id="modeImp">Imposter</button><button class="btn modebtn psybtn" id="modePsy">Psych</button><button class="btn modebtn estbtn" id="modeEst" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button></div>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -1072,6 +1125,11 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
     <div class="pstools row"><button class="psbtn ghost small fsbtn">Full screen</button><button class="psbtn ghost small" id="psHome">Title screen</button></div>
     <div id="psBody"></div>
   </section>
+  <!-- 6.79: Estimation (src/estimation.js). To remove: delete this section, the 6.79 CSS block and the Estimation button -->
+  <section id="esto" hidden>
+    <div class="estools"><button class="esbtn ghost small fsbtn">Full screen</button><button class="esbtn ghost small" id="esHome">Title screen</button></div>
+    <div id="estBody"></div>
+  </section>
   <section id="survSetup" hidden></section>
   <section id="survival" hidden>
     <div class="svtools row"><button class="svbtn ghost fsbtn">Full screen</button><button class="svbtn ghost sndbtn" aria-pressed="true">Sound on</button><button class="svbtn ghost" id="svHome">Title screen</button></div>
@@ -1084,7 +1142,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.78</div>
+      <div class="eyebrow verlabel">v6.79</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
