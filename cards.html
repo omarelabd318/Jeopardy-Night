@@ -45,6 +45,12 @@ input{width:100%;font:700 19px var(--disp);padding:12px;border:2px solid var(--g
 @keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}}
 #hand{align-self:end;position:sticky;bottom:0;padding-bottom:env(safe-area-inset-bottom,0)}
+/* 6.80: Tarneeb is Ahwa (dark wood, brass). Undo: delete these rules and the look/data-look lines in MODES.tn */
+body[data-look=ahwa]{--felt:#3a2616;--felt2:#24160b;--gold:#e0b45a;--soft:#d8c4a4;background:radial-gradient(ellipse at 50% 20%,#4a3220,var(--felt2) 70%) fixed}
+.tr.t0 small,.tn-t0{color:#e0b45a}.tr.t1 small,.tn-t1{color:#57b3a6}
+.b.dbl{border-color:#ff6b7d;color:#ff6b7d;width:100%}.sub2{font-size:13px;font-weight:400;display:block;opacity:.75;font-family:system-ui,sans-serif;margin-top:1px}
+.lt{display:flex;gap:3px;justify-content:center;font-size:9px}
+.tbl2{width:100%;border-collapse:collapse;font-size:15px}.tbl2 td,.tbl2 th{padding:4px 6px;text-align:center}.tbl2 td:first-child{text-align:left}
 </style></head><body class="ckw" data-look="felt"><main>
 <div class="top"><span id="me"></span><span id="chip"></span></div>
 <div id="view"></div>
@@ -75,7 +81,7 @@ async function join(n){
 }
 function joinView(err){
   stop(); $("me").textContent = ""; $("chip").innerHTML = ""; $("hand").innerHTML = "";
-  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${P.get("g") === "est" ? "Estimation" : "Card game"}</div><h1>What's your name?</h1>
+  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${{est:"Estimation", tn:"Tarneeb"}[P.get("g")] || "Card game"}</div><h1>What's your name?</h1>
     <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="send" id="jb" style="margin-top:12px">Join</button></form>
     ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your cards appear here.</p>`;
   $("nm").focus();
@@ -114,6 +120,40 @@ const MODES = {est:{
     return ""; }
 }};
 
+/* ---------- Tarneeb (g=tn): calls 1-7 (7-13 tricks), suits only, Double any time during the auction ---------- */
+MODES.tn = {look:"ahwa",
+  chip(p){ const t = p.trump; return `${p.scores[0]} – ${p.scores[1]} · to ${p.target}${t ? ` · Trump <b class="${t === "H" || t === "D" ? "" : "blk"}">${SYM[t]}</b>` : ""}`; },
+  table(p, seat){ const tm = seat % 2; return `<div class="tbl">${[0, 1].map(t => `<div class="tr t${t}${t === tm ? " me" : ""}"><span>${esc(p.teams[t])}${p.caller != null && CK_T(p.caller) === t ? " <small>Caller</small>" : ""}</span><small>${p.phase === "play" || p.phase === "trickdone" ? "won " + p.won[t] : ""}</small><b>${p.scores[t]}</b></div>`).join("")}</div>`; },
+  extra(p, a, seat){ const cl = p.call ? `<div class="hint">${esc(p.names[p.caller])} called ${p.call.n} ${SYM[p.call.s]} (${p.call.n + 6} tricks)${p.doubled ? " · DOUBLED ×2" : ""}</div>` : "";
+    const lt = p.last && (p.phase === "play" || p.phase === "trickdone") ? `<div class="hint">Last trick: ${p.last.plays.map(x => esc(p.names[x.seat]) + " " + CK.face(x.c)).join(" ")} → ${esc(p.names[p.last.winner])}</div>` : "";
+    return cl + lt; },
+  panel(p, a, seat){
+    if(!a || a.k !== "bid") return "";
+    const dbl = a.canDouble ? `<button class="b dbl" data-dbl="1">Double (×2 for both teams)</button>` : "";
+    if(!a.turn) return dbl ? `<div class="panel">${dbl}</div>` : "";
+    const ok = sel.n != null && sel.s != null && beats({n:sel.n, s:sel.s}, a.high);
+    return `<div class="panel"><div class="q">Your call${a.high ? ` <small class="hint">(highest: ${a.high.n} ${SYM[a.high.s]})</small>` : ` <small class="hint">(1 = 7 tricks)</small>`}</div>
+      <div class="grid" style="grid-template-columns:repeat(4,1fr)">${[1,2,3,4,5,6,7].map(n => `<button class="b${sel.n === n ? " sel" : ""}" data-n="${n}" ${a.high && (n < a.high.n || (n === a.high.n && a.high.s === "S")) ? "disabled" : ""}>${n}<span class="sub2">${n + 6} tricks</span></button>`).join("")}</div>
+      <div class="grid" style="grid-template-columns:repeat(4,1fr)">${["S","H","D","C"].map(s => `<button class="b${s === "H" || s === "D" ? " red" : ""}${sel.s === s ? " sel" : ""}" data-s="${s}" ${sel.n != null && !beats({n:sel.n, s}, a.high) ? "disabled" : ""}>${SYM[s]}</button>`).join("")}</div>
+      <button class="send" data-call="1" ${ok ? "" : "disabled"}>Call${ok ? " " + sel.n + " " + SYM[sel.s] : ""}</button>
+      ${a.canPass ? `<button class="ghost" data-pass="1">Pass</button>` : ""}${dbl}${a.canWeak ? `<button class="ghost" data-weak="1">Weak hand: deal again</button>` : ""}</div>`; },
+  status(p, a, seat){ const nm = i => esc(p.names[i]);
+    if(p.phase === "auction") return a && a.turn ? "Your call" : `${nm(p.turn)} is calling…`;
+    if(p.phase === "redeal") return p.redealWhy === "weak" && p.weak ? `${nm(p.weak.seat)} had a weak hand. Dealing again…` : "Everyone passed. Dealing again…";
+    if(p.phase === "play") return a ? "Your turn" + (p.trick.length ? ` · follow ${SYM[CK.suit(p.trick[0].c)]}` : " · you lead") : `${nm(p.turn)} is playing…`;
+    if(p.phase === "trickdone") return `${nm(p.winner)} takes the trick`;
+    return ""; },
+  screen(p, a, seat, mine){
+    const tm = seat % 2;
+    if(p.phase === "handdone"){ const s = p.summary, ct = s.caller % 2;
+      return `<div class="hint">Hand done</div><div class="status">${esc(p.names[s.caller])} called ${s.call.n} ${SYM[s.call.s]}${s.doubled ? " · DOUBLED ×2" : ""}: ${s.made ? "made" : "missed"}</div>
+        <div class="panel"><table class="tbl2"><tr><th></th><th>Tricks</th><th>Points</th><th>Total</th></tr>${[0, 1].map(t => `<tr class="tn-t${t}"><td>${esc(p.teams[t])}${t === tm ? " (you)" : ""}</td><td>${s.tricks[t]}</td><td><b>${signs(s.pts[t])}</b></td><td>${s.totals[t]}</td></tr>`).join("")}</table></div><p class="hint">The host starts the next hand on the TV.</p>`; }
+    if(p.phase === "over"){ const won = p.winTeam === tm;
+      return `<div class="wait"><div class="hint">Game over</div><div class="big ${won ? "pos" : "neg"}">${p.winTeam === 2 ? "A tie" : won ? "Your team won!" : "Your team lost"}</div><div class="panel" style="margin-top:12px"><div class="q">Final score</div><div class="big">${p.scores[tm]} – ${p.scores[1 - tm]}</div></div><p class="hint">Look at the TV.</p></div>`; }
+    return null; }
+};
+const CK_T = i => i % 2;
+
 function draw(){
   const M = MODES[(st && st.pub && st.pub.g) || P.get("g")] || MODES.est;
   $("me").textContent = me.n;
@@ -122,16 +162,18 @@ function draw(){
   const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
   if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">This game already has four players. Look at the TV.</div></div>`; return; }
   const sg = [p.v, up, sel.n, sel.s, sel.e, note, sending].join("|"); if(sg === sig) return; sig = sg;
-  if(a && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
-  wasMine = !!a; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null;
-  $("chip").innerHTML = M.chip(p);
+  const mineNow = !!a && a.turn !== false;
+  if(mineNow && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
+  wasMine = mineNow; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null;
+  $("chip").innerHTML = M.chip(p); if(M.look) document.body.dataset.look = M.look;
   const v = $("view");
+  if(M.screen){ const h = M.screen(p, a, seat, mine); if(h != null){ $("hand").innerHTML = ""; v.innerHTML = h; return; } }
   if(p.phase === "over"){ const rank = 1 + p.scores.filter(x => x > p.scores[seat]).length; $("hand").innerHTML = "";
     v.innerHTML = `<div class="wait"><div class="hint">Game over</div><div class="big">You finished ${ord(rank)}</div><div class="panel" style="margin-top:12px"><div class="q">Final score</div><div class="big ${p.scores[seat] < 0 ? "neg" : ""}">${p.scores[seat]}</div></div><p class="hint">Look at the TV for the podium.</p></div>`; return; }
   if(p.phase === "scored"){ const row = p.rows[seat]; $("hand").innerHTML = "";
     v.innerHTML = `<div class="hint">Round ${p.round} done</div><div class="status">You said ${p.ests[seat]} and took ${p.won[seat]}</div><div class="panel"><div class="q">This round</div><div class="big ${row.pts > 0 ? "pos" : row.pts < 0 ? "neg" : ""}">${signs(row.pts)}</div><div class="hint">${row.tags.map(esc).join(" · ")}</div></div>${M.table(p, seat)}<p class="hint">The host starts the next round on the TV.</p>`; return; }
   const trickCards = p.trick.map(t => CK.face(t.c)).join("");
-  v.innerHTML = `<div class="status${a ? " me" : ""}">${M.status(p, a, seat)}</div>${M.panel(p, a, seat)}${note ? `<div class="msg">${esc(note)}</div>` : ""}${p.phase === "play" || p.phase === "trickdone" ? `<div class="mini">${trickCards}</div>` : ""}${M.table(p, seat)}${a && a.k === "play" ? `<p class="hint">Tap a card to raise it, tap it again to play it.</p>` : ""}`;
+  v.innerHTML = `<div class="status${a ? " me" : ""}">${M.status(p, a, seat)}</div>${M.extra ? M.extra(p, a, seat) : ""}${M.panel(p, a, seat)}${note ? `<div class="msg">${esc(note)}</div>` : ""}${p.phase === "play" || p.phase === "trickdone" ? `<div class="mini">${trickCards}</div>` : ""}${M.table(p, seat)}${a && a.k === "play" ? `<p class="hint">Tap a card to raise it, tap it again to play it.</p>` : ""}`;
   $("hand").innerHTML = CK.hand(mine.hand, {legal: a && a.k === "play" ? a.legal : null, up});
 }
 document.addEventListener("click", e => {
@@ -142,6 +184,8 @@ document.addEventListener("click", e => {
   else if(t.dataset.s){ sel.s = t.dataset.s; sig = ""; draw(); }
   else if(t.dataset.call){ if(sel.n != null && sel.s) send({k:"bid", n:sel.n, s:sel.s}); }
   else if(t.dataset.pass) send({k:"pass"});
+  else if(t.dataset.dbl) send({k:"double"});
+  else if(t.dataset.weak) send({k:"weak"});
   else if(t.dataset.e){ sel.e = +t.dataset.e; sig = ""; draw(); }
   else if(t.dataset.est){ if(sel.e != null) send({k:"est", n:sel.e}); } });
 document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
