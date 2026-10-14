@@ -44,6 +44,9 @@ const TT = {
   modeSale:{t:["For","Sale?"], ff:'"Abril Fatface","Playfair Display",Georgia,serif', fw:400, c1:"#f3d77a", c2:"#fbf6e6", k:.95, ink:"#fbf6e6",
     sh:".04em .04em 0 rgba(0,0,0,.45)", tag:"Bid for the deed. Sell it for more.", s:["#f3d77a","#26231c","#26231c"],
     bg:"radial-gradient(ellipse at 50% 40%,#1f6b45,#0d3a24 78%)", base:"#0d3a24", g:{c:7,r:5,f:(r,c)=>{const n=1+(r*7+c*4+r*c)%30;return [n,["#8b5a2b","#2a6fb0","#c0392b","#7b3fa0"][n<=7?0:n<=15?1:n<=23?2:3],"#fbf6e6"]},font:'"Abril Fatface",serif',rad:"6px"}},
+  modeHold:{t:["Texas","Hold'em"], ff:'"Limelight",Georgia,serif', fw:400, c1:"#e8c25a", c2:"#f6ecd6", k:.95, ink:"#f6ecd6",
+    sh:".04em .04em 0 #000", tag:"Your cards on your phone. The table on the TV.", s:["#e8c25a","#2a1607","#7a1018"],
+    bg:"radial-gradient(ellipse at 50% 38%,#1b8a50,#0f6a3c 52%,#0a3d24)", base:"#0f6a3c", g:{c:7,r:5,f:(r,c)=>{const k=(r*3+c*2)%4;return [["♠","♥","♦","♣"][k],k%3?"#d32f2f":"#1a1a1a","#fff"]},font:'"Barlow",sans-serif',rad:"8px"}},
 };
 let ttSel = "";   // id of the chosen mode button, "" on the home screen
 let ttJnTagHtml = "<span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span>";

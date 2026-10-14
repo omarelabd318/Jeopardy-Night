@@ -1,7 +1,8 @@
 /* 6.79 (Omar): the shared card kit for the card modes (Estimation first; Tarneeb, 3-5-8 and Texas Hold'em are meant to reuse it). It is plain JavaScript with no
    dependencies, so build.js splices it into index.html (before the mode files) AND copies it to cards.js at the repo root, which the phone page cards.html loads.
    What's in it: card codes ("14S" = ace of spades, "10H" = ten of hearts), the deck, shuffle, sort, the trick winner, the card faces (drawn with CSS, no image files),
-   the oval table with seats and the middle trick (the TV), and two looks: "felt" (Classic Felt, Estimation's pick) and "ahwa" (the coffeehouse look Omar wants for Tarneeb).
+   the oval table with seats and the middle trick (the TV), and three looks: "felt" (Classic Felt, Estimation's pick), "ahwa" (the coffeehouse look Omar wants for Tarneeb) and "vegas" (6.100, Texas Hold'em: green felt, walnut and gold, red card backs).
+   7.2 also adds a four-colour deck switch: data-four on the .ckw wrapper makes diamonds blue and clubs green.
    A look is only a set of CSS variables on a wrapper with data-look="felt|ahwa", so adding a look never touches the layout.
    To remove: delete this file, cards.html, the cards.js copy line in build.js and the /c route in worker/index.js (and the modes that use it). */
 const CK = (() => {
@@ -22,6 +23,8 @@ const CK = (() => {
   const css = `
 .ckw{--ck-felt:#0f6a3c;--ck-felt2:#0a4d2b;--ck-felt3:#16884e;--ck-rail:#3a1e10;--ck-gold:#d8b45a;--ck-card:#fff;--ck-red:#c8102e;--ck-blk:#111;--ck-plate:#111;--ck-plate-ink:#fff;--ck-ink:#fff;--ck-side:#101010;--ck-sc:#1d1d1d;--ck-back:#14407a;--ck-back2:#d8b45a;--ck-bg:#0b1d14;--ck-disp:"Playfair Display",Georgia,serif;--ck-turn:#d8b45a;--ck-turn-ink:#111;--ck-lead:#0f6a3c}
 .ckw[data-look=ahwa]{--ck-felt:#e9e2d4;--ck-felt2:#d4cab6;--ck-felt3:#f4efe4;--ck-rail:#6b4128;--ck-gold:#c9a04f;--ck-card:#fbf6ea;--ck-red:#a3252b;--ck-blk:#1d1814;--ck-plate:#4a2c1a;--ck-plate-ink:#fbf6ea;--ck-ink:#fbf6ea;--ck-side:#2a190f;--ck-sc:rgba(201,160,79,.14);--ck-back:#1f5e5b;--ck-back2:#c9a04f;--ck-bg:#2a190f;--ck-disp:"Reem Kufi","Playfair Display",Georgia,serif;--ck-turn:#1f5e5b;--ck-turn-ink:#fbf6ea;--ck-lead:#c9a04f}
+.ckw[data-look=vegas]{--ck-felt:#1b8a50;--ck-felt2:#0b4a2c;--ck-felt3:#2a9d5f;--ck-rail:#5b2f17;--ck-gold:#e8c25a;--ck-card:#fff;--ck-red:#d32f2f;--ck-blk:#1a1a1a;--ck-plate:rgba(20,10,5,.88);--ck-plate-ink:#f6ecd6;--ck-ink:#f6ecd6;--ck-side:#170b06;--ck-sc:rgba(232,194,90,.12);--ck-back:#a3151f;--ck-back2:#c52a33;--ck-bg:#170b06;--ck-disp:"Barlow","Playfair Display",Georgia,sans-serif;--ck-turn:#e8c25a;--ck-turn-ink:#2a1607;--ck-lead:#8a6a2c}
+.ckw[data-four] .ck[data-c$="D"]{color:#1e6bd6}.ckw[data-four] .ck[data-c$="C"]{color:#1f8a3b}
 .ck{display:inline-block;width:3.6em;aspect-ratio:5/7;border-radius:.45em;position:relative;background:var(--ck-card);color:var(--ck-blk);font:700 1em/1 var(--ck-disp);box-shadow:0 .1em .3em rgba(0,0,0,.4);flex:none;user-select:none}
 .ck.red{color:var(--ck-red)}
 .ck .r{position:absolute;left:.28em;top:.26em;font-style:normal;font-size:.95em;display:flex;flex-direction:column;align-items:center;gap:.04em}
