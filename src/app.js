@@ -151,7 +151,7 @@ function newsHTML(list){
 function openNews(){
   /* 4.53 (Omar): no What's new section, just the full version history, collapsed (4.40–4.52 showed the latest two versions above it) */
   const vs = CHANGELOG.filter(e => e.v);
-  $("#newsTitle").textContent = `Jeopardy Night v${vs[0].v}`;
+  $("#newsTitle").textContent = `Sahra v${vs[0].v}`;
   $("#newsHist").innerHTML = newsHTML(CHANGELOG);
   document.querySelectorAll(".newshist").forEach(d => d.open = false);
   $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>`;   // 7.14 (Omar): the counts live here, not on the title screen
@@ -160,7 +160,7 @@ function openNews(){
   $("#newsBox").hidden = false; $("#newsCode").focus();
 }
 $("#newsLock").addEventListener("submit", e => { e.preventDefault();
-  if($("#newsCode").value.trim().toLowerCase() === "joga"){ $("#newsLock").hidden = true; document.querySelectorAll(".newshist").forEach(d => d.hidden = false); $("#newsHist").parentNode.open = true; $("#newsClose").focus(); }
+  if($("#newsCode").value.trim().toLowerCase() === "joga"){ $("#newsLock").hidden = true; document.querySelectorAll(".newshist").forEach(d => d.hidden = false); $("#newsHist").parentNode.open = true; $("#newsClose").focus({preventScroll:true}); $(".newscard").scrollTop = 0; }   // 7.16 (Omar): open the history from the top, not scrolled to the Close button
   else { $("#newsErr").textContent = "Wrong code."; $("#newsCode").select(); } });
 function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
 $("#verBtn").onclick = openNews;
@@ -170,8 +170,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.15`);
-  $("#verBtn").textContent = "v7.15"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.16`);
+  $("#verBtn").textContent = "v7.16"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
