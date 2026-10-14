@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.93",
+  "date": "2026-10-14",
+  "items": [
+   "Tarneeb title background tiles now read number first, then suit (5♠)."
+  ]
+ },
+ {
   "v": "6.92",
   "date": "2026-10-14",
   "items": [
