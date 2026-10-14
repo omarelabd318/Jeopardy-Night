@@ -6,7 +6,7 @@
    s = Start button [background, text, border], k = title size factor, x = extra CSS for the title. */
 const TT_NAME = "Sahra";   // the overall name (Omar's pick, 6.84)
 const TT = {
-  home:{base:"#0a0d24", ff:'"Rakkas","Playfair Display",serif', ink:"#f6e7c8", tag:"Pick a game. Gather the group. The night is long.",
+  home:{base:"#0a0d24", s:["#ffd98a","#0a0d24","#ffd98a"], ff:'"Rakkas","Playfair Display",serif', ink:"#f6e7c8", tag:"Pick a game. Gather the group. The night is long.",
     bg:"radial-gradient(ellipse at 50% -10%,rgba(255,176,60,.3),transparent 60%),radial-gradient(circle,rgba(255,255,255,.08) 1.2px,transparent 1.8px) 0 0/34px 34px,linear-gradient(#18204a,#0a0d24)"},
   modeBid:{t:["Bidding","Wars"], ff:'"Share Tech Mono",ui-monospace,Menlo,monospace', fw:400, c1:"#ffd21a", c2:"#38e07b", k:.82, ink:"#ffd21a",
     sh:"0 0 .06em #ffb300,0 0 .28em rgba(255,170,0,.55)", tag:"Bid for the clue. Win it, or pay for it.", s:["#ffd21a","#07090c","#ffb21a"],
@@ -90,7 +90,7 @@ function ttApply(id){
   const art = !jn && id && typeof TTBG !== "undefined" && TTBG[id];   // 7.10: modes with a drawn background (TTBG) drop the tile wall
   ttGhost(th && th.g && !art ? th.g : null, jn);   /* 7.10: was ttGhost(th && th.g ? th.g : null, jn) */
   ts.style.background = th ? "transparent" : "";   // 6.86: the theme background lives on the page itself (see --ttbg in head.html), so it carries on under the scrollbar with no seam
-  document.documentElement.style.setProperty("--ttbg", art ? `url("${art}") center/cover no-repeat` : th ? th.bg : "none");   /* 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
+  document.documentElement.style.setProperty("--ttbg", art ? `linear-gradient(color-mix(in srgb, ${th.base || "#000"} 28%, transparent), color-mix(in srgb, ${th.base || "#000"} 28%, transparent)), url("${art}") center/cover no-repeat` : th ? th.bg : "none");   /* 7.12 (Omar): the art is faded a bit with a 28% wash of the mode's base colour (7.10: just url(...) center/cover no-repeat). 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
   ts.style.color = th ? th.ink : "";
   $("#homeHead").hidden = !!id; $("#jnTitle").hidden = !jn; $("#brandCorner").hidden = !id;
   const mt = $("#modeTitle"); mt.hidden = !id || jn;
@@ -105,7 +105,7 @@ function ttApply(id){
   const go = $("#modeGo"), play = $("#play");
   go.hidden = !id || jn; play.hidden = !jn;
   if(id && !jn){ go.textContent = "Start";   /* 6.87 (Omar): just "Start" (6.84-6.86: "Start " + the mode name) */ go.style.cssText = `background:${th.s[0]};border-color:${th.s[2]};color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,.55)`;   /* 7.11 (Omar): Start keeps the mode colours with white text in Jeopardy Night's Start font (7.9: background:#fff;border-color:#fff, which was a misunderstanding) */    /* 7.9 (Omar): every Start button is white (7.8 and earlier: background:${th.s[0]};border-color:${th.s[2]}) */    /* 6.99 (Omar): every Start button uses Jeopardy Night's Start font and text colour (the .btn.primary rules); only the background and border follow the mode. Was also color:${th.s[1]};font-family:${th.ff};font-weight:${th.fw || 700} */ }
-  if(th && id && !jn && th.s){ ts.style.setProperty("--ttbd", th.s[0]); ts.style.setProperty("--ttbg2", `color-mix(in srgb, ${th.s[0]} 22%, ${th.base || "#000"})`); }   /* 7.11: mode colours for Full screen / Sound (see head.html); 7.8 also set --ttf/--ttw/--tti (font, weight, text colour), left out on purpose */
+  if(th && !jn && th.s){ ts.style.setProperty("--ttbd", th.s[0]); ts.style.setProperty("--ttbg2", `color-mix(in srgb, ${th.s[0]} 22%, ${th.base || "#000"})`); }   /* 7.11: mode colours for Full screen / Sound (see head.html); 7.8 also set --ttf/--ttw/--tti (font, weight, text colour), left out on purpose */
   const look = $("#lookBtn"); if(look) look.style.display = jn ? "" : "none";   // the Billboard look only changes Jeopardy Night
   const vb = $("#verBtn"); vb.style.color = th ? th.ink : ""; vb.style.opacity = th ? ".85" : "";
   document.querySelectorAll("#modeRow .modebtn").forEach(x => { const on = x.id === id; x.classList.toggle("sel", on); x.setAttribute("aria-pressed", on); });

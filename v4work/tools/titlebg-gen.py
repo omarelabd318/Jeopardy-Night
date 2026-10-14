@@ -35,7 +35,7 @@ cols = {'B': '#2f6fdb', 'I': '#d93a3a', 'N': '#e9e6df', 'G': '#2fa84f', 'O': '#f
 rng = {'B': (1, 15), 'I': (16, 30), 'N': (31, 45), 'G': (46, 60), 'O': (61, 75)}
 defs = ''.join(f'<radialGradient id="b{k}" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".25" stop-color="{c}"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>' for k, c in cols.items())
 b = f'<defs>{defs}</defs>'
-cell = 200
+cell = 290
 for gy in range(-1, H // cell + 2):
     for gx in range(-1, W // cell + 2):
         x = gx * cell + cell / 2 + r.randint(-44, 44) + (cell / 2 if gy % 2 else 0); y = gy * cell + cell / 2 + r.randint(-40, 40); rad = r.randint(70, 84)
@@ -70,9 +70,9 @@ b += '<text x="200" y="800" fill="#c8281f" opacity=".5" font-size="110" font-fam
 out['modeImp'] = wrap(b, '#1d1312', .5)
 # Psych: halftone + bubbles
 b = f'<defs><pattern id="hd" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="18" cy="18" r="10" fill="#d2232a" opacity=".32"/></pattern><linearGradient id="fd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6f3e8" stop-opacity="0"/><stop offset=".85" stop-color="#f6f3e8" stop-opacity=".95"/></linearGradient></defs><rect width="{W}" height="{H}" fill="url(#hd)"/><rect width="{W}" height="{H}" fill="url(#fd)"/>'
-b += ('<g fill="#fff" stroke="#1e2a26" stroke-width="7"><path d="M170,140 h330 a44,44 0 0 1 44,44 v70 a44,44 0 0 1 -44,44 h-215 l-72,58 v-58 h-43 a44,44 0 0 1 -44,-44 v-70 a44,44 0 0 1 44,-44z"/>'
-      '<path d="M1060,560 h300 a44,44 0 0 1 44,44 v60 a44,44 0 0 1 -44,44 h-44 v58 l-72,-58 h-184 a44,44 0 0 1 -44,-44 v-60 a44,44 0 0 1 44,-44z"/></g>'
-      '<text x="270" y="228" font-family="Arial Black" font-size="50" fill="#1e2a26">TRUE?</text><text x="1110" y="650" font-family="Arial Black" font-size="50" fill="#d2232a">LIAR!</text>')
+b += ('<g fill="#fff" stroke="#1e2a26" stroke-width="7"><path transform="translate(-130,70)" d="M170,140 h330 a44,44 0 0 1 44,44 v70 a44,44 0 0 1 -44,44 h-215 l-72,58 v-58 h-43 a44,44 0 0 1 -44,-44 v-70 a44,44 0 0 1 44,-44z"/>'
+      '<path transform="translate(40,-300)" d="M1060,560 h300 a44,44 0 0 1 44,44 v60 a44,44 0 0 1 -44,44 h-44 v58 l-72,-58 h-184 a44,44 0 0 1 -44,-44 v-60 a44,44 0 0 1 44,-44z"/></g>'
+      '<text x="140" y="298" font-family="Arial Black" font-size="50" fill="#1e2a26">TRUE?</text><text x="1150" y="350" font-family="Arial Black" font-size="50" fill="#d2232a">LIAR!</text>')
 out['modePsy'] = wrap(b, '#f6f3e8', .6)
 # Codenames: radar
 b = ''.join(f'<circle cx="800" cy="450" r="{rr}" fill="none" stroke="#36a3ff" stroke-width="2.5" opacity=".35"/>' for rr in range(90, 900, 110))
