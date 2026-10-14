@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.3",
+  "date": "2026-10-14",
+  "items": [
+   "On the title screen the card games (Estimation, Tarneeb, Texas Hold'em, Liar's Bar) now sit together at the end of the list."
+  ]
+ },
+ {
   "v": "7.2",
   "date": "2026-10-14",
   "items": [
