@@ -1,4 +1,4 @@
-/* 6.72 (Omar): Psych, a bluffing party mode (like Fibbage). Everyone joins once from their phone (psych.html at /y?r=ROOM, the same join step as Imposter). Each clue the TV
+/* 6.72 (Omar): Psych, a bluffing game mode (like Fibbage). Everyone joins once from their phone (psych.html at /y?r=ROOM, the same join step as Imposter). Each clue the TV
    shows a true but obscure fact with one blank; everybody types a believable fake (or taps "Lie for me" for a ready-made one, which pays half), the TV mixes the fakes
    with the real answer, and everybody votes for the one they think is true (not their own). Same fakes are merged into one answer. If too few players wrote fakes, ready-made
    "house" fakes pad the list up to the number of players (at least 4); a vote for a house fake costs the voter the fool value.
@@ -82,7 +82,7 @@ async function psEndVote(){ if(PS.phase !== "vote" || PS.ending) return; PS.endi
   PS.phase = "reveal"; PS.ending = false; psPost(); psRender(); }
 function psNext(){
   if(PS.phase === "reveal"){ if(++PS.step >= PS.order.length){ PS.phase = "scores"; psPost(); } psRender(); return; }
-  if(PS.phase === "scores"){ if(PS.idx + 1 >= PS.plan.length){ PS.phase = "over"; psPostOver(); psRender(); return; } PS.idx++; psClue(); } }
+  if(PS.phase === "scores"){ if(PS.idx + 1 >= PS.plan.length){ PS.phase = "over"; psPostOver(); psRender(); playWinSiu(); return; }   /* 6.76 (Omar): Siuuu on the winner screen like every other mode */ PS.idx++; psClue(); } }
 function psPostOver(){ PS.deltas = {}; fetch("api/psy", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:PS.room, psy:{pub:{c:PS.c, phase:"over", round:3, nth:1, of:1, fool:0, truth:0, q:"", scores:PS.scores}, priv:{ans:[], lies:[]}}})}).catch(() => {}); }
 function psCheck(){ if(PS.ending) return; const done = o => PS.active.length && PS.active.every(x => o[x.p]);
   if(PS.phase === "write" && done(PS.fakes)) setTimeout(psEndWrite, 900);
@@ -90,7 +90,7 @@ function psCheck(){ if(PS.ending) return; const done = o => PS.active.length && 
 
 /* ---------- screens ---------- */
 function psEnter(){ if(S.mode === "psych") return; S.mode = "psych"; document.body.classList.add("psymode"); }
-function psyLeave(){ if(S.mode !== "psych") return; clearInterval(PS.poll); clearInterval(PS.tm); PS.poll = PS.tm = null; PS.c = null; S.mode = null; document.body.classList.remove("psymode"); $("#psyo").hidden = true; }
+function psyLeave(){ if(S.mode !== "psych") return; stopSiu(); clearInterval(PS.poll); clearInterval(PS.tm); PS.poll = PS.tm = null; PS.c = null; S.mode = null; document.body.classList.remove("psymode"); $("#psyo").hidden = true; }
 function psyShow(){ psEnter();
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   PS.room = newRoom(); PS.players = []; PS.scores = {}; PS.phase = "lobby"; PS.c = null; PS.relay = RELAY;
@@ -128,7 +128,7 @@ function psAnsHtml(){ const ph = PS.phase;
 function psRender(){
   const el = $("#psBody"), ph = PS.phase;
   if(ph === "lobby"){ const ps = PS.players, c = PS.cfg, off = RELAY !== true;
-    el.innerHTML = `<div class="pshead"><div class="psbadge">Party game</div><h1>Psych</h1>
+    el.innerHTML = `<div class="pshead"><div class="psbadge">Game mode</div><h1>Psych</h1>
       <p class="sub">Everyone gets the same clue with a word missing. Write a believable lie on your phone, then vote for the one you think is real. Fool your friends to score, and find the truth to score more.</p></div>
       <div class="psgrid">
       <div class="pspanel">${off
@@ -166,7 +166,7 @@ $("#psyo").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ const p = PS.players[+kick.dataset.kick]; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:PS.room, p:p.p})}).catch(() => {});
     PS.players.splice(+kick.dataset.kick, 1); psRender(); return; }
   if(e.target.closest("#psGo")){ psStart(); return; }
-  if(e.target.closest("#psAgain")){ PS.phase = "lobby"; PS.c = null; psRender(); psPoll(); return; }
+  if(e.target.closest("#psAgain")){ stopSiu(); PS.phase = "lobby"; PS.c = null; psRender(); psPoll(); return; }
   if(e.target.closest("#psHome") || e.target.closest("#psHome2")){ showHome(); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "next") psNext();
