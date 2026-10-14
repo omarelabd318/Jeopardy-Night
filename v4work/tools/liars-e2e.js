@@ -1,4 +1,4 @@
-// 6.100: plays whole Liar's Bar games in a headless browser against a small in-memory copy of the relay (worker/index.js): one TV page and N phone pages (liars.html) that join, play cards and call Liar!.
+// 7.1: plays whole Liar's Bar games in a headless browser against a small in-memory copy of the relay (worker/index.js): one TV page and N phone pages (liars.html) that join, play cards and call Liar!.
 //   NODE_PATH=$(npm root -g) node v4work/tools/liars-e2e.js [shotsDir] [players=5] [games=1]
 // It needs a built index.html (node build.js). Checks: a phone only ever gets its own hand, the first play can't be called, a game ends with one winner, play again works. Screenshots go to shotsDir (default ./_lb-shots).
 const http = require("http"), fs = require("fs"), path = require("path"), {chromium} = require("playwright");

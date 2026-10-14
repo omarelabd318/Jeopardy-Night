@@ -1,4 +1,4 @@
-// 6.100: tests the Liar's Bar rules in src/liars.js (the "rules" region, no screen code). Run: node v4work/tools/liars-test.js
+// 7.1: tests the Liar's Bar rules in src/liars.js (the "rules" region, no screen code). Run: node v4work/tools/liars-test.js
 const fs = require("fs"), path = require("path"), assert = require("assert");
 const src = fs.readFileSync(path.join(__dirname, "../../src/liars.js"), "utf8");
 const m = src.match(/\/\*@rules\*\/([\s\S]*?)\/\*@end-rules\*\//); if(!m) throw new Error("rules region not found");

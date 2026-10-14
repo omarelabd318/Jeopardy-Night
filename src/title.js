@@ -41,6 +41,9 @@ const TT = {
   modeTn:{t:["Tarneeb"], ff:'"Reem Kufi","Cairo",sans-serif', fw:700, c1:"#f6ead2", k:1.05, ink:"#f6ead2",
     sh:".04em .04em 0 #1a0e06", tag:"Bid your tricks, name the trump, beat the other pair.", s:["#c49a4a","#2a190f","#f6ead2"],
     bg:"radial-gradient(ellipse at 50% 40%,#5c3a22,#2a190f 75%)", base:"#2a190f", g:{c:7,r:5,f:(r,c)=>{const k=(r+c*2)%4;return [(1+(r*3+c)%5)+["♠","♥","♦","♣"][k],k%3?"#e07a6a":"#f6ead2","#4a2c1a"]},font:'"Reem Kufi",sans-serif',rad:"8px"}},
+  modeSale:{t:["For","Sale?"], ff:'"Abril Fatface","Playfair Display",Georgia,serif', fw:400, c1:"#f3d77a", c2:"#fbf6e6", k:.95, ink:"#fbf6e6",
+    sh:".04em .04em 0 rgba(0,0,0,.45)", tag:"Bid for the deed. Sell it for more.", s:["#f3d77a","#26231c","#26231c"],
+    bg:"radial-gradient(ellipse at 50% 40%,#1f6b45,#0d3a24 78%)", base:"#0d3a24", g:{c:7,r:5,f:(r,c)=>{const n=1+(r*7+c*4+r*c)%30;return [n,["#8b5a2b","#2a6fb0","#c0392b","#7b3fa0"][n<=7?0:n<=15?1:n<=23?2:3],"#fbf6e6"]},font:'"Abril Fatface",serif',rad:"6px"}},
 };
 let ttSel = "";   // id of the chosen mode button, "" on the home screen
 let ttJnTagHtml = "<span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span>";

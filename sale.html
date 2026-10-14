@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>For Sale?</title>
+<!-- 7.0: the For Sale? phone page, at /f?r=ROOM. A player joins once with a name. In the buying phase the phone shows your coins, the top bid and, on your turn, the raise buttons (+1M, +2M, +5M) and Pass.
+     In the selling phase it shows your deeds: tap one, then Lock it in. Coins and deeds are private to this phone. Title Deeds look (Omar's pick of three): green felt, cream deed cards with a colour band
+     per price tier, pale-green bank cheques. The laptop is the referee: this page only sends what a player wants to do (worker/index.js: join, players, crdstate, crdact, the same generic routes as the card games).
+     The laptop stamps every table with a version number (v) and every buying step with a step number (s); a send that lands on an older table is retried once with the newest one, and a raise or pass whose
+     step has moved on is dropped, so a double tap can never pass the next player. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--felt:#0d3a24;--felt2:#1f6b45;--cream:#fbf6e6;--ink:#26231c;--gold:#f3d77a;--soft:#b9d3c2;--bad:#ff9a8a;--ok:#9be0b4;--t0:#8b5a2b;--t1:#2a6fb0;--t2:#c0392b;--t3:#7b3fa0;--disp:"Abril Fatface",Georgia,serif;--body:"Karla",system-ui,sans-serif}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--cream);font:16px/1.35 var(--body);background:radial-gradient(ellipse at 50% 30%,var(--felt2),var(--felt) 80%) fixed}
+main{max-width:480px;margin:0 auto;padding:14px 14px 28px;display:grid;gap:12px;align-content:start}
+#view{display:grid;gap:12px;align-content:start;min-width:0}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font:800 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.top .tn{color:var(--gold);font:400 22px var(--disp);letter-spacing:0;text-transform:none}
+h1{margin:6px 0;font:400 34px/1.1 var(--disp);color:var(--gold)}
+.eye{font:800 12px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.hint{color:var(--soft);font-size:14px}
+.big{font:400 30px/1.15 var(--disp);color:var(--gold)}
+.pos{color:var(--ok)}.neg{color:var(--bad)}
+.panel{background:rgba(0,0,0,.28);border:1px solid #2f7d55;border-radius:12px;padding:12px;display:grid;gap:10px}
+.coins{display:flex;justify-content:space-between;align-items:baseline;background:var(--cream);color:var(--ink);border-radius:10px;padding:8px 14px;border:2px solid var(--ink)}
+.coins b{font:400 32px var(--disp)}
+.coins span{font:800 12px var(--body);letter-spacing:.14em;text-transform:uppercase}
+input{width:100%;font:400 20px var(--body);padding:12px;border:2px solid var(--ink);border-radius:10px;background:var(--cream);color:var(--ink)}
+button{font:inherit;cursor:pointer}
+.send{width:100%;font:400 22px var(--disp);background:var(--gold);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:13px}
+.send:disabled{opacity:.4}
+.ghost{width:100%;font:800 15px var(--body);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--cream);border:2px solid var(--soft);border-radius:10px;padding:11px}
+.raise{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.raise button{background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:10px 0;font:400 24px var(--disp);display:grid;gap:0}
+.raise button small{font:700 11px var(--body);letter-spacing:.06em;opacity:.7}
+.raise button:disabled{opacity:.35}
+.msg{padding:9px 12px;border:1px solid var(--bad);color:var(--bad);border-radius:8px;background:rgba(0,0,0,.35);font-size:14px}
+.row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.deed{background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:6px;display:flex;flex-direction:column;min-width:0;aspect-ratio:3/4;overflow:hidden;text-align:center;position:relative;padding:0;font:inherit}
+.deed .band{height:20%;display:flex;align-items:center;justify-content:center;font:800 9px var(--body);letter-spacing:.18em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--ink);background:var(--tc)}
+.deed .dn{font:400 34px/1 var(--disp);margin-top:6px}
+.deed .dnm{font:700 10.5px/1.15 var(--body);padding:2px 5px 6px;overflow-wrap:anywhere}
+.deed.t0{--tc:var(--t0)}.deed.t1{--tc:var(--t1)}.deed.t2{--tc:var(--t2)}.deed.t3{--tc:var(--t3)}
+.deed.sel{transform:translateY(-6px);box-shadow:0 0 0 4px var(--gold),0 8px 14px rgba(0,0,0,.4)}
+.deed.wide{aspect-ratio:auto;flex-direction:row;align-items:center;text-align:left}
+.deed.wide .band{height:auto;align-self:stretch;width:44px;border-bottom:0;border-right:2px solid var(--ink);writing-mode:vertical-rl;transform:rotate(180deg);font-size:8px}
+.deed.wide .dn{margin:0 10px;font-size:36px}.deed.wide .dnm{font-size:14px;padding:8px 10px 8px 0;flex:1}
+.chq{background:#cfe3c8;color:#1d3b2a;border:2px dashed #1d3b2a;border-radius:6px;padding:5px 7px;display:flex;flex-direction:column;align-items:center;min-width:54px}
+.chq small{font:800 8px var(--body);letter-spacing:.12em;text-transform:uppercase}
+.chq b{font:400 22px/1 var(--disp)}
+.chq.zero{background:#e8c5bd;color:#5a1d12;border-color:#5a1d12}
+.chqs{display:flex;gap:6px;flex-wrap:wrap}
+.chqs .chq b{font-size:18px}
+.bar{height:8px;background:rgba(0,0,0,.35);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--gold)}
+.wait{text-align:center;padding:22px 0 6px;display:grid;gap:8px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.turn{border-color:var(--gold);box-shadow:0 0 0 3px rgba(243,215,122,.35)}
+.dim{opacity:.6}
+.rank{display:flex;justify-content:space-between;align-items:baseline;gap:8px;background:rgba(0,0,0,.28);border-radius:8px;padding:8px 12px}
+.rank b{font:400 22px var(--disp);color:var(--gold)}
+</style></head><body><main>
+<div class="top"><span class="tn" id="tn"></span><span id="rnd"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_sale_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+const TIER = ["Starter", "City", "Compound", "Coast"], tier = c => c <= 7 ? 0 : c <= 15 ? 1 : c <= 23 ? 2 : 3;
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, stAt = 0, timer = null, tick = null, busy = false, sig = "", note = null, total = 0, sel = null, ctx = "", sending = false, lobby = null;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+const left = () => st && st.pub && st.pub.secs != null ? Math.max(0, Math.round(st.pub.secs - (Date.now() - stAt) / 1000)) : null;
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("tn").textContent = ""; $("rnd").textContent = "";
+  $("view").innerHTML = `<div class="eye">Game night</div><h1>For Sale?</h1><div><div class="eye" style="margin-bottom:4px">Your name</div>
+    <input id="nm" maxlength="24" enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name" autocomplete="off"></div>
+    <button class="send" id="jn">Join</button>${err ? `<div class="msg">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your coins and deeds are private to this phone.</p>`;
+  $("nm").focus();
+  $("jn").onclick = () => { const n = $("nm").value.trim(); if(!n){ $("nm").focus(); return; } $("jn").disabled = true; join(n); };
+  $("nm").onkeydown = e => { if(e.key === "Enter") $("jn").click(); };
+}
+const deed = (c, nm, cls = "", tag = "div") => `<${tag} class="deed t${tier(c)} ${cls}" data-c="${c}"><div class="band">${TIER[tier(c)]}</div><div class="dn">${c}</div><div class="dnm">${esc(nm)}</div></${tag}>`;
+const chq = q => `<div class="chq ${q === 0 ? "zero" : ""}"><small>${q === 0 ? "Backed out" : "Cheque"}</small><b>${q}M</b></div>`;
+const bar = () => { const l = left(); if(l == null) return ""; if(l > total) total = l; return `<div class="bar"><i id="bf" style="width:${total ? Math.round(l / total * 100) : 0}%"></i></div>`; };
+const wait = (h, sub) => `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">${h}</div><div class="hint">${sub || ""}</div></div>`;
+function lobbyView(mid){
+  $("tn").textContent = me.n; $("rnd").textContent = "";
+  $("view").innerHTML = wait(mid ? "A game is on" : "You're in, " + esc(me.n), mid ? "You'll be dealt in when the next game starts. Keep this page open." : "Waiting for the host to start. " + ((lobby || []).length ? (lobby || []).length + " player" + ((lobby || []).length === 1 ? "" : "s") + " so far." : ""));
+}
+function draw(){
+  if(!st || !st.pub || st.pub.phase === "lobby" || !st.me){ sig = "lobby"; lobbyView(st && st.pub && st.pub.phase && st.pub.phase !== "lobby"); return; }
+  const p = st.pub, m = st.me, key = [p.phase, p.round, p.sround].join(":");
+  if(key !== ctx){ ctx = key; sel = null; total = 0; note = null; }
+  const sg = [p.v, note, sending, sel].join("|"); if(sg === sig) return; sig = sg;
+  $("tn").textContent = me.n; $("rnd").textContent = p.phase === "over" ? "" : p.phase === "sell" || p.phase === "reveal" ? "Sale " + p.sround + " of " + p.of : "Round " + p.round + " of " + p.of;
+  const v = $("view"), msg = note ? `<div class="msg">${esc(note)}</div>` : "", coins = `<div class="coins"><span>Your coins</span><b>${m.coins}M</b></div>`;
+  const hand = m.hand.length ? `<div class="eye">Your deeds · ${m.hand.length}</div><div class="row">${m.hand.map(([c, nm]) => deed(c, nm)).join("")}</div>` : "";
+  if(p.phase === "bid"){
+    const table = `<div class="eye">On the table</div><div class="row" style="grid-template-columns:repeat(${p.table.length <= 4 ? p.table.length : 3},minmax(0,1fr))">${p.table.map(([c, nm]) => deed(c, nm)).join("")}</div>`;
+    const cheap = p.table.length ? p.table[0] : null;
+    if(m.out){ v.innerHTML = `${coins}${wait("You passed", m.got ? `You took ${m.got.c}, ${esc(m.got.nm)}${m.got.paid ? ` and paid ${m.got.paid}M` : ""}${m.got.back ? ` (${m.got.back}M back)` : ""}. Watch the TV.` : "")}${table}${hand}`; return; }
+    if(m.myTurn){
+      const cur = p.cur;
+      v.innerHTML = `${bar()}<div class="panel turn"><div class="big">Your turn</div>
+        <div>${cur ? `Top bid: <b>${cur}M</b> by ${p.top === me.n ? "you" : esc(p.top)}` : "No bids yet."}${m.bid ? ` · your bid ${m.bid}M` : ""}</div>
+        <div class="raise">${[1, 2, 5].map(d => `<button data-d="${d}" ${cur + d > m.coins ? "disabled" : ""}>+${d}M<small>→ ${cur + d}M</small></button>`).join("")}</div>
+        <button class="ghost" id="ps">Pass · take ${cheap ? cheap[0] : ""}${m.bid ? `, ${Math.floor(m.bid / 2)}M back` : ""}</button>${msg}
+        <div class="hint">${cur + 1 > m.coins ? "You can't afford to raise. " : ""}Passing takes the cheapest deed on the table and returns half your bid.</div></div>${coins}${table}${hand}`;
+      v.querySelectorAll(".raise button").forEach(b => b.onclick = () => send({k:"raise", d:+b.dataset.d, s:p.step}));
+      $("ps").onclick = () => send({k:"pass", s:p.step});
+      return; }
+    v.innerHTML = `${bar()}${coins}<div class="panel dim"><div class="big">${esc(p.turn)}'s turn</div><div>${p.cur ? `Top bid: <b>${p.cur}M</b> by ${p.top === me.n ? "you" : esc(p.top)}` : "No bids yet."}${m.bid ? ` · your bid ${m.bid}M` : ""}</div></div>${table}${hand}`; return; }
+  if(p.phase === "sold"){ const g = m.got; v.innerHTML = `${coins}<div class="panel"><div class="eye">${g && g.won ? "You won the bidding" : "You passed"}</div>${g ? deed(g.c, g.nm, "wide") : ""}
+      <div class="big">${g ? (g.paid ? "Paid " + g.paid + "M" : "Free") : ""}</div>${g && g.back ? `<div class="hint">${g.back}M came back to you.</div>` : ""}</div><div class="hint">Look at the TV.</div>${hand}`; return; }
+  if(p.phase === "sell"){
+    const cheq = `<div class="eye">Cheques on the table</div><div class="chqs">${p.ctable.map(chq).join("")}</div>`;
+    if(m.pick){ const c = m.hand.find(h => h[0] === m.pick); v.innerHTML = `${bar()}${wait("Locked in", "You're selling " + (c ? esc(c[1]) + " (" + c[0] + ")" : "your deed") + ". Waiting for the others.")}${cheq}`; return; }
+    v.innerHTML = `${bar()}<div class="panel"><div class="eye">Pick a deed to sell</div><div class="row">${m.hand.map(([c, nm]) => deed(c, nm, sel === c ? "sel" : "", "button")).join("")}</div>${msg}
+      <button class="send" id="lk" ${sel ? "" : "disabled"}>${sel ? "Lock in " + sel : "Lock it in"}</button><div class="hint">The best deed in the room gets the best cheque. Pick wisely.</div></div>${cheq}`;
+    v.querySelectorAll("button.deed").forEach(b => b.onclick = () => { sel = sel === +b.dataset.c ? null : +b.dataset.c; sig = ""; draw(); });
+    $("lk").onclick = () => send({k:"pick", c:sel}); return; }
+  if(p.phase === "reveal"){ const s = m.sold; v.innerHTML = `<div class="panel"><div class="eye">You sold</div>${s ? deed(s.c, s.nm, "wide") : ""}<div class="big ${s && s.q === 0 ? "neg" : "pos"}">${s ? (s.q === 0 ? "Buyer backed out: 0M" : "for " + s.q + "M") : ""}</div></div>
+      <div class="rank"><span>Coins + cheques</span><b>${m.total}M</b></div><div class="eye">Your cheques</div><div class="chqs">${m.chq.map(chq).join("") || "<span class='hint'>None yet</span>"}</div><div class="hint">Look at the TV.</div>${hand}`; return; }
+  if(p.phase === "over"){ const o = p.over, mine = o.rows.find(x => x.n === me.n), win = o.winners.includes(me.n);
+    v.innerHTML = `<div class="wait"><div class="eye">Game over</div><div class="big ${win ? "pos" : ""}">${win ? (o.winners.length > 1 ? "You share the win" : "You are the Tycoon") : "You finished #" + (mine ? mine.rank : "?")}</div></div>
+      ${o.rows.map(x => `<div class="rank"><span>${x.rank}. ${esc(x.n)}</span><b>${x.total}M</b></div>`).join("")}${o.best ? `<div class="hint">Best deal: ${esc(o.best.n)} sold ${esc(o.best.nm)} for ${o.best.q}M.</div>` : ""}`; return; }
+}
+async function send(a){ if(sending) return; sending = true; note = null; sig = ""; draw();
+  let res = null;
+  for(let k = 0; k < 3; k++){
+    if(!st || !st.pub) break; res = await post("crdact", {p: me.p, v: st.pub.v, a});
+    if(res.ok || res.j.error !== "stale") break;
+    const was = [st.pub.phase, st.pub.round, st.pub.sround, st.pub.step].join(":"); await poll(true);   // the table moved: look again and retry only if it's still this step
+    if(!st || [st.pub.phase, st.pub.round, st.pub.sround, st.pub.step].join(":") !== was) { res = {ok:false, j:{error:"moved"}}; break; } }
+  sending = false;
+  if(!res || !res.ok) note = res && res.j.error === "moved" ? "That step is over." : "That didn't send. Try again.";
+  sig = ""; draw(); poll(true); }
+function paint(){ const l = left(); if(l == null || !st || !st.pub) return; const bf = $("bf"); if(bf){ if(l > total) total = l; bf.style.width = (total ? Math.round(l / total * 100) : 0) + "%"; } }
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ const oldV = st && st.pub ? st.pub.v : -1; st = j; if(!j.pub || j.pub.v !== oldV) stAt = Date.now();
+      if(!j.pub || j.pub.phase === "lobby" || !j.me){ try{ lobby = (await (await fetch(`api/players?r=${encodeURIComponent(r)}`, {cache:"no-store"})).json()).players || []; }catch(e){} sig = ""; }
+      draw(); paint(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 1000); tick = setInterval(paint, 1000); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

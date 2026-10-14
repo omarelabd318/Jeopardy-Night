@@ -1,4 +1,4 @@
-/* 6.100 (Omar): Liar's Bar, a bluffing card game mode, after the card table in the video game Liar's Bar. 3 to 8 players join from their phone (liars.html at /l?r=ROOM, one name, no teams).
+/* 7.1 (Omar): Liar's Bar, a bluffing card game mode, after the card table in the video game Liar's Bar. 3 to 8 players join from their phone (liars.html at /l?r=ROOM, one name, no teams).
    Each round the TV calls a table card (Kings, Queens or Aces) and deals every player 5 cards, which only their own phone shows. On your turn you play 1 to 3 cards face down and they count as the table
    card; Jokers are wild and always count. The next player either plays on or calls Liar! on the last play (only the next player can call; nobody can call the first play of a round). The TV flips the
    cards: if any is not the table card (and not a Joker) the player who played them was lying, otherwise the caller was wrong. The loser spins their own cylinder, 6 chambers with 1 bust placed in secret
@@ -11,7 +11,7 @@
    and priv (each player's own hand) with POST /api/crd and reads the phones' moves from GET /api/crdacts, the same generic relay the card modes use. Needs the Cloudflare link. Setup is saved on this
    device in jn_lbCfg; a game is not saved. It doesn't use the clue card or the Jeopardy scores; app.js only calls lbLeave from showHome. "Play again" keeps the names and phones, makes new cylinders
    and counts wins for the night in the corner of the TV.
-   To remove: delete this file, liars.html, v4work/tools/liars-test.js and liars-e2e.js, the 6.100 CSS block and #lbo section in head.html, the Liar's Bar button and the modeLb entry in title.js,
+   To remove: delete this file, liars.html, v4work/tools/liars-test.js and liars-e2e.js, the 7.1 CSS block and #lbo section in head.html, the Liar's Bar button and the modeLb entry in title.js,
    the /l route in worker/index.js, liars.html in wrangler.jsonc, 'liars' in MODE_FILES in build.js and the lbLeave() call in showHome. */
 
 /*@rules*/
