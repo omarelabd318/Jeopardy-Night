@@ -201,12 +201,12 @@ function bidDone(c){
 function bwEnd(){ const st = BW.st; st.over = true; bwStop(); bwPersist(); bidShow();
   const ranked = st.teams.map((t, i) => ({...t, i})).sort((a, b) => b.score - a.score), max = ranked[0].score, top = ranked.filter(t => t.score === max);
   const rankOf = t => 1 + ranked.filter(x => x.score > t.score).length;
-  $("#winEyebrow").textContent = "Bidding Wars";
+  $("#winEyebrow").textContent = "Bidding Wars"; winTheme("bidding");
   $("#winTitle").innerHTML = top.length > 1 ? `It's a tie!<br><span>${esc(top.map(t => t.name).join(" & "))}</span>` : `${esc(top[0].name)}<br><span>win!</span>`;
   $("#podium").innerHTML = ranked.slice(0, 3).map(t => { const r = rankOf(t); return `<div class="pod p${Math.min(r, 3)}"><div class="who">${esc(t.name)}</div><div class="pts">${bwMoney(t.score)}</div><div class="step">${r}${["th","st","nd","rd"][(r % 100 > 10 && r % 100 < 14) || r % 10 > 3 ? 0 : r % 10]}</div></div>`; }).join("");
   $("#podium").hidden = false;
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b class="${t.score < 0 ? "neg" : ""}">${bwMoney(t.score)}</b></li>`).join("") : "";
   $("#winBoard").hidden = true; $("#winBox").hidden = false; $("#playAgain").textContent = "New auction"; $("#winNote").textContent = "New auction keeps the same teams and settings, resets the scores and deals fresh lots."; $("#playAgain").focus();
-  confetti(); ledStart(); if(S.sound) playEnd(NORMAL_INTRO); }
+  confetti(); ledStart(); playWinSiu(); }
 function bidAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; BW.st = bwInit(); bwPersist(); bidShow(); }
 function bidSetupAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; bidSetupShow(); }

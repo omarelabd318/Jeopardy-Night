@@ -182,14 +182,14 @@ function bingoWinner(){
   const line = st.winner != null;
   const rows = st.teams.map((m, i) => ({name:m.name, n:st.cells.filter(c => c.own === i).length, i})).sort((a, b) => (line ? (b.i === st.winner) - (a.i === st.winner) : 0) || b.n - a.n);
   const top = line ? [rows[0]] : rows.filter(r => r.n === rows[0].n);
-  $("#winEyebrow").textContent = "Category Bingo";
+  $("#winEyebrow").textContent = "Category Bingo"; winTheme("bingo");
   $("#winTitle").innerHTML = line ? `${esc(st.teams[st.winner].name)}<br><span>BINGO!</span>` : top.length > 1 ? `It's a tie!<br><span>${esc(top.map(r => r.name).join(" & "))}</span>` : `${esc(top[0].name)}<br><span>win!</span>`;
   const rankOf = r => line ? (r.i === st.winner ? 1 : 2 + rows.filter(x => x.i !== st.winner && x.n > r.n).length) : 1 + rows.filter(x => x.n > r.n).length;
   $("#podium").innerHTML = rows.slice(0, 3).map(r => { const k = rankOf(r); return `<div class="pod p${Math.min(k, 3)}"><div class="who">${esc(r.name)}</div><div class="pts">${r.n}</div><div class="step">${k}${["th","st","nd","rd"][(k % 100 > 10 && k % 100 < 14) || k % 10 > 3 ? 0 : k % 10]}</div></div>`; }).join("");
   $("#podium").hidden = false;
   $("#standings").innerHTML = rows.length > 3 ? rows.slice(3).map(r => `<li><span>${rankOf(r)}. ${esc(r.name)}</span><b>${r.n}</b></li>`).join("") : "";
   $("#winBoard").hidden = false; $("#winBox").hidden = false; $("#playAgain").focus(); $("#playAgain").textContent = "New board";
-  confetti(); ledStart(); if(S.sound) playEnd(NORMAL_INTRO);
+  confetti(); ledStart(); playWinSiu();
 }
 function bingoAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; if(!BG.st) return; BG.st = bgInit(); bingoBoardShow(); }
 function bingoSetupAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; bingoSetupShow(); }

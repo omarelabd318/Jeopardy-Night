@@ -166,7 +166,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.75`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.76`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1778,7 +1778,7 @@ function showWinner(){
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b class="${t.score<0?"neg":""}">${t.score}</b></li>`).join("") : "";
   $("#winBoard").hidden = S.cats.length*5 - Object.keys(S.done).length === 0;
   $("#winBox").hidden = false; $("#playAgain").focus();
-  confetti(); ledStart(); if(S.sound) playEnd(S.football ? nextIntro() : NORMAL_INTRO);  /* 4.87 (Omar): normal mode plays "no fair" then Siuuu; Football mode alternates the two intros. 4.86: normal mode was Siuuu alone (playSiu()) */  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
+  confetti(); ledStart(); if(S.football) playWinSiu(); else if(S.sound) playEnd(NORMAL_INTRO);  /* 6.76 (Omar): Football mode plays Siuuu alone (was nextIntro(), the two intros in turn) */  /* 4.87 (Omar): normal mode plays "no fair" then Siuuu; Football mode alternates the two intros. 4.86: normal mode was Siuuu alone (playSiu()) */  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
 }
 /* Football mode winner sound: the last 9 seconds of Ronaldo's "Siuuu" clip, in place of the fanfare */
 let siuA = null;
@@ -1816,7 +1816,12 @@ document.addEventListener("keydown", primeSiu, {once:true, capture:true});
 function primeIntros(){ END_INTROS.forEach(src => { try{ if(introA[src]) return; const a = introA[src] = new Audio(src); a.preload = "auto"; a.muted = true;
   const pr = a.play(), done = () => { if(a.muted){ a.pause(); a.currentTime = 0; } }; if(pr) pr.then(done).catch(() => {}); else done(); }catch(e){} }); }
 function stopSiu(){ stopIntro(); if(siuA){ siuA.pause(); siuA.currentTime = 0; } }
-function hideWinner(){ $("#winBox").hidden = true; stopConfetti(); stopSiu(); ledStop(); }
+/* 6.76 (Omar): every mode on the title screen (and any mode added later) plays the Siuuu clip alone on its winner screen, not the "no fair" intro.
+   A new mode's winner function just calls winTheme("<mode>") for its look and playWinSiu() for the sound. Only the normal Jeopardy Night board still plays NORMAL_INTRO then Siuuu.
+   To undo: make playWinSiu() call playEnd(NORMAL_INTRO) (and nextIntro() for Football mode in showWinner()). */
+function playWinSiu(){ if(!S.sound) return; stopIntro(); playSiu(); }
+function winTheme(mode){ const w = $("#winBox"); if(mode) w.dataset.mode = mode; else delete w.dataset.mode; }
+function hideWinner(){ $("#winBox").hidden = true; winTheme(null); stopConfetti(); stopSiu(); ledStop(); }
 /* 4.51: the winner LED strip reads SSSIIIIIIII once, then U's that never end, at 65 px/s (32 with reduced motion; 4.50 was 130) */
 let ledRaf = null;
 function ledStop(){ if(ledRaf) cancelAnimationFrame(ledRaf); ledRaf = null; }

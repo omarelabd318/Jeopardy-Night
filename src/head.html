@@ -23,6 +23,52 @@ body.football #titleScreen #modeRow .modebtn.impbtn{background:#e6e1d3;color:#1d
 #titleScreen #modeRow .modebtn:hover{transform:translateY(-2px)}
 #titleScreen #modeRow .modebtn.survbtn:hover{transform:rotate(-2deg) translateY(-2px)}
 /* end 6.71 */
+/* 6.76 (Omar): each mode's winner screen wears that mode's own colours and type (set with #winBox[data-mode], see winTheme() in src/app.js). Football mode keeps its own green and LED strip, so every rule needs body:not(.football).
+   Bingo: navy bingo card, Bowlby One, the seven section colours as a stripe. Bidding Wars: Trading Floor, black with amber LED digits and square corners. Hot Seat: High Roller felt with Abril Fatface and casino-chip steps.
+   Survival: Cairo Cinema Poster, a yellow sunburst, Lalezar with a hard black shadow, cream paper steps.
+   To undo: delete this block down to "end 6.76" (the winner screens go back to the shared gold-on-dark look) and the winTheme() calls. */
+body:not(.football) #winBox[data-mode]{--wm-font:var(--display)}
+body:not(.football) #winBox[data-mode] #winTitle,body:not(.football) #winBox[data-mode] .pod .pts,body:not(.football) #winBox[data-mode] .pod .step,body:not(.football) #winBox[data-mode] #playAgain{font-family:var(--wm-font)}
+body:not(.football) #winBox[data-mode] #winEyebrow{font-family:var(--wm-font);letter-spacing:.2em}
+/* Bingo */
+body:not(.football) #winBox[data-mode=bingo]{--wm-font:"Bowlby One","Bebas Neue",Impact,sans-serif;--winhi:#1b2a7a;--felt:#10183f;--deeper:#080d26;--brass:#FFCC33;--on-brass:#10183f;--tile:#fff;--line:#2b3a8f;background:radial-gradient(circle,rgba(255,255,255,.07) 1.5px,transparent 2px) 0 0/26px 26px,radial-gradient(ellipse at 50% 30%,var(--winhi),var(--felt) 55%,var(--deeper))}
+body:not(.football) #winBox[data-mode=bingo] #winTitle{font-weight:400;letter-spacing:.02em;text-shadow:4px 4px 0 #000}
+body:not(.football) #winBox[data-mode=bingo] #winTitle span{color:#fff}
+body:not(.football) #winBox[data-mode=bingo] .pod .step{background:linear-gradient(90deg,#4DA3FF 0 14.3%,#FF8A4D 0 28.6%,#34D3A5 0 42.9%,#8FA4C4 0 57.1%,#FF6FA8 0 71.4%,#5FD068 0 85.7%,#A58BFF 0) top/100% 8px no-repeat,#fff;color:#10183f;text-shadow:none;border:3px solid #FFCC33;border-radius:16px 16px 0 0;font-weight:400}
+body:not(.football) #winBox[data-mode=bingo] .pod.p1 .step{background:linear-gradient(90deg,#4DA3FF 0 14.3%,#FF8A4D 0 28.6%,#34D3A5 0 42.9%,#8FA4C4 0 57.1%,#FF6FA8 0 71.4%,#5FD068 0 85.7%,#A58BFF 0) top/100% 8px no-repeat,#FFCC33}
+body:not(.football) #winBox[data-mode=bingo] #playAgain{border-radius:14px;font-weight:400;border:2px solid #fff}
+/* Bidding Wars */
+body:not(.football) #winBox[data-mode=bidding]{--wm-font:"Barlow Condensed","Arial Narrow",sans-serif;background:repeating-linear-gradient(0deg,rgba(255,178,26,.05) 0 1px,transparent 1px 4px),radial-gradient(ellipse at 50% 30%,var(--winhi),var(--felt) 55%,var(--deeper))}
+body:not(.football) #winBox[data-mode=bidding] #winTitle{font-weight:800;text-shadow:0 0 22px rgba(255,178,26,.55)}
+body:not(.football) #winBox[data-mode=bidding] #winTitle span{color:#38e07b;text-shadow:0 0 18px rgba(56,224,123,.5)}
+body:not(.football) #winBox[data-mode=bidding] #winEyebrow,body:not(.football) #winBox[data-mode=bidding] .pod .pts{font-family:"Share Tech Mono",ui-monospace,Menlo,monospace}
+body:not(.football) #winBox[data-mode=bidding] .pod .pts{color:#ffd21a;font-weight:400;text-shadow:0 0 6px #ffb300,0 0 16px rgba(255,170,0,.5)}
+body:not(.football) #winBox[data-mode=bidding] .pod .step{border-radius:0;border:1.5px solid #ffb21a;font-weight:800;box-shadow:inset 0 -4px 0 #38e07b}
+body:not(.football) #winBox[data-mode=bidding] .pod.p1 .step{box-shadow:inset 0 -4px 0 #04160b}
+body:not(.football) #winBox[data-mode=bidding] #playAgain{border-radius:0;background:#38e07b;border-color:#38e07b;color:#04160b;font-weight:800}
+body:not(.football) #winBox[data-mode=bidding] .btn:not(#playAgain){border-radius:0}
+/* Hot Seat */
+body:not(.football) #winBox[data-mode=hotseat]{--wm-font:"Abril Fatface","Playfair Display",Georgia,serif}
+body:not(.football) #winBox[data-mode=hotseat] #winTitle{font-weight:400;text-transform:none;letter-spacing:.02em;text-shadow:4px 4px 0 #041e12}
+body:not(.football) #winBox[data-mode=hotseat] #winTitle span{color:#ef6a5b}
+body:not(.football) #winBox[data-mode=hotseat] .pod .pts{font-weight:400}
+body:not(.football) #winBox[data-mode=hotseat] .pod .step{border:3px dashed #f6ecd0;outline:3px solid #c0392b;outline-offset:-1px;border-radius:18px 18px 0 0;font-weight:400;background:#0c4a2c}
+body:not(.football) #winBox[data-mode=hotseat] .pod.p1 .step{background:#f6ecd0}
+body:not(.football) #winBox[data-mode=hotseat] #playAgain{border-radius:999px;background:#c0392b;border-color:#c0392b;color:#fff;font-weight:400;text-transform:none}
+body:not(.football) #winBox[data-mode=hotseat] .btn:not(#playAgain){border-radius:999px}
+/* Survival */
+body:not(.football) #winBox[data-mode=survival]{--wm-font:"Lalezar","Alfa Slab One",Impact,sans-serif;background:repeating-conic-gradient(from 0deg at 50% 38%,#f6cf48 0 6deg,#eab820 6deg 12deg)}
+body:not(.football) #winBox[data-mode=survival] #winEyebrow{color:#1b1410}
+body:not(.football) #winBox[data-mode=survival] #winTitle{font-weight:400;color:#fff3c4;-webkit-text-stroke:.025em #1b1410;paint-order:stroke fill;text-shadow:6px 6px 0 #1b1410;transform:rotate(-2deg)}
+body:not(.football) #winBox[data-mode=survival] #winTitle span{color:#c8281f}
+body:not(.football) #winBox[data-mode=survival] .pod .who,body:not(.football) #winBox[data-mode=survival] .pod .pts{color:#1b1410}
+body:not(.football) #winBox[data-mode=survival] .pod .step{background:#fff3c4;color:#1b1410;border:3px solid #1b1410;border-radius:4px 4px 0 0;box-shadow:5px 5px 0 #1b1410;text-shadow:none;font-weight:400}
+body:not(.football) #winBox[data-mode=survival] .pod.p1 .step{background:#c8281f;color:#fff3c4}
+body:not(.football) #winBox[data-mode=survival] #playAgain{background:#6a2bb0;border:3px solid #1b1410;color:#ffe066;border-radius:4px;box-shadow:4px 4px 0 #1b1410;font-weight:400}
+body:not(.football) #winBox[data-mode=survival] .btn:not(#playAgain){border:3px solid #1b1410;border-radius:4px;background:#fff3c4;color:#1b1410;box-shadow:4px 4px 0 #1b1410}
+body:not(.football) #winBox[data-mode=survival] .standings li{background:#fff3c4;color:#1b1410;border:3px solid #1b1410;border-radius:4px}
+body:not(.football) #winBox[data-mode=survival] #winNote{color:#1b1410}
+/* end 6.76 */
 /* 6.72 (Omar): Psych, Lie Detector look (his pick of three previews: Lie Detector, Tabloid, Mirage): chart paper, mono type, a time-left bar with a red needle, a strip of every player along the bottom.
    psych.html (the phones) uses the same palette. To remove: delete this block, the #psyo section and the Psych button. */
 #titleScreen #modeRow .modebtn.psybtn{font:700 20px "Archivo Narrow","Arial Narrow",sans-serif;letter-spacing:.1em;text-transform:uppercase;background:#f6f3e8;color:#1e2a26;border:2px solid #1e2a26;border-radius:0;box-shadow:inset 0 -4px 0 #d2232a;padding:10px 26px}
@@ -986,7 +1032,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   <section id="titleScreen">
     <div class="ghost" aria-hidden="true"></div>
     <div class="titleinner">
-      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.75</button>
+      <button class="eyebrow verlabel verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v6.76</button>
       <h1 class="bigtitle">Jeopardy<br><span>Night</span></h1>
       <p class="tagline"><span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span></p>
       <button class="btn primary big" id="play">Start</button>
@@ -1030,7 +1076,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v6.75</div>
+      <div class="eyebrow verlabel">v6.76</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

@@ -140,13 +140,13 @@ function svEnd(){ const st = SV.st; st.over = true; survShow();
   const win = st.teams.findIndex(t => t.lives > 0);
   const ranked = st.teams.map((t, i) => ({...t, i, key: t.lives > 0 ? Infinity : t.seq})).sort((a, b) => b.key - a.key);
   const rankOf = t => 1 + ranked.filter(x => x.key > t.key).length;
-  $("#winEyebrow").textContent = "Survival";
+  $("#winEyebrow").textContent = "Survival"; winTheme("survival");
   $("#winTitle").innerHTML = win >= 0 ? `${esc(st.teams[win].name)}<br><span>win!</span>` : `Nobody<br><span>survives</span>`;
   const note = t => t.lives > 0 ? `${t.lives} ${t.lives === 1 ? "life" : "lives"} left` : `Out in round ${t.out}`;
   $("#podium").innerHTML = ranked.slice(0, 3).map(t => { const r = rankOf(t); return `<div class="pod p${Math.min(r, 3)}"><div class="who">${esc(t.name)}</div><div class="pts" style="font-size:.5em">${esc(note(t))}</div><div class="step">${r}${["th","st","nd","rd"][(r % 100 > 10 && r % 100 < 14) || r % 10 > 3 ? 0 : r % 10]}</div></div>`; }).join("");
   $("#podium").hidden = false;
   $("#standings").innerHTML = ranked.length > 3 ? ranked.slice(3).map(t => `<li><span>${rankOf(t)}. ${esc(t.name)}</span><b>${esc(note(t))}</b></li>`).join("") : "";
   $("#winBoard").hidden = true; $("#winBox").hidden = false; $("#playAgain").textContent = "New game"; $("#winNote").textContent = "New game keeps the same teams and settings, restores every team's lives and draws fresh categories."; $("#playAgain").focus();
-  confetti(); ledStart(); if(S.sound) playEnd(NORMAL_INTRO); }
+  confetti(); ledStart(); playWinSiu(); }
 function survAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; svInit(); survShow(); }
 function survSetupAgain(){ hideWinner(); $("#playAgain").textContent = "Play again"; survSetupShow(); }
