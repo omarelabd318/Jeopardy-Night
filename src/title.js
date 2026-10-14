@@ -51,9 +51,10 @@ const TT = {
   modeTf:{t:["3-5-8"], ff:'"Alfa Slab One",Georgia,serif', fw:400, c1:"#f4d58a", k:1.1, ink:"#f4ecff",
     sh:".05em .05em 0 #1a0a2e", tag:"Three players. Eight, five, three. Take your tricks.", s:["#f4d58a","#2a1248","#f4ecff"],
     bg:"radial-gradient(ellipse at 50% 40%,#4b2a7a,#2a1248 60%,#150726)", base:"#2a1248", g:{c:7,r:5,f:(r,c)=>{const k=(r*3+c*2)%4,n=[8,5,3][(r+c)%3];return [n+["♠","♥","♦","♣"][k],k%3?"#e0607a":"#f4d58a","#3a1d63"]},font:'"Alfa Slab One",serif',rad:"6px",bd:"#f4d58a"}},
+  // 7.7 (Omar): Hold'em title background changed from green to wine red (was too close to Estimation). Old: bg radial-gradient(ellipse at 50% 38%,#1b8a50,#0f6a3c 52%,#0a3d24), base #0f6a3c.
   modeHold:{t:["Texas","Hold'em"], ff:'"Limelight",Georgia,serif', fw:400, c1:"#e8c25a", c2:"#f6ecd6", k:.95, ink:"#f6ecd6",
     sh:".04em .04em 0 #000", tag:"Your cards on your phone. The table on the TV.", s:["#e8c25a","#2a1607","#7a1018"],
-    bg:"radial-gradient(ellipse at 50% 38%,#1b8a50,#0f6a3c 52%,#0a3d24)", base:"#0f6a3c", g:{c:7,r:5,f:(r,c)=>{const k=(r*3+c*2)%4;return [["♠","♥","♦","♣"][k],k%3?"#d32f2f":"#1a1a1a","#fff"]},font:'"Barlow",sans-serif',rad:"8px"}},
+    bg:"radial-gradient(ellipse at 50% 38%,#8a1b2d,#5e1020 52%,#33080f)", base:"#5e1020", g:{c:7,r:5,f:(r,c)=>{const k=(r*3+c*2)%4;return [["♠","♥","♦","♣"][k],k%3?"#d32f2f":"#1a1a1a","#fff"]},font:'"Barlow",sans-serif',rad:"8px"}},
 };
 let ttSel = "";   // id of the chosen mode button, "" on the home screen
 let ttJnTagHtml = "<span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span>";
