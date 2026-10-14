@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Codenames</title>
+<!-- 6.82: the phone page for Codenames, at /n?r=ROOM. A player joins once with a name and a team (Red or Blue). Guessers see the board, tap a word and Confirm; each team's spymaster also sees the secret key
+     (which words are Red, Blue, neutral and the assassin) and types the hint. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay the
+     card modes use). The hint rule (cnHintErr) is the same one src/codenames.js applies. Two looks, set by the host: body[data-look] = mission (default) or souq. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Share+Tech+Mono&family=Reem+Kufi:wght@500;700&family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#ff4d63;--blue:#36a3ff;--neu:#4d5b6e;--neuink:#dbe6f2;--ass:#000;--ink:#cfe6ff;--bg:radial-gradient(120% 90% at 50% 0%,#14263f 0%,#070d18 70%);--head:"Chakra Petch",sans-serif;--body:"Share Tech Mono",ui-monospace,monospace;--tile:#0d1a2b;--tileink:#bfe0ff;--tileb:1px solid #2a4a70;--tr:4px;--r:6px;--panel:rgba(20,40,66,.55);--panelb:1px solid #23446a;--accent:#36a3ff;--onaccent:#06101c;--bad:#ff9a9a}
+body[data-look=souq] .t{font-size:min(13px,calc(var(--tw)/var(--l)*1.22))}
+body[data-look=souq]{--red:#b8323f;--blue:#1f7aa8;--neu:#c4ad80;--neuink:#3b2c14;--ass:#1a1110;--ink:#f4e7c8;--bg:#13243a;--head:"Reem Kufi","Cairo",sans-serif;--body:"Cairo",sans-serif;--tile:#f3e6c8;--tileink:#3b2a12;--tileb:2px solid #c9a24c;--tr:9px;--r:10px;--panel:rgba(201,162,76,.14);--panelb:1px solid rgba(201,162,76,.55);--accent:#c9a24c;--onaccent:#2a1d08}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--ink);font:16px/1.35 var(--body);background:var(--bg) fixed;background-color:#070d18}
+#view{display:grid;gap:10px;align-content:start}
+main{max-width:520px;margin:0 auto;padding:14px 12px 16px;display:grid;gap:10px;align-content:start;min-height:100dvh;grid-template-rows:auto 1fr}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:center;font:700 14px var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.chip{padding:3px 10px;border:2px solid currentColor;border-radius:99px;background:rgba(0,0,0,.3);color:#fff;font-size:13px;white-space:nowrap}
+.chip.red{color:var(--red);background:rgba(0,0,0,.35)}.chip.blue{color:var(--blue);background:rgba(0,0,0,.35)}
+h1{margin:6px 0;font:700 30px/1.1 var(--head)}
+.status{font:700 21px/1.2 var(--head)}
+.status.me{color:var(--accent)}
+.hint{opacity:.8;font-size:14px}
+.panel{background:var(--panel);border:var(--panelb);border-radius:12px;padding:10px;display:grid;gap:8px}
+button{font:inherit;cursor:pointer}
+.send{width:100%;font:700 19px var(--head);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--onaccent);border:0;padding:13px;border-radius:var(--r)}
+.send:disabled{opacity:.4}
+.ghost{background:transparent;color:var(--ink);border:2px solid rgba(255,255,255,.4);border-radius:var(--r);padding:11px;font:700 18px var(--head);width:100%}
+input[type=text]{width:100%;font:700 20px var(--head);padding:12px;border:2px solid var(--accent);border-radius:var(--r);background:#fff;color:#111;text-transform:uppercase}
+input#nm{text-transform:none}
+.msg{padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.5);border:2px solid var(--bad);color:var(--bad);font-size:14px}
+.wait{text-align:center;padding:30px 0 6px}
+.big{font:700 38px/1.1 var(--head)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.teams2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pick{font:700 22px var(--head);padding:14px 0;border-radius:var(--r);border:3px solid transparent;color:#fff}
+.pick.red{background:var(--red)}.pick.blue{background:var(--blue)}
+.pick[aria-pressed=true]{border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:15px}
+.tl li.me{font-weight:700}.tl li.spy::after{content:" ★";color:var(--accent)}
+.tcol h4{margin:0 0 4px;font:700 17px var(--head);letter-spacing:.08em}
+.tcol.red h4{color:var(--red)}.tcol.blue h4{color:var(--blue)}
+.banner{text-align:center;font:700 34px/1.1 var(--head);letter-spacing:.05em;padding:8px;border-radius:var(--r);background:rgba(0,0,0,.3);border:var(--panelb);text-transform:uppercase}
+.banner.red b{color:var(--red)}.banner.blue b{color:var(--blue)}
+.banner small{display:block;font:600 12px var(--body);letter-spacing:.14em;opacity:.75;margin-bottom:2px}
+.board{--tw:calc((min(100vw,520px) - 24px - 24px)/5);display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.t{position:relative;aspect-ratio:1/.92;display:flex;align-items:center;justify-content:center;border-radius:var(--tr);background:var(--tile);color:var(--tileink);font-family:var(--body);font-weight:700;text-transform:uppercase;border:var(--tileb);padding:0;overflow:hidden;min-width:0;font-size:min(14px,calc(var(--tw)/var(--l)*1.5));letter-spacing:0}
+.t:disabled{opacity:1}
+.t span{white-space:nowrap;padding:0 1px}
+.t.kt.k-red{background:color-mix(in srgb,var(--red) 72%,var(--tile));color:#fff;border-color:transparent}
+.t.kt.k-blue{background:color-mix(in srgb,var(--blue) 72%,var(--tile));color:#fff;border-color:transparent}
+.t.kt.k-neu{background:color-mix(in srgb,var(--neu) 60%,var(--tile));color:var(--neuink);border-color:transparent}
+.t.kt.k-ass{background:var(--ass);color:#fff;border-color:transparent}
+.t.kt.k-ass::before{content:"\2620";position:absolute;top:1px;left:3px;font-size:11px;line-height:1}
+.t.rv{color:#fff;border-color:transparent}
+.t.rv.k-red{background:var(--red)}.t.rv.k-blue{background:var(--blue)}.t.rv.k-neu{background:var(--neu);color:var(--neuink)}.t.rv.k-ass{background:var(--ass)}
+.t.kt.rv{opacity:.4}.t.kt.rv span{text-decoration:line-through}
+.t.sh{opacity:.6}.t.sh.k-red{background:var(--red);color:#fff}.t.sh.k-blue{background:var(--blue);color:#fff}.t.sh.k-neu{background:var(--neu);color:var(--neuink)}.t.sh.k-ass{background:var(--ass);color:#fff}
+.t.pend{outline:3px solid var(--accent);outline-offset:-3px}
+.t.last{outline:2px solid #fff;outline-offset:-3px}
+.t em{position:absolute;top:0;right:0;font:700 8px var(--body);font-style:normal;background:var(--accent);color:var(--onaccent);padding:1px 4px;border-bottom-left-radius:5px;text-transform:none}
+.nums{display:grid;grid-template-columns:repeat(11,1fr);gap:4px}
+.nums button{font:700 17px var(--head);padding:9px 0;border-radius:calc(var(--r) * .6);border:2px solid var(--accent);background:#0b0b0e;color:#fff}
+.nums button[aria-pressed=true]{background:var(--accent);color:var(--onaccent)}
+.btns{display:grid;gap:8px;grid-template-columns:1.4fr 1fr}
+.btns .send:only-child,.btns .ghost:only-child{grid-column:1/-1}
+.sc{font-size:14px;opacity:.85;text-align:center}
+</style></head><body><main>
+<div class="top"><span id="me"></span><span id="chip"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_cn_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, busy = false, sig = "", note = null, sending = false, sentV = -1, sentAt = 0, hw = "", hn = null;
+const TEAM = ["Red", "Blue"], cls = k => ({r:"red", b:"blue", n:"neu", a:"ass"}[k]);
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
+const norm = x => String(x ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+function hintErr(p, w){   // the same rule as cnHintErr in src/codenames.js
+  w = String(w || "").trim(); if(!w || /\s/.test(w)) return "One word only."; const n = norm(w); if(n.length < 2) return "That word is too short.";
+  for(let i = 0; i < 25; i++){ if(p.shown[i]) continue; const b = norm(p.words[i]); if(!b) continue;
+    if(n === b) return "That word is on the board."; if(Math.min(n.length, b.length) >= 3 && (n.includes(b) || b.includes(n))) return "Too close to " + p.words[i] + "."; }
+  return ""; }
+
+async function join(n, t){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n, t});
+    if(res.ok){ me = {p, n, t}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+let pickT = null;
+function joinView(err){
+  stop(); $("me").textContent = ""; $("chip").innerHTML = "";
+  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">Codenames</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input type="text" id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
+    <p class="hint">Pick your team</p><div class="teams2"><button type="button" class="pick red" data-t="0" aria-pressed="${pickT === 0}">Red</button><button type="button" class="pick blue" data-t="1" aria-pressed="${pickT === 1}">Blue</button></div>
+    <button class="send" id="jb" style="margin-top:12px" ${pickT === null ? "disabled" : ""}>Join</button></form>
+    ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open for the whole game.</p>`;
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n || pickT === null) return; $("jb").disabled = true; join(n, pickT); };
+  document.querySelectorAll(".pick").forEach(b => b.onclick = () => { pickT = +b.dataset.t; document.querySelectorAll(".pick").forEach(x => x.setAttribute("aria-pressed", String(+x.dataset.t === pickT))); $("jb").disabled = false; });
+}
+async function send(a){ if(sending || !st || !st.pub) return; sending = true; note = null;
+  const res = await post("crdact", {p:me.p, v:st.pub.v, a}); sending = false;
+  if(!res.ok) note = res.j.error === "stale" ? "The board moved on. Look again." : "That didn't send. Try again.";
+  else { sentV = st.pub.v; sentAt = Date.now(); if(a.k === "hint"){ hw = ""; hn = null; } }
+  sig = ""; draw(); poll(true); }
+
+function tile(p, i, isSpy, key, canTap){ const k = p.rev[i], shown = p.shown ? p.shown[i] : k != null, done = p.ph === "boardover" || p.ph === "over", pend = p.pend && p.pend.i === i, kk = key ? key[i] : null;
+  let c = "t";
+  if(shown) c += " rv k-" + cls(k); else if(done) c += " sh k-" + cls(k); else if(isSpy && kk) c += " kt k-" + cls(kk);
+  if(isSpy && shown) c += " kt"; if(pend) c += " pend"; if(p.last && p.last.i === i && shown) c += " last";
+  return `<button class="${c}" data-i="${i}" style="--l:${Math.max(6, p.words[i].length)}" ${canTap && !shown ? "" : "disabled"}><span>${esc(p.words[i])}</span>${pend ? `<em>${esc(p.pend.by)}</em>` : ""}</button>`; }
+function draw(){
+  $("me").textContent = me.n;
+  if(!st || !st.pub){ $("chip").innerHTML = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to open the game.</div></div>`; return; }
+  const p = st.pub, tm = p.teams && p.teams[me.p] != null ? p.teams[me.p] : me.t;
+  document.body.dataset.look = p.look || "mission";
+  const isSpy = !!(st.me && st.me.key) && p.spies && p.spies[tm] === me.p, key = isSpy ? st.me.key.split("") : null;
+  const sg = [p.v, p.look, tm, isSpy, hn, note, sending, hw === "" ? 0 : 1].join("|"); if(sg === sig) return; sig = sg;
+  $("chip").innerHTML = `<span class="chip ${tm === 0 ? "red" : "blue"}">${TEAM[tm]}${p.ph !== "lobby" && p.of > 1 ? ` · ${p.wins[tm]}–${p.wins[1 - tm]}` : ""}</span>`;
+  const v = $("view");
+  if(p.ph === "lobby"){
+    const mem = t => Object.keys(p.teams || {}).filter(x => p.teams[x] === t);
+    v.innerHTML = `<div class="status">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start.</div>
+      <div class="panel"><div class="teams2" style="align-items:start">${[0, 1].map(t => `<div class="tcol ${t ? "blue" : "red"}"><h4>${TEAM[t]} · ${mem(t).length}</h4><ul class="tl">${mem(t).map(x => `<li class="${x === me.p ? "me" : ""}${p.spies && p.spies[t] === x ? " spy" : ""}">${esc(p.names[x] || "")}</li>`).join("")}</ul></div>`).join("")}</div></div>
+      ${p.spies && p.spies[tm] ? `<div class="hint">★ ${esc(p.names[p.spies[tm]] || "")} is your team's spymaster for the first board.</div>` : `<button class="send" data-a="spy">I'll be spymaster</button>`}
+      <button class="ghost" data-a="swap">Switch to ${TEAM[1 - tm]}</button>${note ? `<div class="msg">${esc(note)}</div>` : ""}`; return; }
+  const turnMe = p.turn === tm, guessing = p.ph === "guess" && turnMe && !isSpy, done = p.ph === "boardover" || p.ph === "over";
+  let head = "", ctl = "";
+  if(p.ph === "hint"){
+    if(turnMe && isSpy){ const err = hw ? hintErr(p, hw) : "", ok = hw && !err && hn !== null;
+      head = `<div class="status me">Your hint, spymaster</div>`;
+      ctl = `<div class="panel"><input type="text" id="hw" maxlength="24" placeholder="ONE WORD" autocomplete="off" autocapitalize="characters" value="${esc(hw)}"><div class="nums">${[...Array(10).keys(), 99].map(n => `<button data-n="${n}" aria-pressed="${hn === n}">${n === 99 ? "∞" : n}</button>`).join("")}</div>
+        <div class="hint" id="her">${err ? esc(err) : hn === null ? "Pick how many words it covers." : ""}</div><button class="send" data-a="hint" ${ok ? "" : "disabled"}>Send hint</button></div>`; }
+    else head = `<div class="status${turnMe ? " me" : ""}">${turnMe ? "Your spymaster is thinking of a hint…" : TEAM[p.turn] + "'s spymaster is thinking…"}</div>`; }
+  else if(p.ph === "guess"){
+    const lim = p.limit === null ? "no limit on guesses" : p.limit + (p.limit === 1 ? " guess left" : " guesses left");
+    head = `<div class="banner ${p.turn === 0 ? "red" : "blue"}"><small>${TEAM[p.turn].toUpperCase()}'S HINT</small>${esc(p.hint.w)} <b>${p.hint.n >= 99 ? "∞" : p.hint.n}</b></div>
+      <div class="sc">${turnMe ? (isSpy ? "Your team is guessing. You can't tap, spymaster. " : guessing ? "Your turn: tap a word, then Confirm. " : "") : TEAM[p.turn] + " is guessing. "}${lim}</div>`;
+    if(guessing) ctl = `<div class="btns">${p.pend && p.confirm ? `<button class="send" data-a="ok">Confirm ${esc(p.words[p.pend.i])}</button>` : ""}${p.tried >= 1 ? `<button class="ghost" data-a="end">End turn</button>` : ""}</div>`; }
+  else { const w = p.bw, lost = 1 - w, won = w === tm;
+    head = `<div class="banner ${w === 0 ? "red" : "blue"}"><small>${p.ph === "over" ? "MATCH OVER" : "BOARD " + p.board + " DONE"}</small>${p.why === "assassin" ? esc(TEAM[lost]) + " hit the assassin" : esc(TEAM[w]) + " found every agent"}</div>
+      <div class="status ${won ? "me" : ""}">${won ? "Your team wins" + (p.ph === "over" ? " the match!" : " this board!") : "Your team loses" + (p.ph === "over" ? " the match." : " this board.")}</div>
+      <div class="sc">Red ${p.wins[0]} – ${p.wins[1]} Blue${p.of > 1 ? " · best of " + p.of : ""}${p.ph === "over" ? "" : " · the host starts the next board on the TV"}</div>`; }
+  v.innerHTML = `${head}<div class="board" id="bd">${p.words.map((w, i) => tile(p, i, isSpy, key, guessing)).join("")}</div>${ctl}${isSpy && !done ? `<div class="sc">You are the spymaster: tinted words are the key. Don't say anything but the hint.</div>` : ""}${note ? `<div class="msg">${esc(note)}</div>` : ""}`;
+  const inp = $("hw"); if(inp){ inp.oninput = () => { hw = inp.value; const err = hw ? hintErr(p, hw) : "", ok = hw.trim() && !err && hn !== null; $("her").textContent = err || (hn === null ? "Pick how many words it covers." : ""); const b = document.querySelector("[data-a=hint]"); if(b) b.disabled = !ok; sig = ""; }; }
+}
+document.addEventListener("click", e => {
+  if(!st || !st.pub) return; const p = st.pub, t = e.target.closest("button"); if(!t) return;
+  if(t.dataset.i != null){ send({k:"tap", i:+t.dataset.i}); return; }
+  if(t.dataset.n != null){ hn = +t.dataset.n; sig = ""; draw(); return; }
+  const a = t.dataset.a; if(!a) return;
+  if(a === "spy") send({k:"spy"});
+  else if(a === "swap"){ const nt = 1 - (p.teams && p.teams[me.p] != null ? p.teams[me.p] : me.t); me.t = nt; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(x){} post("join", {p:me.p, n:me.n, t:nt}).then(() => poll(true)); }
+  else if(a === "hint"){ const err = hintErr(p, hw); if(err || hn === null){ note = err || "Pick a number."; sig = ""; draw(); return; } send({k:"hint", w:hw.trim(), n:hn}); }
+  else if(a === "ok") send({k:"ok"});
+  else if(a === "end") send({k:"end"}); });
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j && j.pub && j.me && j.pub.v === sentV && Date.now() - sentAt < 3500){ /* just sent: the laptop hasn't moved the board on yet */ }
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v) note = null; st = j; draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 1000); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>
