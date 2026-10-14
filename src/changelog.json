@@ -3,6 +3,20 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.18",
+  "date": "2026-10-14",
+  "items": [
+   "Start buttons: every mode uses Jeopardy Night's Start font and dark text, on the mode's own colour."
+  ]
+ },
+ {
+  "v": "7.17",
+  "date": "2026-10-14",
+  "items": [
+   "3-5-8: if the title font can't load, the game now falls back to a bold sans font with even numerals instead of a serif where the 8 sits high."
+  ]
+ },
+ {
   "v": "7.16",
   "date": "2026-10-14",
   "items": [
