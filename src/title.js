@@ -19,7 +19,7 @@ const TT = {
     bg:"radial-gradient(ellipse at 50% 45%,#13704a,#0c4a2c 60%,#062616)", base:"#0c4a2c", g:{c:6,r:4,t:[100,200,400,800,"1,600","3,200"],bg:"#0c4a2c",ink:"#f6ecd0",font:'"Abril Fatface",serif',bd:"#f6ecd0",rad:"50%",dash:1}},
   modeSurv:{t:["Survival"], ff:'"Lalezar","Alfa Slab One",Impact,sans-serif', fw:400, c1:"#ffe066", k:1.05, ink:"#ffe066",
     sh:".05em .05em 0 #1b1410", x:"transform:rotate(-2deg);", tag:"Lose all your lives and you're out.", s:["#ffe066","#1b1410","#1b1410"],
-    bg:"repeating-linear-gradient(-35deg,#6a2bb0 0 60px,#5d24a0 60px 120px)", base:"#6a2bb0", g:{c:7,r:5,t:["♥","♥","♥"],bg:"#5a1f98",ink:"#ffe066",sh:"3px 3px 0 #1b1410",font:'"Lalezar",sans-serif',rad:"6px"}},
+    bg:"repeating-linear-gradient(-35deg,#6a2bb0 0 60px,#5d24a0 60px 120px)", base:"#6a2bb0", g:{c:7,r:5,t:["☠","✖"],bg:"#5a1f98",ink:"#ffe066",sh:"3px 3px 0 #1b1410",font:'"Lalezar",sans-serif',rad:"6px"}},
   modeImp:{t:["Imposter"], ff:'"Special Elite","Courier Prime",Courier,monospace', fw:400, c1:"#e6e1d3", k:.95, ink:"#e6e1d3",
     sh:".04em .04em 0 #000", tag:"Most of you share a secret. One of you doesn't.", s:["#c8281f","#e6e1d3","#e6e1d3"],
     bg:"radial-gradient(ellipse at 50% 25%,#3a2523,#1d1312 70%)", base:"#1d1312", g:{c:6,r:4,t:["?","▇▇▇","?","CLASSIFIED"],bg:"#2a1a19",ink:"#e6e1d3",bd:"#c8281f",font:'"Special Elite",monospace'}},
@@ -37,7 +37,7 @@ const TT = {
     bg:"repeating-linear-gradient(90deg,#23251f 0 3px,#2a2c24 3px 6px)", base:"#23251f", g:{c:6,r:4,t:["3-1-4","2-4-1","1-3-2","4-2-3","2-1-3"],bg:"#2f3128",ink:"#efe6cf",bd:"#a07c2c",font:'"Oswald",sans-serif'}},
   modeTn:{t:["Tarneeb"], ff:'"Reem Kufi","Cairo",sans-serif', fw:700, c1:"#f6ead2", k:1.05, ink:"#f6ead2",
     sh:".04em .04em 0 #1a0e06", tag:"Bid your tricks, name the trump, beat the other pair.", s:["#c49a4a","#2a190f","#f6ead2"],
-    bg:"radial-gradient(ellipse at 50% 40%,#5c3a22,#2a190f 75%)", base:"#2a190f", g:{c:7,r:5,f:(r,c)=>{const k=(r+c*2)%4;return [["♠","♥","♦","♣"][k]+(7+(r*3+c)%7),k%3?"#e07a6a":"#f6ead2","#4a2c1a"]},font:'"Reem Kufi",sans-serif',rad:"8px"}},
+    bg:"radial-gradient(ellipse at 50% 40%,#5c3a22,#2a190f 75%)", base:"#2a190f", g:{c:7,r:5,f:(r,c)=>[1+(r*2+c)%5,"#f6ead2","#4a2c1a"],font:'"Reem Kufi",sans-serif',rad:"8px"}},
 };
 let ttSel = "";   // id of the chosen mode button, "" on the home screen
 let ttJnTagHtml = "<span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span>";
