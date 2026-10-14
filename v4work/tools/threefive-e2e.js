@@ -51,7 +51,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
       try{
         if(k === "trump"){ await shot("trump"); const l = p.locator('[data-tf="trump"]'); await l.nth(Math.floor(Math.random() * await l.count())).click(); }
         else if(k === "give" || k === "bury"){ await shot(k); const need = await p.evaluate(() => st.me.act.n), cards = p.locator("#hand .ck[data-c]");
-          for(let i = 0; i < need; i++) await cards.nth(i * 3).click({position:{x:8, y:30}}); await shot(k + "-picked"); await p.click(`[data-tf="${k}"]`); k === "give" ? gives++ : buries++; }
+          for(let i = 0; i < need; i++) await cards.nth(i * 2).click({position:{x:8, y:30}}); await shot(k + "-picked"); await p.click(`[data-tf="${k}"]`); k === "give" ? gives++ : buries++; }
         else { const l = p.locator("#hand .ck[data-c]:not(.off)"), c = l.nth(Math.floor(Math.random() * await l.count())); await c.click({position:{x:8, y:30}}); await shot("play"); await p.locator(".ck.up").click({position:{x:8, y:30}}); moves++; if(!shotAt.has("trick") && await tv.locator(".cktrick .ck").count() >= 2){ shotAt.add("trick"); await tv.screenshot({path:path.join(shots, "tv-trick.png")}); } }
       }catch(e){ await p.screenshot({path:path.join(shots, "stuck.png")}); console.log("STUCK on", k, e.message.split("\n")[0], await p.evaluate(() => JSON.stringify({act:st.me.act, pick, html:document.getElementById("view").innerText.slice(0, 300)}))); process.exit(1); }
       acted = true; await p.waitForTimeout(80); break; }

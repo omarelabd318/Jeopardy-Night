@@ -10,6 +10,13 @@
   ]
  },
  {
+  "v": "7.21",
+  "date": "2026-10-15",
+  "items": [
+   "3-5-8 now plays Race to 0 by default: everyone starts on 10 or 15 points, each trick over your target takes one off, each trick short adds one, and the first to 0 wins. Always three players. The old hand-count games are still in setup."
+  ]
+ },
+ {
   "v": "7.19",
   "date": "2026-10-14",
   "items": [

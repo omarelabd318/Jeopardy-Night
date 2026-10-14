@@ -59,10 +59,10 @@ function play(n, cfg){
   ok(g.phase === "over", "game ends"); ok(g.winners.length >= 1, "has a winner");
   const top = Math.max(...g.scores); ok(g.winners.every(i => g.scores[i] === top), "winners have the top score");
   if(cfg.len !== "t") ok(g.hand >= cfg.len * n, "played the full length");
-  else ok(top >= 10, "first to +10");
+  else ok(top >= (cfg.goal || 10), "reached 0 points left");
   return g; }
 for(let i = 0; i < 300; i++){ play(3, {targets:"853", nt:false, swapMax:0, len:1}); play(3, {targets:"952", nt:true, swapMax:3, len:2}); play(4, {targets:"853", nt:false, swapMax:0, len:1}); play(4, {targets:"952", nt:false, swapMax:3, len:1}); }
-for(let i = 0; i < 30; i++) play(3, {targets:"853", nt:true, swapMax:0, len:"t"});
+for(let i = 0; i < 30; i++) play(3, {targets:"853", nt:true, swapMax:0, len:"t", goal:i % 2 ? 15 : 10});
 
 // privacy: priv has only the player's own hand; pub has no hands
 { const g = T.Game({targets:"853", nt:false, swapMax:0, len:1}, ["A", "B", "C"], ["a", "b", "c"]); g.start();
