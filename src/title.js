@@ -37,7 +37,7 @@ const TT = {
     bg:"repeating-linear-gradient(90deg,#23251f 0 3px,#2a2c24 3px 6px)", base:"#23251f", g:{c:6,r:4,t:["3-1-4","2-4-1","1-3-2","4-2-3","2-1-3"],bg:"#2f3128",ink:"#efe6cf",bd:"#a07c2c",font:'"Oswald",sans-serif'}},
   modeTn:{t:["Tarneeb"], ff:'"Reem Kufi","Cairo",sans-serif', fw:700, c1:"#f6ead2", k:1.05, ink:"#f6ead2",
     sh:".04em .04em 0 #1a0e06", tag:"Bid your tricks, name the trump, beat the other pair.", s:["#c49a4a","#2a190f","#f6ead2"],
-    bg:"radial-gradient(ellipse at 50% 40%,#5c3a22,#2a190f 75%)", base:"#2a190f", g:{c:7,r:5,f:(r,c)=>[1+(r*2+c)%5,"#f6ead2","#4a2c1a"],font:'"Reem Kufi",sans-serif',rad:"8px"}},
+    bg:"radial-gradient(ellipse at 50% 40%,#5c3a22,#2a190f 75%)", base:"#2a190f", g:{c:7,r:5,f:(r,c)=>{const k=(r+c*2)%4;return [["♠","♥","♦","♣"][k]+(1+(r*3+c)%5),k%3?"#e07a6a":"#f6ead2","#4a2c1a"]},font:'"Reem Kufi",sans-serif',rad:"8px"}},
 };
 let ttSel = "";   // id of the chosen mode button, "" on the home screen
 let ttJnTagHtml = "<span>Pick your teams.</span> <span>Pick your categories.</span> <span>Pick your poison.</span>";
