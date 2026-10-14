@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.12",
+  "date": "2026-10-14",
+  "items": [
+   "Title screen: backgrounds are a bit faded, mode buttons are all capitals, Jeopardy Night's Start has white text, the buttons on the Sahra home page take its colours, there are fewer bingo balls and the Psych bubble no longer touches the title. 3-5-8 numbers now line up."
+  ]
+ },
+ {
   "v": "7.11",
   "date": "2026-10-14",
   "items": [
