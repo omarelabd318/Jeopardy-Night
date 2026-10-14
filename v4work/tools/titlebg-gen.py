@@ -68,9 +68,9 @@ b += ''.join(f'<rect x="{r.randint(20,1100)}" y="{y}" width="{r.randint(180,420)
 b += ''.join(f'<circle cx="1260" cy="470" r="{rr}" fill="none" stroke="#c8281f" stroke-width="4" opacity=".45" stroke-dasharray="{r.randint(60,240)} 20"/>' for rr in range(40, 270, 24))
 b += '<text x="200" y="800" fill="#c8281f" opacity=".5" font-size="110" font-family="Special Elite, Courier, monospace" transform="rotate(-8 200 800)">CLASSIFIED</text>'
 out['modeImp'] = wrap(b, '#1d1312', .5)
-# Psych: halftone + bubbles
+# Psych: halftone (7.13, Omar: the speech bubbles are gone; to bring them back run b += bubbles)
 b = f'<defs><pattern id="hd" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="18" cy="18" r="10" fill="#d2232a" opacity=".32"/></pattern><linearGradient id="fd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6f3e8" stop-opacity="0"/><stop offset=".85" stop-color="#f6f3e8" stop-opacity=".95"/></linearGradient></defs><rect width="{W}" height="{H}" fill="url(#hd)"/><rect width="{W}" height="{H}" fill="url(#fd)"/>'
-b += ('<g fill="#fff" stroke="#1e2a26" stroke-width="7"><path transform="translate(-130,70)" d="M170,140 h330 a44,44 0 0 1 44,44 v70 a44,44 0 0 1 -44,44 h-215 l-72,58 v-58 h-43 a44,44 0 0 1 -44,-44 v-70 a44,44 0 0 1 44,-44z"/>'
+bubbles = ('<g fill="#fff" stroke="#1e2a26" stroke-width="7"><path transform="translate(-130,70)" d="M170,140 h330 a44,44 0 0 1 44,44 v70 a44,44 0 0 1 -44,44 h-215 l-72,58 v-58 h-43 a44,44 0 0 1 -44,-44 v-70 a44,44 0 0 1 44,-44z"/>'
       '<path transform="translate(40,-300)" d="M1060,560 h300 a44,44 0 0 1 44,44 v60 a44,44 0 0 1 -44,44 h-44 v58 l-72,-58 h-184 a44,44 0 0 1 -44,-44 v-60 a44,44 0 0 1 44,-44z"/></g>'
       '<text x="140" y="298" font-family="Arial Black" font-size="50" fill="#1e2a26">TRUE?</text><text x="1150" y="350" font-family="Arial Black" font-size="50" fill="#d2232a">LIAR!</text>')
 out['modePsy'] = wrap(b, '#f6f3e8', .6)
