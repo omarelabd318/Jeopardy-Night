@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.19",
+  "date": "2026-10-14",
+  "items": [
+   "Start buttons always show Jeopardy Night's Start font, even if the web fonts are slow to load."
+  ]
+ },
+ {
   "v": "7.18",
   "date": "2026-10-14",
   "items": [
