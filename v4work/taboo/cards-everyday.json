@@ -1,0 +1,2059 @@
+[
+{
+"w": "Alarm clock",
+"ban": [
+"Wake",
+"Morning",
+"Snooze",
+"Ring",
+"Sleep"
+],
+"lvl": "e"
+},
+{
+"w": "Umbrella",
+"ban": [
+"Rain",
+"Wet",
+"Open",
+"Handle",
+"Storm"
+],
+"lvl": "e"
+},
+{
+"w": "Toothbrush",
+"ban": [
+"Teeth",
+"Paste",
+"Bristles",
+"Mouth",
+"Clean"
+],
+"lvl": "e"
+},
+{
+"w": "Pillow",
+"ban": [
+"Bed",
+"Sleep",
+"Head",
+"Soft",
+"Feathers"
+],
+"lvl": "e"
+},
+{
+"w": "Sunglasses",
+"ban": [
+"Bright",
+"Eyes",
+"Shades",
+"Lenses",
+"Summer"
+],
+"lvl": "e"
+},
+{
+"w": "Backpack",
+"ban": [
+"Bag",
+"School",
+"Straps",
+"Carry",
+"Books"
+],
+"lvl": "e"
+},
+{
+"w": "Key",
+"ban": [
+"Lock",
+"Door",
+"Open",
+"Car",
+"Metal"
+],
+"lvl": "e"
+},
+{
+"w": "Mirror",
+"ban": [
+"Reflection",
+"Glass",
+"Face",
+"Look",
+"Bathroom"
+],
+"lvl": "e"
+},
+{
+"w": "Microwave",
+"ban": [
+"Oven",
+"Heat",
+"Popcorn",
+"Kitchen",
+"Minutes"
+],
+"lvl": "e"
+},
+{
+"w": "Refrigerator",
+"ban": [
+"Cold",
+"Food",
+"Kitchen",
+"Freezer",
+"Milk"
+],
+"lvl": "e"
+},
+{
+"w": "Ladder",
+"ban": [
+"Climb",
+"Steps",
+"Roof",
+"Paint",
+"Rungs"
+],
+"lvl": "e"
+},
+{
+"w": "Candle",
+"ban": [
+"Wax",
+"Flame",
+"Birthday",
+"Light",
+"Wick"
+],
+"lvl": "e"
+},
+{
+"w": "Wallet",
+"ban": [
+"Money",
+"Cards",
+"Pocket",
+"Cash",
+"Leather"
+],
+"lvl": "e"
+},
+{
+"w": "Passport",
+"ban": [
+"Travel",
+"Airport",
+"Visa",
+"Country",
+"Stamp"
+],
+"lvl": "e"
+},
+{
+"w": "Suitcase",
+"ban": [
+"Travel",
+"Luggage",
+"Pack",
+"Wheels",
+"Airport"
+],
+"lvl": "e"
+},
+{
+"w": "Headphones",
+"ban": [
+"Ears",
+"Music",
+"Listen",
+"Wireless",
+"Noise"
+],
+"lvl": "e"
+},
+{
+"w": "Charger",
+"ban": [
+"Phone",
+"Battery",
+"Cable",
+"Plug",
+"Power"
+],
+"lvl": "e"
+},
+{
+"w": "Remote control",
+"ban": [
+"TV",
+"Channel",
+"Buttons",
+"Batteries",
+"Sofa"
+],
+"lvl": "e"
+},
+{
+"w": "Scissors",
+"ban": [
+"Cut",
+"Paper",
+"Blades",
+"Hair",
+"Sharp"
+],
+"lvl": "e"
+},
+{
+"w": "Stapler",
+"ban": [
+"Paper",
+"Office",
+"Staples",
+"Desk",
+"Clip"
+],
+"lvl": "e"
+},
+{
+"w": "Notebook",
+"ban": [
+"Write",
+"Pages",
+"School",
+"Pen",
+"Paper"
+],
+"lvl": "e"
+},
+{
+"w": "Calculator",
+"ban": [
+"Math",
+"Numbers",
+"Add",
+"Buttons",
+"Screen"
+],
+"lvl": "e"
+},
+{
+"w": "Bicycle",
+"ban": [
+"Pedal",
+"Wheels",
+"Ride",
+"Helmet",
+"Two"
+],
+"lvl": "e"
+},
+{
+"w": "Helicopter",
+"ban": [
+"Fly",
+"Blades",
+"Pilot",
+"Air",
+"Rescue"
+],
+"lvl": "e"
+},
+{
+"w": "Elevator",
+"ban": [
+"Floors",
+"Up",
+"Button",
+"Building",
+"Stairs"
+],
+"lvl": "e"
+},
+{
+"w": "Escalator",
+"ban": [
+"Stairs",
+"Mall",
+"Moving",
+"Steps",
+"Up"
+],
+"lvl": "e"
+},
+{
+"w": "Traffic light",
+"ban": [
+"Red",
+"Green",
+"Cars",
+"Stop",
+"Intersection"
+],
+"lvl": "e"
+},
+{
+"w": "Zebra crossing",
+"ban": [
+"Road",
+"Walk",
+"Stripes",
+"Pedestrian",
+"Street"
+],
+"lvl": "e"
+},
+{
+"w": "Roller coaster",
+"ban": [
+"Fair",
+"Ride",
+"Loop",
+"Scream",
+"Track"
+],
+"lvl": "e"
+},
+{
+"w": "Swimming pool",
+"ban": [
+"Water",
+"Lanes",
+"Dive",
+"Summer",
+"Wet"
+],
+"lvl": "e"
+},
+{
+"w": "Beach",
+"ban": [
+"Sand",
+"Sea",
+"Sun",
+"Waves",
+"Swim"
+],
+"lvl": "e"
+},
+{
+"w": "Desert",
+"ban": [
+"Sand",
+"Camel",
+"Dry",
+"Hot",
+"Dunes"
+],
+"lvl": "e"
+},
+{
+"w": "Volcano",
+"ban": [
+"Lava",
+"Erupt",
+"Mountain",
+"Ash",
+"Hot"
+],
+"lvl": "e"
+},
+{
+"w": "Rainbow",
+"ban": [
+"Colors",
+"Storm",
+"Sky",
+"Seven",
+"Arc"
+],
+"lvl": "e"
+},
+{
+"w": "Snowman",
+"ban": [
+"Winter",
+"Carrot",
+"Frosty",
+"Hat",
+"Cold"
+],
+"lvl": "e"
+},
+{
+"w": "Birthday",
+"ban": [
+"Cake",
+"Candles",
+"Party",
+"Age",
+"Gift"
+],
+"lvl": "e"
+},
+{
+"w": "Wedding",
+"ban": [
+"Bride",
+"Groom",
+"Marry",
+"Ring",
+"Dress"
+],
+"lvl": "e"
+},
+{
+"w": "Graduation",
+"ban": [
+"Cap",
+"University",
+"Degree",
+"Gown",
+"Diploma"
+],
+"lvl": "e"
+},
+{
+"w": "Barbecue",
+"ban": [
+"Grill",
+"Meat",
+"Smoke",
+"Charcoal",
+"Outside"
+],
+"lvl": "e"
+},
+{
+"w": "Pizza",
+"ban": [
+"Cheese",
+"Italian",
+"Slice",
+"Dough",
+"Delivery"
+],
+"lvl": "e"
+},
+{
+"w": "Hamburger",
+"ban": [
+"Bun",
+"Beef",
+"Fast food",
+"Patty",
+"Cheese"
+],
+"lvl": "e"
+},
+{
+"w": "French fries",
+"ban": [
+"Potato",
+"Fried",
+"Ketchup",
+"Salty",
+"Chips"
+],
+"lvl": "e"
+},
+{
+"w": "Ice cream",
+"ban": [
+"Cold",
+"Cone",
+"Scoop",
+"Vanilla",
+"Dessert"
+],
+"lvl": "e"
+},
+{
+"w": "Chocolate",
+"ban": [
+"Sweet",
+"Cocoa",
+"Bar",
+"Brown",
+"Candy"
+],
+"lvl": "e"
+},
+{
+"w": "Popcorn",
+"ban": [
+"Movie",
+"Snack",
+"Butter",
+"Cinema",
+"Kernels"
+],
+"lvl": "e"
+},
+{
+"w": "Sandwich",
+"ban": [
+"Bread",
+"Lunch",
+"Filling",
+"Two",
+"Slices"
+],
+"lvl": "e"
+},
+{
+"w": "Omelette",
+"ban": [
+"Eggs",
+"Breakfast",
+"Pan",
+"Fold",
+"Fry"
+],
+"lvl": "e"
+},
+{
+"w": "Pancake",
+"ban": [
+"Syrup",
+"Flat",
+"Breakfast",
+"Flip",
+"Batter"
+],
+"lvl": "e"
+},
+{
+"w": "Coffee",
+"ban": [
+"Caffeine",
+"Cup",
+"Morning",
+"Bean",
+"Espresso"
+],
+"lvl": "e"
+},
+{
+"w": "Tea",
+"ban": [
+"Cup",
+"Hot",
+"Leaves",
+"Bag",
+"Drink"
+],
+"lvl": "e"
+},
+{
+"w": "Orange juice",
+"ban": [
+"Fruit",
+"Squeeze",
+"Breakfast",
+"Drink",
+"Citrus"
+],
+"lvl": "e"
+},
+{
+"w": "Watermelon",
+"ban": [
+"Seeds",
+"Summer",
+"Red",
+"Green",
+"Fruit"
+],
+"lvl": "e"
+},
+{
+"w": "Banana",
+"ban": [
+"Yellow",
+"Peel",
+"Monkey",
+"Fruit",
+"Split"
+],
+"lvl": "e"
+},
+{
+"w": "Strawberry",
+"ban": [
+"Red",
+"Jam",
+"Fruit",
+"Cream",
+"Seeds"
+],
+"lvl": "e"
+},
+{
+"w": "Lemon",
+"ban": [
+"Sour",
+"Yellow",
+"Juice",
+"Citrus",
+"Squeeze"
+],
+"lvl": "e"
+},
+{
+"w": "Doctor",
+"ban": [
+"Hospital",
+"Patient",
+"Medicine",
+"White coat",
+"Sick"
+],
+"lvl": "e"
+},
+{
+"w": "Teacher",
+"ban": [
+"School",
+"Class",
+"Students",
+"Homework",
+"Board"
+],
+"lvl": "e"
+},
+{
+"w": "Pilot",
+"ban": [
+"Plane",
+"Fly",
+"Cockpit",
+"Captain",
+"Airline"
+],
+"lvl": "e"
+},
+{
+"w": "Firefighter",
+"ban": [
+"Flames",
+"Hose",
+"Truck",
+"Rescue",
+"Water"
+],
+"lvl": "e"
+},
+{
+"w": "Chef",
+"ban": [
+"Cook",
+"Kitchen",
+"Restaurant",
+"Food",
+"Hat"
+],
+"lvl": "e"
+},
+{
+"w": "Dentist",
+"ban": [
+"Teeth",
+"Chair",
+"Drill",
+"Cavity",
+"Mouth"
+],
+"lvl": "e"
+},
+{
+"w": "Police officer",
+"ban": [
+"Law",
+"Arrest",
+"Badge",
+"Uniform",
+"Crime"
+],
+"lvl": "e"
+},
+{
+"w": "Farmer",
+"ban": [
+"Crops",
+"Field",
+"Tractor",
+"Animals",
+"Land"
+],
+"lvl": "e"
+},
+{
+"w": "Mechanic",
+"ban": [
+"Car",
+"Repair",
+"Engine",
+"Garage",
+"Tools"
+],
+"lvl": "e"
+},
+{
+"w": "Plumber",
+"ban": [
+"Pipes",
+"Water",
+"Leak",
+"Tap",
+"Fix"
+],
+"lvl": "e"
+},
+{
+"w": "Photographer",
+"ban": [
+"Camera",
+"Pictures",
+"Lens",
+"Flash",
+"Shoot"
+],
+"lvl": "e"
+},
+{
+"w": "Judge",
+"ban": [
+"Court",
+"Law",
+"Trial",
+"Verdict",
+"Hammer"
+],
+"lvl": "e"
+},
+{
+"w": "Astronaut",
+"ban": [
+"Space",
+"Rocket",
+"Moon",
+"Suit",
+"Float"
+],
+"lvl": "e"
+},
+{
+"w": "Detective",
+"ban": [
+"Crime",
+"Clues",
+"Investigate",
+"Mystery",
+"Solve"
+],
+"lvl": "e"
+},
+{
+"w": "Magician",
+"ban": [
+"Trick",
+"Rabbit",
+"Hat",
+"Wand",
+"Illusion"
+],
+"lvl": "e"
+},
+{
+"w": "Clown",
+"ban": [
+"Circus",
+"Funny",
+"Nose",
+"Makeup",
+"Laugh"
+],
+"lvl": "e"
+},
+{
+"w": "Vampire",
+"ban": [
+"Blood",
+"Bite",
+"Dracula",
+"Fangs",
+"Night"
+],
+"lvl": "e"
+},
+{
+"w": "Zombie",
+"ban": [
+"Dead",
+"Brain",
+"Walking",
+"Undead",
+"Apocalypse"
+],
+"lvl": "e"
+},
+{
+"w": "Ghost",
+"ban": [
+"Spooky",
+"Boo",
+"Haunted",
+"Sheet",
+"Dead"
+],
+"lvl": "e"
+},
+{
+"w": "Dragon",
+"ban": [
+"Fire",
+"Wings",
+"Fantasy",
+"Scales",
+"Breathe"
+],
+"lvl": "e"
+},
+{
+"w": "Mermaid",
+"ban": [
+"Sea",
+"Tail",
+"Half",
+"Fish",
+"Fantasy"
+],
+"lvl": "e"
+},
+{
+"w": "Treasure",
+"ban": [
+"Pirate",
+"Gold",
+"Map",
+"Chest",
+"Buried"
+],
+"lvl": "e"
+},
+{
+"w": "Pirate",
+"ban": [
+"Ship",
+"Sea",
+"Parrot",
+"Eye patch",
+"Treasure"
+],
+"lvl": "e"
+},
+{
+"w": "Castle",
+"ban": [
+"King",
+"Tower",
+"Medieval",
+"Moat",
+"Knight"
+],
+"lvl": "e"
+},
+{
+"w": "Pyramid",
+"ban": [
+"Egypt",
+"Triangle",
+"Giza",
+"Pharaoh",
+"Tomb"
+],
+"lvl": "e"
+},
+{
+"w": "Lighthouse",
+"ban": [
+"Sea",
+"Ship",
+"Beam",
+"Coast",
+"Tower"
+],
+"lvl": "e"
+},
+{
+"w": "Bridge",
+"ban": [
+"River",
+"Cross",
+"Over",
+"Road",
+"Span"
+],
+"lvl": "e"
+},
+{
+"w": "Tunnel",
+"ban": [
+"Underground",
+"Dark",
+"Train",
+"Through",
+"Mountain"
+],
+"lvl": "e"
+},
+{
+"w": "Airport",
+"ban": [
+"Planes",
+"Flights",
+"Terminal",
+"Passport",
+"Gate"
+],
+"lvl": "e"
+},
+{
+"w": "Hospital",
+"ban": [
+"Doctor",
+"Patient",
+"Nurse",
+"Sick",
+"Emergency"
+],
+"lvl": "e"
+},
+{
+"w": "Library",
+"ban": [
+"Books",
+"Quiet",
+"Borrow",
+"Read",
+"Shelves"
+],
+"lvl": "e"
+},
+{
+"w": "Museum",
+"ban": [
+"Art",
+"Exhibit",
+"History",
+"Visit",
+"Ticket"
+],
+"lvl": "e"
+},
+{
+"w": "Supermarket",
+"ban": [
+"Groceries",
+"Trolley",
+"Shopping",
+"Aisle",
+"Cashier"
+],
+"lvl": "e"
+},
+{
+"w": "Gym",
+"ban": [
+"Workout",
+"Weights",
+"Muscles",
+"Treadmill",
+"Exercise"
+],
+"lvl": "e"
+},
+{
+"w": "Barber",
+"ban": [
+"Haircut",
+"Shave",
+"Beard",
+"Chair",
+"Razor"
+],
+"lvl": "e"
+},
+{
+"w": "Laundry",
+"ban": [
+"Clothes",
+"Wash",
+"Dirty",
+"Machine",
+"Basket"
+],
+"lvl": "e"
+},
+{
+"w": "Vacuum cleaner",
+"ban": [
+"Dust",
+"Floor",
+"Suck",
+"Carpet",
+"Hoover"
+],
+"lvl": "e"
+},
+{
+"w": "Washing machine",
+"ban": [
+"Clothes",
+"Laundry",
+"Soap",
+"Spin",
+"Dirty"
+],
+"lvl": "e"
+},
+{
+"w": "Air conditioner",
+"ban": [
+"Cold",
+"Summer",
+"Cool",
+"Room",
+"Remote"
+],
+"lvl": "e"
+},
+{
+"w": "Fan",
+"ban": [
+"Air",
+"Spin",
+"Blades",
+"Cool",
+"Wind"
+],
+"lvl": "e"
+},
+{
+"w": "Lightbulb",
+"ban": [
+"Glow",
+"Lamp",
+"Bright",
+"Idea",
+"Switch"
+],
+"lvl": "e"
+},
+{
+"w": "Battery",
+"ban": [
+"Power",
+"Charge",
+"Phone",
+"Remote",
+"Dead"
+],
+"lvl": "e"
+},
+{
+"w": "Camera",
+"ban": [
+"Photo",
+"Lens",
+"Picture",
+"Flash",
+"Selfie"
+],
+"lvl": "e"
+},
+{
+"w": "Selfie",
+"ban": [
+"Phone",
+"Photo",
+"Yourself",
+"Camera",
+"Face"
+],
+"lvl": "e"
+},
+{
+"w": "Password",
+"ban": [
+"Secret",
+"Login",
+"Account",
+"Forget",
+"Letters"
+],
+"lvl": "e"
+},
+{
+"w": "Wi-Fi",
+"ban": [
+"Internet",
+"Router",
+"Connect",
+"Signal",
+"Password"
+],
+"lvl": "e"
+},
+{
+"w": "Emoji",
+"ban": [
+"Face",
+"Smiley",
+"Chat",
+"Icon",
+"Yellow"
+],
+"lvl": "e"
+},
+{
+"w": "Podcast",
+"ban": [
+"Episode",
+"Listen",
+"Host",
+"Audio",
+"Talk"
+],
+"lvl": "e"
+},
+{
+"w": "Alarm",
+"ban": [
+"Loud",
+"Siren",
+"Wake",
+"Fire",
+"Warning"
+],
+"lvl": "e"
+},
+{
+"w": "Siren",
+"ban": [
+"Loud",
+"Ambulance",
+"Police",
+"Wail",
+"Emergency"
+],
+"lvl": "e"
+},
+{
+"w": "Parachute",
+"ban": [
+"Jump",
+"Sky",
+"Plane",
+"Fall",
+"Open"
+],
+"lvl": "e"
+},
+{
+"w": "Submarine",
+"ban": [
+"Underwater",
+"Sea",
+"Navy",
+"Periscope",
+"Ship"
+],
+"lvl": "e"
+},
+{
+"w": "Rocket",
+"ban": [
+"Space",
+"Launch",
+"Fly",
+"Moon",
+"Fire"
+],
+"lvl": "e"
+},
+{
+"w": "Telescope",
+"ban": [
+"Stars",
+"Look",
+"Space",
+"Lens",
+"Far"
+],
+"lvl": "e"
+},
+{
+"w": "Microscope",
+"ban": [
+"Tiny",
+"Lab",
+"Lens",
+"Cells",
+"Science"
+],
+"lvl": "e"
+},
+{
+"w": "Thermometer",
+"ban": [
+"Temperature",
+"Fever",
+"Degrees",
+"Hot",
+"Measure"
+],
+"lvl": "e"
+},
+{
+"w": "Stethoscope",
+"ban": [
+"Doctor",
+"Heart",
+"Listen",
+"Chest",
+"Beat"
+],
+"lvl": "e"
+},
+{
+"w": "Syringe",
+"ban": [
+"Needle",
+"Injection",
+"Vaccine",
+"Doctor",
+"Shot"
+],
+"lvl": "e"
+},
+{
+"w": "Band-Aid",
+"ban": [
+"Cut",
+"Wound",
+"Plaster",
+"Sticky",
+"Heal"
+],
+"lvl": "e"
+},
+{
+"w": "Handcuffs",
+"ban": [
+"Police",
+"Arrest",
+"Metal",
+"Wrists",
+"Criminal"
+],
+"lvl": "e"
+},
+{
+"w": "Trophy",
+"ban": [
+"Win",
+"Cup",
+"Gold",
+"Prize",
+"Champion"
+],
+"lvl": "e"
+},
+{
+"w": "Medal",
+"ban": [
+"Gold",
+"Win",
+"Olympics",
+"Neck",
+"Podium"
+],
+"lvl": "e"
+},
+{
+"w": "Referee",
+"ban": [
+"Whistle",
+"Match",
+"Foul",
+"Rules",
+"Card"
+],
+"lvl": "e"
+},
+{
+"w": "Whistle",
+"ban": [
+"Blow",
+"Referee",
+"Sound",
+"Coach",
+"Loud"
+],
+"lvl": "e"
+},
+{
+"w": "Marathon",
+"ban": [
+"Run",
+"Long",
+"Race",
+"Kilometers",
+"Runner"
+],
+"lvl": "e"
+},
+{
+"w": "Yoga",
+"ban": [
+"Stretch",
+"Mat",
+"Pose",
+"Calm",
+"Breathe"
+],
+"lvl": "e"
+},
+{
+"w": "Karaoke",
+"ban": [
+"Sing",
+"Microphone",
+"Lyrics",
+"Screen",
+"Party"
+],
+"lvl": "e"
+},
+{
+"w": "Piano",
+"ban": [
+"Keys",
+"Music",
+"Black",
+"White",
+"Play"
+],
+"lvl": "e"
+},
+{
+"w": "Guitar",
+"ban": [
+"Strings",
+"Strum",
+"Music",
+"Rock",
+"Play"
+],
+"lvl": "e"
+},
+{
+"w": "Drums",
+"ban": [
+"Beat",
+"Sticks",
+"Band",
+"Loud",
+"Rhythm"
+],
+"lvl": "e"
+},
+{
+"w": "Violin",
+"ban": [
+"Strings",
+"Bow",
+"Music",
+"Classical",
+"Play"
+],
+"lvl": "e"
+},
+{
+"w": "Microphone",
+"ban": [
+"Sing",
+"Speak",
+"Stage",
+"Loud",
+"Voice"
+],
+"lvl": "e"
+},
+{
+"w": "Concert",
+"ban": [
+"Band",
+"Stage",
+"Live",
+"Music",
+"Tickets"
+],
+"lvl": "e"
+},
+{
+"w": "Circus",
+"ban": [
+"Clown",
+"Tent",
+"Tricks",
+"Elephant",
+"Show"
+],
+"lvl": "e"
+},
+{
+"w": "Zoo",
+"ban": [
+"Animals",
+"Cages",
+"Visit",
+"Lion",
+"Keeper"
+],
+"lvl": "e"
+},
+{
+"w": "Aquarium",
+"ban": [
+"Fish",
+"Glass",
+"Water",
+"Tank",
+"Sea"
+],
+"lvl": "e"
+},
+{
+"w": "Elephant",
+"ban": [
+"Trunk",
+"Big",
+"Grey",
+"Ears",
+"Tusks"
+],
+"lvl": "e"
+},
+{
+"w": "Giraffe",
+"ban": [
+"Neck",
+"Tall",
+"Spots",
+"Africa",
+"Leaves"
+],
+"lvl": "e"
+},
+{
+"w": "Penguin",
+"ban": [
+"Cold",
+"Bird",
+"Black",
+"Antarctica",
+"Waddle"
+],
+"lvl": "e"
+},
+{
+"w": "Camel",
+"ban": [
+"Desert",
+"Hump",
+"Sahara",
+"Ride",
+"Thirsty"
+],
+"lvl": "e"
+},
+{
+"w": "Octopus",
+"ban": [
+"Eight",
+"Arms",
+"Sea",
+"Ink",
+"Tentacles"
+],
+"lvl": "e"
+},
+{
+"w": "Shark",
+"ban": [
+"Fin",
+"Sea",
+"Teeth",
+"Jaws",
+"Fish"
+],
+"lvl": "e"
+},
+{
+"w": "Dolphin",
+"ban": [
+"Sea",
+"Smart",
+"Jump",
+"Mammal",
+"Flipper"
+],
+"lvl": "e"
+},
+{
+"w": "Butterfly",
+"ban": [
+"Wings",
+"Caterpillar",
+"Cocoon",
+"Colors",
+"Insect"
+],
+"lvl": "e"
+},
+{
+"w": "Spider",
+"ban": [
+"Web",
+"Eight",
+"Legs",
+"Insect",
+"Bite"
+],
+"lvl": "e"
+},
+{
+"w": "Bee",
+"ban": [
+"Honey",
+"Sting",
+"Buzz",
+"Hive",
+"Flower"
+],
+"lvl": "e"
+},
+{
+"w": "Cockroach",
+"ban": [
+"Insect",
+"Kitchen",
+"Disgusting",
+"Squash",
+"Bug"
+],
+"lvl": "e"
+},
+{
+"w": "Mosquito",
+"ban": [
+"Bite",
+"Buzz",
+"Blood",
+"Night",
+"Itch"
+],
+"lvl": "e"
+},
+{
+"w": "Parrot",
+"ban": [
+"Bird",
+"Talk",
+"Colorful",
+"Repeat",
+"Pirate"
+],
+"lvl": "e"
+},
+{
+"w": "Owl",
+"ban": [
+"Night",
+"Bird",
+"Wise",
+"Hoot",
+"Eyes"
+],
+"lvl": "e"
+},
+{
+"w": "Procrastination",
+"ban": [
+"Delay",
+"Later",
+"Tomorrow",
+"Put off",
+"Deadline"
+],
+"lvl": "h"
+},
+{
+"w": "Nostalgia",
+"ban": [
+"Memories",
+"Past",
+"Miss",
+"Childhood",
+"Remember"
+],
+"lvl": "h"
+},
+{
+"w": "Jet lag",
+"ban": [
+"Flight",
+"Tired",
+"Time zone",
+"Sleep",
+"Travel"
+],
+"lvl": "h"
+},
+{
+"w": "Deadline",
+"ban": [
+"Due",
+"Date",
+"Work",
+"Late",
+"Submit"
+],
+"lvl": "h"
+},
+{
+"w": "Awkward",
+"ban": [
+"Uncomfortable",
+"Silence",
+"Embarrassing",
+"Moment",
+"Weird"
+],
+"lvl": "h"
+},
+{
+"w": "Gossip",
+"ban": [
+"Rumors",
+"Talk",
+"Secrets",
+"Behind",
+"Neighbors"
+],
+"lvl": "h"
+},
+{
+"w": "Multitasking",
+"ban": [
+"Many",
+"Same time",
+"Tasks",
+"Juggle",
+"Busy"
+],
+"lvl": "h"
+},
+{
+"w": "Insomnia",
+"ban": [
+"Sleep",
+"Night",
+"Awake",
+"Cannot",
+"Tired"
+],
+"lvl": "h"
+},
+{
+"w": "Allergy",
+"ban": [
+"Sneeze",
+"Pollen",
+"Reaction",
+"Nose",
+"Itchy"
+],
+"lvl": "h"
+},
+{
+"w": "Hangover",
+"ban": [
+"Drink",
+"Headache",
+"Morning",
+"Alcohol",
+"Sick"
+],
+"lvl": "h"
+},
+{
+"w": "Traffic jam",
+"ban": [
+"Cars",
+"Stuck",
+"Road",
+"Slow",
+"Honk"
+],
+"lvl": "h"
+},
+{
+"w": "Blackout",
+"ban": [
+"Power",
+"Electricity",
+"Dark",
+"Lights",
+"Cut"
+],
+"lvl": "h"
+},
+{
+"w": "Souvenir",
+"ban": [
+"Trip",
+"Gift",
+"Memory",
+"Tourist",
+"Bring"
+],
+"lvl": "h"
+},
+{
+"w": "Reunion",
+"ban": [
+"Meet",
+"Again",
+"Old",
+"Friends",
+"Family"
+],
+"lvl": "h"
+},
+{
+"w": "Inheritance",
+"ban": [
+"Will",
+"Money",
+"Die",
+"Family",
+"Receive"
+],
+"lvl": "h"
+},
+{
+"w": "Divorce",
+"ban": [
+"Marriage",
+"Separate",
+"Court",
+"Couple",
+"End"
+],
+"lvl": "h"
+},
+{
+"w": "Lottery",
+"ban": [
+"Ticket",
+"Numbers",
+"Win",
+"Jackpot",
+"Luck"
+],
+"lvl": "h"
+},
+{
+"w": "Budget",
+"ban": [
+"Money",
+"Spend",
+"Plan",
+"Save",
+"Limit"
+],
+"lvl": "h"
+},
+{
+"w": "Interview",
+"ban": [
+"Job",
+"Questions",
+"CV",
+"Hire",
+"Candidate"
+],
+"lvl": "h"
+},
+{
+"w": "Resume",
+"ban": [
+"CV",
+"Job",
+"Experience",
+"Apply",
+"Skills"
+],
+"lvl": "h"
+},
+{
+"w": "Promotion",
+"ban": [
+"Boss",
+"Raise",
+"Job",
+"Higher",
+"Work"
+],
+"lvl": "h"
+},
+{
+"w": "Overtime",
+"ban": [
+"Extra",
+"Hours",
+"Work",
+"Late",
+"Paid"
+],
+"lvl": "h"
+},
+{
+"w": "Mortgage",
+"ban": [
+"House",
+"Bank",
+"Loan",
+"Pay",
+"Monthly"
+],
+"lvl": "h"
+},
+{
+"w": "Scoreboard",
+"ban": [
+"Points",
+"Game",
+"Display",
+"Result",
+"Stadium"
+],
+"lvl": "h"
+},
+{
+"w": "Sunscreen",
+"ban": [
+"SPF",
+"Burn",
+"Lotion",
+"Beach",
+"Skin"
+],
+"lvl": "h"
+},
+{
+"w": "Sleepwalking",
+"ban": [
+"Night",
+"Bed",
+"Wander off",
+"Asleep",
+"Wander"
+],
+"lvl": "h"
+},
+{
+"w": "Lost and found",
+"ban": [
+"Missing",
+"Office",
+"Items",
+"Return",
+"Claim"
+],
+"lvl": "h"
+},
+{
+"w": "Fire extinguisher",
+"ban": [
+"Flames",
+"Red",
+"Spray",
+"Emergency",
+"Put out"
+],
+"lvl": "h"
+},
+{
+"w": "Quicksand",
+"ban": [
+"Sink",
+"Beach",
+"Trap",
+"Stuck",
+"Desert"
+],
+"lvl": "h"
+},
+{
+"w": "Avalanche",
+"ban": [
+"Snow",
+"Mountain",
+"Slide",
+"Buried",
+"Ski"
+],
+"lvl": "h"
+},
+{
+"w": "Earthquake",
+"ban": [
+"Shake",
+"Ground",
+"Richter",
+"Disaster",
+"Tremor"
+],
+"lvl": "h"
+},
+{
+"w": "Tsunami",
+"ban": [
+"Wave",
+"Giant",
+"Ocean",
+"Disaster",
+"Flood"
+],
+"lvl": "h"
+},
+{
+"w": "Compass",
+"ban": [
+"Direction",
+"North",
+"Needle",
+"Hiking",
+"Lost"
+],
+"lvl": "h"
+},
+{
+"w": "Hourglass",
+"ban": [
+"Sand",
+"Time",
+"Timer",
+"Minutes",
+"Flip"
+],
+"lvl": "h"
+},
+{
+"w": "Kaleidoscope",
+"ban": [
+"Colors",
+"Patterns",
+"Tube",
+"Mirrors",
+"Twist"
+],
+"lvl": "h"
+},
+{
+"w": "Chandelier",
+"ban": [
+"Ceiling",
+"Crystal",
+"Light",
+"Fancy",
+"Hang"
+],
+"lvl": "h"
+},
+{
+"w": "Skyscraper",
+"ban": [
+"Tall",
+"Building",
+"City",
+"Floors",
+"Tower"
+],
+"lvl": "h"
+},
+{
+"w": "Escape room",
+"ban": [
+"Puzzle",
+"Locked",
+"Clues",
+"Team",
+"Game"
+],
+"lvl": "h"
+},
+{
+"w": "Piggy bank",
+"ban": [
+"Coins",
+"Save",
+"Oink",
+"Money",
+"Break"
+],
+"lvl": "h"
+},
+{
+"w": "Fortune teller",
+"ban": [
+"Future",
+"Crystal",
+"Predict",
+"Palm",
+"Cards"
+],
+"lvl": "h"
+},
+{
+"w": "Scarecrow",
+"ban": [
+"Field",
+"Birds",
+"Farm",
+"Straw",
+"Hat"
+],
+"lvl": "h"
+},
+{
+"w": "Bodyguard",
+"ban": [
+"Protect",
+"Security",
+"Famous",
+"Protect",
+"Suit"
+],
+"lvl": "h"
+}
+]

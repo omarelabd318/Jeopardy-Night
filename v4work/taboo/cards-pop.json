@@ -1,0 +1,1520 @@
+[
+{
+"w": "Titanic",
+"ban": [
+"Ship",
+"Iceberg",
+"Jack",
+"Rose",
+"Sink"
+],
+"lvl": "e"
+},
+{
+"w": "Harry Potter",
+"ban": [
+"Wizard",
+"Hogwarts",
+"Glasses",
+"Scar",
+"Magic"
+],
+"lvl": "e"
+},
+{
+"w": "Spider-Man",
+"ban": [
+"Web",
+"Marvel",
+"Peter Parker",
+"Insect",
+"Mask"
+],
+"lvl": "e"
+},
+{
+"w": "Batman",
+"ban": [
+"Gotham",
+"Joker",
+"Flying mammal",
+"Bruce Wayne",
+"Cape"
+],
+"lvl": "e"
+},
+{
+"w": "Superman",
+"ban": [
+"Cape",
+"Krypton",
+"Flying",
+"Clark Kent",
+"Hero"
+],
+"lvl": "e"
+},
+{
+"w": "Iron Man",
+"ban": [
+"Tony Stark",
+"Marvel",
+"Suit",
+"Avengers",
+"Armor"
+],
+"lvl": "e"
+},
+{
+"w": "Avengers",
+"ban": [
+"Marvel",
+"Heroes",
+"Thanos",
+"Team",
+"Assemble"
+],
+"lvl": "e"
+},
+{
+"w": "Star Wars",
+"ban": [
+"Jedi",
+"Force",
+"Space",
+"Darth Vader",
+"Lightsaber"
+],
+"lvl": "e"
+},
+{
+"w": "Lion King",
+"ban": [
+"Simba",
+"Disney",
+"Mufasa",
+"Hakuna Matata",
+"Cartoon"
+],
+"lvl": "e"
+},
+{
+"w": "Frozen",
+"ban": [
+"Elsa",
+"Anna",
+"Snow",
+"Let it go",
+"Disney"
+],
+"lvl": "e"
+},
+{
+"w": "Toy Story",
+"ban": [
+"Woody",
+"Buzz",
+"Pixar",
+"Cowboy",
+"Cartoon"
+],
+"lvl": "e"
+},
+{
+"w": "Finding Nemo",
+"ban": [
+"Fish",
+"Dory",
+"Clown",
+"Pixar",
+"Ocean"
+],
+"lvl": "e"
+},
+{
+"w": "Shrek",
+"ban": [
+"Ogre",
+"Green",
+"Donkey",
+"Swamp",
+"Fiona"
+],
+"lvl": "e"
+},
+{
+"w": "Minions",
+"ban": [
+"Yellow",
+"Despicable Me",
+"Banana",
+"Goggles",
+"Gru"
+],
+"lvl": "e"
+},
+{
+"w": "Jurassic Park",
+"ban": [
+"Dinosaurs",
+"Island",
+"Spielberg",
+"Theme park",
+"T-Rex"
+],
+"lvl": "e"
+},
+{
+"w": "Fast and Furious",
+"ban": [
+"Cars",
+"Racing",
+"Vin Diesel",
+"Family",
+"Speed"
+],
+"lvl": "e"
+},
+{
+"w": "James Bond",
+"ban": [
+"007",
+"Spy",
+"Agent",
+"Martini",
+"Secret"
+],
+"lvl": "e"
+},
+{
+"w": "Mission Impossible",
+"ban": [
+"Tom Cruise",
+"Spy",
+"Agent",
+"Stunts",
+"Tape"
+],
+"lvl": "e"
+},
+{
+"w": "Pirates of the Caribbean",
+"ban": [
+"Jack Sparrow",
+"Captain",
+"Ship",
+"Johnny Depp",
+"Sea"
+],
+"lvl": "e"
+},
+{
+"w": "The Godfather",
+"ban": [
+"Mafia",
+"Marlon Brando",
+"Family",
+"Offer",
+"Italian"
+],
+"lvl": "e"
+},
+{
+"w": "Squid Game",
+"ban": [
+"Netflix",
+"Korean",
+"Games",
+"Green",
+"Red light"
+],
+"lvl": "e"
+},
+{
+"w": "Money Heist",
+"ban": [
+"Professor",
+"Mask",
+"Spanish",
+"Red",
+"Bank"
+],
+"lvl": "e"
+},
+{
+"w": "Stranger Things",
+"ban": [
+"Netflix",
+"Eleven",
+"Upside Down",
+"Eighties",
+"Hawkins"
+],
+"lvl": "e"
+},
+{
+"w": "Game of Thrones",
+"ban": [
+"Dragons",
+"Iron seat",
+"Winter",
+"Westeros",
+"Kings"
+],
+"lvl": "e"
+},
+{
+"w": "Breaking Bad",
+"ban": [
+"Walter",
+"Meth",
+"Heisenberg",
+"Chemistry",
+"Teacher"
+],
+"lvl": "e"
+},
+{
+"w": "Friends",
+"ban": [
+"Central Perk",
+"Sitcom",
+"Six",
+"Ross",
+"Rachel"
+],
+"lvl": "e"
+},
+{
+"w": "The Office",
+"ban": [
+"Michael Scott",
+"Sitcom",
+"Dunder Mifflin",
+"Paper",
+"Boss"
+],
+"lvl": "e"
+},
+{
+"w": "SpongeBob",
+"ban": [
+"Pineapple",
+"Bikini Bottom",
+"Square",
+"Patrick",
+"Yellow"
+],
+"lvl": "e"
+},
+{
+"w": "Tom and Jerry",
+"ban": [
+"Cat",
+"Mouse",
+"Chase",
+"Cartoon",
+"Cheese"
+],
+"lvl": "e"
+},
+{
+"w": "Mickey Mouse",
+"ban": [
+"Disney",
+"Ears",
+"Rodent",
+"Minnie",
+"Cartoon"
+],
+"lvl": "e"
+},
+{
+"w": "Pokemon",
+"ban": [
+"Pikachu",
+"Catch",
+"Ash",
+"Cards",
+"Yellow"
+],
+"lvl": "e"
+},
+{
+"w": "Minecraft",
+"ban": [
+"Blocks",
+"Game",
+"Creeper",
+"Build",
+"Steve"
+],
+"lvl": "e"
+},
+{
+"w": "FIFA",
+"ban": [
+"Game",
+"Football",
+"PlayStation",
+"Ultimate Team",
+"Controller"
+],
+"lvl": "e"
+},
+{
+"w": "PlayStation",
+"ban": [
+"Sony",
+"Console",
+"Controller",
+"Games",
+"Xbox"
+],
+"lvl": "e"
+},
+{
+"w": "Fortnite",
+"ban": [
+"Battle Royale",
+"Game",
+"Dance",
+"Skins",
+"Epic"
+],
+"lvl": "e"
+},
+{
+"w": "Among Us",
+"ban": [
+"Impostor",
+"Crew",
+"Game",
+"Vote",
+"Sus"
+],
+"lvl": "e"
+},
+{
+"w": "Mario",
+"ban": [
+"Nintendo",
+"Plumber",
+"Mushroom",
+"Luigi",
+"Jump"
+],
+"lvl": "e"
+},
+{
+"w": "Netflix",
+"ban": [
+"Streaming",
+"Series",
+"Movies",
+"Binge",
+"Subscribe"
+],
+"lvl": "e"
+},
+{
+"w": "YouTube",
+"ban": [
+"Videos",
+"Channel",
+"Subscribe",
+"Watch",
+"Google"
+],
+"lvl": "e"
+},
+{
+"w": "TikTok",
+"ban": [
+"Short",
+"Videos",
+"Dance",
+"Scroll",
+"App"
+],
+"lvl": "e"
+},
+{
+"w": "Instagram",
+"ban": [
+"Photos",
+"Stories",
+"Followers",
+"Likes",
+"Reels"
+],
+"lvl": "e"
+},
+{
+"w": "WhatsApp",
+"ban": [
+"Chat",
+"Message",
+"Green",
+"Group",
+"Voice note"
+],
+"lvl": "e"
+},
+{
+"w": "Snapchat",
+"ban": [
+"Ghost",
+"Filters",
+"Streak",
+"Photo",
+"Disappear"
+],
+"lvl": "e"
+},
+{
+"w": "Facebook",
+"ban": [
+"Social",
+"Zuckerberg",
+"Friends",
+"Blue",
+"Post"
+],
+"lvl": "e"
+},
+{
+"w": "Twitter",
+"ban": [
+"Tweet",
+"Bird",
+"Hashtag",
+"Elon",
+"Post"
+],
+"lvl": "e"
+},
+{
+"w": "Google",
+"ban": [
+"Search",
+"Engine",
+"Browser",
+"Gmail",
+"Maps"
+],
+"lvl": "e"
+},
+{
+"w": "Uber",
+"ban": [
+"Ride",
+"Driver",
+"Taxi",
+"App",
+"Car"
+],
+"lvl": "e"
+},
+{
+"w": "Spotify",
+"ban": [
+"Music",
+"Streaming",
+"Green",
+"Playlist",
+"Songs"
+],
+"lvl": "e"
+},
+{
+"w": "Amazon",
+"ban": [
+"Shopping",
+"Delivery",
+"Bezos",
+"Prime",
+"Online"
+],
+"lvl": "e"
+},
+{
+"w": "Apple",
+"ban": [
+"iPhone",
+"Mac",
+"Steve Jobs",
+"Fruit",
+"Logo"
+],
+"lvl": "e"
+},
+{
+"w": "Tesla",
+"ban": [
+"Electric",
+"Car",
+"Elon Musk",
+"Battery",
+"Autopilot"
+],
+"lvl": "e"
+},
+{
+"w": "McDonald's",
+"ban": [
+"Burger",
+"Golden",
+"Arches",
+"Big Mac",
+"Fast food"
+],
+"lvl": "e"
+},
+{
+"w": "Coca-Cola",
+"ban": [
+"Soda",
+"Red",
+"Fizzy",
+"Bottle",
+"Drink"
+],
+"lvl": "e"
+},
+{
+"w": "Starbucks",
+"ban": [
+"Coffee",
+"Green",
+"Mermaid",
+"Cup",
+"Latte"
+],
+"lvl": "e"
+},
+{
+"w": "IKEA",
+"ban": [
+"Furniture",
+"Swedish",
+"Flat pack",
+"Meatballs",
+"Store"
+],
+"lvl": "e"
+},
+{
+"w": "Nike",
+"ban": [
+"Shoes",
+"Swoosh",
+"Just Do It",
+"Sports",
+"Brand"
+],
+"lvl": "e"
+},
+{
+"w": "Taylor Swift",
+"ban": [
+"Singer",
+"Eras",
+"Fans",
+"Pop",
+"Swifties"
+],
+"lvl": "e"
+},
+{
+"w": "Michael Jackson",
+"ban": [
+"Moonwalk",
+"Thriller",
+"King of Pop",
+"Glove",
+"Dance"
+],
+"lvl": "e"
+},
+{
+"w": "Eminem",
+"ban": [
+"Rapper",
+"Slim Shady",
+"Detroit",
+"Lose Yourself",
+"Hip hop"
+],
+"lvl": "e"
+},
+{
+"w": "Beyonce",
+"ban": [
+"Singer",
+"Queen",
+"Destiny's Child",
+"Jay-Z",
+"Lemonade"
+],
+"lvl": "e"
+},
+{
+"w": "Shakira",
+"ban": [
+"Singer",
+"Colombian",
+"Hips",
+"Waka Waka",
+"Dance"
+],
+"lvl": "e"
+},
+{
+"w": "Justin Bieber",
+"ban": [
+"Baby",
+"Singer",
+"Canadian",
+"Pop",
+"Beliebers"
+],
+"lvl": "e"
+},
+{
+"w": "Ed Sheeran",
+"ban": [
+"Singer",
+"Shape of You",
+"Guitar",
+"Ginger",
+"British"
+],
+"lvl": "e"
+},
+{
+"w": "Adele",
+"ban": [
+"Singer",
+"Hello",
+"British",
+"Album",
+"Rolling in the Deep"
+],
+"lvl": "e"
+},
+{
+"w": "Queen",
+"ban": [
+"Band",
+"Freddie Mercury",
+"Bohemian Rhapsody",
+"Rock",
+"Mercury"
+],
+"lvl": "e"
+},
+{
+"w": "The Beatles",
+"ban": [
+"Band",
+"Liverpool",
+"John Lennon",
+"Yesterday",
+"Four"
+],
+"lvl": "e"
+},
+{
+"w": "Meme",
+"ban": [
+"Funny",
+"Internet",
+"Picture",
+"Viral",
+"Share"
+],
+"lvl": "e"
+},
+{
+"w": "Viral",
+"ban": [
+"Spread",
+"Internet",
+"Famous",
+"Share",
+"Trending"
+],
+"lvl": "e"
+},
+{
+"w": "Influencer",
+"ban": [
+"Followers",
+"Instagram",
+"Sponsored",
+"Social media",
+"Famous"
+],
+"lvl": "e"
+},
+{
+"w": "Livestream",
+"ban": [
+"Real time",
+"Watch",
+"Chat",
+"Broadcast",
+"Online"
+],
+"lvl": "e"
+},
+{
+"w": "Hashtag",
+"ban": [
+"Pound",
+"Symbol",
+"Trending",
+"Twitter",
+"Post"
+],
+"lvl": "e"
+},
+{
+"w": "Cristiano Ronaldo",
+"ban": [
+"Siuu",
+"Football",
+"Portugal",
+"Real Madrid",
+"CR7"
+],
+"lvl": "e"
+},
+{
+"w": "Lionel Messi",
+"ban": [
+"Argentina",
+"Barcelona",
+"Football",
+"Goat",
+"Small"
+],
+"lvl": "e"
+},
+{
+"w": "Elon Musk",
+"ban": [
+"Tesla",
+"SpaceX",
+"Billionaire",
+"Twitter",
+"Mars"
+],
+"lvl": "e"
+},
+{
+"w": "Mark Zuckerberg",
+"ban": [
+"Facebook",
+"Meta",
+"Founder",
+"Billionaire",
+"Hoodie"
+],
+"lvl": "e"
+},
+{
+"w": "Bill Gates",
+"ban": [
+"Microsoft",
+"Founder",
+"Billionaire",
+"Windows",
+"Glasses"
+],
+"lvl": "e"
+},
+{
+"w": "Steve Jobs",
+"ban": [
+"Apple",
+"Founder",
+"Turtleneck",
+"iPhone",
+"Late"
+],
+"lvl": "e"
+},
+{
+"w": "Barbie",
+"ban": [
+"Doll",
+"Pink",
+"Ken",
+"Plastic",
+"Margot Robbie"
+],
+"lvl": "e"
+},
+{
+"w": "Oppenheimer",
+"ban": [
+"Atomic",
+"Bomb",
+"Nolan",
+"Physicist",
+"Cillian"
+],
+"lvl": "e"
+},
+{
+"w": "Inception",
+"ban": [
+"Dream",
+"Nolan",
+"Spinning",
+"Layers",
+"DiCaprio"
+],
+"lvl": "e"
+},
+{
+"w": "Interstellar",
+"ban": [
+"Space",
+"Nolan",
+"Black hole",
+"Wormhole",
+"Time"
+],
+"lvl": "e"
+},
+{
+"w": "The Dark Knight",
+"ban": [
+"Batman",
+"Joker",
+"Heath Ledger",
+"Gotham",
+"Nolan"
+],
+"lvl": "e"
+},
+{
+"w": "Joker",
+"ban": [
+"Clown",
+"Joaquin Phoenix",
+"Stairs",
+"Laugh",
+"Gotham"
+],
+"lvl": "e"
+},
+{
+"w": "Gladiator",
+"ban": [
+"Rome",
+"Arena",
+"Russell Crowe",
+"Colosseum",
+"Fight"
+],
+"lvl": "e"
+},
+{
+"w": "Forrest Gump",
+"ban": [
+"Run",
+"Chocolates",
+"Tom Hanks",
+"Bench",
+"Life"
+],
+"lvl": "e"
+},
+{
+"w": "Home Alone",
+"ban": [
+"Christmas",
+"Kevin",
+"Traps",
+"Burglars",
+"Boy"
+],
+"lvl": "e"
+},
+{
+"w": "The Matrix",
+"ban": [
+"Neo",
+"Pill",
+"Red",
+"Blue",
+"Simulation"
+],
+"lvl": "h"
+},
+{
+"w": "Fight Club",
+"ban": [
+"Brad Pitt",
+"First rule",
+"Soap",
+"Tyler",
+"Underground"
+],
+"lvl": "h"
+},
+{
+"w": "Parasite",
+"ban": [
+"Korean",
+"Oscar",
+"Basement",
+"Rich",
+"Family"
+],
+"lvl": "h"
+},
+{
+"w": "Black Mirror",
+"ban": [
+"Netflix",
+"Technology",
+"Dark",
+"Episodes",
+"Twist"
+],
+"lvl": "h"
+},
+{
+"w": "The Crown",
+"ban": [
+"Netflix",
+"Queen",
+"Royal",
+"British",
+"Elizabeth"
+],
+"lvl": "h"
+},
+{
+"w": "Peaky Blinders",
+"ban": [
+"Tommy Shelby",
+"Birmingham",
+"Gangsters",
+"Caps",
+"Razor"
+],
+"lvl": "h"
+},
+{
+"w": "Narcos",
+"ban": [
+"Escobar",
+"Colombia",
+"Netflix",
+"Drugs",
+"Cartel"
+],
+"lvl": "h"
+},
+{
+"w": "Lupin",
+"ban": [
+"Thief",
+"Netflix",
+"French",
+"Gentleman",
+"Heist"
+],
+"lvl": "h"
+},
+{
+"w": "Wednesday",
+"ban": [
+"Addams",
+"Netflix",
+"Dance",
+"Girl",
+"Goth"
+],
+"lvl": "h"
+},
+{
+"w": "The Simpsons",
+"ban": [
+"Homer",
+"Yellow",
+"Springfield",
+"D'oh",
+"Cartoon"
+],
+"lvl": "h"
+},
+{
+"w": "Family Guy",
+"ban": [
+"Peter",
+"Griffin",
+"Cartoon",
+"Quahog",
+"Stewie"
+],
+"lvl": "h"
+},
+{
+"w": "Rick and Morty",
+"ban": [
+"Cartoon",
+"Scientist",
+"Grandson",
+"Portal",
+"Adult Swim"
+],
+"lvl": "h"
+},
+{
+"w": "Naruto",
+"ban": [
+"Anime",
+"Ninja",
+"Japan",
+"Ramen",
+"Hokage"
+],
+"lvl": "h"
+},
+{
+"w": "Dragon Ball",
+"ban": [
+"Anime",
+"Goku",
+"Saiyan",
+"Balls",
+"Japan"
+],
+"lvl": "h"
+},
+{
+"w": "One Piece",
+"ban": [
+"Anime",
+"Luffy",
+"Pirate",
+"Straw hat",
+"Japan"
+],
+"lvl": "h"
+},
+{
+"w": "Attack on Titan",
+"ban": [
+"Anime",
+"Giants",
+"Walls",
+"Japan",
+"Eren"
+],
+"lvl": "h"
+},
+{
+"w": "Death Note",
+"ban": [
+"Anime",
+"Notebook",
+"Light",
+"Shinigami",
+"Names"
+],
+"lvl": "h"
+},
+{
+"w": "Tetris",
+"ban": [
+"Blocks",
+"Falling",
+"Game",
+"Lines",
+"Russian"
+],
+"lvl": "h"
+},
+{
+"w": "Pac-Man",
+"ban": [
+"Yellow",
+"Ghosts",
+"Arcade",
+"Dots",
+"Maze"
+],
+"lvl": "h"
+},
+{
+"w": "Candy Crush",
+"ban": [
+"Match",
+"Sweets",
+"Phone game",
+"Levels",
+"Colors"
+],
+"lvl": "h"
+},
+{
+"w": "Angry Birds",
+"ban": [
+"Pigs",
+"Slingshot",
+"Phone game",
+"Red",
+"Finnish"
+],
+"lvl": "h"
+},
+{
+"w": "Clash of Clans",
+"ban": [
+"Village",
+"Troops",
+"Phone game",
+"Supercell",
+"Attack"
+],
+"lvl": "h"
+},
+{
+"w": "Call of Duty",
+"ban": [
+"Shooter",
+"War",
+"Game",
+"Black Ops",
+"Online"
+],
+"lvl": "h"
+},
+{
+"w": "GTA",
+"ban": [
+"Game",
+"Rockstar",
+"Cars",
+"Crime",
+"Los Santos"
+],
+"lvl": "h"
+},
+{
+"w": "The Sims",
+"ban": [
+"Life",
+"Game",
+"Build",
+"Characters",
+"Simulation"
+],
+"lvl": "h"
+},
+{
+"w": "Wordle",
+"ban": [
+"Five",
+"Letters",
+"Guess",
+"Daily",
+"Green"
+],
+"lvl": "h"
+},
+{
+"w": "ChatGPT",
+"ban": [
+"AI",
+"Chatbot",
+"OpenAI",
+"Ask",
+"Answers"
+],
+"lvl": "h"
+},
+{
+"w": "Zoom",
+"ban": [
+"Meeting",
+"Video",
+"Call",
+"Online",
+"Remote"
+],
+"lvl": "h"
+},
+{
+"w": "LinkedIn",
+"ban": [
+"Jobs",
+"Professional",
+"Network",
+"Career",
+"CV"
+],
+"lvl": "h"
+},
+{
+"w": "Pinterest",
+"ban": [
+"Pins",
+"Boards",
+"Ideas",
+"Pictures",
+"Inspiration"
+],
+"lvl": "h"
+},
+{
+"w": "Reddit",
+"ban": [
+"Communities",
+"Forum",
+"Upvote",
+"Threads",
+"Front page"
+],
+"lvl": "h"
+},
+{
+"w": "Discord",
+"ban": [
+"Server",
+"Chat",
+"Gamers",
+"Voice",
+"Channel"
+],
+"lvl": "h"
+},
+{
+"w": "Twitch",
+"ban": [
+"Streamer",
+"Gaming",
+"Live",
+"Purple",
+"Subscribe"
+],
+"lvl": "h"
+},
+{
+"w": "Airbnb",
+"ban": [
+"Rent",
+"Stay",
+"Host",
+"Apartment",
+"Booking"
+],
+"lvl": "h"
+},
+{
+"w": "Booking.com",
+"ban": [
+"Hotel",
+"Reservation",
+"Travel",
+"Stay",
+"Website"
+],
+"lvl": "h"
+},
+{
+"w": "Red Bull",
+"ban": [
+"Energy",
+"Drink",
+"Wings",
+"Can",
+"Extreme"
+],
+"lvl": "h"
+},
+{
+"w": "Pepsi",
+"ban": [
+"Cola",
+"Soda",
+"Blue",
+"Rival",
+"Drink"
+],
+"lvl": "h"
+},
+{
+"w": "KFC",
+"ban": [
+"Chicken",
+"Colonel",
+"Fried",
+"Bucket",
+"Fast food"
+],
+"lvl": "h"
+},
+{
+"w": "Subway",
+"ban": [
+"Sandwich",
+"Footlong",
+"Fast food",
+"Bread",
+"Green"
+],
+"lvl": "h"
+},
+{
+"w": "Lego",
+"ban": [
+"Bricks",
+"Build",
+"Danish",
+"Toys",
+"Blocks"
+],
+"lvl": "h"
+},
+{
+"w": "Rubik's Cube",
+"ban": [
+"Colors",
+"Twist",
+"Puzzle",
+"Solve",
+"Six"
+],
+"lvl": "h"
+},
+{
+"w": "Monopoly",
+"ban": [
+"Board game",
+"Money",
+"Property",
+"Hotels",
+"Jail"
+],
+"lvl": "h"
+},
+{
+"w": "Uno",
+"ban": [
+"Card game",
+"Colors",
+"Draw",
+"Skip",
+"Reverse"
+],
+"lvl": "h"
+},
+{
+"w": "Chess",
+"ban": [
+"Board",
+"King",
+"Queen",
+"Checkmate",
+"Pieces"
+],
+"lvl": "h"
+},
+{
+"w": "Mr. Bean",
+"ban": [
+"British",
+"Comedy",
+"Teddy",
+"Rowan Atkinson",
+"Silent"
+],
+"lvl": "h"
+},
+{
+"w": "Sherlock Holmes",
+"ban": [
+"Detective",
+"Watson",
+"Baker Street",
+"Pipe",
+"London"
+],
+"lvl": "h"
+},
+{
+"w": "Lord of the Rings",
+"ban": [
+"Jewelry",
+"Frodo",
+"Hobbit",
+"Gandalf",
+"Mordor"
+],
+"lvl": "h"
+},
+{
+"w": "Hunger Games",
+"ban": [
+"Katniss",
+"Arena",
+"Mockingjay",
+"Districts",
+"Tributes"
+],
+"lvl": "h"
+},
+{
+"w": "Twilight",
+"ban": [
+"Vampire",
+"Werewolf",
+"Bella",
+"Edward",
+"Teenage"
+],
+"lvl": "h"
+},
+{
+"w": "Wonder Woman",
+"ban": [
+"Amazon",
+"DC",
+"Lasso",
+"Diana",
+"Hero"
+],
+"lvl": "h"
+},
+{
+"w": "Deadpool",
+"ban": [
+"Ryan Reynolds",
+"Marvel",
+"Red",
+"Mask",
+"Merc"
+],
+"lvl": "h"
+},
+{
+"w": "Black Panther",
+"ban": [
+"Wakanda",
+"Marvel",
+"Vibranium",
+"King",
+"Chadwick"
+],
+"lvl": "h"
+}
+]

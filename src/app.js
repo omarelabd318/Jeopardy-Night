@@ -109,6 +109,7 @@ const Snd = (() => {
     tick(){ if(!S.sound) return; tone(1320, 0, 0.09, 0.05, "triangle"); tone(660, 0, 0.07, 0.03, "sine"); },
     chime(){ if(!S.sound) return; const f = 784; [[1,0.11],[2.01,0.04],[3.0,0.025],[4.16,0.012]].forEach(([m,v]) => tone(f*m, 0, 2.8/Math.sqrt(m), v*CHIME, "sine", 0.01)); tone(f*1.5, 0.12, 2.2, 0.035*CHIME, "sine", 0.02); },
     blip(){ if(!S.sound) return; tone(988, 0, 0.12, 0.04, "sine"); tone(1480, 0.06, 0.14, 0.03, "sine"); },
+    buzz(){ if(!S.sound) return; tone(196, 0, 0.3, 0.07, "sawtooth", 0.004); tone(147, 0.14, 0.4, 0.07, "sawtooth", 0.004); },   // 7.4: Taboo's buzz
     fanfare(){ if(!S.sound) return; [523, 659, 784, 1047].forEach((f,i) => { tone(f, i*0.13, 0.9, 0.06, "triangle", 0.01); tone(f*2, i*0.13, 0.6, 0.015, "sine", 0.01); }); }
   };
 })();
@@ -166,7 +167,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.3`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.4`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2547,7 +2548,7 @@ if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel(); syncFfaOpt();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
-function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); impLeave(); psyLeave(); estLeave(); tnLeave(); hdLeave(); cnLeave(); decLeave(); slLeave(); lbLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); ttHome(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); impLeave(); psyLeave(); estLeave(); tnLeave(); hdLeave(); cnLeave(); decLeave(); slLeave(); lbLeave(); tbLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); ttHome(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
 /*@modes*/
 $("#resumeBtn").onclick = resumeGame;
 $("#resumeNo").onclick = () => { clearGame(); showResume(); };

@@ -27,6 +27,8 @@
 //   6.79: card modes (Estimation first). The laptop is the referee: POST /api/crd {r,crd:{pub,priv:{player:{hand,act}}}} posts the table (pub = what everyone sees, priv = each phone's own hand and the move it may make);
 //   a phone reads GET /api/crdstate?r&p -> {name, pub, me} (only its own priv) and sends a move with POST /api/crdact {r,p,v,a} (v = the table version it saw); the laptop reads the moves in order with
 //   GET /api/crdacts?r&since -> {n, acts:[{p,v,a}]}. The shared phone page is /c (cards.html).
+//   7.4: Taboo uses the same generic crd routes (the laptop posts the table and, in each player's private part, the card only the describer and the opposing phones may see; phones send start / got / skip / buzz moves);
+//   crdstate also returns "ago" (ms since the laptop posted the table) so a phone can run the clock without trusting its own clock against the laptop's. Its phone page is /t (taboo.html).
 //   7.1: Liar's Bar uses the same generic crd routes (the laptop posts the table and each player's hand, phones send play / liar moves); its phone page is /l (liars.html).
 // 5.27: team games use the same page. A team's phones join once with their team number t, and /api/cur also carries
 //   mode ("ffa" or "teams") and the team names; /api/state?r&p&t answers for that team. The first answer a player
@@ -61,7 +63,7 @@ export class Room extends DurableObject {
       const p = url.searchParams.get("p"), [players, crd] = await Promise.all([st.get("players"), st.get("crd")]), me = (players || {})[p];
       if (!me) return json({ name: null });
       if (!crd || !crd.pub) return json({ name: me.n, pub: null, me: null });
-      return json({ name: me.n, pub: crd.pub, me: (crd.priv || {})[p] || null });
+      return json({ name: me.n, pub: crd.pub, me: (crd.priv || {})[p] || null, ago: Date.now() - ((await st.get("crdat")) || Date.now()) });
     }
     if (op === "players") {
       const players = (await st.get("players")) || {};
@@ -155,7 +157,7 @@ export class Room extends DurableObject {
       if (((psy.priv && psy.priv.ans) || []).includes(norm(b.v))) return json({ ok: false, error: "truth" }, 409);
       fakes[b.p] = { v: b.v, lie: false, at: Date.now() }; await st.put("pf:" + b.c, fakes); return json({ ok: true });
     }
-    if (op === "crd") { await st.put("crd", b.crd); return json({ ok: true }); }
+    if (op === "crd") { await st.put({ crd: b.crd, crdat: Date.now() }); return json({ ok: true }); }
     if (op === "crdact") {
       const [players, crd] = await Promise.all([st.get("players"), st.get("crd")]);
       if (!(players || {})[b.p]) return json({ ok: false, error: "unknown" }, 409);
@@ -187,6 +189,7 @@ export class Room extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === "/t") return env.ASSETS.fetch(new Request(new URL("/taboo" + url.search, url), req));  // 7.4: Taboo phone page
     if (url.pathname === "/l") return env.ASSETS.fetch(new Request(new URL("/liars" + url.search, url), req));  // 7.1: Liar's Bar phone page
     if (url.pathname === "/n") return env.ASSETS.fetch(new Request(new URL("/cn" + url.search, url), req));  // 6.82: Codenames phone page
     if (url.pathname === "/f") return env.ASSETS.fetch(new Request(new URL("/sale" + url.search, url), req));  // 7.0: For Sale? phone page
