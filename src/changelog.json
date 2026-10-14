@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.16",
+  "date": "2026-10-14",
+  "items": [
+   "The version panel has its own Sahra look (navy and gold, rounder font), opens from the top after the code, and lists Version history above Categories and clues. The version line on the title screen keeps its original style."
+  ]
+ },
+ {
   "v": "7.15",
   "date": "2026-10-14",
   "items": [
