@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.95. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.97. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -753,3 +753,5 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 6.93 (2026-10-14): Omar asked for Tarneeb's title tile wall to show the number first, then the suit. Tiles now read like 5♠ (was ♠5). `modeTn` `g` in `src/title.js`. To undo: put the suit first again in that line.
 - 6.94 (2026-10-14): Omar looked at previews and asked for the themed title backgrounds to be a bit faded. The tile wall's opacity went from .3 to .17 (`#titleScreen .ghost.themed` in the 6.86 block of `src/head.html`); the previews also showed .08 as a much fainter option. Jeopardy Night's own board is unchanged. To undo: set the opacity back to .3.
 - 6.95 (2026-10-14): Omar asked for the top-left button on the title screen to say HOME instead of SAHRA. Still capitals (6.88), still takes you back to the Sahra home screen; the markup text in `#brandCorner` in `src/head.html` is "Home". To undo: change it back to "Sahra".
+- 6.96 (2026-10-14): Omar asked for a friendlier font on the HOME button. It now uses Fredoka (rounded, added to the Google Fonts link), still capitals. To undo: delete the `#titleScreen .brandcorner{font-family:"Fredoka"...}` rule in `src/head.html` (the button goes back to Rakkas).
+- 6.97 (2026-10-14): Omar asked for the mode titles on the title screen to be a more uniform size, between the Jeopardy Night title and the smaller ones. Every mode title now uses one size, `clamp(52px,11.5vw,150px)`, in `ttApply` in `src/title.js` (the per-mode `k` factors are no longer used). To undo: restore `font-size:calc(clamp(46px,9.5vw,128px) * ${th.k || 1})`.
