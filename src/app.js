@@ -121,10 +121,14 @@ document.querySelectorAll(".sndbtn").forEach(b => b.addEventListener("click", ()
 $("#optSound").onclick = () => setSound(!S.sound);
 /* 6.60 (Omar): Painted Billboard look, a toggle on the title screen, saved per device in jn_look. It restyles the normal game only (title, setup, board, clue card, scores, winner);
    Football mode, Category Bingo and Bidding Wars keep their own looks. To remove: delete this block, #lookBtn in src/head.html, the "c${i % 6}" classes in renderBoard and the 6.60 CSS block. */
-function setLook(on, save){ document.body.classList.toggle("billboard", on); const b = $("#lookBtn"); if(b){ b.setAttribute("aria-pressed", on); b.textContent = on ? "Billboard look: on" : "Billboard look"; }
-  if(save) store.set("jn_look", on ? "billboard" : ""); }
-$("#lookBtn").onclick = () => { setLook(!document.body.classList.contains("billboard"), true); Snd.unlock(); Snd.blip(); };
-setLook(store.get("jn_look", "") === "billboard", false);
+/* 6.81 (Omar): the Bingo card look (green felt, paper-white cards, navy ink) is the new default for the whole game, Bingo included; the title button now cycles
+   Bingo card, Billboard, Classic (the old blue). jn_look holds "card", "billboard" or "classic"; anything else (including the old empty value) counts as card.
+   To make Classic the default again: change the fallback "card" below to "classic". */
+const LOOKS = [["card", "Bingo card"], ["billboard", "Billboard"], ["classic", "Classic"]];
+function setLook(k, save){ document.body.classList.toggle("billboard", k === "billboard"); document.body.classList.toggle("cardlook", k === "card"); const b = $("#lookBtn"); if(b){ b.dataset.look = k; b.textContent = "Look: " + LOOKS.find(l => l[0] === k)[1]; }
+  if(save) store.set("jn_look", k); }
+$("#lookBtn").onclick = () => { const k = $("#lookBtn").dataset.look, nx = LOOKS[(LOOKS.findIndex(l => l[0] === k) + 1) % LOOKS.length][0]; setLook(nx, true); Snd.unlock(); Snd.blip(); };
+{ const k = store.get("jn_look", ""); setLook(LOOKS.some(l => l[0] === k) ? k : "card", false); }
 $("#optAnim").setAttribute("aria-pressed", S.anim);
 $("#optAnim").onclick = () => { S.anim = !S.anim; store.set("jn_anim", S.anim); $("#optAnim").setAttribute("aria-pressed", S.anim); };   // 5.54
 $("#optPower").onclick = () => { S.power = !S.power; store.set("jn_power", S.power); $("#optPower").setAttribute("aria-pressed", S.power); if(!$("#scores").hidden) renderScores(); };
@@ -166,7 +170,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.80`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.81`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
