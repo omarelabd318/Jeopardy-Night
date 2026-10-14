@@ -15,16 +15,16 @@ const TT = {
     sh:".05em .05em 0 #000", tag:"Claim squares. Five in a row wins.", s:["#ffcc33","#10183f","#fff"],
     bg:"linear-gradient(90deg,#4DA3FF 0 14.3%,#FF8A4D 0 28.6%,#34D3A5 0 42.9%,#8FA4C4 0 57.1%,#FF6FA8 0 71.4%,#5FD068 0 85.7%,#A58BFF 0) bottom/100% 14px no-repeat,radial-gradient(circle,rgba(255,255,255,.08) 1.5px,transparent 2px) 0 0/26px 26px,radial-gradient(ellipse at 50% 30%,#1b2a7a,#10183f 60%,#080d26)", base:"#10183f", g:{c:7,r:7,f:(r,c)=>[[500,400,300,200][Math.max(Math.abs(r-3),Math.abs(c-3))],"#10183f",["#4DA3FF","#FF8A4D","#34D3A5","#8FA4C4","#FF6FA8","#5FD068","#A58BFF"][c]],font:'"Bowlby One",sans-serif',rad:"10px"}},
   modeHot:{t:["Hot","Seat"], ff:'"Abril Fatface","Playfair Display",Georgia,serif', fw:400, c1:"#f6ecd0", c2:"#ef6a5b", k:.95, ink:"#f6ecd0",
-    sh:".04em .04em 0 rgba(0,0,0,.5)", tag:"One team, one streak. Bank it or risk it.", s:["#c0392b","#f6ecd0","#f6ecd0"],
+    sh:".04em .04em 0 rgba(0,0,0,.5)", tag:"One team, one streak. Bank it or risk it.", s:["#ef6a5b","#f6ecd0","#f6ecd0"],
     bg:"radial-gradient(ellipse at 50% 45%,#13704a,#0c4a2c 60%,#062616)", base:"#0c4a2c", g:{c:6,r:4,t:[100,200,400,800,"1,600","3,200"],bg:"#0c4a2c",ink:"#f6ecd0",font:'"Abril Fatface",serif',bd:"#f6ecd0",rad:"50%",dash:1}},
   modeSurv:{t:["Survival"], ff:'"Lalezar","Alfa Slab One",Impact,sans-serif', fw:400, c1:"#ffe066", k:1.05, ink:"#ffe066",
     sh:".05em .05em 0 #1b1410", x:"transform:rotate(-2deg);", tag:"Lose all your lives and you're out.", s:["#ffe066","#1b1410","#1b1410"],
     bg:"repeating-linear-gradient(-35deg,#6a2bb0 0 60px,#5d24a0 60px 120px)", base:"#6a2bb0", g:{c:7,r:5,t:["☠","✖"],bg:"#5a1f98",ink:"#ffe066",sh:"3px 3px 0 #1b1410",font:'"Lalezar",sans-serif',rad:"6px"}},
   modeImp:{t:["Imposter"], ff:'"Special Elite","Courier Prime",Courier,monospace', fw:400, c1:"#e6e1d3", k:.95, ink:"#e6e1d3",
-    sh:".04em .04em 0 #000", tag:"Most of you share a secret. One of you doesn't.", s:["#c8281f","#e6e1d3","#e6e1d3"],
+    sh:".04em .04em 0 #000", tag:"Most of you share a secret. One of you doesn't.", s:["#e8574c","#e6e1d3","#e6e1d3"],
     bg:"radial-gradient(ellipse at 50% 25%,#3a2523,#1d1312 70%)", base:"#1d1312", g:{c:6,r:4,t:["?","▇▇▇","?","CLASSIFIED"],bg:"#2a1a19",ink:"#e6e1d3",bd:"#c8281f",font:'"Special Elite",monospace'}},
   modePsy:{t:["Psych"], ff:'"Archivo Narrow","Arial Narrow",sans-serif', fw:700, c1:"#1e2a26", k:1.1, ink:"#1e2a26",
-    sh:"none", x:"text-transform:uppercase;letter-spacing:.06em;border-bottom:.08em solid #d2232a;padding:0 .2em;", tag:"Write a believable lie. Find the truth.", s:["#d2232a","#f6f3e8","#1e2a26"],
+    sh:"none", x:"text-transform:uppercase;letter-spacing:.06em;border-bottom:.08em solid #d2232a;padding:0 .2em;", tag:"Write a believable lie. Find the truth.", s:["#ef6a5b","#f6f3e8","#1e2a26"],
     bg:"linear-gradient(#f6f3e8,#ece6d2)", base:"#ece6d2", g:{c:6,r:4,t:["____","?","____","TRUE?"],bg:"#ddd5bb",ink:"#1e2a26",bd:"#1e2a26",font:'"Archivo Narrow",sans-serif'}},
   modeEst:{t:["Estimation"], ff:'"Playfair Display",Georgia,serif', fw:700, c1:"#fff", k:.82, ink:"#fff",
     sh:".04em .04em 0 #3a1e10", tag:"Call your tricks, then hit them exactly.", s:["#d8b45a","#2a1608","#3a1e10"],
@@ -33,7 +33,7 @@ const TT = {
     sh:"0 0 .2em rgba(54,163,255,.45)", x:"text-transform:uppercase;letter-spacing:.08em;", tag:"One word, one number. Find your agents.", s:["#36a3ff","#0a1626","#cfe6ff"],
     bg:"repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 34px),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 34px),#0a1626", base:"#0a1626", g:{c:5,r:5,f:(r,c)=>{const k=(r*5+c*3)%7,w=["AGENT","NILE","CODE","SPY","KEY","CAIRO","CLUE","MAP","SPHINX","BRIDGE","NIGHT","TEA"][(r*5+c)%12];return [w,k<2?"#fff":k<4?"#fff":"#2a2418",k<2?"#d23a4d":k<4?"#2a7fd0":"#d9cfae"]},font:'"Chakra Petch",sans-serif',rad:"6px"}},
   modeDec:{t:["Decrypto"], ff:'"Oswald","Arial Narrow",Impact,sans-serif', fw:600, c1:"#efe6cf", k:.95, ink:"#efe6cf",
-    sh:".04em .04em 0 #000", x:"text-transform:uppercase;letter-spacing:.1em;border-bottom:.07em solid #c0392b;padding:0 .2em;", tag:"Pass the code. Don't get intercepted.", s:["#c0392b","#efe6cf","#a07c2c"],
+    sh:".04em .04em 0 #000", x:"text-transform:uppercase;letter-spacing:.1em;border-bottom:.07em solid #c0392b;padding:0 .2em;", tag:"Pass the code. Don't get intercepted.", s:["#e0604f","#efe6cf","#a07c2c"],
     bg:"repeating-linear-gradient(90deg,#23251f 0 3px,#2a2c24 3px 6px)", base:"#23251f", g:{c:6,r:4,t:["3-1-4","2-4-1","1-3-2","4-2-3","2-1-3"],bg:"#2f3128",ink:"#efe6cf",bd:"#a07c2c",font:'"Oswald",sans-serif'}},
   modeTn:{t:["Tarneeb"], ff:'"Reem Kufi","Cairo",sans-serif', fw:700, c1:"#f6ead2", k:1.05, ink:"#f6ead2",
     sh:".04em .04em 0 #1a0e06", tag:"Bid your tricks, name the trump, beat the other pair.", s:["#c49a4a","#2a190f","#f6ead2"],
@@ -86,7 +86,7 @@ function ttApply(id){
   tag.innerHTML = jn ? ttJnTagHtml : esc(th.tag || "");
   const go = $("#modeGo"), play = $("#play");
   go.hidden = !id || jn; play.hidden = !jn;
-  if(id && !jn){ go.textContent = "Start";   /* 6.87 (Omar): just "Start" (6.84-6.86: "Start " + the mode name) */ go.style.cssText = `background:${th.s[0]};color:${th.s[1]};border-color:${th.s[2]};font-family:${th.ff};font-weight:${th.fw || 700}`; }
+  if(id && !jn){ go.textContent = "Start";   /* 6.87 (Omar): just "Start" (6.84-6.86: "Start " + the mode name) */ go.style.cssText = `background:${th.s[0]};border-color:${th.s[2]}`;   /* 6.99 (Omar): every Start button uses Jeopardy Night's Start font and text colour (the .btn.primary rules); only the background and border follow the mode. Was also color:${th.s[1]};font-family:${th.ff};font-weight:${th.fw || 700} */ }
   const look = $("#lookBtn"); if(look) look.style.display = jn ? "" : "none";   // the Billboard look only changes Jeopardy Night
   const vb = $("#verBtn"); vb.style.color = th ? th.ink : ""; vb.style.opacity = th ? ".85" : "";
   document.querySelectorAll("#modeRow .modebtn").forEach(x => { const on = x.id === id; x.classList.toggle("sel", on); x.setAttribute("aria-pressed", on); });
