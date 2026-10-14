@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.85",
+  "date": "2026-10-14",
+  "items": [
+   "The Sahra title no longer has the Arabic under it (or in the top-left chip), and it is a bit smaller."
+  ]
+ },
+ {
   "v": "6.84",
   "date": "2026-10-14",
   "items": [
