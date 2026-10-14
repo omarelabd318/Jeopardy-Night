@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.84",
+  "date": "2026-10-14",
+  "items": [
+   "New title screen. It now says Sahra, and every game is a button underneath, including Jeopardy Night. Tap a game to see its own title, colours and background, then press its Start button (or tap the game again) to play. Sahra moves to the top left; tap it to go back. Hover a game to read what it is. The 112 Categories line moved under the buttons."
+  ]
+ },
+ {
   "v": "6.83",
   "date": "2026-10-14",
   "items": [
