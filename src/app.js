@@ -166,7 +166,7 @@ $("#newsClose").onclick = closeNews;
 $("#newsBox").addEventListener("click", e => { if(e.target.id === "newsBox") closeNews(); });
 function verLabel(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) => a + LV.reduce((b,l) => b + ((DATA[c.id]||{})[l]||[]).length, 0), 0);
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v6.99`); }
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.0`); }
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2547,7 +2547,7 @@ if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel(); syncFfaOpt();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
-function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); impLeave(); psyLeave(); estLeave(); tnLeave(); cnLeave(); decLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); ttHome(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); impLeave(); psyLeave(); estLeave(); tnLeave(); cnLeave(); decLeave(); slLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); ttHome(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
 /*@modes*/
 $("#resumeBtn").onclick = resumeGame;
 $("#resumeNo").onclick = () => { clearGame(); showResume(); };

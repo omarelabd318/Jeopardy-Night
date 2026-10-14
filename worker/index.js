@@ -22,6 +22,7 @@
 //   6.77: Bidding Wars on phones. A team's phone sends POST /api/bid {r,c,t,r2,b} (c = the lot, t = team, r2 = how much to raise by, b = the bid the phone saw);
 //   the laptop reads them in order with GET /api/bids?r&c&since -> {n, bids:[{t,r,b}]} and applies the valid ones. Refused once the lot is no longer the current one.
 //   6.82: Codenames uses the same crd relay as the card modes (the laptop posts the board and the spymasters' key, phones send hint/tap/confirm/end moves); its phone page is /n (cn.html).
+//   7.0: For Sale? uses the same generic routes as well (join, players, crd, crdstate, crdact, crdacts); its phone page is /f (sale.html).
 //   6.83: Decrypto uses the same generic routes: the laptop posts the table with /api/crd, phones read /api/crdstate and send /api/crdact (join carries the team in t). Its phone page is /d (dec.html).
 //   6.79: card modes (Estimation first). The laptop is the referee: POST /api/crd {r,crd:{pub,priv:{player:{hand,act}}}} posts the table (pub = what everyone sees, priv = each phone's own hand and the move it may make);
 //   a phone reads GET /api/crdstate?r&p -> {name, pub, me} (only its own priv) and sends a move with POST /api/crdact {r,p,v,a} (v = the table version it saw); the laptop reads the moves in order with
@@ -186,6 +187,7 @@ export default {
   async fetch(req, env) {
     const url = new URL(req.url);
     if (url.pathname === "/n") return env.ASSETS.fetch(new Request(new URL("/cn" + url.search, url), req));  // 6.82: Codenames phone page
+    if (url.pathname === "/f") return env.ASSETS.fetch(new Request(new URL("/sale" + url.search, url), req));  // 7.0: For Sale? phone page
     if (url.pathname === "/d") return env.ASSETS.fetch(new Request(new URL("/dec" + url.search, url), req));  // 6.83: Decrypto phone page
     if (url.pathname === "/c") return env.ASSETS.fetch(new Request(new URL("/cards" + url.search, url), req));  // 6.79: card modes' phone page
     if (url.pathname === "/y") return env.ASSETS.fetch(new Request(new URL("/psych" + url.search, url), req));  // 6.72: Psych phone page
