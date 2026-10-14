@@ -3,6 +3,27 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.94",
+  "date": "2026-10-14",
+  "items": [
+   "The tile walls behind each game on the title screen are a bit more faded."
+  ]
+ },
+ {
+  "v": "6.93",
+  "date": "2026-10-14",
+  "items": [
+   "Tarneeb title background tiles now read number first, then suit (5♠)."
+  ]
+ },
+ {
+  "v": "6.92",
+  "date": "2026-10-14",
+  "items": [
+   "The SAHRA button in the top-left corner is now square and smaller."
+  ]
+ },
+ {
   "v": "6.91",
   "date": "2026-10-14",
   "items": [
