@@ -87,9 +87,10 @@ function ttApply(id){
   const jn = id === "modeJn", th = !id ? TT.home : jn ? null : (TT[id] || ttFallback(b));
   ttSel = id || "";
   ts.dataset.sel = id || "home";
-  ttGhost(th && th.g ? th.g : null, jn);
+  const art = !jn && id && typeof TTBG !== "undefined" && TTBG[id];   // 7.10: modes with a drawn background (TTBG) drop the tile wall
+  ttGhost(th && th.g && !art ? th.g : null, jn);   /* 7.10: was ttGhost(th && th.g ? th.g : null, jn) */
   ts.style.background = th ? "transparent" : "";   // 6.86: the theme background lives on the page itself (see --ttbg in head.html), so it carries on under the scrollbar with no seam
-  document.documentElement.style.setProperty("--ttbg", th ? th.bg : "none"); document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
+  document.documentElement.style.setProperty("--ttbg", art ? `url("${art}") center/cover no-repeat` : th ? th.bg : "none");   /* 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
   ts.style.color = th ? th.ink : "";
   $("#homeHead").hidden = !!id; $("#jnTitle").hidden = !jn; $("#brandCorner").hidden = !id;
   const mt = $("#modeTitle"); mt.hidden = !id || jn;
