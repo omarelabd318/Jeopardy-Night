@@ -3,6 +3,27 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.8",
+  "date": "2026-10-14",
+  "items": [
+   "On the title screen, the Full screen and Sound buttons now match the game you pick (its font and colours)."
+  ]
+ },
+ {
+  "v": "7.7",
+  "date": "2026-10-14",
+  "items": [
+   "Texas Hold'em's title screen is wine red now, so it no longer looks like Estimation."
+  ]
+ },
+ {
+  "v": "7.6",
+  "date": "2026-10-14",
+  "items": [
+   "3-5-8 has its own look on the title screen: a purple and gold button and background, no longer the same green as Estimation."
+  ]
+ },
+ {
   "v": "7.5",
   "date": "2026-10-14",
   "items": [
