@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.14",
+  "date": "2026-10-14",
+  "items": [
+   "The line under the modes on the title screen now reads just the version, in a friendlier font and the mode's colour. The category and clue counts are in the version panel."
+  ]
+ },
+ {
   "v": "7.13",
   "date": "2026-10-14",
   "items": [
