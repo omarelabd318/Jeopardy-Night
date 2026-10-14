@@ -93,7 +93,7 @@ function ttApply(id){
 function ttHome(){ ttApply(""); }
 function ttPick(b, e){
   if(ttSel === b.id){ if(b._go) b._go.call(b, e); return; }   // second tap on the chosen mode opens it
-  ttApply(b.id); try{ Snd.unlock(); Snd.blip(); }catch(_){}
+  ttApply(b.id);   /* 6.90 (Omar): no click sound when picking a mode (6.84-6.89: try{ Snd.unlock(); Snd.blip(); }catch(_){}) */
 }
 function ttInit(){
   const row = $("#modeRow"); if(!row) return;
