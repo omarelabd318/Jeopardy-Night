@@ -44,6 +44,7 @@ body.football #titleScreen #modeRow .modebtn.impbtn{background:#e6e1d3;color:#1d
 #titleScreen #modeRow .modebtn.survbtn.sel{transform:rotate(-2deg) translateY(-3px)}
 #titleScreen:not([data-sel=home]):not([data-sel=modeJn]) #resumeBox{display:none!important}
 #titleScreen .verbtn{margin-top:4px}
+#titleScreen .row .btn.small{color:var(--cream)}   /* readable on the light Psych background too (the buttons otherwise inherit the page text colour) */
 @media (max-width:700px){#titleScreen:not([data-sel=home]) .titleinner{padding-top:70px}}   /* room for the Sahra chip */
 /* end 6.84 */
 /* 6.76 (Omar): each mode's winner screen wears that mode's own colours and type (set with #winBox[data-mode], see winTheme() in src/app.js). Football mode keeps its own green and LED strip, so every rule needs body:not(.football).
