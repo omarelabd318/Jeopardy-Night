@@ -21,6 +21,7 @@
 //   Answers use /api/answer with k "ffa" and t = the player id.
 //   6.77: Bidding Wars on phones. A team's phone sends POST /api/bid {r,c,t,r2,b} (c = the lot, t = team, r2 = how much to raise by, b = the bid the phone saw);
 //   the laptop reads them in order with GET /api/bids?r&c&since -> {n, bids:[{t,r,b}]} and applies the valid ones. Refused once the lot is no longer the current one.
+//   6.82: Codenames uses the same crd relay as the card modes (the laptop posts the board and the spymasters' key, phones send hint/tap/confirm/end moves); its phone page is /n (cn.html).
 //   6.79: card modes (Estimation first). The laptop is the referee: POST /api/crd {r,crd:{pub,priv:{player:{hand,act}}}} posts the table (pub = what everyone sees, priv = each phone's own hand and the move it may make);
 //   a phone reads GET /api/crdstate?r&p -> {name, pub, me} (only its own priv) and sends a move with POST /api/crdact {r,p,v,a} (v = the table version it saw); the laptop reads the moves in order with
 //   GET /api/crdacts?r&since -> {n, acts:[{p,v,a}]}. The shared phone page is /c (cards.html).
@@ -183,6 +184,7 @@ export class Room extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === "/n") return env.ASSETS.fetch(new Request(new URL("/cn" + url.search, url), req));  // 6.82: Codenames phone page
     if (url.pathname === "/c") return env.ASSETS.fetch(new Request(new URL("/cards" + url.search, url), req));  // 6.79: card modes' phone page
     if (url.pathname === "/y") return env.ASSETS.fetch(new Request(new URL("/psych" + url.search, url), req));  // 6.72: Psych phone page
     if (url.pathname === "/s") return env.ASSETS.fetch(new Request(new URL("/spy" + url.search, url), req));  // 6.68: Imposter phone page
