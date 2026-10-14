@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Decrypto</title>
+<!-- 6.82: the Decrypto phone page, at /d?r=ROOM. A player joins once with a name and a team (Team A or Team B), then sees their own team's four keywords all game. The Encryptor sees the secret code
+     and types three clues; the others decode their team's code or try to intercept the other team's. Enigma look (Omar's pick of three): dark casing, cream paper, brass discs, typewriter type.
+     The laptop is the referee: this page only sends what a player wants to do (worker/index.js: join, players, crdstate, crdact, the same generic routes as the card games).
+     The laptop stamps every table with a version number; a send that lands on an older table is retried once with the newest one (the action itself says which round it is for). -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#23251f;--bg2:#1a1c17;--paper:#e9dfc4;--cell:#d8ccad;--ink:#2a261c;--cream:#efe6cf;--soft:#b9ae92;--brass:#e8c97a;--brass2:#a07c2c;--a:#e0584a;--b:#4ea58a;--bad:#ff9a8a;--ok:#9be0b4;--typ:"Special Elite","Courier New",monospace;--osw:"Oswald","Arial Narrow",Impact,sans-serif}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--cream);font:16px/1.35 var(--typ);background:repeating-linear-gradient(90deg,#23251f 0 3px,#262820 3px 6px)}
+body.ta{--team:var(--a)} body.tb{--team:var(--b)}
+main{max-width:480px;margin:0 auto;padding:14px 14px 28px;display:grid;gap:11px;align-content:start}
+#view{display:grid;gap:11px;align-content:start;min-width:0}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font:600 15px var(--osw);letter-spacing:.1em;text-transform:uppercase}
+.top .tn{color:var(--team,var(--brass));font-size:20px}
+h1{margin:6px 0;font:700 32px/1.1 var(--osw);letter-spacing:.02em}
+.eye{font:600 13px var(--osw);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.hint{color:var(--soft);font-size:14px}
+.kws{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.kw{display:flex;gap:8px;align-items:center;background:var(--paper);color:var(--ink);border:1px solid #9a8a5c;border-radius:4px;padding:8px 10px;min-width:0}
+.kw em{font:700 20px var(--osw);font-style:normal;color:var(--team,#c0392b)}
+.kw span{font-weight:400;font-size:17px;overflow-wrap:anywhere}
+.panel{background:rgba(0,0,0,.28);border:1px solid #6d6247;border-radius:6px;padding:11px;display:grid;gap:9px}
+.code{display:flex;justify-content:center;gap:12px;padding:4px 0}
+.code b{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;font:700 36px var(--osw);color:#231c0c;background:radial-gradient(circle at 35% 30%,var(--brass),var(--brass2) 70%);box-shadow:inset 0 0 0 5px rgba(0,0,0,.18)}
+label{font:600 13px var(--osw);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:3px}
+input{width:100%;font:400 18px var(--typ);padding:11px 12px;border:1px solid #9a8a5c;border-radius:4px;background:var(--paper);color:var(--ink)}
+button{font:inherit;cursor:pointer}
+.send{width:100%;font:700 20px var(--osw);letter-spacing:.1em;text-transform:uppercase;background:var(--team,var(--a));color:#fff;border:0;border-radius:4px;padding:13px}
+.send:disabled{opacity:.4}
+.ghost{width:100%;font:600 17px var(--osw);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--cream);border:1px solid var(--soft);border-radius:4px;padding:10px}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tbtn{font:700 22px var(--osw);letter-spacing:.06em;text-transform:uppercase;padding:18px 6px;border:0;border-radius:4px;color:#fff}
+.tbtn.a{background:#c0392b}.tbtn.b{background:#2f6b58}
+.msg{padding:9px 12px;border:1px solid var(--bad);color:var(--bad);border-radius:4px;background:rgba(0,0,0,.35);font-size:14px}
+.clue{display:flex;gap:10px;align-items:center;background:var(--paper);color:var(--ink);border-radius:4px;padding:9px 11px}
+.clue .w{flex:1;font-size:19px;overflow-wrap:anywhere}
+.clue .pk{display:flex;gap:5px}
+.pk button{width:38px;height:38px;border-radius:50%;border:1px solid #9a8a5c;background:var(--cell);color:var(--ink);font:700 18px var(--osw)}
+.pk button.on{background:radial-gradient(circle at 35% 30%,var(--brass),var(--brass2) 70%);color:#231c0c;border-color:var(--brass2)}
+.clue .ix{font:700 16px var(--osw);color:#6d6247;width:14px}
+.log{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.log .col{background:var(--cell);color:var(--ink);border-radius:3px;padding:4px 5px;min-height:56px;min-width:0}
+.log h4{margin:0 0 3px;text-align:center;font:700 15px var(--osw);color:var(--tc,#c0392b)}
+.log h4 small{display:block;font:400 11px var(--typ);color:var(--ink);overflow-wrap:anywhere}
+.log .c{font-size:12px;line-height:1.2;overflow-wrap:anywhere}.log .c sup{font-size:9px;opacity:.6;margin-right:2px}
+.big{font:700 30px/1.15 var(--osw)}
+.pos{color:var(--ok)}.neg{color:var(--bad)}
+.wait{text-align:center;padding:26px 0 6px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--brass);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.bar{height:7px;background:#3a3d33;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--team,var(--brass))}
+</style></head><body><main>
+<div class="top"><span class="tn" id="tn"></span><span id="rnd"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_dec_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+const norm = x => String(x ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9؀-ۿ]+/g, "").replace(/^(the|a|an)(?=.)/, "");
+const TN = ["Team A", "Team B"];
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, stAt = 0, timer = null, tick = null, busy = false, sig = "", note = null, total = 0, pk = [null, null, null], ctx = "", typed = {}, sending = false, lobby = null;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
+const left = () => st && st.pub && st.pub.secs != null ? Math.max(0, Math.round(st.pub.secs - (Date.now() - stAt) / 1000)) : null;
+const mmss = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+async function join(n, t){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n, t});
+    if(res.ok){ me = {p, n, t}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); document.body.className = ""; $("tn").textContent = ""; $("rnd").textContent = "";
+  $("view").innerHTML = `<div class="eye">Decrypto</div><h1>What's your name?</h1>
+    <input id="nm" maxlength="24" enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name" autocomplete="off">
+    <div class="eye" style="margin-top:6px">Pick your team</div>
+    <div class="teams"><button class="tbtn a" data-t="0">Team A</button><button class="tbtn b" data-t="1">Team B</button></div>
+    ${err ? `<div class="msg">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your team's secret words appear here.</p>`;
+  $("nm").focus();
+  document.querySelectorAll(".tbtn").forEach(b => b.onclick = () => { const n = $("nm").value.trim(); if(!n){ $("nm").focus(); return; } document.querySelectorAll(".tbtn").forEach(x => x.disabled = true); join(n, +b.dataset.t); });
+}
+const kwHtml = m => `<div class="kws">${m.words.map((w, i) => `<div class="kw"><em>${i + 1}</em><span>${esc(w)}</span></div>`).join("")}</div>`;
+function logHtml(p, t, words){ const col = t ? "#2f6b58" : "#c0392b";
+  return `<div class="log" style="--tc:${col}">${[0, 1, 2, 3].map(i => `<div class="col"><h4>${i + 1}${words ? `<small>${esc(words[i])}</small>` : ""}</h4>${p.log[t][i].map(c => `<div class="c"><sup>R${c.r}</sup>${esc(c.w)}</div>`).join("")}</div>`).join("")}</div>`; }
+const bar = () => { const l = left(); if(l == null) return ""; if(l > total) total = l; return `<div class="bar"><i id="bf" style="width:${total ? Math.round(l / total * 100) : 0}%"></i></div>`; };
+const pickRows = (clues, who) => `<div class="eye">${who}</div>${clues.map((w, i) => `<div class="clue"><span class="ix">${"ABC"[i]}</span><span class="w">${esc(w)}</span><span class="pk" data-i="${i}">${[1, 2, 3, 4].map(n => `<button data-n="${n}" class="${pk[i] === n ? "on" : ""}">${n}</button>`).join("")}</span></div>`).join("")}`;
+const pkOk = () => pk.every(n => n) && new Set(pk).size === 3;
+function typedVal(k){ return esc(typed[k] || ""); }
+function keepInputs(){ document.querySelectorAll("input[data-k]").forEach(i => typed[i.dataset.k] = i.value); }
+function lobbyView(){
+  const l = lobby || [], mine = l.find(x => x.p === me.p), t = mine && mine.t === 1 ? 1 : mine && mine.t === 0 ? 0 : (me.t === 1 ? 1 : 0), mates = l.filter(x => x.t === t && x.p !== me.p).map(x => x.n);
+  document.body.className = t ? "tb" : "ta"; $("tn").textContent = TN[t]; $("rnd").textContent = "";
+  $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">You're on ${TN[t]}${mates.length ? " with " + esc(mates.join(", ")) : ""}. Waiting for the host to start. Your four secret words appear here.</div></div>
+    <button class="ghost" id="sw">Switch to ${TN[1 - t]}</button>`;
+  $("sw").onclick = () => { $("sw").disabled = true; post("join", {p: me.p, n: me.n, t: 1 - t}).then(x => { if(x.ok){ me.t = 1 - t; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} } poll(true); }); };
+}
+function draw(){
+  if(!st || !st.pub || st.pub.phase === "lobby" || !st.me){ sig = "lobby"; lobbyView(); return; }
+  const p = st.pub, m = st.me, t = m.team, key = [p.phase, p.round, p.turn].join(":");
+  if(key !== ctx){ ctx = key; pk = [null, null, null]; typed = {}; total = 0; note = null; }
+  const sg = [p.v, note, sending].join("|"); if(sg === sig) return; sig = sg; keepInputs();
+  document.body.className = t ? "tb" : "ta"; $("tn").textContent = p.names[t]; $("rnd").textContent = p.phase === "over" ? "" : p.phase === "tie" ? "Tiebreak" : "Round " + p.round + " of " + p.of;
+  const v = $("view"), words = kwHtml(m), L = p.locks || {}, msg = note ? `<div class="msg">${esc(note)}</div>` : "", wait = (h, sub) => `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">${h}</div><div class="hint">${sub || ""}</div></div>`;
+  if(p.phase === "write"){
+    if(m.enc && !p.sent[t]){ v.innerHTML = `${bar()}<div class="panel"><div class="eye">You're the Encryptor. Your secret code</div><div class="code">${m.code.map(d => `<b>${d}</b>`).join("")}</div>
+        ${m.code.map((d, i) => `<div><label>Clue for ${d} · ${esc(m.words[d - 1])}</label><input data-k="c${i}" maxlength="40" autocomplete="off" autocapitalize="off" enterkeyhint="${i < 2 ? "next" : "send"}" value="${typedVal("c" + i)}"></div>`).join("")}
+        ${msg}<button class="send" id="sc">Send clues</button><div class="hint">One clue per number. Say what the word means, not how it's spelled. Don't use the word itself.</div></div>${words}`;
+      $("sc").onclick = () => { keepInputs(); const c = m.code.map((d, i) => (typed["c" + i] || "").trim()); if(c.some(x => !x)){ note = "Write a clue for all three numbers."; sig = ""; draw(); return; }
+        const bad = c.findIndex((x, i) => norm(m.words[m.code[i] - 1]).length >= 3 && norm(x).includes(norm(m.words[m.code[i] - 1]))); if(bad >= 0){ note = `Clue ${bad + 1} contains the secret word. Say it another way.`; sig = ""; draw(); return; }
+        send({k:"clues", r:p.round, c}); };
+      return; }
+    v.innerHTML = `${bar()}${m.enc ? wait("Clues sent", "Waiting for the other team's Encryptor.") : wait(esc(p.enc[t]) + " is writing", "Your Encryptor is writing three clues. Keep your four words in mind.")}${words}<div class="eye">Your team's clues so far</div>${logHtml(p, t, m.words)}`; return; }
+  if(p.phase === "guess"){
+    const own = p.turn === t;
+    if(own && m.enc){ v.innerHTML = `${bar()}<div class="panel"><div class="eye">Your code</div><div class="code">${m.code.map(d => `<b>${d}</b>`).join("")}</div><div class="hint">Your team is decoding it. Don't give any hints!</div></div>
+        <div class="eye">The clues you gave</div>${p.clues.map((w, i) => `<div class="clue"><span class="ix">${"ABC"[i]}</span><span class="w">${esc(w)}</span></div>`).join("")}${L.own ? `<div class="hint">${esc(L.own)} locked your team's guess.</div>` : ""}${words}`; return; }
+    if(!own && p.round === 1){ v.innerHTML = `${wait("No interception yet", "Nobody can intercept in round 1. " + esc(p.names[p.turn]) + " is decoding.")}${words}`; return; }
+    const lockedBy = own ? L.own : L.opp, who = own ? `${esc(p.enc[t])}'s clues. Which numbers do they point to?` : `${esc(p.names[p.turn])}'s clues. Can you intercept their code?`;
+    if(lockedBy){ v.innerHTML = `${bar()}${wait("Locked in", esc(lockedBy) + " locked your team's guess. Waiting for the other team.")}${words}`; return; }
+    v.innerHTML = `${bar()}<div class="panel">${pickRows(p.clues, who)}${msg}<button class="send" id="lk" ${pkOk() ? "" : "disabled"}>Lock ${pkOk() ? pk.join("-") : "in"}</button>
+        <div class="hint">${pkOk() ? "Tell your team before you lock." : "Pick three different numbers from 1 to 4."} The first player to lock decides for the whole team.</div></div>
+      <div class="eye">${own ? "Your team's clues so far" : esc(p.names[p.turn]) + "'s clues so far"}</div>${logHtml(p, p.turn, own ? m.words : null)}${words}`;
+    v.querySelectorAll(".pk button").forEach(b => b.onclick = () => { const i = +b.closest(".pk").dataset.i, n = +b.dataset.n; pk[i] = pk[i] === n ? null : n; sig = ""; draw(); });
+    $("lk").onclick = () => send({k:"guess", r:p.round, t:p.turn, g:pk.slice()});
+    return; }
+  if(p.phase === "reveal"){ const rv = p.rev, own = rv.t === t, ok = own ? rv.ownOk : p.round > 1 && rv.oppOk, other = own ? (p.round > 1 && rv.oppOk) : !rv.ownOk;
+    v.innerHTML = `<div class="panel"><div class="eye">The code was</div><div class="code">${rv.code.map(d => `<b>${d}</b>`).join("")}</div>
+      <div class="big ${ok ? "pos" : "neg"}">${own ? (rv.ownOk ? "Your team decoded it" : "Miscommunication") : p.round === 1 ? "No interception in round 1" : rv.oppOk ? "You intercepted it!" : "Not intercepted"}</div>
+      ${own && rv.oppOk ? `<div class="hint neg">${esc(p.names[1 - t])} intercepted your clues.</div>` : ""}${!own && !rv.ownOk ? `<div class="hint pos">${esc(p.names[rv.t])} got their own code wrong.</div>` : ""}</div>${words}<div class="hint">Look at the TV.</div>`; return; }
+  if(p.phase === "tie"){ if(p.tie[t]){ v.innerHTML = `${bar()}${wait("Locked in", "Waiting for the other team's guesses.")}${words}`; return; }
+    v.innerHTML = `${bar()}<div class="panel"><div class="eye">Tiebreak: what are ${esc(p.names[1 - t])}'s four keywords?</div>${[0, 1, 2, 3].map(i => `<div><label>Their keyword ${i + 1}</label><input data-k="w${i}" maxlength="40" autocomplete="off" autocapitalize="off" value="${typedVal("w" + i)}"></div>`).join("")}
+      ${msg}<button class="send" id="tb">Lock in</button><div class="hint">One answer for the whole team: the first player to lock decides. Leave a box empty if you have no idea.</div></div>
+      <div class="eye">${esc(p.names[1 - t])}'s clues over the game</div>${logHtml(p, 1 - t)}${words}`;
+    $("tb").onclick = () => { keepInputs(); send({k:"tie", w:[0, 1, 2, 3].map(i => (typed["w" + i] || "").trim())}); }; return; }
+  if(p.phase === "over"){ const o = p.over, w = o.winner, win = w === t, draw2 = w === 2;
+    v.innerHTML = `<div class="wait"><div class="eye">Game over</div><div class="big ${draw2 ? "" : win ? "pos" : "neg"}">${draw2 ? "It's a draw" : win ? "Your team won" : esc(p.names[w]) + " won"}</div></div>
+      ${[0, 1].map(x => `<div class="eye">${esc(p.names[x])}'s keywords</div><div class="kws">${o.words[x].map((k, i) => `<div class="kw"><em>${i + 1}</em><span>${esc(k)}</span></div>`).join("")}</div>`).join("")}`; return; }
+}
+async function send(a){ if(sending) return; sending = true; note = null; sig = ""; draw();
+  let res = null;
+  for(let k = 0; k < 3; k++){
+    if(!st || !st.pub) break; res = await post("crdact", {p: me.p, v: st.pub.v, a});
+    if(res.ok || res.j.error !== "stale") break;
+    const was = [st.pub.phase, st.pub.round, st.pub.turn].join(":"); await poll(true);   // the table moved: look again and retry only if it's still this step
+    if(!st || [st.pub.phase, st.pub.round, st.pub.turn].join(":") !== was) { res = {ok:false, j:{error:"moved"}}; break; } }
+  sending = false;
+  if(!res || !res.ok) note = res && res.j.error === "moved" ? "That step is over." : "That didn't send. Try again.";
+  sig = ""; draw(); poll(true); }
+function paint(){ const l = left(); if(l == null || !st || !st.pub) return; const bf = $("bf"); if(bf){ if(l > total) total = l; bf.style.width = (total ? Math.round(l / total * 100) : 0) + "%"; }
+  const rn = $("rnd"); if(rn && st.me && (st.pub.phase === "write" || st.pub.phase === "guess" || st.pub.phase === "tie")) rn.textContent = (st.pub.phase === "tie" ? "Tiebreak" : "Round " + st.pub.round + " of " + st.pub.of) + " · " + mmss(l); }
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ const oldV = st && st.pub ? st.pub.v : -1; st = j; if(!j.pub || j.pub.v !== oldV) stAt = Date.now();
+      if(!j.pub || j.pub.phase === "lobby" || !j.me){ try{ lobby = (await (await fetch(`api/players?r=${encodeURIComponent(r)}`, {cache:"no-store"})).json()).players || []; }catch(e){} sig = ""; }
+      draw(); paint(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 1000); tick = setInterval(paint, 1000); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>
