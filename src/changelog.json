@@ -3,6 +3,13 @@
   "era": "6.x: Category Descriptions"
  },
  {
+  "v": "6.75",
+  "date": "2026-10-14",
+  "items": [
+   "Bidding Wars can now be bid on from phones. Turn on Phone bidding in setup: a QR code shows before the first lot, each team scans it and picks its team, then raises from its phone. Answers are still given out loud on the TV."
+  ]
+ },
+ {
   "v": "6.74",
   "date": "2026-10-11",
   "items": [

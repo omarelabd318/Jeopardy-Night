@@ -48,6 +48,14 @@ body.football input{border-color:#007E00}
 body.football .msg{background:rgba(0,0,0,.12)}
 body.football .dot{background:#fff}
 body.football .q{color:#0F2557}  /* 5.48 (Omar): the question in the same navy as the buttons (was white) */
+/* 6.75: Bidding Wars on phones, in the same black and amber as the TV */
+body.bw{--bg:#07090c;--panel:#11161c;--line:#26313b;--fg:#e8f1f2;--muted:#7d8b93;--gold:#ffb21a;--ink:#07090c;--good:#38e07b}
+.bwbig{font:800 64px/1 ui-monospace,Menlo,Consolas,monospace;color:var(--gold);text-shadow:0 0 18px rgba(255,178,26,.4);margin:6px 0 2px}
+.bwlead{font-weight:700;margin-bottom:14px}
+.bwbtns{display:grid;gap:10px;margin-top:10px}
+.bwbtns .go{margin:0;background:var(--good);color:#04160b;display:flex;justify-content:space-between;align-items:baseline}
+.bwbtns .go small{font-size:15px;opacity:.8;text-transform:none;letter-spacing:0}
+body.bw .lock .tick{color:var(--gold)}
 </style></head><body><main>
 <div class="top"><span class="me" id="me"></span><span class="score" id="score"></span></div>
 <div id="view"></div>
@@ -63,7 +71,7 @@ function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz2345
 const ord = n => n + (["th","st","nd","rd"][(n%100>10&&n%100<14)||n%10>3?0:n%10]);
 const teamMode = () => st && st.mode === "teams";
 const brand = () => st && st.fb ? "Joga Bonito" : "Jeopardy Night";   // 5.47 (Omar): Football mode is "Joga Bonito" on the TV, so here too
-function theme(){ const fb = !!(st && st.fb); document.body.classList.toggle("football", fb); document.title = brand() + ": play"; }
+function theme(){ const fb = !!(st && st.fb); document.body.classList.toggle("football", fb); document.body.classList.toggle("bw", !!(st && st.cur && st.cur.bw)); document.title = brand() + ": play"; }
 const getState = p => fetch(`api/state?r=${encodeURIComponent(r)}&p=${encodeURIComponent(p)}`, {cache:"no-store"}).then(x => x.json());
 
 async function join(n, t){
@@ -93,12 +101,39 @@ async function joinView(err){
 
 function header(){
   $("me").textContent = me.n;
-  $("score").textContent = st ? `${st.score} pts · ${ord(st.rank)} of ${st.n}` : "";
+  $("score").textContent = st ? `${st.cur && st.cur.bw ? money(st.score) : st.score + " pts"} · ${ord(st.rank)} of ${st.n}` : "";
 }
 const shownAns = (c, v) => c.kind === "order" || (c.kind === "steal" && c.ev) ? orderText(c, v) : v;   // 5.73: order steals too
+const money = v => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US");
+/* 6.75: Bidding Wars. The TV sends the lot, the current bid and who leads; a tap sends the raise back and the TV applies it if the bid hasn't moved */
+function drawBid(c){
+  const mine = st.team, lot = `<div class="eyebrow">${c.no ? `Lot ${c.no} of ${c.of} · ` : ""}${esc(c.val || "Bidding Wars")}</div>`;
+  if(c.ph === "wait"){ $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're on ${esc(me.n)}!</div><div class="hint">Watch the TV. The bid buttons appear here when the first lot opens.</div></div>`; return; }
+  if(c.ph === "over"){ $("view").innerHTML = `<div class="wait"><div class="big">Auction over</div><div class="hint">Look at the TV for the winner.</div></div>`; return; }
+  if(c.ph !== "lot"){ const us = c.buyer === mine;
+    $("view").innerHTML = `${lot}<div class="wait"><div class="big">${c.ph === "sold" || c.ph === "clue" ? `Sold to ${esc(c.bn)} for ${money(c.price)}` : "Next lot"}</div><div class="hint">${us ? "Your team bought it. Answer out loud on the TV." : `${esc(c.bn)} answers on the TV.`}</div></div>`; return; }
+  const open = !c.bid, lead = c.lead === mine, max = c.bid >= c.cap;
+  let btns = "";
+  if(lead) btns = `<div class="msg ok">Your team leads. Wait to see if anyone raises.</div>`;
+  else if(max) btns = `<div class="msg">At the maximum bid.</div>`;
+  else if(open) btns = `<div class="bwbtns"><button class="go" data-r="${c.rs[0]}">Open the bidding <small>${money(c.lo)}</small></button></div>`;
+  else { const seen = new Set(); btns = `<div class="bwbtns">${c.rs.map(r => { const a = Math.min(c.bid + r, c.cap); if(seen.has(a)) return ""; seen.add(a);
+    return `<button class="go" data-r="${r}">Bid ${money(a)} <small>+${money(r)}</small></button>`; }).join("")}</div>`; }
+  $("view").innerHTML = `${lot}<h1>${esc(c.cat)}</h1><div class="eyebrow">${open ? "Opening bid" : "Current bid"}</div><div class="bwbig">${money(open ? c.lo : c.bid)}</div>
+    <div class="bwlead">${open ? "No bids yet" : esc(c.ln) + " leads"}</div>${btns}<div class="msg" id="msg" hidden></div>
+    <p class="hint">Max bid ${money(c.cap)}. Only the winning team answers, out loud on the TV.</p>`;
+  const bt = document.querySelector(".bwbtns"); if(bt) bt.onclick = async e => { const b = e.target.closest("[data-r]"); if(!b) return; bt.querySelectorAll("button").forEach(x => x.disabled = true);
+    try{ const res = await post("bid", {r, c: c.c, t: mine, r2: +b.dataset.r, b: c.bid || 0});
+      if(!res.ok){ say(res.j.error === "closed" ? "Too late: that lot has moved on." : "That didn't go through. Try again.", "err"); }
+      else say("Bid sent. Watch the TV.", "ok"); }
+    catch(x){ say("No connection. Check your internet and try again.", "err"); }
+    setTimeout(() => { shown = ""; poll(); }, 1200); };
+}
 function draw(){
   header();
-  const c = st && st.cur, key = c ? c.c + (st.closed ? ":x" : st.mine ? ":m" : "") : "wait";
+  const c = st && st.cur;
+  if(c && c.kind === "bid" && st.team != null){ const k = JSON.stringify(c) + ":" + st.team; if(k === shown) return; shown = k; drawBid(c); return; }
+  const key = c ? c.c + (st.closed ? ":x" : st.mine ? ":m" : "") : "wait";
   if(key === shown) return;  // keep what the player is typing
   shown = key;
   const team = teamMode(), us = team ? "your team" : "you";
@@ -156,12 +191,15 @@ async function poll(){
   if(busy || document.hidden) return; busy = true;
   try{ const j = await getState(me.p);
     if(j && j.name === null){ busy = false; st = j; me = null; joinView(); return; }  // the game doesn't know this phone (a new game): join again
-    if(j && "cur" in j){ st = j; theme(); draw(); } }
+    if(j && "cur" in j){ st = j; theme(); draw();
+      const want = j.cur && j.cur.kind === "bid" ? 1000 : 2000;   // 6.75: Bidding Wars needs quicker updates
+      if(want !== every && timer){ every = want; clearInterval(timer); timer = setInterval(poll, every); } } }
   catch(e){}
   busy = false;
 }
 function stop(){ if(timer){ clearInterval(timer); timer = null; } }
-function loop(){ stop(); header(); poll(); timer = setInterval(poll, 2000); }
+let every = 2000;
+function loop(){ stop(); header(); poll(); every = 2000; timer = setInterval(poll, every); }
 document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(); });
 
 if(!r) $("view").innerHTML = `<div class="msg err">This link is missing its game code. Scan the code on the TV again.</div>`;
