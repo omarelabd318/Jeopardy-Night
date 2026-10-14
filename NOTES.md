@@ -3,7 +3,7 @@
 Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, version saved 2026-10-02)
 
 ## What's here
-- `index.html`: the whole game, v6.94. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
+- `index.html`: the whole game, v6.95. It's built from `src/` and `v4work/` by `node build.js` (see BUILD.md), with every clue built in. The setup screen offers 112 categories (one of them, NSFW, locked behind a code; The Parent Trap is hidden), plus 12 mixes in 7 groups; Football mode adds its own World Cup category on top.
 - `photos/`: 649 jpgs loaded as `photos/<key>.jpg`: 539 for Guess the Car, Actor, Footballer and Person, 30 stadium photos (`stadium-*.jpg`), and 80 Guess the Food photos (`food-*.jpg`). The game loads the food photos from the five `food-100.js` … `food-500.js` bundles; the jpgs stay because the build only adds a food clue when its jpg exists.
 - `sounds/siuuu.mp3`: the Football mode winner clip.
 - `v4work/`: the v4 build inputs. `out/<id>.json` holds each category's final clues and `out/<id>.log.md` lists what changed.
@@ -752,3 +752,4 @@ Source: https://claude.ai/artifact/X5vXepDtYQ7JTracXSmAeq (Omar's artifact, vers
 - 6.92 (2026-10-14): Omar asked for the SAHRA button at the top left to be square and smaller. It now has 2px corners, less padding and a font about two thirds the size (`.brandcorner` in the 6.84 CSS block of `src/head.html`). To undo: delete the 6.92 rule (the old values are in its comment).
 - 6.93 (2026-10-14): Omar asked for Tarneeb's title tile wall to show the number first, then the suit. Tiles now read like 5♠ (was ♠5). `modeTn` `g` in `src/title.js`. To undo: put the suit first again in that line.
 - 6.94 (2026-10-14): Omar looked at previews and asked for the themed title backgrounds to be a bit faded. The tile wall's opacity went from .3 to .17 (`#titleScreen .ghost.themed` in the 6.86 block of `src/head.html`); the previews also showed .08 as a much fainter option. Jeopardy Night's own board is unchanged. To undo: set the opacity back to .3.
+- 6.95 (2026-10-14): Omar asked for the top-left button on the title screen to say HOME instead of SAHRA. Still capitals (6.88), still takes you back to the Sahra home screen; the markup text in `#brandCorner` in `src/head.html` is "Home". To undo: change it back to "Sahra".
