@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.9",
+  "date": "2026-10-14",
+  "items": [
+   "Title screen: every Start button is white, and Full screen and Sound are back to plain white text."
+  ]
+ },
+ {
   "v": "7.8",
   "date": "2026-10-14",
   "items": [
