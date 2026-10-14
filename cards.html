@@ -4,7 +4,7 @@
 <!-- 6.79: the phone page for the card modes, at /c?r=ROOM&g=est (Estimation first). A player joins once with a name, then sees only their own hand, who is to move and the buttons for their move.
      The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact). Cards and the Classic Felt palette come from cards.js (the same file the game uses;
      build.js copies it from src/cards.js). Another card mode adds its own screen to MODES below. -->
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Limelight&family=Barlow:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{--felt:#0f6a3c;--felt2:#0a4d2b;--gold:#d8b45a;--ink:#fff;--soft:#b9d2c3;--bad:#ff9a9a;--ok:#8fe3a8;--disp:"Playfair Display",Georgia,serif}
 [hidden]{display:none!important}
@@ -51,6 +51,33 @@ body[data-look=ahwa]{--felt:#3a2616;--felt2:#24160b;--gold:#e0b45a;--soft:#d8c4a
 .b.dbl{border-color:#ff6b7d;color:#ff6b7d;width:100%}.sub2{font-size:13px;font-weight:400;display:block;opacity:.75;font-family:system-ui,sans-serif;margin-top:1px}
 .lt{display:flex;gap:3px;justify-content:center;font-size:9px}
 .tbl2{width:100%;border-collapse:collapse;font-size:15px}.tbl2 td,.tbl2 th{padding:4px 6px;text-align:center}.tbl2 td:first-child{text-align:left}
+
+/* 7.1: Texas Hold'em, Vegas Classic: walnut and gold, green felt panels, red card backs. Undo: delete these rules and MODES.hd below */
+body[data-look=vegas]{--felt:#1b8a50;--felt2:#0b4a2c;--gold:#e8c25a;--soft:#cdb98e;--disp:"Barlow","Playfair Display",Georgia,sans-serif;background:radial-gradient(circle at 50% 25%,#3a1e12,#170b06 72%) fixed}
+body[data-look=vegas] h1,body[data-look=vegas] .big{font-family:"Limelight",Georgia,serif;font-weight:400}
+body[data-look=vegas] .panel{background:rgba(20,10,5,.72)}
+.hdv{display:grid;gap:10px}
+.hdbd{display:flex;justify-content:center;gap:5px;font-size:10.5px;padding:8px 6px;border-radius:12px;background:radial-gradient(ellipse at 50% 40%,#2a9d5f,#1b8a50 55%,#0b4a2c);border:2px solid #5b2f17;box-shadow:0 0 0 2px #e8c25a}
+.hdbd .ck.slot{background:transparent;box-shadow:none;border:2px dashed rgba(255,255,255,.35)}
+.hdpt{text-align:center;font:700 16px var(--disp);color:var(--gold);margin-top:-2px}
+.hdfold{background:#3a2418!important;color:#f6ecd6!important;border-color:#8a6a2c!important}
+.hdcall{background:#1f8a52!important;color:#fff!important;border-color:#1f8a52!important}
+.hdraise{display:grid;gap:8px}.hdq{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.hdq .b{font-size:15px;padding:8px 0}
+.hdraise input[type=range]{width:100%;padding:0;border:0;background:transparent;accent-color:#e8c25a;height:34px}
+#hdgo{background:#e8c25a;color:#2a1607}
+.hdtm{height:6px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden}.hdtm i{display:block;height:100%;background:var(--gold);transform-origin:left;animation:hdtm linear forwards}
+@keyframes hdtm{to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.hdtm i{animation:none}}
+.hdhw{display:grid;gap:4px;justify-items:center;padding:6px 0 4px;-webkit-touch-callout:none}
+.hdhw.fold{opacity:.55}
+.hdhand{display:flex;gap:12px;justify-content:center;font-size:27px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:pointer}
+.hdc{position:relative;width:3.6em;aspect-ratio:5/7;transition:transform .12s}
+.hdc:first-child{transform:rotate(-4deg)}.hdc:last-child{transform:rotate(4deg)}
+.hdc .ck{position:absolute;inset:0;width:100%}
+.hdbk{position:absolute;inset:0;transition:opacity .08s}.hdbk .ck{width:100%;height:100%}
+.hdhand.peek .hdbk{opacity:0}
+.hdhelp{font:700 15px var(--disp);color:var(--gold);visibility:hidden}.hdhand.peek~.hdhelp{visibility:visible}
+.hdhint{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);opacity:.8}
 </style></head><body class="ckw" data-look="felt"><main>
 <div class="top"><span id="me"></span><span id="chip"></span></div>
 <div id="view"></div>
@@ -64,7 +91,7 @@ const P = new URLSearchParams(location.search), $ = id => document.getElementByI
 const r = P.get("r") || "", KEY = "jn_crd_" + r;
 const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
 let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
-let st = null, timer = null, busy = false, sig = "", note = null, up = null, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0;
+let st = null, timer = null, busy = false, sig = "", note = null, up = null, preHn = -1, tV = -1, tStart = 0, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0;
 const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
 function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 const signs = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
@@ -81,7 +108,7 @@ async function join(n){
 }
 function joinView(err){
   stop(); $("me").textContent = ""; $("chip").innerHTML = ""; $("hand").innerHTML = "";
-  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${{est:"Estimation", tn:"Tarneeb"}[P.get("g")] || "Card game"}</div><h1>What's your name?</h1>
+  $("view").innerHTML = `<div class="hint" style="text-transform:uppercase;letter-spacing:.1em">${{est:"Estimation", tn:"Tarneeb", hd:"Texas Hold'em"}[P.get("g")] || "Card game"}</div><h1>What's your name?</h1>
     <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="send" id="jb" style="margin-top:12px">Join</button></form>
     ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open. Your cards appear here.</p>`;
   $("nm").focus();
@@ -154,20 +181,72 @@ MODES.tn = {look:"ahwa",
 };
 const CK_T = i => i % 2;
 
+/* ---------- Texas Hold'em (g=hd): your two cards face down (hold to peek), the shared cards, the pot and the buttons for your move ---------- */
+const hdNum = n => Number(n).toLocaleString("en-US");
+const hdOrd = n => ord(n);
+MODES.hd = {look:"vegas", watch:"This game is full or already started. Look at the TV.",
+  chip(p){ return `Hand ${p.hn} · Blinds ${hdNum(p.blinds[0])}/${hdNum(p.blinds[1])}`; },
+  /* the raise amount is kept in sel.r; quick picks work it out from the pot like a pot-sized raise (call first, then raise by the pot) */
+  target(q, a){ const call = a.cur - a.bet, potAfter = a.pot + call; let to = q === "min" ? a.minTo : q === "half" ? a.cur + Math.ceil(potAfter / 2) : q === "pot" ? a.cur + potAfter : a.maxTo; return Math.max(a.minTo, Math.min(a.maxTo, to)); },
+  quick(q, a){ if(!a || a.k !== "bet" || !a.canRaise) return; sel.r = this.target(q, a); sig = ""; draw(); },
+  click(c, a){ if(c === "pre"){ preHn = preHn === st.pub.hn ? -1 : st.pub.hn; sig = ""; draw(); return; }
+    if(c === "show"){ send({k:"showcards"}); return; }
+    if(!a || a.k !== "bet") return;
+    if(c === "fold") send({k:"fold"}); else if(c === "check") send({k:"check"}); else if(c === "call") send({k:"call"});
+    else if(c === "raise"){ const to = Math.max(a.minTo, Math.min(a.maxTo, sel.r != null ? sel.r : a.minTo)); send(to >= a.maxTo ? {k:"allin"} : {k:"raise", to}); } },
+  screen(p, a, seat, mine){
+    const nm = i => esc(p.names[i]), me = seat, out = p.out[me], folded = p.folded[me];
+    if(p.phase === "over"){ const rk = p.ranks[me];
+      return {view:`<div class="wait"><div class="hint">Game over</div><div class="big ${rk === 1 ? "pos" : ""}">${rk === 1 ? "You won!" : "You finished " + hdOrd(rk)}</div><div class="panel" style="margin-top:12px"><div class="q">Your chips</div><div class="big">${hdNum(p.stacks[me])}</div></div><p class="hint">Look at the TV.</p></div>`, hand:""}; }
+    if(a && tV !== p.v){ tV = p.v; tStart = Date.now(); }
+    if(a && preHn === p.hn){ preHn = -1; const mv = a.canCheck ? {k:"check"} : {k:"fold"}; setTimeout(() => { if(st && st.pub && st.pub.v === p.v) send(mv); }, 0); }   // the Check/Fold queued before it was my turn
+    const board = `<div class="hdbd">${[0, 1, 2, 3, 4].map(k => p.board[k] ? CK.face(p.board[k]) : `<div class="ck slot"></div>`).join("")}</div>`;
+    const potLine = `Pot ${hdNum(p.pot)}${p.pots.length ? " · " + p.pots.map((x, k) => (k ? "side " : "main ") + hdNum(x.amt)).join(" · ") : ""}${p.phase === "hand" && p.cur > p.bets[me] && !out && !folded ? ` · to call ${hdNum(Math.min(p.cur - p.bets[me], p.stacks[me]))}` : ""}`;
+    let status = "";
+    if(p.phase === "show"){ const w = p.show.won[me];
+      status = `<div class="status${w > 0 ? " me" : ""}">${w > 0 ? "You win " + hdNum(w) : p.show.unc != null ? nm(p.show.unc) + " takes the pot" : "Hand over"}</div>` + (p.show.unc == null ? `<div class="hint">${p.show.pots.map(x => `${x.win.map(nm).join(" and ")} ${x.win.length > 1 ? "split" : "win"} ${hdNum(x.amt)}${x.name ? " with " + esc(x.name) : ""}`).join("<br>")}</div>` : ""); }
+    else if(p.phase === "run") status = `<div class="status">Everyone is all in. Dealing…</div>`;
+    else if(out) status = `<div class="status">You're out</div>`;
+    else if(folded) status = `<div class="status">You folded</div>`;
+    else status = `<div class="status${a ? " me" : ""}">${a ? "Your turn" : p.turn >= 0 ? nm(p.turn) + " is deciding…" : ""}</div>`;
+    if(out) status = `<div class="hint">Out in ${hdOrd(out)}</div>` + status;
+    let panel = "";
+    if(a && a.k === "bet"){
+      const left = Math.max(1, (p.secs || 0) - (Date.now() - tStart) / 1000), r = sel.r != null ? sel.r : a.minTo, allIn = r >= a.maxTo;
+      panel = `<div class="panel">${p.secs ? `<div class="hdtm"><i style="animation-duration:${left.toFixed(1)}s"></i></div>` : ""}
+        <div class="grid two"><button class="b hdfold" data-hd="fold">Fold</button>${a.canCheck ? `<button class="b hdcall" data-hd="check">Check</button>` : `<button class="b hdcall" data-hd="call">Call ${hdNum(a.toCall)}${a.allinCall ? " (all in)" : ""}</button>`}</div>
+        ${a.canRaise ? `<div class="hdraise"><div class="hdq"><button class="b" data-q="min">Min</button><button class="b" data-q="half">½ pot</button><button class="b" data-q="pot">Pot</button><button class="b" data-q="max">All in</button></div>
+          ${a.maxTo > a.minTo ? `<input type="range" id="hdr" min="${a.minTo}" max="${a.maxTo}" step="1" value="${r}" aria-label="Raise to">` : ""}
+          <button class="send" id="hdgo" data-hd="raise">${allIn ? "All in " + hdNum(a.maxTo) : (a.cur ? "Raise to " : "Bet ") + hdNum(r)}</button></div>` : ""}</div>`; }
+    else if(!out && !folded && p.phase === "hand") panel = `<button class="ghost" data-hd="pre">${preHn === p.hn ? "✓ Check / Fold queued (tap to cancel)" : "Check / Fold when it's my turn"}</button>`;
+    const flag = i => [p.dealer === i ? "D" : "", p.sb === i && p.hn ? "SB" : "", p.bb === i && p.hn ? "BB" : ""].filter(Boolean).join(" ");
+    const tbl = `<div class="tbl">${p.names.map((n, i) => { const st2 = p.out[i] ? "Out · " + hdOrd(p.out[i]) : p.folded[i] ? "Folded" : p.allin[i] ? "All in" : p.bets[i] ? "bet " + hdNum(p.bets[i]) : "", fl = flag(i);
+      return `<div class="tr${i === me ? " me" : ""}${p.turn === i && p.phase === "hand" ? " turn" : ""}"><span>${esc(n)}${fl ? ` <small>${fl}</small>` : ""}</span><small>${st2}</small><b>${hdNum(p.stacks[i])}</b></div>`; }).join("")}</div>`;
+    const reveal = mine.canShow ? `<button class="ghost" data-hd="show">Show my cards</button>` : "";
+    const hand = out && p.phase !== "show" || !mine.hand.length ? "" : `<div class="hdhw${folded ? " fold" : ""}"><div class="hdhand" id="hdh">${mine.hand.map(c => `<div class="hdc">${CK.face(c)}<div class="hdbk">${CK.back()}</div></div>`).join("")}</div>${mine.helper ? `<div class="hdhelp">You have: ${esc(mine.helper)}</div>` : ""}<div class="hdhint">Hold to peek</div></div>`;
+    return {view:`<div class="hdv">${status}${board}<div class="hdpt">${potLine}</div>${panel}${p.phase === "show" ? reveal : ""}${note ? `<div class="msg">${esc(note)}</div>` : ""}${tbl}</div>`, hand}; }
+};
+/* hold the cards to peek, let go to hide them again (and no long-press menu) */
+(() => { const on = e => { const h = e.target.closest && e.target.closest("#hdh"); if(h){ h.classList.add("peek"); e.preventDefault && e.type !== "pointerdown" && e.preventDefault(); } }, off = () => { const h = document.getElementById("hdh"); if(h) h.classList.remove("peek"); };
+  document.addEventListener("pointerdown", on); ["pointerup", "pointercancel", "pointerleave", "blur"].forEach(t => document.addEventListener(t, off, true)); window.addEventListener("blur", off);
+  document.addEventListener("contextmenu", e => { if(e.target.closest && e.target.closest(".hdhw")) e.preventDefault(); });
+  document.addEventListener("input", e => { if(e.target.id !== "hdr" || !st || !st.me || !st.me.act) return; sel.r = +e.target.value; const a = st.me.act, go = document.getElementById("hdgo"); if(go) go.textContent = sel.r >= a.maxTo ? "All in " + hdNum(a.maxTo) : (a.cur ? "Raise to " : "Bet ") + hdNum(sel.r); }); })();
+
+
 function draw(){
   const M = MODES[(st && st.pub && st.pub.g) || P.get("g")] || MODES.est;
   $("me").textContent = me.n;
   if(!st || !st.pub){ $("chip").innerHTML = ""; $("hand").innerHTML = ""; sig = "w";
     $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. Your cards will appear here.</div></div>`; return; }
   const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
-  if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">This game already has four players. Look at the TV.</div></div>`; return; }
-  const sg = [p.v, up, sel.n, sel.s, sel.e, note, sending].join("|"); if(sg === sig) return; sig = sg;
+  if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">${M.watch || "This game already has four players. Look at the TV."}</div></div>`; return; }
+  const sg = [p.v, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending].join("|"); if(sg === sig) return; sig = sg;
   const mineNow = !!a && a.turn !== false;
   if(mineNow && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
-  wasMine = mineNow; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null;
-  $("chip").innerHTML = M.chip(p); if(M.look) document.body.dataset.look = M.look;
+  wasMine = mineNow; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null; if(!a || a.k !== "bet") sel.r = null;
+  $("chip").innerHTML = M.chip(p); if(M.look) document.body.dataset.look = M.look; if(p.cfg && "four" in p.cfg) document.body.toggleAttribute("data-four", !!p.cfg.four);
   const v = $("view");
-  if(M.screen){ const h = M.screen(p, a, seat, mine); if(h != null){ $("hand").innerHTML = ""; v.innerHTML = h; return; } }
+  if(M.screen){ const h = M.screen(p, a, seat, mine); if(h != null){ const o = typeof h === "object" ? h : {view:h, hand:""}; $("hand").innerHTML = o.hand; v.innerHTML = o.view; return; } }
   if(p.phase === "over"){ const rank = 1 + p.scores.filter(x => x > p.scores[seat]).length; $("hand").innerHTML = "";
     v.innerHTML = `<div class="wait"><div class="hint">Game over</div><div class="big">You finished ${ord(rank)}</div><div class="panel" style="margin-top:12px"><div class="q">Final score</div><div class="big ${p.scores[seat] < 0 ? "neg" : ""}">${p.scores[seat]}</div></div><p class="hint">Look at the TV for the podium.</p></div>`; return; }
   if(p.phase === "scored"){ const row = p.rows[seat]; $("hand").innerHTML = "";
@@ -186,6 +265,8 @@ document.addEventListener("click", e => {
   else if(t.dataset.pass) send({k:"pass"});
   else if(t.dataset.dbl) send({k:"double"});
   else if(t.dataset.weak) send({k:"weak"});
+  else if(t.dataset.hd){ MODES.hd.click(t.dataset.hd, a); }
+  else if(t.dataset.q){ MODES.hd.quick(t.dataset.q, a); }
   else if(t.dataset.e){ sel.e = +t.dataset.e; sig = ""; draw(); }
   else if(t.dataset.est){ if(sel.e != null) send({k:"est", n:sel.e}); } });
 document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
