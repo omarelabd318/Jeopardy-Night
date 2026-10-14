@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.11",
+  "date": "2026-10-14",
+  "items": [
+   "Title screen: Start buttons are white text on the game's colour, and Full screen and Sound take the game's colours too."
+  ]
+ },
+ {
   "v": "7.10",
   "date": "2026-10-14",
   "items": [
