@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.32",
+  "date": "2026-10-15",
+  "items": [
+   "The version number on the title screen no longer has a dotted line under it."
+  ]
+ },
+ {
   "v": "7.31",
   "date": "2026-10-15",
   "items": [
