@@ -133,7 +133,7 @@ b = '<defs><radialGradient id="p" cx="50%" cy="100%" r="100%"><stop offset="0" s
 b += ''.join(f'<line x1="800" y1="{H}" x2="{800+1100*math.cos(math.pi*(1-i/18)):.0f}" y2="{H-1100*math.sin(math.pi*(1-i/18)):.0f}" stroke="#f4d58a" opacity=".18"/>' for i in range(19))
 b += ''.join(f'<circle cx="{cx}" cy="{H}" r="{rr}" fill="none" stroke="#f4d58a" stroke-width="3" opacity="{.5-rr/1500:.2f}"/>' for cx in (0, 800, 1600) for rr in range(90, 980, 80))
 out['modeTf'] = wrap(b, '#2a1248', .3)
-# Fake Artist (7.29, Omar picked the Evidence Board): cork board, polaroid sketches, red string. No text (a background image cannot load web fonts), no sticky note.
+# Fake Artist (7.29, Omar picked the Evidence Board): cork board, polaroid sketches, red string. No text (a background image cannot load web fonts), no sticky note, no captions, each picture centred on its paper (7.30).
 r = random.Random(11)
 b = f'<rect width="{W}" height="{H}" fill="#9a6a3c"/>'
 b += ''.join(f'<circle cx="{r.randint(0,W)}" cy="{r.randint(0,H)}" r="{r.uniform(1.5,5):.1f}" fill="{r.choice(["#6e4624","#b58450","#7d5330","#c49560"])}" opacity="{r.uniform(.25,.6):.2f}"/>' for _ in range(520))
@@ -144,14 +144,13 @@ sk = {
     'glass': '<path d="M66 56 h88 l-12 124 h-64 Z M72 100 h76" fill="none" stroke="#2e9e4f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>',
     'fake': '<path d="M30 160 C60 60 80 190 110 110 S150 40 190 150 M40 70 C90 40 120 100 170 60 M50 190 C90 120 130 200 180 170" fill="none" stroke="#a64dff" stroke-width="6" stroke-linecap="round"/><path d="M84 76 C84 30 146 30 146 74 C146 106 110 104 110 138" fill="none" stroke="#e6007e" stroke-width="12" stroke-linecap="round"/><circle cx="110" cy="170" r="8" fill="#e6007e"/>',
 }
-def card(x, y, rot, k, cap):
+def card(x, y, rot, k):
     return (f'<g transform="translate({x} {y}) rotate({rot})"><rect width="250" height="310" fill="#000" opacity=".28" transform="translate(10 12)"/><rect width="250" height="310" fill="#f6f3ea"/>'
-            f'<rect x="15" y="15" width="220" height="220" fill="#ecebe6"/><g transform="translate(15 15)">{sk[k]}</g>'
-            f'<path d="{cap}" fill="none" stroke="#333" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+            f'<rect x="15" y="45" width="220" height="220" fill="#ecebe6"/><g transform="translate(15 45)">{sk[k]}</g>'
             f'<circle cx="125" cy="-2" r="11" fill="#d81f2a"/><circle cx="121" cy="-6" r="3.5" fill="#fff" opacity=".6"/></g>')
 def pin(x, y, rot):
     a = math.radians(rot); return (x + 125 * math.cos(a) + 2 * math.sin(a), y + 125 * math.sin(a) - 2 * math.cos(a))
-cards = [(80, 70, -6, 'pyr', 'M60 275 q14-18 28 0 t28 0 t28 0 t28 0'), (1350, 62, 5, 'camel', 'M80 275 q12-16 24 0 t24 0 t24 0 t24 0'), (40, 545, 4, 'fake', 'M100 275 h20 M135 275 h20'), (1300, 520, -4, 'glass', 'M95 275 q10-14 20 0 t20 0 t20 0')]
+cards = [(80, 70, -6, 'pyr'), (1350, 62, 5, 'camel'), (40, 545, 4, 'fake'), (1300, 520, -4, 'glass')]
 P = [pin(*c[:3]) for c in cards]
 def string(a, c, sag): return f'<path d="M{a[0]:.0f} {a[1]:.0f} Q{(a[0]+c[0])/2:.0f} {(a[1]+c[1])/2+sag:.0f} {c[0]:.0f} {c[1]:.0f}" fill="none" stroke="#c4202b" stroke-width="3.2" stroke-linecap="round"/>'
 b += string(P[0], P[1], 170) + string(P[0], P[2], -70) + string(P[1], P[3], -60) + string(P[2], P[3], 150) + string(P[0], P[3], 120) + string(P[2], P[1], -80)
