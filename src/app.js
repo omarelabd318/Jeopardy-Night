@@ -170,8 +170,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.37`);
-  $("#verBtn").textContent = "v7.37"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.39`);
+  $("#verBtn").textContent = "v7.39"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2580,7 +2580,7 @@ document.addEventListener("fullscreenchange", fsLabel); document.addEventListene
   const hide = () => { clearTimeout(timer); on = null; tip.classList.remove("on"); };
   const show = el => {
     const [t0, ...li] = el.dataset.tip.split("\n");   // 6.40: lines after the first become a bullet list (a mix's categories)
-    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").replace(/✎/, "").trim())}</b>${esc(t0)}${li.length ? `<ul class="${li.length > 12 ? "cols" : ""}">${li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}${el.dataset.who ? `<span class="who">${esc(el.dataset.who)}</span>` : ""}`; tip.classList.add("on");
+    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").replace(/✎/, "").trim())}</b>${esc(t0)}${li.length ? `<ul class="${li.length > 12 ? "cols" : ""}">${li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}${el.dataset.who ? `<span class="who">${esc(el.dataset.who)}</span>` : ""}${el.dataset.phones ? `<span class="who">${esc(el.dataset.phones)}</span>` : ""}`; tip.classList.add("on");
     const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, m = 12;
     const x = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m), below = r.bottom + 10 + h < innerHeight - m;
     tip.style.left = x + "px"; tip.style.top = (below ? r.bottom + 10 : Math.max(m, r.top - 10 - h)) + "px"; };

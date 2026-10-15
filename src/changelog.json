@@ -1,5 +1,19 @@
 [
  {
+  "v": "7.39",
+  "date": "2026-10-15",
+  "items": [
+   "The phones line in the hover box is green, and Imposter now says phones are required."
+  ]
+ },
+ {
+  "v": "7.38",
+  "date": "2026-10-15",
+  "items": [
+   "Each mode's hover box now also says whether phones are required, optional or not needed."
+  ]
+ },
+ {
   "v": "7.37",
   "date": "2026-10-15",
   "items": [
