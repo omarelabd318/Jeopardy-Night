@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.27",
+  "date": "2026-10-15",
+  "items": [
+   "Title screen: the top parts are back exactly as they were; only the mode tiles stay anchored at the bottom."
+  ]
+ },
+ {
   "v": "7.26",
   "date": "2026-10-15",
   "items": [
