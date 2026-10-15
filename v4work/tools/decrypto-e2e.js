@@ -28,7 +28,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
   const b = await chromium.launch(), tvc = await b.newContext({viewport:{width:1920, height:1080}}), tv = await tvc.newPage();
   tv.on("pageerror", e => errs.push("TV " + e.message)); tv.on("console", m => { if(m.type() === "error" && !/Failed to load resource|ERR_/.test(m.text())) errs.push("TV " + m.text()); });
   await tv.addInitScript(fast); if(process.env.TIE) await tv.addInitScript(() => { try{ localStorage.setItem("jn_decCfg", JSON.stringify({rounds:6})); }catch(e){} }); await tv.route(/^(?!http:\/\/localhost)/, r => r.abort());
-  await tv.goto(base + "/index.html"); await tv.waitForTimeout(500); await tv.click("#modeDec"); await tv.waitForTimeout(1200);
+  await tv.goto(base + "/index.html"); await tv.waitForTimeout(500); await tv.click("#modeDec"); await tv.waitForTimeout(300); await tv.click("#modeDec"); await tv.waitForTimeout(1200);
   await tv.screenshot({path:path.join(shots, "tv-lobby-empty.png")});
   const phones = [], names = ["Mona", "Karim", "Youssef", "Nour", "Salma", "Omar"];
   for(let i = 0; i < names.length; i++){

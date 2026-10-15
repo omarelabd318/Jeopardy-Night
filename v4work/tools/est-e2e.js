@@ -28,7 +28,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
   const b = await chromium.launch(), tvc = await b.newContext({viewport:{width:1920, height:1080}}), tv = await tvc.newPage();
   tv.on("pageerror", e => errs.push("TV " + e.message)); tv.on("console", m => { if(m.type() === "error" && !/Failed to load resource|ERR_/.test(m.text())) errs.push("TV " + m.text()); });
   await tv.addInitScript(fast); await tv.route(/^(?!http:\/\/localhost)/, r => r.abort());   // no outside network: the fonts and the QR script just don't load
-  await tv.goto(base + "/index.html"); await tv.waitForTimeout(500); await tv.click("#modeEst"); await tv.waitForTimeout(1200);
+  await tv.goto(base + "/index.html"); await tv.waitForTimeout(500); await tv.click("#modeEst"); await tv.waitForTimeout(300); await tv.click("#modeEst"); await tv.waitForTimeout(1200);
   await tv.screenshot({path:path.join(shots, "tv-lobby-empty.png")});
   const phones = [];
   for(const n of ["Mona", "Karim", "Youssef", "Nour"]){

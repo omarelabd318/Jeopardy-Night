@@ -50,7 +50,8 @@ const CK = (() => {
 .ckseat.n .ckmeta{color:var(--ck-ink)}
 .ckpips{display:flex;gap:calc(var(--u)*.3)}.ckpips i{width:calc(var(--u)*.95);height:calc(var(--u)*.95);border-radius:50%;border:calc(var(--u)*.15) solid var(--ck-gold);display:block}.ckpips i.on{background:var(--ck-gold)}
 .ckfan{display:flex;font-size:calc(var(--u)*.7)}.ckfan .ck{margin-left:-2.4em}.ckfan .ck:first-child{margin-left:0}
-.cktrick{position:absolute;left:50%;top:50%;width:calc(var(--u)*27);height:calc(var(--u)*27);transform:translate(-50%,-50%);z-index:2;font-size:calc(var(--u)*1.9)}
+/* 7.37: trick cards 40% bigger so they read from the sofa (was a 27u box at 1.9u) */
+.cktrick{position:absolute;left:50%;top:50%;width:calc(var(--u)*36);height:calc(var(--u)*36);transform:translate(-50%,-50%);z-index:2;font-size:calc(var(--u)*2.65)}
 .cktrick .ck{position:absolute}
 .cktrick .s{left:50%;bottom:4%;transform:translateX(-50%) rotate(3deg)}.cktrick .n{left:50%;top:4%;transform:translateX(-50%) rotate(-4deg)}
 .cktrick .e{right:2%;top:50%;transform:translateY(-50%) rotate(8deg)}.cktrick .w{left:2%;top:50%;transform:translateY(-50%) rotate(-7deg)}
@@ -65,14 +66,15 @@ const CK = (() => {
 .cksc.lead{background:var(--ck-lead);color:#fff;box-shadow:inset 0 0 0 .15vw var(--ck-gold)}
 .cksc.neg b{color:#ff8a8a}
 /* the phone: a hand along the bottom, two overlapping rows when it is long */
-.ckhand{display:flex;flex-direction:column;gap:.3em;align-items:center;font-size:15px;padding:.4em .3em 1.2em}
+/* 7.37: bigger cards, and each row spreads across the phone's width (--k = cards in the row) instead of bunching in the middle.
+   Was: font-size:15px, a fixed overlap of -1.5em (one row) or -1.9em (two rows). */
+.ckhand{display:flex;flex-direction:column;gap:.3em;align-items:center;font-size:clamp(15px,4.6vw,20px);padding:.4em .3em 1.2em}
 .ckrow{display:flex;justify-content:center}
-.ckrow .ck{margin-left:-1.5em;transition:transform .15s}.ckrow .ck:first-child{margin-left:0}
+.ckrow .ck{margin-left:min(.2em,calc((min(100vw - 40px,26em) - 3.6em)/max(var(--k,1) - 1,1) - 3.6em));transition:transform .15s}.ckrow .ck:first-child{margin-left:0}
 .ckrow .ck.up{transform:translateY(-.9em)}
-.ckrow.two .ck{margin-left:-1.9em}.ckrow.two .ck:first-child{margin-left:0}
 `;
   const inject = look => { if(typeof document === "undefined") return; let s = document.getElementById("ckcss"); if(!s){ s = document.createElement("style"); s.id = "ckcss"; s.textContent = css; document.head.appendChild(s); } };
   const hand = (codes, o = {}) => { const n = codes.length, per = n > 7 ? Math.ceil(n / 2) : n, rows = n > 7 ? [codes.slice(0, per), codes.slice(per)] : [codes];
-    return `<div class="ckhand">${rows.map(r => `<div class="ckrow${rows.length > 1 ? " two" : ""}">${r.map(c => face(c, (o.legal && !o.legal.includes(c) ? "off " : "") + (o.up === c || (o.ups && o.ups.includes(c)) ? "up" : ""))).join("")}</div>`).join("")}</div>`; };
+    return `<div class="ckhand">${rows.map(r => `<div class="ckrow${rows.length > 1 ? " two" : ""}" style="--k:${r.length}">${r.map(c => face(c, (o.legal && !o.legal.includes(c) ? "off " : "") + (o.up === c || (o.ups && o.ups.includes(c)) ? "up" : ""))).join("")}</div>`).join("")}</div>`; };
   return {SUITS, SYM, RED, POS, code, rank, suit, label, deck, shuffle, sort, trickWinner, face, back, css, inject, hand};
 })();
