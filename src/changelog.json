@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.26",
+  "date": "2026-10-15",
+  "items": [
+   "Title screen: when you pick a mode, its title starts at the top and the mode tiles stay put at the bottom, so nothing jumps up and down."
+  ]
+ },
+ {
   "v": "7.25",
   "date": "2026-10-15",
   "items": [
