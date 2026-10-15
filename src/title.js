@@ -160,8 +160,10 @@ function ttStars(){
   requestAnimationFrame(frame);
 }
 
+function ttFit(){ const row = $("#modeRow"); if(row) row.style.zoom = Math.min(1, (innerWidth - 80) / 1400) || 1; }   // 7.45: the widest fixed row (Imposter to Hues and Cues) is about 1310px (plus margins), so a narrower window shrinks the tile rows instead of wrapping one tile alone
 function ttInit(){
   const row = $("#modeRow"); if(!row) return;
+  ttFit(); addEventListener("resize", ttFit);
   row.querySelectorAll(".modebtn").forEach(b => {
     b._go = b.id === "modeJn" ? (() => $("#play").click()) : b.onclick;
     b.onclick = e => ttPick(b, e);
