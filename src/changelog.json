@@ -1,5 +1,13 @@
 [
  {
+  "v": "7.44",
+  "date": "2026-10-15",
+  "items": [
+   "New mode: Hues and Cues. Everyone joins on their phone. One player secretly picks a shade on a board of 480 colours and gives a one-word clue; everyone taps where they think it is, then gets a second clue and a second try. Land on the shade for 300, next to it for 200, close for 100. The clue giver scores for every good guess.",
+   "The phone checks clues for you (no colour names, light or dark, numbers or positions), and if most players flag a clue it is struck."
+  ]
+ },
+ {
   "v": "7.42",
   "date": "2026-10-15",
   "items": [

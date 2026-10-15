@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hues and Cues</title>
+<!-- 7.44: the phone page for Hues and Cues, at /h?r=ROOM. A player joins once with a name. Each turn one player is the clue giver: their phone shows 4 secret shades (tap one) and a box for a one-word clue.
+     Everyone else sees the clue and a small copy of the 480-shade board: tap it to open a 7 x 5 close-up, tap the exact square, then Lock in. After the first markers the clue giver writes a second clue (one or two words)
+     and everyone places a second marker. For 5 s after a clue shows there is a Flag button. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay Taboo,
+     Fake Artist and the card modes use) and only the clue giver's own phone ever receives the secret shade (the laptop puts it in that player's private part). The banned-word check below is the same as HCR.check
+     in src/hues.js (v4work/tools/hues-test.js compares them); the word list comes from the table. Paint Chip look: white card, black Big Shoulders capitals, Share Tech Mono codes. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5f3;--ink:#111;--mute:#6b6f76;--line:#d9dbd6;--yel:#ffd23f;--me:#ff2e4c;--head:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--mono:"Share Tech Mono",ui-monospace,Menlo,monospace;--body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--ink);font:16px/1.35 var(--body);-webkit-user-select:none;user-select:none;touch-action:manipulation}
+main{max-width:520px;margin:0 auto;padding:0 14px 96px;display:grid;gap:12px;align-content:start;min-height:100dvh;grid-template-rows:auto 1fr auto}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:center;font:500 14px var(--mono);letter-spacing:.04em;padding-top:max(10px,env(safe-area-inset-top))}
+.chip{padding:2px 10px;border:2px solid var(--ink);background:#fff;font:500 13px var(--mono);white-space:nowrap;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:12px;height:12px;border-radius:50%;background:var(--me);display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #0007}
+h1{margin:6px 0;font:800 40px/1 var(--head);text-transform:uppercase;letter-spacing:.02em}
+#view{display:grid;gap:12px;align-content:start}
+.status{font:800 30px/1 var(--head);text-transform:uppercase;letter-spacing:.02em}
+.status small{display:block;font:400 14px var(--mono);text-transform:none;letter-spacing:0;color:var(--mute);margin-top:4px}
+.hint{color:var(--mute);font-size:14px}
+.tag{display:inline-block;background:var(--ink);color:var(--bg);padding:2px 8px;font:500 13px var(--mono)}
+.clue1{font:800 44px/1 var(--head);text-transform:uppercase;letter-spacing:.02em;word-break:break-word}
+.clue2{font:800 26px/1 var(--head);text-transform:uppercase;letter-spacing:.02em;color:var(--mute)}
+.btn{border:0;border-radius:0;background:var(--ink);color:var(--bg);font:800 22px var(--head);text-transform:uppercase;letter-spacing:.04em;padding:13px;width:100%;cursor:pointer}
+.btn:disabled{opacity:.35}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--ink);font-size:17px;padding:9px}
+.dock{position:fixed;left:0;right:0;bottom:0;padding:10px 14px max(12px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%);display:grid;gap:8px}
+.dock>*{max-width:492px;width:100%;margin:0 auto}
+input[type=text]{width:100%;font:800 28px var(--head);text-transform:uppercase;letter-spacing:.03em;padding:8px 10px;border:2px solid var(--ink);border-radius:0;background:#fff;color:var(--ink);-webkit-user-select:text;user-select:text}
+.msg{background:#fff;border:2px solid var(--ink);padding:8px 10px;font-size:14px}
+.msg.bad{background:#fff0f0;border-color:#c0182c;color:#8a0f1f}
+.sw{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sw button{aspect-ratio:1.5;border:3px solid #fff;box-shadow:0 0 0 2px #0003;cursor:pointer;position:relative;border-radius:0}
+.sw button[aria-pressed=true]{box-shadow:0 0 0 4px var(--ink)}
+.sw button[aria-pressed=true]::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:42px;text-shadow:0 1px 4px #000a}
+.sw button.off{opacity:.4}
+canvas{display:block;width:100%}
+.mini{background:#fff;touch-action:none}
+.mag{touch-action:none;background:#fff}
+.bar{height:6px;background:var(--line)}.bar i{display:block;height:100%;width:100%;background:var(--ink)}
+.rule{font:400 13px var(--mono);color:var(--mute)}
+.scores{display:grid;gap:4px;font:500 15px var(--mono)}
+.scores div{display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:3px 0}
+.scores i{width:13px;height:13px;border-radius:50%;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px #0007}
+.scores span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scores em{font-style:normal;color:#0a7a35}
+.wait{display:flex;gap:8px;justify-content:center;padding:30px}.dot{width:12px;height:12px;background:var(--ink);animation:b 1s infinite}.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{opacity:.2}}
+</style></head><body><main>
+<div class="top"><span id="me"></span><span id="chip"></span></div>
+<div id="view"></div>
+<div id="foot"></div>
+</main>
+<div class="dock" id="dock" hidden></div>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_hc_" + r, COLS = 30, ROWS = 16, LET = "ABCDEFGHIJKLMNOP";
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+const COL = ["#ff2e4c", "#1e90ff", "#1fcf5a", "#ffb300", "#a64dff", "#ff4fb8", "#00d4d4", "#ff7a1a", "#c6ff3d", "#8a8f98"];
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, tick = null, busy = false, sig = "", note = null, sending = false, dl = 0, tot = 30, fdl = 0, sel = null, ctr = null, pick = -1, selTid = 0, flaggedTid = 0, typed = "", typedTid = 0;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
+const colOf = (p, pub) => COL[((pub.col || {})[p] || 0) % COL.length];
+const nm = (p, pub) => esc((pub.names || {})[p] || "");
+const init = (p, pub) => ((pub.names || {})[p] || "?").trim().charAt(0).toUpperCase() || "?";
+const code = t => t ? LET[t[1]] + (t[0] + 1) : "";
+const shade = (c, r) => { const t = r / (ROWS - 1), l = 70 - t * 40, s = 92 + t * 8; return `hsl(${(c * 12) % 360} ${s.toFixed(1)}% ${l.toFixed(1)}%)`; };
+const dist = (a, b) => Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]));
+const pts = d => d === 0 ? 300 : d === 1 ? 200 : d === 2 ? 100 : 0;
+
+/* the clue check: the same as HCR.check in src/hues.js */
+const WHY = {colour:"No colour names.", light:"No light, dark or pale.", pos:"No board positions."};
+function check(text, max, ban){
+  const SET = {}; Object.keys(ban || {}).forEach(k => ban[k].split(" ").forEach(w => { SET[w] = k; }));
+  const word = w => String(w).normalize("NFD").replace(/[\u0300-\u036f\u064b-\u065f]/g, "").toLowerCase().replace(/[\u0623\u0625\u0622]/g, "\u0627").replace(/[^a-z0-9\u0600-\u06ff]+/g, "");
+  const t = String(text == null ? "" : text).trim().replace(/\s+/g, " "); if(!t) return "Type a clue.";
+  const ws = t.split(" "); if(max === 1 ? ws.length !== 1 : ws.length > 2) return max === 1 ? "One word only." : "Two words at most.";
+  for(const w of ws){ const k = SET[word(w)]; if(k) return WHY[k]; }
+  if(/\d/.test(t)) return "No numbers."; if(t.length > 24) return "Too long."; return ""; }
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n, t:null});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("chip").innerHTML = ""; $("foot").innerHTML = ""; $("dock").hidden = true;
+  $("view").innerHTML = `<div class="tag">Hues and Cues</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input type="text" id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
+    <button class="btn" id="jb" style="margin-top:12px">Join</button></form>
+    ${err ? `<div class="msg bad" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open for the whole game.</p>`;
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n); };
+}
+/* one move to the laptop. A move that names a turn (t) is resent once the phone has the newest table, as long as that turn is still the current one. */
+async function act(a){
+  if(sending || !st || !st.pub) return false; sending = true; note = null; let ok = false;
+  for(let k = 0; k < 4; k++){
+    const res = await post("crdact", {p:me.p, v:st.pub.v, a}); if(res.ok){ ok = true; break; }
+    if(res.j.error === "stale"){ await poll(true); if(!st || !st.pub || (a.t != null && st.pub.tid !== a.t)) break; continue; }
+    note = "That didn't send. Try again."; break; }
+  sending = false; sig = ""; draw(); poll(true); return ok; }
+function updateBar(){ const b = $("bar"); if(b){ b.style.width = dl ? Math.max(0, Math.min(100, (dl - Date.now()) / 1000 / tot * 100)) + "%" : "100%"; }
+  const f = $("flag"); if(f && fdl && Date.now() > fdl){ f.hidden = true; } }
+
+/* ---------- the board ---------- */
+function layout(cv, c0, r0, nc, nr, pad){ const W = cv.clientWidth, cell = Math.floor(W / nc * 10) / 10, H = Math.round(cell * nr); return {W, H, cell, c0, r0, nc, nr, pad}; }
+function paintBoard(cv, o){   // o: c0,r0,nc,nr, marks [{p,c,r,two,faint}], sel, tgt, frame, win
+  const dpr = Math.min(2, devicePixelRatio || 1), nc = o.nc || COLS, nr = o.nr || ROWS, c0 = o.c0 || 0, r0 = o.r0 || 0, W = cv.clientWidth, cell = W / nc, H = cell * nr;
+  cv.style.height = H + "px"; if(cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)){ cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+  const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H); const gp = Math.max(.6, cell * (nc < 12 ? .08 : .1));
+  for(let i = 0; i < nc; i++) for(let j = 0; j < nr; j++){ c.fillStyle = shade(i + c0, j + r0); c.fillRect(i * cell + gp / 2, j * cell + gp / 2, cell - gp, cell - gp); }
+  const X = i => (i - c0 + .5) * cell, Y = j => (j - r0 + .5) * cell;
+  if(o.frame && o.tgt){ const t = o.tgt; c.fillStyle = "rgba(244,245,243,.5)"; c.beginPath(); c.rect(0, 0, W, H); c.rect(X(t[0] + 2.5), Y(t[1] - 2.5), -5 * cell, 5 * cell); c.fill("evenodd");
+    c.strokeStyle = "#111"; c.lineWidth = Math.max(2, cell * .16); c.strokeRect(X(t[0] - 1.5), Y(t[1] - 1.5), 3 * cell, 3 * cell); c.strokeStyle = "#fff"; c.lineWidth = Math.max(1.5, cell * .08); c.strokeRect(X(t[0] - .5) + 1.5, Y(t[1] - .5) + 1.5, cell - 3, cell - 3); }
+  else if(o.tgt){ c.strokeStyle = "#fff"; c.lineWidth = 2.5; c.strokeRect(X(o.tgt[0] - .5) + 1, Y(o.tgt[1] - .5) + 1, cell - 2, cell - 2); c.strokeStyle = "#111"; c.lineWidth = 1; c.strokeRect(X(o.tgt[0] - .5), Y(o.tgt[1] - .5), cell + 0, cell + 0); }
+  (o.marks || []).forEach(m => { if(m.c < c0 || m.c >= c0 + nc || m.r < r0 || m.r >= r0 + nr) return; const x = X(m.c), y = Y(m.r), R = Math.max(3.4, cell * (nc < 12 ? .34 : .5)); c.globalAlpha = m.faint ? .55 : 1;
+    c.beginPath(); c.arc(x, y, R + 1.4, 0, 7); c.fillStyle = "#fff"; c.fill(); c.beginPath(); c.arc(x, y, R, 0, 7); c.fillStyle = m.col; c.fill();
+    if(R > 6){ c.fillStyle = "#fff"; c.font = `800 ${R * 1.1}px system-ui,sans-serif`; c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(m.i, x, y + R * .05); } c.globalAlpha = 1; });
+  if(o.sel){ const x = X(o.sel[0] - .5), y = Y(o.sel[1] - .5); if(o.sel[0] >= c0 && o.sel[0] < c0 + nc && o.sel[1] >= r0 && o.sel[1] < r0 + nr){ c.strokeStyle = "#fff"; c.lineWidth = Math.max(2.5, cell * .12); c.strokeRect(x + 1.5, y + 1.5, cell - 3, cell - 3); c.strokeStyle = "#111"; c.lineWidth = 1.2; c.strokeRect(x, y, cell, cell); } }
+  if(o.win){ c.strokeStyle = "#111"; c.lineWidth = 2; const x = (o.win.c0 - c0) * cell, y = (o.win.r0 - r0) * cell; c.strokeRect(x, y, o.win.nc * cell, o.win.nr * cell); c.strokeStyle = "#fff"; c.lineWidth = 1; c.strokeRect(x - 1.5, y - 1.5, o.win.nc * cell + 3, o.win.nr * cell + 3); } }
+function marksOf(p, m, faintAll){ return Object.keys(m || {}).map(q => ({p:q, c:m[q][0], r:m[q][1], col:colOf(q, p), i:init(q, p), faint:faintAll && q !== me.p})); }
+function winAt(c, r){ const c0 = Math.max(0, Math.min(COLS - 7, c - 3)), r0 = Math.max(0, Math.min(ROWS - 5, r - 2)); return {c0, r0, nc:7, nr:5}; }
+function boardHtml(){ return `<canvas class="mini" id="mini"></canvas><div class="rule" id="selline">Tap the board to zoom in.</div><canvas class="mag" id="mag"></canvas>`; }
+function armGuess(p, mine){
+  const mini = $("mini"), mag = $("mag"); if(!mini) return;
+  const w = () => ctr || {c0:11, r0:5, nc:7, nr:5};
+  const m1 = p.ph === "g2" ? marksOf(p, p.m1, true) : [];
+  const paint = () => { const wn = w(); paintBoard(mini, {marks:m1, sel, win:wn});
+    paintBoard(mag, {c0:wn.c0, r0:wn.r0, nc:7, nr:5, marks:m1, sel}); const sl = $("selline"); if(sl) sl.textContent = sel ? `Your pick: ${LET[sel[1]]}${sel[0] + 1}` : "Tap the board to zoom in, then tap a square."; const lb = $("lock"); if(lb) lb.disabled = !sel || sending; };
+  const at = (cv, e, nc, nr, c0, r0) => { const b = cv.getBoundingClientRect(); return [c0 + Math.max(0, Math.min(nc - 1, Math.floor((e.clientX - b.left) / b.width * nc))), r0 + Math.max(0, Math.min(nr - 1, Math.floor((e.clientY - b.top) / b.height * nr)))]; };
+  mini.onpointerdown = e => { e.preventDefault(); const q = at(mini, e, COLS, ROWS, 0, 0); ctr = winAt(q[0], q[1]); sel = q; selTid = p.tid; paint(); };
+  mag.onpointerdown = e => { e.preventDefault(); const wn = w(); sel = at(mag, e, 7, 5, wn.c0, wn.r0); selTid = p.tid; paint(); };
+  paint(); }
+
+/* ---------- screens ---------- */
+function scoreList(p, deltas){ const ids = Object.keys(p.names || {}).sort((a, b) => ((p.scores || {})[b] || 0) - ((p.scores || {})[a] || 0));
+  return `<div class="scores">${ids.map(x => `<div><i style="background:${colOf(x, p)}"></i><span>${nm(x, p)}${x === p.giver && p.ph !== "over" && p.ph !== "lobby" ? " · giver" : ""}</span>${deltas && deltas[x] ? `<em>+${deltas[x]}</em>` : ""}<b>${(p.scores || {})[x] || 0}</b></div>`).join("")}</div>`; }
+function dockSet(html){ const d = $("dock"); d.innerHTML = html; d.hidden = !html; }
+function draw(){
+  if(!me){ return; } const v = $("view"), p = st && st.pub; $("me").textContent = me.n; 
+  if(!p){ $("chip").innerHTML = ""; dockSet(""); v.innerHTML = `<div class="status">Waiting for the game<small>The host hasn't started yet.</small></div><div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; return; }
+  const mineCol = colOf(me.p, p); $("chip").innerHTML = `<span class="chip"><i style="background:${mineCol}"></i>${(p.scores || {})[me.p] || 0}</span>`;
+  if(p.tid !== selTid && (p.ph === "g1" || p.ph === "g2" || p.ph === "pick" || p.ph === "pick2")){ if(p.tid !== selTid){ sel = null; ctr = null; } }
+  const key = JSON.stringify([p.v, sel, ctr, note, sending, flaggedTid, pick, typedTid === p.tid ? typed : ""]); if(key === sig && p.ph !== "reveal"){ return; } sig = key;
+  const giver = p.giver === me.p, tg = st.me && st.me.tgt, clues = (p.c1 ? `<div class="clue1">${esc(p.c1)}</div>` : "") + (p.c2 ? `<div class="clue2">${esc(p.c2)}</div>` : "");
+  const err = note ? `<div class="msg bad">${esc(note)}</div>` : "";
+  if(p.ph === "lobby"){ dockSet(""); v.innerHTML = `<div class="status">You're in<small>${Object.keys(p.names || {}).length} joined. Waiting for the host to start.</small></div>${scoreList(p)}`; return; }
+  if(p.ph === "over"){ dockSet(""); const win = (p.winners || []).includes(me.p); v.innerHTML = `<div class="status">${win ? "You win!" : "Game over"}<small>${(p.winners || []).map(x => nm(x, p)).join(" and ")} ${p.winners && p.winners.length > 1 ? "share the best eye" : "has the best eye"}</small></div>${scoreList(p)}`; return; }
+  const head = `<div><span class="tag">Turn ${p.turn} of ${p.turns}</span> <span class="tag" style="background:${colOf(p.giver, p)}">${nm(p.giver, p)}</span></div>`;
+  const bar = p.left != null && p.tot ? `<div class="bar"><i id="bar"></i></div>` : "";
+  if(p.ph === "pick" && giver){
+    const card = (st.me && st.me.card) || [], first = !tg, rej = p.rej ? `<div class="msg bad">${esc(p.rej)}</div>` : "", live = check(typedTid === p.tid ? typed : "", 1, p.ban), shown = typed && typedTid === p.tid ? live : "";
+    v.innerHTML = `${head}<div class="status">You give the clue<small>${first ? "Tap the shade you'll hint at, then type one word." : "Your clue was struck. Type a new one-word clue."}</small></div>${rej}
+      ${first ? `<div class="sw">${card.map((q, i) => `<button data-i="${i}" aria-pressed="${pick === i}" class="${pick >= 0 && pick !== i ? "off" : ""}" style="background:${shade(q[0], q[1])}" aria-label="Shade ${i + 1}"></button>`).join("")}</div>` : `<div class="swone" style="height:70px;background:${shade(tg[0], tg[1])}"></div>`}
+      <input type="text" id="cl" maxlength="24" autocomplete="off" autocapitalize="off" enterkeyhint="send" placeholder="One word" value="${esc(typedTid === p.tid ? typed : "")}"><div class="rule">One word. No colour names, light or dark, numbers or positions.${shown ? `<br><b style="color:#c0182c">${esc(shown)}</b>` : ""}</div>${bar}${err}`;
+    dockSet(`<button class="btn" id="send" ${(!first || pick >= 0) && !live ? "" : "disabled"}>Send clue</button>`);
+    $("cl").oninput = e => { typed = e.target.value; typedTid = p.tid; const why = check(typed, 1, p.ban), s = $("send"); s.disabled = !!why || (first && pick < 0); const rl = document.querySelector(".rule"); rl.innerHTML = "One word. No colour names, light or dark, numbers or positions." + (typed && why ? `<br><b style="color:#c0182c">${esc(why)}</b>` : ""); };
+    document.querySelectorAll(".sw button").forEach(b => b.onclick = () => { pick = +b.dataset.i; sig = ""; draw(); });
+    $("send").onclick = () => { if(check(typed, 1, p.ban)) return; act({k:"pick", t:p.tid, i:first ? pick : 0, w:typed}).then(() => { typed = ""; }); };
+    return; }
+  if(p.ph === "pick2" && giver){
+    const rej = p.rej ? `<div class="msg bad">${esc(p.rej)}</div>` : "", live = check(typedTid === p.tid ? typed : "", 2, p.ban);
+    v.innerHTML = `${head}<div class="status">Clue 2<small>One or two words. The first markers are on the board.</small></div>${rej}${clues}<canvas class="mini" id="mini"></canvas><div class="rule">Your shade is ${code(tg)} (outlined). Pale rings are the first markers.</div>
+      <input type="text" id="cl" maxlength="24" autocomplete="off" autocapitalize="off" enterkeyhint="send" placeholder="One or two words" value="${esc(typedTid === p.tid ? typed : "")}"><div class="rule">No colour names, light or dark, numbers or positions.</div>${bar}${err}`;
+    paintBoard($("mini"), {marks:marksOf(p, p.m1, false), tgt:tg}); dockSet(`<button class="btn" id="send" ${live ? "disabled" : ""}>Send clue 2</button>`);
+    $("cl").oninput = e => { typed = e.target.value; typedTid = p.tid; const why = check(typed, 2, p.ban); $("send").disabled = !!why; };
+    $("send").onclick = () => { if(check(typed, 2, p.ban)) return; act({k:"clue2", t:p.tid, w:typed}).then(() => { typed = ""; }); };
+    return; }
+  if(p.ph === "pick" || p.ph === "pick2"){ dockSet(""); v.innerHTML = `${head}<div class="status">${nm(p.giver, p)} is ${p.ph === "pick" ? "choosing a shade and a clue" : "writing clue 2"}<small>${p.rej ? "The last clue was flagged." : "Get ready to guess."}</small></div>${clues}${p.ph === "pick2" ? `<canvas class="mini" id="mini"></canvas>` : ""}${bar}${scoreList(p)}`; if(p.ph === "pick2") paintBoard($("mini"), {marks:marksOf(p, p.m1, false)}); return; }
+  if(p.ph === "g1" || p.ph === "g2"){
+    const locked = (p.locked || []).includes(me.p), second = p.ph === "g2";
+    if(giver){ dockSet(""); v.innerHTML = `${head}<div class="status">Guessing<small>${(p.locked || []).length} of ${Object.keys(p.names).length - 1} have placed a marker. Your shade is ${code(tg)}.</small></div>${clues}${second ? `<canvas class="mini" id="mini"></canvas>` : ""}${bar}`; if(second) paintBoard($("mini"), {marks:marksOf(p, p.m1, false), tgt:tg}); return; }
+    const canFlag = p.fl > 0 && flaggedTid !== p.tid && !locked && fdl > Date.now();
+    v.innerHTML = `${head}<div class="status">${locked ? "Locked in" : "Place your marker"}<small>${locked ? "Waiting for the others…" : second ? "Second clue: move toward or away from the first markers." : "Tap the board, then the exact square."}</small></div>${clues}${bar}${err}
+      ${canFlag ? `<button class="btn alt" id="flag">Flag this clue</button>` : ""}${locked ? `<canvas class="mini" id="mini"></canvas>` : boardHtml()}`;
+    if(locked){ paintBoard($("mini"), {marks:marksOf(p, second ? {...(p.m1 || {})} : {}, true), sel:null}); dockSet(""); }
+    else { armGuess(p); dockSet(`<button class="btn" id="lock" disabled>Lock in</button>`); $("lock").disabled = !sel; $("lock").onclick = () => { if(!sel) return; const [c, rr] = sel; act({k:"mark", t:p.tid, c, r:rr}); }; }
+    const f = $("flag"); if(f) f.onclick = () => { flaggedTid = p.tid; act({k:"flag", t:p.tid}); };
+    return; }
+  if(p.ph === "reveal"){ dockSet(""); const d = (p.deltas || {})[me.p] || 0, t = p.tgt, mine = [p.m1 && p.m1[me.p], p.m2 && p.m2[me.p]].filter(Boolean);
+    let line = giver ? `${d} points for your clue` : mine.length ? mine.map(m => { const k = t ? dist(m, t) : 9; return k === 0 ? "exact! 300" : k === 1 ? "inside the frame 200" : k === 2 ? "just outside 100" : "missed 0"; }).join(" · ") : "no marker this turn";
+    if(p.kind === "skip") line = "This turn was skipped. No points.";
+    v.innerHTML = `${head}<div class="status">${giver ? "Your clue scored" : d ? "+" + d : "Nothing this time"}<small>${esc(line)}</small></div>${clues}${t ? `<div class="rule">The shade was ${code(t)}. Frame = 3 × 3 around it.</div><canvas class="mini" id="mini"></canvas>` : ""}${scoreList(p, p.deltas)}`;
+    if(t) paintBoard($("mini"), {marks:marksOf(p, p.m1, false).concat(Object.keys(p.m2 || {}).map(q => ({p:q, c:p.m2[q][0], r:p.m2[q][1], col:colOf(q, p), i:init(q, p)}))), tgt:t, frame:true}); return; }
+}
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v) note = note && st && st.pub && j.pub && st.pub.tid === j.pub.tid ? note : null; st = j;
+      const p = j.pub; if(p && p.left != null){ tot = p.tot || 30; dl = Date.now() + p.left * 1000 - (j.ago || 0); } else dl = 0; fdl = p && p.fl ? Date.now() + p.fl * 1000 - (j.ago || 0) : 0;
+      draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 500); tick = setInterval(updateBar, 250); }
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer) poll(true); });
+addEventListener("resize", () => { sig = ""; draw(); });
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

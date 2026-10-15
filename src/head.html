@@ -857,6 +857,74 @@ body.tbmode .wrap{max-width:none;padding:0}
 #tbo .tbbuzz em{font:600 calc(var(--u)*2.4)/1 var(--tb-body);font-style:normal;color:#fff;opacity:.9}
 @keyframes tbpop{from{transform:scale(1.15);opacity:0}}
 @media (prefers-reduced-motion:reduce){#tbo .tbonair.lit,#tbo .tbbuzz{animation:none}}
+/* 7.44 (Omar): Hues and Cues, Paint Chip look (his pick of three previews: Paint Chip, Gallery Night, Mashrabiya Tiles; the other two were left out): a paint shop's colour fan, white card, square chips with white gaps,
+   black Big Shoulders capitals and Share Tech Mono codes. Vivid shades at his request. The TV is one stage sized by --u (100 units = the screen's width at 16:9) with the board as big as the header and the player strip allow.
+   hues.html (the phones) uses the same palette. To remove: delete this block, the #hco section and the Hues and Cues button. */
+#titleScreen #modeRow .modebtn.hcbbtn{font:800 25px "Big Shoulders Display","Arial Narrow",Impact,sans-serif;letter-spacing:.03em;text-transform:uppercase;background:#f4f5f3 linear-gradient(90deg,#ff2e4c,#ff7a1a,#ffd23f,#1fcf5a,#00d4d4,#1e90ff,#a64dff,#ff4fb8) bottom/100% 7px no-repeat;color:#111;border:2.5px solid #111;border-radius:0;box-shadow:5px 5px 0 #111;padding:10px 26px 15px}
+body.hcmode{min-height:100vh;background:#f4f5f3}
+body.hcmode .wrap{max-width:none;padding:0}
+#hco{--hc-ink:#111;--hc-paper:#f4f5f3;--hc-mute:#6b6f76;--hc-yel:#ffd23f;--hc-head:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--hc-mono:"Share Tech Mono",ui-monospace,Menlo,monospace;--hc-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--hc-ink);font-family:var(--hc-body);background:var(--hc-paper);min-height:100vh}
+#hco [hidden]{display:none!important}
+#hco .hctools{display:flex;gap:8px;justify-content:flex-end;padding:6px 10px 0}
+#hco .hcbtn{font:800 20px var(--hc-head);letter-spacing:.04em;text-transform:uppercase;padding:9px 22px;border:2.5px solid var(--hc-ink);background:var(--hc-ink);color:var(--hc-paper);cursor:pointer;border-radius:0}
+#hco .hcbtn.go{background:var(--hc-yel);color:var(--hc-ink)}
+#hco .hcbtn.ghost{background:transparent;color:var(--hc-ink)}
+#hco .hcbtn.small{font-size:16px;padding:5px 14px}
+#hco .hcbtn:disabled{opacity:.4;cursor:default}
+#hco .gap{flex:1}
+#hco .hchead{padding:14px 24px 0}
+#hco .hcbadge{display:inline-block;font:500 14px var(--hc-mono);letter-spacing:.14em;text-transform:uppercase;background:var(--hc-ink);color:var(--hc-paper);padding:2px 12px}
+#hco h1{margin:10px 0 6px;font:800 clamp(48px,7vw,92px)/.95 var(--hc-head);text-transform:uppercase;letter-spacing:.02em;border-bottom:8px solid transparent;border-image:linear-gradient(90deg,#ff2e4c,#ff7a1a,#ffd23f,#1fcf5a,#00d4d4,#1e90ff,#a64dff,#ff4fb8) 1;display:inline-block;padding-bottom:4px}
+#hco .sub{margin:8px 0 14px;max-width:64ch;color:#333;font-size:19px}
+#hco .hcgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start;padding:0 24px 20px}
+#hco .hcpanel{background:#fff;border:2.5px solid var(--hc-ink);padding:16px 18px;display:grid;gap:10px;box-shadow:6px 6px 0 var(--hc-ink)}
+#hco .hceye{font:500 14px var(--hc-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hc-mute)}
+#hco .note{margin:0;font-size:15px;color:#333}
+#hco .note.warn{color:#c0182c}
+#hco .hcqr{background:#fff;padding:10px;width:fit-content;border:2px solid var(--hc-ink)}
+#hco .hcseg{display:flex;flex-wrap:wrap;gap:6px}
+#hco .hcseg button{font:800 20px var(--hc-head);letter-spacing:.03em;padding:4px 16px;border:2px solid var(--hc-ink);background:#fff;color:var(--hc-ink);cursor:pointer;border-radius:0}
+#hco .hcseg button[aria-pressed=true]{background:var(--hc-ink);color:var(--hc-paper)}
+#hco .hcnames{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+#hco .hcnames li button{font:600 16px var(--hc-body);padding:4px 12px;border:2px solid var(--hc-ink);background:#fff;color:var(--hc-ink);cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+#hco i{display:inline-block;width:.85em;height:.85em;border-radius:50%;flex:none;font-style:normal;border:2px solid #fff;box-shadow:0 0 0 1px #0008}
+/* the TV */
+#hco .hctv{container-type:size;height:calc(100vh - 38px);min-height:0}
+#hco .hcin{--u:min(1cqw,1.78cqh);width:100%;height:100%;display:flex;flex-direction:column;gap:calc(var(--u)*.5);padding:calc(var(--u)*.6) calc(var(--u)*1.4) calc(var(--u)*.6);overflow:hidden;font-size:calc(var(--u)*1.5)}
+#hco .hctop{display:flex;align-items:center;gap:calc(var(--u)*2);min-height:calc(var(--u)*5)}
+#hco .hcclue{flex:1;display:flex;align-items:baseline;gap:calc(var(--u)*1.6);flex-wrap:wrap;min-width:0}
+#hco .hcwho{font:500 calc(var(--u)*1.45) var(--hc-mono);white-space:nowrap}
+#hco .hctag{display:inline-block;color:#fff;padding:0 calc(var(--u)*.6);text-shadow:0 1px 2px #0007}
+#hco .hcc1{font:800 calc(var(--u)*4.6)/1 var(--hc-head);text-transform:uppercase;letter-spacing:.02em}
+#hco .hcc1.soft{font-size:calc(var(--u)*2.2);color:var(--hc-mute)}
+#hco .hcc2{font:800 calc(var(--u)*3)/1 var(--hc-head);text-transform:uppercase;color:var(--hc-mute)}
+#hco .hctarget{display:flex;align-items:center;gap:calc(var(--u)*.8);font:500 calc(var(--u)*1.5) var(--hc-mono)}
+#hco .hctarget b{font:800 calc(var(--u)*4) var(--hc-head)}
+#hco .hctarget i{width:calc(var(--u)*3.2);height:calc(var(--u)*3.2);border-radius:0;border:2px solid #111;box-shadow:none}
+#hco .hcctl{display:flex;gap:calc(var(--u)*.8);align-items:center}
+#hco .hcctl .hcbtn{font-size:calc(var(--u)*1.8);padding:calc(var(--u)*.4) calc(var(--u)*1.2)}
+#hco .hcmain{flex:1;min-height:0;display:flex;gap:calc(var(--u)*1.2)}
+#hco .hcboard{flex:1;min-width:0;min-height:0}
+#hco .hcboard canvas{display:block;width:100%;height:100%}
+#hco .hcfoot{width:calc(var(--u)*14);flex:none;display:flex;flex-direction:column;gap:calc(var(--u)*1);justify-content:center}
+#hco .hcstrip{display:flex;flex-direction:column;gap:calc(var(--u)*.9);font:500 calc(var(--u)*1.5) var(--hc-mono)}
+#hco .hcp{display:flex;align-items:center;gap:calc(var(--u)*.5);min-width:0}
+#hco .hcp span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+#hco .hcp b{order:3}
+#hco .hcp.giver span{background:var(--hc-ink);color:var(--hc-paper);padding:0 calc(var(--u)*.5)}
+#hco .hcp b{font-weight:400;font-variant-numeric:tabular-nums}
+#hco .hcp em{font-style:normal;color:#0a7a35;font-weight:700}
+#hco .hcp u{text-decoration:none;color:#0a7a35;font-weight:700}
+#hco .hchint{margin:0;font:400 calc(var(--u)*1.3) var(--hc-mono);color:var(--hc-mute)}
+#hco .hcbar{flex:none;height:calc(var(--u)*.5);background:#d9dbd6}#hco .hcbar i{display:block;height:100%;width:100%;background:var(--hc-ink);border:0;box-shadow:none;border-radius:0}
+#hco .hcover{flex:1;display:grid;align-content:center;justify-items:center;gap:calc(var(--u)*2)}
+#hco .hcwin{font:800 calc(var(--u)*9)/1 var(--hc-head);text-transform:uppercase;text-align:center}
+#hco .hcwin span{display:block;font:500 calc(var(--u)*2) var(--hc-mono);text-transform:none;color:var(--hc-mute);margin-top:calc(var(--u)*.6)}
+#hco .hcplace{list-style:none;margin:0;padding:0;display:grid;gap:calc(var(--u)*.5);min-width:calc(var(--u)*34);font:500 calc(var(--u)*2.2) var(--hc-mono)}
+#hco .hcplace li{display:flex;gap:calc(var(--u)*1);align-items:center;border-bottom:2px solid #111;padding:2px 0}
+#hco .hcplace li span{flex:1}
+#hco .hcplace b{font:800 calc(var(--u)*3) var(--hc-head)}
+#hco .hcplace em{font-style:normal}
 /* 7.23 (Omar): Fake Artist, Street Wall look (his pick of three previews: Sketchbook, Gallery Opening, Street Wall; the other two were left out): concrete wall, paper canvas, spray-glow lines, Bungee and marker lettering,
    yellow and magenta. The TV is one stage sized by --u (100 units = the screen's width at 16:9). draw.html (the phones) uses the same palette. To remove: delete this block, the #fao section and the Fake Artist button. */
 #titleScreen #modeRow .modebtn.fabbtn{font:400 21px Impact,"Arial Narrow Bold",sans-serif;   /* 7.33 (Omar: "dont touch fake artist"): kept as it looked while Google Fonts were broken (Bungee never loaded, so it showed Impact). Was "Bungee",Impact,sans-serif */
@@ -1927,9 +1995,9 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <p class="note" id="fsNote" hidden></p>
       </div>
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. 6.84: Jeopardy Night is the first one. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button></div>
+      <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn hcbbtn" id="modeHc" data-phones="Phones required, one per player" data-who="Solo · 3 to 10 players · best with 5 to 8" data-tip="Find the secret shade: one player gives a word, everyone taps their guess on a 480-colour board.">Hues and Cues</button><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button></div>
       <!-- 6.84: the categories and version line moved from the top of the title screen to under the modes -->
-      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.42</button>
+      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.44</button>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -1997,6 +2065,11 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
     <div class="fatools"><button class="fabtn ghost small fsbtn">Full screen</button><button class="fabtn ghost small" id="faHome">Title screen</button></div>
     <div id="faBody"></div>
   </section>
+  <!-- 7.44: Hues and Cues (src/hues.js, hues.html). To remove: delete this section, the 7.44 CSS block and the Hues and Cues button -->
+  <section id="hco" hidden>
+    <div class="hctools"><button class="hcbtn ghost small fsbtn">Full screen</button><button class="hcbtn ghost small" id="hcHome">Title screen</button></div>
+    <div id="hcBody"></div>
+  </section>
   <!-- 7.0: For Sale? (src/forsale.js, sale.html). To remove: delete this section, the 7.0 CSS block and the For Sale? button -->
   <section id="slo" hidden>
     <div class="sltools"><button class="slbtn ghost small fsbtn">Full screen</button><button class="slbtn ghost small" id="slHome">Title screen</button></div>
@@ -2014,7 +2087,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v7.42</div>
+      <div class="eyebrow verlabel">v7.44</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
