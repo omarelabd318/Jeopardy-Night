@@ -40,7 +40,7 @@ const TT = {
     bg:"radial-gradient(ellipse at 50% 40%,#3b2416,#1a0f09 75%)", base:"#1a0f09", g:{c:7,r:5,f:(r,c)=>{const t=["K","Q","A","★","LIAR!","1 in 6","BUST"][(r*3+c)%7];return [t,t==="LIAR!"||t==="BUST"?"#d8342a":"#1a0f09","#f0e2c2"]},font:'"Rye",serif',rad:"8px",bd:"#c9a24a"}},
   modeFa:{t:["Fake","Artist"], ff:'"Bungee",Impact,sans-serif', fw:400, c1:"#ffe600", c2:"#f2f2f2", k:.85, ink:"#f2f2f2",
     sh:".06em .06em 0 #e6007e", tag:"One line each. One of you is faking it.", s:["#ffe600","#111","#e6007e"],
-    bg:"linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/34px 17px,linear-gradient(rgba(0,0,0,.25) 2px,transparent 2px) 0 0/34px 17px,radial-gradient(circle at 20% 20%,#4a4a50,#2b2b30)", base:"#2b2b30", g:{c:6,r:4,t:["~","?","FAKE","✎","~","?"],bg:"#2f2f33",ink:"#ffe600",bd:"#e6007e",font:'"Bungee",sans-serif',rad:"4px"}},
+    bg:"linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/34px 17px,linear-gradient(rgba(0,0,0,.25) 2px,transparent 2px) 0 0/34px 17px,radial-gradient(circle at 20% 20%,#4a4a50,#2b2b30)", base:"#2a1a0e", g:{c:6,r:4,t:["~","?","FAKE","✎","~","?"],bg:"#2f2f33",ink:"#ffe600",bd:"#e6007e",font:'"Bungee",sans-serif',rad:"4px"}},
   modeTb:{t:["Taboo"], ff:'"Bungee",Impact,sans-serif', fw:400, c1:"#fbeedd", k:1, ink:"#fbeedd",
     sh:"0 0 .3em rgba(227,38,59,.75)", tag:"Describe it. Don't say it.", s:["#f2c14e","#170509","#f2c14e"],
     bg:"radial-gradient(ellipse at 50% 0%,#4a1420,#2a0b12 58%,#170509)", base:"#170509", g:{c:6,r:4,t:["TABOO","SAY IT","BUZZ!","ON AIR","NO!","GUESS"],bg:"#2a0b12",ink:"#f2c14e",bd:"#e3263b",font:'"Bungee",sans-serif',rad:"6px"}},
