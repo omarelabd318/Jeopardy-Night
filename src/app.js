@@ -2580,7 +2580,7 @@ document.addEventListener("fullscreenchange", fsLabel); document.addEventListene
   const hide = () => { clearTimeout(timer); on = null; tip.classList.remove("on"); };
   const show = el => {
     const [t0, ...li] = el.dataset.tip.split("\n");   // 6.40: lines after the first become a bullet list (a mix's categories)
-    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").replace(/✎/, "").trim())}</b>${esc(t0)}${li.length ? `<ul class="${li.length > 12 ? "cols" : ""}">${li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`; tip.classList.add("on");
+    tip.innerHTML = `<b>${esc(el.textContent.replace(/teams only$/, "").replace(/✎/, "").trim())}</b>${esc(t0)}${li.length ? `<ul class="${li.length > 12 ? "cols" : ""}">${li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}${el.dataset.who ? `<span class="who">${esc(el.dataset.who)}</span>` : ""}`; tip.classList.add("on");
     const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight, m = 12;
     const x = Math.min(Math.max(m, r.left + r.width / 2 - w / 2), innerWidth - w - m), below = r.bottom + 10 + h < innerHeight - m;
     tip.style.left = x + "px"; tip.style.top = (below ? r.bottom + 10 : Math.max(m, r.top - 10 - h)) + "px"; };
