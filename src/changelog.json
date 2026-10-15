@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.23",
+  "date": "2026-10-15",
+  "items": [
+   "Jeopardy Night's Start game button, headings and the clue-count line always use their own font, even when the web fonts are slow to load."
+  ]
+ },
+ {
   "v": "7.22",
   "date": "2026-10-15",
   "items": [
