@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.28",
+  "date": "2026-10-15",
+  "items": [
+   "Title screen: every mode gets the same amount of room for its title, tagline and Start button (all centred in it), so the mode tiles never move."
+  ]
+ },
+ {
   "v": "7.27",
   "date": "2026-10-15",
   "items": [
