@@ -27,6 +27,7 @@
 //   6.79: card modes (Estimation first). The laptop is the referee: POST /api/crd {r,crd:{pub,priv:{player:{hand,act}}}} posts the table (pub = what everyone sees, priv = each phone's own hand and the move it may make);
 //   a phone reads GET /api/crdstate?r&p -> {name, pub, me} (only its own priv) and sends a move with POST /api/crdact {r,p,v,a} (v = the table version it saw); the laptop reads the moves in order with
 //   GET /api/crdacts?r&since -> {n, acts:[{p,v,a}]}. The shared phone page is /c (cards.html).
+//   7.23: Fake Artist uses the same generic crd routes (the laptop posts the canvas and each player's own card, phones send seen / stroke / vote / guess moves); its phone page is /w (draw.html).
 //   7.4: Taboo uses the same generic crd routes (the laptop posts the table and, in each player's private part, the card only the describer and the opposing phones may see; phones send start / got / skip / buzz moves);
 //   crdstate also returns "ago" (ms since the laptop posted the table) so a phone can run the clock without trusting its own clock against the laptop's. Its phone page is /t (taboo.html).
 //   7.1: Liar's Bar uses the same generic crd routes (the laptop posts the table and each player's hand, phones send play / liar moves); its phone page is /l (liars.html).
@@ -189,6 +190,7 @@ export class Room extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === "/w") return env.ASSETS.fetch(new Request(new URL("/draw" + url.search, url), req));  // 7.23: Fake Artist phone page
     if (url.pathname === "/t") return env.ASSETS.fetch(new Request(new URL("/taboo" + url.search, url), req));  // 7.4: Taboo phone page
     if (url.pathname === "/l") return env.ASSETS.fetch(new Request(new URL("/liars" + url.search, url), req));  // 7.1: Liar's Bar phone page
     if (url.pathname === "/n") return env.ASSETS.fetch(new Request(new URL("/cn" + url.search, url), req));  // 6.82: Codenames phone page
@@ -250,7 +252,7 @@ export default {
       b = { crd: i };
     } else if (op === "crdact") {
       const p = String(b.p || ""), a = b.a;
-      if (!ROOM.test(p) || !Number.isInteger(b.v) || !a || typeof a !== "object" || JSON.stringify(a).length > 200) return json({ ok: false, error: "bad move" }, 400);
+      if (!ROOM.test(p) || !Number.isInteger(b.v) || !a || typeof a !== "object" || JSON.stringify(a).length > (a.k === "stroke" ? 900 : 200)) return json({ ok: false, error: "bad move" }, 400);   // 7.23: a Fake Artist line (up to 60 points) is bigger than the other moves
       b = { p, v: b.v, a };
     } else if (op === "kick") {
       const p = String(b.p || "");

@@ -1,0 +1,431 @@
+# Fake Artist words. One category per "## Name" block. Each line is: word, optionally ":h" for hard (default easy), optionally "=alt1,alt2" other accepted guesses.
+## Animals
+camel
+giraffe
+octopus
+penguin
+scorpion
+crocodile
+peacock
+snail
+elephant
+butterfly
+shark
+spider
+horse=pony
+cat=kitten
+dog=puppy
+fish
+owl
+rabbit=bunny
+snake
+turtle=tortoise
+bat
+dolphin
+flamingo
+hedgehog=porcupine
+donkey
+pelican:h
+seahorse:h
+kangaroo
+lobster=crab
+squirrel
+sheep=lamb
+hen=chicken
+bee=wasp
+dragonfly:h
+chameleon:h=lizard
+platypus:h
+parrot
+whale
+frog=toad
+ostrich
+panda=bear
+## Egyptian food
+koshari=kushari
+ful=foul,fava beans
+taameya=falafel,tameya
+feteer=fiteer,pie
+konafa=kunafa,knafeh
+mahshi=stuffed vegetables,stuffed grape leaves
+hawawshi
+basbousa=basbosa,semolina cake
+molokhia=mulukhiyah
+sugarcane juice=asab,sugar cane juice
+karkadeh=hibiscus,hibiscus drink
+sahlab:h
+roz bel laban=rice pudding
+aish baladi=baladi bread,bread
+shawarma
+liver=kebda
+hamam mahshi=stuffed pigeon,pigeon
+sambousek=samosa
+umm ali=om ali
+kofta
+kebab
+mombar:h=sausage
+fattah:h
+baba ghanoush=eggplant dip
+hummus=chickpea dip
+tahini:h
+dates=balah
+mango=manga
+lemon=limoon
+sweet potato=batata,roasted sweet potato
+tomato=tamatem
+sugar cane=asab
+hibiscus tea=karkadeh
+tamarind drink:h=tamr hindi
+bessara:h=fava soup
+rice and vermicelli=roz
+grilled corn=corn
+kobeba:h=kibbeh
+lupin beans:h=termos
+eish fino:h=bread roll
+lemonade=limonada
+## Food and drinks
+pizza
+burger=hamburger
+ice cream cone=ice cream
+watermelon
+popcorn
+sushi
+banana
+birthday cake=cake
+hot dog
+french fries=fries,chips
+donut=doughnut
+pineapple
+cupcake
+coffee cup=coffee
+spaghetti=pasta,noodles
+sandwich
+taco
+cookie=biscuit
+apple
+carrot
+egg
+pretzel:h
+croissant:h
+milkshake=shake
+avocado
+cherry=cherries
+grapes
+lollipop=candy
+cheese=cheese slice
+bread=loaf
+chocolate bar=chocolate
+pancakes=waffle
+pepper=chili,chilli
+mushroom
+corn dog:h
+sausage
+steak
+sardine can:h
+cotton candy:h=candy floss
+soda can=can
+water bottle=bottle
+soup=bowl of soup
+salad=bowl of salad
+juice box=juice
+## Egyptian daily life
+microbus=minibus,micro bus
+tuk-tuk=tuktuk,rickshaw
+shisha=hookah,water pipe
+fanous=ramadan lantern,lantern
+gas cylinder=butagas,gas tank
+satellite dish=dish
+tawla=backgammon
+felucca=sailboat,nile boat
+ahwa=coffee shop,coffee house
+bawab=doorman
+clothesline=laundry line
+sebou:h=walking stick
+galabeya=gallabiya,robe
+tarboush:h=fez
+prayer rug=sagada,prayer mat
+mosque
+minaret
+church
+water tank=roof tank
+ceiling fan
+air conditioner=ac
+generator:h
+hand fan
+cairo metro=metro,train
+street vendor=cart
+pigeon tower:h=pigeon coop
+arabic coffee pot=dallah,coffee pot
+prayer beads=misbaha,tasbih
+tea glass=tea cup
+water jug=qulla,jug
+mobile charger=charger
+street kiosk=koshk,kiosk
+felucca on the nile=nile boat
+microbus conductor:h=mazzoon
+rooftop satellite=dish
+bread on a head:h=bread tray
+laundry on a balcony=clothesline
+street cat=cat
+car horn:h=horn
+hand cart=cart
+prayer cap=taqiyah
+## Places and landmarks
+pyramids=pyramid,giza
+sphinx
+cairo tower=tower
+eiffel tower
+statue of liberty
+burj khalifa
+lighthouse
+volcano
+big ben
+taj mahal
+great wall=wall
+leaning tower=tower of pisa,pisa
+colosseum=coliseum
+kaaba:h
+abu simbel:h=temple
+karnak:h=temple,columns
+citadel:h=saladin citadel,castle
+pharos:h=alexandria lighthouse,lighthouse
+nile river=nile
+red sea:h=beach
+desert=sahara
+oasis
+cave
+waterfall
+island=desert island
+igloo
+castle
+windmill
+opera house=sydney opera house
+stonehenge:h
+camel caravan:h=caravan
+mountain
+sunrise
+beach
+rainbow
+skyscraper
+white house:h
+clock tower
+suez canal:h=canal
+tent camp=tent
+fortress=fort
+rope bridge:h=bridge
+railway station=train station
+## Things at home
+toilet
+ceiling fan
+remote control=remote
+umbrella
+toothbrush
+ladder
+bunk bed
+washing machine
+sofa=couch
+lamp
+television=tv
+fridge=refrigerator
+key
+door
+window
+mirror
+clock
+broom
+bucket
+chair
+table
+bed
+iron
+kettle
+teapot
+plug=socket
+light bulb=bulb
+scissors
+candle
+slippers=flip flops
+pillow
+curtain
+vacuum cleaner=vacuum
+mop
+phone=mobile
+laptop=computer
+router:h=wifi
+stairs=staircase
+trash can=bin,dustbin
+bathtub=bath
+## Football
+goalkeeper=goalie,keeper
+var screen:h=var
+penalty kick=penalty
+red card
+trophy=cup
+corner flag
+stadium
+salah celebration:h=sujood,salah
+football boots=boots,cleats
+whistle
+referee
+goal net=net,goal
+scoreboard
+football=ball,soccer ball
+fans=crowd
+yellow card
+free kick:h=freekick
+offside flag:h=offside,linesman
+bicycle kick:h=overhead kick
+captain armband:h=armband
+tunnel:h=player tunnel
+substitution board:h=sub board
+ballon d'or:h=golden ball
+world cup=trophy
+jersey=shirt,kit
+gloves
+water bottle
+stopwatch=timer
+medal
+flag
+dribble:h
+header=heading
+tackle
+throw-in:h
+cone=training cone
+tactics board:h=whiteboard
+stands=terraces
+floodlights=lights
+hat-trick:h=hat trick
+mascot
+## Characters
+spongebob
+batman
+shrek
+pikachu
+mario
+bakar:h
+bogy and tamtam:h=bogy,tamtam
+homer simpson=homer
+mickey mouse=mickey
+superman
+spider-man=spiderman
+darth vader=vader
+minion=minions
+elsa
+simba=lion king
+woody=toy story
+donald duck=donald
+tom and jerry=tom,jerry
+bugs bunny
+hulk
+iron man
+joker
+harry potter=harry
+dracula
+santa claus=santa
+pinocchio
+cinderella
+aladdin
+genie
+captain majid:h=majid
+snowman=olaf
+scarecrow
+ninja
+pirate
+robot
+zombie
+mermaid
+wizard
+dragon
+alien
+vampire
+unicorn
+abla fahita:h
+captain tsubasa:h=tsubasa
+sonic
+tintin:h
+popeye
+## Transport
+helicopter
+submarine
+rocket
+bicycle=bike
+hot air balloon=balloon
+train
+scooter
+ambulance
+airplane=plane,aeroplane
+bus
+taxi=cab
+truck=lorry
+tractor
+ship=cruise ship
+sailboat=boat
+motorbike=motorcycle
+fire truck=fire engine
+ferry:h
+tram
+cable car:h=gondola
+skateboard
+roller skates=rollerblades
+jeep
+parachute
+tank:h
+crane:h
+ice cream truck=ice cream van
+police car
+wheelchair
+trolley=shopping cart
+hoverboard:h
+spaceship=ufo
+jet ski:h
+canoe=kayak
+traffic light=traffic lights
+camel ride=camel
+bus stop:h
+road sign=sign
+airport:h=runway
+petrol pump:h=gas station
+## Jobs
+doctor
+chef=cook
+firefighter=fireman
+astronaut
+bawab:h=doorman
+pilot
+barber=hairdresser
+magician=wizard
+teacher
+policeman=police officer,police
+farmer
+plumber
+dentist
+singer
+dancer
+painter=artist
+photographer
+engineer
+mechanic
+tailor
+baker
+fisherman
+soldier
+judge
+nurse
+lifeguard
+clown
+waiter
+taxi driver=driver
+mailman=postman
+conductor:h=orchestra conductor
+tour guide:h
+street sweeper:h
+sheikh:h
+news anchor:h=newsreader
+vet=veterinarian
+carpenter
+
+cashier
+electrician
+architect:h
+shepherd:h
+butcher

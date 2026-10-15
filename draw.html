@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fake Artist</title>
+<!-- 7.23: the phone page for Fake Artist, at /w?r=ROOM. A player joins once with a name. Each game the phone shows a card (hold to see it): the category and the secret word, or, for the fake artist, the category
+     and random letters. When it is your turn the canvas wakes up: put your finger down, draw one unbroken line, lift to end your turn (cut off after the turn length the TV says). Then everyone votes, and a caught
+     fake types one guess. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay Taboo and the card modes use) and only ever receives its own card
+     (the laptop puts it in this player's private part); the real word is not in anything the phone receives until the reveal. Street Wall look: concrete, paper canvas, yellow and magenta. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#3a3a3e;--bg2:#2b2b30;--yel:#ffe600;--mag:#e6007e;--ink:#111;--paper:#ecebe6;--cream:#f2f2f2;--head:"Bungee",Impact,sans-serif;--mark:"Permanent Marker","Bungee",cursive;--body:"Rubik",system-ui,sans-serif;--me:#ff2e4c}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{min-height:100vh;min-height:100dvh;color:var(--cream);font:16px/1.35 var(--body);background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/34px 17px,linear-gradient(rgba(0,0,0,.25) 2px,transparent 2px) 0 0/34px 17px,radial-gradient(circle at 20% 20%,#4a4a50,var(--bg2)) fixed;background-color:var(--bg2);-webkit-user-select:none;user-select:none}
+main{max-width:520px;margin:0 auto;padding:0 14px 20px;display:grid;gap:12px;align-content:start;min-height:100dvh;grid-template-rows:auto 1fr auto}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:center;font:400 15px var(--head);letter-spacing:.04em;color:var(--yel);padding-top:max(10px,env(safe-area-inset-top))}
+.chip{padding:3px 12px;border:2px solid var(--yel);border-radius:4px;background:#111;font:400 13px var(--head);white-space:nowrap;color:var(--cream);display:inline-flex;gap:7px;align-items:center}
+.chip i{width:12px;height:12px;border-radius:50%;background:var(--me);display:inline-block}
+h1{margin:6px 0;font:400 30px/1.1 var(--head);color:var(--yel);text-shadow:3px 3px 0 var(--mag)}
+#view{display:grid;gap:12px;align-content:start}
+.status{font:400 24px/1.15 var(--mark)}
+.status.me{color:var(--yel)}
+.hint{opacity:.85;font-size:14px}
+.tag{font:400 13px var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--yel)}
+button{font:inherit;cursor:pointer;color:inherit}
+.send{width:100%;font:400 20px var(--head);letter-spacing:.04em;text-transform:uppercase;background:var(--yel);color:var(--ink);border:0;padding:15px;border-radius:6px;box-shadow:4px 4px 0 var(--mag)}
+.send:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--mag)}
+.send:disabled{opacity:.4}
+input[type=text]{width:100%;font:600 20px var(--body);padding:12px;border:3px solid var(--yel);border-radius:6px;background:var(--paper);color:#111;-webkit-user-select:text;user-select:text}
+.msg{padding:8px 12px;border-radius:6px;background:#111;border:2px solid var(--mag);color:#ffb3d9;font-size:14px}
+.wait{text-align:center;padding:30px 0 6px}
+.big{font:400 34px/1.1 var(--mark)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--yel);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.bar{height:12px;border-radius:2px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:var(--yel)}
+.pad{position:relative;width:100%;aspect-ratio:4/3;background:var(--paper);box-shadow:5px 5px 0 #111;border:0}
+.pad canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pad.mine{outline:6px solid var(--me);touch-action:none;cursor:crosshair}
+.pad.mine canvas{touch-action:none}
+.pad .go{position:absolute;left:0;right:0;top:44%;text-align:center;font:400 22px var(--mark);color:#111;opacity:.55;pointer-events:none}
+.votes{display:grid;gap:9px}
+.votes button{display:flex;align-items:center;gap:12px;background:#111;color:#fff;border:0;border-radius:6px;padding:14px 16px;text-align:left;font:400 22px var(--mark);box-shadow:4px 4px 0 #000}
+.votes button i{width:18px;height:18px;border-radius:50%;flex:none;background:var(--c)}
+.votes button[aria-pressed=true]{background:var(--yel);color:#111;transform:rotate(-1.5deg)}
+.votes button:disabled{opacity:.5}
+.order{display:flex;flex-wrap:wrap;gap:6px}
+.order span{font:400 12px var(--head);padding:4px 9px;border-radius:3px;background:#111;display:inline-flex;gap:6px;align-items:center}
+.order span i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.order span.now{background:var(--yel);color:#111;transform:rotate(-3deg) scale(1.1)}
+.order span.done{opacity:.5}
+.card{background:var(--paper);color:#111;padding:22px 18px;display:grid;gap:10px;box-shadow:7px 7px 0 #111;transform:rotate(1.2deg);text-align:center}
+.card small{font:400 15px var(--head);letter-spacing:.06em;text-transform:uppercase}
+.card b{font:400 clamp(30px,11vw,46px)/1.05 var(--mark);word-break:break-word}
+.card em{font:600 14px var(--body);font-style:normal;opacity:.75}
+.peek{width:100%;background:#111;color:var(--cream);border:2px dashed var(--yel);border-radius:6px;padding:12px;font:400 16px var(--head);letter-spacing:.04em;touch-action:none}
+.peek:active{background:#000}
+.cover{background:var(--paper);color:#111;padding:26px 18px;text-align:center;font:400 22px var(--mark);box-shadow:7px 7px 0 #111;transform:rotate(-1deg)}
+.tally{font-size:14px;opacity:.9}
+.delta{font:400 44px var(--head);color:var(--yel);text-shadow:3px 3px 0 var(--mag)}
+</style></head><body><main>
+<div class="top"><span id="me"></span><span id="chip"></span></div>
+<div id="view"></div>
+<div id="foot"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_fa_" + r;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+const COL = ["#ff2e4c", "#1e90ff", "#1fcf5a", "#ffb300", "#a64dff", "#ff4fb8", "#00d4d4", "#ff7a1a", "#c6ff3d", "#f2f2f2"];
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, tick = null, busy = false, sig = "", note = null, sending = false, dl = 0, tot = 45, peeking = false, seenSent = false, myVote = {}, drawing = false, mine = [], sentTid = 0, padEnd = 0, padTimer = 0, padSecs = 15, shown = "";
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
+const colOf = (p, pub) => COL[((pub.col || {})[p] || 0) % COL.length];
+const cap = t => { t = String(t ?? ""); return t.charAt(0).toUpperCase() + t.slice(1); };
+const nm = (p, pub) => esc((pub.names || {})[p] || "");
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n, t:null});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("chip").innerHTML = ""; $("foot").innerHTML = "";
+  $("view").innerHTML = `<div class="tag">Fake Artist</div><h1>What's your name?</h1>
+    <form id="jf" autocomplete="off"><input type="text" id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name">
+    <button class="send" id="jb" style="margin-top:12px">Join</button></form>
+    ${err ? `<div class="msg" style="margin-top:10px">${esc(err)}</div>` : ""}<p class="hint">Keep this page open for the whole game.</p>`;
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; join(n); };
+}
+/* one move to the laptop. A move that names a turn (t) is resent once the phone has the newest table, as long as that turn is still the current one. */
+async function act(a){
+  if(sending || !st || !st.pub) return false; sending = true; note = null; let ok = false;
+  for(let k = 0; k < 4; k++){
+    const res = await post("crdact", {p:me.p, v:st.pub.v, a}); if(res.ok){ ok = true; break; }
+    if(res.j.error === "stale"){ await poll(true); if(!st || !st.pub || (a.t != null && st.pub.tid !== a.t)) break; continue; }
+    note = "That didn't send. Try again."; break; }
+  sending = false; sig = ""; draw(); poll(true); return ok; }
+function updateBar(){ const b = $("bar"); if(!dl || !b) return; b.style.width = Math.max(0, Math.min(100, (dl - Date.now()) / 1000 / tot * 100)) + "%"; }
+
+/* ---------- the canvas ---------- */
+function paintStrokes(cv, pub, extra){
+  const c = cv.getContext("2d"); c.clearRect(0, 0, 1000, 750); c.lineCap = "round"; c.lineJoin = "round"; c.lineWidth = 17;
+  const line = (pts, col, glow) => { if(pts.length < 4) return; c.save(); c.strokeStyle = col; c.shadowColor = col; c.shadowBlur = glow; c.beginPath(); c.moveTo(pts[0], pts[1]);
+    for(let i = 1; i < pts.length / 2 - 1; i++) c.quadraticCurveTo(pts[i * 2], pts[i * 2 + 1], (pts[i * 2] + pts[i * 2 + 2]) / 2, (pts[i * 2 + 1] + pts[i * 2 + 3]) / 2);
+    c.lineTo(pts[pts.length - 2], pts[pts.length - 1]); c.stroke(); c.restore(); };
+  const reveal = pub.ph === "reveal" || pub.ph === "over";
+  (pub.strokes || []).forEach(s => { c.globalAlpha = reveal && s.p !== pub.fake ? .35 : 1; line(s.pts, colOf(s.p, pub), reveal && s.p === pub.fake ? 34 : 7); }); c.globalAlpha = 1;
+  if(extra && extra.length >= 4) line(extra, COL[((pub.col || {})[me.p] || 0) % COL.length], 7); }
+function flat(pts){ const o = []; pts.forEach(q => o.push(Math.round(q[0]), Math.round(q[1]))); return o; }
+function resample(pts, n){   // at most n points, evenly spaced along the line
+  if(pts.length <= n) return pts; const d = [0]; for(let i = 1; i < pts.length; i++) d.push(d[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  const total = d[d.length - 1], out = [pts[0]]; let j = 1; for(let k = 1; k < n - 1; k++){ const t = total * k / (n - 1); while(j < pts.length - 1 && d[j] < t) j++;
+    const a = pts[j - 1], b = pts[j], f = d[j] > d[j - 1] ? (t - d[j - 1]) / (d[j] - d[j - 1]) : 0; out.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); }
+  out.push(pts[pts.length - 1]); return out; }
+function pathLen(pts){ let l = 0; for(let i = 1; i < pts.length; i++) l += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return l; }
+function armPad(pad, cv, pub){
+  const at = e => { const b = cv.getBoundingClientRect(); return [Math.max(0, Math.min(1000, (e.clientX - b.left) / b.width * 1000)), Math.max(0, Math.min(750, (e.clientY - b.top) / b.height * 750))]; };
+  const finish = async () => { if(!drawing) return; drawing = false; clearTimeout(padTimer); pad.querySelector(".go") && (pad.querySelector(".go").hidden = false);
+    if(pathLen(mine) < 30){ mine = []; note = "Draw a longer line."; sig = ""; draw(); return; }
+    const pts = flat(resample(mine, 40)), tid = pub.tid; mine = []; const ok = await act({k:"stroke", t:tid, pts}); if(ok) sentTid = tid; };
+  pad.addEventListener("pointerdown", e => { if(drawing || sending || sentTid === pub.tid) return; e.preventDefault(); try{ pad.setPointerCapture(e.pointerId); }catch(x){} drawing = true; note = null; mine = [at(e)];
+    const g = pad.querySelector(".go"); if(g) g.hidden = true; padTimer = setTimeout(finish, padSecs * 1000); paintStrokes(cv, pub, flat(mine)); });
+  pad.addEventListener("pointermove", e => { if(!drawing) return; e.preventDefault(); const q = at(e), l = mine[mine.length - 1]; if(Math.hypot(q[0] - l[0], q[1] - l[1]) < 3) return; mine.push(q); paintStrokes(cv, pub, flat(mine)); });
+  ["pointerup", "pointercancel"].forEach(ev => pad.addEventListener(ev, e => { e.preventDefault(); finish(); }));
+  pad.addEventListener("contextmenu", e => e.preventDefault()); }
+
+/* ---------- screens ---------- */
+function orderHtml(p){ return `<div class="order">${(p.order || []).map((x, i) => `<span class="${p.ph === "draw" && i === p.ti ? "now" : p.ph === "draw" && i < p.ti ? "done" : ""}" style="--c:${colOf(x, p)}"><i></i>${nm(x, p)}</span>`).join("")}</div>`; }
+function peekHtml(){ return `<button class="peek" id="peek">Hold to see your card</button>`; }
+function cardFace(c){ return `<div class="card"><small>${esc(c.cat)}</small><b>${esc(cap(c.w))}</b>${c.f ? `<em>you're the fake artist</em>` : ""}</div>`; }
+function draw(){
+  if(drawing) return;   // never rebuild the page under a finger
+  $("me").textContent = me.n;
+  if(!st || !st.pub){ $("chip").innerHTML = ""; $("foot").innerHTML = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to open the game.</div></div>`; return; }
+  const p = st.pub, mc = colOf(me.p, p), card = st.me && st.me.card;
+  const sg = [p.v, note, sending, peeking, myVote[p.tid] || "", sentTid === p.tid].join("|"); if(sg === sig) return; sig = sg;
+  document.documentElement.style.setProperty("--me", mc); $("chip").innerHTML = `<span class="chip"><i></i>${esc(p.scores && p.scores[me.p] != null ? p.scores[me.p] + " pts" : "0 pts")}</span>`;
+  $("foot").innerHTML = card && p.ph !== "lobby" && p.ph !== "reveal" && p.ph !== "over" ? peekHtml() : "";
+  const v = $("view"), err = note ? `<div class="msg">${esc(note)}</div>` : "";
+  const cats = `<div class="tag">${esc(p.cat || "")}</div>`;
+  if(p.ph === "lobby"){ v.innerHTML = `<div class="status">You're in, ${esc(me.n)}</div><div class="hint">Your colour is ${""}<span class="chip"><i></i>this one</span>. The host starts the game.</div>${p.scores && p.scores[me.p] ? `<div class="hint">You have ${p.scores[me.p]} points.</div>` : ""}`; return; }
+  if(p.ph === "card"){ v.innerHTML = `${cats}<div class="status me">Check your card</div><div class="hint">Hold the button below to see it, then let go. ${card && card.f ? "" : ""}Don't show anyone.</div>${seenSent ? `<div class="hint">Got it. Waiting for the host to start drawing.</div>` : ""}`; return; }
+  if(p.ph === "draw"){
+    const myTurn = p.cur === me.p, done = sentTid === p.tid, secs = p.secs || 15; padSecs = secs;
+    if(myTurn && !done){ v.innerHTML = `${cats}<div class="status me">Your turn</div><div class="bar"><i id="bar"></i></div><div class="pad mine" id="pad"><canvas id="cv" width="1000" height="750"></canvas><div class="go">DRAW ONE LINE</div></div><div class="hint">One line, don't lift your finger until you're done. It stops after ${secs} seconds.</div>${err}`;
+      const cv = $("cv"); paintStrokes(cv, p, null); armPad($("pad"), cv, p); updateBar(); return; }
+    v.innerHTML = `${cats}<div class="status">${myTurn ? "Sent" : nm(p.cur, p) + " is drawing"}</div><div class="pad" id="pad"><canvas id="cv" width="1000" height="750"></canvas></div>${orderHtml(p)}<div class="hint">Round ${p.round}. ${card && card.f ? "Blend in: draw as if you know the word." : "Add to the drawing without making the word too obvious."}</div>`;
+    paintStrokes($("cv"), p, null); return; }
+  if(p.ph === "vote"){
+    const mv = myVote[p.tid] || "";
+    v.innerHTML = `${cats}<div class="status me">Who's the fake?</div><div class="pad" id="pad" style="max-width:62%"><canvas id="cv" width="1000" height="750"></canvas></div>
+      <div class="votes">${(p.order || []).filter(x => x !== me.p).map(x => `<button data-o="${esc(x)}" aria-pressed="${mv === x}" style="--c:${colOf(x, p)}"><i></i>${nm(x, p)}</button>`).join("")}</div>
+      <div class="hint">${mv ? "Voted. You can still change it." : "Tap who you think it is."}</div>${err}`;
+    paintStrokes($("cv"), p, null); return; }
+  if(p.ph === "between"){ v.innerHTML = `<div class="status me">Not caught</div><div class="hint">The fake artist is still among you. Two more rounds, then another vote.</div>`; return; }
+  if(p.ph === "guess"){
+    if(p.fake === me.p){ v.innerHTML = `<div class="status me">You've been caught!</div><div class="hint">Guess the word and you still score.</div><form id="gf" autocomplete="off"><input type="text" id="gw" maxlength="40" enterkeyhint="send" placeholder="The word is…"><button class="send" id="gb" style="margin-top:12px">Send guess</button></form>${err}`;
+      $("gf").onsubmit = e => { e.preventDefault(); const g = $("gw").value.trim(); if(!g) return; $("gb").disabled = true; act({k:"guess", t:p.tid, g}); }; }
+    else v.innerHTML = `<div class="status">${nm(p.fake, p)} was the fake!</div><div class="hint">They get one guess at the word. Keep quiet.</div><div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+    return; }
+  if(p.ph === "judge"){ v.innerHTML = `<div class="status">${nm(p.fake, p)} guessed</div><div class="big">“${esc(p.guess || "…")}”</div><div class="hint">The host decides on the TV.</div>`; return; }
+  const d = p.deltas && p.deltas[me.p], won = (p.winners || []).includes(me.p);
+  if(p.ph === "reveal"){ const k = p.outcome, line = k === "escape" ? "The fake got away with it." : k === "right" ? "The fake was caught but guessed the word." : "The fake was caught and guessed wrong.";
+    v.innerHTML = `<div class="tag">The word was</div><div class="big">${esc(cap(p.word))}</div><div class="status">${nm(p.fake, p)} was the fake artist</div><div class="hint">${line}</div><div class="delta">${d ? "+" + d : "+0"}</div><div class="hint">The host starts the next game on the TV.</div>`; return; }
+  v.innerHTML = `<div class="status ${won ? "me" : ""}">${won ? "You win the wall!" : "Good game."}</div><div class="hint">${(p.winners || []).map(x => nm(x, p)).join(" and ")} ${(p.winners || []).length > 1 ? "share the win" : "wins"}.</div>`;
+}
+/* the card: hold the button to see it, let go to hide it. The first look tells the TV you've seen it. */
+function showCard(on){ const c = st && st.me && st.me.card; if(!c) return; const v = $("view");
+  if(on){ shown = v.innerHTML; peeking = true; v.innerHTML = cardFace(c); if(!seenSent){ seenSent = true; post("crdact", {p:me.p, v:st.pub.v, a:{k:"seen"}}).then(x => { if(!x.ok && !(x.j && x.j.error === "stale")) seenSent = false; }); } }
+  else if(peeking){ peeking = false; sig = ""; draw(); } }
+document.addEventListener("pointerdown", e => { const b = e.target.closest("#peek"); if(b){ e.preventDefault(); showCard(true); return; }
+  const o = e.target.closest("[data-o]"); if(o && st && st.pub && st.pub.ph === "vote"){ const t = st.pub.tid; myVote[t] = o.dataset.o; sig = ""; draw(); act({k:"vote", t, o:o.dataset.o}); } });
+["pointerup", "pointercancel"].forEach(ev => document.addEventListener(ev, () => { if(peeking) showCard(false); }));
+document.addEventListener("contextmenu", e => { if(e.target.closest("#peek,.card,.pad")) e.preventDefault(); });
+document.addEventListener("visibilitychange", () => { if(document.hidden && peeking) showCard(false); if(!document.hidden && me && timer) poll(true); });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v) note = note && st && st.pub && j.pub && st.pub.tid === j.pub.tid ? note : null; const wasTid = st && st.pub ? st.pub.tid : 0; st = j;
+      if(j.pub && j.pub.ph === "card" && wasTid !== j.pub.tid) seenSent = false;
+      if(j.pub && j.pub.left != null){ tot = j.pub.ph === "draw" ? 45 : 30; dl = Date.now() + j.pub.left * 1000 - (j.ago || 0); } else dl = 0;
+      if(!peeking) draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 500); tick = setInterval(updateBar, 250); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>
