@@ -13,7 +13,9 @@
   },
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // 7.41: the game page goes through worker/index.js first, so the old jeopardy-night address can forward it to sahra. Everything else is still served straight from dist/.
+    "run_worker_first": ["/", "/index.html"]
   },
   "durable_objects": {
     "bindings": [{ "name": "ROOMS", "class_name": "Room" }]

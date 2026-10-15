@@ -190,6 +190,11 @@ export class Room extends DurableObject {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    // 7.41 (Omar): the game is called Sahra, so the old jeopardy-night.<account>.workers.dev address sends the game page to sahra.<account>.workers.dev.
+    // Only the game page moves: phone pages and /api stay put, because each address has its own rooms and a game already open on the old address must keep working.
+    // A 302, not a 301, so phones and browsers don't remember it and removing these lines undoes it. Needs "run_worker_first" in wrangler.jsonc, or "/" never reaches this code.
+    if (url.hostname.startsWith("jeopardy-night.") && (url.pathname === "/" || url.pathname === "/index.html"))
+      return Response.redirect("https://" + url.hostname.replace(/^jeopardy-night\./, "sahra.") + "/" + url.search, 302);
     if (url.pathname === "/w") return env.ASSETS.fetch(new Request(new URL("/draw" + url.search, url), req));  // 7.23: Fake Artist phone page
     if (url.pathname === "/t") return env.ASSETS.fetch(new Request(new URL("/taboo" + url.search, url), req));  // 7.4: Taboo phone page
     if (url.pathname === "/l") return env.ASSETS.fetch(new Request(new URL("/liars" + url.search, url), req));  // 7.1: Liar's Bar phone page
