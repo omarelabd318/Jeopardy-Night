@@ -1,5 +1,13 @@
 [
  {
+  "v": "7.33",
+  "date": "2026-10-15",
+  "items": [
+   "Fixed the game's fonts: a typo since 6.83 stopped every web font from loading, so titles and mode buttons fell back to plain system fonts. They now show their real fonts.",
+   "Survival's mode button is now a torn jungle canvas."
+  ]
+ },
+ {
   "v": "7.32",
   "date": "2026-10-15",
   "items": [
