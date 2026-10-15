@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.31",
+  "date": "2026-10-15",
+  "items": [
+   "The Billboard look toggle moved to the bottom of Jeopardy Night's setup, and it now only changes Jeopardy Night."
+  ]
+ },
+ {
   "era": "7.x: Party Games"
  },
  {
