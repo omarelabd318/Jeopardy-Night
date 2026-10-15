@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.36",
+  "date": "2026-10-15",
+  "items": [
+   "Hovering a mode on the title screen now also says whether it's for teams or solo players, and how many players it suits."
+  ]
+ },
+ {
   "v": "7.35",
   "date": "2026-10-15",
   "items": [
