@@ -3,6 +3,13 @@
   "era": "7.x: Party Games"
  },
  {
+  "v": "7.24",
+  "date": "2026-10-15",
+  "items": [
+   "New game mode: Fake Artist. Everyone scans one code, then draws a secret word one line at a time on their phone while the TV shows the drawing. One of you is the fake artist and doesn't know the word. Vote them out after 2 rounds; if they're caught they get one guess at the word."
+  ]
+ },
+ {
   "v": "7.23",
   "date": "2026-10-15",
   "items": [

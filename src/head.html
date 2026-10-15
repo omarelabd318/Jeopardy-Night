@@ -844,6 +844,80 @@ body.tbmode .wrap{max-width:none;padding:0}
 #tbo .tbbuzz em{font:600 calc(var(--u)*2.4)/1 var(--tb-body);font-style:normal;color:#fff;opacity:.9}
 @keyframes tbpop{from{transform:scale(1.15);opacity:0}}
 @media (prefers-reduced-motion:reduce){#tbo .tbonair.lit,#tbo .tbbuzz{animation:none}}
+/* 7.23 (Omar): Fake Artist, Street Wall look (his pick of three previews: Sketchbook, Gallery Opening, Street Wall; the other two were left out): concrete wall, paper canvas, spray-glow lines, Bungee and marker lettering,
+   yellow and magenta. The TV is one stage sized by --u (100 units = the screen's width at 16:9). draw.html (the phones) uses the same palette. To remove: delete this block, the #fao section and the Fake Artist button. */
+#titleScreen #modeRow .modebtn.fabbtn{font:400 21px "Bungee",Impact,sans-serif;letter-spacing:.04em;text-transform:uppercase;background:#2b2b30;color:#ffe600;border:2.5px solid #ffe600;border-radius:4px;box-shadow:5px 5px 0 #e6007e;padding:10px 26px}
+body.famode{min-height:100vh;background:#2b2b30}
+body.famode .wrap{max-width:none;padding:0}
+#fao{--fa-yel:#ffe600;--fa-mag:#e6007e;--fa-ink:#111;--fa-paper:#ecebe6;--fa-cream:#f2f2f2;--fa-head:"Bungee",Impact,sans-serif;--fa-mark:"Permanent Marker","Bungee",Impact,sans-serif;--fa-body:"Rubik",system-ui,sans-serif;color:var(--fa-cream);font-family:var(--fa-body);min-height:100vh;display:flex;flex-direction:column;background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/34px 17px,linear-gradient(rgba(0,0,0,.25) 2px,transparent 2px) 0 0/34px 17px,radial-gradient(circle at 20% 20%,#4a4a50,#2b2b30)}
+#fao [hidden]{display:none!important}
+#fao .fatools{display:flex;gap:8px;justify-content:flex-end;padding:6px 10px 0}
+#fao .fabtn{font:400 19px var(--fa-head);letter-spacing:.03em;padding:10px 24px;border:2px solid var(--fa-yel);background:var(--fa-ink);color:var(--fa-yel);cursor:pointer;border-radius:4px;box-shadow:3px 3px 0 var(--fa-mag)}
+#fao .fabtn.go{background:var(--fa-yel);color:var(--fa-ink)}
+#fao .fabtn.ghost{background:transparent;color:var(--fa-cream);border-color:rgba(242,242,242,.5);box-shadow:none}
+#fao .fabtn.small{font-size:15px;padding:7px 16px}
+#fao .fabtn:disabled{opacity:.45;cursor:default}
+#fao .gap{flex:1}
+#fao .fahead{padding:18px 24px 0}
+#fao .fabadge{display:inline-block;font:700 14px var(--fa-body);letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--fa-mag);color:#ff7ac0;padding:2px 12px;border-radius:99px}
+#fao h1{margin:10px 0 6px;font:400 clamp(40px,6vw,76px)/1.05 var(--fa-head);color:var(--fa-yel);text-shadow:.05em .05em 0 var(--fa-mag)}
+#fao .sub{margin:0 0 14px;max-width:64ch;opacity:.9;font-size:19px}
+#fao .fagrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start;padding:0 24px 20px}
+#fao .fapanel{background:rgba(0,0,0,.35);border:2px solid rgba(255,230,0,.5);border-radius:6px;padding:16px 18px;display:grid;gap:10px}
+#fao .faeye{font:700 14px var(--fa-body);letter-spacing:.14em;text-transform:uppercase;color:var(--fa-yel)}
+#fao .note{margin:0;font-size:15px;opacity:.85}
+#fao .note.warn{color:#ffb3d9;opacity:1}
+#fao .faqr{background:#fff;padding:10px;width:fit-content;border-radius:4px}
+#fao .faseg{display:flex;flex-wrap:wrap;gap:6px}
+#fao .faseg button{font:700 17px var(--fa-body);padding:6px 14px;border:2px solid var(--fa-yel);background:var(--fa-ink);color:var(--fa-cream);cursor:pointer;border-radius:4px}
+#fao .faseg button[aria-pressed=true]{background:var(--fa-yel);color:var(--fa-ink)}
+#fao .fanames{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+#fao .fanames li button{font:600 16px var(--fa-body);padding:4px 12px;border:2px solid var(--c);background:var(--fa-ink);color:var(--fa-cream);cursor:pointer;border-radius:99px;display:inline-flex;gap:7px;align-items:center}
+#fao i{display:inline-block;width:.8em;height:.8em;border-radius:50%;flex:none;font-style:normal}
+/* the TV */
+#fao .fatv{flex:1;container-type:size;height:calc(100vh - 38px);min-height:0}
+#fao .fain{--u:min(1cqw,1.78cqh);position:relative;width:100%;height:100%;font-size:calc(var(--u)*1.6);overflow:hidden}
+#fao .fatop{position:absolute;left:calc(var(--u)*3);right:calc(var(--u)*3);top:calc(var(--u)*2.4);display:flex;justify-content:space-between;align-items:center}
+#fao .fatitle{font:400 calc(var(--u)*3.2)/1 var(--fa-head);color:var(--fa-yel);text-shadow:calc(var(--u)*.3) calc(var(--u)*.3) 0 var(--fa-mag)}
+#fao .farnd{font:400 calc(var(--u)*2.4)/1 var(--fa-mark);background:var(--fa-yel);color:var(--fa-ink);padding:calc(var(--u)*.5) calc(var(--u)*1.6);transform:rotate(-1.5deg)}
+#fao .facvw{position:absolute;left:50%;top:calc(var(--u)*8.6);width:calc(var(--u)*44);height:calc(var(--u)*33);transform:translateX(-50%) rotate(-.5deg);background:var(--fa-paper);box-shadow:calc(var(--u)*.8) calc(var(--u)*.8) 0 var(--fa-ink)}
+#fao .facvw canvas{display:block;width:100%;height:100%}
+#fao .faL,#fao .faR{position:absolute;top:calc(var(--u)*9.6);width:calc(var(--u)*21);display:grid;gap:calc(var(--u)*.9);align-content:start}
+#fao .faL{left:calc(var(--u)*2.5)}#fao .faR{right:calc(var(--u)*2.5)}
+#fao .fatag{font:400 calc(var(--u)*1.5)/1.1 var(--fa-head);letter-spacing:.08em;text-transform:uppercase;color:var(--fa-yel)}
+#fao .falab{font:600 calc(var(--u)*1.5)/1.1 var(--fa-body);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+#fao .faname{font:400 calc(var(--u)*3.4)/1.05 var(--fa-mark);overflow-wrap:anywhere}
+#fao .fasmall{font:500 calc(var(--u)*1.6)/1.25 var(--fa-body);opacity:.88}
+#fao .fabar{height:calc(var(--u)*1.1);background:rgba(255,255,255,.2);border-radius:calc(var(--u)*.2);overflow:hidden}
+#fao .fabar i{display:block;height:100%;width:100%;background:var(--fa-yel);border-radius:0}
+#fao .fascores{list-style:none;margin:0;padding:0;display:grid;gap:calc(var(--u)*.6)}
+#fao .fascores li{display:grid;grid-template-columns:calc(var(--u)*1.8) 1fr auto auto;gap:calc(var(--u)*1);align-items:center;font:600 calc(var(--u)*1.9)/1.1 var(--fa-body);background:rgba(0,0,0,.4);padding:calc(var(--u)*.55) calc(var(--u)*1.2);border-left:calc(var(--u)*.7) solid var(--c)}
+#fao .fascores li i{background:var(--c);width:calc(var(--u)*1.3);height:calc(var(--u)*1.3)}
+#fao .fascores li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#fao .fascores li b{font:400 calc(var(--u)*2.3)/1 var(--fa-head);min-width:calc(var(--u)*2);text-align:right;font-variant-numeric:tabular-nums}
+#fao .fascores li em{font:400 calc(var(--u)*1.7)/1 var(--fa-head);font-style:normal;color:var(--fa-yel)}
+#fao .fafoot{margin-top:calc(var(--u)*.8);font:600 calc(var(--u)*1.3)/1.2 var(--fa-body);letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+#fao .fastrip{position:absolute;left:calc(var(--u)*3);right:calc(var(--u)*3);top:calc(var(--u)*43.4);display:flex;gap:calc(var(--u)*1);justify-content:center;flex-wrap:wrap}
+#fao .fachip{display:inline-flex;align-items:center;gap:calc(var(--u)*.7);padding:calc(var(--u)*.45) calc(var(--u)*1.3);font:400 calc(var(--u)*1.6)/1.1 var(--fa-mark);background:var(--fa-ink);border-radius:calc(var(--u)*.3)}
+#fao .fachip i{background:var(--c);width:calc(var(--u)*1.3);height:calc(var(--u)*1.3)}
+#fao .fachip.now{background:var(--fa-yel);color:var(--fa-ink);transform:rotate(-3deg) scale(1.12)}
+#fao .fachip.done{opacity:.5}
+#fao .faseen{display:flex;flex-wrap:wrap;gap:calc(var(--u)*.8);justify-content:center;margin:calc(var(--u)*1.4) 0}
+#fao .faseen.col{justify-content:flex-start;margin:calc(var(--u)*.4) 0}
+#fao .fahint{position:absolute;left:0;right:0;top:calc(var(--u)*47.6);margin:0;text-align:center;font-size:calc(var(--u)*1.9);opacity:.9}
+#fao .factl{position:absolute;left:calc(var(--u)*3);right:calc(var(--u)*3);bottom:calc(var(--u)*3.2);display:flex;gap:calc(var(--u)*1);align-items:center}
+#fao .factl .fabtn.small{font-size:calc(var(--u)*1.5);padding:calc(var(--u)*.5) calc(var(--u)*1.4)}
+#fao .facard{position:absolute;left:50%;top:calc(var(--u)*10);width:calc(var(--u)*72);transform:translateX(-50%);text-align:center}
+#fao .fabig{font:400 calc(var(--u)*7)/1.05 var(--fa-mark);color:var(--fa-yel);text-shadow:calc(var(--u)*.35) calc(var(--u)*.35) 0 var(--fa-mag);margin:calc(var(--u)*1) 0}
+#fao .facard p{margin:0;font-size:calc(var(--u)*2.2)}
+#fao .facard p.fasmall{font-size:calc(var(--u)*1.7)}
+#fao .faover{position:absolute;left:50%;top:calc(var(--u)*7);transform:translateX(-50%);width:calc(var(--u)*62);text-align:center}
+#fao .fawin{font:400 calc(var(--u)*6)/1.05 var(--fa-mark);color:var(--fa-yel);text-shadow:calc(var(--u)*.4) calc(var(--u)*.4) 0 var(--fa-mag)}
+#fao .fawin span{display:block;font:600 calc(var(--u)*2.4)/1.2 var(--fa-body);color:var(--fa-cream);text-shadow:none;margin-top:calc(var(--u)*.6)}
+#fao .faplace{list-style:none;margin:calc(var(--u)*1.6) 0 0;padding:0;display:grid;gap:calc(var(--u)*.6)}
+#fao .faplace li{display:grid;grid-template-columns:calc(var(--u)*4) calc(var(--u)*2) 1fr auto;gap:calc(var(--u)*1);align-items:center;font:600 calc(var(--u)*2.3)/1.1 var(--fa-body);border-left:calc(var(--u)*1) solid var(--c);background:rgba(0,0,0,.4);padding:calc(var(--u)*.5) calc(var(--u)*1.6);text-align:left}
+#fao .faplace li i{background:var(--c);width:calc(var(--u)*1.5);height:calc(var(--u)*1.5)}
+#fao .faplace b{font:400 calc(var(--u)*2.4)/1 var(--fa-head)}#fao .faplace em{font:400 calc(var(--u)*2.6)/1 var(--fa-head);font-style:normal;color:var(--fa-yel)}
 /* 7.1 (Omar): Liar's Bar (src/liars.js, liars.html). Saloon look, his pick of three previews (Saloon, Neon Dive, Ahwa; the other two were left out): green felt table with a brass rim, Rye lettering, red card backs,
    a red BUSTED stamp. The TV is one stage sized by --u (100 units = the screen's width at 16:9). liars.html (the phones) uses the same palette. To remove: delete this block, the #lbo section and the Liar's Bar button. */
 body.lbmode{min-height:100vh;background:#1a0f09}
@@ -1037,8 +1111,8 @@ body.cnmode .wrap{max-width:none;padding:0}
 <script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js" onload="window.__worldReady && window.__worldReady()" onerror="(window.__cdnErr=window.__cdnErr||{}).map=1"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- 5.2: Google Fonts load in the background, so a slow fonts server no longer keeps the page blank (a render-blocking stylesheet did). Text shows in a fallback font for a moment, then the game re-fits its text when the fonts arrive (jn-fonts in src/app.js). To undo: swap this back to <link rel="stylesheet" href="…same URL…"> and drop the noscript. -->
-<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700;900&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow&family=Oswald:wght@500;600;700:wght@600;700&family=Chakra+Petch:wght@500;700&family=Reem+Kufi:wght@500;700&family=Cairo:wght@600;800&family=Fredoka:wght@500;600&family=Karla:wght@400;700;800&family=Limelight&family=Bungee&family=Rubik:wght@400;600;800&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700;900&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow&family=Oswald:wght@500;600;700:wght@600;700&family=Chakra+Petch:wght@500;700&family=Reem+Kufi:wght@500;700&family=Cairo:wght@600;800&family=Fredoka:wght@500;600&family=Limelight&family=Bungee&family=Rubik:wght@400;600;800&display=swap"></noscript>
+<link rel="preload" as="style" onerror="(window.__cdnErr=window.__cdnErr||{}).fonts=1" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700;900&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow&family=Oswald:wght@500;600;700:wght@600;700&family=Chakra+Petch:wght@500;700&family=Reem+Kufi:wght@500;700&family=Cairo:wght@600;800&family=Fredoka:wght@500;600&family=Karla:wght@400;700;800&family=Limelight&family=Bungee&family=Rubik:wght@400;600;800&family=Permanent+Marker&display=swap" onload="this.onload=null;this.rel='stylesheet';window.dispatchEvent(new Event('jn-fonts'))">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600;700&family=Bebas+Neue&family=Alfa+Slab+One&family=Lobster&family=Rye&family=Abril+Fatface&family=Playfair+Display:wght@500;700;900&family=Rakkas&family=Bungee+Shade&family=Barlow+Condensed:wght@600;700;800&family=Share+Tech+Mono&family=Lalezar&family=Bowlby+One&family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Narrow&family=Oswald:wght@500;600;700:wght@600;700&family=Chakra+Petch:wght@500;700&family=Reem+Kufi:wght@500;700&family=Cairo:wght@600;800&family=Fredoka:wght@500;600&family=Limelight&family=Bungee&family=Rubik:wght@400;600;800&family=Permanent+Marker&display=swap"></noscript>
 <style>
 /* Layout: game-table felt board — a scrollable grid of brass-numbered tiles, a fixed scoreboard rail, a full-screen clue card. Single dark look by choice. */
 :root{
@@ -1835,9 +1909,9 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <div class="row ttopts" style="justify-content:center"><button class="btn small fsbtn">Full screen</button><button class="btn small sndbtn" aria-pressed="true">Sound on</button><button class="btn small" id="lookBtn" aria-pressed="false" title="Painted Billboard look for the normal game">Billboard look</button></div>
       <p class="note" id="fsNote" hidden></p>
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. 6.84: Jeopardy Night is the first one. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><button class="btn modebtn impbtn" id="modeImp" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn estbtn" id="modeEst" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button></div>
+      <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><button class="btn modebtn impbtn" id="modeImp" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn estbtn" id="modeEst" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button><button class="btn modebtn fabbtn" id="modeFa" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button></div>
       <!-- 6.84: the categories and version line moved from the top of the title screen to under the modes -->
-      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.23</button>
+      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.24</button>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -1900,6 +1974,11 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
     <div class="tbtools"><button class="tbbtn ghost small fsbtn">Full screen</button><button class="tbbtn ghost small" id="tbHome">Title screen</button></div>
     <div id="tbBody"></div>
   </section>
+  <!-- 7.23: Fake Artist (src/fakeartist.js, draw.html). To remove: delete this section, the 7.23 CSS block and the Fake Artist button -->
+  <section id="fao" hidden>
+    <div class="fatools"><button class="fabtn ghost small fsbtn">Full screen</button><button class="fabtn ghost small" id="faHome">Title screen</button></div>
+    <div id="faBody"></div>
+  </section>
   <!-- 7.0: For Sale? (src/forsale.js, sale.html). To remove: delete this section, the 7.0 CSS block and the For Sale? button -->
   <section id="slo" hidden>
     <div class="sltools"><button class="slbtn ghost small fsbtn">Full screen</button><button class="slbtn ghost small" id="slHome">Title screen</button></div>
@@ -1917,7 +1996,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v7.23</div>
+      <div class="eyebrow verlabel">v7.24</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

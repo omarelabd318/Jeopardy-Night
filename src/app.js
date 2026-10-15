@@ -170,8 +170,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.23`);
-  $("#verBtn").textContent = "v7.23"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.24`);
+  $("#verBtn").textContent = "v7.24"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2552,7 +2552,7 @@ if(window.__WORLD_JSON) initWorld(); else window.__worldReady = initWorld;
 S.cats = S.cats.filter(id => catById(id));
 renderChips(); renderTeamInputs(); renderPrep(); histNote(); verLabel(); syncFfaOpt();
 $("#titleScreen .ghost").innerHTML = Array.from({length:30},(_,i)=>`<i>${[100,200,300,400,500][Math.floor(i/6)]}</i>`).join("");
-function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); impLeave(); psyLeave(); estLeave(); tnLeave(); hdLeave(); cnLeave(); decLeave(); slLeave(); lbLeave(); tfLeave(); tbLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); ttHome(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
+function showHome(){ bingoLeave(); bidLeave(); hsLeave(); survLeave(); impLeave(); psyLeave(); estLeave(); tnLeave(); hdLeave(); cnLeave(); decLeave(); slLeave(); lbLeave(); tfLeave(); tbLeave(); faLeave(); setFootball(false); closeCard(); hideWinner(); showResume(); ttHome(); $("#titleScreen").hidden = false; $("#setup").hidden = true; $("#game").hidden = true; $("#scores").hidden = true; const t=$("#titleScreen .bigtitle"); if(t){ t.style.animation="none"; void t.offsetWidth; t.style.animation=""; } window.scrollTo(0,0); }
 /*@modes*/
 $("#resumeBtn").onclick = resumeGame;
 $("#resumeNo").onclick = () => { clearGame(); showResume(); };
