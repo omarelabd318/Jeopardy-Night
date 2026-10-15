@@ -1,5 +1,5 @@
 /* 7.44 (Omar): Hues and Cues, a colour-guessing party game as a game mode (framework drafted 2026-10-14, then "build with look 1 and your recommendations": Paint Chip look). Everyone joins once from their phone
-   (hues.html at /h?r=ROOM, one name), 3 to 10 players. The board is 480 shades (30 columns of hue by 16 rows from pale to dark), drawn by the code, so every phone and the TV show the same colours.
+   (hues.html at /h?r=ROOM, one name), 3 to 10 players. The board is 480 shades (30 columns of hue by 16 rows from pale to dark, with 3 pastel rows above fading to white and 3 rows below fading to brown and black), drawn by the code, so every phone and the TV show the same colours.
    Each turn one player is the clue giver: the game deals them a card of 4 shades (at least 6 squares apart) on their phone only, they tap one as the secret target and type a one-word clue. Everyone else taps a
    square on their own copy of the board and locks it in (a tap on the small board opens a 7 x 5 close-up for the exact square). Markers stay hidden until everyone has locked in (or the timer ends), then they drop onto
    the TV board together. The clue giver, who now sees where they landed, types a second clue of one or two words and everybody places a second marker. The reveal draws the scoring frame on the TV.
@@ -19,7 +19,7 @@
 
 /*@rules*/
 const HCR = (() => {
-  const COLS = 30, ROWS = 16, FLAG_MS = 5000;
+  const COLS = 30, ROWS = 22, FLAG_MS = 5000;
   const BAN = {   // reason -> the words (lower case, letters only); a clue is refused if any of its words is here
     colour: "red reds reddish blue blues bluish green greens greenish yellow yellows yellowish orange oranges orangey purple purples purplish violet pink pinks pinkish brown browns brownish grey greys greyish gray grays grayish black blacks blackish white whites whitish colour color colours colors shade shades hue hues tint a7mar ahmar ahmer ahmr 7amra hamra azra2 azraq azrak zar2a zarqa akhdar a5dar akhdr khadra asfar asfr safra bonni bonny bunni benni ramadi ramady rmady eswed aswad aswd sooda abyad abyadh abiad abyd beda banafsegy banafsagy banafsegi bnfsgy bembe pembe bamba bortoaly bortoali burtu2ali bortoqaly احمر حمرا ازرق زرقا اخضر خضرا اصفر صفرا اسود سودا ابيض بيضا بني برتقالي بنفسجي وردي رمادي",
     light: "light lighter lightest dark darker darkest pale paler bright brighter deep fate7 fateh fatih ghame2 ghamek ghameq ghamiq فاتح غامق",
@@ -34,8 +34,10 @@ const HCR = (() => {
     for(const w of ws){ const k = SET[word(w)]; if(k) return WHY[k]; }
     if(/\d/.test(t)) return "No numbers."; if(t.length > 24) return "Too long."; return ""; }
   const clean = t => String(t).trim().replace(/\s+/g, " ").slice(0, 24);
-  const shade = (c, r) => { const t = r / (ROWS - 1), l = 70 - t * 40, s = 92 + t * 8;   /* vivid (Omar: "make colors more vivid"): saturation 92-100% and lightness 70 down to 30; the mockup was paler (l = 92 - t * 72, s = t < .5 ? 55 + t * 80 : 95 - (t - .5) * 60); 7.44 first build: l = 88 - t * 62, s = t < .5 ? 80 + t * 40 : 100 */
-    return `hsl(${(c * 12) % 360} ${s.toFixed(1)}% ${l.toFixed(1)}%)`; };
+  const shade = (c, r) => { const h = (c * 12) % 360; if(r < 3){ const e = [[91, 38], [84, 62], [77, 80]][r]; return `hsl(${h} ${e[1]}% ${e[0]}%)`; }   /* 7.44 (Omar, option D): rows A-C fade up to near-white, rows T-V fade down to brown and black, each column keeping its hue; the vivid part is rows D-S. Before, ROWS was 16 starting at the vivid ramp */
+  if(r >= 19){ const e = [[24, 72], [17, 52], [9, 34]][r - 19]; return `hsl(${h} ${e[1]}% ${e[0]}%)`; }
+  r -= 3; const t = r / 15, l = 70 - t * 40, s = 92 + t * 8;   /* vivid (Omar: "make colors more vivid"): saturation 92-100% and lightness 70 down to 30; the mockup was paler (l = 92 - t * 72, s = t < .5 ? 55 + t * 80 : 95 - (t - .5) * 60); 7.44 first build: l = 88 - t * 62, s = t < .5 ? 80 + t * 40 : 100 */
+    return `hsl(${h} ${s.toFixed(1)}% ${l.toFixed(1)}%)`; };
   const dist = (a, b) => Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]));
   const pts = d => d === 0 ? 300 : d === 1 ? 200 : d === 2 ? 100 : 0;
   function dealCard(rnd){   // 4 shades at least 6 squares apart
@@ -86,7 +88,7 @@ const HC = {cfg:null, room:null, players:[], col:{}, scores:{}, g:null, over:fal
 HC.cfg = Object.assign({turns:0, t1:60, t2:45, tg:30}, store.get("jn_hcCfg", {}));
 const hcSave = () => store.set("jn_hcCfg", HC.cfg);
 const HC_COL = ["#ff2e4c", "#1e90ff", "#1fcf5a", "#ffb300", "#a64dff", "#ff4fb8", "#00d4d4", "#ff7a1a", "#c6ff3d", "#8a8f98"];
-const HC_LET = "ABCDEFGHIJKLMNOP";
+const HC_LET = "ABCDEFGHIJKLMNOPQRSTUV";
 const hcUrl = () => new URL(`h?r=${HC.room}`, location.href).href;
 const hcName = p => { const x = HC.players.find(y => y.p === p); return x ? x.n : ""; };
 const hcCol = p => HC_COL[(HC.col[p] || 0) % HC_COL.length];

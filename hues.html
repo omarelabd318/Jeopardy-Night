@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hues and Cues</title>
 <!-- 7.44: the phone page for Hues and Cues, at /h?r=ROOM. A player joins once with a name. Each turn one player is the clue giver: their phone shows 4 secret shades (tap one) and a box for a one-word clue.
-     Everyone else sees the clue and a small copy of the 480-shade board: tap it to open a 7 x 5 close-up, tap the exact square, then Lock in. After the first markers the clue giver writes a second clue (one or two words)
+     Everyone else sees the clue and a small copy of the 660-shade board: tap it to open a 7 x 3 close-up, tap the exact square, then Lock in. After the first markers the clue giver writes a second clue (one or two words)
      and everyone places a second marker. For 5 s after a clue shows there is a Flag button. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay Taboo,
      Fake Artist and the card modes use) and only the clue giver's own phone ever receives the secret shade (the laptop puts it in that player's private part). The banned-word check below is the same as HCR.check
      in src/hues.js (v4work/tools/hues-test.js compares them); the word list comes from the table. Paint Chip look: white card, black Big Shoulders capitals, Share Tech Mono codes. -->
@@ -58,7 +58,7 @@ canvas{display:block;width:100%}
 <div class="dock" id="dock" hidden></div>
 <script>
 const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
-const r = P.get("r") || "", KEY = "jn_hc_" + r, COLS = 30, ROWS = 16, LET = "ABCDEFGHIJKLMNOP";
+const r = P.get("r") || "", KEY = "jn_hc_" + r, COLS = 30, ROWS = 22, LET = "ABCDEFGHIJKLMNOPQRSTUV";
 const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
 const COL = ["#ff2e4c", "#1e90ff", "#1fcf5a", "#ffb300", "#a64dff", "#ff4fb8", "#00d4d4", "#ff7a1a", "#c6ff3d", "#8a8f98"];
 let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
@@ -69,7 +69,9 @@ const colOf = (p, pub) => COL[((pub.col || {})[p] || 0) % COL.length];
 const nm = (p, pub) => esc((pub.names || {})[p] || "");
 const init = (p, pub) => ((pub.names || {})[p] || "?").trim().charAt(0).toUpperCase() || "?";
 const code = t => t ? LET[t[1]] + (t[0] + 1) : "";
-const shade = (c, r) => { const t = r / (ROWS - 1), l = 70 - t * 40, s = 92 + t * 8; return `hsl(${(c * 12) % 360} ${s.toFixed(1)}% ${l.toFixed(1)}%)`; };
+const shade = (c, r) => { const h = (c * 12) % 360; if(r < 3){ const e = [[91, 38], [84, 62], [77, 80]][r]; return `hsl(${h} ${e[1]}% ${e[0]}%)`; }   /* 7.44 (Omar, option D): rows A-C fade up to near-white, rows T-V fade down to brown and black, each column keeping its hue; the vivid part is rows D-S. Before, ROWS was 16 starting at the vivid ramp */
+  if(r >= 19){ const e = [[24, 72], [17, 52], [9, 34]][r - 19]; return `hsl(${h} ${e[1]}% ${e[0]}%)`; }
+  r -= 3; const t = r / 15, l = 70 - t * 40, s = 92 + t * 8; return `hsl(${h} ${s.toFixed(1)}% ${l.toFixed(1)}%)`; };
 const dist = (a, b) => Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]));
 const pts = d => d === 0 ? 300 : d === 1 ? 200 : d === 2 ? 100 : 0;
 
@@ -126,17 +128,17 @@ function paintBoard(cv, o){   // o: c0,r0,nc,nr, marks [{p,c,r,two,faint}], sel,
   if(o.sel){ const x = X(o.sel[0] - .5), y = Y(o.sel[1] - .5); if(o.sel[0] >= c0 && o.sel[0] < c0 + nc && o.sel[1] >= r0 && o.sel[1] < r0 + nr){ c.strokeStyle = "#fff"; c.lineWidth = Math.max(2.5, cell * .12); c.strokeRect(x + 1.5, y + 1.5, cell - 3, cell - 3); c.strokeStyle = "#111"; c.lineWidth = 1.2; c.strokeRect(x, y, cell, cell); } }
   if(o.win){ c.strokeStyle = "#111"; c.lineWidth = 2; const x = (o.win.c0 - c0) * cell, y = (o.win.r0 - r0) * cell; c.strokeRect(x, y, o.win.nc * cell, o.win.nr * cell); c.strokeStyle = "#fff"; c.lineWidth = 1; c.strokeRect(x - 1.5, y - 1.5, o.win.nc * cell + 3, o.win.nr * cell + 3); } }
 function marksOf(p, m, faintAll){ return Object.keys(m || {}).map(q => ({p:q, c:m[q][0], r:m[q][1], col:colOf(q, p), i:init(q, p), faint:faintAll && q !== me.p})); }
-function winAt(c, r){ const c0 = Math.max(0, Math.min(COLS - 7, c - 3)), r0 = Math.max(0, Math.min(ROWS - 5, r - 2)); return {c0, r0, nc:7, nr:5}; }
+function winAt(c, r){ const c0 = Math.max(0, Math.min(COLS - 7, c - 3)), r0 = Math.max(0, Math.min(ROWS - 3, r - 1)); return {c0, r0, nc:7, nr:3}; }
 function boardHtml(){ return `<canvas class="mini" id="mini"></canvas><div class="rule" id="selline">Tap the board to zoom in.</div><canvas class="mag" id="mag"></canvas>`; }
 function armGuess(p, mine){
   const mini = $("mini"), mag = $("mag"); if(!mini) return;
-  const w = () => ctr || {c0:11, r0:5, nc:7, nr:5};
+  const w = () => ctr || {c0:11, r0:5, nc:7, nr:3};
   const m1 = p.ph === "g2" ? marksOf(p, p.m1, true) : [];
   const paint = () => { const wn = w(); paintBoard(mini, {marks:m1, sel, win:wn});
-    paintBoard(mag, {c0:wn.c0, r0:wn.r0, nc:7, nr:5, marks:m1, sel}); const sl = $("selline"); if(sl) sl.textContent = sel ? `Your pick: ${LET[sel[1]]}${sel[0] + 1}` : "Tap the board to zoom in, then tap a square."; const lb = $("lock"); if(lb) lb.disabled = !sel || sending; };
+    paintBoard(mag, {c0:wn.c0, r0:wn.r0, nc:7, nr:3, marks:m1, sel}); const sl = $("selline"); if(sl) sl.textContent = sel ? `Your pick: ${LET[sel[1]]}${sel[0] + 1}` : "Tap the board to zoom in, then tap a square."; const lb = $("lock"); if(lb) lb.disabled = !sel || sending; };
   const at = (cv, e, nc, nr, c0, r0) => { const b = cv.getBoundingClientRect(); return [c0 + Math.max(0, Math.min(nc - 1, Math.floor((e.clientX - b.left) / b.width * nc))), r0 + Math.max(0, Math.min(nr - 1, Math.floor((e.clientY - b.top) / b.height * nr)))]; };
   mini.onpointerdown = e => { e.preventDefault(); const q = at(mini, e, COLS, ROWS, 0, 0); ctr = winAt(q[0], q[1]); sel = q; selTid = p.tid; paint(); };
-  mag.onpointerdown = e => { e.preventDefault(); const wn = w(); sel = at(mag, e, 7, 5, wn.c0, wn.r0); selTid = p.tid; paint(); };
+  mag.onpointerdown = e => { e.preventDefault(); const wn = w(); sel = at(mag, e, 7, 3, wn.c0, wn.r0); selTid = p.tid; paint(); };
   paint(); }
 
 /* ---------- screens ---------- */

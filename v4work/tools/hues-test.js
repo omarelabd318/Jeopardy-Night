@@ -18,7 +18,7 @@ eq(chk("Ahly", 1), "", "a team is fine"); eq(chk("koshari", 1), "", "food is fin
   ["Pool", "", "sea breeze", "Blue", "sky blue", "bluetooth", "a7mar", "azra2", "أحمر", "بحر", "dark", "Lighter", "corner", "C12", "top left", "Ahly", "koshari", "one two three", "x".repeat(30), "  spaced   out  "].forEach(t => [1, 2].forEach(k => eq(C(t, k, T.BAN), T.check(t, k), `phone and game agree on "${t}" (${k})`))); }
 
 // the board and scoring
-eq(T.COLS * T.ROWS, 480, "480 shades"); ok(/^hsl\(/.test(T.shade(3, 4)), "a shade"); eq(T.shade(0, 8), T.shade(30, 8), "the hue wheel wraps");
+eq(T.COLS * T.ROWS, 660, "660 shades"); ok(/^hsl\(/.test(T.shade(3, 4)), "a shade"); eq(T.shade(0, 8), T.shade(30, 8), "the hue wheel wraps");
 eq([[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 0], [3, 3]].map(([a, b]) => T.pts(T.dist([5, 5], [5 + a, 5 + b]))), [300, 200, 200, 100, 100, 0, 0], "300 on the target, 200 in the frame, 100 on the ring, 0 beyond");
 { const r = (() => { let k = 0; return () => ((k++ * 0.6180339) % 1); })(); for(let i = 0; i < 50; i++){ const c = Array.from({length:4}, () => 0), card = (() => { const g = T.Game({players:ids, rand:r}); g.begin(0); return g.card; })(); eq(card.length, 4, "4 shades"); for(let x = 0; x < 4; x++) for(let y = x + 1; y < 4; y++) ok(T.dist(card[x], card[y]) >= 6, "shades are at least 6 apart"); } }
 
