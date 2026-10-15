@@ -1,5 +1,13 @@
 [
  {
+  "v": "7.43",
+  "date": "2026-10-15",
+  "items": [
+   "Category Bingo: new \"4 in a row\" win option for a shorter game.",
+   "Category Bingo: if a square is picked and missed twice, it gets a new category from the same section. The value stays the same."
+  ]
+ },
+ {
   "v": "7.42",
   "date": "2026-10-15",
   "items": [
