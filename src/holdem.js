@@ -168,7 +168,7 @@ const HE = (() => {
 /*@end-rules*/
 
 /* ---------- screens and the link to the phones ---------- */
-const HD = {cfg:null, room:null, players:[], phase:"lobby", g:null, relay:null, poll:null, since:0, busy:false, tm:null, paused:false, dl:0};
+const HD = {cfg:null, room:null, players:[], phase:"lobby", g:null, relay:null, poll:null, since:0, busy:false, tm:null, paused:false, dl:0, sn:0, snHn:0, rt:null, anim:-1};   // sn: how many board cards the TV (and phones) have been shown so far; they come out one at a time
 HD.cfg = Object.assign({chips:1000, up:8, end:"last", fixed:30, timer:30, helper:true, four:false}, store.get("jn_hdCfg", {}));
 const hdSave = () => store.set("jn_hdCfg", HD.cfg);
 const hdUrl = () => new URL(`c?r=${HD.room}&g=hd`, location.href).href;
@@ -177,8 +177,11 @@ const hdNum = n => Number(n).toLocaleString("en-US");
 const hdOrd = n => { const x = ["th", "st", "nd", "rd"], v = n % 100; return n + (x[(v - 20) % 10] || x[v] || x[0]); };
 const hdSuit = s => `<b class="${s === "H" || s === "D" ? "" : "blk"}">${HE.SYM[s]}</b>`;
 
-function hdPost(){ const g = HD.g; if(!g) return; const priv = {}; g.pids.forEach((p, i) => priv[p] = HE.priv(g, i));
-  fetch("api/crd", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:HD.room, crd:{pub:HE.pub(g), priv}})}).catch(() => {}); }
+/* while a street's cards are still being turned over one by one, the table (and the phones) show only the cards revealed so far and nobody is on turn yet */
+const hdRevealing = g => g.phase !== "show" && g.phase !== "over" && HD.sn < g.board.length;
+const hdPub = g => { const p = HE.pub(g); if(hdRevealing(g)){ p.board = p.board.slice(0, HD.sn); p.turn = -1; } return p; };
+function hdPost(){ const g = HD.g; if(!g) return; const priv = {}, rv = hdRevealing(g); g.pids.forEach((p, i) => { priv[p] = HE.priv(g, i); if(rv){ priv[p].act = null; priv[p].helper = ""; } });
+  fetch("api/crd", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:HD.room, crd:{pub:hdPub(g), priv}})}).catch(() => {}); }
 async function hdPoll(){ if($("#hdo").hidden || HD.busy) return; HD.busy = true;
   try{
     if(HD.relay !== RELAY){ HD.relay = RELAY; if(HD.phase === "lobby") hdRender(); }
@@ -194,10 +197,14 @@ async function hdPoll(){ if($("#hdo").hidden || HD.busy) return; HD.busy = true;
 /* ---------- the flow ---------- */
 function hdStart(){
   if(HD.players.length < 2 || HD.players.length > 9 || RELAY !== true) return;
-  HD.g = HE.Game(Object.assign({}, HD.cfg), HD.players.map(x => x.n), HD.players.map(x => x.p), hdRnd); HD.since = 0; HD.paused = false; HD.g.start(); HD.phase = "play"; hdChanged(); }
+  HD.g = HE.Game(Object.assign({}, HD.cfg), HD.players.map(x => x.n), HD.players.map(x => x.p), hdRnd); HD.since = 0; HD.paused = false; clearTimeout(HD.rt); HD.rt = null; HD.sn = 0; HD.snHn = 0; HD.anim = -1; HD.g.start(); HD.phase = "play"; hdChanged(); }
 /* what is waiting on a timer: the next street on a run out, the next hand after a showdown, a player's turn running out (or a seat the host sat out) */
-function hdChanged(){ const g = HD.g; hdPost(); hdRender(); clearTimeout(HD.tm);
+function hdChanged(){ const g = HD.g;
+  if(g.hn !== HD.snHn){ HD.snHn = g.hn; HD.sn = 0; HD.anim = -1; }
+  if(g.phase === "show" || g.phase === "over"){ HD.sn = g.board.length; HD.anim = -1; }
+  hdPost(); hdRender(); clearTimeout(HD.tm);
   if(g.phase === "over"){ playWinSiu(); return; }
+  if(hdRevealing(g)){ if(!HD.rt) hdReveal(g); return; }   // the timers below start once the last card is face up
   if(HD.paused) return;
   const v = g.v, ph = g.phase, run = (ms, f) => { HD.tm = setTimeout(() => { if(HD.g === g && g.v === v && g.phase === ph && !HD.paused) f(); }, ms); };
   if(ph === "run") run(2000, () => { g.advance(); hdChanged(); });
@@ -205,11 +212,16 @@ function hdChanged(){ const g = HD.g; hdPost(); hdRender(); clearTimeout(HD.tm);
   else if(ph === "hand" && g.turn >= 0){
     if(g.sit[g.turn]) run(700, () => { g.autoAct(g.turn); hdChanged(); });
     else if(g.cfg.timer){ HD.dl = Date.now() + g.cfg.timer * 1000; run(g.cfg.timer * 1000, () => { g.autoAct(g.turn); hdChanged(); }); } } }
+function hdReveal(g){ HD.rt = setTimeout(function step(){
+  if(HD.g !== g){ HD.rt = null; return; }
+  HD.sn++; HD.anim = HD.sn - 1; hdPost(); hdRender();
+  if(HD.sn < g.board.length) HD.rt = setTimeout(step, 800);
+  else { HD.rt = null; HD.anim = -1; hdChanged(); } }, 500); }
 function hdNext(){ const g = HD.g; if(g && g.phase === "show"){ g.advance(); hdChanged(); } }
 
 /* ---------- screens ---------- */
 function hdEnter(){ if(S.mode === "holdem") return; S.mode = "holdem"; document.body.classList.add("hdmode"); }
-function hdLeave(){ if(S.mode !== "holdem") return; stopSiu(); clearTimeout(HD.tm); clearInterval(HD.poll); HD.poll = null; HD.g = null; HD.phase = "lobby"; HD.paused = false; S.mode = null; document.body.classList.remove("hdmode"); $("#hdo").hidden = true; }
+function hdLeave(){ if(S.mode !== "holdem") return; stopSiu(); clearTimeout(HD.tm); clearTimeout(HD.rt); HD.rt = null; HD.sn = 0; HD.snHn = 0; HD.anim = -1; clearInterval(HD.poll); HD.poll = null; HD.g = null; HD.phase = "lobby"; HD.paused = false; S.mode = null; document.body.classList.remove("hdmode"); $("#hdo").hidden = true; }
 function hdShow(){ hdEnter(); CK.inject();
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo","#psyo","#esto","#tno","#cno","#dco"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   HD.room = newRoom(); HD.players = []; HD.phase = "lobby"; HD.g = null; HD.since = 0; HD.relay = RELAY; HD.paused = false;
@@ -256,19 +268,19 @@ function hdRender(){
     const q = $("#hdQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(HD.phase === "lobby" && !$("#hdo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:hdUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
     return; }
-  const p = HE.pub(g);
+  const p = hdPub(g);
   if(p.phase === "over"){ const rk = p.ranks, order = [...Array(p.n).keys()].sort((a, b) => rk[a] - rk[b] || p.stacks[b] - p.stacks[a]), win = order.filter(s => rk[s] === 1).map(s => esc(p.names[s]));
     el.innerHTML = `<div class="hdhead"><div class="hdbadge">Game over</div><h1>${win.join(" and ")} ${win.length > 1 ? "win" : "wins"}</h1></div>
       <ol class="hdpod">${order.map(s => `<li class="r${Math.min(rk[s], 4)}"><b>${hdOrd(rk[s])}</b><span>${esc(p.names[s])}</span><em>${hdNum(p.stacks[s])}</em></li>`).join("")}</ol>
       <div class="hdrow"><button class="hdbtn go" data-act="again">Play again</button><button class="hdbtn ghost" data-act="home">Title screen</button></div>`; return; }
-  const glow = p.show && p.show.glow || [], slots = [0, 1, 2, 3, 4].map(k => p.board[k] ? CK.face(p.board[k], glow.includes(p.board[k]) ? "glow" : "") : `<div class="ck slot"></div>`).join("");
+  const glow = p.show && p.show.glow || [], slots = [0, 1, 2, 3, 4].map(k => p.board[k] ? CK.face(p.board[k], (glow.includes(p.board[k]) ? "glow " : "") + (k === HD.anim ? "hdnew" : "")).trim() : `<div class="ck slot"></div>`).join("");
   const sorted = [...Array(p.n).keys()].sort((a, b) => (p.out[a] ? 1 : 0) - (p.out[b] ? 1 : 0) || (p.out[a] && p.out[b] ? p.out[a] - p.out[b] : p.stacks[b] - p.stacks[a]));
   const upTxt = p.up <= 1 ? "Blinds up next hand" : `Blinds up in ${p.up} hands`;
   const cap = p.phase === "show" ? (p.show.unc != null ? `${esc(p.names[p.show.unc])} wins ${hdNum(p.show.pots[0].amt)}` : p.show.pots.map(x => `${x.win.map(i => esc(p.names[i])).join(" and ")} ${x.win.length > 1 ? "split" : "wins"} ${hdNum(x.amt)}${x.name ? ` · ${esc(x.name)}` : ""}`).join("<br>")) : hdSaid(p, p.say) || (p.turn >= 0 ? `${esc(p.names[p.turn])} to act` : "");
   const toCall = p.turn >= 0 && p.phase === "hand" ? Math.max(0, p.cur - p.bets[p.turn]) : 0;
-  el.innerHTML = `<div class="ckw hd-tv" data-look="vegas"${p.cfg.four ? " data-four" : ""}><div class="hd-stage"><div class="ckt"><div class="cktin"><div class="ckfelt"></div>
+  el.innerHTML = `<div class="ckw hd-tv${p.phase === "hand" && p.turn >= 0 ? " hasturn" : ""}" data-look="vegas"${p.cfg.four ? " data-four" : ""}><div class="hd-stage"><div class="ckt"><div class="cktin"><div class="ckfelt"></div>
     ${[...Array(p.n).keys()].map(i => hdSeatHtml(i, p)).join("")}
-    <div class="hdmid"><div class="hdboard">${slots}</div><div class="hdpots"><span class="hdpot"><span class="hdch"></span>Pot ${hdNum(p.pot)}</span>${p.pots.length ? p.pots.map((x, k) => `<span class="hdpot side">${k ? "Side" : "Main"} ${hdNum(x.amt)}</span>`).join("") : ""}</div>
+    <div class="hdmid">${p.phase === "hand" && p.turn >= 0 && !HD.paused ? `<div class="hdturn"><span class="hdarr">▶</span>${esc(p.names[p.turn])}'s turn</div>` : ""}<div class="hdboard">${slots}</div><div class="hdpots"><span class="hdpot"><span class="hdch"></span>Pot ${hdNum(p.pot)}</span>${p.pots.length ? p.pots.map((x, k) => `<span class="hdpot side">${k ? "Side" : "Main"} ${hdNum(x.amt)}</span>`).join("") : ""}</div>
       <div class="hdsay">${cap}${p.phase === "hand" && toCall ? `<br><small>${hdNum(toCall)} to call</small>` : ""}</div></div>
     ${HD.paused ? `<div class="ckmsg">Paused</div>` : ""}
     <div class="ckchip">Hand ${p.hn} · Blinds ${hdNum(p.blinds[0])} / ${hdNum(p.blinds[1])} · ${p.final ? "Final hands" : p.cfg.end === "fixed" ? `Hand ${p.hn} of ${p.cfg.fixed}` : upTxt}</div></div></div></div>
