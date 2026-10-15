@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Speed Trivia</title>
+<!-- 7.47: the phone page for Speed Trivia, at /b?r=ROOM. A player joins once with a name, then the phone is a buzzer: a big round button in the player's colour. After a buzz it shows the four answer buttons
+     (or a text box), only to the player who buzzed. The laptop is the referee: this page only sends the move it wants (worker/index.js: join, crdstate, crdact, the same relay the other phone modes use) and never
+     receives the clue or the answer, only who buzzed, who is locked out and the scores. A buzz is sent on touch-down with the table version the phone saw, so the relay refuses every buzz after the first.
+     Studio Podiums look (Omar's pick): navy studio light, gold type, glossy round buzzer. The phone polls every 0.3 s while a game runs. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0c1846;--navy2:#13246b;--edge:#2c43a8;--gold:#ffcf4a;--ice:#c9d4ff;--bad:#ff6b6b;--ok:#4ade80;--head:Anton,Impact,sans-serif;--body:"Barlow Condensed","Arial Narrow",sans-serif;--c:#e8413a;--c0:#e8413a;--c1:#2f7bf0;--c2:#22b45f;--c3:#f2b31b}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+html,body{margin:0;height:100%}
+body{color:#fff;font:600 19px/1.25 var(--body);background:radial-gradient(120% 90% at 50% 0%,#1d3a8a 0%,#0c1846 55%,#060c26 100%) fixed;background-color:var(--navy);overscroll-behavior:none;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+main{height:100%;max-width:520px;margin:0 auto;padding:max(10px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px}
+.top{display:flex;justify-content:space-between;gap:10px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ice);min-height:22px}
+.top b{color:var(--c);font-weight:700}
+#view{flex:1;display:flex;flex-direction:column;gap:12px;min-height:0}
+h1{margin:6px 0;font:400 34px/1.05 var(--head);letter-spacing:.03em;text-transform:uppercase;color:var(--gold)}
+.hint{color:var(--ice);font-size:17px;font-weight:500}
+.status{font:400 30px/1.1 var(--head);letter-spacing:.03em;text-transform:uppercase}
+.gold{color:var(--gold)}
+input{width:100%;font:700 24px var(--body);padding:12px;border:3px solid var(--edge);border-radius:12px;background:#09123a;color:#fff;outline:none;user-select:text;-webkit-user-select:text}
+input:focus{border-color:var(--gold)}
+button{font:inherit;cursor:pointer;color:inherit}
+.send{width:100%;font:400 26px var(--head);letter-spacing:.06em;text-transform:uppercase;background:var(--gold);color:#1a1300;border:0;border-radius:12px;padding:14px}
+.send:disabled{opacity:.5}
+.msg{padding:10px 12px;border:2px solid var(--bad);border-radius:10px;color:var(--bad);font-size:17px}
+.buzzwrap{flex:1;display:grid;place-items:center;min-height:0}
+.buzz{width:min(86vw,62vh,420px);aspect-ratio:1;border:0;border-radius:50%;background:radial-gradient(circle at 40% 33%,#ffb3ad,var(--c) 52%,#5a0d0a);box-shadow:0 12px 0 #3a0806,0 0 70px color-mix(in srgb,var(--c) 65%,transparent);color:#fff;font:400 clamp(54px,18vw,92px)/1 var(--head);letter-spacing:.05em;text-shadow:0 4px 0 rgba(0,0,0,.35)}
+.buzz:active{transform:translateY(8px);box-shadow:0 4px 0 #3a0806,0 0 70px color-mix(in srgb,var(--c) 65%,transparent)}
+.buzz.grey{background:radial-gradient(circle at 40% 33%,#5b6590,#2a3260 55%,#171d3f);box-shadow:0 12px 0 #0b1030;color:#9aa6d6;font-size:clamp(30px,10vw,52px);text-shadow:none}
+.buzz.grey:active{transform:none}
+.lockbox{flex:1;display:grid;place-content:center;text-align:center;gap:8px}
+.lockbox .big{font:400 56px/1 var(--head);letter-spacing:.05em;color:var(--bad)}
+.lockbox .big.neutral{color:var(--ice)}
+.bar{height:12px;border-radius:8px;background:rgba(255,255,255,.15);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:var(--gold)}
+.opts{display:grid;gap:10px;flex:1;align-content:start}
+.opt{background:var(--navy2);border:3px solid var(--edge);border-radius:14px;padding:16px 14px;font:400 clamp(22px,6.4vw,30px)/1.1 var(--head);text-transform:uppercase;text-align:center;min-height:68px}
+.opt:active{border-color:var(--gold);background:#1b2f86}
+.opt:disabled{opacity:.55}
+.panel{background:var(--navy2);border:2px solid var(--edge);border-radius:14px;padding:14px;display:grid;gap:4px}
+.panel b{font:400 40px/1.05 var(--head);letter-spacing:.03em;text-transform:uppercase}
+.panel small{color:var(--ice);font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+.pos{color:var(--ok)}.neg{color:var(--bad)}
+.wait{text-align:center;padding:40px 0 10px}.wait .big{font:400 36px var(--head);text-transform:uppercase;margin:12px 0;color:var(--gold)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin:0 3px;animation:b 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+</style></head><body><main>
+<div class="top"><span id="me"></span><span id="rnd"></span></div>
+<div id="view"></div>
+</main>
+<script>
+const P = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+const r = P.get("r") || "", KEY = "jn_sp_" + r, COLS = ["#e8413a", "#2f7bf0", "#22b45f", "#f2b31b"];
+const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
+let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+let st = null, timer = null, tick = null, busy = false, sig = "", note = null, sending = false, dl = 0, early = 0, wake = null;
+const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
+function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
+const buzzTone = ms => { try{ navigator.vibrate && navigator.vibrate(ms); }catch(e){} };
+const signs = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
+const ord = n => { const x = ["th", "st", "nd", "rd"], v = n % 100; return n + (x[(v - 20) % 10] || x[v] || x[0]); };
+async function keepAwake(){ try{ if(navigator.wakeLock && !wake) wake = await navigator.wakeLock.request("screen"); wake && wake.addEventListener("release", () => { wake = null; }); }catch(e){} }
+
+async function join(n){
+  const p = (me && me.p) || newId();
+  try{ const res = await post("join", {p, n});
+    if(res.ok){ me = {p, n}; try{ localStorage.setItem(KEY, JSON.stringify(me)); }catch(e){} sig = ""; loop(); return; }
+    joinView(res.j.error === "full" ? "This game is full." : "That didn't work. Try again."); }
+  catch(e){ joinView("No connection. Check your internet and try again."); }
+}
+function joinView(err){
+  stop(); $("me").textContent = ""; $("rnd").textContent = "";
+  $("view").innerHTML = `<h1>Speed Trivia</h1><div class="status">What's your name?</div>
+    <form id="jf" autocomplete="off"><input id="nm" maxlength="24" required enterkeyhint="go" value="${esc(me && me.n || "")}" placeholder="Your name"><button class="send" id="jb" style="margin-top:12px">Join</button></form>
+    ${err ? `<div class="msg">${esc(err)}</div>` : ""}<p class="hint">Your phone is your buzzer. Keep this page open for the whole game.</p>`;
+  $("jf").onsubmit = e => { e.preventDefault(); const n = $("nm").value.trim(); if(!n) return; $("jb").disabled = true; keepAwake(); join(n); };
+}
+async function send(a){ if(sending || !st || !st.pub) return; sending = true; note = null;
+  const res = await post("crdact", {p:me.p, v:st.pub.v, a}); sending = false;
+  if(!res.ok && a.k === "ans") note = res.j.error === "stale" ? "Too late." : "That didn't send. Try again.";
+  if(res.ok && a.k === "buzz") buzzTone(40);
+  sig = ""; draw(); poll(true); }
+function bar(){ return `<div class="bar"><i id="tbar"></i></div>`; }
+function updateBar(){ const b = $("tbar"); if(!b || !dl || !st || !st.pub) return; const left = (dl - Date.now()) / 1000; b.style.width = Math.max(0, Math.min(100, left / st.pub.secs * 100)) + "%"; }
+
+function draw(){
+  $("me").textContent = me.n;
+  if(!st || !st.pub){ $("rnd").textContent = ""; sig = "w";
+    $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to open the game.</div></div>`; return; }
+  const p = st.pub, idx = (p.ids || []).indexOf(me.p), mine = idx >= 0, col = COLS[idx < 0 ? 0 : idx], locked = (p.lock || []).includes(me.p), out = p.sd && !p.sd.includes(me.p);
+  document.documentElement.style.setProperty("--c", col);
+  const sg = [p.v, mine, note, sending, early > Date.now()].join("|"); if(sg === sig) return; sig = sg;
+  const v = $("view"), nm = x => esc((p.names && p.names[x]) || ""), score = p.score ? p.score[me.p] ?? 0 : 0, err = note ? `<div class="msg">${esc(note)}</div>` : "";
+  $("rnd").innerHTML = p.ph === "lobby" || p.ph === "over" ? "" : p.rd === 4 ? "Sudden death" : `Round ${p.rd}`;
+  if(!mine){ v.innerHTML = p.ph === "lobby" && (p.ids || []).length < 4 ? `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start.</div></div>`
+      : (p.ids || []).length >= 4 ? `<div class="wait"><div class="big">This game is full</div><div class="hint">Four players are already in. Ask the host to remove someone, or wait for the next game.</div></div>`
+      : `<div class="wait"><div class="big">Game in progress</div><div class="hint">You'll join between clues.</div></div>`; return; }
+  if(p.ph === "lobby"){ v.innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">You are <b style="color:${col}">${["red", "blue", "green", "gold"][idx]}</b>. Waiting for the host to start.</div></div>`; return; }
+  if(p.ph === "round"){ v.innerHTML = `<div class="wait"><div class="hint">${p.rd === 4 ? "Tied at the top" : "Get ready"}</div><div class="big">${p.rd === 4 ? "Sudden death" : `Round ${p.rd} · ${esc(p.rname)}`}</div><div class="hint">${p.rd === 4 ? (out ? "You're not in this one. Watch the TV." : "First right answer wins. A wrong answer puts you out.") : `+${p.right} for a right answer${p.wrong ? `, −${p.wrong} for a wrong one` : ""}.`}</div></div>`; return; }
+  if(p.ph === "ready"){ const tooEarly = early > Date.now(); v.innerHTML = `<div class="status gold">${p.cat ? esc(p.cat) : "Get ready"}</div><div class="buzzwrap"><button class="buzz grey" id="bz">${tooEarly ? "TOO EARLY" : "GET READY"}</button></div><div class="hint" style="text-align:center">Look at the TV</div>`; return; }
+  if(p.ph === "live"){
+    if(out){ v.innerHTML = `<div class="lockbox"><div class="big neutral">You're out</div><div class="hint">Sudden death. Watch the TV.</div></div>`; return; }
+    if(locked){ v.innerHTML = `<div class="lockbox"><div class="big">LOCKED</div><div class="hint">Wrong. Wait for the next clue.</div></div>`; return; }
+    const lastMsg = p.last && p.last.p !== me.p ? `<div class="hint" style="text-align:center">${nm(p.last.p)} ${p.last.k === "time" ? "ran out of time" : "was wrong"}. Buzz!</div>` : `<div class="hint" style="text-align:center">${esc(p.cat)}</div>`;
+    v.innerHTML = `<div class="buzzwrap"><button class="buzz" id="bz">BUZZ</button></div>${lastMsg}`; return; }
+  if(p.ph === "buzzed"){
+    if(p.buz !== me.p){ v.innerHTML = `<div class="lockbox"><div class="big neutral">${nm(p.buz)} buzzed</div><div class="hint">${locked ? "You're locked out of this clue." : "If they get it wrong, buzz again."}</div></div>`; return; }
+    const o = st.me;
+    if(!o){ v.innerHTML = `${bar()}<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; updateBar(); return; }
+    if(o.typed){ v.innerHTML = `${bar()}<div class="status gold">Type your answer</div><form id="af" autocomplete="off"><input id="av" maxlength="60" enterkeyhint="send" autocapitalize="words" placeholder="Answer"><button class="send" id="ab" style="margin-top:10px">Send</button></form>${err}`;
+      $("av").focus(); $("af").onsubmit = e => { e.preventDefault(); const t = $("av").value.trim(); if(!t) return; $("ab").disabled = true; send({k:"ans", t}); }; updateBar(); return; }
+    v.innerHTML = `${bar()}<div class="status gold">Your answer</div><div class="opts">${(o.opts || []).map(x => `<button class="opt" data-i="${x.i}" ${sending ? "disabled" : ""}>${esc(x.t)}</button>`).join("")}</div>${err}`; updateBar(); return; }
+  if(p.ph === "result"){ const x = p.res || {}, me1 = x.p === me.p, d = me1 ? x.pts : 0;
+    v.innerHTML = `<div class="panel"><small>The answer</small><b class="gold">${esc(p.ans || "")}</b></div>
+      <div class="panel"><small>${x.k === "right" ? (me1 ? "You got it" : nm(x.p) + " got it") : x.k === "dead" ? "Nobody got it" : me1 ? (x.k === "time" ? "You ran out of time" : "You were wrong") : "No one else could buzz"}</small><b class="${d > 0 ? "pos" : d < 0 ? "neg" : ""}">${me1 ? signs(d) : "0"}</b></div>
+      <div class="panel"><small>Your score · ${ord(1 + Object.values(p.score || {}).filter(s => s > score).length)} of ${(p.ids || []).length}</small><b class="${score < 0 ? "neg" : ""}">${score}</b></div>`; return; }
+  if(p.ph === "scores"){ const rank = 1 + Object.values(p.score || {}).filter(s => s > score).length;
+    v.innerHTML = `<div class="wait"><div class="hint">After round ${p.rd}</div><div class="big">You're ${ord(rank)}</div></div><div class="panel"><small>Your score</small><b class="${score < 0 ? "neg" : ""}">${score}</b></div><div class="hint" style="text-align:center">Look at the TV</div>`; return; }
+  if(p.ph === "over"){ const won = (p.winners || []).includes(me.p), rank = 1 + Object.values(p.score || {}).filter(s => s > score).length;
+    v.innerHTML = `<div class="wait"><div class="hint">Game over</div><div class="big">${won ? "You win!" : "You finished " + ord(rank)}</div></div><div class="panel"><small>Final score</small><b class="${score < 0 ? "neg" : ""}">${score}</b></div>`; return; }
+}
+function press(e){ if(!st || !st.pub) return; const t = e.target.closest("button"); if(!t) return;
+  if(t.id === "bz"){ e.preventDefault(); const ph = st.pub.ph;
+    if(ph === "ready"){ early = Date.now() + 500; sig = ""; draw(); setTimeout(() => { sig = ""; if(st) draw(); }, 520); return; }
+    if(ph === "live" && early < Date.now()){ t.disabled = true; send({k:"buzz"}); } return; }
+  if(t.dataset.i != null){ e.preventDefault(); send({k:"ans", i:+t.dataset.i}); } }
+document.addEventListener("pointerdown", press);
+document.addEventListener("click", e => { if(e.target.closest("#bz,.opt")) e.preventDefault(); });
+document.addEventListener("visibilitychange", () => { if(!document.hidden && me && timer){ poll(true); keepAwake(); } });
+async function poll(force){
+  if(busy && !force) return; if(document.hidden && !force) return; busy = true;
+  try{ const j = await (await fetch(`api/crdstate?r=${encodeURIComponent(r)}&p=${encodeURIComponent(me.p)}`, {cache:"no-store"})).json();
+    if(j && j.name === null){ busy = false; me = null; joinView(); return; }   // the game doesn't know this phone (a new game, or the host removed it): join again
+    if(j){ const was = st && st.pub ? st.pub.ph : null; if(!st || !st.pub || !j.pub || st.pub.v !== j.pub.v) note = null; st = j;
+      if(j.pub && j.pub.ph === "buzzed") dl = Date.now() + j.pub.left * 1000 - (j.ago || 0); else dl = 0;
+      if(j.pub && j.pub.ph === "live" && was !== "live") buzzTone(25);
+      draw(); } }
+  catch(e){}
+  busy = false;
+}
+function stop(){ if(timer){ clearInterval(timer); timer = null; } if(tick){ clearInterval(tick); tick = null; } }
+function loop(){ stop(); poll(); timer = setInterval(poll, 300); tick = setInterval(updateBar, 200); keepAwake(); }
+if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
+else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
+else joinView();
+</script>
+</body></html>

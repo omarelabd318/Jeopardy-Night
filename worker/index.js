@@ -27,6 +27,7 @@
 //   6.79: card modes (Estimation first). The laptop is the referee: POST /api/crd {r,crd:{pub,priv:{player:{hand,act}}}} posts the table (pub = what everyone sees, priv = each phone's own hand and the move it may make);
 //   a phone reads GET /api/crdstate?r&p -> {name, pub, me} (only its own priv) and sends a move with POST /api/crdact {r,p,v,a} (v = the table version it saw); the laptop reads the moves in order with
 //   GET /api/crdacts?r&since -> {n, acts:[{p,v,a}]}. The shared phone page is /c (cards.html).
+//   7.47: Speed Trivia uses the same generic crd routes (the laptop posts who is locked out and who buzzed and, in the buzzer's private part only, the four answer buttons; phones send buzz and answer moves, a buzz carries the table version the phone saw so the relay refuses every buzz after the first); its phone page is /b (buzz.html).
 //   7.44: Hues and Cues uses the same generic crd routes (the laptop posts the board state and the clue giver's secret shade in that player's private part; phones send pick / clue2 / mark / flag moves); its phone page is /h (hues.html).
 //   7.23: Fake Artist uses the same generic crd routes (the laptop posts the canvas and each player's own card, phones send seen / stroke / vote / guess moves); its phone page is /w (draw.html).
 //   7.4: Taboo uses the same generic crd routes (the laptop posts the table and, in each player's private part, the card only the describer and the opposing phones may see; phones send start / got / skip / buzz moves);
@@ -196,6 +197,7 @@ export default {
     // A 302, not a 301, so phones and browsers don't remember it and removing these lines undoes it. Needs "run_worker_first" in wrangler.jsonc, or "/" never reaches this code.
     if (url.hostname.startsWith("jeopardy-night.") && (url.pathname === "/" || url.pathname === "/index.html"))
       return Response.redirect("https://" + url.hostname.replace(/^jeopardy-night\./, "sahra.") + "/" + url.search, 302);
+    if (url.pathname === "/b") return env.ASSETS.fetch(new Request(new URL("/buzz" + url.search, url), req));  // 7.47: Speed Trivia phone page
     if (url.pathname === "/h") return env.ASSETS.fetch(new Request(new URL("/hues" + url.search, url), req));  // 7.44: Hues and Cues phone page
     if (url.pathname === "/w") return env.ASSETS.fetch(new Request(new URL("/draw" + url.search, url), req));  // 7.23: Fake Artist phone page
     if (url.pathname === "/t") return env.ASSETS.fetch(new Request(new URL("/taboo" + url.search, url), req));  // 7.4: Taboo phone page
