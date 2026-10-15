@@ -91,7 +91,7 @@ function renderImp(){
     const p = ps[d.step], card = d.cards[p.p];
     el.innerHTML = `<div class="imhead"><div class="imbadge">Round ${IM.round} · ${esc(d.title)}</div><h1>Pass to ${esc(p.n)}</h1><p class="sub">Everyone else, look away. ${esc(p.n)}: hold the card to see it, let go to hide it, then tap Next.</p></div>
       <div class="imcard" id="imCard"><div class="imcover" id="imCover"><div class="imstamp">CLASSIFIED</div><div class="imtap">Hold to see your card.<br>Let go to hide it.</div></div><div id="imFace" hidden></div></div>
-      <div class="row"><button class="imbtn go" id="imNext">${d.step + 1 < ps.length ? "Next player" : "Everyone has a card"}</button></div>`;
+      <div class="row imnextrow"><button class="imbtn go" id="imNext">${d.step + 1 < ps.length ? "Next player" : "Everyone has a card"}</button></div>`;
     const card$ = $("#imCard"), face = $("#imFace"), cover = $("#imCover");
     card$.onpointerdown = e => { e.preventDefault(); face.innerHTML = imCardHtml(card, p.n); face.hidden = false; cover.hidden = true; };
     ["pointerup", "pointercancel", "pointerleave"].forEach(ev => card$.addEventListener(ev, () => { face.hidden = true; face.innerHTML = ""; cover.hidden = false; }));

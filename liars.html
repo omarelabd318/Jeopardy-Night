@@ -41,7 +41,8 @@ input[type=text]{width:100%;font:700 20px var(--body);padding:12px;border:2px so
 .mini{display:grid;justify-items:center;gap:6px;font-size:14px;opacity:.9}.mini div{display:flex}
 .mini i{width:24px;height:34px;border-radius:4px;margin:0 -6px;border:1.5px solid var(--card);background:repeating-linear-gradient(45deg,#7a1f1a 0 4px,#5c1512 4px 8px)}
 .hand{display:flex;justify-content:center;flex-wrap:wrap;gap:0;padding:22px 0 8px;min-height:104px}
-.c{position:relative;width:56px;height:80px;margin:0 -4px;border-radius:8px;background:var(--card);color:var(--cardink);border:3px solid var(--gold);font:400 30px var(--head);display:grid;place-items:center;padding:0;transition:translate .15s}
+/* 7.37: bigger cards side by side (was width:56px;height:80px;margin:0 -4px) */
+.c{position:relative;width:min(66px,17vw);height:auto;aspect-ratio:7/10;margin:0 3px;border-radius:8px;background:var(--card);color:var(--cardink);border:3px solid var(--gold);font:400 36px var(--head);display:grid;place-items:center;padding:0;transition:translate .15s}
 .c small{position:absolute;left:4px;top:1px;font:700 12px var(--body)}
 .c.jk{color:#9b1c16}
 .c.up{translate:0 -16px;box-shadow:0 0 0 3px var(--gold2),0 8px 14px rgba(0,0,0,.5)}

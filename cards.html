@@ -51,6 +51,8 @@ body[data-look=ahwa]{--felt:#3a2616;--felt2:#24160b;--gold:#e0b45a;--soft:#d8c4a
 .tr.t0 small,.tn-t0{color:#e0b45a}.tr.t1 small,.tn-t1{color:#57b3a6}
 .b.dbl{border-color:#ff6b7d;color:#ff6b7d;width:100%}.sub2{font-size:13px;font-weight:400;display:block;opacity:.75;font-family:system-ui,sans-serif;margin-top:1px}
 .lt{display:flex;gap:3px;justify-content:center;font-size:9px}
+/* 7.37: the last trick was full-size cards inside a line of text and could push the page wider than the phone; now small cards in one wrapping row */
+.lastt{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}.lastt span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.lastt .ck{font-size:9px}
 .tbl2{width:100%;border-collapse:collapse;font-size:15px}.tbl2 td,.tbl2 th{padding:4px 6px;text-align:center}.tbl2 td:first-child{text-align:left}
 
 /* 7.2: Texas Hold'em, Vegas Classic: walnut and gold, green felt panels, red card backs. Undo: delete these rules and MODES.hd below */
@@ -153,7 +155,7 @@ MODES.tn = {look:"ahwa",
   chip(p){ const t = p.trump; return `${p.scores[0]} – ${p.scores[1]} · to ${p.target}${t ? ` · Trump <b class="${t === "H" || t === "D" ? "" : "blk"}">${SYM[t]}</b>` : ""}`; },
   table(p, seat){ const tm = seat % 2; return `<div class="tbl">${[0, 1].map(t => `<div class="tr t${t}${t === tm ? " me" : ""}"><span>${esc(p.teams[t])}${p.caller != null && CK_T(p.caller) === t ? " <small>Caller</small>" : ""}</span><small>${p.phase === "play" || p.phase === "trickdone" ? "won " + p.won[t] : ""}</small><b>${p.scores[t]}</b></div>`).join("")}</div>`; },
   extra(p, a, seat){ const cl = p.call ? `<div class="hint">${esc(p.names[p.caller])} called ${p.call.n} ${SYM[p.call.s]} (${p.call.n + 6} tricks)${p.doubled ? " · DOUBLED ×2" : ""}</div>` : "";
-    const lt = p.last && (p.phase === "play" || p.phase === "trickdone") ? `<div class="hint">Last trick: ${p.last.plays.map(x => esc(p.names[x.seat]) + " " + CK.face(x.c)).join(" ")} → ${esc(p.names[p.last.winner])}</div>` : "";
+    const lt = p.last && (p.phase === "play" || p.phase === "trickdone") ? `<div class="hint lastt">Last trick: ${p.last.plays.map(x => `<span>${esc(p.names[x.seat])} ${CK.face(x.c)}</span>`).join("")}<span>→ ${esc(p.names[p.last.winner])}</span></div>` : "";
     return cl + lt; },
   panel(p, a, seat){
     if(!a || a.k !== "bid") return "";
@@ -192,7 +194,7 @@ MODES.tf = {look:"felt", watch:"This game already has its players. Look at the T
     if(seat !== p.roles.rest && p.tgt[seat] >= 0 && p.phase !== "handdone") out.push(`<div class="hint">You need <b>${p.tgt[seat]}</b> tricks${p.phase === "play" || p.phase === "trickdone" ? ` · won ${p.won[seat]}` : ""}${p.phase === "play" || p.phase === "trickdone" ? "" : " this hand"}</div>`);
     if(m && m.swaps && m.swaps.length && p.phase !== "swap") out.push(`<div class="hint">Swap: ${m.swaps.map(x => x.gave ? `you gave ${CK.face(x.gave)} and got ${CK.face(x.got)}` : `you got ${CK.face(x.recv)} and sent back ${CK.face(x.sent)}`).join(", ")}</div>`);
     if(m && m.kitty && p.phase === "play" && p.played === 0) out.push(`<div class="hint">You picked up the kitty: ${m.kitty.map(c => CK.face(c)).join(" ")}</div>`);
-    if(p.last && (p.phase === "play" || p.phase === "trickdone")) out.push(`<div class="hint">Last trick: ${p.last.plays.map(x => nm(x.seat) + " " + CK.face(x.c)).join(" ")} → ${nm(p.last.winner)}</div>`);
+    if(p.last && (p.phase === "play" || p.phase === "trickdone")) out.push(`<div class="hint lastt">Last trick: ${p.last.plays.map(x => `<span>${nm(x.seat)} ${CK.face(x.c)}</span>`).join("")}<span>→ ${nm(p.last.winner)}</span></div>`);
     return out.join(""); },
   panel(p, a, seat){
     if(!a) return "";
