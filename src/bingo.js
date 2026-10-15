@@ -16,7 +16,8 @@ const bgShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.f
 const bgMkLines = n => { const out = []; for(const [dr,dc] of [[0,1],[1,0],[1,1],[1,-1]]) for(let r = 0; r < BG_N; r++) for(let c = 0; c < BG_N; c++){
   const L = []; for(let k = 0; k < n; k++){ const rr = r + dr*k, cc = c + dc*k; if(rr < 0 || rr >= BG_N || cc < 0 || cc >= BG_N) break; L.push(rr*BG_N + cc); } if(L.length === n) out.push(L); } return out; };
 /* 6.55 (Omar): the win can be 5 or 6 in a row (setup "Win with"). Square values by position still come from the 5-in-a-row lines. */
-const BG_LINES = bgMkLines(5), BG_LINES6 = bgMkLines(6), bgRun = () => BG.cfg.row === 6 ? BG_LINES6 : BG_LINES, bgRowN = () => BG.cfg.row === 6 ? 6 : 5;
+/* 7.43 (Omar): and 4 in a row is a third choice, a shorter game. */
+const BG_LINES = bgMkLines(5), BG_LINES6 = bgMkLines(6), BG_LINES4 = bgMkLines(4), bgRowN = () => BG.cfg.row === 6 ? 6 : BG.cfg.row === 4 ? 4 : 5, bgRun = () => ({4:BG_LINES4, 5:BG_LINES, 6:BG_LINES6})[bgRowN()];
 /* values by position (6.70, Omar): spread out so no line is much easier than another (before, the edges were all 100s and 200s and the
    centre all 500s, so the perimeter lines were the cheapest wins). 8 squares of 100, 8 of 200, 12 of 300, 12 of 400, 9 of 500; the four
    corners are 400. Found by a search that evens out the average value along every 5-in-a-row and 6-in-a-row line (they now run 280 to 360,
@@ -79,7 +80,7 @@ function renderBingoSetup(){
     <div><div class="eyebrow">Game mode</div><h1>Category <span>Bingo</span></h1><p class="sub">A 7x7 board of 49 categories. Teams take turns picking a square and answering its clue; get it right and the square is yours. First to ${bgRowN()} in a row (across, down or diagonal) wins. Each team has a few steals to take an opponent's square.</p></div>
     <div class="panel opt"><div class="eyebrow">Teams</div><div class="bteams">${c.teams.map((n, i) => `<div class="bteam"><i style="background:${BG_TEAMCOL[i]}"></i><input type="text" data-bn="${i}" value="${esc(n)}" maxlength="24" aria-label="Team ${i + 1} name">${c.teams.length > 2 ? `<button class="btn small" data-rm="${i}">Remove</button>` : ""}</div>`).join("")}</div>${c.teams.length < 4 ? `<div class="row"><button class="btn small" id="bgAddTeam">Add a team</button></div>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Look of the board</div><div class="looks">${BG_LOOKS.map(([k, n, d]) => `<button class="look" data-set="look" data-v="${k}" aria-pressed="${c.look === k}"><b>${n}</b><span class="d">${d}</span>${bgSwatch(k)}</button>`).join("")}</div><p class="note">You can also flip between the looks on the board with the Look button.</p></div>
-    <div class="panel opt"><div class="eyebrow">Win with</div>${seg("row", [[5, "5 in a row"], [6, "6 in a row (longer game)"]], bgRowN())}</div>
+    <div class="panel opt"><div class="eyebrow">Win with</div>${seg("row", [[4, "4 in a row (shorter game)"], [5, "5 in a row"], [6, "6 in a row (longer game)"]], bgRowN())}</div>
     <div class="panel opt"><div class="eyebrow">Steals per team</div>${seg("steals", [[1, "1 steal"], [2, "2 steals"]], c.steals)}</div>
     <div class="panel opt"><div class="eyebrow">Photo rounds</div>${seg("photos", [["true", "On: photo rounds on the board"], ["false", "Off: no photo rounds"]], c.photos !== false)}${c.photos === false ? `<p class="note">Takes Guess the Car, Actor, Footballer, Person, Food, Logo and Country, and Egypt: Photo Edition, off the board. One of the other sections gets two groups of squares instead.</p>` : ""}</div>
     <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["random", "Random from every category"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
@@ -117,10 +118,11 @@ function renderBingo(){
   const own = i => st.cells.filter(c => c.own === i).length;
   const anyOpp = st.cells.some(c => c.own != null && c.own !== t);
   const bar = st.preview ? "" : `<div class="bteams">${st.teams.map((m, i) => `<div class="bt${i === t && !st.over ? " on" : ""}" style="--tc:${BG_TEAMCOL[i]}"><i></i>${esc(m.name)}<b>${own(i)}</b><span class="stl" title="Steals left">${"★".repeat(m.steals)}${"☆".repeat(Math.max(0, BG.cfg.steals - m.steals))}</span></div>`).join("")}</div>`;
-  const stat = st.preview ? `<div class="bstat">Preview. Tap a square to swap its category, or shuffle the whole board.</div>`
+  const noteHtml = st.note && !st.preview && !st.over ? `<div class="bstat" style="font-weight:700">🔄 ${esc(st.note)}</div>` : "";
+  const stat = noteHtml + (st.preview ? `<div class="bstat">Preview. Tap a square to swap its category, or shuffle the whole board.</div>`
     : st.over ? `<div class="bstat">Game over.</div>`
     : st.stealing ? `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}: tap an opponent's square to steal it <span class="row"><button class="btn small" data-b="nosteal">Cancel steal</button></span></div>`
-    : `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}'s turn: pick an open square${team.lock != null ? ` (not ${bgName(team.lock)})` : ""} <span class="row"><button class="btn small" data-b="steal" ${team.steals > 0 && anyOpp ? "" : "disabled"}>Steal (${team.steals} left)</button></span></div>`;
+    : `<div class="bstat" style="color:${BG_TEAMCOL[t]}">${esc(team.name)}'s turn: pick an open square${team.lock != null ? ` (not ${bgName(team.lock)})` : ""} <span class="row"><button class="btn small" data-b="steal" ${team.steals > 0 && anyOpp ? "" : "disabled"}>Steal (${team.steals} left)</button></span></div>`);
   const grid = st.cells.map((c, i) => { const cat = catById(c.cat), nm = bgShort(c.cat), long = nm.length > 15 || nm.split(/\s+/).some(w => w.length > 9), o = c.own;
     const cls = ["sq", o != null ? "own" : "", o != null && o !== t ? "opp" : "", thr.has(i) ? "thr" : "", winSet.has(i) ? "win" : "", !st.preview && team.lock === i ? "lk" : "", st.preview ? "pv" : ""].filter(Boolean).join(" ");
     return `<button class="${cls}" data-i="${i}" style="--sc:var(--s${c.ss});${o != null ? `--tc:${BG_TEAMCOL[o]}` : ""}" aria-label="${"ABCDEFG"[i % BG_N] + (Math.floor(i / BG_N) + 1)}: ${esc(cat.name)} for ${c.v}${o != null ? ", owned by " + esc(st.teams[o].name) : ""}"><span class="sec"></span><span class="v">${c.v}</span><span class="nm${long ? " l" : ""}">${esc(nm)}</span><span class="who">${o != null ? bgInit1(st, o) : ""}</span></button>`; }).join("");
@@ -141,7 +143,7 @@ $("#bingoBody").addEventListener("click", e => {
   const q = e.target.closest(".sq"); if(!q) return; bingoClickSq(+q.dataset.i);
 });
 function bingoClickSq(i){
-  const st = BG.st, cell = st.cells[i], t = st.turn; if(st.over) return;
+  const st = BG.st, cell = st.cells[i], t = st.turn; if(st.over) return; st.note = "";
   if(st.preview){ const used = new Set(st.cells.map(c => c.cat)), opts = bgSecIds()[cell.ss].filter(id => !used.has(id)); if(opts.length){ cell.cat = opts[Math.floor(Math.random() * opts.length)]; renderBingo(); } return; }
   if(st.stealing){ if(cell.own == null || cell.own === t) return; if(st.teams[t].lock === i){ Snd.blip(); return; } st.pend = {sq:i, kind:"steal"}; }
   else { if(cell.own != null) return; if(st.teams[t].lock === i && st.cells.some((c, k) => c.own == null && k !== i)){ Snd.blip(); return; } st.pend = {sq:i, kind:"pick"}; }
@@ -158,7 +160,7 @@ function bingoAwards(c){ const st = BG.st, i = st.turn, t = st.teams[i], p = st.
     <p class="note">${p && p.kind === "steal" ? `The steal works only if ${esc(t.name)} is closest.` : `The closest team takes ${bgName(p ? p.sq : 0)}. On a tie, ${esc(t.name)} wins it if they're in the tie.`} Tap to change who was closest.</p>`;
   return `<div class="award"><div class="grp"><span>${esc(t.name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">${p && p.kind === "steal" ? "Correct: steal it" : "Correct: claim it"}</button><button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong</button></div></div>`; }
 function bingoDone(c){
-  const st = BG.st, p = st.pend, t = st.turn; let v = c.awards[t];
+  const st = BG.st, p = st.pend, t = st.turn; let v = c.awards[t]; st.note = "";
   S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
   closeCard();
   if(c.type === "closest" && p && c.revealed){   // 6.56: closest team takes the square (picker wins a tie); a steal needs the stealer to be closest
@@ -172,7 +174,11 @@ function bingoDone(c){
   const cell = st.cells[p.sq], team = st.teams[t], prev = team.lock;
   if(v === 1){ cell.own = t; if(p.kind === "steal") team.steals--; team.lock = null; Snd.blip(); }
   else if(p.kind === "steal"){ team.steals--; team.lock = p.sq; }
-  else team.lock = p.sq;   // 6.66 (Omar): a missed square is locked for that team on its next turn, like a failed steal
+  else { team.lock = p.sq;   // 6.66 (Omar): a missed square is locked for that team on its next turn, like a failed steal
+    /* 7.43 (Omar): a square that was picked and missed twice gets a new category from the same section; its value stays */
+    cell.miss = (cell.miss || 0) + 1;
+    if(cell.miss >= 2){ const used = new Set(st.cells.map(c => c.cat)), sec = bgSecIds()[cell.ss] || [], opts = sec.filter(id => !used.has(id)), alt = opts.length ? opts : sec.filter(id => id !== cell.cat);
+      if(alt.length){ const old = bgShort(cell.cat); cell.cat = alt[Math.floor(Math.random() * alt.length)]; cell.miss = 0; st.note = `${bgName(p.sq)} was missed twice, so ${old} is now ${bgShort(cell.cat)} (still ${cell.v})`; } } }
   st.pend = null; st.stealing = false;
   const line = v === 1 ? bgWinLine(t) : null;
   if(line){ st.over = true; st.winner = t; st.line = line; bgPersist(); renderBingo(); setTimeout(() => bingoWinner(), 1800); return; }

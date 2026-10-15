@@ -12,7 +12,7 @@ const TT = {
     sh:"0 0 .06em #ffb300,0 0 .28em rgba(255,170,0,.55)", tag:"Bid for the clue. Win it, or pay for it.", s:["#ffd21a","#07090c","#ffb21a"],
     bg:"radial-gradient(circle,rgba(255,178,26,.14) 1px,transparent 1.5px) 0 0/22px 22px,radial-gradient(circle at 50% 40%,#1a1d24,#07090c 70%)", base:"#07090c", g:{c:6,r:5,t:["$200","$300","$400","$500","$600","$800","$1,200","$1,500"],bg:"#07090c",ink:"#ffd21a",font:'"Share Tech Mono",monospace',bd:"#ffb21a",sh:"0 0 8px #ffb300"}},
   modeBingo:{t:["Category","Bingo"], ff:'"Bowlby One","Bebas Neue",Impact,sans-serif', fw:400, c1:"#ffcc33", c2:"#fff", k:.72, ink:"#fff",
-    sh:".05em .05em 0 #000", tag:"Claim squares. Five in a row wins.", s:["#ffcc33","#10183f","#fff"],
+    sh:".05em .05em 0 #000", tag:"Claim squares. First to a row wins.", s:["#ffcc33","#10183f","#fff"],
     bg:"linear-gradient(90deg,#4DA3FF 0 14.3%,#FF8A4D 0 28.6%,#34D3A5 0 42.9%,#8FA4C4 0 57.1%,#FF6FA8 0 71.4%,#5FD068 0 85.7%,#A58BFF 0) bottom/100% 14px no-repeat,radial-gradient(circle,rgba(255,255,255,.08) 1.5px,transparent 2px) 0 0/26px 26px,radial-gradient(ellipse at 50% 30%,#1b2a7a,#10183f 60%,#080d26)", base:"#10183f", g:{c:7,r:7,f:(r,c)=>[[500,400,300,200][Math.max(Math.abs(r-3),Math.abs(c-3))],"#10183f",["#4DA3FF","#FF8A4D","#34D3A5","#8FA4C4","#FF6FA8","#5FD068","#A58BFF"][c]],font:'"Bowlby One",sans-serif',rad:"10px"}},
   modeHot:{t:["Hot","Seat"], ff:'"Abril Fatface","Playfair Display",Georgia,serif', fw:400, c1:"#f6ecd0", c2:"#ef6a5b", k:.95, ink:"#f6ecd0",
     sh:".04em .04em 0 rgba(0,0,0,.5)", tag:"One team, one streak. Bank it or risk it.", s:["#ef6a5b","#f6ecd0","#f6ecd0"],
