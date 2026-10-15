@@ -120,6 +120,43 @@ function ttPick(b, e){
   if(ttSel === b.id){ if(b._go) b._go.call(b, e); return; }   // second tap on the chosen mode opens it
   ttApply(b.id);   /* 6.90 (Omar): no click sound when picking a mode (6.84-6.89: try{ Snd.unlock(); Snd.blip(); }catch(_){}) */
 }
+/* 7.42 (Omar): a slow starry sky moves behind the home screen, with a shooting star every few seconds in a random direction. It only draws while the home screen shows (not once a mode is picked).
+   To undo: delete ttStars() and its call in ttInit(), and the #ttStars rules in head.html. */
+function ttStars(){
+  const ts = $("#titleScreen"), cv = document.createElement("canvas"); cv.id = "ttStars"; ts.prepend(cv);
+  const x = cv.getContext("2d"), R = (a, b) => a + Math.random() * (b - a);
+  let W = 0, H = 0, stars = [], shoot = null, next = 0, last = performance.now();
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const size = () => { const d = Math.min(2, devicePixelRatio || 1); W = ts.clientWidth; H = ts.clientHeight; cv.width = W * d; cv.height = H * d; x.setTransform(d, 0, 0, d, 0, 0);
+    stars = Array.from({length: Math.round(W * H / 2600)}, () => ({x: R(0, W), y: R(0, H), r: R(.4, 1.6), ph: R(0, 6.28), sp: R(.6, 2.2), b: R(.25, .9), g: Math.random() < .2})); };
+  const frame = now => {
+    requestAnimationFrame(frame);
+    const dt = Math.min(.05, (now - last) / 1000), t = now / 1000; last = now;
+    if(ts.hidden || ts.dataset.sel !== "home") return;
+    if(ts.clientWidth !== W || ts.clientHeight !== H) size();
+    x.clearRect(0, 0, W, H);
+    for(const s of stars){
+      const a = s.b * (still ? .7 : .35 + .65 * (.5 + .5 * Math.sin(t * s.sp + s.ph)));
+      x.fillStyle = s.g ? `rgba(255,217,138,${a})` : `rgba(255,255,255,${a})`; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 7); x.fill();
+      if(s.r > 1.3 && a > .6){ x.strokeStyle = `rgba(255,255,255,${(a - .6) * .9})`; x.lineWidth = .6; x.beginPath(); x.moveTo(s.x - s.r * 3, s.y); x.lineTo(s.x + s.r * 3, s.y); x.moveTo(s.x, s.y - s.r * 3); x.lineTo(s.x, s.y + s.r * 3); x.stroke(); }
+    }
+    if(still) return;
+    if(!shoot && t > next){   // any direction except straight up or flat: steep or shallow, left or right, sometimes rising
+      const ang = (Math.random() < .5 ? R(.15, 1.3) : Math.PI - R(.15, 1.3)) * (Math.random() < .2 ? -1 : 1), v = R(550, 950);
+      shoot = {x: R(W * .1, W * .9), y: ang > 0 ? R(0, H * .45) : R(H * .4, H * .8), vx: Math.cos(ang) * v, vy: Math.sin(ang) * v, life: 0, max: R(.6, 1.1)};
+      next = t + R(3.5, 8);
+    }
+    if(shoot){
+      shoot.life += dt; shoot.x += shoot.vx * dt; shoot.y += shoot.vy * dt;
+      const f = shoot.life / shoot.max, a = Math.sin(Math.min(1, f) * Math.PI), tx = shoot.x - shoot.vx * .14, ty = shoot.y - shoot.vy * .14;
+      const g = x.createLinearGradient(shoot.x, shoot.y, tx, ty); g.addColorStop(0, `rgba(255,240,200,${a})`); g.addColorStop(1, "rgba(255,240,200,0)");
+      x.strokeStyle = g; x.lineWidth = 2; x.lineCap = "round"; x.beginPath(); x.moveTo(shoot.x, shoot.y); x.lineTo(tx, ty); x.stroke();
+      if(f >= 1) shoot = null;
+    }
+  };
+  requestAnimationFrame(frame);
+}
+
 function ttInit(){
   const row = $("#modeRow"); if(!row) return;
   row.querySelectorAll(".modebtn").forEach(b => {
@@ -128,5 +165,6 @@ function ttInit(){
   });
   $("#modeGo").onclick = e => { const b = ttSel && document.getElementById(ttSel); if(b && b._go) b._go.call(b, e); };
   $("#brandCorner").onclick = ttHome;
+  ttStars();
   ttHome();
 }
