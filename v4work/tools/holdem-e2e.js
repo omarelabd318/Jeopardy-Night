@@ -41,7 +41,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
     await p.goto(`${base}/cards.html?r=${R.room}&g=hd`); await p.fill("#nm", n); await p.click("#jb"); await p.waitForTimeout(300); phones.push(p); }
   await tv.waitForTimeout(1500); await tv.screenshot({path:path.join(shots, "tv-lobby.png")}); await phones[0].screenshot({path:path.join(shots, "phone-waiting.png")});
   await tv.click("#hdGo"); await tv.waitForTimeout(1500);
-  let moves = 0, hands = 0, shotAt = new Set(), done = false, lastHand = 0;
+  let moves = 0, missed = 0, hands = 0, shotAt = new Set(), done = false, lastHand = 0;
   for(let tick = 0; tick < 6000 && !done; tick++){
     if(await tv.locator(".hdpod").count()){ done = true; break; }
     const chipTxt = await tv.locator(".ckchip").first().innerText().catch(() => ""), hn = +((chipTxt.match(/Hand (\d+)/) || [])[1] || 0); if(hn !== lastHand){ lastHand = hn; hands++; }
@@ -58,7 +58,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
         else if(r < .45) await p.click('[data-hd="fold"]', {timeout:1500});
         else await p.click('[data-hd="check"], [data-hd="call"]', {timeout:1500});
         moves++;
-      }catch(e){ await p.screenshot({path:path.join(shots, "stuck.png")}); console.log("STUCK on", k, e.message.split("\n")[0], await p.evaluate(() => JSON.stringify({act:st.me.act, html:document.getElementById("view").innerText.slice(0, 300)}))); process.exit(1); }
+      }catch(e){ if(++missed < 25){ console.log("missed click (the buttons went away: a street was being dealt)", e.message.split("\n")[0]); await p.waitForTimeout(300); continue; } await p.screenshot({path:path.join(shots, "stuck.png")}); console.log("TV:", (await tv.evaluate(() => document.getElementById("hdBody").innerText)).replace(/\n/g," | ").slice(0,400)); console.log("STUCK on", k, e.message.split("\n")[0], await p.evaluate(() => JSON.stringify({turn:st.pub.turn, board:st.pub.board, seat:st.me.seat, v:st.pub.v, act:st.me.act, html:document.getElementById("view").innerText.slice(0, 300)}))); process.exit(1); }
       acted = true; await p.waitForTimeout(60); break; }
     if(!acted) await tv.waitForTimeout(120);
     if(tick === 80 && !shotAt.has("mid")){ shotAt.add("mid"); await tv.screenshot({path:path.join(shots, "tv-mid.png")}); await phones[1].screenshot({path:path.join(shots, "phone-mid.png")}); } }

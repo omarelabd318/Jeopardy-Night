@@ -278,7 +278,7 @@ function draw(){
     $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. Your cards will appear here.</div></div>`; return; }
   const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
   if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">${M.watch || "This game already has four players. Look at the TV."}</div></div>`; return; }
-  const sg = [p.v, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending, pick.join(",")].join("|"); if(sg === sig) return; sig = sg;
+  const sg = [p.v, p.board ? p.board.length : "", a ? 1 : 0, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending, pick.join(",")].join("|"); if(sg === sig) return; sig = sg;
   const mineNow = !!a && a.turn !== false;
   if(mineNow && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
   wasMine = mineNow; if(!a || a.k !== "bid") sel.n = sel.s = null; if(!a || a.k !== "est") sel.e = null; if(!a || a.k !== "bet") sel.r = null; if(!a || (a.k !== "give" && a.k !== "bury")) pick = [];
