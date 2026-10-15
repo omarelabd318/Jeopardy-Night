@@ -1,5 +1,5 @@
 /* 7.44 (Omar): Hues and Cues, a colour-guessing party game as a game mode (framework drafted 2026-10-14, then "build with look 1 and your recommendations": Paint Chip look). Everyone joins once from their phone
-   (hues.html at /h?r=ROOM, one name), 3 to 10 players. The board is 480 shades (30 columns of hue by 16 rows from pale to dark, with 3 pastel rows above fading to white and 3 rows below fading to brown and black), drawn by the code, so every phone and the TV show the same colours.
+   (hues.html at /h?r=ROOM, one name), 3 to 10 players. The board is 660 shades (30 columns of hue by 22 rows: 16 vivid rows from pale to dark, with 3 pastel rows above fading to white and 3 rows below fading to brown and black), drawn by the code, so every phone and the TV show the same colours.
    Each turn one player is the clue giver: the game deals them a card of 4 shades (at least 6 squares apart) on their phone only, they tap one as the secret target and type a one-word clue. Everyone else taps a
    square on their own copy of the board and locks it in (a tap on the small board opens a 7 x 5 close-up for the exact square). Markers stay hidden until everyone has locked in (or the timer ends), then they drop onto
    the TV board together. The clue giver, who now sees where they landed, types a second clue of one or two words and everybody places a second marker. The reveal draws the scoring frame on the TV.
@@ -198,7 +198,7 @@ function hcRender(){
   const el = $("#hcBody"), g = HC.g;
   if(!g){ const off = RELAY !== true, ps = HC.players, c = HC.cfg, ok = !off && ps.length >= 3 && ps.length <= 10, per = c.turns || (ps.length <= 6 ? 2 : 1);
     const sec = k => [[k === "t1" ? 45 : k === "t2" ? 30 : 20, ""], [k === "t1" ? 60 : k === "t2" ? 45 : 30, ""], [k === "t1" ? 90 : k === "t2" ? 60 : 45, ""], [0, ""]].map(([v]) => [v, v ? v + " s" : "Off"]);
-    el.innerHTML = `<div class="hchead"><div class="hcbadge">Game mode</div><h1>Hues and Cues</h1><p class="sub">One player picks a secret shade on a 480-colour board and gives a one-word clue. Everyone else taps where they think it is on their phone. The closer you land, the more you score.</p></div>
+    el.innerHTML = `<div class="hchead"><div class="hcbadge">Game mode</div><h1>Hues and Cues</h1><p class="sub">One player picks a secret shade on a 660-colour board and gives a one-word clue. Everyone else taps where they think it is on their phone. The closer you land, the more you score.</p></div>
       <div class="hcgrid">
       <div class="hcpanel">${off
         ? `<div class="hceye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "Every player guesses on their own phone and the clue giver's secret has to stay private, so Hues and Cues only runs where everyone can join with a code."}</p>`
