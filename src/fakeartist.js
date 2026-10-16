@@ -4,7 +4,7 @@
    and each new line is drawn onto it as soon as the phone sends it. After 2 rounds everyone votes for the fake. If the fake gets the most votes (alone) they are caught and get one typed guess
    at the word; if not, 2 more rounds and a second vote. The fake can go first in round 1 (Omar's call, the order is a plain shuffle) and the order stays the same for the later rounds.
    7.48 (Omar): the reveal names the most-voted player of the last vote (or the tied ones), also when that wasn't the fake; and setup has Round 4 On/Off (Off = only round 3 after a missed first vote, then the second vote).
-   Points (kept across games, first to 5 by default; 3, 5 or 7 in setup): caught and the guess is wrong, every real artist +1; caught and the guess is right, the fake +2; the fake escapes both
+   Points (kept across games, first to 7 by default; 5, 7, 9 or 11 in setup, Omar 7.61): caught and the guess is wrong, every real artist +1; caught and the guess is right, the fake +2; the fake escapes both
    votes, +3; every real artist whose last vote named the fake +1 on top. A typed guess that matches the word (or one of its listed spellings) is accepted by the game; otherwise the host taps
    Right or Wrong on the laptop. A turn waits 45 s for the finger (then it's skipped, and the host can skip sooner); a line is cut off after the turn length (10/15/20/30 s, default 15) and a
    line shorter than 3% of the canvas doesn't count (the phone asks for another). The winner screen plays the Siuuu clip.
@@ -66,7 +66,8 @@ const FAR = (() => {
 
 const FA = {cfg:null, room:null, players:[], col:{}, scores:{}, phase:"lobby", g:null, word:null, scr:"", vc:0, since:0, busy:false, poll:null, tmr:null, psig:"", relay:null, sung:false, n:0,
   seenCard:{}, anim:null, raf:0, auto:0, lastCat:null, scored:false, over:false, seen:store.get("jn_faSeen", {})};
-FA.cfg = Object.assign({target:5, secs:15, diff:"mix", r4:1, cats:{}}, store.get("jn_faCfg", {}));
+FA.cfg = Object.assign({target:7, secs:15, diff:"mix", r4:1, cats:{}}, store.get("jn_faCfg", {}));
+if(![5, 7, 9, 11].includes(FA.cfg.target)) FA.cfg.target = 7;   // 7.61: the old 3 points option is gone (it was 3, 5 or 7 with 5 as the default); a device that saved 3 gets the new default
 const faSave = () => store.set("jn_faCfg", FA.cfg);
 const FA_COL = ["#ff2e4c", "#1e90ff", "#1fcf5a", "#ffb300", "#a64dff", "#ff4fb8", "#00d4d4", "#ff7a1a", "#c6ff3d", "#f2f2f2"];
 const faCats = () => Object.keys((typeof FAW !== "undefined" && FAW.cats) || {});
@@ -194,7 +195,7 @@ function faRender(){
         : `<div class="faeye">Scan to join</div><div id="faQr" class="faqr"></div><p class="note">Everyone scans once and types a name. You get a colour that stays yours all night. Keep the page open for the whole game.</p>`}</div>
       <div class="fapanel"><div class="faeye">Players · ${ps.length}</div>${ps.length ? `<ul class="fanames">${ps.map(x => `<li style="--c:${faCol(x.p)}"><button data-kick="${esc(x.p)}" title="Remove ${esc(x.n)}">${faDot(x.p)}${esc(x.n)}</button></li>`).join("")}</ul><p class="note">Tap a name to remove that player.</p>` : `<p class="note">Waiting for players… you need 4 to 10.</p>`}
         ${ps.length > 10 ? `<p class="note warn">Ten players at most. Remove ${ps.length - 10}.</p>` : ""}</div>
-      <div class="fapanel"><div class="faeye">First to</div>${faSeg("target", [[3, "3 points"], [5, "5 points"], [7, "7 points"]], c.target)}
+      <div class="fapanel"><div class="faeye">First to</div>${faSeg("target", [[5, "5 points"], [7, "7 points"], [9, "9 points"], [11, "11 points"]], c.target)}
         <div class="faeye">Turn length</div>${faSeg("secs", [[10, "10 s"], [15, "15 s"], [20, "20 s"], [30, "30 s"]], c.secs)}<p class="note">How long a line can go on once the finger is down.</p>
         <div class="faeye">Words</div>${faSeg("diff", [["mix", "Mixed"], ["easy", "Easy only"], ["hard", "Hard only"]], c.diff)}
         <div class="faeye">Categories</div><div class="faseg">${ids.map(id => `<button data-cat="${esc(id)}" aria-pressed="${faOn(id)}">${esc(id)}</button>`).join("")}</div>

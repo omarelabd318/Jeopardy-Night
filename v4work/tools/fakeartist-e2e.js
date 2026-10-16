@@ -32,7 +32,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
   await new Promise(r => srv.listen(0, r)); const base = "http://localhost:" + srv.address().port, errs = [], fails = [];
   const b = await chromium.launch(), tv = await (await b.newContext({viewport:{width:+process.env.TVW || 1920, height:+process.env.TVH || 1080}})).newPage();
   const watch = (p, n) => { p.on("pageerror", e => errs.push(n + " " + e.message)); p.on("console", m => { if(m.type() === "error" && !/Failed to load resource|ERR_/.test(m.text())) errs.push(n + " " + m.text()); }); };
-  watch(tv, "TV"); await tv.addInitScript(() => { try{ localStorage.setItem("jn_faCfg", JSON.stringify({target:3, secs:10})); }catch(e){} });
+  watch(tv, "TV"); await tv.addInitScript(() => { try{ localStorage.setItem("jn_faCfg", JSON.stringify({target:5, secs:10})); }catch(e){} });
   await tv.route(/^(?!http:\/\/localhost)/, r => r.abort());
   await tv.goto(base + "/index.html"); await tv.waitForTimeout(600); await tv.click("#modeFa"); await tv.waitForTimeout(400); await tv.screenshot({path:path.join(shots, "tv-title.png")});
   await tv.click("#modeGo"); await tv.waitForTimeout(1200); await tv.screenshot({path:path.join(shots, "tv-lobby-empty.png")});
