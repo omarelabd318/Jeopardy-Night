@@ -534,18 +534,14 @@ body.hdmode .wrap{max-width:none;padding:0}
 #hdo .hdpot.side{background:rgba(20,10,5,.7);color:var(--ck-gold);border:calc(var(--u)*.2) solid var(--ck-gold);font-size:calc(var(--u)*1.5)}
 #hdo .hdsay{font:600 calc(var(--u)*1.8)/1.25 "Barlow",sans-serif;text-align:center;text-shadow:0 0 calc(var(--u)*.6) #000;min-height:calc(var(--u)*2.4)}
 #hdo .hdsay small{font-size:.75em;opacity:.85}
-/* 7.22 (Omar): board cards turn over one at a time, and whose turn it is stands out: a big gold "NAME's turn" banner above the board, a gold pulsing name plate with a ring, and the other seats dimmed a little. To undo: delete these rules (down to "end 7.22") and the .hdturn/hasturn bits in src/holdem.js. */
+/* 7.22 (Omar): board cards turn over one at a time, and whose turn it is stands out: a gold pulsing name plate with a ring, and the other seats dimmed a little. To undo: delete these rules (down to "end 7.22") and the hasturn bits in src/holdem.js. */
 #hdo .hdboard .ck.hdnew{animation:hdnew .55s cubic-bezier(.2,.8,.2,1) both}
 @keyframes hdnew{from{opacity:0;transform:translateY(calc(var(--u)*-3)) rotateY(90deg) scale(.8)}to{opacity:1;transform:none}}
-#hdo .hdturn{display:flex;align-items:center;gap:calc(var(--u)*.9);background:var(--ck-gold);color:#2a1607;font:800 calc(var(--u)*3)/1 "Barlow",sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:calc(var(--u)*.7) calc(var(--u)*2);border-radius:99px;box-shadow:0 0 0 calc(var(--u)*.3) #2a1607,0 0 calc(var(--u)*3) var(--ck-gold);animation:hdturn 1.2s ease-in-out infinite}
-#hdo .hdturn .hdarr{display:inline-block;animation:hdarr .8s ease-in-out infinite alternate}
-@keyframes hdturn{50%{transform:scale(1.04)}}
-@keyframes hdarr{to{transform:translateX(calc(var(--u)*.7))}}
 #hdo .hd-tv.hasturn .ckseat.hds:not(.turn){opacity:.78}
 #hdo .hd-tv.hasturn .ckseat.dim:not(.turn){opacity:.45}
 #hdo .ckseat.hds.turn .ckplate{background:var(--ck-gold);color:#2a1607;box-shadow:0 0 0 calc(var(--u)*.3) #fff,0 0 calc(var(--u)*3) var(--ck-gold);font-size:1.25em}
 #hdo .ckseat.hds.turn{z-index:4}
-@media(prefers-reduced-motion:reduce){#hdo .hdturn,#hdo .hdturn .hdarr,#hdo .hdboard .ck.hdnew{animation:none}}
+@media(prefers-reduced-motion:reduce){#hdo .hdboard .ck.hdnew{animation:none}}
 /* end 7.22 */
 #hdo .ckmsg{font-size:calc(var(--u)*3)}
 #hdo .ckchip{font-family:"Barlow",sans-serif}
