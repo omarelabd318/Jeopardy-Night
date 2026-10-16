@@ -104,6 +104,10 @@ const Snd = (() => {
     const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + start;
     o.type = type; o.frequency.value = freq; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + attack); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
     o.connect(g).connect(out || a.destination); o.start(t); o.stop(t + dur + 0.05); };
+  /* 7.65: a burst of filtered noise that dies away (the paper and chip sounds above); fEnd slides the filter */
+  const hdNoise = (a, dest, t, dur, type, f, q, gain, fEnd) => { const buf = a.createBuffer(1, Math.floor(a.sampleRate * Math.max(dur, 0.1)), a.sampleRate), d = buf.getChannelData(0); for(let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    const s = a.createBufferSource(), fl = a.createBiquadFilter(), g = a.createGain(); s.buffer = buf; fl.type = type; fl.frequency.setValueAtTime(f, t); fl.Q.value = q; if(fEnd) fl.frequency.exponentialRampToValueAtTime(fEnd, t + dur);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(gain, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); s.connect(fl).connect(g).connect(dest || a.destination); s.start(t); s.stop(t + dur + 0.02); };
   let spinG = null;
   const click = (dest, start, vol, freq) => { const a = ctx(); if(!a) return; const t = a.currentTime + start, len = 0.05, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
     for(let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (a.sampleRate * 0.006));
@@ -126,6 +130,15 @@ const Snd = (() => {
         nz.connect(f).connect(g).connect(out || a.destination); nz.start(t);
         const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; const fr = 150 + Math.random() * 30; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(70, t + 0.08); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.2, t + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
         o.connect(og).connect(out || a.destination); o.start(t); o.stop(t + 0.15); } },
+    /* 7.65 (Omar, Hold'em): table sounds, all made with the audio API (no files). A card is a short paper slide then a snap, a knock is a soft double tap on the rail, chips are a few bright clicks. */
+    deal(n = 4){ const a = ctx(); if(!a || !S.sound) return; for(let k = 0; k < n * 2; k++) this.card(k * 0.13 + Math.random() * 0.02, false); },
+    card(d = 0, heavy = false){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime + d; hdNoise(a, out, t, 0.07, "bandpass", 2600, 0.8, 0.11, 5200); hdNoise(a, out, t + 0.055, 0.035, "highpass", 3500, 0.7, heavy ? 0.3 : 0.2); tone(heavy ? 190 : 240, d + 0.055, 0.05, heavy ? 0.14 : 0.08, "triangle"); },
+    flip(heavy = false){ this.card(0, heavy); },
+    knock(){ if(!S.sound) return; const a = ctx(); if(!a) return; [[0, 0.3], [0.16, 0.23]].forEach(([d, g]) => { const t = a.currentTime + d; tone(150, d, 0.12, g, "sine"); tone(520, d, 0.03, g * 0.15, "triangle"); hdNoise(a, out, t, 0.05, "lowpass", 900, 0.5, g * 0.6); }); },
+    chips(n = 0){ if(!S.sound) return; const a = ctx(); if(!a) return; const big = n > 5, c = big ? n : 3 + Math.floor(Math.random() * 2); let x = 0;
+      if(big) hdNoise(a, out, a.currentTime, 0.45, "bandpass", 1800, 0.6, 0.1, 900);
+      for(let i = 0; i < c; i++){ const f = 3200 + Math.random() * 1800, g = big ? 0.25 + Math.random() * 0.12 : 0.32 - i * 0.03; tone(f, x, 0.045, g * 0.25, "sine"); tone(f * 1.47, x, 0.03, g * 0.12, "sine"); hdNoise(a, out, a.currentTime + x, 0.03, "bandpass", 5200, 1.5, g * 0.7); x += big ? 0.025 + Math.random() * 0.035 : 0.055 + Math.random() * 0.04; } },
+    fold(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime; hdNoise(a, out, t, 0.22, "bandpass", 1400, 0.7, 0.12, 700); hdNoise(a, out, t + 0.04, 0.18, "bandpass", 2000, 0.7, 0.08, 900); },
     dry(){ if(!S.sound) return; const a = ctx(); if(!a) return; click(out || a.destination, 0, 1.2, 1800); click(out || a.destination, 0.09, 0.8, 3400); tone(2100, 0.09, 0.12, 0.02, "triangle", 0.002); },
     bang(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime, len = 1.6, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
       for(let i = 0; i < d.length; i++){ const x = i / a.sampleRate; d[i] = (Math.random() * 2 - 1) * Math.exp(-x * 7) * (x < 0.012 ? 1.6 : 1); }
@@ -193,8 +206,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.64`);
-  $("#verBtn").textContent = "v7.64"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.65`);
+  $("#verBtn").textContent = "v7.65"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [

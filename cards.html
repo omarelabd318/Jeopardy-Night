@@ -231,7 +231,7 @@ MODES.tf = {look:"felt", watch:"This game already has its players. Look at the T
 /* ---------- Texas Hold'em (g=hd): your two cards face down (hold to peek), the shared cards, the pot and the buttons for your move ---------- */
 const hdNum = n => Number(n).toLocaleString("en-US");
 const hdOrd = n => ord(n);
-MODES.hd = {look:"vegas", watch:"This game is full or already started. Look at the TV.",
+MODES.hd = {look:"vegas", watch(p){ return p.phase === "over" ? "This game is over. Look at the TV." : (p.n < 9 ? "You'll be dealt in at the start of the next hand. Look at the TV until then." : "The table is full. Look at the TV."); },   // 7.65: phones that join after the start get a seat at the next hand
   chip(p){ return `Hand ${p.hn} · Blinds ${hdNum(p.blinds[0])}/${hdNum(p.blinds[1])}`; },
   /* the raise amount is kept in sel.r; quick picks work it out from the pot like a pot-sized raise (call first, then raise by the pot) */
   target(q, a){ const call = a.cur - a.bet, potAfter = a.pot + call; let to = q === "min" ? a.minTo : q === "half" ? a.cur + Math.ceil(potAfter / 2) : q === "pot" ? a.cur + potAfter : a.maxTo; return Math.max(a.minTo, Math.min(a.maxTo, to)); },
@@ -291,7 +291,7 @@ function draw(){
   if(!st || !st.pub){ $("chip").innerHTML = ""; $("hand").innerHTML = ""; sig = "w";
     $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. Your cards will appear here.</div></div>`; return; }
   const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
-  if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">${M.watch || "This game already has four players. Look at the TV."}</div></div>`; return; }
+  if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">${typeof M.watch === "function" ? M.watch(p) : (M.watch || "This game already has four players. Look at the TV.")}</div></div>`; return; }
   if(typing === p.v && document.activeElement && document.activeElement.id === "hdn") return;   // 7.48: don't redraw (and lose the keyboard) while a bet is being typed
   const sg = [p.v, p.board ? p.board.length : "", a ? 1 : 0, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending, pick.join(",")].join("|"); if(sg === sig) return; sig = sg;
   const mineNow = !!a && a.turn !== false;
