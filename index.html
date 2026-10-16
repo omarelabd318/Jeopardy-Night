@@ -539,7 +539,7 @@ body.hdmode .wrap{max-width:none;padding:0}
 @keyframes hdnew{from{opacity:0;transform:translateY(calc(var(--u)*-3)) rotateY(90deg) scale(.8)}to{opacity:1;transform:none}}
 #hdo .hd-tv.hasturn .ckseat.hds:not(.turn){opacity:.78}
 #hdo .hd-tv.hasturn .ckseat.dim:not(.turn){opacity:.45}
-#hdo .ckseat.hds.turn .ckplate{background:var(--ck-gold);color:#2a1607;box-shadow:0 0 0 calc(var(--u)*.3) #fff,0 0 calc(var(--u)*3) var(--ck-gold);font-size:1.25em}
+#hdo .ckseat.hds.turn .ckplate{background:var(--ck-gold);color:#2a1607;box-shadow:0 0 0 calc(var(--u)*.3) #fff,0 0 calc(var(--u)*3) var(--ck-gold);font-size:1.12em}
 #hdo .ckseat.hds.turn{z-index:4}
 @media(prefers-reduced-motion:reduce){#hdo .hdboard .ck.hdnew{animation:none}}
 /* end 7.22 */
@@ -566,7 +566,10 @@ body.hdmode .wrap{max-width:none;padding:0}
 #hdo .ckseat.gone .ckplate{background:transparent;border-color:transparent;box-shadow:none}
 #hdo .hdhole.up .ck{font-size:calc(var(--u)*1.45)}
 #hdo .hdhole.up{min-height:calc(var(--u)*5.3)}
-#hdo .ckside .cksc small{font-size:1vw;opacity:.75;font-weight:600;letter-spacing:.02em}
+#hdo .hd-tv>.ckside{min-height:0;overflow:hidden}
+#hdo .ckside .cksc{grid-template-columns:auto 1fr auto;column-gap:.6vw}
+#hdo .ckside .cksc b{grid-column:3;grid-row:1}
+#hdo .ckside .cksc small{grid-column:2;grid-row:1;justify-self:start;font-size:.95vw;opacity:.75;font-weight:600;letter-spacing:.02em}
 #hdo .ckside .cksc.turn{box-shadow:inset .35vw 0 0 var(--ck-gold),inset 0 0 0 .12vw var(--ck-gold)}
 #hdo .ckside .cksc.turn small{opacity:1;color:var(--ck-gold)}
 #hdo .ckside .cksc.lead.turn small{color:#fff}
@@ -6889,8 +6892,8 @@ function hdRender(){
     ${HD.paused ? `<div class="ckmsg">Paused</div>` : ""}
     <div class="ckchip">Hand ${p.hn} · Blinds ${hdNum(p.blinds[0])} / ${hdNum(p.blinds[1])} · ${p.final ? "Final hands" : p.cfg.end === "fixed" ? `Hand ${p.hn} of ${p.cfg.fixed}` : upTxt}</div></div></div></div>
     <div class="ckside"><h3>Chips</h3>${sorted.map(i => { const live = (p.phase === "hand" || p.phase === "run") && p.dealt[i] && !p.out[i], turn = p.phase === "hand" && p.turn === i,
-      st = p.sit[i] && !p.out[i] ? "Sitting out · tap to bring back" : !live ? "" : turn ? "Deciding…" : p.folded[i] ? "Folded" : p.allin[i] ? "All in" : p.bets[i] ? `Bet ${hdNum(p.bets[i])}` : "";   // 7.52: what each player is doing this hand
-      return `<button class="cksc hdrow2${p.out[i] ? " neg gone" : ""}${turn ? " turn" : ""}${live && p.folded[i] ? " fld" : ""}${!p.out[i] && p.stacks[i] === Math.max(...p.stacks) ? " lead" : ""}" data-sit="${i}" title="${p.out[i] ? "" : "Tap to sit this player out (they fold or check every hand)"}">${esc(p.names[i])}<b>${p.out[i] ? "Out · " + hdOrd(p.out[i]) : hdNum(p.stacks[i])}</b>${st ? `<small>${st}</small>` : ""}</button>`; }).join("")}
+      st = p.sit[i] && !p.out[i] ? "Sitting out" : !live ? "" : turn ? "Deciding…" : p.folded[i] ? "Folded" : p.allin[i] ? "All in" : p.bets[i] ? `Bet ${hdNum(p.bets[i])}` : "";   // 7.52: what each player is doing this hand
+      return `<button class="cksc hdrow2${p.out[i] ? " neg gone" : ""}${turn ? " turn" : ""}${live && p.folded[i] ? " fld" : ""}${!p.out[i] && p.stacks[i] === Math.max(...p.stacks) ? " lead" : ""}" data-sit="${i}" title="${p.out[i] ? "" : p.sit[i] ? "Tap to bring this player back" : "Tap to sit this player out (they fold or check every hand)"}">${esc(p.names[i])}<b>${p.out[i] ? "Out · " + hdOrd(p.out[i]) : hdNum(p.stacks[i])}</b>${st ? `<small>${st}</small>` : ""}</button>`; }).join("")}
       <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small wide" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button></div></div></div>`; }
 $("#hdo").addEventListener("click", e => {
   const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; HD.cfg[k] = k === "end" ? v : k === "helper" || k === "four" ? v === "1" : +v; hdSave(); hdRender(); return; }
