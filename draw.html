@@ -159,16 +159,18 @@ function draw(){
       <div class="votes">${(p.order || []).filter(x => x !== me.p).map(x => `<button data-o="${esc(x)}" aria-pressed="${mv === x}" style="--c:${colOf(x, p)}"><i></i>${nm(x, p)}</button>`).join("")}</div>
       <div class="hint">${mv ? "Voted. You can still change it." : "Tap who you think it is."}</div>${err}`;
     paintStrokes($("cv"), p, null); return; }
-  if(p.ph === "between"){ v.innerHTML = `<div class="status me">Not caught</div><div class="hint">The fake artist is still among you. Two more rounds, then another vote.</div>`; return; }
+  if(p.ph === "between"){ v.innerHTML = `<div class="status me">Not caught</div><div class="hint">The fake artist is still among you. ${p.extra === 1 ? "One more round" : "Two more rounds"}, then another vote.</div>`; return; }
   if(p.ph === "guess"){
     if(p.fake === me.p){ v.innerHTML = `<div class="status me">You've been caught!</div><div class="hint">Guess the word and you still score.</div><form id="gf" autocomplete="off"><input type="text" id="gw" maxlength="40" enterkeyhint="send" placeholder="The word is…"><button class="send" id="gb" style="margin-top:12px">Send guess</button></form>${err}`;
       $("gf").onsubmit = e => { e.preventDefault(); const g = $("gw").value.trim(); if(!g) return; $("gb").disabled = true; act({k:"guess", t:p.tid, g}); }; }
     else v.innerHTML = `<div class="status">${nm(p.fake, p)} was the fake!</div><div class="hint">They get one guess at the word. Keep quiet.</div><div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
     return; }
   if(p.ph === "judge"){ v.innerHTML = `<div class="status">${nm(p.fake, p)} guessed</div><div class="big">“${esc(p.guess || "…")}”</div><div class="hint">The host decides on the TV.</div>`; return; }
+  const topLine = q => { if(!q.topN || !q.top) return ""; const one = q.top.length === 1, who = q.top.map(x => nm(x, q)).join(", ");
+    return `<div class="hint">${one ? "Most votes" : "Tied on votes"}: ${who} (${q.topN}${one ? "" : " each"})${q.top.includes(q.fake) ? "" : ", not the fake"}</div>`; };
   const d = p.deltas && p.deltas[me.p], won = (p.winners || []).includes(me.p);
   if(p.ph === "reveal"){ const k = p.outcome, line = k === "escape" ? "The fake got away with it." : k === "right" ? "The fake was caught but guessed the word." : "The fake was caught and guessed wrong.";
-    v.innerHTML = `<div class="tag">The word was</div><div class="big">${esc(cap(p.word))}</div><div class="status">${nm(p.fake, p)} was the fake artist</div><div class="hint">${line}</div><div class="delta">${d ? "+" + d : "+0"}</div><div class="hint">The host starts the next game on the TV.</div>`; return; }
+    v.innerHTML = `<div class="tag">The word was</div><div class="big">${esc(cap(p.word))}</div><div class="status">${nm(p.fake, p)} was the fake artist</div><div class="hint">${line}</div>${topLine(p)}<div class="delta">${d ? "+" + d : "+0"}</div><div class="hint">The host starts the next game on the TV.</div>`; return; }
   v.innerHTML = `<div class="status ${won ? "me" : ""}">${won ? "You win the wall!" : "Good game."}</div><div class="hint">${(p.winners || []).map(x => nm(x, p)).join(" and ")} ${(p.winners || []).length > 1 ? "share the win" : "wins"}.</div>`;
 }
 /* the card: hold the button to see it, let go to hide it. The first look tells the TV you've seen it. */
