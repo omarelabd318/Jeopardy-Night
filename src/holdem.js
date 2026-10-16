@@ -204,6 +204,7 @@ async function hdPoll(){ if($("#hdo").hidden || HD.busy) return; HD.busy = true;
 
 /* ---------- the flow ---------- */
 function hdStart(){
+  HD.qr = false;
   try{ Snd.unlock(); }catch(e){}
   if(HD.players.length < 2 || HD.players.length > 9 || RELAY !== true) return;
   HD.g = HE.Game(Object.assign({}, HD.cfg), HD.players.map(x => x.n), HD.players.map(x => x.p), hdRnd); HD.since = 0; HD.paused = false; clearTimeout(HD.rt); HD.rt = null; HD.sn = 0; HD.snHn = 0; HD.anim = -1; HD.g.start(); HD.phase = "play"; hdChanged(); }
@@ -298,7 +299,8 @@ function hdRender(){
     <div class="ckside"><h3>Chips</h3>${sorted.map(i => { const live = (p.phase === "hand" || p.phase === "run") && p.dealt[i] && !p.out[i], turn = p.phase === "hand" && p.turn === i,
       st = p.sit[i] && !p.out[i] ? "Sitting out" : !live ? "" : turn ? "Deciding…" : p.folded[i] ? "Folded" : p.allin[i] ? "All in" : p.bets[i] ? `Bet ${hdNum(p.bets[i])}` : "";   // 7.52: what each player is doing this hand
       return `<button class="cksc hdrow2${p.out[i] ? " neg gone" : ""}${turn ? " turn" : ""}${live && p.folded[i] ? " fld" : ""}${!p.out[i] && p.stacks[i] === Math.max(...p.stacks) ? " lead" : ""}" data-sit="${i}" title="${p.out[i] ? "" : p.sit[i] ? "Tap to bring this player back" : "Tap to sit this player out (they fold or check every hand)"}">${esc(p.names[i])}<b>${p.out[i] ? "Out · " + hdOrd(p.out[i]) : hdNum(p.stacks[i])}</b>${st ? `<small>${st}</small>` : ""}</button>`; }).join("")}
-      <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small wide" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button></div></div></div>`; }
+      <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small wide" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button>${RELAY === true && p.n < 9 ? `<button class="hdbtn ghost small wide" data-act="qr">Join code</button>` : ""}</div></div></div>${HD.qr ? `<div class="hdqrpop" data-act="qr"><div class="hdqr" id="hdQr2"></div><b>Scan to join. You are dealt in at the next hand.</b><small>Tap to close</small></div>` : ""}`;
+  const q2 = $("#hdQr2"); if(q2 && window.QRCode){ q2.innerHTML = ""; try{ new QRCode(q2, {text:hdUrl(), width:260, height:260, correctLevel:QRCode.CorrectLevel.L}); }catch(e){} } }
 $("#hdo").addEventListener("click", e => {
   const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; HD.cfg[k] = k === "end" ? v : k === "helper" || k === "four" ? v === "1" : +v; hdSave(); hdRender(); return; }
   const kick = e.target.closest("[data-kick]"); if(kick){ const x = HD.players[+kick.dataset.kick]; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:HD.room, p:x.p})}).catch(() => {});
@@ -311,6 +313,7 @@ $("#hdo").addEventListener("click", e => {
   else if(act.dataset.act === "shuffle"){ CK.shuffle(HD.players); hdRender(); }
   else if(act.dataset.act === "again"){ stopSiu(); HD.phase = "lobby"; HD.g = null; hdRender(); hdPoll(); }
   else if(act.dataset.act === "home") showHome();
+  else if(act.dataset.act === "qr"){ HD.qr = !HD.qr; hdRender(); }   // 7.65: the join code during a game, for late joiners
   else if(act.dataset.act === "pause"){ HD.paused = !HD.paused; if(HD.g) hdChanged(); }
   else if(act.dataset.act === "final"){ const g = HD.g; if(g){ g.makeFinal(); hdChanged(); } }
   else if(act.dataset.act === "end") askConfirm("End the game now?", "This shows the winner screen with the current chips.", "End game", () => { const g = HD.g; if(g){ g.endNow(); hdChanged(); } }); });
