@@ -53,7 +53,7 @@ function psStart(){
   PS.scores = {}; PS.players.forEach(x => PS.scores[x.p] = 0); PS.plan = psMakePlan(); PS.idx = 0; psClue(); }
 function psClue(){
   const e = PS.plan[PS.idx], a = e.clue;
-  PS.c = "g" + Date.now().toString(36) + PS.idx; PS.active = PS.players.slice(); PS.fakes = {}; PS.votes = {}; PS.lies = 0; PS.opts = []; PS.res = {}; PS.deltas = {}; PS.step = 0; PS.ending = false;
+  PS.c = "g" + Date.now().toString(36) + PS.idx; PS.active = PS.players.slice(); PS.fakes = {}; PS.votes = {}; PS.lies = 0; PS.opts = []; PS.res = {}; PS.deltas = {}; PS.step = 0; PS.ending = false; clearInterval(PS.rv); PS.rv = null;
   PS.priv = {ans:[a.a].concat(a.alt || []).map(psNorm).filter(Boolean), lies:psShuffle(a.lies.slice())};
   PS.phase = "write"; PS.total = PS_WRITE; PS.dl = Date.now() + PS_WRITE * 1000; psPost(); psRender(); }
 function psBuildOptions(){
@@ -81,7 +81,11 @@ async function psEndVote(){ if(PS.phase !== "vote" || PS.ending) return; PS.endi
   PS.order = PS.opts.map((o, i) => i).filter(i => !PS.opts[i].truth).concat(PS.opts.findIndex(o => o.truth)); PS.step = 0;
   PS.phase = "reveal"; PS.ending = false; psPost(); psRender(); }
 function psNext(){
-  if(PS.phase === "reveal"){ if(++PS.step >= PS.order.length){ PS.phase = "scores"; psPost(); } psRender(); return; }
+  if(PS.phase === "reveal"){   // 7.55 (Omar): one press starts the reveal, a lie every 2 s, the truth last, then a second press shows the scores. Old: one press per answer (step through psNext).
+    if(PS.rv) return;
+    if(PS.step >= PS.order.length){ PS.phase = "scores"; psPost(); psRender(); return; }
+    const go = () => { PS.step++; psRender(); if(PS.step >= PS.order.length || PS.phase !== "reveal"){ clearInterval(PS.rv); PS.rv = null; psRender(); } };
+    PS.rv = setInterval(go, 2000); go(); return; }
   if(PS.phase === "scores"){ if(PS.idx + 1 >= PS.plan.length){ PS.phase = "over"; psPostOver(); psRender(); playWinSiu(); return; }   /* 6.76 (Omar): Siuuu on the winner screen like every other mode */ PS.idx++; psClue(); } }
 function psPostOver(){ PS.deltas = {}; fetch("api/psy", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:PS.room, psy:{pub:{c:PS.c, phase:"over", round:3, nth:1, of:1, fool:0, truth:0, q:"", scores:PS.scores}, priv:{ans:[], lies:[]}}})}).catch(() => {}); }
 function psCheck(){ if(PS.ending) return; const done = o => PS.active.length && PS.active.every(x => o[x.p]);
@@ -90,7 +94,7 @@ function psCheck(){ if(PS.ending) return; const done = o => PS.active.length && 
 
 /* ---------- screens ---------- */
 function psEnter(){ if(S.mode === "psych") return; S.mode = "psych"; document.body.classList.add("psymode"); }
-function psyLeave(){ if(S.mode !== "psych") return; stopSiu(); clearInterval(PS.poll); clearInterval(PS.tm); PS.poll = PS.tm = null; PS.c = null; S.mode = null; document.body.classList.remove("psymode"); $("#psyo").hidden = true; }
+function psyLeave(){ if(S.mode !== "psych") return; stopSiu(); clearInterval(PS.poll); clearInterval(PS.tm); clearInterval(PS.rv); PS.poll = PS.tm = PS.rv = null; PS.c = null; S.mode = null; document.body.classList.remove("psymode"); $("#psyo").hidden = true; }
 function psyShow(){ psEnter();
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   PS.room = newRoom(); PS.players = []; PS.scores = {}; PS.phase = "lobby"; PS.c = null; PS.relay = RELAY;
@@ -151,7 +155,7 @@ function psRender(){
       <div class="row"><button class="psbtn go" id="psAgain">Play again</button><button class="psbtn ghost" id="psHome2">Title screen</button></div>`; return; }
   const e = PS.plan[PS.idx], fool = psFool(), live = ph === "write" || ph === "vote", last = PS.idx + 1 >= PS.plan.length;
   const ctl = ph === "write" || ph === "vote" ? `<button class="psbtn small" data-act="skip">Skip ahead</button><button class="psbtn small" data-act="more">+30 s</button>`
-    : `<button class="psbtn go small" data-act="next">${ph === "reveal" ? (PS.step + 1 >= PS.order.length ? "Reveal the truth" : "Reveal next") : last ? "See the winner" : e.nth === e.of && e.round < 3 ? "Next round" : "Next clue"}</button>`;
+    : `<button class="psbtn go small" data-act="next"${ph === "reveal" && PS.rv ? " disabled" : ""}>${ph === "reveal" ? (PS.rv ? "Revealing…" : PS.step >= PS.order.length ? "Show scores" : "Reveal answers") : last ? "See the winner" : e.nth === e.of && e.round < 3 ? "Next round" : "Next clue"}</button>`;
   const blank = ph === "scores" ? `<b class="fill">${esc(e.clue.a)}</b>` : `<b></b>`;
   el.innerHTML = `<div class="pstv"><div class="psin">
     <div class="pstop"><span>${e.round === 3 ? "Final clue" : `Round ${e.round} · clue ${e.nth} of ${e.of}`}</span><span>Fool ${fool} · Truth ${fool * 2}</span></div>
