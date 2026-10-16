@@ -549,6 +549,41 @@ body.hdmode .wrap{max-width:none;padding:0}
 #hdo .ckside button.cksc{border:0;font-family:inherit;font-weight:inherit;/* 7.37: was font:inherit, which also reset the size, so the names were tiny next to the chip counts */color:inherit;text-align:left;cursor:pointer;width:100%}
 #hdo .ckside .cksc.lead{background:var(--ck-lead)}
 #hdo .hd-tools{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+/* 7.52 (Omar): Hold'em polish pass. Lobby: QR and players stacked on the left, the settings in a two-column card on the right, so nothing runs off a 1080p screen. Table: players who are out shrink to a faint name,
+   face-up hole cards are bigger at showdown. Chips list: a line under each name says what they are doing this hand, the player on turn has a gold edge, folded and out players are muted. Host buttons sit in one even row (Next hand full width above them).
+   Game over: centred, gold, silver and bronze for the top three, "Out" instead of 0. To undo: delete this block (down to "end 7.52") and the matching 7.52 markup in src/holdem.js. */
+#hdBody>.hdhead,#hdBody>.hdgrid,#hdBody>.hdpod,#hdBody>.hdrow{width:min(1320px,100%);margin-inline:auto;padding-inline:24px;box-sizing:border-box}
+#hdo .hdgrid{grid-template-columns:minmax(300px,380px) minmax(260px,1fr) minmax(460px,1.5fr)}
+#hdo .hdgrid:has(.hdcol){grid-template-columns:minmax(300px,420px) minmax(520px,1fr)}
+#hdo .hdcol{display:grid;gap:16px;align-content:start}
+#hdo .hdqr{margin-inline:auto}
+#hdo .hdset{grid-template-columns:1fr 1fr;column-gap:26px;row-gap:16px;align-content:start}
+#hdo .hdopt{display:grid;gap:8px;align-content:start}
+#hdo .hdset .note{font-size:14px;line-height:1.35}
+#hdo .hdset #hdGo{grid-column:1/-1;font-size:24px;padding:14px;margin-top:4px}
+#hdo .hdseg button{font-size:17px}
+#hdo .ckseat.gone{opacity:.32!important;transform:translate(-50%,-50%) scale(.82)}
+#hdo .ckseat.gone .ckplate{background:transparent;border-color:transparent;box-shadow:none}
+#hdo .hdhole.up .ck{font-size:calc(var(--u)*1.45)}
+#hdo .hdhole.up{min-height:calc(var(--u)*5.3)}
+#hdo .ckside .cksc small{font-size:1vw;opacity:.75;font-weight:600;letter-spacing:.02em}
+#hdo .ckside .cksc.turn{box-shadow:inset .35vw 0 0 var(--ck-gold),inset 0 0 0 .12vw var(--ck-gold)}
+#hdo .ckside .cksc.turn small{opacity:1;color:var(--ck-gold)}
+#hdo .ckside .cksc.lead.turn small{color:#fff}
+#hdo .ckside .cksc.fld{opacity:.6}
+#hdo .ckside .cksc.gone{opacity:.45;font-size:1.25vw;padding:.35vw .8vw;background:transparent}
+#hdo .ckside .cksc.gone b{font-size:1.15vw;color:var(--hd-soft)}
+#hdo .hd-tools{display:flex;flex-wrap:nowrap;gap:8px}#hdo:has(.hd-tools .wide) .hd-tools{flex-wrap:wrap}
+#hdo .hd-tools .hdbtn{flex:1;padding:8px 6px;white-space:nowrap}
+#hdo .hd-tools .wide{flex-basis:100%;font-size:18px;padding:10px 6px}
+#hdo .hdpod{width:min(980px,100%)!important}
+#hdo .hdpod li.r2{background:linear-gradient(90deg,#d9dde3,#aeb5bf);color:#1d2228;border-color:transparent}
+#hdo .hdpod li.r3{background:linear-gradient(90deg,#d79a62,#a8683a);color:#2a1607;border-color:transparent}
+#hdo .hdpod li.r1{box-shadow:0 0 30px rgba(232,194,90,.45)}
+#hdo .hdpod em{font-size:.8em;opacity:.9}
+#hdBody:has(.hdpod)>.hdhead{text-align:center;padding-top:4vh}
+#hdBody:has(.hdpod)>.hdrow{justify-content:center}
+/* end 7.52 */
 /* end 6.80 */
 /* 6.72 (Omar): Psych, Lie Detector look (his pick of three previews: Lie Detector, Tabloid, Mirage): chart paper, mono type, a time-left bar with a red needle, a strip of every player along the bottom.
    psych.html (the phones) uses the same palette. To remove: delete this block, the #psyo section and the Psych button. */
@@ -2082,7 +2117,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. 6.84: Jeopardy Night is the first one. -->
       <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><i class="rowbrk"></i><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn hcbbtn" id="modeHc" data-phones="Phones required, one per player" data-who="Solo · 3 to 10 players · best with 5 to 8" data-tip="Find the secret shade: one player gives a word, everyone taps their guess on a 660-colour board.">Hues and Cues</button><i class="rowbrk"></i><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button><button class="btn modebtn stbtn" id="modeSp" data-phones="Phones required, one per player" data-who="Solo · 2 to 4 players · best with 3 or 4" data-tip="Phones are buzzers. Buzz first, answer fast, don't get it wrong.">Speed Trivia</button></div>
       <!-- 6.84: the categories and version line moved from the top of the title screen to under the modes -->
-      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.51</button>
+      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.52</button>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -2177,7 +2212,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v7.51</div>
+      <div class="eyebrow verlabel">v7.52</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

@@ -60,6 +60,12 @@ body[data-look=vegas]{--felt:#1b8a50;--felt2:#0b4a2c;--gold:#e8c25a;--soft:#cdb9
 body[data-look=vegas] h1,body[data-look=vegas] .big{font-family:"Limelight",Georgia,serif;font-weight:400}
 body[data-look=vegas] .panel{background:rgba(20,10,5,.72)}
 .hdv{display:grid;gap:10px}
+/* 7.52: Hold'em phone polish: the cards at the bottom sit on a dark fade instead of over the player list, the list is tidier (who is on turn, bets in gold), and the look is Vegas from the first screen */
+body[data-look=vegas] #hand{background:linear-gradient(rgba(23,11,6,0),#170b06 38%);margin-inline:-12px;padding-inline:12px}
+body[data-look=vegas] .tbl .tr small{color:var(--soft)}
+body[data-look=vegas] .tbl .tr.turn{box-shadow:inset 4px 0 0 var(--gold)}body[data-look=vegas] .tbl .tr.me.turn{box-shadow:inset 4px 0 0 var(--gold),inset 0 0 0 2px var(--gold)}
+body[data-look=vegas] .status{font-family:"Limelight",Georgia,serif;font-weight:400;letter-spacing:.01em}
+body[data-look=vegas] .wait .hint{font-family:"Barlow",system-ui,sans-serif}
 .hdbd{display:flex;justify-content:center;gap:5px;font-size:10.5px;padding:8px 6px;border-radius:12px;background:radial-gradient(ellipse at 50% 40%,#2a9d5f,#1b8a50 55%,#0b4a2c);border:2px solid #5b2f17;box-shadow:0 0 0 2px #e8c25a}
 .hdbd .ck.slot{background:transparent;box-shadow:none;border:2px dashed rgba(255,255,255,.35)}
 .hdpt{text-align:center;font:700 16px var(--disp);color:var(--gold);margin-top:-2px}
@@ -245,7 +251,7 @@ MODES.hd = {look:"vegas", watch:"This game is full or already started. Look at t
     const potLine = `Pot ${hdNum(p.pot)}${p.pots.length ? " · " + p.pots.map((x, k) => (k ? "side " : "main ") + hdNum(x.amt)).join(" · ") : ""}${p.phase === "hand" && p.cur > p.bets[me] && !out && !folded ? ` · to call ${hdNum(Math.min(p.cur - p.bets[me], p.stacks[me]))}` : ""}`;
     let status = "";
     if(p.phase === "show"){ const w = p.show.won[me];
-      status = `<div class="status${w > 0 ? " me" : ""}">${w > 0 ? "You win " + hdNum(w) : p.show.unc != null ? nm(p.show.unc) + " takes the pot" : "Hand over"}</div>` + (p.show.unc == null ? `<div class="hint">${p.show.pots.map(x => `${x.win.map(nm).join(" and ")} ${x.win.length > 1 ? "split" : "win"} ${hdNum(x.amt)}${x.name ? " with " + esc(x.name) : ""}`).join("<br>")}</div>` : ""); }
+      status = `<div class="status${w > 0 ? " me" : ""}">${w > 0 ? "You win " + hdNum(w) : p.show.unc != null ? nm(p.show.unc) + " takes the pot" : "Hand over"}</div>` + (p.show.unc == null ? `<div class="hint">${p.show.pots.map(x => `${x.win.map(nm).join(" and ")} ${x.win.length > 1 ? "split" : "wins"} ${hdNum(x.amt)}${x.name ? " with " + esc(x.name) : ""}`).join("<br>")}</div>` : ""); }
     else if(p.phase === "run") status = `<div class="status">Everyone is all in. Dealing…</div>`;
     else if(out) status = `<div class="status">You're out</div>`;
     else if(folded) status = `<div class="status">You folded</div>`;
@@ -330,6 +336,7 @@ async function poll(force){
 }
 function stop(){ if(timer){ clearInterval(timer); timer = null; } }
 function loop(){ stop(); poll(); timer = setInterval(poll, 1000); }
+{ const M0 = MODES[P.get("g")]; if(M0 && M0.look) document.body.dataset.look = M0.look; }   // 7.52: the mode's look from the very first screen (join and waiting), not only once the game starts
 if(!r) $("view").innerHTML = `<div class="msg">This link is missing its game code. Scan the code on the TV again.</div>`;
 else if(me && me.p){ $("view").innerHTML = `<div class="wait"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`; loop(); }
 else joinView();
