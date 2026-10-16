@@ -40,6 +40,7 @@ button{font:inherit;cursor:pointer}
 .deed{background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:6px;display:flex;flex-direction:column;min-width:0;aspect-ratio:3/4;overflow:hidden;text-align:center;position:relative;padding:0;font:inherit}
 .deed .band{height:20%;display:flex;align-items:center;justify-content:center;font:800 9px var(--body);letter-spacing:.18em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--ink);background:var(--tc)}
 .deed .dn{font:400 34px/1 var(--disp);margin-top:6px}
+.deed .dn small{font-size:.45em;margin-left:.06em}
 .deed .dnm{font:700 10.5px/1.15 var(--body);padding:2px 5px 6px;overflow-wrap:anywhere}
 .deed.t0{--tc:var(--t0)}.deed.t1{--tc:var(--t1)}.deed.t2{--tc:var(--t2)}.deed.t3{--tc:var(--t3)}
 .deed.sel{transform:translateY(-6px);box-shadow:0 0 0 4px var(--gold),0 8px 14px rgba(0,0,0,.4)}
@@ -92,7 +93,7 @@ function joinView(err){
   $("jn").onclick = () => { const n = $("nm").value.trim(); if(!n){ $("nm").focus(); return; } $("jn").disabled = true; join(n); };
   $("nm").onkeydown = e => { if(e.key === "Enter") $("jn").click(); };
 }
-const deed = (c, nm, cls = "", tag = "div") => `<${tag} class="deed t${tier(c)} ${cls}" data-c="${c}"><div class="band">${TIER[tier(c)]}</div><div class="dn">${c}</div><div class="dnm">${esc(nm)}</div></${tag}>`;
+const deed = (c, nm, cls = "", tag = "div") => `<${tag} class="deed t${tier(c)} ${cls}" data-c="${c}"><div class="band">${TIER[tier(c)]}</div><div class="dn">${c}<small>M</small></div><div class="dnm">${esc(nm)}</div></${tag}>`;
 const chq = q => `<div class="chq ${q === 0 ? "zero" : ""}"><small>${q === 0 ? "Backed out" : "Cheque"}</small><b>${q}M</b></div>`;
 const bar = () => { const l = left(); if(l == null) return ""; if(l > total) total = l; return `<div class="bar"><i id="bf" style="width:${total ? Math.round(l / total * 100) : 0}%"></i></div>`; };
 const wait = (h, sub) => `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">${h}</div><div class="hint">${sub || ""}</div></div>`;
@@ -111,13 +112,13 @@ function draw(){
   if(p.phase === "bid"){
     const table = `<div class="eye">On the table</div><div class="row" style="grid-template-columns:repeat(${p.table.length <= 4 ? p.table.length : 3},minmax(0,1fr))">${p.table.map(([c, nm]) => deed(c, nm)).join("")}</div>`;
     const cheap = p.table.length ? p.table[0] : null;
-    if(m.out){ v.innerHTML = `${coins}${wait("You passed", m.got ? `You took ${m.got.c}, ${esc(m.got.nm)}${m.got.paid ? ` and paid ${m.got.paid}M` : ""}${m.got.back ? ` (${m.got.back}M back)` : ""}. Watch the TV.` : "")}${table}${hand}`; return; }
+    if(m.out){ v.innerHTML = `${coins}${wait("You passed", m.got ? `You took ${m.got.c}M, ${esc(m.got.nm)}${m.got.paid ? ` and paid ${m.got.paid}M` : ""}${m.got.back ? ` (${m.got.back}M back)` : ""}. Watch the TV.` : "")}${table}${hand}`; return; }
     if(m.myTurn){
       const cur = p.cur;
       v.innerHTML = `${bar()}<div class="panel turn"><div class="big">Your turn</div>
         <div>${cur ? `Top bid: <b>${cur}M</b> by ${p.top === me.n ? "you" : esc(p.top)}` : "No bids yet."}${m.bid ? ` · your bid ${m.bid}M` : ""}</div>
         <div class="raise">${[1, 2, 5].map(d => `<button data-d="${d}" ${cur + d > m.coins ? "disabled" : ""}>+${d}M<small>→ ${cur + d}M</small></button>`).join("")}</div>
-        <button class="ghost" id="ps">Pass · take ${cheap ? cheap[0] : ""}${m.bid ? `, ${Math.floor(m.bid / 2)}M back` : ""}</button>${msg}
+        <button class="ghost" id="ps">Pass · take ${cheap ? cheap[0] + "M" : ""}${m.bid ? `, ${Math.floor(m.bid / 2)}M back` : ""}</button>${msg}
         <div class="hint">${cur + 1 > m.coins ? "You can't afford to raise. " : ""}Passing takes the cheapest deed on the table and returns half your bid.</div></div>${coins}${table}${hand}`;
       v.querySelectorAll(".raise button").forEach(b => b.onclick = () => send({k:"raise", d:+b.dataset.d, s:p.step}));
       $("ps").onclick = () => send({k:"pass", s:p.step});
@@ -127,9 +128,9 @@ function draw(){
       <div class="big">${g ? (g.paid ? "Paid " + g.paid + "M" : "Free") : ""}</div>${g && g.back ? `<div class="hint">${g.back}M came back to you.</div>` : ""}</div><div class="hint">Look at the TV.</div>${hand}`; return; }
   if(p.phase === "sell"){
     const cheq = `<div class="eye">Cheques on the table</div><div class="chqs">${p.ctable.map(chq).join("")}</div>`;
-    if(m.pick){ const c = m.hand.find(h => h[0] === m.pick); v.innerHTML = `${bar()}${wait("Locked in", "You're selling " + (c ? esc(c[1]) + " (" + c[0] + ")" : "your deed") + ". Waiting for the others.")}${cheq}`; return; }
+    if(m.pick){ const c = m.hand.find(h => h[0] === m.pick); v.innerHTML = `${bar()}${wait("Locked in", "You're selling " + (c ? esc(c[1]) + " (" + c[0] + "M)" : "your deed") + ". Waiting for the others.")}${cheq}`; return; }
     v.innerHTML = `${bar()}<div class="panel"><div class="eye">Pick a deed to sell</div><div class="row">${m.hand.map(([c, nm]) => deed(c, nm, sel === c ? "sel" : "", "button")).join("")}</div>${msg}
-      <button class="send" id="lk" ${sel ? "" : "disabled"}>${sel ? "Lock in " + sel : "Lock it in"}</button><div class="hint">The best deed in the room gets the best cheque. Pick wisely.</div></div>${cheq}`;
+      <button class="send" id="lk" ${sel ? "" : "disabled"}>${sel ? "Lock in " + sel + "M" : "Lock it in"}</button><div class="hint">The best deed in the room gets the best cheque. Pick wisely.</div></div>${cheq}`;
     v.querySelectorAll("button.deed").forEach(b => b.onclick = () => { sel = sel === +b.dataset.c ? null : +b.dataset.c; sig = ""; draw(); });
     $("lk").onclick = () => send({k:"pick", c:sel}); return; }
   if(p.phase === "reveal"){ const s = m.sold; v.innerHTML = `<div class="panel"><div class="eye">You sold</div>${s ? deed(s.c, s.nm, "wide") : ""}<div class="big ${s && s.q === 0 ? "neg" : "pos"}">${s ? (s.q === 0 ? "Buyer backed out: 0M" : "for " + s.q + "M") : ""}</div></div>
