@@ -1,5 +1,13 @@
 [
  {
+  "v": "7.48",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar: played cards now pile up in the middle of the table, and each new play drops on top of the ones already there.",
+   "Liar's Bar: a player is only stamped BUSTED after the spin finishes, not before."
+  ]
+ },
+ {
   "v": "7.47",
   "date": "2026-10-15",
   "items": [
