@@ -104,12 +104,28 @@ const Snd = (() => {
     const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + start;
     o.type = type; o.frequency.value = freq; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + attack); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
     o.connect(g).connect(out || a.destination); o.start(t); o.stop(t + dur + 0.05); };
+  let spinG = null;
+  const click = (dest, start, vol, freq) => { const a = ctx(); if(!a) return; const t = a.currentTime + start, len = 0.05, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
+    for(let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (a.sampleRate * 0.006));
+    const n = a.createBufferSource(); n.buffer = buf; const f = a.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = freq; f.Q.value = 2.2; const g = a.createGain(); g.gain.value = vol * 0.5;
+    n.connect(f).connect(g).connect(dest); n.start(t); };
   return {
     unlock(){ if(S.sound) ctx(); },
     tick(){ if(!S.sound) return; tone(1320, 0, 0.09, 0.05, "triangle"); tone(660, 0, 0.07, 0.03, "sine"); },
     chime(){ if(!S.sound) return; const f = 784; [[1,0.11],[2.01,0.04],[3.0,0.025],[4.16,0.012]].forEach(([m,v]) => tone(f*m, 0, 2.8/Math.sqrt(m), v*CHIME, "sine", 0.01)); tone(f*1.5, 0.12, 2.2, 0.035*CHIME, "sine", 0.02); },
     blip(){ if(!S.sound) return; tone(988, 0, 0.12, 0.04, "sine"); tone(1480, 0.06, 0.14, 0.03, "sine"); },
     buzz(){ if(!S.sound) return; tone(196, 0, 0.3, 0.07, "sawtooth", 0.004); tone(147, 0.14, 0.4, 0.07, "sawtooth", 0.004); },   // 7.4: Taboo's buzz
+    /* 7.58 (Omar, Liar's Bar): a revolver cylinder spinning (clicks that slow down with the spin on screen), a gunshot, and the dry click of an empty chamber. All made with the audio API, no files. */
+    spin(){ if(!S.sound) return; const a = ctx(); if(!a) return; this.stopSpin(); const g = a.createGain(); g.gain.value = 1; g.connect(out || a.destination); spinG = g;
+      for(let k = 1; k <= 17; k++){ const p = k * 60 / 1000, t = 3.2 * (1 - Math.pow(1 - p, 1 / 3)); if(p >= 1) break; click(g, t, 0.55 + 0.35 * (1 - p), 2600 + (k % 3) * 500); } },
+    stopSpin(){ if(spinG){ try{ spinG.gain.setValueAtTime(spinG.gain.value, ac.currentTime); spinG.gain.linearRampToValueAtTime(0, ac.currentTime + 0.08); }catch(e){} spinG = null; } },
+    dry(){ if(!S.sound) return; const a = ctx(); if(!a) return; click(out || a.destination, 0, 1.2, 1800); click(out || a.destination, 0.09, 0.8, 3400); tone(2100, 0.09, 0.12, 0.02, "triangle", 0.002); },
+    bang(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime, len = 1.6, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
+      for(let i = 0; i < d.length; i++){ const x = i / a.sampleRate; d[i] = (Math.random() * 2 - 1) * Math.exp(-x * 7) * (x < 0.012 ? 1.6 : 1); }
+      const n = a.createBufferSource(); n.buffer = buf; const f = a.createBiquadFilter(); f.type = "lowpass"; f.frequency.setValueAtTime(7000, t); f.frequency.exponentialRampToValueAtTime(400, t + 1.2);
+      const ng = a.createGain(); ng.gain.value = 0.42; n.connect(f).connect(ng).connect(out || a.destination); n.start(t);
+      const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(38, t + 0.35); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.5, t + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+      o.connect(og).connect(out || a.destination); o.start(t); o.stop(t + 0.6); },
     fanfare(){ if(!S.sound) return; [523, 659, 784, 1047].forEach((f,i) => { tone(f, i*0.13, 0.9, 0.06, "triangle", 0.01); tone(f*2, i*0.13, 0.6, 0.015, "sine", 0.01); }); }
   };
 })();
@@ -170,8 +186,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.57`);
-  $("#verBtn").textContent = "v7.57"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.58`);
+  $("#verBtn").textContent = "v7.58"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [

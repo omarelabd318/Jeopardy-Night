@@ -48,7 +48,7 @@ const LBR = (() => {
       g.rev = {cards:g.last.cards, liar, claimer:g.last.by, caller:g.turn, loser}; g.phase = "reveal"; return true; };
     g.spin = () => {
       if(g.phase !== "reveal") return false; const s = g.seats[g.rev.loser], k = s.spins, bust = k === s.bust;
-      s.spins++; g.res = {loser:g.rev.loser, k:k + 1, odds:CHAMBERS - k, bust};
+      s.spins++; g.res = {loser:g.rev.loser, k:k + 1, odds:CHAMBERS - k, bust, had:s.hand.length, handBefore:s.hand.slice()};   // had/handBefore: what to keep showing until the spin result is revealed (7.58)
       if(bust){ s.out = true; s.hand = []; g.order.push(s.p); }
       g.phase = "spin"; return true; };
     g.next = () => {
@@ -58,11 +58,12 @@ const LBR = (() => {
     g.auto = () => { if(g.phase !== "turn") return false; const s = g.seats[g.turn]; return liarOnly() ? g.call(s.p) : g.play(s.p, [Math.floor(rnd() * s.hand.length)]); };
     const pid = i => g.seats[i].p;
     g.pub = (showRes = true) => ({ph:g.phase, round:g.round, tbl:g.tbl, turn:g.phase === "turn" ? pid(g.turn) : null, pile:g.pile, lo:g.liarOnly(),
-      last:g.last ? {by:pid(g.last.by), n:g.last.n} : null, seats:g.seats.map(s => ({p:s.p, n:s.n, c:s.hand.length, sp:s.spins, out:s.out && !(!showRes && g.phase === "spin" && g.res && g.seats[g.res.loser] === s)})),
+      last:g.last ? {by:pid(g.last.by), n:g.last.n} : null, seats:g.seats.map(s => { const hid = !showRes && g.phase === "spin" && g.res && g.seats[g.res.loser] === s;   // 7.58: until the TV shows the result, the spinner looks exactly as before the spin
+        return {p:s.p, n:s.n, c:hid ? g.res.had : s.hand.length, sp:hid ? s.spins - 1 : s.spins, out:s.out && !hid}; }),
       rev:g.rev && g.phase !== "turn" ? {cards:g.rev.cards, liar:g.rev.liar, claimer:pid(g.rev.claimer), caller:pid(g.rev.caller), loser:pid(g.rev.loser)} : null,
       res:g.res && g.phase !== "turn" ? {loser:pid(g.res.loser), k:g.res.k, odds:g.res.odds, bust:showRes || g.phase !== "spin" ? g.res.bust : null} : null,
-      winner:g.winner, order:g.order.slice()});
-    g.priv = p => { const s = g.seats[idx(p)]; return s && !s.out ? {hand:s.hand.slice()} : {}; };
+      winner:g.winner, order:g.order.filter(x => showRes || g.phase !== "spin" || !g.res || x !== pid(g.res.loser))});
+    g.priv = (p, showRes = true) => { const s = g.seats[idx(p)]; if(s && !showRes && g.phase === "spin" && g.res && g.seats[g.res.loser] === s) return {hand:g.res.handBefore.slice()}; return s && !s.out ? {hand:s.hand.slice()} : {}; };
     return g; }
   return {Game, MIX, RANKS, HAND, CHAMBERS, deckFor};
 })();
@@ -79,7 +80,7 @@ const lbNm = p => { const s = lbSeat(p) || LB.players.find(x => x.p === p); retu
 /* ---------- talking to the phones ---------- */
 function lbPost(){
   if(RELAY !== true) return; const g = LB.g, priv = {}; let pub;
-  if(g){ pub = g.pub(LB.resShown); pub.secs = LB.cfg.timer || 0; g.seats.forEach(s => { priv[s.p] = g.priv(s.p); }); pub.wins = LB.wins; }
+  if(g){ pub = g.pub(LB.resShown); pub.secs = LB.cfg.timer || 0; g.seats.forEach(s => { priv[s.p] = g.priv(s.p, LB.resShown); }); pub.wins = LB.wins; }
   else { const names = {}; LB.players.forEach(x => names[x.p] = x.n); pub = {ph:"lobby", names, order:LB.players.map(x => x.p)}; }
   pub.v = ++LB.vc;
   fetch("api/crd", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:LB.room, crd:{pub, priv}})}).catch(() => {}); }
@@ -102,25 +103,25 @@ function lbStart(){
 function lbPhaseStart(){   // timers that belong to the current phase
   const g = LB.g; LB.at = Date.now(); LB.resShown = false;
   LB.dl = g.phase === "turn" && LB.cfg.timer ? Date.now() + LB.cfg.timer * 1000 : 0;
-  if(g.phase === "spin") LB.resAt = Date.now() + LB.spinMs; }
+  if(g.phase === "spin"){ LB.resAt = Date.now() + LB.spinMs; try{ Snd.spin(); }catch(e){} } }   // 7.58: the cylinder spinning
 function lbChanged(){   // call after the game state changed
   const g = LB.g, key = g.phase + ":" + g.round + ":" + g.pile + ":" + (g.turn) + ":" + (g.res ? g.res.k + g.res.loser : "");
   if(key !== LB.lastKey){ LB.lastKey = key; lbPhaseStart(); }
   if(g.phase === "over" && !LB.sung){ LB.sung = true; const w = g.winner; LB.wins[w] = (LB.wins[w] || 0) + 1; playWinSiu(); }
   lbPost(); lbRender(); }
-function lbAgain(){ stopSiu(); LB.g = null; LB.phase = "lobby"; LB.lastKey = ""; lbRender(); lbPost(); }
+function lbAgain(){ stopSiu(); try{ Snd.stopSpin(); }catch(e){} LB.g = null; LB.phase = "lobby"; LB.lastKey = ""; lbRender(); lbPost(); }
 function lbTick(){ const g = LB.g; if(!g || LB.phase !== "play") return; const now = Date.now();
   if(g.phase === "turn"){ const f = $("#lbFill"); if(f && LB.dl) f.style.width = Math.max(0, Math.min(100, (LB.dl - now) / (LB.cfg.timer * 10))) + "%";
     if(LB.dl && now >= LB.dl && g.auto()) lbChanged(); }
   else if(g.phase === "reveal"){ if(now - LB.at >= LB.revMs && g.spin()) lbChanged(); }
   else if(g.phase === "spin" && !LB.resShown && now >= LB.resAt) lbShowRes(); }
 function lbShowRes(){ const g = LB.g; if(!g || g.phase !== "spin" || LB.resShown) return; LB.resShown = true; lbPost(); lbRender();
-  try{ if(g.res.bust) Snd.fanfare(); else Snd.chime(); }catch(e){} }
+  try{ Snd.stopSpin(); if(g.res.bust) Snd.bang(); else Snd.dry(); }catch(e){} }   // 7.58 (Omar): gunshot on a bust, a dry click when safe (was a fanfare and a chime)
 
 /* ---------- screens ---------- */
 function lbEnter(){ if(S.mode === "liars") return; S.mode = "liars"; document.body.classList.add("lbmode"); }
-function lbLeave(){ if(S.mode !== "liars") return; stopSiu(); clearInterval(LB.poll); clearInterval(LB.tm); LB.poll = LB.tm = null; LB.g = null; LB.phase = "lobby"; S.mode = null; document.body.classList.remove("lbmode"); $("#lbo").hidden = true; }
-function lbShow(){ lbEnter();
+function lbLeave(){ if(S.mode !== "liars") return; stopSiu(); try{ Snd.stopSpin(); }catch(e){} clearInterval(LB.poll); clearInterval(LB.tm); LB.poll = LB.tm = null; LB.g = null; LB.phase = "lobby"; S.mode = null; document.body.classList.remove("lbmode"); $("#lbo").hidden = true; }
+function lbShow(){ lbEnter(); try{ Snd.unlock(); }catch(e){}
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo","#psyo","#esto","#tno","#cno","#dco"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   LB.room = newRoom(); LB.players = []; LB.phase = "lobby"; LB.g = null; LB.since = 0; LB.relay = RELAY; LB.psig = ""; LB.wins = {}; LB.sung = false; LB.lastKey = ""; LB.vc = 0;
   $("#lbo").hidden = false; lbRender(); window.scrollTo(0, 0); lbPost();
@@ -130,8 +131,8 @@ const lbBacks = n => `<span class="lbbacks">${Array.from({length:Math.min(n, 5)}
 const lbPips = sp => `<span class="lbpips">${Array.from({length:6}, (_, k) => `<u class="${k < sp ? "f" : ""}"></u>`).join("")}</span>`;
 function lbSeatHtml(s, i, n, turn, g){   // seat 0 at the bottom, then round the table counter-clockwise (the order of play)
   const a = Math.PI / 2 + i * 2 * Math.PI / n, x = 50 + Math.cos(a) * 41, y = 53 + Math.sin(a) * 36;
-  const out = s.out && !(g.phase === "spin" && !LB.resShown && g.seats[g.res.loser] === s);
-  return `<div class="lbseat${turn === s.p ? " now" : ""}${out ? " out" : ""}" style="left:${x}%;top:${y}%"><div class="nm">${esc(s.n)}</div>${out ? `<div class="lbstamp">BUSTED</div>` : lbBacks(s.hand.length) + lbPips(s.spins)}${turn === s.p && LB.dl ? `<div class="lbtmr"><i id="lbFill" style="width:${Math.max(0, Math.min(100, (LB.dl - Date.now()) / (LB.cfg.timer * 10)))}%"></i></div>` : ""}</div>`; }
+  const hid = g.phase === "spin" && !LB.resShown && g.seats[g.res.loser] === s, out = s.out && !hid;   // 7.58: until the result shows, the spinner looks exactly as before the spin
+  return `<div class="lbseat${turn === s.p ? " now" : ""}${out ? " out" : ""}" style="left:${x}%;top:${y}%"><div class="nm">${esc(s.n)}</div>${out ? `<div class="lbstamp">BUSTED</div>` : lbBacks(hid ? g.res.had : s.hand.length) + lbPips(hid ? s.spins - 1 : s.spins)}${turn === s.p && LB.dl ? `<div class="lbtmr"><i id="lbFill" style="width:${Math.max(0, Math.min(100, (LB.dl - Date.now()) / (LB.cfg.timer * 10)))}%"></i></div>` : ""}</div>`; }
 function lbDrum(sp, bust){   // the cylinder, seen end on: sp chambers used (the last one is the bust when bust is true)
   let s = `<svg viewBox="0 0 100 100" role="img" aria-label="Cylinder, ${sp} of 6 chambers used"><circle cx="50" cy="50" r="46" fill="#b8913f" stroke="#f3d27a" stroke-width="2.4"/><circle cx="50" cy="50" r="9" fill="#6b4a1c"/>`;
   for(let k = 0; k < 6; k++){ const a = k * Math.PI / 3 - Math.PI / 2, x = 50 + Math.cos(a) * 28, y = 50 + Math.sin(a) * 28, used = k < sp, hit = bust && k === sp - 1;

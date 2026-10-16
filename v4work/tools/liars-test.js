@@ -52,6 +52,12 @@ for(let seed = 1; seed <= 60; seed++){ const g = L.Game(names(3), seeded(seed));
 { const g = L.Game(names(4), seeded(7)); g.start(); const t = g.turn; ok(g.auto(), "auto plays"); eq(g.seats[t].hand.length, 4, "one card played"); eq(g.last.n, 1, "claim of one"); }
 { const g = L.Game(names(3), seeded(8)); g.start(); const a = g.turn; g.seats.forEach((s, i) => { if(i !== a) s.hand = []; }); g.last = {by:(a + 1) % 3, cards:["K"], n:1}; ok(g.auto(), "auto calls"); eq(g.phase, "reveal", "when only Liar! is left"); }
 
+// 7.58: until the spin result is shown, nothing hints at a bust: the spinner keeps the same cards, dots and seat, their phone keeps the hand, and the standings don't list them
+{ const g = L.Game(names(3), seeded(9)); g.start(); const before = g.seats[1].hand.slice(); g.phase = "reveal"; g.rev = {loser:1, cards:[], liar:true, claimer:1, caller:2}; g.seats[1].bust = 0; g.spin();
+  const h = g.pub(false), sh = h.seats[1], r = g.pub(true).seats[1];
+  eq(sh.out, false, "hidden: not out yet"); eq(sh.c, before.length, "hidden: same card count"); eq(sh.sp, 0, "hidden: dot not filled yet"); eq(h.res.bust, null, "hidden: no result"); eq(h.order.length, 0, "hidden: not in the standings");
+  eq(g.priv("p1", false).hand, before, "hidden: the phone keeps the hand"); eq(r.out, true, "shown: out"); eq(r.c, 0, "shown: no cards"); eq(r.sp, 1, "shown: dot filled"); eq(g.pub(true).order.length, 1, "shown: in the standings"); eq(g.priv("p1", true).hand, undefined, "shown: no hand"); }
+
 // next round: loser starts if alive, else the next living player; busted players get no cards; last one standing wins
 { const g = L.Game(names(3), seeded(9)); g.start(); g.phase = "reveal"; g.rev = {loser:1, cards:[], liar:true, claimer:1, caller:2}; g.seats[1].bust = 0; g.spin(); eq(g.seats[1].out, true, "busted");
   ok(g.next(), "next"); eq(g.round, 2, "round 2"); eq(g.turn, 2, "the next living player starts"); eq(g.seats[1].hand.length, 0, "busted player has no cards"); ok(g.priv("p1").hand === undefined, "busted player gets no hand");
