@@ -186,8 +186,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.59`);
-  $("#verBtn").textContent = "v7.59"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.61`);
+  $("#verBtn").textContent = "v7.61"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2109,20 +2109,22 @@ const TURN_FREE = new Set(["password","closest","impostor"]);
 const WAGER_ALL = new Set(["closest"]);
 function bettors(c){ return WAGER_ALL.has(c.type) ? S.teams.map((t,i) => i) : [c.picker]; }
 const halfBet = b => Math.round(b / 100) * 50;
+/* 7.60 (Omar): the lowest bet is half the tile (was 0 in 6.45-7.59). To undo, make wagerMin return 0 and put the "0" quick button back. */
+const wagerMin = c => c.lvl / 2;
 function awardPts(c, i, v){ const b = c.bets && c.bets[i];
   if(b != null) return v === 1 ? b : v === -1 ? -b : v === 0.5 ? halfBet(b) : 0;
   return v*c.lvl*(i===c.x2 && v>0 ? 2 : 1); }
 function noHalf(c, i){ return !!c.bets && c.bets[i] != null && (c.type === "order" || c.type === "closest"); }
 function renderWager(c){
-  const max = c.lvl*2, ids = Object.keys(c.bets), one = ids.length === 1;
-  const quick = [["0",0],["Half",c.lvl/2],["Same",c.lvl],["1½×",c.lvl*1.5],["Double",max]];
+  const max = c.lvl*2, min = wagerMin(c), ids = Object.keys(c.bets), one = ids.length === 1;
+  const quick = [["Half",min],["Same",c.lvl],["1½×",c.lvl*1.5],["Double",max]];   // 7.60: no "0" button, the minimum is Half (6.45-7.59: ["0",0] came first)
   $("#clue").innerHTML = `
     <div class="cluehead"><div class="eyebrow">${esc(catById(c.tile || c.cat).name)}</div><div class="val">${c.lvl}</div></div>
     <div class="wager">${one ? "" : `<div class="note">Every team bets on this one. The closest gains its bet; everyone else loses theirs.</div>`}
     ${ids.map(i => { const b = c.bets[i]; return `<div class="wrow"><div class="wq">${esc(S.teams[i].name)}, how much do you bet?</div>
-      <div class="wctl"><button class="btn" data-wd="${i}" data-v="-50" ${b<=0?"disabled":""} aria-label="Bet 50 less">−</button><b class="wamt">${b}</b><button class="btn" data-wd="${i}" data-v="50" ${b>=max?"disabled":""} aria-label="Bet 50 more">+</button></div>
+      <div class="wctl"><button class="btn" data-wd="${i}" data-v="-50" ${b<=min?"disabled":""} aria-label="Bet 50 less">−</button><b class="wamt">${b}</b><button class="btn" data-wd="${i}" data-v="50" ${b>=max?"disabled":""} aria-label="Bet 50 more">+</button></div>
       <div class="row wquick">${quick.map(([l,v]) => `<button class="chip" aria-pressed="${b===v}" data-wset="${i}" data-v="${v}">${l}${v ? ` · ${v}` : ""}</button>`).join("")}</div></div>`; }).join("")}
-    <div class="note">Bet 0 to ${max}. Right adds the bet, wrong takes it away.</div></div>
+    <div class="note">Bet ${min} to ${max}. Right adds the bet, wrong takes it away.</div></div>
     <div class="row"><button class="btn primary" data-act="lockbet">${one ? `Lock in ${c.bets[ids[0]]}` : "Lock in bets"}</button><button class="btn small" data-act="cancel">Back to board</button></div>`;
 }
 function offTurn(c, i){ return !S.ffa && !TURN_FREE.has(c.type) && i !== (S.turn||0); }
@@ -2481,7 +2483,7 @@ $("#clue").addEventListener("click", e => {
   if(om && c.order && !c.revealed){ const i = +om.dataset.om, j = i + +om.dataset.dir; if(j >= 0 && j < c.order.length){ [c.order[i], c.order[j]] = [c.order[j], c.order[i]]; Snd.blip(); renderClue(); } return; }
   /* 6.45: the wager card's − / + and quick amounts */
   const wd = e.target.closest("[data-wd]");
-  if(wd && c.wagerStage){ const i = +wd.dataset.wd; c.bets[i] = Math.max(0, Math.min(c.lvl*2, c.bets[i] + +wd.dataset.v)); renderClue(); return; }
+  if(wd && c.wagerStage){ const i = +wd.dataset.wd; c.bets[i] = Math.max(wagerMin(c), Math.min(c.lvl*2, c.bets[i] + +wd.dataset.v)); /* 7.60: the floor was 0 */ renderClue(); return; }
   const wq = e.target.closest("[data-wset]");
   if(wq && c.wagerStage){ c.bets[+wq.dataset.wset] = +wq.dataset.v; renderClue(); return; }
   const tw = e.target.closest("[data-two]");
