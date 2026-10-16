@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.51",
+  "date": "2026-10-16",
+  "items": [
+   "Hot Seat: a new \"Clue played already\" button on the clue card swaps to a fresh clue without using your team's one swap."
+  ]
+ },
+ {
   "v": "7.50",
   "date": "2026-10-16",
   "items": [

@@ -130,7 +130,10 @@ function hsBanner(c){ const st = HS.st; if(!st || !st.cur) return ""; st.cur.idx
     : `<p class="note hsbanner">${nm} is in the Hot Seat. ${st.pot ? `Pot ${hsNum(st.pot)}: right makes it ${hsNum(hsNext())}, wrong loses ${hsNum(st.pot)}.` : "First clue of the turn: right starts the pot at 100, wrong loses nothing."}</p>`; }
 function hsAwards(c){ const st = HS.st, i = hsSeat(), tb = !!st.tb;
   return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : " · pot " + hsNum(hsNext())}</button>${!tb && HS_HALF.has(c.cat) ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · bank ${hsNum(st.pot)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
-function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; return !c.preview && !c.revealed && HS.cfg.swap && t && t.swap && !st.tb ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""; }
+function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; if(c.preview || c.revealed) return "";
+  /* 7.51 (Omar): "Clue played already" is a free swap that doesn't use the team's one swap. Without it Hot Seat only had the limited swap. */
+  const played = `<button class="btn small" data-act="played" title="The group has already had this clue. Get another from the same category and value, and it doesn't use your swap.">Clue played already</button>`;
+  return played + (HS.cfg.swap && t && t.swap && !st.tb ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""); }
 function hsDone(c){
   const st = HS.st, i = hsSeat(), v = c.awards[i];
   S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
