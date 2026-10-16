@@ -186,8 +186,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.62`);
-  $("#verBtn").textContent = "v7.62"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.63`);
+  $("#verBtn").textContent = "v7.63"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -336,17 +336,20 @@ applyMixes();
 const mixOpen = new Set();   // 6.40 (Omar): each mix starts folded; this remembers which ones are open while setup is shown
 function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
   box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(c => c && c.type === "mix").map(m =>   /* 6.38: TV Show Mix is a mix too now (6.37: left out, fixed contents) */ { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
-    return `<details class="mixrow" data-mixrow="${m.id}"${mixOpen.has(m.id) ? " open" : ""}><summary><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id] === "All" ? "any section" : MIX_SECTION[m.id])}${custom ? " · edited" : ""}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5></summary>
-      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></details>`; }).join("");   // 6.27-6.39: an open <div class="mixrow"> with an <h5>
+    const sel = saved[m.id] && !saved[m.id].length ? [] : m.src;   // 7.63: a cleared mix shows nothing picked (it plays its defaults until one is picked)
+    return `<details class="mixrow" data-mixrow="${m.id}"${mixOpen.has(m.id) ? " open" : ""}><summary><h5>${esc(m.name)}<small>${sel.length} of ${ok.length} · ${esc(MIX_SECTION[m.id] === "All" ? "any section" : MIX_SECTION[m.id])}${custom ? " · edited" : ""}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5></summary>
+      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${sel.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div>
+      ${sel.length ? "" : `<p class="note mixnone">Nothing picked, so this mix plays its usual categories until you pick one.</p>`}<div class="row mixall"><button class="btn small" data-mixall="${m.id}"${sel.length === ok.length ? " disabled" : ""}>Select all</button><button class="btn small" data-mixclear="${m.id}"${sel.length ? "" : " disabled"}>Clear</button></div></details>`; }).join("");   // 7.63 (Omar): Select all and Clear under each mix   // 6.27-6.39: an open <div class="mixrow"> with an <h5>
   box.querySelectorAll("details.mixrow").forEach(d => d.addEventListener("toggle", () => d.open ? mixOpen.add(d.dataset.mixrow) : mixOpen.delete(d.dataset.mixrow)));
   const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
-document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset]"); if(!b || !$("#mixEdit").contains(b)) return;
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset],[data-mixall],[data-mixclear]"); if(!b || !$("#mixEdit").contains(b)) return;
   const saved = store.get("jn_mixes", {});
   if(b.dataset.mixreset){ e.preventDefault(); delete saved[b.dataset.mixreset]; }   // preventDefault: the Reset button sits in the row's <summary>
-  else { const m = catById(b.dataset.mix), s = b.dataset.src, cur = m.src.includes(s) ? m.src.filter(x => x !== s) : [...m.src, s];
-    if(!cur.length){ b.animate && b.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"none"}], {duration:200}); return; }   // a mix needs at least one category
-    const order = mixAllowed(m.id); saved[m.id] = order.filter(x => cur.includes(x));
-    if(saved[m.id].length === MIX_DEFAULT[m.id].length && MIX_DEFAULT[m.id].every(x => saved[m.id].includes(x))) delete saved[m.id]; }
+  else if(b.dataset.mixclear) saved[b.dataset.mixclear] = [];   // 7.63 (Omar): Clear. An empty list plays the mix's defaults (applyMixes) until something is picked
+  else { const id = b.dataset.mixall || b.dataset.mix, m = catById(id), s = b.dataset.src, now = saved[id] && !saved[id].length ? [] : m.src,
+      cur = b.dataset.mixall ? mixAllowed(id) : now.includes(s) ? now.filter(x => x !== s) : [...now, s];   // 7.63 (Omar): Select all
+    saved[id] = mixAllowed(id).filter(x => cur.includes(x));   // 7.63: unpicking the last one works like Clear (6.27-7.62: shook and refused, "a mix needs at least one category")
+    if(saved[id].length && saved[id].length === MIX_DEFAULT[id].length && MIX_DEFAULT[id].every(x => saved[id].includes(x))) delete saved[id]; }
   store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
   renderMixEdit(); renderChips(); });
 $("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });

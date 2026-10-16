@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.63",
+  "date": "2026-10-16",
+  "items": [
+   "Edit mixes: each mix now has Select all and Clear buttons under its categories."
+  ]
+ },
+ {
   "v": "7.62",
   "date": "2026-10-16",
   "items": [
