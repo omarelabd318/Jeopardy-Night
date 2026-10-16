@@ -105,7 +105,10 @@ function lbPhaseStart(){   // timers that belong to the current phase
   LB.dl = g.phase === "turn" && LB.cfg.timer ? Date.now() + LB.cfg.timer * 1000 : 0;
   if(g.phase === "spin"){ LB.resAt = Date.now() + LB.spinMs; try{ Snd.spin(); }catch(e){} } }   // 7.58: the cylinder spinning
 function lbChanged(){   // call after the game state changed
-  const g = LB.g, key = g.phase + ":" + g.round + ":" + g.pile + ":" + (g.turn) + ":" + (g.res ? g.res.k + g.res.loser : "");
+  const g = LB.g, pk = g.round + ":" + g.pile;
+  if(g.phase === "turn" && g.last && LB.sndPile !== pk){ LB.sndPile = pk; try{ Snd.place(g.last.n); }catch(e){} }   // 7.64: the sound of the cards going down
+  if(g.phase !== "turn") LB.sndPile = null;
+  const key = g.phase + ":" + g.round + ":" + g.pile + ":" + (g.turn) + ":" + (g.res ? g.res.k + g.res.loser : "");
   if(key !== LB.lastKey){ LB.lastKey = key; lbPhaseStart(); }
   if(g.phase === "over" && !LB.sung){ LB.sung = true; const w = g.winner; LB.wins[w] = (LB.wins[w] || 0) + 1; playWinSiu(); }
   lbPost(); lbRender(); }

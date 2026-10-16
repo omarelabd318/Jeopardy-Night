@@ -119,6 +119,13 @@ const Snd = (() => {
     spin(){ if(!S.sound) return; const a = ctx(); if(!a) return; this.stopSpin(); const g = a.createGain(); g.gain.value = 1; g.connect(out || a.destination); spinG = g;
       for(let k = 1; k <= 17; k++){ const p = k * 60 / 1000, t = 3.2 * (1 - Math.pow(1 - p, 1 / 3)); if(p >= 1) break; click(g, t, 0.55 + 0.35 * (1 - p), 2600 + (k % 3) * 500); } },
     stopSpin(){ if(spinG){ try{ spinG.gain.setValueAtTime(spinG.gain.value, ac.currentTime); spinG.gain.linearRampToValueAtTime(0, ac.currentTime + 0.08); }catch(e){} spinG = null; } },
+    /* 7.64 (Omar): the sound of cards being put down on the felt: per card a soft paper slap (short filtered noise) over a low thump, a little different each time. */
+    place(n = 1, delay = 0){ if(!S.sound) return; const a = ctx(); if(!a) return; for(let i = 0; i < n; i++){ const t = a.currentTime + delay + i * 0.15, len = 0.14, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
+        for(let k = 0; k < d.length; k++){ const x = k / a.sampleRate; d[k] = (Math.random() * 2 - 1) * Math.exp(-x / 0.022) * (1 - Math.exp(-x / 0.0008)); }
+        const nz = a.createBufferSource(); nz.buffer = buf; const f = a.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = 1500 + Math.random() * 900; f.Q.value = 0.7; const g = a.createGain(); g.gain.value = 0.38 + Math.random() * 0.1;
+        nz.connect(f).connect(g).connect(out || a.destination); nz.start(t);
+        const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; const fr = 150 + Math.random() * 30; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(70, t + 0.08); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.2, t + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+        o.connect(og).connect(out || a.destination); o.start(t); o.stop(t + 0.15); } },
     dry(){ if(!S.sound) return; const a = ctx(); if(!a) return; click(out || a.destination, 0, 1.2, 1800); click(out || a.destination, 0.09, 0.8, 3400); tone(2100, 0.09, 0.12, 0.02, "triangle", 0.002); },
     bang(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime, len = 1.6, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
       for(let i = 0; i < d.length; i++){ const x = i / a.sampleRate; d[i] = (Math.random() * 2 - 1) * Math.exp(-x * 7) * (x < 0.012 ? 1.6 : 1); }
@@ -186,8 +193,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.61`);
-  $("#verBtn").textContent = "v7.61"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.64`);
+  $("#verBtn").textContent = "v7.64"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -336,17 +343,20 @@ applyMixes();
 const mixOpen = new Set();   // 6.40 (Omar): each mix starts folded; this remembers which ones are open while setup is shown
 function renderMixEdit(){ const box = $("#mixEdit"); if(!box) return; const saved = store.get("jn_mixes", {}); let changed = 0;
   box.innerHTML = CAT_GROUPS[0][1].map(catById).filter(c => c && c.type === "mix").map(m =>   /* 6.38: TV Show Mix is a mix too now (6.37: left out, fixed contents) */ { const ok = mixAllowed(m.id), custom = !!saved[m.id]; if(custom) changed++;
-    return `<details class="mixrow" data-mixrow="${m.id}"${mixOpen.has(m.id) ? " open" : ""}><summary><h5>${esc(m.name)}<small>${m.src.length} of ${ok.length} · ${esc(MIX_SECTION[m.id] === "All" ? "any section" : MIX_SECTION[m.id])}${custom ? " · edited" : ""}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5></summary>
-      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${m.src.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div></details>`; }).join("");   // 6.27-6.39: an open <div class="mixrow"> with an <h5>
+    const sel = saved[m.id] && !saved[m.id].length ? [] : m.src;   // 7.63: a cleared mix shows nothing picked (it plays its defaults until one is picked)
+    return `<details class="mixrow" data-mixrow="${m.id}"${mixOpen.has(m.id) ? " open" : ""}><summary><h5>${esc(m.name)}<small>${sel.length} of ${ok.length} · ${esc(MIX_SECTION[m.id] === "All" ? "any section" : MIX_SECTION[m.id])}${custom ? " · edited" : ""}</small>${custom ? `<button class="mini" data-mixreset="${m.id}">Reset</button>` : ""}</h5></summary>
+      <div class="chips">${ok.map(s => `<button class="chip" aria-pressed="${sel.includes(s)}" data-mix="${m.id}" data-src="${s}"${S.ffa && FFA_SKIP.has(catById(s).type) ? ` disabled title="Needs teams, so it's left out of Free-for-all"` : ""}>${esc(catById(s).name)}${catById(s).mode ? " (Football mode)" : ""}${S.ffa && FFA_SKIP.has(catById(s).type) ? ` <small>teams only</small>` : ""}</button>`).join("")}</div>
+      ${sel.length ? "" : `<p class="note mixnone">Nothing picked, so this mix plays its usual categories until you pick one.</p>`}<div class="row mixall"><button class="btn small" data-mixall="${m.id}"${sel.length === ok.length ? " disabled" : ""}>Select all</button><button class="btn small" data-mixclear="${m.id}"${sel.length ? "" : " disabled"}>Clear</button></div></details>`; }).join("");   // 7.63 (Omar): Select all and Clear under each mix   // 6.27-6.39: an open <div class="mixrow"> with an <h5>
   box.querySelectorAll("details.mixrow").forEach(d => d.addEventListener("toggle", () => d.open ? mixOpen.add(d.dataset.mixrow) : mixOpen.delete(d.dataset.mixrow)));
   const n = $("#mixCount"); if(n) n.textContent = changed ? `· ${changed} changed` : ""; }
-document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset]"); if(!b || !$("#mixEdit").contains(b)) return;
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-mix],[data-mixreset],[data-mixall],[data-mixclear]"); if(!b || !$("#mixEdit").contains(b)) return;
   const saved = store.get("jn_mixes", {});
   if(b.dataset.mixreset){ e.preventDefault(); delete saved[b.dataset.mixreset]; }   // preventDefault: the Reset button sits in the row's <summary>
-  else { const m = catById(b.dataset.mix), s = b.dataset.src, cur = m.src.includes(s) ? m.src.filter(x => x !== s) : [...m.src, s];
-    if(!cur.length){ b.animate && b.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"none"}], {duration:200}); return; }   // a mix needs at least one category
-    const order = mixAllowed(m.id); saved[m.id] = order.filter(x => cur.includes(x));
-    if(saved[m.id].length === MIX_DEFAULT[m.id].length && MIX_DEFAULT[m.id].every(x => saved[m.id].includes(x))) delete saved[m.id]; }
+  else if(b.dataset.mixclear) saved[b.dataset.mixclear] = [];   // 7.63 (Omar): Clear. An empty list plays the mix's defaults (applyMixes) until something is picked
+  else { const id = b.dataset.mixall || b.dataset.mix, m = catById(id), s = b.dataset.src, now = saved[id] && !saved[id].length ? [] : m.src,
+      cur = b.dataset.mixall ? mixAllowed(id) : now.includes(s) ? now.filter(x => x !== s) : [...now, s];   // 7.63 (Omar): Select all
+    saved[id] = mixAllowed(id).filter(x => cur.includes(x));   // 7.63: unpicking the last one works like Clear (6.27-7.62: shook and refused, "a mix needs at least one category")
+    if(saved[id].length && saved[id].length === MIX_DEFAULT[id].length && MIX_DEFAULT[id].every(x => saved[id].includes(x))) delete saved[id]; }
   store.set("jn_mixes", saved); applyMixes(); Object.keys(PICKS).forEach(k => { if(isMix(k.split("-")[0])) delete PICKS[k]; });
   renderMixEdit(); renderChips(); });
 $("#mixPanel").addEventListener("toggle", () => { if($("#mixPanel").open) renderMixEdit(); });

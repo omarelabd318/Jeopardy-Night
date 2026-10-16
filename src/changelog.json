@@ -1,5 +1,26 @@
 [
  {
+  "v": "7.64",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar: a soft card-slap sound plays on the TV every time cards are put down, one slap per card."
+  ]
+ },
+ {
+  "v": "7.63",
+  "date": "2026-10-16",
+  "items": [
+   "Edit mixes: each mix now has Select all and Clear buttons under its categories."
+  ]
+ },
+ {
+  "v": "7.62",
+  "date": "2026-10-16",
+  "items": [
+   "For Sale?: property values now show an M (millions), and the setup screen has a full How to play guide with a worked example."
+  ]
+ },
+ {
   "v": "7.61",
   "date": "2026-10-16",
   "items": [

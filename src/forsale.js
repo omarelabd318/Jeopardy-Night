@@ -132,12 +132,12 @@ function slTick(){ const g = SL.g; if(!g || !SL.dl) return;
   const f = $("#slFill"); if(f) f.style.width = Math.max(0, Math.min(100, (SL.dl - Date.now()) / (SL.total * 10))) + "%";
   if(Date.now() >= SL.dl && (g.phase === "bid" || g.phase === "sell")){ SL.dl = null; g.timeout(); slChanged(); } }
 const slSeg = (key, opts, cur) => `<div class="slseg">${opts.map(([v, t]) => `<button data-set="${key}" data-v="${v}" aria-pressed="${String(cur) === String(v)}">${t}</button>`).join("")}</div>`;
-const slDeed = (c, nm, cls = "") => { const t = SLR.tier(c); return `<div class="deed t${t} ${cls}"><div class="band">${SL_TIER[t]}</div><div class="dn">${c}</div><div class="dnm">${esc(nm)}</div></div>`; };
+const slDeed = (c, nm, cls = "") => { const t = SLR.tier(c); return `<div class="deed t${t} ${cls}"><div class="band">${SL_TIER[t]}</div><div class="dn">${c}<small>M</small></div><div class="dnm">${esc(nm)}</div></div>`; };
 const slChq = (q, cls = "") => `<div class="chq ${q === 0 ? "zero" : ""} ${cls}"><small>${q === 0 ? "Buyer backed out" : "Cheque"}</small><b>${q}M</b></div>`;
 const slTimer = () => SL.dl ? `<div class="sltimer"><b id="slFill" style="width:${Math.max(0, Math.min(100, (SL.dl - Date.now()) / (SL.total * 10)))}%"></b></div>` : "";
-function slLastText(l){ if(!l) return ""; return l.k === "pass" ? `${esc(l.n)} passed and took ${l.c}, ${esc(l.nm)}${l.back ? ` · ${l.back}M back` : ""}` : `${esc(l.n)} bid ${l.bid}M`; }
+function slLastText(l){ if(!l) return ""; return l.k === "pass" ? `${esc(l.n)} passed and took ${l.c}M, ${esc(l.nm)}${l.back ? ` · ${l.back}M back` : ""}` : `${esc(l.n)} bid ${l.bid}M`; }
 function slSeats(p){ return `<div class="slseats">${p.ps.map(x => `<div class="seat${x.turn ? " turn" : ""}${x.out ? " out" : ""}"><div class="sn">${esc(x.n)}</div>
-  <div class="ss">${p.phase === "sell" ? (x.pick ? "locked ✓" : "choosing…") : x.out ? `passed${x.took ? ` · took ${x.took}` : ""}` : x.turn ? "bidding…" : x.bid ? "in the bidding" : "no bid yet"}</div>
+  <div class="ss">${p.phase === "sell" ? (x.pick ? "locked ✓" : "choosing…") : x.out ? `passed${x.took ? ` · took ${x.took}M` : ""}` : x.turn ? "bidding…" : x.bid ? "in the bidding" : "no bid yet"}</div>
   ${p.phase === "bid" && !x.out ? `<b>${x.bid ? x.bid + "M" : "–"}</b>` : ""}</div>`).join("")}</div>`; }
 function slMid(p){
   if(p.phase === "bid") return `<div class="slround">Round ${p.round} of ${p.of} · Buying</div>
@@ -155,7 +155,7 @@ function slMid(p){
   return ""; }
 function slOver(p){ const o = p.over, tie = o.winners.length > 1, rows = o.rows.slice().reverse();
   return `<div class="slhead"><div class="slbadge">Tycoon of the night</div><h1>${tie ? esc(o.winners.join(" and ")) + " share the win" : esc(o.winners[0]) + " wins"}</h1>
-    <p class="slsub">${o.best ? `Best deal: ${esc(o.best.n)} sold ${esc(o.best.nm)} (${o.best.c}) for ${o.best.q}M.` : "Cheques plus unspent coins, in millions of pounds."}</p></div>
+    <p class="slsub">${o.best ? `Best deal: ${esc(o.best.n)} sold ${esc(o.best.nm)} (${o.best.c}M) for ${o.best.q}M.` : "Cheques plus unspent coins, in millions of pounds."}</p></div>
     <div class="slrows">${rows.map((r, i) => `<div class="row${r.rank === 1 ? " win" : ""}" style="animation-delay:${i * .6}s"><span class="rk">${r.rank}</span><span class="nm">${esc(r.n)}</span>
       <span class="ch">${r.chq.map(q => `<i class="${q === 0 ? "zero" : ""}">${q}</i>`).join("")}</span><span class="co">+ ${r.coins}M coins</span><b>${r.total}M</b></div>`).join("")}</div>
     <div class="slrow"><button class="slbtn go" id="slAgain">Play again</button><button class="slbtn ghost" id="slHome2">Title screen</button></div>`; }
@@ -163,7 +163,7 @@ function slRender(){
   const el = $("#slBody"), ph = SL.phase, g = SL.g;
   if(ph === "lobby"){ const ps = SL.players, c = SL.cfg, off = RELAY !== true, ok = ps.length >= 3 && ps.length <= 6 && !off;
     el.innerHTML = `<div class="slhead"><div class="slbadge">Game mode</div><h1>For Sale?</h1>
-      <p class="sub">Bid for Cairo properties, then flip them for cash. Most money at the end wins.</p></div>
+      <p class="sub">Buy properties cheap, then sell them for more. Whoever ends with the most money wins. Everyone plays on their own phone.</p></div>
       <div class="slgrid">
       <div class="slpanel">${off
         ? `<div class="sleye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "For Sale? runs on phones, which talk to the game through the Cloudflare link. Open the game from there to play it."}</p>`
@@ -174,8 +174,25 @@ function slRender(){
         <div class="sleye">Time to pick a deed to sell</div>${slSeg("sell", [[30, "30 s"], [45, "45 s"], [60, "60 s"], [0, "Off"]], c.sell)}
         <p class="note">When the clock runs out a bid becomes a pass, and your cheapest deed is sold.</p>
         <button class="slbtn go" id="slGo" ${ok ? "" : "disabled"}>Start</button></div>
-      <div class="slpanel"><div class="sleye">How it works</div><ol class="slhow"><li><b>Buying.</b> Raise the top bid or pass. Pass and you take the cheapest deed and get half your bid back. The last bidder pays in full and takes the best deed.</li>
-        <li><b>Selling.</b> Everyone secretly picks a deed. The best deed gets the biggest cheque.</li><li><b>Winning.</b> Cheques plus leftover coins. Most money wins.</li></ol></div>
+      <div class="slpanel slguide"><div class="sleye">How to play</div>
+        <p class="slidea">You are a property dealer. Every property has a value from <b>1M to 30M</b> printed on its card (this is what it is worth, not what you pay): the higher, the better the property. First you <b>buy</b> properties as cheaply as you can. Then you <b>sell</b> them to buyers for as much as you can. You do everything on your phone. Your coins and your properties are secret; the TV shows the bids and who took what.</p>
+        <div class="slsteps">
+          <div class="step"><div class="sn1">1</div><h3>Buying</h3>
+            <p>Each round the TV lays out a few properties, one for every player. When it's your turn, raise the top bid by <b>+1M, +2M or +5M</b>, or <b>pass</b>.</p>
+            <ul><li><b>Pass:</b> you take the <b>cheapest</b> property on the table and get <b>half your bid back</b> (rounded down).</li>
+            <li><b>Last one left:</b> when everybody else has passed, you pay your <b>whole bid</b> and take the <b>best</b> property.</li>
+            <li>You can't bid more coins than you have.</li></ul></div>
+          <div class="step"><div class="sn1">2</div><h3>Selling</h3>
+            <p>Once all the properties are bought, the TV lays out cheques, one for every player, from <b>0M to 15M</b>. Everybody secretly picks one of their properties to sell.</p>
+            <ul><li>All picks are revealed together. The <b>best property</b> gets the <b>biggest cheque</b>, the next best gets the next cheque, and so on.</li>
+            <li>Look at the cheques first: a big cheque wants a high property, and a <b>0M</b> cheque (the buyer backed out) is where your worst property goes.</li></ul></div>
+          <div class="step"><div class="sn1">3</div><h3>Winning</h3>
+            <p>Add up your cheques and the coins you didn't spend. <b>The most money wins.</b> A tie goes to whoever has more coins left.</p>
+            <ul><li>Spending a lot on one great property can leave you short later, so keep some coins.</li>
+            <li>If the clock runs out, a bid counts as a pass and your cheapest property is sold.</li></ul></div>
+        </div>
+        <p class="slex"><b>Example of one buying round.</b> The table shows 7M, 18M, 22M and 26M. Mona bids 3M and Karim bids 6M. Mona passes: she takes the 7M and gets 1M back, so it cost her 2M. Youssef and Nour pass without bidding: they take the 18M and 22M for free. Karim is the last one left: he pays all 6M and takes the 26M.</p>
+        <p class="note">Everyone starts with <b>18M</b> in coins (3 or 4 players) or <b>14M</b> (5 or 6 players). With 3 players a few properties and cheques are left out, so every game is a little different.</p></div>
       </div>`;
     const q = $("#slQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(SL.phase === "lobby" && !$("#slo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:slUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
