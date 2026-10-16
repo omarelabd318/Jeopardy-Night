@@ -143,7 +143,7 @@ function lbCenter(g){
   if(g.phase === "turn"){
     const k = g.round + ":" + g.pile, fresh = g.last && LB.dropKey !== k; LB.dropKey = k;   // the pile is a messy stack; a new play drops on top of it
     const n = g.last ? g.last.n : 0, old = Math.min(g.pile - n, 14), rr = j => ((j * 37 + 11) % 29) - 14, xx = j => ((j * 53 + 7) % 11) - 5, yy = j => ((j * 29 + 3) % 7) - 3;
-    return `<div class="lbmid mid1"><div class="lbtbl"><span>TABLE CARD</span><b>${LB_NAME[g.tbl]}</b></div>
+    return `<div class="lbmid mid1">
       <div class="lbpile">${Array.from({length:old}, (_, j) => `<i style="--r:${rr(j)}deg;--x:${xx(j)};--y:${yy(j)}"></i>`).join("")}${Array.from({length:n}, (_, j) => `<i class="nw${fresh ? " drop" : ""}" style="--r:${rr(old + j + 5)}deg;--x:${xx(old + j + 3)};--y:${yy(old + j + 2)};--j:${j}"></i>`).join("")}${g.last ? "" : `<em>Pile is empty</em>`}</div></div>`; }
   if(g.phase === "reveal"){ const r = g.rev, who = g.seats[r.claimer].n, caller = g.seats[r.caller].n;
     return `<div class="lbmid rev"><div class="lbflip">${r.cards.map(c => lbCard(c, c === g.tbl || c === "J" ? "" : "bad")).join("")}<div class="lbverdict">${r.liar ? "LIAR!" : "TRUTH!"}</div></div>
@@ -179,7 +179,7 @@ function lbRender(){
     return; }
   const n = g.n, turn = g.phase === "turn" ? g.seats[g.turn].p : null, wins = Object.entries(LB.wins).filter(([p]) => lbSeat(p)).map(([p, c]) => `${esc(lbNm(p))} ${c}`).join(" · ");
   el.innerHTML = `<div class="lbtv"><div class="lbin">
-    <div class="lbtitle">Liar's Bar</div><div class="lbround">Round ${g.round}</div>${wins ? `<div class="lbwins">Tonight: ${wins}</div>` : ""}
+    <div class="lbtitle">Liar's Bar</div><div class="lbround">Round ${g.round}</div>${g.phase !== "over" && g.tbl ? `<div class="lbtbl lbtop"><span>TABLE CARD</span><b>${LB_NAME[g.tbl]}</b></div>` : ""}${wins ? `<div class="lbwins">Tonight: ${wins}</div>` : ""}
     <div class="lbtable"></div>
     ${g.phase === "over" ? lbOver(g) : lbCenter(g)}
     ${g.seats.map((s, i) => lbSeatHtml(s, i, n, turn, g)).join("")}
