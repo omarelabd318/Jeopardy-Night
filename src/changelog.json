@@ -1,5 +1,72 @@
 [
  {
+  "v": "7.59",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar: the start screen lists what's in the deck for the number of players (Kings, Queens, Aces and Jokers), a small deck strip stays on the TV during the game, and phones show it too."
+  ]
+ },
+ {
+  "v": "7.58",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar sounds: the cylinder clicks round and slows down while it spins, a gunshot goes off when someone is busted, and a dry click when the chamber is empty.",
+   "Liar's Bar: nothing hints at a bust before the spin finishes any more: the spinner keeps their cards and cylinder dots until the result shows, and BUSTED only appears then."
+  ]
+ },
+ {
+  "v": "7.57",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar: the table card plaque at the top right is smaller."
+  ]
+ },
+ {
+  "v": "7.56",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar: the table card (Kings, Queens or Aces) now sits under the Round label at the top right instead of in the middle of the table."
+  ]
+ },
+ {
+  "v": "7.55",
+  "date": "2026-10-16",
+  "items": [
+   "Psych: after voting, one press of Reveal answers shows the lies one by one, 2 seconds apart, with who wrote and who voted for each. The real answer comes last."
+  ]
+ },
+ {
+  "v": "7.54",
+  "date": "2026-10-16",
+  "items": [
+   "Fake Artist looks cleaner: the TV tag says which round of how many, the category is a label, and the winner row stands out.",
+   "Fake Artist phones: a colour badge and player list in the lobby, a face-down card, the drawing on the Not caught and reveal screens, and the final standings."
+  ]
+ },
+ {
+  "v": "7.53",
+  "date": "2026-10-16",
+  "items": [
+   "Liar's Bar looks cleaner: each seat is now a small plaque that lights up on its turn, the felt has a stitched rim, the start screen is centred with a three-step how-to-play, and the Safe and Busted stamps match.",
+   "Liar's Bar on phones: your hand and the Play and Liar! buttons sit together at the bottom of the screen, the cylinder is one tidy pill, and the pile shows as a small messy stack."
+  ]
+ },
+ {
+  "v": "7.52",
+  "date": "2026-10-16",
+  "items": [
+   "Texas Hold'em looks cleaner: a tidier setup screen, bigger cards at showdown, players who are out fade away, the chips list says who is deciding, folded or all in, and the game-over list has gold, silver and bronze.",
+   "Texas Hold'em phones: the Vegas look from the very first screen, and your cards no longer sit on top of the player list."
+  ]
+ },
+ {
+  "v": "7.51",
+  "date": "2026-10-16",
+  "items": [
+   "Hot Seat: a new \"Clue played already\" button on the clue card swaps to a fresh clue without using your team's one swap."
+  ]
+ },
+ {
   "v": "7.50",
   "date": "2026-10-16",
   "items": [

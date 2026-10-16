@@ -57,6 +57,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
       if(!pub.last && st.hasLiar) fails.push("Liar! offered on the first play");
       if(pub.last && !st.hasLiar) fails.push("Liar! missing when there is a last play");
       if(!seen.has("myturn") && pub.last){ seen.add("myturn"); await who.screenshot({path:path.join(shots, "phone-turn.png")}); await tv.screenshot({path:path.join(shots, "tv-turn.png")}); }
+      for(const k of [2, 3, 4, 6]) if(pub.pile >= k && !seen.has("pile" + k)){ seen.add("pile" + k); await tv.waitForTimeout(900); await tv.screenshot({path:path.join(shots, "tv-pile-" + pub.pile + ".png")}); }   // 7.56: previews of a bigger pile
       if(!seen.has("first") && !pub.last){ seen.add("first"); await who.screenshot({path:path.join(shots, "phone-first.png")}); }
       // everyone else only holds their own hand
       for(const p of phones){ const h = await p.evaluate(() => st && st.me && st.me.hand ? st.me.hand.length : -1); const want = pub.seats.find(s => R.players[Object.keys(R.players).find(k => R.players[k].n === p.nm)] && s.p === Object.keys(R.players).find(k => R.players[k].n === p.nm)); if(want && !want.out && h !== -1 && h !== want.c) { /* a poll can lag one version behind: ignore */ } }

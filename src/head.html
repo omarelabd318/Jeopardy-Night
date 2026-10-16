@@ -539,7 +539,7 @@ body.hdmode .wrap{max-width:none;padding:0}
 @keyframes hdnew{from{opacity:0;transform:translateY(calc(var(--u)*-3)) rotateY(90deg) scale(.8)}to{opacity:1;transform:none}}
 #hdo .hd-tv.hasturn .ckseat.hds:not(.turn){opacity:.78}
 #hdo .hd-tv.hasturn .ckseat.dim:not(.turn){opacity:.45}
-#hdo .ckseat.hds.turn .ckplate{background:var(--ck-gold);color:#2a1607;box-shadow:0 0 0 calc(var(--u)*.3) #fff,0 0 calc(var(--u)*3) var(--ck-gold);font-size:1.25em}
+#hdo .ckseat.hds.turn .ckplate{background:var(--ck-gold);color:#2a1607;box-shadow:0 0 0 calc(var(--u)*.3) #fff,0 0 calc(var(--u)*3) var(--ck-gold);font-size:1.12em}
 #hdo .ckseat.hds.turn{z-index:4}
 @media(prefers-reduced-motion:reduce){#hdo .hdboard .ck.hdnew{animation:none}}
 /* end 7.22 */
@@ -549,6 +549,44 @@ body.hdmode .wrap{max-width:none;padding:0}
 #hdo .ckside button.cksc{border:0;font-family:inherit;font-weight:inherit;/* 7.37: was font:inherit, which also reset the size, so the names were tiny next to the chip counts */color:inherit;text-align:left;cursor:pointer;width:100%}
 #hdo .ckside .cksc.lead{background:var(--ck-lead)}
 #hdo .hd-tools{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+/* 7.52 (Omar): Hold'em polish pass. Lobby: QR and players stacked on the left, the settings in a two-column card on the right, so nothing runs off a 1080p screen. Table: players who are out shrink to a faint name,
+   face-up hole cards are bigger at showdown. Chips list: a line under each name says what they are doing this hand, the player on turn has a gold edge, folded and out players are muted. Host buttons sit in one even row (Next hand full width above them).
+   Game over: centred, gold, silver and bronze for the top three, "Out" instead of 0. To undo: delete this block (down to "end 7.52") and the matching 7.52 markup in src/holdem.js. */
+#hdBody>.hdhead,#hdBody>.hdgrid,#hdBody>.hdpod,#hdBody>.hdrow{width:min(1320px,100%);margin-inline:auto;padding-inline:24px;box-sizing:border-box}
+#hdo .hdgrid{grid-template-columns:minmax(300px,380px) minmax(260px,1fr) minmax(460px,1.5fr)}
+#hdo .hdgrid:has(.hdcol){grid-template-columns:minmax(300px,420px) minmax(520px,1fr)}
+#hdo .hdcol{display:grid;gap:16px;align-content:start}
+#hdo .hdqr{margin-inline:auto}
+#hdo .hdset{grid-template-columns:1fr 1fr;column-gap:26px;row-gap:16px;align-content:start}
+#hdo .hdopt{display:grid;gap:8px;align-content:start}
+#hdo .hdset .note{font-size:14px;line-height:1.35}
+#hdo .hdset #hdGo{grid-column:1/-1;font-size:24px;padding:14px;margin-top:4px}
+#hdo .hdseg button{font-size:17px}
+#hdo .ckseat.gone{opacity:.32!important;transform:translate(-50%,-50%) scale(.82)}
+#hdo .ckseat.gone .ckplate{background:transparent;border-color:transparent;box-shadow:none}
+#hdo .hdhole.up .ck{font-size:calc(var(--u)*1.45)}
+#hdo .hdhole.up{min-height:calc(var(--u)*5.3)}
+#hdo .hd-tv>.ckside{min-height:0;overflow:hidden}
+#hdo .ckside .cksc{grid-template-columns:auto 1fr auto;column-gap:.6vw}
+#hdo .ckside .cksc b{grid-column:3;grid-row:1}
+#hdo .ckside .cksc small{grid-column:2;grid-row:1;justify-self:start;font-size:.95vw;opacity:.75;font-weight:600;letter-spacing:.02em}
+#hdo .ckside .cksc.turn{box-shadow:inset .35vw 0 0 var(--ck-gold),inset 0 0 0 .12vw var(--ck-gold)}
+#hdo .ckside .cksc.turn small{opacity:1;color:var(--ck-gold)}
+#hdo .ckside .cksc.lead.turn small{color:#fff}
+#hdo .ckside .cksc.fld{opacity:.6}
+#hdo .ckside .cksc.gone{opacity:.45;font-size:1.25vw;padding:.35vw .8vw;background:transparent}
+#hdo .ckside .cksc.gone b{font-size:1.15vw;color:var(--hd-soft)}
+#hdo .hd-tools{display:flex;flex-wrap:nowrap;gap:8px}#hdo:has(.hd-tools .wide) .hd-tools{flex-wrap:wrap}
+#hdo .hd-tools .hdbtn{flex:1;padding:8px 6px;white-space:nowrap}
+#hdo .hd-tools .wide{flex-basis:100%;font-size:18px;padding:10px 6px}
+#hdo .hdpod{width:min(980px,100%)!important}
+#hdo .hdpod li.r2{background:linear-gradient(90deg,#d9dde3,#aeb5bf);color:#1d2228;border-color:transparent}
+#hdo .hdpod li.r3{background:linear-gradient(90deg,#d79a62,#a8683a);color:#2a1607;border-color:transparent}
+#hdo .hdpod li.r1{box-shadow:0 0 30px rgba(232,194,90,.45)}
+#hdo .hdpod em{font-size:.8em;opacity:.9}
+#hdBody:has(.hdpod)>.hdhead{text-align:center;padding-top:4vh}
+#hdBody:has(.hdpod)>.hdrow{justify-content:center}
+/* end 7.52 */
 /* end 6.80 */
 /* 6.72 (Omar): Psych, Lie Detector look (his pick of three previews: Lie Detector, Tabloid, Mirage): chart paper, mono type, a time-left bar with a red needle, a strip of every player along the bottom.
    psych.html (the phones) uses the same palette. To remove: delete this block, the #psyo section and the Psych button. */
@@ -1048,7 +1086,7 @@ body.famode .wrap{max-width:none;padding:0}
 #fao .facvw canvas{display:block;width:100%;height:100%}
 #fao .faL,#fao .faR{position:absolute;top:calc(var(--u)*9.6);width:calc(var(--u)*21);display:grid;gap:calc(var(--u)*.9);align-content:start}
 #fao .faL{left:calc(var(--u)*2.5)}#fao .faR{right:calc(var(--u)*2.5)}
-#fao .fatag{font:400 calc(var(--u)*1.5)/1.1 var(--fa-head);letter-spacing:.08em;text-transform:uppercase;color:var(--fa-yel)}
+#fao .fatag{justify-self:start;display:inline-block;font:400 calc(var(--u)*1.4)/1.15 var(--fa-head);letter-spacing:.08em;text-transform:uppercase;color:var(--fa-yel);background:var(--fa-ink);padding:calc(var(--u)*.45) calc(var(--u)*1);border-left:calc(var(--u)*.45) solid var(--fa-mag);border-radius:calc(var(--u)*.2)}   /* 7.54: a label chip; was {font:400 calc(var(--u)*1.5)/1.1 var(--fa-head);letter-spacing:.08em;text-transform:uppercase;color:var(--fa-yel)} */
 #fao .falab{font:600 calc(var(--u)*1.5)/1.1 var(--fa-body);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
 #fao .faname{font:400 calc(var(--u)*3.4)/1.05 var(--fa-mark);overflow-wrap:anywhere}
 #fao .fasmall{font:500 calc(var(--u)*1.6)/1.25 var(--fa-body);opacity:.88}
@@ -1081,6 +1119,7 @@ body.famode .wrap{max-width:none;padding:0}
 #fao .faplace{list-style:none;margin:calc(var(--u)*1.6) 0 0;padding:0;display:grid;gap:calc(var(--u)*.6)}
 #fao .faplace li{display:grid;grid-template-columns:calc(var(--u)*4) calc(var(--u)*2) 1fr auto;gap:calc(var(--u)*1);align-items:center;font:600 calc(var(--u)*2.3)/1.1 var(--fa-body);border-left:calc(var(--u)*1) solid var(--c);background:rgba(0,0,0,.4);padding:calc(var(--u)*.5) calc(var(--u)*1.6);text-align:left}
 #fao .faplace li i{background:var(--c);width:calc(var(--u)*1.5);height:calc(var(--u)*1.5)}
+#fao .faplace li.win{background:rgba(255,230,0,.16);outline:calc(var(--u)*.25) solid var(--fa-yel);outline-offset:calc(var(--u)*-.25)}   /* 7.54: the winner row stands out */
 #fao .faplace b{font:400 calc(var(--u)*2.4)/1 var(--fa-head)}#fao .faplace em{font:400 calc(var(--u)*2.6)/1 var(--fa-head);font-style:normal;color:var(--fa-yel)}
 /* 7.1 (Omar): Liar's Bar (src/liars.js, liars.html). Saloon look, his pick of three previews (Saloon, Neon Dive, Ahwa; the other two were left out): green felt table with a brass rim, Rye lettering, red card backs,
    a red BUSTED stamp. The TV is one stage sized by --u (100 units = the screen's width at 16:9). liars.html (the phones) uses the same palette. To remove: delete this block, the #lbo section and the Liar's Bar button. */
@@ -1181,6 +1220,66 @@ body.lbmode .wrap{max-width:none;padding:0}
 #lbo .lbctl .gap{flex:1}
 @media (prefers-reduced-motion:reduce){#lbo .lbflip .lbc,#lbo .lbverdict,#lbo .lbdrum.go,#lbo .lbodds .res,#lbo .lbconf i{animation:none}}
 /* end 7.1 */
+/* 7.53 (Omar asked for a cleaner look on TV and phones): Liar's Bar polish. Everything here overrides the 7.1 rules above; to undo it, delete this block (and the 7.53 lines in src/liars.js and liars.html). */
+#lbo .lblob{min-height:calc(100vh - 44px);display:flex;flex-direction:column;justify-content:center;width:100%;max-width:1240px;margin:0 auto;padding:0 0 4vh}
+#lbo .lblob .lbhead{text-align:center;padding-bottom:6px}
+#lbo .lblob .sub{margin:0 auto 22px;font-size:20px}
+#lbo .lblob .lbgrid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+#lbo .lbpanel{background:linear-gradient(rgba(201,162,74,.14),rgba(201,162,74,.06));border-color:rgba(201,162,74,.45);border-radius:14px;padding:18px 20px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#lbo .lbqr{padding:12px;border-radius:10px;box-shadow:0 0 0 3px var(--lb-gold)}
+#lbo .lbnames button{background:rgba(0,0,0,.35)}
+#lbo #lbGo{margin-top:4px;font-size:22px;padding:12px}
+#lbo .lbhow{list-style:none;margin:6px 24px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+#lbo .lbhow li{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-top:2px solid rgba(201,162,74,.45)}
+#lbo .lbhow b{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:400 20px/1 var(--lb-head);background:var(--lb-gold);color:#1a0f09}
+#lbo .lbhow span{font-size:16px;line-height:1.4;opacity:.92}
+#lbo .lbhow em{display:block;font:400 20px/1.2 var(--lb-head);font-style:normal;color:var(--lb-gold2);margin-bottom:2px}
+/* the TV: a stitched rim on the felt, seats as small plaques that sit clear of the rim */
+#lbo .lbtable::after{content:"";position:absolute;inset:calc(var(--u)*1.6);border-radius:50%;border:calc(var(--u)*.18) dashed rgba(243,210,122,.28)}
+#lbo .lbtitle{top:calc(var(--u)*2.2)}
+#lbo .lbround{top:calc(var(--u)*2.3);font-size:calc(var(--u)*1.6);letter-spacing:.14em;text-transform:uppercase;padding:calc(var(--u)*.5) calc(var(--u)*1.4);border:calc(var(--u)*.18) solid var(--lb-gold);border-radius:99px;background:rgba(0,0,0,.35);opacity:1;color:var(--lb-gold2)}
+#lbo .lbturn{left:calc(var(--u)*3);top:calc(var(--u)*7);transform:none;font-size:calc(var(--u)*1.9);background:rgba(26,15,9,.9)}
+#lbo .lbseat{background:rgba(26,15,9,.92);border:calc(var(--u)*.18) solid rgba(201,162,74,.7);border-radius:calc(var(--u)*1.2);padding:calc(var(--u)*.8) calc(var(--u)*1.3) calc(var(--u)*.9);gap:calc(var(--u)*.6);box-shadow:0 calc(var(--u)*.6) calc(var(--u)*1.6) rgba(0,0,0,.55);transition:box-shadow .3s,border-color .3s}
+#lbo .lbseat .nm{background:none;border:0;padding:0;font-size:calc(var(--u)*2.1);color:var(--lb-ink)}
+#lbo .lbseat.now{border-color:var(--lb-gold2);box-shadow:0 0 0 calc(var(--u)*.25) var(--lb-gold2),0 0 calc(var(--u)*3) rgba(243,210,122,.55)}
+#lbo .lbseat.now .nm{background:none;box-shadow:none;color:var(--lb-gold2)}
+#lbo .lbbacks b{width:calc(var(--u)*1.6);height:calc(var(--u)*2.3);background:repeating-linear-gradient(45deg,var(--lb-back) 0 calc(var(--u)*.3),#5c1512 calc(var(--u)*.3) calc(var(--u)*.6));border-color:rgba(240,226,194,.85)}
+#lbo .lbpips{gap:calc(var(--u)*.35)}
+#lbo .lbpips u{width:calc(var(--u)*1);height:calc(var(--u)*1);border-color:rgba(201,162,74,.8)}
+#lbo .lbpips u.f{background:var(--lb-gold2);border-color:var(--lb-gold2)}
+#lbo .lbseat.out{opacity:.6;filter:grayscale(.85)}
+#lbo .lbstamp{border-radius:calc(var(--u)*.4)}
+#lbo .lbtmr{width:100%;min-width:calc(var(--u)*10)}
+#lbo .lbtbl span{letter-spacing:.3em;opacity:.75}
+#lbo .lbodds .res{white-space:nowrap;border-radius:calc(var(--u)*.5);animation:lbres .35s ease-out both}
+@keyframes lbres{from{transform:rotate(-6deg) scale(1.8);opacity:0}}
+#lbo .lbodds .res.ok{color:#2c6b49;font-size:calc(var(--u)*3.8);transform:rotate(-6deg);border:calc(var(--u)*.45) solid #2c6b49;background:rgba(240,226,194,.94)}
+#lbo .lbctl{right:calc(var(--u)*1.6);bottom:calc(var(--u)*1.4);background:rgba(26,15,9,.85);border:calc(var(--u)*.15) solid rgba(201,162,74,.5);border-radius:99px;padding:calc(var(--u)*.5) calc(var(--u)*.7)}
+#lbo .lbctl .gap{display:none}
+#lbo .lbctl .lbbtn.small{font-size:calc(var(--u)*1.35);padding:calc(var(--u)*.45) calc(var(--u)*1.5);border-radius:99px}
+#lbo .lbover{box-shadow:0 calc(var(--u)*1) calc(var(--u)*4) rgba(0,0,0,.7)}
+#lbo .lbwins{left:auto;right:calc(var(--u)*3);top:calc(var(--u)*7.4);text-align:right;max-width:calc(var(--u)*24)}
+/* 7.56 (Omar): the table card sits under the round pill at the top right, not in the middle of the felt. To undo: put the .lbtbl div back at the start of .lbmid.mid1 in lbCenter() and delete this rule. */
+#lbo .lbtbl.lbtop{gap:calc(var(--u)*.2);position:absolute;right:calc(var(--u)*3);top:calc(var(--u)*7.2);z-index:3;text-align:center;padding:calc(var(--u)*.45) calc(var(--u)*1);border-radius:calc(var(--u)*1.2);background:rgba(26,15,9,.9);border:calc(var(--u)*.2) solid rgba(201,162,74,.7);box-shadow:0 calc(var(--u)*.6) calc(var(--u)*1.6) rgba(0,0,0,.5)}
+#lbo .lbtbl.lbtop b{font-size:calc(var(--u)*2.4)}
+#lbo .lbtbl.lbtop span{opacity:.85;font-size:calc(var(--u)*.95);letter-spacing:.18em}
+#lbo .lbwins{top:calc(var(--u)*7.4);left:calc(var(--u)*3);right:auto;text-align:left}
+#lbo .lbturn{top:calc(var(--u)*10.5)}
+/* 7.58 (Omar): the deck listing. To undo: delete this block and the lbDeckChips uses in src/liars.js (start screen panel, in-game strip) and the deck lines in liars.html. */
+#lbo .lbdeckrow{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+#lbo .dk{display:inline-flex;align-items:center;gap:calc(var(--u,1px)*0 + 8px)}
+#lbo .dk i{font:400 20px/1 var(--lb-head);font-style:normal;display:grid;place-items:center;width:34px;height:46px;border-radius:6px;background:var(--lb-ink);color:#1a0f09;border:2px solid var(--lb-gold)}
+#lbo .dk.jk i{color:#9b1c16}
+#lbo .dk b{font:400 28px/1 var(--lb-head);color:var(--lb-gold2)}
+#lbo .dk em{font:700 16px var(--lb-body);font-style:normal;opacity:.9}
+#lbo .lblob .lbdeckp{margin:0 24px 6px}
+#lbo .lbdeckbar{position:absolute;left:calc(var(--u)*3);bottom:calc(var(--u)*1.8);display:flex;align-items:center;gap:calc(var(--u)*1.6);padding:calc(var(--u)*.5) calc(var(--u)*1.4);border-radius:99px;background:rgba(26,15,9,.85);border:calc(var(--u)*.15) solid rgba(201,162,74,.5);z-index:4}
+#lbo .lbdeckbar>span{font:700 calc(var(--u)*1.2)/1 var(--lb-body);letter-spacing:.18em;text-transform:uppercase;color:var(--lb-gold)}
+#lbo .lbdeckbar .dk{gap:calc(var(--u)*.5)}
+#lbo .lbdeckbar .dk i{width:calc(var(--u)*1.9);height:calc(var(--u)*2.6);font-size:calc(var(--u)*1.3);border-width:calc(var(--u)*.14);border-radius:calc(var(--u)*.35)}
+#lbo .lbdeckbar .dk b{font-size:calc(var(--u)*1.9)}
+#lbo .lbdeckbar .dk em{display:none}
+/* end 7.53 */
 /* 6.82 (Omar): Codenames (src/codenames.js, cn.html). Two looks, his pick of three previews: Mission Control (default) and Souq Tiles; the third (Tabletop) was left out. A look is only the set of
    variables on #cno[data-look]; the layout never changes. cn.html (the phones) uses the same palettes. To remove: delete this block, the #cno section and the Codenames button.
    To go back to one look: delete the other [data-look] rule and the Look setting in cnRender. */
@@ -2082,7 +2181,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. 6.84: Jeopardy Night is the first one. -->
       <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><i class="rowbrk"></i><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn hcbbtn" id="modeHc" data-phones="Phones required, one per player" data-who="Solo · 3 to 10 players · best with 5 to 8" data-tip="Find the secret shade: one player gives a word, everyone taps their guess on a 660-colour board.">Hues and Cues</button><i class="rowbrk"></i><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button><button class="btn modebtn stbtn" id="modeSp" data-phones="Phones required, one per player" data-who="Solo · 2 to 4 players · best with 3 or 4" data-tip="Phones are buzzers. Buzz first, answer fast, don't get it wrong.">Speed Trivia</button></div>
       <!-- 6.84: the categories and version line moved from the top of the title screen to under the modes -->
-      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.50</button>
+      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.59</button>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -2177,7 +2276,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v7.50</div>
+      <div class="eyebrow verlabel">v7.59</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

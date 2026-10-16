@@ -239,31 +239,31 @@ function hdSeatHtml(i, p){
   if(p.dealer === i && p.phase !== "over") tags.push(`<span class="hdd" title="Dealer button">D</span>`);
   if(p.sb === i && p.hn && !out) tags.push(`<span class="tag">SB</span>`); if(p.bb === i && p.hn && !out) tags.push(`<span class="tag">BB</span>`);
   if(p.allin[i] && !out) tags.push(`<span class="tag hot">All in</span>`); if(p.sit[i] && !out) tags.push(`<span class="tag">Sitting out</span>`);
-  const cards = dealt ? `<div class="hdhole${fold ? " fold" : ""}">${up ? up.map(c => CK.face(c, glow.includes(c) ? "glow" : "")).join("") : CK.back() + CK.back()}</div>` : ``;
+  const cards = dealt ? `<div class="hdhole${fold ? " fold" : ""}${up ? " up" : ""}">${up ? up.map(c => CK.face(c, glow.includes(c) ? "glow" : "")).join("") : CK.back() + CK.back()}</div>` : ``;
   const nm = `<div class="ckplate${won ? " won" : ""}">${esc(p.names[i])}${tags.join("")}${turn && p.secs ? `<i class="hdt" style="animation-duration:${Math.max(1, (HD.dl - Date.now()) / 1000).toFixed(1)}s"></i>` : ""}</div>`;
   const meta = `<div class="ckmeta">${out ? `Out · ${hdOrd(out)}` : hdNum(p.stacks[i])}${won ? ` <b class="hdwin">+${hdNum(p.show.won[i])}</b>` : ""}</div>`;
   const hn = p.show && p.show.hands[i] && won ? `<div class="hdhand">${esc(p.show.hands[i].name)}</div>` : "";
   const bet = p.bets[i] > 0 && (p.phase === "hand" || p.phase === "run") ? (() => { const bx = ps.x + (50 - ps.x) * .4, by = ps.y + (50 - ps.y) * .4; return `<div class="hdbet" style="left:${bx}%;top:${by}%"><span class="hdch"></span>${hdNum(p.bets[i])}</div>`; })() : "";
   const top = ps.y < 45;
-  return `<div class="ckseat hds${turn ? " turn" : ""}${fold || out ? " dim" : ""}${top ? " tp" : ""}" style="left:${ps.x}%;top:${ps.y}%">${hn}${top ? nm + cards : cards + nm}${meta}</div>${bet}`; }
+  return `<div class="ckseat hds${turn ? " turn" : ""}${fold || out ? " dim" : ""}${out ? " gone" : ""}${top ? " tp" : ""}" style="left:${ps.x}%;top:${ps.y}%">${hn}${top ? nm + cards : cards + nm}${meta}</div>${bet}`; }
 function hdRender(){
   const el = $("#hdBody"), ph = HD.phase, g = HD.g;
   if(ph === "lobby"){ const ps = HD.players, c = HD.cfg, off = RELAY !== true, ok = ps.length >= 2 && ps.length <= 9 && !off;
     el.innerHTML = `<div class="hdhead"><div class="hdbadge">Card game</div><h1>Texas Hold'em</h1><p class="sub">No-limit poker with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.</p></div>
-      <div class="hdgrid">
+      <div class="hdgrid"><div class="hdcol">
       <div class="hdpanel">${off
         ? `<div class="hdeye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "Texas Hold'em runs on phones, which talk to the game through the Cloudflare link. Open the game from there to play it."}</p>`
         : `<div class="hdeye">Scan to join</div><div id="hdQr" class="hdqr"></div><p class="note">Each player scans once and types a name. Keep the page open for the whole game.</p>`}</div>
       <div class="hdpanel"><div class="hdeye">Players · ${ps.length} of 2 to 9</div>${ps.length ? `<ol class="hdnames">${ps.map((p, i) => `<li><button data-kick="${i}" title="Remove ${esc(p.n)}">${esc(p.n)}</button></li>`).join("")}</ol>` : `<p class="note">Waiting for players… Texas Hold'em needs at least two.</p>`}
-        <p class="note">${ps.length > 9 ? "Tap a name to remove the extra players. " : ""}Seats go clockwise round the table in this order.</p>${ps.length > 1 ? `<button class="hdbtn small" data-act="shuffle">Shuffle seats</button>` : ""}</div>
-      <div class="hdpanel"><div class="hdeye">Starting chips</div>${hdSeg("chips", [[500, "500", "Short game"], [1000, "1,000"], [2000, "2,000", "Long game"]], c.chips)}
-        <div class="hdeye">Blinds go up every</div>${hdSeg("up", [[5, "5 hands"], [8, "8 hands"], [12, "12 hands"]], c.up)}
-        <div class="hdeye">Game ends</div>${hdSeg("end", [["last", "Last stack standing"], ["fixed", "Fixed hands"]], c.end)}${c.end === "fixed" ? hdSeg("fixed", [[20, "20"], [30, "30"], [40, "40"]], c.fixed) : ""}
+        <p class="note">${ps.length > 9 ? "Tap a name to remove the extra players. " : ""}Seats go clockwise round the table in this order.</p>${ps.length > 1 ? `<button class="hdbtn small" data-act="shuffle">Shuffle seats</button>` : ""}</div></div>
+      <div class="hdpanel hdset"><div class="hdopt"><div class="hdeye">Starting chips</div>${hdSeg("chips", [[500, "500", "Short game"], [1000, "1,000"], [2000, "2,000", "Long game"]], c.chips)}
+        </div><div class="hdopt"><div class="hdeye">Blinds go up every</div>${hdSeg("up", [[5, "5 hands"], [8, "8 hands"], [12, "12 hands"]], c.up)}
+        </div><div class="hdopt"><div class="hdeye">Game ends</div>${hdSeg("end", [["last", "Last stack standing"], ["fixed", "Fixed hands"]], c.end)}${c.end === "fixed" ? hdSeg("fixed", [[20, "20"], [30, "30"], [40, "40"]], c.fixed) : ""}
         <p class="note">${c.end === "fixed" ? "The game stops after the chosen number of hands and the most chips wins." : "Players drop out as they lose their chips. The last one with chips wins."} The host can always tap Final hands for 5 more hands.</p>
-        <div class="hdeye">Turn timer</div>${hdSeg("timer", [[20, "20 s"], [30, "30 s"], [45, "45 s"], [0, "Off"]], c.timer)}<p class="note">When it runs out the player checks if they can, otherwise folds.</p>
-        <div class="hdeye">Hand helper on phones</div>${hdOnOff("helper", c.helper)}<p class="note">The phone says what you have, like "Pair of Kings".</p>
-        <div class="hdeye">Four-colour deck</div>${hdOnOff("four", c.four)}<p class="note">Diamonds blue and clubs green, easier to read on the TV.</p>
-        <button class="hdbtn go" id="hdGo" ${ok ? "" : "disabled"}>Start</button></div>
+        </div><div class="hdopt"><div class="hdeye">Turn timer</div>${hdSeg("timer", [[20, "20 s"], [30, "30 s"], [45, "45 s"], [0, "Off"]], c.timer)}<p class="note">When it runs out the player checks if they can, otherwise folds.</p>
+        </div><div class="hdopt"><div class="hdeye">Hand helper on phones</div>${hdOnOff("helper", c.helper)}<p class="note">The phone says what you have, like "Pair of Kings".</p>
+        </div><div class="hdopt"><div class="hdeye">Four-colour deck</div>${hdOnOff("four", c.four)}<p class="note">Diamonds blue and clubs green, easier to read on the TV.</p>
+        </div><button class="hdbtn go" id="hdGo" ${ok ? "" : "disabled"}>${ok ? "Start" : RELAY !== true ? "Start" : ps.length > 9 ? "Too many players" : "Waiting for players"}</button></div>
       </div>`;
     const q = $("#hdQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(HD.phase === "lobby" && !$("#hdo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:hdUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
@@ -271,7 +271,7 @@ function hdRender(){
   const p = hdPub(g);
   if(p.phase === "over"){ const rk = p.ranks, order = [...Array(p.n).keys()].sort((a, b) => rk[a] - rk[b] || p.stacks[b] - p.stacks[a]), win = order.filter(s => rk[s] === 1).map(s => esc(p.names[s]));
     el.innerHTML = `<div class="hdhead"><div class="hdbadge">Game over</div><h1>${win.join(" and ")} ${win.length > 1 ? "win" : "wins"}</h1></div>
-      <ol class="hdpod">${order.map(s => `<li class="r${Math.min(rk[s], 4)}"><b>${hdOrd(rk[s])}</b><span>${esc(p.names[s])}</span><em>${hdNum(p.stacks[s])}</em></li>`).join("")}</ol>
+      <ol class="hdpod">${order.map(s => `<li class="r${Math.min(rk[s], 4)}"><b>${hdOrd(rk[s])}</b><span>${esc(p.names[s])}</span><em>${p.stacks[s] > 0 ? hdNum(p.stacks[s]) + " chips" : "Out"}</em></li>`).join("")}</ol>
       <div class="hdrow"><button class="hdbtn go" data-act="again">Play again</button><button class="hdbtn ghost" data-act="home">Title screen</button></div>`; return; }
   const glow = p.show && p.show.glow || [], slots = [0, 1, 2, 3, 4].map(k => p.board[k] ? CK.face(p.board[k], (glow.includes(p.board[k]) ? "glow " : "") + (k === HD.anim ? "hdnew" : "")).trim() : `<div class="ck slot"></div>`).join("");
   const sorted = [...Array(p.n).keys()].sort((a, b) => (p.out[a] ? 1 : 0) - (p.out[b] ? 1 : 0) || (p.out[a] && p.out[b] ? p.out[a] - p.out[b] : p.stacks[b] - p.stacks[a]));
@@ -284,8 +284,10 @@ function hdRender(){
       <div class="hdsay">${cap}${p.phase === "hand" && toCall ? `<br><small>${hdNum(toCall)} to call</small>` : ""}</div></div>
     ${HD.paused ? `<div class="ckmsg">Paused</div>` : ""}
     <div class="ckchip">Hand ${p.hn} · Blinds ${hdNum(p.blinds[0])} / ${hdNum(p.blinds[1])} · ${p.final ? "Final hands" : p.cfg.end === "fixed" ? `Hand ${p.hn} of ${p.cfg.fixed}` : upTxt}</div></div></div></div>
-    <div class="ckside"><h3>Chips</h3>${sorted.map(i => `<button class="cksc hdrow2${p.out[i] ? " neg" : ""}${!p.out[i] && p.stacks[i] === Math.max(...p.stacks) ? " lead" : ""}" data-sit="${i}" title="${p.out[i] ? "" : "Tap to sit this player out (they fold or check every hand)"}">${esc(p.names[i])}<b>${p.out[i] ? hdOrd(p.out[i]) : hdNum(p.stacks[i])}</b>${p.sit[i] && !p.out[i] ? `<small>Sitting out · tap to bring back</small>` : ""}</button>`).join("")}
-      <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button></div></div></div>`; }
+    <div class="ckside"><h3>Chips</h3>${sorted.map(i => { const live = (p.phase === "hand" || p.phase === "run") && p.dealt[i] && !p.out[i], turn = p.phase === "hand" && p.turn === i,
+      st = p.sit[i] && !p.out[i] ? "Sitting out" : !live ? "" : turn ? "Deciding…" : p.folded[i] ? "Folded" : p.allin[i] ? "All in" : p.bets[i] ? `Bet ${hdNum(p.bets[i])}` : "";   // 7.52: what each player is doing this hand
+      return `<button class="cksc hdrow2${p.out[i] ? " neg gone" : ""}${turn ? " turn" : ""}${live && p.folded[i] ? " fld" : ""}${!p.out[i] && p.stacks[i] === Math.max(...p.stacks) ? " lead" : ""}" data-sit="${i}" title="${p.out[i] ? "" : p.sit[i] ? "Tap to bring this player back" : "Tap to sit this player out (they fold or check every hand)"}">${esc(p.names[i])}<b>${p.out[i] ? "Out · " + hdOrd(p.out[i]) : hdNum(p.stacks[i])}</b>${st ? `<small>${st}</small>` : ""}</button>`; }).join("")}
+      <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small wide" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button></div></div></div>`; }
 $("#hdo").addEventListener("click", e => {
   const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; HD.cfg[k] = k === "end" ? v : k === "helper" || k === "four" ? v === "1" : +v; hdSave(); hdRender(); return; }
   const kick = e.target.closest("[data-kick]"); if(kick){ const x = HD.players[+kick.dataset.kick]; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:HD.room, p:x.p})}).catch(() => {});
