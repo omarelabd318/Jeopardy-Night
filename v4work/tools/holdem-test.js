@@ -125,4 +125,12 @@ for(let gi = 0; gi < 600; gi++){
   ok(g.stack.reduce((s, x) => s + x, 0) === all, "all chips accounted for at the end");
   if(c.end === "last" && g.finalLeft == null) ok(g.stack.filter(x => x > 0).length === 1, "last stack standing: one player has everything");
 }
+// 7.65: late joiners are seated at the next hand with the starting chips, never over 9 seats, never after the game is over
+{ const g = H.Game({chips:1000, up:8, end:"last", fixed:30, timer:30, helper:true, four:false}, ["A","B","C"], ["a","b","c"], Math.random); g.start();
+  g.late.push({p:"d", n:"D"}, {p:"a", n:"A again"}); g.seatLate(); ok(g.n === 4 && g.names[3] === "D" && g.stack[3] === 1000 && g.out.length === 4 && g.hole.length === 4 && g.late.length === 0, "a late joiner gets a seat, a repeat doesn't");
+  let guard = 0; while(g.phase !== "show" && guard++ < 50){ if(g.phase === "run") g.advance(); else g.autoAct(g.turn); }
+  g.late.push({p:"e", n:"E"}); const total = g.stack.reduce((a, b) => a + b, 0); g.advance(); ok(g.n === 5 && g.dealt[4] && g.hole[4].length === 2, "a joiner waiting during a hand is dealt in with the next one");
+  ok(g.stack.reduce((a, b) => a + b, 0) + g.tot.reduce((a, b) => a + b, 0) === total + 1000, "only the new player's chips were added");
+  const h = H.Game({chips:1000, up:8, end:"last", fixed:30, timer:30, helper:true, four:false}, "ABCDEFGHI".split(""), "abcdefghi".split(""), Math.random); h.start(); h.late.push({p:"z", n:"Z"}); h.seatLate(); ok(h.n === 9, "the table never goes past 9 seats");
+  }
 console.log(`holdem rules: ${n} checks passed; ${games} games, ${hands} hands (${showdowns} showdowns, ${unc} uncontested, ${runs} run-out streets, ${splits} with a split pot, ${finals} Final hands, ${fixeds} fixed-length games)`);

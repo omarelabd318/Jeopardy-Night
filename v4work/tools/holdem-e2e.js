@@ -41,7 +41,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
     await p.goto(`${base}/cards.html?r=${R.room}&g=hd`); await p.fill("#nm", n); await p.click("#jb"); await p.waitForTimeout(300); phones.push(p); }
   await tv.waitForTimeout(1500); await tv.screenshot({path:path.join(shots, "tv-lobby.png")}); await phones[0].screenshot({path:path.join(shots, "phone-waiting.png")});
   await tv.click("#hdGo"); await tv.waitForTimeout(1500);
-  let moves = 0, missed = 0, hands = 0, shotAt = new Set(), done = false, lastHand = 0;
+  let late = null, lateTxt = "", lateSeated = false, moves = 0, missed = 0, hands = 0, shotAt = new Set(), done = false, lastHand = 0;
   for(let tick = 0; tick < 6000 && !done; tick++){
     if(await tv.locator(".hdpod").count()){ done = true; break; }
     const chipTxt = await tv.locator(".ckchip").first().innerText().catch(() => ""), hn = +((chipTxt.match(/Hand (\d+)/) || [])[1] || 0); if(hn !== lastHand){ lastHand = hn; hands++; }
@@ -62,8 +62,14 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
       }catch(e){ if(++missed < 25){ console.log("missed click (the buttons went away: a street was being dealt)", e.message.split("\n")[0]); await p.waitForTimeout(300); continue; } await p.screenshot({path:path.join(shots, "stuck.png")}); console.log("TV:", (await tv.evaluate(() => document.getElementById("hdBody").innerText)).replace(/\n/g," | ").slice(0,400)); console.log("STUCK on", k, e.message.split("\n")[0], await p.evaluate(() => JSON.stringify({turn:st.pub.turn, board:st.pub.board, seat:st.me.seat, v:st.pub.v, act:st.me.act, html:document.getElementById("view").innerText.slice(0, 300)}))); process.exit(1); }
       acted = true; await p.waitForTimeout(60); break; }
     if(!acted) await tv.waitForTimeout(120);
+    if(tick === 38){ await tv.click('[data-act="qr"]'); await tv.waitForTimeout(600); await tv.screenshot({path:path.join(shots, "tv-joincode.png")}); const ok = await tv.locator("#hdQr2").count(); if(!ok) errs.push("no join code on the TV"); await tv.click(".hdqrpop"); }
+    if(tick === 40){ const c = await b.newContext({viewport:{width:390, height:800}, isMobile:true, hasTouch:true}), p = await c.newPage(); p.on("pageerror", e => errs.push("Late " + e.message)); await p.addInitScript(fast); await p.route(/^(?!http:\/\/localhost)/, r => r.abort());
+      await p.goto(`${base}/cards.html?r=${R.room}&g=hd`); await p.fill("#nm", "Late"); await p.click("#jb"); await p.waitForTimeout(1500); late = p; phones.push(p);   // 7.65: joins in the middle of the game
+      lateTxt = await p.innerText("body"); await p.screenshot({path:path.join(shots, "phone-late-waiting.png")}); }
+    if(late && !lateSeated && tick > 41 && !/Watching/.test(await late.innerText("body").catch(() => "Watching"))){ lateSeated = true; await late.screenshot({path:path.join(shots, "phone-late-seated.png")}); }
     if(tick === 80 && !shotAt.has("mid")){ shotAt.add("mid"); await tv.screenshot({path:path.join(shots, "tv-mid.png")}); await phones[1].screenshot({path:path.join(shots, "phone-mid.png")}); } }
   await tv.waitForTimeout(800); await tv.screenshot({path:path.join(shots, "tv-over.png")}); await phones[0].screenshot({path:path.join(shots, "phone-over.png")});
+  console.log("late joiner: waiting text", /dealt in/.test(lateTxt) ? "ok" : "MISSING", "| seated", lateSeated ? "yes" : "NO"); if(!lateSeated || !/dealt in/.test(lateTxt)) errs.push("late joiner not handled");
   console.log(done ? "game finished" : "GAME DID NOT FINISH", "| hands:", hands, "| phone moves:", moves, "| errors:", errs.length); errs.slice(0, 8).forEach(e => console.log(" ", e));
   await b.close(); srv.close(); process.exit(done && !errs.length ? 0 : 1);
 })();

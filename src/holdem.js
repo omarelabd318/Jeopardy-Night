@@ -57,9 +57,9 @@ const HE = (() => {
      and returns {ok} or {ok:false, err}. After "run" and "show" the screen calls advance() (on a timer or a click). Phases: hand (betting), run (everyone left is all in: the cards come one street at a time),
      show (the hand is over, pots paid), over. ---- */
   function Game(cfg, names, pids, rnd = Math.random){
-    const n = names.length, z = v => Array(n).fill(v), ok = {ok:true}, bad = err => ({ok:false, err});
+    let n = names.length; const z = v => Array(n).fill(v), ok = {ok:true}, bad = err => ({ok:false, err});
     const g = {cfg, names, pids, n, v:0, phase:"", hn:0, dealer:-1, sb:-1, bb:-1, lvl:0, blinds:[10, 20], street:0, board:[], hole:z(null).map(() => []), deck:[], stack:z(cfg.chips), out:z(0), folded:z(false), allin:z(false),
-      bet:z(0), tot:z(0), acted:z(false), startStack:z(0), dealt:z(false), cur:0, minRaise:20, turn:-1, say:null, show:null, finalLeft:null, over:false, shown:z(false), sit:z(false), place:0};
+      bet:z(0), tot:z(0), acted:z(false), startStack:z(0), dealt:z(false), cur:0, minRaise:20, turn:-1, say:null, show:null, finalLeft:null, over:false, shown:z(false), sit:z(false), place:0, late:[]};   // late: players who joined after the start; they are dealt in at the next hand
     const alive = () => { const a = []; for(let i = 0; i < n; i++) if(!g.out[i]) a.push(i); return a; };
     const nextFrom = (i, f) => { for(let k = 1; k <= n; k++){ const j = (i + k) % n; if(f(j)) return j; } return -1; };   // the next seat clockwise (higher index) that passes f
     const live = () => alive().filter(i => !g.folded[i]);
@@ -139,9 +139,14 @@ const HE = (() => {
       else if(g.phase === "show"){
         const al = alive();
         if(al.length <= 1 || (cfg.end === "fixed" && g.hn >= cfg.fixed) || (g.finalLeft != null && g.finalLeft <= 0)){ g.phase = "over"; g.over = true; g.turn = -1; g.final = g.ranks(); }
-        else g.startHand(); }
+        else { g.seatLate(); g.startHand(); } }
       else return false;
       g.v++; return true; };
+    /* 7.65 (Omar): a phone that joins after the start waits in g.late and gets a seat, with the starting chips, when the next hand is dealt (never more than 9 seats) */
+    g.seatLate = () => { while(g.late.length && n < 9){ const x = g.late.shift(); if(g.pids.includes(x.p)) continue;
+      names.push(x.n); pids.push(x.p); g.hole.push([]); g.stack.push(cfg.chips); [g.out, g.bet, g.tot, g.startStack].forEach(a => a.push(0)); [g.folded, g.allin, g.acted, g.dealt, g.shown, g.sit].forEach(a => a.push(false));
+      n++; g.n = n; }
+      g.late.length = 0; };
     g.start = () => { g.startHand(); g.v++; };
     g.autoAct = seat => { if(g.phase !== "hand" || g.turn !== seat) return bad("turn"); return g.act(seat, g.toCall(seat) <= 0 ? {k:"check"} : {k:"fold"}); };
     g.makeFinal = () => { if(g.finalLeft == null){ g.finalLeft = g.phase === "show" ? 5 : 6; g.v++; } };   // the hand in play counts as one of them, so mid-hand it is 6
@@ -188,19 +193,24 @@ async function hdPoll(){ if($("#hdo").hidden || HD.busy) return; HD.busy = true;
     if(HD.phase === "lobby"){ if(RELAY !== true) return;
       const j = await (await fetch(`api/players?r=${encodeURIComponent(HD.room)}`, {cache:"no-store"})).json(), ps = (j.players || []).map(x => ({p:x.p, n:x.n}));
       if(HD.phase === "lobby" && JSON.stringify(ps) !== JSON.stringify(HD.players)){ HD.players = ps; hdRender(); } }
-    else if(HD.g && HD.g.phase !== "over" && !HD.paused){
+    else if(HD.g && HD.g.phase !== "over" && RELAY === true && (HD.lp = (HD.lp || 0) + 1) % 4 === 1){   // 7.65: every few polls, look for phones that joined after the start
+      const j = await (await fetch(`api/players?r=${encodeURIComponent(HD.room)}`, {cache:"no-store"})).json(), g = HD.g;
+      for(const x of j.players || []) if(g === HD.g && !g.pids.includes(x.p) && !g.late.some(l => l.p === x.p)) g.late.push({p:x.p, n:x.n}); }
+    if(HD.phase !== "lobby" && HD.g && HD.g.phase !== "over" && !HD.paused){
       const j = await (await fetch(`api/crdacts?r=${encodeURIComponent(HD.room)}&since=${HD.since}`, {cache:"no-store"})).json(); HD.since = j.n; let changed = false;
-      for(const x of j.acts || []){ const g = HD.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok) changed = true; }
+      for(const x of j.acts || []){ const g = HD.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok){ changed = true; hdSnd(x.a.k); } }
       if(changed) hdChanged(); } }
   catch(e){} finally { HD.busy = false; } }
 
 /* ---------- the flow ---------- */
 function hdStart(){
+  HD.qr = false;
+  try{ Snd.unlock(); }catch(e){}
   if(HD.players.length < 2 || HD.players.length > 9 || RELAY !== true) return;
   HD.g = HE.Game(Object.assign({}, HD.cfg), HD.players.map(x => x.n), HD.players.map(x => x.p), hdRnd); HD.since = 0; HD.paused = false; clearTimeout(HD.rt); HD.rt = null; HD.sn = 0; HD.snHn = 0; HD.anim = -1; HD.g.start(); HD.phase = "play"; hdChanged(); }
 /* what is waiting on a timer: the next street on a run out, the next hand after a showdown, a player's turn running out (or a seat the host sat out) */
 function hdChanged(){ const g = HD.g;
-  if(g.hn !== HD.snHn){ HD.snHn = g.hn; HD.sn = 0; HD.anim = -1; }
+  if(g.hn !== HD.snHn){ HD.snHn = g.hn; HD.sn = 0; HD.anim = -1; try{ Snd.deal(g.dealt.filter(Boolean).length); }catch(e){} }   // 7.65: the sound of the cards going round
   if(g.phase === "show" || g.phase === "over"){ HD.sn = g.board.length; HD.anim = -1; }
   hdPost(); hdRender(); clearTimeout(HD.tm);
   if(g.phase === "over"){ playWinSiu(); return; }
@@ -210,11 +220,13 @@ function hdChanged(){ const g = HD.g;
   if(ph === "run") run(2000, () => { g.advance(); hdChanged(); });
   else if(ph === "show") run(g.show && g.show.unc != null ? 4500 : 8000, () => { g.advance(); hdChanged(); });
   else if(ph === "hand" && g.turn >= 0){
-    if(g.sit[g.turn]) run(700, () => { g.autoAct(g.turn); hdChanged(); });
-    else if(g.cfg.timer){ HD.dl = Date.now() + g.cfg.timer * 1000; run(g.cfg.timer * 1000, () => { g.autoAct(g.turn); hdChanged(); }); } } }
+    if(g.sit[g.turn]) run(700, () => { hdSnd(g.toCall(g.turn) <= 0 ? "check" : "fold"); g.autoAct(g.turn); hdChanged(); });
+    else if(g.cfg.timer){ HD.dl = Date.now() + g.cfg.timer * 1000; run(g.cfg.timer * 1000, () => { hdSnd(g.toCall(g.turn) <= 0 ? "check" : "fold"); g.autoAct(g.turn); hdChanged(); }); } } }
+/* 7.65 (Omar): table sounds, all made in the browser: a soft knock for check, chips for a call or bet, a bigger push for all in, a slide for fold */
+function hdSnd(k){ try{ if(k === "check") Snd.knock(); else if(k === "fold") Snd.fold(); else if(k === "allin") Snd.chips(10); else Snd.chips(); }catch(e){} }
 function hdReveal(g){ HD.rt = setTimeout(function step(){
   if(HD.g !== g){ HD.rt = null; return; }
-  HD.sn++; HD.anim = HD.sn - 1; hdPost(); hdRender();
+  HD.sn++; HD.anim = HD.sn - 1; try{ Snd.flip(HD.sn > 3); }catch(e){} hdPost(); hdRender();
   if(HD.sn < g.board.length) HD.rt = setTimeout(step, 800);
   else { HD.rt = null; HD.anim = -1; hdChanged(); } }, 500); }
 function hdNext(){ const g = HD.g; if(g && g.phase === "show"){ g.advance(); hdChanged(); } }
@@ -287,7 +299,8 @@ function hdRender(){
     <div class="ckside"><h3>Chips</h3>${sorted.map(i => { const live = (p.phase === "hand" || p.phase === "run") && p.dealt[i] && !p.out[i], turn = p.phase === "hand" && p.turn === i,
       st = p.sit[i] && !p.out[i] ? "Sitting out" : !live ? "" : turn ? "Deciding…" : p.folded[i] ? "Folded" : p.allin[i] ? "All in" : p.bets[i] ? `Bet ${hdNum(p.bets[i])}` : "";   // 7.52: what each player is doing this hand
       return `<button class="cksc hdrow2${p.out[i] ? " neg gone" : ""}${turn ? " turn" : ""}${live && p.folded[i] ? " fld" : ""}${!p.out[i] && p.stacks[i] === Math.max(...p.stacks) ? " lead" : ""}" data-sit="${i}" title="${p.out[i] ? "" : p.sit[i] ? "Tap to bring this player back" : "Tap to sit this player out (they fold or check every hand)"}">${esc(p.names[i])}<b>${p.out[i] ? "Out · " + hdOrd(p.out[i]) : hdNum(p.stacks[i])}</b>${st ? `<small>${st}</small>` : ""}</button>`; }).join("")}
-      <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small wide" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button></div></div></div>`; }
+      <div class="hd-tools">${p.phase === "show" ? `<button class="hdbtn go small wide" data-act="next">Next hand</button>` : ""}<button class="hdbtn ghost small" data-act="pause">${HD.paused ? "Resume" : "Pause"}</button>${p.final ? "" : `<button class="hdbtn ghost small" data-act="final">Final hands</button>`}<button class="hdbtn ghost small" data-act="end">End game</button>${RELAY === true && p.n < 9 ? `<button class="hdbtn ghost small wide" data-act="qr">Join code</button>` : ""}</div></div></div>${HD.qr ? `<div class="hdqrpop" data-act="qr"><div class="hdqr" id="hdQr2"></div><b>Scan to join. You are dealt in at the next hand.</b><small>Tap to close</small></div>` : ""}`;
+  const q2 = $("#hdQr2"); if(q2 && window.QRCode){ q2.innerHTML = ""; try{ new QRCode(q2, {text:hdUrl(), width:260, height:260, correctLevel:QRCode.CorrectLevel.L}); }catch(e){} } }
 $("#hdo").addEventListener("click", e => {
   const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; HD.cfg[k] = k === "end" ? v : k === "helper" || k === "four" ? v === "1" : +v; hdSave(); hdRender(); return; }
   const kick = e.target.closest("[data-kick]"); if(kick){ const x = HD.players[+kick.dataset.kick]; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:HD.room, p:x.p})}).catch(() => {});
@@ -300,6 +313,7 @@ $("#hdo").addEventListener("click", e => {
   else if(act.dataset.act === "shuffle"){ CK.shuffle(HD.players); hdRender(); }
   else if(act.dataset.act === "again"){ stopSiu(); HD.phase = "lobby"; HD.g = null; hdRender(); hdPoll(); }
   else if(act.dataset.act === "home") showHome();
+  else if(act.dataset.act === "qr"){ HD.qr = !HD.qr; hdRender(); }   // 7.65: the join code during a game, for late joiners
   else if(act.dataset.act === "pause"){ HD.paused = !HD.paused; if(HD.g) hdChanged(); }
   else if(act.dataset.act === "final"){ const g = HD.g; if(g){ g.makeFinal(); hdChanged(); } }
   else if(act.dataset.act === "end") askConfirm("End the game now?", "This shows the winner screen with the current chips.", "End game", () => { const g = HD.g; if(g){ g.endNow(); hdChanged(); } }); });
