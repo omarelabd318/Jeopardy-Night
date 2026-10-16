@@ -1,5 +1,13 @@
 [
  {
+  "v": "7.50",
+  "date": "2026-10-16",
+  "items": [
+   "Fake Artist: the reveal now says who got the most votes, even when it wasn't the fake artist.",
+   "Fake Artist: setup has a Round 4 switch. Turn it off and a missed vote means just one more round before the second vote."
+  ]
+ },
+ {
   "v": "7.49",
   "date": "2026-10-16",
   "items": [

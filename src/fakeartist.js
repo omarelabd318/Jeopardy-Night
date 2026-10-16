@@ -3,6 +3,7 @@
    line). Then everyone draws the word on one shared canvas, in turn, one unbroken line each: finger down starts the line, lifting the finger ends the turn, no undo. The TV shows the canvas
    and each new line is drawn onto it as soon as the phone sends it. After 2 rounds everyone votes for the fake. If the fake gets the most votes (alone) they are caught and get one typed guess
    at the word; if not, 2 more rounds and a second vote. The fake can go first in round 1 (Omar's call, the order is a plain shuffle) and the order stays the same for the later rounds.
+   7.48 (Omar): the reveal names the most-voted player of the last vote (or the tied ones), also when that wasn't the fake; and setup has Round 4 On/Off (Off = only round 3 after a missed first vote, then the second vote).
    Points (kept across games, first to 5 by default; 3, 5 or 7 in setup): caught and the guess is wrong, every real artist +1; caught and the guess is right, the fake +2; the fake escapes both
    votes, +3; every real artist whose last vote named the fake +1 on top. A typed guess that matches the word (or one of its listed spellings) is accepted by the game; otherwise the host taps
    Right or Wrong on the laptop. A turn waits 45 s for the finger (then it's skipped, and the host can skip sooner); a line is cut off after the turn length (10/15/20/30 s, default 15) and a
@@ -31,14 +32,14 @@ const FAR = (() => {
     return len >= MIN_LEN ? out : null; }
   /* o = {players:[ids] (3 or more), word:{w, alt:[...]}, idle:seconds a turn waits for the finger, rand:() => 0..1} */
   function Game(o){
-    const ids = o.players.slice(), n = ids.length; if(n < 3) return null;
+    const ids = o.players.slice(), n = ids.length, extra = o.extra === 1 ? 1 : 2; if(n < 3) return null;   // extra: lines rounds after a missed vote (2 = rounds 3 and 4, 1 = round 3 only, Omar 7.48)
     const rnd = o.rand || Math.random, idle = (o.idle || IDLE) * 1000;
     const sh = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-    const g = {ids, n, order:sh(ids.slice()), fake:ids[Math.floor(rnd() * n)], word:o.word, ph:"card", round:1, ti:0, strokes:[], votes:{}, vn:0, tally:{}, tid:1, dl:0, vdl:0, gdl:0, guess:"", outcome:null, deltas:null, caught:false, last:{}};
+    const g = {ids, n, order:sh(ids.slice()), fake:ids[Math.floor(rnd() * n)], word:o.word, ph:"card", round:1, ti:0, strokes:[], votes:{}, vn:0, tally:{}, top:[], topN:0, extra, tid:1, dl:0, vdl:0, gdl:0, guess:"", outcome:null, deltas:null, caught:false, last:{}};
     const wanted = [norm(o.word.w)].concat((o.word.alt || []).map(norm));
     const match = t => { const k = norm(t); return !!k && wanted.includes(k); };
     const openVote = now => { g.ph = "vote"; g.vn++; g.votes = {}; g.vdl = now + VOTE * 1000; g.tid++; };
-    const nextTurn = now => { g.ti++; if(g.ti >= n){ g.ti = 0; g.round++; if(g.round === 3 || g.round === 5){ openVote(now); return; } } g.tid++; g.dl = now + idle; };
+    const nextTurn = now => { g.ti++; if(g.ti >= n){ g.ti = 0; g.round++; if(g.round === 3 || g.round === 3 + extra){ openVote(now); return; } } g.tid++; g.dl = now + idle; };
     function finish(kind){   // kind: "escape" (the fake was never caught), "right" or "wrong" (the caught fake's guess)
       g.outcome = kind; g.ph = "reveal"; g.tid++; const d = {}; ids.forEach(p => d[p] = 0);
       if(kind === "escape") d[g.fake] += 3; else if(kind === "right") d[g.fake] += 2; else ids.forEach(p => { if(p !== g.fake) d[p] += 1; });
@@ -50,7 +51,7 @@ const FAR = (() => {
     g.vote = (p, o2) => { if(g.ph !== "vote" || !ids.includes(p) || !ids.includes(o2) || p === o2) return false; g.votes[p] = o2; return true; };
     g.allVoted = () => g.ph === "vote" && ids.every(p => g.votes[p]);
     g.endVote = now => { if(g.ph !== "vote") return false; const t = {}; ids.forEach(p => t[p] = 0); Object.values(g.votes).forEach(x => t[x]++);
-      const mx = Math.max(...Object.values(t)), top = ids.filter(p => t[p] === mx); g.tally = t; g.last = Object.assign({}, g.votes);
+      const mx = Math.max(...Object.values(t)), top = ids.filter(p => t[p] === mx); g.tally = t; g.top = top; g.topN = mx; g.last = Object.assign({}, g.votes);   // top: who got the most votes in this vote (more than one if tied), shown at the reveal even when they weren't the fake
       g.caught = mx > 0 && top.length === 1 && top[0] === g.fake;
       if(g.caught){ g.ph = "guess"; g.gdl = now + GUESS * 1000; g.tid++; } else if(g.vn === 1){ g.ph = "between"; g.tid++; } else finish("escape");
       return true; };
@@ -65,7 +66,7 @@ const FAR = (() => {
 
 const FA = {cfg:null, room:null, players:[], col:{}, scores:{}, phase:"lobby", g:null, word:null, scr:"", vc:0, since:0, busy:false, poll:null, tmr:null, psig:"", relay:null, sung:false, n:0,
   seenCard:{}, anim:null, raf:0, auto:0, lastCat:null, scored:false, over:false, seen:store.get("jn_faSeen", {})};
-FA.cfg = Object.assign({target:5, secs:15, diff:"mix", cats:{}}, store.get("jn_faCfg", {}));
+FA.cfg = Object.assign({target:5, secs:15, diff:"mix", r4:1, cats:{}}, store.get("jn_faCfg", {}));
 const faSave = () => store.set("jn_faCfg", FA.cfg);
 const FA_COL = ["#ff2e4c", "#1e90ff", "#1fcf5a", "#ffb300", "#a64dff", "#ff4fb8", "#00d4d4", "#ff7a1a", "#c6ff3d", "#f2f2f2"];
 const faCats = () => Object.keys((typeof FAW !== "undefined" && FAW.cats) || {});
@@ -95,12 +96,12 @@ function faPub(){
   const g = FA.g, names = {}; FA.players.forEach(x => names[x.p] = x.n);
   const pub = {ph:FA.over ? "over" : g ? g.ph : "lobby", names, col:FA.col, scores:FA.scores, target:FA.cfg.target, secs:FA.cfg.secs};
   if(!g) return pub;
-  const now = Date.now(); Object.assign(pub, {order:g.order, round:g.round, ti:g.ti, tid:g.tid, cat:FA.word.cat, strokes:g.strokes, cur:g.cur(), vn:g.vn});
+  const now = Date.now(); Object.assign(pub, {order:g.order, round:g.round, ti:g.ti, tid:g.tid, cat:FA.word.cat, strokes:g.strokes, cur:g.cur(), vn:g.vn, extra:g.extra});
   if(g.ph === "draw") pub.left = Math.max(0, (g.dl - now) / 1000);
   if(g.ph === "vote") pub.left = Math.max(0, (g.vdl - now) / 1000);
   if(g.ph === "guess"){ pub.left = Math.max(0, (g.gdl - now) / 1000); pub.fake = g.fake; pub.tally = g.tally; }
   if(g.ph === "judge" || g.ph === "reveal"){ pub.fake = g.fake; pub.guess = g.guess; pub.tally = g.tally; }
-  if(g.ph === "reveal"){ Object.assign(pub, {word:FA.word.w, outcome:g.outcome, deltas:g.deltas}); }
+  if(g.ph === "reveal"){ Object.assign(pub, {word:FA.word.w, outcome:g.outcome, deltas:g.deltas, top:g.top, topN:g.topN}); }
   if(FA.over) pub.winners = faWinners();
   return pub; }
 function faPost(){
@@ -133,7 +134,7 @@ function faAnimLast(){ const g = FA.g, i = g.strokes.length - 1, s = g.strokes[i
 function faStart(){
   if(RELAY !== true || FA.players.length < 4 || FA.players.length > 10 || !faCats().some(faOn)) return; stopSiu(); faSync();
   FA.word = faWord(); FA.scr = faScr(FA.word.w);
-  FA.g = FAR.Game({players:FA.players.map(x => x.p), word:{w:FA.word.w, alt:FA.word.alt}, idle:FAR.IDLE});
+  FA.g = FAR.Game({players:FA.players.map(x => x.p), word:{w:FA.word.w, alt:FA.word.alt}, idle:FAR.IDLE, extra:FA.cfg.r4 === 0 ? 1 : 2});
   FA.seenCard = {}; FA.scored = false; FA.over = false; FA.anim = null; FA.auto = 0; FA.sung = false; FA.vc = FA.vc || 0; faChanged(); }
 function faWinners(){ const mx = Math.max(...Object.values(FA.scores), 0); return Object.keys(FA.scores).filter(p => FA.scores[p] === mx && FA.players.some(x => x.p === p)); }
 function faChanged(){ const g = FA.g;
@@ -177,6 +178,9 @@ const faDot = p => `<i style="background:${faCol(p)}"></i>`;
 function faScoreList(g, deltas){ const ps = FA.players.slice().sort((a, b) => (FA.scores[b.p] || 0) - (FA.scores[a.p] || 0));
   return `<ul class="fascores">${ps.map(x => `<li style="--c:${faCol(x.p)}">${faDot(x.p)}<span>${esc(x.n)}</span>${deltas && deltas[x.p] ? `<em>+${deltas[x.p]}</em>` : ""}<b>${FA.scores[x.p] || 0}</b></li>`).join("")}</ul><div class="fafoot">First to ${FA.cfg.target} wins the night</div>`; }
 function faStrip(g){ return `<div class="fastrip">${g.order.map((p, i) => `<span class="fachip${g.ph === "draw" && i === g.ti ? " now" : g.ph === "draw" && i < g.ti ? " done" : ""}" style="--c:${faCol(p)}">${faDot(p)}${esc(faName(p))}</span>`).join("")}</div>`; }
+function faTop(g){   // 7.48: who got the most votes, also when it wasn't the fake
+  if(!g.topN) return ""; const names = g.top.map(p => esc(faName(p))), who = g.top.length === 1 ? `<b style="color:${faCol(g.top[0])}">${names[0]}</b>` : names.join(", ");
+  return `<div class="fasmall">${g.top.length === 1 ? "Most votes" : "Tied on votes"}: ${who} (${g.topN}${g.top.length > 1 ? " each" : ""})${g.top.includes(g.fake) ? "" : ", not the fake"}</div>`; }
 function faOver(){ const ws = faWinners(), order = FA.players.slice().sort((a, b) => (FA.scores[b.p] || 0) - (FA.scores[a.p] || 0));
   return `<div class="faover"><div class="fawin">${ws.map(p => esc(faName(p))).join(" and ")}<span>${ws.length > 1 ? "share the wall" : "owns the wall"}</span></div>
     <ol class="faplace">${order.map((x, i) => `<li style="--c:${faCol(x.p)}"><b>${i + 1}</b>${faDot(x.p)}<span>${esc(x.n)}</span><em>${FA.scores[x.p] || 0}</em></li>`).join("")}</ol></div>`; }
@@ -194,7 +198,7 @@ function faRender(){
         <div class="faeye">Turn length</div>${faSeg("secs", [[10, "10 s"], [15, "15 s"], [20, "20 s"], [30, "30 s"]], c.secs)}<p class="note">How long a line can go on once the finger is down.</p>
         <div class="faeye">Words</div>${faSeg("diff", [["mix", "Mixed"], ["easy", "Easy only"], ["hard", "Hard only"]], c.diff)}
         <div class="faeye">Categories</div><div class="faseg">${ids.map(id => `<button data-cat="${esc(id)}" aria-pressed="${faOn(id)}">${esc(id)}</button>`).join("")}</div>
-        <p class="note">Two rounds of lines, then a vote. If the fake isn't caught, two more rounds and a second vote.</p>
+        <div class="faeye">Round 4</div>${faSeg("r4", [[1, "On"], [0, "Off"]], c.r4)}<p class="note">Two rounds of lines, then a vote. If the fake isn't caught, ${c.r4 === 0 ? "one more round" : "two more rounds"} and a second vote.</p>
         ${ps.length && ps.length < 4 && !off ? `<p class="note warn">You need at least 4 players to start.</p>` : ""}
         <button class="fabtn go" id="faGo" ${ok ? "" : "disabled"}>Start</button></div></div>`;
     const q = $("#faQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!FA.g && !$("#fao").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
@@ -211,7 +215,7 @@ function faRender(){
   } else if(ph === "draw"){
     const p = g.cur(), turn = g.ti + 1;
     left = `<div class="fatag">${esc(FA.word.cat)}</div><div class="falab">Now drawing</div><div class="faname" style="color:${faCol(p)}">${esc(faName(p))}</div><div class="fasmall">Line ${turn} of ${g.n} · round ${rn}</div><div class="fabar"><i id="faBar"></i></div>
-      <div class="fasmall">${rn <= 2 ? "Vote after round 2" : "Vote after round 4"}</div>`;
+      <div class="fasmall">${rn <= 2 ? "Vote after round 2" : `Vote after round ${2 + g.extra}`}</div>`;
     hint = "One line each. Lift your finger and your turn is over.";
     ctl = `<button class="fabtn small" data-act="skip">Skip turn</button>`;
   } else if(ph === "vote"){
@@ -221,7 +225,7 @@ function faRender(){
     hint = "Votes stay secret until everyone is done. You can change your pick.";
     ctl = `<button class="fabtn go small" data-act="result">Show the result</button>`;
   } else if(ph === "between"){
-    left = `<div class="falab">Not caught</div><div class="faname">The fake artist is still among you</div><div class="fasmall">Two more rounds, then another vote.</div>`;
+    left = `<div class="falab">Not caught</div><div class="faname">The fake artist is still among you</div><div class="fasmall">${g.extra === 1 ? "One more round" : "Two more rounds"}, then another vote.</div>`;
     ctl = `<button class="fabtn go small" data-act="cont">Keep drawing</button>`;
   } else if(ph === "guess"){
     left = `<div class="falab">Caught!</div><div class="faname" style="color:${faCol(fk)}">${esc(faName(fk))}</div><div class="fasmall">was the fake artist. One guess at the word:</div><div class="fabar"><i id="faBar"></i></div>`;
@@ -230,7 +234,7 @@ function faRender(){
     ctl = `<button class="fabtn go small" data-act="right">Right</button><button class="fabtn small" data-act="wrong">Wrong</button>`;
   } else if(ph === "reveal"){
     const kind = g.outcome, line = kind === "escape" ? "The fake got away with it" : kind === "right" ? "Caught, but guessed the word" : "Caught, and guessed wrong";
-    left = `<div class="falab">The word was</div><div class="faname">${esc(FA.word.w.charAt(0).toUpperCase() + FA.word.w.slice(1))}</div><div class="falab">The fake artist</div><div class="faname" style="color:${faCol(fk)}">${esc(faName(fk))}</div><div class="fasmall">${line}</div>`;
+    left = `<div class="falab">The word was</div><div class="faname">${esc(FA.word.w.charAt(0).toUpperCase() + FA.word.w.slice(1))}</div><div class="falab">The fake artist</div><div class="faname" style="color:${faCol(fk)}">${esc(faName(fk))}</div><div class="fasmall">${line}</div>${faTop(g)}`;
     const top = Math.max(...Object.values(FA.scores), 0);
     ctl = `<button class="fabtn go small" data-act="${top >= FA.cfg.target ? "winner" : "next"}">${top >= FA.cfg.target ? "See the winner" : "Next game"}</button>`;
   } else if(ph === "over"){
