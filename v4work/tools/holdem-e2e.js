@@ -55,7 +55,8 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
         if(tick > 5 && !shotAt.has("peek")){ shotAt.add("peek"); await p.evaluate(() => document.getElementById("hdh") && document.getElementById("hdh").classList.add("peek")); await p.screenshot({path:path.join(shots, "phone-peek.png")}); await p.evaluate(() => document.getElementById("hdh") && document.getElementById("hdh").classList.remove("peek")); }
         await shot("turn");
         if(canRaise && r < .3){ const q = ["min", "half", "pot", "max"][Math.floor(Math.random() * 4)]; await p.click(`[data-q="${q}"]`, {timeout:1500}); await shot("raise"); await p.click("#hdgo", {timeout:1500}); }
-        else if(r < .45) await p.click('[data-hd="fold"]', {timeout:1500});
+        else if(canRaise && r < .4){ const typed = ["5", "99999", "60", "137"][Math.floor(Math.random() * 4)]; await p.fill("#hdn", typed); await shot("typed"); if(Math.random() < .5) await p.press("#hdn", "Enter"); else await p.click("#hdgo", {timeout:1500}); }   // 7.48: type the bet
+        else if(r < .55) await p.click('[data-hd="fold"]', {timeout:1500});
         else await p.click('[data-hd="check"], [data-hd="call"]', {timeout:1500});
         moves++;
       }catch(e){ if(++missed < 25){ console.log("missed click (the buttons went away: a street was being dealt)", e.message.split("\n")[0]); await p.waitForTimeout(300); continue; } await p.screenshot({path:path.join(shots, "stuck.png")}); console.log("TV:", (await tv.evaluate(() => document.getElementById("hdBody").innerText)).replace(/\n/g," | ").slice(0,400)); console.log("STUCK on", k, e.message.split("\n")[0], await p.evaluate(() => JSON.stringify({turn:st.pub.turn, board:st.pub.board, seat:st.me.seat, v:st.pub.v, act:st.me.act, html:document.getElementById("view").innerText.slice(0, 300)}))); process.exit(1); }

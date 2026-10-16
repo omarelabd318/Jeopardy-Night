@@ -65,6 +65,7 @@ body[data-look=vegas] .panel{background:rgba(20,10,5,.72)}
 .hdpt{text-align:center;font:700 16px var(--disp);color:var(--gold);margin-top:-2px}
 .hdfold{background:#3a2418!important;color:#f6ecd6!important;border-color:#8a6a2c!important}
 .hdcall{background:#1f8a52!important;color:#fff!important;border-color:#1f8a52!important}
+.hdnum{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;opacity:.95}.hdnum input{width:50%;font:700 22px/1 "Barlow",sans-serif;text-align:right;padding:10px 12px;border-radius:10px;border:2px solid #e8c25a;background:#1a0f09;color:#fff;font-variant-numeric:tabular-nums}.hdnum input::placeholder{font-size:14px;font-weight:500;opacity:.6}
 .hdraise{display:grid;gap:8px}.hdq{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.hdq .b{font-size:15px;padding:8px 0}
 .hdraise input[type=range]{width:100%;padding:0;border:0;background:transparent;accent-color:#e8c25a;height:34px}
 #hdgo{background:#e8c25a;color:#2a1607}
@@ -94,7 +95,7 @@ const P = new URLSearchParams(location.search), $ = id => document.getElementByI
 const r = P.get("r") || "", KEY = "jn_crd_" + r;
 const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
 let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
-let st = null, timer = null, busy = false, sig = "", note = null, up = null, preHn = -1, tV = -1, tStart = 0, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0, pick = [];
+let st = null, timer = null, busy = false, sig = "", note = null, up = null, preHn = -1, typing = -1, tV = -1, tStart = 0, sel = {n:null, s:null}, wasMine = false, sending = false, sentV = -1, sentAt = 0, pick = [];
 const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body: JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok: x.ok && j.ok, j})));
 function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i=0;i<10;i++) s += a[Math.floor(Math.random()*a.length)]; return s; }
 const signs = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
@@ -256,6 +257,7 @@ MODES.hd = {look:"vegas", watch:"This game is full or already started. Look at t
       panel = `<div class="panel">${p.secs ? `<div class="hdtm"><i style="animation-duration:${left.toFixed(1)}s"></i></div>` : ""}
         <div class="grid two"><button class="b hdfold" data-hd="fold">Fold</button>${a.canCheck ? `<button class="b hdcall" data-hd="check">Check</button>` : `<button class="b hdcall" data-hd="call">Call ${hdNum(a.toCall)}${a.allinCall ? " (all in)" : ""}</button>`}</div>
         ${a.canRaise ? `<div class="hdraise"><div class="hdq"><button class="b" data-q="min">Min</button><button class="b" data-q="half">½ pot</button><button class="b" data-q="pot">Pot</button><button class="b" data-q="max">All in</button></div>
+          <label class="hdnum"><span>Type an amount</span><input type="number" id="hdn" inputmode="numeric" pattern="[0-9]*" min="${a.minTo}" max="${a.maxTo}" step="1" value="${r}" placeholder="${hdNum(a.minTo)} to ${hdNum(a.maxTo)}" onfocus="this.select()" aria-label="Bet amount"></label>
           ${a.maxTo > a.minTo ? `<input type="range" id="hdr" min="${a.minTo}" max="${a.maxTo}" step="1" value="${r}" aria-label="Raise to">` : ""}
           <button class="send" id="hdgo" data-hd="raise">${allIn ? "All in " + hdNum(a.maxTo) : (a.cur ? "Raise to " : "Bet ") + hdNum(r)}</button></div>` : ""}</div>`; }
     else if(!out && !folded && p.phase === "hand") panel = `<button class="ghost" data-hd="pre">${preHn === p.hn ? "✓ Check / Fold queued (tap to cancel)" : "Check / Fold when it's my turn"}</button>`;
@@ -270,7 +272,11 @@ MODES.hd = {look:"vegas", watch:"This game is full or already started. Look at t
 (() => { const on = e => { const h = e.target.closest && e.target.closest("#hdh"); if(h){ h.classList.add("peek"); e.preventDefault && e.type !== "pointerdown" && e.preventDefault(); } }, off = () => { const h = document.getElementById("hdh"); if(h) h.classList.remove("peek"); };
   document.addEventListener("pointerdown", on); ["pointerup", "pointercancel", "pointerleave", "blur"].forEach(t => document.addEventListener(t, off, true)); window.addEventListener("blur", off);
   document.addEventListener("contextmenu", e => { if(e.target.closest && e.target.closest(".hdhw")) e.preventDefault(); });
-  document.addEventListener("input", e => { if(e.target.id !== "hdr" || !st || !st.me || !st.me.act) return; sel.r = +e.target.value; const a = st.me.act, go = document.getElementById("hdgo"); if(go) go.textContent = sel.r >= a.maxTo ? "All in " + hdNum(a.maxTo) : (a.cur ? "Raise to " : "Bet ") + hdNum(sel.r); }); })();
+  /* 7.48 (Omar): type the exact bet. The box keeps its focus while typing (draw() leaves the screen alone), the button shows the amount it will send (kept between the minimum and all in), and Enter sends it. */
+  document.addEventListener("input", e => { if(e.target.id !== "hdn" || !st || !st.me || !st.me.act) return; const a = st.me.act, n = Math.round(+e.target.value); typing = st.pub.v; sel.r = n > 0 ? Math.max(a.minTo, Math.min(a.maxTo, n)) : a.minTo;
+    const go = document.getElementById("hdgo"), sl = document.getElementById("hdr"); if(sl) sl.value = sel.r; if(go) go.textContent = sel.r >= a.maxTo ? "All in " + hdNum(a.maxTo) : (a.cur ? "Raise to " : "Bet ") + hdNum(sel.r); });
+  document.addEventListener("keydown", e => { if(e.key === "Enter" && e.target.id === "hdn"){ e.preventDefault(); const go = document.getElementById("hdgo"); if(go) go.click(); } });
+  document.addEventListener("input", e => { if(e.target.id !== "hdr" || !st || !st.me || !st.me.act) return; sel.r = +e.target.value; const a = st.me.act, go = document.getElementById("hdgo"); const nb = document.getElementById("hdn"); if(nb) nb.value = sel.r; if(go) go.textContent = sel.r >= a.maxTo ? "All in " + hdNum(a.maxTo) : (a.cur ? "Raise to " : "Bet ") + hdNum(sel.r); }); })();
 
 
 function draw(){
@@ -280,6 +286,7 @@ function draw(){
     $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start. Your cards will appear here.</div></div>`; return; }
   const p = st.pub, mine = st.me, seat = mine ? mine.seat : -1, a = mine && mine.act;
   if(seat < 0 || !mine){ $("chip").innerHTML = M.chip(p); $("hand").innerHTML = ""; sig = "s"; $("view").innerHTML = `<div class="wait"><div class="big">Watching</div><div class="hint">${M.watch || "This game already has four players. Look at the TV."}</div></div>`; return; }
+  if(typing === p.v && document.activeElement && document.activeElement.id === "hdn") return;   // 7.48: don't redraw (and lose the keyboard) while a bet is being typed
   const sg = [p.v, p.board ? p.board.length : "", a ? 1 : 0, up, sel.n, sel.s, sel.e, sel.r, preHn, note, sending, pick.join(",")].join("|"); if(sg === sig) return; sig = sg;
   const mineNow = !!a && a.turn !== false;
   if(mineNow && !wasMine && navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}

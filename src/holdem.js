@@ -280,7 +280,7 @@ function hdRender(){
   const toCall = p.turn >= 0 && p.phase === "hand" ? Math.max(0, p.cur - p.bets[p.turn]) : 0;
   el.innerHTML = `<div class="ckw hd-tv${p.phase === "hand" && p.turn >= 0 ? " hasturn" : ""}" data-look="vegas"${p.cfg.four ? " data-four" : ""}><div class="hd-stage"><div class="ckt"><div class="cktin"><div class="ckfelt"></div>
     ${[...Array(p.n).keys()].map(i => hdSeatHtml(i, p)).join("")}
-    <div class="hdmid">${p.phase === "hand" && p.turn >= 0 && !HD.paused ? `<div class="hdturn"><span class="hdarr">▶</span>${esc(p.names[p.turn])}'s turn</div>` : ""}<div class="hdboard">${slots}</div><div class="hdpots"><span class="hdpot"><span class="hdch"></span>Pot ${hdNum(p.pot)}</span>${p.pots.length ? p.pots.map((x, k) => `<span class="hdpot side">${k ? "Side" : "Main"} ${hdNum(x.amt)}</span>`).join("") : ""}</div>
+    <div class="hdmid"><div class="hdboard">${slots}</div><div class="hdpots"><span class="hdpot"><span class="hdch"></span>Pot ${hdNum(p.pot)}</span>${p.pots.length ? p.pots.map((x, k) => `<span class="hdpot side">${k ? "Side" : "Main"} ${hdNum(x.amt)}</span>`).join("") : ""}</div>
       <div class="hdsay">${cap}${p.phase === "hand" && toCall ? `<br><small>${hdNum(toCall)} to call</small>` : ""}</div></div>
     ${HD.paused ? `<div class="ckmsg">Paused</div>` : ""}
     <div class="ckchip">Hand ${p.hn} · Blinds ${hdNum(p.blinds[0])} / ${hdNum(p.blinds[1])} · ${p.final ? "Final hands" : p.cfg.end === "fixed" ? `Hand ${p.hn} of ${p.cfg.fixed}` : upTxt}</div></div></div></div>

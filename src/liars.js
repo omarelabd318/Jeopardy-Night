@@ -58,7 +58,7 @@ const LBR = (() => {
     g.auto = () => { if(g.phase !== "turn") return false; const s = g.seats[g.turn]; return liarOnly() ? g.call(s.p) : g.play(s.p, [Math.floor(rnd() * s.hand.length)]); };
     const pid = i => g.seats[i].p;
     g.pub = (showRes = true) => ({ph:g.phase, round:g.round, tbl:g.tbl, turn:g.phase === "turn" ? pid(g.turn) : null, pile:g.pile, lo:g.liarOnly(),
-      last:g.last ? {by:pid(g.last.by), n:g.last.n} : null, seats:g.seats.map(s => ({p:s.p, n:s.n, c:s.hand.length, sp:s.spins, out:s.out})),
+      last:g.last ? {by:pid(g.last.by), n:g.last.n} : null, seats:g.seats.map(s => ({p:s.p, n:s.n, c:s.hand.length, sp:s.spins, out:s.out && !(!showRes && g.phase === "spin" && g.res && g.seats[g.res.loser] === s)})),
       rev:g.rev && g.phase !== "turn" ? {cards:g.rev.cards, liar:g.rev.liar, claimer:pid(g.rev.claimer), caller:pid(g.rev.caller), loser:pid(g.rev.loser)} : null,
       res:g.res && g.phase !== "turn" ? {loser:pid(g.res.loser), k:g.res.k, odds:g.res.odds, bust:showRes || g.phase !== "spin" ? g.res.bust : null} : null,
       winner:g.winner, order:g.order.slice()});
@@ -128,9 +128,10 @@ function lbShow(){ lbEnter();
 const lbCard = (c, cls = "") => `<i class="lbc${c === "J" ? " jk" : ""} ${cls}"><b>${c === "J" ? "★" : c}</b><small>${c === "J" ? "★" : c}</small></i>`;
 const lbBacks = n => `<span class="lbbacks">${Array.from({length:Math.min(n, 5)}, () => "<b></b>").join("")}</span>`;
 const lbPips = sp => `<span class="lbpips">${Array.from({length:6}, (_, k) => `<u class="${k < sp ? "f" : ""}"></u>`).join("")}</span>`;
-function lbSeatHtml(s, i, n, turn){   // seat 0 at the bottom, then round the table counter-clockwise (the order of play)
+function lbSeatHtml(s, i, n, turn, g){   // seat 0 at the bottom, then round the table counter-clockwise (the order of play)
   const a = Math.PI / 2 + i * 2 * Math.PI / n, x = 50 + Math.cos(a) * 41, y = 53 + Math.sin(a) * 36;
-  return `<div class="lbseat${turn === s.p ? " now" : ""}${s.out ? " out" : ""}" style="left:${x}%;top:${y}%"><div class="nm">${esc(s.n)}</div>${s.out ? `<div class="lbstamp">BUSTED</div>` : lbBacks(s.hand.length) + lbPips(s.spins)}${turn === s.p && LB.dl ? `<div class="lbtmr"><i id="lbFill" style="width:${Math.max(0, Math.min(100, (LB.dl - Date.now()) / (LB.cfg.timer * 10)))}%"></i></div>` : ""}</div>`; }
+  const out = s.out && !(g.phase === "spin" && !LB.resShown && g.seats[g.res.loser] === s);
+  return `<div class="lbseat${turn === s.p ? " now" : ""}${out ? " out" : ""}" style="left:${x}%;top:${y}%"><div class="nm">${esc(s.n)}</div>${out ? `<div class="lbstamp">BUSTED</div>` : lbBacks(s.hand.length) + lbPips(s.spins)}${turn === s.p && LB.dl ? `<div class="lbtmr"><i id="lbFill" style="width:${Math.max(0, Math.min(100, (LB.dl - Date.now()) / (LB.cfg.timer * 10)))}%"></i></div>` : ""}</div>`; }
 function lbDrum(sp, bust){   // the cylinder, seen end on: sp chambers used (the last one is the bust when bust is true)
   let s = `<svg viewBox="0 0 100 100" role="img" aria-label="Cylinder, ${sp} of 6 chambers used"><circle cx="50" cy="50" r="46" fill="#b8913f" stroke="#f3d27a" stroke-width="2.4"/><circle cx="50" cy="50" r="9" fill="#6b4a1c"/>`;
   for(let k = 0; k < 6; k++){ const a = k * Math.PI / 3 - Math.PI / 2, x = 50 + Math.cos(a) * 28, y = 50 + Math.sin(a) * 28, used = k < sp, hit = bust && k === sp - 1;
@@ -140,7 +141,10 @@ function lbDrum(sp, bust){   // the cylinder, seen end on: sp chambers used (the
 const lbConfetti = () => `<div class="lbconf">${Array.from({length:28}, (_, i) => `<i style="--a:${(i * 360 / 28 + (i % 3) * 7).toFixed(0)}deg;--d:${14 + (i * 7) % 18}u;--c:${["#d8342a", "#f3d27a", "#f0e2c2", "#2c6b49"][i % 4]};--t:${(i % 5) * 0.04}s"></i>`).join("")}</div>`;
 function lbCenter(g){
   if(g.phase === "turn"){
-    return `<div class="lbmid"><div class="lbtbl"><span>TABLE</span><b>${LB_NAME[g.tbl]}</b></div><div class="lbpile"><i></i><i></i><i></i>${g.last ? `<em>${esc(lbNm(g.seats[g.last.by].p))}: ${g.last.n} ${g.last.n === 1 ? LB_ONE[g.tbl] : LB_NAME[g.tbl]}</em>` : `<em>Pile is empty</em>`}</div></div>`; }
+    const k = g.round + ":" + g.pile, fresh = g.last && LB.dropKey !== k; LB.dropKey = k;   // the pile is a messy stack; a new play drops on top of it
+    const n = g.last ? g.last.n : 0, old = Math.min(g.pile - n, 14), rr = j => ((j * 37 + 11) % 29) - 14, xx = j => ((j * 53 + 7) % 11) - 5, yy = j => ((j * 29 + 3) % 7) - 3;
+    return `<div class="lbmid mid1"><div class="lbtbl"><span>TABLE CARD</span><b>${LB_NAME[g.tbl]}</b></div>
+      <div class="lbpile">${Array.from({length:old}, (_, j) => `<i style="--r:${rr(j)}deg;--x:${xx(j)};--y:${yy(j)}"></i>`).join("")}${Array.from({length:n}, (_, j) => `<i class="nw${fresh ? " drop" : ""}" style="--r:${rr(old + j + 5)}deg;--x:${xx(old + j + 3)};--y:${yy(old + j + 2)};--j:${j}"></i>`).join("")}${g.last ? "" : `<em>Pile is empty</em>`}</div></div>`; }
   if(g.phase === "reveal"){ const r = g.rev, who = g.seats[r.claimer].n, caller = g.seats[r.caller].n;
     return `<div class="lbmid rev"><div class="lbflip">${r.cards.map(c => lbCard(c, c === g.tbl || c === "J" ? "" : "bad")).join("")}<div class="lbverdict">${r.liar ? "LIAR!" : "TRUTH!"}</div></div>
       <p class="lbwho">${esc(caller)} called Liar on ${esc(who)}'s ${r.cards.length} ${r.cards.length === 1 ? LB_ONE[g.tbl] : LB_NAME[g.tbl]}.<br><b>${esc(g.seats[r.loser].n)} ${r.liar ? "was lying" : "was telling the truth"}</b> and spins.</p></div>`; }
@@ -177,7 +181,7 @@ function lbRender(){
     <div class="lbtitle">Liar's Bar</div><div class="lbround">Round ${g.round}</div>${wins ? `<div class="lbwins">Tonight: ${wins}</div>` : ""}
     <div class="lbtable"></div>
     ${g.phase === "over" ? lbOver(g) : lbCenter(g)}
-    ${g.seats.map((s, i) => lbSeatHtml(s, i, n, turn)).join("")}
+    ${g.seats.map((s, i) => lbSeatHtml(s, i, n, turn, g)).join("")}
     ${g.phase === "turn" ? `<div class="lbturn">${esc(g.seats[g.turn].n)}'s turn${g.liarOnly() ? " · only Liar! is left" : ""}</div>` : ""}
     <div class="lbctl">${lbCtl(g)}</div></div></div>`; lbTick(); }
 $("#lbo").addEventListener("click", e => {
