@@ -183,7 +183,7 @@ function faTop(g){   // 7.48: who got the most votes, also when it wasn't the fa
   return `<div class="fasmall">${g.top.length === 1 ? "Most votes" : "Tied on votes"}: ${who} (${g.topN}${g.top.length > 1 ? " each" : ""})${g.top.includes(g.fake) ? "" : ", not the fake"}</div>`; }
 function faOver(){ const ws = faWinners(), order = FA.players.slice().sort((a, b) => (FA.scores[b.p] || 0) - (FA.scores[a.p] || 0));
   return `<div class="faover"><div class="fawin">${ws.map(p => esc(faName(p))).join(" and ")}<span>${ws.length > 1 ? "share the wall" : "owns the wall"}</span></div>
-    <ol class="faplace">${order.map((x, i) => `<li style="--c:${faCol(x.p)}"><b>${i + 1}</b>${faDot(x.p)}<span>${esc(x.n)}</span><em>${FA.scores[x.p] || 0}</em></li>`).join("")}</ol></div>`; }
+    <ol class="faplace">${order.map((x, i) => `<li class="${ws.includes(x.p) ? "win" : ""}" style="--c:${faCol(x.p)}"><b>${i + 1}</b>${faDot(x.p)}<span>${esc(x.n)}</span><em>${FA.scores[x.p] || 0}</em></li>`).join("")}</ol></div>`; }
 function faRender(){
   const el = $("#faBody"), g = FA.g;
   if(!g){ const off = RELAY !== true, ps = FA.players, c = FA.cfg, ids = faCats(), ok = !off && ps.length >= 4 && ps.length <= 10 && ids.some(faOn);
@@ -205,7 +205,7 @@ function faRender(){
       q.innerHTML = ""; try{ new QRCode(q, {text:faUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
     return; }
   const ph = FA.over ? "over" : g.ph, fk = g.fake, rn = g.round, showCv = ph !== "card" && ph !== "over";
-  const rlabel = ph === "card" ? "Check your cards" : ph === "vote" ? `Vote ${g.vn}` : ph === "reveal" || ph === "over" ? "The reveal" : `Round ${rn}`;
+  const rlabel = ph === "card" ? "Get ready" : ph === "vote" ? `Vote ${g.vn}` : ph === "reveal" ? "The reveal" : ph === "over" ? "Final scores" : `Round ${rn} of ${rn <= 2 ? 2 : 2 + g.extra}`;   /* 7.54: was "Check your cards", "The reveal" on the winner screen too, and "Round N" */
   let left = "", mid = "", ctl = "", hint = "";
   if(ph === "card"){
     const seen = Object.keys(FA.seenCard).length, n = g.n;
@@ -214,8 +214,7 @@ function faRender(){
     ctl = `<button class="fabtn go small" data-act="start">Start drawing</button>`;
   } else if(ph === "draw"){
     const p = g.cur(), turn = g.ti + 1;
-    left = `<div class="fatag">${esc(FA.word.cat)}</div><div class="falab">Now drawing</div><div class="faname" style="color:${faCol(p)}">${esc(faName(p))}</div><div class="fasmall">Line ${turn} of ${g.n} · round ${rn}</div><div class="fabar"><i id="faBar"></i></div>
-      <div class="fasmall">${rn <= 2 ? "Vote after round 2" : `Vote after round ${2 + g.extra}`}</div>`;
+    left = `<div class="fatag">${esc(FA.word.cat)}</div><div class="falab">Now drawing</div><div class="faname" style="color:${faCol(p)}">${esc(faName(p))}</div><div class="fasmall">Line ${turn} of ${g.n}</div><div class="fabar"><i id="faBar"></i></div>`;   /* 7.54: the round and "Vote after round N" now live in the top-right tag */
     hint = "One line each. Lift your finger and your turn is over.";
     ctl = `<button class="fabtn small" data-act="skip">Skip turn</button>`;
   } else if(ph === "vote"){

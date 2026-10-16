@@ -7,7 +7,7 @@
      (the laptop puts it in this player's private part); the real word is not in anything the phone receives until the reveal. Street Wall look: concrete, paper canvas, yellow and magenta. -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#3a3a3e;--bg2:#2b2b30;--yel:#ffe600;--mag:#e6007e;--ink:#111;--paper:#ecebe6;--cream:#f2f2f2;--head:"Bungee",Impact,sans-serif;--mark:"Permanent Marker","Bungee",cursive;--body:"Rubik",system-ui,sans-serif;--me:#ff2e4c}
+:root{--bg:#3a3a3e;--bg2:#2b2b30;--yel:#ffe600;--mag:#e6007e;--ink:#111;--paper:#ecebe6;--cream:#f2f2f2;--head:"Bungee",Impact,sans-serif;--mark:"Permanent Marker","Bungee",Impact,sans-serif;--body:"Rubik",system-ui,sans-serif;--me:#ff2e4c}
 [hidden]{display:none!important}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
@@ -60,6 +60,18 @@ input[type=text]{width:100%;font:600 20px var(--body);padding:12px;border:3px so
 .cover{background:var(--paper);color:#111;padding:26px 18px;text-align:center;font:400 22px var(--mark);box-shadow:7px 7px 0 #111;transform:rotate(-1deg)}
 .tally{font-size:14px;opacity:.9}
 .delta{font:400 44px var(--head);color:var(--yel);text-shadow:3px 3px 0 var(--mag)}
+/* 7.54 polish: lobby colour badge, face-down card, centred thumbnails, standings */
+.hello{display:flex;gap:16px;align-items:center;background:rgba(0,0,0,.35);border:2px solid rgba(255,230,0,.45);border-radius:6px;padding:16px}
+.swatch{width:58px;height:58px;border-radius:50%;background:var(--me);box-shadow:4px 4px 0 #111;flex:none}
+.facedown{background:var(--paper);color:#111;aspect-ratio:3/2;display:grid;place-items:center;box-shadow:7px 7px 0 #111;transform:rotate(-1.5deg);font:400 64px var(--head);background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.06) 0 10px,transparent 10px 20px)}
+.facedown span{color:var(--mag);text-shadow:3px 3px 0 #111}
+.thumb{width:min(100%,calc(36vh * 4 / 3));justify-self:center}
+.row{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.stand{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.stand li{display:grid;grid-template-columns:22px 14px 1fr auto;gap:10px;align-items:center;background:#111;padding:10px 14px;border-left:6px solid var(--c);border-radius:3px;font:600 17px var(--body)}
+.stand li b{font:400 16px var(--head);opacity:.7}.stand li i{width:14px;height:14px;border-radius:50%;background:var(--c)}
+.stand li em{font:400 20px var(--head);font-style:normal;color:var(--yel)}
+.stand li.me{background:#000;outline:2px solid var(--yel)}
 </style></head><body><main>
 <div class="top"><span id="me"></span><span id="chip"></span></div>
 <div id="view"></div>
@@ -145,8 +157,11 @@ function draw(){
   $("foot").innerHTML = card && p.ph !== "lobby" && p.ph !== "reveal" && p.ph !== "over" ? peekHtml() : "";
   const v = $("view"), err = note ? `<div class="msg">${esc(note)}</div>` : "";
   const cats = `<div class="tag">${esc(p.cat || "")}</div>`;
-  if(p.ph === "lobby"){ v.innerHTML = `<div class="status">You're in, ${esc(me.n)}</div><div class="hint">Your colour is ${""}<span class="chip"><i></i>this one</span>. The host starts the game.</div>${p.scores && p.scores[me.p] ? `<div class="hint">You have ${p.scores[me.p]} points.</div>` : ""}`; return; }
-  if(p.ph === "card"){ v.innerHTML = `${cats}<div class="status me">Check your card</div><div class="hint">Hold the button below to see it, then let go. ${card && card.f ? "" : ""}Don't show anyone.</div>${seenSent ? `<div class="hint">Got it. Waiting for the host to start drawing.</div>` : ""}`; return; }
+  if(p.ph === "lobby"){ const ids = Object.keys(p.names || {});
+    v.innerHTML = `<div class="hello"><div class="swatch"></div><div><div class="tag">You're in</div><div class="status">${esc(me.n)}</div><div class="hint">This is your colour for the night.</div></div></div>
+      ${ids.length ? `<div class="tag">${ids.length} ${ids.length === 1 ? "player" : "players"} in</div><div class="order">${ids.map(x => `<span style="--c:${colOf(x, p)}"><i></i>${nm(x, p)}</span>`).join("")}</div>` : ""}
+      <div class="hint">The host starts the game on the TV.${p.scores && p.scores[me.p] ? ` You have ${p.scores[me.p]} points.` : ""}</div>`; return; }
+  if(p.ph === "card"){ v.innerHTML = `${cats}<div class="status me">Check your card</div><div class="facedown"><span>?</span></div><div class="hint">${seenSent ? "Got it. Waiting for the host to start drawing." : "Hold the button below to see it, then let go. Don't show anyone."}</div>`; return; }
   if(p.ph === "draw"){
     const myTurn = p.cur === me.p, done = sentTid === p.tid, secs = p.secs || 15; padSecs = secs;
     if(myTurn && !done){ v.innerHTML = `${cats}<div class="status me">Your turn</div><div class="bar"><i id="bar"></i></div><div class="pad mine" id="pad"><canvas id="cv" width="1000" height="750"></canvas><div class="go">DRAW ONE LINE</div></div><div class="hint">One line, don't lift your finger until you're done. It stops after ${secs} seconds.</div>${err}`;
@@ -155,11 +170,12 @@ function draw(){
     paintStrokes($("cv"), p, null); return; }
   if(p.ph === "vote"){
     const mv = myVote[p.tid] || "";
-    v.innerHTML = `${cats}<div class="status me">Who's the fake?</div><div class="pad" id="pad" style="max-width:62%"><canvas id="cv" width="1000" height="750"></canvas></div>
+    v.innerHTML = `${cats}<div class="status me">Who's the fake?</div><div class="pad thumb" id="pad"><canvas id="cv" width="1000" height="750"></canvas></div>
       <div class="votes">${(p.order || []).filter(x => x !== me.p).map(x => `<button data-o="${esc(x)}" aria-pressed="${mv === x}" style="--c:${colOf(x, p)}"><i></i>${nm(x, p)}</button>`).join("")}</div>
       <div class="hint">${mv ? "Voted. You can still change it." : "Tap who you think it is."}</div>${err}`;
     paintStrokes($("cv"), p, null); return; }
-  if(p.ph === "between"){ v.innerHTML = `<div class="status me">Not caught</div><div class="hint">The fake artist is still among you. ${p.extra === 1 ? "One more round" : "Two more rounds"}, then another vote.</div>`; return; }
+  if(p.ph === "between"){ v.innerHTML = `${cats}<div class="status me">Not caught</div><div class="hint">The fake artist is still among you. ${p.extra === 1 ? "One more round" : "Two more rounds"}, then another vote.</div><div class="pad thumb"><canvas id="cv" width="1000" height="750"></canvas></div>`;
+    paintStrokes($("cv"), p, null); return; }
   if(p.ph === "guess"){
     if(p.fake === me.p){ v.innerHTML = `<div class="status me">You've been caught!</div><div class="hint">Guess the word and you still score.</div><form id="gf" autocomplete="off"><input type="text" id="gw" maxlength="40" enterkeyhint="send" placeholder="The word is…"><button class="send" id="gb" style="margin-top:12px">Send guess</button></form>${err}`;
       $("gf").onsubmit = e => { e.preventDefault(); const g = $("gw").value.trim(); if(!g) return; $("gb").disabled = true; act({k:"guess", t:p.tid, g}); }; }
@@ -170,8 +186,13 @@ function draw(){
     return `<div class="hint">${one ? "Most votes" : "Tied on votes"}: ${who} (${q.topN}${one ? "" : " each"})${q.top.includes(q.fake) ? "" : ", not the fake"}</div>`; };
   const d = p.deltas && p.deltas[me.p], won = (p.winners || []).includes(me.p);
   if(p.ph === "reveal"){ const k = p.outcome, line = k === "escape" ? "The fake got away with it." : k === "right" ? "The fake was caught but guessed the word." : "The fake was caught and guessed wrong.";
-    v.innerHTML = `<div class="tag">The word was</div><div class="big">${esc(cap(p.word))}</div><div class="status">${nm(p.fake, p)} was the fake artist</div><div class="hint">${line}</div>${topLine(p)}<div class="delta">${d ? "+" + d : "+0"}</div><div class="hint">The host starts the next game on the TV.</div>`; return; }
-  v.innerHTML = `<div class="status ${won ? "me" : ""}">${won ? "You win the wall!" : "Good game."}</div><div class="hint">${(p.winners || []).map(x => nm(x, p)).join(" and ")} ${(p.winners || []).length > 1 ? "share the win" : "wins"}.</div>`;
+    v.innerHTML = `<div class="tag">The word was</div><div class="big">${esc(cap(p.word))}</div><div class="pad thumb"><canvas id="cv" width="1000" height="750"></canvas></div>
+      <div class="status"><span style="color:${colOf(p.fake, p)}">${p.fake === me.p ? "You were" : nm(p.fake, p) + " was"}</span> the fake artist</div><div class="hint">${line}</div>${topLine(p)}
+      <div class="row"><div class="delta">${d ? "+" + d : "+0"}</div><div class="hint">this game</div></div><div class="hint">The host starts the next game on the TV.</div>`;
+    paintStrokes($("cv"), p, null); return; }
+  const ids = Object.keys(p.names || {}).sort((a, b) => ((p.scores || {})[b] || 0) - ((p.scores || {})[a] || 0));
+  v.innerHTML = `<div class="status ${won ? "me" : ""}">${won ? "You win the wall!" : "Good game."}</div><div class="hint">${(p.winners || []).map(x => nm(x, p)).join(" and ")} ${(p.winners || []).length > 1 ? "share the win" : "wins"}.</div>
+    <ol class="stand">${ids.map((x, i) => `<li class="${x === me.p ? "me" : ""}" style="--c:${colOf(x, p)}"><b>${i + 1}</b><i></i><span>${nm(x, p)}</span><em>${(p.scores || {})[x] || 0}</em></li>`).join("")}</ol>`;
 }
 /* the card: hold the button to see it, let go to hide it. The first look tells the TV you've seen it. */
 function showCard(on){ const c = st && st.me && st.me.card; if(!c) return; const v = $("view");
