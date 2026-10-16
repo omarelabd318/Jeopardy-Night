@@ -119,6 +119,13 @@ const Snd = (() => {
     spin(){ if(!S.sound) return; const a = ctx(); if(!a) return; this.stopSpin(); const g = a.createGain(); g.gain.value = 1; g.connect(out || a.destination); spinG = g;
       for(let k = 1; k <= 17; k++){ const p = k * 60 / 1000, t = 3.2 * (1 - Math.pow(1 - p, 1 / 3)); if(p >= 1) break; click(g, t, 0.55 + 0.35 * (1 - p), 2600 + (k % 3) * 500); } },
     stopSpin(){ if(spinG){ try{ spinG.gain.setValueAtTime(spinG.gain.value, ac.currentTime); spinG.gain.linearRampToValueAtTime(0, ac.currentTime + 0.08); }catch(e){} spinG = null; } },
+    /* 7.64 (Omar): the sound of cards being put down on the felt: per card a soft paper slap (short filtered noise) over a low thump, a little different each time. */
+    place(n = 1, delay = 0){ if(!S.sound) return; const a = ctx(); if(!a) return; for(let i = 0; i < n; i++){ const t = a.currentTime + delay + i * 0.15, len = 0.14, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
+        for(let k = 0; k < d.length; k++){ const x = k / a.sampleRate; d[k] = (Math.random() * 2 - 1) * Math.exp(-x / 0.022) * (1 - Math.exp(-x / 0.0008)); }
+        const nz = a.createBufferSource(); nz.buffer = buf; const f = a.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = 1500 + Math.random() * 900; f.Q.value = 0.7; const g = a.createGain(); g.gain.value = 0.38 + Math.random() * 0.1;
+        nz.connect(f).connect(g).connect(out || a.destination); nz.start(t);
+        const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; const fr = 150 + Math.random() * 30; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(70, t + 0.08); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.2, t + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+        o.connect(og).connect(out || a.destination); o.start(t); o.stop(t + 0.15); } },
     dry(){ if(!S.sound) return; const a = ctx(); if(!a) return; click(out || a.destination, 0, 1.2, 1800); click(out || a.destination, 0.09, 0.8, 3400); tone(2100, 0.09, 0.12, 0.02, "triangle", 0.002); },
     bang(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime, len = 1.6, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
       for(let i = 0; i < d.length; i++){ const x = i / a.sampleRate; d[i] = (Math.random() * 2 - 1) * Math.exp(-x * 7) * (x < 0.012 ? 1.6 : 1); }
@@ -186,8 +193,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.63`);
-  $("#verBtn").textContent = "v7.63"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.64`);
+  $("#verBtn").textContent = "v7.64"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
