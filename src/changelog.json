@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.60",
+  "date": "2026-10-16",
+  "items": [
+   "Wager mode: the lowest bet is now half the tile's value (it was 0). The wager screen's 0 button is gone, and the minus button stops at half."
+  ]
+ },
+ {
   "v": "7.59",
   "date": "2026-10-16",
   "items": [
