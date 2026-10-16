@@ -80,6 +80,7 @@ main{grid-template-rows:auto 1fr;padding-bottom:max(16px,env(safe-area-inset-bot
 .top{padding:2px 2px 0}
 @media (prefers-reduced-motion:reduce){.c{box-shadow:none}}
 .over{margin:auto 0;display:grid;gap:14px;justify-items:center;text-align:center;padding:20px 0}
+.tbl .deck{font-size:12px;opacity:.8;margin-top:4px}
 /* end 7.53 */
 </style></head><body><main>
 <div class="top"><span id="me"></span><span id="chip"></span></div>
@@ -91,6 +92,8 @@ const r = P.get("r") || "", KEY = "jn_lb_" + r;
 const esc = t => String(t ?? "").replace(/[&<>"]/g, s => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[s]));
 let me = null; try{ me = JSON.parse(localStorage.getItem(KEY)); }catch(e){}
 let st = null, timer = null, busy = false, sel = [], selV = -1, note = null, sending = false, seenV = -1, seenAt = 0, sig = "";
+const MIX = {3:[5, 1], 4:[6, 2], 5:[8, 2], 6:[9, 3], 7:[11, 3], 8:[12, 4]};   // 7.58: [of each of Kings, Queens, Aces, Jokers] by number of players, the same table as LBR.MIX
+const deckLine = n => { const [k, j] = MIX[Math.max(3, Math.min(8, n))]; return `${k} Kings, ${k} Queens, ${k} Aces and ${j} Jokers`; };
 const NAME = {K:"Kings", Q:"Queens", A:"Aces"}, ONE = {K:"King", Q:"Queen", A:"Ace", J:"Joker"};
 const post = (op, body) => fetch("api/" + op, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(Object.assign({r}, body))}).then(x => x.json().catch(() => ({})).then(j => ({ok:x.ok && j.ok, j})));
 function newId(){ const a = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for(let i = 0; i < 10; i++) s += a[Math.floor(Math.random() * a.length)]; return s; }
@@ -127,13 +130,14 @@ function draw(){
   const v = $("view");
   if(p.ph === "lobby"){ sig = "l" + (p.order || []).join(",");
     v.innerHTML = `<div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start.</div>
+      <div class="panel"><div class="hint">The deck for ${Math.max(3, (p.order || []).length)} players</div><div>${deckLine((p.order || []).length)}. Everyone is dealt 5, and a Joker counts as the table card.</div></div>
       <div class="panel"><div class="hint">At the table · ${(p.order || []).length}</div><ul class="names">${(p.order || []).map(x => `<li class="${x === me.p ? "me" : ""}">${esc(p.names[x] || "")}</li>`).join("")}</ul></div>`; return; }
   const seat = p.seats.find(s => s.p === me.p), mine = p.turn === me.p, hand = (st.me && st.me.hand) || [], by = x => (p.seats.find(s => s.p === x) || {n:"Someone"}).n;
   if(!seat){ v.innerHTML = `<div class="wait"><div class="big">You're not in this game</div><div class="hint">Wait for the next one: the host starts it from the TV.</div></div>`; $("chip").innerHTML = ""; return; }
   const left = mine ? secsLeft(p) : null;
   $("chip").innerHTML = `<span class="chip">${seat.out ? "Busted" : left !== null ? "0:" + String(left).padStart(2, "0") : "Round " + p.round}</span>`;
   const cyl = `<div class="cyl">Your cylinder ${Array.from({length:6}, (_, k) => `<u class="${k < seat.sp ? "f" : ""}"></u>`).join("")} <span>${seat.out ? "" : "1 in " + (6 - seat.sp)}</span></div>`;
-  const tbl = p.ph === "over" ? "" : `<div class="tbl"><span>Table</span><strong>${NAME[p.tbl]}</strong></div>`;
+  const tbl = p.ph === "over" ? "" : `<div class="tbl"><span>Table</span><strong>${NAME[p.tbl]}</strong><small class="deck">Deck: ${deckLine(p.seats.length)}</small></div>`;
   const g = [p.v, sel.join(), note, sending, left].join("|"); if(g === sig) return; sig = g;
   let body = "", btns = "";
   if(p.ph === "over"){ const won = p.winner === me.p;

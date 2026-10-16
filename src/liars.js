@@ -126,6 +126,8 @@ function lbShow(){ lbEnter(); try{ Snd.unlock(); }catch(e){}
   LB.room = newRoom(); LB.players = []; LB.phase = "lobby"; LB.g = null; LB.since = 0; LB.relay = RELAY; LB.psig = ""; LB.wins = {}; LB.sung = false; LB.lastKey = ""; LB.vc = 0;
   $("#lbo").hidden = false; lbRender(); window.scrollTo(0, 0); lbPost();
   clearInterval(LB.poll); LB.poll = setInterval(lbPoll, 800); clearInterval(LB.tm); LB.tm = setInterval(lbTick, 250); lbPoll(); }
+const lbDeckN = n => LBR.MIX[Math.max(3, Math.min(8, n))];   // 7.58 (Omar): [of each of Kings, Queens, Aces, Jokers] for n players
+const lbDeckChips = n => { const [k, j] = lbDeckN(n); return [["K", "Kings", k], ["Q", "Queens", k], ["A", "Aces", k], ["J", "Jokers", j]].map(([c, nm, x]) => `<span class="dk${c === "J" ? " jk" : ""}"><i>${c === "J" ? "★" : c}</i><b>${x}</b><em>${nm}</em></span>`).join(""); };
 const lbCard = (c, cls = "") => `<i class="lbc${c === "J" ? " jk" : ""} ${cls}"><b>${c === "J" ? "★" : c}</b><small>${c === "J" ? "★" : c}</small></i>`;
 const lbBacks = n => `<span class="lbbacks">${Array.from({length:Math.min(n, 5)}, () => "<b></b>").join("")}</span>`;
 const lbPips = sp => `<span class="lbpips">${Array.from({length:6}, (_, k) => `<u class="${k < sp ? "f" : ""}"></u>`).join("")}</span>`;
@@ -174,6 +176,7 @@ function lbRender(){
       <div class="lbpanel"><div class="lbeye">Turn timer</div><div class="lbseg">${[[0, "Off"], [20, "20 s"], [30, "30 s"], [60, "60 s"]].map(([v, t]) => `<button data-set="timer" data-v="${v}" aria-pressed="${LB.cfg.timer === v}">${t}</button>`).join("")}</div>
         <p class="note">When it runs out, the game plays one random card for you.</p>
         <button class="lbbtn go" id="lbGo" ${ok ? "" : "disabled"}>${ok ? "Start" : ps.length < 3 ? "Need " + (3 - ps.length) + " more" : "Start"}</button></div></div>
+      <div class="lbpanel lbdeckp"><div class="lbeye">The deck for ${Math.max(3, ps.length)} players · ${(() => { const [k, j] = lbDeckN(ps.length); return k * 3 + j; })()} cards</div><div class="lbdeckrow">${lbDeckChips(ps.length)}</div><p class="note">Everyone is dealt 5 cards. A Joker counts as whatever the table card is.  The deck gets bigger with more players.</p></div>
       <ol class="lbhow"><li><b>1</b><span><em>Play</em>Put 1 to 3 cards face down and claim they all match the table card.</span></li><li><b>2</b><span><em>Call</em>The next player either plays on top or shouts Liar! and the cards flip.</span></li><li><b>3</b><span><em>Spin</em>Whoever was wrong spins their cylinder. One chamber in six busts you.</span></li></ol></div>`;
     const q = $("#lbQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!LB.g && !$("#lbo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:lbUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
@@ -185,7 +188,7 @@ function lbRender(){
     ${g.phase === "over" ? lbOver(g) : lbCenter(g)}
     ${g.seats.map((s, i) => lbSeatHtml(s, i, n, turn, g)).join("")}
     ${g.phase === "turn" ? `<div class="lbturn">${esc(g.seats[g.turn].n)}'s turn${g.liarOnly() ? " · only Liar! is left" : ""}</div>` : ""}
-    <div class="lbctl">${lbCtl(g)}</div></div></div>`; lbTick(); }
+    <div class="lbdeckbar"><span>Deck</span>${lbDeckChips(g.n)}</div><div class="lbctl">${lbCtl(g)}</div></div></div>`; lbTick(); }
 $("#lbo").addEventListener("click", e => {
   const set = e.target.closest("[data-set]"); if(set){ LB.cfg[set.dataset.set] = +set.dataset.v; lbSave(); lbRender(); return; }
   const kick = e.target.closest("[data-kick]"); if(kick){ fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:LB.room, p:kick.dataset.kick})}).catch(() => {});
