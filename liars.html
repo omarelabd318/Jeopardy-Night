@@ -54,6 +54,33 @@ input[type=text]{width:100%;font:700 20px var(--body);padding:12px;border:2px so
 .stamp.ok{color:#2c6b49;border-color:#2c6b49}
 .reveal{display:flex;justify-content:center;gap:6px;padding:6px 0}.reveal .c{margin:0}.reveal .c.bad{color:#9b1c16;border-color:#d8342a}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}.c{transition:none}}
+/* 7.53 (Omar asked for a cleaner look): your hand and the buttons sit together at the bottom of the screen in thumb reach, the cylinder is one pill, the pile is a small messy stack.
+   To undo: delete this block and put back the 7.52 draw() from git. */
+main{grid-template-rows:auto 1fr;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+#view{display:flex;flex-direction:column;gap:12px;min-height:0;height:100%}
+.tbl{padding:12px 10px 14px;border-radius:14px;box-shadow:0 0 0 2px var(--gold),0 8px 20px rgba(0,0,0,.45)}
+.tbl strong{font-size:44px}
+.cyl{align-self:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(0,0,0,.35);border:1px solid rgba(201,162,74,.5);font-size:13px;letter-spacing:.04em}
+.cyl u{width:11px;height:11px}.cyl u.f{background:var(--gold2);border-color:var(--gold2)}
+.cyl span{font-weight:700;color:var(--gold2);margin-left:4px}
+.status{padding:4px 6px}
+.status b{font-size:26px;margin-bottom:2px}
+.pile{position:relative;height:58px;width:120px;margin:0 auto}
+.pile i{position:absolute;left:50%;top:50%;width:30px;height:43px;margin:-21px 0 0 -15px;border-radius:5px;border:1.5px solid var(--card);background:repeating-linear-gradient(45deg,#7a1f1a 0 4px,#5c1512 4px 8px);box-shadow:0 2px 5px rgba(0,0,0,.55)}
+.pilecap{text-align:center;font-size:13px;opacity:.75;margin-top:-4px}
+.dock{margin-top:auto;display:grid;gap:12px}
+.dock .lbl{font:700 12px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:center}
+.hand{padding:20px 0 4px;min-height:0}
+.c{box-shadow:0 4px 10px rgba(0,0,0,.45)}
+.hand.idle .c{filter:brightness(.94)}
+.send:disabled{background:transparent;color:var(--ink);border-color:rgba(201,162,74,.6);opacity:.75}
+.liar{box-shadow:inset 0 -3px 0 rgba(0,0,0,.3)}
+.stamp{border-radius:8px;margin:4px 0;align-self:center}
+.reveal{align-self:center}
+.top{padding:2px 2px 0}
+@media (prefers-reduced-motion:reduce){.c{box-shadow:none}}
+.over{margin:auto 0;display:grid;gap:14px;justify-items:center;text-align:center;padding:20px 0}
+/* end 7.53 */
 </style></head><body><main>
 <div class="top"><span id="me"></span><span id="chip"></span></div>
 <div id="view"></div>
@@ -89,6 +116,7 @@ async function send(a){ if(sending || !st || !st.pub) return; sending = true; no
   else sel = [];
   sig = ""; draw(); poll(true); }
 const card = (c, cls = "", i = "") => `<${i === "" ? "div" : "button"} class="c ${c === "J" ? "jk " : ""}${cls}"${i === "" ? "" : ` data-i="${i}"`}>${c === "J" ? "★" : c}<small>${c === "J" ? "★" : c}</small></${i === "" ? "div" : "button"}>`;
+const pileHtml = (n, cap) => `<div class="pile">${Array.from({length:Math.min(n, 8)}, (_, j) => `<i style="transform:translate(${((j * 53 + 7) % 11) - 5}px,${((j * 29 + 3) % 7) - 3}px) rotate(${((j * 37 + 11) % 29) - 14}deg)"></i>`).join("")}</div>${cap ? `<div class="pilecap">${cap}</div>` : ""}`;   // 7.53: the same messy stack as the TV
 function secsLeft(p){ if(!p.secs) return null; return Math.max(0, p.secs - Math.floor((Date.now() - seenAt) / 1000)); }
 function draw(){
   $("me").textContent = me.n;
@@ -104,27 +132,28 @@ function draw(){
   if(!seat){ v.innerHTML = `<div class="wait"><div class="big">You're not in this game</div><div class="hint">Wait for the next one: the host starts it from the TV.</div></div>`; $("chip").innerHTML = ""; return; }
   const left = mine ? secsLeft(p) : null;
   $("chip").innerHTML = `<span class="chip">${seat.out ? "Busted" : left !== null ? "0:" + String(left).padStart(2, "0") : "Round " + p.round}</span>`;
-  const cyl = `<div class="cyl">Cylinder ${Array.from({length:6}, (_, k) => `<u class="${k < seat.sp ? "f" : ""}"></u>`).join("")} <span>${seat.out ? "" : "1 in " + (6 - seat.sp)}</span></div>`;
+  const cyl = `<div class="cyl">Your cylinder ${Array.from({length:6}, (_, k) => `<u class="${k < seat.sp ? "f" : ""}"></u>`).join("")} <span>${seat.out ? "" : "1 in " + (6 - seat.sp)}</span></div>`;
   const tbl = p.ph === "over" ? "" : `<div class="tbl"><span>Table</span><strong>${NAME[p.tbl]}</strong></div>`;
   const g = [p.v, sel.join(), note, sending, left].join("|"); if(g === sig) return; sig = g;
-  let body = "";
+  let body = "", btns = "";
   if(p.ph === "over"){ const won = p.winner === me.p;
-    body = `<div class="status ${won ? "me" : ""}"><b>${won ? "You are the last one standing!" : esc(by(p.winner)) + " wins"}</b>${won ? "Nobody called you out in time." : "You went out; the winner is the last one left."}</div>`; }
+    body = `<div class="over"><div class="stamp${won ? " ok" : ""}">${won ? "WINNER" : "GAME OVER"}</div><div class="status ${won ? "me" : ""}"><b>${won ? "You are the last one standing!" : esc(by(p.winner)) + " wins"}</b>${won ? "Nobody called you out in time." : "You went out; the winner is the last one left."}</div><div class="hint">The full standings are on the TV.</div></div>`; }
   else if(seat.out){ body = `<div class="status"><b>Busted, you're watching</b>${p.ph === "turn" ? esc(by(p.turn)) + " is up" : "Look at the TV"}</div>`;
-    if(p.last) body += `<div class="mini"><div>${Array.from({length:Math.min(p.pile, 6)}, () => "<i></i>").join("")}</div>${esc(by(p.last.by))} claims ${p.last.n} ${p.last.n === 1 ? ONE[p.tbl] : NAME[p.tbl]}</div>`; }
+    if(p.last) body += pileHtml(p.pile, `${esc(by(p.last.by))} claims ${p.last.n} ${p.last.n === 1 ? ONE[p.tbl] : NAME[p.tbl]}`); }
   else if(p.ph === "reveal"){ const r = p.rev;
     body = `<div class="reveal">${r.cards.map(c => card(c, c === p.tbl || c === "J" ? "" : "bad")).join("")}</div><div class="stamp${r.liar ? "" : " ok"}" style="justify-self:center">${r.liar ? "LIAR!" : "TRUTH!"}</div>
       <div class="status"><b>${esc(by(r.loser))} spins</b>${r.liar ? esc(by(r.claimer)) + " was lying" : esc(by(r.caller)) + " was wrong"}</div>`; }
   else if(p.ph === "spin"){ const x = p.res, shown = x.bust !== null;
-    body = `<div class="status"><b>${esc(by(x.loser))} spins</b>1 in ${x.odds}</div>${shown ? `<div class="stamp${x.bust ? "" : " ok"}">${x.bust ? "BUSTED" : "SAFE"}</div>` : `<div class="wait" style="padding:6px"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`}`; }
+    body = `<div class="status"><b>${x.loser === me.p ? "You spin" : esc(by(x.loser)) + " spins"}</b>A 1 in ${x.odds} chance of the bust</div>${shown ? `<div class="stamp${x.bust ? "" : " ok"}">${x.bust ? "BUSTED" : "SAFE"}</div>` : `<div class="wait" style="padding:6px"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`}`; }
   else { // a turn
     const claim = p.last ? `${esc(by(p.last.by))} played ${p.last.n} and says ${p.last.n === 1 ? "it's a" : "they're"} ${p.last.n === 1 ? ONE[p.tbl] : NAME[p.tbl]}.` : "Nothing on the table yet. You lead.";
     body = `<div class="status ${mine ? "me" : ""}"><b>${mine ? "Your turn" : esc(by(p.turn)) + "'s turn"}</b>${claim}</div>
-      <div class="mini"><div>${Array.from({length:Math.min(p.pile, 6)}, () => "<i></i>").join("") || ""}</div>${p.pile ? p.pile + " card" + (p.pile > 1 ? "s" : "") + " face down" : ""}</div>`;
+      ${p.pile ? pileHtml(p.pile, p.pile + " card" + (p.pile > 1 ? "s" : "") + " face down") : ""}`;
     if(mine){ const canCall = !!p.last, lo = p.lo;
-      body += `<div class="btns">${canCall ? `<button class="liar" data-a="liar" ${sending ? "disabled" : ""}>Liar!</button>` : ""}${lo ? "" : `<button class="send" data-a="play" ${sel.length && !sending ? "" : "disabled"}>${sel.length ? "Play " + sel.length : "Pick 1 to 3 cards"}</button>`}</div>${lo ? `<div class="hint" style="text-align:center">Everyone else is out of cards, so all you can do is call Liar!</div>` : ""}`; } }
+      btns = `<div class="btns">${canCall ? `<button class="liar" data-a="liar" ${sending ? "disabled" : ""}>Liar!</button>` : ""}${lo ? "" : `<button class="send" data-a="play" ${sel.length && !sending ? "" : "disabled"}>${sel.length ? "Play " + sel.length : "Pick 1 to 3 cards"}</button>`}</div>${lo ? `<div class="hint" style="text-align:center">Everyone else is out of cards, so all you can do is call Liar!</div>` : ""}`; } }
   const showHand = !seat.out && p.ph !== "over";
-  v.innerHTML = `${tbl}${cyl}${body}${showHand && hand.length ? `<div class="hand">${hand.map((c, i) => card(c, sel.includes(i) ? "up" : "", i)).join("")}</div>` : !seat.out && p.ph === "turn" && !hand.length ? `<div class="hint" style="text-align:center">You're out of cards, so you're safe this round.</div>` : ""}${note ? `<div class="msg">${esc(note)}</div>` : ""}`;
+  const handHtml = showHand && hand.length ? `<div class="lbl">Your hand</div><div class="hand${mine && p.ph === "turn" ? "" : " idle"}">${hand.map((c, i) => card(c, sel.includes(i) ? "up" : "", i)).join("")}</div>` : !seat.out && p.ph === "turn" && !hand.length ? `<div class="hint" style="text-align:center">You're out of cards, so you're safe this round.</div>` : "";
+  v.innerHTML = `${tbl}${seat.out || p.ph === "over" ? "" : cyl}${body}<div class="dock">${handHtml}${btns}${note ? `<div class="msg">${esc(note)}</div>` : ""}</div>`;
 }
 document.addEventListener("click", e => {
   if(!st || !st.pub) return; const p = st.pub, t = e.target.closest("button"); if(!t) return;

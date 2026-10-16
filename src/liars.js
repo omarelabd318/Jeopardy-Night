@@ -163,7 +163,7 @@ function lbCtl(g){ const out = [];
 function lbRender(){
   const el = $("#lbBody"), g = LB.g;
   if(!g){ const ps = LB.players, off = RELAY !== true, ok = !off && ps.length >= 3 && ps.length <= 8;
-    el.innerHTML = `<div class="lbhead"><div class="lbbadge">Game mode</div><h1>Liar's Bar</h1><p class="sub">Play your cards face down and say they match the table card. Call out the liars. Lose a challenge and you spin the cylinder: one chamber busts you. Last one standing wins.</p></div>
+    el.innerHTML = `<div class="lblob"><div class="lbhead"><div class="lbbadge">Game mode</div><h1>Liar's Bar</h1><p class="sub">Play your cards face down and say they match the table card. Call out the liars. Lose a challenge and you spin the cylinder: one chamber busts you. Last one standing wins.</p></div>
       <div class="lbgrid">
       <div class="lbpanel">${off
         ? `<div class="lbeye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "Everyone plays from their own phone, which sends its moves through the Cloudflare link, so this game can't start here."}</p>`
@@ -172,7 +172,8 @@ function lbRender(){
         ${ps.length > 8 ? `<p class="note warn">8 seats only. Remove ${ps.length - 8} player${ps.length - 8 > 1 ? "s" : ""} to start.</p>` : ps.length && ps.length < 3 ? `<p class="note">3 players are needed to start.</p>` : ""}</div>
       <div class="lbpanel"><div class="lbeye">Turn timer</div><div class="lbseg">${[[0, "Off"], [20, "20 s"], [30, "30 s"], [60, "60 s"]].map(([v, t]) => `<button data-set="timer" data-v="${v}" aria-pressed="${LB.cfg.timer === v}">${t}</button>`).join("")}</div>
         <p class="note">When it runs out, the game plays one random card for you.</p>
-        <button class="lbbtn go" id="lbGo" ${ok ? "" : "disabled"}>Start</button></div></div>`;
+        <button class="lbbtn go" id="lbGo" ${ok ? "" : "disabled"}>${ok ? "Start" : ps.length < 3 ? "Need " + (3 - ps.length) + " more" : "Start"}</button></div></div>
+      <ol class="lbhow"><li><b>1</b><span><em>Play</em>Put 1 to 3 cards face down and claim they all match the table card.</span></li><li><b>2</b><span><em>Call</em>The next player either plays on top or shouts Liar! and the cards flip.</span></li><li><b>3</b><span><em>Spin</em>Whoever was wrong spins their cylinder. One chamber in six busts you.</span></li></ol></div>`;
     const q = $("#lbQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!LB.g && !$("#lbo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:lbUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
     return; }
