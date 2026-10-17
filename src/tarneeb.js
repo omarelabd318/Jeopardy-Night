@@ -134,7 +134,7 @@ async function tnPoll(){ if($("#tno").hidden || TN.busy) return; TN.busy = true;
       if(TN.phase === "lobby" && JSON.stringify(ps) !== JSON.stringify(TN.players)){ TN.players = ps; tnRender(); } }
     else if(TN.g && TN.g.phase !== "over"){
       const j = await (await fetch(`api/crdacts?r=${encodeURIComponent(TN.room)}&since=${TN.since}`, {cache:"no-store"})).json(); TN.since = j.n; let changed = false;
-      for(const x of j.acts || []){ const g = TN.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok) changed = true; }
+      for(const x of j.acts || []){ const g = TN.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok){ changed = true; cardSfx(x.a); } }
       if(changed) tnChanged(); } }
   catch(e){} finally { TN.busy = false; } }
 
@@ -142,7 +142,7 @@ async function tnPoll(){ if($("#tno").hidden || TN.busy) return; TN.busy = true;
 function tnStart(){
   if(TN.players.length !== 4 || RELAY !== true) return;
   TN.g = TNR.Game(Object.assign({}, TN.cfg), TN.players.map(x => x.n), TN.players.map(x => x.p)); TN.since = 0; TN.g.start(); TN.phase = "play"; tnChanged(); }
-function tnChanged(){ const g = TN.g; tnPost(); tnRender();
+function tnChanged(){ const g = TN.g; tnPost(); tnRender(); cardTableSfx(g);   // 7.77: deal and trick-sweep sounds
   if(g.phase === "over"){ playWinSiu(); return; }
   const wait = {redeal:g.redealWhy === "weak" ? 4200 : 2600, trickdone:1700, handdone:12000}[g.phase];
   if(wait){ const v = g.v, ph = g.phase; setTimeout(() => { if(TN.g === g && g.v === v && g.phase === ph){ g.advance(); tnChanged(); } }, wait); } }
@@ -151,7 +151,7 @@ function tnNext(){ const g = TN.g; if(g && g.phase === "handdone"){ g.advance();
 /* ---------- screens ---------- */
 function tnEnter(){ if(S.mode === "tarneeb") return; S.mode = "tarneeb"; document.body.classList.add("tnmode"); }
 function tnLeave(){ if(S.mode !== "tarneeb") return; stopSiu(); clearInterval(TN.poll); TN.poll = null; TN.g = null; TN.phase = "lobby"; S.mode = null; document.body.classList.remove("tnmode"); $("#tno").hidden = true; }
-function tnShow(){ tnEnter(); CK.inject();
+function tnShow(){ tnEnter(); CK.inject(); try{ Snd.unlock(); }catch(e){}
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo","#psyo","#esto"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   TN.room = newRoom(); TN.players = []; TN.phase = "lobby"; TN.g = null; TN.since = 0; TN.relay = RELAY;
   $("#tno").hidden = false; tnRender(); window.scrollTo(0, 0);

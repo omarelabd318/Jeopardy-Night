@@ -140,6 +140,10 @@ const Snd = (() => {
       if(big) hdNoise(a, out, a.currentTime, 0.45, "bandpass", 1800, 0.6, 0.1, 900);
       for(let i = 0; i < c; i++){ const f = 3200 + Math.random() * 1800, g = big ? 0.25 + Math.random() * 0.12 : 0.32 - i * 0.03; tone(f, x, 0.045, g * 0.25, "sine"); tone(f * 1.47, x, 0.03, g * 0.12, "sine"); hdNoise(a, out, a.currentTime + x, 0.03, "bandpass", 5200, 1.5, g * 0.7); x += big ? 0.025 + Math.random() * 0.035 : 0.055 + Math.random() * 0.04; } },
     fold(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime; hdNoise(a, out, t, 0.22, "bandpass", 1400, 0.7, 0.12, 700); hdNoise(a, out, t + 0.04, 0.18, "bandpass", 2000, 0.7, 0.08, 900); },
+    /* 7.77 (Omar, Tarneeb, Estimation, 3-5-8): one firm tap on the table for a call, and the swish of a finished trick being swept up by its winner */
+    tap(loud = false){ if(!S.sound) return; const a = ctx(); if(!a) return; const g = loud ? 0.6 : 0.45; tone(loud ? 120 : 140, 0, 0.13, g, "sine"); tone(480, 0, 0.03, g * 0.18, "triangle"); hdNoise(a, out, a.currentTime, 0.05, "lowpass", 1000, 0.5, g * 0.7); },
+    sweep(n = 4){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime; hdNoise(a, out, t, 0.32, "bandpass", 2200, 0.7, 0.1, 800);
+      for(let i = 0; i < n; i++) hdNoise(a, out, t + 0.03 + i * 0.045, 0.06, "bandpass", 1600 + Math.random() * 900, 0.8, 0.07); tone(130, 0.24, 0.1, 0.12, "sine"); },
     dry(){ if(!S.sound) return; const a = ctx(); if(!a) return; click(out || a.destination, 0, 1.2, 1800); click(out || a.destination, 0.09, 0.8, 3400); tone(2100, 0.09, 0.12, 0.02, "triangle", 0.002); },
     bang(){ if(!S.sound) return; const a = ctx(); if(!a) return; const t = a.currentTime, len = 1.6, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
       for(let i = 0; i < d.length; i++){ const x = i / a.sampleRate; d[i] = (Math.random() * 2 - 1) * Math.exp(-x * 7) * (x < 0.012 ? 1.6 : 1); }
@@ -150,6 +154,16 @@ const Snd = (() => {
     fanfare(){ if(!S.sound) return; [523, 659, 784, 1047].forEach((f,i) => { tone(f, i*0.13, 0.9, 0.06, "triangle", 0.01); tone(f*2, i*0.13, 0.6, 0.015, "sine", 0.01); }); }
   };
 })();
+/* 7.77 (Omar): card sounds for Tarneeb, Estimation and 3-5-8 on the TV, made from the Liar's Bar and Hold'em sounds above. cardSfx(a) is a phone's move (a card down, a knock for pass,
+   a tap for a call, cards slid in for a swap or the bury); cardTableSfx(g) runs on every change and plays the deal when a new hand starts and the sweep when a finished trick is taken.
+   They follow the Sound button like every Snd sound. To remove: delete these two functions and their calls in estimation.js, tarneeb.js and threefive.js. */
+function cardSfx(a){ try{ const k = a && a.k;
+  if(k === "play") Snd.place(1); else if(k === "pass" || (k === "dash" && !a.yes)) Snd.knock(); else if(k === "double") { Snd.tap(true); setTimeout(() => Snd.tap(true), 140); }
+  else if(k === "bid" || k === "est" || k === "trump" || k === "dash") Snd.tap(); else if(k === "give") Snd.place((a.cs || []).length || 1); else if(k === "bury"){ Snd.place(4); for(let i = 0; i < 4; i++) Snd.card(0.75 + i * 0.13); } }catch(e){} }
+function cardTableSfx(g){ try{ const mem = g.sfx || (g.sfx = {}), ph = g.phase, deal = g.ri != null ? g.ri : g.hand, was = mem.ph;
+  if(was === "trickdone" && ph !== "trickdone") Snd.sweep(g.n || 4);
+  if(ph !== "over" && ph !== "redeal" && (mem.deal !== deal || was === "redeal")) Snd.deal(6);
+  mem.ph = ph; mem.deal = deal; }catch(e){} }
 function syncSound(){
   document.querySelectorAll(".sndbtn").forEach(b => { b.setAttribute("aria-pressed", S.sound); b.textContent = S.sound ? "Sound on" : "Sound off"; b.title = S.sound ? "Tap to mute the timer sounds" : "Tap to turn the timer sounds on"; });
   $("#optSound").setAttribute("aria-pressed", S.sound);
@@ -209,8 +223,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.76`);
-  $("#verBtn").textContent = "v7.76"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.77`);
+  $("#verBtn").textContent = "v7.77"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [

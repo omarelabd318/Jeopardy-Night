@@ -135,7 +135,7 @@ async function tfPoll(){ if($("#tfo").hidden || TF.busy) return; TF.busy = true;
       if(TF.phase === "lobby" && JSON.stringify(ps) !== JSON.stringify(TF.players)){ TF.players = ps; tfRender(); } }
     else if(TF.g && TF.g.phase !== "over"){
       const j = await (await fetch(`api/crdacts?r=${encodeURIComponent(TF.room)}&since=${TF.since}`, {cache:"no-store"})).json(); TF.since = j.n; let changed = false;
-      for(const x of j.acts || []){ const g = TF.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok) changed = true; }
+      for(const x of j.acts || []){ const g = TF.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok){ changed = true; cardSfx(x.a); } }
       if(changed) tfChanged(); } }
   catch(e){} finally { TF.busy = false; } }
 
@@ -143,7 +143,7 @@ async function tfPoll(){ if($("#tfo").hidden || TF.busy) return; TF.busy = true;
 function tfStart(){
   const k = TF.players.length; if((k !== 3 && k !== 4) || (k === 4 && TF.cfg.len === "t") || RELAY !== true) return;
   TF.g = TFR.Game(Object.assign({}, TF.cfg), TF.players.map(x => x.n), TF.players.map(x => x.p)); TF.since = 0; TF.g.start(); TF.phase = "play"; tfChanged(); }
-function tfChanged(){ const g = TF.g; tfPost(); tfRender();
+function tfChanged(){ const g = TF.g; tfPost(); tfRender(); cardTableSfx(g);   // 7.77: deal and trick-sweep sounds
   if(g.phase === "over"){ playWinSiu(); return; }
   const wait = {trickdone:1700, handdone:14000}[g.phase];
   if(wait){ const v = g.v, ph = g.phase; setTimeout(() => { if(TF.g === g && g.v === v && g.phase === ph){ g.advance(); tfChanged(); } }, wait); } }
@@ -152,7 +152,7 @@ function tfNext(){ const g = TF.g; if(g && g.phase === "handdone"){ g.advance();
 /* ---------- screens ---------- */
 function tfEnter(){ if(S.mode === "threefive") return; S.mode = "threefive"; document.body.classList.add("tfmode"); }
 function tfLeave(){ if(S.mode !== "threefive") return; stopSiu(); clearInterval(TF.poll); TF.poll = null; TF.g = null; TF.phase = "lobby"; S.mode = null; document.body.classList.remove("tfmode"); $("#tfo").hidden = true; }
-function tfShow(){ tfEnter(); CK.inject();
+function tfShow(){ tfEnter(); CK.inject(); try{ Snd.unlock(); }catch(e){}
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo","#psyo","#esto","#tno","#hdo"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   TF.room = newRoom(); TF.players = []; TF.phase = "lobby"; TF.g = null; TF.since = 0; TF.relay = RELAY;
   $("#tfo").hidden = false; tfRender(); window.scrollTo(0, 0);
