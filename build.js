@@ -63,8 +63,8 @@ const MIXES = [
   ["tvmix", "TV Show Mix", ["got","peaky","bb","pb","st","office","friends","himym"]],   // 6.38: the eight show categories
   ["mixent2", "Entertainment Mix 2", ["tv","netflix","toons","mus","songt","spot","pixar","marvel","emov"]],
   ["mixfb", "Football Mix", ${J(FOOTBALL_IDS)}],
-  /* 6.40 (Omar): Everything Mix, last: every category except Act It Out (both), One Word Clues, the locked NSFW one and the hidden ones */
-  ["mixall", "Everything Mix", CATS.filter(c => !c.mode && !["act","acteg","pw","x18","ptrap"].includes(c.id)).map(c => c.id)]];
+  /* 6.40 (Omar): Everything Mix, last: every category except Act It Out (both), One Word Clues, the locked NSFW one and the hidden ones (7.73: Literally Translated) */
+  ["mixall", "Everything Mix", CATS.filter(c => !c.mode && !["act","acteg","pw","x18","ptrap","lit"].includes(c.id)).map(c => c.id)]];
 MIXES.forEach(([id,name]) => { CATS.push({id, name, type:"mix"}); DATA[id] = {100:[],200:[],300:[],400:[],500:[]}; });
 MIXES.forEach(([id,name,src]) => { const c = CATS.find(x => x.id===id); c.src = src.filter(s => CATS.some(x => x.id===s));   // 6.38: after all are added, so a mix can include another (TV Show Mix)
   c.desc = "A mix of " + c.src.map(s => CATS.find(x => x.id===s).name).join(", ") + ". Each tile picks one of them."; });

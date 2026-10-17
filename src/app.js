@@ -87,7 +87,7 @@ const S = {
 };
 const photos = {};  // norm(answer) -> blob url
 const catById = id => CATS.find(c => c.id === id);
-const HIDDEN_IDS = new Set(["ptrap"]);   // 6.40 (Omar): hidden from setup, mixes and the totals; its clues stay in the build. To bring one back, take it out of this set (and put it back in CAT_GROUPS)
+const HIDDEN_IDS = new Set(["ptrap","lit"]);   // 7.73 (Omar): Literally Translated hidden too (was after plot in Entertainment). 6.40 (Omar): hidden from setup, mixes and the totals; its clues stay in the build. To bring one back, take it out of this set (and put it back in CAT_GROUPS)
 const PICK = CATS.filter(c => !c.mode && !HIDDEN_IDS.has(c.id));  // categories offered in setup (Football mode adds its own World Cup)
 const pool = (cat,lvl) => DATA[cat][lvl];
 
@@ -209,8 +209,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.72`);
-  $("#verBtn").textContent = "v7.72"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.73`);
+  $("#verBtn").textContent = "v7.73"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -218,7 +218,7 @@ const CAT_GROUPS = [
   /* 4.80 (Omar): every Egypt category now sits in Egypt & Arab World. 4.82 (Omar): Act It Out: Egypt Edition back in Party Games after "act"; Egyptian Cinema moved to after Arab World, Ramadan Series to after Egyptian Football. Before, Egyptian Football was in Football & Sports after "fb"; Egyptian Cinema, Plots: Egypt and Quotes: Egypt in Entertainment after "tv", "plot" and "quote"; the three Egypt party games in Party Games after act, emov and emsen */
   ["Egypt & Arab World", ["egy","egyph","egh","cairo","arab","ecin","prov","memeeg","ploteg","quoteeg","egfb","ramadan","lyricar","emeg","emseg","ctryar"]],
   ["Football & Sports", ["fb","pl","wc","wc26","ucl","xfer","cclub","path","whoami","shirt","mgr","fyear","form","score","stad","sport","tennis"]],
-  ["Entertainment", ["tv","plot","lit","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","emov","quote","qblank","mus","songt","song","oldies","lyric","spot","igf"]],
+  ["Entertainment", ["tv","plot","got","peaky","bb","pb","gta","vgames","st","office","netflix","friends","himym","hp","hgames","marvel","blockbuster","toons","romcom","pixar","emov","quote","qblank","mus","songt","song","oldies","lyric","spot","igf"]],
   ["Maps & World", ["geo","landmark","flag","shape","pin","ctry","lang","trans"]],
   ["Knowledge", ["gk","facts","his","islam","ww2","year","myth","holi","sci","space","animal","food","ffood","cal","cocktail","mb","curr","brand","cars","tg","nick","books"]],
   ["Photo Rounds", ["car","actor","footy","person","foodpic","logo","gctry"]],  /* 5.23: Egypt: Photo Edition (egyph) after Egypt, Guess the Country (gctry) after Guess the Logo */,
