@@ -55,7 +55,7 @@ function renderHsSetup(){
     <div class="hspanel"><div class="hseye">Turns per team</div>${seg("turns", [3, 4, 5, 6, 7, 8].map(n => [n, n]), c.turns)}<p class="note">Every team gets the same number of turns in the hot seat.</p></div>
     <div class="hspanel"><div class="hseye">One swap per team</div>${seg("swap", [["true", "On"], ["false", "Off"]], c.swap)}<p class="note">On: each team can swap one clue it doesn't like for another from the same category and value, once per game.</p></div>
     <div class="hspanel"><div class="hseye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture and every clue that shows a photo.</p></div>
-    <div class="hspanel" title="After a miss with something in the pot, the next team gets one go at the same clue for half the pot. A wrong steal costs nothing."><div class="hseye">Steal the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: when the team in the seat misses with something in the pot, the next team gets one go at the same clue for half the pot. A wrong steal costs nothing.</p></div>
+    <div class="hspanel"><div class="hseye">Steal the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: when the team in the seat misses with something in the pot, the next team gets one go at the same clue for half the pot. A wrong steal costs nothing.</p></div>
     <div class="row"><button class="hsb ghost" id="hsBack">Back to title</button><button class="hsb go" id="hsStart">Take a seat</button></div>`;
 }
 $("#hsSetup").addEventListener("click", e => {

@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.69",
+  "date": "2026-10-17",
+  "items": [
+   "Removed the hover tooltips from the new setup switches (Final Jeopardy, Steal the pot, Hot Potato, Mystery lots, Sealed bids); each already has its description written under it."
+  ]
+ },
+ {
   "v": "7.68",
   "date": "2026-10-17",
   "items": [
