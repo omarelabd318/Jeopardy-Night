@@ -1,8 +1,8 @@
 /* 7.47 (Omar): Speed Trivia, a buzzer race for 2 to 4 players (framework drafted 2026-10-14, then "build with look 1 and all defaults": Studio Podiums look). Every player joins once from their phone
    (buzz.html at /b?r=ROOM, one name, same join step as Imposter and Psych); the phone is the buzzer. The TV shows one clue at a time, typing in word by word (4 words a second); anyone can buzz at any moment, and the first
    buzz the relay received wins. The buzzer's phone shows 4 answer buttons (the right answer plus 3 wrong ones from the same category's other answers) or, with "Type it", a text box. A wrong answer or running out of time locks
-   that player out for the rest of the clue and costs half the round's points; the clue goes on and the others can buzz. Nobody scores if everyone is locked out or nobody buzzes 8 s after the clue is complete.
-   Game: 3 rounds of 8 clues (setup: 5 to 12): Warm Up (100 and 200 clues, +100 / -50, 6 s to answer), Speed Up (300 and 400 clues, +200 / -100, 6 s), Lightning (500 clues, +300 / -150, 4 s). Typing doubles the answer time.
+   that player out for the rest of the clue and costs half the clue's value (7.66; it was half the round's points); the clue goes on and the others can buzz. Nobody scores if everyone is locked out or nobody buzzes 8 s after the clue is complete.
+   Game: 3 rounds of 8 clues (setup: 5 to 12): Warm Up (100 and 200 clues, 6 s to answer), Speed Up (300 and 400 clues, 6 s), Lightning (500 clues, 4 s). Since 7.66 (Omar) a right answer scores the clue's value and a wrong one loses half of it; the setup also offers Marathon: 20 to 30 clues (default 25) of 200 to 500 picked at random, no rounds, same scoring. Typing gives a flat 15 s (7.66).
    From the 3rd right answer in a row, each further one adds +100; a streak breaks when you answer wrong, run out of time or somebody else wins a clue (a clue nobody gets doesn't break it). A tie for first plays
    sudden death on 500 clues: only the tied players can buzz, a wrong answer knocks you out of it, the first right answer wins (up to 8 clues, then they share the win). The winner screen plays the Siuuu clip.
    Clues come from the normal pool: text, emoji and flag categories whose answer is 30 characters or fewer (no A/B/C answers, no photo clues), picked at random from the categories chosen in setup (a clue is not repeated on this
@@ -21,23 +21,24 @@
 const SPR = (() => {
   const WPS = 4, DEAD_MS = 8000, RESULT_MS = 3000, SCORES_MS = 5000, ROUND_MS = 3000, STREAK_AT = 3, BONUS = 100;
   const ROUNDS = [null, {n:1, name:"Warm Up", lv:[100, 200], right:100, wrong:50, secs:6}, {n:2, name:"Speed Up", lv:[300, 400], right:200, wrong:100, secs:6},
-    {n:3, name:"Lightning", lv:[500], right:300, wrong:150, secs:4}, {n:4, name:"Sudden death", lv:[500], right:0, wrong:0, secs:6}];
+    {n:3, name:"Lightning", lv:[500], right:300, wrong:150, secs:4}, {n:4, name:"Sudden death", lv:[500], right:0, wrong:0, secs:6},
+    {n:5, name:"Marathon", lv:[200, 300, 400, 500], right:0, wrong:0, secs:6}];   // 7.66: a clue is worth its own value (right:/wrong: above are no longer used); Marathon draws any of 200 to 500 at random
   /* o = {players:[ids] (2 to 4), per:clues per round, pen:wrong answers cost points, typed:answers are typed, wbw:clue types in word by word, draw:(lvl, round) => clue | null,
      match:(text, clue) => bool, rand:() => 0..1}. A clue is {q, a, opts:[4 answers], ci:index of the right one, ...whatever the screen shows}. Phases: round > ready > live > buzzed > (live again | result) > ready ... > scores > round ... > over. */
   function Game(o){
-    const ids = o.players.slice(); if(ids.length < 2 || ids.length > 4) return null;
+    const ids = o.players.slice(); if(ids.length < 2 || ids.length > 4) return null; const marathon = o.mode === "marathon";
     const rnd = o.rand || Math.random, wbw = o.wbw !== false, typed = !!o.typed, pen = o.pen !== false;
-    const g = {ids, per:o.per, pen, typed, wbw, rd:0, ci:0, ph:"round", clue:null, lock:{}, gone:[], buz:null, shuf:[], dl:0, rdy:0, rv:0, rvT:0, rt:0, score:{}, streak:{}, maxStreak:{}, res:null, last:null,
+    const g = {ids, per:o.per, pen, typed, wbw, marathon, lvl:0, rd:0, ci:0, ph:"round", clue:null, lock:{}, gone:[], buz:null, shuf:[], dl:0, rdy:0, rv:0, rvT:0, rt:0, score:{}, streak:{}, maxStreak:{}, res:null, last:null,
       sd:null, sdAll:null, sdN:0, sdWin:false, winners:null, paused:false, v:0};
     ids.forEach(p => { g.score[p] = 0; g.streak[p] = 0; g.maxStreak[p] = 0; });
-    const R = () => ROUNDS[g.rd], secs = () => R().secs * (typed ? 2 : 1), nw = () => g.clue ? String(g.clue.q).split(/\s+/).length : 0;
+    const R = () => ROUNDS[g.rd], secs = () => typed ? 15 : R().secs, nw = () => g.clue ? String(g.clue.q).split(/\s+/).length : 0;
     const shown = now => Math.min(nw(), g.rv + (g.ph === "live" ? Math.max(0, now - g.rvT) / 1000 * WPS : 0));
     const fullAt = () => g.rvT + (nw() - g.rv) / WPS * 1000;
     const shuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
     const alive = () => ids.filter(p => !g.lock[p] && (!g.sd || g.sd.includes(p)));
-    function draw(now){ const r = R(), lvl = r.lv[g.ci % r.lv.length], c = o.draw(lvl, g.rd);
+    function draw(now){ const r = R(), lvl = marathon && !g.sd ? r.lv[Math.floor(rnd() * r.lv.length)] : r.lv[g.ci % r.lv.length], c = o.draw(lvl, g.rd);
       if(!c){ g.ph = "over"; g.winners = leaders(); return false; }
-      g.clue = c; g.lock = {}; g.gone = []; g.buz = null; g.res = null; g.last = null; g.rv = wbw ? 0 : nw(); g.rvT = 0; g.ph = "ready"; g.rdy = now + (wbw ? 2000 : 1000); g.v++; return true; }
+      g.clue = c; g.lvl = lvl; g.lock = {}; g.gone = []; g.buz = null; g.res = null; g.last = null; g.rv = wbw ? 0 : nw(); g.rvT = 0; g.ph = "ready"; g.rdy = now + (wbw ? 2000 : 1000); g.v++; return true; }
     const leaders = () => { const m = Math.max(...ids.map(p => g.score[p])); return ids.filter(p => g.score[p] === m); };
     function toResult(now){ g.ph = "result"; g.rt = now; g.v++; }
     function roundCard(now){ g.ph = "round"; g.rt = now; g.ci = 0; g.v++; }
@@ -47,19 +48,19 @@ const SPR = (() => {
         if(++g.sdN >= 8){ g.winners = g.sdAll.slice(); g.ph = "over"; g.v++; return; }
         g.sd = g.sdAll.slice(); g.ci++; draw(now); return; }
       if(++g.ci < g.per){ draw(now); return; }
-      if(g.rd < 3){ g.ph = "scores"; g.rt = now; g.v++; return; }
+      if(g.rd < 3 && !marathon){ g.ph = "scores"; g.rt = now; g.v++; return; }
       const lead = leaders(); if(lead.length === 1){ g.winners = lead; g.ph = "over"; g.v++; return; }
       g.sd = lead.slice(); g.sdAll = lead.slice(); g.sdN = 0; g.rd = 4; roundCard(now); }
-    function right(p, now, guess){ const r = R(); g.streak[p]++; ids.forEach(x => { if(x !== p) g.streak[x] = 0; });
-      const bonus = !g.sd && g.streak[p] >= STREAK_AT ? BONUS : 0, pts = r.right + bonus; g.score[p] += pts; g.maxStreak[p] = Math.max(g.maxStreak[p], g.streak[p]);
+    function right(p, now, guess){ g.streak[p]++; ids.forEach(x => { if(x !== p) g.streak[x] = 0; });
+      const bonus = !g.sd && g.streak[p] >= STREAK_AT ? BONUS : 0, pts = (g.sd ? 0 : g.lvl) + bonus; g.score[p] += pts; g.maxStreak[p] = Math.max(g.maxStreak[p], g.streak[p]);
       g.res = {k:"right", p, pts, bonus, guess:guess == null ? null : guess}; toResult(now); return true; }
-    function wrong(p, now, a, why){ const r = R(), cost = g.sd || !pen ? 0 : r.wrong; g.score[p] -= cost; g.streak[p] = 0; g.lock[p] = 1;
+    function wrong(p, now, a, why){ const cost = g.sd || !pen ? 0 : Math.round(g.lvl / 2); g.score[p] -= cost; g.streak[p] = 0; g.lock[p] = 1;
       if(a && a.i != null) g.gone.push(a.i);
       let win = false; if(g.sd){ g.sd = g.sd.filter(x => x !== p); if(g.sd.length === 1){ win = true; g.sdWin = true; } }
       g.last = {p, k:why, pts:-cost, guess:a && a.t != null ? String(a.t) : null, at:now};
       if(win || !alive().length){ g.res = {k:why, p, pts:-cost, dead:true, guess:g.last.guess}; toResult(now); return true; }
       g.ph = "live"; g.buz = null; g.rvT = now; g.v++; return true; }
-    g.start = now => { if(g.rd) return false; g.rd = 1; roundCard(now); return true; };
+    g.start = now => { if(g.rd) return false; g.rd = marathon ? 5 : 1; roundCard(now); return true; };
     g.shown = shown; g.R = R; g.nw = nw; g.secs = secs; g.alive = alive;
     g.fullAt = fullAt;
     g.buzz = (p, now) => { if(g.paused || g.ph !== "live" || !ids.includes(p) || g.lock[p] || (g.sd && !g.sd.includes(p))) return false;
@@ -91,7 +92,7 @@ const SPR = (() => {
 
 const SP = {cfg:null, room:null, players:[], phase:"lobby", g:null, vc:0, since:0, busy:false, poll:null, tmr:null, relay:null, psig:"", n:0, sung:false, flash:null, rc:-1, seen:store.get("jn_spSeen", {})};
 if(/[?&]spdebug\b/.test(location.search)) window.__SP = SP;   // 7.47: test hook for v4work/tools/speed-e2e.js, only with ?spdebug
-SP.cfg = Object.assign({per:8, typed:false, wbw:true, pen:true, off:{}}, store.get("jn_spCfg", {}));
+SP.cfg = Object.assign({per:8, mara:false, mn:25, typed:false, wbw:true, pen:true, off:{}}, store.get("jn_spCfg", {}));
 const spSave = () => store.set("jn_spCfg", SP.cfg);
 const SP_COL = ["#e8413a", "#2f7bf0", "#22b45f", "#f2b31b"];
 const spUrl = () => new URL(`b?r=${SP.room}`, location.href).href;
@@ -137,7 +138,7 @@ const spMatch = (t, c) => ansMatch(t, c.a);
 function spPub(){
   const g = SP.g, ids = SP.players.slice(0, 4).map(x => x.p), names = {}; SP.players.forEach(x => names[x.p] = x.n);
   if(!g) return {ph:"lobby", ids, names};
-  const r = g.R(), pub = {ph:g.ph, ids:g.ids, names, rd:g.rd, rname:r.name, right:r.right, wrong:g.pen ? r.wrong : 0, ci:g.ci + 1, of:g.sd ? 1 : g.per, cat:g.clue ? g.clue.catName : "", typed:g.typed, secs:g.secs(),
+  const r = g.R(), pub = {ph:g.ph, ids:g.ids, names, rd:g.rd, rname:r.name, val:g.lvl, pen:g.pen, mara:g.marathon, ci:g.ci + 1, of:g.sd ? 1 : g.per, cat:g.clue ? g.clue.catName : "", typed:g.typed, secs:g.secs(),
     score:g.score, streak:g.streak, lock:Object.keys(g.lock).filter(p => g.lock[p]), sd:g.sd, buz:g.buz, left:g.ph === "buzzed" ? Math.max(0, (g.dl - Date.now()) / 1000) : g.secs(), last:g.last ? {p:g.last.p, k:g.last.k, pts:g.last.pts} : null};
   if(g.ph === "result"){ pub.res = {k:g.res.k, p:g.res.p, pts:g.res.pts, bonus:g.res.bonus || 0}; pub.ans = g.clue.a; }
   if(g.ph === "over") pub.winners = g.winners;
@@ -168,7 +169,7 @@ function spAct(p, a){ const g = SP.g, now = Date.now();
 /* ---------- the flow ---------- */
 function spStart(){
   const ps = SP.players.slice(0, 4); if(RELAY !== true || ps.length < 2 || !spCats().length) return; stopSiu(); try{ Snd.unlock(); }catch(e){} SP.lastCat = null; SP.fAt = 0; SP.rV = -1;
-  SP.g = SPR.Game({players:ps.map(x => x.p), per:SP.cfg.per, pen:SP.cfg.pen, typed:SP.cfg.typed, wbw:SP.cfg.wbw, draw:spDraw, match:spMatch});
+  SP.g = SPR.Game({players:ps.map(x => x.p), mode:SP.cfg.mara ? "marathon" : "rounds", per:SP.cfg.mara ? SP.cfg.mn : SP.cfg.per, pen:SP.cfg.pen, typed:SP.cfg.typed, wbw:SP.cfg.wbw, draw:spDraw, match:spMatch});
   SP.phase = "play"; SP.sung = false; SP.flash = null; SP.g.start(Date.now()); spChanged(); }
 function spChanged(){ const g = SP.g;
   if(g.ph === "over" && !SP.sung){ SP.sung = true; playWinSiu(); }
@@ -201,7 +202,7 @@ function spOver(g){ const rows = g.ids.map(p => ({p, s:g.score[p], st:g.maxStrea
     <p class="spbrag">${best && best.st >= 2 ? `Longest streak: <b>${esc(spName(best.p))}</b> (${best.st} in a row)` : "No streaks this game"}</p></div>`; }
 function spMid(g){
   const r = g.R();
-  if(g.ph === "round") return `<div class="spcard"><small>${g.rd === 4 ? "Tied at the top" : "Get ready"}</small><h2>${g.rd === 4 ? "Sudden death" : `Round ${r.n} · ${esc(r.name)}`}</h2><p>${g.rd === 4 ? `${g.sd.map(p => esc(spName(p))).join(" and ")}: first right answer wins. A wrong answer puts you out.` : `${r.lv.join(" and ")} clues · +${r.right} right${g.pen ? `, −${r.wrong} wrong` : ""} · ${g.secs()} s to answer`}</p></div>`;
+  if(g.ph === "round") return `<div class="spcard"><small>${g.rd === 4 ? "Tied at the top" : "Get ready"}</small><h2>${g.rd === 4 ? "Sudden death" : g.marathon ? `Marathon · ${g.per} clues` : `Round ${r.n} · ${esc(r.name)}`}</h2><p>${g.rd === 4 ? `${g.sd.map(p => esc(spName(p))).join(" and ")}: first right answer wins. A wrong answer puts you out.` : `${g.marathon ? "200 to 500 clues, picked at random" : `${r.lv.join(" and ")} clues`} · right = the clue's value${g.pen ? ", wrong = lose half of it" : ""} · ${g.secs()} s to answer`}</p></div>`;
   if(g.ph === "scores"){ const rows = g.ids.slice().sort((a, b) => g.score[b] - g.score[a]);
     return `<div class="spcard"><small>After round ${r.n}</small><h2>Scores</h2><ol class="spplace">${rows.map((p, i) => `<li style="--c:${spCol(p)}"><b>${i + 1}</b><span>${esc(spName(p))}</span><em class="${g.score[p] < 0 ? "neg" : ""}">${g.score[p]}</em></li>`).join("")}</ol></div>`; }
   const c = g.clue, media = c.kind === "emoji" ? `<div class="spemoji">${esc(c.emoji)}</div>` : c.kind === "flag" ? `<div class="spflag">${flagSVG(c.flag)}</div>` : "";
@@ -214,7 +215,7 @@ function spMid(g){
     status = `<div class="spans"><small>The answer</small><b>${esc(c.a)}</b></div>
       <ul class="spopts">${c.opts.map((t, i) => `<li class="${i === c.ci ? "ok" : ""}">${esc(t)}</li>`).join("")}</ul>
       <div class="spstat ${x.k === "right" ? "go" : "bad"}">${x.k === "right" ? `<b>${who}</b> gets it! ${spSigned(x.pts)}${x.bonus ? ` (streak bonus +${x.bonus})` : ""}` : x.k === "dead" ? "Nobody got it." : `<b>${who}</b> ${x.k === "time" ? "ran out of time" : "got it wrong"}${x.pts ? ` (${spSigned(x.pts)})` : ""}. Nobody else left to buzz.`}</div>`; }
-  return `<div class="spcat">${esc(c.catName)}</div>${media}<div class="spq${String(c.q).length > 90 ? " long" : ""}" id="spQ" data-n="${n}">${spWords(w, n)}</div>${status}`; }
+  return `<div class="spcat">${esc(c.catName)}${g.sd ? "" : ` · ${g.lvl}`}</div>${media}<div class="spq${String(c.q).length > 90 ? " long" : ""}" id="spQ" data-n="${n}">${spWords(w, n)}</div>${status}`; }
 function spCtl(g){ const out = [];
   if(g.ph === "round" || g.ph === "result" || g.ph === "scores" || g.ph === "live") out.push(`<button class="spbtn small" data-act="next">${g.ph === "live" ? "Skip clue" : "Next"}</button>`);
   if(g.ph === "over") out.push(`<button class="spbtn go small" data-act="again">Play again</button>`);
@@ -228,22 +229,24 @@ function spRender(){
         ? `<div class="speye">${RELAY === null ? "Checking the connection…" : "Needs the Cloudflare link"}</div><p class="note">${RELAY === null ? "Hold on a second." : "Buzzers are phones that talk to the game through the Cloudflare link. Open the game from there to play Speed Trivia."}</p>`
         : `<div class="speye">Scan to join</div><div id="spQr" class="spqr"></div><p class="note">Everyone scans once and types a name. Keep the page open for the whole game.</p>`}</div>
       <div class="sppanel"><div class="speye">Players · ${shown.length} of 4</div>${shown.length ? `<ul class="spnames">${shown.map(p => `<li><button data-kick="${esc(p.p)}" title="Remove ${esc(p.n)}" style="--c:${SP_COL[shown.indexOf(p)]}"><i></i>${esc(p.n)}</button></li>`).join("")}</ul><p class="note">Tap a name to remove that player.${many ? " Phones past the fourth are told the game is full." : ""}</p>` : `<p class="note">Waiting for players… you need 2 to 4.</p>`}</div>
-      <div class="sppanel"><div class="speye">Clues per round</div>${spSeg("per", [5, 6, 7, 8, 9, 10, 11, 12].map(n => [n, n]), c.per)}
+      <div class="sppanel"><div class="speye">Game</div>${spSeg("mara", [[0, "3 rounds"], [1, "Marathon"]], c.mara ? 1 : 0)}
+        <div class="speye">${c.mara ? "Clues in the game" : "Clues per round"}</div>${c.mara ? spSeg("mn", [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(n => [n, n]), c.mn) : spSeg("per", [5, 6, 7, 8, 9, 10, 11, 12].map(n => [n, n]), c.per)}
         <div class="speye">Answers</div>${spSeg("typed", [[0, "Multiple choice"], [1, "Type it"]], c.typed ? 1 : 0)}
+        <p class="note">Time to answer after buzzing: ${c.typed ? "15 s, in every round" : c.mara ? "6 s on every clue" : "6 s (4 s in Lightning)"}.</p>
         <div class="speye">The clue</div>${spSeg("wbw", [[1, "Word by word"], [0, "All at once"]], c.wbw ? 1 : 0)}
         <div class="speye">Wrong answer</div>${spSeg("pen", [[1, "Costs points"], [0, "Only locks you out"]], c.pen ? 1 : 0)}
         <div class="speye">Categories</div><div class="spseg">${groups.map(n => `<button data-grp="${esc(n)}" aria-pressed="${!c.off[n]}">${esc(n)}</button>`).join("")}</div>
-        <p class="note">3 rounds of ${c.per} clues: Warm Up (100 and 200), Speed Up (300 and 400), Lightning (500). A tie for first plays sudden death.</p>
+        <p class="note">${c.mara ? `${c.mn} clues from 200 to 500 at random, no rounds.` : `3 rounds of ${c.per} clues: Warm Up (100 and 200), Speed Up (300 and 400), Lightning (500).`} Right answers score the clue's value${c.pen ? " and wrong ones lose half of it" : ""}. A tie for first plays sudden death.</p>
         <button class="spbtn go" id="spGo" ${ok ? "" : "disabled"}>Start</button></div></div>`;
     const q = $("#spQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!SP.g && !$("#spo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:spUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }
     return; }
-  const r = g.R(), top = g.ph === "over" ? "Final scores" : g.rd === 4 ? "Sudden death" : `Round ${r.n} · ${esc(r.name)}`, cnt = g.ph === "over" || g.ph === "round" || g.ph === "scores" ? "" : g.sd ? "" : `Clue ${g.ci + 1} of ${g.per}`;
+  const r = g.R(), top = g.ph === "over" ? "Final scores" : g.rd === 4 ? "Sudden death" : g.marathon ? "Marathon" : `Round ${r.n} · ${esc(r.name)}`, cnt = g.ph === "over" || g.ph === "round" || g.ph === "scores" ? "" : g.sd ? "" : `Clue ${g.ci + 1} of ${g.per}`;
   el.innerHTML = `<div class="sptv"><div class="spin"><div class="sptop"><span>${top}</span><span>${cnt}${g.paused ? " · Waiting for players" : ""}</span></div>
     <div class="spmid">${g.ph === "over" ? spOver(g) : spMid(g)}</div>${(g.ph === "over" || g.ph === "scores") ? "" : spPods(g)}
     <div class="spctl">${spCtl(g)}</div></div></div>`; spTick(); }
 $("#spo").addEventListener("click", e => {
-  const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = +set.dataset.v; SP.cfg[k] = k === "per" ? v : !!v; spSave(); spRender(); return; }
+  const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = +set.dataset.v; SP.cfg[k] = k === "per" || k === "mn" ? v : !!v; spSave(); spRender(); return; }
   const grp = e.target.closest("[data-grp]"); if(grp){ const n = grp.dataset.grp; SP.cfg.off[n] = !SP.cfg.off[n]; if(!spCats().length) SP.cfg.off[n] = false; spSave(); spRender(); return; }
   const kick = e.target.closest("[data-kick]"); if(kick){ fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:SP.room, p:kick.dataset.kick})}).catch(() => {});
     SP.players = SP.players.filter(x => x.p !== kick.dataset.kick); SP.psig = JSON.stringify(SP.players.map(x => ({p:x.p, n:x.n}))); spRender(); spPost(); return; }

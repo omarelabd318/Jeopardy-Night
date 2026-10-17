@@ -96,17 +96,17 @@ function draw(){
   document.documentElement.style.setProperty("--c", col);
   const sg = [p.v, mine, note, sending, early > Date.now()].join("|"); if(sg === sig) return; sig = sg;
   const v = $("view"), nm = x => esc((p.names && p.names[x]) || ""), score = p.score ? p.score[me.p] ?? 0 : 0, err = note ? `<div class="msg">${esc(note)}</div>` : "";
-  $("rnd").innerHTML = p.ph === "lobby" || p.ph === "over" ? "" : p.rd === 4 ? "Sudden death" : `Round ${p.rd}`;
+  $("rnd").innerHTML = p.ph === "lobby" || p.ph === "over" ? "" : p.rd === 4 ? "Sudden death" : p.mara ? "Marathon" : `Round ${p.rd}`;
   if(!mine){ v.innerHTML = p.ph === "lobby" && (p.ids || []).length < 4 ? `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to start.</div></div>`
       : (p.ids || []).length >= 4 ? `<div class="wait"><div class="big">This game is full</div><div class="hint">Four players are already in. Ask the host to remove someone, or wait for the next game.</div></div>`
       : `<div class="wait"><div class="big">Game in progress</div><div class="hint">You'll join between clues.</div></div>`; return; }
   if(p.ph === "lobby"){ v.innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">You are <b style="color:${col}">${["red", "blue", "green", "gold"][idx]}</b>. Waiting for the host to start.</div></div>`; return; }
-  if(p.ph === "round"){ v.innerHTML = `<div class="wait"><div class="hint">${p.rd === 4 ? "Tied at the top" : "Get ready"}</div><div class="big">${p.rd === 4 ? "Sudden death" : `Round ${p.rd} · ${esc(p.rname)}`}</div><div class="hint">${p.rd === 4 ? (out ? "You're not in this one. Watch the TV." : "First right answer wins. A wrong answer puts you out.") : `+${p.right} for a right answer${p.wrong ? `, −${p.wrong} for a wrong one` : ""}.`}</div></div>`; return; }
+  if(p.ph === "round"){ v.innerHTML = `<div class="wait"><div class="hint">${p.rd === 4 ? "Tied at the top" : "Get ready"}</div><div class="big">${p.rd === 4 ? "Sudden death" : p.mara ? `Marathon · ${p.of} clues` : `Round ${p.rd} · ${esc(p.rname)}`}</div><div class="hint">${p.rd === 4 ? (out ? "You're not in this one. Watch the TV." : "First right answer wins. A wrong answer puts you out.") : `A right answer scores the clue's value${p.pen ? ", a wrong one loses half of it" : ""}.`}</div></div>`; return; }
   if(p.ph === "ready"){ const tooEarly = early > Date.now(); v.innerHTML = `<div class="status gold">${p.cat ? esc(p.cat) : "Get ready"}</div><div class="buzzwrap"><button class="buzz grey" id="bz">${tooEarly ? "TOO EARLY" : "GET READY"}</button></div><div class="hint" style="text-align:center">Look at the TV</div>`; return; }
   if(p.ph === "live"){
     if(out){ v.innerHTML = `<div class="lockbox"><div class="big neutral">You're out</div><div class="hint">Sudden death. Watch the TV.</div></div>`; return; }
     if(locked){ v.innerHTML = `<div class="lockbox"><div class="big">LOCKED</div><div class="hint">Wrong. Wait for the next clue.</div></div>`; return; }
-    const lastMsg = p.last && p.last.p !== me.p ? `<div class="hint" style="text-align:center">${nm(p.last.p)} ${p.last.k === "time" ? "ran out of time" : "was wrong"}. Buzz!</div>` : `<div class="hint" style="text-align:center">${esc(p.cat)}</div>`;
+    const lastMsg = p.last && p.last.p !== me.p ? `<div class="hint" style="text-align:center">${nm(p.last.p)} ${p.last.k === "time" ? "ran out of time" : "was wrong"}. Buzz!</div>` : `<div class="hint" style="text-align:center">${esc(p.cat)}${p.sd ? "" : " · " + p.val}</div>`;
     v.innerHTML = `<div class="buzzwrap"><button class="buzz" id="bz">BUZZ</button></div>${lastMsg}`; return; }
   if(p.ph === "buzzed"){
     if(p.buz !== me.p){ v.innerHTML = `<div class="lockbox"><div class="big neutral">${nm(p.buz)} buzzed</div><div class="hint">${locked ? "You're locked out of this clue." : "If they get it wrong, buzz again."}</div></div>`; return; }
