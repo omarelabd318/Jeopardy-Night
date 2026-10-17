@@ -209,8 +209,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.74`);
-  $("#verBtn").textContent = "v7.74"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.75`);
+  $("#verBtn").textContent = "v7.75"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1832,10 +1832,10 @@ function showWinner(){
    7.68 (Omar): the bets are secret, sent from the team phones (the same join code and /api/bid route as phone bidding; the TV only shows who has bet, and the amounts appear with the answer).
    Without the Cloudflare link there are no phones, so the host types the bets in instead. To remove: delete this block, #optFinal in head.html, the finalJ / finalDone lines in this file and the fj part of drawBid in play.html. */
 const FJ = {st:null, timer:null, seen:0};
-function fjPick(){ const ok = [];
+function fjPick(only, skip){ const ok = [];   // only: stay in this category (7.75); skip: not this clue index
   [S.cats, PICK.map(c => c.id)].forEach(list => { if(ok.length) return;
-    list.forEach(id => { const c = catById(id); if(!c || c.mode || c.type !== "text" || HIDDEN_IDS.has(id) || isMix(id)) return;
-      (pool(id, 500) || []).forEach((e, i) => { if(!e[2]) ok.push([id, i]); }); }); });
+    list.forEach(id => { const c = catById(id); if(!c || c.mode || c.type !== "text" || HIDDEN_IDS.has(id) || isMix(id) || (only && id !== only)) return;
+      (pool(id, 500) || []).forEach((e, i) => { if(!e[2] && !(only && i === skip)) ok.push([id, i]); }); }); });
   if(!ok.length) return null;
   const fresh = ok.filter(([id, i]) => !S.used.has(`${id}-500-${i}`)), from = fresh.length ? fresh : ok; return from[Math.floor(Math.random() * from.length)]; }
 function fjStart(){ if(S.ended || S.finalDone) return; S.finalDone = true;
@@ -1879,7 +1879,9 @@ function fjRender(){ const f = FJ.st; if(!f) return; const cat = catById(f.cat),
       q.innerHTML = ""; try{ new QRCode(q, {text: ffaUrl(), width: 220, height: 220, correctLevel: QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); } }
 $("#clue").addEventListener("click", e => { const f = FJ.st; if(!f || S.cur) return; const b = e.target.closest("[data-fj]"); if(!b) return; const k = b.dataset.fj;
   if(k === "skip"){ fjClose(); showWinner(); return; }
-  if(k === "swap"){ let pk = fjPick(); for(let t = 0; pk && pk[0] === f.cat && t < 8; t++) pk = fjPick(); if(!pk) return; S.used.add(`${f.cat}-500-${f.idx}`); store.set("jn_used", [...S.used]); f.cat = pk[0]; f.idx = pk[1];   // 7.70 (Omar): swap the Final Jeopardy clue (new random category and clue; bets already sent stay)
+  if(k === "swap"){ let pk; if(f.stage === "clue") pk = fjPick(f.cat, f.idx);   // 7.75 (Omar): once the bets are locked, teams bet on this category, so the swap stays in it
+    else { pk = fjPick(); for(let t = 0; pk && pk[0] === f.cat && t < 8; t++) pk = fjPick(); }
+    if(!pk) return; S.used.add(`${f.cat}-500-${f.idx}`); store.set("jn_used", [...S.used]); f.cat = pk[0]; f.idx = pk[1];   // 7.70 (Omar): swap the Final Jeopardy clue (new random category and clue; bets already sent stay)
     Snd.blip(); fjRender(); fjSync({join:"wait", phonebets:"bet", clue:"lock"}[f.stage]); return; }
   if(k === "open"){ fjStop(); f.stage = "phonebets"; FJ.seen = 0; Snd.blip(); fjRender(); fjSync("bet"); fjPoll(); return; }
   if(k === "typed"){ fjStop(); f.phones = false; ffaPost({cur:null, s:{}}); f.stage = "bets"; fjRender(); return; }
