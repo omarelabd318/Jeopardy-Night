@@ -55,7 +55,7 @@ function renderHsSetup(){
     <div class="hspanel"><div class="hseye">Turns per team</div>${seg("turns", [3, 4, 5, 6, 7, 8].map(n => [n, n]), c.turns)}<p class="note">Every team gets the same number of turns in the hot seat.</p></div>
     <div class="hspanel"><div class="hseye">One swap per team</div>${seg("swap", [["true", "On"], ["false", "Off"]], c.swap)}<p class="note">On: each team can swap one clue it doesn't like for another from the same category and value, once per game.</p></div>
     <div class="hspanel"><div class="hseye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture and every clue that shows a photo.</p></div>
-    <div class="hspanel"><div class="hseye">Steal the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: when the team in the seat misses with something in the pot, the next team gets one go at the same clue for half the pot. A wrong steal costs nothing.</p></div>
+    <div class="hspanel"><div class="hseye">Steal the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: when the team in the seat is wrong, press "Wrong: next team steals" before revealing the answer. The next team gets one go at the same clue for half the pot. A wrong steal costs nothing. If you reveal first, a wrong answer just loses the pot.</p></div>
     <div class="row"><button class="hsb ghost" id="hsBack">Back to title</button><button class="hsb go" id="hsStart">Take a seat</button></div>`;
 }
 $("#hsSetup").addEventListener("click", e => {
@@ -83,8 +83,8 @@ function renderHs(){
   if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc" data-card="${i}"><b>${esc(catById(c.cat).name)}</b><span>Value hidden</span></button>`).join("")}</div>`;
   else if(st.phase === "clue" || st.phase === "tbclue") low = `<div class="hscards one"><button class="hsb go" data-hs="reopen">Open the clue again</button></div>`;
   if(st.phase === "result"){ const r = st.res, last = st.turnNo + 1 >= hsTotal();
-    ov = `<div class="hsov"><h2 class="${r.kind === "miss" && r.pts ? "lose" : ""}">${r.kind === "bank" ? "Banked!" : r.kind === "half" ? "Half answer" : r.pts ? "Busted!" : "Missed it"}</h2>
-      <div class="who">${r.kind === "miss" ? (r.pts ? `${esc(r.name)} loses ${hsNum(r.pts)}` : `${esc(r.name)} had nothing at risk`) + (r.stole ? `<br>${esc(r.stole.name)} steals ${hsNum(r.stole.amt)}!` : r.stl ? `<br>${esc(r.stl)} missed the steal` : "") : r.pts ? `${esc(r.name)} keeps ${hsNum(r.pts)}` : `${esc(r.name)} had nothing to keep`}</div>
+    ov = `<div class="hsov"><h2 class="${r.kind === "miss" && r.pts ? "lose" : ""}">${r.kind === "pass" ? "Passed" : r.kind === "bank" ? "Banked!" : r.kind === "half" ? "Half answer" : r.pts ? "Busted!" : "Missed it"}</h2>
+      <div class="who">${r.kind === "pass" ? `${esc(r.name)} keeps ${hsNum(r.pts)} (a quarter of the pot) and drops the other ${hsNum(r.lost)}` : r.kind === "miss" ? (r.pts ? `${esc(r.name)} loses ${hsNum(r.pts)}` : `${esc(r.name)} had nothing at risk`) + (r.stole ? `<br>${esc(r.stole.name)} steals ${hsNum(r.stole.amt)}!` : r.stl ? `<br>${esc(r.stl)} missed the steal` : "") : r.pts ? `${esc(r.name)} keeps ${hsNum(r.pts)}` : `${esc(r.name)} had nothing to keep`}</div>
       <button class="hsb go" data-hs="next">${last ? "Final scores" : "Next team"}</button></div>`; }
   if(st.phase === "tb"){ const names = st.tb.ids.map(i => esc(st.teams[i].name));
     ov = `<div class="hsov"><h2>Tie-break</h2><div class="who">${st.tb.msg || `${names.join(" and ")} are tied.`}</div><p class="note">${esc(t.name)} gets one 500 clue. Right wins it.</p><button class="hsb go" data-hs="tbopen">Open the clue</button></div>`; }
@@ -135,7 +135,9 @@ function hsAwards(c){ const st = HS.st, i = hsSeat(), tb = !!st.tb;
 function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; if(c.preview || c.revealed) return "";
   /* 7.51 (Omar): "Clue played already" is a free swap that doesn't use the team's one swap. Without it Hot Seat only had the limited swap. */
   const played = `<button class="btn small" data-act="played" title="The group has already had this clue. Get another from the same category and value, and it doesn't use your swap.">Clue played already</button>`;
-  return played + (HS.cfg.swap && t && t.swap && !st.tb && !st.stl ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""); }
+  const steal = HS.cfg.steal && st.pot && st.teams.length > 1 && !st.tb && !st.stl ? `<button class="btn small" data-act="hsmiss" title="The team in the seat is wrong. The next team gets one go at the same clue, answer still hidden.">Wrong: ${esc(st.teams[(hsSeat() + 1) % st.teams.length].name)} steals</button>` : "";
+  const pass = st.pot && !st.tb && !st.stl ? `<button class="btn small" data-act="hspass" title="Not sure? Skip the clue and keep 25% of the pot. The rest is lost.">Pass: keep ${hsNum(Math.round(st.pot / 4))}</button>` : "";
+  return played + pass + steal + (HS.cfg.swap && t && t.swap && !st.tb && !st.stl ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""); }
 function hsDone(c){
   const st = HS.st, i = hsSeat(), v = c.awards[i];
   S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
@@ -145,8 +147,13 @@ function hsDone(c){
   if(v === undefined){ renderHs(); return; }   // closed with no result: back to the table, where the clue can be opened again
   if(v === 1){ st.streak++; st.pot = hsPotAt(st.streak - 1); st.phase = "pick"; st.cur = null; hsDeal(); Snd.blip(); renderHs(); return; }
   if(v === 0.5) return hsResult("half", st.pot);   // a half answer is a safe stop: bank the pot from before this clue
-  if(HS.cfg.steal && st.pot && st.teams.length > 1){ st.stl = {by:(hsSeat() + 1) % st.teams.length, amt:st.pot / 2}; st.phase = "clue"; Snd.tick(); hsOpen(); return; }   // 7.67: Steal the pot, the next team gets one go at this clue for half the pot
   hsResult("miss", st.pot); }
+/* 7.76 (Omar): the steal has to start BEFORE Reveal answer, or the answer is already on the TV. "Wrong: next team steals" ends the seat team's go and reopens the same clue, still hidden, for the next team. */
+/* 7.76 (Omar): an unsure team can Pass before the reveal: it takes 25% of the unbanked pot and the rest is lost, so skipping beats a wrong guess. */
+function hsPass(){ const st = HS.st; if(!st || !st.cur || st.stl || st.tb || !st.pot) return; const t = st.teams[hsSeat()], gain = Math.round(st.pot / 4);
+  t.score += gain; st.res = {kind:"pass", pts:gain, lost:st.pot - gain, name:t.name}; S.used.add(`${st.cur.cat}-${st.cur.lvl}-${st.cur.idx}`); store.set("jn_used", [...S.used]); histNote();
+  closeCard(); st.phase = "result"; st.cur = null; Snd.chime(); renderHs(); }
+function hsMiss(){ const st = HS.st; if(!st || !st.cur || st.stl || st.tb) return; st.stl = {by:(hsSeat() + 1) % st.teams.length, amt:st.pot / 2}; Snd.tick(); hsOpen(); }
 function hsStealDone(right){ const st = HS.st, stl = st.stl, by = st.teams[stl.by]; st.stl = null;   /* 7.67: right earns half the pot; wrong costs nothing */
   if(right) by.score += stl.amt;
   const t = st.teams[hsSeat()]; st.res = {kind:"miss", pts:st.pot, name:t.name, stole:right ? {name:by.name, amt:stl.amt} : null, stl:right ? null : by.name}; st.phase = "result"; st.cur = null; if(right) Snd.chime(); else Snd.tick(); renderHs(); }

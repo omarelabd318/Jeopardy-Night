@@ -1,5 +1,14 @@
 [
  {
+  "v": "7.76",
+  "date": "2026-10-17",
+  "items": [
+   "Hot Seat Steal the pot now happens before the answer is revealed: press \"Wrong: next team steals\" and the next team gets the same clue, answer still hidden.",
+   "Hot Seat: a team that is unsure can Pass before the reveal and keep 25% of the pot; the rest is lost.",
+   "Speed Trivia typed answers forgive more spelling mistakes."
+  ]
+ },
+ {
   "v": "7.75",
   "date": "2026-10-17",
   "items": [
