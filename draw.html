@@ -40,6 +40,17 @@ input[type=text]{width:100%;font:600 20px var(--body);padding:12px;border:3px so
 .pad canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .pad.mine{outline:6px solid var(--me);touch-action:none;cursor:crosshair}
 .pad.mine canvas{touch-action:none}
+.full{position:fixed;inset:0;z-index:50;height:100dvh;background:var(--ink);display:grid;grid-template-rows:auto 1fr;touch-action:none;-webkit-user-select:none;user-select:none;overscroll-behavior:none}
+.full .fbar{display:flex;align-items:center;gap:10px;padding:max(8px,env(safe-area-inset-top)) 12px 8px;font:400 15px var(--head);letter-spacing:.04em;color:var(--yel)}
+.full .fbar .bar{flex:1;margin:0}
+.full .fbar button{background:#111;color:var(--cream);border:2px dashed var(--yel);border-radius:6px;padding:6px 10px;font:400 13px var(--head);touch-action:none}
+.full .pad{width:auto;aspect-ratio:auto;box-shadow:none;outline:0;position:relative;overflow:hidden;background:transparent}
+.full .board{position:absolute;left:50%;top:50%;background:var(--paper);box-shadow:5px 5px 0 #111;outline:6px solid var(--me)}
+.full .board canvas{position:absolute;inset:0;width:100%;height:100%}
+.full .board .go{position:absolute;left:0;right:0;top:44%;text-align:center;font:400 22px var(--mark);color:#111;opacity:.55;pointer-events:none}
+.full .fcard{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--ink);z-index:2;padding:24px}
+.full .fcard .card{width:100%;max-width:360px}
+.full .fmsg{position:absolute;left:12px;right:12px;bottom:10px;z-index:1}
 .pad .go{position:absolute;left:0;right:0;top:44%;text-align:center;font:400 22px var(--mark);color:#111;opacity:.55;pointer-events:none}
 .votes{display:grid;gap:9px}
 .votes button{display:flex;align-items:center;gap:12px;background:#111;color:#fff;border:0;border-radius:6px;padding:14px 16px;text-align:left;font:400 22px var(--mark);box-shadow:4px 4px 0 #000}
@@ -130,9 +141,16 @@ function resample(pts, n){   // at most n points, evenly spaced along the line
   const total = d[d.length - 1], out = [pts[0]]; let j = 1; for(let k = 1; k < n - 1; k++){ const t = total * k / (n - 1); while(j < pts.length - 1 && d[j] < t) j++;
     const a = pts[j - 1], b = pts[j], f = d[j] > d[j - 1] ? (t - d[j - 1]) / (d[j] - d[j - 1]) : 0; out.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); }
   out.push(pts[pts.length - 1]); return out; }
+/* the board fills the pad; in a tall phone it turns on its side when that makes it bigger */
+let fitState = {s: 1, rot: false};
+function fitPad(pad, board){
+  const w = pad.clientWidth - 16, h = pad.clientHeight - 16, s0 = Math.min(w / 1000, h / 750), s1 = Math.min(h / 1000, w / 750), rot = s1 > s0 * 1.15, s = rot ? s1 : s0;
+  board.style.width = 1000 * s + "px"; board.style.height = 750 * s + "px"; board.style.margin = `${-375 * s}px 0 0 ${-500 * s}px`; board.style.transform = rot ? "rotate(90deg)" : "none";
+  fitState = {s: s, rot: rot}; return fitState; }
+addEventListener("resize", () => { const pad = $("pad"), b = $("board"); if(pad && b && $("full") && !drawing) fitPad(pad, b); });
 function pathLen(pts){ let l = 0; for(let i = 1; i < pts.length; i++) l += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return l; }
-function armPad(pad, cv, pub){
-  const at = e => { const b = cv.getBoundingClientRect(); return [Math.max(0, Math.min(1000, (e.clientX - b.left) / b.width * 1000)), Math.max(0, Math.min(750, (e.clientY - b.top) / b.height * 750))]; };
+function armPad(pad, cv, pub, mapper){
+  const at = mapper || (e => { const b = cv.getBoundingClientRect(); return [Math.max(0, Math.min(1000, (e.clientX - b.left) / b.width * 1000)), Math.max(0, Math.min(750, (e.clientY - b.top) / b.height * 750))]; });
   const finish = async () => { if(!drawing) return; drawing = false; clearTimeout(padTimer); pad.querySelector(".go") && (pad.querySelector(".go").hidden = false);
     if(pathLen(mine) < 30){ mine = []; note = "Draw a longer line."; sig = ""; draw(); return; }
     const pts = flat(resample(mine, 40)), tid = pub.tid; mine = []; const ok = await act({k:"stroke", t:tid, pts}); if(ok) sentTid = tid; };
@@ -152,7 +170,7 @@ function draw(){
   if(!st || !st.pub){ $("chip").innerHTML = ""; $("foot").innerHTML = ""; sig = "w";
     $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're in, ${esc(me.n)}</div><div class="hint">Waiting for the host to open the game.</div></div>`; return; }
   const p = st.pub, mc = colOf(me.p, p), card = st.me && st.me.card;
-  const sg = [p.v, note, sending, peeking, myVote[p.tid] || "", sentTid === p.tid].join("|"); if(sg === sig) return; sig = sg;
+  const sg = [p.v, note, sending, peeking, myVote[p.tid] || "", sentTid === p.tid].join("|"); if(sg === sig) return; sig = sg; { const old = $("full"); if(old) old.remove(); }
   document.documentElement.style.setProperty("--me", mc); $("chip").innerHTML = `<span class="chip"><i></i>${esc(p.scores && p.scores[me.p] != null ? p.scores[me.p] + " pts" : "0 pts")}</span>`;
   $("foot").innerHTML = card && p.ph !== "lobby" && p.ph !== "reveal" && p.ph !== "over" ? peekHtml() : "";
   const v = $("view"), err = note ? `<div class="msg">${esc(note)}</div>` : "";
@@ -164,8 +182,14 @@ function draw(){
   if(p.ph === "card"){ v.innerHTML = `${cats}<div class="status me">Check your card</div><div class="facedown"><span>?</span></div><div class="hint">${seenSent ? "Got it. Waiting for the host to start drawing." : "Hold the button below to see it, then let go. Don't show anyone."}</div>`; return; }
   if(p.ph === "draw"){
     const myTurn = p.cur === me.p, done = sentTid === p.tid, secs = p.secs || 15; padSecs = secs;
-    if(myTurn && !done){ v.innerHTML = `${cats}<div class="status me">Your turn</div><div class="bar"><i id="bar"></i></div><div class="pad mine" id="pad"><canvas id="cv" width="1000" height="750"></canvas><div class="go">DRAW ONE LINE</div></div><div class="hint">One line, don't lift your finger until you're done. It stops after ${secs} seconds.</div>${err}`;
-      const cv = $("cv"); paintStrokes(cv, p, null); armPad($("pad"), cv, p); updateBar(); return; }
+    if(myTurn && !done){ v.innerHTML = `${cats}<div class="status me">Your turn</div><div class="hint">Draw on the full screen.</div>`;
+      const f = document.createElement("div"); f.id = "full"; f.className = "full";
+      f.innerHTML = `<div class="fbar"><span>Your turn</span><div class="bar"><i id="bar"></i></div>${card ? `<button id="fpeek">Card</button>` : ""}</div><div class="pad mine" id="pad"><div class="board" id="board"><canvas id="cv" width="1000" height="750"></canvas><div class="go">DRAW ONE LINE</div></div><div class="fcard" id="fcard"></div>${note ? `<div class="msg fmsg">${esc(note)}</div>` : ""}</div>`;
+      document.body.appendChild(f);
+      const cv = $("cv"), pad = $("pad"); fitPad(pad, $("board")); paintStrokes(cv, p, null);
+      armPad(pad, cv, p, e => { const b = pad.getBoundingClientRect(), dx = e.clientX - (b.left + b.width / 2), dy = e.clientY - (b.top + b.height / 2);
+        const fit = fitState, lx = fit.rot ? dy : dx, ly = fit.rot ? -dx : dy; return [Math.max(0, Math.min(1000, lx / fit.s + 500)), Math.max(0, Math.min(750, ly / fit.s + 375))]; });
+      updateBar(); return; }
     v.innerHTML = `${cats}<div class="status">${myTurn ? "Sent" : nm(p.cur, p) + " is drawing"}</div><div class="pad" id="pad"><canvas id="cv" width="1000" height="750"></canvas></div>${orderHtml(p)}<div class="hint">Round ${p.round}. ${card && card.f ? "Blend in: draw as if you know the word." : "Add to the drawing without making the word too obvious."}</div>`;
     paintStrokes($("cv"), p, null); return; }
   if(p.ph === "vote"){
@@ -195,13 +219,14 @@ function draw(){
     <ol class="stand">${ids.map((x, i) => `<li class="${x === me.p ? "me" : ""}" style="--c:${colOf(x, p)}"><b>${i + 1}</b><i></i><span>${nm(x, p)}</span><em>${(p.scores || {})[x] || 0}</em></li>`).join("")}</ol>`;
 }
 /* the card: hold the button to see it, let go to hide it. The first look tells the TV you've seen it. */
-function showCard(on){ const c = st && st.me && st.me.card; if(!c) return; const v = $("view");
+function showCard(on){ const c = st && st.me && st.me.card; if(!c) return; const v = $("view"), fc = $("fcard");
+  if(fc){ if(on){ peeking = true; fc.innerHTML = cardFace(c); fc.style.display = "flex"; } else { peeking = false; fc.style.display = "none"; } return; }
   if(on){ shown = v.innerHTML; peeking = true; v.innerHTML = cardFace(c); if(!seenSent){ seenSent = true; post("crdact", {p:me.p, v:st.pub.v, a:{k:"seen"}}).then(x => { if(!x.ok && !(x.j && x.j.error === "stale")) seenSent = false; }); } }
   else if(peeking){ peeking = false; sig = ""; draw(); } }
-document.addEventListener("pointerdown", e => { const b = e.target.closest("#peek"); if(b){ e.preventDefault(); showCard(true); return; }
+document.addEventListener("pointerdown", e => { const b = e.target.closest("#peek,#fpeek"); if(b){ e.preventDefault(); showCard(true); return; }
   const o = e.target.closest("[data-o]"); if(o && st && st.pub && st.pub.ph === "vote"){ const t = st.pub.tid; myVote[t] = o.dataset.o; sig = ""; draw(); act({k:"vote", t, o:o.dataset.o}); } });
 ["pointerup", "pointercancel"].forEach(ev => document.addEventListener(ev, () => { if(peeking) showCard(false); }));
-document.addEventListener("contextmenu", e => { if(e.target.closest("#peek,.card,.pad")) e.preventDefault(); });
+document.addEventListener("contextmenu", e => { if(e.target.closest("#peek,#fpeek,.card,.pad")) e.preventDefault(); });
 document.addEventListener("visibilitychange", () => { if(document.hidden && peeking) showCard(false); if(!document.hidden && me && timer) poll(true); });
 async function poll(force){
   if(busy && !force) return; if(document.hidden && !force) return; busy = true;
