@@ -1,5 +1,12 @@
 [
  {
+  "v": "7.66",
+  "date": "2026-10-17",
+  "items": [
+   "Speed Trivia: a right answer now scores the clue's value (100 to 500) and a wrong one loses half of it. New Marathon game: 20 to 30 clues (you pick) of 200 to 500 at random, no rounds. A right answer after someone else got it wrong earns half. The setup screen now says how long you get to answer (6 s, or a flat 15 s when typing)."
+  ]
+ },
+ {
   "v": "7.65",
   "date": "2026-10-16",
   "items": [

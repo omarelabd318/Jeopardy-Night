@@ -31,12 +31,12 @@ eq(mk(["a"]), null, "needs 2 players"); eq(mk(["a", "b", "c", "d", "e"]), null, 
   const h = mk(["a", "b"], {pen:false}); h.start(0); h.tick(3000); h.tick(5000); h.buzz("a", 6000); h.answer("a", {i:0}, 6100); eq(h.score.a, 0, "no penalty when switched off"); ok(h.lock.a, "but still locked"); }
 
 // typed answers, double time
-{ const g = mk(["a", "b"], {typed:true}); g.start(0); g.tick(3000); g.tick(5000); g.buzz("a", 6000); eq(g.dl, 18000, "12 s when typing"); ok(!g.answer("a", {i:2}, 6100), "no buttons when typing"); ok(!g.answer("a", {t:"  "}, 6100), "empty text"); ok(g.answer("a", {t:" RIGHT" + no + " "}, 6200), "typed right"); eq(g.res.guess, "RIGHT" + no, "typed text kept"); }
+{ const g = mk(["a", "b"], {typed:true}); g.start(0); g.tick(3000); g.tick(5000); g.buzz("a", 6000); eq(g.dl, 21000, "15 s when typing"); ok(!g.answer("a", {i:2}, 6100), "no buttons when typing"); ok(!g.answer("a", {t:"  "}, 6100), "empty text"); ok(g.answer("a", {t:" RIGHT" + no + " "}, 6200), "typed right"); eq(g.res.guess, "RIGHT" + no, "typed text kept"); }
 
 // streaks: the 3rd right answer in a row adds 100, someone else's win or a wrong answer breaks it; all-at-once reveal
 { const g = mk(["a", "b"], {per:6, wbw:false}); g.start(0); g.tick(3000); eq(g.shown(3000), 8, "all at once"); const win = (p, t) => { g.tick(t); g.tick(t + 2000); ok(g.buzz(p, t + 2100), "buzz"); ok(g.answer(p, {i:2}, t + 2200), "win"); g.tick(t + 2200 + 3000); };
   eq(g.rdy - 3000, 1000, "live after 1 s");
-  win("a", 3000); win("a", 8300); eq(g.score.a, 200, "two wins, 100 each"); win("a", 13600); eq(g.score.a, 400, "third in a row: +100 bonus"); eq(g.streak.a, 3, "streak 3"); win("a", 18900); eq(g.score.a, 600, "bonus again"); eq(g.maxStreak.a, 4, "longest streak");
+  win("a", 3000); win("a", 8300); eq(g.score.a, 300, "two wins: 100 then 200 (a clue is worth its value)"); win("a", 13600); eq(g.score.a, 500, "third in a row: 100 + 100 bonus"); eq(g.streak.a, 3, "streak 3"); win("a", 18900); eq(g.score.a, 800, "200 + bonus again"); eq(g.maxStreak.a, 4, "longest streak");
   win("b", 24200); eq(g.streak, {a:0, b:1}, "b's win breaks a's streak"); }
 
 // rounds: values, answer times, the scores screen, the final
@@ -48,7 +48,7 @@ eq(mk(["a"]), null, "needs 2 players"); eq(mk(["a", "b", "c", "d", "e"]), null, 
 const harness = g => { let t = 0; const step = () => { t += 1e5; return g.tick(t); }, toLive = () => { for(let k = 0; k < 6 && g.ph !== "live"; k++) step(); eq(g.ph, "live", "reached a live clue"); },
   play = who => { toLive(); if(who){ ok(g.buzz(who, t + 1), who + " buzzes"); ok(g.answer(who, {i:2}, t + 2), who + " is right"); } else ok(g.skip(t), "host skips"); step(); }; return {step, toLive, play, now:() => t}; };
 { const g = mk(["a", "b"], {per:1}), h = harness(g); g.start(0);
-  h.play("a"); eq(g.ph, "scores", "scores after round 1"); h.play("a"); h.play("a"); eq(g.ph, "over", "a clear leader wins"); eq(g.winners, ["a"], "a wins"); eq(g.score.a, 100 + 200 + 300 + 100, "700: three in a row earns the bonus"); }
+  h.play("a"); eq(g.ph, "scores", "scores after round 1"); h.play("a"); h.play("a"); eq(g.ph, "over", "a clear leader wins"); eq(g.winners, ["a"], "a wins"); eq(g.score.a, 100 + 300 + 500 + 100, "1000: each clue is worth its value, three in a row earns the bonus"); }
 { const g = mk(["a", "b", "c"], {per:1}), h = harness(g); g.start(0);
   h.play(null); h.play(null); h.play(null); eq(g.ph, "round", "tied at 0: sudden death card"); eq(g.rd, 4, "round 4"); eq(g.sd, ["a", "b", "c"], "all three tied"); eq(g.R().name, "Sudden death", "name");
   h.step(); eq(g.ph, "ready", "clue"); eq(lvls.slice(-1)[0], 500, "500 clue"); h.toLive(); const t = h.now(); ok(g.buzz("a", t + 1), "a buzzes"); ok(g.answer("a", {i:0}, t + 2), "wrong"); eq(g.score.a, 0, "no points lost in sudden death"); eq(g.sd, ["b", "c"], "a is out"); eq(g.ph, "live", "play on");
@@ -62,4 +62,16 @@ const harness = g => { let t = 0; const step = () => { t += 1e5; return g.tick(t
   g.buzz("c", 6000); ok(g.drop("c", 6100), "buzzer leaves"); eq(g.ph, "live", "back to live"); ok(g.drop("b", 6200), "another leaves"); ok(g.paused, "one player: paused"); ok(!g.tick(1e9), "nothing moves while paused"); ok(!g.buzz("a", 7000), "no buzzing while paused");
   ok(g.add("e") === false || true, "add attempted"); }
 { const g = mk(["a", "b"]); g.start(0); ok(g.over(), "end the game"); eq(g.ph, "over", "over"); ok(!g.over(), "once"); }
+// 7.66 (Omar): a right answer scores the clue's value, a wrong one loses half of it, at every level
+{ for(const lv of [100, 200, 300, 400, 500]){ const g = mk(["a", "b"], {per:8}); g.start(0); g.rd = 2; g.ci = 0; g.tick(3000); g.lvl = lv; g.tick(5000); g.buzz("a", 6000); g.answer("a", {i:0}, 6100); eq(g.score.a, -lv / 2, "wrong on a " + lv + " loses " + lv / 2);
+    g.buzz("b", 6200); g.answer("b", {i:2}, 6300); eq(g.score.b, Math.round(lv / 2), "a right answer after a wrong one (a steal) on a " + lv + " scores half"); }
+  for(const lv of [100, 500]){ const g = mk(["a", "b"], {per:8}); g.start(0); g.tick(3000); g.lvl = lv; g.tick(5000); g.buzz("a", 6000); g.answer("a", {i:2}, 6100); eq(g.score.a, lv, "a clean right answer scores the full " + lv); eq(g.res.steal, false, "not a steal"); } }
+// marathon: no rounds, the chosen number of clues, any of 200 to 500, same scoring, then sudden death on a tie
+{ const seen = new Set(); let calls = 0; const d = lvl => { calls++; seen.add(lvl); return draw(lvl); };
+  let k = 0; const g = S.Game({players:["a", "b"], per:20, mode:"marathon", draw:d, match, rand:() => ((k++ * 0.37) % 1)}); ok(g.marathon, "marathon"); g.start(0); eq(g.rd, 5, "marathon is its own round"); eq(g.R().name, "Marathon", "name");
+  let t = 0, n = 0, pa = 0; const step = () => { t += 1e5; return g.tick(t); };
+  while(g.ph !== "over" && n++ < 400){ if(g.ph === "round" || g.ph === "ready" || g.ph === "result"){ step(); continue; }
+    if(g.ph === "live"){ ok(g.lvl >= 200 && g.lvl <= 500 && g.lvl % 100 === 0, "level 200 to 500: " + g.lvl); const before = g.score.a; g.buzz("a", t + 1); if(g.ci % 2){ g.answer("a", {i:2}, t + 2); eq(g.score.a, before + g.lvl + (g.streak.a >= 3 ? 100 : 0), "right = value"); pa++; } else { g.answer("a", {i:0}, t + 2); eq(g.score.a, before - g.lvl / 2, "wrong = half"); } step(); } else step(); }
+  ok([...seen].every(l => l >= 200 && l <= 500), "marathon draws only 200 to 500"); ok(seen.size >= 3, "a mix of levels: " + [...seen]); ok(g.ph !== "scores", "no scores screens between rounds"); eq(calls >= 20, true, "20 clues drawn");
+  eq(g.ph, "over", "marathon ends"); eq(g.winners, ["a"], "a leads"); }
 console.log("speed rules: " + n + " checks passed");

@@ -55,20 +55,20 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
   await phones[0].click("#bz"); await phones[0].waitForTimeout(150); if(!(await phones[0].locator("text=TOO EARLY").count())) fails.push("an early press does not say TOO EARLY");
   await waitPh("live"); await tv.waitForTimeout(700); await tv.screenshot({path:path.join(shots, "tv-live.png")}); await phones[0].screenshot({path:path.join(shots, "phone-live.png")});
   if(R.crd.pub.cat === undefined) fails.push("no category in the table");
-  let c = await clueOf(); const s0 = scores(); await phones[0].waitForSelector("#bz:not(.grey)", {timeout:4000}).catch(() => fails.push("buzzer not live on the phone")); await tv.waitForTimeout(600); await phones[0].click("#bz");
+  let c = await clueOf(); const s0 = scores(), val0 = R.crd.pub.val; await phones[0].waitForSelector("#bz:not(.grey)", {timeout:4000}).catch(() => fails.push("buzzer not live on the phone")); await tv.waitForTimeout(600); await phones[0].click("#bz");
   await waitPh("buzzed", 4000); if(R.crd.pub.buz !== id(names[0])) fails.push("A did not win the buzz"); await tv.waitForTimeout(500);
   await tv.screenshot({path:path.join(shots, "tv-buzzed.png")}); await phones[0].waitForSelector(".opt", {timeout:4000}).catch(() => fails.push("the buzzer sees no buttons")); await phones[0].screenshot({path:path.join(shots, "phone-options.png")});
   if(await phones[1].locator(".opt").count()) fails.push("another phone can see the answer buttons"); await phones[1].screenshot({path:path.join(shots, "phone-other-buzzed.png")});
   if((await phones[0].locator(".opt").count()) !== 4) fails.push("not 4 buttons");
   await phones[0].locator(".opt", {hasText:new RegExp("^" + c.a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$", "i")}).first().click(); await waitPh("result", 4000);
-  if(scores()[id(names[0])] !== s0[id(names[0])] + 100) fails.push("right answer did not score 100: " + JSON.stringify(scores()));
+  if(scores()[id(names[0])] !== s0[id(names[0])] + val0) fails.push("right answer did not score the clue value " + val0 + ": " + JSON.stringify(scores()));
   await tv.screenshot({path:path.join(shots, "tv-result.png")}); await phones[0].screenshot({path:path.join(shots, "phone-result.png")});
   // ---- clue 2: B buzzes wrong, is locked, C buzzes and is right (3+ players); with 2 players B is wrong and nobody is left
-  await waitPh("ready", 8000); await waitPh("live", 5000); await tv.waitForTimeout(600); c = await clueOf(); const s1 = scores();
+  await waitPh("ready", 8000); await waitPh("live", 5000); await tv.waitForTimeout(600); c = await clueOf(); const s1 = scores(), val1 = R.crd.pub.val;
   await phones[1].click("#bz"); await waitPh("buzzed", 4000); await phones[1].waitForSelector(".opt", {timeout:4000}).catch(() => fails.push("B sees no buttons"));
   const wrongIdx = (await phones[1].locator(".opt").evaluateAll(els => els.map(e => e.textContent))).findIndex(t => t.toLowerCase() !== c.a.toLowerCase());
   await phones[1].locator(".opt").nth(wrongIdx).click(); await tv.waitForTimeout(700);
-  if(N >= 3){ if(ph() !== "live") fails.push("after a wrong answer the clue should go on, got " + ph()); if(scores()[id(names[1])] !== s1[id(names[1])] - 50) fails.push("wrong answer did not cost 50: " + JSON.stringify(scores()));
+  if(N >= 3){ if(ph() !== "live") fails.push("after a wrong answer the clue should go on, got " + ph()); if(scores()[id(names[1])] !== s1[id(names[1])] - val1 / 2) fails.push("wrong answer did not cost half of " + val1 + ": " + JSON.stringify(scores()));
     await tv.screenshot({path:path.join(shots, "tv-locked.png")}); if(!(await phones[1].locator("text=LOCKED").count())) fails.push("B's phone does not say LOCKED"); await phones[1].screenshot({path:path.join(shots, "phone-locked.png")});
     await phones[1].locator("#bz").click({timeout:500}).catch(() => {});   // no buzzer to press
     await phones[2].click("#bz"); await waitPh("buzzed", 4000); if(R.crd.pub.buz !== id(names[2])) fails.push("C did not get the buzz after B was locked");
@@ -78,7 +78,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
   await waitPh("ready", 18000); await waitPh("live", 5000); await tv.waitForTimeout(600); const before = R.acts.length;
   await Promise.all([phones[0].click("#bz"), phones[1].click("#bz")]); await waitPh("buzzed", 4000); await tv.waitForTimeout(500);
   const buzzActs = R.acts.slice(before).filter(a => a.a.k === "buzz"); if(!buzzActs.some(a => a.p === R.crd.pub.buz) || buzzActs[0].p !== R.crd.pub.buz) fails.push("the first buzz at the relay did not win: " + JSON.stringify(buzzActs.map(a => a.p)) + " vs " + R.crd.pub.buz);   // the relay keeps both, the laptop takes the first
-  const first = R.crd.pub.buz; const s2 = scores(); await tv.waitForTimeout(6800); if(ph() === "buzzed") fails.push("the answer timer never ran out"); if(scores()[first] !== s2[first] - 100 && R.crd.pub.ph !== "result") fails.push("a timeout should cost 100 in round 2: " + JSON.stringify(scores()) + " vs " + JSON.stringify(s2));
+  const first = R.crd.pub.buz, val2 = R.crd.pub.val; const s2 = scores(); await tv.waitForTimeout(6800); if(ph() === "buzzed") fails.push("the answer timer never ran out"); if(scores()[first] !== s2[first] - val2 / 2 && R.crd.pub.ph !== "result") fails.push("a timeout should cost half the clue value: " + JSON.stringify(scores()) + " vs " + JSON.stringify(s2));
   // ---- clue 4 on: nobody buzzes (host skips), then play on with A buzzing right until the game ends
   let over = false, k = 0, lastRound = 0;
   for(let t = 0; t < 600 && !over; t++){
@@ -98,11 +98,11 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
     if(!(await phones[0].locator("text=/win|finished/i").count())) fails.push("the phone shows no result at the end");
     await tv.click('[data-act="again"]'); await tv.waitForTimeout(800); if(!(await tv.locator("#spGo").count())) fails.push("Play again did not return to the lobby"); await tv.screenshot({path:path.join(shots, "tv-lobby-again.png")}); }
   // ---- a second, typed game
-  await tv.locator('[data-set="typed"][data-v="1"]').click(); await tv.waitForTimeout(300); await tv.click("#spGo"); await waitPh("round", 3000);
-  await tv.locator('[data-act="next"]').click(); await waitPh("ready", 6000); await waitPh("live", 5000); await tv.waitForTimeout(600); c = await clueOf(); const st0 = scores();
+  await tv.locator('[data-set="typed"][data-v="1"]').click(); await tv.locator('[data-set="mara"][data-v="1"]').click(); await tv.locator('[data-set="mn"][data-v="20"]').click(); await tv.waitForTimeout(300); await tv.screenshot({path:path.join(shots, "tv-lobby-marathon.png")}); await tv.click("#spGo"); await waitPh("round", 3000);
+  await tv.locator('[data-act="next"]').click(); await waitPh("ready", 6000); await waitPh("live", 5000); await tv.waitForTimeout(600); c = await clueOf(); const st0 = scores(), valT = R.crd.pub.val; if(!R.crd.pub.mara || R.crd.pub.of !== 20 || ![200, 300, 400, 500].includes(valT)) fails.push("marathon table wrong: " + JSON.stringify([R.crd.pub.mara, R.crd.pub.of, valT]));
   await phones[0].click("#bz"); await waitPh("buzzed", 4000); await phones[0].waitForSelector("#av", {timeout:4000}).catch(() => fails.push("no text box in Type it mode"));
-  if(R.crd.pub.secs !== 12) fails.push("typing should give 12 s, got " + R.crd.pub.secs); await phones[0].screenshot({path:path.join(shots, "phone-typed.png")});
-  await phones[0].fill("#av", c.a.toUpperCase()); await phones[0].click("#ab"); await waitPh("result", 4000); if(scores()[id(names[0])] !== st0[id(names[0])] + 100) fails.push("a typed right answer did not score: " + JSON.stringify(scores()));
+  if(R.crd.pub.secs !== 15) fails.push("typing should give 15 s, got " + R.crd.pub.secs); await phones[0].screenshot({path:path.join(shots, "phone-typed.png")});
+  await phones[0].fill("#av", c.a.toUpperCase()); await phones[0].click("#ab"); await waitPh("result", 4000); if(scores()[id(names[0])] !== st0[id(names[0])] + valT) fails.push("a typed right answer did not score the clue value: " + JSON.stringify(scores()));
   await tv.screenshot({path:path.join(shots, "tv-typed-result.png")});
   console.log("posts:", R.posts, "acts:", R.acts.length, "leaks:", R.leaks, R.leakMsg.slice(0, 3));
   if(R.leaks) fails.push("leaks: " + R.leakMsg.slice(0, 3).join("; "));
