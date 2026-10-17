@@ -112,6 +112,7 @@ function drawBid(c){
   if(c.ph === "over"){ $("view").innerHTML = `<div class="wait"><div class="big">Auction over</div><div class="hint">Look at the TV for the winner.</div></div>`; return; }
   if(c.ph !== "lot"){ const us = c.buyer === mine;
     $("view").innerHTML = `${lot}<div class="wait"><div class="big">${c.ph === "sold" || c.ph === "clue" ? `Sold to ${esc(c.bn)} for ${money(c.price)}` : "Next lot"}</div><div class="hint">${us ? "Your team bought it. Answer out loud on the TV." : `${esc(c.bn)} answers on the TV.`}</div></div>`; return; }
+  if(c.sl){ drawSealed(c, mine, lot); return; }   // 7.67: sealed bids
   const open = !c.bid, lead = c.lead === mine, max = c.bid >= c.cap;
   let btns = "";
   if(lead) btns = `<div class="msg ok">Your team leads. Wait to see if anyone raises.</div>`;
@@ -128,6 +129,27 @@ function drawBid(c){
       else say("Bid sent. Watch the TV.", "ok"); }
     catch(x){ say("No connection. Check your internet and try again.", "err"); }
     setTimeout(() => { shown = ""; poll(); }, 1200); };
+}
+/* 7.67: sealed bids. One secret bid in $50 steps; sending again replaces it until the TV closes the box. The amount is sent as "b" on the usual /api/bid route (r2 is 50). */
+let sealFor = "", sealAmt = 0;
+function drawSealed(c, mine, lot){
+  if(c.sl === 2){ $("view").innerHTML = `${lot}<h1>${esc(c.cat)}</h1><div class="wait"><div class="big">Sealed bids</div><div class="hint">Everyone sends one secret bid. The host opens bidding on the TV, then you get ${10} seconds.</div></div>`; return; }
+  if(sealFor !== c.c){ sealFor = c.c; sealAmt = c.lo; }
+  const sent = c.bd && c.bd[mine];
+  $("view").innerHTML = `${lot}<h1>${esc(c.cat)}</h1><div class="eyebrow">Your secret bid</div>
+    <div class="bwbig" id="sealBig">${money(sealAmt)}</div>
+    <div class="bwbtns" style="grid-template-columns:1fr 1fr"><button class="go" id="sealDn" style="justify-content:center;background:#222a33;color:#e9eef2">− $50</button><button class="go" id="sealUp" style="justify-content:center;background:#222a33;color:#e9eef2">+ $50</button></div>
+    <div class="bwbtns"><button class="go" id="sealGo">${sent ? "Change my bid" : "Send my bid"}</button></div>
+    <div class="msg${sent ? " ok" : ""}" id="msg" ${sent ? "" : "hidden"}>${sent ? "Bid sent. You can change it until time runs out." : ""}</div>
+    <p class="hint">From ${money(c.lo)} to ${money(c.cap)}. The highest bid wins and pays its own price. Only the winning team answers, out loud on the TV.</p>`;
+  const upd = () => { $("sealBig").textContent = money(sealAmt); };
+  $("sealDn").onclick = () => { sealAmt = Math.max(c.lo, sealAmt - 50); upd(); };
+  $("sealUp").onclick = () => { sealAmt = Math.min(c.cap, sealAmt + 50); upd(); };
+  $("sealGo").onclick = async () => { const g = $("sealGo"); g.disabled = true;
+    try{ const res = await post("bid", {r, c: c.c, t: mine, r2: 50, b: sealAmt});
+      if(!res.ok) say(res.j.error === "closed" ? "Too late: bidding has closed." : "That didn't go through. Try again.", "err"); else say(`Bid of ${money(sealAmt)} sent. Watch the TV.`, "ok"); }
+    catch(x){ say("No connection. Check your internet and try again.", "err"); }
+    g.disabled = false; setTimeout(() => { shown = ""; poll(); }, 1200); };
 }
 function draw(){
   header();
