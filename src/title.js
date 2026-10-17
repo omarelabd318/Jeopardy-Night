@@ -134,7 +134,7 @@ function ttStars(){
   let W = 0, H = 0, stars = [], shoot = null, next = 0, last = performance.now();
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const size = () => { const d = Math.min(2, devicePixelRatio || 1); W = ts.clientWidth; H = ts.clientHeight; cv.width = W * d; cv.height = H * d; x.setTransform(d, 0, 0, d, 0, 0);
-    stars = Array.from({length: Math.round(W * H / 2600)}, () => ({x: R(0, W), y: R(0, H), r: R(.4, 1.6), ph: R(0, 6.28), sp: R(.6, 2.2), b: R(.25, .9), g: Math.random() < .2})); };
+    stars = Array.from({length: Math.round(W * H / 1500)}, () => ({x: R(0, W), y: R(0, H), r: R(.4, 1.6), ph: R(0, 6.28), sp: R(.6, 2.2), b: R(.25, .9), g: Math.random() < .2})); };   /* 7.72 (Omar): more stars; 7.42-7.71 used W * H / 2600 */
   const frame = now => {
     requestAnimationFrame(frame);
     const dt = Math.min(.05, (now - last) / 1000), t = now / 1000; last = now;
