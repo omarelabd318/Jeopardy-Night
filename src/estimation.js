@@ -25,7 +25,7 @@ async function esPoll(){ if($("#esto").hidden || ES.busy) return; ES.busy = true
       if(ES.phase === "lobby" && JSON.stringify(ps) !== JSON.stringify(ES.players)){ ES.players = ps; esRender(); } }
     else if(ES.g && ES.g.phase !== "over"){
       const j = await (await fetch(`api/crdacts?r=${encodeURIComponent(ES.room)}&since=${ES.since}`, {cache:"no-store"})).json(); ES.since = j.n; let changed = false;
-      for(const x of j.acts || []){ const g = ES.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok) changed = true; }
+      for(const x of j.acts || []){ const g = ES.g, seat = g.pids.indexOf(x.p); if(seat < 0 || x.v !== g.v) continue; if(g.act(seat, x.a).ok){ changed = true; cardSfx(x.a); } }
       if(changed) esChanged(); } }
   catch(e){} finally { ES.busy = false; } }
 
@@ -33,7 +33,7 @@ async function esPoll(){ if($("#esto").hidden || ES.busy) return; ES.busy = true
 function esStart(){
   if(ES.players.length !== 4 || RELAY !== true) return;
   ES.g = ER.Game({bola:ES.cfg.bola, dash:ES.cfg.dash}, ES.players.map(x => x.n), ES.players.map(x => x.p)); ES.since = 0; ES.g.start(); ES.phase = "play"; esChanged(); }
-function esChanged(){ const g = ES.g; esPost(); esRender();
+function esChanged(){ const g = ES.g; esPost(); esRender(); cardTableSfx(g);   // 7.77: deal and trick-sweep sounds
   if(g.phase === "over"){ playWinSiu(); return; }
   const wait = {redeal:2600, trickdone:1700}[g.phase];
   if(wait){ const v = g.v, ph = g.phase; setTimeout(() => { if(ES.g === g && g.v === v && g.phase === ph){ g.advance(); esChanged(); } }, wait); } }
@@ -42,7 +42,7 @@ function esNext(){ const g = ES.g; if(g && g.phase === "scored"){ g.advance(); e
 /* ---------- screens ---------- */
 function esEnter(){ if(S.mode === "estimation") return; S.mode = "estimation"; document.body.classList.add("esmode"); }
 function estLeave(){ if(S.mode !== "estimation") return; stopSiu(); clearInterval(ES.poll); ES.poll = null; ES.g = null; ES.phase = "lobby"; S.mode = null; document.body.classList.remove("esmode"); $("#esto").hidden = true; }
-function estShow(){ esEnter(); CK.inject();
+function estShow(){ esEnter(); CK.inject(); try{ Snd.unlock(); }catch(e){}
   ["#titleScreen","#setup","#game","#scores","#bingo","#bingoSetup","#bidding","#bidSetup","#survival","#survSetup","#hotSeat","#hotseat","#hsSetup","#lobby","#impo","#psyo"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   ES.room = newRoom(); ES.players = []; ES.phase = "lobby"; ES.g = null; ES.since = 0; ES.relay = RELAY;
   $("#esto").hidden = false; esRender(); window.scrollTo(0, 0);
