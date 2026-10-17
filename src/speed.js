@@ -52,8 +52,8 @@ const SPR = (() => {
       const lead = leaders(); if(lead.length === 1){ g.winners = lead; g.ph = "over"; g.v++; return; }
       g.sd = lead.slice(); g.sdAll = lead.slice(); g.sdN = 0; g.rd = 4; roundCard(now); }
     function right(p, now, guess){ g.streak[p]++; ids.forEach(x => { if(x !== p) g.streak[x] = 0; });
-      const bonus = !g.sd && g.streak[p] >= STREAK_AT ? BONUS : 0, pts = (g.sd ? 0 : g.lvl) + bonus; g.score[p] += pts; g.maxStreak[p] = Math.max(g.maxStreak[p], g.streak[p]);
-      g.res = {k:"right", p, pts, bonus, guess:guess == null ? null : guess}; toResult(now); return true; }
+      const bonus = !g.sd && g.streak[p] >= STREAK_AT ? BONUS : 0, steal = !g.sd && ids.some(x => g.lock[x]), pts = (g.sd ? 0 : steal ? Math.round(g.lvl / 2) : g.lvl) + bonus; g.score[p] += pts; g.maxStreak[p] = Math.max(g.maxStreak[p], g.streak[p]);   // 7.66: a right answer after someone else got it wrong earns half
+      g.res = {k:"right", p, pts, bonus, steal, guess:guess == null ? null : guess}; toResult(now); return true; }
     function wrong(p, now, a, why){ const cost = g.sd || !pen ? 0 : Math.round(g.lvl / 2); g.score[p] -= cost; g.streak[p] = 0; g.lock[p] = 1;
       if(a && a.i != null) g.gone.push(a.i);
       let win = false; if(g.sd){ g.sd = g.sd.filter(x => x !== p); if(g.sd.length === 1){ win = true; g.sdWin = true; } }
@@ -140,7 +140,7 @@ function spPub(){
   if(!g) return {ph:"lobby", ids, names};
   const r = g.R(), pub = {ph:g.ph, ids:g.ids, names, rd:g.rd, rname:r.name, val:g.lvl, pen:g.pen, mara:g.marathon, ci:g.ci + 1, of:g.sd ? 1 : g.per, cat:g.clue ? g.clue.catName : "", typed:g.typed, secs:g.secs(),
     score:g.score, streak:g.streak, lock:Object.keys(g.lock).filter(p => g.lock[p]), sd:g.sd, buz:g.buz, left:g.ph === "buzzed" ? Math.max(0, (g.dl - Date.now()) / 1000) : g.secs(), last:g.last ? {p:g.last.p, k:g.last.k, pts:g.last.pts} : null};
-  if(g.ph === "result"){ pub.res = {k:g.res.k, p:g.res.p, pts:g.res.pts, bonus:g.res.bonus || 0}; pub.ans = g.clue.a; }
+  if(g.ph === "result"){ pub.res = {k:g.res.k, p:g.res.p, pts:g.res.pts, bonus:g.res.bonus || 0, steal:!!g.res.steal}; pub.ans = g.clue.a; }
   if(g.ph === "over") pub.winners = g.winners;
   return pub; }
 function spPost(){
@@ -202,7 +202,7 @@ function spOver(g){ const rows = g.ids.map(p => ({p, s:g.score[p], st:g.maxStrea
     <p class="spbrag">${best && best.st >= 2 ? `Longest streak: <b>${esc(spName(best.p))}</b> (${best.st} in a row)` : "No streaks this game"}</p></div>`; }
 function spMid(g){
   const r = g.R();
-  if(g.ph === "round") return `<div class="spcard"><small>${g.rd === 4 ? "Tied at the top" : "Get ready"}</small><h2>${g.rd === 4 ? "Sudden death" : g.marathon ? `Marathon · ${g.per} clues` : `Round ${r.n} · ${esc(r.name)}`}</h2><p>${g.rd === 4 ? `${g.sd.map(p => esc(spName(p))).join(" and ")}: first right answer wins. A wrong answer puts you out.` : `${g.marathon ? "200 to 500 clues, picked at random" : `${r.lv.join(" and ")} clues`} · right = the clue's value${g.pen ? ", wrong = lose half of it" : ""} · ${g.secs()} s to answer`}</p></div>`;
+  if(g.ph === "round") return `<div class="spcard"><small>${g.rd === 4 ? "Tied at the top" : "Get ready"}</small><h2>${g.rd === 4 ? "Sudden death" : g.marathon ? `Marathon · ${g.per} clues` : `Round ${r.n} · ${esc(r.name)}`}</h2><p>${g.rd === 4 ? `${g.sd.map(p => esc(spName(p))).join(" and ")}: first right answer wins. A wrong answer puts you out.` : `${g.marathon ? "200 to 500 clues, picked at random" : `${r.lv.join(" and ")} clues`} · right = the clue's value (half after someone else's wrong answer)${g.pen ? ", wrong = lose half of it" : ""} · ${g.secs()} s to answer`}</p></div>`;
   if(g.ph === "scores"){ const rows = g.ids.slice().sort((a, b) => g.score[b] - g.score[a]);
     return `<div class="spcard"><small>After round ${r.n}</small><h2>Scores</h2><ol class="spplace">${rows.map((p, i) => `<li style="--c:${spCol(p)}"><b>${i + 1}</b><span>${esc(spName(p))}</span><em class="${g.score[p] < 0 ? "neg" : ""}">${g.score[p]}</em></li>`).join("")}</ol></div>`; }
   const c = g.clue, media = c.kind === "emoji" ? `<div class="spemoji">${esc(c.emoji)}</div>` : c.kind === "flag" ? `<div class="spflag">${flagSVG(c.flag)}</div>` : "";
@@ -214,7 +214,7 @@ function spMid(g){
   else if(g.ph === "result"){ const x = g.res, who = x.p ? esc(spName(x.p)) : "";
     status = `<div class="spans"><small>The answer</small><b>${esc(c.a)}</b></div>
       <ul class="spopts">${c.opts.map((t, i) => `<li class="${i === c.ci ? "ok" : ""}">${esc(t)}</li>`).join("")}</ul>
-      <div class="spstat ${x.k === "right" ? "go" : "bad"}">${x.k === "right" ? `<b>${who}</b> gets it! ${spSigned(x.pts)}${x.bonus ? ` (streak bonus +${x.bonus})` : ""}` : x.k === "dead" ? "Nobody got it." : `<b>${who}</b> ${x.k === "time" ? "ran out of time" : "got it wrong"}${x.pts ? ` (${spSigned(x.pts)})` : ""}. Nobody else left to buzz.`}</div>`; }
+      <div class="spstat ${x.k === "right" ? "go" : "bad"}">${x.k === "right" ? `<b>${who}</b> gets it! ${spSigned(x.pts)}${x.steal ? " (half, after a wrong answer)" : ""}${x.bonus ? ` (streak bonus +${x.bonus})` : ""}` : x.k === "dead" ? "Nobody got it." : `<b>${who}</b> ${x.k === "time" ? "ran out of time" : "got it wrong"}${x.pts ? ` (${spSigned(x.pts)})` : ""}. Nobody else left to buzz.`}</div>`; }
   return `<div class="spcat">${esc(c.catName)}${g.sd ? "" : ` · ${g.lvl}`}</div>${media}<div class="spq${String(c.q).length > 90 ? " long" : ""}" id="spQ" data-n="${n}">${spWords(w, n)}</div>${status}`; }
 function spCtl(g){ const out = [];
   if(g.ph === "round" || g.ph === "result" || g.ph === "scores" || g.ph === "live") out.push(`<button class="spbtn small" data-act="next">${g.ph === "live" ? "Skip clue" : "Next"}</button>`);
@@ -236,7 +236,7 @@ function spRender(){
         <div class="speye">The clue</div>${spSeg("wbw", [[1, "Word by word"], [0, "All at once"]], c.wbw ? 1 : 0)}
         <div class="speye">Wrong answer</div>${spSeg("pen", [[1, "Costs points"], [0, "Only locks you out"]], c.pen ? 1 : 0)}
         <div class="speye">Categories</div><div class="spseg">${groups.map(n => `<button data-grp="${esc(n)}" aria-pressed="${!c.off[n]}">${esc(n)}</button>`).join("")}</div>
-        <p class="note">${c.mara ? `${c.mn} clues from 200 to 500 at random, no rounds.` : `3 rounds of ${c.per} clues: Warm Up (100 and 200), Speed Up (300 and 400), Lightning (500).`} Right answers score the clue's value${c.pen ? " and wrong ones lose half of it" : ""}. A tie for first plays sudden death.</p>
+        <p class="note">${c.mara ? `${c.mn} clues from 200 to 500 at random, no rounds.` : `3 rounds of ${c.per} clues: Warm Up (100 and 200), Speed Up (300 and 400), Lightning (500).`} Right answers score the clue's value (half if someone got it wrong first)${c.pen ? " and wrong ones lose half of it" : ""}. A tie for first plays sudden death.</p>
         <button class="spbtn go" id="spGo" ${ok ? "" : "disabled"}>Start</button></div></div>`;
     const q = $("#spQr"); if(q){ const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(!SP.g && !$("#spo").hidden && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text:spUrl(), width:230, height:230, correctLevel:QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); }

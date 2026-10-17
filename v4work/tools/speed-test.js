@@ -64,7 +64,8 @@ const harness = g => { let t = 0; const step = () => { t += 1e5; return g.tick(t
 { const g = mk(["a", "b"]); g.start(0); ok(g.over(), "end the game"); eq(g.ph, "over", "over"); ok(!g.over(), "once"); }
 // 7.66 (Omar): a right answer scores the clue's value, a wrong one loses half of it, at every level
 { for(const lv of [100, 200, 300, 400, 500]){ const g = mk(["a", "b"], {per:8}); g.start(0); g.rd = 2; g.ci = 0; g.tick(3000); g.lvl = lv; g.tick(5000); g.buzz("a", 6000); g.answer("a", {i:0}, 6100); eq(g.score.a, -lv / 2, "wrong on a " + lv + " loses " + lv / 2);
-    g.buzz("b", 6200); g.answer("b", {i:2}, 6300); eq(g.score.b, lv, "right on a " + lv + " scores " + lv); } }
+    g.buzz("b", 6200); g.answer("b", {i:2}, 6300); eq(g.score.b, Math.round(lv / 2), "a right answer after a wrong one (a steal) on a " + lv + " scores half"); }
+  for(const lv of [100, 500]){ const g = mk(["a", "b"], {per:8}); g.start(0); g.tick(3000); g.lvl = lv; g.tick(5000); g.buzz("a", 6000); g.answer("a", {i:2}, 6100); eq(g.score.a, lv, "a clean right answer scores the full " + lv); eq(g.res.steal, false, "not a steal"); } }
 // marathon: no rounds, the chosen number of clues, any of 200 to 500, same scoring, then sudden death on a tie
 { const seen = new Set(); let calls = 0; const d = lvl => { calls++; seen.add(lvl); return draw(lvl); };
   let k = 0; const g = S.Game({players:["a", "b"], per:20, mode:"marathon", draw:d, match, rand:() => ((k++ * 0.37) % 1)}); ok(g.marathon, "marathon"); g.start(0); eq(g.rd, 5, "marathon is its own round"); eq(g.R().name, "Marathon", "name");
