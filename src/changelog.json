@@ -1,5 +1,23 @@
 [
  {
+  "v": "7.68",
+  "date": "2026-10-17",
+  "items": [
+   "Final Jeopardy bets are now secret and sent from the team phones (scan the code, pick your team); the TV shows who has bet and reveals the amounts with the answer. Without phones, the host can still type the bets in.",
+   "Bidding Wars sealed bids now give 15 seconds by default, and you can set 10, 15, 20 or 30 seconds in setup.",
+   "Hover over any of the new setup switches (Final Jeopardy, Steal the pot, Hot Potato, Mystery lots, Sealed bids) for a one-line description."
+  ]
+ },
+ {
+  "v": "7.67",
+  "date": "2026-10-17",
+  "items": [
+   "New setup switches, all off by default. Jeopardy Night: Final Jeopardy, one last clue after the final tile where every team with points secretly bets up to its whole score.",
+   "Hot Seat: Steal the pot. When the team in the seat misses with something in the pot, the next team gets one go at the same clue for half the pot.",
+   "Bidding Wars: Hot Potato (a buyer who can't answer passes the lot to a team that wants it, twice per team), Mystery lots (two per game with a hidden title that pay double) and Sealed bids (every team sends one secret bid from its phone)."
+  ]
+ },
+ {
   "v": "7.66",
   "date": "2026-10-17",
   "items": [

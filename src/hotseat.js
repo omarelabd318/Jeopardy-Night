@@ -10,7 +10,7 @@ const hsNum = n => Number(n).toLocaleString("en-US");
 const hsPotAt = k => 100 * 2 ** k;   // the pot after k+1 right answers
 const hsShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 function hsDefaults(){ const names = S.teams.map(t => t.name).slice(0, 6); while(names.length < 2) names.push("Team " + "ABCDEF"[names.length]);
-  return {teams:names, turns:5, swap:true, photos:true}; }
+  return {teams:names, turns:5, swap:true, photos:true, steal:false}; }
 HS.cfg = Object.assign(hsDefaults(), store.get("jn_hsCfg", {}));
 const hsSave = () => store.set("jn_hsCfg", HS.cfg);
 
@@ -32,7 +32,7 @@ function hsDeal(again){   // three category cards, each with a random hidden val
   st.cards = out; }
 const hsInit = () => { HS.st = {v:1, teams:HS.cfg.teams.map(n => ({name:n, score:0, swap:HS.cfg.swap})), turnNo:0, pot:0, streak:0, usedCats:[], cards:[], phase:"pick", cur:null, res:null, over:false, tb:null, tbWin:null}; hsDeal(); return HS.st; };
 const hsTotal = () => HS.cfg.teams.length * HS.cfg.turns;
-const hsSeat = () => { const st = HS.st; return st.tb ? st.tb.ids[st.tb.i] : st.turnNo % st.teams.length; };
+const hsSeat = () => { const st = HS.st; if(st.stl) return st.stl.by; return st.tb ? st.tb.ids[st.tb.i] : st.turnNo % st.teams.length; };
 const hsNext = () => HS.st.streak ? HS.st.pot * 2 : 100;   // what the pot becomes on the next right answer
 
 /* ---------- screens ---------- */
@@ -55,11 +55,12 @@ function renderHsSetup(){
     <div class="hspanel"><div class="hseye">Turns per team</div>${seg("turns", [3, 4, 5, 6, 7, 8].map(n => [n, n]), c.turns)}<p class="note">Every team gets the same number of turns in the hot seat.</p></div>
     <div class="hspanel"><div class="hseye">One swap per team</div>${seg("swap", [["true", "On"], ["false", "Off"]], c.swap)}<p class="note">On: each team can swap one clue it doesn't like for another from the same category and value, once per game.</p></div>
     <div class="hspanel"><div class="hseye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture and every clue that shows a photo.</p></div>
+    <div class="hspanel" title="After a miss with something in the pot, the next team gets one go at the same clue for half the pot. A wrong steal costs nothing."><div class="hseye">Steal the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: when the team in the seat misses with something in the pot, the next team gets one go at the same clue for half the pot. A wrong steal costs nothing.</p></div>
     <div class="row"><button class="hsb ghost" id="hsBack">Back to title</button><button class="hsb go" id="hsStart">Take a seat</button></div>`;
 }
 $("#hsSetup").addEventListener("click", e => {
   const c = HS.cfg, set = e.target.closest("[data-set]");
-  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "turns") v = +v; if(k === "swap" || k === "photos") v = v === "true"; c[k] = v; hsSave(); renderHsSetup(); return; }
+  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "turns") v = +v; if(k === "swap" || k === "photos" || k === "steal") v = v === "true"; c[k] = v; hsSave(); renderHsSetup(); return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ c.teams.splice(+rm.dataset.rm, 1); hsSave(); renderHsSetup(); return; }
   if(e.target.closest("#hsAddTeam")){ c.teams.push("Team " + "ABCDEF"[c.teams.length]); hsSave(); renderHsSetup(); return; }
   if(e.target.closest("#hsBack")){ showHome(); return; }
@@ -74,7 +75,7 @@ function renderHs(){
   if(st.over){ root.innerHTML = ""; return; }
   const seat = hsSeat(), t = st.teams[seat], n = st.streak, start = Math.max(0, n - 3), round = Math.floor(st.turnNo / st.teams.length) + 1;
   const chips = [0,1,2,3,4].map(j => { const k = start + j, cls = k < n - 1 ? "done" : k === n - 1 ? "cur" : k === n ? "nxt" : ""; return `<div class="hschip ${cls}">${hsNum(hsPotAt(k))}</div>`; }).join("");
-  const sub = st.tb ? "TIE-BREAK · ONE 500 CLUE EACH" : `ROUND ${round} OF ${HS.cfg.turns} · ${n ? n + " RIGHT IN A ROW" : "FIRST CLUE OF THE TURN"}`;
+  const sub = st.stl ? `STEAL · HALF THE POT · ${hsNum(st.stl.amt)}` : st.tb ? "TIE-BREAK · ONE 500 CLUE EACH" : `ROUND ${round} OF ${HS.cfg.turns} · ${n ? n + " RIGHT IN A ROW" : "FIRST CLUE OF THE TURN"}`;
   const lead = Math.max(...st.teams.map(m => m.score));
   const mid = st.tb ? "" : `<div class="hsstack"><b>${hsNum(st.pot)}</b><small>${st.pot ? "IN THE POT" : "NOTHING AT RISK YET"}</small></div>
     <button class="hscp bank" data-hs="bank" ${st.pot && st.phase === "pick" ? "" : "disabled"}><div>Bank<small>${hsNum(st.pot)}</small></div></button><div class="hscp risk"><div>Risk<small>${hsNum(hsNext())}</small></div></div>`;
@@ -83,13 +84,13 @@ function renderHs(){
   else if(st.phase === "clue" || st.phase === "tbclue") low = `<div class="hscards one"><button class="hsb go" data-hs="reopen">Open the clue again</button></div>`;
   if(st.phase === "result"){ const r = st.res, last = st.turnNo + 1 >= hsTotal();
     ov = `<div class="hsov"><h2 class="${r.kind === "miss" && r.pts ? "lose" : ""}">${r.kind === "bank" ? "Banked!" : r.kind === "half" ? "Half answer" : r.pts ? "Busted!" : "Missed it"}</h2>
-      <div class="who">${r.kind === "miss" ? (r.pts ? `${esc(r.name)} loses ${hsNum(r.pts)}` : `${esc(r.name)} had nothing at risk`) : r.pts ? `${esc(r.name)} keeps ${hsNum(r.pts)}` : `${esc(r.name)} had nothing to keep`}</div>
+      <div class="who">${r.kind === "miss" ? (r.pts ? `${esc(r.name)} loses ${hsNum(r.pts)}` : `${esc(r.name)} had nothing at risk`) + (r.stole ? `<br>${esc(r.stole.name)} steals ${hsNum(r.stole.amt)}!` : r.stl ? `<br>${esc(r.stl)} missed the steal` : "") : r.pts ? `${esc(r.name)} keeps ${hsNum(r.pts)}` : `${esc(r.name)} had nothing to keep`}</div>
       <button class="hsb go" data-hs="next">${last ? "Final scores" : "Next team"}</button></div>`; }
   if(st.phase === "tb"){ const names = st.tb.ids.map(i => esc(st.teams[i].name));
     ov = `<div class="hsov"><h2>Tie-break</h2><div class="who">${st.tb.msg || `${names.join(" and ")} are tied.`}</div><p class="note">${esc(t.name)} gets one 500 clue. Right wins it.</p><button class="hsb go" data-hs="tbopen">Open the clue</button></div>`; }
   root.innerHTML = `
     <div class="hssco">${st.teams.map((m, i) => `<div class="${i === seat ? "on" : ""}"><span>${esc(m.name)}${m.swap && HS.cfg.swap ? " ↻" : ""}</span><span class="${m.score < 0 ? "neg" : ""}">${hsNum(m.score)}</span></div>`).join("")}</div>
-    <div class="hsttl">${esc(t.name)} is in the Hot Seat<small>${sub}</small></div>
+    <div class="hsttl">${st.stl ? `${esc(t.name)} can steal` : `${esc(t.name)} is in the Hot Seat`}<small>${sub}</small></div>
     <div class="hsladder">${st.tb ? "" : chips}</div>${mid}${low}${ov}`;
 }
 function hsOpen(){ const st = HS.st, c = st.cur; renderHs();   // 6.62: redraw the table first, so "Back to the table" shows "Open the clue again" (it used to show the old, dead cards)
@@ -110,7 +111,7 @@ function hsTbDone(c, v){ const st = HS.st, tb = st.tb; if(v === undefined){ rend
   if(rights.length === 1){ st.tbWin = rights[0]; return hsEnd(); }
   const same = rights.length === 0 || rights.length === tb.ids.length;
   st.tb = {ids: same ? tb.ids : rights, i:0, res:{}, msg: same ? "Everyone " + (rights.length ? "got it" : "missed") + ", so go again." : "Still tied, go again."}; st.phase = "tb"; st.cur = null; renderHs(); }
-function hsUseSwap(){ const st = HS.st, t = st && st.teams[hsSeat()]; if(!HS.cfg.swap || st.tb || !t || !t.swap) return false; t.swap = false; return true; }
+function hsUseSwap(){ const st = HS.st, t = st && st.teams[hsSeat()]; if(!HS.cfg.swap || st.tb || st.stl || !t || !t.swap) return false; t.swap = false; return true; }
 $("#hsBody").addEventListener("click", e => {
   const st = HS.st; if(!st) return;
   const card = e.target.closest("[data-card]");
@@ -126,23 +127,29 @@ $("#hsHome").onclick = () => { const st = HS.st; if(st && !st.over && (st.turnNo
 /* ---------- the clue card (called from renderClue and the Done button in app.js) ---------- */
 function hsBanner(c){ const st = HS.st; if(!st || !st.cur) return ""; st.cur.idx = c.idx;   // keeps "Open the clue again" on the same clue after a swap
   const nm = esc(st.teams[hsSeat()].name);
+  if(st.stl) return `<p class="note hsbanner">${nm}: steal chance. Right earns ${hsNum(st.stl.amt)} (half the pot), wrong costs nothing.</p>`;
   return st.tb ? `<p class="note hsbanner">Tie-break: ${nm} gets this 500 clue. Right wins it.</p>`
     : `<p class="note hsbanner">${nm} is in the Hot Seat. ${st.pot ? `Pot ${hsNum(st.pot)}: right makes it ${hsNum(hsNext())}, wrong loses ${hsNum(st.pot)}.` : "First clue of the turn: right starts the pot at 100, wrong loses nothing."}</p>`; }
 function hsAwards(c){ const st = HS.st, i = hsSeat(), tb = !!st.tb;
-  return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : " · pot " + hsNum(hsNext())}</button>${!tb && HS_HALF.has(c.cat) ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · bank ${hsNum(st.pot)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
+  return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : st.stl ? " · steal " + hsNum(st.stl.amt) : " · pot " + hsNum(hsNext())}</button>${!tb && !st.stl && HS_HALF.has(c.cat) ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · bank ${hsNum(st.pot)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb || st.stl ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
 function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; if(c.preview || c.revealed) return "";
   /* 7.51 (Omar): "Clue played already" is a free swap that doesn't use the team's one swap. Without it Hot Seat only had the limited swap. */
   const played = `<button class="btn small" data-act="played" title="The group has already had this clue. Get another from the same category and value, and it doesn't use your swap.">Clue played already</button>`;
-  return played + (HS.cfg.swap && t && t.swap && !st.tb ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""); }
+  return played + (HS.cfg.swap && t && t.swap && !st.tb && !st.stl ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""); }
 function hsDone(c){
   const st = HS.st, i = hsSeat(), v = c.awards[i];
   S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
   closeCard(); if(!st) return;
   if(st.tb) return hsTbDone(c, v);
+  if(st.stl){ if(v === undefined){ renderHs(); return; } return hsStealDone(v === 1); }
   if(v === undefined){ renderHs(); return; }   // closed with no result: back to the table, where the clue can be opened again
   if(v === 1){ st.streak++; st.pot = hsPotAt(st.streak - 1); st.phase = "pick"; st.cur = null; hsDeal(); Snd.blip(); renderHs(); return; }
   if(v === 0.5) return hsResult("half", st.pot);   // a half answer is a safe stop: bank the pot from before this clue
+  if(HS.cfg.steal && st.pot && st.teams.length > 1){ st.stl = {by:(hsSeat() + 1) % st.teams.length, amt:st.pot / 2}; st.phase = "clue"; Snd.tick(); hsOpen(); return; }   // 7.67: Steal the pot, the next team gets one go at this clue for half the pot
   hsResult("miss", st.pot); }
+function hsStealDone(right){ const st = HS.st, stl = st.stl, by = st.teams[stl.by]; st.stl = null;   /* 7.67: right earns half the pot; wrong costs nothing */
+  if(right) by.score += stl.amt;
+  const t = st.teams[hsSeat()]; st.res = {kind:"miss", pts:st.pot, name:t.name, stole:right ? {name:by.name, amt:stl.amt} : null, stl:right ? null : by.name}; st.phase = "result"; st.cur = null; if(right) Snd.chime(); else Snd.tick(); renderHs(); }
 function hsEnd(){ const st = HS.st; st.over = true; st.tb = null; hsShow();
   const ranked = st.teams.map((t, i) => ({...t, i})).sort((a, b) => b.score - a.score || (b.i === st.tbWin) - (a.i === st.tbWin)), max = ranked[0].score;
   const top = st.tbWin != null ? [ranked[0]] : ranked.filter(t => t.score === max);
