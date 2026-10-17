@@ -1,5 +1,14 @@
 [
  {
+  "v": "7.68",
+  "date": "2026-10-17",
+  "items": [
+   "Final Jeopardy bets are now secret and sent from the team phones (scan the code, pick your team); the TV shows who has bet and reveals the amounts with the answer. Without phones, the host can still type the bets in.",
+   "Bidding Wars sealed bids now give 15 seconds by default, and you can set 10, 15, 20 or 30 seconds in setup.",
+   "Hover over any of the new setup switches (Final Jeopardy, Steal the pot, Hot Potato, Mystery lots, Sealed bids) for a one-line description."
+  ]
+ },
+ {
   "v": "7.67",
   "date": "2026-10-17",
   "items": [

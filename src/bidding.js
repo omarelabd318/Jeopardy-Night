@@ -41,11 +41,12 @@ const bwCats = t => t[2].filter(id => catById(id) && !HIDDEN_IDS.has(id) && (BW.
 const bwTitleOn = t => BW.cfg.titles[t[0]] !== undefined ? BW.cfg.titles[t[0]] : t[3] !== "off";
 const bwMoney = v => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US");
 function bwDefaults(){ const names = S.teams.map(t => t.name).slice(0, 6); while(names.length < 2) names.push("Team " + "ABCDEF"[names.length]);
-  return {teams:names, lots:12, secs:6, photos:true, raises:true, phones:false, titles:{}, potato:false, mystery:false, sealed:false}; }
+  return {teams:names, lots:12, secs:6, photos:true, raises:true, phones:false, titles:{}, potato:false, mystery:false, sealed:false, ssecs:15}; }
 BW.cfg = Object.assign(bwDefaults(), store.get("jn_bidCfg", {}));
 /* 7.67 (Omar): three switches in setup, all off by default. Hot Potato: a buyer who can't answer hands the lot to a team that wants it (twice per team per game).
    Mystery lots: two lots per game hide even their title and pay double for a right answer. Sealed bids: with phone bidding, every team sends one secret bid. */
-const BW_POTATOES = 2, BW_SEALED_SECS = 10;
+const BW_POTATOES = 2, BW_SEALED_OPTS = [10, 15, 20, 30];   // 7.68 (Omar): 10 s felt short, so sealed bids default to 15 s and can be set to 10, 15, 20 or 30
+const bwSealedSecs = () => BW_SEALED_OPTS.includes(BW.cfg.ssecs) ? BW.cfg.ssecs : 15;
 const bwQ = v => Math.round(v / 5) * 5;   // Hot Potato amounts are rounded to the nearest $5
 const bwWho = lot => lot.potato ? lot.potato.to : lot.buyer;   // who answers: the buyer, or the team that took the Hot Potato
 const bwName = lot => lot.mystery ? "Mystery lot" : bwTitle(lot.title)[1];
@@ -102,9 +103,10 @@ function renderBidSetup(){
       <p class="note">After each bid the lot is sold when this many seconds pass with no higher bid. The host can always tap SOLD early.</p></div>
     <div class="bwpanel"><div class="bweye">Raise amounts</div>${seg("raises", [["true", "Teams choose"], ["false", "+$50 only"]], c.raises)}<p class="note">Teams choose: each team card gets +$50 / +$100 / +$200 buttons. +$50 only: every bid goes up by $50.</p></div>
     <div class="bwpanel"><div class="bweye">Phone bidding</div>${seg("phones", [["true", "On"], ["false", "Off"]], c.phones)}<p class="note">${RELAY === true || RELAY === null ? "On: a QR code shows before the first lot. Each team scans it with a phone, picks its team and bids from there; answers are still given out loud on the TV. The TV's bid buttons keep working too." : "Needs the Cloudflare link: the phones send their bids through it, so it can't be used here."}</p></div>
-    <div class="bwpanel"><div class="bweye">Hot Potato</div>${seg("potato", [["true", "On"], ["false", "Off"]], c.potato)}<p class="note">On: a buyer who doesn't know the answer can pass the lot to a team that wants it, up to ${BW_POTATOES} times per team per game. The buyer pays 25% of the price. The team that takes it gets 50% of the price if right and loses 25% if wrong.</p></div>
-    <div class="bwpanel"><div class="bweye">Mystery lots</div>${seg("mystery", [["true", "On"], ["false", "Off"]], c.mystery)}<p class="note">On: two lots per game hide even their title. A right answer on a mystery lot pays double the bid; a wrong one still loses just the bid.</p></div>
-    <div class="bwpanel"><div class="bweye">Sealed bids</div>${seg("sealed", [["true", "On"], ["false", "Off"]], c.sealed)}<p class="note">${RELAY === true || RELAY === null ? `On (needs Phone bidding on): instead of raising out loud, every team sends one secret bid from its phone within ${BW_SEALED_SECS} seconds. The highest bid buys the lot and pays its own bid; a tie goes to whoever sent it first. All bids show when it's sold.` : "Needs the Cloudflare link, like phone bidding."}${c.sealed && !c.phones ? " <b>Turn Phone bidding on too, or sealed bids are skipped.</b>" : ""}</p></div>
+    <div class="bwpanel" title="A buyer who can't answer passes the lot to a team that wants it. Twice per team per game. Buyer pays 25% of the price; the taker gets +50% if right, −25% if wrong."><div class="bweye">Hot Potato</div>${seg("potato", [["true", "On"], ["false", "Off"]], c.potato)}<p class="note">On: a buyer who doesn't know the answer can pass the lot to a team that wants it, up to ${BW_POTATOES} times per team per game. The buyer pays 25% of the price. The team that takes it gets 50% of the price if right and loses 25% if wrong.</p></div>
+    <div class="bwpanel" title="Two lots per game hide their title. A right answer on a mystery lot pays double the bid; a wrong one still loses just the bid."><div class="bweye">Mystery lots</div>${seg("mystery", [["true", "On"], ["false", "Off"]], c.mystery)}<p class="note">On: two lots per game hide even their title. A right answer on a mystery lot pays double the bid; a wrong one still loses just the bid.</p></div>
+    <div class="bwpanel" title="No open raising: every team sends one secret bid from its phone. Highest bid buys the lot at its own price. Needs Phone bidding on."><div class="bweye">Sealed bids</div>${seg("sealed", [["true", "On"], ["false", "Off"]], c.sealed)}<p class="note">${RELAY === true || RELAY === null ? `On (needs Phone bidding on): instead of raising out loud, every team sends one secret bid from its phone within the time set below. The highest bid buys the lot and pays its own bid; a tie goes to whoever sent it first. All bids show when it's sold.` : "Needs the Cloudflare link, like phone bidding."}${c.sealed && !c.phones ? " <b>Turn Phone bidding on too, or sealed bids are skipped.</b>" : ""}</p></div>
+    ${c.sealed ? `<div class="bwpanel" title="How long teams have to send their sealed bids once the host opens them."><div class="bweye">Sealed bid time</div>${seg("ssecs", BW_SEALED_OPTS.map(n => [n, n + " s"]), bwSealedSecs())}<p class="note">The host can also tap Reveal now to close the bids early.</p></div>` : ""}
     <div class="bwpanel"><div class="bweye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture, Egypt: Photo Edition and every clue that shows a photo.</p></div>
     <div class="bwpanel"><div class="bweye">Titles in the auction</div><div class="bwtitles">${BW_TITLES.map(t => { const off = t[3] === "photo" && !c.photos;
       return `<button data-title="${t[0]}" aria-pressed="${bwTitleOn(t) && !off}" ${off ? "disabled" : ""}><b>${esc(t[1])}</b><small>${esc(t[2].filter(id => catById(id)).map(id => catById(id).name).join(", "))}</small></button>`; }).join("")}</div></div>
@@ -112,7 +114,7 @@ function renderBidSetup(){
 }
 $("#bidSetup").addEventListener("click", e => {
   const c = BW.cfg, set = e.target.closest("[data-set]");
-  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "lots" || k === "secs") v = +v; if(k === "photos" || k === "raises" || k === "phones" || k === "potato" || k === "mystery" || k === "sealed") v = v === "true"; c[k] = v; bwSave(); renderBidSetup(); return; }
+  if(set){ const k = set.dataset.set; let v = set.dataset.v; if(k === "lots" || k === "secs" || k === "ssecs") v = +v; if(k === "photos" || k === "raises" || k === "phones" || k === "potato" || k === "mystery" || k === "sealed") v = v === "true"; c[k] = v; bwSave(); renderBidSetup(); return; }
   const tt = e.target.closest("[data-title]"); if(tt){ const t = BW_TITLES.find(x => x[0] === tt.dataset.title); c.titles[t[0]] = !bwTitleOn(t);
     if(!BW_TITLES.some(x => bwTitleOn(x) && bwCats(x).length)) c.titles[t[0]] = true; bwSave(); renderBidSetup(); return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ c.teams.splice(+rm.dataset.rm, 1); bwSave(); renderBidSetup(); return; }
@@ -253,7 +255,7 @@ function bwSync(){ if(!bwLive() || !BW.st) return; const st = BW.st, s = {}; st.
   let cur;
   if(st.over) cur = {c: `bw${BW.gid}_end`, kind: "bid", bw: 1, ph: "over"};
   else { const lot = bwLotNow(), tier = BW_TIERS[lot.tier];
-    cur = {c: `bw${BW.gid}_${st.i}`, kind: "bid", bw: 1, ph: st.phase, cat: bwName(lot), val: tier.k, sl: st.sealedOn ? (st.sealed && st.sealed.open ? 1 : 2) : 0, bd: st.teams.map((m, i) => st.sealed && st.sealed.bids[i] ? 1 : 0), bid: st.bid, lo: tier.lv[0], cap: tier.cap, lead: st.leader, ln: st.leader >= 0 ? st.teams[st.leader].name : "",
+    cur = {c: `bw${BW.gid}_${st.i}`, kind: "bid", bw: 1, ph: st.phase, cat: bwName(lot), val: tier.k, ss: bwSealedSecs(), sl: st.sealedOn ? (st.sealed && st.sealed.open ? 1 : 2) : 0, bd: st.teams.map((m, i) => st.sealed && st.sealed.bids[i] ? 1 : 0), bid: st.bid, lo: tier.lv[0], cap: tier.cap, lead: st.leader, ln: st.leader >= 0 ? st.teams[st.leader].name : "",
       rs: BW.cfg.raises ? BW_RAISES : [BW_STEP], rk: st.teams.map(m => BW_RAISES.includes(m.raise) ? m.raise : BW_STEP), buyer: lot.buyer, bn: lot.buyer != null ? st.teams[lot.buyer].name : "", price: lot.price, no: st.i + 1, of: st.lots.length}; }
   const k = JSON.stringify([cur, s]); if(k === bwLastSync) return; bwLastSync = k;
   ffaPost({cur, s, mode: "teams", teams: st.teams.map(m => m.name)}); }
@@ -299,7 +301,7 @@ setInterval(bwPoll, 1000);
    To remove: delete this block, the sealed parts of renderBid, bwPoll, bwSync, bidDone and bwUnsold (search "sealed"), the Sealed bids panel, and the sealed screen in play.html. */
 const bwSealed = () => !!(BW.st && BW.st.sealedOn && bwLive() && !BW.st.over && BW.st.phase === "lot");
 function bwSealState(){ const st = BW.st; if(!st.sealed) st.sealed = {open:false, bids:{}, seq:0}; return st.sealed; }
-function bwSealedOpen(){ if(!bwSealed()) return; const sl = bwSealState(); if(sl.open) return; sl.open = true; bwStop(); BW.left = BW_SEALED_SECS; Snd.unlock(); Snd.blip();
+function bwSealedOpen(){ if(!bwSealed()) return; const sl = bwSealState(); if(sl.open) return; sl.open = true; bwStop(); BW.left = bwSealedSecs(); Snd.unlock(); Snd.blip();
   const st = BW.st; BW.timer = setInterval(() => { BW.left--; if(BW.left <= 0){ bwStop(); bwSealedReveal(); return; } if(BW.left <= 3) Snd.tick(); const e = $("#bwCount"); if(e) e.textContent = `Sealed bids · ${BW.left}s`; }, 1000);
   renderBid(); }
 async function bwSealedReveal(){ const st = BW.st; if(!bwSealed()) return; const sl = bwSealState(); if(!sl.open) return; bwStop(); sl.open = false; sl.closing = true;

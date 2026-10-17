@@ -209,8 +209,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.67`);
-  $("#verBtn").textContent = "v7.67"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.68`);
+  $("#verBtn").textContent = "v7.68"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1828,9 +1828,10 @@ function showWinner(){
   confetti(); ledStart(); if(S.football) playWinSiu(); else if(S.sound) playEnd(NORMAL_INTRO);  /* 6.76 (Omar): Football mode plays Siuuu alone (was nextIntro(), the two intros in turn) */  /* 4.87 (Omar): normal mode plays "no fair" then Siuuu; Football mode alternates the two intros. 4.86: normal mode was Siuuu alone (playSiu()) */  /* 4.63 (Omar): the Siuuu clip in both modes (was: Football mode only, normal mode played Snd.fanfare()) */
 }
 /* 7.67 (Omar): Final Jeopardy, a setup switch (off by default). After the last tile, one clue from a random board category that nobody has to pick: every team with more than 0 secretly
-   bets from 0 up to its whole score (the host types the bets in), the clue and answer show, and right adds the bet, wrong takes it away. Teams on 0 or below sit out. Then the winner screen.
-   To remove: delete this block, #optFinal in head.html, and the finalJ / finalDone lines in this file. */
-const FJ = {st:null};
+   bets from 0 up to its whole score, the clue and answer show, and right adds the bet, wrong takes it away. Teams on 0 or below sit out. Then the winner screen.
+   7.68 (Omar): the bets are secret, sent from the team phones (the same join code and /api/bid route as phone bidding; the TV only shows who has bet, and the amounts appear with the answer).
+   Without the Cloudflare link there are no phones, so the host types the bets in instead. To remove: delete this block, #optFinal in head.html, the finalJ / finalDone lines in this file and the fj part of drawBid in play.html. */
+const FJ = {st:null, timer:null, seen:0};
 function fjPick(){ const ok = [];
   [S.cats, PICK.map(c => c.id)].forEach(list => { if(ok.length) return;
     list.forEach(id => { const c = catById(id); if(!c || c.mode || c.type !== "text" || HIDDEN_IDS.has(id) || isMix(id)) return;
@@ -1840,23 +1841,53 @@ function fjPick(){ const ok = [];
 function fjStart(){ if(S.ended || S.finalDone) return; S.finalDone = true;
   const elig = S.teams.map((t, i) => i).filter(i => S.teams[i].score > 0), pk = fjPick();
   if(!elig.length || !pk){ showWinner(); return; }
-  FJ.st = {cat:pk[0], idx:pk[1], stage:"bets", elig, bets:{}, awards:{}}; $("#card").hidden = false; fjRender(); }
+  const phones = RELAY === true && !S.ffa;
+  FJ.seen = 0; FJ.st = {cat:pk[0], idx:pk[1], stage:phones ? "join" : "bets", phones, id:"fj" + newRoom().slice(0, 5), elig, bets:{}, got:{}, awards:{}, cnt:{}};
+  $("#card").hidden = false; fjRender(); if(phones){ fjSync("wait"); fjPlayers(); } }
+function fjStop(){ clearTimeout(FJ.timer); FJ.timer = null; }
+function fjSync(ph){ const f = FJ.st; if(!f || !f.phones) return; const s = {}; S.teams.forEach((t, i) => { s["t" + i] = t.score; });
+  ffaPost({mode:"teams", teams:S.teams.map(t => t.name), s, cur:{c:f.id, kind:"bid", fj:1, ph, cat:catById(f.cat).name, mx:S.teams.map((t, i) => f.elig.includes(i) ? t.score : 0), bd:S.teams.map((t, i) => f.got[i] != null ? 1 : 0)}}); }
+function fjClose(){ fjStop(); const f = FJ.st; if(f && f.phones) ffaPost({cur:null, s:{}}); FJ.st = null; $("#card").hidden = true; }
+async function fjPlayers(){ const f = FJ.st; if(!f || f.stage !== "join") return;
+  try{ const j = await (await fetch(`api/players?r=${encodeURIComponent(S.room)}`, {cache:"no-store"})).json(), k = {}; (j.players || []).forEach(pl => { if(pl.t != null) k[pl.t] = (k[pl.t] || 0) + 1; }); f.cnt = k;
+    const el = $("#fjPhones"); if(el) el.innerHTML = S.teams.map((t, i) => `<li>${esc(t.name)} · ${k[i] ? k[i] + " phone" + (k[i] > 1 ? "s" : "") : "no phone yet"}</li>`).join(""); }catch(e){}
+  FJ.timer = setTimeout(fjPlayers, 2000); }
+async function fjPoll(){ const f = FJ.st; if(!f || f.stage !== "phonebets") return;
+  try{ const j = await (await fetch(`api/bids?r=${encodeURIComponent(S.room)}&c=${f.id}&since=${FJ.seen}`, {cache:"no-store"})).json();
+    if(FJ.st === f && f.stage === "phonebets" && Array.isArray(j.bids)){ FJ.seen = j.n;
+      j.bids.forEach(x => { if(f.elig.includes(x.t)) f.got[x.t] = Math.max(0, Math.min(S.teams[x.t].score, Math.floor(Number(x.b) || 0))); });
+      const el = $("#fjCount"); if(el) el.innerHTML = `${Object.keys(f.got).length}/${f.elig.length}<small>${f.elig.map(i => esc(S.teams[i].name) + (f.got[i] != null ? " ✓" : " …")).join("   ")}</small>`; fjSync("bet"); } }catch(e){}
+  FJ.timer = setTimeout(fjPoll, 1000); }
 function fjRender(){ const f = FJ.st; if(!f) return; const cat = catById(f.cat), [q, a] = pool(f.cat, 500)[f.idx], money = n => Number(n).toLocaleString("en-US");
+  const sit = S.teams.map((t, i) => f.elig.includes(i) ? "" : `${esc(t.name)} (${money(t.score)}) sits out`).filter(Boolean).join(" · ");
   let body = "";
-  if(f.stage === "bets") body = `<p class="note">Every team with points writes down a secret bet, from 0 up to its whole score. Teams on 0 or below sit this one out. The host types the bets in.</p>
+  if(f.stage === "join") body = `<p class="note">Every team with points sends a secret bet from its phone, from 0 up to its whole score. Scan the code and pick your team. Teams on 0 or below sit out.</p>
+    <div class="fjjoin"><div class="qr" id="fjqr"></div><ul id="fjPhones" class="note"></ul></div>${sit ? `<p class="note">${sit}</p>` : ""}
+    <div class="row"><button class="btn primary" data-fj="open">Open the bets</button><button class="btn small" data-fj="typed">No phones: type the bets in</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
+  else if(f.stage === "phonebets") body = `<p class="note">Bets are secret. Each team sends its bet from its phone, and can change it until you lock them in.</p>
+    <div class="eyebrow">Bets in</div><div class="fjcount" id="fjCount">${Object.keys(f.got).length}/${f.elig.length}<small>${f.elig.map(i => esc(S.teams[i].name) + (f.got[i] != null ? " ✓" : " …")).join("   ")}</small></div>${sit ? `<p class="note">${sit}</p>` : ""}
+    <div class="row"><button class="btn primary" data-fj="lock">Lock in bets and show the clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
+  else if(f.stage === "bets") body = `<p class="note">Every team with points writes down a secret bet, from 0 up to its whole score. Teams on 0 or below sit this one out. The host types the bets in.</p>
     <div class="award">${S.teams.map((t, i) => f.elig.includes(i) ? `<div class="grp"><span>${esc(t.name)} · ${money(t.score)}</span><input type="number" inputmode="numeric" min="0" max="${t.score}" step="1" placeholder="Bet" data-fjbet="${i}" aria-label="${esc(t.name)} bet" style="width:7em;font:inherit;padding:.4em .6em"></div>` : `<div class="grp"><span>${esc(t.name)} · ${money(t.score)}</span><span class="note">sits out</span></div>`).join("")}</div>
     <div class="row"><button class="btn primary" data-fj="lock">Lock in bets and show the clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
-  else { body = `<p class="qtext${q.length > 150 ? " long" : ""}">${esc(q)}</p><p class="note">Bets: ${f.elig.map(i => `${esc(S.teams[i].name)} ${money(f.bets[i])}`).join(" · ")}. Teams write their answers down.</p>
+  else { body = `<p class="qtext${q.length > 150 ? " long" : ""}">${esc(q)}</p><p class="note">${f.stage === "reveal" ? `Bets: ${f.elig.map(i => `${esc(S.teams[i].name)} ${money(f.bets[i])}`).join(" · ")}.` : "The bets are locked in and secret. Teams write their answers down."}</p>
     ${f.stage === "reveal" ? `<div class="answer">${fmtAns(a)}</div><div class="award">${f.elig.map(i => `<div class="grp"><span>${esc(S.teams[i].name)}</span><button class="y${f.awards[i] === 1 ? " on" : ""}" data-fj="aw" data-i="${i}" data-v="1">Right +${money(f.bets[i])}</button><button class="n${f.awards[i] === -1 ? " on" : ""}" data-fj="aw" data-i="${i}" data-v="-1">Wrong −${money(f.bets[i])}</button></div>`).join("")}</div>
       <div class="row"><button class="btn primary" data-fj="finish">Save scores and see the winner</button></div>`
-      : `<div class="row"><button class="btn primary" data-fj="reveal">Reveal answer</button></div>`}`; }
-  $("#clue").innerHTML = `<div class="cluehead"><div class="eyebrow">Final Jeopardy · ${esc(cat.name)}</div><div class="val">★</div></div>${body}`; }
+      : `<div class="row"><button class="btn primary" data-fj="reveal">Reveal answer and bets</button></div>`}`; }
+  $("#clue").innerHTML = `<div class="cluehead"><div class="eyebrow">Final Jeopardy · ${esc(cat.name)}</div><div class="val">★</div></div>${body}`;
+  if(f.stage === "join"){ const q = $("#fjqr"); const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(FJ.st === f && f.stage === "join" && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
+      q.innerHTML = ""; try{ new QRCode(q, {text: ffaUrl(), width: 220, height: 220, correctLevel: QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); } }
 $("#clue").addEventListener("click", e => { const f = FJ.st; if(!f || S.cur) return; const b = e.target.closest("[data-fj]"); if(!b) return; const k = b.dataset.fj;
-  if(k === "skip"){ FJ.st = null; $("#card").hidden = true; showWinner(); return; }
-  if(k === "lock"){ f.elig.forEach(i => { const el = $(`[data-fjbet="${i}"]`), n = Math.floor(Number(el && el.value) || 0); f.bets[i] = Math.max(0, Math.min(S.teams[i].score, n)); }); f.stage = "clue"; Snd.blip(); fjRender(); return; }
+  if(k === "skip"){ fjClose(); showWinner(); return; }
+  if(k === "open"){ fjStop(); f.stage = "phonebets"; FJ.seen = 0; Snd.blip(); fjRender(); fjSync("bet"); fjPoll(); return; }
+  if(k === "typed"){ fjStop(); f.phones = false; ffaPost({cur:null, s:{}}); f.stage = "bets"; fjRender(); return; }
+  if(k === "lock"){ fjStop();
+    if(f.stage === "phonebets"){ f.elig.forEach(i => { f.bets[i] = f.got[i] != null ? f.got[i] : 0; }); }
+    else f.elig.forEach(i => { const el = $(`[data-fjbet="${i}"]`), n = Math.floor(Number(el && el.value) || 0); f.bets[i] = Math.max(0, Math.min(S.teams[i].score, n)); });
+    f.stage = "clue"; fjSync("lock"); Snd.blip(); fjRender(); return; }
   if(k === "reveal"){ f.stage = "reveal"; fjRender(); return; }
   if(k === "aw"){ const i = +b.dataset.i, v = +b.dataset.v; if(f.awards[i] === v) delete f.awards[i]; else f.awards[i] = v; fjRender(); return; }
-  if(k === "finish"){ f.elig.forEach(i => { if(f.awards[i]) S.teams[i].score += f.awards[i] * f.bets[i]; }); S.used.add(`${f.cat}-500-${f.idx}`); store.set("jn_used", [...S.used]); FJ.st = null; $("#card").hidden = true; showWinner(); } });
+  if(k === "finish"){ f.elig.forEach(i => { if(f.awards[i]) S.teams[i].score += f.awards[i] * f.bets[i]; }); S.used.add(`${f.cat}-500-${f.idx}`); store.set("jn_used", [...S.used]); fjClose(); showWinner(); } });
 /* Football mode winner sound: the last 9 seconds of Ronaldo's "Siuuu" clip, in place of the fanfare */
 let siuA = null;
 const SIU_VOL = 1;  /* 4.63 (Omar): the clip is half as loud, done in sounds/siuuu.mp3 itself because iPhones ignore this volume setting */
@@ -2069,7 +2100,7 @@ const FFA_SKIP = new Set(["act","impostor","password"]);
 function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#teamsPanel").hidden = S.ffa;
   if(S.ffa){ if(!S.preFfa) S.preFfa = {power:S.power, qrAns:S.qrAns, steal:S.steal, wager:S.wager, finalJ:S.finalJ}; S.power = S.qrAns = S.steal = S.wager = S.finalJ = false; S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type)); }
   else if(S.preFfa){ Object.assign(S, S.preFfa); S.preFfa = null; }
-  [["#optPower","power"],["#optSteal","steal"],["#optWager","wager"],["#optFinal","finalJ"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); b.title = S.ffa ? "Off in Free-for-all" : ""; });
+  [["#optPower","power"],["#optSteal","steal"],["#optWager","wager"],["#optFinal","finalJ"]].forEach(([id,k]) => { const b = $(id); b.disabled = S.ffa; b.setAttribute("aria-pressed", S[k]); if(b.dataset.t0 === undefined) b.dataset.t0 = b.title; b.title = S.ffa ? "Off in Free-for-all" : b.dataset.t0;   /* 7.68: keeps the switch's own hover text */ });
   renderChips(); renderMixEdit(); }   // 6.29: the Edit mixes panel greys out team-only categories too
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
 function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check

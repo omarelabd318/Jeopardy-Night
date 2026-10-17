@@ -107,6 +107,7 @@ const shownAns = (c, v) => c.kind === "order" || (c.kind === "steal" && c.ev) ? 
 const money = v => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US");
 /* 6.77: Bidding Wars. The TV sends the lot, the current bid and who leads; a tap sends the raise back and the TV applies it if the bid hasn't moved */
 function drawBid(c){
+  if(c.fj){ drawFinal(c); return; }   // 7.68: Final Jeopardy bets
   const mine = st.team, lot = `<div class="eyebrow">${c.no ? `Lot ${c.no} of ${c.of} · ` : ""}${esc(c.val || "Bidding Wars")}</div>`;
   if(c.ph === "wait"){ $("view").innerHTML = `<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're on ${esc(me.n)}!</div><div class="hint">Watch the TV. The bid buttons appear here when the first lot opens.</div></div>`; return; }
   if(c.ph === "over"){ $("view").innerHTML = `<div class="wait"><div class="big">Auction over</div><div class="hint">Look at the TV for the winner.</div></div>`; return; }
@@ -130,10 +131,34 @@ function drawBid(c){
     catch(x){ say("No connection. Check your internet and try again.", "err"); }
     setTimeout(() => { shown = ""; poll(); }, 1200); };
 }
+/* 7.68: Final Jeopardy. The TV sends the category and each team's top bet (its score); the team sends one secret bet, changeable until the host locks them. */
+let fjFor = "", fjAmt = 0;
+function drawFinal(c){
+  const mine = st.team, mx = (c.mx && c.mx[mine]) || 0, head = `<div class="eyebrow">Final Jeopardy</div>`;
+  if(c.ph === "wait"){ $("view").innerHTML = `${head}<div class="wait"><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="big">You're on ${esc(me.n)}!</div><div class="hint">Watch the TV. Your secret bet box opens here for the last clue.</div></div>`; return; }
+  if(!mx){ $("view").innerHTML = `${head}<div class="wait"><div class="big">You sit this one out</div><div class="hint">Final Jeopardy is for teams with points. Watch the TV.</div></div>`; return; }
+  if(c.ph === "lock"){ $("view").innerHTML = `${head}<div class="wait"><div class="big">Bets are locked</div><div class="hint">Read the clue on the TV and write your answer down.</div></div>`; return; }
+  if(fjFor !== c.c){ fjFor = c.c; fjAmt = 0; }
+  const sent = c.bd && c.bd[mine];
+  $("view").innerHTML = `${head}<h1>${esc(c.cat)}</h1><div class="eyebrow">Your secret bet</div><div class="bwbig" id="fjBig">${fjAmt.toLocaleString("en-US")}</div>
+    <div class="hint">You can bet from 0 up to ${mx.toLocaleString("en-US")} (your whole score).</div>
+    <div class="bwbtns" style="grid-template-columns:1fr 1fr"><button class="go" data-d="-100" style="justify-content:center;background:#222a33;color:#e9eef2">− 100</button><button class="go" data-d="100" style="justify-content:center;background:#222a33;color:#e9eef2">+ 100</button>
+      <button class="go" data-d="-10" style="justify-content:center;background:#222a33;color:#e9eef2">− 10</button><button class="go" data-d="10" style="justify-content:center;background:#222a33;color:#e9eef2">+ 10</button>
+      <button class="go" data-to="0" style="justify-content:center;background:#222a33;color:#e9eef2">Bet 0</button><button class="go" data-to="${mx}" style="justify-content:center;background:#222a33;color:#e9eef2">All in</button></div>
+    <div class="bwbtns"><button class="go" id="fjGo" style="justify-content:center">${sent ? "Change my bet" : "Send my bet"}</button></div>
+    <div class="msg${sent ? " ok" : ""}" id="msg" ${sent ? "" : "hidden"}>${sent ? "Bet sent. You can change it until the host locks the bets." : ""}</div>`;
+  const upd = () => { $("fjBig").textContent = fjAmt.toLocaleString("en-US"); };
+  document.querySelectorAll("[data-d],[data-to]").forEach(b => b.onclick = () => { fjAmt = b.dataset.to != null ? +b.dataset.to : Math.max(0, Math.min(mx, fjAmt + +b.dataset.d)); upd(); });
+  $("fjGo").onclick = async () => { const g = $("fjGo"); g.disabled = true;
+    try{ const res = await post("bid", {r, c: c.c, t: mine, r2: 50, b: fjAmt});
+      if(!res.ok) say(res.j.error === "closed" ? "Too late: the bets are locked." : "That didn't go through. Try again.", "err"); else say(`Bet of ${fjAmt.toLocaleString("en-US")} sent.`, "ok"); }
+    catch(x){ say("No connection. Check your internet and try again.", "err"); }
+    g.disabled = false; setTimeout(() => { shown = ""; poll(); }, 1200); };
+}
 /* 7.67: sealed bids. One secret bid in $50 steps; sending again replaces it until the TV closes the box. The amount is sent as "b" on the usual /api/bid route (r2 is 50). */
 let sealFor = "", sealAmt = 0;
 function drawSealed(c, mine, lot){
-  if(c.sl === 2){ $("view").innerHTML = `${lot}<h1>${esc(c.cat)}</h1><div class="wait"><div class="big">Sealed bids</div><div class="hint">Everyone sends one secret bid. The host opens bidding on the TV, then you get ${10} seconds.</div></div>`; return; }
+  if(c.sl === 2){ $("view").innerHTML = `${lot}<h1>${esc(c.cat)}</h1><div class="wait"><div class="big">Sealed bids</div><div class="hint">Everyone sends one secret bid. The host opens bidding on the TV, then you get ${c.ss || 15} seconds.</div></div>`; return; }
   if(sealFor !== c.c){ sealFor = c.c; sealAmt = c.lo; }
   const sent = c.bd && c.bd[mine];
   $("view").innerHTML = `${lot}<h1>${esc(c.cat)}</h1><div class="eyebrow">Your secret bid</div>
