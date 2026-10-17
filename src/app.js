@@ -125,11 +125,12 @@ const Snd = (() => {
       for(let k = 1; k <= 17; k++){ const p = k * 60 / 1000, t = 3.2 * (1 - Math.pow(1 - p, 1 / 3)); if(p >= 1) break; click(g, t, 0.55 + 0.35 * (1 - p), 2600 + (k % 3) * 500); } },
     stopSpin(){ if(spinG){ try{ spinG.gain.setValueAtTime(spinG.gain.value, ac.currentTime); spinG.gain.linearRampToValueAtTime(0, ac.currentTime + 0.08); }catch(e){} spinG = null; } },
     /* 7.64 (Omar): the sound of cards being put down on the felt: per card a soft paper slap (short filtered noise) over a low thump, a little different each time. */
+    /* 7.77 (Omar: "less slappy, less loud"): a soft brush instead of a slap, about a third as loud. Was: noise decay 0.022 s with a 0.0008 s attack, bandpass 1500-2400 Hz Q 0.7 at gain 0.38-0.48, thump gain 0.2 at 4 ms. */
     place(n = 1, delay = 0){ if(!S.sound) return; const a = ctx(); if(!a) return; for(let i = 0; i < n; i++){ const t = a.currentTime + delay + i * 0.15, len = 0.14, buf = a.createBuffer(1, Math.floor(a.sampleRate * len), a.sampleRate), d = buf.getChannelData(0);
-        for(let k = 0; k < d.length; k++){ const x = k / a.sampleRate; d[k] = (Math.random() * 2 - 1) * Math.exp(-x / 0.022) * (1 - Math.exp(-x / 0.0008)); }
-        const nz = a.createBufferSource(); nz.buffer = buf; const f = a.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = 1500 + Math.random() * 900; f.Q.value = 0.7; const g = a.createGain(); g.gain.value = 0.38 + Math.random() * 0.1;
+        for(let k = 0; k < d.length; k++){ const x = k / a.sampleRate; d[k] = (Math.random() * 2 - 1) * Math.exp(-x / 0.03) * (1 - Math.exp(-x / 0.004)); }
+        const nz = a.createBufferSource(); nz.buffer = buf; const f = a.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = 1300 + Math.random() * 400; f.Q.value = 0.5; const g = a.createGain(); g.gain.value = 0.13 + Math.random() * 0.03;
         nz.connect(f).connect(g).connect(out || a.destination); nz.start(t);
-        const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; const fr = 150 + Math.random() * 30; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(70, t + 0.08); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.2, t + 0.004); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+        const o = a.createOscillator(), og = a.createGain(); o.type = "sine"; const fr = 150 + Math.random() * 30; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(70, t + 0.08); og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(0.06, t + 0.01); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
         o.connect(og).connect(out || a.destination); o.start(t); o.stop(t + 0.15); } },
     /* 7.65 (Omar, Hold'em): table sounds, all made with the audio API (no files). A card is a short paper slide then a snap, a knock is a soft double tap on the rail, chips are a few bright clicks. */
     deal(n = 4){ const a = ctx(); if(!a || !S.sound) return; for(let k = 0; k < n * 2; k++) this.card(k * 0.13 + Math.random() * 0.02, false); },
