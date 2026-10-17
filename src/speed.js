@@ -132,7 +132,10 @@ function spDraw(lvl){
       const opts = spShuf(spShuf(pickFrom).slice(0, 3).concat(c.a)); c.opts = opts; c.ci = opts.indexOf(c.a); c.lvl = lvl;
       (SP.seen[key] = SP.seen[key] || []).push(i); store.set("jn_spSeen", SP.seen); SP.lastCat = cat; return c; } }
   return null; }
-const spMatch = (t, c) => ansMatch(t, c.a);
+/* 7.76 (Omar): typed fast on a phone, so be more forgiving than the main game: one slip from 4 letters, two from 7, three from 13, on the whole answer or its last word */
+const spLoose = (g, v) => { const n = v.length; return lev(g, v) <= (n <= 3 ? 0 : n <= 6 ? 1 : n <= 12 ? 2 : 3); };
+const spMatch = (t, c) => { if(ansMatch(t, c.a)) return true; const g = ansNorm(t); if(!g) return false;
+  return ansVariants(c.a).some(v => { const w = v.split(" "), last = w[w.length - 1]; return spLoose(g, v) || spLoose(g.replace(/ /g, ""), v.replace(/ /g, "")) || (w.length > 1 && last.length >= 4 && spLoose(g, last)); }); };
 
 /* ---------- talking to the phones ---------- */
 function spPub(){

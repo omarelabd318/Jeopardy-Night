@@ -209,8 +209,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.75`);
-  $("#verBtn").textContent = "v7.75"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.76`);
+  $("#verBtn").textContent = "v7.76"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2618,6 +2618,7 @@ $("#clue").addEventListener("click", e => {
   if(a==="swap" && S.mode === "hotseat" && !hsUseSwap()) return;   // 6.59: one swap per team per game
   if(a==="swap" || a==="played"){ const turn = c.turn;   // 7.51: "played" is Hot Seat's free swap for a clue the group has already had S.used.add(`${c.cat}-${c.lvl}-${c.idx}`); store.set("jn_used", [...S.used]); histNote();
     /* 6.20: a mix swaps to a fresh pick from any of its sources */ const two = c.two; S.keepBets = c.bets || null; if(c.tile) openClue(c.tile, c.lvl, 0); else openClue(c.cat, c.lvl, c.idx); S.cur.two = two; if(turn !== undefined) S.cur.turn = turn; renderClue(); return; }
+  if(a==="hspass"){ hsPass(); return; }   // 7.76: Hot Seat Pass
   if(a==="potato" || a==="potatono" || a==="potatoto"){ bidPotato(c, a, b); return; }   // 7.67: Bidding Wars Hot Potato
   if(a==="cancel"){ closeCard(); }
   if(a==="done" && c.preview){ closeCard(); return; }
