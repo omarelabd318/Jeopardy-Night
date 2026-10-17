@@ -209,8 +209,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.73`);
-  $("#verBtn").textContent = "v7.73"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.74`);
+  $("#verBtn").textContent = "v7.74"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1863,22 +1863,24 @@ function fjRender(){ const f = FJ.st; if(!f) return; const cat = catById(f.cat),
   let body = "";
   if(f.stage === "join") body = `<p class="note">Every team with points sends a secret bet from its phone, from 0 up to its whole score. Scan the code and pick your team. Teams on 0 or below sit out.</p>
     <div class="fjjoin"><div class="qr" id="fjqr"></div><ul id="fjPhones" class="note"></ul></div>${sit ? `<p class="note">${sit}</p>` : ""}
-    <div class="row"><button class="btn primary" data-fj="open">Open the bets</button><button class="btn small" data-fj="typed">No phones: type the bets in</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
+    <div class="row"><button class="btn primary" data-fj="open">Open the bets</button><button class="btn small" data-fj="typed">No phones: type the bets in</button><button class="btn small" data-fj="swap">Swap clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
   else if(f.stage === "phonebets") body = `<p class="note">Bets are secret. Each team sends its bet from its phone, and can change it until you lock them in.</p>
     <div class="eyebrow">Bets in</div><div class="fjcount" id="fjCount">${Object.keys(f.got).length}/${f.elig.length}<small>${f.elig.map(i => esc(S.teams[i].name) + (f.got[i] != null ? " ✓" : " …")).join("   ")}</small></div>${sit ? `<p class="note">${sit}</p>` : ""}
-    <div class="row"><button class="btn primary" data-fj="lock">Lock in bets and show the clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
+    <div class="row"><button class="btn primary" data-fj="lock">Lock in bets and show the clue</button><button class="btn small" data-fj="swap">Swap clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
   else if(f.stage === "bets") body = `<p class="note">Every team with points writes down a secret bet, from 0 up to its whole score. Teams on 0 or below sit this one out. The host types the bets in.</p>
     <div class="award">${S.teams.map((t, i) => f.elig.includes(i) ? `<div class="grp"><span>${esc(t.name)} · ${money(t.score)}</span><input type="number" inputmode="numeric" min="0" max="${t.score}" step="1" placeholder="Bet" data-fjbet="${i}" aria-label="${esc(t.name)} bet" style="width:7em;font:inherit;padding:.4em .6em"></div>` : `<div class="grp"><span>${esc(t.name)} · ${money(t.score)}</span><span class="note">sits out</span></div>`).join("")}</div>
-    <div class="row"><button class="btn primary" data-fj="lock">Lock in bets and show the clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
+    <div class="row"><button class="btn primary" data-fj="lock">Lock in bets and show the clue</button><button class="btn small" data-fj="swap">Swap clue</button><button class="btn small" data-fj="skip">Skip Final Jeopardy</button></div>`;
   else { body = `<p class="qtext${q.length > 150 ? " long" : ""}">${esc(q)}</p><p class="note">${f.stage === "reveal" ? `Bets: ${f.elig.map(i => `${esc(S.teams[i].name)} ${money(f.bets[i])}`).join(" · ")}.` : "The bets are locked in and secret. Teams write their answers down."}</p>
     ${f.stage === "reveal" ? `<div class="answer">${fmtAns(a)}</div><div class="award">${f.elig.map(i => `<div class="grp"><span>${esc(S.teams[i].name)}</span><button class="y${f.awards[i] === 1 ? " on" : ""}" data-fj="aw" data-i="${i}" data-v="1">Right +${money(f.bets[i])}</button><button class="n${f.awards[i] === -1 ? " on" : ""}" data-fj="aw" data-i="${i}" data-v="-1">Wrong −${money(f.bets[i])}</button></div>`).join("")}</div>
       <div class="row"><button class="btn primary" data-fj="finish">Save scores and see the winner</button></div>`
-      : `<div class="row"><button class="btn primary" data-fj="reveal">Reveal answer and bets</button></div>`}`; }
+      : `<div class="row"><button class="btn primary" data-fj="reveal">Reveal answer and bets</button><button class="btn small" data-fj="swap">Swap clue</button></div>`}`; }
   $("#clue").innerHTML = `<div class="cluehead"><div class="eyebrow">Final Jeopardy · ${esc(cat.name)}</div><div class="val">★</div></div>${body}`;
   if(f.stage === "join"){ const q = $("#fjqr"); const draw = () => { if(!window.QRCode){ q.textContent = "The code maker didn't load yet."; setTimeout(() => { if(FJ.st === f && f.stage === "join" && !q.querySelector("img,canvas")) draw(); }, 1000); return; }
       q.innerHTML = ""; try{ new QRCode(q, {text: ffaUrl(), width: 220, height: 220, correctLevel: QRCode.CorrectLevel.L}); }catch(e){ q.textContent = "Couldn't draw the code."; } }; draw(); } }
 $("#clue").addEventListener("click", e => { const f = FJ.st; if(!f || S.cur) return; const b = e.target.closest("[data-fj]"); if(!b) return; const k = b.dataset.fj;
   if(k === "skip"){ fjClose(); showWinner(); return; }
+  if(k === "swap"){ let pk = fjPick(); for(let t = 0; pk && pk[0] === f.cat && t < 8; t++) pk = fjPick(); if(!pk) return; S.used.add(`${f.cat}-500-${f.idx}`); store.set("jn_used", [...S.used]); f.cat = pk[0]; f.idx = pk[1];   // 7.70 (Omar): swap the Final Jeopardy clue (new random category and clue; bets already sent stay)
+    Snd.blip(); fjRender(); fjSync({join:"wait", phonebets:"bet", clue:"lock"}[f.stage]); return; }
   if(k === "open"){ fjStop(); f.stage = "phonebets"; FJ.seen = 0; Snd.blip(); fjRender(); fjSync("bet"); fjPoll(); return; }
   if(k === "typed"){ fjStop(); f.phones = false; ffaPost({cur:null, s:{}}); f.stage = "bets"; fjRender(); return; }
   if(k === "lock"){ fjStop();
