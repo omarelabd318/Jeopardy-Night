@@ -7,7 +7,7 @@
 const TT_NAME = "Sahra";   // the overall name (Omar's pick, 6.84)
 const TT = {
   home:{base:"#0a0d24", s:["#ffd98a","#0a0d24","#ffd98a"], ff:'"Rakkas","Playfair Display",serif', ink:"#f6e7c8", tag:"Pick a game. Gather the group. The night is long.",
-    bg:"radial-gradient(ellipse at 50% -10%,rgba(255,176,60,.3),transparent 60%),radial-gradient(circle,rgba(255,255,255,.08) 1.2px,transparent 1.8px) 0 0/34px 34px,linear-gradient(#18204a,#0a0d24)"},
+    bg:"radial-gradient(ellipse at 50% -10%,rgba(255,176,60,.3),transparent 60%),linear-gradient(#18204a,#0a0d24)"},   /* 7.71 (Omar): the faint dot grid is gone from the home background. 7.70 and before had radial-gradient(circle,rgba(255,255,255,.08) 1.2px,transparent 1.8px) 0 0/34px 34px between the glow and the linear-gradient */
   modeBid:{t:["Bidding","Wars"], ff:'"Share Tech Mono",ui-monospace,Menlo,monospace', fw:400, c1:"#ffd21a", c2:"#38e07b", k:.82, ink:"#ffd21a",
     sh:"0 0 .06em #ffb300,0 0 .28em rgba(255,170,0,.55)", tag:"Bid for the clue. Win it, or pay for it.", s:["#ffd21a","#07090c","#ffb21a"],
     bg:"radial-gradient(circle,rgba(255,178,26,.14) 1px,transparent 1.5px) 0 0/22px 22px,radial-gradient(circle at 50% 40%,#1a1d24,#07090c 70%)", base:"#07090c", g:{c:6,r:5,t:["$200","$300","$400","$500","$600","$800","$1,200","$1,500"],bg:"#07090c",ink:"#ffd21a",font:'"Share Tech Mono",monospace',bd:"#ffb21a",sh:"0 0 8px #ffb300"}},
