@@ -1,0 +1,80 @@
+{
+ "200": [
+  [
+   "Who or what is nicknamed “Fergie”?",
+   "Sir Alex Ferguson"
+  ],
+  [
+   "Who or what is nicknamed “The City of Angels”?",
+   "Los Angeles"
+  ],
+  [
+   "Who or what is nicknamed “The Paris of the Middle East”?",
+   "Beirut"
+  ],
+  [
+   "Who or what is nicknamed “The Boot”?",
+   "Italy"
+  ]
+ ],
+ "300": [
+  [
+   "Who or what is nicknamed “The Dervishes (El Darawish)”?",
+   "Ismaily"
+  ],
+  [
+   "Who or what is nicknamed “The Greek Freak”?",
+   "Giannis Antetokounmpo"
+  ],
+  [
+   "Who or what is nicknamed “Ol' Blue Eyes”?",
+   "Frank Sinatra"
+  ],
+  [
+   "Who or what is nicknamed “The Land of Smiles”?",
+   "Thailand"
+  ]
+ ],
+ "400": [
+  [
+   "Who or what is nicknamed “The Thin White Duke”?",
+   "David Bowie"
+  ],
+  [
+   "Who or what is nicknamed “Gazza”?",
+   "Paul Gascoigne"
+  ],
+  [
+   "Who or what is nicknamed “L'Hexagone (The Hexagon)”?",
+   "France"
+  ],
+  [
+   "Who or what is nicknamed “The Blue Pearl”?",
+   "Chefchaouen"
+  ]
+ ],
+ "500": [
+  [
+   "Who or what is nicknamed “Satchmo”?",
+   "Louis Armstrong"
+  ],
+  [
+   "Who or what is nicknamed “El Mago (The Magician)”?",
+   "David Silva"
+  ],
+  [
+   "Who or what is nicknamed “The Mailman”?",
+   "Karl Malone"
+  ],
+  [
+   "Who or what is nicknamed “Zaeem El Thaghr (Leader of the Port)”?",
+   "Al Ittihad of Alexandria"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Italy",
+  "France",
+  "Los Angeles",
+  "Beirut"
+ ]
+}

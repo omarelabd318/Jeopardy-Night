@@ -214,6 +214,22 @@
    [
     "What is Norway's currency?",
     "The Norwegian krone"
+   ],
+   [
+    "What is Morocco's currency?",
+    "The Moroccan dirham"
+   ],
+   [
+    "What is Chile's currency?",
+    "The Chilean peso"
+   ],
+   [
+    "What is Libya's currency?",
+    "The Libyan dinar"
+   ],
+   [
+    "What is Sudan's currency?",
+    "The Sudanese pound"
    ]
   ],
   "300": [
@@ -320,6 +336,22 @@
    [
     "Which Gulf country's dinar is the world's second most valuable currency unit, after Kuwait's?",
     "Bahrain"
+   ],
+   [
+    "What is Afghanistan's currency?",
+    "The afghani"
+   ],
+   [
+    "What is Serbia's currency?",
+    "The Serbian dinar"
+   ],
+   [
+    "What is Cuba's currency?",
+    "The Cuban peso"
+   ],
+   [
+    "What is Uzbekistan's currency?",
+    "The som"
    ]
   ],
   "400": [
@@ -426,6 +458,22 @@
    [
     "Which country's currency is the córdoba?",
     "Nicaragua"
+   ],
+   [
+    "Which country's currency is the somoni?",
+    "Tajikistan"
+   ],
+   [
+    "Which country's currency is the convertible mark?",
+    "Bosnia and Herzegovina"
+   ],
+   [
+    "Which country's currency is the tala?",
+    "Samoa"
+   ],
+   [
+    "Which country's currency is the kina?",
+    "Papua New Guinea"
    ]
   ],
   "500": [
@@ -532,6 +580,22 @@
    [
     "Which country's currency is the metical?",
     "Mozambique"
+   ],
+   [
+    "Which country's currency is the loti?",
+    "Lesotho"
+   ],
+   [
+    "Which country's currency is the lilangeni?",
+    "Eswatini (Swaziland)"
+   ],
+   [
+    "Which country's currency is the vatu?",
+    "Vanuatu"
+   ],
+   [
+    "Which country brought in a new gold-backed currency called the ZiG in 2024?",
+    "Zimbabwe"
    ]
   ]
  }
