@@ -55,7 +55,7 @@ function renderHsSetup(){
     <div class="hspanel"><div class="hseye">Turns per team</div>${seg("turns", [3, 4, 5, 6, 7, 8].map(n => [n, n]), c.turns)}<p class="note">Every team gets the same number of turns in the hot seat.</p></div>
     <div class="hspanel"><div class="hseye">One swap per team</div>${seg("swap", [["true", "On"], ["false", "Off"]], c.swap)}<p class="note">On: each team can swap one clue it doesn't like for another from the same category and value, once per game.</p></div>
     <div class="hspanel"><div class="hseye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture and every clue that shows a photo.</p></div>
-    <div class="hspanel"><div class="hseye">Pass the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: a team that isn't sure can press Pass before the answer is revealed. It keeps 25% of the pot, and the next team gets the same clue (answer still hidden) for half the pot, with nothing lost if it is wrong. Passing has no limit across a game. Off: no Pass button.</p></div>
+    <div class="hspanel"><div class="hseye">Pass the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: a team that isn't sure can press Pass before the answer is revealed. It keeps 50% of the pot, and the next team gets the same clue (answer still hidden) for half the pot, with nothing lost if it is wrong. Passing has no limit across a game. Off: no Pass button.</p></div>
     <div class="row"><button class="hsb ghost" id="hsBack">Back to title</button><button class="hsb go" id="hsStart">Take a seat</button></div>`;
 }
 $("#hsSetup").addEventListener("click", e => {
@@ -135,7 +135,7 @@ function hsAwards(c){ const st = HS.st, i = hsSeat(), tb = !!st.tb;
 function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; if(c.preview || c.revealed) return "";
   /* 7.51 (Omar): "Clue played already" is a free swap that doesn't use the team's one swap. Without it Hot Seat only had the limited swap. */
   const played = `<button class="btn small" data-act="played" title="The group has already had this clue. Get another from the same category and value, and it doesn't use your swap.">Clue played already</button>`;
-  const pass = HS.cfg.steal && st.pot && !st.tb && !st.stl ? `<button class="btn small" data-act="hspass" title="Not sure? Skip the clue and keep 25% of the pot. The next team gets one go at it for half the pot.">Pass: keep ${hsNum(Math.round(st.pot / 4))}</button>` : "";
+  const pass = HS.cfg.steal && st.pot && !st.tb && !st.stl ? `<button class="btn small" data-act="hspass" title="Not sure? Skip the clue and keep 50% of the pot. The next team gets one go at it for half the pot.">Pass: keep ${hsNum(Math.round(st.pot / 2))}</button>` : "";
   return played + pass + (HS.cfg.swap && t && t.swap && !st.tb && !st.stl ? `<button class="btn small" data-act="swap" title="Swap this clue for another from the same category and value. Once per team per game.">Swap clue (1 left)</button>` : ""); }
 function hsDone(c){
   const st = HS.st, i = hsSeat(), v = c.awards[i];
@@ -147,8 +147,8 @@ function hsDone(c){
   if(v === 1){ st.streak++; st.pot = hsPotAt(st.streak - 1); st.phase = "pick"; st.cur = null; hsDeal(); Snd.blip(); renderHs(); return; }
   if(v === 0.5) return hsResult("half", st.pot);   // a half answer is a safe stop: bank the pot from before this clue
   hsResult("miss", st.pot); }
-/* 7.76 (Omar): Pass (before Reveal answer, so the answer isn't on the TV). The team in the seat takes 25% of the unbanked pot and the next team gets one go at the same clue for half the pot, wrong costs nothing. Passing has no limit per game. */
-function hsPass(){ const st = HS.st; if(!st || !st.cur || st.tb || st.stl || !st.pot || !HS.cfg.steal) return; const i = hsSeat(), t = st.teams[i], gain = Math.round(st.pot / 4);
+/* 7.76 (Omar): Pass (before Reveal answer, so the answer isn't on the TV). The team in the seat takes 50% of the unbanked pot and the next team gets one go at the same clue for half the pot, wrong costs nothing. Passing has no limit per game. */
+function hsPass(){ const st = HS.st; if(!st || !st.cur || st.tb || st.stl || !st.pot || !HS.cfg.steal) return; const i = hsSeat(), t = st.teams[i], gain = Math.round(st.pot / 2);
   t.score += gain; const stl = st.stl || (st.stl = {by:i, amt:st.pot / 2, passed:[]}); stl.passed.push({name:t.name, amt:gain});
   if(st.teams.length < 2){ st.stl = null; st.res = {kind:"pass", name:t.name, passed:stl.passed}; S.used.add(`${st.cur.cat}-${st.cur.lvl}-${st.cur.idx}`); store.set("jn_used", [...S.used]); histNote();
     closeCard(); st.phase = "result"; st.cur = null; Snd.chime(); renderHs(); return; }
