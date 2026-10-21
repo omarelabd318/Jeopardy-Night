@@ -31,12 +31,18 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   if(!(await p.locator("#teo .teflash.ok").textContent()).includes("All 10")) fail("all ten should say so");
   await p.click('#teo [data-act="next"]'); await p.waitForTimeout(400); await p.screenshot({path:shots + "/6-winner.png"});
   const w = await p.locator("#teo .tewin").textContent(); if(!/Sara/.test(w)) fail("Sara should win: " + w);
-  // TenaBall, one player
+  // TenaBall, one player (solo is endless: Next list keeps dealing until Finish)
   await p.click('#teo [data-act="setup"]'); await p.click('#teo [data-set="sub"][data-v="f"]'); await p.click('#teo [data-rm="1"]'); await p.waitForTimeout(200);
   await p.screenshot({path:shots + "/7-teaball-setup.png"});
   await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fa = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); await type(fa[1].split(" ").pop()); await type(fa[4]); await type("Pelé"); await p.waitForTimeout(300);
   await p.screenshot({path:shots + "/8-tenaball-play.png"});
+  if(!(await p.locator("#teo .tetop").textContent()).includes("List 1") || /of \d/.test(await p.locator("#teo .tetop").textContent())) fail("solo header should say List 1 with no 'of'");
+  await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.click('#teo [data-act="next"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
+  if(!(await p.locator("#teo .tetop").textContent()).includes("List 2")) fail("solo should keep dealing lists");
+  await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.screenshot({path:shots + "/8b-solo-next.png"}); await p.click('#teo [data-act="finish"]'); await p.waitForTimeout(300);
+  if(!/found by Omar/.test(await p.locator("#teo .tewin").textContent())) fail("Finish should show the solo result");
+  await p.click('#teo [data-act="again"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
   // Formations
   await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
