@@ -17,7 +17,8 @@
 const TER = (() => {
   const BONUS = 5;
   const loose = (lev, g, v) => { const n = v.length; return lev(g, v) <= (n <= 3 ? 0 : n <= 5 ? 1 : n <= 8 ? 2 : n <= 12 ? 3 : 4); };   // 7.85 (Omar): more leeway for typed answers; before: 0 up to 3 letters, 1 up to 6, 2 up to 12, 3 beyond
-  function variants(it, norm){ const out = new Set(); [it.a].concat(it.alt || []).forEach(x => { const s = norm(x); if(s) out.add(s); }); return [...out]; }
+  /* 7.86 (Omar): a slot whose answer is "A / B" (a tie at the cut) accepts either name */
+  function variants(it, norm){ const out = new Set(); [it.a].concat(String(it.a).split(" / "), it.alt || []).forEach(x => { const s = norm(x); if(s) out.add(s); }); return [...out]; }
   /* how well guess g (already normalised) names item it: 0 exact, 1 close spelling, 2 the surname exactly, 3 the surname closely, Infinity not at all */
   function score(g, it, norm, lev){ let best = Infinity; const gs = g.replace(/ /g, "");
     for(const v of variants(it, norm)){ const vs = v.replace(/ /g, "");
