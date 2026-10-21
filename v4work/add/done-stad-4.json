@@ -1,0 +1,59 @@
+{
+ "200": [
+  [
+   "Which club plays at La Rosaleda?",
+   "Málaga"
+  ],
+  [
+   "Which club plays at Estadio Carlos Tartiere?",
+   "Real Oviedo"
+  ],
+  [
+   "Which club plays at Stadio Mapei?",
+   "Sassuolo"
+  ]
+ ],
+ "300": [
+  [
+   "Which club plays at St. Jakob-Park?",
+   "Basel"
+  ],
+  [
+   "Which club plays at Allianz Stadion?",
+   "Rapid Wien"
+  ],
+  [
+   "Which club plays at Stadio Arechi?",
+   "Salernitana"
+  ]
+ ],
+ "400": [
+  [
+   "Which club plays at Brøndby Stadium?",
+   "Brøndby"
+  ],
+  [
+   "Which club plays at Lerkendal Stadion?",
+   "Rosenborg"
+  ],
+  [
+   "Which club plays at Tannadice Park?",
+   "Dundee United"
+  ]
+ ],
+ "500": [
+  [
+   "Which club plays at Stark's Park?",
+   "Raith Rovers"
+  ],
+  [
+   "Which club plays at Cappielow?",
+   "Greenock Morton"
+  ],
+  [
+   "Which club plays at New Douglas Park?",
+   "Hamilton Academical"
+  ]
+ ],
+ "allow_dup_answers": []
+}
