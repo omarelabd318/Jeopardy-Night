@@ -11,6 +11,7 @@ const mk = (names, lives) => TER.Turn({items:names.map(a => typeof a === "string
   eq(t.guess("canada").k, "right", "right"); eq(t.found[1], true, "slot 2 filled"); eq(t.guess("Canda").k, "dup", "a near spelling of a found one is a duplicate");
   eq(t.guess("france").k, "wrong", "wrong"); eq(t.left, 2, "a life gone"); eq(t.guess("France").k, "again", "same wrong twice"); eq(t.left, 2, "no second life lost");
   eq(t.guess("  ").k, "empty", "blank"); eq(t.guess("kazakstan").k, "right", "one slip is fine"); eq(t.guess("brasil").k, "right", "brasil");
+  { const h = mk(["Russia", "X"], 3); eq(h.tap(0), "hint", "tap 1 hints"); eq(h.hintText(0), "R…", "first letter"); h.tap(0); eq(h.hintText(0), "Ru…", "two letters"); h.tap(0); eq(h.hintText(0), "Rus…", "three letters"); eq(h.n(), 0, "hints give nothing"); eq(h.tap(0), "give", "4th tap gives"); eq(h.n(), 1, "now found"); eq(h.tap(1), "give", "one-letter answer gives straight away"); }
   ok(t.give(0), "host gives Russia"); ok(!t.give(0), "only once"); eq(t.n(), 4, "4 found");
   t.guess("peru"); eq(t.left, 1, "1 life"); ok(!t.over, "still going"); t.guess("chile"); ok(t.over, "out of lives"); eq(t.how, "lives", "how"); eq(t.points(), 4, "1 point each");
   eq(t.guess("china").k, "over", "no guesses after the end"); }
