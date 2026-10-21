@@ -46,7 +46,12 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   const ln = await p.locator("#teo .telistno").textContent(); if(!/^(NM|FM)#\d\d$/.test(ln)) fail("solo shows only the list ID, like FM#07");
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.click('#teo [data-act="next"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
   if(await p.locator("#teo .telistno").textContent() === ln) fail("solo should keep dealing lists");
-  await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.screenshot({path:shots + "/8b-solo-next.png"}); await p.click('#teo [data-act="finish"]'); await p.waitForTimeout(300);
+  // 7.86: the Next button top right skips to the next list at once, with no answers shown
+  { const id2 = await p.locator("#teo .telistno").textContent(); if(await p.locator("#teSkip").isHidden()) fail("Next should show while playing"); await p.screenshot({path:shots + "/8a-next-button.png"});
+    await p.click("#teSkip"); await p.waitForTimeout(150);
+    const st = await p.evaluate(() => TE.phase); if(st !== "play") fail("skipping in solo should land on the next list, got " + st);
+    if(await p.locator("#teo .telistno").textContent() === id2) fail("Next should deal a new list"); if(await p.locator("#teo .teslot.miss").count()) fail("skipping must not reveal answers"); }
+  await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); if(!(await p.locator("#teSkip").isHidden())) fail("Next should hide after the list ends"); await p.screenshot({path:shots + "/8b-solo-next.png"}); await p.click('#teo [data-act="finish"]'); await p.waitForTimeout(300);
   if(!/found by Omar/.test(await p.locator("#teo .tewin").textContent())) fail("Finish should show the solo result");
   await p.click('#teo [data-act="again"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
   // Formations

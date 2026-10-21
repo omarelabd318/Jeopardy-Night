@@ -66,7 +66,7 @@ function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}
   Object.keys(d).forEach(v => (d[v] || []).forEach(([q, a]) => { const ln = String(q).split("\n"), m = String(a).match(/^(.*?), (\S+) \((.*)\)$/);
     const rows = ln.slice(1).map(r => r.split(" · ").map(s => s.trim()).filter(Boolean));
     if(rows.flat().length !== 11) return;
-    out.push({key:a, id:"FM#" + tePad(TEN.f.length + out.length + 1), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); }));
+    out.push({key:a, id:"FMF#" + tePad(out.length + 1), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); }));
   return out; }
 const teLists = () => (teBall() ? TEN.f : TEN.n).map((L, i) => ({id:(teBall() ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
 TE.formShare = 1 / 3;   // 7.82 (Omar): with Formations on, lineups are mixed in at random with the football lists (about one turn in three), not lineups only
@@ -96,6 +96,9 @@ function teEnd(){ const tu = TE.turns[TE.ti], t = TE.t; tu.n = t.n(); tu.pts = t
   if(hid.length) TE.revT = setInterval(() => { TE.rev++; teRender(); if(TE.rev >= hid.length) clearInterval(TE.revT); }, 380);   // the missed answers appear one by one
   teRender(); }
 function teNext(){ clearInterval(TE.revT); if(TE.cfg.players.length === 1 && TE.ti + 1 >= TE.turns.length) TE.turns.push({p:0, r:TE.ti + 1, list:teDeal(1)[0], pts:0, n:0}); TE.ti++; if(TE.ti >= TE.turns.length){ TE.phase = "over"; if(!TE.sung){ TE.sung = true; playWinSiu(); } teRender(); return; } teReady(); }
+/* 7.86 (Omar): the Next button (top right) skips to the next list right away: no answers are shown, whatever was found still scores */
+function teSkip(){ if(TE.phase !== "play" || !TE.t) return; const tu = TE.turns[TE.ti], t = TE.t; t.stop("skip"); tu.n = t.n(); tu.pts = t.points(); TE.scores[tu.p] += tu.pts; TE.phase = "done";
+  teNext(); if(TE.phase === "ready" && TE.cfg.players.length === 1) teGo(); }
 function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "play") return; const txt = inp.value; inp.value = ""; const r = TE.t.guess(txt);
   if(r.k === "empty") return;
   if(r.k === "right"){ try{ Snd.chime(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
@@ -134,7 +137,7 @@ function teHead(tu){ const L = tu.list;
   return L.rows ? `<div class="tehd form"><div class="tet">${esc(L.t)} <span>${esc(L.yr)}</span></div><div class="ted">${esc(L.d)}</div>${L.score ? `<div class="tesc">${esc(L.score)}</div>` : ""}<div class="tegoal">Name all 11 starters</div></div>`
     : `<div class="tehd"><div class="tet">${esc(L.t)}</div><div class="ted">${esc(L.d || "")}</div></div>`; }
 function teRender(){
-  const el = $("#teBody"); if(!el) return; document.body.classList.toggle("teball", teBall()); const c = TE.cfg, ball = teBall();
+  const el = $("#teBody"); if(!el) return; document.body.classList.toggle("teball", teBall()); const c = TE.cfg, ball = teBall(); const sk = $("#teSkip"); if(sk) sk.hidden = TE.phase !== "play";
   if(TE.phase === "setup"){
     const nLists = (ball ? TEN.f : TEN.n).length, nForm = teLineups().length;
     el.innerHTML = `<div class="tehead"><div class="tebadge">Game mode</div><h1>${teName()}</h1><p class="sub">${teForm() ? "Football top tens, with a famous starting lineup mixed in now and then: drawn on half a pitch with the team, the year and the score, name all 11 players. Any order, every time." : "A top-ten list hides behind a pyramid of ten slots. Name as many as you can, in any order. Every right answer fills its slot; every wrong one costs a life."}</p></div>
@@ -183,6 +186,7 @@ $("#teo").addEventListener("click", e => {
   if(e.target.closest("[data-add]")){ TE.cfg.players.push("Player " + (TE.cfg.players.length + 1)); teSave(); teRender(); const ins = document.querySelectorAll("#teo [data-pl]"); const l = ins[ins.length - 1]; if(l){ l.focus(); l.select(); } return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ TE.cfg.players.splice(+rm.dataset.rm, 1); teSave(); teRender(); return; }
   if(e.target.closest("#teGo")){ teStart(); return; }
+  if(e.target.closest("#teSkip")){ teSkip(); return; }
   if(e.target.closest("#teHome")){ leaveAsk(TE.phase === "ready" || TE.phase === "play" || TE.phase === "done", teName()); return; }
   const gv = e.target.closest("[data-give]"); if(gv && TE.phase === "play" && TE.t){ const r = TE.t.tap(+gv.dataset.give); if(r === "give"){ try{ Snd.chime(); }catch(e){} TE.flash = {k:"ok", i:[+gv.dataset.give]}; if(TE.t.over) teEnd(); else teRender(); } else if(r === "hint"){ TE.flash = null; teRender(); } return; }
   const act = e.target.closest("[data-act]"); if(!act) return; const a = act.dataset.act;
