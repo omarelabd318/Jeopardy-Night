@@ -307,7 +307,7 @@ $("#hdo").addEventListener("click", e => {
     HD.players.splice(+kick.dataset.kick, 1); hdRender(); return; }
   const sit = e.target.closest("[data-sit]"); if(sit && HD.g){ const i = +sit.dataset.sit; if(!HD.g.out[i]){ HD.g.sit[i] = !HD.g.sit[i]; HD.g.v++; hdChanged(); } return; }
   if(e.target.closest("#hdGo")){ hdStart(); return; }
-  if(e.target.closest("#hdHome")){ showHome(); return; }
+  if(e.target.closest("#hdHome")){ leaveAsk(cfLive(HD), "Texas Hold'em"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "next") hdNext();
   else if(act.dataset.act === "shuffle"){ CK.shuffle(HD.players); hdRender(); }

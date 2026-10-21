@@ -106,7 +106,7 @@ $("#esto").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ const x = ES.players[+kick.dataset.kick]; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:ES.room, p:x.p})}).catch(() => {});
     ES.players.splice(+kick.dataset.kick, 1); esRender(); return; }
   if(e.target.closest("#esGo")){ esStart(); return; }
-  if(e.target.closest("#esHome")){ showHome(); return; }
+  if(e.target.closest("#esHome")){ leaveAsk(cfLive(ES), "Estimation"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "next") esNext();
   else if(act.dataset.act === "shuffle"){ CK.shuffle(ES.players); esRender(); }

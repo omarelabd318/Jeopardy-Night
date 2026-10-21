@@ -224,8 +224,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.79`);
-  $("#verBtn").textContent = "v7.79"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.80`);
+  $("#verBtn").textContent = "v7.80"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -1785,8 +1785,43 @@ let confirmYes = null;
 function askConfirm(title, text, yesLabel, onYes, force){   // 6.50: force asks even outside a normal game (Bingo, Bidding Wars)
   if(!force && !midgame()){ onYes(); return; }
   $("#confirmTitle").textContent = title; $("#confirmText").textContent = text; $("#confirmYes").textContent = yesLabel;
-  confirmYes = onYes; $("#confirmBox").hidden = false; $("#confirmNo").focus();
+  cfTheme(); confirmYes = onYes; $("#confirmBox").hidden = false; $("#confirmNo").focus();
 }
+/* 7.80 (Omar): the pop-up box takes the look of the mode it opens in. It moves into that mode's screen so the mode's own button classes
+   (and the CSS variables they use) apply, and the card copies the mode's background, text colour, accent (its Start button colour) and
+   heading font from the page. Jeopardy Night keeps the old look. Undo: delete cfTheme(), its call in askConfirm, CF_MODES and the 7.80 CSS
+   rules next to #confirmBox in head.html. */
+const CF_MODES = [["#bidding,#bidSetup", "bwbtn"], ["#hotSeat,#hsSetup", "hsb"], ["#survival,#survSetup", "svbtn"], ["#bingo,#bingoSetup", "btn"],
+  ["#impo", "imbtn"], ["#psyo", "psbtn"], ["#esto", "esbtn"], ["#tno", "tnbtn"], ["#tfo", "tfbtn"], ["#hdo", "hdbtn"], ["#cno", "cnbtn"], ["#dco", "dcbtn"],
+  ["#lbo", "lbbtn"], ["#tbo", "tbbtn"], ["#fao", "fabtn"], ["#spo", "spbtn"], ["#hco", "hcbtn"], ["#slo", "slbtn"]];
+function cfTheme(){
+  const box = $("#confirmBox"), no = $("#confirmNo"), yes = $("#confirmYes");
+  let host = null, bc = "btn";
+  for(const [sel, c] of CF_MODES){ const el = [...document.querySelectorAll(sel)].find(e => !e.hidden && e.offsetParent !== null); if(el){ host = el; bc = c; break; } }
+  if(!host){ document.body.appendChild(box); box.classList.remove("themed"); box.removeAttribute("style"); no.className = "btn"; yes.className = "btn primary"; return; }
+  host.appendChild(box); box.removeAttribute("style");
+  if(bc === "btn"){ box.classList.remove("themed"); no.className = "btn"; yes.className = "btn primary"; return; }   // Bingo: its Look (Classic, Neon, Card) already restyles the card
+  box.classList.add("themed");
+  const go = "go";
+  no.className = bc + " ghost"; yes.className = bc + " " + go;
+  const probe = document.createElement("button"); probe.className = bc + " " + go; probe.style.cssText = "position:absolute;visibility:hidden"; host.appendChild(probe);
+  const pc = getComputedStyle(probe), hc = getComputedStyle(host), clear = c => !c || c === "transparent" || /rgba\(.*,\s*0\)$/.test(c);
+  let bgEl = host, bg; while(bgEl && (bg = getComputedStyle(bgEl), bg.backgroundImage === "none" && clear(bg.backgroundColor))) bgEl = bgEl.parentElement;
+  bg = bg || getComputedStyle(document.body);
+  const bgc = clear(bg.backgroundColor) ? ((bg.backgroundImage.match(/rgba?\([^)]*\)/g) || []).find(c => { const a = c.match(/[\d.]+/g); return a.length < 4 || +a[3] >= .5; }) || "rgb(17,17,17)") : bg.backgroundColor;
+  let acc = clear(pc.backgroundColor) ? pc.color : pc.backgroundColor;
+  if(cfContrast(acc, bgc) < 2) acc = [pc.color, pc.borderColor, hc.color].find(c => cfContrast(c, bgc) >= 2) || hc.color;   // a yellow Start button on a pale page, say
+  [["--cf-bg", bgc], ["--cf-img", bg.backgroundImage], ["--cf-ink", hc.color], ["--cf-acc", acc],
+   ["--cf-head", pc.fontFamily], ["--cf-wt", pc.fontWeight], ["--cf-rad", pc.borderRadius === "0px" ? "0px" : "14px"]].forEach(([k, v]) => box.style.setProperty(k, v));
+  probe.remove();
+}
+function cfLum(c){ const m = (c.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(v => { v = v / 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * m[0] + .7152 * m[1] + .0722 * m[2]; }
+function cfContrast(a, b){ const x = cfLum(a), y = cfLum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
+/* 7.80 (Omar): every mode's Title screen button asks first while a game is running (the phone modes used to leave straight away).
+   live is the mode's state object: a game is running once it has a game (g) that isn't over, or for Imposter and Psych once past the lobby.
+   Undo: in each mode's #..Home click handler put back showHome() in place of leaveAsk(...) */
+const cfLive = m => m.g ? !(m.over || m.g.over || m.g.phase === "over" || m.g.ph === "over") : (m.g === undefined && !!m.phase && m.phase !== "lobby" && m.phase !== "over");
+function leaveAsk(live, name){ if(live) askConfirm("Leave this game?", "Going to the title screen ends this " + name + " game. It can't be resumed.", "Go to title", showHome, true); else showHome(); }
 $("#confirmNo").onclick = () => { $("#confirmBox").hidden = true; confirmYes = null; };
 $("#confirmYes").onclick = () => { $("#confirmBox").hidden = true; const f = confirmYes; confirmYes = null; if(f) f(); };
 $("#toSetup").onclick = () => askConfirm("Leave this game?", "Going to setup ends the current game. Scores and the board reset when you start again.", "Go to setup", () => { clearGame(); goSetup(); });

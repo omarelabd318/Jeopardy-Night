@@ -1,5 +1,13 @@
 [
  {
+  "v": "7.80",
+  "date": "2026-10-21",
+  "items": [
+   "The \"Leave this game?\" box now wears the colours, fonts and buttons of the mode you're in.",
+   "Every mode's Title screen button now asks before leaving while a game is running, not just Jeopardy Night, Bidding Wars, Bingo, Hot Seat and Survival."
+  ]
+ },
+ {
   "v": "7.79",
   "date": "2026-10-21",
   "items": [

@@ -113,7 +113,7 @@ $("#impo").addEventListener("click", e => {
   if(e.target.closest("#imReveal")){ IM.phase = "reveal"; imPost("reveal"); renderImp(); return; }
   if(e.target.closest("#imLobby")){ IM.phase = "lobby"; renderImp(); imPoll(); return; }
   if(e.target.closest("#imNext")){ IM.deal.step++; renderImp(); return; }
-  if(e.target.closest("#imBack")){ showHome(); return; } });
+  if(e.target.closest("#imBack")){ leaveAsk(cfLive(IM), "Imposter"); return; } });
 $("#impo").addEventListener("submit", e => { if(e.target.id !== "imAddForm") return; e.preventDefault(); const i = $("#imAdd"), n = i.value.trim().slice(0, 24); if(!n) return;
   IM.players.push({p:"L" + IM.players.length + Math.floor(Math.random() * 1e6), n}); renderImp(); const f = $("#imAdd"); if(f) f.focus(); });
 $("#modeImp").onclick = impShow;

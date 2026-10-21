@@ -199,7 +199,7 @@ $("#tbo").addEventListener("click", e => {
     TB.players = TB.players.filter(x => x.p !== kick.dataset.kick); tbSync(); tbRender(); tbPost(); return; }
   if(e.target.closest("#tbShuffle")){ tbShuffle(); return; }
   if(e.target.closest("#tbGo")){ tbStart(); return; }
-  if(e.target.closest("#tbHome")){ showHome(); return; }
+  if(e.target.closest("#tbHome")){ leaveAsk(cfLive(TB), "Taboo"); return; }
   const un = e.target.closest("[data-undo]"); if(un && TB.g){ if(TB.g.undo(+un.dataset.undo)) tbChanged(); return; }
   const act = e.target.closest("[data-act]"); if(!act || !TB.g) return; const a = act.dataset.act, g = TB.g, now = Date.now();
   if(a === "start"){ if(g.start(now)) tbChanged(); }

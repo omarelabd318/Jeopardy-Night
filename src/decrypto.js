@@ -198,7 +198,7 @@ $("#dco").addEventListener("click", e => {
   const mv = e.target.closest("[data-move]"); if(mv){ const x = DC.players.find(y => y.p === mv.dataset.move); if(x){ decMove(x, 1 - x.t); decRender(); } return; }
   if(e.target.closest("#dcGo")){ decStart(); return; }
   if(e.target.closest("#dcAgain")){ stopSiu(); DC.phase = "lobby"; DC.g = null; DC.dl = null; DC.v++; decPost(); decRender(); decPoll(); return; }
-  if(e.target.closest("#dcHome") || e.target.closest("#dcHome2")){ showHome(); return; }
+  if(e.target.closest("#dcHome") || e.target.closest("#dcHome2")){ leaveAsk(cfLive(DC), "Decrypto"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "balance"){ const ps = DC.players.slice(); DCR.shuffle(ps); ps.forEach((x, i) => decMove(x, i % 2)); decRender(); }
   else if(act.dataset.act === "skip" && DC.g){ DC.dl = null; DC.g.timeout(); decChanged(); }

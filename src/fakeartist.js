@@ -253,7 +253,7 @@ $("#fao").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ const p = kick.dataset.kick; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:FA.room, p})}).catch(() => {});
     FA.players = FA.players.filter(x => x.p !== p); faSync(); faRender(); faPost(); return; }
   if(e.target.closest("#faGo")){ faStart(); return; }
-  if(e.target.closest("#faHome")){ showHome(); return; }
+  if(e.target.closest("#faHome")){ leaveAsk(cfLive(FA), "Fake Artist"); return; }
   const act = e.target.closest("[data-act]"); if(!act || !FA.g) return; const a = act.dataset.act, g = FA.g, now = Date.now();
   if(a === "start"){ if(g.start(now)) faChanged(); }
   else if(a === "skip"){ if(g.skip(now)) faChanged(); }
