@@ -105,8 +105,8 @@ function teSkip(){ if(TE.phase !== "play" || !TE.t) return; const tu = TE.turns[
   teNext(); if(TE.phase === "ready" && TE.cfg.players.length === 1) teGo(); }
 function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "play") return; const txt = inp.value; inp.value = ""; const r = TE.t.guess(txt);
   if(r.k === "empty") return;
-  if(r.k === "right"){ try{ Snd.chime(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
-  else if(r.k === "wrong"){ try{ Snd.buzz(); }catch(e){} TE.flash = {k:"bad", t:r.t}; }
+  if(r.k === "right"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
+  else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t}; }
   else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? TE.t.items[r.i].a : r.t};
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
@@ -194,7 +194,7 @@ $("#teo").addEventListener("click", e => {
   if(e.target.closest("#teGo")){ teStart(); return; }
   if(e.target.closest("#teSkip")){ teSkip(); return; }
   if(e.target.closest("#teHome")){ leaveAsk(TE.phase === "ready" || TE.phase === "play" || TE.phase === "done", teName()); return; }
-  const gv = e.target.closest("[data-give]"); if(gv && TE.phase === "play" && TE.t){ const r = TE.t.tap(+gv.dataset.give); if(r === "give"){ try{ Snd.chime(); }catch(e){} TE.flash = {k:"ok", i:[+gv.dataset.give]}; if(TE.t.over) teEnd(); else teRender(); } else if(r === "hint"){ TE.flash = null; teRender(); } return; }
+  const gv = e.target.closest("[data-give]"); if(gv && TE.phase === "play" && TE.t){ const r = TE.t.tap(+gv.dataset.give); if(r === "give"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:[+gv.dataset.give]}; if(TE.t.over) teEnd(); else teRender(); } else if(r === "hint"){ TE.flash = null; teRender(); } return; }
   const act = e.target.closest("[data-act]"); if(!act) return; const a = act.dataset.act;
   if(a === "go") teGo();
   else if(a === "guess") teGuess();

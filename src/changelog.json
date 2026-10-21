@@ -1,4 +1,5 @@
 [
+ {"v": "7.96", "date": "2026-10-22", "items": ["Tenable: new sounds for a right guess (two rising notes) and a wrong guess (two falling notes)."]},
  {"v": "7.95", "date": "2026-10-22", "items": ["Tenable: 10 new top tens (best-selling video games, most populous cities, biggest countries in Asia, most-visited websites, best-selling book series, most-streamed Spotify artists, airlines by fleet size, best-selling music artists, biggest companies by market value, most-visited cities) and 8 new TenaBall lists (Liverpool, Bayern and Tottenham scorers or appearances, Premier League assists and clean sheets, World Cup scorers, Champions League appearances, Serie A scorers)."]},
  {"v": "7.94", "date": "2026-10-22", "items": ["Tenable: when the timer reaches zero nothing happens on the board any more, it is only a clock for the room. The last 10 seconds tick and zero gives one chime."]},
  {"v": "7.93", "date": "2026-10-22", "items": ["Tenable: the timer per list is now Off, 2, 3 or 5 minutes, shown as minutes and seconds."]},
