@@ -254,7 +254,7 @@ $("#spo").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:SP.room, p:kick.dataset.kick})}).catch(() => {});
     SP.players = SP.players.filter(x => x.p !== kick.dataset.kick); SP.psig = JSON.stringify(SP.players.map(x => ({p:x.p, n:x.n}))); spRender(); spPost(); return; }
   if(e.target.closest("#spGo")){ spStart(); return; }
-  if(e.target.closest("#spHome")){ showHome(); return; }
+  if(e.target.closest("#spHome")){ leaveAsk(cfLive(SP), "Speed Trivia"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return; const a = act.dataset.act, g = SP.g;
   if(a === "again"){ spAgain(); return; } if(!g) return;
   if(a === "next"){ if(g.skip(Date.now())) spChanged(); }

@@ -199,7 +199,7 @@ $("#lbo").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:LB.room, p:kick.dataset.kick})}).catch(() => {});
     LB.players = LB.players.filter(x => x.p !== kick.dataset.kick); lbRender(); lbPost(); return; }
   if(e.target.closest("#lbGo")){ lbStart(); return; }
-  if(e.target.closest("#lbHome")){ showHome(); return; }
+  if(e.target.closest("#lbHome")){ leaveAsk(cfLive(LB), "Liar's Bar"); return; }
   const act = e.target.closest("[data-act]"); if(!act || !LB.g) return; const a = act.dataset.act, g = LB.g;
   if(a === "spin"){ if(g.spin()) lbChanged(); }
   else if(a === "skip") lbShowRes();

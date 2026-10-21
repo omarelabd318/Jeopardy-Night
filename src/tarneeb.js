@@ -219,7 +219,7 @@ $("#tno").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ const x = TN.players[+kick.dataset.kick]; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:TN.room, p:x.p})}).catch(() => {});
     TN.players.splice(+kick.dataset.kick, 1); tnRender(); return; }
   if(e.target.closest("#tnGo")){ tnStart(); return; }
-  if(e.target.closest("#tnHome")){ showHome(); return; }
+  if(e.target.closest("#tnHome")){ leaveAsk(cfLive(TN), "Tarneeb"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "next") tnNext();
   else if(act.dataset.act === "shuffle"){ CK.shuffle(TN.players); tnRender(); }

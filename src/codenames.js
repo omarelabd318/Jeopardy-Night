@@ -181,7 +181,7 @@ $("#cno").addEventListener("click", e => {
     CN.players = CN.players.filter(x => x.p !== kick.dataset.kick); CN.teams = cnTeams(); cnRender(); cnPost(); return; }
   const star = e.target.closest("[data-star]"); if(star){ const p = star.dataset.star, tm = CN.teams[p]; CN.vol[tm] = CN.vol[tm] === p ? null : p; cnRender(); cnPost(); return; }
   if(e.target.closest("#cnGo")){ cnStart(); return; }
-  if(e.target.closest("#cnHome")){ showHome(); return; }
+  if(e.target.closest("#cnHome")){ leaveAsk(cfLive(CN), "Codenames"); return; }
   const tile = e.target.closest(".t[data-i]"); if(tile && CN.g){ if(cnAct({host:true}, {k:"tap", i:+tile.dataset.i})) cnChanged(); return; }
   const act = e.target.closest("[data-act]"); if(!act) return; const a = act.dataset.act;
   if(a === "ok"){ if(cnAct({host:true}, {k:"ok"})) cnChanged(); }

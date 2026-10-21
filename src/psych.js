@@ -171,7 +171,7 @@ $("#psyo").addEventListener("click", e => {
     PS.players.splice(+kick.dataset.kick, 1); psRender(); return; }
   if(e.target.closest("#psGo")){ psStart(); return; }
   if(e.target.closest("#psAgain")){ stopSiu(); PS.phase = "lobby"; PS.c = null; psRender(); psPoll(); return; }
-  if(e.target.closest("#psHome") || e.target.closest("#psHome2")){ showHome(); return; }
+  if(e.target.closest("#psHome") || e.target.closest("#psHome2")){ leaveAsk(cfLive(PS), "Psych"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "next") psNext();
   else if(act.dataset.act === "skip") (PS.phase === "write" ? psEndWrite : psEndVote)();

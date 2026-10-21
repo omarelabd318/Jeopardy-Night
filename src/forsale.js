@@ -207,7 +207,7 @@ $("#slo").addEventListener("click", e => {
   const kk = e.target.closest("[data-kick]"); if(kk){ fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:SL.room, p:kk.dataset.kick})}).catch(() => {}); SL.players = SL.players.filter(x => x.p !== kk.dataset.kick); slRender(); return; }
   if(e.target.closest("#slGo")){ slStart(); return; }
   if(e.target.closest("#slAgain")){ stopSiu(); SL.phase = "lobby"; SL.g = null; SL.dl = null; SL.v++; slPost(); slRender(); slPoll(); return; }
-  if(e.target.closest("#slHome") || e.target.closest("#slHome2")){ showHome(); return; }
+  if(e.target.closest("#slHome") || e.target.closest("#slHome2")){ leaveAsk(cfLive(SL), "For Sale?"); return; }
   const act = e.target.closest("[data-act]"); if(!act) return;
   if(act.dataset.act === "skip" && SL.g){ SL.dl = null; SL.g.timeout(); slChanged(); }
   else if(act.dataset.act === "more" && SL.g){ SL.dl = (SL.dl || Date.now()) + 30000; SL.total += 30; slPost(); slRender(); }

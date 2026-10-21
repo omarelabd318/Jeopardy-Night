@@ -236,7 +236,7 @@ $("#hco").addEventListener("click", e => {
   const kick = e.target.closest("[data-kick]"); if(kick){ const p = kick.dataset.kick; fetch("api/kick", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({r:HC.room, p})}).catch(() => {});
     HC.players = HC.players.filter(x => x.p !== p); hcSync(); if(HC.g) HC.g.drop(p, Date.now()); hcChanged(); return; }
   if(e.target.closest("#hcGo")){ hcStart(); return; }
-  if(e.target.closest("#hcHome")){ showHome(); return; }
+  if(e.target.closest("#hcHome")){ leaveAsk(cfLive(HC), "Hues and Cues"); return; }
   const act = e.target.closest("[data-act]"); if(!act || !HC.g) return; const a = act.dataset.act, g = HC.g, now = Date.now();
   if(a === "skip"){ if(g.timeout(now)) hcChanged(); }
   else if(a === "next"){ if(g.next(now)) hcChanged(); }
