@@ -1,0 +1,78 @@
+{
+ "200": [
+  [
+   "Who scored the first Premier League hat-trick, for Leeds against Tottenham, in 1992?",
+   "Eric Cantona"
+  ],
+  [
+   "Which Mexican striker was denied a hat-trick against Aston Villa in 2012 when his second goal was ruled an own goal by Ron Vlaar?",
+   "Javier Hernández"
+  ],
+  [
+   "Which two players scored hat-tricks in Leicester's 9–0 win at Southampton in 2019?",
+   "Ayoze Pérez and Jamie Vardy"
+  ],
+  [
+   "Which two Manchester City players scored hat-tricks in the 6–3 derby win over United in 2022?",
+   "Erling Haaland and Phil Foden"
+  ]
+ ],
+ "300": [
+  [
+   "Which Liverpool teenager became the Premier League's youngest hat-trick scorer, against Sheffield Wednesday in 1998?",
+   "Michael Owen"
+  ],
+  [
+   "Which veteran striker is the oldest Premier League hat-trick scorer, at 37, for Portsmouth in 2003?",
+   "Teddy Sheringham"
+  ],
+  [
+   "Which Bournemouth player scored three penalties in a single match in November 2024?",
+   "Justin Kluivert"
+  ],
+  [
+   "Which two players, both big targetmen, are the only ones to score a hat-trick of headers in the Premier League?",
+   "Duncan Ferguson and Salomón Rondón"
+  ]
+ ],
+ "400": [
+  [
+   "Which three players each scored a hat-trick on 23 September 1995?",
+   "Robbie Fowler, Alan Shearer and Tony Yeboah"
+  ],
+  [
+   "How many hat-tricks did Alan Shearer score in 1995–96, the most in one season?",
+   "Five"
+  ],
+  [
+   "Which Norwegian's 'hat-trick' against Manchester United in 1996 was reduced to two goals after a Phil Neville own goal was ruled?",
+   "Egil Østenstad"
+  ],
+  [
+   "Which six clubs have played in every Premier League season?",
+   "Arsenal, Chelsea, Everton, Liverpool, Manchester United and Tottenham"
+  ]
+ ],
+ "500": [
+  [
+   "Which striker holds the Premier League record of 12 hat-tricks?",
+   "Sergio Agüero"
+  ],
+  [
+   "How many hat-tricks did Alan Shearer score in the Premier League?",
+   "11"
+  ],
+  [
+   "Which player scored hat-tricks for Blackburn, Everton and Portsmouth?",
+   "Yakubu"
+  ],
+  [
+   "Which Liverpool striker scored three 'perfect' hat-tricks (right foot, left foot, header)?",
+   "Robbie Fowler"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Teddy Sheringham",
+  "Sergio Agüero"
+ ]
+}

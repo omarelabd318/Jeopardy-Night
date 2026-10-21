@@ -1,0 +1,59 @@
+{
+ "200": [
+  [
+   "Which player moved from Roma to Liverpool in 2018 for about £65m?",
+   "Alisson"
+  ],
+  [
+   "Which player moved from Benfica to Manchester City in 2017 for about £35m?",
+   "Ederson"
+  ],
+  [
+   "Which player moved from Milan to Paris Saint-Germain in 2012 for about €42m?",
+   "Thiago Silva"
+  ]
+ ],
+ "300": [
+  [
+   "Which player moved from Tottenham to Lazio in 1992 for about £5.5m?",
+   "Paul Gascoigne"
+  ],
+  [
+   "Which player moved from Lazio to Inter in 1999 for about £32m?",
+   "Christian Vieri"
+  ],
+  [
+   "Which player moved from Tottenham to Inter in 2020 for about €20m?",
+   "Christian Eriksen"
+  ],
+  [
+   "Which player moved from Monaco to Real Madrid in 2022 for about €80m?",
+   "Aurélien Tchouaméni"
+  ]
+ ],
+ "400": [
+  [
+   "Which player moved from Monaco to Manchester United in 2015 for about £36m (rising to about £58m)?",
+   "Anthony Martial"
+  ],
+  [
+   "Which player moved from Lyon to Arsenal in 2017 for about £46.5m?",
+   "Alexandre Lacazette"
+  ],
+  [
+   "Which player moved from Dortmund to Arsenal in 2018 for about £56m?",
+   "Pierre-Emerick Aubameyang"
+  ],
+  [
+   "Which player moved from Brighton to Arsenal in 2021 for about £50m?",
+   "Ben White"
+  ]
+ ],
+ "500": [
+  [
+   "Which player moved from São Paulo to Real Betis in 1998 for about £21.5m?",
+   "Denílson"
+  ]
+ ],
+ "allow_dup_answers": []
+}

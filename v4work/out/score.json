@@ -270,6 +270,22 @@
    [
     "What was the final score? Man City vs Al Hilal, 2025 Club World Cup last 16",
     "Al Hilal 4–3 Man City (after extra time)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Borussia Dortmund, 2024 Champions League final at Wembley",
+    "Real Madrid 2–0 Borussia Dortmund"
+   ],
+   [
+    "What was the final score? Milan vs Liverpool, 2007 Champions League final in Athens",
+    "Milan 2–1 Liverpool"
+   ],
+   [
+    "What was the final score? Bayern Munich vs PSG, 2020 Champions League final in Lisbon",
+    "Bayern Munich 1–0 PSG"
+   ],
+   [
+    "What was the final score? Real Madrid vs Atlético Madrid, 2014 Champions League final in Lisbon",
+    "Real Madrid 4–1 Atlético Madrid (after extra time)"
    ]
   ],
   "300": [
@@ -404,6 +420,22 @@
    [
     "What was the final score? Barcelona vs Real Madrid, 2025 Copa del Rey final in Seville",
     "Barcelona 3–2 Real Madrid (after extra time)"
+   ],
+   [
+    "What was the final score? Real Madrid vs Valencia, 2000 Champions League final",
+    "Real Madrid 3–0 Valencia"
+   ],
+   [
+    "What was the final score? Porto vs Monaco, 2004 Champions League final",
+    "Porto 3–0 Monaco"
+   ],
+   [
+    "What was the final score? Brazil vs Italy, 1970 World Cup final",
+    "Brazil 4–1 Italy"
+   ],
+   [
+    "What was the final score? West Germany vs Netherlands, 1974 World Cup final",
+    "West Germany 2–1 Netherlands"
    ]
   ],
   "400": [
@@ -538,6 +570,22 @@
    [
     "What was the final score? Morocco vs Jordan, 2025 FIFA Arab Cup final",
     "Morocco 3–2 Jordan (after extra time)"
+   ],
+   [
+    "What was the final score? Argentina vs West Germany, 1986 World Cup final",
+    "Argentina 3–2 West Germany"
+   ],
+   [
+    "What was the final score? England vs West Germany, 1966 World Cup final",
+    "England 4–2 West Germany (after extra time)"
+   ],
+   [
+    "What was the final score? Borussia Dortmund vs Juventus, 1997 Champions League final",
+    "Borussia Dortmund 3–1 Juventus"
+   ],
+   [
+    "What was the final score? Real Madrid vs Juventus, 1998 Champions League final in Amsterdam",
+    "Real Madrid 1–0 Juventus"
    ]
   ],
   "500": [
@@ -672,6 +720,22 @@
    [
     "What was the final score? Real Madrid vs Al Hilal, 2025 Club World Cup group stage",
     "1–1"
+   ],
+   [
+    "What was the final score? Real Madrid vs Eintracht Frankfurt, 1960 European Cup final at Hampden Park",
+    "Real Madrid 7–3 Eintracht Frankfurt"
+   ],
+   [
+    "What was the final score? Benfica vs Real Madrid, 1962 European Cup final in Amsterdam",
+    "Benfica 5–3 Real Madrid"
+   ],
+   [
+    "What was the final score? Brazil vs Sweden, 1958 World Cup final",
+    "Brazil 5–2 Sweden"
+   ],
+   [
+    "What was the final score? West Germany vs Hungary, 1954 World Cup final in Bern",
+    "West Germany 3–2 Hungary"
    ]
   ]
  }

@@ -1,0 +1,92 @@
+{
+ "200": [
+  [
+   "What year? Germany beat Brazil 7–1 in the World Cup semi-final · Luis Suárez bites Giorgio Chiellini · Real Madrid win La Décima",
+   "2014"
+  ],
+  [
+   "What year? Leicester City win the Premier League · Portugal win Euro 2016 · Iceland knock England out at Euro 2016",
+   "2016"
+  ],
+  [
+   "What year? Neymar joins Paris Saint-Germain for €222m · Real Madrid retain the Champions League · Mohamed Salah joins Liverpool",
+   "2017"
+  ],
+  [
+   "What year? Liverpool win the Champions League in Madrid · Algeria win the Africa Cup of Nations in Egypt · Lionel Messi wins the Ballon d'Or for the sixth time",
+   "2019"
+  ]
+ ],
+ "300": [
+  [
+   "What year? Man United beat Chelsea on penalties in the Champions League final in Moscow · Spain win Euro 2008 · Manchester City are taken over by the Abu Dhabi United Group",
+   "2008"
+  ],
+  [
+   "What year? Barcelona win six trophies in a calendar year · Kaká joins Real Madrid · Cristiano Ronaldo joins Real Madrid",
+   "2009"
+  ],
+  [
+   "What year? Barcelona beat Manchester United at Wembley in the Champions League final · Sergio Agüero joins Manchester City · Lionel Messi wins his third Ballon d'Or",
+   "2011"
+  ],
+  [
+   "What year? Bayern Munich win the treble · Gareth Bale joins Real Madrid · Sir Alex Ferguson retires",
+   "2013"
+  ]
+ ],
+ "400": [
+  [
+   "What year? Real Madrid sign David Beckham · Milan beat Juventus on penalties in the Champions League final at Old Trafford · Roman Abramovich buys Chelsea",
+   "2003"
+  ],
+  [
+   "What year? Greece win Euro 2004 · Porto win the Champions League · Arsenal finish the league season unbeaten",
+   "2004"
+  ],
+  [
+   "What year? Liverpool come back from 3–0 down in Istanbul · Ronaldinho wins the Ballon d'Or · Chelsea win their first league title in 50 years",
+   "2005"
+  ],
+  [
+   "What year? Milan beat Liverpool in the Champions League final in Athens · David Beckham joins LA Galaxy · Kaká wins the Ballon d'Or",
+   "2007"
+  ]
+ ],
+ "500": [
+  [
+   "What year? France win the World Cup at home · Zinedine Zidane wins the Ballon d'Or · Arsenal win the league and FA Cup double",
+   "1998"
+  ],
+  [
+   "What year? Manchester United win the treble · Rivaldo wins the Ballon d'Or · The USA win the Women's World Cup on penalties",
+   "1999"
+  ],
+  [
+   "What year? France win Euro 2000 with a golden goal · Real Madrid beat Valencia in the Champions League final · Luís Figo moves from Barcelona to Real Madrid",
+   "2000"
+  ],
+  [
+   "What year? Liverpool win a cup treble: FA Cup, League Cup and UEFA Cup · Bayern Munich win the Champions League on penalties against Valencia · Zinedine Zidane joins Real Madrid",
+   "2001"
+  ]
+ ],
+ "allow_dup_answers": [
+  "1998",
+  "1999",
+  "2000",
+  "2001",
+  "2003",
+  "2004",
+  "2005",
+  "2007",
+  "2008",
+  "2009",
+  "2011",
+  "2013",
+  "2014",
+  "2016",
+  "2017",
+  "2019"
+ ]
+}
