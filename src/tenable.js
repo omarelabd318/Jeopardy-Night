@@ -165,7 +165,7 @@ function teRender(){
       <div class="tectl"><button class="tebtn go" data-act="again">Play again</button><button class="tebtn ghost" data-act="setup">Change setup</button></div></div></div>`;
     return; }
   const tu = TE.turns[TE.ti], t = TE.t, p = c.players[tu.p], tot = TE.turns.length;
-  const top = `<div class="tetop"><span class="telogo">${teName()}</span><span>${c.players.length > 1 ? `<b>${esc(p)}</b>` : ""}</span><span>${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${Math.max(0, Math.ceil((TE.dl - Date.now()) / 1000))}</span> s</span>` : ""}</span></div>
+  const top = `<div class="tetop"><span class="telogo">${teName()}</span><span></span><span>${c.players.length > 1 && TE.phase !== "ready" ? `<b class="tepl">${esc(p)}</b>` : ""}${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${Math.max(0, Math.ceil((TE.dl - Date.now()) / 1000))}</span> s</span>` : ""}</span></div>
     ${TE.dl && TE.phase === "play" ? `<div class="tebar"><i id="teBar" style="width:${Math.max(0, Math.min(100, (TE.dl - Date.now()) / (c.secs * 10)))}%"></i></div>` : ""}`;
   if(TE.phase === "ready"){
     el.innerHTML = `<div class="tetv">${top}<div class="teready"><small>${c.players.length > 1 ? "Next up" : "Ready?"}</small><h2>${esc(p)}</h2>
