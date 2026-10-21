@@ -500,6 +500,10 @@
    [
     "Finish the song title: “Wind of ___”",
     "Wind of Change (Scorpions)"
+   ],
+   [
+    "Finish the song title: “Hey ___”",
+    "Hey Jude (The Beatles)"
    ]
   ],
   "400": [
@@ -666,6 +670,22 @@
    [
     "Finish the song title: “Fi Youm w ___”",
     "Fi Youm w Leila (Warda)"
+   ],
+   [
+    "Finish the song title: “Is This ___”",
+    "Is This Love (Bob Marley)"
+   ],
+   [
+    "Finish the song title: “Kiss from a ___”",
+    "Kiss from a Rose (Seal)"
+   ],
+   [
+    "Finish the song title: “Heaven Knows I'm Miserable ___”",
+    "Heaven Knows I'm Miserable Now (The Smiths)"
+   ],
+   [
+    "Finish the song title: “Love Will Tear Us ___”",
+    "Love Will Tear Us Apart (Joy Division)"
    ]
   ],
   "500": [
@@ -832,6 +852,18 @@
    [
     "Finish the song title: “Heart-Shaped ___”",
     "Heart-Shaped Box (Nirvana)"
+   ],
+   [
+    "Finish the song title: “Rhythm Is a ___”",
+    "Rhythm Is a Dancer (Snap!)"
+   ],
+   [
+    "Finish the song title: “Come as You ___”",
+    "Come as You Are (Nirvana)"
+   ],
+   [
+    "Finish the song title: “Walk on the ___ Side”",
+    "Walk on the Wild Side (Lou Reed)"
    ]
   ]
  }
