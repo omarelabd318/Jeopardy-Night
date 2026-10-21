@@ -1,4 +1,4 @@
-// 7.85: plays Tenable in a headless browser: Normal with two players (right, wrong, near spellings, a host give, stop, the reveal), TenaBall, and TenaBall Formations,
+// 7.82: plays Tenable in a headless browser: Normal with two players (right, wrong, near spellings, a host give, stop, the reveal), TenaBall, and TenaBall Formations,
 // through to the winner screen. NODE_PATH=$(npm root -g) node v4work/tools/tenable-e2e.js [shotsDir]. Needs a built index.html. Screenshots go to shotsDir (default ./_te-shots).
 const fs = require("fs"), path = require("path"), {chromium} = require("playwright");
 const root = path.resolve(__dirname, "../.."), shots = path.resolve(process.argv[2] || "_te-shots"); fs.mkdirSync(shots, {recursive:true});

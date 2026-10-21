@@ -20,7 +20,7 @@ const TT = {
   modeSurv:{t:["Survival"], ff:'"Lalezar","Alfa Slab One",Impact,sans-serif', fw:400, c1:"#ffe066", k:1.05, ink:"#ffe066",
     sh:".05em .05em 0 #1b1410", x:"transform:rotate(-2deg);", tag:"Lose all your lives and you're out.", s:["#ffe066","#1b1410","#1b1410"],
     bg:"repeating-linear-gradient(-35deg,#6a2bb0 0 60px,#5d24a0 60px 120px)", base:"#6a2bb0", g:{c:7,r:5,t:["☠","✖"],bg:"#5a1f98",ink:"#ffe066",sh:"3px 3px 0 #1b1410",font:'"Lalezar",sans-serif',rad:"6px"}},
-  /* 7.85 (Omar): Tenable. Normal edition colours (indigo and cyan) with a TenaBall green stripe along the bottom; the wall is the ten numbered slots */
+  /* 7.82 (Omar): Tenable. Normal edition colours (indigo and cyan) with a TenaBall green stripe along the bottom; the wall is the ten numbered slots */
   modeTen:{t:["Tenable"], ff:'"Big Shoulders Display","Arial Narrow",Impact,sans-serif', fw:800, c1:"#3be8ff", k:1, ink:"#eaf6ff",
     sh:"0 0 .25em rgba(59,232,255,.6)", x:"text-transform:uppercase;letter-spacing:.08em;", tag:"Ten answers. Name them all. TenaBall for the football heads.", s:["#3be8ff","#061033","#3be8ff"],
     bg:"linear-gradient(90deg,#00BE00 50%,#0F2557 0) bottom/100% 14px no-repeat,radial-gradient(90% 70% at 50% 0%,#2a1a86 0%,#120a4a 45%,#070420 100%)", base:"#120a4a", g:{c:7,r:5,t:["1","2","3","4","5","6","7","8","9","10"],bg:"#120c3a",ink:"#3be8ff",bd:"#2e2a8a",font:'"Big Shoulders Display",sans-serif',rad:"8px"}},

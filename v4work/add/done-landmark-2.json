@@ -1,0 +1,74 @@
+{
+ "200": [
+  [
+   "Which US mountain has four presidents' faces carved into it?",
+   "Mount Rushmore"
+  ],
+  [
+   "Which Paris tower was built for the 1889 World's Fair?",
+   "The Eiffel Tower"
+  ],
+  [
+   "What is the main waterway through Venice, lined with palaces, called?",
+   "The Grand Canal"
+  ],
+  [
+   "Which New York skyscraper was the world's tallest from 1931 to 1970?",
+   "The Empire State Building"
+  ]
+ ],
+ "300": [
+  [
+   "What is the tree-lined walking street through the middle of Barcelona called?",
+   "La Rambla"
+  ],
+  [
+   "What is the rocky hill in Athens topped by the Parthenon called?",
+   "The Acropolis"
+  ],
+  [
+   "Which London bridge opens up in the middle to let ships through?",
+   "Tower Bridge"
+  ],
+  [
+   "Which Moscow square is home to St Basil's Cathedral?",
+   "Red Square"
+  ]
+ ],
+ "400": [
+  [
+   "In which Spanish city is the titanium-clad Guggenheim Museum by Frank Gehry?",
+   "Bilbao"
+  ],
+  [
+   "Which Roman city in northern Jordan has a huge oval plaza and a long colonnaded street?",
+   "Jerash"
+  ],
+  [
+   "Which Tokyo street crossing is said to be the busiest in the world?",
+   "Shibuya Crossing"
+  ],
+  [
+   "What is the army of clay soldiers that guards China's first emperor's tomb called?",
+   "The Terracotta Army"
+  ]
+ ],
+ "500": [
+  [
+   "Which Turkish site has white travertine terraces whose name means 'cotton castle'?",
+   "Pamukkale"
+  ],
+  [
+   "Which giant statues in Afghanistan did the Taliban blow up in 2001?",
+   "The Buddhas of Bamiyan"
+  ],
+  [
+   "In which city is the golden Shwedagon Pagoda?",
+   "Yangon (Myanmar)"
+  ],
+  [
+   "Which Lebanese limestone cave system near Beirut is famous for its huge stalactites?",
+   "Jeita Grotto"
+  ]
+ ]
+}

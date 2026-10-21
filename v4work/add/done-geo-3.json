@@ -1,0 +1,74 @@
+{
+ "200": [
+  [
+   "Which desert covers southern Mongolia and part of northern China?",
+   "The Gobi"
+  ],
+  [
+   "Which mountain range separates France from Italy and Switzerland?",
+   "The Alps"
+  ],
+  [
+   "What is the capital of Thailand?",
+   "Bangkok"
+  ],
+  [
+   "Which is the largest lake in Africa?",
+   "Lake Victoria"
+  ]
+ ],
+ "300": [
+  [
+   "Which salt lake between Jordan and the West Bank is the lowest point on land?",
+   "The Dead Sea"
+  ],
+  [
+   "Which canal links the Atlantic and the Pacific through Central America?",
+   "The Panama Canal"
+  ],
+  [
+   "What is the highest mountain in Africa?",
+   "Mount Kilimanjaro"
+  ],
+  [
+   "Which island country lies just off the southeast tip of India?",
+   "Sri Lanka"
+  ]
+ ],
+ "400": [
+  [
+   "Which lake, shared by Bolivia and Peru, is the highest navigable lake in the world?",
+   "Lake Titicaca"
+  ],
+  [
+   "Which huge basin in Egypt's Western Desert sinks about 133 m below sea level?",
+   "The Qattara Depression"
+  ],
+  [
+   "Which river flows through Phnom Penh and Vientiane?",
+   "The Mekong"
+  ],
+  [
+   "What is the largest inland body of water in the world?",
+   "The Caspian Sea"
+  ]
+ ],
+ "500": [
+  [
+   "What is the highest mountain in Antarctica?",
+   "Mount Vinson (Vinson Massif)"
+  ],
+  [
+   "Which Central Asian lake, once the world's fourth largest, mostly dried up after Soviet irrigation?",
+   "The Aral Sea"
+  ],
+  [
+   "Which African lake, shared by Chad, Cameroon, Niger and Nigeria, has shrunk by about 90% since the 1960s?",
+   "Lake Chad"
+  ],
+  [
+   "Which inland delta in Botswana floods every year and never reaches the sea?",
+   "The Okavango Delta"
+  ]
+ ]
+}

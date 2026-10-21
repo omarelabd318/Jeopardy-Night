@@ -1,0 +1,74 @@
+{
+ "200": [
+  [
+   "Only one of these facts is true. Which one?\nA) Goldfish have a three-second memory\nB) Octopuses have blue blood\nC) Bulls are angered by the colour red",
+   "B) Octopuses have blue blood\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The Great Wall of China is visible from the Moon with the naked eye\nB) Mount Everest grows a few millimetres every year\nC) Lightning never strikes the same place twice",
+   "B) Mount Everest grows a few millimetres every year\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Humans only use 10% of their brains\nB) Your hair and nails keep growing after you die\nC) Sharks have been around longer than trees",
+   "C) Sharks have been around longer than trees\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid\nB) The Great Pyramid was built by slaves\nC) Napoleon was unusually short for his time",
+   "A) Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid\n(others: B and C are false)"
+  ]
+ ],
+ "300": [
+  [
+   "Only one of these facts is true. Which one?\nA) Chameleons change colour mainly to blend into their background\nB) Ostriches bury their heads in the sand when scared\nC) A group of owls is called a parliament",
+   "C) A group of owls is called a parliament\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Oxford University is older than the Aztec Empire\nB) Harvard is older than Oxford\nC) Al-Azhar University was founded in the 1800s",
+   "A) Oxford University is older than the Aztec Empire\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Vikings wore horned helmets into battle\nB) Einstein failed maths at school\nC) Edison wasn't the first to make a light bulb; he made a practical long-lasting one",
+   "C) Edison wasn't the first to make a light bulb; he made a practical long-lasting one\n(others: A and B are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Saudi Arabia imports camels from Australia\nB) There are no camels left in Egypt\nC) The Sahara is bigger than Antarctica",
+   "A) Saudi Arabia imports camels from Australia\n(others: B and C are false)"
+  ]
+ ],
+ "400": [
+  [
+   "Only one of these facts is true. Which one?\nA) The shortest war in history lasted under an hour\nB) The Hundred Years' War lasted exactly 100 years\nC) The First World War started in 1912",
+   "A) The shortest war in history lasted under an hour\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) A day on Venus is longer than a year on Venus\nB) Mars is the hottest planet in the Solar System\nC) Jupiter is the planet closest to Earth",
+   "A) A day on Venus is longer than a year on Venus\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Scotland's national animal is the lion\nB) There are more possible games of chess than atoms in the observable universe\nC) Chess was invented in France",
+   "B) There are more possible games of chess than atoms in the observable universe\n(others: A and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The Eiffel Tower grows by around 15 cm in summer heat\nB) The Eiffel Tower was built in Barcelona and moved to Paris\nC) The Eiffel Tower was meant to be painted gold",
+   "A) The Eiffel Tower grows by around 15 cm in summer heat\n(others: B and C are false)"
+  ]
+ ],
+ "500": [
+  [
+   "Only one of these facts is true. Which one?\nA) Nintendo started out making playing cards in 1889\nB) Samsung started out making TVs\nC) Nokia started out making phones",
+   "A) Nintendo started out making playing cards in 1889\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) The dot over a lowercase 'i' is called a tittle\nB) The '#' sign's official name is the asterisk\nC) The question mark was invented in the 20th century",
+   "A) The dot over a lowercase 'i' is called a tittle\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Russia has a bigger surface area than the dwarf planet Pluto\nB) Pluto is bigger than our Moon\nC) Our Moon is bigger than Mercury",
+   "A) Russia has a bigger surface area than the dwarf planet Pluto\n(others: B and C are false)"
+  ],
+  [
+   "Only one of these facts is true. Which one?\nA) Fortune cookies were invented in China\nB) Croissants were invented in France with no outside influence\nC) Fortune cookies most likely came from Japan and became popular in the USA",
+   "C) Fortune cookies most likely came from Japan and became popular in the USA\n(others: A and B are false)"
+  ]
+ ]
+}

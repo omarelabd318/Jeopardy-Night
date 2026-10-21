@@ -1,4 +1,4 @@
-/* 7.85 (Omar): Tenable, a solo list game in two editions: Normal and TenaBall (the football edition, in the Football mode greens). The TV shows a pyramid of ten hidden
+/* 7.82 (Omar): Tenable, a solo list game in two editions: Normal and TenaBall (the football edition, in the Football mode greens). The TV shows a pyramid of ten hidden
    slots (1 at the top, 7 to 10 along the bottom) for a ranked list such as "Largest countries by area"; one player names as many as they can, in any order, typed on the
    laptop. A right answer fills its slot, a wrong one costs a life (3 by default; 5 or no limit in setup). The turn ends when all ten are found, the lives run out, the
    optional timer ends or the player stops; the slots still hidden are then shown one by one. 1 point per answer, +5 for all ten ("Tenable!").
@@ -10,7 +10,7 @@
    Lists: v4work/tenable/normal.json and football.json ({t, d, src, as, a:[[answer, value, [other names]]]}, ranked 1 to 10), checked online on 2026-10-21.
    No phones. Setup is saved on this device in jn_teCfg, and the lists already played in jn_teSeen; a game is not saved.
    The rules (the guess checker and a turn's state) live in TER below with no screen code, so v4work/tools/tenable-test.js can load just that region.
-   To remove: delete this file, v4work/tenable/, v4work/tools/tenable-test.js, the 7.85 CSS block and #teo section in head.html, the Tenable button, its TT entry in title.js,
+   To remove: delete this file, v4work/tenable/, v4work/tools/tenable-test.js, the 7.82 CSS block and #teo section in head.html, the Tenable button, its TT entry in title.js,
    its CF_MODES entry and the teLeave() call in showHome (src/app.js), TEN in build.js and 'tenable' in MODE_FILES. */
 
 /*@rules*/

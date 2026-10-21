@@ -1,4 +1,4 @@
-// 7.85: tests the Tenable rules in src/tenable.js (the "rules" region) and checks every list and lineup. Run: node v4work/tools/tenable-test.js
+// 7.82: tests the Tenable rules in src/tenable.js (the "rules" region) and checks every list and lineup. Run: node v4work/tools/tenable-test.js
 const fs = require("fs"), path = require("path"), assert = require("assert"), R = p => fs.readFileSync(path.join(__dirname, "../..", p), "utf8");
 const m = R("src/tenable.js").match(/\/\*@rules\*\/([\s\S]*?)\/\*@end-rules\*\//); if(!m) throw new Error("rules region not found");
 const app = R("src/app.js"), fn = name => app.match(new RegExp("function " + name + "\\([\\s\\S]*?\\n(?=function |const )"))[0];

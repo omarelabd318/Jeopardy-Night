@@ -1,0 +1,92 @@
+{
+ "200": [
+  [
+   "What year? Barcelona win the treble with Messi, Suárez and Neymar · The New Suez Canal opens · Adele releases Hello",
+   "2015"
+  ],
+  [
+   "What year? Real Madrid win back-to-back Champions Leagues · Despacito tops the charts · Mohamed Salah joins Liverpool",
+   "2017"
+  ],
+  [
+   "What year? The London Olympics · Gangnam Style goes viral · Mohamed Morsi becomes Egypt's president",
+   "2012"
+  ],
+  [
+   "What year? Egypt play their first World Cup in 28 years · Avengers: Infinity War · Liverpool lose the Champions League final in Kyiv",
+   "2018"
+  ]
+ ],
+ "300": [
+  [
+   "What year? Facebook launches · Greece win the Euros in Portugal · The Indian Ocean tsunami",
+   "2004"
+  ],
+  [
+   "What year? Egypt win the Africa Cup of Nations at home · Zidane's headbutt in the World Cup final · Twitter launches",
+   "2006"
+  ],
+  [
+   "What year? The January 25 Revolution · Osama bin Laden is killed · Prince William marries Kate Middleton",
+   "2011"
+  ],
+  [
+   "What year? Michael Jackson dies · Avatar is released · Barack Obama becomes US president",
+   "2009"
+  ]
+ ],
+ "400": [
+  [
+   "What year? The Berlin Wall falls · The Tiananmen Square protests · Egypt beat Algeria to reach the 1990 World Cup",
+   "1989"
+  ],
+  [
+   "What year? Live Aid concerts · Back to the Future is released · Mikhail Gorbachev takes power",
+   "1985"
+  ],
+  [
+   "What year? Michael Jackson first moonwalks on TV · Return of the Jedi is released · Microsoft Word comes out",
+   "1983"
+  ],
+  [
+   "What year? The Soviet Union breaks up · Operation Desert Storm · Nirvana release Smells Like Teen Spirit",
+   "1991"
+  ]
+ ],
+ "500": [
+  [
+   "What year? The Nakba and the first Arab–Israeli war · Gandhi is assassinated · London hosts the Olympics",
+   "1948"
+  ],
+  [
+   "What year? JFK is assassinated · Valentina Tereshkova becomes the first woman in space · The Beatles release She Loves You",
+   "1963"
+  ],
+  [
+   "What year? The Soviet Union invades Afghanistan · Margaret Thatcher becomes prime minister · Sony launches the Walkman",
+   "1979"
+  ],
+  [
+   "What year? The Six-Day War · The first human heart transplant · The Beatles release Sgt. Pepper",
+   "1967"
+  ]
+ ],
+ "allow_dup_answers": [
+  "2015",
+  "2017",
+  "2012",
+  "2018",
+  "2004",
+  "2006",
+  "2011",
+  "2009",
+  "1989",
+  "1985",
+  "1983",
+  "1991",
+  "1948",
+  "1963",
+  "1979",
+  "1967"
+ ]
+}
