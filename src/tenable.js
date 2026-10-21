@@ -55,7 +55,9 @@ const TER = (() => {
 
 const TE = {cfg:null, phase:"setup", turns:[], ti:0, t:null, item:null, flash:null, rev:0, revT:null, tmr:null, dl:0, sung:false};
 const TE_DEF = {sub:"n", form:false, players:["Player 1"], per:3, lives:3, secs:0};
+const teClock = n => { n = Math.max(0, Math.ceil(n)); return Math.floor(n / 60) + ":" + String(n % 60).padStart(2, "0"); };
 TE.cfg = Object.assign({}, TE_DEF, store.get("jn_teCfg", {})); if(!Array.isArray(TE.cfg.players) || !TE.cfg.players.length) TE.cfg.players = ["Player 1"];
+if(![0, 120, 180, 300].includes(TE.cfg.secs)) TE.cfg.secs = 0;   /* 7.93: older saves held 60/90/120 s */
 const teSave = () => store.set("jn_teCfg", TE.cfg);
 const teMix = () => TE.cfg.sub === "m";   // 7.86 (Omar): the Mix edition deals Tenable and TenaBall lists in one game; each list wears its own edition's look
 const teBall = () => TE.cfg.sub === "f" || (["ready", "play", "done"].includes(TE.phase) && !!TE.turns[TE.ti] && TE.turns[TE.ti].list.ed === "f"), teForm = () => (TE.cfg.sub === "f" || teMix()) && TE.cfg.form;
@@ -108,7 +110,7 @@ function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "pl
   else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? TE.t.items[r.i].a : r.t};
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
-  if(b) b.style.width = Math.max(0, Math.min(100, left / (TE.cfg.secs * 10))) + "%"; if(l) l.textContent = Math.max(0, Math.ceil(left / 1000));
+  if(b) b.style.width = Math.max(0, Math.min(100, left / (TE.cfg.secs * 10))) + "%"; if(l) l.textContent = teClock(left / 1000);
   if(left <= 0){ TE.t.stop("time"); teEnd(); } }
 
 /* ---------- screens ---------- */
@@ -153,7 +155,7 @@ function teRender(){
         <p class="note">One player is a solo game. With more, players take turns, each with their own list.</p></div>
       <div class="tepanel">${c.players.length > 1 ? `<div class="teeye">Lists each</div>${teSeg("per", [1, 2, 3, 4, 5].map(n => [n, n]), c.per)}` : `<div class="teeye">Lists</div><p class="note">Solo play never runs out: keep going list after list, and press Finish when you want to stop.</p>`}
         <div class="teeye">Lives</div>${teSeg("lives", [[3, "3"], [5, "5"], [0, "No limit"]], c.lives)}
-        <div class="teeye">Timer per list</div>${teSeg("secs", [[0, "Off"], [60, "60 s"], [90, "90 s"], [120, "120 s"]], c.secs)}
+        <div class="teeye">Timer per list</div>${teSeg("secs", [[0, "Off"], [120, "2 minutes"], [180, "3 minutes"], [300, "5 minutes"]], c.secs)}
         <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer.</p>
         <button class="tebtn go" id="teGo">Start</button></div></div>`;
     return; }
@@ -165,11 +167,11 @@ function teRender(){
       <div class="tectl"><button class="tebtn go" data-act="again">Play again</button><button class="tebtn ghost" data-act="setup">Change setup</button></div></div></div>`;
     return; }
   const tu = TE.turns[TE.ti], t = TE.t, p = c.players[tu.p], tot = TE.turns.length;
-  const top = `<div class="tetop"><span class="telogo">${teName()}</span><span></span><span>${c.players.length > 1 && TE.phase !== "ready" ? `<b class="tepl">${esc(p)}</b>` : ""}${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${Math.max(0, Math.ceil((TE.dl - Date.now()) / 1000))}</span> s</span>` : ""}</span></div>
+  const top = `<div class="tetop"><span class="telogo">${teName()}</span><span></span><span>${c.players.length > 1 && TE.phase !== "ready" ? `<b class="tepl">${esc(p)}</b>` : ""}${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${teClock((TE.dl - Date.now()) / 1000)}</span></span>` : ""}</span></div>
     ${TE.dl && TE.phase === "play" ? `<div class="tebar"><i id="teBar" style="width:${Math.max(0, Math.min(100, (TE.dl - Date.now()) / (c.secs * 10)))}%"></i></div>` : ""}`;
   if(TE.phase === "ready"){
     el.innerHTML = `<div class="tetv">${top}<div class="teready"><small>${c.players.length > 1 ? "Next up" : "Ready?"}</small><h2>${esc(p)}</h2>
-      <p>${!!tu.list.rows ? "A lineup is coming: name all 11 players." : "A top ten is coming: name all ten."} ${c.lives ? `${c.lives} lives.` : "No life limit."}${c.secs ? ` ${c.secs} seconds.` : ""}</p>
+      <p>${!!tu.list.rows ? "A lineup is coming: name all 11 players." : "A top ten is coming: name all ten."} ${c.lives ? `${c.lives} lives.` : "No life limit."}${c.secs ? ` ${c.secs / 60} minutes.` : ""}</p>
       <button class="tebtn go" data-act="go">Show the ${!!tu.list.rows ? "lineup" : "list"}</button></div>${teBoard()}</div>`; return; }
   const fl = TE.flash, msg = TE.phase === "done"
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
