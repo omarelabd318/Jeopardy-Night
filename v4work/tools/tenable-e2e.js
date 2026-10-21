@@ -20,7 +20,7 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   const type = async t => { await p.fill("#teIn", t); await p.press("#teIn", "Enter"); await p.waitForTimeout(120); };
   // a slightly misspelt right answer, two right, a wrong, a duplicate
   const near = ans[3].length > 6 ? ans[3].slice(0, -2) + ans[3].slice(-1) : ans[3];
-  await type(near); await type(ans[0]); await type(ans[6]); await type("Atlantis"); await type(ans[0]);
+  await type(near); await type(ans[0]); await type(ans[6]); await type("Zzqxv"); await type(ans[0]);
   let st = await p.evaluate(() => ({n:TE.t.n(), left:TE.t.left})); if(st.n !== 3 || st.left !== 2) fail(`after 3 right and 1 wrong: ${JSON.stringify(st)} (near: ${near})`);
   await p.click('#teo [data-give="8"]'); await p.waitForTimeout(150); await p.screenshot({path:shots + "/3-normal-play.png"});
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(4500); await p.screenshot({path:shots + "/4-normal-reveal.png"});
@@ -37,9 +37,9 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fa = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); await type(fa[1].split(" ").pop()); await type(fa[4]); await type("Pelé"); await p.waitForTimeout(300);
   await p.screenshot({path:shots + "/8-tenaball-play.png"});
-  if(!(await p.locator("#teo .tetop").textContent()).includes("List 1") || /of \d/.test(await p.locator("#teo .tetop").textContent())) fail("solo header should say List 1 with no 'of'");
+  const ln = await p.locator("#teo .telistno").textContent(); if(ln !== "List 1") fail("solo header should say List 1 with no 'of'");
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.click('#teo [data-act="next"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
-  if(!(await p.locator("#teo .tetop").textContent()).includes("List 2")) fail("solo should keep dealing lists");
+  if(await p.locator("#teo .telistno").textContent() !== "List 2") fail("solo should keep dealing lists");
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.screenshot({path:shots + "/8b-solo-next.png"}); await p.click('#teo [data-act="finish"]'); await p.waitForTimeout(300);
   if(!/found by Omar/.test(await p.locator("#teo .tewin").textContent())) fail("Finish should show the solo result");
   await p.click('#teo [data-act="again"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);

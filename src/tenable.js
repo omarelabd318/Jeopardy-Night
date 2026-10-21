@@ -5,7 +5,7 @@
    1 to 8 players take turns, each with their own list, for 1 to 5 lists each (default 3); the highest total wins and the winner screen plays the Siuuu clip.
    TenaBall's "Formations" switch (Omar, 2026-10-21) mixes famous starting lineups in at random with the lists (about one turn in three, TE.formShare; Omar asked for a mix, not lineups only), each drawn on half a pitch, with the team, the year, the occasion and the score:
    guess all 11 players. The lineups are the Formations category (v4work/out/form.json), the scores are in v4work/tenable/form-scores.json.
-   The host can tap a hidden slot to give it (for an answer said out loud or a spelling the checker missed) and press "Wrong" for a wrong answer said out loud.
+   The host can tap a hidden slot to give it (for an answer said out loud or a spelling the checker missed).
    Matching: the main game's checker plus Speed Trivia's looser one (7.76: one slip from 4 letters, two from 7, three from 13), on the answer, its other names, or a surname.
    Lists: v4work/tenable/normal.json and football.json ({t, d, src, as, a:[[answer, value, [other names]]]}, ranked 1 to 10), checked online on 2026-10-21.
    No phones. Setup is saved on this device in jn_teCfg, and the lists already played in jn_teSeen; a game is not saved.
@@ -42,7 +42,6 @@ const TER = (() => {
       const name = o.norm(t.items[fresh[0]].a), same = fresh.filter(i => o.norm(t.items[i].a) === name);   // two players with the same name both fill
       same.forEach(i => t.found[i] = true); if(t.found.every(Boolean)) end("all"); return {k:"right", i:same}; };
     t.give = i => { if(t.over || t.found[i] == null || t.found[i]) return false; t.found[i] = true; t.given++; if(t.found.every(Boolean)) end("all"); return true; };
-    t.miss = () => { if(t.over) return false; t.wrong.push("(said out loud)"); if(t.lives){ t.left--; if(t.left <= 0) end("lives"); } return true; };
     t.stop = how => { if(t.over) return false; end(how || "stop"); return true; };
     return t; }
   return {Turn, score, BONUS};
@@ -144,7 +143,7 @@ function teRender(){
       <div class="tepanel">${c.players.length > 1 ? `<div class="teeye">Lists each</div>${teSeg("per", [1, 2, 3, 4, 5].map(n => [n, n]), c.per)}` : `<div class="teeye">Lists</div><p class="note">Solo play never runs out: keep going list after list, and press Finish when you want to stop.</p>`}
         <div class="teeye">Lives</div>${teSeg("lives", [[3, "3"], [5, "5"], [0, "No limit"]], c.lives)}
         <div class="teeye">Timer per list</div>${teSeg("secs", [[0, "Off"], [60, "60 s"], [90, "90 s"], [120, "120 s"]], c.secs)}
-        <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For answers said out loud, the host taps the slot to give it, or presses Wrong.</p>
+        <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For answers said out loud, the host taps the slot to give it.</p>
         <button class="tebtn go" id="teGo">Start</button></div></div>`;
     return; }
   if(TE.phase === "over"){ const ps = c.players, rows = ps.map((p, i) => ({p, s:TE.scores[i], n:TE.turns.filter(t => t.p === i).reduce((a, t) => a + t.n, 0), all:TE.turns.filter(t => t.p === i && t.n === t.list.items.length).length})).sort((a, b) => b.s - a.s);
@@ -155,7 +154,7 @@ function teRender(){
       <div class="tectl"><button class="tebtn go" data-act="again">Play again</button><button class="tebtn ghost" data-act="setup">Change setup</button></div></div></div>`;
     return; }
   const tu = TE.turns[TE.ti], t = TE.t, p = c.players[tu.p], tot = TE.turns.length;
-  const top = `<div class="tetop"><span class="telogo">${teName()}</span><span>${c.players.length > 1 ? `<b>${esc(p)}</b> · ` : ""}${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1}${c.players.length > 1 ? ` of ${tot}` : ""}</span><span>${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${Math.max(0, Math.ceil((TE.dl - Date.now()) / 1000))}</span> s</span>` : ""}</span></div>
+  const top = `<div class="tetop"><span class="telogo">${teName()}</span><span>${c.players.length > 1 ? `<b>${esc(p)}</b>` : ""}</span><span>${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${Math.max(0, Math.ceil((TE.dl - Date.now()) / 1000))}</span> s</span>` : ""}</span></div>
     ${TE.dl && TE.phase === "play" ? `<div class="tebar"><i id="teBar" style="width:${Math.max(0, Math.min(100, (TE.dl - Date.now()) / (c.secs * 10)))}%"></i></div>` : ""}`;
   if(TE.phase === "ready"){
     el.innerHTML = `<div class="tetv">${top}<div class="teready"><small>${c.players.length > 1 ? "Next up" : "Ready?"}</small><h2>${esc(p)}</h2>
@@ -165,10 +164,11 @@ function teRender(){
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
     : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
+  const no = `<span class="telistno">${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1}${c.players.length > 1 ? ` of ${tot}` : ""}</span>`;   // 7.82 (Omar): the list number sits at the bottom left, not the top
   const ctl = TE.phase === "play"
     ? `<div class="tein"><input id="teIn" autocomplete="off" spellcheck="false" placeholder="Type a guess and press Enter"><button class="tebtn go" data-act="guess">Guess</button></div>
-       <div class="tectl"><button class="tebtn small ghost" data-act="miss" title="Someone said a wrong answer out loud: costs a life, same as a wrong guess typed in">Wrong answer said out loud</button><button class="tebtn small ghost" data-act="stop">Stop here</button><span class="gap"></span><span class="tehint">Tap a hidden slot to give it</span><button class="tebtn small ghost" data-act="end">End game</button></div>`
-    : `<div class="tectl"><span class="gap"></span><button class="tebtn go" data-act="next">${c.players.length === 1 ? "Next list" : TE.ti + 1 >= TE.turns.length ? "See the results" : `Next: ${esc(c.players[TE.turns[TE.ti + 1].p])}`}</button>${c.players.length === 1 ? `<button class="tebtn ghost" data-act="finish">Finish</button>` : ""}<span class="gap"></span></div>`;
+       <div class="tectl">${no}<button class="tebtn small ghost" data-act="stop">Stop here</button><span class="gap"></span><span class="tehint">Tap a hidden slot to give it</span><button class="tebtn small ghost" data-act="end">End game</button></div>`
+    : `<div class="tectl done">${no}<button class="tebtn go" data-act="next">${c.players.length === 1 ? "Next list" : TE.ti + 1 >= TE.turns.length ? "See the results" : `Next: ${esc(c.players[TE.turns[TE.ti + 1].p])}`}</button>${c.players.length === 1 ? `<button class="tebtn ghost" data-act="finish">Finish</button>` : ""}<span class="gap"></span></div>`;
   el.innerHTML = `<div class="tetv${!!tu.list.rows ? " fm" : ""}">${top}<div class="temain">${teHead(tu)}${!!tu.list.rows ? tePitch(tu, t) : tePyramid(tu, t)}</div>${msg}
     ${t.wrong.length ? `<div class="tewrong">${t.wrong.slice(-8).map(w => `<s>${esc(w)}</s>`).join("")}</div>` : ""}${ctl}${teBoard()}</div>`; }
 $("#teo").addEventListener("click", e => {
@@ -181,7 +181,6 @@ $("#teo").addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return; const a = act.dataset.act;
   if(a === "go") teGo();
   else if(a === "guess") teGuess();
-  else if(a === "miss"){ if(TE.t && TE.t.miss()){ try{ Snd.buzz(); }catch(e){} TE.flash = {k:"bad", t:"That"}; if(TE.t.over) teEnd(); else teRender(); } }
   else if(a === "stop"){ if(TE.t && TE.t.stop("stop")) teEnd(); }
   else if(a === "next") teNext();
   else if(a === "finish"){ TE.phase = "over"; if(!TE.sung){ TE.sung = true; playWinSiu(); } teRender(); }
