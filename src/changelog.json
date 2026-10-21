@@ -1,4 +1,5 @@
 [
+ {"v": "7.94", "date": "2026-10-22", "items": ["Tenable: when the timer reaches zero nothing happens on the board any more, it is only a clock for the room. The last 10 seconds tick and zero gives one chime."]},
  {"v": "7.93", "date": "2026-10-22", "items": ["Tenable: the timer per list is now Off, 2, 3 or 5 minutes, shown as minutes and seconds."]},
  {"v": "7.92", "date": "2026-10-22", "items": ["Tenable: the player name is gone from the top centre. It shows at the top right while you play, and not on the Next up screen."]},
  {"v": "7.91", "date": "2026-10-21", "items": ["The Category Bingo tile on the title screen is 15% smaller."]},

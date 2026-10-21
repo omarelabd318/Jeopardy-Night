@@ -93,7 +93,7 @@ function teStart(){
 function teReady(){ TE.phase = "ready"; TE.t = null; TE.flash = null; clearInterval(TE.revT); teRender(); }
 function teGo(){ const tu = TE.turns[TE.ti];
   TE.t = TER.Turn({items:tu.list.items, lives:TE.cfg.lives, norm:ansNorm, lev}); TE.phase = "play"; TE.flash = null; TE.rev = 0;
-  TE.dl = TE.cfg.secs ? Date.now() + TE.cfg.secs * 1000 : 0; teRender(); const i = $("#teIn"); if(i) i.focus(); }
+  TE.dl = TE.cfg.secs ? Date.now() + TE.cfg.secs * 1000 : 0; TE.tk = null; teRender(); const i = $("#teIn"); if(i) i.focus(); }
 function teEnd(){ const tu = TE.turns[TE.ti], t = TE.t; tu.n = t.n(); tu.pts = t.points(); TE.scores[tu.p] += tu.pts; TE.phase = "done";
   if(t.how === "all"){ try{ Snd.fanfare(); }catch(e){} } else { try{ Snd.buzz(); }catch(e){} }
   const hid = t.found.map((f, i) => f ? -1 : i).filter(i => i >= 0); TE.rev = 0; clearInterval(TE.revT);
@@ -111,7 +111,9 @@ function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "pl
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
   if(b) b.style.width = Math.max(0, Math.min(100, left / (TE.cfg.secs * 10))) + "%"; if(l) l.textContent = teClock(left / 1000);
-  if(left <= 0){ TE.t.stop("time"); teEnd(); } }
+  /* 7.94 (Omar): the timer is only a clock for the room. At zero nothing happens on the board (it used to stop the list); the last 10 seconds tick and zero gives one chime. Old: if(left <= 0){ TE.t.stop("time"); teEnd(); } */
+  const sec = Math.max(0, Math.ceil(left / 1000));
+  if(TE.tk !== sec){ TE.tk = sec; try{ if(sec >= 1 && sec <= 10) Snd.tick(); else if(sec === 0) Snd.chime(); }catch(e){} } }
 
 /* ---------- screens ---------- */
 function teEnter(){ if(S.mode === "tenable") return; S.mode = "tenable"; document.body.classList.add("temode"); }
@@ -156,7 +158,7 @@ function teRender(){
       <div class="tepanel">${c.players.length > 1 ? `<div class="teeye">Lists each</div>${teSeg("per", [1, 2, 3, 4, 5].map(n => [n, n]), c.per)}` : `<div class="teeye">Lists</div><p class="note">Solo play never runs out: keep going list after list, and press Finish when you want to stop.</p>`}
         <div class="teeye">Lives</div>${teSeg("lives", [[3, "3"], [5, "5"], [0, "No limit"]], c.lives)}
         <div class="teeye">Timer per list</div>${teSeg("secs", [[0, "Off"], [120, "2 minutes"], [180, "3 minutes"], [300, "5 minutes"]], c.secs)}
-        <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer.</p>
+        <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer. The timer is just a clock for the room: the last 10 seconds tick, and at zero nothing stops on the board.</p>
         <button class="tebtn go" id="teGo">Start</button></div></div>`;
     return; }
   if(TE.phase === "over"){ const ps = c.players, rows = ps.map((p, i) => ({p, s:TE.scores[i], n:TE.turns.filter(t => t.p === i).reduce((a, t) => a + t.n, 0), all:TE.turns.filter(t => t.p === i && t.n === t.list.items.length).length})).sort((a, b) => b.s - a.s);
