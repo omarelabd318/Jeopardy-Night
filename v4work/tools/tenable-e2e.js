@@ -38,7 +38,7 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   const fa = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); await type(fa[1].split(" ").pop()); await type(fa[4]); await type("Pelé"); await p.waitForTimeout(300);
   await p.screenshot({path:shots + "/8-tenaball-play.png"});
   // Formations
-  await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
+  await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
   await p.waitForTimeout(400); await p.screenshot({path:shots + "/9-formations-play.png"});
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(3000); await p.screenshot({path:shots + "/10-formations-reveal.png"});
