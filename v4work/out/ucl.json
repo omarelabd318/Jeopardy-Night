@@ -358,6 +358,10 @@
    [
     "Which Belgian club lost the 1978 final to Liverpool at Wembley?",
     "Club Brugge"
+   ],
+   [
+    "Which Dutch striker scored the winner for Ajax in the 1995 Champions League final?",
+    "Patrick Kluivert"
    ]
   ],
   "300": [
@@ -730,6 +734,10 @@
    [
     "Which Yugoslav club beat Marseille on penalties in the 1991 final in Bari?",
     "Red Star Belgrade"
+   ],
+   [
+    "Which Portuguese coach won the 2004 final with Porto?",
+    "José Mourinho"
    ]
   ],
   "500": [
@@ -912,6 +920,14 @@
    [
     "Which Portuguese club beat Barcelona 3–2 in Bern in the 1961 final, ending Real Madrid's run of five titles?",
     "Benfica"
+   ],
+   [
+    "Which Italian side beat Ajax in the 1996 final?",
+    "Juventus"
+   ],
+   [
+    "Which team beat Valencia on penalties in 2001?",
+    "Bayern Munich"
    ]
   ]
  }

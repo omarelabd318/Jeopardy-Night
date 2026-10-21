@@ -1,0 +1,42 @@
+{
+ "200": [
+  [
+   "Which band sang 'Livin' on a Prayer'?",
+   "Bon Jovi"
+  ],
+  [
+   "Which band sang 'Eye of the Tiger'?",
+   "Survivor"
+  ]
+ ],
+ "300": [],
+ "400": [
+  [
+   "Who sang 'Tainted Love' as the original 1964 soul recording?",
+   "Gloria Jones"
+  ],
+  [
+   "Who sang 'Our House' (1982)?",
+   "Madness"
+  ],
+  [
+   "Who sang 'Ghostbusters' in 1984?",
+   "Ray Parker Jr."
+  ],
+  [
+   "Which band sang 'Love Will Tear Us Apart'?",
+   "Joy Division"
+  ]
+ ],
+ "500": [
+  [
+   "Which band sang 'Rhythm of the Night'?",
+   "DeBarge"
+  ],
+  [
+   "Who sang 'Bette Davis Eyes' in 1981?",
+   "Kim Carnes"
+  ]
+ ],
+ "allow_dup_answers": []
+}

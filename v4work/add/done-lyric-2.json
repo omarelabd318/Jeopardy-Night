@@ -1,0 +1,43 @@
+{
+ "200": [
+  [
+   "Finish the lyric: “Hello from the other ___”",
+   "side (Hello, Adele)"
+  ],
+  [
+   "Finish the lyric: “Never gonna give you up, never gonna let you ___”",
+   "down (Never Gonna Give You Up, Rick Astley)"
+  ]
+ ],
+ "300": [
+  [
+   "Finish the lyric: “I see trees of green, red roses ___”",
+   "too (What a Wonderful World, Louis Armstrong)"
+  ],
+  [
+   "Finish the lyric: “We are the champions, my friends, and we'll keep on fighting till the ___”",
+   "end (We Are the Champions, Queen)"
+  ]
+ ],
+ "400": [
+  [
+   "Finish the lyric: “You can't always get what you ___”",
+   "want (You Can't Always Get What You Want, The Rolling Stones)"
+  ],
+  [
+   "Finish the lyric: “Take on me, take me on, I'll be gone in a day or ___”",
+   "two (Take On Me, a-ha)"
+  ],
+  [
+   "Finish the lyric: “Is this love that I'm ___”",
+   "feeling (Is This Love, Bob Marley)"
+  ]
+ ],
+ "500": [
+  [
+   "Finish the lyric: “Money, it's a ___”",
+   "gas (Money, Pink Floyd)"
+  ]
+ ],
+ "allow_dup_answers": []
+}

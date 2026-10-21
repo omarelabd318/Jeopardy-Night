@@ -1,0 +1,26 @@
+{
+ "200": [
+  [
+   "What is Eminem's real first name?",
+   "Marshall"
+  ]
+ ],
+ "300": [
+  [
+   "Which album by Michael Jackson is the best-selling of all time?",
+   "Thriller"
+  ],
+  [
+   "Which band released the album 'Rumours' in 1977?",
+   "Fleetwood Mac"
+  ]
+ ],
+ "400": [
+  [
+   "Which album by Pink Floyd has a pig over Battersea Power Station on its cover?",
+   "Animals"
+  ]
+ ],
+ "500": [],
+ "allow_dup_answers": []
+}
