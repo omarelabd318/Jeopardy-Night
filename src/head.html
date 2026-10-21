@@ -1037,6 +1037,7 @@ body.teball #teo .telives i.on{background:#ffd23f;box-shadow:0 2px 0 #0F2557}
 #teo .teslot span{display:flex;flex-direction:column;align-items:center;line-height:1.05;text-align:center}
 #teo .teslot b{font:700 clamp(18px,1.85vw,32px)/1.02 var(--te-body)}
 #teo .teslot span.long b{font-size:clamp(15px,1.45vw,25px)}
+#teo .teslot span.xlong b{font-size:clamp(11px,1.05vw,17px);line-height:1.1}
 #teo .teslot small{font-size:clamp(12px,1.05vw,17px);font-weight:600;opacity:.8;margin-top:2px}
 #teo .teslot.ok{background:var(--te-okbg);color:var(--te-okink);border-color:var(--te-ac);box-shadow:0 0 18px color-mix(in srgb,var(--te-ac) 60%,transparent)}
 #teo .teslot.ok em{color:var(--te-okink);opacity:.6;font-size:clamp(16px,1.6vw,26px)}
@@ -2408,7 +2409,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <!-- 7.82: Tenable (src/tenable.js). To remove: delete this section, the 7.82 CSS block and the Tenable button -->
   <section id="teo" hidden>
-    <div class="tetools"><button class="tebtn ghost small fsbtn">Full screen</button><button class="tebtn ghost small" id="teHome">Title screen</button></div>
+    <div class="tetools"><button class="tebtn ghost small" id="teSkip" hidden>Next</button><button class="tebtn ghost small fsbtn">Full screen</button><button class="tebtn ghost small" id="teHome">Title screen</button></div>
     <div id="teBody"></div>
   </section>
   <!-- 7.44: Hues and Cues (src/hues.js, hues.html). To remove: delete this section, the 7.44 CSS block and the Hues and Cues button -->

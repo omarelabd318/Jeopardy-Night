@@ -46,9 +46,21 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   const ln = await p.locator("#teo .telistno").textContent(); if(!/^(NM|FM)#\d\d$/.test(ln)) fail("solo shows only the list ID, like FM#07");
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.click('#teo [data-act="next"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
   if(await p.locator("#teo .telistno").textContent() === ln) fail("solo should keep dealing lists");
-  await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.screenshot({path:shots + "/8b-solo-next.png"}); await p.click('#teo [data-act="finish"]'); await p.waitForTimeout(300);
+  // 7.86: the Next button top right skips to the next list at once, with no answers shown
+  { const id2 = await p.locator("#teo .telistno").textContent(); if(await p.locator("#teSkip").isHidden()) fail("Next should show while playing"); await p.screenshot({path:shots + "/8a-next-button.png"});
+    await p.click("#teSkip"); await p.waitForTimeout(150);
+    const st = await p.evaluate(() => TE.phase); if(st !== "play") fail("skipping in solo should land on the next list, got " + st);
+    if(await p.locator("#teo .telistno").textContent() === id2) fail("Next should deal a new list"); if(await p.locator("#teo .teslot.miss").count()) fail("skipping must not reveal answers"); }
+  await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); if(!(await p.locator("#teSkip").isHidden())) fail("Next should hide after the list ends"); await p.screenshot({path:shots + "/8b-solo-next.png"}); await p.click('#teo [data-act="finish"]'); await p.waitForTimeout(300);
   if(!/found by Omar/.test(await p.locator("#teo .tewin").textContent())) fail("Finish should show the solo result");
   await p.click('#teo [data-act="again"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
+  // 7.86: the Mix edition deals both editions, each list in its own look
+  await p.click('#teo [data-act="end"]'); await p.waitForTimeout(200); await p.click('#teo [data-set="sub"][data-v="m"]'); await p.waitForTimeout(150); await p.screenshot({path:shots + "/mix-setup.png"});
+  if(!/Tenable Mix/.test(await p.locator("#teo .tehead h1").textContent())) fail("Mix setup should be titled Tenable Mix");
+  await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(150);
+  { const eds = new Set(); for(let k = 0; k < 16; k++){ const r = await p.evaluate(() => ({ed:TE.turns[TE.ti].list.ed, ball:document.body.classList.contains("teball")}));
+      if((r.ed === "f") !== r.ball) fail("the look should follow the list's edition"); eds.add(r.ed); if(k === 3) await p.screenshot({path:shots + "/mix-play.png"}); await p.click("#teSkip"); await p.waitForTimeout(60); }
+    if(!(eds.has("n") && eds.has("f"))) fail("Mix should deal both editions: " + [...eds]); }
   // Formations
   await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
