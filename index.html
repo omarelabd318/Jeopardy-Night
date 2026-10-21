@@ -1042,7 +1042,8 @@ body.teball #teo .telives i.on{background:#ffd23f;box-shadow:0 2px 0 #0F2557}
 #teo .teslot.ok em{color:var(--te-okink);opacity:.6;font-size:clamp(16px,1.6vw,26px)}
 #teo .teslot.miss{background:var(--te-miss);border-color:var(--te-hot);color:#fff}
 #teo .teslot.miss em{color:var(--te-hot);font-size:clamp(16px,1.6vw,26px)}
-#teo .teslot.hint em{left:10px;transform:translateY(-50%);font-size:clamp(16px,1.6vw,26px);opacity:.55}
+#teo .teslot.hint em{display:none}   /* 7.85 (Omar): no slot number behind the hint letters; the old look was: left:10px;transform:translateY(-50%);font-size:clamp(16px,1.6vw,26px);opacity:.55 */
+#teo .teslot.hint{padding-left:8px}
 #teo .teslot .tehintl{letter-spacing:.08em;color:var(--te-ac)}
 #teo .teslot.new,#teo .teman.new{animation:tePop .5s ease-out}
 @keyframes tePop{0%{transform:scale(.85)}60%{transform:scale(1.07)}100%{transform:scale(1)}}

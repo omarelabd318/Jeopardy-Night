@@ -52,6 +52,9 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   // Formations
   await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
+  { const m1 = '#teo [data-give="9"]', m2 = '#teo [data-give="10"]'; await p.click(m1); await p.click(m2); await p.click(m2); await p.click(m2);   // 7.85: letter hints on lineup players, no number behind the letters
+    if(!(await p.locator(m1).textContent()).includes(fm[9].slice(0, 1) + "…")) fail("formation hint should show the first letter");
+    if(await p.locator("#teo .teslot.hint em").count()) fail("hinted slots should have no visible number"); }
   await p.waitForTimeout(400); await p.screenshot({path:shots + "/9-formations-play.png"});
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(3000); await p.screenshot({path:shots + "/10-formations-reveal.png"});
   await p.setViewportSize({width:390, height:844}); await p.waitForTimeout(300); await p.screenshot({path:shots + "/11-phone-width.png", fullPage:true});
