@@ -124,7 +124,7 @@ function teSlot(tu, t, i, rk){ const it = tu.list.items[i], f = t ? t.found[i] :
   const cls = !f && !shown && t && t.hints[i] ? "hint" : f ? "ok" + (TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(i) ? " new" : "") : shown ? "miss" : "";
   const hnt = !f && !shown && t && t.hints[i] ? t.hintText(i) : "";
   const txt = f || shown ? `<b>${esc(it.a)}</b>${it.v ? `<small>${esc(it.v)}</small>` : ""}` : hnt ? `<b class="tehintl">${esc(hnt)}</b>` : "";
-  return `<button class="teslot ${cls}" data-give="${i}" ${f || shown || TE.phase !== "play" ? "tabindex=-1" : `title="Tap for a letter, again for more, then the answer"`}><em>${rk}</em><span class="${String(it.a).length > 16 ? "long" : ""}">${txt}</span></button>`; }
+  return `<button class="teslot ${cls}" data-give="${i}" ${f || shown || TE.phase !== "play" ? "tabindex=-1" : `title="Tap for a letter, again for more, then the answer"`}><em>${rk}</em><span class="${String(it.a).length > 30 ? "long xlong" : String(it.a).length > 16 ? "long" : ""}">${txt}</span></button>`; }
 function tePyramid(tu, t){ let i = 0, h = ""; [1, 2, 3, 4].forEach(n => { h += `<div class="terow">`; for(let k = 0; k < n; k++, i++) h += teSlot(tu, t, i, i + 1); h += `</div>`; }); return `<div class="tepyr">${h}</div>`; }
 function tePitch(tu, t){ const rows = tu.list.rows, n = rows.length; let i = 0, h = "";
   rows.forEach((r, ri) => { const y = n > 1 ? 13 + ri * (72 / (n - 1)) : 50;
