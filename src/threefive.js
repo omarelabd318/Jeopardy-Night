@@ -201,7 +201,7 @@ function tfRender(){
     el.innerHTML = `<div class="tfhead"><div class="tfbadge">Game over</div><h1>${p.winners.length > 1 ? p.winners.map(i => esc(p.names[i])).join(" and ") + " share it" : esc(p.names[p.winners[0]]) + " wins"}</h1></div>
       <ol class="tfpod">${order.map(i => `<li class="${rk(i) === 1 ? "r1" : ""}"><b>${tfOrd(rk(i))}</b><span>${esc(p.names[i])}</span><em class="${p.scores[i] < 0 && p.len !== "t" ? "neg" : ""}">${p.len === "t" ? tfLeft(p, p.scores[i]) : tfSigned(p.scores[i])}</em></li>`).join("")}</ol>
       <div class="tfrow"><button class="tfbtn go" data-act="again">Play again</button><button class="tfbtn ghost" data-act="home">Title screen</button></div>`; return; }
-  const trick = p.trick.map(t => CK.face(t.c, tfPos(t.seat, p.n) + (t.seat === p.winner ? " win" : "") + " in")).join("");
+  const fl = CK.fly("tf", p.trick.map(t => t.c)), trick = p.trick.map(t => { const f = fl(t.c); return CK.face(t.c, tfPos(t.seat, p.n) + (t.seat === p.winner ? " win" : "") + f[0], f[1]); }).join("");
   const chip = `Hand ${p.hand}${p.total ? ` of ${p.total}` : ""}${p.tie ? " · Tiebreak" : ""} · ${p.len === "t" ? "Race to 0" : "Most points wins"}`;
   el.innerHTML = `<div class="ckw tf-tv" data-look="felt"><div class="tf-stage"><div class="ckt"><div class="cktin tf${p.n}"><div class="ckfelt"></div>
     ${p.names.map((_, i) => tfSeatHtml(i, p)).join("")}

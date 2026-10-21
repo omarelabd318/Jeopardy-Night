@@ -16,7 +16,15 @@ const CK = (() => {
     plays.forEach((p, i) => { if(!i) return; const b = plays[best].c, s = suit(p.c), bs = suit(b);
       if(s === bs ? rank(p.c) > rank(b) : (trump && s === trump && bs !== trump)) best = i; });
     return best; };
-  const face = (c, cls = "") => { const s = suit(c); return `<div class="ck${RED[s] ? " red" : ""}${cls ? " " + cls : ""}" data-c="${c}"><i class="r">${label(rank(c))}<b>${SYM[s]}</b></i><i class="m">${SYM[s]}</i></div>`; };
+  const face = (c, cls = "", sty = "") => { const s = suit(c); return `<div class="ck${RED[s] ? " red" : ""}${cls ? " " + cls : ""}" data-c="${c}"${sty ? ` style="${sty}"` : ""}><i class="r">${label(rank(c))}<b>${SYM[s]}</b></i><i class="m">${SYM[s]}</i></div>`; };
+  /* 7.79 (Omar): a card played to the table slides in from the seat of the player who played it, and only the new card moves (before, every card
+     in the trick replayed a small drop from above on each redraw). fly(scope, codes) remembers when each card first showed up; it returns c => [class, style]
+     for the card, with a negative delay so a redraw mid-flight carries on instead of starting again. The direction comes from the card's seat class
+     (.s .n .e .w) in the .cktrick rules below. */
+  const flown = {}, FLY = 500;
+  const fly = (scope, codes) => { const m = flown[scope] || (flown[scope] = {}), now = Date.now();
+    Object.keys(m).forEach(c => { if(!codes.includes(c)) delete m[c]; }); codes.forEach(c => { if(!(c in m)) m[c] = now; });
+    return c => { const t = now - (m[c] || 0); return t < FLY ? [" fly", `animation-delay:-${t}ms`] : ["", ""]; }; };
   const back = (cls = "") => `<div class="ck back${cls ? " " + cls : ""}"></div>`;
   /* the table: seats 0..3 run counter-clockwise from the bottom (bottom, right, top, left), like the order of play. */
   const POS = ["s", "e", "n", "w"];
@@ -55,6 +63,12 @@ const CK = (() => {
 .cktrick .ck{position:absolute}
 .cktrick .s{left:50%;bottom:4%;transform:translateX(-50%) rotate(3deg)}.cktrick .n{left:50%;top:4%;transform:translateX(-50%) rotate(-4deg)}
 .cktrick .e{right:2%;top:50%;transform:translateY(-50%) rotate(8deg)}.cktrick .w{left:2%;top:50%;transform:translateY(-50%) rotate(-7deg)}
+/* 7.79: the fly-in from each seat. It moves the separate translate/scale properties, so the card's own rotate stays put. Was: every trick card had
+   class "in" (ckin above: a short drop from above). --fx/--fy are the start point in card ems; 3-5-8's three-seat table moves e and w up (head.html). */
+.cktrick .s{--fx:0;--fy:8.5em}.cktrick .n{--fx:0;--fy:-8.5em}.cktrick .e{--fx:11em;--fy:0}.cktrick .w{--fx:-11em;--fy:0}
+@keyframes ckfly{from{translate:var(--fx) var(--fy);scale:.8;opacity:.2}to{translate:0 0;scale:1;opacity:1}}
+.cktrick .ck.fly{animation:ckfly .5s cubic-bezier(.2,.75,.3,1) both;z-index:3}
+@media(prefers-reduced-motion:reduce){.cktrick .ck.fly{animation:none}}
 .cktrick .ck.win{box-shadow:0 0 0 .16em var(--ck-gold),0 0 1.1em var(--ck-gold);z-index:2}
 .ckmsg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;text-align:center;font-family:var(--ck-disp);color:var(--ck-ink);background:rgba(0,0,0,.55);padding:calc(var(--u)*1.4) calc(var(--u)*2.6);border-radius:calc(var(--u)*1.2);border:calc(var(--u)*.2) solid var(--ck-gold);max-width:60%}
 .ckchip{position:absolute;left:calc(var(--u)*2);bottom:calc(var(--u)*2);z-index:5;display:flex;gap:calc(var(--u)*1);align-items:center;font:700 calc(var(--u)*1.55)/1 var(--ck-disp);padding:calc(var(--u)*.7) calc(var(--u)*1.3);border-radius:99px;background:rgba(0,0,0,.6);color:#fff;border:calc(var(--u)*.2) solid var(--ck-gold)}
@@ -76,5 +90,5 @@ const CK = (() => {
   const inject = look => { if(typeof document === "undefined") return; let s = document.getElementById("ckcss"); if(!s){ s = document.createElement("style"); s.id = "ckcss"; s.textContent = css; document.head.appendChild(s); } };
   const hand = (codes, o = {}) => { const n = codes.length, per = n > 7 ? Math.ceil(n / 2) : n, rows = n > 7 ? [codes.slice(0, per), codes.slice(per)] : [codes];
     return `<div class="ckhand">${rows.map(r => `<div class="ckrow${rows.length > 1 ? " two" : ""}" style="--k:${r.length}">${r.map(c => face(c, (o.legal && !o.legal.includes(c) ? "off " : "") + (o.up === c || (o.ups && o.ups.includes(c)) ? "up" : ""))).join("")}</div>`).join("")}</div>`; };
-  return {SUITS, SYM, RED, POS, code, rank, suit, label, deck, shuffle, sort, trickWinner, face, back, css, inject, hand};
+  return {SUITS, SYM, RED, POS, code, rank, suit, label, deck, shuffle, sort, trickWinner, face, back, fly, css, inject, hand};
 })();

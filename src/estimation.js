@@ -91,7 +91,7 @@ function esRender(){
     el.innerHTML = `<div class="eshead"><div class="esbadge">Game over</div><h1>${win.join(" and ")} ${win.length > 1 ? "win" : "wins"}</h1></div>
       <ol class="espod">${order.map(s => `<li class="r${Math.min(rk[s], 4)}"><b>${esOrd(rk[s])}</b><span>${esc(p.names[s])}</span><em class="${p.scores[s] < 0 ? "neg" : ""}">${p.scores[s]}</em></li>`).join("")}</ol>
       <div class="esrow"><button class="esbtn go" data-act="again">Play again</button><button class="esbtn ghost" data-act="home">Title screen</button></div>`; return; }
-  const lead = Math.max(...p.scores), trick = p.trick.map(t => CK.face(t.c, CK.POS[t.seat] + (t.seat === p.winner ? " win" : "") + " in")).join("");
+  const lead = Math.max(...p.scores), fl = CK.fly("est", p.trick.map(t => t.c)), trick = p.trick.map(t => { const f = fl(t.c); return CK.face(t.c, CK.POS[t.seat] + (t.seat === p.winner ? " win" : "") + f[0], f[1]); }).join("");
   const chipTrump = p.trump ? `Trump ${esSuitHtml(p.trump)}` : p.phase === "dash" || p.phase === "auction" ? "Bidding" : "";
   const ovun = p.total != null ? `${p.total > 13 ? "Over" : "Under"} ${Math.abs(p.total - 13) > 0 ? (p.total > 13 ? "+" : "−") + Math.abs(p.total - 13) : ""}` : "";
   el.innerHTML = `<div class="ckw es-tv" data-look="felt"><div class="es-stage"><div class="ckt"><div class="cktin"><div class="ckfelt"></div>
