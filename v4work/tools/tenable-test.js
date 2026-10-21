@@ -15,6 +15,9 @@ const mk = (names, lives) => TER.Turn({items:names.map(a => typeof a === "string
   { const l = mk(["Russia", "Argentina", "Kazakhstan", "Spain", "Chad", "Iran", "Iraq", "Australia"], 3);   // 7.85: more leeway
     eq(l.guess("Rusia").k, "right", "one letter short"); eq(l.guess("Argntna").k, "right", "two letters short on a long name"); eq(l.guess("Kazakstn").k, "right", "two slips"); eq(l.guess("Spian").k, "right", "swapped letters (2 edits) on a 5 letter name"); eq(l.guess("Austrlai").k, "right", "swapped end letters");
     eq(l.guess("Chd").k, "right", "one letter short on a 4 letter name"); eq(l.guess("Iran").k, "right", "Iran"); eq(l.found[5], true, "Iran filled Iran"); eq(l.found[6], false, "exact beats a close spelling of another slot"); eq(l.guess("Iraq").k, "right", "Iraq is its own slot"); }
+  { const l = mk(["Alpha", "Carlos Bianchi / Gunnar Andersson", "Zed"], 3);   // 7.86: a tie at the cut accepts either name
+    eq(l.guess("Andersson").k, "right", "tie: second name"); eq(l.found[1], true, "tie slot filled"); eq(l.guess("Carlos Bianchi").k, "dup", "tie: the other name is a repeat, not a wrong answer"); eq(l.left, 3, "no life lost"); }
+  { const l = mk(["Alpha", "Carlos Bianchi / Gunnar Andersson", "Zed"], 3); eq(l.guess("bianchi").k, "right", "tie: first name by surname"); }
   ok(t.give(0), "host gives Russia"); ok(!t.give(0), "only once"); eq(t.n(), 4, "4 found");
   t.guess("peru"); eq(t.left, 1, "1 life"); ok(!t.over, "still going"); t.guess("chile"); ok(t.over, "out of lives"); eq(t.how, "lives", "how"); eq(t.points(), 4, "1 point each");
   eq(t.guess("china").k, "over", "no guesses after the end"); }
