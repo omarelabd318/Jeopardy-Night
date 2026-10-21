@@ -1,4 +1,5 @@
 [
+ {"v": "7.85", "date": "2026-10-21", "items": ["Tenable: tapping a hidden slot now gives a clue. The first tap shows the first letter, the next two taps show two and three letters, and the tap after that gives the full answer.", "Typed answers are more forgiving of spelling mistakes now."]},
  {"v": "7.84", "date": "2026-10-21", "items": ["Every Tenable and TenaBall list now has its own number (NM#01 and up for Normal, FM#01 and up for TenaBall) so you can tell which ones you have played. It sits bottom left, under the list number; in solo it replaces the list number."]},
  {"v": "7.83", "date": "2026-10-21", "items": ["Tenable's title screen now has a big pyramid, cut into sections, behind the title instead of the numbered squares."]},
  {"v": "7.82", "date": "2026-10-21", "items": ["New mode: Tenable. A top-ten list hides behind a pyramid of ten slots; name them all, in any order, before your lives run out. Solo, or take turns with up to 8 players.", "30 lists in each edition. TenaBall is the football edition, in the Football mode greens; its Formations switch mixes in famous lineups on half a pitch (team, year and score), where you name all 11."]},

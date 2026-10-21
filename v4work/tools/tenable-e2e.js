@@ -22,7 +22,13 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   const near = ans[3].length > 6 ? ans[3].slice(0, -2) + ans[3].slice(-1) : ans[3];
   await type(near); await type(ans[0]); await type(ans[6]); await type("Zzqxv"); await type(ans[0]);
   let st = await p.evaluate(() => ({n:TE.t.n(), left:TE.t.left})); if(st.n !== 3 || st.left !== 2) fail(`after 3 right and 1 wrong: ${JSON.stringify(st)} (near: ${near})`);
-  await p.click('#teo [data-give="8"]'); await p.waitForTimeout(150); await p.screenshot({path:shots + "/3-normal-play.png"});
+  const slot = '#teo [data-give="8"]';   // 7.85: letters first (1, 2, 3), then the whole answer
+  await p.click(slot); await p.waitForTimeout(150); await p.screenshot({path:shots + "/3-normal-play.png"});
+  const l1 = await p.locator(slot).textContent(); if(!l1.includes(ans[8].slice(0, 1) + "…")) fail("first tap should show the first letter, got " + l1);
+  await p.click(slot); await p.click(slot); const l3 = await p.locator(slot).textContent(); if(!l3.includes(Array.from(ans[8]).slice(0, 3).join("") + "…")) fail("third tap should show three letters, got " + l3);
+  if(await p.evaluate(() => TE.t.n()) !== 3) fail("letters must not fill the slot");
+  await p.screenshot({path:shots + "/3b-three-letters.png"}); await p.click(slot); await p.waitForTimeout(150);
+  if(await p.evaluate(() => TE.t.n()) !== 4) fail("fourth tap should give the answer");
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(4500); await p.screenshot({path:shots + "/4-normal-reveal.png"});
   if(await p.locator("#teo .teslot.miss").count() !== 6) fail("6 missed slots should be revealed");
   await p.click('#teo [data-act="next"]'); await p.click('#teo [data-act="go"]');
@@ -46,6 +52,9 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   // Formations
   await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
+  { const m1 = '#teo [data-give="9"]', m2 = '#teo [data-give="10"]'; await p.click(m1); await p.click(m2); await p.click(m2); await p.click(m2);   // 7.85: letter hints on lineup players, no number behind the letters
+    if(!(await p.locator(m1).textContent()).includes(fm[9].slice(0, 1) + "…")) fail("formation hint should show the first letter");
+    if(await p.locator("#teo .teslot.hint em").count()) fail("hinted slots should have no visible number"); }
   await p.waitForTimeout(400); await p.screenshot({path:shots + "/9-formations-play.png"});
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(3000); await p.screenshot({path:shots + "/10-formations-reveal.png"});
   await p.setViewportSize({width:390, height:844}); await p.waitForTimeout(300); await p.screenshot({path:shots + "/11-phone-width.png", fullPage:true});
