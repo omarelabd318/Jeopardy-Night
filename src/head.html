@@ -974,6 +974,126 @@ body.hcmode .wrap{max-width:none;padding:0}
 #hco .hcplace li span{flex:1}
 #hco .hcplace b{font:800 calc(var(--u)*3) var(--hc-head)}
 #hco .hcplace em{font-style:normal}
+/* 7.85 (Omar): Tenable. Normal edition "Tower" look: deep indigo with glowing cyan slots in a pyramid of ten (1 at the top), magenta for wrong answers and lives.
+   TenaBall (body.teball) takes the Football mode greens: a mown pitch, navy slots with white type, the main game's Football palette (#00BE00, #0F2557).
+   Formations draws half a pitch with the lineup's players as shirts. To remove: delete this block, the #teo section and the Tenable button. */
+#titleScreen #modeRow .modebtn.tenbtn{font:800 23px "Big Shoulders Display","Arial Narrow",Impact,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(90deg,#00BE00 50%,#0F2557 0) bottom/100% 5px no-repeat,radial-gradient(ellipse at 50% 0%,#2a1a86,#0c0736 75%);color:#3be8ff;border:2px solid #3be8ff;border-radius:6px;box-shadow:0 0 12px rgba(59,232,255,.45),inset 0 0 10px rgba(59,232,255,.25);text-shadow:0 0 8px rgba(59,232,255,.8);padding:9px 26px 12px}
+body.temode{min-height:100vh;background:#070420}
+body.temode.teball{background:#00A800}
+body.temode .wrap{max-width:none;padding:0}
+#teo{--te-ac:#3be8ff;--te-hot:#ff3ea5;--te-ink:#eaf6ff;--te-dim:#9aa6d8;--te-slot:#120c3a;--te-edge:#2e2a8a;--te-okbg:linear-gradient(#5ff0ff,#18b8e0);--te-okink:#061033;--te-miss:#3a1030;--te-head:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--te-body:"Barlow Condensed","Arial Narrow",sans-serif;
+  color:var(--te-ink);font-family:var(--te-body);font-weight:600;min-height:100vh;background:radial-gradient(90% 70% at 50% 0%,#2a1a86 0%,#120a4a 45%,#070420 100%)}
+body.teball #teo{--te-ac:#ffffff;--te-hot:#ffd23f;--te-ink:#ffffff;--te-dim:#e6ffe6;--te-slot:#0F2557;--te-edge:#0B1C45;--te-okbg:linear-gradient(#ffffff,#e9eef9);--te-okink:#0F2557;--te-miss:#7A0E05;--te-head:"Oswald","Arial Narrow",Impact,sans-serif;
+  background:repeating-linear-gradient(90deg,#00BE00 0 8vw,#00CA00 8vw 16vw)}
+#teo [hidden]{display:none!important}
+#teo .tetools{display:flex;gap:8px;justify-content:flex-end;padding:6px 10px 0}
+#teo .tebtn{font:800 20px var(--te-head);letter-spacing:.08em;text-transform:uppercase;padding:9px 24px;border:2px solid var(--te-ac);background:var(--te-slot);color:var(--te-ac);cursor:pointer;border-radius:6px}
+#teo .tebtn.go{background:var(--te-ac);color:var(--te-okink);box-shadow:0 0 14px color-mix(in srgb,var(--te-ac) 55%,transparent)}
+#teo .tebtn.ghost{background:transparent}
+body.teball #teo .tebtn.ghost{background:rgba(15,37,87,.55)}
+#teo .tebtn.small{font-size:16px;padding:5px 14px}
+#teo .gap{flex:1}
+#teo .tehead{padding:14px 24px 0}
+#teo .tebadge{display:inline-block;font:700 15px var(--te-body);letter-spacing:.2em;text-transform:uppercase;color:var(--te-okink);background:var(--te-ac);padding:2px 12px}
+#teo h1{margin:10px 0 6px;font:800 clamp(52px,8vw,104px)/.95 var(--te-head);letter-spacing:.06em;text-transform:uppercase;color:var(--te-ac);text-shadow:0 0 .25em color-mix(in srgb,var(--te-ac) 60%,transparent)}
+body.teball #teo h1{text-shadow:.04em .05em 0 #0F2557}
+#teo .sub{margin:8px 0 14px;max-width:70ch;color:var(--te-dim);font-size:21px;font-weight:500}
+#teo .tegrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start;padding:0 24px 20px}
+#teo .tepanel{background:rgba(10,6,40,.75);border:2px solid var(--te-edge);border-radius:12px;padding:16px 18px;display:grid;gap:10px}
+body.teball #teo .tepanel{background:rgba(15,37,87,.88)}
+#teo .teeye{font:700 15px var(--te-body);letter-spacing:.16em;text-transform:uppercase;color:var(--te-dim)}
+#teo .note{margin:0;font-size:18px;font-weight:500;color:var(--te-dim)}
+#teo .teseg{display:flex;flex-wrap:wrap;gap:6px}
+#teo .teseg button{font:700 18px var(--te-body);padding:6px 14px;border-radius:6px;border:2px solid var(--te-edge);background:transparent;color:var(--te-ink);cursor:pointer}
+#teo .teseg button[aria-pressed=true]{background:var(--te-ac);border-color:var(--te-ac);color:var(--te-okink)}
+#teo .tenames{display:grid;gap:6px}
+#teo .tename{display:flex;gap:6px}
+#teo .tename input,#teo .tein input{flex:1;min-width:0;font:600 20px var(--te-body);padding:7px 12px;border-radius:6px;border:2px solid var(--te-edge);background:#fff;color:#111}
+#teo .tename button{width:40px;font:700 22px var(--te-body);border-radius:6px;border:2px solid var(--te-edge);background:transparent;color:var(--te-ink);cursor:pointer}
+/* the TV */
+#teo .tetv{max-width:1500px;margin:0 auto;padding:6px clamp(12px,2.4vw,36px) 16px;display:flex;flex-direction:column;gap:10px;min-height:calc(100vh - 50px)}
+#teo .tetop{display:flex;align-items:center;justify-content:space-between;gap:12px;font:600 clamp(18px,1.6vw,26px) var(--te-body);color:var(--te-dim)}
+#teo .tetop b{color:var(--te-ink)}
+#teo .telogo{font:800 clamp(24px,2.3vw,38px) var(--te-head);letter-spacing:.1em;text-transform:uppercase;color:var(--te-ac);text-shadow:0 0 .3em color-mix(in srgb,var(--te-ac) 55%,transparent)}
+body.teball #teo .telogo{text-shadow:.05em .05em 0 #0F2557}
+#teo .telives{display:inline-flex;gap:6px;vertical-align:middle}
+#teo .telives i{width:clamp(16px,1.5vw,24px);height:clamp(16px,1.5vw,24px);border-radius:50%;border:2px solid var(--te-hot);opacity:.35}
+#teo .telives i.on{background:var(--te-hot);opacity:1;box-shadow:0 0 10px var(--te-hot)}
+#teo .telives.inf{font-size:.8em}
+body.teball #teo .telives i{border-radius:3px;width:clamp(13px,1.2vw,19px);height:clamp(18px,1.7vw,26px);transform:rotate(8deg);border-color:#ffd23f}
+body.teball #teo .telives i.on{background:#ffd23f;box-shadow:0 2px 0 #0F2557}
+#teo .teclock{font:800 1.1em var(--te-head);color:var(--te-ink);margin-left:10px}
+#teo .tebar{height:6px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
+#teo .tebar i{display:block;height:100%;background:var(--te-ac);transition:width .2s linear}
+#teo .temain{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.4vh,18px);flex:1}
+#teo .tehd{text-align:center}
+#teo .tet{font:800 clamp(30px,3.6vw,60px)/1 var(--te-head);letter-spacing:.04em;text-transform:uppercase;color:var(--te-ink)}
+#teo .ted{margin-top:6px;font-size:clamp(17px,1.5vw,24px);color:var(--te-dim);font-weight:500}
+#teo .tepyr{width:min(96%,calc(64vh * 1.9),1250px);display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.1vh,12px)}
+#teo .terow{display:flex;justify-content:center;gap:clamp(6px,.8vw,12px);width:100%}
+#teo .teslot{position:relative;flex:0 0 calc(25% - 9px);height:clamp(54px,11vh,104px);display:flex;align-items:center;justify-content:center;padding:4px 8px 4px 34px;border-radius:8px;border:2px solid var(--te-edge);background:var(--te-slot);color:var(--te-ink);font-family:var(--te-body);cursor:pointer;box-shadow:inset 0 0 18px rgba(59,232,255,.12);transition:background .25s,transform .25s}
+#teo .teslot em{position:absolute;left:10px;top:50%;transform:translateY(-50%);font:800 clamp(22px,2.4vw,40px) var(--te-head);font-style:normal;color:var(--te-ac);opacity:.9}
+#teo .teslot:not(.ok):not(.miss) em{left:50%;transform:translate(-50%,-50%);opacity:.55;font-size:clamp(28px,3.2vw,54px)}
+#teo .teslot span{display:flex;flex-direction:column;align-items:center;line-height:1.05;text-align:center}
+#teo .teslot b{font:700 clamp(18px,1.85vw,32px)/1.02 var(--te-body)}
+#teo .teslot span.long b{font-size:clamp(15px,1.45vw,25px)}
+#teo .teslot small{font-size:clamp(12px,1.05vw,17px);font-weight:600;opacity:.8;margin-top:2px}
+#teo .teslot.ok{background:var(--te-okbg);color:var(--te-okink);border-color:var(--te-ac);box-shadow:0 0 18px color-mix(in srgb,var(--te-ac) 60%,transparent)}
+#teo .teslot.ok em{color:var(--te-okink);opacity:.6;font-size:clamp(16px,1.6vw,26px)}
+#teo .teslot.miss{background:var(--te-miss);border-color:var(--te-hot);color:#fff}
+#teo .teslot.miss em{color:var(--te-hot);font-size:clamp(16px,1.6vw,26px)}
+#teo .teslot.new,#teo .teman.new{animation:tePop .5s ease-out}
+@keyframes tePop{0%{transform:scale(.85)}60%{transform:scale(1.07)}100%{transform:scale(1)}}
+#teo .teflash{text-align:center;font:600 clamp(20px,1.9vw,30px) var(--te-body);color:var(--te-dim);min-height:1.3em}
+#teo .teflash b{color:var(--te-ink)}
+#teo .teflash.ok{color:var(--te-ac)}
+#teo .teflash.bad{color:var(--te-hot)}
+body.teball #teo .teflash{text-shadow:0 1px 0 #0F2557}
+body.teball #teo .teflash.ok{color:#fff}
+#teo .tewrong{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-size:clamp(15px,1.3vw,20px);color:var(--te-hot)}
+#teo .tewrong s{text-decoration-thickness:2px}
+#teo .tein{display:flex;gap:8px;max-width:760px;width:100%;margin:0 auto}
+#teo .tein input{font-size:clamp(20px,1.7vw,28px)}
+#teo .tectl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#teo .tehint{font-size:16px;color:var(--te-dim)}
+#teo .tescore{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;font-size:clamp(16px,1.4vw,22px);color:var(--te-dim)}
+#teo .tescore b{color:var(--te-ink);font-family:var(--te-head);font-size:1.2em;margin-left:4px}
+#teo .tescore .cur{color:var(--te-ac)}
+#teo .teready{margin:auto;text-align:center;display:grid;gap:12px;justify-items:center}
+#teo .teready small{font:700 18px var(--te-body);letter-spacing:.2em;text-transform:uppercase;color:var(--te-dim)}
+#teo .teready h2{margin:0;font:800 clamp(56px,8vw,120px)/1 var(--te-head);text-transform:uppercase;color:var(--te-ac)}
+#teo .teready p{margin:0;font-size:22px;color:var(--te-dim)}
+#teo .teover{margin:auto;text-align:center;display:grid;gap:16px;justify-items:center;padding:20px}
+#teo .tewin{font:800 clamp(56px,8vw,120px)/1 var(--te-head);text-transform:uppercase;color:var(--te-ac)}
+#teo .tewin span{display:block;font:600 clamp(22px,2vw,32px) var(--te-body);text-transform:none;color:var(--te-dim);margin-top:8px}
+#teo .teplace{list-style:none;margin:0;padding:0;display:grid;gap:6px;min-width:min(520px,90vw)}
+#teo .teplace li{display:flex;align-items:center;gap:12px;padding:8px 14px;border-radius:8px;background:var(--te-slot);border:2px solid var(--te-edge);font-size:22px}
+#teo .teplace li b{font-family:var(--te-head);color:var(--te-ac);width:1.5em}
+#teo .teplace li span{flex:1;text-align:left}
+#teo .teplace li small{color:var(--te-dim);font-size:16px}
+#teo .teplace li em{font:800 28px var(--te-head);font-style:normal}
+/* Formations: the lineup on half a pitch */
+#teo .tetv.fm .temain{flex-direction:row;align-items:center;justify-content:center;gap:clamp(16px,3vw,48px)}
+#teo .tehd.form{text-align:left;max-width:30%;display:grid;gap:10px}
+#teo .tehd.form .tet span{color:var(--te-ac)}
+#teo .tesc{font:700 clamp(22px,2.1vw,34px)/1.1 var(--te-head);color:#0F2557;background:#fff;padding:8px 14px;border-radius:6px;width:fit-content;box-shadow:0 3px 0 #0B1C45}
+#teo .tegoal{font-size:clamp(16px,1.4vw,22px);color:var(--te-dim)}
+#teo .tepitch{position:relative;height:min(64vh,760px);aspect-ratio:1.05;background:repeating-linear-gradient(180deg,#0aa30a 0 10%,#08950a 10% 20%);border:3px solid rgba(255,255,255,.9);border-radius:6px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+#teo .telines b{position:absolute;border:3px solid rgba(255,255,255,.8)}
+#teo .telines .box{left:20%;right:20%;bottom:-3px;height:17%;border-bottom:none}
+#teo .telines .six{left:37%;right:37%;bottom:-3px;height:6%;border-bottom:none}
+#teo .telines .arc{left:41%;right:41%;bottom:17%;height:5%;border-radius:50% 50% 0 0/100% 100% 0 0;border-bottom:none}
+#teo .telines .mid{left:35%;right:35%;top:-3px;height:14%;border-radius:0 0 50% 50%/0 0 100% 100%;border-top:none}
+#teo .teman{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:0;cursor:pointer;width:22%}
+#teo .teman i{width:clamp(30px,4.6vh,52px);height:clamp(30px,4.6vh,52px);border-radius:50%;background:#0F2557;border:3px solid #fff;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+#teo .teman span{font:700 clamp(14px,1.9vh,22px)/1.05 var(--te-body);color:#0F2557;background:rgba(255,255,255,.92);padding:2px 8px;border-radius:4px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#teo .teman:not(.ok):not(.miss) span{background:rgba(15,37,87,.75);color:#fff}
+#teo .teman.ok i{background:#ffd23f}
+#teo .teman.miss i{background:#7A0E05}
+#teo .teman.miss span{background:#7A0E05;color:#fff}
+#teo .tecap{position:absolute;left:8px;top:8px}
+#teo .tefm{font:800 clamp(18px,2.4vh,28px) var(--te-head);color:#fff;background:#0F2557;padding:2px 10px;border-radius:4px}
+@media (max-width:820px){ #teo .tetv.fm .temain{flex-direction:column} #teo .tehd.form{max-width:none;text-align:center;justify-items:center} #teo .tepitch{height:auto;width:96%} #teo .teslot{padding-left:26px} #teo .teslot em{left:6px} }
 /* 7.47 (Omar): Speed Trivia, Studio Podiums look (his pick of three previews: Studio Podiums, Arcade Cabinet, Race Lanes; the other two were left out): a TV game show set, navy studio light, gold Anton capitals, a wooden podium per player
    whose lamp lights in their colour when they buzz. The TV is one stage sized by --u (100 units = the screen's width at 16:9). buzz.html (the phones) uses the same palette. To remove: delete this block, the #spo section and the Speed Trivia button. */
 #titleScreen #modeRow .modebtn.stbtn{font:400 22px Anton,Impact,"Arial Narrow",sans-serif;letter-spacing:.06em;text-transform:uppercase;background:radial-gradient(ellipse at 50% 0%,#1d3a8a,#0c1846 70%);color:#ffcf4a;border:2.5px solid #ffcf4a;border-radius:8px;box-shadow:inset 0 -5px 0 #8a5a12,3px 3px 0 rgba(0,0,0,.45);padding:9px 26px}
@@ -2204,9 +2324,9 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <p class="note" id="fsNote" hidden></p>
       </div>
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. 6.84: Jeopardy Night is the first one. -->
-      <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><i class="rowbrk"></i><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn hcbbtn" id="modeHc" data-phones="Phones required, one per player" data-who="Solo · 3 to 10 players · best with 5 to 8" data-tip="Find the secret shade: one player gives a word, everyone taps their guess on a 660-colour board.">Hues and Cues</button><i class="rowbrk"></i><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button><button class="btn modebtn stbtn" id="modeSp" data-phones="Phones required, one per player" data-who="Solo · 2 to 4 players · best with 3 or 4" data-tip="Phones are buzzers. Buzz first, answer fast, don't get it wrong.">Speed Trivia</button></div>
+      <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><button class="btn modebtn tenbtn" id="modeTen" data-phones="No phones needed" data-who="Solo · 1 to 8 players taking turns · best with 1 to 6" data-tip="Name all ten on a top-ten list, in any order, before your lives run out. TenaBall is the football edition, with famous lineups too.">Tenable</button><i class="rowbrk"></i><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn hcbbtn" id="modeHc" data-phones="Phones required, one per player" data-who="Solo · 3 to 10 players · best with 5 to 8" data-tip="Find the secret shade: one player gives a word, everyone taps their guess on a 660-colour board.">Hues and Cues</button><i class="rowbrk"></i><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button><button class="btn modebtn stbtn" id="modeSp" data-phones="Phones required, one per player" data-who="Solo · 2 to 4 players · best with 3 or 4" data-tip="Phones are buzzers. Buzz first, answer fast, don't get it wrong.">Speed Trivia</button></div>
       <!-- 6.84: the categories and version line moved from the top of the title screen to under the modes -->
-      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.80</button>
+      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v7.85</button>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -2279,6 +2399,11 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
     <div class="sptools"><button class="spbtn ghost small fsbtn">Full screen</button><button class="spbtn ghost small" id="spHome">Title screen</button></div>
     <div id="spBody"></div>
   </section>
+  <!-- 7.85: Tenable (src/tenable.js). To remove: delete this section, the 7.85 CSS block and the Tenable button -->
+  <section id="teo" hidden>
+    <div class="tetools"><button class="tebtn ghost small fsbtn">Full screen</button><button class="tebtn ghost small" id="teHome">Title screen</button></div>
+    <div id="teBody"></div>
+  </section>
   <!-- 7.44: Hues and Cues (src/hues.js, hues.html). To remove: delete this section, the 7.44 CSS block and the Hues and Cues button -->
   <section id="hco" hidden>
     <div class="hctools"><button class="hcbtn ghost small fsbtn">Full screen</button><button class="hcbtn ghost small" id="hcHome">Title screen</button></div>
@@ -2301,7 +2426,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v7.80</div>
+      <div class="eyebrow verlabel">v7.85</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->
