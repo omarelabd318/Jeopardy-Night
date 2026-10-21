@@ -200,7 +200,7 @@ function tnRender(){
     el.innerHTML = `<div class="tnhead"><div class="tnbadge">Game over</div><h1>${draw ? "It's a draw" : tnTeamName(p, w) + " win"}</h1></div>
       <ol class="tnpod"><li class="r1 t${w}"><b>${draw ? "=" : "1st"}</b><span>${tnTeamName(p, w)}</span><em>${p.scores[w]}</em></li><li class="${draw ? "r1 " : ""}t${l}"><b>${draw ? "=" : "2nd"}</b><span>${tnTeamName(p, l)}</span><em class="${p.scores[l] < 0 ? "neg" : ""}">${p.scores[l]}</em></li></ol>
       <div class="tnrow"><button class="tnbtn go" data-act="again">Play again</button><button class="tnbtn ghost" data-act="home">Title screen</button></div>`; return; }
-  const trick = p.trick.map(t => CK.face(t.c, CK.POS[t.seat] + (t.seat === p.winner ? " win" : "") + " in")).join("");
+  const fl = CK.fly("tn", p.trick.map(t => t.c)), trick = p.trick.map(t => { const f = fl(t.c); return CK.face(t.c, CK.POS[t.seat] + (t.seat === p.winner ? " win" : "") + f[0], f[1]); }).join("");
   const need = p.call ? TNR.tricksFor(p.call) : 0, ct = p.caller != null ? TNR.team(p.caller) : -1;
   const chip = p.call ? `Hand ${p.hand} · Call ${tnCall(p.call)} · ${need} tricks${p.doubled ? ` · <span class="tn-dbl">×2</span>` : ""}` : `Hand ${p.hand} · Bidding${p.high ? ` · High ${tnCall(p.high)}${p.doubled ? " ×2" : ""}` : ""}`;
   const counter = t => { const got = p.won[t]; if(ct < 0 || p.phase === "auction" || p.phase === "redeal") return ""; const goal = t === ct ? need : 14 - need; return `<small>Tricks ${got} / ${goal}${t === ct ? " needed" : " to stop them"}</small>`; };
