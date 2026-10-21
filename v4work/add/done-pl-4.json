@@ -1,0 +1,26 @@
+{
+ "200": [
+  [
+   "How many games did Arsenal's unbeaten league run reach between 2003 and 2004?",
+   "49"
+  ]
+ ],
+ "300": [
+  [
+   "How many points did Manchester City win in 2017–18, the Premier League record?",
+   "100"
+  ],
+  [
+   "Who is the youngest Premier League goalscorer, aged 16 years and 271 days, for Everton in 2005?",
+   "James Vaughan"
+  ]
+ ],
+ "400": [
+  [
+   "What were Leicester City's pre-season odds of winning the 2015–16 title?",
+   "5000/1"
+  ]
+ ],
+ "500": [],
+ "allow_dup_answers": []
+}
