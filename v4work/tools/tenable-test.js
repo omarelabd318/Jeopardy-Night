@@ -12,6 +12,9 @@ const mk = (names, lives) => TER.Turn({items:names.map(a => typeof a === "string
   eq(t.guess("france").k, "wrong", "wrong"); eq(t.left, 2, "a life gone"); eq(t.guess("France").k, "again", "same wrong twice"); eq(t.left, 2, "no second life lost");
   eq(t.guess("  ").k, "empty", "blank"); eq(t.guess("kazakstan").k, "right", "one slip is fine"); eq(t.guess("brasil").k, "right", "brasil");
   { const h = mk(["Russia", "X"], 3); eq(h.tap(0), "hint", "tap 1 hints"); eq(h.hintText(0), "R…", "first letter"); h.tap(0); eq(h.hintText(0), "Ru…", "two letters"); h.tap(0); eq(h.hintText(0), "Rus…", "three letters"); eq(h.n(), 0, "hints give nothing"); eq(h.tap(0), "give", "4th tap gives"); eq(h.n(), 1, "now found"); eq(h.tap(1), "give", "one-letter answer gives straight away"); }
+  { const l = mk(["Russia", "Argentina", "Kazakhstan", "Spain", "Chad", "Iran", "Iraq", "Australia"], 3);   // 7.85: more leeway
+    eq(l.guess("Rusia").k, "right", "one letter short"); eq(l.guess("Argntna").k, "right", "two letters short on a long name"); eq(l.guess("Kazakstn").k, "right", "two slips"); eq(l.guess("Spian").k, "right", "swapped letters (2 edits) on a 5 letter name"); eq(l.guess("Austrlai").k, "right", "swapped end letters");
+    eq(l.guess("Chd").k, "right", "one letter short on a 4 letter name"); eq(l.guess("Iran").k, "right", "Iran"); eq(l.found[5], true, "Iran filled Iran"); eq(l.found[6], false, "exact beats a close spelling of another slot"); eq(l.guess("Iraq").k, "right", "Iraq is its own slot"); }
   ok(t.give(0), "host gives Russia"); ok(!t.give(0), "only once"); eq(t.n(), 4, "4 found");
   t.guess("peru"); eq(t.left, 1, "1 life"); ok(!t.over, "still going"); t.guess("chile"); ok(t.over, "out of lives"); eq(t.how, "lives", "how"); eq(t.points(), 4, "1 point each");
   eq(t.guess("china").k, "over", "no guesses after the end"); }
