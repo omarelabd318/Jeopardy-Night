@@ -1,0 +1,92 @@
+{
+ "200": [
+  [
+   "What language is this? “Hola, amigo” (it means 'hello, friend')",
+   "Spanish"
+  ],
+  [
+   "What language is this? “Prost!” (it means 'cheers!')",
+   "German"
+  ],
+  [
+   "What language is this? “Santé!” (it means 'cheers!')",
+   "French"
+  ],
+  [
+   "What language is this? “Sayonara” (it means 'goodbye')",
+   "Japanese"
+  ]
+ ],
+ "300": [
+  [
+   "What language is this? “Kanpai!” (it means 'cheers!')",
+   "Japanese"
+  ],
+  [
+   "What language is this? “Şerefe!” (it means 'cheers!')",
+   "Turkish"
+  ],
+  [
+   "What language is this? “Do svidaniya” (it means 'goodbye')",
+   "Russian"
+  ],
+  [
+   "What language is this? “Dobrý den” (it means 'good day')",
+   "Czech"
+  ]
+ ],
+ "400": [
+  [
+   "What language is this? “Tot ziens” (it means 'goodbye')",
+   "Dutch"
+  ],
+  [
+   "What language is this? “Hyvää huomenta” (it means 'good morning')",
+   "Finnish"
+  ],
+  [
+   "The English word “bazaar” comes from which language?",
+   "Persian"
+  ],
+  [
+   "The English word “paradise” comes from which language?",
+   "Old Persian ('walled garden')"
+  ]
+ ],
+ "500": [
+  [
+   "The English word “sugar” comes, through Arabic and Persian, from which ancient language?",
+   "Sanskrit (śarkarā)"
+  ],
+  [
+   "The Egyptian word “agzakhana” (pharmacy) comes from which language?",
+   "Turkish (eczane)"
+  ],
+  [
+   "What language is this? “Kia ora” (it means 'hello')",
+   "Māori"
+  ],
+  [
+   "What language is this? “Dia dhuit” (it means 'hello')",
+   "Irish"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Spanish",
+  "German",
+  "French",
+  "Japanese",
+  "Japanese",
+  "Turkish",
+  "Russian",
+  "Czech",
+  "Dutch",
+  "Finnish",
+  "Persian",
+  "Old Persian ('walled garden')",
+  "Sanskrit (śarkarā)",
+  "Turkish (eczane)",
+  "Māori",
+  "Irish"
+ ]
+}

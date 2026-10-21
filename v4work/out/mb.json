@@ -342,6 +342,22 @@
    [
     "What is the illegal trading of shares using secret, non-public company information called?",
     "Insider trading"
+   ],
+   [
+    "What is the rate at which one currency can be swapped for another called?",
+    "The exchange rate"
+   ],
+   [
+    "What is a very long, deep slump in the economy, worse than a recession, called?",
+    "A depression"
+   ],
+   [
+    "What do investors call the 'fear of missing out' that makes them chase a rising stock?",
+    "FOMO"
+   ],
+   [
+    "What is raising money from lots of people online, on sites like Kickstarter, called?",
+    "Crowdfunding"
    ]
   ],
   "300": [
@@ -516,6 +532,22 @@
    [
     "Which 2015 film with Christian Bale and Steve Carell follows investors who bet against the US housing market?",
     "The Big Short"
+   ],
+   [
+    "What is a loan to a government or company that you can buy and that pays fixed interest called?",
+    "A bond"
+   ],
+   [
+    "What is it called when lots of customers rush to take their money out of a bank at once?",
+    "A bank run"
+   ],
+   [
+    "What is a startup's very first money, from founders, friends or angel investors, called?",
+    "Seed funding"
+   ],
+   [
+    "What is the main index of 100 big companies on the London Stock Exchange called?",
+    "The FTSE 100"
    ]
   ],
   "400": [
@@ -682,6 +714,22 @@
    [
     "Egyptian-born economist Mohamed El-Erian was CEO of which huge bond-investment firm?",
     "PIMCO"
+   ],
+   [
+    "Why is a company's net profit called 'the bottom line'?",
+    "It's the last line of the income statement"
+   ],
+   [
+    "What are the short-term IOUs Egypt's government sells to borrow money, usually for 3 to 12 months?",
+    "Treasury bills (T-bills)"
+   ],
+   [
+    "Which index from The Economist compares currencies using the price of one burger?",
+    "The Big Mac Index"
+   ],
+   [
+    "What is Saudi Arabia's stock exchange called?",
+    "Tadawul"
    ]
   ],
   "500": [
@@ -848,6 +896,22 @@
    [
     "Which trading company, founded in 1602, is often called the first publicly traded company?",
     "The Dutch East India Company (VOC)"
+   ],
+   [
+    "What is the old trust-based way of sending money abroad through brokers, without moving cash across the border?",
+    "Hawala"
+   ],
+   [
+    "What is a company's current assets minus its current liabilities called?",
+    "Working capital"
+   ],
+   [
+    "What does it mean to amortise a loan?",
+    "Pay it off in regular instalments over time"
+   ],
+   [
+    "What is buying a company against the wishes of its management called?",
+    "A hostile takeover"
    ]
   ]
  }

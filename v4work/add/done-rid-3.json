@@ -1,0 +1,81 @@
+{
+ "200": [
+  [
+   "Read this backwards: 'irahsok'. Which Egyptian dish is it?",
+   "Koshari"
+  ],
+  [
+   "I have a neck and two arms, but no head and no hands. What am I?",
+   "A shirt"
+  ],
+  [
+   "A bawab has 17 cars to wash. All but 9 drive off before he's done. How many cars are left?",
+   "Nine"
+  ],
+  [
+   "I'm grilled on coals along the Corniche on summer nights, and you eat me off the cob. What am I?",
+   "Roasted corn (dora)"
+  ]
+ ],
+ "300": [
+  [
+   "I sit on almost every Cairo rooftop, I'm round and dusty, and I fill up when the pump runs. What am I?",
+   "The water tank"
+  ],
+  [
+   "I'm small with a long handle, and every Egyptian makes Turkish coffee in me. What am I?",
+   "The kanaka (coffee pot)"
+  ],
+  [
+   "What's the next letter? J, F, M, A, M, J, J, A, …",
+   "S (September: they're the months)"
+  ],
+  [
+   "What do the digits 0, 6, 8 and 9 have that 1, 2, 3, 5 and 7 don't?",
+   "Closed loops (holes)"
+  ]
+ ],
+ "400": [
+  [
+   "What's the next letter? O, T, T, F, F, S, S, E, …",
+   "N (Nine: one, two, three…)"
+  ],
+  [
+   "If two people eat two plates of koshari in two minutes, how many plates can four people eat in four minutes?",
+   "Eight"
+  ],
+  [
+   "What has keys but can't open locks, and a space but no room?",
+   "A keyboard"
+  ],
+  [
+   "A father is four times as old as his son. In 20 years he'll be twice as old. How old is the son now?",
+   "10"
+  ]
+ ],
+ "500": [
+  [
+   "A clock's hands are on top of each other at 12:00. How many times do they line up like that in 12 hours, counting 12:00 once?",
+   "11"
+  ],
+  [
+   "I'm a three-digit number. My tens digit is 5 more than my ones digit, and my hundreds digit is 8 less than my tens digit. What am I?",
+   "194"
+  ],
+  [
+   "The day before yesterday was three days after Saturday. What day is it today?",
+   "Thursday"
+  ],
+  [
+   "A brick weighs 1 kg plus half a brick. How much does the whole brick weigh?",
+   "2 kg"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Two",
+  "Nine",
+  "Eight",
+  "12",
+  "11"
+ ]
+}

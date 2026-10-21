@@ -374,6 +374,22 @@
    [
     "Which Arab country's 2011 protests centred on Pearl Roundabout?",
     "Bahrain"
+   ],
+   [
+    "Which country is this city in? Jaffa",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Ajman",
+    "The UAE"
+   ],
+   [
+    "Which country is this city in? Hammamet",
+    "Tunisia"
+   ],
+   [
+    "Which country is this city in? Lusail",
+    "Qatar"
    ]
   ],
   "300": [
@@ -560,6 +576,22 @@
    [
     "Which Arab country is the novelist Tayeb Salih from?",
     "Sudan"
+   ],
+   [
+    "Which country is this city in? Nazareth",
+    "Palestine"
+   ],
+   [
+    "Which country is this city in? Tétouan",
+    "Morocco"
+   ],
+   [
+    "Which country is this city in? Raqqa",
+    "Syria"
+   ],
+   [
+    "Which country is this city in? Yanbu",
+    "Saudi Arabia"
    ]
   ],
   "400": [
@@ -746,6 +778,22 @@
    [
     "Which Arab country is home to the Wahiba Sands desert?",
     "Oman"
+   ],
+   [
+    "Which country is this city in? Blida",
+    "Algeria"
+   ],
+   [
+    "Which country is this city in? Sirte",
+    "Libya"
+   ],
+   [
+    "Which country is this city in? Jounieh",
+    "Lebanon"
+   ],
+   [
+    "Which country is this city in? Nasiriyah",
+    "Iraq"
    ]
   ],
   "500": [
@@ -932,6 +980,22 @@
    [
     "Which Arab country was known as the Trucial States before 1971?",
     "The UAE"
+   ],
+   [
+    "Which country is this city in? Hargeisa",
+    "Somalia"
+   ],
+   [
+    "Which country is this city in? Wad Madani",
+    "Sudan"
+   ],
+   [
+    "Which country is this city in? Khasab",
+    "Oman"
+   ],
+   [
+    "Which country is this city in? Riffa",
+    "Bahrain"
    ]
   ]
  }

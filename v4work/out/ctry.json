@@ -374,6 +374,22 @@
    [
     "Which country is home to the ruins of ancient Carthage?",
     "Tunisia"
+   ],
+   [
+    "Which country is this city in? Kyoto",
+    "Japan"
+   ],
+   [
+    "Which country is this city in? Florence",
+    "Italy"
+   ],
+   [
+    "Which country is this city in? Split",
+    "Croatia"
+   ],
+   [
+    "Which country is this city in? Bordeaux",
+    "France"
    ]
   ],
   "300": [
@@ -560,6 +576,22 @@
    [
     "Which Central American country abolished its army in 1948 and is famous for 'pura vida'?",
     "Costa Rica"
+   ],
+   [
+    "Which country is this city in? Gothenburg",
+    "Sweden"
+   ],
+   [
+    "Which country is this city in? Salzburg",
+    "Austria"
+   ],
+   [
+    "Which country is this city in? Antalya",
+    "Turkey"
+   ],
+   [
+    "Which country has the most islands in the world, about 267,000?",
+    "Sweden"
    ]
   ],
   "400": [
@@ -746,6 +778,22 @@
    [
     "Which country is this city in? Malé",
     "The Maldives"
+   ],
+   [
+    "Which country is this city in? Mombasa",
+    "Kenya"
+   ],
+   [
+    "Which country is this city in? Mosul",
+    "Iraq"
+   ],
+   [
+    "Which country is this city in? Lviv",
+    "Ukraine"
+   ],
+   [
+    "Which country is this city in? Tabriz",
+    "Iran"
    ]
   ],
   "500": [
@@ -932,6 +980,22 @@
    [
     "Which is the only country in Africa with Spanish as an official language?",
     "Equatorial Guinea"
+   ],
+   [
+    "Which country is this city in? Bulawayo",
+    "Zimbabwe"
+   ],
+   [
+    "Which country is this city in? Davao",
+    "The Philippines"
+   ],
+   [
+    "Which country is this city in? Mandalay",
+    "Myanmar"
+   ],
+   [
+    "Which country is the ancient Silk Road city of Samarkand in?",
+    "Uzbekistan"
    ]
   ]
  }
