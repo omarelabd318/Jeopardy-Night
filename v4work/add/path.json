@@ -1,0 +1,35 @@
+{
+ "200": [
+  [
+   "Whose career? PSV → Manchester United → Lyon → Barcelona → Atlético Madrid → Corinthians",
+   "Memphis Depay"
+  ]
+ ],
+ "300": [
+  [
+   "Whose career? Valencia → Eibar (loan) → Celta Vigo (loan) → Valencia → Manchester City → Real Sociedad",
+   "David Silva"
+  ],
+  [
+   "Whose career? Basel → Borussia Mönchengladbach → Arsenal → Bayer Leverkusen → Sunderland",
+   "Granit Xhaka"
+  ]
+ ],
+ "400": [
+  [
+   "Whose career? Villarreal → Recreativo (loan) → Villarreal → Málaga → Arsenal → Villarreal → Al-Sadd → Real Oviedo",
+   "Santi Cazorla"
+  ]
+ ],
+ "500": [
+  [
+   "Whose career? Blackpool → Macclesfield → Stockport → Rochdale → Bristol Rovers → Southampton → Liverpool → West Brom",
+   "Rickie Lambert"
+  ],
+  [
+   "Whose career? Real Madrid → Osasuna (loan) → Getafe → Valencia → Tottenham → Villarreal → Fenerbahçe → Granada → Levante",
+   "Roberto Soldado"
+  ]
+ ],
+ "allow_dup_answers": []
+}
