@@ -1,0 +1,42 @@
+{
+ "200": [],
+ "300": [
+  [
+   "What was the final score? Real Madrid vs Barcelona, 2009 El Clásico at the Bernabéu",
+   "Real Madrid 2–6 Barcelona"
+  ],
+  [
+   "What was the final score? Germany vs Argentina, 2014 World Cup final (after extra time)",
+   "Germany 1–0 Argentina"
+  ]
+ ],
+ "400": [
+  [
+   "What was the final score? Uruguay vs Brazil, 1950 World Cup decider at the Maracanã",
+   "Uruguay 2–1 Brazil"
+  ],
+  [
+   "What was the final score? Hungary vs England, 1953 friendly at Wembley",
+   "Hungary 6–3 England"
+  ]
+ ],
+ "500": [
+  [
+   "What was the final score? Egypt vs South Africa, 1998 Africa Cup of Nations final",
+   "Egypt 2–0 South Africa"
+  ],
+  [
+   "What was the final score? Algeria vs Senegal, 2019 Africa Cup of Nations final",
+   "Algeria 1–0 Senegal"
+  ],
+  [
+   "What was the final score? Leicester vs Man United, 2014 Premier League",
+   "Leicester 5–3 Man United"
+  ],
+  [
+   "What was the final score? Man United vs Man City, 2011 Premier League at Old Trafford",
+   "Man United 1–6 Man City"
+  ]
+ ],
+ "allow_dup_answers": []
+}
