@@ -1,0 +1,75 @@
+{
+ "200": [
+  [
+   "Which two teams played the first World Cup final, in 1930?",
+   "Uruguay and Argentina"
+  ],
+  [
+   "Which South American country hosted the 1962 World Cup?",
+   "Chile"
+  ],
+  [
+   "In which stadium was the 1970 World Cup final played?",
+   "Estadio Azteca, Mexico City"
+  ],
+  [
+   "Which Dutch coach led the Netherlands to the 1974 World Cup final?",
+   "Rinus Michels"
+  ]
+ ],
+ "300": [
+  [
+   "In which stadium was the 1994 World Cup final played?",
+   "Rose Bowl, Pasadena"
+  ],
+  [
+   "In which stadium was the 1982 World Cup final played?",
+   "Santiago Bernabéu, Madrid"
+  ],
+  [
+   "In which stadium was the 1990 World Cup final played?",
+   "Stadio Olimpico, Rome"
+  ],
+  [
+   "Which Austrian coach led the Netherlands to the 1978 World Cup final?",
+   "Ernst Happel"
+  ]
+ ],
+ "400": [
+  [
+   "Which Hungarian scored 11 goals to win the 1954 Golden Boot?",
+   "Sándor Kocsis"
+  ],
+  [
+   "Which German coach led West Germany to the 1954 title, the 'Miracle of Bern'?",
+   "Sepp Herberger"
+  ],
+  [
+   "Which Brazilian won the 1938 Golden Boot with seven goals?",
+   "Leônidas"
+  ],
+  [
+   "Which Brazilian won the 1950 Golden Boot with nine goals?",
+   "Ademir"
+  ]
+ ],
+ "500": [
+  [
+   "Which Argentine striker won the 1930 Golden Boot with eight goals?",
+   "Guillermo Stábile"
+  ],
+  [
+   "Which Czechoslovak won the 1934 Golden Boot with five goals?",
+   "Oldřich Nejedlý"
+  ],
+  [
+   "Who coached Uruguay to their 1950 World Cup win?",
+   "Juan López"
+  ],
+  [
+   "What was the official attendance of the 1950 'Maracanazo' match against Brazil, the largest ever at a World Cup?",
+   "About 173,850"
+  ]
+ ],
+ "allow_dup_answers": []
+}

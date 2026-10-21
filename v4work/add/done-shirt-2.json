@@ -1,0 +1,92 @@
+{
+ "200": [
+  [
+   "What shirt number did Cristiano Ronaldo wear at Sporting CP?",
+   "28"
+  ],
+  [
+   "What shirt number did Wayne Rooney wear at Everton?",
+   "18"
+  ],
+  [
+   "What shirt number did Zlatan Ibrahimović wear at Barcelona?",
+   "9"
+  ],
+  [
+   "What shirt number did Dani Alves wear at Barcelona?",
+   "2"
+  ]
+ ],
+ "300": [
+  [
+   "What shirt number did Ronaldo Nazário wear at AC Milan?",
+   "99"
+  ],
+  [
+   "What shirt number did Gianluigi Buffon wear at Parma?",
+   "77"
+  ],
+  [
+   "What shirt number did Claude Makélélé wear at Real Madrid?",
+   "24"
+  ],
+  [
+   "What shirt number did Samuel Eto'o wear at Chelsea?",
+   "29"
+  ]
+ ],
+ "400": [
+  [
+   "What shirt number did Mohamed Salah wear at Fiorentina?",
+   "74"
+  ],
+  [
+   "What shirt number did Lionel Messi wear at Barcelona in 2004–05, his first full season?",
+   "30"
+  ],
+  [
+   "What shirt number did Alexis Sánchez wear at Inter?",
+   "70"
+  ],
+  [
+   "What shirt number did Steven Gerrard wear at Liverpool in his early seasons (1998–2004)?",
+   "17"
+  ]
+ ],
+ "500": [
+  [
+   "What shirt number did Ronaldinho wear in his first season at Barcelona?",
+   "4"
+  ],
+  [
+   "What shirt number did Bastian Schweinsteiger wear at Manchester United?",
+   "31"
+  ],
+  [
+   "What shirt number did Philipp Lahm wear at Bayern Munich?",
+   "21"
+  ],
+  [
+   "What shirt number did Kevin De Bruyne wear at Wolfsburg?",
+   "14"
+  ]
+ ],
+ "allow_dup_answers": [
+  "28",
+  "18",
+  "9",
+  "2",
+  "99",
+  "77",
+  "24",
+  "29",
+  "74",
+  "30",
+  "70",
+  "17",
+  "4",
+  "31",
+  "21",
+  "14"
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "200": [
+  [
+   "Which club plays at Brentford Community Stadium?",
+   "Brentford"
+  ],
+  [
+   "Which club plays at Bet365 Stadium?",
+   "Stoke City"
+  ],
+  [
+   "Which club plays at RheinEnergieStadion?",
+   "1. FC Köln"
+  ],
+  [
+   "Which club plays at Mewa Arena?",
+   "Mainz 05"
+  ]
+ ],
+ "300": [
+  [
+   "Which club plays at Riazor?",
+   "Deportivo La Coruña"
+  ],
+  [
+   "Which club plays at Stade Bollaert-Delelis?",
+   "Lens"
+  ],
+  [
+   "Which club plays at Millerntor-Stadion?",
+   "St. Pauli"
+  ],
+  [
+   "Which club plays at Volksparkstadion?",
+   "Hamburger SV"
+  ]
+ ],
+ "400": [
+  [
+   "Which club plays at Estadio de Vallecas?",
+   "Rayo Vallecano"
+  ],
+  [
+   "Which club plays at Mendizorroza?",
+   "Deportivo Alavés"
+  ],
+  [
+   "Which club plays at Coliseum Alfonso Pérez?",
+   "Getafe"
+  ],
+  [
+   "Which club plays at Estadio de Gran Canaria?",
+   "Las Palmas"
+  ]
+ ],
+ "500": [
+  [
+   "Which club plays at Home Park?",
+   "Plymouth Argyle"
+  ],
+  [
+   "Which club plays at Ashton Gate?",
+   "Bristol City"
+  ],
+  [
+   "Which club plays at Sincil Bank?",
+   "Lincoln City"
+  ],
+  [
+   "Which club plays at Brisbane Road?",
+   "Leyton Orient"
+  ]
+ ],
+ "allow_dup_answers": []
+}
