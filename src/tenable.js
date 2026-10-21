@@ -56,8 +56,9 @@ const TE = {cfg:null, phase:"setup", turns:[], ti:0, t:null, item:null, flash:nu
 const TE_DEF = {sub:"n", form:false, players:["Player 1"], per:3, lives:3, secs:0};
 TE.cfg = Object.assign({}, TE_DEF, store.get("jn_teCfg", {})); if(!Array.isArray(TE.cfg.players) || !TE.cfg.players.length) TE.cfg.players = ["Player 1"];
 const teSave = () => store.set("jn_teCfg", TE.cfg);
-const teBall = () => TE.cfg.sub === "f", teForm = () => teBall() && TE.cfg.form;
-const teName = () => teBall() ? "TenaBall" : "Tenable";
+const teMix = () => TE.cfg.sub === "m";   // 7.86 (Omar): the Mix edition deals Tenable and TenaBall lists in one game; each list wears its own edition's look
+const teBall = () => TE.cfg.sub === "f" || (["ready", "play", "done"].includes(TE.phase) && !!TE.turns[TE.ti] && TE.turns[TE.ti].list.ed === "f"), teForm = () => (TE.cfg.sub === "f" || teMix()) && TE.cfg.form;
+const teName = () => teBall() ? "TenaBall" : teMix() && !["ready", "play", "done"].includes(TE.phase) ? "Tenable Mix" : "Tenable";
 const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- the lists ---------- */
@@ -66,16 +67,16 @@ function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}
   Object.keys(d).forEach(v => (d[v] || []).forEach(([q, a]) => { const ln = String(q).split("\n"), m = String(a).match(/^(.*?), (\S+) \((.*)\)$/);
     const rows = ln.slice(1).map(r => r.split(" · ").map(s => s.trim()).filter(Boolean));
     if(rows.flat().length !== 11) return;
-    out.push({key:a, id:"FMF#" + tePad(out.length + 1), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); }));
+    out.push({ed:"f", key:a, id:"FMF#" + tePad(out.length + 1), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); }));
   return out; }
-const teLists = () => (teBall() ? TEN.f : TEN.n).map((L, i) => ({id:(teBall() ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
+const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
 TE.formShare = 1 / 3;   // 7.82 (Omar): with Formations on, lineups are mixed in at random with the football lists (about one turn in three), not lineups only
 function teDraw(pool, k, seen){   // a list not played on this device yet (all of them again once every one has been played)
   const s = new Set(seen[k] || []); let fresh = pool.filter(L => !s.has(L.key)); if(!fresh.length){ s.clear(); fresh = pool; }
   const L = fresh[Math.floor(Math.random() * fresh.length)]; s.add(L.key); seen[k] = [...s]; return L; }
 function teDeal(n){
-  const seen = store.get("jn_teSeen", {}), lists = teLists(), lineups = teForm() ? teLineups() : [], out = [];
-  for(let i = 0; i < n; i++) out.push(lineups.length && Math.random() < TE.formShare ? teDraw(lineups, "fm", seen) : teDraw(lists, TE.cfg.sub, seen));
+  const seen = store.get("jn_teSeen", {}), lineups = teForm() ? teLineups() : [], out = [];
+  for(let i = 0; i < n; i++) { const ed = teMix() ? (Math.random() < 0.5 ? "n" : "f") : TE.cfg.sub; out.push(lineups.length && Math.random() < TE.formShare ? teDraw(lineups, "fm", seen) : teDraw(teLists(ed), ed, seen)); }
   store.set("jn_teSeen", seen); return out; }
 
 /* ---------- the flow ---------- */
@@ -137,13 +138,13 @@ function teHead(tu){ const L = tu.list;
   return L.rows ? `<div class="tehd form"><div class="tet">${esc(L.t)} <span>${esc(L.yr)}</span></div><div class="ted">${esc(L.d)}</div>${L.score ? `<div class="tesc">${esc(L.score)}</div>` : ""}<div class="tegoal">Name all 11 starters</div></div>`
     : `<div class="tehd"><div class="tet">${esc(L.t)}</div><div class="ted">${esc(L.d || "")}</div></div>`; }
 function teRender(){
-  const el = $("#teBody"); if(!el) return; document.body.classList.toggle("teball", teBall()); const c = TE.cfg, ball = teBall(); const sk = $("#teSkip"); if(sk) sk.hidden = TE.phase !== "play";
+  const el = $("#teBody"); if(!el) return; document.body.classList.toggle("teball", teBall()); const c = TE.cfg, ball = teBall() || teMix(); const sk = $("#teSkip"); if(sk) sk.hidden = TE.phase !== "play";
   if(TE.phase === "setup"){
-    const nLists = (ball ? TEN.f : TEN.n).length, nForm = teLineups().length;
-    el.innerHTML = `<div class="tehead"><div class="tebadge">Game mode</div><h1>${teName()}</h1><p class="sub">${teForm() ? "Football top tens, with a famous starting lineup mixed in now and then: drawn on half a pitch with the team, the year and the score, name all 11 players. Any order, every time." : "A top-ten list hides behind a pyramid of ten slots. Name as many as you can, in any order. Every right answer fills its slot; every wrong one costs a life."}</p></div>
+    const nLists = teMix() ? TEN.n.length + TEN.f.length : (ball ? TEN.f : TEN.n).length, nForm = teLineups().length;
+    el.innerHTML = `<div class="tehead"><div class="tebadge">Game mode</div><h1>${teName()}</h1><p class="sub">${teMix() ? "Top-ten lists from both editions in one game: general knowledge in the Tenable look, football in the TenaBall look. Name as many as you can, in any order." : teForm() ? "Football top tens, with a famous starting lineup mixed in now and then: drawn on half a pitch with the team, the year and the score, name all 11 players. Any order, every time." : "A top-ten list hides behind a pyramid of ten slots. Name as many as you can, in any order. Every right answer fills its slot; every wrong one costs a life."}</p></div>
       <div class="tegrid">
-      <div class="tepanel"><div class="teeye">Edition</div>${teSeg("sub", [["n", "Tenable"], ["f", "TenaBall"]], c.sub)}
-        <p class="note">${ball ? `TenaBall is the football edition: ${nLists} football top tens.` : `${nLists} top tens: countries, films, music, the internet, science and more.`}</p>
+      <div class="tepanel"><div class="teeye">Edition</div>${teSeg("sub", [["n", "Tenable"], ["f", "TenaBall"], ["m", "Mix"]], c.sub)}
+        <p class="note">${teMix() ? `Mix deals ${nLists} top tens from both editions in one game: Tenable lists and TenaBall football lists, each in its own look.` : ball ? `TenaBall is the football edition: ${nLists} football top tens.` : `${nLists} top tens: countries, films, music, the internet, science and more.`}</p>
         ${ball ? `<div class="teeye">Formations</div>${teSeg("form", [[0, "Off"], [1, "On"]], c.form ? 1 : 0)}<p class="note">On: famous starting lineups (${nForm} of them) are mixed in at random with the top tens, about one turn in three. Name all 11 players from the lineup on half a pitch.</p>` : ""}</div>
       <div class="tepanel"><div class="teeye">Players · ${c.players.length} of 8</div>
         <div class="tenames">${c.players.map((p, i) => `<div class="tename"><input data-pl="${i}" value="${esc(p)}" maxlength="18" aria-label="Player ${i + 1} name">${c.players.length > 1 ? `<button data-rm="${i}" aria-label="Remove ${esc(p)}">×</button>` : ""}</div>`).join("")}</div>
