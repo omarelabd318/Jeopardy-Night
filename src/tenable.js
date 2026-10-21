@@ -57,13 +57,14 @@ const teName = () => teBall() ? "TenaBall" : "Tenable";
 const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- the lists ---------- */
+const tePad = n => String(n).padStart(2, "0");   // 7.84 (Omar): list IDs are two digits (NM#01) until there are three-digit numbers
 function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}, out = [];
   Object.keys(d).forEach(v => (d[v] || []).forEach(([q, a]) => { const ln = String(q).split("\n"), m = String(a).match(/^(.*?), (\S+) \((.*)\)$/);
     const rows = ln.slice(1).map(r => r.split(" · ").map(s => s.trim()).filter(Boolean));
     if(rows.flat().length !== 11) return;
-    out.push({key:a, form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); }));
+    out.push({key:a, id:"FM#" + tePad(TEN.f.length + out.length + 1), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); }));
   return out; }
-const teLists = () => (teBall() ? TEN.f : TEN.n).map(L => ({key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
+const teLists = () => (teBall() ? TEN.f : TEN.n).map((L, i) => ({id:(teBall() ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
 TE.formShare = 1 / 3;   // 7.82 (Omar): with Formations on, lineups are mixed in at random with the football lists (about one turn in three), not lineups only
 function teDraw(pool, k, seen){   // a list not played on this device yet (all of them again once every one has been played)
   const s = new Set(seen[k] || []); let fresh = pool.filter(L => !s.has(L.key)); if(!fresh.length){ s.clear(); fresh = pool; }
@@ -164,7 +165,8 @@ function teRender(){
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
     : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
-  const no = `<span class="telistno">${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1}${c.players.length > 1 ? ` of ${tot}` : ""}</span>`;   // 7.82 (Omar): the list number sits at the bottom left, not the top
+  const lid = tu.list.id ? `<span class="teid">${tu.list.id}</span>` : "";   // 7.84 (Omar): every list has a fixed ID (NM#1.. Normal, FM#1.. TenaBall; lineups follow the football lists) so he can tell which have been played; solo shows only the ID
+  const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
   const ctl = TE.phase === "play"
     ? `<div class="tein"><input id="teIn" autocomplete="off" spellcheck="false" placeholder="Type a guess and press Enter"><button class="tebtn go" data-act="guess">Guess</button></div>
        <div class="tectl">${no}<button class="tebtn small ghost" data-act="stop">Stop here</button><span class="gap"></span><span class="tehint">Tap a hidden slot to give it</span><button class="tebtn small ghost" data-act="end">End game</button></div>`
