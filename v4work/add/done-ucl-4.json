@@ -1,0 +1,30 @@
+{
+ "200": [
+  [
+   "Which Dutch striker scored the winner for Ajax in the 1995 Champions League final?",
+   "Patrick Kluivert"
+  ]
+ ],
+ "300": [],
+ "400": [
+  [
+   "Which Portuguese coach won the 2004 final with Porto?",
+   "José Mourinho"
+  ]
+ ],
+ "500": [
+  [
+   "Which Italian side beat Ajax in the 1996 final?",
+   "Juventus"
+  ],
+  [
+   "Which team beat Valencia on penalties in 2001?",
+   "Bayern Munich"
+  ]
+ ],
+ "allow_dup_answers": [
+  "Juventus",
+  "Bayern Munich",
+  "José Mourinho"
+ ]
+}
