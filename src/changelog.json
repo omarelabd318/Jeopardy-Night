@@ -1,5 +1,9 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.33", "date": "2026-10-22", "items": ["Tenable: when a list has a many-way tie for the last places, the slot now shows just the name you typed instead of every tied name."]},
+ {"v": "8.32", "date": "2026-10-22", "items": ["Tenable: list IDs now run NM#001 to NM#100 and FM#001 to FM#100. TenaBall: two new lists, most Premier League Player of the Month awards and most World Cup matches played (any of the tied names counts for the last two places)."]},
+ {"v": "8.31", "date": "2026-10-22", "items": ["Tenable: 3 new lists (most expensive films, highest-grossing films of the 2010s, biggest cities in Asia). TenaBall: 2 new lists (Brazil's and France's all-time top scorers)."]},
+ {"v": "8.30", "date": "2026-10-22", "items": ["Formations: 8 new lineups: Brazil 1994, Italy 1982, Germany 2014 (7-1), Barcelona 2010 (5-0), Liverpool 2019 (4-0), Chelsea 2016-17, Egypt 2022 semi-final and Real Madrid 2011."]},
  {"v": "8.29", "date": "2026-10-22", "items": ["Version panel: the NSFW switch no longer shows a highlighted box behind it."]},
  {"v": "8.28", "date": "2026-10-22", "items": ["Category Bingo: the title screen background is now a bingo card, and Bingo setup has the Football clues setting (Normal, Fewer or Off), like Bidding Wars and Hot Seat."]},
  {"v": "8.27", "date": "2026-10-22", "items": ["Bidding Wars and Hot Seat setup: new Football clues setting. Normal, Fewer (football comes up about a third as often) or Off."]},

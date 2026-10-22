@@ -31,7 +31,7 @@ const TER = (() => {
     return best; }
   /* o = {items:[{a, v, alt}] (10 for a list, 11 for a lineup), lives (0 = no limit), norm, lev}. Phases: live > over (how: all | lives | time | stop) */
   function Turn(o){
-    const t = {items:o.items, found:o.items.map(() => false), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), flag:o.items.map(() => false)};
+    const t = {items:o.items, found:o.items.map(() => false), label:o.items.map(() => ""), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), flag:o.items.map(() => false)};
     const end = how => { t.over = true; t.how = how; };
     t.n = () => t.found.filter(Boolean).length;
     t.points = () => t.n() + (t.n() === t.items.length ? BONUS : 0);
@@ -49,6 +49,7 @@ const TER = (() => {
         return mkw ? {k:"wrong", t:raw, mk:mkw} : {k:"wrong", t:raw}; }
       const fresh = hit.filter(i => !t.found[i]); if(!fresh.length) return {k:"dup", i:hit[0]};
       const name = o.norm(t.items[fresh[0]].a), same = fresh.filter(i => o.norm(t.items[i].a) === name);   // two players with the same name both fill
+      { const parts = String(t.items[fresh[0]].a).split(" / "); if(parts.length > 2){ let bp = parts[0], bs = Infinity; parts.forEach(pt => { const sc = score(o.norm(raw), {a:pt, alt:[]}, o.norm, o.lev); if(sc < bs){ bs = sc; bp = pt; } }); same.forEach(i => t.label[i] = bp); } }   // 8.32: a slot that stands for a many-way tie shows the name that was typed, not all of them
       same.forEach(i => t.found[i] = true); if(t.found.every(Boolean)) end("all"); return {k:"right", i:same}; };
     t.give = i => { if(t.over || t.found[i] == null || t.found[i]) return false; t.found[i] = true; t.given++; if(t.found.every(Boolean)) end("all"); return true; };
     /* 7.85 (Omar): tapping a hidden slot reveals one more letter each time (first letter, then two, then three); the tap after that gives the whole answer */
@@ -75,7 +76,7 @@ const teName = () => teBall() ? "TenaBall" : teMix() && !["ready", "play", "done
 const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- the lists ---------- */
-const tePad = n => String(n).padStart(2, "0");   // 7.84 (Omar): list IDs are two digits (NM#01) until there are three-digit numbers
+const tePad = n => String(n).padStart(3, "0");   // 8.32 (Omar): both editions have 100 lists, so IDs start from 001 (NM#001, FM#001); before: two digits (NM#01), set in 7.84
 /* 8.5 (Omar): flags for the first tap. v4work/tenable/flags.json holds one comma list of flag codes per list or lineup (same order as the answers); a list where every answer has the same flag gets none, and neither does one with no data */
 function teFlags(items, codes){ const c = String(codes || "").split(","); if(c.length !== items.length || new Set(c.filter(Boolean)).size < 2) return items; c.forEach((x, i) => { if(x) items[i].f = x; }); return items; }
 function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}, out = [];
@@ -126,7 +127,7 @@ function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "pl
   if(r.k === "right"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
   else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t, mk:r.mk}; }
   else if(r.k === "make") TE.flash = {k:"make", t:r.t};
-  else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? TE.t.items[r.i].a : r.t};
+  else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? (String(TE.t.items[r.i].a).indexOf(" / ") > -1 ? txt : TE.t.items[r.i].a) : r.t};   // 8.32: a tie slot ("A / B") has a long answer, so say the name that was typed
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
   if(b) b.style.width = Math.max(0, Math.min(100, left / (TE.cfg.secs * 10))) + "%"; if(l) l.textContent = teClock(left / 1000);
@@ -147,8 +148,9 @@ function teSlot(tu, t, i, rk){ const it = tu.list.items[i], f = t ? t.found[i] :
   const flg = !f && !shown && t && t.flag[i] && it.f ? `<img class="teflag" src="photos/flags/${it.f}.svg" alt="">` : "";
   const cls = !f && !shown && t && (t.hints[i] || flg) ? "hint" : f ? "ok" + (TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(i) ? " new" : "") : shown ? "miss" : "";
   const hnt = !f && !shown && t && t.hints[i] ? t.hintText(i) : "";
-  const txt = f || shown ? `<b>${esc(it.a)}</b>${it.v ? `<small>${esc(it.v)}</small>` : ""}` : hnt || flg ? `${flg}${hnt ? `<b class="tehintl">${esc(hnt)}</b>` : ""}` : "";
-  return `<button class="teslot ${cls}" data-give="${i}" ${f || shown || TE.phase !== "play" ? "tabindex=-1" : `title="Tap for a letter, again for more, then the answer"`}><em>${rk}</em><span class="${String(it.a).length > 30 ? "long xlong" : String(it.a).length > 16 ? "long" : ""}">${txt}</span></button>`; }
+  const nm = f && t && t.label[i] ? t.label[i] : it.a;
+  const txt = f || shown ? `<b>${esc(nm)}</b>${it.v ? `<small>${esc(it.v)}</small>` : ""}` : hnt || flg ? `${flg}${hnt ? `<b class="tehintl">${esc(hnt)}</b>` : ""}` : "";
+  return `<button class="teslot ${cls}" data-give="${i}" ${f || shown || TE.phase !== "play" ? "tabindex=-1" : `title="Tap for a letter, again for more, then the answer"`}><em>${rk}</em><span class="${String(nm).length > 30 ? "long xlong" : String(nm).length > 16 ? "long" : ""}">${txt}</span></button>`; }
 function tePyramid(tu, t){ let i = 0, h = ""; [1, 2, 3, 4].forEach(n => { h += `<div class="terow">`; for(let k = 0; k < n; k++, i++) h += teSlot(tu, t, i, i + 1); h += `</div>`; }); return `<div class="tepyr">${h}</div>`; }
 function tePitch(tu, t){ const rows = tu.list.rows, n = rows.length; let i = 0, h = "";
   rows.forEach((r, ri) => { const y = n > 1 ? 13 + ri * (72 / (n - 1)) : 50;
@@ -207,7 +209,7 @@ function teRender(){
       <button class="tebtn go" data-act="go">Show the ${!!tu.list.rows ? "lineup" : "list"}</button></div>${teBoard()}</div>`; return; }
   const fl = TE.flash, msg = TE.phase === "done"
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
-    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
+    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(t.label[fl.i[0]] || tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
   const lid = tu.list.id ? `<span class="teid">${tu.list.id}</span>` : "";   // 7.84 (Omar): every list has a fixed ID (NM#1.. Normal, FM#1.. TenaBall; lineups follow the football lists) so he can tell which have been played; solo shows only the ID
   const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
