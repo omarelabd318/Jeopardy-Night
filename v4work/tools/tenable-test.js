@@ -27,12 +27,13 @@ const mk = (names, lives) => TER.Turn({items:names.map(a => typeof a === "string
   eq(t.guess("shearer").k, "right", "surname"); eq(t.guess("mo salah").k, "right", "other name"); eq(t.guess("Thiery Henri").k, "right", "two slips on 12 letters"); eq(t.guess("kan").k, "wrong", "too far off"); }
 { const t = mk(["Neville", "Neville", "Giggs"], 3); eq(t.guess("neville").i.length, 2, "two players with one name both fill"); }
 
-// every list: 10 answers, every answer (and each other name) finds only its own slot
+// every list: 10 answers, every answer (and each other name) finds only its own slot (8.32: except the last two slots of a list with a multi-way tie, which accept the same names)
 const D = f => JSON.parse(R("v4work/tenable/" + f)), lists = {normal:D("normal.json"), football:D("football.json")};
 for(const [k, L] of Object.entries(lists)){ const titles = new Set();
   for(const l of L){ ok(l.t && !titles.has(l.t), k + ": title " + l.t); titles.add(l.t); eq(l.a.length, 10, l.t + ": 10 answers"); ok(l.src && l.as, l.t + ": source and date");
     const t = mk(l.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), 0);
-    l.a.forEach(([a, v, alt], i) => [a].concat(alt || []).forEach(g => eq(t.match(g), l.a.map((x, j) => j).filter(j => j === i || ansNorm(l.a[j][0]) === ansNorm(a)), `${l.t}: "${g}" should match only "${a}" (got ${t.match(g).map(j => l.a[j][0])})`))); } }
+    l.a.forEach(([a, v, alt], i) => [a].concat(alt || []).forEach(g => { const exp = l.a.map((x, j) => j).filter(j => j === i || ansNorm(l.a[j][0]) === ansNorm(a) || (a.includes(" / ") && l.a[j][0].includes(" / ") && JSON.stringify(l.a[j][2]) === JSON.stringify(alt))), got = t.match(g), tie = a.includes(" / ") && exp.length > 1;
+      if(tie) ok(got.length && got.every(j => exp.includes(j)), `${l.t}: "${g}" should match only its tie slots (got ${got.map(j => l.a[j][0])})`); else eq(got, exp, `${l.t}: "${g}" should match only "${a}" (got ${got.map(j => l.a[j][0])})`); })); } }
 // every lineup has 11 players and a score
 const form = JSON.parse(R("v4work/out/form.json")).data, fs2 = D("form-scores.json"); let nl = 0;
 const allLx = []; for(const v in form) form[v].forEach(x => allLx.push(x)); D("lineups.json").forEach(x => allLx.push(x));   // 8.1: Tenable-only lineups too

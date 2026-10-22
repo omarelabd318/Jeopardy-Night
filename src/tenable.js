@@ -75,7 +75,7 @@ const teName = () => teBall() ? "TenaBall" : teMix() && !["ready", "play", "done
 const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- the lists ---------- */
-const tePad = n => String(n).padStart(2, "0");   // 7.84 (Omar): list IDs are two digits (NM#01) until there are three-digit numbers
+const tePad = n => String(n).padStart(3, "0");   // 8.32 (Omar): both editions have 100 lists, so IDs start from 001 (NM#001, FM#001); before: two digits (NM#01), set in 7.84
 /* 8.5 (Omar): flags for the first tap. v4work/tenable/flags.json holds one comma list of flag codes per list or lineup (same order as the answers); a list where every answer has the same flag gets none, and neither does one with no data */
 function teFlags(items, codes){ const c = String(codes || "").split(","); if(c.length !== items.length || new Set(c.filter(Boolean)).size < 2) return items; c.forEach((x, i) => { if(x) items[i].f = x; }); return items; }
 function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}, out = [];
@@ -126,7 +126,7 @@ function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "pl
   if(r.k === "right"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
   else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t, mk:r.mk}; }
   else if(r.k === "make") TE.flash = {k:"make", t:r.t};
-  else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? TE.t.items[r.i].a : r.t};
+  else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? (String(TE.t.items[r.i].a).indexOf(" / ") > -1 ? txt : TE.t.items[r.i].a) : r.t};   // 8.32: a tie slot ("A / B") has a long answer, so say the name that was typed
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
   if(b) b.style.width = Math.max(0, Math.min(100, left / (TE.cfg.secs * 10))) + "%"; if(l) l.textContent = teClock(left / 1000);

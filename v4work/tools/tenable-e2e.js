@@ -43,7 +43,7 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fa = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); await type(fa[1].split(" ").pop()); await type(fa[4]); await type("Pelé"); await p.waitForTimeout(300);
   await p.screenshot({path:shots + "/8-tenaball-play.png"});
-  const ln = await p.locator("#teo .telistno").textContent(); if(!/^(NM|FM)#\d\d$/.test(ln)) fail("solo shows only the list ID, like FM#07");
+  const ln = await p.locator("#teo .telistno").textContent(); if(!/^(NM|FM)#\d{3}$/.test(ln)) fail("solo shows only the list ID, like FM#007");
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(200); await p.click('#teo [data-act="next"]'); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(100);
   if(await p.locator("#teo .telistno").textContent() === ln) fail("solo should keep dealing lists");
   // 7.86: the Next button top right skips to the next list at once, with no answers shown
