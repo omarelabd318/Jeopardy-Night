@@ -16,7 +16,8 @@ const hsSave = () => store.set("jn_hsCfg", HS.cfg);
 
 /* ---------- dealing clues ---------- */
 const hsHas = id => HS_LVLS.some(l => ((DATA[id] || {})[l] || []).length);
-const hsOkCat = id => { const c = catById(id); return !!c && !c.mode && !HS_BAD.has(c.type) && !HIDDEN_IDS.has(id) && (!LOCKED_IDS.has(id) || unlocked.has(id)) && (HS.cfg.photos || c.type !== "photo") && hsHas(id); };
+/* 8.26 (Omar): NSFW only when its switch in the version panel is on (was: once unlocked in the Jeopardy setup, `|| unlocked.has(id)`) */
+const hsOkCat = id => { const c = catById(id); return !!c && !c.mode && !HS_BAD.has(c.type) && !HIDDEN_IDS.has(id) && (!LOCKED_IDS.has(id) || nsfwOn()) && (HS.cfg.photos || c.type !== "photo") && hsHas(id); };
 function hsIdx(cat, lvl){   // an unplayed clue; with photo rounds off, never one that shows a photo
   const n = ((DATA[cat] || {})[lvl] || []).length; if(!n) return null;
   if(catById(cat).type === "photo") return HS.cfg.photos ? pickIdx(cat, lvl) : null;
