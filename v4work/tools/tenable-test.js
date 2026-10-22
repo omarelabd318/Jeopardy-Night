@@ -39,4 +39,11 @@ const allLx = []; for(const v in form) form[v].forEach(x => allLx.push(x)); D("l
 for(const [q, a] of allLx){ nl++; const names = q.split("\n").slice(1).join(" · ").split(" · ");
   eq(names.length, 11, a + ": 11 players"); ok(fs2[a], a + ": has a score"); ok(/^.*?, \S+ \(.*\)$/.test(a), a + ": team, year (occasion)");
   const t = mk(names, 0); names.forEach((x, i) => { const hit = t.match(x); ok(hit.includes(i) && hit.every(j => ansNorm(names[j]) === ansNorm(x)), `${a}: "${x}" matches ${hit.map(j => names[j])}`); }); }
+// 8.5: first tap is the flag (when the item has one), then letters, then the answer
+{ const t = mk([{a:"Lionel Messi", f:"ar"}, {a:"Pelé"}], 0); eq(t.tap(0), "hint", "flag tap"); eq(t.hints[0], 0, "the flag tap gives no letter"); eq(t.tap(0), "hint", "first letter"); eq(t.hints[0], 1, "one letter after the flag");
+  eq(t.tap(1), "hint", "no flag: the first tap is a letter"); eq(t.hints[1], 1, "one letter on an item without a flag"); }
+// 8.5: flags.json lines up with the lists and lineups
+{ const fl = D("flags.json"), fset = new Set(lists.football.map(l => l.t)), have = f => fs.existsSync(path.join(__dirname, "../../photos/flags/" + f + ".svg"));
+  for(const [t, c] of Object.entries(fl.l)){ ok(fset.has(t), "flags: unknown list " + t); eq(c.split(",").length, 10, "flags: 10 codes for " + t); c.split(",").filter(Boolean).forEach(x => ok(have(x), "flags: no file for " + x + " in " + t)); }
+  const keys = new Set(allLx.map(x => x[1])); for(const [t, c] of Object.entries(fl.x)){ ok(keys.has(t), "flags: unknown lineup " + t); eq(c.split(",").length, 11, "flags: 11 codes for " + t); c.split(",").filter(Boolean).forEach(x => ok(have(x), "flags: no file for " + x + " in " + t)); } }
 console.log(`tenable-test: ${n} checks passed (${lists.normal.length} normal lists, ${lists.football.length} football lists, ${nl} lineups)`);

@@ -29,7 +29,7 @@ const TER = (() => {
     return best; }
   /* o = {items:[{a, v, alt}] (10 for a list, 11 for a lineup), lives (0 = no limit), norm, lev}. Phases: live > over (how: all | lives | time | stop) */
   function Turn(o){
-    const t = {items:o.items, found:o.items.map(() => false), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0)};
+    const t = {items:o.items, found:o.items.map(() => false), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), flag:o.items.map(() => false)};
     const end = how => { t.over = true; t.how = how; };
     t.n = () => t.found.filter(Boolean).length;
     t.points = () => t.n() + (t.n() === t.items.length ? BONUS : 0);
@@ -44,7 +44,9 @@ const TER = (() => {
       same.forEach(i => t.found[i] = true); if(t.found.every(Boolean)) end("all"); return {k:"right", i:same}; };
     t.give = i => { if(t.over || t.found[i] == null || t.found[i]) return false; t.found[i] = true; t.given++; if(t.found.every(Boolean)) end("all"); return true; };
     /* 7.85 (Omar): tapping a hidden slot reveals one more letter each time (first letter, then two, then three); the tap after that gives the whole answer */
+    /* 8.5 (Omar): in TenaBall the first tap on a slot shows the answer's flag (items with an f code, set by teFlags), the taps after that give letters as above */
     t.tap = i => { if(t.over || t.found[i] == null || t.found[i]) return null; const len = Array.from(String(t.items[i].a)).length;
+      if(t.items[i].f && !t.flag[i]){ t.flag[i] = true; return "hint"; }
       if(t.hints[i] < Math.min(3, len - 1)){ t.hints[i]++; return "hint"; } return t.give(i) ? "give" : null; };
     t.hintText = i => t.hints[i] ? Array.from(String(t.items[i].a)).slice(0, t.hints[i]).join("") + "…" : "";
     t.stop = how => { if(t.over) return false; end(how || "stop"); return true; };
@@ -66,15 +68,17 @@ const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floo
 
 /* ---------- the lists ---------- */
 const tePad = n => String(n).padStart(2, "0");   // 7.84 (Omar): list IDs are two digits (NM#01) until there are three-digit numbers
+/* 8.5 (Omar): flags for the first tap. v4work/tenable/flags.json holds one comma list of flag codes per list or lineup (same order as the answers); a list where every answer has the same flag gets none, and neither does one with no data */
+function teFlags(items, codes){ const c = String(codes || "").split(","); if(c.length !== items.length || new Set(c.filter(Boolean)).size < 2) return items; c.forEach((x, i) => { if(x) items[i].f = x; }); return items; }
 function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}, out = [];
   const all = []; Object.keys(d).forEach(v => (d[v] || []).forEach(x => all.push(x)));
   (Array.isArray(TEN.lx) ? TEN.lx : []).forEach(x => all.push(x));   // 8.1 (Omar): Tenable-only lineups from v4work/tenable/lineups.json, after the Formations ones so the FMF# numbers stay put
   all.forEach(([q, a]) => { const ln = String(q).split("\n"), m = String(a).match(/^(.*?), (\S+) \((.*)\)$/);
     const rows = ln.slice(1).map(r => r.split(" · ").map(s => s.trim()).filter(Boolean));
     if(rows.flat().length !== 11) return;
-    out.push({ed:"f", key:a, id:"FMF#" + String(out.length + 1).padStart(3, "0"), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:rows.flat().map(n => ({a:n}))}); });
+    out.push({ed:"f", key:a, id:"FMF#" + String(out.length + 1).padStart(3, "0"), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:teFlags(rows.flat().map(n => ({a:n})), ((TEN.fl || {}).x || {})[a])}); });
   return out; }
-const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
+const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:ed === "f" ? teFlags(L.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), ((TEN.fl || {}).l || {})[L.t]) : L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
 TE.formShare = 1 / 3;   // 7.82 (Omar): with Formations on, lineups are mixed in at random with the football lists (about one turn in three), not lineups only
 function teDraw(pool, k, seen){   // a list not played on this device yet (all of them again once every one has been played)
   const s = new Set(seen[k] || []); let fresh = pool.filter(L => !s.has(L.key)); if(!fresh.length){ s.clear(); fresh = pool; }
@@ -131,16 +135,17 @@ const teSeg = (key, opts, cur) => `<div class="teseg">${opts.map(([v, t]) => `<b
 const teLives = t => !t.lives ? `<span class="telives inf">No life limit</span>` : `<span class="telives">${Array.from({length:t.lives}, (_, i) => `<i class="${i < t.left ? "on" : ""}"></i>`).join("")}</span>`;
 function teSlot(tu, t, i, rk){ const it = tu.list.items[i], f = t ? t.found[i] : false, done = TE.phase === "done";
   const hid = t ? t.found.map((x, j) => x ? -1 : j).filter(j => j >= 0) : [], shown = done && hid.indexOf(i) > -1 && hid.indexOf(i) < TE.rev;
-  const cls = !f && !shown && t && t.hints[i] ? "hint" : f ? "ok" + (TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(i) ? " new" : "") : shown ? "miss" : "";
+  const flg = !f && !shown && t && t.flag[i] && it.f ? `<img class="teflag" src="photos/flags/${it.f}.svg" alt="">` : "";
+  const cls = !f && !shown && t && (t.hints[i] || flg) ? "hint" : f ? "ok" + (TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(i) ? " new" : "") : shown ? "miss" : "";
   const hnt = !f && !shown && t && t.hints[i] ? t.hintText(i) : "";
-  const txt = f || shown ? `<b>${esc(it.a)}</b>${it.v ? `<small>${esc(it.v)}</small>` : ""}` : hnt ? `<b class="tehintl">${esc(hnt)}</b>` : "";
+  const txt = f || shown ? `<b>${esc(it.a)}</b>${it.v ? `<small>${esc(it.v)}</small>` : ""}` : hnt || flg ? `${flg}${hnt ? `<b class="tehintl">${esc(hnt)}</b>` : ""}` : "";
   return `<button class="teslot ${cls}" data-give="${i}" ${f || shown || TE.phase !== "play" ? "tabindex=-1" : `title="Tap for a letter, again for more, then the answer"`}><em>${rk}</em><span class="${String(it.a).length > 30 ? "long xlong" : String(it.a).length > 16 ? "long" : ""}">${txt}</span></button>`; }
 function tePyramid(tu, t){ let i = 0, h = ""; [1, 2, 3, 4].forEach(n => { h += `<div class="terow">`; for(let k = 0; k < n; k++, i++) h += teSlot(tu, t, i, i + 1); h += `</div>`; }); return `<div class="tepyr">${h}</div>`; }
 function tePitch(tu, t){ const rows = tu.list.rows, n = rows.length; let i = 0, h = "";
   rows.forEach((r, ri) => { const y = n > 1 ? 13 + ri * (72 / (n - 1)) : 50;
     r.forEach((_, k) => { const x = (k + 1) * 100 / (r.length + 1), idx = i++, it = tu.list.items[idx], f = t ? t.found[idx] : false;
       const hid = t ? t.found.map((z, j) => z ? -1 : j).filter(j => j >= 0) : [], shown = TE.phase === "done" && hid.indexOf(idx) > -1 && hid.indexOf(idx) < TE.rev;
-      h += `<button class="teman ${f ? "ok" : shown ? "miss" : ""}${f && TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(idx) ? " new" : ""}" data-give="${idx}" style="left:${x}%;top:${ri === n - 1 ? 87 : y}%"><i></i><span>${f || shown ? esc(it.a) : (t && t.hints[idx] ? esc(t.hintText(idx)) : "?")}</span></button>`; }); });
+      h += `<button class="teman ${f ? "ok" : shown ? "miss" : ""}${f && TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(idx) ? " new" : ""}" data-give="${idx}" style="left:${x}%;top:${ri === n - 1 ? 87 : y}%"><i${!f && !shown && t && t.flag[idx] && it.f ? ` class="fl" style="background-image:url(photos/flags/${it.f}.svg)"` : ""}></i><span>${f || shown ? esc(it.a) : (t && t.hints[idx] ? esc(t.hintText(idx)) : "?")}</span></button>`; }); });
   return `<div class="tepitch"><div class="telines"><b class="box"></b><b class="six"></b><b class="arc"></b><b class="mid"></b></div>${h}
     <div class="tecap"><div class="tefm">${esc(tu.list.form)}</div></div></div>`; }
 function teBoard(){ const ps = TE.cfg.players; if(ps.length < 2) return "";
@@ -199,7 +204,7 @@ function teRender(){
   const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
   const ctl = TE.phase === "play"
     ? `<div class="tein"><input id="teIn" autocomplete="off" spellcheck="false" placeholder="Type a guess and press Enter"><button class="tebtn go" data-act="guess">Guess</button></div>
-       <div class="tectl">${no}<button class="tebtn small ghost" data-act="stop">Stop here</button><span class="gap"></span><span class="tehint">Tap a hidden slot for a letter</span><button class="tebtn small ghost" data-act="end">End game</button></div>`
+       <div class="tectl">${no}<button class="tebtn small ghost" data-act="stop">Stop here</button><span class="gap"></span><span class="tehint">Tap a hidden slot for a hint</span><button class="tebtn small ghost" data-act="end">End game</button></div>`
     : `<div class="tectl done">${no}<button class="tebtn go" data-act="next">${c.players.length === 1 ? "Next list" : TE.ti + 1 >= TE.turns.length ? "See the results" : `Next: ${esc(c.players[TE.turns[TE.ti + 1].p])}`}</button>${c.players.length === 1 ? `<button class="tebtn ghost" data-act="finish">Finish</button>` : ""}<span class="gap"></span></div>`;
   el.innerHTML = `<div class="tetv${!!tu.list.rows ? " fm" : ""}">${top}<div class="temain">${teHead(tu)}${!!tu.list.rows ? tePitch(tu, t) : tePyramid(tu, t)}</div>${msg}
     ${t.wrong.length ? `<div class="tewrong">${t.wrong.slice(-8).map(w => `<s>${esc(w)}</s>`).join("")}</div>` : ""}${ctl}${teBoard()}</div>`; }

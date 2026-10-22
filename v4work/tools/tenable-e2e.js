@@ -7,7 +7,7 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   const b = await chromium.launch(), p = await b.newPage({viewport:{width:1600, height:900}});
   p.on("pageerror", e => errs.push(e.message)); p.on("console", m => { if(m.type() === "error" && !/net::|Failed to load|favicon|api\/ping/.test(m.text())) errs.push(m.text()); });
   const html = fs.readFileSync(root + "/index.html", "utf8"), at = html.lastIndexOf("})();");   // app.js is one closure: a throwaway copy hands TE to the test
-  fs.writeFileSync(root + "/_te-test.html", html.slice(0, at) + "window.TE = TE;\n" + html.slice(at));
+  fs.writeFileSync(root + "/_te-test.html", html.slice(0, at) + "window.TE = TE; window.teLists = teLists; window.teGo = teGo;\n" + html.slice(at));
   await p.goto("file://" + root + "/_te-test.html"); await p.waitForTimeout(800);
   await p.evaluate(() => { localStorage.removeItem("jn_teCfg"); localStorage.removeItem("jn_teSeen"); });
   await p.click("#modeTen"); await p.waitForTimeout(400); await p.screenshot({path:shots + "/0-title.png"});
@@ -64,10 +64,21 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   // Formations
   await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
-  { const m1 = '#teo [data-give="9"]', m2 = '#teo [data-give="10"]'; await p.click(m1); await p.click(m2); await p.click(m2); await p.click(m2);   // 7.85: letter hints on lineup players, no number behind the letters
+  { const m1 = '#teo [data-give="9"]', m2 = '#teo [data-give="10"]'; await p.click(m1);   // 7.85: letter hints on lineup players, no number behind the letters
+    if(await p.evaluate(() => !!TE.turns[TE.ti].list.items[9].f)){ if(!(await p.locator(m1 + " i.fl").count())) fail("8.5: the first tap on a flagged lineup player should show the flag"); await p.click(m1); }   // 8.5: the first tap is the flag when the lineup has flags
+    await p.click(m2); await p.click(m2); await p.click(m2);
     if(!(await p.locator(m1).textContent()).includes(fm[9].slice(0, 1) + "…")) fail("formation hint should show the first letter");
     if(await p.locator("#teo .teslot.hint em").count()) fail("hinted slots should have no visible number"); }
   await p.waitForTimeout(400); await p.screenshot({path:shots + "/9-formations-play.png"});
+  // 8.5: TenaBall lists: the first tap is the flag, the taps after that give letters; a list that is all one nationality has no flags
+  { await p.evaluate(() => { TE.turns[TE.ti].list = teLists("f").find(x => x.t === "Ballon d'Or winners, 2004 to 2025"); teGo(); }); await p.waitForTimeout(200);
+    const s0 = '#teo [data-give="0"]'; await p.click(s0); await p.waitForTimeout(100);
+    const src = await p.locator(s0 + " img.teflag").getAttribute("src").catch(() => null); if(src !== "photos/flags/ar.svg") fail("8.5: first tap on Lionel Messi should show Argentina's flag, got " + src);
+    await p.screenshot({path:shots + "/13-flag-first-tap.png"}); await p.click(s0); const t2 = await p.locator(s0).textContent();
+    if(!t2.includes("L…")) fail("8.5: second tap should give the first letter, got " + t2); if(!(await p.locator(s0 + " img.teflag").count())) fail("8.5: the flag should stay beside the letters");
+    await p.screenshot({path:shots + "/14-flag-and-letter.png"});
+    await p.evaluate(() => { TE.turns[TE.ti].list = teLists("f").find(x => x.t === "Messi's favourite victims"); teGo(); }); await p.waitForTimeout(200);
+    await p.click(s0); if(await p.locator(s0 + " img.teflag").count()) fail("8.5: a list with one nationality should not show flags"); if(!(await p.locator(s0).textContent()).includes("S…")) fail("8.5: a one-nationality list should go straight to letters"); }
   await p.click('#teo [data-act="stop"]'); await p.waitForTimeout(3000); await p.screenshot({path:shots + "/10-formations-reveal.png"});
   await p.setViewportSize({width:390, height:844}); await p.waitForTimeout(300); await p.screenshot({path:shots + "/11-phone-width.png", fullPage:true});
   await p.setViewportSize({width:1600, height:900}); await p.click("#teHome"); await p.waitForTimeout(300);
