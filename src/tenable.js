@@ -84,7 +84,7 @@ function teDeal(n){
 
 /* ---------- the flow ---------- */
 function teStart(){
-  const ps = TE.cfg.players.map(p => String(p).trim()).filter(Boolean).slice(0, 8); if(!ps.length) return; TE.cfg.players = ps; teSave();
+  const ps = TE.cfg.players.map(p => String(p).trim()).filter(Boolean).slice(0, 8); if(!ps.length) return; TE.cfg.players = ps; if(!TE.pick) teSave();
   stopSiu(); try{ Snd.unlock(); }catch(e){}
   const solo = ps.length === 1, lists = teDeal(solo ? 1 : ps.length * TE.cfg.per); TE.turns = [];   // 7.82 (Omar): a solo player isn't limited to a number of lists: the next one is dealt when they press Next, until they press Finish
   if(solo) TE.turns.push({p:0, r:0, list:lists[0], pts:0, n:0});
@@ -119,7 +119,7 @@ function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl 
 function teEnter(){ if(S.mode === "tenable") return; S.mode = "tenable"; document.body.classList.add("temode"); }
 function teLeave(){ if(S.mode !== "tenable") return; stopSiu(); clearInterval(TE.tmr); clearInterval(TE.revT); TE.tmr = null; TE.phase = "setup"; TE.t = null;
   S.mode = null; document.body.classList.remove("temode", "teball"); $("#teo").hidden = true; }
-function teShow(){ teEnter(); ["#titleScreen", "#setup", "#game", "#scores"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
+function teShow(){ teEnter(); teUnpick(); ["#titleScreen", "#setup", "#game", "#scores"].forEach(s => { const e = $(s); if(e) e.hidden = true; });
   TE.phase = "setup"; $("#teo").hidden = false; teRender(); window.scrollTo(0, 0); clearInterval(TE.tmr); TE.tmr = setInterval(teTick, 200); }
 const teSeg = (key, opts, cur) => `<div class="teseg">${opts.map(([v, t]) => `<button data-set="${key}" data-v="${v}" aria-pressed="${String(cur) === String(v)}">${t}</button>`).join("")}</div>`;
 const teLives = t => !t.lives ? `<span class="telives inf">No life limit</span>` : `<span class="telives">${Array.from({length:t.lives}, (_, i) => `<i class="${i < t.left ? "on" : ""}"></i>`).join("")}</span>`;
@@ -142,8 +142,18 @@ function teBoard(){ const ps = TE.cfg.players; if(ps.length < 2) return "";
 function teHead(tu){ const L = tu.list;
   return L.rows ? `<div class="tehd form"><div class="tet">${esc(L.t)} <span>${esc(L.yr)}</span></div><div class="ted">${esc(L.d)}</div>${L.score ? `<div class="tesc">${esc(L.score)}</div>` : ""}<div class="tegoal">Name all 11 starters</div></div>`
     : `<div class="tehd"><div class="tet">${esc(L.t)}</div><div class="ted">${esc(L.d || "")}</div></div>`; }
+function teListsShow(){   // 7.98 (Omar): every list with its ID and title, newest first, split into sections that start collapsed; tapping one plays it as a solo game
+  const sec = (name, k, rows) => `<details><summary>${name}<small>${rows.length}</small></summary><ol>${rows.map((L, i) => [L, i]).reverse().map(([L, i]) => `<li><button data-pk="${k}|${i}"><b>${L.id}</b><span>${esc(L.t)}${L.yr ? " " + esc(L.yr) : ""}</span></button></li>`).join("")}</ol></details>`;
+  let ov = $("#teLs"); if(!ov){ ov = document.createElement("div"); ov.id = "teLs"; ov.className = "tels"; $("#teo").appendChild(ov); }
+  ov.innerHTML = `<div role="dialog" aria-label="Lists"><header><h2>Lists</h2><button class="tebtn ghost small" data-lsx="1">Close</button></header><p class="note">Newest first. Tap a list to play it now as a solo game.</p>${sec("Tenable", "n", teLists("n"))}${sec("TenaBall", "f", teLists("f"))}${sec("TenaBall Formations", "fm", teLineups())}</div>`;
+  ov.hidden = false; }
+function tePick(k, i){   // a solo game that opens with the chosen list (the setup's players come back on return to setup)
+  const L = (k === "fm" ? teLineups() : teLists(k))[i]; if(!L) return; if(!TE.pick) TE.pick = TE.cfg.players.slice();
+  TE.cfg.players = [String(TE.pick[0] || "").trim() || "Player 1"]; $("#teLs").hidden = true; stopSiu(); try{ Snd.unlock(); }catch(e){}
+  TE.turns = [{p:0, r:0, list:L, pts:0, n:0}]; TE.scores = [0]; TE.ti = 0; TE.sung = false; teReady(); }
+const teUnpick = () => { if(TE.pick){ TE.cfg.players = TE.pick; TE.pick = null; } };
 function teRender(){
-  const el = $("#teBody"); if(!el) return; document.body.classList.toggle("teball", teBall()); const c = TE.cfg, ball = teBall() || teMix(); const sk = $("#teSkip"); if(sk) sk.hidden = TE.phase !== "play";
+  const el = $("#teBody"); if(!el) return; document.body.classList.toggle("teball", teBall()); const c = TE.cfg, ball = teBall() || teMix(); const sk = $("#teSkip"); if(sk) sk.hidden = TE.phase !== "play"; const lb = $("#teListsBtn"); if(lb) lb.hidden = TE.phase !== "setup";
   if(TE.phase === "setup"){
     const nLists = teMix() ? TEN.n.length + TEN.f.length : (ball ? TEN.f : TEN.n).length, nForm = teLineups().length;
     el.innerHTML = `<div class="tehead"><div class="tebadge">Game mode</div><h1>${teName()}</h1><p class="sub">${teMix() ? "Top-ten lists from both editions in one game: general knowledge in the Tenable look, football in the TenaBall look. Name as many as you can, in any order." : teForm() ? "Football top tens, with a famous starting lineup mixed in now and then: drawn on half a pitch with the team, the year and the score, name all 11 players. Any order, every time." : "A top-ten list hides behind a pyramid of ten slots. Name as many as you can, in any order. Every right answer fills its slot; every wrong one costs a life."}</p></div>
@@ -191,6 +201,9 @@ $("#teo").addEventListener("click", e => {
   const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; TE.cfg[k] = k === "sub" ? v : k === "form" ? v === "1" : +v; teSave(); teRender(); return; }
   if(e.target.closest("[data-add]")){ TE.cfg.players.push("Player " + (TE.cfg.players.length + 1)); teSave(); teRender(); const ins = document.querySelectorAll("#teo [data-pl]"); const l = ins[ins.length - 1]; if(l){ l.focus(); l.select(); } return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ TE.cfg.players.splice(+rm.dataset.rm, 1); teSave(); teRender(); return; }
+  if(e.target.closest("#teListsBtn")){ teListsShow(); return; }
+  if(e.target.closest("[data-lsx]") || e.target.id === "teLs"){ $("#teLs").hidden = true; return; }
+  const pk = e.target.closest("[data-pk]"); if(pk){ const [k, i] = pk.dataset.pk.split("|"); tePick(k, +i); return; }
   if(e.target.closest("#teGo")){ teStart(); return; }
   if(e.target.closest("#teSkip")){ teSkip(); return; }
   if(e.target.closest("#teHome")){ leaveAsk(TE.phase === "ready" || TE.phase === "play" || TE.phase === "done", teName()); return; }
@@ -202,7 +215,7 @@ $("#teo").addEventListener("click", e => {
   else if(a === "next") teNext();
   else if(a === "finish"){ TE.phase = "over"; if(!TE.sung){ TE.sung = true; playWinSiu(); } teRender(); }
   else if(a === "again"){ stopSiu(); teStart(); }
-  else if(a === "setup" || a === "end"){ stopSiu(); clearInterval(TE.revT); TE.phase = "setup"; teRender(); } });
+  else if(a === "setup" || a === "end"){ stopSiu(); clearInterval(TE.revT); teUnpick(); TE.phase = "setup"; teRender(); } });
 $("#teo").addEventListener("input", e => { const i = e.target.closest("[data-pl]"); if(i){ TE.cfg.players[+i.dataset.pl] = i.value; teSave(); } });
 $("#teo").addEventListener("keydown", e => { if(e.key === "Enter" && e.target.id === "teIn"){ e.preventDefault(); teGuess(); } });
 $("#modeTen").onclick = teShow;
