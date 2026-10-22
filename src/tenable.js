@@ -67,7 +67,7 @@ const TE = {cfg:null, phase:"setup", turns:[], ti:0, t:null, item:null, flash:nu
 const TE_DEF = {sub:"n", form:false, players:["Player 1"], per:3, lives:3, secs:0};
 const teClock = n => { n = Math.max(0, Math.ceil(n)); return Math.floor(n / 60) + ":" + String(n % 60).padStart(2, "0"); };
 TE.cfg = Object.assign({}, TE_DEF, store.get("jn_teCfg", {})); if(!Array.isArray(TE.cfg.players) || !TE.cfg.players.length) TE.cfg.players = ["Player 1"];
-if(![0, 120, 180, 300].includes(TE.cfg.secs)) TE.cfg.secs = 0;   /* 7.93: older saves held 60/90/120 s */
+if(![0, 120, 180, 300, 600].includes(TE.cfg.secs)) TE.cfg.secs = 0;   /* 8.25 (Omar): timer buttons read Off 2 3 5 10 under "Timer per list (in minutes)"; before: "2 minutes", "3 minutes", "5 minutes" and no 10 */   /* 7.93: older saves held 60/90/120 s */
 const teSave = () => store.set("jn_teCfg", TE.cfg);
 const teMix = () => TE.cfg.sub === "m";   // 7.86 (Omar): the Mix edition deals Tenable and TenaBall lists in one game; each list wears its own edition's look
 const teBall = () => TE.cfg.sub === "f" || (["ready", "play", "done"].includes(TE.phase) && !!TE.turns[TE.ti] && TE.turns[TE.ti].list.ed === "f"), teForm = () => (TE.cfg.sub === "f" || teMix()) && TE.cfg.form;
@@ -187,7 +187,7 @@ function teRender(){
         <p class="note">One player is a solo game. With more, players take turns, each with their own list.</p></div>
       <div class="tepanel">${c.players.length > 1 ? `<div class="teeye">Lists each</div>${teSeg("per", [1, 2, 3, 4, 5].map(n => [n, n]), c.per)}` : `<div class="teeye">Lists</div><p class="note">Solo play never runs out: keep going list after list, and press Finish when you want to stop.</p>`}
         <div class="teeye">Lives</div>${teSeg("lives", [[3, "3"], [5, "5"], [0, "No limit"]], c.lives)}
-        <div class="teeye">Timer per list</div>${teSeg("secs", [[0, "Off"], [120, "2 minutes"], [180, "3 minutes"], [300, "5 minutes"]], c.secs)}
+        <div class="teeye">Timer per list (in minutes)</div>${teSeg("secs", [[0, "Off"], [120, "2"], [180, "3"], [300, "5"], [600, "10"]], c.secs)}
         <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer. The timer is just a clock for the room: the last 10 seconds tick, and at zero nothing stops on the board.</p>
         <button class="tebtn go" id="teGo">Start</button></div></div>`;
     return; }
