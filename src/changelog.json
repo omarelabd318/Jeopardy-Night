@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.25", "date": "2026-10-22", "items": ["Tenable: timer per list is now Off, 2, 3, 5 or 10 minutes, shown as plain numbers."]},
  {"v": "8.24", "date": "2026-10-22", "items": ["Setup: tap the \"clues already played\" line to see how many played clues each category has, most played first. The same list is in the version panel, under Played clues."]},
  {"v": "8.23", "date": "2026-10-22", "items": ["Version history: 7.31 to 7.99 are back under 7.x (they were showing under 8.x)."]},
  {"v": "8.22", "date": "2026-10-22", "items": ["Tenable: new list, the most popular pizza toppings."]},
