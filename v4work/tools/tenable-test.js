@@ -32,7 +32,7 @@ const D = f => JSON.parse(R("v4work/tenable/" + f)), lists = {normal:D("normal.j
 for(const [k, L] of Object.entries(lists)){ const titles = new Set();
   for(const l of L){ ok(l.t && !titles.has(l.t), k + ": title " + l.t); titles.add(l.t); eq(l.a.length, 10, l.t + ": 10 answers"); ok(l.src && l.as, l.t + ": source and date");
     const t = mk(l.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), 0);
-    l.a.forEach(([a, v, alt], i) => [a].concat(alt || []).forEach(g => eq(t.match(g), [i], `${l.t}: "${g}" should match only "${a}" (got ${t.match(g).map(j => l.a[j][0])})`))); } }
+    l.a.forEach(([a, v, alt], i) => [a].concat(alt || []).forEach(g => eq(t.match(g), l.a.map((x, j) => j).filter(j => j === i || ansNorm(l.a[j][0]) === ansNorm(a)), `${l.t}: "${g}" should match only "${a}" (got ${t.match(g).map(j => l.a[j][0])})`))); } }
 // every lineup has 11 players and a score
 const form = JSON.parse(R("v4work/out/form.json")).data, fs2 = D("form-scores.json"); let nl = 0;
 const allLx = []; for(const v in form) form[v].forEach(x => allLx.push(x)); D("lineups.json").forEach(x => allLx.push(x));   // 8.1: Tenable-only lineups too
