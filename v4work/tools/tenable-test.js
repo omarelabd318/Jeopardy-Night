@@ -35,7 +35,8 @@ for(const [k, L] of Object.entries(lists)){ const titles = new Set();
     l.a.forEach(([a, v, alt], i) => [a].concat(alt || []).forEach(g => eq(t.match(g), [i], `${l.t}: "${g}" should match only "${a}" (got ${t.match(g).map(j => l.a[j][0])})`))); } }
 // every lineup has 11 players and a score
 const form = JSON.parse(R("v4work/out/form.json")).data, fs2 = D("form-scores.json"); let nl = 0;
-for(const v in form) for(const [q, a] of form[v]){ nl++; const names = q.split("\n").slice(1).join(" · ").split(" · ");
+const allLx = []; for(const v in form) form[v].forEach(x => allLx.push(x)); D("lineups.json").forEach(x => allLx.push(x));   // 8.1: Tenable-only lineups too
+for(const [q, a] of allLx){ nl++; const names = q.split("\n").slice(1).join(" · ").split(" · ");
   eq(names.length, 11, a + ": 11 players"); ok(fs2[a], a + ": has a score"); ok(/^.*?, \S+ \(.*\)$/.test(a), a + ": team, year (occasion)");
   const t = mk(names, 0); names.forEach((x, i) => { const hit = t.match(x); ok(hit.includes(i) && hit.every(j => ansNorm(names[j]) === ansNorm(x)), `${a}: "${x}" matches ${hit.map(j => names[j])}`); }); }
 console.log(`tenable-test: ${n} checks passed (${lists.normal.length} normal lists, ${lists.football.length} football lists, ${nl} lineups)`);
