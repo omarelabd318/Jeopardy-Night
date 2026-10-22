@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.29", "date": "2026-10-22", "items": ["Version panel: the NSFW switch no longer shows a highlighted box behind it."]},
  {"v": "8.28", "date": "2026-10-22", "items": ["Category Bingo: the title screen background is now a bingo card, and Bingo setup has the Football clues setting (Normal, Fewer or Off), like Bidding Wars and Hot Seat."]},
  {"v": "8.27", "date": "2026-10-22", "items": ["Bidding Wars and Hot Seat setup: new Football clues setting. Normal, Fewer (football comes up about a third as often) or Off."]},
  {"v": "8.26", "date": "2026-10-22", "items": ["Version panel: a new NSFW section with a switch that lets the NSFW category show up in Bidding Wars and Hot Seat. Off by default."]},
