@@ -23,6 +23,8 @@ const TER = (() => {
   function score(g, it, norm, lev){ let best = Infinity; const gs = g.replace(/ /g, "");
     for(const v of variants(it, norm)){ const vs = v.replace(/ /g, "");
       if(g === v || gs === vs) return 0;
+      { const fw = v.split(" "); if(it.mk && fw.length > 1 && g.indexOf(" ") < 0 && lev(g, fw[0]) <= 2) continue; }   // 8.16 (Omar): a bare make such as "Toyota" or "Volkswagen" never counts for "Toyota Corolla"; undo: delete this line
+      if(it.mk && g.indexOf(" ") > 0 && v.indexOf(" ") > 0){ const a = g.split(" "), b = v.split(" "); if(loose(lev, a[0], b[0]) && loose(lev, a.slice(1).join(" "), b.slice(1).join(" ")) && (a[a.length - 1] === b[b.length - 1] || Math.min(a[a.length - 1].length, b[b.length - 1].length) > 2)) best = Math.min(best, 1); continue; }   // 8.18: car lists, make and model are spelled separately so a close model ("Yaris" for "Camry") can't pass
       if(loose(lev, g, v) || loose(lev, gs, vs)) best = Math.min(best, 1);
       const w = v.split(" "), last = w[w.length - 1];
       if(w.length > 1 && last.length >= 4){ if(g === last) best = Math.min(best, 2); else if(g.length >= 4 && loose(lev, g, last)) best = Math.min(best, 3); } }
@@ -37,8 +39,14 @@ const TER = (() => {
       return m === Infinity ? [] : sc.map((s, i) => s === m ? i : -1).filter(i => i >= 0); };
     t.guess = text => {
       if(t.over) return {k:"over"}; const raw = String(text || "").trim(), hit = t.match(raw); if(hit === null) return {k:"empty"};
-      if(!hit.length){ const g = o.norm(raw); if(t.wrong.some(w => o.norm(w) === g)) return {k:"again", t:raw};   // the same wrong answer twice costs one life
-        t.wrong.push(raw); if(t.lives){ t.left--; if(t.left <= 0) end("lives"); } return {k:"wrong", t:raw}; }
+      if(!hit.length){ const g = o.norm(raw);
+        /* 8.18 (Omar, car lists only: items with mk): a bare make ("Toyota") is not an answer and costs no life, but every hidden slot that starts with it now reads "Toyota ..." */
+        const mk = g.indexOf(" ") < 0 && g.length >= 3 ? t.items.map((it, i) => { const w = o.norm(it.a).split(" "); return it.mk && !t.found[i] && w.length > 1 && o.lev(g, w[0]) <= (w[0].length >= 8 ? 2 : w[0].length >= 5 ? 1 : 0) ? i : -1; }).filter(i => i >= 0) : [];
+        if(mk.length) return {k:"make", t:String(t.items[mk[0]].a).split(/\s+/)[0]};
+        if(t.wrong.some(w => o.norm(w) === g)) return {k:"again", t:raw};   // the same wrong answer twice costs one life
+        t.wrong.push(raw); if(t.lives){ t.left--; if(t.left <= 0) end("lives"); }
+        const gw = g.split(" ")[0], mkw = g.indexOf(" ") > 0 && gw.length >= 3 ? t.items.map(it => String(it.a).split(/\s+/)[0]).find((w, i) => t.items[i].mk && t.items[i].a.indexOf(" ") > 0 && o.lev(gw, o.norm(w)) <= (w.length >= 8 ? 2 : w.length >= 5 ? 1 : 0)) : null;   // 8.18: a right make with the wrong model
+        return mkw ? {k:"wrong", t:raw, mk:mkw} : {k:"wrong", t:raw}; }
       const fresh = hit.filter(i => !t.found[i]); if(!fresh.length) return {k:"dup", i:hit[0]};
       const name = o.norm(t.items[fresh[0]].a), same = fresh.filter(i => o.norm(t.items[i].a) === name);   // two players with the same name both fill
       same.forEach(i => t.found[i] = true); if(t.found.every(Boolean)) end("all"); return {k:"right", i:same}; };
@@ -78,7 +86,7 @@ function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}
     if(rows.flat().length !== 11) return;
     out.push({ed:"f", key:a, id:"FMF#" + String(out.length + 1).padStart(3, "0"), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:teFlags(rows.flat().map(n => ({a:n})), ((TEN.fl || {}).x || {})[a])}); });
   return out; }
-const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:ed === "f" ? teFlags(L.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), ((TEN.fl || {}).l || {})[L.t]) : L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
+const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:ed === "f" ? teFlags(L.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), ((TEN.fl || {}).l || {})[L.t]) : L.a.map(([a, v, alt]) => ({a, v, alt:alt || [], mk:!!L.mk}))}));   // 8.18: mk = the list is made of make + model answers (the car lists)
 TE.formShare = 1 / 3;   // 7.82 (Omar): with Formations on, lineups are mixed in at random with the football lists (about one turn in three), not lineups only
 function teDraw(pool, k, seen){   // a list not played on this device yet (all of them again once every one has been played)
   const s = new Set(seen[k] || []); let fresh = pool.filter(L => !s.has(L.key)); if(!fresh.length){ s.clear(); fresh = pool; }
@@ -116,7 +124,8 @@ function teSwap(){ if(TE.phase !== "play" || !TE.t) return; const tu = TE.turns[
 function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "play") return; const txt = inp.value; inp.value = ""; const r = TE.t.guess(txt);
   if(r.k === "empty") return;
   if(r.k === "right"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
-  else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t}; }
+  else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t, mk:r.mk}; }
+  else if(r.k === "make") TE.flash = {k:"make", t:r.t};
   else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? TE.t.items[r.i].a : r.t};
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
@@ -198,7 +207,7 @@ function teRender(){
       <button class="tebtn go" data-act="go">Show the ${!!tu.list.rows ? "lineup" : "list"}</button></div>${teBoard()}</div>`; return; }
   const fl = TE.flash, msg = TE.phase === "done"
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
-    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
+    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
   const lid = tu.list.id ? `<span class="teid">${tu.list.id}</span>` : "";   // 7.84 (Omar): every list has a fixed ID (NM#1.. Normal, FM#1.. TenaBall; lineups follow the football lists) so he can tell which have been played; solo shows only the ID
   const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
