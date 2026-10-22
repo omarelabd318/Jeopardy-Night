@@ -120,6 +120,9 @@ const Snd = (() => {
     chime(){ if(!S.sound) return; const f = 784; [[1,0.11],[2.01,0.04],[3.0,0.025],[4.16,0.012]].forEach(([m,v]) => tone(f*m, 0, 2.8/Math.sqrt(m), v*CHIME, "sine", 0.01)); tone(f*1.5, 0.12, 2.2, 0.035*CHIME, "sine", 0.02); },
     blip(){ if(!S.sound) return; tone(988, 0, 0.12, 0.04, "sine"); tone(1480, 0.06, 0.14, 0.03, "sine"); },
     buzz(){ if(!S.sound) return; tone(196, 0, 0.3, 0.07, "sawtooth", 0.004); tone(147, 0.14, 0.4, 0.07, "sawtooth", 0.004); },   // 7.4: Taboo's buzz
+    /* 7.96 (Omar picked these from the options: right guess 3, wrong guess 3), used by Tenable. Rise: C6 then G6, sine. Fall: Eb4 then Bb3, triangle. The old Tenable sounds were chime() and buzz(). */
+    rise(){ if(!S.sound) return; tone(1047, 0, 0.3, 0.12, "sine", 0.004); tone(1568, 0.12, 0.5, 0.12, "sine", 0.004); },
+    fall(){ if(!S.sound) return; tone(311, 0, 0.4, 0.1, "triangle", 0.01); tone(233, 0.3, 0.55, 0.1, "triangle", 0.01); },
     /* 7.58 (Omar, Liar's Bar): a revolver cylinder spinning (clicks that slow down with the spin on screen), a gunshot, and the dry click of an empty chamber. All made with the audio API, no files. */
     spin(){ if(!S.sound) return; const a = ctx(); if(!a) return; this.stopSpin(); const g = a.createGain(); g.gain.value = 1; g.connect(out || a.destination); spinG = g;
       for(let k = 1; k <= 17; k++){ const p = k * 60 / 1000, t = 3.2 * (1 - Math.pow(1 - p, 1 / 3)); if(p >= 1) break; click(g, t, 0.55 + 0.35 * (1 - p), 2600 + (k % 3) * 500); } },
@@ -224,8 +227,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.91`);
-  $("#verBtn").textContent = "v7.91"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v7.99`);
+  $("#verBtn").textContent = "v7.99"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
