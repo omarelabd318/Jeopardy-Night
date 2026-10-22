@@ -30,7 +30,7 @@ const TER = (() => {
     return best; }
   /* o = {items:[{a, v, alt}] (10 for a list, 11 for a lineup), lives (0 = no limit), norm, lev}. Phases: live > over (how: all | lives | time | stop) */
   function Turn(o){
-    const t = {items:o.items, found:o.items.map(() => false), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), flag:o.items.map(() => false)};
+    const t = {items:o.items, found:o.items.map(() => false), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), part:o.items.map(() => ""), flag:o.items.map(() => false)};
     const end = how => { t.over = true; t.how = how; };
     t.n = () => t.found.filter(Boolean).length;
     t.points = () => t.n() + (t.n() === t.items.length ? BONUS : 0);
@@ -38,7 +38,11 @@ const TER = (() => {
       return m === Infinity ? [] : sc.map((s, i) => s === m ? i : -1).filter(i => i >= 0); };
     t.guess = text => {
       if(t.over) return {k:"over"}; const raw = String(text || "").trim(), hit = t.match(raw); if(hit === null) return {k:"empty"};
-      if(!hit.length){ const g = o.norm(raw); if(t.wrong.some(w => o.norm(w) === g)) return {k:"again", t:raw};   // the same wrong answer twice costs one life
+      if(!hit.length){ const g = o.norm(raw);
+        /* 8.18 (Omar): a bare make ("Toyota") is not an answer and costs no life, but every hidden slot that starts with it now reads "Toyota ..." */
+        const mk = g.indexOf(" ") < 0 && g.length >= 3 ? t.items.map((it, i) => { const w = o.norm(it.a).split(" "); return !t.found[i] && w.length > 1 && o.lev(g, w[0]) <= (w[0].length >= 8 ? 2 : w[0].length >= 5 ? 1 : 0) ? i : -1; }).filter(i => i >= 0) : [];
+        if(mk.length){ const nm = String(t.items[mk[0]].a).split(/\s+/)[0]; mk.forEach(i => t.part[i] = nm); return {k:"make", t:nm, n:mk.length}; }
+        if(t.wrong.some(w => o.norm(w) === g)) return {k:"again", t:raw};   // the same wrong answer twice costs one life
         t.wrong.push(raw); if(t.lives){ t.left--; if(t.left <= 0) end("lives"); } return {k:"wrong", t:raw}; }
       const fresh = hit.filter(i => !t.found[i]); if(!fresh.length) return {k:"dup", i:hit[0]};
       const name = o.norm(t.items[fresh[0]].a), same = fresh.filter(i => o.norm(t.items[i].a) === name);   // two players with the same name both fill
@@ -118,6 +122,7 @@ function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "pl
   if(r.k === "empty") return;
   if(r.k === "right"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
   else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t}; }
+  else if(r.k === "make") TE.flash = {k:"make", t:r.t, n:r.n};
   else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? TE.t.items[r.i].a : r.t};
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
@@ -137,8 +142,8 @@ const teLives = t => !t.lives ? `<span class="telives inf">No life limit</span>`
 function teSlot(tu, t, i, rk){ const it = tu.list.items[i], f = t ? t.found[i] : false, done = TE.phase === "done";
   const hid = t ? t.found.map((x, j) => x ? -1 : j).filter(j => j >= 0) : [], shown = done && hid.indexOf(i) > -1 && hid.indexOf(i) < TE.rev;
   const flg = !f && !shown && t && t.flag[i] && it.f ? `<img class="teflag" src="photos/flags/${it.f}.svg" alt="">` : "";
-  const cls = !f && !shown && t && (t.hints[i] || flg) ? "hint" : f ? "ok" + (TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(i) ? " new" : "") : shown ? "miss" : "";
-  const hnt = !f && !shown && t && t.hints[i] ? t.hintText(i) : "";
+  const cls = !f && !shown && t && (t.hints[i] || t.part[i] || flg) ? "hint" : f ? "ok" + (TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(i) ? " new" : "") : shown ? "miss" : "";
+  const hnt = !f && !shown && t ? (t.part[i] && t.hints[i] <= t.part[i].length ? t.part[i] + "…" : t.hints[i] ? t.hintText(i) : "") : "";
   const txt = f || shown ? `<b>${esc(it.a)}</b>${it.v ? `<small>${esc(it.v)}</small>` : ""}` : hnt || flg ? `${flg}${hnt ? `<b class="tehintl">${esc(hnt)}</b>` : ""}` : "";
   return `<button class="teslot ${cls}" data-give="${i}" ${f || shown || TE.phase !== "play" ? "tabindex=-1" : `title="Tap for a letter, again for more, then the answer"`}><em>${rk}</em><span class="${String(it.a).length > 30 ? "long xlong" : String(it.a).length > 16 ? "long" : ""}">${txt}</span></button>`; }
 function tePyramid(tu, t){ let i = 0, h = ""; [1, 2, 3, 4].forEach(n => { h += `<div class="terow">`; for(let k = 0; k < n; k++, i++) h += teSlot(tu, t, i, i + 1); h += `</div>`; }); return `<div class="tepyr">${h}</div>`; }
@@ -199,7 +204,7 @@ function teRender(){
       <button class="tebtn go" data-act="go">Show the ${!!tu.list.rows ? "lineup" : "list"}</button></div>${teBoard()}</div>`; return; }
   const fl = TE.flash, msg = TE.phase === "done"
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
-    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
+    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't an answer: say which one (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
   const lid = tu.list.id ? `<span class="teid">${tu.list.id}</span>` : "";   // 7.84 (Omar): every list has a fixed ID (NM#1.. Normal, FM#1.. TenaBall; lineups follow the football lists) so he can tell which have been played; solo shows only the ID
   const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
