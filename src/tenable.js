@@ -23,6 +23,7 @@ const TER = (() => {
   function score(g, it, norm, lev){ let best = Infinity; const gs = g.replace(/ /g, "");
     for(const v of variants(it, norm)){ const vs = v.replace(/ /g, "");
       if(g === v || gs === vs) return 0;
+      { const fw = v.split(" "); if(fw.length > 1 && g.indexOf(" ") < 0 && lev(g, fw[0]) <= 2) continue; }   // 8.16 (Omar): a bare make such as "Toyota" or "Volkswagen" never counts for "Toyota Corolla"; undo: delete this line
       if(loose(lev, g, v) || loose(lev, gs, vs)) best = Math.min(best, 1);
       const w = v.split(" "), last = w[w.length - 1];
       if(w.length > 1 && last.length >= 4){ if(g === last) best = Math.min(best, 2); else if(g.length >= 4 && loose(lev, g, last)) best = Math.min(best, 3); } }
