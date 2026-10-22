@@ -9912,9 +9912,9 @@ function ttApply(id){
   document.querySelectorAll("#modeRow .modebtn").forEach(x => { const on = x.id === id; x.classList.toggle("sel", on); x.setAttribute("aria-pressed", on); });
 }
 function ttHome(){ ttApply(""); }
-/* 8.28 (Omar): the background of the Category Bingo title screen is three faded paper bingo cards on green felt, a few squares daubed in gold (#ttCard, CSS block "8.28" in head.html).
+/* 8.28 (Omar): the background of the Category Bingo title screen is three faded paper bingo cards on blue, a few squares daubed in gold (#ttCard, CSS block "8.28" in head.html).
    To undo: delete ttCardBuild(), TT_CARDBG, the cardBg line in ttApply and the 8.28 CSS block; the old art is still TTBG.modeBingo. */
-const TT_CARDBG = "radial-gradient(ellipse at 50% 15%,#14703f 0%,#0E5A3B 55%,#0a4a30 100%)";
+const TT_CARDBG = "radial-gradient(ellipse at 50% 15%,#2447c4 0%,#14298f 55%,#0b1766 100%)";   /* Omar: blue. First version was green felt: radial-gradient(ellipse at 50% 15%,#14703f 0%,#0E5A3B 55%,#0a4a30 100%) */
 function ttCardBuild(){
   const ts = $("#titleScreen"), el = document.createElement("div"); el.id = "ttCard"; el.setAttribute("aria-hidden", "true");
   const pick = (lo, n) => { const a = Array.from({length: 15}, (_, i) => lo + i); for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, n); };
