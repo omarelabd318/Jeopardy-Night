@@ -227,8 +227,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.6`);
-  $("#verBtn").textContent = "v8.6"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.7`);
+  $("#verBtn").textContent = "v8.7"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -619,7 +619,7 @@ function setFootball(on){ if(on && !S.football) S.prevCats = S.cats; if(!on && S
   if(t1) t1.textContent = on ? "Joga" : "Jeopardy"; if(t2) t2.textContent = on ? "Bonito" : "Night"; }
 /* 4.43: retro poster collage of football phrases behind the Football mode board.
    4.48: packed into exactly the whole rows and columns that fit, and each phrase shrunk to fit its block, so nothing is cut off. */
-const FB_PHRASES = ["SIIIIIUUUUUU!","BAR-CO-LA","NO FAIR","ظالم ظلم","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?"];
+const FB_PHRASES = ["SIIIIIUUUUUU!","BAR-CO-LA","NO FAIR","ظالم ظلم","It's a fucking disgrace","After review… #10 Paraguay","AGUEROOOOO","Qué mirás, bobo?","Running down the wing","Ankara Messi","الكورة أجوان","يا نهار أبيض","لفها لفة جاتوه","يخرب بيتك يا مجرم","الله عليك يا حبيب والديك","نادي القرن","الفراعنة","Hand of God","If I speak, I am in big trouble","Good ebening","Cold rainy night in Stoke","Fergie time","Tiki-taka","What do we think of shit?","I'm a serial winner"];  // 8.7 (Omar): "I'm a serial winner" added
 const FB_FILL = ["Calma","VAR","90+7'","OLÉ","1–0","Full time","!","⚽","Yalla","Hat-trick"];
 /* 4.76 (Omar): phrases drawn with a different font for each part between the dashes (Alfa Slab One, Lobster, Bebas Neue) */
 const FB_MIXED = {"BAR-CO-LA": [2, 3, 1]};
