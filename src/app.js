@@ -213,6 +213,7 @@ function openNews(){
   document.querySelectorAll(".newshist").forEach(d => d.open = false);
   $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>`;   // 7.14 (Omar): the counts live here, not on the title screen
   { const d = histData(); $("#newsPlayed").innerHTML = `<p class="note">${esc(d.sum)}</p><ol class="histlist">${d.list}</ol>`; }   // 8.24 (Omar): played clues per category
+  nsfwPaint();   // 8.26 (Omar): the NSFW switch
   /* 4.62 (Omar): the history only opens with the code "joga" (any capitals); it locks again on every open */
   document.querySelectorAll(".newshist").forEach(d => d.hidden = true); $("#newsLock").hidden = false; $("#newsCode").value = ""; $("#newsErr").textContent = "";
   $("#newsBox").hidden = false; $("#newsCode").focus();
@@ -220,6 +221,8 @@ function openNews(){
 $("#newsLock").addEventListener("submit", e => { e.preventDefault();
   if($("#newsCode").value.trim().toLowerCase() === "joga"){ $("#newsLock").hidden = true; document.querySelectorAll(".newshist").forEach(d => d.hidden = false); $("#newsHist").parentNode.open = true; $("#newsClose").focus({preventScroll:true}); $(".newscard").scrollTop = 0; }   // 7.16 (Omar): open the history from the top, not scrolled to the Close button
   else { $("#newsErr").textContent = "Wrong code."; $("#newsCode").select(); } });
+function nsfwPaint(){ const on = nsfwOn(), b = $("#nsfwSw"); b.setAttribute("aria-checked", on); b.querySelector("b").textContent = on ? "On" : "Off"; }
+$("#nsfwSw").onclick = () => { store.set("jn_nsfwModes", !nsfwOn()); nsfwPaint(); };
 function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
 $("#verBtn").onclick = openNews;
 $("#newsClose").onclick = closeNews;
@@ -228,8 +231,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.25`);
-  $("#verBtn").textContent = "v8.25"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.26`);
+  $("#verBtn").textContent = "v8.26"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -413,6 +416,11 @@ function renderChips(){
 const codeHash = s => { let h = 7; for(const ch of String(s).trim().toLowerCase()) h = (h*31 + ch.charCodeAt(0)) >>> 0; return h; };
 const LOCKED = {x18: 8129869};
 const unlocked = new Set();
+/* 8.26 (Omar): a switch in the version panel ("NSFW" section, under Played clues) lets the NSFW category show up in Bidding Wars (as its own NSFW title)
+   and Hot Seat. Off by default, saved on this device in jn_nsfwModes. The panel itself needs its code, so this stays behind one. Jeopardy Night
+   still asks for the category's own code. Before 8.26 Bidding Wars never had it and Hot Seat used it only after it was unlocked in the Jeopardy setup.
+   To remove: delete this line, .newsnsfw in head.html, the nsfw lines in openNews, and the 8.26 lines in bidding.js and hotseat.js. */
+const nsfwOn = () => store.get("jn_nsfwModes", false) === true;
 let lockFor = null;
 function askCode(id){ lockFor = id; $("#lockCode").value = ""; $("#lockErr").textContent = ""; $("#lockBox").hidden = false; $("#lockCode").focus(); }
 function closeLock(){ $("#lockBox").hidden = true; lockFor = null; }
