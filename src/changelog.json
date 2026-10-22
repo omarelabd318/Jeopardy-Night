@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.8", "date": "2026-10-22", "items": ["TenaBall: 5 new Manchester United lists: most expensive signings, all-time assists, most trophies, best scoring seasons and most appearances in the Premier League era."]},
  {"v": "8.7", "date": "2026-10-22", "items": ["Football mode: \"I'm a serial winner\" joins the phrases behind the board.", "Version history: 8.x now has its own section (8.0 to 8.6 were showing under 7.x)."]},
  {"v": "8.6", "date": "2026-10-22", "items": ["TenaBall flags: checked against Wikipedia and fixed a few that were wrong or missing (Alavés, Leverkusen, Portsmouth, Feyenoord, Deportivo, Zamalek and Pyramids lineups)."]},
  {"v": "8.5", "date": "2026-10-22", "items": ["TenaBall: the first tap on a hidden slot now shows a flag (the player's country, or the club's country), and the taps after that give letters as before. Works on the lists and on club lineups. A list where every answer is from one country, and lists of countries, skip the flag."]},
