@@ -231,8 +231,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.26`);
-  $("#verBtn").textContent = "v8.26"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.27`);
+  $("#verBtn").textContent = "v8.27"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -421,6 +421,13 @@ const unlocked = new Set();
    still asks for the category's own code. Before 8.26 Bidding Wars never had it and Hot Seat used it only after it was unlocked in the Jeopardy setup.
    To remove: delete this line, .newsnsfw in head.html, the nsfw lines in openNews, and the 8.26 lines in bidding.js and hotseat.js. */
 const nsfwOn = () => store.get("jn_nsfwModes", false) === true;
+/* 8.27 (Omar): a Football setting in the Bidding Wars and Hot Seat setups (each mode keeps its own, cfg.football): Normal (as before), Fewer (each
+   football category is kept in a draw only FB_FEWER of the time, so football comes up about a third as often) or Off (no football clues at all).
+   Football = the Football & Sports setup group without Sports and Tennis, plus Egyptian Football and Guess the Footballer.
+   To remove: delete these lines and the 8.27 lines in bidding.js and hotseat.js. */
+const FB_IDS = new Set([...CAT_GROUPS.find(g => g[0] === "Football & Sports")[1].filter(id => id !== "sport" && id !== "tennis"), "egfb", "footy"]), FB_FEWER = 1/3;
+const FB_OPTS = [["normal", "Normal"], ["fewer", "Fewer"], ["off", "Off"]], FB_NOTE = "Fewer: football comes up about a third as often. Off: no football clues at all (football titles, Egyptian Football, Guess the Footballer).";
+const fbKeep = (id, lvl) => !FB_IDS.has(id) || lvl === "normal" || (lvl === "fewer" && Math.random() < FB_FEWER);   // re-rolled on every draw; anything unknown counts as Off
 let lockFor = null;
 function askCode(id){ lockFor = id; $("#lockCode").value = ""; $("#lockErr").textContent = ""; $("#lockBox").hidden = false; $("#lockCode").focus(); }
 function closeLock(){ $("#lockBox").hidden = true; lockFor = null; }
