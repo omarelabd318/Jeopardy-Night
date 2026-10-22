@@ -10,14 +10,14 @@ const hsNum = n => Number(n).toLocaleString("en-US");
 const hsPotAt = k => 100 * 2 ** k;   // the pot after k+1 right answers
 const hsShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 function hsDefaults(){ const names = S.teams.map(t => t.name).slice(0, 6); while(names.length < 2) names.push("Team " + "ABCDEF"[names.length]);
-  return {teams:names, turns:5, swap:true, photos:true, steal:false}; }
+  return {teams:names, turns:5, swap:true, photos:true, steal:false, football:"normal"}; }   // 8.27: football
 HS.cfg = Object.assign(hsDefaults(), store.get("jn_hsCfg", {}));
 const hsSave = () => store.set("jn_hsCfg", HS.cfg);
 
 /* ---------- dealing clues ---------- */
 const hsHas = id => HS_LVLS.some(l => ((DATA[id] || {})[l] || []).length);
 /* 8.26 (Omar): NSFW only when its switch in the version panel is on (was: once unlocked in the Jeopardy setup, `|| unlocked.has(id)`) */
-const hsOkCat = id => { const c = catById(id); return !!c && !c.mode && !HS_BAD.has(c.type) && !HIDDEN_IDS.has(id) && (!LOCKED_IDS.has(id) || nsfwOn()) && (HS.cfg.photos || c.type !== "photo") && hsHas(id); };
+const hsOkCat = id => { const c = catById(id); return !!c && !c.mode && !HS_BAD.has(c.type) && !HIDDEN_IDS.has(id) && (!LOCKED_IDS.has(id) || nsfwOn()) && (HS.cfg.football !== "off" || !FB_IDS.has(id)) && (HS.cfg.photos || c.type !== "photo") && hsHas(id); };
 function hsIdx(cat, lvl){   // an unplayed clue; with photo rounds off, never one that shows a photo
   const n = ((DATA[cat] || {})[lvl] || []).length; if(!n) return null;
   if(catById(cat).type === "photo") return HS.cfg.photos ? pickIdx(cat, lvl) : null;
@@ -26,7 +26,7 @@ function hsIdx(cat, lvl){   // an unplayed clue; with photo rounds off, never on
   return from[Math.floor(Math.random() * from.length)]; }
 function hsCard(cat, lvl){ const idx = hsIdx(cat, lvl); if(idx == null) return null; warmRef(imgRefFor(cat, lvl, idx)); return {cat, lvl, idx}; }
 function hsDeal(again){   // three category cards, each with a random hidden value; no category twice in one turn
-  const st = HS.st, ids = hsShuffle(CATS.map(c => c.id).filter(id => hsOkCat(id) && !st.usedCats.includes(id))), out = [];
+  const st = HS.st, ids = hsShuffle(CATS.map(c => c.id).filter(id => hsOkCat(id) && !st.usedCats.includes(id) && fbKeep(id, HS.cfg.football))), out = [];   // 8.27: fbKeep thins football out on Fewer
   for(const cat of ids){ if(out.length >= 3) break;
     for(let t = 0; t < 8; t++){ const card = hsCard(cat, HS_LVLS[Math.floor(Math.random() * HS_LVLS.length)]); if(card){ out.push(card); break; } } }
   if(out.length < 3 && st.usedCats.length && !again){ st.usedCats = []; return hsDeal(true); }
@@ -55,6 +55,7 @@ function renderHsSetup(){
       ${c.teams.length < 6 ? `<div><button class="hsb ghost" id="hsAddTeam">Add team</button></div>` : ""}</div>
     <div class="hspanel"><div class="hseye">Turns per team</div>${seg("turns", [3, 4, 5, 6, 7, 8].map(n => [n, n]), c.turns)}<p class="note">Every team gets the same number of turns in the hot seat.</p></div>
     <div class="hspanel"><div class="hseye">One swap per team</div>${seg("swap", [["true", "On"], ["false", "Off"]], c.swap)}<p class="note">On: each team can swap one clue it doesn't like for another from the same category and value, once per game.</p></div>
+    <div class="hspanel"><div class="hseye">Football clues</div>${seg("football", FB_OPTS, c.football)}<p class="note">${FB_NOTE}</p></div>
     <div class="hspanel"><div class="hseye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture and every clue that shows a photo.</p></div>
     <div class="hspanel"><div class="hseye">Pass the pot</div>${seg("steal", [["true", "On"], ["false", "Off"]], c.steal)}<p class="note">On: a team that isn't sure can press Pass before the answer is revealed. It keeps 25% of the pot, and the next team gets the same clue (answer still hidden) for half the pot, with nothing lost if it is wrong. Passing has no limit across a game. Off: no Pass button.</p></div>
     <div class="row"><button class="hsb ghost" id="hsBack">Back to title</button><button class="hsb go" id="hsStart">Take a seat</button></div>`;

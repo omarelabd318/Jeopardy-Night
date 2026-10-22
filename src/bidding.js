@@ -38,11 +38,11 @@ const BW_TITLES = [
   ["puzz", "Puzzles", ["rid","link","headl","order","emsen"], "off"],
   ["nsfw", "NSFW", ["x18"], "nsfw"]];   // 8.26 (Omar): only while the NSFW switch in the version panel is on (see nsfwOn); a photo round
 const BW_PHOTO_CATS = new Set(["egyph", "x18", ...BW_TITLES.filter(t => t[3] === "photo").flatMap(t => t[2])]);
-const bwCats = t => t[2].filter(id => catById(id) && !HIDDEN_IDS.has(id) && (BW.cfg.photos || !BW_PHOTO_CATS.has(id)) && (!LOCKED_IDS.has(id) || nsfwOn()));
+const bwCats = t => t[2].filter(id => catById(id) && !HIDDEN_IDS.has(id) && (BW.cfg.photos || !BW_PHOTO_CATS.has(id)) && (!LOCKED_IDS.has(id) || nsfwOn()) && (BW.cfg.football !== "off" || !FB_IDS.has(id)));   // 8.27: Football Off leaves the football titles and Guess the Footballer out
 const bwTitleOn = t => t[3] === "nsfw" && !nsfwOn() ? false : BW.cfg.titles[t[0]] !== undefined ? BW.cfg.titles[t[0]] : t[3] !== "off";
 const bwMoney = v => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US");
 function bwDefaults(){ const names = S.teams.map(t => t.name).slice(0, 6); while(names.length < 2) names.push("Team " + "ABCDEF"[names.length]);
-  return {teams:names, lots:12, secs:6, photos:true, raises:true, phones:false, titles:{}, potato:false, mystery:false, sealed:false, ssecs:15}; }
+  return {teams:names, lots:12, secs:6, photos:true, raises:true, phones:false, titles:{}, potato:false, mystery:false, sealed:false, ssecs:15, football:"normal"}; }   // 8.27: football
 BW.cfg = Object.assign(bwDefaults(), store.get("jn_bidCfg", {}));
 /* 7.67 (Omar): three switches in setup, all off by default. Hot Potato: a buyer who can't answer hands the lot to a team that wants it (twice per team per game).
    Mystery lots: two lots per game hide even their title and pay double for a right answer. Sealed bids: with phone bidding, every team sends one secret bid. */
@@ -66,7 +66,8 @@ function bwLot(tier, prev, seen){
   const titles = BW_TITLES.filter(t => bwTitleOn(t) && bwCats(t).length);
   let opts = titles.filter(t => t[0] !== prev && !seen.has(t[0])); if(!opts.length) opts = titles.filter(t => t[0] !== prev); if(!opts.length) opts = titles;
   for(let tries = 0; tries < 30; tries++){ const t = opts[Math.floor(Math.random() * opts.length)], cats = bwCats(t);
-    const cat = cats[Math.floor(Math.random() * cats.length)], lvl = BW_TIERS[tier].lv[Math.floor(Math.random() * 2)], idx = bwIdx(cat, lvl);
+    const cat = cats[Math.floor(Math.random() * cats.length)]; if(tries < 25 && !fbKeep(cat, BW.cfg.football)) continue;   // 8.27: on Fewer, most football draws are thrown back
+    const lvl = BW_TIERS[tier].lv[Math.floor(Math.random() * 2)], idx = bwIdx(cat, lvl);
     if(idx == null) continue;
     seen.add(t[0]); warmRef(imgRefFor(cat, lvl, idx)); return {title:t[0], tier, cat, lvl, idx, buyer:null, price:0, res:null}; }
   return null; }
@@ -108,8 +109,9 @@ function renderBidSetup(){
     <div class="bwpanel"><div class="bweye">Mystery lots</div>${seg("mystery", [["true", "On"], ["false", "Off"]], c.mystery)}<p class="note">On: two lots per game hide even their title. A right answer on a mystery lot pays double the bid; a wrong one still loses just the bid.</p></div>
     <div class="bwpanel"><div class="bweye">Sealed bids</div>${seg("sealed", [["true", "On"], ["false", "Off"]], c.sealed)}<p class="note">${RELAY === true || RELAY === null ? `On (needs Phone bidding on): instead of raising out loud, every team sends one secret bid from its phone within the time set below. The highest bid buys the lot and pays its own bid; a tie goes to whoever sent it first. All bids show when it's sold.` : "Needs the Cloudflare link, like phone bidding."}${c.sealed && !c.phones ? " <b>Turn Phone bidding on too, or sealed bids are skipped.</b>" : ""}</p></div>
     ${c.sealed ? `<div class="bwpanel"><div class="bweye">Sealed bid time</div>${seg("ssecs", BW_SEALED_OPTS.map(n => [n, n + " s"]), bwSealedSecs())}<p class="note">The host can also tap Reveal now to close the bids early.</p></div>` : ""}
+    <div class="bwpanel"><div class="bweye">Football clues</div>${seg("football", FB_OPTS, c.football)}<p class="note">${FB_NOTE}</p></div>
     <div class="bwpanel"><div class="bweye">Photo rounds</div>${seg("photos", [["true", "On"], ["false", "Off"]], c.photos)}<p class="note">Off leaves out Guess the Face, Guess the Picture, Egypt: Photo Edition and every clue that shows a photo.</p></div>
-    <div class="bwpanel"><div class="bweye">Titles in the auction</div><div class="bwtitles">${BW_TITLES.filter(t => t[3] !== "nsfw" || nsfwOn()).map(t => { const off = (t[3] === "photo" || t[3] === "nsfw") && !c.photos;
+    <div class="bwpanel"><div class="bweye">Titles in the auction</div><div class="bwtitles">${BW_TITLES.filter(t => t[3] !== "nsfw" || nsfwOn()).map(t => { const off = (t[3] === "photo" || t[3] === "nsfw") && !c.photos || !bwCats(t).length;   // 8.27: also greyed out when Football Off empties a title
       return `<button data-title="${t[0]}" aria-pressed="${bwTitleOn(t) && !off}" ${off ? "disabled" : ""}><b>${esc(t[1])}</b><small>${esc(t[2].filter(id => catById(id)).map(id => catById(id).name).join(", "))}</small></button>`; }).join("")}</div></div>
     <div class="row"><button class="bwbtn ghost" id="bwBack">Back to title</button><button class="bwbtn go" id="bwStart">Start the auction</button></div>`;
 }
