@@ -212,6 +212,7 @@ function openNews(){
   $("#newsHist").innerHTML = newsHTML(CHANGELOG);
   document.querySelectorAll(".newshist").forEach(d => d.open = false);
   $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>`;   // 7.14 (Omar): the counts live here, not on the title screen
+  { const d = histData(); $("#newsPlayed").innerHTML = `<p class="note">${esc(d.sum)}</p><ol class="histlist">${d.list}</ol>`; }   // 8.24 (Omar): played clues per category
   /* 4.62 (Omar): the history only opens with the code "joga" (any capitals); it locks again on every open */
   document.querySelectorAll(".newshist").forEach(d => d.hidden = true); $("#newsLock").hidden = false; $("#newsCode").value = ""; $("#newsErr").textContent = "";
   $("#newsBox").hidden = false; $("#newsCode").focus();
@@ -227,8 +228,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.23`);
-  $("#verBtn").textContent = "v8.23"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.24`);
+  $("#verBtn").textContent = "v8.24"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -438,7 +439,26 @@ $("#teamInputs").addEventListener("input", e => { const i = +e.target.id.replace
 $("#addTeam").onclick = () => { if(S.teams.length < 6){ S.teams.push({name:`Team ${String.fromCharCode(65+S.teams.length)}`,score:0}); renderTeamInputs(); } };
 $("#rmTeam").onclick = () => { if(S.teams.length > 1){ S.teams.pop(); renderTeamInputs(); } };
 
-function histNote(){ $("#histNote").textContent = S.used.size ? `${S.used.size} clues already played are skipped` : ""; }
+function histNote(){ const n = $("#histNote"); n.textContent = S.used.size ? `${S.used.size} clues already played are skipped` : ""; n.classList.toggle("histlink", !!S.used.size); }
+/* 8.24 (Omar): tap the "clues already played" line in setup to see them per category, most played first. jn_used keys are
+   "<category>-<value>-<index>"; a mix clue is stored under the category it came from. Undo: delete histShow, the two #histNote/#histClose
+   lines below, the histlink toggle above, #histBox in head.html and its 8.24 CSS. Omar also asked for it as a "Played clues" section in the
+   version panel, under Version history and Categories and clues (#newsPlayed, filled in openNews). */
+function histData(){ const n = {};
+  S.used.forEach(k => { const p = k.split("-"); if(p.length < 3) return; const id = p.slice(0, -2).join("-"), l = p[p.length - 2];
+    const e = n[id] || (n[id] = {t:0}); e.t++; e[l] = (e[l] || 0) + 1; });
+  const rows = Object.entries(n).map(([id, e]) => { const c = catById(id), tot = DATA[id] ? LV.reduce((t,l) => t + (DATA[id][l] || []).length, 0) : 0;
+    return {name: c ? c.name : id, e, tot}; }).sort((a,b) => b.e.t - a.e.t || a.name.localeCompare(b.name));
+  const top = rows.length ? rows[0].e.t : 1;
+  const sum = rows.length ? `${S.used.size} clues from ${rows.length} categor${rows.length === 1 ? "y" : "ies"}. Clues from a mix count under the category they came from.` : "No clues played on this device yet.";
+  const list = rows.map(r => `<li><span class="hn">${esc(r.name)}</span><span class="hc">${r.e.t}${r.tot ? `<small> of ${r.tot}</small>` : ""}</span>`
+    + `<span class="hb"><i style="width:${Math.max(3, Math.round(100 * r.e.t / top))}%"></i></span>`
+    + `<span class="hv">${LV.map(l => `<b class="${r.e[l] ? "" : "z"}">${l}: ${r.e[l] || 0}</b>`).join("")}</span></li>`).join("");
+  return {sum, list}; }
+function histShow(){ const d = histData(); $("#histSum").textContent = d.sum; $("#histList").innerHTML = d.list; $("#histBox").hidden = false; $("#histClose").focus(); }
+$("#histNote").onclick = () => { if($("#histNote").classList.contains("histlink") && S.used.size) histShow(); };
+$("#histClose").onclick = () => { $("#histBox").hidden = true; };
+$("#histBox").onclick = e => { if(e.target.id === "histBox") $("#histBox").hidden = true; };
 $("#resetHist").onclick = () => { S.used.clear(); store.set("jn_used", []); histNote(); };
 
 /* photo pack */
@@ -603,7 +623,7 @@ DB.all().then(saved => {
   Object.entries(saved).forEach(([k,b]) => { photos[k] = URL.createObjectURL(b); }); renderPrep(); packStatus(); if(S.cur) renderClue(); });
 
 $("#start").onclick = () => {
-  if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return; }
+  if(!S.cats.length){ $("#histNote").classList.remove("histlink"); $("#histNote").textContent = "Pick at least one category to start."; return; }
   if(S.ffa && !ffaReady()) return;
   newGame();
   if(linked()){ ffaLobby(); return; }
@@ -2161,10 +2181,10 @@ function syncFfaOpt(){ $("#optFfa").setAttribute("aria-pressed", S.ffa); $("#tea
   renderChips(); renderMixEdit(); }   // 6.29: the Edit mixes panel greys out team-only categories too
 $("#optFfa").onclick = () => { S.ffa = !S.ffa; store.set("jn_ffa", S.ffa); syncFfaOpt(); };
 function ffaReady(football){  // 5.35: Football mode picks its own categories, so it skips the "pick a category" check
-  if(RELAY !== true){ $("#histNote").textContent = RELAY === null ? "Checking the connection for Free-for-all… try again in a second." : "Free-for-all needs the Cloudflare link: the phones send their answers through it."; return false; }
+  if(RELAY !== true){ $("#histNote").classList.remove("histlink"); $("#histNote").textContent = RELAY === null ? "Checking the connection for Free-for-all… try again in a second." : "Free-for-all needs the Cloudflare link: the phones send their answers through it."; return false; }
   if(football) return true;
   S.cats = S.cats.filter(id => !FFA_SKIP.has(catById(id).type));
-  if(!S.cats.length){ $("#histNote").textContent = "Pick at least one category to start."; return false; }
+  if(!S.cats.length){ $("#histNote").classList.remove("histlink"); $("#histNote").textContent = "Pick at least one category to start."; return false; }
   return true; }
 /* 5.27 (Omar): team games work the same way. With Answer QR codes or Steal QR codes on, Start shows the join code once;
    each team's phones pick their team, and from then on Closest Wins / Price Is Right number boxes and steal boxes pop up
