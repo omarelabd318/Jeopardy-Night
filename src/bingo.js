@@ -25,7 +25,7 @@ const BG_LINES = bgMkLines(5), BG_LINES6 = bgMkLines(6), BG_LINES4 = bgMkLines(4
    Before 6.70 the value came from how many winning lines ran through the square (BG_CNT: 3 lines = 100 ... 8 lines = 500). */
 const BG_VALS = [400,300,100,400,500,200,400, 300,500,300,200,100,500,300, 200,100,400,500,400,200,100, 500,200,500,100,200,500,300, 300,400,200,300,400,300,400, 100,300,400,500,300,100,300, 400,500,100,200,400,300,400];
 const bgSym = () => { const k = Math.floor(Math.random() * 8); return i => { let r = Math.floor(i / BG_N), c = i % BG_N; if(k & 1) [r, c] = [c, r]; if(k & 2) r = BG_N - 1 - r; if(k & 4) c = BG_N - 1 - c; return BG_VALS[r * BG_N + c]; }; };
-function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"random", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"card"}; }
+function bgDefaults(){ return {teams: S.teams.slice(0, 4).map(t => t.name).concat(["Team A","Team B"]).slice(0, Math.max(2, Math.min(4, S.teams.length))), steals:2, fill:"random", sections:BG_SECS.map((_, i) => i), picks:[], values:"pos", flat:300, auto:true, photos:true, row:5, start:"random", look:"card", football:"normal"}; }   // 8.28: football
 BG.cfg = Object.assign(bgDefaults(), store.get("jn_bingoCfg", {}));
 if(BG.cfg.lookV !== 2){ BG.cfg.look = "card"; BG.cfg.lookV = 2; store.set("jn_bingoCfg", BG.cfg); }   // 6.75 (Omar): Bingo card is the default look; this switches saved boards over once (was "classic")
 if(BG.cfg.fill === "balanced") BG.cfg.fill = "random";   // 6.56 (Omar): Balanced (7 per section) became Random from every category
@@ -33,10 +33,14 @@ const bgSave = () => { store.set("jn_bingoCfg", BG.cfg); };
 /* Photo rounds switch (Omar): off takes the whole Photo Rounds section, plus Egypt: Photo Edition, off the board. Egypt, Football, Entertainment and Knowledge each have 14+ categories, so
    one of them fills the seventh group of squares (picked at random) and the board stays 49 different-feeling squares. */
 const BG_PHOTO = BG_SECS.findIndex(g => g[0] === "Photo Rounds"), BG_PHOTO_EXTRA = new Set(["egyph"]);
-const bgSecIds = () => BG_SECS.map((g, i) => BG.cfg.photos === false ? (i === BG_PHOTO ? [] : g[1].filter(id => bgOk(id) && !BG_PHOTO_EXTRA.has(id))) : g[1].filter(bgOk));
+/* 8.28 (Omar): the Football clues setting from Bidding Wars and Hot Seat (8.27) is in Bingo's setup too: Normal, Fewer (each football category is kept on a board with chance 1/3, via fbKeep) or Off (none).
+   To remove: delete bgFewer, the football line in bgSecIds, the Football panel in renderBingoSetup and the football lines in bgDefaults, bgFill, the preview swap and the missed-twice swap. */
+const bgSecIds0 = () => BG_SECS.map((g, i) => BG.cfg.photos === false ? (i === BG_PHOTO ? [] : g[1].filter(id => bgOk(id) && !BG_PHOTO_EXTRA.has(id))) : g[1].filter(bgOk));
+const bgSecIds = () => bgSecIds0().map(ids => BG.cfg.football === "off" ? ids.filter(id => !FB_IDS.has(id)) : ids);
+const bgFewer = ids => { if(BG.cfg.football !== "fewer") return ids; const k = ids.filter(id => fbKeep(id, "fewer")); return k.length ? k : ids; };
 const bgShares = (a, b) => { const ra = Math.floor(a / BG_N), ca = a % BG_N, rb = Math.floor(b / BG_N), cb = b % BG_N; return ra === rb || ca === cb || ra - ca === rb - cb || ra + ca === rb + cb; };
 function bgFill(cfg){
-  const secs = bgSecIds(), all = secs.map((_, i) => i).filter(i => secs[i].length);
+  const secs = bgSecIds().map(bgFewer), all = secs.map((_, i) => i).filter(i => secs[i].length);
   const chosen = cfg.fill === "sections" && cfg.sections.filter(i => secs[i] && secs[i].length).length ? cfg.sections.filter(i => secs[i] && secs[i].length) : all;
   const perm = bgShuffle(chosen.slice());
   while(perm.length < BG_N){ const big = chosen.filter(si => secs[si].length >= 2 * Math.ceil(BG_N / chosen.length) + 6), pool = big.length ? big : chosen; perm.push(pool[Math.floor(Math.random() * pool.length)]); }
@@ -83,6 +87,7 @@ function renderBingoSetup(){
     <div class="panel opt"><div class="eyebrow">Win with</div>${seg("row", [[4, "4 in a row (shorter game)"], [5, "5 in a row"], [6, "6 in a row (longer game)"]], bgRowN())}</div>
     <div class="panel opt"><div class="eyebrow">Steals per team</div>${seg("steals", [[1, "1 steal"], [2, "2 steals"]], c.steals)}</div>
     <div class="panel opt"><div class="eyebrow">Photo rounds</div>${seg("photos", [["true", "On: photo rounds on the board"], ["false", "Off: no photo rounds"]], c.photos !== false)}${c.photos === false ? `<p class="note">Takes Guess the Car, Actor, Footballer, Person, Food, Logo and Country, and Egypt: Photo Edition, off the board. One of the other sections gets two groups of squares instead.</p>` : ""}</div>
+    <div class="panel opt"><div class="eyebrow">Football clues</div>${seg("football", FB_OPTS, c.football || "normal")}<p class="note">${FB_NOTE}</p></div>
     <div class="panel opt"><div class="eyebrow">Filling the board</div>${seg("fill", [["random", "Random from every category"], ["sections", "Pick sections"], ["hand", "Hand-pick categories"]], c.fill)}
       ${c.fill === "sections" ? `<div class="seg">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<button data-sec="${i}" aria-pressed="${c.sections.includes(i)}">${esc(g[0])}</button>`).join("")}</div><p class="note">The 49 squares are shared out evenly between the sections you tick; a category can appear more than once, never in the same row, column or diagonal if it can be helped.</p>` : ""}
       ${c.fill === "hand" ? `<p class="note">Tap the categories you want on the board (${c.picks.length} picked). The rest of the board is topped up from each section.</p><div class="hp">${BG_SECS.map((g, i) => !secs[i].length ? "" : `<div><h4>${esc(g[0])}</h4><div class="seg">${secs[i].map(id => `<button data-pick="${id}" aria-pressed="${c.picks.includes(id)}">${esc(bgShort(id))}</button>`).join("")}</div></div>`).join("")}</div>` : ""}</div>
@@ -144,7 +149,7 @@ $("#bingoBody").addEventListener("click", e => {
 });
 function bingoClickSq(i){
   const st = BG.st, cell = st.cells[i], t = st.turn; if(st.over) return; st.note = "";
-  if(st.preview){ const used = new Set(st.cells.map(c => c.cat)), opts = bgSecIds()[cell.ss].filter(id => !used.has(id)); if(opts.length){ cell.cat = opts[Math.floor(Math.random() * opts.length)]; renderBingo(); } return; }
+  if(st.preview){ const used = new Set(st.cells.map(c => c.cat)), opts = bgFewer(bgSecIds()[cell.ss]).filter(id => !used.has(id)); if(opts.length){ cell.cat = opts[Math.floor(Math.random() * opts.length)]; renderBingo(); } return; }
   if(st.stealing){ if(cell.own == null || cell.own === t) return; if(st.teams[t].lock === i){ Snd.blip(); return; } st.pend = {sq:i, kind:"steal"}; }
   else { if(cell.own != null) return; if(st.teams[t].lock === i && st.cells.some((c, k) => c.own == null && k !== i)){ Snd.blip(); return; } st.pend = {sq:i, kind:"pick"}; }
   S.turn = t; openClue(cell.cat, cell.v);
@@ -177,7 +182,7 @@ function bingoDone(c){
   else { team.lock = p.sq;   // 6.66 (Omar): a missed square is locked for that team on its next turn, like a failed steal
     /* 7.43 (Omar): a square that was picked and missed twice gets a new category from the same section; its value stays */
     cell.miss = (cell.miss || 0) + 1;
-    if(cell.miss >= 2){ const used = new Set(st.cells.map(c => c.cat)), sec = bgSecIds()[cell.ss] || [], opts = sec.filter(id => !used.has(id)), alt = opts.length ? opts : sec.filter(id => id !== cell.cat);
+    if(cell.miss >= 2){ const used = new Set(st.cells.map(c => c.cat)), sec = bgFewer(bgSecIds()[cell.ss] || []), opts = sec.filter(id => !used.has(id)), alt = opts.length ? opts : sec.filter(id => id !== cell.cat);
       if(alt.length){ const old = bgShort(cell.cat); cell.cat = alt[Math.floor(Math.random() * alt.length)]; cell.miss = 0; st.note = `${bgName(p.sq)} was missed twice, so ${old} is now ${bgShort(cell.cat)} (still ${cell.v})`; } } }
   st.pend = null; st.stealing = false;
   const line = v === 1 ? bgWinLine(t) : null;

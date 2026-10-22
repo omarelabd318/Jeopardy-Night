@@ -107,7 +107,8 @@ function ttApply(id){
   const art = tile || (!jn && id && typeof TTBG !== "undefined" && TTBG[id]);   // 7.10: modes with a drawn background (TTBG) drop the tile wall
   ttGhost(th && th.g && !art ? th.g : null, jn);   /* 7.10: was ttGhost(th && th.g ? th.g : null, jn) */
   ts.style.background = th ? "transparent" : "";   // 6.86: the theme background lives on the page itself (see --ttbg in head.html), so it carries on under the scrollbar with no seam
-  document.documentElement.style.setProperty("--ttbg", art ? `linear-gradient(color-mix(in srgb, ${th.base || "#000"} 28%, transparent), color-mix(in srgb, ${th.base || "#000"} 28%, transparent)), ${tile ? tile : `url("${art}") center/cover no-repeat`}` : th ? th.bg : "none");   /* 7.12 (Omar): the art is faded a bit with a 28% wash of the mode's base colour (7.10: just url(...) center/cover no-repeat). 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
+  const cardBg = id === "modeBingo";   // 8.28 (Omar): picking Category Bingo shows bingo cards on green felt (was the drawn TTBG.modeBingo art, still in titlebg.js)
+  document.documentElement.style.setProperty("--ttbg", cardBg ? TT_CARDBG : art ? `linear-gradient(color-mix(in srgb, ${th.base || "#000"} 28%, transparent), color-mix(in srgb, ${th.base || "#000"} 28%, transparent)), ${tile ? tile : `url("${art}") center/cover no-repeat`}` : th ? th.bg : "none");   /* 7.12 (Omar): the art is faded a bit with a 28% wash of the mode's base colour (7.10: just url(...) center/cover no-repeat). 7.10: drawn backgrounds from src/titlebg.js; the old gradient stays in TT.bg */ document.documentElement.style.setProperty("--ttbc", th ? th.base || "#10183f" : "#10183f");
   ts.style.color = th ? th.ink : "";
   $("#homeHead").hidden = !!id; $("#jnTitle").hidden = !jn; $("#brandCorner").hidden = !id;
   const mt = $("#modeTitle"); mt.hidden = !id || jn;
@@ -128,6 +129,19 @@ function ttApply(id){
   document.querySelectorAll("#modeRow .modebtn").forEach(x => { const on = x.id === id; x.classList.toggle("sel", on); x.setAttribute("aria-pressed", on); });
 }
 function ttHome(){ ttApply(""); }
+/* 8.28 (Omar): the background of the Category Bingo title screen is three faded paper bingo cards on green felt, a few squares daubed in gold (#ttCard, CSS block "8.28" in head.html).
+   To undo: delete ttCardBuild(), TT_CARDBG, the cardBg line in ttApply and the 8.28 CSS block; the old art is still TTBG.modeBingo. */
+const TT_CARDBG = "radial-gradient(ellipse at 50% 15%,#14703f 0%,#0E5A3B 55%,#0a4a30 100%)";
+function ttCardBuild(){
+  const ts = $("#titleScreen"), el = document.createElement("div"); el.id = "ttCard"; el.setAttribute("aria-hidden", "true");
+  const pick = (lo, n) => { const a = Array.from({length: 15}, (_, i) => lo + i); for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, n); };
+  el.innerHTML = [0, 1, 2].map(k => { const cols = [0, 1, 2, 3, 4].map(c => pick(c * 15 + 1, 5)), day = new Set();
+    while(day.size < 7) day.add(Math.floor(Math.random() * 25));
+    let h = "<div class=\"bc\">" + "BINGO".split("").map(l => `<b>${l}</b>`).join("");
+    for(let r = 0; r < 5; r++) for(let c = 0; c < 5; c++){ const free = r === 2 && c === 2; h += `<i${free ? " class=\"fr\"" : day.has(r * 5 + c) ? " class=\"db\"" : ""}>${free ? "★" : cols[c][r]}</i>`; }
+    return h + "</div>"; }).join("");
+  ts.prepend(el);
+}
 function ttPick(b, e){
   if(ttSel === b.id){ if(b._go) b._go.call(b, e); return; }   // second tap on the chosen mode opens it
   ttApply(b.id);   /* 6.90 (Omar): no click sound when picking a mode (6.84-6.89: try{ Snd.unlock(); Snd.blip(); }catch(_){}) */
@@ -179,6 +193,6 @@ function ttInit(){
   });
   $("#modeGo").onclick = e => { const b = ttSel && document.getElementById(ttSel); if(b && b._go) b._go.call(b, e); };
   $("#brandCorner").onclick = ttHome;
-  ttStars();
+  ttStars(); ttCardBuild();
   ttHome();
 }
