@@ -23,7 +23,7 @@ const TER = (() => {
   function score(g, it, norm, lev){ let best = Infinity; const gs = g.replace(/ /g, "");
     for(const v of variants(it, norm)){ const vs = v.replace(/ /g, "");
       if(g === v || gs === vs) return 0;
-      { const fw = v.split(" "); if(fw.length > 1 && g.indexOf(" ") < 0 && lev(g, fw[0]) <= 2) continue; }   // 8.16 (Omar): a bare make such as "Toyota" or "Volkswagen" never counts for "Toyota Corolla"; undo: delete this line
+      { const fw = v.split(" "); if(it.mk && fw.length > 1 && g.indexOf(" ") < 0 && lev(g, fw[0]) <= 2) continue; }   // 8.16 (Omar): a bare make such as "Toyota" or "Volkswagen" never counts for "Toyota Corolla"; undo: delete this line
       if(loose(lev, g, v) || loose(lev, gs, vs)) best = Math.min(best, 1);
       const w = v.split(" "), last = w[w.length - 1];
       if(w.length > 1 && last.length >= 4){ if(g === last) best = Math.min(best, 2); else if(g.length >= 4 && loose(lev, g, last)) best = Math.min(best, 3); } }
@@ -39,8 +39,8 @@ const TER = (() => {
     t.guess = text => {
       if(t.over) return {k:"over"}; const raw = String(text || "").trim(), hit = t.match(raw); if(hit === null) return {k:"empty"};
       if(!hit.length){ const g = o.norm(raw);
-        /* 8.18 (Omar): a bare make ("Toyota") is not an answer and costs no life, but every hidden slot that starts with it now reads "Toyota ..." */
-        const mk = g.indexOf(" ") < 0 && g.length >= 3 ? t.items.map((it, i) => { const w = o.norm(it.a).split(" "); return !t.found[i] && w.length > 1 && o.lev(g, w[0]) <= (w[0].length >= 8 ? 2 : w[0].length >= 5 ? 1 : 0) ? i : -1; }).filter(i => i >= 0) : [];
+        /* 8.18 (Omar, car lists only: items with mk): a bare make ("Toyota") is not an answer and costs no life, but every hidden slot that starts with it now reads "Toyota ..." */
+        const mk = g.indexOf(" ") < 0 && g.length >= 3 ? t.items.map((it, i) => { const w = o.norm(it.a).split(" "); return it.mk && !t.found[i] && w.length > 1 && o.lev(g, w[0]) <= (w[0].length >= 8 ? 2 : w[0].length >= 5 ? 1 : 0) ? i : -1; }).filter(i => i >= 0) : [];
         if(mk.length){ const nm = String(t.items[mk[0]].a).split(/\s+/)[0]; mk.forEach(i => t.part[i] = nm); return {k:"make", t:nm, n:mk.length}; }
         if(t.wrong.some(w => o.norm(w) === g)) return {k:"again", t:raw};   // the same wrong answer twice costs one life
         t.wrong.push(raw); if(t.lives){ t.left--; if(t.left <= 0) end("lives"); } return {k:"wrong", t:raw}; }
@@ -83,7 +83,7 @@ function teLineups(){ const d = (typeof DATA !== "undefined" && DATA.form) || {}
     if(rows.flat().length !== 11) return;
     out.push({ed:"f", key:a, id:"FMF#" + String(out.length + 1).padStart(3, "0"), form:ln[0], rows, t:m ? m[1] : a, yr:m ? m[2] : "", d:m ? m[3] : "", score:(TEN.fs || {})[a] || "", items:teFlags(rows.flat().map(n => ({a:n})), ((TEN.fl || {}).x || {})[a])}); });
   return out; }
-const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:ed === "f" ? teFlags(L.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), ((TEN.fl || {}).l || {})[L.t]) : L.a.map(([a, v, alt]) => ({a, v, alt:alt || []}))}));
+const teLists = ed => (ed === "f" ? TEN.f : TEN.n).map((L, i) => ({ed, id:(ed === "f" ? "FM#" : "NM#") + tePad(i + 1), key:L.t, t:L.t, d:L.d, src:L.src, as:L.as, items:ed === "f" ? teFlags(L.a.map(([a, v, alt]) => ({a, v, alt:alt || []})), ((TEN.fl || {}).l || {})[L.t]) : L.a.map(([a, v, alt]) => ({a, v, alt:alt || [], mk:!!L.mk}))}));   // 8.18: mk = the list is made of make + model answers (the car lists)
 TE.formShare = 1 / 3;   // 7.82 (Omar): with Formations on, lineups are mixed in at random with the football lists (about one turn in three), not lineups only
 function teDraw(pool, k, seen){   // a list not played on this device yet (all of them again once every one has been played)
   const s = new Set(seen[k] || []); let fresh = pool.filter(L => !s.has(L.key)); if(!fresh.length){ s.clear(); fresh = pool; }
