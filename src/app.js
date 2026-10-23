@@ -270,8 +270,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.62`);
-  $("#verBtn").textContent = "v8.62"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.63`);
+  $("#verBtn").textContent = "v8.63"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -349,7 +349,7 @@ const TIPS = {
   shirt: "What number did this famous player wear?",
   mgr: "Name the manager or national team coach.",
   fyear: "Three football events from the same year. Name the year.",
-  form: "A full starting lineup. Name the team and the year.",
+  form: "A full starting lineup. Name the team and the year. Half points for just one of them.",
   score: "A famous match. Name the final score.",
   sport: "Every sport except football.",
   food: "Dishes, drinks and food from around the world and Egypt.",

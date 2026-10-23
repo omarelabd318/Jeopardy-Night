@@ -5,7 +5,7 @@
    hsSetupAgain and hsLeave. Setup is saved on this device in jn_hsCfg (the game itself isn't saved). To remove: see the 6.59 NOTES entry. */
 const HS = {cfg:null, st:null};
 const HS_LVLS = [200,300,400,500];   // 6.59 (Omar): clues are random from these pools, never a 100. To bring 100s back, add 100 to this list.
-const HS_BAD = new Set(["act","impostor","password","closest","mix"]), HS_HALF = new Set(["song","pin"]), HS_WINNOTE = $("#winNote").textContent;   // rounds that need other teams are left out; half answers: song or singer, country only
+const HS_BAD = new Set(["act","impostor","password","closest","mix"]), HS_WINNOTE = $("#winNote").textContent;   // rounds that need other teams are left out; 8.63 (Omar): every clue has a Half button (7.x-8.62: only song and pin, HS_HALF)
 const hsNum = n => Number(n).toLocaleString("en-US");
 const hsPotAt = k => 100 * 2 ** k;   // the pot after k+1 right answers
 const hsShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -105,7 +105,8 @@ function renderHs(){
   const st = HS.st, root = $("#hsBody"); if(!st) return;
   if(st.over){ root.innerHTML = ""; return; }
   const seat = hsSeat(), t = st.teams[seat], n = st.streak, start = Math.max(0, n - 3), round = Math.floor(st.turnNo / st.teams.length) + 1;
-  const chips = [0,1,2,3,4].map(j => { const k = start + j, cls = k < n - 1 ? "done" : k === n - 1 ? "cur" : k === n ? "nxt" : ""; return `<div class="hschip ${cls}">${hsNum(hsPotAt(k))}</div>`; }).join("");
+  const hist = st.hist || [], at = k => k < n && hist[k] != null ? hist[k] : (n ? st.pot : 50) * 2 ** (k - n + 1);   // 8.63: the ladder shows the real pots so far, then doubles on from the pot
+  const chips = [0,1,2,3,4].map(j => { const k = start + j, cls = k < n - 1 ? "done" : k === n - 1 ? "cur" : k === n ? "nxt" : ""; return `<div class="hschip ${cls}">${hsNum(at(k))}</div>`; }).join("");
   const sub = st.stl ? `PASSED ON · HALF THE POT · ${hsNum(st.stl.amt)}` : st.tb ? "TIE-BREAK · ONE 500 CLUE EACH" : `ROUND ${round} OF ${HS.cfg.turns} · ${n ? n + " RIGHT IN A ROW" : "FIRST CLUE OF THE TURN"}`;
   const lead = Math.max(...st.teams.map(m => m.score));
   const mid = st.tb ? "" : `<div class="hsstack"><b>${hsNum(st.pot)}</b><small>${st.pot ? "IN THE POT" : "NOTHING AT RISK YET"}</small></div>
@@ -129,7 +130,7 @@ function hsOpen(){ const st = HS.st, c = st.cur; renderHs();   // 6.62: redraw t
 function hsResult(kind, pts){ const st = HS.st, t = st.teams[hsSeat()]; if(kind !== "miss") t.score += pts;
   st.res = {kind, pts, name:t.name}; st.phase = "result"; st.cur = null; if(kind === "miss") Snd.tick(); else Snd.chime(); renderHs(); }
 function hsNextTeam(){ const st = HS.st; st.turnNo++; if(st.turnNo >= hsTotal()) return hsFinish();
-  st.pot = 0; st.streak = 0; st.usedCats = []; st.phase = "pick"; st.res = null; hsDeal(); renderHs(); }
+  st.pot = 0; st.streak = 0; st.hist = []; st.usedCats = []; st.phase = "pick"; st.res = null; hsDeal(); renderHs(); }
 function hsFinish(){ const st = HS.st, max = Math.max(...st.teams.map(t => t.score)), top = st.teams.map((t, i) => i).filter(i => st.teams[i].score === max);
   if(top.length < 2) return hsEnd();
   st.tb = {ids:top, i:0, res:{}, msg:""}; st.phase = "tb"; st.res = null; renderHs(); }
@@ -168,7 +169,7 @@ function hsBanner(c){ const st = HS.st; if(!st || !st.cur) return ""; st.cur.idx
   return st.tb ? `<p class="note hsbanner">Tie-break: ${nm} gets this 500 clue. Right wins it.</p>`
     : `<p class="note hsbanner">${nm} is in the Hot Seat. ${st.pot ? `Pot ${hsNum(st.pot)}: right makes it ${hsNum(hsNext())}, wrong loses ${hsNum(st.pot)}.` : "First clue of the turn: right starts the pot at 100, wrong loses nothing."}</p>`; }
 function hsAwards(c){ const st = HS.st, i = hsSeat(), tb = !!st.tb;
-  return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : st.stl ? " · steal " + hsNum(st.stl.amt) : " · pot " + hsNum(hsNext())}</button>${!tb && !st.stl && HS_HALF.has(c.cat) ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · bank ${hsNum(st.pot)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb || st.stl ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
+  return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : st.stl ? " · steal " + hsNum(st.stl.amt) : " · pot " + hsNum(hsNext())}</button>${!tb && !st.stl ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · pot ${hsNum(hsNext() / 2)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb || st.stl ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
 function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; if(c.preview || c.revealed) return "";
   /* 7.51 (Omar): "Clue played already" is a free swap that doesn't use the team's one swap. Without it Hot Seat only had the limited swap. */
   const played = `<button class="btn small" data-act="played" title="The group has already had this clue. Get another from the same category and value, and it doesn't use your swap.">Clue played already</button>`;
@@ -181,8 +182,11 @@ function hsDone(c){
   if(st.tb) return hsTbDone(c, v);
   if(st.stl){ if(v === undefined){ renderHs(); return; } return hsStealDone(v === 1); }
   if(v === undefined){ renderHs(); return; }   // closed with no result: back to the table, where the clue can be opened again
-  if(v === 1){ st.streak++; st.pot = hsPotAt(st.streak - 1); st.phase = "pick"; st.cur = null; hsDeal(); Snd.blip(); renderHs(); return; }
-  if(v === 0.5) return hsResult("half", st.pot);   // a half answer is a safe stop: bank the pot from before this clue
+  if(v === 1){ st.pot = hsNext(); (st.hist = st.hist || [])[st.streak] = st.pot; st.streak++; st.phase = "pick"; st.cur = null; hsDeal(); Snd.blip(); renderHs(); return; }   // 8.63: from the pot itself, not hsPotAt(streak), so a half answer carries on
+  /* 8.63 (Omar): a half answer no longer banks. The pot becomes half of what a right answer would make it and the turn goes on,
+     doubling from there (pot 400: right makes 800, half keeps 400; first clue: half starts the pot at 50).
+     8.62 and before: if(v === 0.5) return hsResult("half", st.pot);  a safe stop that banked the pot from before this clue. */
+  if(v === 0.5){ st.pot = hsNext() / 2; (st.hist = st.hist || [])[st.streak] = st.pot; st.streak++; st.phase = "pick"; st.cur = null; hsDeal(); Snd.blip(); renderHs(); return; }
   hsResult("miss", st.pot); }
 /* 7.76 (Omar): Pass (before Reveal answer, so the answer isn't on the TV). The team in the seat takes 25% of the unbanked pot and the next team gets one go at the same clue for half the pot, wrong costs nothing. Passing has no limit per game. */
 function hsPass(){ const st = HS.st; if(!st || !st.cur || st.tb || st.stl || !st.pot || !HS.cfg.steal) return; const i = hsSeat(), t = st.teams[i], gain = Math.round(st.pot / 4);
