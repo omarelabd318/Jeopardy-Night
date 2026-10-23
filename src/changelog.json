@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.39", "date": "2026-10-23", "items": ["Tenable: the Choose list cards show just the list number and title (lineups get a small Lineup tag)."]},
  {"v": "8.38", "date": "2026-10-23", "items": ["Tenable and TenaBall: new list, the most valuable football clubs (Forbes 2026).", "Tenable: new Choose list switch in setup: each turn starts with 9 lists in a 3 by 3 grid and the player picks one."]},
  {"v": "8.37", "date": "2026-10-23", "items": ["Liar's Bar: a line above the cards on the TV says who played last and how many cards."]},
  {"v": "8.36", "date": "2026-10-23", "items": ["Tenable: 9 new lists: most valuable sports teams, superhero films, dog breeds, Spotify's top artists of 2025, hottest temperatures by country, longest-serving leaders, films with the most Oscars, Michelin stars by country and the most-grown fruits."]},

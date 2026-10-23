@@ -219,7 +219,7 @@ function teRender(){
     ${TE.dl && TE.phase === "play" ? `<div class="tebar"><i id="teBar" style="width:${Math.max(0, Math.min(100, (TE.dl - Date.now()) / (c.secs * 10)))}%"></i></div>` : ""}`;
   if(TE.phase === "ready" && !tu.list){
     el.innerHTML = `<div class="tetv">${top}<div class="tepick"><small>${c.players.length > 1 ? "Next up" : "Your pick"}</small><h2>${esc(p)}, choose a list</h2>
-      <div class="techo">${(tu.opts || []).map((L, i) => `<button data-cho="${i}" class="${L.ed === "f" ? "ball" : ""}"><em>${L.id}</em><b>${esc(L.t)}${L.yr ? " " + esc(L.yr) : ""}</b><small>${L.rows ? "Lineup: name all 11" : esc(L.d || "")}</small></button>`).join("")}</div></div><div class="tectl"><span class="gap"></span><button class="tebtn small ghost" data-act="end">End game</button></div>${teBoard()}</div>`; return; }
+      <div class="techo">${(tu.opts || []).map((L, i) => `<button data-cho="${i}" class="${L.ed === "f" ? "ball" : ""}"><em>${L.id}</em><b>${esc(L.t)}${L.yr ? " " + esc(L.yr) : ""}</b>${L.rows ? `<small>Lineup</small>` : ""}</button>`).join("")}</div></div><div class="tectl"><span class="gap"></span><button class="tebtn small ghost" data-act="end">End game</button></div>${teBoard()}</div>`; return; }
   if(TE.phase === "ready"){
     el.innerHTML = `<div class="tetv">${top}<div class="teready"><small>${c.players.length > 1 ? "Next up" : "Ready?"}</small><h2>${esc(p)}</h2>
       <p>${!!tu.list.rows ? "A lineup is coming: name all 11 players." : "A top ten is coming: name all ten."} ${c.lives ? `${c.lives} lives.` : "No life limit."}${c.secs ? ` ${c.secs / 60} minutes.` : ""}</p>
