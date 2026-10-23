@@ -21,5 +21,12 @@
     "bindings": [{ "name": "ROOMS", "class_name": "Room" }]
   },
   // SQLite-backed Durable Objects are included in Cloudflare's free plan.
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room"] }]
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room"] }],
+  // 8.72 (Omar): Logs switched on in the dashboard (Observability). Kept here too, so a deploy from GitHub
+  // doesn't switch them back off. Applies to both Worker projects (sahra and jeopardy-night). To undo, delete this block.
+  "observability": {
+    "logs": { "enabled": true, "head_sampling_rate": 1, "invocation_logs": true, "persist": true },
+    "traces": { "enabled": false, "head_sampling_rate": 1, "persist": true },
+    "issue_detection": { "enabled": false }
+  }
 }
