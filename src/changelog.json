@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.61", "date": "2026-10-23", "items": ["Hot Seat: don't like any of the three categories? Each team can swap them for three new ones, once per game."]},
  {"v": "8.60", "date": "2026-10-23", "items": ["Hot Seat: each category card shows a short line about the category, and long names like Disney/CN/Nickelodeon stay inside their card."]},
  {"v": "8.59", "date": "2026-10-23", "items": ["Riddle Me This: each row of the list now counts up from left to right, with the newest row at the top."]},
  {"v": "8.58", "date": "2026-10-23", "items": ["Version panel: a new Modes section, under Categories and clues, has a small card for every mode, with its players, whether it needs phones, and how many categories, clues, lists or words it has.", "The section headings in the version panel no longer show a faded box when you hover them."]},

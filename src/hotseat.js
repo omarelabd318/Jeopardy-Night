@@ -60,7 +60,7 @@ function hsDeal(again){   // three category cards, each with a random hidden val
     for(let t = 0; t < 8; t++){ const card = hsCard(cat, HS_LVLS[Math.floor(Math.random() * HS_LVLS.length)]); if(card){ out.push(card); break; } } }
   if(out.length < 3 && st.usedCats.length && !again){ st.usedCats = []; return hsDeal(true); }
   st.cards = out; }
-const hsInit = () => { HS.st = {v:1, teams:HS.cfg.teams.map(n => ({name:n, score:0, swap:HS.cfg.swap})), turnNo:0, pot:0, streak:0, usedCats:[], cards:[], phase:"pick", cur:null, res:null, over:false, tb:null, tbWin:null}; hsDeal(); return HS.st; };
+const hsInit = () => { HS.st = {v:1, teams:HS.cfg.teams.map(n => ({name:n, score:0, swap:HS.cfg.swap, cswap:true})), turnNo:0, pot:0, streak:0, usedCats:[], cards:[], phase:"pick", cur:null, res:null, over:false, tb:null, tbWin:null}; hsDeal(); return HS.st; };
 const hsTotal = () => HS.cfg.teams.length * HS.cfg.turns;
 const hsSeat = () => { const st = HS.st; if(st.stl) return st.stl.by; return st.tb ? st.tb.ids[st.tb.i] : st.turnNo % st.teams.length; };
 const hsNext = () => HS.st.streak ? HS.st.pot * 2 : 100;   // what the pot becomes on the next right answer
@@ -111,7 +111,7 @@ function renderHs(){
   const mid = st.tb ? "" : `<div class="hsstack"><b>${hsNum(st.pot)}</b><small>${st.pot ? "IN THE POT" : "NOTHING AT RISK YET"}</small></div>
     <button class="hscp bank" data-hs="bank" ${st.pot && st.phase === "pick" ? "" : "disabled"}><div>Bank<small>${hsNum(st.pot)}</small></div></button><div class="hscp risk"><div>Risk<small>${hsNum(hsNext())}</small></div></div>`;
   let low = "", ov = "";
-  if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc${catById(c.cat).name.length > 28 ? " long" : ""}" data-card="${i}"><b>${esc(catById(c.cat).name).replace(/\//g, "/<wbr>")}</b>${HS_BLURB[c.cat] ? `<i class="hsd">${esc(HS_BLURB[c.cat])}</i>` : ""}</button>`).join("")}</div>`;
+  if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}${hsCanCswap() ? ` <button class="hsb cswap" data-hs="cswap" title="Don't like any of these? Swap all three for new categories. Once per team per game.">Swap categories (1 left)</button>` : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc${catById(c.cat).name.length > 28 ? " long" : ""}" data-card="${i}"><b>${esc(catById(c.cat).name).replace(/\//g, "/<wbr>")}</b>${HS_BLURB[c.cat] ? `<i class="hsd">${esc(HS_BLURB[c.cat])}</i>` : ""}</button>`).join("")}</div>`;
   else if(st.phase === "clue" || st.phase === "tbclue") low = `<div class="hscards one"><button class="hsb go" data-hs="reopen">Open the clue again</button></div>`;
   if(st.phase === "result"){ const r = st.res, last = st.turnNo + 1 >= hsTotal();
     ov = `<div class="hsov"><h2 class="${r.kind === "miss" && r.pts ? "lose" : ""}">${r.kind === "pass" ? "Passed" : r.kind === "bank" ? "Banked!" : r.kind === "half" ? "Half answer" : r.pts ? "Busted!" : "Missed it"}</h2>
@@ -142,6 +142,11 @@ function hsTbDone(c, v){ const st = HS.st, tb = st.tb; if(v === undefined){ rend
   if(rights.length === 1){ st.tbWin = rights[0]; return hsEnd(); }
   const same = rights.length === 0 || rights.length === tb.ids.length;
   st.tb = {ids: same ? tb.ids : rights, i:0, res:{}, msg: same ? "Everyone " + (rights.length ? "got it" : "missed") + ", so go again." : "Still tied, go again."}; st.phase = "tb"; st.cur = null; renderHs(); }
+// 8.61 (Omar): one category swap per team per game: trade all three cards for three new categories
+function hsCanCswap(){ const st = HS.st, t = st && st.teams[hsSeat()]; return !!t && st.phase === "pick" && !st.tb && !st.stl && t.cswap !== false; }
+function hsCswap(){ const st = HS.st; if(!hsCanCswap()) return; st.teams[hsSeat()].cswap = false;
+  const old = st.cards.map(c => c.cat); st.usedCats.push(...old); hsDeal(); st.usedCats = st.usedCats.filter(id => !old.includes(id));   // old three only skipped for this deal
+  Snd.blip(); renderHs(); }
 function hsUseSwap(){ const st = HS.st, t = st && st.teams[hsSeat()]; if(!HS.cfg.swap || st.tb || st.stl || !t || !t.swap) return false; t.swap = false; return true; }
 $("#hsBody").addEventListener("click", e => {
   const st = HS.st; if(!st) return;
@@ -149,6 +154,7 @@ $("#hsBody").addEventListener("click", e => {
   if(card && st.phase === "pick"){ st.cur = st.cards[+card.dataset.card]; st.usedCats.push(st.cur.cat); st.phase = "clue"; Snd.unlock(); Snd.blip(); hsOpen(); return; }
   const b = e.target.closest("[data-hs]"); if(!b) return; const k = b.dataset.hs;
   if(k === "bank" && st.pot && st.phase === "pick") hsResult("bank", st.pot);
+  else if(k === "cswap") hsCswap();
   else if(k === "reopen" && st.cur) hsOpen();
   else if(k === "next") hsNextTeam();
   else if(k === "tbopen") hsTbOpen();
