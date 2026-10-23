@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.69", "date": "2026-10-23", "items": ["Riddle Me This: a riddle with a YouTube video now plays it right on the riddle screen, so you don't have to leave the game."]},
  {"v": "8.68", "date": "2026-10-23", "items": ["Riddle Me This: the hint and solution buttons just show a lock until they open, with no countdown, and the solution now opens after 10 minutes too."]},
  {"v": "8.67", "date": "2026-10-23", "items": ["Riddle Me This: a colour dot on each riddle shows how hard it is, from green (very easy) to red (very hard), with a key under the title."]},
  {"v": "8.66", "date": "2026-10-23", "items": ["Tenable: an answer you found after a hint (flag or letters) is worth half a point, and a fully revealed answer is worth nothing. Getting all ten still earns the +2 bonus."]},

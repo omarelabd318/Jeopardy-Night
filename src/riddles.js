@@ -12,7 +12,10 @@ const RD_LV = [null, ["Very easy", "#3ddc84"], ["Easy", "#4fc3f7"], ["Medium", "
 const rdDot = r => { const v = RD_LV[r.lv]; return v ? `<i class="rddot" style="--lv:${v[1]}" title="${v[0]}"></i>` : ""; };
 const RD = {open:-1, t0:0, tmr:null, seen:(() => { try { return new Set(JSON.parse(localStorage.getItem("jn_rdSeen") || "[]")); } catch(e){ return new Set(); } })()};
 const rdEsc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;"})[c]);
+/* 8.69 (Omar): a YouTube link plays in the riddle screen, with a small "Open on YouTube instead" link under it (8.53-8.68: only the link, which left the game) */
+const rdYT = u => { const m = String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/); return m ? m[1] : ""; };
 const rdBlock = b => b.img ? `<div class="rdimg"><img src="${rdEsc(b.img)}" alt="Picture for this riddle"></div>`
+  : b.url && rdYT(b.url) ? `<div class="rdvid"><iframe src="https://www.youtube-nocookie.com/embed/${rdYT(b.url)}?rel=0" title="Video for this riddle" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="rdurl small"><a href="${rdEsc(b.url)}" target="_blank" rel="noopener">Open on YouTube instead</a></p>`
   : b.url ? `<p class="rdurl"><a href="${rdEsc(b.url)}" target="_blank" rel="noopener">${rdEsc(b.url)}</a></p>`
   : b.pre != null ? `<pre>${rdEsc(b.pre)}</pre>` : `<p>${rdEsc(b.p)}</p>`;
 function rdEnter(){ if(S.mode === "riddles") return; S.mode = "riddles"; document.body.classList.add("rdmode"); }
