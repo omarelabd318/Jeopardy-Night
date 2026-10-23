@@ -1,7 +1,7 @@
 /* 8.53 (Omar): Riddle Me This. Opening the mode shows the list of riddles straight away, newest first (R#56 at the top); pick one and it fills the TV.
    The Swap riddle button at the top brings the list back. No answers (Omar doesn't have them), no scoring, no teams, no phones.
    Riddles: v4work/riddles/riddles.txt (RID in build.js: [{n:"R#01", b:[{p}|{pre}|{img}|{url}]}]); a new riddle goes at the end with the next number.
-   Riddles already opened on this device get a small "Read" tag (jn_rdSeen). Look: "Riddler", deep purple with acid-green question marks.
+   Riddles already opened on this device are faded on the list (jn_rdSeen; 8.53 had a small "Read" tag). Look: "Riddler", deep purple with acid-green question marks.
    To remove: delete this file, v4work/riddles/, photos/riddles/, the 8.53 CSS block and #rdo section in head.html, the Riddle Me This button, its TT entry
    in title.js, the rdLeave() call in showHome (src/app.js), RID in build.js and 'riddles' in MODE_FILES. */
 const RD = {open:-1, seen:(() => { try { return new Set(JSON.parse(localStorage.getItem("jn_rdSeen") || "[]")); } catch(e){ return new Set(); } })()};
@@ -15,13 +15,13 @@ function rdShow(){ rdEnter(); ["#titleScreen", "#setup", "#game", "#scores"].for
   $("#rdo").hidden = false; RD.open = -1; rdRender(); window.scrollTo(0, 0); }
 function rdRender(){ const body = $("#rdBody"), sw = $("#rdSwap"); sw.hidden = RD.open < 0;
   if(RD.open < 0){
-    const cards = RID.map((r, i) => [r, i]).reverse().map(([r, i]) => { const seen = RD.seen.has(r.n), txt = r.b.filter(b => b.p).map(b => b.p).join(" "),
-        tags = (r.b.some(b => b.img) ? `<i class="rdtag">Picture</i>` : "") + (r.b.some(b => b.url) ? `<i class="rdtag">Video link</i>` : "") + (seen ? `<i class="rdtag rdseen">Read</i>` : "");
-      return `<button class="rdcard${seen ? " seen" : ""}" data-rd="${i}"><div class="rdch"><b>${r.n}</b>${tags}</div><span>${rdEsc(txt)}</span></button>`; }).join("");
+    /* 8.54 (Omar): each card has a short title; the Picture / Video link / Read tags are gone, a riddle already read is faded instead */
+    const cards = RID.map((r, i) => [r, i]).reverse().map(([r, i]) => { const txt = r.b.filter(b => b.p).map(b => b.p).join(" ");
+      return `<button class="rdcard${RD.seen.has(r.n) ? " seen" : ""}" data-rd="${i}"><div class="rdch"><b>${r.n}</b><em>${rdEsc(r.t || "")}</em></div><span>${rdEsc(txt)}</span></button>`; }).join("");
     body.innerHTML = `<header class="rdhead"><h1>Riddle Me This</h1><p>${RID.length} riddles · newest first · pick one to read it on the TV</p><button class="rdbtn go" id="rdRandom">Random riddle</button></header><div class="rdlist">${cards}</div>`;
     return; }
   const r = RID[RD.open];
-  body.innerHTML = `<article class="rdread"><div class="rdnum">${r.n}</div><div class="rdtext">${r.b.map(rdBlock).join("")}</div></article>`;
+  body.innerHTML = `<article class="rdread"><div class="rdnum">${r.n}${r.t ? `<small>${rdEsc(r.t)}</small>` : ""}</div><div class="rdtext">${r.b.map(rdBlock).join("")}</div></article>`;
   rdFit(); body.querySelectorAll(".rdimg img").forEach(im => im.addEventListener("load", rdFit)); }
 /* the riddle text starts big and shrinks until the whole riddle fits on one screen (never below 17px; a very long one then scrolls) */
 function rdFit(){ const t = $("#rdBody .rdtext"); if(!t) return; const room = window.innerHeight - t.getBoundingClientRect().top - 24;

@@ -1,12 +1,12 @@
 # Riddle Me This (8.53): the riddles, numbered R#01, R#02, ... in the order they were added. The game lists them newest first.
-# Add a new riddle at the END with the next number. Each starts with a line "=== R#NN". Lines starting with # are notes and are skipped.
+# Add a new riddle at the END with the next number. Each starts with a line "=== R#NN | Short title" (8.54: the title shows on the list and above the riddle; keep it spoiler-free). Lines starting with # are notes and are skipped.
 # A line [img riddles/name.png] shows photos/riddles/name.png in the riddle. Lines between ``` fences are shown in a fixed-width font (for sums laid out in columns).
 # A line that is only a web address becomes a link. No answers are stored (Omar doesn't have them).
 
-=== R#01
+=== R#01 | Dealing the Hearts
 All 13 hearts in a deck of cards are arranged in a face-down stack. You pick up the stack and begin to deal them out in a curious way: You take the top card and move it to the bottom of the stack, then, you take the new top card and lay it face up on the table. You continue this sequence of two moves until you place all 13 cards face up on the table.
 
-=== R#02
+=== R#02 | The Comic Book Box
 Three sisters combine their money to buy a mystery box full of an unknown amount of comic books. The box arrives at the sisters’ house one night, and they agree to store it in their younger brother’s room and not open it until the next morning.
 But that night, one sister can’t sleep, so she decides to sneak in and open the box. Looking inside, she finds that she can split the comic books into three equal shares, plus one extra comic. She sees her brother awake and spying, so she hands him the extra comic, takes her own share of one-third of the remaining comic books, and goes back to sleep.
 An hour later, the second sister does the exact same thing. She opens the box and sees that the comics can be split into three equal shares, plus one extra comic. She bribes the spying little brother with a comic, takes one-third of the remaining books, and goes back to sleep.
@@ -14,71 +14,71 @@ Then, an hour after that, the third sister does the same thing yet again, bribin
 In the morning, none of the sisters want to reveal that they’ve already taken any comics. So they each pretend to be surprised when they look in the box. They dump out the comics and realize that the number of books can easily be split into three equal shares along with one extra comic, which they gave to their happy little brother.
 What’s the smallest possible number of comic books that could have been in that mystery box when it first arrived? And how many comics does each sibling have?
 
-=== R#03
+=== R#03 | A Hen and a Half
 A hen and a half lays an egg and a half in a day and a half. How many eggs does one hen lay in one day?
 
-=== R#04
+=== R#04 | Three Stone Doors
 You’re lost in an endless maze and turn a corner, only to be faced with a fearsome sight. Three large stone doors stand before you in the passageway. You laugh confidently, remembering that like in the classic sci-fi movie Labyrinth, only one of the doors tells the truth, while the other doors always lie.
 Each door has a plain wooden sign attached to the front. The sign on the left door reads, “The way out is beyond this door.” The sign on the middle door reads, “The way out is beyond one of these doors.” And the sign on the right door reads, “The way out is beyond the middle door.”
 You were hoping you’d get to ask a question, but now you pause and carefully consider your options. You only get one chance at this. So, which door do you open?
 
-=== R#05
+=== R#05 | Diophantus's Age
 One of the titans of Number Theory—the study of natural numbers and their properties—is Diophantus of Alexandria, an ancient Greek mathematician who still pops up in algebra textbooks today. You might even remember his namesake Diophantine equations, which always take the form Ax + By = C, where A, B, and C are all whole numbers.
 Centuries after Diophantus’s death, the grammarian Metrodorus wrote an epitaph that both described the mathematician’s life and revealed his age—evidently a long-standing mystery. And that’s where you come in: Can you figure out how old Diophantus was when he died? (Bonus points if you can solve this problem without resorting to fractions.)
 
-=== R#06
+=== R#06 | Scuba Diver in the Forest
 There is a dead man in a scuba suit in the middle of a forest. How did he get there?
 
-=== R#07
+=== R#07 | Twelve Cue Balls
 You have 12 cue balls that look and feel identical. However, one of the cue balls is either slightly lighter or slightly heavier than the rest. You cannot tell which ball is the odd one out by handling them, and you do not know if that ball is lighter or heavier.
 You have a set of old-fashioned balance scales. The scale with more weight in it will tip down, and the scale with less weight in it will tip up.
 How do you figure out which ball is the odd one out, and whether it is lighter or heavier, in just three weighings?
 
-=== R#08
+=== R#08 | The Three Gods
 On the summit of this remote volcano, you realize a few things through divine intervention.
 First, you know that one of the three gods always tells the truth, another always lies, and the third will respond to questions randomly. Therefore, let us call the gods True, False, and Random.
 The gods speak a different language. They understand all languages perfectly well, but only answer questions with either ja or da, the words for yes and no. You do not know which god is which, and you do not know which word means yes and which word means no.
 Finally, you have an existential problem on your hands. You may ask three yes-or-no questions, each one directed to only one god, and only that god will answer with either ja or da. If you can determine the identities of the three gods, they will send you on your way with their blessing, and you can be assured of a prosperous and fulfilled life. If you fail to determine the identities of the gods, however, they will be less generous in their treatment. The volcano pit smokes and glows red beside you.
 With your three questions, how do you figure out which god is True, which is False, and which is Random?
 
-=== R#09
+=== R#09 | 53 Bicycles
 In a room there are 53 bicycles. There is also a table in the middle of the room. A dead man with a bullet hole in his head is slouched in a chair, face down on the table.
 What happened?
 
-=== R#10
+=== R#10 | The Farmer's Fence
 A farmer challenges an engineer, a physicist, and a mathematician to build him a fence that encloses the most area with the least amount of fencing.
 The engineer makes a circular fence, claiming that it is most efficient.
 The physicist made a long straight line of fence and said the length was infinite, as fencing half the world was the most efficient way.
 The mathematician laughed at the others, and then proceeded to build the winning fence. What did he build?
 
-=== R#11
+=== R#11 | Pickleball Round-Robin
 Kenny, Abby, and Ned got together for a round-robin pickleball tournament, where, as usual, the winner stays on after each game to play the person who sat out that game. At the end of their pickleball afternoon, Abby is exhausted, having played the last seven straight games. Kenny, who is less winded, tallies up the games played:
 Kenny played eight games
 Abby played 12 games
 Ned played 14 games
 Who won the fourth game against whom?
 
-=== R#12
+=== R#12 | The Scooter Ride Home
 Amanda lives with her teenage son, Matt, in the countryside—a car ride away from Matt’s school. Every afternoon, Amanda leaves the house at the same time, drives to the school at a constant speed, picks Matt up exactly when his chess club ends at 5 p.m., and then they immediately return home together at the same constant speed. But one day, Matt isn’t feeling well, so he leaves chess practice early and starts to head home on his portable scooter.
 After Matt has been scooting for an hour, Amanda comes across him in her car (on her usual route to pick him up), and they return together, arriving home 40 minutes earlier than they usually do. How much chess practice did Matt miss?
 
-=== R#13
+=== R#13 | Double by Moving a Digit
 One day, in a gathering of top scientists, one of them wondered out loud whether there exists an integer that you could exactly double by moving its last digit to its front. For instance, 265 would satisfy this if 526 were its exact double—which it isn’t.
 After apparently just five seconds, Dyson responded, “Of course there is, but the smallest such number has 18 digits.”
 This left some of the smartest scientists in the world puzzling over how he could have figured this out so quickly.
 So given Dyson’s hint, what is the smallest such number?
 
-=== R#14
+=== R#14 | Numbers on Foreheads
 Cecilia loves testing the logic of her very logical friends Jaya, Julian, and Levi, so she announces:
 “I’ll write a positive number on each of your foreheads. None of the numbers are the same, and two of the numbers add up to the third.”
 She scribbles the numbers on their heads, then turns to Jaya and asks her what her number is. Jaya sees Julian has 20 on his forehead, and Levi has 30 on his. She thinks for a moment and then says, “I don’t know what my number is.” Julian pipes in, “I also don’t know my number,” and then Levi exclaims, “Me neither!” Cecilia gleefully says, “I’ve finally stumped you guys!”
 “Not so fast!” Jaya says. “Now I know my number!”
 What is Jaya’s number?
 
-=== R#15
+=== R#15 | What Comes Next?
 23, 28, 43, 65, 98, ???
 
-=== R#16
+=== R#16 | Statement x
 A puzzle from the October 1962 issue of Eureka, the journal of the Cambridge University Mathematical Society:
 (a) At least two of these statements, apart from this one, are true.
 (b) At least two of these statements, apart from this one, are false.
@@ -86,7 +86,7 @@ A puzzle from the October 1962 issue of Eureka, the journal of the Cambridge Uni
 (d) x of these statements are true.
 Given that, if you knew the value of x, you could determine uniquely which statements are true and which are false, determine the value of x.
 
-=== R#17
+=== R#17 | Planet Sum
 An elegant alphametic by Jonathan Joseph, from the October 1991 issue of Games magazine:
 ```
    VENUS
@@ -98,26 +98,26 @@ An elegant alphametic by Jonathan Joseph, from the October 1991 issue of Games m
 ```
 If each letter consistently represents a particular digit, what equation does this expression encipher?
 
-=== R#18
+=== R#18 | Two Trains Passing
 Two trains, A and B, start simultaneously from opposite ends of a 450-mile track. Each travels nonstop at a uniform speed to the opposite end. A finishes its journey 4 hours after passing B, and B finishes its journey 9 hours after passing A. What were their speeds?
 
-=== R#19
+=== R#19 | Family Chess Tournament
 A mother, her brother, her daughter, and her son take part in a family chess tournament. Two of the four are twins. At the end of the tournament, the winner and the “loser” (the player in last place) are found to be the same age, and the winner is the opposite gender to the loser’s twin. Who won the tournament?
 
-=== R#20
+=== R#20 | The Maths Contest
 In a mathematical contest, three problems, A, B, C were posed. Among the participants there were 25 students who solved at least one problem each. Of all the contestants who did not solve problem A, the number who solved B was twice the number who solved C. The number of students who solved only problem A was one more than the number of students who solved A and at least one other problem. Of all students who solved just one problem, half did not solve problem A. How many students solved only problem B?
 
-=== R#21
+=== R#21 | Ages of A and B
 When A was three times as old as B was the year before A was a half of B’s present age, B was 3 years younger than A was when B was two thirds of A’s present age. A’s and B’s ages now total 73. How old are A and B?
 
-=== R#22
+=== R#22 | Island of Liars
 On a certain familiar island, some residents always lie, and the others always tell the truth. The total population is 100. Each resident worships one of three gods, the sun god, the moon god, or the Earth god. One day a visitor asks each resident three questions:
 1. Do you worship the sun god?
 2. Do you worship the moon god?
 3. Do you worship the Earth god?
 Sixty residents answer yes to the first question, 40 to the second, and 30 to the third. How many residents are liars?
 
-=== R#23
+=== R#23 | Five Birthdays
 Annie, Betty, Carrie, Darla, and Eve all have the same birthday, but all are different ages. On their shared birthday:
 • Darla said to Betty: “I’m 9 years older than Eve.”
 • Eve said to Betty: “I’m 7 years older than Annie.”
@@ -129,39 +129,39 @@ Annie, Betty, Carrie, Darla, and Eve all have the same birthday, but all are dif
 • Betty said to Carrie: “The difference between your age and Darla’s is the same as the difference between Darla’s and Eve’s.”
 Whenever one of them spoke to someone older than herself, everything she said was true, but when she spoke to someone younger, everything she said was false. How old is each person?
 
-=== R#24
+=== R#24 | Trains at Noon
 “At noon precisely, a train leaves A for B, and another leaves B for A. They pass after 51 minutes. Each train stays 27 minutes at its destination and then returns by the same route. The trains from A and B travel throughout with constant speeds of 23 m.p.h. and 39 m.p.h., respectively. At what time do they pass for the second time?”
 
-=== R#25
+=== R#25 | Ant on a Clock
 An ant crawls onto a clock face at the 6 mark just as the minute hand is passing 12. She begins crawling counterclockwise around the face’s circumference at a uniform speed. When the minute hand passes her, she reverses course and crawls clockwise without changing her speed. Forty-five minutes after her first encounter with the minute hand, it passes her a second time and she departs. How much time did she spend on the clock face?
 
-=== R#26
+=== R#26 | The Lion and the Unicorn
 In What Is the Name of This Book? (1986), Raymond Smullyan describes two curious denizens of the Forest of Forgetfulness. The Lion lies on Mondays, Tuesdays, and Wednesdays, and the Unicorn lies on Thursdays, Fridays, and Saturdays. Each tells the truth on the days it doesn’t lie.
 One day Alice encounters the two of them resting under a tree. They tell her:
 Lion: Yesterday was one of my lying days.
 Unicorn: Yesterday was one of my lying days too.
 “From these two statements, Alice (who was a very bright girl) was able to deduce the day of the week. What day was it?”
 
-=== R#27
+=== R#27 | Mr. Smith in Atlantic City
 Mr. Smith goes to Atlantic City to gamble for a weekend. To guard against bad luck, he sets a policy at the start: In every game he plays, he’ll bet exactly half the money he has at the time, and he’ll make all his bets at even odds, so he’ll have an equal chance of winning and of losing this amount. In the end he wins the same number of games that he loses. Does he break even?
 
-=== R#28
+=== R#28 | Two Coins
 My friend tosses two coins and covers them with his hand. ‘Is there at least one “tail”?’ I ask. He affirms this (a).
 Just then he accidentally knocks one of them to the floor (b). On finding the dropped coin under the table, we discover it to be a ‘tail’ (c).
 ‘That is all right,’ he says, ‘because it was a “tail” to start with.’ (d).
 At each point (a), (b), (c) and (d) of this episode I calculated what, to the best of my knowledge, was the probability that both coins showed ‘tails’ at the time. What were these probabilities?
 
-=== R#29
+=== R#29 | Gleepers and Poosters
 If a GLEEPER is as long as two PLONTHS and a half-GLEEPER, and a BLAHMIE is as long as two GLEEPERS and a half-BLAHMIE, and a POOSTER is as long as two BLAHMIES and a half-POOSTER, then how many PLONTHS long is a half-POOSTER?
 
-=== R#30
+=== R#30 | Bert, Bill and Ben
 When Bert was just one year younger than Bill was when Ben was half as old as Bill will be 3 years from now, Ben was twice as old as Bill was when Ben was 1/3 as old as Bert was 3 years ago. But, when Bill was twice as old as Bert, Ben was 1/4 as old as Bill was one year ago.
 “Ignoring odd months and considering that Bert has passed the half-century mark, it will be no problem to find out how old these three friends are.”
 
-=== R#31
+=== R#31 | The Wine Bottles
 A gentleman had a bottle containing 12 pints of wine, 6 of which he was desirous of giving to a friend; but he had nothing to measure it, except two other bottles, one of 7 pints, and the other of 5. How did he contrive to put 6 pints into the 7-pint bottle?
 
-=== R#32
+=== R#32 | Six Poker Hands
 Four players describe the cards they held in their last game of five-card poker:
 Harry: “I had the two, nine, and jack of hearts, and the two and nine of diamonds.”
 Edna: “I held four fives and the queen of spades.”
@@ -171,17 +171,17 @@ Georgiana: “I had a straight. Two of my cards were spades; the others weren’
 Cleo: “I just had one lousy pair.” (to Frankie:) “But my lowest-ranking card was higher than any of yours.”
 An onlooker asks how many of the undealt cards were black, and Dave answers, “No more than three.” What were the contents of Dave’s, Frankie’s, Georgiana’s, and Cleo’s hands?
 
-=== R#33
+=== R#33 | The Bathtub
 A bathtub will fill in 3 minutes if the plug is in and the cold tap only is turned on full. It will fill in 4 minutes if the plug is in and the hot tap only is turned on full. With the plug out and both taps off, a full tub will drain in 2 minutes. How long will it take to fill the empty tub if the plug is out and both taps are turned on full?
 
-=== R#34
+=== R#34 | The Busy Elevator
 A 20-story office building has one busy elevator. On a recent trip upward, the elevator transported seven passengers. Each of these went up at least two floors, but no two of them went up the same number of floors. On this one upward journey, no more than one passenger crossed the elevator’s threshold on any given floor; no passenger exited on the 17th floor; and the elevator’s doors opened at more odd-numbered floors than even-numbered floors. Anton was the last passenger on and the second one off. Bessie got on before Clara and after Dagwood and went up more floors than Dagwood did. Edsel went up exactly twice as many floors as Filbert and got off before Gerda got on. Gerda was not the last one to exit.
 Where did each passenger enter and exit the elevator?
 
-=== R#35
+=== R#35 | Before and After
 “If the brainteaser you solved before you solved this one was harder than the brainteaser you solved after you solved the brainteaser that you solved before you solved this one, was the brainteaser you solved before you solved this one harder than this one?”
 
-=== R#36
+=== R#36 | Five Schoolgirls
 A problem by British puzzlist Hubert Phillips:
 In writing home about an examination, five schoolgirls each made one true statement and one untrue one. The relevant passages:
 Betty: Kitty was second in the examination. I was only third.
@@ -191,17 +191,17 @@ Kitty: I came out second. Mary was only fourth.
 Mary: I was fourth. Top place was taken by Betty.
 In what order did they place?
 
-=== R#37
+=== R#37 | Two Marksmen
 Marksman A hits a certain small target 75 percent of the time. Marksman B hits it 25 percent of the time. The two of them aim at that target and fire simultaneously. One bullet hits it. What’s the probability that it came from A?
 
-=== R#38
+=== R#38 | A Flock of Pigeons
 “Solve the following problem if you can: a flock of pigeons alighted upon a tree, some perching upon the upper branches and some upon the lower; those upon the upper branches said to those upon the lower: ‘If one of you flies up to us our number will be double yours; if one of us flies down to you, our numbers will be equal.’”
 How large was the flock?
 
-=== R#39
+=== R#39 | Dresses and Shoes
 Three girls dressed up in white, green, and blue dresses. They also wore shoes of these three colors. Only Ann wore a dress of the same color as her shoes. Neither Betty’s dress nor her shoes were white, and Carol’s shoes were green. What was the color of each girl’s dress?
 
-=== R#40
+=== R#40 | The True/False Gang
 A puzzle by Jared Z., Nicole H., and Benjamin E., mathematicians at the National Security Agency:
 The chief detective hurried down to the police station after hearing big news: there was a heist at Pi National Bank! The police had brought in seven known gang members seen leaving the scene of the crime. They belonged to the nefarious True/False Gang, so named because each member is either required to always tell the truth or required to always lie, although everyone is capable of engaging in wrongdoing. The chief also knew from his past cases that any crime committed by the gang always included one truth teller.
 When the chief showed up, he asked the gang members the following questions:
@@ -219,18 +219,18 @@ Person 7: Yes; 2; 2
 After looking these answers over, the chief prepared to arrest those responsible.
 Which of these seven did the chief arrest?
 
-=== R#41
+=== R#41 | PI × R2 = AREA
 PI × R2 = AREA
 If each letter in this expression (but not the exponent 2) is replaced with a corresponding digit, the resulting equation will be valid. What are the digits?
 
-=== R#42
+=== R#42 | Six Hats
 After a meeting of six professors, each man left with another’s hat. The hat that Aitkins took belonged to the man who took Baily’s hat. The man whose hat was taken by Caldwell took the hat of the man who took Dunlop’s hat. And the man who took Easton’s hat wasn’t the one whose hat was taken by Fort. Who took Aitkins’ hat?
 
-=== R#43
+=== R#43 | The Greedy King
 A little kingdom contains 66 people, a king and 65 citizens. Each of them, including the king, has a salary of one gold piece. When democracy comes, the king is denied a vote, but he has the power to suggest changes, in particular regarding the redistribution of salaries. The salaries must total 66, and each salary must be a whole number of gold pieces. The citizens will vote on each suggestion, which will pass if more citizens vote for it than against it. Each voter will reliably support a measure if it will increase his salary, oppose it if it will decrease his salary, and otherwise abstain from voting.
 The king is greedy. What’s the highest salary he can arrange for himself?
 
-=== R#44
+=== R#44 | Three Athletes
 Three athletes (and only three athletes) participate in a series of track and field events. Points are awarded for 1st, 2nd, and 3rd place in each event (the same points for each event, i.e. 1st always gets “x” points, 2nd always gets “y” points, 3rd always gets “z” points), with x > y > z > 0, and all point values being integers.
 The athletes are named Adam, Bob, and Charlie.
 • Adam finished first overall with 22 points.
@@ -238,10 +238,10 @@ The athletes are named Adam, Bob, and Charlie.
 • Charlie also finished with 9 points overall.
 Question: Who finished second in the 100-meter dash (and why)?
 
-=== R#45
+=== R#45 | The Cabinetmaker's Pay
 A puzzle by Soviet science writer Yakov Perelman: Six carpenters and a cabinetmaker were hired to do a job. Each carpenter was paid 20 rubles, and the cabinetmaker was paid 3 rubles more than the average wage of the whole group. How much did the cabinetmaker make?
 
-=== R#46
+=== R#46 | Four Statements
 A problem from the October 1959 issue of Eureka, the journal of the Cambridge University Mathematical Society:
 A. The total number of true statements in this problem is 0 or 1 or 3.
 B. The total number of true statements in this problem is 1 or 2 or 3.
@@ -249,44 +249,44 @@ C. The total number of true statements in this problem (excluding this one) is 0
 D. The total number of true statements in this problem (excluding this one) is 1 or 2 or 3.
 Which of these statements are true?
 
-=== R#47
+=== R#47 | Tom and Dick
 A problem from the October 1962 issue of Eureka, the journal of the Cambridge University Mathematical Society:
 Tom is twice as old as Dick was when Tom was half as old as Dick will be when Tom is twice as old as Dick was when Tom was a year younger than Dick is now. Dick is twice as old as Tom was when Dick was half as old as Tom was when Dick was half as old as Tom was two years ago. How old are Dick and Tom?
 
-=== R#48
+=== R#48 | The Captain's Boat
 A problem from the Stanford University Competitive Examination in Mathematics:
 How old is the captain, how many children has he, and how long is his boat? Given the product 32118 of the three desired numbers (integers). The length of the boat is given in feet (is several feet), the captain has both sons and daughters, he has more years than children, but he is not yet one hundred years old.
 
-=== R#49
+=== R#49 | Knights and Knaves
 A puzzle by Edward J. Barbeau, from the February 2007 issue of Crux Mathematicorum:
 A certain familiar island is inhabited by knights, who can only speak the truth, and knaves, who can only lie. One day a visitor meets three inhabitants, A, B, and C. The visitor asked, “How many knights are there among you three?”
 A gave an answer, which the visitor didn’t hear. When the visitor asked B what A had said, B replied, “A said that there is one knight among us.” At this C said, “Don’t believe B. He is lying.”
 What are B and C?
 
-=== R#50
+=== R#50 | The Hospital
 When visiting with a friend one of our hospitals for wounded soldiers, I was informed that exactly two-thirds of the men had lost an eye, three-fourths had lost an arm, and four-fifths had lost a leg. ‘Then,’ I remarked to my friend, ‘it follows that at least twenty-six of the men must have lost all three — an eye, an arm, and a leg.’ That being so, can you say exactly how many men were in the hospital? It is a very simple calculation, but I have no doubt it will perplex a good many readers.
 
-=== R#51
+=== R#51 | AA + BB + CC
 AA + BB + CC = ABC
 Find A, B, and C as distinct integers. There is only one solution.
 
-=== R#52
+=== R#52 | Shoes in Two Cities
 City A contains 20,000 people. One percent of these have one foot only and wear one shoe apiece. Half of the remaining people go barefoot, wearing no shoes at all, and the rest wear two shoes apiece.
 In City B, 20 percent of the residents have one foot only and wear one shoe apiece. Of the remainder, half go barefoot and half wear two shoes apiece.
 If 20,000 shoes are worn in City B, what is its population?
 
-=== R#53
+=== R#53 | Rock, Paper, Scissors
 https://youtu.be/hf7Sy7FPal0?si=iKpjROlFQnGfqAvh
 In Season 8, Episode 7 of Penn & Teller’s magic competition show Fool Us, magician Hans Petter Secker appears to predict the outcome of three successive rounds of rock-paper-scissors, though Secker oversees the game remotely from Norway and the players are invited to exchange items before each round. How is this accomplished?
 
-=== R#54
+=== R#54 | The Strange Cipher
 [img riddles/r54.png]
 In Robert Chambers’ 1906 novel The Tracer of Lost Persons, Mr. Keen copies the figure above from a mysterious photograph. He is trying to help Captain Harren find a young woman with whom he has become obsessed.
 “It’s the strangest cipher I ever encountered,” he says at length. “The strangest I ever heard of. I have seen hundreds of ciphers — hundreds — secret codes of the State Department, secret military codes, elaborate Oriental ciphers, symbols used in commercial transactions, symbols used by criminals and every species of malefactor. And every one of them can be solved with time and patience and a little knowledge of the subject. But this … this is too simple.”
 The message reveals the name of the young woman whom Captain Harren has been seeking. What is it?
 
-=== R#55
+=== R#55 | Double the Money
 Three men play a game, agreeing that in each round the loser will double the money of each of the other two. After three rounds, each man has lost one time, and each man has $24. How much did each have at the start of the game?
 
-=== R#56
+=== R#56 | Sharing Apples
 We’re giving out apples to a group of boys. If we distribute the entire supply, then every boy will get three, except for one, who will get two. If instead we give each boy two apples, then we’ll have eight apples left over. How many apples are there altogether?

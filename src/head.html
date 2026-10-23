@@ -998,27 +998,28 @@ body.rdmode .wrap{max-width:none;padding:0}
 #rdo .rdbtn.small{font-size:13px;padding:6px 12px}
 #rdo .rdbtn.go{background:var(--rd-ac);color:#170b2c}
 #rdo .rdbtn:hover{filter:brightness(1.15)}
-#rdo #rdSwap{margin-right:auto;font-size:17px;padding:9px 22px}
+/* 8.54 (Omar): Swap riddle sits on the right with Full screen and Title screen, in the same small style (8.53: a big green button on the left, #rdSwap{margin-right:auto;font-size:17px;padding:9px 22px} with class go) */
 #rdo .rdhead{text-align:center;padding:4px 16px 18px}
 #rdo .rdhead h1{font:400 clamp(38px,6vw,76px)/1.05 "Limelight","Playfair Display",serif;color:var(--rd-ac);margin:0;text-shadow:0 0 .25em rgba(141,255,95,.45)}
 #rdo .rdhead p{color:var(--rd-dim);margin:6px 0 14px;font-size:16px}
-#rdo .rdlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;padding:0 clamp(16px,3vw,40px) 40px;max-width:1600px;margin:0 auto}
+#rdo .rdlist{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 clamp(16px,3vw,40px) 40px;max-width:1600px;margin:0 auto}
 #rdo .rdcard{display:flex;flex-direction:column;justify-content:flex-start;text-align:left;background:var(--rd-card);border:1.5px solid var(--rd-edge);border-radius:14px;padding:14px 16px 16px;color:var(--rd-ink);font:500 15px/1.4 "Figtree",sans-serif;cursor:pointer;transition:transform .12s,border-color .12s}
 #rdo .rdcard:hover{transform:translateY(-2px);border-color:var(--rd-ac)}
-#rdo .rdch{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-#rdo .rdcard b{font:400 24px "Limelight",serif;color:var(--rd-ac);margin-right:auto}
+#rdo .rdch{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;min-width:0}
+#rdo .rdcard b{font:400 24px "Limelight",serif;color:var(--rd-ac);flex:none}
+#rdo .rdcard em{font:700 16px "Figtree",sans-serif;font-style:normal;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #rdo .rdcard span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;color:#ddd3f3}
-#rdo .rdcard.seen{opacity:.72}
-#rdo .rdtag{white-space:nowrap;font:700 11px "Figtree",sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:999px;border:1px solid var(--rd-ac);color:var(--rd-ac)}
-#rdo .rdtag.rdseen{border-color:var(--rd-dim);color:var(--rd-dim)}
+#rdo .rdcard.seen{opacity:.45;filter:saturate(.5)}   /* 8.54 (Omar): read riddles fade (8.53: opacity .72 plus a Read tag) */
 #rdo .rdread{max-width:1300px;margin:0 auto;padding:6px clamp(16px,4vw,60px) 24px}
-#rdo .rdnum{font:400 clamp(30px,4vw,56px) "Limelight",serif;color:var(--rd-ac);text-shadow:0 0 .25em rgba(141,255,95,.45);margin-bottom:10px}
+#rdo .rdnum small{display:block;font:700 .42em "Figtree",sans-serif;color:var(--rd-ink);text-shadow:none;margin-top:2px}
+#rdo .rdnum{font:400 clamp(30px,4vw,56px)/1.05 "Limelight",serif;color:var(--rd-ac);text-shadow:0 0 .25em rgba(141,255,95,.45);margin-bottom:10px}
 #rdo .rdtext{line-height:1.42;font-weight:500}
 #rdo .rdtext p{margin:0 0 .55em}
 #rdo .rdtext pre{font:600 1em/1.25 "IBM Plex Mono",ui-monospace,Menlo,monospace;color:var(--rd-ac);margin:.2em 0 .7em;white-space:pre}
 #rdo .rdtext .rdurl a{color:var(--rd-ac);word-break:break-all}
 #rdo .rdimg{background:#fff;border-radius:12px;padding:12px;width:fit-content;margin:0 auto .6em;max-width:100%}
 #rdo .rdimg img{display:block;max-width:100%;max-height:42vh;height:auto}
+@media (max-width:1100px){#rdo .rdlist{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:600px){#rdo .rdlist{grid-template-columns:1fr}#rdo .rdhead{padding-top:12px}}
 /* 7.82 (Omar): Tenable. Normal edition "Tower" look: deep indigo with glowing cyan slots in a pyramid of ten (1 at the top), magenta for wrong answers and lives.
    TenaBall (body.teball) takes the Football mode greens: a mown pitch, navy slots with white type, the main game's Football palette (#00BE00, #0F2557).
@@ -2450,7 +2451,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
       <!-- 6.48: game modes. 6.49: Bidding Wars on the left of Category Bingo. 6.84: Jeopardy Night is the first one. -->
       <div class="row modes" id="modeRow"><button class="btn modebtn jnbtn" id="modeJn" data-phones="Phones optional: answer by QR code or play Free-for-all" data-who="Teams or solo · 1 to 6 teams · best with 4 to 12 players" data-tip="The classic board: pick a tile from 100 to 500, answer the clue, highest score wins. Football mode and Wager are in its setup.">Jeopardy Night</button><button class="btn modebtn bidbtn" id="modeBid" data-phones="Phones optional: turn on phone bidding in setup" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Teams bid points for the right to answer a clue they only know by its category and tier. Win the bid, then win or lose what you bid.">Bidding Wars</button><button class="btn modebtn bingobtn" id="modeBingo" data-phones="No phones needed" data-who="Teams or solo · 2 to 4 teams · best with 4 to 10 players" data-tip="Teams claim squares on a 7x7 board of categories. Answer right to claim one, and the first to five in a row wins.">Category Bingo</button><button class="btn modebtn hsbtn" id="modeHot" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="One team sits in the hot seat on a streak of clues. The pot doubles with every right answer: bank it or risk it all.">Hot Seat</button><button class="btn modebtn survbtn" id="modeSurv" data-phones="No phones needed" data-who="Teams or solo · 2 to 6 teams · best with 4 to 12 players" data-tip="Every team starts with lives and loses one for each wrong clue. Eight rounds that get harder; the last team standing wins.">Survival</button><button class="btn modebtn tenbtn" id="modeTen" data-phones="No phones needed" data-who="Solo · 1 to 8 players taking turns · best with 1 to 6" data-tip="Name all ten on a top-ten list, in any order, before your lives run out. TenaBall is the football edition, with famous lineups too.">Tenable</button><button class="btn modebtn rdmbtn" id="modeRd" data-phones="No phones needed" data-who="Anyone · the whole room reads together" data-tip="Pick a riddle from the list and read it on the TV. No scoring and no answers on screen: just work it out together.">Riddle Me This</button><i class="rowbrk"></i><button class="btn modebtn impbtn" id="modeImp" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="Everyone gets a card on their phone, but one or two players get a different one. Talk it out and find the imposter.">Imposter</button><button class="btn modebtn psybtn" id="modePsy" data-phones="Phones required, one per player" data-who="Solo · 3 or more players · best with 5 to 10" data-tip="A true, obscure fact with a blank. Everyone types a believable fake on their phone, then votes for the one they think is real.">Psych</button><button class="btn modebtn cnbtn" id="modeCn" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 10" data-tip="Two teams, 25 words. Your spymaster gives one word and a number; find your agents, dodge the assassin.">Codenames</button><button class="btn modebtn decbtn" id="modeDec" data-phones="Phones required, one per player" data-who="Teams only · 2 teams · 4 or more players, best with 6 to 8" data-tip="Two teams, four secret words: give clues your team gets and the other team can't crack.">Decrypto</button><button class="btn modebtn salebtn" id="modeSale" data-phones="Phones required, one per player" data-who="Solo · 3 to 6 players · best with 4 to 6" data-tip="Bid for Cairo properties, then flip them for cash. Richest tycoon wins.">For Sale?</button><button class="btn modebtn fabbtn" id="modeFa" data-phones="Phones required, one per player" data-who="Solo · 4 to 10 players · best with 5 to 8" data-tip="Everyone draws the secret word one line at a time on their phone, except the fake artist, who has no idea what it is.">Fake Artist</button><button class="btn modebtn hcbbtn" id="modeHc" data-phones="Phones required, one per player" data-who="Solo · 3 to 10 players · best with 5 to 8" data-tip="Find the secret shade: one player gives a word, everyone taps their guess on a 660-colour board.">Hues and Cues</button><i class="rowbrk"></i><button class="btn modebtn estbtn" id="modeEst" data-phones="Phones required, one per player" data-who="Solo · exactly 4 players" data-tip="Four players, 13 cards each: call your tricks exactly or pay for it.">Estimation</button><button class="btn modebtn tnbtn" id="modeTn" data-phones="Phones required, one per player" data-who="Teams only · exactly 4 players, 2 teams of 2" data-tip="Two teams, 13 tricks, your hand on your phone. Call it with a suit, first to 31 wins.">Tarneeb</button><button class="btn modebtn holdbtn" id="modeHold" data-phones="Phones required, one per player" data-who="Solo · 2 to 9 players · best with 4 to 8" data-tip="No-limit poker for 2 to 9 players with play chips. Your two cards are on your phone, the table, the pot and whose turn it is are on the TV. Last player with chips wins.">Texas Hold'em</button><button class="btn modebtn liarbtn" id="modeLb" data-phones="Phones required, one per player" data-who="Solo · 3 to 8 players · best with 4 to 6" data-tip="Bluff your cards onto the table, call out the liars, and survive the roulette. Last one standing wins.">Liar's Bar</button><button class="btn modebtn tabbtn" id="modeTb" data-phones="Phones required, one per player" data-who="Teams only · 2 to 4 teams · 4 or more players, best with 6 to 12" data-tip="Describe the word without the banned ones. Your team guesses, the other team buzzes.">Taboo</button><button class="btn modebtn tfmbtn" id="modeTf" data-phones="Phones required, one per player" data-who="Solo · exactly 3 players" data-tip="Three players, 16 tricks: the dealer needs 8, the next player 5, the last 3. Cards on your phone, table on the TV.">3-5-8</button><button class="btn modebtn stbtn" id="modeSp" data-phones="Phones required, one per player" data-who="Solo · 2 to 4 players · best with 3 or 4" data-tip="Phones are buzzers. Buzz first, answer fast, don't get it wrong.">Speed Trivia</button></div>
       <!-- 6.84: the categories and version line moved from the top of the title screen to under the modes -->
-      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v8.53</button>
+      <button class="eyebrow verbtn" id="verBtn" aria-haspopup="dialog" title="Version history">v8.54</button>
     </div>
   </section>
   <!-- 6.49: Bidding Wars (src/bidding.js). To remove: delete these two sections, the 6.49 CSS block, the two mode buttons above and the S.mode === "bidding" lines in src/app.js -->
@@ -2525,7 +2526,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <!-- 8.53: Riddle Me This (src/riddles.js). To remove: delete this section, the 8.53 CSS block and the Riddle Me This button -->
   <section id="rdo" hidden>
-    <div class="rdtools"><button class="rdbtn go" id="rdSwap" hidden>Swap riddle</button><button class="rdbtn small fsbtn">Full screen</button><button class="rdbtn small" id="rdHome">Title screen</button></div>
+    <div class="rdtools"><button class="rdbtn small" id="rdSwap" hidden>Swap riddle</button><button class="rdbtn small fsbtn">Full screen</button><button class="rdbtn small" id="rdHome">Title screen</button></div>
     <div id="rdBody"></div>
   </section>
   <!-- 7.82: Tenable (src/tenable.js). To remove: delete this section, the 7.82 CSS block and the Tenable button -->
@@ -2555,7 +2556,7 @@ body.hsmode #card .val{font-family:"Abril Fatface","Playfair Display",serif}
   </section>
   <section id="setup" hidden>
     <div>
-      <div class="eyebrow verlabel">v8.53</div>
+      <div class="eyebrow verlabel">v8.54</div>
       <h1>Jeopardy <span>Night</span></h1>
       <p class="sub">Pick your categories and teams. Every tile pulls a random clue from its pool, so you can replay without repeats.</p>
       <p class="sub howto">📺 The game is best played by screen mirroring a laptop to the TV, so everyone watches the board while one person runs it from the laptop.</p>  <!-- 4.97 (Omar). To remove: delete this line and the .howto rule -->

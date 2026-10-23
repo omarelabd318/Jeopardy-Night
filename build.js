@@ -23,8 +23,8 @@ const TBDATA=(()=>{const d=W+'/taboo',o={};if(!fs.existsSync(d))return o;for(con
 const FADATA=(()=>{const f=W+'/fakeartist/words.json';return fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'utf8')):{cats:{}}})();   // 7.23: Fake Artist words: {cats:{name:[[word,"e"|"h",[alts]]]}}
 const CNDATA=(()=>{const d=W+'/codenames',o={};if(!fs.existsSync(d))return o;for(const f of fs.readdirSync(d).sort())if(/^words-.*\.json$/.test(f))o[f.slice(6,-5)]=JSON.parse(fs.readFileSync(d+'/'+f,'utf8'));return o})();   // 6.82: Codenames word packs: words-<pack>.json = [word, ...]
 const TENDATA=(()=>{const d=W+'/tenable',r=f=>fs.existsSync(d+'/'+f)?JSON.parse(fs.readFileSync(d+'/'+f,'utf8')):{};return{n:r('normal.json'),f:r('football.json'),fs:r('form-scores.json'),lx:r('lineups.json'),fl:r('flags.json')}})();   // 7.82: Tenable lists {t,d,src,as,a:[[answer,value,[other names]]]} and the Formations scores
-const RIDDATA=(()=>{const f=W+'/riddles/riddles.txt';if(!fs.existsSync(f))return[];const out=[];let cur=null,pre=null;   // 8.53: Riddle Me This: [{n:"R#01",b:[{p}|{pre}|{img}|{url}]}]
-  for(const ln of fs.readFileSync(f,'utf8').split('\n')){const m=ln.match(/^=== (R#\d+)/);if(m){out.push(cur={n:m[1],b:[]});pre=null;continue}if(!cur||(pre===null&&/^#/.test(ln)))continue;
+const RIDDATA=(()=>{const f=W+'/riddles/riddles.txt';if(!fs.existsSync(f))return[];const out=[];let cur=null,pre=null;   // 8.53: Riddle Me This: [{n:"R#01",t:title (8.54),b:[{p}|{pre}|{img}|{url}]}]
+  for(const ln of fs.readFileSync(f,'utf8').split('\n')){const m=ln.match(/^=== (R#\d+)(?:\s*\|\s*(.+))?/);if(m){out.push(cur={n:m[1],t:(m[2]||'').trim(),b:[]});pre=null;continue}if(!cur||(pre===null&&/^#/.test(ln)))continue;
     if(ln.trim()==='```'){if(pre===null)pre=[];else{cur.b.push({pre:pre.join('\n')});pre=null}continue}if(pre!==null){pre.push(ln);continue}
     const t=ln.trim();if(!t)continue;const im=t.match(/^\[img (.+)\]$/);cur.b.push(im?{img:'photos/'+im[1]}:/^https?:\/\/\S+$/.test(t)?{url:t}:{p:t})}
   return out})();
