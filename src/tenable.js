@@ -76,7 +76,7 @@ if(![0, 120, 180, 300, 600].includes(TE.cfg.secs)) TE.cfg.secs = 0;   /* 8.25 (O
 const teSave = () => store.set("jn_teCfg", TE.cfg);
 const teMix = () => TE.cfg.sub === "m";   // 7.86 (Omar): the Mix edition deals Tenable and TenaBall lists in one game; each list wears its own edition's look
 const teBall = () => TE.cfg.sub === "f" || (["ready", "play", "done"].includes(TE.phase) && !!TE.turns[TE.ti] && !!TE.turns[TE.ti].list && TE.turns[TE.ti].list.ed === "f"), teForm = () => (TE.cfg.sub === "f" || teMix()) && TE.cfg.form;
-const teName = () => teBall() ? "TenaBall" : teMix() && !["ready", "play", "done"].includes(TE.phase) ? "Tenable Mix" : "Tenable";
+const teName = () => teBall() ? "TenaBall" : teMix() && (!["ready", "play", "done"].includes(TE.phase) || (TE.turns[TE.ti] && !TE.turns[TE.ti].list)) ? "Tenable Mix" : "Tenable";   // 8.42 (Omar): the Choose list grid in Mix says Tenable Mix too
 const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- the lists ---------- */
