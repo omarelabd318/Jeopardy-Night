@@ -17,6 +17,35 @@ const hsSave = () => store.set("jn_hsCfg", HS.cfg);
 /* ---------- dealing clues ---------- */
 const hsHas = id => HS_LVLS.some(l => ((DATA[id] || {})[l] || []).length);
 /* 8.26 (Omar): NSFW only when its switch in the version panel is on (was: once unlocked in the Jeopardy setup, `|| unlocked.has(id)`) */
+// 8.60 (Omar): a short line under each category name on the three cards
+const HS_BLURB = {
+  geo:"Countries, capitals, rivers and seas", landmark:"Famous places around the world", his:"Empires, wars and turning points", islam:"The Quran, Ramadan, Hajj and history",
+  ww2:"Battles, leaders and the home front", year:"Three events, one year: name it", myth:"Gods, heroes and monsters", holi:"Feasts, festivals and customs",
+  mus:"Singers, bands, albums and hits", songt:"Name the missing word in the title", song:"Name the song and the singer", oldies:"Classic hits from the 50s to the 90s",
+  spot:"Order artists by Spotify listeners", igf:"Order stars by Instagram followers", lyric:"Finish the line of the song", lyricar:"Finish the Arabic song line",
+  tv:"Films and shows from everywhere", ecin:"Egyptian films and Ramadan TV", plot:"A film explained badly: name it", ploteg:"An Egyptian film explained badly",
+  got:"Westeros, the houses and the throne", peaky:"The Shelbys, Birmingham and the razors", bb:"Walter, Jesse and Albuquerque", pb:"Michael, Lincoln and Fox River",
+  gta:"Los Santos, story mode and Online", vgames:"From Mario and PES to Elden Ring", st:"Hawkins and the Upside Down", office:"Michael, Dwight and Dunder Mifflin",
+  netflix:"Money Heist, Squid Game and more", friends:"Ross, Rachel, Joey and Central Perk", himym:"Ted, Barney and MacLaren's", hp:"Hogwarts, spells and the wizarding world",
+  hgames:"Katniss, Panem and the arena", marvel:"Films, shows and comics", blockbuster:"Big films and box office battles", toons:"The cartoons you grew up on",
+  romcom:"Romantic comedies, near and far", pixar:"Shrek, Toy Story and friends", gk:"A bit of everything", facts:"Three facts, only one is true",
+  lang:"Words, languages and where they came from", trans:"Translate the Spanish, French or Italian", flag:"Name the country from its flag", shape:"Name the country from its outline",
+  pin:"Name the city on the map", ctry:"A city or a fact: name the country", sci:"Physics, chemistry, biology and more", space:"Planets, stars and missions",
+  animal:"Wild facts about animals", fb:"Players, clubs and big moments", egfb:"Al Ahly, Zamalek and the Pharaohs", pl:"The Premier League since 2000",
+  wc:"The World Cup, mostly since 1998", wc26:"The 48-team World Cup", ucl:"Champions League nights since 2000", xfer:"Name the player from the transfer",
+  stad:"Clubs and their stadiums", cclub:"Three players, one club: name it", path:"Name the player from his clubs", whoami:"Three clues: name the footballer",
+  shirt:"Name the shirt number", mgr:"Name the manager", fyear:"Three football events, one year", form:"Name the team from the lineup",
+  score:"Name the final score", sport:"Every sport except football", tennis:"Grand Slams, legends and new stars", food:"Dishes, drinks and ingredients",
+  ffood:"Chains, menus and street food", cal:"Pick the one with the most calories", cocktail:"Cocktails, spirits, beer and wine", foodpic:"Name the food from the photo",
+  logo:"A blurred logo: name the brand", car:"A zoomed-in car: name it", actor:"A zoomed-in actor: name them", footy:"A zoomed-in footballer: name him",
+  person:"A zoomed-in famous face: name them", egy:"All about Egypt", egyph:"Photos from all over Egypt", egh:"Egypt from 1900 to now",
+  cairo:"Neighbourhoods, bridges and squares", arab:"Countries, cities and culture", prov:"Finish the Egyptian proverb", ramadan:"Ramadan TV, old and new",
+  memeeg:"Meme faces and viral moments", emov:"Name the film or show from emojis", emeg:"Name the Egyptian title from emojis", emsen:"Decode the saying from emojis",
+  emseg:"Decode the Egyptian phrase", ctryar:"Name the Arab country", rid:"Think before you answer", link:"Four clues: what links them?",
+  mb:"Money, companies and the rich", curr:"Currencies and where they're used", brand:"Brand origins, logos and slogans", cars:"Makes, models and motorsport",
+  tg:"Gadgets, apps and games", nick:"Who goes by this nickname?", books:"The books from school", quote:"Name where the line is from",
+  quoteeg:"Name the Egyptian film or show", qblank:"Say the missing word in the quote", headl:"Three headlines, only one is real", order:"Put three events in order",
+  gctry:"Name the country from the photo", x18:"Name the star from the photo"};
 const hsOkCat = id => { const c = catById(id); return !!c && !c.mode && !HS_BAD.has(c.type) && !HIDDEN_IDS.has(id) && (!LOCKED_IDS.has(id) || nsfwOn()) && (HS.cfg.football !== "off" || !FB_IDS.has(id)) && (HS.cfg.photos || c.type !== "photo") && hsHas(id); };
 function hsIdx(cat, lvl){   // an unplayed clue; with photo rounds off, never one that shows a photo
   const n = ((DATA[cat] || {})[lvl] || []).length; if(!n) return null;
@@ -31,7 +60,7 @@ function hsDeal(again){   // three category cards, each with a random hidden val
     for(let t = 0; t < 8; t++){ const card = hsCard(cat, HS_LVLS[Math.floor(Math.random() * HS_LVLS.length)]); if(card){ out.push(card); break; } } }
   if(out.length < 3 && st.usedCats.length && !again){ st.usedCats = []; return hsDeal(true); }
   st.cards = out; }
-const hsInit = () => { HS.st = {v:1, teams:HS.cfg.teams.map(n => ({name:n, score:0, swap:HS.cfg.swap})), turnNo:0, pot:0, streak:0, usedCats:[], cards:[], phase:"pick", cur:null, res:null, over:false, tb:null, tbWin:null}; hsDeal(); return HS.st; };
+const hsInit = () => { HS.st = {v:1, teams:HS.cfg.teams.map(n => ({name:n, score:0, swap:HS.cfg.swap, cswap:true})), turnNo:0, pot:0, streak:0, usedCats:[], cards:[], phase:"pick", cur:null, res:null, over:false, tb:null, tbWin:null}; hsDeal(); return HS.st; };
 const hsTotal = () => HS.cfg.teams.length * HS.cfg.turns;
 const hsSeat = () => { const st = HS.st; if(st.stl) return st.stl.by; return st.tb ? st.tb.ids[st.tb.i] : st.turnNo % st.teams.length; };
 const hsNext = () => HS.st.streak ? HS.st.pot * 2 : 100;   // what the pot becomes on the next right answer
@@ -82,7 +111,7 @@ function renderHs(){
   const mid = st.tb ? "" : `<div class="hsstack"><b>${hsNum(st.pot)}</b><small>${st.pot ? "IN THE POT" : "NOTHING AT RISK YET"}</small></div>
     <button class="hscp bank" data-hs="bank" ${st.pot && st.phase === "pick" ? "" : "disabled"}><div>Bank<small>${hsNum(st.pot)}</small></div></button><div class="hscp risk"><div>Risk<small>${hsNum(hsNext())}</small></div></div>`;
   let low = "", ov = "";
-  if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc" data-card="${i}"><b>${esc(catById(c.cat).name)}</b><span>Value hidden</span></button>`).join("")}</div>`;
+  if(st.phase === "pick") low = `<div class="hshint">Tap a card to risk it${st.pot ? ", or bank the pot" : ""}${hsCanCswap() ? ` <button class="hsb cswap" data-hs="cswap" title="Don't like any of these? Swap all three for new categories. Once per team per game.">Swap categories (1 left)</button>` : ""}</div><div class="hscards">${st.cards.map((c, i) => `<button class="hspc${catById(c.cat).name.length > 28 ? " long" : ""}" data-card="${i}"><b>${esc(catById(c.cat).name).replace(/\//g, "/<wbr>")}</b>${HS_BLURB[c.cat] ? `<i class="hsd">${esc(HS_BLURB[c.cat])}</i>` : ""}</button>`).join("")}</div>`;
   else if(st.phase === "clue" || st.phase === "tbclue") low = `<div class="hscards one"><button class="hsb go" data-hs="reopen">Open the clue again</button></div>`;
   if(st.phase === "result"){ const r = st.res, last = st.turnNo + 1 >= hsTotal();
     ov = `<div class="hsov"><h2 class="${r.kind === "miss" && r.pts ? "lose" : ""}">${r.kind === "pass" ? "Passed" : r.kind === "bank" ? "Banked!" : r.kind === "half" ? "Half answer" : r.pts ? "Busted!" : "Missed it"}</h2>
@@ -113,6 +142,11 @@ function hsTbDone(c, v){ const st = HS.st, tb = st.tb; if(v === undefined){ rend
   if(rights.length === 1){ st.tbWin = rights[0]; return hsEnd(); }
   const same = rights.length === 0 || rights.length === tb.ids.length;
   st.tb = {ids: same ? tb.ids : rights, i:0, res:{}, msg: same ? "Everyone " + (rights.length ? "got it" : "missed") + ", so go again." : "Still tied, go again."}; st.phase = "tb"; st.cur = null; renderHs(); }
+// 8.61 (Omar): one category swap per team per game: trade all three cards for three new categories
+function hsCanCswap(){ const st = HS.st, t = st && st.teams[hsSeat()]; return !!t && st.phase === "pick" && !st.tb && !st.stl && t.cswap !== false; }
+function hsCswap(){ const st = HS.st; if(!hsCanCswap()) return; st.teams[hsSeat()].cswap = false;
+  const old = st.cards.map(c => c.cat); st.usedCats.push(...old); hsDeal(); st.usedCats = st.usedCats.filter(id => !old.includes(id));   // old three only skipped for this deal
+  Snd.blip(); renderHs(); }
 function hsUseSwap(){ const st = HS.st, t = st && st.teams[hsSeat()]; if(!HS.cfg.swap || st.tb || st.stl || !t || !t.swap) return false; t.swap = false; return true; }
 $("#hsBody").addEventListener("click", e => {
   const st = HS.st; if(!st) return;
@@ -120,6 +154,7 @@ $("#hsBody").addEventListener("click", e => {
   if(card && st.phase === "pick"){ st.cur = st.cards[+card.dataset.card]; st.usedCats.push(st.cur.cat); st.phase = "clue"; Snd.unlock(); Snd.blip(); hsOpen(); return; }
   const b = e.target.closest("[data-hs]"); if(!b) return; const k = b.dataset.hs;
   if(k === "bank" && st.pot && st.phase === "pick") hsResult("bank", st.pot);
+  else if(k === "cswap") hsCswap();
   else if(k === "reopen" && st.cur) hsOpen();
   else if(k === "next") hsNextTeam();
   else if(k === "tbopen") hsTbOpen();
