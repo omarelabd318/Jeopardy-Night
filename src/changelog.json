@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.36", "date": "2026-10-23", "items": ["Tenable: 9 new lists: most valuable sports teams, superhero films, dog breeds, Spotify's top artists of 2025, hottest temperatures by country, longest-serving leaders, films with the most Oscars, Michelin stars by country and the most-grown fruits."]},
  {"v": "8.35", "date": "2026-10-23", "items": ["Tenable: 2 new lists, the most-downloaded apps of 2025 and the countries with the most McDonald's."]},
  {"v": "8.34", "date": "2026-10-23", "items": ["Tenable: \"avatar fire\" now counts for Avatar: Fire and Ash (a half-typed name that matches only one answer is accepted).", "Tenable: typing a first word shared by several answers (like \"manchester\") now asks for the full name instead of guessing, and \"nottingham\" no longer turns into Tottenham.", "TenaBall formations: every lineup is now drawn the right way round (the right-side players were showing on the left)."]},
  {"v": "8.33", "date": "2026-10-22", "items": ["Tenable: when a list has a many-way tie for the last places, the slot now shows just the name you typed instead of every tied name."]},
