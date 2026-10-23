@@ -27,6 +27,7 @@ const TER = (() => {
       if(it.mk && g.indexOf(" ") > 0 && v.indexOf(" ") > 0){ const a = g.split(" "), b = v.split(" "); if(loose(lev, a[0], b[0]) && loose(lev, a.slice(1).join(" "), b.slice(1).join(" ")) && (a[a.length - 1] === b[b.length - 1] || Math.min(a[a.length - 1].length, b[b.length - 1].length) > 2)) best = Math.min(best, 1); continue; }   // 8.18: car lists, make and model are spelled separately so a close model ("Yaris" for "Camry") can't pass
       if(loose(lev, g, v) || loose(lev, gs, vs)) best = Math.min(best, 1);
       const w = v.split(" "), last = w[w.length - 1];
+      if(!it.mk && w.length > 1 && w[0].length >= 4 && g === w[0]) best = Math.min(best, 0.4);   // 8.34 (Omar): "Nottingham" is Nottingham Forest, and beats a close spelling of another name ("Tottenham"); several slots sharing that first word make the guess vague (see Turn.guess)
       if(w.length > 1 && last.length >= 4){ if(g === last) best = Math.min(best, 2); else if(g.length >= 4 && loose(lev, g, last)) best = Math.min(best, 3); } }
     return best; }
   /* o = {items:[{a, v, alt}] (10 for a list, 11 for a lineup), lives (0 = no limit), norm, lev}. Phases: live > over (how: all | lives | time | stop) */
@@ -35,7 +36,9 @@ const TER = (() => {
     const end = how => { t.over = true; t.how = how; };
     t.n = () => t.found.filter(Boolean).length;
     t.points = () => t.n() + (t.n() === t.items.length ? BONUS : 0);
-    t.match = text => { const g = o.norm(text); if(!g) return null; const sc = t.items.map(it => score(g, it, o.norm, o.lev)), m = Math.min(...sc);
+    t.match = text => { const g = o.norm(text); if(!g) return null; const sc = t.items.map(it => score(g, it, o.norm, o.lev)), m = Math.min(...sc); t.lastMin = m;
+      if(m === Infinity && g.indexOf(" ") > 0){ const pre = t.items.map((it, i) => !it.mk && variants(it, o.norm).some(v => v.indexOf(g + " ") === 0) ? i : -1).filter(i => i >= 0);   // 8.34 (Omar): "Avatar Fire" is "Avatar: Fire and Ash": two or more words that start exactly one answer count
+        if(pre.length === 1){ t.lastMin = 1; return pre; } }
       return m === Infinity ? [] : sc.map((s, i) => s === m ? i : -1).filter(i => i >= 0); };
     t.guess = text => {
       if(t.over) return {k:"over"}; const raw = String(text || "").trim(), hit = t.match(raw); if(hit === null) return {k:"empty"};
@@ -48,6 +51,7 @@ const TER = (() => {
         const gw = g.split(" ")[0], mkw = g.indexOf(" ") > 0 && gw.length >= 3 ? t.items.map(it => String(it.a).split(/\s+/)[0]).find((w, i) => t.items[i].mk && t.items[i].a.indexOf(" ") > 0 && o.lev(gw, o.norm(w)) <= (w.length >= 8 ? 2 : w.length >= 5 ? 1 : 0)) : null;   // 8.18: a right make with the wrong model
         return mkw ? {k:"wrong", t:raw, mk:mkw} : {k:"wrong", t:raw}; }
       const fresh = hit.filter(i => !t.found[i]); if(!fresh.length) return {k:"dup", i:hit[0]};
+      if(t.lastMin === 0.4 && new Set(fresh.map(i => o.norm(t.items[i].a))).size > 1) return {k:"vague", t:raw};   // 8.34: only a first word, and it starts several hidden answers: no life lost, say which one
       const name = o.norm(t.items[fresh[0]].a), same = fresh.filter(i => o.norm(t.items[i].a) === name);   // two players with the same name both fill
       { const parts = String(t.items[fresh[0]].a).split(" / "); if(parts.length > 2){ let bp = parts[0], bs = Infinity; parts.forEach(pt => { const sc = score(o.norm(raw), {a:pt, alt:[]}, o.norm, o.lev); if(sc < bs){ bs = sc; bp = pt; } }); same.forEach(i => t.label[i] = bp); } }   // 8.32: a slot that stands for a many-way tie shows the name that was typed, not all of them
       same.forEach(i => t.found[i] = true); if(t.found.every(Boolean)) end("all"); return {k:"right", i:same}; };
@@ -127,6 +131,7 @@ function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "pl
   if(r.k === "right"){ try{ Snd.rise(); }catch(e){} TE.flash = {k:"ok", i:r.i}; }
   else if(r.k === "wrong"){ try{ Snd.fall(); }catch(e){} TE.flash = {k:"bad", t:r.t, mk:r.mk}; }
   else if(r.k === "make") TE.flash = {k:"make", t:r.t};
+  else if(r.k === "vague") TE.flash = {k:"vague", t:r.t};
   else TE.flash = {k:r.k === "dup" ? "dup" : "again", t:r.k === "dup" ? (String(TE.t.items[r.i].a).indexOf(" / ") > -1 ? txt : TE.t.items[r.i].a) : r.t};   // 8.32: a tie slot ("A / B") has a long answer, so say the name that was typed
   if(TE.t.over) teEnd(); else { teRender(); const i = $("#teIn"); if(i) i.focus(); } }
 function teTick(){ if(TE.phase !== "play" || !TE.dl) return; const left = TE.dl - Date.now(), b = $("#teBar"), l = $("#teLeft");
@@ -154,7 +159,7 @@ function teSlot(tu, t, i, rk){ const it = tu.list.items[i], f = t ? t.found[i] :
 function tePyramid(tu, t){ let i = 0, h = ""; [1, 2, 3, 4].forEach(n => { h += `<div class="terow">`; for(let k = 0; k < n; k++, i++) h += teSlot(tu, t, i, i + 1); h += `</div>`; }); return `<div class="tepyr">${h}</div>`; }
 function tePitch(tu, t){ const rows = tu.list.rows, n = rows.length; let i = 0, h = "";
   rows.forEach((r, ri) => { const y = n > 1 ? 13 + ri * (72 / (n - 1)) : 50;
-    r.forEach((_, k) => { const x = (k + 1) * 100 / (r.length + 1), idx = i++, it = tu.list.items[idx], f = t ? t.found[idx] : false;
+    r.forEach((_, k) => { const x = (r.length - k) * 100 / (r.length + 1), idx = i++, it = tu.list.items[idx], f = t ? t.found[idx] : false;
       const hid = t ? t.found.map((z, j) => z ? -1 : j).filter(j => j >= 0) : [], shown = TE.phase === "done" && hid.indexOf(idx) > -1 && hid.indexOf(idx) < TE.rev;
       h += `<button class="teman ${f ? "ok" : shown ? "miss" : ""}${f && TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(idx) ? " new" : ""}" data-give="${idx}" style="left:${x}%;top:${ri === n - 1 ? 87 : y}%"><i${!f && !shown && t && t.flag[idx] && it.f ? ` class="fl" style="background-image:url(photos/flags/${it.f}.svg)"` : ""}></i><span>${f || shown ? esc(it.a) : (t && t.hints[idx] ? esc(t.hintText(idx)) : "?")}</span></button>`; }); });
   return `<div class="tepitch"><div class="telines"><b class="box"></b><b class="six"></b><b class="arc"></b><b class="mid"></b></div>${h}
@@ -209,7 +214,7 @@ function teRender(){
       <button class="tebtn go" data-act="go">Show the ${!!tu.list.rows ? "lineup" : "list"}</button></div>${teBoard()}</div>`; return; }
   const fl = TE.flash, msg = TE.phase === "done"
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
-    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(t.label[fl.i[0]] || tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
+    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(t.label[fl.i[0]] || tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : fl.k === "vague" ? `<b>${esc(fl.t)}</b> could be more than one: say the full name (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
   const lid = tu.list.id ? `<span class="teid">${tu.list.id}</span>` : "";   // 7.84 (Omar): every list has a fixed ID (NM#1.. Normal, FM#1.. TenaBall; lineups follow the football lists) so he can tell which have been played; solo shows only the ID
   const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
