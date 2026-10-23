@@ -2,11 +2,11 @@
    The Swap riddle button at the top brings the list back. No answers (Omar doesn't have them), no scoring, no teams, no phones.
    Riddles: v4work/riddles/riddles.txt (RID in build.js: [{n:"R#01", b:[{p}|{pre}|{img}|{url}]}]); a new riddle goes at the end with the next number.
    8.55 (Omar): a small timer counts up from 0:00 when a riddle opens. Bottom left: Small hint (unlocks after 10 minutes) and Big hint (after 20); bottom right: Solution
-   (any time). Each opens in a box over the riddle. The hints and solutions are in riddles.txt under each riddle (h1, h2, sol).
+   (any time; 8.68: also after 10 minutes, and locked buttons show only a lock, no countdown). Each opens in a box over the riddle. The hints and solutions are in riddles.txt under each riddle (h1, h2, sol).
    Riddles already opened on this device are faded on the list (jn_rdSeen; 8.53 had a small "Read" tag). Look: "Riddler", deep purple with acid-green question marks.
    To remove: delete this file, v4work/riddles/, photos/riddles/, the 8.53 CSS block and #rdo section in head.html, the Riddle Me This button, its TT entry
    in title.js, the rdLeave() call in showHome (src/app.js), RID in build.js and 'riddles' in MODE_FILES. */
-const RD_UNLOCK = {h1:600, h2:1200, sol:0};   // 8.55 (Omar): seconds before each button works
+const RD_UNLOCK = {h1:600, h2:1200, sol:600};   // 8.55 (Omar): seconds before each button works; 8.68 (Omar): the solution also waits 10 minutes (8.55-8.67: sol:0)
 const RD_NAME = {h1:"Small hint", h2:"Big hint", sol:"Solution"};
 const RD_LV = [null, ["Very easy", "#3ddc84"], ["Easy", "#4fc3f7"], ["Medium", "#ffd54f"], ["Hard", "#ff8a3d"], ["Very hard", "#ff4d6a"]];   // 8.67 (Omar): level colours (the dot on each card, and the key under the title)
 const rdDot = r => { const v = RD_LV[r.lv]; return v ? `<i class="rddot" style="--lv:${v[1]}" title="${v[0]}"></i>` : ""; };
@@ -39,7 +39,7 @@ const rdClock = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 /* 8.55: the timer and the hint buttons, updated every second while a riddle is open */
 function rdTick(){ if(RD.open < 0) return; const s = Math.floor((Date.now() - RD.t0) / 1000); $("#rdTimer").textContent = "⏱ " + rdClock(s);
   document.querySelectorAll("#rdBody [data-rdh]").forEach(b => { const k = b.dataset.rdh, left = RD_UNLOCK[k] - s, lock = left > 0;
-    b.disabled = lock; b.classList.toggle("locked", lock); b.textContent = lock ? `🔒 ${RD_NAME[k]} ${rdClock(left)}` : RD_NAME[k]; }); }
+    b.disabled = lock; b.classList.toggle("locked", lock); b.textContent = lock ? `🔒 ${RD_NAME[k]}` : RD_NAME[k]; }); }   // 8.68 (Omar): no countdown on a locked button (8.55-8.67: `🔒 ${RD_NAME[k]} ${rdClock(left)}`)
 function rdStop(){ clearInterval(RD.tmr); RD.tmr = null; rdPopClose(); }
 function rdPop(k){ const r = RID[RD.open], lines = r && r[k]; if(!lines) return; rdPopClose();
   const d = document.createElement("div"); d.className = "rdpop" + (k === "sol" ? " sol" : ""); d.id = "rdPop";
