@@ -211,7 +211,7 @@ function openNews(){
   $("#newsTitle").textContent = `Sahra v${vs[0].v}`;
   $("#newsHist").innerHTML = newsHTML(CHANGELOG);
   document.querySelectorAll(".newshist").forEach(d => d.open = false);
-  $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>`;   // 7.14 (Omar): the counts live here, not on the title screen
+  $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>` + modeStatsHTML();   // 7.14 (Omar): the counts live here, not on the title screen. 8.58: plus a card per mode
   { const d = histData(); $("#newsPlayed").innerHTML = `<p class="note">${esc(d.sum)}</p><ol class="histlist">${d.list}</ol>`; }   // 8.24 (Omar): played clues per category
   nsfwPaint();   // 8.26 (Omar): the NSFW switch
   /* 4.62 (Omar): the history only opens with the code "joga" (any capitals); it locks again on every open */
@@ -221,6 +221,43 @@ function openNews(){
 $("#newsLock").addEventListener("submit", e => { e.preventDefault();
   if($("#newsCode").value.trim().toLowerCase() === "joga"){ $("#newsLock").hidden = true; document.querySelectorAll(".newshist").forEach(d => d.hidden = false); $("#newsHist").parentNode.open = true; $("#newsClose").focus({preventScroll:true}); $(".newscard").scrollTop = 0; }   // 7.16 (Omar): open the history from the top, not scrolled to the Close button
   else { $("#newsErr").textContent = "Wrong code."; $("#newsCode").select(); } });
+/* 8.58 (Omar): under Categories and clues, a small card for every mode on the title screen, in title-screen order: players and phones come
+   from the mode button's own data-who and data-phones (the same text as its hover box), and the count line is worked out from the game's data
+   each time the panel opens. Modes without categories or clues (the card games, For Sale? and Hues and Cues) have no count line.
+   The trivia modes count with each mode's own setup on this device (photo rounds, football, NSFW), as a game would deal them.
+   To remove: delete this block, "+ modeStatsHTML()" in openNews and the 8.58 CSS block in head.html. */
+const msN = x => Number(x).toLocaleString("en-US");
+const msClues = ids => ids.reduce((a, id) => a + LV.reduce((b, l) => b + ((DATA[id] || {})[l] || []).length, 0), 0);
+const msLen = o => Object.values(o || {}).reduce((a, v) => a + (Array.isArray(v) ? v.length : 0), 0);
+function msTitles(catsOf){ const ts = BW_TITLES.filter(t => catsOf(t).length), ids = [...new Set(ts.flatMap(catsOf))];
+  return `${ts.length} titles · ${ids.length} categories · ${msN(msClues(ids))} clues`; }
+function msCats(ok){ const ids = PICK.filter(c => ok(c.id)).map(c => c.id); return `${ids.length} categories · ${msN(msClues(ids))} clues`; }
+const MODE_STATS = {
+  modeJn: () => { const {n, nc} = verCounts(); return `${nc} categories · ${msN(n)} clues · ${PICK.filter(c => c.type === "mix").length} mixes`; },
+  modeBid: () => msTitles(bwCats),
+  modeBingo: () => msCats(bgOk),
+  modeHot: () => msCats(hsOkCat),
+  modeSurv: () => msTitles(svCats),
+  modeTen: () => `${TEN.n.length} Tenable lists · ${TEN.f.length} TenaBall lists · ${teLineups().length} lineups`,
+  modeTb: () => `${Object.keys(TBC).length} packs · ${msN(msLen(TBC))} cards`,
+  modeImp: () => `${Object.keys(IMP.cats).length + 1} categories · ${msN(msLen(IMP.cats))} cards · ${Object.keys(IMP.langs).length} languages`,
+  modePsy: () => `${PSY.r.length + PSY.f.length} clues (${PSY.f.length} for the final)`,
+  modeCn: () => `${Object.keys(CNW).length} word packs · ${msN(msLen(CNW))} words`,
+  modeDec: () => `${Object.keys(DECK.packs).length} packs · ${msN(msLen(DECK.packs))} keywords`,
+  modeFa: () => `${Object.keys(FAW.cats).length} categories · ${msN(msLen(FAW.cats))} words`,
+  modeSp: () => { let nc = 0, n = 0; PICK.forEach(c => { if(c.type === "mix" || !spElig(c.id)) return; nc++; LV.forEach(l => DATA[c.id][l].forEach((_, i) => { if(spEntry(c.id, l, i)) n++; })); });
+    return `${nc} categories · ${msN(n)} buzzer clues`; },
+  modeRd: () => `${RID.length} riddles`,
+};
+function modeStatsHTML(){
+  const cards = [...document.querySelectorAll("#modeRow .modebtn")].map(b => {
+    const ph = b.dataset.phones || "", kind = /^Phones required/.test(ph) ? ["need", "Phones needed"] : /optional/i.test(ph) ? ["opt", "Phones optional"] : ["none", "No phones"];
+    const more = kind[0] === "opt" ? ph.replace(/^[^:]*:\s*(.)/, (_, c) => c.toUpperCase()) : kind[0] === "need" ? "One per player" : "";
+    let cnt = ""; try { cnt = MODE_STATS[b.id] ? MODE_STATS[b.id]() : ""; } catch(e){ cnt = ""; }
+    return `<li><div class="msh"><b>${esc(b.textContent.trim())}</b><span class="msph ms-${kind[0]}">${kind[1]}</span></div>`
+      + `<div class="msl">${esc(b.dataset.who || "")}</div>${more ? `<div class="msl">${esc(more)}</div>` : ""}${cnt ? `<div class="msc">${esc(cnt)}</div>` : ""}</li>`; });
+  return `<h4 class="era">Modes</h4><ul class="modestats">${cards.join("")}</ul>`;
+}
 function nsfwPaint(){ const on = nsfwOn(), b = $("#nsfwSw"); b.setAttribute("aria-checked", on); b.querySelector("b").textContent = on ? "On" : "Off"; }
 $("#nsfwSw").onclick = () => { store.set("jn_nsfwModes", !nsfwOn()); nsfwPaint(); };
 function closeNews(){ $("#newsBox").hidden = true; $("#verBtn").focus(); }
@@ -231,8 +268,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.57`);
-  $("#verBtn").textContent = "v8.57"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.58`);
+  $("#verBtn").textContent = "v8.58"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
