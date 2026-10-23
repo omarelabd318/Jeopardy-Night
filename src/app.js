@@ -231,8 +231,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.46`);
-  $("#verBtn").textContent = "v8.46"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.47`);
+  $("#verBtn").textContent = "v8.47"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2624,7 +2624,9 @@ function renderClue(){
       ${S.mode === "hotseat" ? hsSwapBtn(c) : c.preview || c.revealed ? "" : `<button class="btn small" data-act="swap" title="Already played this one? Get a different clue from the same category and value">Swap clue</button>`}
       ${S.mode === "bidding" ? bidPotatoBtn(c) : ""}
       ${c.preview ? "" : `<button class="btn small" data-act="cancel">${S.mode === "bidding" ? "Back to auction" : S.mode === "hotseat" ? "Back to the table" : S.mode === "survival" ? "Back to round" : "Back to board"}</button>`}
+      ${sandClock(c)}
     </div>`;
+  sandSet(c);   // 8.47: fill the sand clock to the time left
   const zimg = $("#clue .zoom img");
   if(zimg && c.type==="photo" && !focus[norm(p.a)] && "FaceDetector" in window && (c.cat==="actor"||c.cat==="footy"||c.cat==="person")){
     const k = norm(p.a);
@@ -2644,6 +2646,20 @@ function renderClue(){
   const one = $("#one");
   if(one) one.onchange = e => { const f = e.target.files[0]; if(f){ const k = norm(p.a); delete focus[k]; store.set("jn_focus", focus); setPhoto(k, f); renderClue(); renderPrep(); packStatus(); openFocus(k, "Host only: tap the face or the part to zoom in on"); } };
 }
+/* 8.47 (Omar): a small sand clock at the bottom right of the clue card, on the buttons row, next to the timer bar (not instead of it).
+   The top bulb empties and the bottom one fills as the time runs down. To remove: delete sandClock, sandSet, the ${sandClock(c)} line in renderClue, the sandSet call in tick and the 8.47 CSS. */
+function sandClock(c){ if(!c || !c.secs) return "";
+  return `<div class="sandclk${c.running ? " run" : ""}${c.left <= 0 ? " out" : ""}" aria-hidden="true"><svg viewBox="0 0 34 48">
+    <defs><clipPath id="sgT"><path d="M7 5H27C27 15 19 20 17 24C15 20 7 15 7 5Z"/></clipPath><clipPath id="sgB"><path d="M17 24C19 28 27 33 27 43H7C7 33 15 28 17 24Z"/></clipPath></defs>
+    <rect x="3" y="1.5" width="28" height="4" rx="2" class="cap"/><rect x="3" y="42.5" width="28" height="4" rx="2" class="cap"/>
+    <path class="glass" d="M7 5H27C27 15 19 20 17 24C19 28 27 33 27 43H7C7 33 15 28 17 24C15 20 7 15 7 5Z"/>
+    <rect class="st" x="0" width="34" clip-path="url(#sgT)"/><rect class="sb" x="0" width="34" clip-path="url(#sgB)"/>
+    <rect class="flow" x="16.4" y="22" width="1.2" height="17"/></svg></div>`; }
+function sandSet(c){ const el = $("#clue .sandclk"); if(!el || !c) return; const f = Math.max(0, Math.min(1, c.left / c.secs));
+  const top = el.querySelector(".st"), bot = el.querySelector(".sb");
+  if(top){ top.setAttribute("y", 24 - 17 * f); top.setAttribute("height", 17 * f); }
+  if(bot){ bot.setAttribute("y", 43 - 17 * (1 - f)); bot.setAttribute("height", 17 * (1 - f)); }
+  el.classList.toggle("run", !!c.running && c.left > 0); el.classList.toggle("out", c.left <= 0); }
 function tick(){
   const c = S.cur; if(!c) return;
   c.left -= .25;
@@ -2651,6 +2667,7 @@ function tick(){
   if(c.left <= 5 && c.left % 1 === 0) Snd.tick();
   const i = $("#clue .bar i"), t = $("#clue .timer .t");
   if(i) i.style.width = (100*c.left/c.secs)+"%"; if(t) t.textContent = Math.ceil(c.left);
+  sandSet(c);   // 8.47
 }
 function stopTimer(){ if(timer){ clearInterval(timer); timer = null; } }
 function closeCard(){ stopTimer(); $("#card").hidden = true; const was = S.cur; S.cur = null; wPump(); if(linked() && was && !was.preview) ffaPost({cur:null}); }
