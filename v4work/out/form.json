@@ -2,7 +2,7 @@
  "id": "form",
  "name": "Formations",
  "type": "text",
- "desc": "A full starting lineup, strikers at the top and the keeper at the bottom. Name the team and the year.",
+ "desc": "A full starting lineup, strikers at the top and the keeper at the bottom. Name the team and the year. Half points for only the team or only the year.",
  "data": {
   "100": [
    [

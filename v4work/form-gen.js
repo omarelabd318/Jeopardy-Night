@@ -73,5 +73,5 @@ const data={};
 for(const v in L) data[v]=L[v].map(([f,s,a])=>{const rows=s.split(';').map(r=>r.split(',').map(x=>x.trim()));
   const n=rows.reduce((t,r)=>t+r.length,0); if(n!==11) throw new Error(a+' has '+n);
   return [f+"\n"+rows.slice().reverse().map(r=>r.join(' · ')).join("\n"),a];});
-require('fs').writeFileSync('/mnt/project-files/jeopardy/v4work/out/form.json',JSON.stringify({id:"form",name:"Formations",type:"text",desc:"A full starting lineup, strikers at the top and the keeper at the bottom. Name the team and the year.",data},null,1));
+require('fs').writeFileSync('/mnt/project-files/jeopardy/v4work/out/form.json',JSON.stringify({id:"form",name:"Formations",type:"text",desc:"A full starting lineup, strikers at the top and the keeper at the bottom. Name the team and the year. Half points for only the team or only the year.",data},null,1));
 console.log(Object.values(data).map(a=>a.length));

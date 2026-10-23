@@ -6,7 +6,7 @@
    To remove: see the 6.49 NOTES entry. */
 const BW = {cfg:null, st:null, timer:null, left:0, phones:false, gid:0, seen:{c:null, n:0}, busy:false, cnt:{}};
 const BW_TIERS = [{k:"Entry", lv:[200,300], cap:600}, {k:"Medium", lv:[300,400], cap:1200}, {k:"Expert", lv:[400,500], cap:1500}];
-const BW_WINNOTE = $("#winNote").textContent, BW_STEP = 50, BW_RAISES = [50,100,200], BW_HALF = new Set(["song","pin"]);   // the two categories that give half points (song or singer; country only); half the bid there
+const BW_WINNOTE = $("#winNote").textContent, BW_STEP = 50, BW_RAISES = [50,100,200], BW_HALF = new Set(["song","pin","form"]);   // the categories that give half points (song or singer; country only; 8.63: Formations team or year); half the bid there
 /* the titles shown while bidding; each groups related categories from one setup section. photo: needs the photo rounds on. off: off by default */
 const BW_TITLES = [
   ["egfilm", "Egyptian Film, TV & Music", ["ecin","ramadan","ploteg","quoteeg","emeg","lyricar"]],
