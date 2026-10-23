@@ -231,8 +231,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.47`);
-  $("#verBtn").textContent = "v8.47"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.48`);
+  $("#verBtn").textContent = "v8.48"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2653,13 +2653,29 @@ function sandClock(c){ if(!c || !c.secs) return "";
     <defs><clipPath id="sgT"><path d="M7 5H27C27 15 19 20 17 24C15 20 7 15 7 5Z"/></clipPath><clipPath id="sgB"><path d="M17 24C19 28 27 33 27 43H7C7 33 15 28 17 24Z"/></clipPath></defs>
     <rect x="3" y="1.5" width="28" height="4" rx="2" class="cap"/><rect x="3" y="42.5" width="28" height="4" rx="2" class="cap"/>
     <path class="glass" d="M7 5H27C27 15 19 20 17 24C19 28 27 33 27 43H7C7 33 15 28 17 24C15 20 7 15 7 5Z"/>
-    <rect class="st" x="0" width="34" clip-path="url(#sgT)"/><rect class="sb" x="0" width="34" clip-path="url(#sgB)"/>
-    <rect class="flow" x="16.4" y="22" width="1.2" height="17"/></svg></div>`; }
+    <path class="st" clip-path="url(#sgT)"/><path class="sb" clip-path="url(#sgB)"/>
+    <line class="flow" x1="17" y1="24" x2="17" y2="42"/></svg></div>`; }
+/* 8.48 (Omar): drains by amount of sand, not by height. The bulbs are narrow at the neck, so 8.47's straight height made the top look nearly
+   empty while half the time was left. SAND_A[k] is the sand area within k/4 units of the neck (the bulb shape from the glass path), and the
+   top and bottom levels are found from it. The top surface dips into a funnel over the neck, the bottom builds a mound under the stream. */
+const SAND_A = (() => { const pts = []; for(let t = 0; t <= 1.0001; t += .005){ const u = 1 - t;
+    pts.push([u*u*u*27 + 3*u*u*t*27 + 3*u*t*t*19 + t*t*t*17 - 17, u*u*u*5 + 3*u*u*t*15 + 3*u*t*t*20 + t*t*t*24]); }   // half-width and y down the top bulb's right edge
+  const half = d => { const y = 24 - d; for(let k = 1; k < pts.length; k++) if(pts[k][1] >= y){ const [w0, y0] = pts[k-1], [w1, y1] = pts[k]; return w0 + (w1 - w0) * (y - y0) / ((y1 - y0) || 1); } return 0; };
+  const A = [0]; for(let k = 1; k <= 76; k++) A.push(A[k-1] + .25 * (half((k - .5) / 4) * 2)); return A; })();   // area within d = k/4 of the neck, up to d = 19
+const SAND_FULL = 16;   // a full top bulb holds sand up to 16 units above the neck, leaving air under the cap
+function sandH(area, fromBase){ const A = SAND_A, base = A[A.length - 1];   // from the neck (top bulb), or from the base (bottom bulb, the mirror image)
+  const want = fromBase ? base - area : area; let k = 1; while(k < A.length - 1 && A[k] < want) k++;
+  const d = (k - 1 + (want - A[k-1]) / ((A[k] - A[k-1]) || 1)) / 4; return fromBase ? 19 - d : d; }
 function sandSet(c){ const el = $("#clue .sandclk"); if(!el || !c) return; const f = Math.max(0, Math.min(1, c.left / c.secs));
-  const top = el.querySelector(".st"), bot = el.querySelector(".sb");
-  if(top){ top.setAttribute("y", 24 - 17 * f); top.setAttribute("height", 17 * f); }
-  if(bot){ bot.setAttribute("y", 43 - 17 * (1 - f)); bot.setAttribute("height", 17 * (1 - f)); }
-  el.classList.toggle("run", !!c.running && c.left > 0); el.classList.toggle("out", c.left <= 0); }
+  const full = SAND_A[SAND_FULL * 4], run = !!c.running && c.left > 0;
+  const ht = f > 0 ? sandH(full * f, false) : 0, hb = sandH(full * (1 - f), true);
+  const ys = 24 - ht, dip = f > 0 && f < 1 ? Math.min(2.6, ht * .45) : 0;   // funnel over the neck once sand has started to fall
+  const yb = 43 - hb, mound = 1 - f > 0 ? Math.min(3.2, hb * .6 + .4) : 0;   // heap under the stream
+  const top = el.querySelector(".st"), bot = el.querySelector(".sb"), fl = el.querySelector(".flow");
+  if(top) top.setAttribute("d", f > 0 ? `M0 ${ys}L11 ${ys}Q17 ${ys + dip * 1.6} 23 ${ys}L34 ${ys}L34 30L0 30Z` : "");
+  if(bot) bot.setAttribute("d", 1 - f > 0 ? `M0 44L0 ${yb + mound * .35}Q17 ${yb - mound * 1.3} 34 ${yb + mound * .35}L34 44Z` : "");
+  if(fl) fl.setAttribute("y2", Math.max(24.5, yb - mound * .5).toFixed(2));
+  el.classList.toggle("run", run); el.classList.toggle("out", c.left <= 0); }
 function tick(){
   const c = S.cur; if(!c) return;
   c.left -= .25;
