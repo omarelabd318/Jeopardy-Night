@@ -151,7 +151,8 @@ function lbCenter(g){
     // 7.79 (Omar): the new cards slide in from the seat of whoever played them (was a drop from straight above). --dx/--dy point at that seat, in u.
     const a = g.last ? Math.PI / 2 + g.last.by * 2 * Math.PI / g.n : -Math.PI / 2, dx = (Math.cos(a) * 33).toFixed(1), dy = (Math.sin(a) * 17).toFixed(1);
     const n = g.last ? g.last.n : 0, old = Math.min(g.pile - n, 14), rr = j => ((j * 37 + 11) % 29) - 14, xx = j => ((j * 53 + 7) % 11) - 5, yy = j => ((j * 29 + 3) % 7) - 3;
-    return `<div class="lbmid mid1">
+    const lastTxt = g.last ? `<div class="lblast"><b>${esc(lbNm(g.seats[g.last.by].p))}</b> played ${g.last.n} card${g.last.n === 1 ? "" : "s"}</div>` : "";   // 8.37: who played last, above the pile
+    return `<div class="lbmid mid1">${lastTxt}
       <div class="lbpile">${Array.from({length:old}, (_, j) => `<i style="--r:${rr(j)}deg;--x:${xx(j)};--y:${yy(j)}"></i>`).join("")}${Array.from({length:n}, (_, j) => `<i class="nw${fresh ? " drop" : ""}" style="--r:${rr(old + j + 5)}deg;--x:${xx(old + j + 3)};--y:${yy(old + j + 2)};--j:${j};--dx:${dx};--dy:${dy}"></i>`).join("")}${g.last ? "" : `<em>Pile is empty</em>`}</div></div>`; }
   if(g.phase === "reveal"){ const r = g.rev, who = g.seats[r.claimer].n, caller = g.seats[r.caller].n;
     return `<div class="lbmid rev"><div class="lbflip">${r.cards.map(c => lbCard(c, c === g.tbl || c === "J" ? "" : "bad")).join("")}<div class="lbverdict">${r.liar ? "LIAR!" : "TRUTH!"}</div></div>
