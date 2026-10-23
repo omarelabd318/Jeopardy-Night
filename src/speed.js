@@ -103,11 +103,11 @@ const spCol = p => { const g = SP.g, i = (g ? g.ids : SP.players.slice(0, 4).map
 const spSigned = n => (n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n);
 
 /* ---------- clues ---------- */
-const SP_Q = {emov:"Name the film or TV show.", emeg:"Name the Egyptian film, series or play.", emseg:"Decode the Egyptian phrase or saying."};
+const SP_Q = {emseg:"Decode the Egyptian phrase or saying."};   // 8.62: emov and emeg name the film, TV series or play (workName in app.js); was emov:"Name the film or TV show.", emeg:"Name the Egyptian film, series or play."
 function spEntry(cat, lvl, i){   // {q, a, kind, ...} for one pool entry, or null when it doesn't suit a buzzer (long answer, A/B/C, a photo)
   const c = catById(cat), e = DATA[cat][lvl][i]; let q, a, x = {};
   if(c.type === "text"){ if(typeof e[2] === "string") return null; q = e[0]; a = e[1]; }
-  else if(c.type === "emoji"){ q = SP_Q[cat] || "Decode the phrase or proverb."; a = e[1]; x = {kind:"emoji", emoji:e[0]}; }
+  else if(c.type === "emoji"){ q = cat === "emov" || cat === "emeg" ? `Name the ${workName(cat, e[1])}.` : SP_Q[cat] || "Decode the phrase or proverb."; a = e[1]; x = {kind:"emoji", emoji:e[0]}; }
   else if(c.type === "flag"){ if(!F[e]) return null; q = "Name the country this flag belongs to."; a = F[e][0]; x = {kind:"flag", flag:e}; }
   else return null;
   if(typeof a !== "string" || !q || q.length > 220 || a.length > 30 || a.indexOf("\n") >= 0 || /^[A-Ca-c]\)/.test(a)) return null;

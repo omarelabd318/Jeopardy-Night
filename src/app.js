@@ -270,8 +270,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.61`);
-  $("#verBtn").textContent = "v8.61"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.62`);
+  $("#verBtn").textContent = "v8.62"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2443,6 +2443,12 @@ function openClue(cat,lvl,exclude,forceIdx,tile){
   if(!preview && !S.cur.wagerStage && !["act","impostor","password"].includes(type)){ S.cur.running = true; try{ Snd.unlock(); }catch(e){} timer = setInterval(tick, 250); renderClue(); }
   $("#clue").focus?.();
 }
+/* 8.62 (Omar): emoji and Act It Out clues name what the answer is (film, TV series or play) instead of "film or TV show" or
+   "film, series or play". Kinds come from ACT_KIND (each out file's act_kind); a title not listed is a film, and "either" is one
+   that's well known as both. (8.61 and before: "Name the film or TV show." / "Name the Egyptian film, series or play.") */
+const WORK_WORD = {film: "film", series: "TV series", play: "play", either: "film or TV series"};
+function workName(cat, title){ const k = (typeof ACT_KIND !== "undefined" && ACT_KIND[title]) || "film";
+  return (/eg$/.test(cat) ? "Egyptian " : "") + (WORK_WORD[k] || "film"); }
 function clueParts(){
   const {cat,lvl,idx,type} = S.cur;
   if(type==="text"){ const [q,a,img,blur] = pool(cat,lvl)[idx]; return {q, a, img, blur}; }
@@ -2459,9 +2465,9 @@ function clueParts(){
     return {q: num ? num.q : "Put these three in order, earliest first.", a: sorted.map(i => ev[i][0]).join(" → "), ev, sorted, num}; }
   if(type==="pin"){ const [city,country,lat,lon] = pool(cat,lvl)[idx]; return {q:"Name the city at the pin. Just the country gets half points.", a:`${city}, ${country}`, pin:[lat,lon]}; }
   if(type==="shape"){ const [n,al] = pool(cat,lvl)[idx]; return {q:"Name the country from its outline.", a:n, shape:al}; }
-  if(type==="emoji"){ const [e,ans] = pool(cat,lvl)[idx]; const ar = typeof AR_EMOJI !== "undefined" && AR_EMOJI.has(ans) ? " (Arabic)" : ""; return {q: (cat==="emov" ? "Name the film or TV show." : cat==="emeg" ? "Name the Egyptian film, series or play." : cat==="emseg" ? "Decode the Egyptian phrase or saying." : "Decode the phrase or proverb.") + ar, a:ans, emoji:e}; }
+  if(type==="emoji"){ const [e,ans] = pool(cat,lvl)[idx]; const ar = typeof AR_EMOJI !== "undefined" && AR_EMOJI.has(ans) ? " (Arabic)" : ""; return {q: (cat==="emov" || cat==="emeg" ? `Name the ${workName(cat, ans)}.` : cat==="emseg" ? "Decode the Egyptian phrase or saying." : "Decode the phrase or proverb.") + ar, a:ans, emoji:e}; }
   if(type==="act"){ const t = pool(cat,lvl)[idx], kind = (typeof ACT_KIND !== "undefined" && ACT_KIND[t]) || "film";
-    return {q: cat==="acteg" ? "One player acts out this Egyptian film, series or play. No talking, no sounds, no pointing at letters." : "One player acts out this film or TV show. No talking, no sounds, no pointing at letters.", a:`${t} (${kind})`}; }
+    return {q: `One player acts out this ${workName(cat, t)}. No talking, no sounds, no pointing at letters.`, a:`${t} (${kind})`}; }
   const [a,wiki] = pool(cat,lvl)[idx];
   return {q: cat==="car" ? (lvl>=300 ? "Name the make AND model." : "Name the make and model.") : cat==="footy" ? "Who is this footballer?" : cat==="person" ? "Who is this famous person?" : "Who is this actor?", a, wiki};
 }
