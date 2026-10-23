@@ -22,6 +22,14 @@ const mk = (names, lives) => TER.Turn({items:names.map(a => typeof a === "string
   t.guess("peru"); eq(t.left, 1, "1 life"); ok(!t.over, "still going"); t.guess("chile"); ok(t.over, "out of lives"); eq(t.how, "lives", "how"); eq(t.points(), 4, "1 point each");
   eq(t.guess("china").k, "over", "no guesses after the end"); }
 { const t = mk(["A1x", "Bb2", "Cc3"], 0); ["a1x", "bb2"].forEach(g => t.guess(g)); for(let i = 0; i < 9; i++) t.guess("nope" + i); ok(!t.over, "no life limit"); t.guess("cc3"); eq(t.how, "all", "all found"); eq(t.points(), 3 + TER.BONUS, "bonus"); }
+// 8.34 (Omar): "avatar fire" is Avatar: Fire and Ash; "nottingham" is Nottingham Forest, not Tottenham; a first word shared by several hidden answers is vague (no life lost)
+{ const t = mk(["Avatar: Fire and Ash", "Avatar: The Way of Water", "Zootopia 2"], 3);
+  eq(t.guess("avatar fire").k, "right", "unique two-word start"); eq(t.found[0], true, "filled Fire and Ash"); eq(t.guess("avatar the way").k, "right", "the other Avatar"); eq(t.left, 3, "no life lost"); }
+{ const t = mk(["Avatar: Fire and Ash", "Avatar: The Way of Water", "Zootopia 2"], 3); eq(t.guess("avatar").k, "vague", "just Avatar could be either"); eq(t.left, 3, "vague costs nothing"); eq(t.guess("avatar fir").k, "wrong", "a half-typed word is not a start"); }
+{ const t = mk(["Brighton", "Nottingham Forest", "Tottenham", "Burnley"], 3);
+  eq(t.guess("nottingham").k, "right", "first word"); eq(t.found[1], true, "Nottingham Forest filled"); eq(t.found[2], false, "Tottenham not touched"); eq(t.guess("tottenham").k, "right", "Tottenham itself still fine"); eq(t.left, 3, "no life lost"); }
+{ const t = mk(["Manchester United", "Manchester City", "Chelsea"], 3);
+  eq(t.guess("manchester").k, "vague", "two slots start with it"); eq(t.left, 3, "vague costs no life"); eq(t.n(), 0, "vague fills nothing"); eq(t.guess("manchester city").k, "right", "a longer name still works"); eq(t.guess("manchester").k, "right", "once one is found the other is the only one left"); }
 // surnames, the same name twice
 { const t = mk(["Alan Shearer", "Harry Kane", {a:"Mohamed Salah", alt:["mo salah"]}, "Thierry Henry"], 3);
   eq(t.guess("shearer").k, "right", "surname"); eq(t.guess("mo salah").k, "right", "other name"); eq(t.guess("Thiery Henri").k, "right", "two slips on 12 letters"); eq(t.guess("kan").k, "wrong", "too far off"); }
