@@ -107,7 +107,7 @@ function renderHs(){
   const seat = hsSeat(), t = st.teams[seat], n = st.streak, start = Math.max(0, n - 3), round = Math.floor(st.turnNo / st.teams.length) + 1;
   const hist = st.hist || [], at = k => k < n && hist[k] != null ? hist[k] : (n ? st.pot : 50) * 2 ** (k - n + 1);   // 8.63: the ladder shows the real pots so far, then doubles on from the pot
   const chips = [0,1,2,3,4].map(j => { const k = start + j, cls = k < n - 1 ? "done" : k === n - 1 ? "cur" : k === n ? "nxt" : ""; return `<div class="hschip ${cls}">${hsNum(at(k))}</div>`; }).join("");
-  const sub = st.stl ? `PASSED ON · HALF THE POT · ${hsNum(st.stl.amt)}` : st.tb ? "TIE-BREAK · ONE 500 CLUE EACH" : `ROUND ${round} OF ${HS.cfg.turns} · ${n ? n + " RIGHT IN A ROW" : "FIRST CLUE OF THE TURN"}`;
+  const sub = st.stl ? `PASSED ON · HALF THE POT · ${hsNum(st.stl.amt)}` : st.tb ? "TIE-BREAK · ONE 500 CLUE EACH" : n ? n + " RIGHT IN A ROW" : "FIRST CLUE OF THE TURN";   // 8.71 (Omar): the round moved to the top right (8.70 and before: `ROUND ${round} OF ${HS.cfg.turns} · ` led this line)
   const lead = Math.max(...st.teams.map(m => m.score));
   const mid = st.tb ? "" : `<div class="hsstack"><b>${hsNum(st.pot)}</b><small>${st.pot ? "IN THE POT" : "NOTHING AT RISK YET"}</small></div>
     <button class="hscp bank" data-hs="bank" ${st.pot && st.phase === "pick" ? "" : "disabled"}><div>Bank<small>${hsNum(st.pot)}</small></div></button><div class="hscp risk"><div>Risk<small>${hsNum(hsNext())}</small></div></div>`;
@@ -121,6 +121,7 @@ function renderHs(){
   if(st.phase === "tb"){ const names = st.tb.ids.map(i => esc(st.teams[i].name));
     ov = `<div class="hsov"><h2>Tie-break</h2><div class="who">${st.tb.msg || `${names.join(" and ")} are tied.`}</div><p class="note">${esc(t.name)} gets one 500 clue. Right wins it.</p><button class="hsb go" data-hs="tbopen">Open the clue</button></div>`; }
   root.innerHTML = `
+    ${st.tb ? "" : `<div class="hsround">Round ${round} of ${HS.cfg.turns}</div>`}
     <div class="hssco">${st.teams.map((m, i) => `<div class="${i === seat ? "on" : ""}"><span>${esc(m.name)}${m.swap && HS.cfg.swap ? " ↻" : ""}</span><span class="${m.score < 0 ? "neg" : ""}">${hsNum(m.score)}</span></div>`).join("")}</div>
     <div class="hsttl">${st.stl ? `${esc(t.name)} got the pass` : `${esc(t.name)} is in the Hot Seat`}<small>${sub}</small></div>
     <div class="hsladder">${st.tb ? "" : chips}</div>${mid}${low}${ov}`;
