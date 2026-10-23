@@ -3003,20 +3003,21 @@ $("#newsLock").addEventListener("submit", e => { e.preventDefault();
 /* 8.58 (Omar): under Categories and clues, a small card for every mode on the title screen, in title-screen order: players and phones come
    from the mode button's own data-who and data-phones (the same text as its hover box), and the count line is worked out from the game's data
    each time the panel opens. Modes without categories or clues (the card games, For Sale? and Hues and Cues) have no count line.
-   The trivia modes count with each mode's own setup on this device (photo rounds, football, NSFW), as a game would deal them.
+   The trivia modes count their full pool, whatever their setup switches say (photo rounds on, football Normal); the locked NSFW category is never counted (Omar).
    To remove: delete this block, "+ modeStatsHTML()" in openNews and the 8.58 CSS block in head.html. */
 const msN = x => Number(x).toLocaleString("en-US");
 const msClues = ids => ids.reduce((a, id) => a + LV.reduce((b, l) => b + ((DATA[id] || {})[l] || []).length, 0), 0);
 const msLen = o => Object.values(o || {}).reduce((a, v) => a + (Array.isArray(v) ? v.length : 0), 0);
-function msTitles(catsOf){ const ts = BW_TITLES.filter(t => catsOf(t).length), ids = [...new Set(ts.flatMap(catsOf))];
+const msOk = id => !!catById(id) && !HIDDEN_IDS.has(id) && !LOCKED_IDS.has(id);
+function msTitles(){ const catsOf = t => t[2].filter(msOk), ts = BW_TITLES.filter(t => t[3] !== "nsfw" && catsOf(t).length), ids = [...new Set(ts.flatMap(catsOf))];
   return `${ts.length} titles · ${ids.length} categories · ${msN(msClues(ids))} clues`; }
 function msCats(ok){ const ids = PICK.filter(c => ok(c.id)).map(c => c.id); return `${ids.length} categories · ${msN(msClues(ids))} clues`; }
 const MODE_STATS = {
   modeJn: () => { const {n, nc} = verCounts(); return `${nc} categories · ${msN(n)} clues · ${PICK.filter(c => c.type === "mix").length} mixes`; },
-  modeBid: () => msTitles(bwCats),
-  modeBingo: () => msCats(bgOk),
-  modeHot: () => msCats(hsOkCat),
-  modeSurv: () => msTitles(svCats),
+  modeBid: msTitles,   // Bidding Wars and Survival deal from the same titles
+  modeBingo: () => msCats(id => { const c = catById(id); return msOk(id) && !c.mode && c.type !== "mix" && !BG_SKIP.has(id); }),
+  modeHot: () => msCats(id => { const c = catById(id); return msOk(id) && !c.mode && !HS_BAD.has(c.type) && hsHas(id); }),
+  modeSurv: msTitles,
   modeTen: () => `${TEN.n.length} Tenable lists · ${TEN.f.length} TenaBall lists · ${teLineups().length} lineups`,
   modeTb: () => `${Object.keys(TBC).length} packs · ${msN(msLen(TBC))} cards`,
   modeImp: () => `${Object.keys(IMP.cats).length + 1} categories · ${msN(msLen(IMP.cats))} cards · ${Object.keys(IMP.langs).length} languages`,
