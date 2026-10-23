@@ -1,5 +1,8 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.44", "date": "2026-10-23", "items": ["TenaBall: Real Madrid and Barcelona signings lists now use Transfermarkt fees, so the order matches Chelsea, Arsenal and Liverpool."]},
+ {"v": "8.43", "date": "2026-10-23", "items": ["TenaBall: Liverpool's most expensive signings."]},
+ {"v": "8.42", "date": "2026-10-23", "items": ["Tenable: 12 new lists, from Africa's biggest economies and the highest-paid actors to the fastest birds and life expectancy (highest and lowest).", "TenaBall: Real Madrid's, Barcelona's, Chelsea's and Arsenal's most expensive signings.", "Tenable Mix: the Choose list screen says Tenable Mix in the top left."]},
  {"v": "8.41", "date": "2026-10-23", "items": ["Tenable Mix: the Choose list grid is now close to half Tenable, half TenaBall (still a little random), and lineups only take football places."]},
  {"v": "8.40", "date": "2026-10-23", "items": ["Tenable: getting all ten now earns +2 bonus points instead of +5."]},
  {"v": "8.39", "date": "2026-10-23", "items": ["Tenable: the Choose list cards show just the list number and title (lineups get a small Lineup tag)."]},
