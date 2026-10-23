@@ -23,9 +23,14 @@ const TBDATA=(()=>{const d=W+'/taboo',o={};if(!fs.existsSync(d))return o;for(con
 const FADATA=(()=>{const f=W+'/fakeartist/words.json';return fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'utf8')):{cats:{}}})();   // 7.23: Fake Artist words: {cats:{name:[[word,"e"|"h",[alts]]]}}
 const CNDATA=(()=>{const d=W+'/codenames',o={};if(!fs.existsSync(d))return o;for(const f of fs.readdirSync(d).sort())if(/^words-.*\.json$/.test(f))o[f.slice(6,-5)]=JSON.parse(fs.readFileSync(d+'/'+f,'utf8'));return o})();   // 6.82: Codenames word packs: words-<pack>.json = [word, ...]
 const TENDATA=(()=>{const d=W+'/tenable',r=f=>fs.existsSync(d+'/'+f)?JSON.parse(fs.readFileSync(d+'/'+f,'utf8')):{};return{n:r('normal.json'),f:r('football.json'),fs:r('form-scores.json'),lx:r('lineups.json'),fl:r('flags.json')}})();   // 7.82: Tenable lists {t,d,src,as,a:[[answer,value,[other names]]]} and the Formations scores
+const RIDDATA=(()=>{const f=W+'/riddles/riddles.txt';if(!fs.existsSync(f))return[];const out=[];let cur=null,pre=null;   // 8.53: Riddle Me This: [{n:"R#01",b:[{p}|{pre}|{img}|{url}]}]
+  for(const ln of fs.readFileSync(f,'utf8').split('\n')){const m=ln.match(/^=== (R#\d+)/);if(m){out.push(cur={n:m[1],b:[]});pre=null;continue}if(!cur||(pre===null&&/^#/.test(ln)))continue;
+    if(ln.trim()==='```'){if(pre===null)pre=[];else{cur.b.push({pre:pre.join('\n')});pre=null}continue}if(pre!==null){pre.push(ln);continue}
+    const t=ln.trim();if(!t)continue;const im=t.match(/^\[img (.+)\]$/);cur.b.push(im?{img:'photos/'+im[1]}:/^https?:\/\/\S+$/.test(t)?{url:t}:{p:t})}
+  return out})();
 const DECDATA=(()=>{const f=W+'/decrypto/keywords.json';return fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'utf8')):{packs:{},fam:[]}})();   // 6.83: Decrypto keywords: {packs:{name:[words]},fam:[[words of one family]]}
 const FOOTBALL_IDS=JSON.parse(fs.readFileSync('src/app.js','utf8').match(/const FOOTBALL = (\[[^\]]*\])/)[1]);   // 6.20: Football Mix = the Football mode pool
-const MODE_FILES=['cards','estrules','bidding','bingo','hotseat','survival','imposter','psych','estimation','tarneeb','holdem','codenames','decrypto','forsale','liars','threefive','taboo','fakeartist','hues','speed','tenable','titlebg','title'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
+const MODE_FILES=['cards','estrules','bidding','bingo','hotseat','survival','imposter','psych','estimation','tarneeb','holdem','codenames','decrypto','forsale','liars','threefive','taboo','fakeartist','hues','speed','tenable','riddles','titlebg','title'].filter(m=>fs.existsSync(`src/${m}.js`));   // 6.48: each game mode lives in src/<mode>.js and is spliced into app.js at /*@modes*/
 fs.copyFileSync('src/cards.js','cards.js');   // 6.79: the phone page cards.html loads the same card kit as the game
 const head=fs.readFileSync('src/head.html','utf8'), app=fs.readFileSync('src/app.js','utf8').replace('/*@modes*/',()=>MODE_FILES.map(m=>fs.readFileSync(`src/${m}.js`,'utf8')).join('\n')), builtin=fs.readFileSync('src/builtin.js','utf8');
 const data=`${builtin.trim()}
@@ -42,6 +47,7 @@ const ACT_KIND = ${J(ACT)};
 const PHOTO_CATS = ${J(extra.PHOTO_CATS||base.PHOTO_CATS)};
 const CHANGELOG = ${J(JSON.parse(fs.readFileSync('src/changelog.json','utf8')))};
 const FAW = ${J(FADATA)};   /* 7.23: Fake Artist words (v4work/fakeartist/words.json, from words.txt) */
+const RID = ${J(RIDDATA)};   /* 8.53: Riddle Me This riddles (v4work/riddles/riddles.txt) */
 const TEN = ${J(TENDATA)};   /* 7.82: Tenable lists (v4work/tenable/*.json) */
 const TBC = ${J(TBDATA)};   /* 7.4: Taboo cards (v4work/taboo/cards-*.json) */
 const CNW = ${J(CNDATA)};   /* 6.82: Codenames word packs (v4work/codenames/words-*.json) */
