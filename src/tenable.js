@@ -172,8 +172,7 @@ function tePitch(tu, t){ const rows = tu.list.rows, n = rows.length; let i = 0, 
     r.forEach((_, k) => { const x = (r.length - k) * 100 / (r.length + 1), idx = i++, it = tu.list.items[idx], f = t ? t.found[idx] : false;
       const hid = t ? t.found.map((z, j) => z ? -1 : j).filter(j => j >= 0) : [], shown = TE.phase === "done" && hid.indexOf(idx) > -1 && hid.indexOf(idx) < TE.rev;
       h += `<button class="teman ${f ? "ok" : shown ? "miss" : ""}${f && TE.flash && TE.flash.k === "ok" && TE.flash.i.includes(idx) ? " new" : ""}" data-give="${idx}" style="left:${x}%;top:${ri === n - 1 ? 87 : y}%"><i${!f && !shown && t && t.flag[idx] && it.f ? ` class="fl" style="background-image:url(photos/flags/${it.f}.svg)"` : ""}></i><span>${f || shown ? esc(it.a) : (t && t.hints[idx] ? esc(t.hintText(idx)) : "?")}</span></button>`; }); });
-  return `<div class="tepitch"><div class="telines"><b class="box"></b><b class="six"></b><b class="arc"></b><b class="mid"></b></div>${h}
-    <div class="tecap"><div class="tefm">${esc(tu.list.form)}</div></div></div>`; }
+  return `<div class="tepitch"><div class="telines"><b class="box"></b><b class="six"></b><b class="arc"></b><b class="mid"></b></div>${h}</div>`; }   /* 8.46 (Omar): no formation label (e.g. 5-3-2) in the pitch's top left. Was: ${h}<div class="tecap"><div class="tefm">${esc(tu.list.form)}</div></div></div> */
 function teBoard(){ const ps = TE.cfg.players; if(ps.length < 2) return "";
   return `<div class="tescore">${ps.map((p, i) => `<span class="${TE.turns[TE.ti] && TE.turns[TE.ti].p === i && TE.phase !== "over" ? "cur" : ""}">${esc(p)} <b>${TE.scores[i]}</b></span>`).join("")}</div>`; }
 function teHead(tu){ const L = tu.list;
