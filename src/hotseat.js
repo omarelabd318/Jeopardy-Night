@@ -5,7 +5,7 @@
    hsSetupAgain and hsLeave. Setup is saved on this device in jn_hsCfg (the game itself isn't saved). To remove: see the 6.59 NOTES entry. */
 const HS = {cfg:null, st:null};
 const HS_LVLS = [200,300,400,500];   // 6.59 (Omar): clues are random from these pools, never a 100. To bring 100s back, add 100 to this list.
-const HS_BAD = new Set(["act","impostor","password","closest","mix"]), HS_HALF = new Set(["song","pin","form"]), HS_WINNOTE = $("#winNote").textContent;   // rounds that need other teams are left out; half answers: song or singer, country only, team or year (8.63)
+const HS_BAD = new Set(["act","impostor","password","closest","mix"]), HS_HALF = new Set(["song","pin","form","car","actor","footy","person"]), HS_WINNOTE = $("#winNote").textContent;   // rounds that need other teams are left out; half answers: song or singer, country only, team or year, a partial name in the four photo rounds (8.63)
 const hsNum = n => Number(n).toLocaleString("en-US");
 const hsPotAt = k => 100 * 2 ** k;   // the pot after k+1 right answers
 const hsShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
