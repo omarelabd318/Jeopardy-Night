@@ -212,6 +212,7 @@ function openNews(){
   $("#newsHist").innerHTML = newsHTML(CHANGELOG);
   document.querySelectorAll(".newshist").forEach(d => d.open = false);
   $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>`;   // 7.14 (Omar): the counts live here, not on the title screen
+  $("#newsStats").insertAdjacentHTML("beforeend", `<ol class="histlist">${catCountList()}</ol>`);   // 8.64 (Omar): every category with its clue count, under the totals
   $("#newsModes").innerHTML = modeStatsHTML();   // 8.58 (Omar): a card per mode, in its own Modes section
   { const d = histData(); $("#newsPlayed").innerHTML = `<p class="note">${esc(d.sum)}</p><ol class="histlist">${d.list}</ol>`; }   // 8.24 (Omar): played clues per category
   nsfwPaint();   // 8.26 (Omar): the NSFW switch
@@ -270,8 +271,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.63`);
-  $("#verBtn").textContent = "v8.63"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.64`);
+  $("#verBtn").textContent = "v8.64"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -509,6 +510,16 @@ function histData(){ const n = {};
     + `<span class="hb"><i style="width:${Math.max(3, Math.round(100 * r.e.t / top))}%"></i></span>`
     + `<span class="hv">${LV.map(l => `<b class="${r.e[l] ? "" : "z"}">${l}: ${r.e[l] || 0}</b>`).join("")}</span></li>`).join("");
   return {sum, list}; }
+/* 8.64 (Omar): under the totals in Categories and clues, each category with how many clues it has, laid out like the Played clues list
+   (most clues first, a bar, then the count per value) but with nothing about what has been played. Same categories as the totals
+   (verCounts: no mixes, no TV Show Mix, no hidden ones). Undo: delete catCountList and its line in openNews. */
+function catCountList(){
+  const rows = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").map(c => { const d = DATA[c.id] || {}, e = {t:0};
+    LV.forEach(l => { e[l] = (d[l] || []).length; e.t += e[l]; }); return {name: c.name, e}; }).sort((a,b) => b.e.t - a.e.t || a.name.localeCompare(b.name));
+  const top = rows.length ? rows[0].e.t || 1 : 1;
+  return rows.map(r => `<li><span class="hn">${esc(r.name)}</span><span class="hc">${r.e.t}</span>`
+    + `<span class="hb"><i style="width:${Math.max(3, Math.round(100 * r.e.t / top))}%"></i></span>`
+    + `<span class="hv">${LV.map(l => `<b class="${r.e[l] ? "" : "z"}">${l}: ${r.e[l]}</b>`).join("")}</span></li>`).join(""); }
 function histShow(){ const d = histData(); $("#histSum").textContent = d.sum; $("#histList").innerHTML = d.list; $("#histBox").hidden = false; $("#histClose").focus(); }
 $("#histNote").onclick = () => { if($("#histNote").classList.contains("histlink") && S.used.size) histShow(); };
 $("#histClose").onclick = () => { $("#histBox").hidden = true; };
