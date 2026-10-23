@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.58", "date": "2026-10-23", "items": ["Version panel: a new Modes section, under Categories and clues, has a small card for every mode, with its players, whether it needs phones, and how many categories, clues, lists or words it has.", "The section headings in the version panel no longer show a faded box when you hover them."]},
  {"v": "8.57", "date": "2026-10-23", "items": ["Taboo's tile moved to the end of the first row on the title screen."]},
  {"v": "8.56", "date": "2026-10-23", "items": ["Liar's Bar: Liar! now takes two taps (the button asks you to tap again), so a tap meant for one of your cards can't call it by accident."]},
  {"v": "8.55", "date": "2026-10-23", "items": ["Riddle Me This: every riddle now has a solution (bottom right) and a small and a big hint (bottom left) that unlock after 10 and 20 minutes, with a timer from when you open the riddle.", "The Riddle Me This tile moved to the end of the bottom row, after Speed Trivia."]},
