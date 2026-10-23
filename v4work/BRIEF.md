@@ -9,11 +9,11 @@ Input: `/mnt/project-files/jeopardy/v4work/in/<id>.json` has `{id, name, type, d
 
 1. **Quality check every clue.** Fix wrong facts. Fix or replace outdated ones. Remove exact and near duplicates within the category. Fix questions that are ambiguous (more than one fair answer, unless the answer lists the alternatives). Fix typos. Keep answers short enough for a host to judge at a glance. Remove anything that doesn't fit the category.
 2. **Rebalance values.** 100 means nearly everyone at the party knows it. 300 means a typical fan or a well-read person. 500 means hard, even for fans, but still fair and gettable. Move clues that are too easy or too hard to the right value. Keep each value's pool about the same size, within 2 of the others.
-3. **Add new clues.** Add 50 (10 per value), or 30 (6 per value) for categories marked "+30" in your assignment. Match the category's existing style and wording templates exactly (for example `Which film or TV show is this line from? “…”`). Don't duplicate existing clues, and don't reuse an answer that's already in the category unless the question is clearly different. Mix in Egyptian and Arab content where the category already does, and keep it fun for a party.
+3. **Add new clues.** Add 50 (10 per value), or 30 (6 per value) for categories marked "+30" in your assignment. Match the category's existing style and wording templates exactly (for example `Which film is this line from? “…”`). Since 8.62 every clue that asks for a title names what it is: film, TV series or play ("Egyptian film/TV series/play" in the Egypt categories), including plots (`Which TV series is this? …`). Don't duplicate existing clues, and don't reuse an answer that's already in the category unless the question is clearly different. Mix in Egyptian and Arab content where the category already does, and keep it fun for a party.
 
 ## Entry formats by `type` (keep them exactly)
 - `text`: `["question", "answer"]`
-- `emoji`: `["emoji string", "answer"]`. For an Arabic-language answer (an Egyptian phrase or title written in Latin letters), also list the answer in `arabic_answers`.
+- `emoji`: `["emoji string", "answer"]`. In Emoji Movies & TV (both editions), list every title that isn't a film in `act_kind` (`"series"`, `"play"` or `"either"`), since the clue line names it. For an Arabic-language answer (an Egyptian phrase or title written in Latin letters), also list the answer in `arabic_answers`.
 - `act`: `"Title"` (string). Every title needs an entry in `act_kind`: `{"Title": "film"|"series"|"play"}`. The QR code shows the title, so keep it plain.
 - `password`: `"word"` (one word for a one-word-clues game)
 - `closest`: `["question", number, "unit"]`. The number must be accurate and checkable, and the unit can be `""`.

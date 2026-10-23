@@ -491,7 +491,7 @@
   "Zorro": "film",
   "Robin Hood": "film",
   "Popeye": "series",
-  "Teenage Mutant Ninja Turtles": "film",
+  "Teenage Mutant Ninja Turtles": "series",
   "Pokémon": "series",
   "The Wizard of Oz": "film",
   "Mr. & Mrs. Smith": "film",
@@ -516,6 +516,7 @@
   "Inglourious Basterds": "film",
   "There Will Be Blood": "film",
   "Better Call Saul": "series",
-  "Rear Window": "film"
+  "Rear Window": "film",
+  "Scooby-Doo": "series"
  }
 }
