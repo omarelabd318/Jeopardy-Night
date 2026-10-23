@@ -5,7 +5,7 @@
    hsSetupAgain and hsLeave. Setup is saved on this device in jn_hsCfg (the game itself isn't saved). To remove: see the 6.59 NOTES entry. */
 const HS = {cfg:null, st:null};
 const HS_LVLS = [200,300,400,500];   // 6.59 (Omar): clues are random from these pools, never a 100. To bring 100s back, add 100 to this list.
-const HS_BAD = new Set(["act","impostor","password","closest","mix"]), HS_HALF = new Set(["song","pin","form","car","actor","footy","person"]), HS_WINNOTE = $("#winNote").textContent;   // rounds that need other teams are left out; half answers: song or singer, country only, team or year, a partial name in the four photo rounds (8.63)
+const HS_BAD = new Set(["act","impostor","password","closest","mix"]), HS_WINNOTE = $("#winNote").textContent;   // rounds that need other teams are left out; 8.63 (Omar): every clue has a Half button (7.x-8.62: only song and pin, HS_HALF)
 const hsNum = n => Number(n).toLocaleString("en-US");
 const hsPotAt = k => 100 * 2 ** k;   // the pot after k+1 right answers
 const hsShuffle = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -169,7 +169,7 @@ function hsBanner(c){ const st = HS.st; if(!st || !st.cur) return ""; st.cur.idx
   return st.tb ? `<p class="note hsbanner">Tie-break: ${nm} gets this 500 clue. Right wins it.</p>`
     : `<p class="note hsbanner">${nm} is in the Hot Seat. ${st.pot ? `Pot ${hsNum(st.pot)}: right makes it ${hsNum(hsNext())}, wrong loses ${hsNum(st.pot)}.` : "First clue of the turn: right starts the pot at 100, wrong loses nothing."}</p>`; }
 function hsAwards(c){ const st = HS.st, i = hsSeat(), tb = !!st.tb;
-  return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : st.stl ? " · steal " + hsNum(st.stl.amt) : " · pot " + hsNum(hsNext())}</button>${!tb && !st.stl && HS_HALF.has(c.cat) ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · pot ${hsNum(hsNext() / 2)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb || st.stl ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
+  return `<div class="award"><div class="grp"><span>${esc(st.teams[i].name)}</span><button class="y${c.awards[i] === 1 ? " on" : ""}" data-aw="${i}" data-v="1">Right${tb ? "" : st.stl ? " · steal " + hsNum(st.stl.amt) : " · pot " + hsNum(hsNext())}</button>${!tb && !st.stl ? `<button class="h${c.awards[i] === 0.5 ? " on" : ""}" data-aw="${i}" data-v="0.5">Half · pot ${hsNum(hsNext() / 2)}</button>` : ""}<button class="n${c.awards[i] === -1 ? " on" : ""}" data-aw="${i}" data-v="-1">Wrong${tb || st.stl ? "" : " · lose " + hsNum(st.pot)}</button></div></div>`; }
 function hsSwapBtn(c){ const st = HS.st, t = st && st.teams[hsSeat()]; if(c.preview || c.revealed) return "";
   /* 7.51 (Omar): "Clue played already" is a free swap that doesn't use the team's one swap. Without it Hot Seat only had the limited swap. */
   const played = `<button class="btn small" data-act="played" title="The group has already had this clue. Get another from the same category and value, and it doesn't use your swap.">Clue played already</button>`;
