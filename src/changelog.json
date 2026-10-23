@@ -1,5 +1,8 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.55", "date": "2026-10-23", "items": ["Riddle Me This: every riddle now has a solution (bottom right) and a small and a big hint (bottom left) that unlock after 10 and 20 minutes, with a timer from when you open the riddle.", "The Riddle Me This tile moved to the end of the bottom row, after Speed Trivia."]},
+ {"v": "8.54", "date": "2026-10-23", "items": ["Riddle Me This: every riddle has a short title, the list has 4 columns, riddles you've read fade, and Swap riddle sits at the top right with the other buttons."]},
+ {"v": "8.53", "date": "2026-10-23", "items": ["New mode: Riddle Me This. Pick one of 56 riddles from the list (newest at the top) and read it on the TV; Swap riddle at the top brings the list back. No scoring."]},
  {"v": "8.52", "date": "2026-10-23", "items": ["Fake Artist: the drawing board now turns the other way on a tall phone, so \"Draw one line\" reads from the bottom up."]},
  {"v": "8.51", "date": "2026-10-23", "items": ["The sand clock stays in one place under the countdown instead of shifting as the numbers go down."]},
  {"v": "8.50", "date": "2026-10-23", "items": ["The sand clock on the clue card now sits right under the countdown number."]},
