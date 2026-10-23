@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.72", "date": "2026-10-23", "items": ["Behind the scenes: the game server now keeps logs, so problems on the live link are easier to track down. Nothing changes in the game."]},
  {"v": "8.71", "date": "2026-10-23", "items": ["Hot Seat: the round number now sits in the top right corner."]},
  {"v": "8.70", "date": "2026-10-23", "items": ["Riddle Me This: the level colour dot also shows next to the riddle number while you read it."]},
  {"v": "8.69", "date": "2026-10-23", "items": ["Riddle Me This: a riddle with a YouTube video now plays it right on the riddle screen, so you don't have to leave the game."]},
