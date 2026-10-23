@@ -20,9 +20,11 @@ function rdShow(){ rdEnter(); ["#titleScreen", "#setup", "#game", "#scores"].for
 function rdRender(){ const body = $("#rdBody"), sw = $("#rdSwap"); sw.hidden = RD.open < 0; $("#rdTimer").hidden = RD.open < 0;
   if(RD.open < 0){
     /* 8.54 (Omar): each card has a short title; the Picture / Video link / Read tags are gone, a riddle already read is faded instead */
-    const cards = RID.map((r, i) => [r, i]).reverse().map(([r, i]) => { const txt = r.b.filter(b => b.p).map(b => b.p).join(" ");
+    /* 8.59 (Omar): rows of oldest-first groups (R#01-04, R#05-08 ...), newest row at the top, each row counting up left to right (8.53-8.58: plain newest-first reading order, RID...reverse()) */
+    const cols = rdCols(), rows = []; for(let i = 0; i < RID.length; i += cols) rows.push(RID.slice(i, i + cols).map((r, j) => [r, i + j]));
+    const cards = rows.reverse().flat().map(([r, i]) => { const txt = r.b.filter(b => b.p).map(b => b.p).join(" ");
       return `<button class="rdcard${RD.seen.has(r.n) ? " seen" : ""}" data-rd="${i}"><div class="rdch"><b>${r.n}</b><em>${rdEsc(r.t || "")}</em></div><span>${rdEsc(txt)}</span></button>`; }).join("");
-    body.innerHTML = `<header class="rdhead"><h1>Riddle Me This</h1><p>${RID.length} riddles · newest first · pick one to read it on the TV</p><button class="rdbtn go" id="rdRandom">Random riddle</button></header><div class="rdlist">${cards}</div>`;
+    body.innerHTML = `<header class="rdhead"><h1>Riddle Me This</h1><p>${RID.length} riddles · newest at the top · pick one to read it on the TV</p><button class="rdbtn go" id="rdRandom">Random riddle</button></header><div class="rdlist">${cards}</div>`;
     return; }
   const r = RID[RD.open];
   body.innerHTML = `<article class="rdread"><div class="rdnum">${r.n}${r.t ? `<small>${rdEsc(r.t)}</small>` : ""}</div><div class="rdtext">${r.b.map(rdBlock).join("")}</div></article><div class="rdbar"><div class="rdbarl">${["h1", "h2"].map(k => `<button class="rdbtn rdhint" data-rdh="${k}"></button>`).join("")}</div><button class="rdbtn rdhint rdsol" data-rdh="sol"></button></div>`;
@@ -54,5 +56,7 @@ $("#rdo").addEventListener("click", e => {
   const c = e.target.closest(".rdcard"); if(c) rdOpen(+c.dataset.rd);
 });
 document.addEventListener("keydown", e => { if(S.mode === "riddles" && RD.open >= 0 && e.key === "Escape" && !document.fullscreenElement){ if($("#rdPop")) rdPopClose(); else rdList(); } });
-window.addEventListener("resize", () => { if(S.mode === "riddles" && RD.open >= 0) rdFit(); });
+const rdCols = () => innerWidth > 1100 ? 4 : innerWidth > 600 ? 2 : 1;   // the list's columns (the .rdlist rules in head.html)
+RD.cols = rdCols();
+window.addEventListener("resize", () => { if(S.mode !== "riddles") return; if(RD.open >= 0) rdFit(); else if(rdCols() !== RD.cols){ RD.cols = rdCols(); rdRender(); } });
 $("#modeRd").onclick = rdShow;
