@@ -1,7 +1,7 @@
 /* 7.82 (Omar): Tenable, a solo list game in two editions: Normal and TenaBall (the football edition, in the Football mode greens). The TV shows a pyramid of ten hidden
    slots (1 at the top, 7 to 10 along the bottom) for a ranked list such as "Largest countries by area"; one player names as many as they can, in any order, typed on the
    laptop. A right answer fills its slot, a wrong one costs a life (3 by default; 5 or no limit in setup). The turn ends when all ten are found, the lives run out, the
-   optional timer ends or the player stops; the slots still hidden are then shown one by one. 1 point per answer, +5 for all ten ("Tenable!").
+   optional timer ends or the player stops; the slots still hidden are then shown one by one. 1 point per answer, +2 for all ten ("Tenable!").
    1 to 8 players take turns, each with their own list, for 1 to 5 lists each (default 3); the highest total wins and the winner screen plays the Siuuu clip.
    TenaBall's "Formations" switch (Omar, 2026-10-21) mixes famous starting lineups in at random with the lists (about one turn in three, TE.formShare; Omar asked for a mix, not lineups only), each drawn on half a pitch, with the team, the year, the occasion and the score:
    guess all 11 players. The lineups are the Formations category (v4work/out/form.json), the scores are in v4work/tenable/form-scores.json.
@@ -15,7 +15,7 @@
 
 /*@rules*/
 const TER = (() => {
-  const BONUS = 5;
+  const BONUS = 2;   // 8.40 (Omar): +2 for all ten (or all 11 in a lineup); before: 5
   const loose = (lev, g, v) => { const n = v.length; return lev(g, v) <= (n <= 3 ? 0 : n <= 5 ? 1 : n <= 8 ? 2 : n <= 12 ? 3 : 4); };   // 7.85 (Omar): more leeway for typed answers; before: 0 up to 3 letters, 1 up to 6, 2 up to 12, 3 beyond
   /* 7.86 (Omar): a slot whose answer is "A / B" (a tie at the cut) accepts either name */
   function variants(it, norm){ const out = new Set(); [it.a].concat(String(it.a).split(" / "), it.alt || []).forEach(x => { const s = norm(x); if(s) out.add(s); }); return [...out]; }
