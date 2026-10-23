@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.48", "date": "2026-10-23", "items": ["Sand clock: the falling sand no longer glows, it drains by amount so it doesn't look empty too early, and the sand dips in the top and piles up in the bottom like a real hourglass."]},
  {"v": "8.47", "date": "2026-10-23", "items": ["A small sand clock now sits at the bottom right of every clue card, next to the buttons. It empties as the timer runs down."]},
  {"v": "8.46", "date": "2026-10-23", "items": ["TenaBall lineups: the formation (like 5-3-2) no longer shows in the top left of the pitch."]},
  {"v": "8.45", "date": "2026-10-23", "items": ["TenaBall lineups: a player you guess now just appears in place instead of sliding in."]},
