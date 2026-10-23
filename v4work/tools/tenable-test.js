@@ -18,8 +18,10 @@ const mk = (names, lives) => TER.Turn({items:names.map(a => typeof a === "string
   { const l = mk(["Alpha", "Carlos Bianchi / Gunnar Andersson", "Zed"], 3);   // 7.86: a tie at the cut accepts either name
     eq(l.guess("Andersson").k, "right", "tie: second name"); eq(l.found[1], true, "tie slot filled"); eq(l.guess("Carlos Bianchi").k, "dup", "tie: the other name is a repeat, not a wrong answer"); eq(l.left, 3, "no life lost"); }
   { const l = mk(["Alpha", "Carlos Bianchi / Gunnar Andersson", "Zed"], 3); eq(l.guess("bianchi").k, "right", "tie: first name by surname"); }
+  { const l = mk(["Russia", "Spain", "Chad"], 3); l.tap(0); l.tap(0); l.guess("Russia"); l.tap(1); l.guess("Spain"); eq(l.points(), 1, "8.66: hinted answers are half a point, however many letters"); l.guess("Chad"); eq(l.points(), 2 + TER.BONUS, "8.66: all found with hints still gets the bonus"); }
+  { const l = mk(["Russia", "Spain"], 3); l.tap(1); l.tap(1); l.tap(1); l.tap(1); eq(l.found[1], true, "tapped to reveal"); eq(l.points(), 0, "8.66: a revealed answer is worth 0"); }
   ok(t.give(0), "host gives Russia"); ok(!t.give(0), "only once"); eq(t.n(), 4, "4 found");
-  t.guess("peru"); eq(t.left, 1, "1 life"); ok(!t.over, "still going"); t.guess("chile"); ok(t.over, "out of lives"); eq(t.how, "lives", "how"); eq(t.points(), 4, "1 point each");
+  t.guess("peru"); eq(t.left, 1, "1 life"); ok(!t.over, "still going"); t.guess("chile"); ok(t.over, "out of lives"); eq(t.how, "lives", "how"); eq(t.points(), 3, "1 point each, 0 for the revealed one (8.66)");
   eq(t.guess("china").k, "over", "no guesses after the end"); }
 { const t = mk(["A1x", "Bb2", "Cc3"], 0); ["a1x", "bb2"].forEach(g => t.guess(g)); for(let i = 0; i < 9; i++) t.guess("nope" + i); ok(!t.over, "no life limit"); t.guess("cc3"); eq(t.how, "all", "all found"); eq(t.points(), 3 + TER.BONUS, "bonus"); }
 // 8.34 (Omar): "avatar fire" is Avatar: Fire and Ash; "nottingham" is Nottingham Forest, not Tottenham; a first word shared by several hidden answers is vague (no life lost)

@@ -1,5 +1,6 @@
 [
  {"era": "8.x: Tenable and More"},
+ {"v": "8.66", "date": "2026-10-23", "items": ["Tenable: an answer you found after a hint (flag or letters) is worth half a point, and a fully revealed answer is worth nothing. Getting all ten still earns the +2 bonus."]},
  {"v": "8.65", "date": "2026-10-23", "items": ["On the Sahra home screen, Full screen and Sound now sit below the game tiles."]},
  {"v": "8.64", "date": "2026-10-23", "items": ["Version panel: Categories and clues now lists every category with how many clues it has, most first, with the count per value."]},
  {"v": "8.63", "date": "2026-10-23", "items": ["Formations: half points for getting only the team or only the year, in Hot Seat, Bidding Wars and Survival too.", "Hot Seat: every clue now has a Half button. Bidding Wars and Survival add Half to the Guess the Car, Actor, Footballer and Person rounds.", "Hot Seat: a half answer no longer ends your run. The pot becomes half of what a right answer would give, and you keep going from there."]},

@@ -32,10 +32,12 @@ const TER = (() => {
     return best; }
   /* o = {items:[{a, v, alt}] (10 for a list, 11 for a lineup), lives (0 = no limit), norm, lev}. Phases: live > over (how: all | lives | time | stop) */
   function Turn(o){
-    const t = {items:o.items, found:o.items.map(() => false), label:o.items.map(() => ""), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), flag:o.items.map(() => false)};
+    const t = {items:o.items, found:o.items.map(() => false), label:o.items.map(() => ""), lives:o.lives || 0, left:o.lives || 0, wrong:[], over:false, how:null, given:0, hints:o.items.map(() => 0), flag:o.items.map(() => false), gave:o.items.map(() => false)};
     const end = how => { t.over = true; t.how = how; };
     t.n = () => t.found.filter(Boolean).length;
-    t.points = () => t.n() + (t.n() === t.items.length ? BONUS : 0);
+    /* 8.66 (Omar): a found answer is 1 point, 0.5 if any hint (flag or letter) was shown for it, 0 if the whole answer was revealed; the all-ten bonus still counts. Was: t.points = () => t.n() + (t.n() === t.items.length ? BONUS : 0); */
+    t.worth = i => !t.found[i] || t.gave[i] ? 0 : t.flag[i] || t.hints[i] ? 0.5 : 1;
+    t.points = () => t.items.reduce((s, _, i) => s + t.worth(i), 0) + (t.n() === t.items.length ? BONUS : 0);
     t.match = text => { const g = o.norm(text); if(!g) return null; const sc = t.items.map(it => score(g, it, o.norm, o.lev)), m = Math.min(...sc); t.lastMin = m;
       if(m === Infinity && g.indexOf(" ") > 0){ const pre = t.items.map((it, i) => !it.mk && variants(it, o.norm).some(v => v.indexOf(g + " ") === 0) ? i : -1).filter(i => i >= 0);   // 8.34 (Omar): "Avatar Fire" is "Avatar: Fire and Ash": two or more words that start exactly one answer count
         if(pre.length === 1){ t.lastMin = 1; return pre; } }
@@ -55,7 +57,7 @@ const TER = (() => {
       const name = o.norm(t.items[fresh[0]].a), same = fresh.filter(i => o.norm(t.items[i].a) === name);   // two players with the same name both fill
       { const parts = String(t.items[fresh[0]].a).split(" / "); if(parts.length > 2){ let bp = parts[0], bs = Infinity; parts.forEach(pt => { const sc = score(o.norm(raw), {a:pt, alt:[]}, o.norm, o.lev); if(sc < bs){ bs = sc; bp = pt; } }); same.forEach(i => t.label[i] = bp); } }   // 8.32: a slot that stands for a many-way tie shows the name that was typed, not all of them
       same.forEach(i => t.found[i] = true); if(t.found.every(Boolean)) end("all"); return {k:"right", i:same}; };
-    t.give = i => { if(t.over || t.found[i] == null || t.found[i]) return false; t.found[i] = true; t.given++; if(t.found.every(Boolean)) end("all"); return true; };
+    t.give = i => { if(t.over || t.found[i] == null || t.found[i]) return false; t.found[i] = true; t.gave[i] = true; t.given++; if(t.found.every(Boolean)) end("all"); return true; };
     /* 7.85 (Omar): tapping a hidden slot reveals one more letter each time (first letter, then two, then three); the tap after that gives the whole answer */
     /* 8.5 (Omar): in TenaBall the first tap on a slot shows the answer's flag (items with an f code, set by teFlags), the taps after that give letters as above */
     t.tap = i => { if(t.over || t.found[i] == null || t.found[i]) return null; const len = Array.from(String(t.items[i].a)).length;
@@ -205,7 +207,7 @@ function teRender(){
         <div class="teeye">Lives</div>${teSeg("lives", [[3, "3"], [5, "5"], [0, "No limit"]], c.lives)}
         <div class="teeye">Choose list</div>${teSeg("choose", [[0, "Off"], [1, "On"]], c.choose ? 1 : 0)}<p class="note">On: each turn starts with 9 lists in a 3 by 3 grid, and the player picks the one to play.</p>
         <div class="teeye">Timer per list (in minutes)</div>${teSeg("secs", [[0, "Off"], [120, "2"], [180, "3"], [300, "5"], [600, "10"]], c.secs)}
-        <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer. The timer is just a clock for the room: the last 10 seconds tick, and at zero nothing stops on the board.</p>
+        <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer (half a point if you used a hint, none if you revealed it), +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer. The timer is just a clock for the room: the last 10 seconds tick, and at zero nothing stops on the board.</p>
         <button class="tebtn go" id="teGo">Start</button></div></div>`;
     return; }
   if(TE.phase === "over"){ const ps = c.players, rows = ps.map((p, i) => ({p, s:TE.scores[i], n:TE.turns.filter(t => t.p === i).reduce((a, t) => a + t.n, 0), all:TE.turns.filter(t => t.p === i && t.list && t.n === t.list.items.length).length})).sort((a, b) => b.s - a.s);
@@ -227,7 +229,7 @@ function teRender(){
       <button class="tebtn go" data-act="go">Show the ${!!tu.list.rows ? "lineup" : "list"}</button></div>${teBoard()}</div>`; return; }
   const fl = TE.flash, msg = TE.phase === "done"
     ? `<div class="teflash ${t.how === "all" ? "ok" : "bad"}">${t.how === "all" ? `${teName().toUpperCase()}! All ${t.items.length} found` : `${t.how === "lives" ? "Out of lives" : t.how === "time" ? "Time's up" : "Stopped"}: ${t.n()} of ${t.items.length} found`} · <b>+${tu.pts}</b></div>`
-    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(t.label[fl.i[0]] || tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : fl.k === "vague" ? `<b>${esc(fl.t)}</b> could be more than one: say the full name (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
+    : fl ? `<div class="teflash ${fl.k === "ok" ? "ok" : fl.k === "bad" ? "bad" : ""}">${fl.k === "ok" ? `Yes! <b>${esc(t.label[fl.i[0]] || tu.list.items[fl.i[0]].a)}</b>${!!tu.list.rows ? "" : ` is number ${fl.i[0] + 1}`}${t.worth(fl.i[0]) === 0.5 ? " · ½ point (hint)" : t.worth(fl.i[0]) === 0 ? " · revealed, no point" : ""}` : fl.k === "bad" && fl.mk ? `<b>${esc(fl.t)}</b> isn't the right ${esc(fl.mk)} model` : fl.k === "bad" ? `<b>${esc(fl.t)}</b> isn't ${!!tu.list.rows ? "in the lineup" : "on the list"}` : fl.k === "dup" ? `<b>${esc(fl.t)}</b> is already up there` : fl.k === "make" ? `<b>${esc(fl.t)}</b> alone isn't a model: say which one (no life lost)` : fl.k === "vague" ? `<b>${esc(fl.t)}</b> could be more than one: say the full name (no life lost)` : `<b>${esc(fl.t)}</b> was already guessed wrong (no life lost)`}</div>`
     : `<div class="teflash">${t.n()} of ${t.items.length} found</div>`;
   const lid = tu.list.id ? `<span class="teid">${tu.list.id}</span>` : "";   // 7.84 (Omar): every list has a fixed ID (NM#1.. Normal, FM#1.. TenaBall; lineups follow the football lists) so he can tell which have been played; solo shows only the ID
   const no = `<span class="telistno">${c.players.length > 1 ? `<span>${!!tu.list.rows ? "Lineup" : "List"} ${TE.ti + 1} of ${tot}</span>` : ""}${lid}</span>`;
