@@ -1,11 +1,12 @@
 # Riddle Me This (8.53): the riddles, numbered R#01, R#02, ... in the order they were added. The game lists them newest first.
+# 8.67 (Omar): a third part on the "=== R#NN | Title | level" line sets the colour dot on the list: very easy, easy, medium, hard or very hard (Claude's ratings).
 # Add a new riddle at the END with the next number. Each starts with a line "=== R#NN | Short title" (8.54: the title shows on the list and above the riddle; keep it spoiler-free). Lines starting with # are notes and are skipped.
 # A line [img riddles/name.png] shows photos/riddles/name.png in the riddle. Lines between ``` fences are shown in a fixed-width font (for sums laid out in columns).
 # A line that is only a web address becomes a link.
 # 8.55 (Omar): after the riddle, "--- small hint", "--- big hint" and "--- solution" lines start those parts (each line below them is one line on screen).
 # The answers and hints were worked out by Claude (the maths and logic ones checked by computer search); R#48 has more than one fit and R#54 comes from the novel.
 
-=== R#01 | Dealing the Hearts
+=== R#01 | Dealing the Hearts | medium
 All 13 hearts in a deck of cards are arranged in a face-down stack. You pick up the stack and begin to deal them out in a curious way: You take the top card and move it to the bottom of the stack, then, you take the new top card and lay it face up on the table. You continue this sequence of two moves until you place all 13 cards face up on the table.
 --- small hint
 Work backwards: picture the 13 cards already dealt in order from Ace to King, and undo the moves.
@@ -15,7 +16,7 @@ Number the places in the stack 1 to 13 and act the deal out with those numbers. 
 To deal them out in order from Ace to King, stack them like this, from the top down:
 7, A, Q, 2, 8, 3, J, 4, 9, 5, K, 6, 10.
 
-=== R#02 | The Comic Book Box
+=== R#02 | The Comic Book Box | medium
 Three sisters combine their money to buy a mystery box full of an unknown amount of comic books. The box arrives at the sisters’ house one night, and they agree to store it in their younger brother’s room and not open it until the next morning.
 But that night, one sister can’t sleep, so she decides to sneak in and open the box. Looking inside, she finds that she can split the comic books into three equal shares, plus one extra comic. She sees her brother awake and spying, so she hands him the extra comic, takes her own share of one-third of the remaining comic books, and goes back to sleep.
 An hour later, the second sister does the exact same thing. She opens the box and sees that the comics can be split into three equal shares, plus one extra comic. She bribes the spying little brother with a comic, takes one-third of the remaining books, and goes back to sleep.
@@ -34,7 +35,7 @@ Third sister: 11 + 7 = 18.
 Brother: 4 (one each night and one in the morning).
 (79 → 52 → 34 → 22, and 22 = 3 × 7 + 1.)
 
-=== R#03 | A Hen and a Half
+=== R#03 | A Hen and a Half | easy
 A hen and a half lays an egg and a half in a day and a half. How many eggs does one hen lay in one day?
 --- small hint
 If a hen and a half lay an egg and a half in a day and a half, how many eggs does one hen lay in that same day and a half?
@@ -43,7 +44,7 @@ One hen lays one egg every day and a half.
 --- solution
 Two-thirds of an egg. One hen lays 1 egg in 1.5 days, so 2/3 of an egg in one day.
 
-=== R#04 | Three Stone Doors
+=== R#04 | Three Stone Doors | easy
 You’re lost in an endless maze and turn a corner, only to be faced with a fearsome sight. Three large stone doors stand before you in the passageway. You laugh confidently, remembering that like in the classic sci-fi movie Labyrinth, only one of the doors tells the truth, while the other doors always lie.
 Each door has a plain wooden sign attached to the front. The sign on the left door reads, “The way out is beyond this door.” The sign on the middle door reads, “The way out is beyond one of these doors.” And the sign on the right door reads, “The way out is beyond the middle door.”
 You were hoping you’d get to ask a question, but now you pause and carefully consider your options. You only get one chance at this. So, which door do you open?
@@ -54,7 +55,7 @@ If the way out is behind the left door, the left and middle signs are both true.
 --- solution
 The right door. Then only the middle sign ("beyond one of these doors") is true, and the other two are lies.
 
-=== R#05 | Diophantus's Age
+=== R#05 | Diophantus's Age | medium
 One of the titans of Number Theory—the study of natural numbers and their properties—is Diophantus of Alexandria, an ancient Greek mathematician who still pops up in algebra textbooks today. You might even remember his namesake Diophantine equations, which always take the form Ax + By = C, where A, B, and C are all whole numbers.
 Centuries after Diophantus’s death, the grammarian Metrodorus wrote an epitaph that both described the mathematician’s life and revealed his age—evidently a long-standing mystery. And that’s where you come in: Can you figure out how old Diophantus was when he died? (Bonus points if you can solve this problem without resorting to fractions.)
 --- small hint
@@ -64,7 +65,7 @@ Without fractions: his age has to divide evenly by 6, by 12, by 7 and by 2, so i
 --- solution
 84 years. Boyhood 14, beard after 7 more, married after 12 more, son born 5 years later, son lived 42 years, and Diophantus died 4 years after him: 14 + 7 + 12 + 5 + 42 + 4 = 84.
 
-=== R#06 | Scuba Diver in the Forest
+=== R#06 | Scuba Diver in the Forest | easy
 There is a dead man in a scuba suit in the middle of a forest. How did he get there?
 --- small hint
 Think about what was happening to the forest.
@@ -73,7 +74,7 @@ There was a forest fire, and planes were fighting it.
 --- solution
 A firefighting plane scooped up water from the lake or sea where he was diving, scooped him up with it, and dropped him on the burning forest.
 
-=== R#07 | Twelve Cue Balls
+=== R#07 | Twelve Cue Balls | very hard
 You have 12 cue balls that look and feel identical. However, one of the cue balls is either slightly lighter or slightly heavier than the rest. You cannot tell which ball is the odd one out by handling them, and you do not know if that ball is lighter or heavier.
 You have a set of old-fashioned balance scales. The scale with more weight in it will tip down, and the scale with less weight in it will tip up.
 How do you figure out which ball is the odd one out, and whether it is lighter or heavier, in just three weighings?
@@ -90,7 +91,7 @@ If the left pan goes down, either one of 1 to 4 is heavy or one of 5 to 8 is lig
 • Right down: 3 is heavy or 5 is light. Weigh 3 against 9: if 3 goes down it's heavy; if they balance, 5 is light.
 If the right pan goes down first, do the same with heavy and light swapped.
 
-=== R#08 | The Three Gods
+=== R#08 | The Three Gods | very hard
 On the summit of this remote volcano, you realize a few things through divine intervention.
 First, you know that one of the three gods always tells the truth, another always lies, and the third will respond to questions randomly. Therefore, let us call the gods True, False, and Random.
 The gods speak a different language. They understand all languages perfectly well, but only answer questions with either ja or da, the words for yes and no. You do not know which god is which, and you do not know which word means yes and which word means no.
@@ -105,7 +106,7 @@ If you ask True or False "If I asked you 'Is B Random?', would you say ja?", the
 2. Ask the god you now know is not Random: "If I asked you 'Are you False?', would you say ja?" Ja means it's False, da means it's True.
 3. Ask the same god: "If I asked you 'Is A Random?', would you say ja?" Ja means A is Random; da means the third god is. The last god is whatever is left.
 
-=== R#09 | 53 Bicycles
+=== R#09 | 53 Bicycles | medium
 In a room there are 53 bicycles. There is also a table in the middle of the room. A dead man with a bullet hole in his head is slouched in a chair, face down on the table.
 What happened?
 --- small hint
@@ -115,7 +116,7 @@ Bicycle is a famous brand of playing cards. How many cards should a deck have?
 --- solution
 They're Bicycle playing cards: 53 of them, one too many for a deck. He was caught cheating at cards with an extra card, and another player shot him.
 
-=== R#10 | The Farmer's Fence
+=== R#10 | The Farmer's Fence | medium
 A farmer challenges an engineer, a physicist, and a mathematician to build him a fence that encloses the most area with the least amount of fencing.
 The engineer makes a circular fence, claiming that it is most efficient.
 The physicist made a long straight line of fence and said the length was infinite, as fencing half the world was the most efficient way.
@@ -127,7 +128,7 @@ The mathematician's fence is tiny.
 --- solution
 He built a small fence around himself and declared, "I'm on the outside." Now the whole rest of the world is enclosed, with almost no fencing.
 
-=== R#11 | Pickleball Round-Robin
+=== R#11 | Pickleball Round-Robin | hard
 Kenny, Abby, and Ned got together for a round-robin pickleball tournament, where, as usual, the winner stays on after each game to play the person who sat out that game. At the end of their pickleball afternoon, Abby is exhausted, having played the last seven straight games. Kenny, who is less winded, tallies up the games played:
 Kenny played eight games
 Abby played 12 games
@@ -140,7 +141,7 @@ There were 17 games. Kenny sat out 9 of them, and nobody can sit out two games i
 --- solution
 Ned beat Kenny. Kenny had to sit out every odd game (1, 3, 5 ... 17), so he lost every game he played. Abby played games 11 to 17 straight, so her 5 rests were games 2, 4, 6, 8 and 10. That means those games were all Ned against Kenny, and Ned won them.
 
-=== R#12 | The Scooter Ride Home
+=== R#12 | The Scooter Ride Home | medium
 Amanda lives with her teenage son, Matt, in the countryside—a car ride away from Matt’s school. Every afternoon, Amanda leaves the house at the same time, drives to the school at a constant speed, picks Matt up exactly when his chess club ends at 5 p.m., and then they immediately return home together at the same constant speed. But one day, Matt isn’t feeling well, so he leaves chess practice early and starts to head home on his portable scooter.
 After Matt has been scooting for an hour, Amanda comes across him in her car (on her usual route to pick him up), and they return together, arriving home 40 minutes earlier than they usually do. How much chess practice did Matt miss?
 --- small hint
@@ -150,7 +151,7 @@ The 40 minutes saved is the drive from where she met Matt to the school and back
 --- solution
 1 hour 20 minutes. Amanda met Matt at 4:40. He'd been scooting for an hour, so he left chess at 3:40.
 
-=== R#13 | Double by Moving a Digit
+=== R#13 | Double by Moving a Digit | hard
 One day, in a gathering of top scientists, one of them wondered out loud whether there exists an integer that you could exactly double by moving its last digit to its front. For instance, 265 would satisfy this if 526 were its exact double—which it isn’t.
 After apparently just five seconds, Dyson responded, “Of course there is, but the smallest such number has 18 digits.”
 This left some of the smartest scientists in the world puzzling over how he could have figured this out so quickly.
@@ -162,7 +163,7 @@ Keep going: double each digit you find (with carries) to get the digit to its le
 --- solution
 105263157894736842. Doubled, it's 210526315789473684: the 2 at the end has moved to the front.
 
-=== R#14 | Numbers on Foreheads
+=== R#14 | Numbers on Foreheads | hard
 Cecilia loves testing the logic of her very logical friends Jaya, Julian, and Levi, so she announces:
 “I’ll write a positive number on each of your foreheads. None of the numbers are the same, and two of the numbers add up to the third.”
 She scribbles the numbers on their heads, then turns to Jaya and asks her what her number is. Jaya sees Julian has 20 on his forehead, and Levi has 30 on his. She thinks for a moment and then says, “I don’t know what my number is.” Julian pipes in, “I also don’t know my number,” and then Levi exclaims, “Me neither!” Cecilia gleefully says, “I’ve finally stumped you guys!”
@@ -175,7 +176,7 @@ If Jaya had 10, Levi would see 10 and 20, so his number would be 30 or 10. But n
 --- solution
 50. If Jaya had 10, Levi would have known his number straight away: it couldn't be 10 (taken), so it would be 30. He didn't know, so Jaya's number is 50.
 
-=== R#15 | What Comes Next?
+=== R#15 | What Comes Next? | medium
 23, 28, 43, 65, 98, ???
 --- small hint
 Look at the gaps between the numbers: 5, 15, 22, 33.
@@ -186,7 +187,7 @@ Now look at how much each gap grows: 5, 10, 7, 11. Compare those with the digits
 23 (+5) = 28, gap 5 + 10 = 15 → 43, gap 15 + 7 = 22 → 65, gap 22 + 11 = 33 → 98, gap 33 + 17 = 50 → 148.
 (Put another way: each number is the one before plus the digit sums of every number so far.)
 
-=== R#16 | Statement x
+=== R#16 | Statement x | hard
 A puzzle from the October 1962 issue of Eureka, the journal of the Cambridge University Mathematical Society:
 (a) At least two of these statements, apart from this one, are true.
 (b) At least two of these statements, apart from this one, are false.
@@ -200,7 +201,7 @@ Statement (c) must be true: if it were false, all four would be true, including 
 --- solution
 x = 3. Then (a), (c) and (d) are true and (b) is false. For any other value of x, no combination works.
 
-=== R#17 | Planet Sum
+=== R#17 | Planet Sum | very hard
 An elegant alphametic by Jonathan Joseph, from the October 1991 issue of Games magazine:
 ```
    VENUS
@@ -219,7 +220,7 @@ Now work along the columns from the right, keeping track of carries. The last co
 20163 + 4593 + 358691 + 695163 = 1078610.
 V = 2, E = 0, N = 1, U = 6, S = 3, M = 4, A = 5, R = 9, T = 8, P = 7.
 
-=== R#18 | Two Trains Passing
+=== R#18 | Two Trains Passing | medium
 Two trains, A and B, start simultaneously from opposite ends of a 450-mile track. Each travels nonstop at a uniform speed to the opposite end. A finishes its journey 4 hours after passing B, and B finishes its journey 9 hours after passing A. What were their speeds?
 --- small hint
 After they pass, each train covers the stretch the other train covered before they met.
@@ -228,7 +229,7 @@ If they met after t hours, then t × t = 4 × 9, so they met after 6 hours.
 --- solution
 A: 45 mph, B: 30 mph. They met after 6 hours, and 6 × (45 + 30) = 450 miles. A covers B's 6 hours of track in 4 hours, so A is one and a half times faster.
 
-=== R#19 | Family Chess Tournament
+=== R#19 | Family Chess Tournament | hard
 A mother, her brother, her daughter, and her son take part in a family chess tournament. Two of the four are twins. At the end of the tournament, the winner and the “loser” (the player in last place) are found to be the same age, and the winner is the opposite gender to the loser’s twin. Who won the tournament?
 --- small hint
 The winner and the loser can't be twins of each other. Why not?
@@ -237,7 +238,7 @@ So the winner and the loser are the same age without being twins. Which two of t
 --- solution
 The brother (the uncle) won. The twins are the son and the daughter, and the uncle is the same age as them. The loser is the son: his twin, the daughter, is the opposite gender to the uncle who won.
 
-=== R#20 | The Maths Contest
+=== R#20 | The Maths Contest | hard
 In a mathematical contest, three problems, A, B, C were posed. Among the participants there were 25 students who solved at least one problem each. Of all the contestants who did not solve problem A, the number who solved B was twice the number who solved C. The number of students who solved only problem A was one more than the number of students who solved A and at least one other problem. Of all students who solved just one problem, half did not solve problem A. How many students solved only problem B?
 --- small hint
 Draw three overlapping circles for A, B and C, give each region a letter (only A, only B, B and C but not A ...), and turn each sentence into an equation.
@@ -247,7 +248,7 @@ Draw three overlapping circles for A, B and C, give each region a letter (only A
 6 students solved only B.
 (Only A: 8, only B: 6, only C: 2, B and C but not A: 2, and 7 solved A plus at least one other.)
 
-=== R#21 | Ages of A and B
+=== R#21 | Ages of A and B | hard
 When A was three times as old as B was the year before A was a half of B’s present age, B was 3 years younger than A was when B was two thirds of A’s present age. A’s and B’s ages now total 73. How old are A and B?
 --- small hint
 Untangle it from the inside out, starting with "the year before A was half of B's present age".
@@ -256,7 +257,7 @@ Call their ages now A and B, with A + B = 73, and turn each "when" into "so many
 --- solution
 A is 39 and B is 34.
 
-=== R#22 | Island of Liars
+=== R#22 | Island of Liars | medium
 On a certain familiar island, some residents always lie, and the others always tell the truth. The total population is 100. Each resident worships one of three gods, the sun god, the moon god, or the Earth god. One day a visitor asks each resident three questions:
 1. Do you worship the sun god?
 2. Do you worship the moon god?
@@ -269,7 +270,7 @@ A truth-teller says yes once (to their own god). A liar says yes twice (to the t
 --- solution
 30 liars. There were 130 yeses, so truth-tellers + 2 × liars = 130, and truth-tellers + liars = 100.
 
-=== R#23 | Five Birthdays
+=== R#23 | Five Birthdays | very hard
 Annie, Betty, Carrie, Darla, and Eve all have the same birthday, but all are different ages. On their shared birthday:
 • Darla said to Betty: “I’m 9 years older than Eve.”
 • Eve said to Betty: “I’m 7 years older than Annie.”
@@ -287,7 +288,7 @@ If Annie were older than Carrie, that statement would have to be true, which is 
 --- solution
 Annie 30, Betty 51, Carrie 55, Darla 46, Eve 37.
 
-=== R#24 | Trains at Noon
+=== R#24 | Trains at Noon | hard
 “At noon precisely, a train leaves A for B, and another leaves B for A. They pass after 51 minutes. Each train stays 27 minutes at its destination and then returns by the same route. The trains from A and B travel throughout with constant speeds of 23 m.p.h. and 39 m.p.h., respectively. At what time do they pass for the second time?”
 --- small hint
 Work out how far apart A and B are, and how long each train takes for the trip.
@@ -296,7 +297,7 @@ The track is 62 mph × 51 minutes = 52.7 miles. B takes about 81 minutes for the
 --- solution
 At 3:00 p.m. exactly. B reaches A at about 1:21, waits until 1:48 and heads back. A reaches B at about 2:17 and waits until 2:44. They are then about 16 miles apart, closing at 62 mph, and meet at 3:00.
 
-=== R#25 | Ant on a Clock
+=== R#25 | Ant on a Clock | hard
 An ant crawls onto a clock face at the 6 mark just as the minute hand is passing 12. She begins crawling counterclockwise around the face’s circumference at a uniform speed. When the minute hand passes her, she reverses course and crawls clockwise without changing her speed. Forty-five minutes after her first encounter with the minute hand, it passes her a second time and she departs. How much time did she spend on the clock face?
 --- small hint
 When they both go clockwise, the minute hand can only pass her again if one of them laps the other.
@@ -305,7 +306,7 @@ In 45 minutes the minute hand moves only 45 of the 60 minute marks, so she must 
 --- solution
 54 minutes. She moves 7/3 marks a minute, so she meets the minute hand after 9 minutes (she covers 21 marks and the hand 9, together the 30 from 6 to 12), and then stays 45 more.
 
-=== R#26 | The Lion and the Unicorn
+=== R#26 | The Lion and the Unicorn | medium
 In What Is the Name of This Book? (1986), Raymond Smullyan describes two curious denizens of the Forest of Forgetfulness. The Lion lies on Mondays, Tuesdays, and Wednesdays, and the Unicorn lies on Thursdays, Fridays, and Saturdays. Each tells the truth on the days it doesn’t lie.
 One day Alice encounters the two of them resting under a tree. They tell her:
 Lion: Yesterday was one of my lying days.
@@ -318,7 +319,7 @@ The Lion can only say "Yesterday was one of my lying days" on Mondays (lying tod
 --- solution
 Thursday. The Lion can say it on Mondays and Thursdays, and the Unicorn on Thursdays and Sundays.
 
-=== R#27 | Mr. Smith in Atlantic City
+=== R#27 | Mr. Smith in Atlantic City | easy
 Mr. Smith goes to Atlantic City to gamble for a weekend. To guard against bad luck, he sets a policy at the start: In every game he plays, he’ll bet exactly half the money he has at the time, and he’ll make all his bets at even odds, so he’ll have an equal chance of winning and of losing this amount. In the end he wins the same number of games that he loses. Does he break even?
 --- small hint
 Try one win and one loss starting with $100.
@@ -327,7 +328,7 @@ A win multiplies his money by 1.5 and a loss by 0.5. The order doesn't matter.
 --- solution
 No, he loses. Every win paired with a loss leaves him 1.5 × 0.5 = 3/4 of his money, so after n wins and n losses he has (3/4)ⁿ of what he started with.
 
-=== R#28 | Two Coins
+=== R#28 | Two Coins | hard
 My friend tosses two coins and covers them with his hand. ‘Is there at least one “tail”?’ I ask. He affirms this (a).
 Just then he accidentally knocks one of them to the floor (b). On finding the dropped coin under the table, we discover it to be a ‘tail’ (c).
 ‘That is all right,’ he says, ‘because it was a “tail” to start with.’ (d).
@@ -342,7 +343,7 @@ At (a) there are three equally likely cases: tail-tail, tail-head and head-tail.
 (c) The floor coin is a tail, so it all depends on the coin still on the table, which was a tail in 2 of the 3 cases.
 (d) Now you know the dropped coin was the tail, so the other one is 50-50.
 
-=== R#29 | Gleepers and Poosters
+=== R#29 | Gleepers and Poosters | easy
 If a GLEEPER is as long as two PLONTHS and a half-GLEEPER, and a BLAHMIE is as long as two GLEEPERS and a half-BLAHMIE, and a POOSTER is as long as two BLAHMIES and a half-POOSTER, then how many PLONTHS long is a half-POOSTER?
 --- small hint
 Start with the GLEEPER: if it's two PLONTHS plus half of itself, what is the other half?
@@ -351,7 +352,7 @@ A GLEEPER is 4 PLONTHS. In the same way, a BLAHMIE is 4 GLEEPERS.
 --- solution
 32 PLONTHS. A GLEEPER is 4 PLONTHS, a BLAHMIE 16, a POOSTER 64, so half a POOSTER is 32.
 
-=== R#30 | Bert, Bill and Ben
+=== R#30 | Bert, Bill and Ben | very hard
 When Bert was just one year younger than Bill was when Ben was half as old as Bill will be 3 years from now, Ben was twice as old as Bill was when Ben was 1/3 as old as Bert was 3 years ago. But, when Bill was twice as old as Bert, Ben was 1/4 as old as Bill was one year ago.
 “Ignoring odd months and considering that Bert has passed the half-century mark, it will be no problem to find out how old these three friends are.”
 --- small hint
@@ -361,7 +362,7 @@ Give each friend a letter for his age now and change each "when" into a number o
 --- solution
 Bert 72, Bill 85, Ben 80. (The only other whole-number answer makes Bill 113.)
 
-=== R#31 | The Wine Bottles
+=== R#31 | The Wine Bottles | easy
 A gentleman had a bottle containing 12 pints of wine, 6 of which he was desirous of giving to a friend; but he had nothing to measure it, except two other bottles, one of 7 pints, and the other of 5. How did he contrive to put 6 pints into the 7-pint bottle?
 --- small hint
 Keep pouring between the 7-pint and 5-pint bottles, emptying the 5-pint bottle back into the big one whenever it's full.
@@ -371,7 +372,7 @@ Start by filling the 7 from the 12, then filling the 5 from the 7. That leaves 2
 (big / 7 / 5) 12-0-0 → 5-7-0 → 5-2-5 → 10-2-0 → 10-0-2 → 3-7-2 → 3-4-5 → 8-4-0 → 8-0-4 → 1-7-4 → 1-6-5.
 In words: fill the 7, fill the 5 from it, empty the 5 into the big bottle, pour the 7's 2 pints into the 5, fill the 7 again, top up the 5 from it (4 left), empty the 5, pour the 4 into the 5, fill the 7, and top up the 5 from it. 6 pints are left in the 7.
 
-=== R#32 | Six Poker Hands
+=== R#32 | Six Poker Hands | very hard
 Four players describe the cards they held in their last game of five-card poker:
 Harry: “I had the two, nine, and jack of hearts, and the two and nine of diamonds.”
 Edna: “I held four fives and the queen of spades.”
@@ -390,7 +391,7 @@ Frankie: 2, 3, 4, 6, 7 of clubs.
 Georgiana: 9♣ 10♣ J♠ Q♣ K♠.
 Cleo: 8♣ J♣ K♣ A♣ A♠ (a pair of aces).
 
-=== R#33 | The Bathtub
+=== R#33 | The Bathtub | easy
 A bathtub will fill in 3 minutes if the plug is in and the cold tap only is turned on full. It will fill in 4 minutes if the plug is in and the hot tap only is turned on full. With the plug out and both taps off, a full tub will drain in 2 minutes. How long will it take to fill the empty tub if the plug is out and both taps are turned on full?
 --- small hint
 Think in tubs per minute.
@@ -399,7 +400,7 @@ The cold tap fills 1/3 of a tub a minute, the hot tap 1/4, and the open plug dra
 --- solution
 12 minutes. 1/3 + 1/4 − 1/2 = 1/12 of a tub each minute.
 
-=== R#34 | The Busy Elevator
+=== R#34 | The Busy Elevator | very hard
 A 20-story office building has one busy elevator. On a recent trip upward, the elevator transported seven passengers. Each of these went up at least two floors, but no two of them went up the same number of floors. On this one upward journey, no more than one passenger crossed the elevator’s threshold on any given floor; no passenger exited on the 17th floor; and the elevator’s doors opened at more odd-numbered floors than even-numbered floors. Anton was the last passenger on and the second one off. Bessie got on before Clara and after Dagwood and went up more floors than Dagwood did. Edsel went up exactly twice as many floors as Filbert and got off before Gerda got on. Gerda was not the last one to exit.
 Where did each passenger enter and exit the elevator?
 --- small hint
@@ -415,7 +416,7 @@ Gerda: 10 to 19
 Filbert: 11 to 15
 Anton: 12 to 14
 
-=== R#35 | Before and After
+=== R#35 | Before and After | very easy
 “If the brainteaser you solved before you solved this one was harder than the brainteaser you solved after you solved the brainteaser that you solved before you solved this one, was the brainteaser you solved before you solved this one harder than this one?”
 --- small hint
 Untangle "the brainteaser you solved after you solved the brainteaser that you solved before you solved this one".
@@ -424,7 +425,7 @@ The one you solved after the one before this one is... this one.
 --- solution
 Yes. The long phrase just means "this one", so the question is: if the one before was harder than this one, was the one before harder than this one? Yes.
 
-=== R#36 | Five Schoolgirls
+=== R#36 | Five Schoolgirls | medium
 A problem by British puzzlist Hubert Phillips:
 In writing home about an examination, five schoolgirls each made one true statement and one untrue one. The relevant passages:
 Betty: Kitty was second in the examination. I was only third.
@@ -440,7 +441,7 @@ Kitty did not come second. So Betty's "I was only third" is true.
 --- solution
 1st Kitty, 2nd Joan, 3rd Betty, 4th Mary, 5th Ethel.
 
-=== R#37 | Two Marksmen
+=== R#37 | Two Marksmen | medium
 Marksman A hits a certain small target 75 percent of the time. Marksman B hits it 25 percent of the time. The two of them aim at that target and fire simultaneously. One bullet hits it. What’s the probability that it came from A?
 --- small hint
 Only two things can have happened: A hit and B missed, or B hit and A missed.
@@ -449,7 +450,7 @@ A hits and B misses: 0.75 × 0.75 = 0.5625. B hits and A misses: 0.25 × 0.25 = 
 --- solution
 90%. 0.5625 ÷ (0.5625 + 0.0625) = 0.9.
 
-=== R#38 | A Flock of Pigeons
+=== R#38 | A Flock of Pigeons | easy
 “Solve the following problem if you can: a flock of pigeons alighted upon a tree, some perching upon the upper branches and some upon the lower; those upon the upper branches said to those upon the lower: ‘If one of you flies up to us our number will be double yours; if one of us flies down to you, our numbers will be equal.’”
 How large was the flock?
 --- small hint
@@ -459,7 +460,7 @@ There are 2 more pigeons on the upper branches than on the lower ones.
 --- solution
 12 pigeons: 7 up and 5 below. If one flies up it's 8 and 4; if one flies down it's 6 and 6.
 
-=== R#39 | Dresses and Shoes
+=== R#39 | Dresses and Shoes | very easy
 Three girls dressed up in white, green, and blue dresses. They also wore shoes of these three colors. Only Ann wore a dress of the same color as her shoes. Neither Betty’s dress nor her shoes were white, and Carol’s shoes were green. What was the color of each girl’s dress?
 --- small hint
 Start with Betty's shoes.
@@ -468,7 +469,7 @@ Betty's shoes aren't white, and Carol's are green, so Betty's are blue.
 --- solution
 Ann: white dress (white shoes). Betty: green dress (blue shoes). Carol: blue dress (green shoes).
 
-=== R#40 | The True/False Gang
+=== R#40 | The True/False Gang | hard
 A puzzle by Jared Z., Nicole H., and Benjamin E., mathematicians at the National Security Agency:
 The chief detective hurried down to the police station after hearing big news: there was a heist at Pi National Bank! The police had brought in seven known gang members seen leaving the scene of the crime. They belonged to the nefarious True/False Gang, so named because each member is either required to always tell the truth or required to always lie, although everyone is capable of engaging in wrongdoing. The chief also knew from his past cases that any crime committed by the gang always included one truth teller.
 When the chief showed up, he asked the gang members the following questions:
@@ -492,7 +493,7 @@ Only the answer "3" is given by exactly three people: 2, 5 and 6. They're the tr
 --- solution
 Persons 2, 3 and 4. The truth-tellers (2, 5 and 6) say three are guilty: 2 says he did it, 5 and 6 say they didn't. The liars 3 and 4 said "No", so they're guilty, and the liars 1 and 7 said "Yes", so they're innocent.
 
-=== R#41 | PI × R2 = AREA
+=== R#41 | PI × R2 = AREA | medium
 PI × R2 = AREA
 If each letter in this expression (but not the exponent 2) is replaced with a corresponding digit, the resulting equation will be valid. What are the digits?
 --- small hint
@@ -503,7 +504,7 @@ PI × R² is a four-digit number whose second digit is R. Try R from 4 to 9.
 96 × 7² = 96 × 49 = 4704.
 P = 9, I = 6, R = 7, A = 4, E = 0.
 
-=== R#42 | Six Hats
+=== R#42 | Six Hats | hard
 After a meeting of six professors, each man left with another’s hat. The hat that Aitkins took belonged to the man who took Baily’s hat. The man whose hat was taken by Caldwell took the hat of the man who took Dunlop’s hat. And the man who took Easton’s hat wasn’t the one whose hat was taken by Fort. Who took Aitkins’ hat?
 --- small hint
 Write out who took whose hat as chains: Aitkins took X's hat, and X took Baily's.
@@ -512,7 +513,7 @@ Nobody took his own hat. Try each man for Aitkins' hat and see which one never b
 --- solution
 Fort took Aitkins' hat. Two different hat swaps fit the clues, but in both of them Fort has Aitkins' hat.
 
-=== R#43 | The Greedy King
+=== R#43 | The Greedy King | very hard
 A little kingdom contains 66 people, a king and 65 citizens. Each of them, including the king, has a salary of one gold piece. When democracy comes, the king is denied a vote, but he has the power to suggest changes, in particular regarding the redistribution of salaries. The salaries must total 66, and each salary must be a whole number of gold pieces. The citizens will vote on each suggestion, which will pass if more citizens vote for it than against it. Each voter will reliably support a measure if it will increase his salary, oppose it if it will decrease his salary, and otherwise abstain from voting.
 The king is greedy. What’s the highest salary he can arrange for himself?
 --- small hint
@@ -522,7 +523,7 @@ Each round, take all the money from just under half of the citizens who have any
 --- solution
 63 gold pieces. The paid group keeps shrinking: 65 with 1 → 33 with 2 → 17 with 3 → 9 with 4 → 5 with 5 → 3 with 6 → 2 with 7 → then one with 8 and one with 1 → then one with 2 and one with 1. A change always needs at least two citizens to gain, so the citizens can never end up with less than 3 between them.
 
-=== R#44 | Three Athletes
+=== R#44 | Three Athletes | medium
 Three athletes (and only three athletes) participate in a series of track and field events. Points are awarded for 1st, 2nd, and 3rd place in each event (the same points for each event, i.e. 1st always gets “x” points, 2nd always gets “y” points, 3rd always gets “z” points), with x > y > z > 0, and all point values being integers.
 The athletes are named Adam, Bob, and Charlie.
 • Adam finished first overall with 22 points.
@@ -536,7 +537,7 @@ There must be 5 events, worth 5, 2 and 1 points.
 --- solution
 Charlie. With 5 events at 5, 2 and 1 points, Bob won the javelin (5) and came last in the other four (4 × 1). Adam has 22: four wins and 2nd in the javelin. So Charlie came 2nd in every other event, including the 100-meter dash.
 
-=== R#45 | The Cabinetmaker's Pay
+=== R#45 | The Cabinetmaker's Pay | easy
 A puzzle by Soviet science writer Yakov Perelman: Six carpenters and a cabinetmaker were hired to do a job. Each carpenter was paid 20 rubles, and the cabinetmaker was paid 3 rubles more than the average wage of the whole group. How much did the cabinetmaker make?
 --- small hint
 Call the average wage A. Then the whole group was paid 7 × A.
@@ -545,7 +546,7 @@ Call the average wage A. Then the whole group was paid 7 × A.
 --- solution
 23.5 rubles (23 rubles 50 kopecks). The average is 20.5, and 6 × 20 + 23.5 = 143.5 = 7 × 20.5.
 
-=== R#46 | Four Statements
+=== R#46 | Four Statements | medium
 A problem from the October 1959 issue of Eureka, the journal of the Cambridge University Mathematical Society:
 A. The total number of true statements in this problem is 0 or 1 or 3.
 B. The total number of true statements in this problem is 1 or 2 or 3.
@@ -559,7 +560,7 @@ Exactly two of the statements are true.
 --- solution
 B and D are true; A and C are false.
 
-=== R#47 | Tom and Dick
+=== R#47 | Tom and Dick | very hard
 A problem from the October 1962 issue of Eureka, the journal of the Cambridge University Mathematical Society:
 Tom is twice as old as Dick was when Tom was half as old as Dick will be when Tom is twice as old as Dick was when Tom was a year younger than Dick is now. Dick is twice as old as Tom was when Dick was half as old as Tom was when Dick was half as old as Tom was two years ago. How old are Dick and Tom?
 --- small hint
@@ -569,7 +570,7 @@ Write T and D for their ages now and turn each "when" into "so many years ago". 
 --- solution
 Tom is 30 and Dick is 26.
 
-=== R#48 | The Captain's Boat
+=== R#48 | The Captain's Boat | easy
 A problem from the Stanford University Competitive Examination in Mathematics:
 How old is the captain, how many children has he, and how long is his boat? Given the product 32118 of the three desired numbers (integers). The length of the boat is given in feet (is several feet), the captain has both sons and daughters, he has more years than children, but he is not yet one hundred years old.
 --- small hint
@@ -579,7 +580,7 @@ Break 32118 into prime factors.
 --- solution
 The captain is 53, he has 6 children and his boat is 101 feet long. (53 is the only possible age. 2 or 3 children with a 303- or 202-foot boat would multiply out too, but 6 and 101 is the intended answer.)
 
-=== R#49 | Knights and Knaves
+=== R#49 | Knights and Knaves | medium
 A puzzle by Edward J. Barbeau, from the February 2007 issue of Crux Mathematicorum:
 A certain familiar island is inhabited by knights, who can only speak the truth, and knaves, who can only lie. One day a visitor meets three inhabitants, A, B, and C. The visitor asked, “How many knights are there among you three?”
 A gave an answer, which the visitor didn’t hear. When the visitor asked B what A had said, B replied, “A said that there is one knight among us.” At this C said, “Don’t believe B. He is lying.”
@@ -591,7 +592,7 @@ Suppose B is a knight. Then A really did say "one knight". Could A be a knight? 
 --- solution
 B is a knave and C is a knight. If B were a knight, A's words "there is one knight" would be false if A were a knight (two knights) and true if A were a knave (B the only knight), and neither works.
 
-=== R#50 | The Hospital
+=== R#50 | The Hospital | medium
 When visiting with a friend one of our hospitals for wounded soldiers, I was informed that exactly two-thirds of the men had lost an eye, three-fourths had lost an arm, and four-fifths had lost a leg. ‘Then,’ I remarked to my friend, ‘it follows that at least twenty-six of the men must have lost all three — an eye, an arm, and a leg.’ That being so, can you say exactly how many men were in the hospital? It is a very simple calculation, but I have no doubt it will perplex a good many readers.
 --- small hint
 What's the smallest share of the men who must have lost all three? Add the fractions.
@@ -600,7 +601,7 @@ At least 2/3 + 3/4 + 4/5 − 2 = 13/60 of the men lost all three.
 --- solution
 120 men. 13/60 of 120 is 26.
 
-=== R#51 | AA + BB + CC
+=== R#51 | AA + BB + CC | easy
 AA + BB + CC = ABC
 Find A, B, and C as distinct integers. There is only one solution.
 --- small hint
@@ -610,7 +611,7 @@ ABC is 11 times the sum of its own digits.
 --- solution
 A = 1, B = 9, C = 8: 11 + 99 + 88 = 198.
 
-=== R#52 | Shoes in Two Cities
+=== R#52 | Shoes in Two Cities | very easy
 City A contains 20,000 people. One percent of these have one foot only and wear one shoe apiece. Half of the remaining people go barefoot, wearing no shoes at all, and the rest wear two shoes apiece.
 In City B, 20 percent of the residents have one foot only and wear one shoe apiece. Of the remainder, half go barefoot and half wear two shoes apiece.
 If 20,000 shoes are worn in City B, what is its population?
@@ -621,7 +622,7 @@ It's the same in City B: one-footed people wear one shoe each, and everyone else
 --- solution
 20,000 people. Every resident averages exactly one shoe.
 
-=== R#53 | Rock, Paper, Scissors
+=== R#53 | Rock, Paper, Scissors | hard
 https://youtu.be/hf7Sy7FPal0?si=iKpjROlFQnGfqAvh
 In Season 8, Episode 7 of Penn & Teller’s magic competition show Fool Us, magician Hans Petter Secker appears to predict the outcome of three successive rounds of rock-paper-scissors, though Secker oversees the game remotely from Norway and the players are invited to exchange items before each round. How is this accomplished?
 --- small hint
@@ -631,7 +632,7 @@ Around three players there are only two possible patterns (the winner sits to yo
 --- solution
 It's parity. With rock, paper and scissors spread over three people there are only two possible states, and any swap between two players flips the state. Secker set up the starting state and followed the number of swaps, so an even number keeps the result and an odd number flips it. The outcome was never really in doubt.
 
-=== R#54 | The Strange Cipher
+=== R#54 | The Strange Cipher | hard
 [img riddles/r54.png]
 In Robert Chambers’ 1906 novel The Tracer of Lost Persons, Mr. Keen copies the figure above from a mysterious photograph. He is trying to help Captain Harren find a young woman with whom he has become obsessed.
 “It’s the strangest cipher I ever encountered,” he says at length. “The strangest I ever heard of. I have seen hundreds of ciphers — hundreds — secret codes of the State Department, secret military codes, elaborate Oriental ciphers, symbols used in commercial transactions, symbols used by criminals and every species of malefactor. And every one of them can be solved with time and patience and a little knowledge of the subject. But this … this is too simple.”
@@ -643,7 +644,7 @@ It's a version of the old pigpen ("Seal of Solomon") cipher: the lines divide ea
 --- solution
 Edith Inwood. It's a simple pigpen-style letter cipher: each box is the whole key drawing, and its marks pick out one letter.
 
-=== R#55 | Double the Money
+=== R#55 | Double the Money | easy
 Three men play a game, agreeing that in each round the loser will double the money of each of the other two. After three rounds, each man has lost one time, and each man has $24. How much did each have at the start of the game?
 --- small hint
 Work backwards from the end, when everyone has $24.
@@ -652,7 +653,7 @@ Before the last round, the loser had just doubled the other two. So they had $12
 --- solution
 $39, $21 and $12. The first loser started with $39, the second with $21 and the last with $12.
 
-=== R#56 | Sharing Apples
+=== R#56 | Sharing Apples | very easy
 We’re giving out apples to a group of boys. If we distribute the entire supply, then every boy will get three, except for one, who will get two. If instead we give each boy two apples, then we’ll have eight apples left over. How many apples are there altogether?
 --- small hint
 Call the number of boys b.

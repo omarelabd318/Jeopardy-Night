@@ -8,6 +8,8 @@
    in title.js, the rdLeave() call in showHome (src/app.js), RID in build.js and 'riddles' in MODE_FILES. */
 const RD_UNLOCK = {h1:600, h2:1200, sol:0};   // 8.55 (Omar): seconds before each button works
 const RD_NAME = {h1:"Small hint", h2:"Big hint", sol:"Solution"};
+const RD_LV = [null, ["Very easy", "#3ddc84"], ["Easy", "#4fc3f7"], ["Medium", "#ffd54f"], ["Hard", "#ff8a3d"], ["Very hard", "#ff4d6a"]];   // 8.67 (Omar): level colours (the dot on each card, and the key under the title)
+const rdDot = r => { const v = RD_LV[r.lv]; return v ? `<i class="rddot" style="--lv:${v[1]}" title="${v[0]}"></i>` : ""; };
 const RD = {open:-1, t0:0, tmr:null, seen:(() => { try { return new Set(JSON.parse(localStorage.getItem("jn_rdSeen") || "[]")); } catch(e){ return new Set(); } })()};
 const rdEsc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;"})[c]);
 const rdBlock = b => b.img ? `<div class="rdimg"><img src="${rdEsc(b.img)}" alt="Picture for this riddle"></div>`
@@ -23,8 +25,8 @@ function rdRender(){ const body = $("#rdBody"), sw = $("#rdSwap"); sw.hidden = R
     /* 8.59 (Omar): rows of oldest-first groups (R#01-04, R#05-08 ...), newest row at the top, each row counting up left to right (8.53-8.58: plain newest-first reading order, RID...reverse()) */
     const cols = rdCols(), rows = []; for(let i = 0; i < RID.length; i += cols) rows.push(RID.slice(i, i + cols).map((r, j) => [r, i + j]));
     const cards = rows.reverse().flat().map(([r, i]) => { const txt = r.b.filter(b => b.p).map(b => b.p).join(" ");
-      return `<button class="rdcard${RD.seen.has(r.n) ? " seen" : ""}" data-rd="${i}"><div class="rdch"><b>${r.n}</b><em>${rdEsc(r.t || "")}</em></div><span>${rdEsc(txt)}</span></button>`; }).join("");
-    body.innerHTML = `<header class="rdhead"><h1>Riddle Me This</h1><p>${RID.length} riddles · newest at the top · pick one to read it on the TV</p><button class="rdbtn go" id="rdRandom">Random riddle</button></header><div class="rdlist">${cards}</div>`;
+      return `<button class="rdcard${RD.seen.has(r.n) ? " seen" : ""}" data-rd="${i}"><div class="rdch"><b>${r.n}</b><em>${rdEsc(r.t || "")}</em>${rdDot(r)}</div><span>${rdEsc(txt)}</span></button>`; }).join("");
+    body.innerHTML = `<header class="rdhead"><h1>Riddle Me This</h1><p>${RID.length} riddles · newest at the top · pick one to read it on the TV</p><div class="rdlegend">${RD_LV.slice(1).map(v => `<i class="rdlv" style="--lv:${v[1]}">${v[0]}</i>`).join("")}</div><button class="rdbtn go" id="rdRandom">Random riddle</button></header><div class="rdlist">${cards}</div>`;
     return; }
   const r = RID[RD.open];
   body.innerHTML = `<article class="rdread"><div class="rdnum">${r.n}${r.t ? `<small>${rdEsc(r.t)}</small>` : ""}</div><div class="rdtext">${r.b.map(rdBlock).join("")}</div></article><div class="rdbar"><div class="rdbarl">${["h1", "h2"].map(k => `<button class="rdbtn rdhint" data-rdh="${k}"></button>`).join("")}</div><button class="rdbtn rdhint rdsol" data-rdh="sol"></button></div>`;
