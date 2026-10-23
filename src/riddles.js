@@ -9,6 +9,7 @@
 const RD_UNLOCK = {h1:600, h2:1200, sol:600};   // 8.55 (Omar): seconds before each button works; 8.68 (Omar): the solution also waits 10 minutes (8.55-8.67: sol:0)
 const RD_NAME = {h1:"Small hint", h2:"Big hint", sol:"Solution"};
 const RD_LV = [null, ["Very easy", "#3ddc84"], ["Easy", "#4fc3f7"], ["Medium", "#ffd54f"], ["Hard", "#ff8a3d"], ["Very hard", "#ff4d6a"]];   // 8.67 (Omar): level colours (the dot on each card, and the key under the title)
+/* 8.70 (Omar): the same dot sits next to the riddle's number on the riddle screen (rdnum) */
 const rdDot = r => { const v = RD_LV[r.lv]; return v ? `<i class="rddot" style="--lv:${v[1]}" title="${v[0]}"></i>` : ""; };
 const RD = {open:-1, t0:0, tmr:null, seen:(() => { try { return new Set(JSON.parse(localStorage.getItem("jn_rdSeen") || "[]")); } catch(e){ return new Set(); } })()};
 const rdEsc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;"})[c]);
@@ -32,7 +33,7 @@ function rdRender(){ const body = $("#rdBody"), sw = $("#rdSwap"); sw.hidden = R
     body.innerHTML = `<header class="rdhead"><h1>Riddle Me This</h1><p>${RID.length} riddles · newest at the top · pick one to read it on the TV</p><div class="rdlegend">${RD_LV.slice(1).map(v => `<i class="rdlv" style="--lv:${v[1]}">${v[0]}</i>`).join("")}</div><button class="rdbtn go" id="rdRandom">Random riddle</button></header><div class="rdlist">${cards}</div>`;
     return; }
   const r = RID[RD.open];
-  body.innerHTML = `<article class="rdread"><div class="rdnum">${r.n}${r.t ? `<small>${rdEsc(r.t)}</small>` : ""}</div><div class="rdtext">${r.b.map(rdBlock).join("")}</div></article><div class="rdbar"><div class="rdbarl">${["h1", "h2"].map(k => `<button class="rdbtn rdhint" data-rdh="${k}"></button>`).join("")}</div><button class="rdbtn rdhint rdsol" data-rdh="sol"></button></div>`;
+  body.innerHTML = `<article class="rdread"><div class="rdnum">${r.n}${rdDot(r)}${r.t ? `<small>${rdEsc(r.t)}</small>` : ""}</div><div class="rdtext">${r.b.map(rdBlock).join("")}</div></article><div class="rdbar"><div class="rdbarl">${["h1", "h2"].map(k => `<button class="rdbtn rdhint" data-rdh="${k}"></button>`).join("")}</div><button class="rdbtn rdhint rdsol" data-rdh="sol"></button></div>`;
   rdTick(); rdFit(); body.querySelectorAll(".rdimg img").forEach(im => im.addEventListener("load", rdFit)); }
 /* the riddle text starts big and shrinks until the whole riddle fits on one screen (never below 17px; a very long one then scrolls) */
 function rdFit(){ const t = $("#rdBody .rdtext"), bar = $("#rdBody .rdbar"); if(!t) return; const room = window.innerHeight - t.getBoundingClientRect().top - 24 - (bar ? bar.offsetHeight : 0);
