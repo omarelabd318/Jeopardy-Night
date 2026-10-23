@@ -61,8 +61,8 @@ const errs = [], fail = m => { console.error("FAIL: " + m); process.exitCode = 1
   { const eds = new Set(); for(let k = 0; k < 16; k++){ const r = await p.evaluate(() => ({ed:TE.turns[TE.ti].list.ed, ball:document.body.classList.contains("teball")}));
       if((r.ed === "f") !== r.ball) fail("the look should follow the list's edition"); eds.add(r.ed); if(k === 3) await p.screenshot({path:shots + "/mix-play.png"}); await p.click("#teSkip"); await p.waitForTimeout(60); }
     if(!(eds.has("n") && eds.has("f"))) fail("Mix should deal both editions: " + [...eds]); }
-  // Formations
-  await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
+  // Formations (8.41: in Mix only football cards can be lineups, so this check uses TenaBall)
+  await p.click('#teo [data-act="end"]'); await p.click('#teo [data-set="sub"][data-v="f"]'); await p.click('#teo [data-set="form"][data-v="1"]'); await p.evaluate(() => TE.formShare = 1); await p.click("#teGo"); await p.click('#teo [data-act="go"]'); await p.waitForTimeout(200);
   const fm = await p.evaluate(() => TE.turns[TE.ti].list.items.map(i => i.a)); for(const a of fm.slice(0, 5)) await type(a); await type("Zidane2");
   { const m1 = '#teo [data-give="9"]', m2 = '#teo [data-give="10"]'; await p.click(m1);   // 7.85: letter hints on lineup players, no number behind the letters
     if(await p.evaluate(() => !!TE.turns[TE.ti].list.items[9].f)){ if(!(await p.locator(m1 + " i.fl").count())) fail("8.5: the first tap on a flagged lineup player should show the flag"); await p.click(m1); }   // 8.5: the first tap is the flag when the lineup has flags

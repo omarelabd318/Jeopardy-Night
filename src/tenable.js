@@ -98,11 +98,13 @@ function teDraw(pool, k, seen){   // a list not played on this device yet (all o
   const L = fresh[Math.floor(Math.random() * fresh.length)]; s.add(L.key); seen[k] = [...s]; return L; }
 function teDeal(n){
   const seen = store.get("jn_teSeen", {}), lineups = teForm() ? teLineups() : [], out = [];
-  for(let i = 0; i < n; i++) { const ed = teMix() ? (Math.random() < 0.5 ? "n" : "f") : TE.cfg.sub; out.push(lineups.length && Math.random() < TE.formShare ? teDraw(lineups, "fm", seen) : teDraw(teLists(ed), ed, seen)); }
+  for(let i = 0; i < n; i++) { const ed = teMix() ? (Math.random() < 0.5 ? "n" : "f") : TE.cfg.sub; out.push(lineups.length && ed === "f" && Math.random() < TE.formShare ? teDraw(lineups, "fm", seen) : teDraw(teLists(ed), ed, seen)); }   // 8.41: in Mix only the football half can turn into a lineup (before: any card could, so Tenable got about a third)
   store.set("jn_teSeen", seen); return out; }
 /* 8.37 (Omar): "Choose list" switch. Each turn opens on a 3 by 3 grid of 9 lists (not played on this device yet where possible) and the player picks one; only the picked list counts as played */
-function teOffer(n){ const seen = store.get("jn_teSeen", {}), lineups = teForm() ? teLineups() : [], out = [], keys = new Set();
-  for(let k = 0; k < n * 6 && out.length < n; k++){ const ed = teMix() ? (Math.random() < 0.5 ? "n" : "f") : TE.cfg.sub, fm = lineups.length && Math.random() < TE.formShare;
+/* 8.41 (Omar): in Mix the grid is close to half and half: 3 to 6 Tenable lists (mostly 4 or 5), the rest football, and only football cards can be lineups. Before: each card was a coin flip and lineups also took Tenable's places, so Tenable often got only 2 or 3 of 9 */
+const teMixPlan = n => { const k = [3, 4, 4, 5, 5, 6][Math.floor(Math.random() * 6)]; return teShuf(Array.from({length:n}, (_, i) => i < Math.round(k * n / 9) ? "n" : "f")); };
+function teOffer(n){ const seen = store.get("jn_teSeen", {}), lineups = teForm() ? teLineups() : [], out = [], keys = new Set(), plan = teMix() ? teMixPlan(n) : [];
+  for(let k = 0; k < n * 6 && out.length < n; k++){ const ed = teMix() ? plan[out.length] : TE.cfg.sub, fm = lineups.length && ed === "f" && Math.random() < TE.formShare;
     const pool = fm ? lineups : teLists(ed), s = new Set(seen[fm ? "fm" : ed] || []); let fresh = pool.filter(L => !s.has(L.key) && !keys.has(L.key)); if(!fresh.length) fresh = pool.filter(L => !keys.has(L.key)); if(!fresh.length) continue;
     const L = fresh[Math.floor(Math.random() * fresh.length)]; keys.add(L.key); out.push(L); }
   return out; }
