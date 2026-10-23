@@ -211,7 +211,8 @@ function openNews(){
   $("#newsTitle").textContent = `Sahra v${vs[0].v}`;
   $("#newsHist").innerHTML = newsHTML(CHANGELOG);
   document.querySelectorAll(".newshist").forEach(d => d.open = false);
-  $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>` + modeStatsHTML();   // 7.14 (Omar): the counts live here, not on the title screen. 8.58: plus a card per mode
+  $("#newsStats").innerHTML = `<ul><li><b>${verCounts().nc}</b> categories</li><li><b>${verCounts().n.toLocaleString("en-US")}</b> clues</li></ul>`;   // 7.14 (Omar): the counts live here, not on the title screen
+  $("#newsModes").innerHTML = modeStatsHTML();   // 8.58 (Omar): a card per mode, in its own Modes section
   { const d = histData(); $("#newsPlayed").innerHTML = `<p class="note">${esc(d.sum)}</p><ol class="histlist">${d.list}</ol>`; }   // 8.24 (Omar): played clues per category
   nsfwPaint();   // 8.26 (Omar): the NSFW switch
   /* 4.62 (Omar): the history only opens with the code "joga" (any capitals); it locks again on every open */
@@ -221,11 +222,11 @@ function openNews(){
 $("#newsLock").addEventListener("submit", e => { e.preventDefault();
   if($("#newsCode").value.trim().toLowerCase() === "joga"){ $("#newsLock").hidden = true; document.querySelectorAll(".newshist").forEach(d => d.hidden = false); $("#newsHist").parentNode.open = true; $("#newsClose").focus({preventScroll:true}); $(".newscard").scrollTop = 0; }   // 7.16 (Omar): open the history from the top, not scrolled to the Close button
   else { $("#newsErr").textContent = "Wrong code."; $("#newsCode").select(); } });
-/* 8.58 (Omar): under Categories and clues, a small card for every mode on the title screen, in title-screen order: players and phones come
+/* 8.58 (Omar): a "Modes" section under Categories and clues, with a small card for every mode on the title screen, in title-screen order: players and phones come
    from the mode button's own data-who and data-phones (the same text as its hover box), and the count line is worked out from the game's data
    each time the panel opens. Modes without categories or clues (the card games, For Sale? and Hues and Cues) have no count line.
    The trivia modes count their full pool, whatever their setup switches say (photo rounds on, football Normal); the locked NSFW category is never counted (Omar).
-   To remove: delete this block, "+ modeStatsHTML()" in openNews and the 8.58 CSS block in head.html. */
+   To remove: delete this block, the #newsModes line in openNews, the newsmodes <details> and the 8.58 CSS block in head.html. */
 const msN = x => Number(x).toLocaleString("en-US");
 const msClues = ids => ids.reduce((a, id) => a + LV.reduce((b, l) => b + ((DATA[id] || {})[l] || []).length, 0), 0);
 const msLen = o => Object.values(o || {}).reduce((a, v) => a + (Array.isArray(v) ? v.length : 0), 0);
@@ -257,7 +258,7 @@ function modeStatsHTML(){
     let cnt = ""; try { cnt = MODE_STATS[b.id] ? MODE_STATS[b.id]() : ""; } catch(e){ cnt = ""; }
     return `<li><div class="msh"><b>${esc(b.textContent.trim())}</b><span class="msph ms-${kind[0]}">${kind[1]}</span></div>`
       + `<div class="msl">${esc(b.dataset.who || "")}</div>${more ? `<div class="msl">${esc(more)}</div>` : ""}${cnt ? `<div class="msc">${esc(cnt)}</div>` : ""}</li>`; });
-  return `<h4 class="era">Modes</h4><ul class="modestats">${cards.join("")}</ul>`;
+  return `<ul class="modestats">${cards.join("")}</ul>`;
 }
 function nsfwPaint(){ const on = nsfwOn(), b = $("#nsfwSw"); b.setAttribute("aria-checked", on); b.querySelector("b").textContent = on ? "On" : "Off"; }
 $("#nsfwSw").onclick = () => { store.set("jn_nsfwModes", !nsfwOn()); nsfwPaint(); };
