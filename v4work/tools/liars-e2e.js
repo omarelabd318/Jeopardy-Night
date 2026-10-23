@@ -63,7 +63,7 @@ process.on("unhandledRejection", e => { console.log("ERR", e.message.split("\n")
       for(const p of phones){ const h = await p.evaluate(() => st && st.me && st.me.hand ? st.me.hand.length : -1); const want = pub.seats.find(s => R.players[Object.keys(R.players).find(k => R.players[k].n === p.nm)] && s.p === Object.keys(R.players).find(k => R.players[k].n === p.nm)); if(want && !want.out && h !== -1 && h !== want.c) { /* a poll can lag one version behind: ignore */ } }
       const callIt = st.hasLiar && (st.lo || Math.random() < 0.4);
       try{
-      if(callIt) await who.click('[data-a="liar"]', {timeout:4000});
+      if(callIt){ await who.click('[data-a="liar"]', {timeout:4000}); await who.click('[data-a="liar"]', {timeout:4000}); }   // 8.56: two taps
       else { const cards = who.locator('.hand .c'), nc = await cards.count(), want = 1 + Math.floor(Math.random() * Math.min(2, nc)); if(!nc){ await tv.waitForTimeout(300); continue; }
         const idx = [...Array(nc).keys()].sort(() => Math.random() - .5).slice(0, want); for(const i of idx) await cards.nth(i).click({timeout:4000}); await who.click('[data-a="play"]', {timeout:4000}); }
       }catch(e){ const now = await who.evaluate(() => ({turn:st.pub.turn, me:me.p, v:st.pub.v, ph:st.pub.ph, sel:typeof sel !== "undefined" ? sel : null, text:document.getElementById("view").innerText.replace(/\n/g, " / ").slice(0, 200)})); const same = R.crd && R.crd.pub.v === now.v && R.crd.pub.ph === pub.ph && R.crd.pub.turn === pub.turn;
