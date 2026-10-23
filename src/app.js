@@ -231,8 +231,8 @@ function verCounts(){ const n = PICK.filter(c => c.id !== "tvmix").reduce((a,c) 
   const nc = PICK.filter(c => c.type !== "mix" && c.id !== "tvmix").length;   // 6.36 (Omar): mixes (and TV Show Mix) reuse other categories' clues, so they aren't counted (6.20-6.35: PICK.length)
   return {n, nc}; }
 function verLabel(){ const {n, nc} = verCounts();
-  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.49`);
-  $("#verBtn").textContent = "v8.49"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
+  document.querySelectorAll(".verlabel").forEach(el => el.textContent = `${nc} Categories · ${n.toLocaleString("en-US")} Clues · v8.50`);
+  $("#verBtn").textContent = "v8.50"; }   // 7.14 (Omar): the title screen shows only the version; the counts moved into the version panel
 
 /* ---------- setup ---------- */
 const CAT_GROUPS = [
@@ -2675,7 +2675,15 @@ function sandSet(c){ const el = $("#clue .sandclk"); if(!el || !c) return; const
   if(top) top.setAttribute("d", f > 0 ? `M0 ${ys}L11 ${ys}Q17 ${ys + dip * 1.6} 23 ${ys}L34 ${ys}L34 30L0 30Z` : "");
   if(bot) bot.setAttribute("d", 1 - f > 0 ? `M0 44L0 ${yb + mound * .35}Q17 ${yb - mound * 1.3} 34 ${yb + mound * .35}L34 44Z` : "");
   if(fl) fl.setAttribute("y2", Math.max(24.5, yb - mound * .5).toFixed(2));
-  el.classList.toggle("run", run); el.classList.toggle("out", c.left <= 0); }
+  el.classList.toggle("run", run); el.classList.toggle("out", c.left <= 0); sandAlign(el); }
+// 8.50 (Omar): centre the sand clock under the countdown number above it (8.47-8.49 sat flush right).
+function sandAlign(el){ const t = $("#clue .timer .t"), row = el.parentElement; if(!t || !row) return;
+  const k = el.getBoundingClientRect().width / (el.offsetWidth || 1) || 1;   // the card can be zoomed on a TV
+  const rg = document.createRange(); rg.selectNodeContents(t);   // the number itself, not its 3ch box
+  const tr = t.textContent ? rg.getBoundingClientRect() : t.getBoundingClientRect(), rr = row.getBoundingClientRect(), w = el.offsetWidth;
+  const m = (rr.right - (tr.left + tr.right) / 2) / k - w / 2;
+  el.style.marginRight = Math.max(-24, m).toFixed(1) + "px"; }   // may reach a little into the card padding
+addEventListener("resize", () => { const el = $("#clue .sandclk"); if(el) sandAlign(el); });
 function tick(){
   const c = S.cur; if(!c) return;
   c.left -= .25;
