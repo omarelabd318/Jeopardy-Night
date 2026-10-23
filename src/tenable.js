@@ -69,13 +69,13 @@ const TER = (() => {
 /*@end-rules*/
 
 const TE = {cfg:null, phase:"setup", turns:[], ti:0, t:null, item:null, flash:null, rev:0, revT:null, tmr:null, dl:0, sung:false};
-const TE_DEF = {sub:"n", form:false, players:["Player 1"], per:3, lives:3, secs:0};
+const TE_DEF = {sub:"n", form:false, players:["Player 1"], per:3, lives:3, secs:0, choose:false};
 const teClock = n => { n = Math.max(0, Math.ceil(n)); return Math.floor(n / 60) + ":" + String(n % 60).padStart(2, "0"); };
 TE.cfg = Object.assign({}, TE_DEF, store.get("jn_teCfg", {})); if(!Array.isArray(TE.cfg.players) || !TE.cfg.players.length) TE.cfg.players = ["Player 1"];
 if(![0, 120, 180, 300, 600].includes(TE.cfg.secs)) TE.cfg.secs = 0;   /* 8.25 (Omar): timer buttons read Off 2 3 5 10 under "Timer per list (in minutes)"; before: "2 minutes", "3 minutes", "5 minutes" and no 10 */   /* 7.93: older saves held 60/90/120 s */
 const teSave = () => store.set("jn_teCfg", TE.cfg);
 const teMix = () => TE.cfg.sub === "m";   // 7.86 (Omar): the Mix edition deals Tenable and TenaBall lists in one game; each list wears its own edition's look
-const teBall = () => TE.cfg.sub === "f" || (["ready", "play", "done"].includes(TE.phase) && !!TE.turns[TE.ti] && TE.turns[TE.ti].list.ed === "f"), teForm = () => (TE.cfg.sub === "f" || teMix()) && TE.cfg.form;
+const teBall = () => TE.cfg.sub === "f" || (["ready", "play", "done"].includes(TE.phase) && !!TE.turns[TE.ti] && !!TE.turns[TE.ti].list && TE.turns[TE.ti].list.ed === "f"), teForm = () => (TE.cfg.sub === "f" || teMix()) && TE.cfg.form;
 const teName = () => teBall() ? "TenaBall" : teMix() && !["ready", "play", "done"].includes(TE.phase) ? "Tenable Mix" : "Tenable";
 const teShuf = a => { for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
@@ -100,16 +100,24 @@ function teDeal(n){
   const seen = store.get("jn_teSeen", {}), lineups = teForm() ? teLineups() : [], out = [];
   for(let i = 0; i < n; i++) { const ed = teMix() ? (Math.random() < 0.5 ? "n" : "f") : TE.cfg.sub; out.push(lineups.length && Math.random() < TE.formShare ? teDraw(lineups, "fm", seen) : teDraw(teLists(ed), ed, seen)); }
   store.set("jn_teSeen", seen); return out; }
+/* 8.37 (Omar): "Choose list" switch. Each turn opens on a 3 by 3 grid of 9 lists (not played on this device yet where possible) and the player picks one; only the picked list counts as played */
+function teOffer(n){ const seen = store.get("jn_teSeen", {}), lineups = teForm() ? teLineups() : [], out = [], keys = new Set();
+  for(let k = 0; k < n * 6 && out.length < n; k++){ const ed = teMix() ? (Math.random() < 0.5 ? "n" : "f") : TE.cfg.sub, fm = lineups.length && Math.random() < TE.formShare;
+    const pool = fm ? lineups : teLists(ed), s = new Set(seen[fm ? "fm" : ed] || []); let fresh = pool.filter(L => !s.has(L.key) && !keys.has(L.key)); if(!fresh.length) fresh = pool.filter(L => !keys.has(L.key)); if(!fresh.length) continue;
+    const L = fresh[Math.floor(Math.random() * fresh.length)]; keys.add(L.key); out.push(L); }
+  return out; }
+function teMark(L){ const seen = store.get("jn_teSeen", {}), k = L.rows ? "fm" : L.ed, s = new Set(seen[k] || []); s.add(L.key); seen[k] = [...s]; store.set("jn_teSeen", seen); }
+function teChoose(i){ const tu = TE.turns[TE.ti], L = tu && tu.opts && tu.opts[i]; if(!L) return; tu.list = L; tu.opts = null; teMark(L); teGo(); }
 
 /* ---------- the flow ---------- */
 function teStart(){
   const ps = TE.cfg.players.map(p => String(p).trim()).filter(Boolean).slice(0, 8); if(!ps.length) return; TE.cfg.players = ps; if(!TE.pick) teSave();
   stopSiu(); try{ Snd.unlock(); }catch(e){}
-  const solo = ps.length === 1, lists = teDeal(solo ? 1 : ps.length * TE.cfg.per); TE.turns = [];   // 7.82 (Omar): a solo player isn't limited to a number of lists: the next one is dealt when they press Next, until they press Finish
+  const solo = ps.length === 1, lists = TE.cfg.choose ? Array(solo ? 1 : ps.length * TE.cfg.per).fill(null) : teDeal(solo ? 1 : ps.length * TE.cfg.per); TE.turns = [];   // 7.82 (Omar): a solo player isn't limited to a number of lists: the next one is dealt when they press Next, until they press Finish
   if(solo) TE.turns.push({p:0, r:0, list:lists[0], pts:0, n:0});
   else for(let r = 0; r < TE.cfg.per; r++) ps.forEach((p, i) => TE.turns.push({p:i, r, list:lists[(r * ps.length + i) % lists.length], pts:0, n:0}));
   TE.scores = ps.map(() => 0); TE.ti = 0; TE.sung = false; teReady(); }
-function teReady(){ TE.phase = "ready"; TE.t = null; TE.flash = null; clearInterval(TE.revT); teRender(); }
+function teReady(){ TE.phase = "ready"; TE.t = null; TE.flash = null; clearInterval(TE.revT); const tu = TE.turns[TE.ti]; if(tu && !tu.list) tu.opts = teOffer(9); teRender(); }
 function teGo(){ const tu = TE.turns[TE.ti];
   TE.t = TER.Turn({items:tu.list.items, lives:TE.cfg.lives, norm:ansNorm, lev}); TE.phase = "play"; TE.flash = null; TE.rev = 0;
   TE.dl = TE.cfg.secs ? Date.now() + TE.cfg.secs * 1000 : 0; TE.tk = null; teRender(); const i = $("#teIn"); if(i) i.focus(); }
@@ -118,12 +126,12 @@ function teEnd(){ const tu = TE.turns[TE.ti], t = TE.t; tu.n = t.n(); tu.pts = t
   const hid = t.found.map((f, i) => f ? -1 : i).filter(i => i >= 0); TE.rev = 0; clearInterval(TE.revT);
   if(hid.length) TE.revT = setInterval(() => { TE.rev++; teRender(); if(TE.rev >= hid.length) clearInterval(TE.revT); }, 380);   // the missed answers appear one by one
   teRender(); }
-function teNext(){ clearInterval(TE.revT); if(TE.cfg.players.length === 1 && TE.ti + 1 >= TE.turns.length) TE.turns.push({p:0, r:TE.ti + 1, list:teDeal(1)[0], pts:0, n:0}); TE.ti++; if(TE.ti >= TE.turns.length){ TE.phase = "over"; if(!TE.sung){ TE.sung = true; playWinSiu(); } teRender(); return; } teReady(); }
+function teNext(){ clearInterval(TE.revT); if(TE.cfg.players.length === 1 && TE.ti + 1 >= TE.turns.length) TE.turns.push({p:0, r:TE.ti + 1, list:TE.cfg.choose ? null : teDeal(1)[0], pts:0, n:0}); TE.ti++; if(TE.ti >= TE.turns.length){ TE.phase = "over"; if(!TE.sung){ TE.sung = true; playWinSiu(); } teRender(); return; } teReady(); }
 /* 7.86 (Omar): the Next button (top right) skips to the next list right away: no answers are shown, whatever was found still scores */
 function teSkip(){ if(TE.phase !== "play" || !TE.t) return; const tu = TE.turns[TE.ti], t = TE.t; t.stop("skip"); tu.n = t.n(); tu.pts = t.points(); TE.scores[tu.p] += tu.pts; TE.phase = "done";
-  teNext(); if(TE.phase === "ready" && TE.cfg.players.length === 1) teGo(); }
+  teNext(); if(TE.phase === "ready" && TE.cfg.players.length === 1 && TE.turns[TE.ti].list) teGo(); }
 /* 8.0 (Omar): with two or more players the Next button is Swap: the same player gets a fresh list straight away (new lives and timer); nothing found on the swapped list scores */
-function teSwap(){ if(TE.phase !== "play" || !TE.t) return; const tu = TE.turns[TE.ti]; TE.t.stop("swap"); let L = teDeal(1)[0];
+function teSwap(){ if(TE.phase !== "play" || !TE.t) return; const tu = TE.turns[TE.ti]; TE.t.stop("swap"); if(TE.cfg.choose){ tu.list = null; teReady(); return; } let L = teDeal(1)[0];
   for(let k = 0; k < 5 && L.key === tu.list.key; k++) L = teDeal(1)[0];
   tu.list = L; teGo(); }
 function teGuess(){ const inp = $("#teIn"); if(!inp || !TE.t || TE.phase !== "play") return; const txt = inp.value; inp.value = ""; const r = TE.t.guess(txt);
@@ -194,12 +202,13 @@ function teRender(){
         <p class="note">One player is a solo game. With more, players take turns, each with their own list.</p></div>
       <div class="tepanel">${c.players.length > 1 ? `<div class="teeye">Lists each</div>${teSeg("per", [1, 2, 3, 4, 5].map(n => [n, n]), c.per)}` : `<div class="teeye">Lists</div><p class="note">Solo play never runs out: keep going list after list, and press Finish when you want to stop.</p>`}
         <div class="teeye">Lives</div>${teSeg("lives", [[3, "3"], [5, "5"], [0, "No limit"]], c.lives)}
+        <div class="teeye">Choose list</div>${teSeg("choose", [[0, "Off"], [1, "On"]], c.choose ? 1 : 0)}<p class="note">On: each turn starts with 9 lists in a 3 by 3 grid, and the player picks the one to play.</p>
         <div class="teeye">Timer per list (in minutes)</div>${teSeg("secs", [[0, "Off"], [120, "2"], [180, "3"], [300, "5"], [600, "10"]], c.secs)}
         <p class="note">Type each guess on this laptop and press Enter. A wrong guess costs a life. 1 point per answer, +${TER.BONUS} for getting them all. Spelling doesn't have to be perfect, and surnames are enough. For a clue, tap a hidden slot: each tap shows one more letter (up to three), and the next tap gives the whole answer. The timer is just a clock for the room: the last 10 seconds tick, and at zero nothing stops on the board.</p>
         <button class="tebtn go" id="teGo">Start</button></div></div>`;
     return; }
-  if(TE.phase === "over"){ const ps = c.players, rows = ps.map((p, i) => ({p, s:TE.scores[i], n:TE.turns.filter(t => t.p === i).reduce((a, t) => a + t.n, 0), all:TE.turns.filter(t => t.p === i && t.n === t.list.items.length).length})).sort((a, b) => b.s - a.s);
-    const top = rows[0].s, win = rows.filter(r => r.s === top), max = TE.turns.filter(t => t.p === 0).reduce((a, t) => a + t.list.items.length, 0);
+  if(TE.phase === "over"){ const ps = c.players, rows = ps.map((p, i) => ({p, s:TE.scores[i], n:TE.turns.filter(t => t.p === i).reduce((a, t) => a + t.n, 0), all:TE.turns.filter(t => t.p === i && t.list && t.n === t.list.items.length).length})).sort((a, b) => b.s - a.s);
+    const top = rows[0].s, win = rows.filter(r => r.s === top), max = TE.turns.filter(t => t.p === 0).reduce((a, t) => a + (t.list ? t.list.items.length : 0), 0);
     el.innerHTML = `<div class="tetv"><div class="teover"><div class="tebadge">${teName()}</div>
       <div class="tewin">${ps.length === 1 ? `${rows[0].n} of ${max}` : win.map(r => esc(r.p)).join(" and ")}<span>${ps.length === 1 ? `found by ${esc(rows[0].p)} · ${top} points` : win.length > 1 ? "share the win" : "wins the night"}</span></div>
       ${ps.length > 1 ? `<ol class="teplace">${rows.map((r, i) => `<li><b>${i + 1}</b><span>${esc(r.p)}</span><small>${r.n} found${r.all ? ` · ${r.all}× all` : ""}</small><em>${r.s}</em></li>`).join("")}</ol>` : rows[0].all ? `<p class="note">${rows[0].all === 1 ? "One full house" : rows[0].all + " full houses"}: every answer found.</p>` : ""}
@@ -208,6 +217,9 @@ function teRender(){
   const tu = TE.turns[TE.ti], t = TE.t, p = c.players[tu.p], tot = TE.turns.length;
   const top = `<div class="tetop"><span class="telogo">${teName()}</span><span></span><span>${c.players.length > 1 && TE.phase !== "ready" ? `<b class="tepl">${esc(p)}</b>` : ""}${t ? teLives(t) : ""}${TE.dl && TE.phase === "play" ? ` <span class="teclock"><span id="teLeft">${teClock((TE.dl - Date.now()) / 1000)}</span></span>` : ""}</span></div>
     ${TE.dl && TE.phase === "play" ? `<div class="tebar"><i id="teBar" style="width:${Math.max(0, Math.min(100, (TE.dl - Date.now()) / (c.secs * 10)))}%"></i></div>` : ""}`;
+  if(TE.phase === "ready" && !tu.list){
+    el.innerHTML = `<div class="tetv">${top}<div class="tepick"><small>${c.players.length > 1 ? "Next up" : "Your pick"}</small><h2>${esc(p)}, choose a list</h2>
+      <div class="techo">${(tu.opts || []).map((L, i) => `<button data-cho="${i}" class="${L.ed === "f" ? "ball" : ""}"><em>${L.id}</em><b>${esc(L.t)}${L.yr ? " " + esc(L.yr) : ""}</b><small>${L.rows ? "Lineup: name all 11" : esc(L.d || "")}</small></button>`).join("")}</div></div><div class="tectl"><span class="gap"></span><button class="tebtn small ghost" data-act="end">End game</button></div>${teBoard()}</div>`; return; }
   if(TE.phase === "ready"){
     el.innerHTML = `<div class="tetv">${top}<div class="teready"><small>${c.players.length > 1 ? "Next up" : "Ready?"}</small><h2>${esc(p)}</h2>
       <p>${!!tu.list.rows ? "A lineup is coming: name all 11 players." : "A top ten is coming: name all ten."} ${c.lives ? `${c.lives} lives.` : "No life limit."}${c.secs ? ` ${c.secs / 60} minutes.` : ""}</p>
@@ -225,11 +237,12 @@ function teRender(){
   el.innerHTML = `<div class="tetv${!!tu.list.rows ? " fm" : ""}">${top}<div class="temain">${teHead(tu)}${!!tu.list.rows ? tePitch(tu, t) : tePyramid(tu, t)}</div>${msg}
     ${t.wrong.length ? `<div class="tewrong">${t.wrong.slice(-8).map(w => `<s>${esc(w)}</s>`).join("")}</div>` : ""}${ctl}${teBoard()}</div>`; }
 $("#teo").addEventListener("click", e => {
-  const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; TE.cfg[k] = k === "sub" ? v : k === "form" ? v === "1" : +v; teSave(); teRender(); return; }
+  const set = e.target.closest("[data-set]"); if(set){ const k = set.dataset.set, v = set.dataset.v; TE.cfg[k] = k === "sub" ? v : k === "form" || k === "choose" ? v === "1" : +v; teSave(); teRender(); return; }
   if(e.target.closest("[data-add]")){ TE.cfg.players.push("Player " + (TE.cfg.players.length + 1)); teSave(); teRender(); const ins = document.querySelectorAll("#teo [data-pl]"); const l = ins[ins.length - 1]; if(l){ l.focus(); l.select(); } return; }
   const rm = e.target.closest("[data-rm]"); if(rm){ TE.cfg.players.splice(+rm.dataset.rm, 1); teSave(); teRender(); return; }
   if(e.target.closest("#teListsBtn")){ teListsShow(); return; }
   if(e.target.closest("[data-lsx]") || e.target.id === "teLs"){ $("#teLs").hidden = true; return; }
+  const cho = e.target.closest("[data-cho]"); if(cho){ teChoose(+cho.dataset.cho); return; }
   const pk = e.target.closest("[data-pk]"); if(pk){ const [k, i] = pk.dataset.pk.split("|"); tePick(k, +i); return; }
   if(e.target.closest("#teGo")){ teStart(); return; }
   if(e.target.closest("#teSkip")){ if(TE.cfg.players.length > 1) teSwap(); else teSkip(); return; }
